@@ -1,6 +1,6 @@
 <?php
 /**
- * Functional Scope: API for Sign Up, Sign In and Sign Out.
+ * Functional Scope: API for Sign Up, Sign In , Validate Email for Users.
  */
 namespace App\Http\Controllers\Api\V1;
 use App\Exceptions\HttpBadRequestException;
@@ -240,7 +240,12 @@ class AuthController extends Controller {
                     $response = [
                         'status' => true,
                         'message' => "User signed in successfully.",
-                        'user' => $user,
+                        'user' => [ 
+                                    'id' => $user->id, 'name' => $user->name, 
+                                    'email' =>  $user->email, 'role' => $role,
+                                    'avatar' => $user->avatar, 'document_path' => $user->document_path,
+                                    'status' => $user->status  
+                                ],
                         'token' => $token,
                     ];
                     $responseCode = 200;
