@@ -48,6 +48,6 @@ trait HasRoles
     {
 
         $role = $this->roles()->where('user_id',$id)->first();
-        return  $role->name;
+        return  $role->id;
     }
 }

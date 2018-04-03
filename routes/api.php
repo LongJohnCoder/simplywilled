@@ -78,6 +78,46 @@ Route::group(['prefix' => 'v1'], function() {
             'uses' => 'Api\V1\AdminController@changePassword',
             'as'   => 'api.v1.ChangePassword.post'
         ]);
+
+        /**
+        * Lists of roles
+        */
+        Route::post('roles', [
+            'uses' => 'Api\V1\RoleController@roleLists',
+            'as'   => 'api.v1.RoleLists.post'
+        ]);
+
+        /**
+        * Create roles
+        */
+        Route::post('role-create', [
+            'uses' => 'Api\V1\RoleController@createRole',
+            'as'   => 'api.v1.RoleCreate.post'
+        ]);
+
+        /**
+        * Role Details
+        */
+        Route::post('role-details', [
+            'uses' => 'Api\V1\RoleController@roleDetails',
+            'as'   => 'api.v1.RoleDetails.post'
+        ]);
+
+        /**
+        * Role Update
+        */
+        Route::post('role-update', [
+            'uses' => 'Api\V1\RoleController@roleUpdate',
+            'as'   => 'api.v1.RoleUpdate.post'
+        ]);
+
+        /**
+        * Role Delete
+        */
+        Route::post('role-delete', [
+            'uses' => 'Api\V1\RoleController@roleDelete',
+            'as'   => 'api.v1.RoleDelete.post'
+        ]);
     });
 
     /**

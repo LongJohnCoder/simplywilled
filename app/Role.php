@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Role
@@ -22,5 +23,6 @@ class Role extends Model
      * @var array
      */
     protected $fillable = ['name'];
+    use SoftDeletes;
 
 }
