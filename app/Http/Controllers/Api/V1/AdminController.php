@@ -55,7 +55,7 @@ class AdminController extends Controller {
                 
                 $user = Auth::user();
                 $role = $user->getRole($user->id);
-                if($role != 'Admin') {
+                if($role == 'Admin') {
                     JWTAuth::invalidate($token);
                         $response = [
                         'status' => false,

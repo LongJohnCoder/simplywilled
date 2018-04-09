@@ -118,6 +118,48 @@ Route::group(['prefix' => 'v1'], function() {
             'uses' => 'Api\V1\RoleController@roleDelete',
             'as'   => 'api.v1.RoleDelete.post'
         ]);
+
+        /*
+         * Route for getting the all category list
+         * */
+        Route::get('category-list', [
+            'uses' => 'Api\V1\CategoryController@categoryList',
+            'as'   => 'api.v1.DeleteCategory.get'
+        ]);
+
+        /**
+         *Route for Create Category
+         */
+        Route::post('create-category', [
+            'uses' => 'Api\V1\CategoryController@createCategory',
+            'as'   => 'api.v1.CreateCategory.post'
+        ]);
+
+       /*
+        * Route for view category
+        */
+        Route::get('view-category/{categoryId}', [
+            'uses' => 'Api\V1\CategoryController@viewCategory',
+            'as'   => 'api.v1.ViewCategory.get'
+        ]);
+
+        /**
+         *Route for Edit Category
+         */
+        Route::post('edit-category', [
+            'uses' => 'Api\V1\CategoryController@editCategory',
+            'as'   => 'api.v1.EditCategory.post'
+        ]);
+
+        /*
+         *Route for Delete category
+         *
+         * */
+        Route::post('delete-category', [
+            'uses' => 'Api\V1\CategoryController@deleteCategory',
+            'as'   => 'api.v1.DeleteCategory.post'
+        ]);
+
     });
 
     /**

@@ -229,7 +229,7 @@ class AuthController extends Controller {
                 
                 $user = Auth::user();
                 $role = $user->getRole($user->id);
-                if($role != 'User') {
+                if($role == 'User') {
                     JWTAuth::invalidate($token);
                         $response = [
                         'status' => false,
