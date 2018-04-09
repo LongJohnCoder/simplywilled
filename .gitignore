@@ -6,6 +6,7 @@ npm-debug.log
 bootstrap/compiled.php
 app/storage/
 
+resources/assets/simplywilled
 # Laravel 5 & Lumen specific
 public/storage
 public/hot
