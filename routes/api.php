@@ -200,6 +200,48 @@ Route::group(['prefix' => 'v1'], function() {
             'as'   => 'api.v1.DeleteBlog.post'
         ]);
 
+        /*
+         * Route for create faq category
+         * */
+        Route::post('create-faq-category', [
+            'uses' => 'Api\V1\FaqCategoryController@createFaqCategory',
+            'as'   => 'api.v1.CreateFaqCategory.post'
+        ]);
+
+        /*
+         * Route for Edit faq category
+         * */
+        Route::post('edit-faq-category', [
+            'uses' => 'Api\V1\FaqCategoryController@editFaqCategory',
+            'as'   => 'api.v1.EditFaqCategory.post'
+        ]);
+
+        /*
+         * Route for faq category list
+         * */
+        Route::get('faq-category-list', [
+            'uses' => 'Api\V1\FaqCategoryController@faqCategoryList',
+            'as'   => 'api.v1.FaqCategoryList.get'
+        ]);
+
+        /*
+         * Route for faq category list
+         * */
+        Route::get('view-faq-category/{faqCategoryId}', [
+            'uses' => 'Api\V1\FaqCategoryController@viewFaqCategory',
+            'as'   => 'api.v1.FaqCategoryView.get'
+        ]);
+
+        /*
+         * Route for delete faq category
+         * */
+        Route::post('delete-faq-category', [
+            'uses' => 'Api\V1\FaqCategoryController@deleteFaqCategory',
+            'as'   => 'api.v1.DeleteFaqCategory.post'
+        ]);
+
+
+
     });
 
     /**
