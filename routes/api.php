@@ -240,6 +240,46 @@ Route::group(['prefix' => 'v1'], function() {
             'as'   => 'api.v1.DeleteFaqCategory.post'
         ]);
 
+        /*
+         * Route for creating a FAQ
+         * */
+        Route::post('create-faq', [
+            'uses' => 'Api\V1\FaqController@createFaq',
+            'as'   => 'api.v1.CreateFaq.post'
+        ]);
+
+        /*
+         * Route for creating a FAQ
+         * */
+        Route::post('edit-faq', [
+            'uses' => 'Api\V1\FaqController@editFaq',
+            'as'   => 'api.v1.EditFaq.post'
+        ]);
+
+        /*
+         * Route for FAQ List
+         * */
+        Route::get('faq-list', [
+            'uses' => 'Api\V1\FaqController@faqList',
+            'as'   => 'api.v1.FaqList.get'
+        ]);
+
+        /*
+         * Route for view a FAQ
+         * */
+        Route::get('view-faq/{faqId}', [
+            'uses' => 'Api\V1\FaqController@viewFaq',
+            'as'   => 'api.v1.ViewFaq.get'
+        ]);
+
+        /*
+         * Route for deleting a FAQ
+         * */
+        Route::post('delete-faq', [
+            'uses' => 'Api\V1\FaqController@deleteFaq',
+            'as'   => 'api.v1.DeleteFaq.post'
+        ]);
+
 
 
     });
