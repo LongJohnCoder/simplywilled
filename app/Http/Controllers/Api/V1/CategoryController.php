@@ -44,7 +44,7 @@ class CategoryController extends Controller {
                     'status' => true,
                     'message' => 'Category not added',
                     'data' => []
-                ], 200);
+                ], 400);
             }
         }catch(Exception $e){
             return response()->json([

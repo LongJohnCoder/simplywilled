@@ -160,6 +160,46 @@ Route::group(['prefix' => 'v1'], function() {
             'as'   => 'api.v1.DeleteCategory.post'
         ]);
 
+        /*
+         * Route for Create Blog
+         * */
+        Route::post('create-blog', [
+            'uses' => 'Api\V1\BlogController@createBlog',
+            'as'   => 'api.v1.CreateBlog.post'
+        ]);
+
+        /*
+         * Route for Edit Blog
+         * */
+        Route::post('edit-blog', [
+            'uses' => 'Api\V1\BlogController@editBlog',
+            'as'   => 'api.v1.EditBlog.post'
+        ]);
+
+        /*
+         * Route for Edit Blog
+         * */
+        Route::get('blog-list', [
+            'uses' => 'Api\V1\BlogController@blogList',
+            'as'   => 'api.v1.blogList.get'
+        ]);
+
+        /*
+         * Route for view Blog
+         * */
+        Route::get('view-blog/{blogId}', [
+            'uses' => 'Api\V1\BlogController@viewBlog',
+            'as'   => 'api.v1.blogView.get'
+        ]);
+
+        /*
+         * Route for delete a blog
+         * */
+        Route::post('delete-blog', [
+            'uses' => 'Api\V1\BlogController@deleteBlog',
+            'as'   => 'api.v1.DeleteBlog.post'
+        ]);
+
     });
 
     /**
