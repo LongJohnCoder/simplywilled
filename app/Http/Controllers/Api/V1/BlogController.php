@@ -25,6 +25,7 @@ use JWTAuthException;
 use Log;
 use Mail;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use App\Models\BlogComment;
 
 class BlogController extends Controller
 {
@@ -362,4 +363,123 @@ class BlogController extends Controller
         }
 
     }
+
+    /*
+     *  Function to add comments to a blog
+     *  @params [Request :: name, email, message, parentCommentId]
+     *  @return \Illuminate\Http\JsonResponse
+     * */
+     public function addBlogComments(Request $request)
+     {
+         try {
+
+            //checking valid blogid
+            if(!$request->has('blogId') || !is_numeric($request->blogId)) {
+              print_r($request->blogId);die();
+             return response()->json([
+                 'status'   => false,
+                 'message'  => 'Invalid blogId!',
+                 'data'     => []
+             ], 400);
+            }
+            $blogId = $request->blogId;
+
+            //checking valid message
+            if(!$request->has('message') || strlen(trim($request->message)) == 0) {
+             return response()->json([
+                 'status'   => false,
+                 'message'  => 'Invalid Message!',
+                 'data'     => []
+             ], 400);
+            }
+            $message = $request->message;
+
+            //checking valid name
+            if(!$request->has('name') || strlen(trim($request->name)) == 0) {
+              return response()->json([
+                  'status'   => false,
+                  'message'  => 'Name is invalid',
+                  'data'     => []
+              ], 400);
+            }
+            $name    = $request->name;
+
+            //checking valid email
+            if(!$request->has('email') || strlen(trim($request->email)) == 0 || !(filter_var($request->email, FILTER_VALIDATE_EMAIL))) {
+              return response()->json([
+                  'status'   => false,
+                  'message'  => 'Email is invalid',
+                  'data'     => []
+              ], 400);
+            }
+            $email  = $request->email;
+
+            //checking valid parentCommentId
+            if(!$request->has('parentCommentId') || !is_numeric($request->parentCommentId)) {
+              return response()->json([
+                  'status'   => false,
+                  'message'  => 'Incorrect parentCommentId',
+                  'data'     => []
+              ], 400);
+            }
+
+            if($request->parentCommentId > 0 && !BlogComment::find($request->parentCommentId)) {
+              return response()->json([
+                  'status'   => false,
+                  'message'  => 'Incorrect parentCommentId, this parentCommentId does not exist',
+                  'data'     => []
+              ], 400);
+            }
+
+            //if another comment has the same parentCommentId then 2 messages cannot have the same parentCommentId
+            $count = BlogComment::where('parent_comment_id', $request->parentCommentId)->where('status' , '1')->count();
+            if($count > 0) {
+              return response()->json([
+                  'status'   => false,
+                  'message'  => 'Other message share the same parentCommentId, thus invalid',
+                  'data'     => []
+              ], 400);
+            }
+
+            $parentCommentId  = $request->parentCommentId;
+
+            // find the blog to which the comment should be added
+            $blog                       = Blogs::findorfail($blogId);
+            $comment                    = new BlogComment();
+            $comment->blog_id           = $blogId;
+            $comment->email             = $email;
+            $comment->name              = $name;
+            $comment->message           = $message;
+            $comment->status            = '1';
+            $comment->parent_comment_id = $parentCommentId;
+
+            if ($comment->save()) {
+               return response()->json([
+                   'status'   => true,
+                   'message'  => 'Message saved',
+                   'data'     => ['message' => $comment]
+               ], 200);
+            } else {
+               return response()->json([
+                   'status'   => false,
+                   'message'  => 'Message not saved. Database Connectivity Error!',
+                   'data'     => []
+               ], 400);
+            }
+         } catch(ModelNotFoundException $me) {
+           return response()->json([
+               'status'       => false,
+               'message'      => $me->getMessage(),
+               'errorLineNo'  => $me->getLine(),
+               'data'         => []
+           ], 500);
+         } catch (Exception $e) {
+             return response()->json([
+                 'status'       => false,
+                 'message'      => $e->getMessage(),
+                 'errorLineNo'  => $e->getLine(),
+                 'data'         => []
+             ], 500);
+         }
+     }
 }

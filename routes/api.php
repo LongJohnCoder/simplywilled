@@ -54,7 +54,7 @@ Route::group(['prefix' => 'v1'], function() {
         'uses' => 'Api\V1\AdminController@logIn',
         'as'   => 'api.v1.adminLogin.post'
     ]);
-    
+
     /**
      * Route for Authenticated Admin panel
     */
@@ -64,7 +64,7 @@ Route::group(['prefix' => 'v1'], function() {
         /**
         * Route for Sign-out from Admin panel
         */
-        
+
         Route::post('sign-out',[
             'uses' => 'Api\V1\AdminController@logOut',
             'as'   => 'api.v1.adminSignout.post'
@@ -289,7 +289,7 @@ Route::group(['prefix' => 'v1'], function() {
      */
 
     Route::group(['middleware' => ['jwt.auth','user.auth'], 'prefix' => 'user' ], function() {
-       
+
        /**
         * Route for Change Password
         */
@@ -303,6 +303,14 @@ Route::group(['prefix' => 'v1'], function() {
             'uses' => 'Api\V1\UserController@signOut',
             'as' => 'api.v1.signOut.post'
         ]);
+
+        /**
+         * Route for Commenting to a blog
+         */
+         Route::post('comment', [
+             'uses' => 'Api\V1\BlogController@addBlogComments',
+             'as' => 'api.v1.makeComment'
+         ]);
 
     });
 });
