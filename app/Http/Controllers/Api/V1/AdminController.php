@@ -25,6 +25,44 @@ use App\Helper\DateTimeHelper;
 
 class AdminController extends Controller {
 
+
+  /**
+   * Signs in a authenticated admin
+   *
+   * @param Request $request
+   * @return \Illuminate\Http\JsonResponse
+   */
+    public function deletePackage($id) {
+      try {
+
+        //rejecting delete request if package id is invalid
+        if(!is_numeric($id)) {
+         return response()->json([
+             'status'   => false,
+             'message'  => 'Invalid Package id!'
+         ], 400);
+        }
+
+        if(Packages::destroy($id)) {
+          return response()->json([
+              'status'   => true,
+              'message'  => 'Package Deleted Successfully!'
+          ], 200);
+        } else {
+          return response()->json([
+              'status'   => true,
+              'message'  => 'Invalid Package id!'
+          ], 400);
+        }
+      } catch (\Exception $e) {
+        return response()->json([
+            'status'       => false,
+            'message'      => $e->getMessage(),
+            'errorLineNo'  => $e->getLine()
+        ], 500);
+      }
+    }
+
   /**
    * Signs in a authenticated admin
    *
