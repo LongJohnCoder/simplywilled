@@ -288,6 +288,14 @@ Route::group(['prefix' => 'v1'], function() {
             'as'   => 'api.v1.createPackage.post'
         ]);
 
+        /*
+         * Route for delete package
+         * */
+        Route::delete('delete-package/{id}', [
+            'uses' => 'Api\V1\AdminController@deletePackage',
+            'as'   => 'api.v1.deletePackage.delete'
+        ]);
+
     });
 
     /**
