@@ -375,7 +375,6 @@ class BlogController extends Controller
 
             //checking valid blogid
             if(!$request->has('blogId') || !is_numeric($request->blogId)) {
-              print_r($request->blogId);die();
              return response()->json([
                  'status'   => false,
                  'message'  => 'Invalid blogId!',

@@ -20,9 +20,91 @@ use Log;
 use Mail;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Validator;
+use App\Models\Packages;
+use App\Helper\DateTimeHelper;
 
 class AdminController extends Controller {
 
+  /**
+   * Signs in a authenticated admin
+   *
+   * @param Request $request
+   * @return \Illuminate\Http\JsonResponse
+   */
+    public function createPackage(Request $request) {
+      try {
+
+        //if request has no name field or name field is empty discarding
+        if(!$request->has('name') || strlen(trim($request->name)) == 0) {
+         return response()->json([
+             'status'   => false,
+             'message'  => 'Invalid Package Name!',
+             'data'     => []
+         ], 400);
+        }
+        $name = $request->name;
+
+        //if request has no amount field or amount field is empty discarding
+        if(!$request->has('amount') || !is_numeric($request->amount)) {
+         return response()->json([
+             'status'   => false,
+             'message'  => 'Invalid Package Amount!',
+             'data'     => []
+         ], 400);
+        }
+        $amount = $request->amount;
+
+        //if request has no valid_till field or valid_till field is empty discarding
+        if(!$request->has('valid_till') || strlen(trim($request->valid_till)) == 0) {
+         return response()->json([
+             'status'   => false,
+             'message'  => 'Invalid Package valid_till value!',
+             'data'     => []
+         ], 400);
+        }
+        $dtHelper = new DateTimeHelper();
+        if(!$dtHelper->verifyDate(trim($request->valid_till))) {
+          return response()->json([
+              'status'   => false,
+              'message'  => 'Invalid Package valid_till format!',
+              'data'     => []
+          ], 400);
+        }
+        $validTill = $request->valid_till;
+
+        $desc = [
+          'description' => $request->has('description') ? $request->description : ''
+        ];
+        $desc = json_encode($desc);
+
+        $package = new Packages();
+        $package->name        = $name;
+        $package->amount      = $amount;
+        $package->valid_till  = $validTill;
+        $package->description = $desc;
+        $package->status      = '1';
+        if($package->save()) {
+          return response()->json([
+              'status'   => true,
+              'message'  => 'New Package Created',
+              'data'     => ['package' => $package]
+          ], 200);
+        } else {
+          return response()->json([
+              'status'   => true,
+              'message'  => 'Database Conectivity Error',
+              'data'     => []
+          ], 200);
+        }
+      } catch(\Exception $e) {
+        return response()->json([
+            'status'       => false,
+            'message'      => $e->getMessage(),
+            'errorLineNo'  => $e->getLine(),
+            'data'         => []
+        ], 500);
+      }
+    }
 
     /**
      * Signs in a authenticated admin
@@ -52,7 +134,7 @@ class AdminController extends Controller {
              * Authenticate user using JWTAuth
              */
             if ($token = JWTAuth::attempt($request->only('email', 'password'))) {
-                
+
                 $user = Auth::user();
                 $role = $user->getRole($user->id);
                 if($role == 'Admin') {
@@ -67,9 +149,9 @@ class AdminController extends Controller {
                     $response = [
                         'status' => true,
                         'message' => "User signed in successfully.",
-                        'user' => [ 
-                                    'id' => $user->id, 'name' => $user->name, 
-                                    'email' => $user->email, 'role' => $role 
+                        'user' => [
+                                    'id' => $user->id, 'name' => $user->name,
+                                    'email' => $user->email, 'role' => $role
                                 ],
                         'token' => $token,
                     ];
@@ -91,7 +173,7 @@ class AdminController extends Controller {
                 'error'     => $httpBadRequestException->getMessage()
             ];
             $responseCode = 400;
-        } /** @noinspection PhpUndefinedClassInspection */ 
+        } /** @noinspection PhpUndefinedClassInspection */
         catch (JWTAuthException $JWTAuthException) {
 
             $response = [
@@ -163,7 +245,7 @@ class AdminController extends Controller {
      */
 
     public function changePassword(Request $request) {
-          
+
         try {
             $validator = Validator::make($request->all(), [
                 'new_password'  => 'required',

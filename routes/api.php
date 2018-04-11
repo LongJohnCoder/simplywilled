@@ -280,7 +280,13 @@ Route::group(['prefix' => 'v1'], function() {
             'as'   => 'api.v1.DeleteFaq.post'
         ]);
 
-
+        /*
+         * Route for create package
+         * */
+        Route::post('create-package', [
+            'uses' => 'Api\V1\AdminController@createPackage',
+            'as'   => 'api.v1.createPackage.post'
+        ]);
 
     });
 
