@@ -54,6 +54,7 @@ class CouponsController extends Controller
         $percentage = $request->percentage;
 
         //if request has no expired_on field or expired_on field is empty discarding
+        //Calling helper function to check if date field entered matches mysql datetime format
         $dtHelper = new DateTimeHelper();
         if(!$request->has('expired_on') || !$dtHelper->verifyDate(trim($request->expired_on))) {
          return response()->json([
@@ -159,6 +160,7 @@ class CouponsController extends Controller
          $percentage = (float)$request->percentage;
 
          //if request has no expired_on field or expired_on field is empty discarding
+         //Calling helper function to check if date field entered matches mysql datetime format
          $dtHelper = new DateTimeHelper();
          if($request->has('expired_on') && strlen($request->expired_on) > 0 && !$dtHelper->verifyDate(trim($request->expired_on))) {
           return response()->json([
@@ -199,5 +201,4 @@ class CouponsController extends Controller
          ], 500);
        }
      }
-
 }

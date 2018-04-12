@@ -366,12 +366,21 @@ class BlogController extends Controller
 
     /*
      *  Function to add comments to a blog
-     *  @params [Request :: name, email, message, parentCommentId]
+     *  @params [Request :: name, email, message, parentCommentId, blogId : (required, integer)]
      *  @return \Illuminate\Http\JsonResponse
      * */
      public function addBlogComments(Request $request)
      {
          try {
+            //if User assosiated with this session is not found return valid error
+            if(!\Auth::check()) {
+              return response()->json([
+                  'status'   => false,
+                  'message'  => 'User data not found! Please log in again.',
+                  'data'     => []
+              ], 400);
+            }
+            $userId = \Auth::user()->id;
 
             //checking valid blogid
             if(!$request->has('blogId') || !is_numeric($request->blogId)) {
@@ -431,15 +440,14 @@ class BlogController extends Controller
             }
 
             //if another comment has the same parentCommentId then 2 messages cannot have the same parentCommentId
-            $count = BlogComment::where('parent_comment_id', $request->parentCommentId)->where('status' , '1')->count();
-            if($count > 0) {
+            $count = BlogComment::where('parent_comment_id', $request->parentCommentId)->count();
+            if($count > 0 && $request->parentCommentId != 0 ) {
               return response()->json([
                   'status'   => false,
                   'message'  => 'Other message share the same parentCommentId, thus invalid',
                   'data'     => []
               ], 400);
             }
-
             $parentCommentId  = $request->parentCommentId;
 
             // find the blog to which the comment should be added
@@ -449,8 +457,9 @@ class BlogController extends Controller
             $comment->email             = $email;
             $comment->name              = $name;
             $comment->message           = $message;
-            $comment->status            = '1';
+            $comment->status            = config('default_values.BlogComment.defaultBlogCommentStatus');
             $comment->parent_comment_id = $parentCommentId;
+            $comment->user_id           = $userId;
 
             if ($comment->save()) {
                return response()->json([

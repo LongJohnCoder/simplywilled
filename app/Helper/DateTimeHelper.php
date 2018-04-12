@@ -1,7 +1,15 @@
 <?php
+/**
+ * Functional Scope: Helper class for datetime
+ */
 namespace App\Helper;
 
 class DateTimeHelper {
+
+  /**
+  * Helper function for checking a particular date format for datetime fields
+  * @params [date , strict mode (default true))
+  */
   public function verifyDate($date, $strict = true)
   {
     $dateTime = \DateTime::createFromFormat('Y-m-d H:i:s', $date);
