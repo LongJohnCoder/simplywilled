@@ -110,16 +110,11 @@ class AdminController extends Controller {
         }
         $validTill = $request->valid_till;
 
-        $desc = [
-          'description' => $request->has('description') ? $request->description : ''
-        ];
-        $desc = json_encode($desc);
-
         $package = new Packages();
         $package->name        = $name;
         $package->amount      = $amount;
         $package->valid_till  = $validTill;
-        $package->description = $desc;
+        $package->description = $request->has('description') ? $request->description : '';
         $package->status      = '1';
         if($package->save()) {
           return response()->json([
@@ -143,6 +138,74 @@ class AdminController extends Controller {
         ], 500);
       }
     }
+
+    /**
+     * Signs in a authenticated admin
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+      public function editPackage(Request $request) {
+        try {
+
+          //if request has improper id field then return error
+          if(!$request->has('id') || !is_numeric($request->id)) {
+           return response()->json([
+               'status'   => false,
+               'message'  => 'Invalid Package Id!',
+               'data'     => []
+           ], 400);
+          }
+          $id = $request->id;
+
+          //if request has no name field or name field is empty discarding
+          if($request->has('name') && strlen(trim($request->name)) == 0) {
+           return response()->json([
+               'status'   => false,
+               'message'  => 'Invalid Package Name!',
+               'data'     => []
+           ], 400);
+         }
+          $name = trim($request->name);
+
+
+          //if request has no amount field or amount field is empty discarding
+          if($request->has('amount') && !is_numeric($request->amount)) {
+           return response()->json([
+               'status'   => false,
+               'message'  => 'Invalid Package Amount!',
+               'data'     => []
+           ], 400);
+         }
+          $amount = (float)$request->amount;
+
+          $package = Packages::findorfail($id);
+          $package->name        = $name;
+          $package->amount      = $amount;
+          $package->description = $request->has('description') ? $request->description : '';
+          $package->status      = $request->has('status') ? $request->status : '0';
+          if($package->save()) {
+            return response()->json([
+                'status'   => true,
+                'message'  => 'Package edited sucessfully',
+                'data'     => ['package' => $package]
+            ], 200);
+          } else {
+            return response()->json([
+                'status'   => true,
+                'message'  => 'Database Conectivity Error',
+                'data'     => []
+            ], 200);
+          }
+        } catch(\Exception $e) {
+          return response()->json([
+              'status'       => false,
+              'message'      => $e->getMessage(),
+              'errorLineNo'  => $e->getLine(),
+              'data'         => []
+          ], 500);
+        }
+      }
 
     /**
      * Signs in a authenticated admin

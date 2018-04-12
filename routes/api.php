@@ -296,6 +296,14 @@ Route::group(['prefix' => 'v1'], function() {
             'as'   => 'api.v1.deletePackage.delete'
         ]);
 
+        /*
+         * Route for create package
+         * */
+        Route::post('edit-package', [
+            'uses' => 'Api\V1\AdminController@editPackage',
+            'as'   => 'api.v1.editPackage.post'
+        ]);
+
     });
 
     /**
