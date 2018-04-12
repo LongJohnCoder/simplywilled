@@ -42,7 +42,7 @@ class AdminController extends Controller {
              'message'  => 'Invalid Package id!'
          ], 400);
         }
-
+        $id = (int)$id;
         if(Packages::destroy($id)) {
           return response()->json([
               'status'   => true,

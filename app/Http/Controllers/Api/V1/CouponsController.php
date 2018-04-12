@@ -100,4 +100,35 @@ class CouponsController extends Controller
         ], 500);
       }
     }
+
+    public function deleteCoupon($id) {
+      try {
+
+        //rejecting delete request if package id is invalid
+        if(!is_numeric($id)) {
+         return response()->json([
+             'status'   => false,
+             'message'  => 'Invalid Coupon id!'
+         ], 400);
+        }
+        $id = (int)$id;
+        if(Coupon::destroy($id)) {
+          return response()->json([
+              'status'   => true,
+              'message'  => 'Coupon Deleted Successfully!'
+          ], 200);
+        } else {
+          return response()->json([
+              'status'   => true,
+              'message'  => 'Coupon Id cannot be found!'
+          ], 400);
+        }
+      } catch (\Exception $e) {
+        return response()->json([
+            'status'       => false,
+            'message'      => $e->getMessage(),
+            'errorLineNo'  => $e->getLine()
+        ], 500);
+      }
+    }
 }

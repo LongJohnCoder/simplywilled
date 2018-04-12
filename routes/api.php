@@ -311,6 +311,15 @@ Route::group(['prefix' => 'v1'], function() {
             'uses' => 'Api\V1\CouponsController@createCoupon',
             'as'   => 'api.v1.createCoupon.post'
         ]);
+
+        /*
+         * Route for delete coupon
+         * */
+        Route::delete('delete-coupon/{id}', [
+            'uses' => 'Api\V1\CouponsController@deleteCoupon',
+            'as'   => 'api.v1.deleteCoupon.delete'
+        ]);
+
     });
 
     /**
