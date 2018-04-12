@@ -354,8 +354,16 @@ Route::group(['prefix' => 'v1'], function() {
          */
          Route::post('comment', [
              'uses' => 'Api\V1\BlogController@addBlogComments',
-             'as' => 'api.v1.makeComment'
+             'as' => 'api.v1.addBlogComment.post'
          ]);
+
+         /**
+          * Route for deleting a comment
+          */
+          Route::delete('delete-comment/{id}', [
+              'uses' => 'Api\V1\BlogController@deleteBlogComments',
+              'as' => 'api.v1.deleteBlogComment.delete'
+          ]);
 
     });
 });

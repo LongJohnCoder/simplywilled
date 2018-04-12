@@ -490,4 +490,47 @@ class BlogController extends Controller
              ], 500);
          }
      }
+
+     /*
+      *  Function to delete comments from a blog
+      *  @params [Request :: id : (required, integer : type[blogComment id])]
+      *  @return \Illuminate\Http\JsonResponse
+      * */
+      public function deleteBlogComments($id)
+      {
+          try {
+            //rejecting delete request if blogComment id is invalid
+            if(!is_numeric($id)) {
+             return response()->json([
+                 'status'   => false,
+                 'message'  => 'Invalid Blog id!'
+             ], 400);
+            }
+            $id = (int)$id;
+            if(BlogComment::destroy($id)) {
+              return response()->json([
+                  'status'   => true,
+                  'message'  => 'Comment Deleted Successfully!'
+              ], 200);
+            } else {
+              return response()->json([
+                  'status'   => false,
+                  'message'  => 'Comment cannot be found!'
+              ], 400);
+            }
+          } catch(ModelNotFoundException $me) {
+            return response()->json([
+                'status'       => false,
+                'message'      => $me->getMessage(),
+                'errorLineNo'  => $me->getLine(),
+                'data'         => []
+            ], 500);
+          } catch (\Exception $e) {
+            return response()->json([
+                'status'       => false,
+                'message'      => $e->getMessage(),
+                'errorLineNo'  => $e->getLine()
+            ], 500);
+          }
+      }
 }
