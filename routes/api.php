@@ -432,5 +432,14 @@ Route::group(['prefix' => 'v1'], function() {
           'as' => 'api.v1.allFaqQuestions.get'
         ]);
 
+        /*
+         * Route for edit user profile
+         * */
+        Route::post('edit-profile', [
+            'uses' => 'Api\V1\UserController@editProfile',
+            'as' => 'api.v1.editProfile.post'
+        ]);
+
+
     });
 });

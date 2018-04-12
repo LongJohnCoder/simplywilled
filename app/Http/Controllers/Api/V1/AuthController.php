@@ -119,7 +119,8 @@ class AuthController extends Controller {
                 $response = [
                     'status'        => false,
                     'error'         => "Internal server error.",
-                    'error_info'    => $queryException->getMessage()
+                    'error_info'    => $queryException->getMessage(),
+                    'error_line'    => $queryException->getLine()
                 ];
                 $responseCode = 500;
             }
@@ -130,7 +131,8 @@ class AuthController extends Controller {
             $response = [
                 'status'            => false,
                 'error'             => "Internal server error.",
-                'error_info'        => $clientException->getMessage()
+                'error_info'        => $clientException->getMessage(),
+                'error_line'        => $clientException->getLine()
             ];
             $responseCode = 500;
         } catch (Exception $exception) {
@@ -142,7 +144,9 @@ class AuthController extends Controller {
             $response = [
                 'status'            => false,
                 'error'             => "Internal server error.",
-                'error_info'        => $exception->getMessage()
+                'error_info'        => $exception->getMessage(),
+                'error_line'        => $exception->getLine()
+
             ];
 
             $responseCode = 500;
