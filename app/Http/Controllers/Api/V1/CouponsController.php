@@ -54,20 +54,13 @@ class CouponsController extends Controller
         $percentage = $request->percentage;
 
         //if request has no expired_on field or expired_on field is empty discarding
-        if(!$request->has('expired_on') || strlen(trim($request->expired_on)) == 0) {
+        $dtHelper = new DateTimeHelper();
+        if(!$request->has('expired_on') || !$dtHelper->verifyDate(trim($request->expired_on))) {
          return response()->json([
              'status'   => false,
-             'message'  => 'Invalid Package expired_on value!',
+             'message'  => 'Invalid Coupons expired_on format!',
              'data'     => []
          ], 400);
-        }
-        $dtHelper = new DateTimeHelper();
-        if(!$dtHelper->verifyDate(trim($request->expired_on))) {
-          return response()->json([
-              'status'   => false,
-              'message'  => 'Invalid Package expired_on format!',
-              'data'     => []
-          ], 400);
         }
         $expiredOn = $request->expired_on;
 
@@ -101,6 +94,11 @@ class CouponsController extends Controller
       }
     }
 
+    /*
+     *  Function to create coupon by an admin
+     *  @params [id as url parameter]
+     *  @return \Illuminate\Http\JsonResponse
+     * */
     public function deleteCoupon($id) {
       try {
 
@@ -131,4 +129,75 @@ class CouponsController extends Controller
         ], 500);
       }
     }
+
+
+    /*
+     *  Function to edit coupon by an admin
+     *  @params [Request :: title:(text), percentage:(float), expired_on:(datetime), description: text(optional), status:enum[0,1]]
+     *  @return \Illuminate\Http\JsonResponse
+     * */
+     public function editCoupon(Request $request) {
+       try {
+
+         if(!$request->has('id') || !is_numeric($request->id)) {
+          return response()->json([
+              'status'   => false,
+              'message'  => 'Invalid Coupon Id!',
+              'data'     => []
+          ], 400);
+         }
+         $id = (int)$request->id;
+
+         //if request has no amount field or amount field is empty discarding
+         if($request->has('percentage') && strlen($request->percentage) > 0 && !is_numeric($request->percentage)) {
+          return response()->json([
+              'status'   => false,
+              'message'  => 'Invalid Percentage Provided!',
+              'data'     => []
+          ], 400);
+         }
+         $percentage = (float)$request->percentage;
+
+         //if request has no expired_on field or expired_on field is empty discarding
+         $dtHelper = new DateTimeHelper();
+         if($request->has('expired_on') && strlen($request->expired_on) > 0 && !$dtHelper->verifyDate(trim($request->expired_on))) {
+          return response()->json([
+              'status'   => false,
+              'message'  => 'Invalid Package expired_on value!',
+              'data'     => []
+          ], 400);
+         }
+         $expiredOn = $request->expired_on;
+
+         $coupon = Coupon::findorfail($id);
+         $coupon->title       = $request->has('title') && $request->title != null  ? $request->title : $coupon->title;
+         $coupon->percentage  = $percentage == null ? $coupon->percentage : $percentage;
+         $coupon->expired_on  = $expiredOn == null ? $coupon->expired_on : $expiredOn;
+         $coupon->description = $request->has('description') && $request->description != null ? $request->description : '';
+         $coupon->status      = $request->has('status') && $request->status != null ? $request->status : $coupon->status;
+         $coupon->token       = str_random(60);
+
+         if($coupon->save()) {
+           return response()->json([
+               'status'   => true,
+               'message'  => 'Coupon Edited Successfully!',
+               'data'     => ['coupon' => $coupon]
+           ], 200);
+         } else {
+           return response()->json([
+               'status'   => true,
+               'message'  => 'Database connectivity error',
+               'data'     => []
+           ], 400);
+         }
+       } catch (\Exception $e) {
+         return response()->json([
+             'status'       => false,
+             'message'      => $e->getMessage(),
+             'errorLineNo'  => $e->getLine(),
+             'data'         => []
+         ], 500);
+       }
+     }
+
 }

@@ -320,6 +320,13 @@ Route::group(['prefix' => 'v1'], function() {
             'as'   => 'api.v1.deleteCoupon.delete'
         ]);
 
+        /*
+         * Route for edit coupon
+         * */
+        Route::post('edit-coupon', [
+            'uses' => 'Api\V1\CouponsController@editCoupon',
+            'as'   => 'api.v1.editCoupon.post'
+        ]);
     });
 
     /**
