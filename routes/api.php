@@ -304,6 +304,13 @@ Route::group(['prefix' => 'v1'], function() {
             'as'   => 'api.v1.editPackage.post'
         ]);
 
+        /*
+         * Route for create coupon
+         * */
+        Route::post('create-coupon', [
+            'uses' => 'Api\V1\CouponsController@createCoupon',
+            'as'   => 'api.v1.createCoupon.post'
+        ]);
     });
 
     /**
