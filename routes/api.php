@@ -327,6 +327,22 @@ Route::group(['prefix' => 'v1'], function() {
             'uses' => 'Api\V1\CouponsController@editCoupon',
             'as'   => 'api.v1.editCoupon.post'
         ]);
+
+        /**
+         * Route for approving a comment
+         */
+         Route::post('approve-comment', [
+             'uses' => 'Api\V1\BlogController@approveBlogComments',
+             'as' => 'api.v1.approveBlogComment.post'
+         ]);
+
+         /**
+          * Route for deleting a comment
+          */
+          Route::delete('delete-comment/{id}', [
+              'uses' => 'Api\V1\BlogController@deleteBlogComments',
+              'as' => 'api.v1.deleteBlogComment.delete'
+          ]);
     });
 
     /**
@@ -356,14 +372,6 @@ Route::group(['prefix' => 'v1'], function() {
              'uses' => 'Api\V1\BlogController@addBlogComments',
              'as' => 'api.v1.addBlogComment.post'
          ]);
-
-         /**
-          * Route for deleting a comment
-          */
-          Route::delete('delete-comment/{id}', [
-              'uses' => 'Api\V1\BlogController@deleteBlogComments',
-              'as' => 'api.v1.deleteBlogComment.delete'
-          ]);
 
     });
 });

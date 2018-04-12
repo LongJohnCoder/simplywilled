@@ -26,6 +26,7 @@ use Log;
 use Mail;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Models\BlogComment;
+use App\RoleUser;
 
 class BlogController extends Controller
 {
@@ -503,10 +504,39 @@ class BlogController extends Controller
             if(!is_numeric($id)) {
              return response()->json([
                  'status'   => false,
-                 'message'  => 'Invalid Blog id!'
+                 'message'  => 'Invalid BlogComment id!'
              ], 400);
             }
             $id = (int)$id;
+
+            //only permit operation if the logged in user is admin
+            if(!\Auth::check()) {
+              return response()->json([
+                  'status'   => false,
+                  'message'  => 'User data not found! Please log in again.',
+                  'data'     => []
+              ], 400);
+            }
+            $user = \Auth::user();
+            $userRoleId = Role::where('name', 'Admin')->first();
+
+            if(!$userRoleId) {
+              return response()->json([
+                  'status'   => false,
+                  'message'  => 'Permissions not configured properly, no role User',
+                  'data'     => []
+              ], 400);
+            }
+            $userRoleId = $userRoleId->id;
+            $permission = RoleUser::where('user_id',$user->id)->where('role_id', $userRoleId)->first();
+            if(!$permission) {
+              return response()->json([
+                  'status'   => false,
+                  'message'  => 'You are not accessible for this operation',
+                  'data'     => []
+              ], 400);
+            }
+
             if(BlogComment::destroy($id)) {
               return response()->json([
                   'status'   => true,
@@ -533,4 +563,87 @@ class BlogController extends Controller
             ], 500);
           }
       }
+
+      /*
+       *  Function to delete comments from a blog
+       *  @params [Request :: [id : (required, integer : type[blogComment id]), status : type: string,  [0(unapproved)/1(approved)]]]
+       *  @return \Illuminate\Http\JsonResponse
+       * */
+       public function approveBlogComments(Request $request)
+       {
+           try {
+             //rejecting approve request if blogComment id is invalid
+             if(!isset($request->id) || !is_numeric($request->id)) {
+              return response()->json([
+                  'status'   => false,
+                  'message'  => 'Invalid BlogComment id!'
+              ], 400);
+             }
+             $id = (int)$request->id;
+
+             //rejecting approve request if status is invalid
+             if(!isset($request->status) || ($request->status != 0 && $request->status != 1)) {
+              return response()->json([
+                  'status'   => false,
+                  'message'  => 'Invalid BlogComment status!'
+              ], 400);
+             }
+
+             //only permit operation if the logged in user is admin
+             if(!\Auth::check()) {
+               return response()->json([
+                   'status'   => false,
+                   'message'  => 'User data not found! Please log in again.',
+                   'data'     => []
+               ], 400);
+             }
+             $user = \Auth::user();
+             $userRoleId = Role::where('name', 'Admin')->first();
+
+             if(!$userRoleId) {
+               return response()->json([
+                   'status'   => false,
+                   'message'  => 'Permissions not configured properly, no role User',
+                   'data'     => []
+               ], 400);
+             }
+             $userRoleId = $userRoleId->id;
+             $permission = RoleUser::where('user_id',$user->id)->where('role_id', $userRoleId)->first();
+             if(!$permission) {
+               return response()->json([
+                   'status'   => false,
+                   'message'  => 'You are not accessible for this operation',
+                   'data'     => []
+               ], 400);
+             }
+
+             $status = (string)$request->status;
+             $blogComment = BlogComment::findorfail($id);
+             $blogComment->status = $status;
+             if($blogComment->save()) {
+               return response()->json([
+                   'status'   => true,
+                   'message'  => 'Comment Approval Successful!'
+               ], 200);
+             } else {
+               return response()->json([
+                   'status'   => false,
+                   'message'  => 'Comment cannot be found!'
+               ], 400);
+             }
+           } catch(ModelNotFoundException $me) {
+             return response()->json([
+                 'status'       => false,
+                 'message'      => $me->getMessage(),
+                 'errorLineNo'  => $me->getLine(),
+                 'data'         => []
+             ], 500);
+           } catch (\Exception $e) {
+             return response()->json([
+                 'status'       => false,
+                 'message'      => $e->getMessage(),
+                 'errorLineNo'  => $e->getLine()
+             ], 500);
+           }
+       }
 }
