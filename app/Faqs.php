@@ -27,4 +27,8 @@ class Faqs extends Model
     public function faqCategory(){
         return $this->hasMany('App\FaqCategoryMapping','faq_id','id');
     }
+
+    public function faqMapping(){
+        return $this->hasMany('App\FaqCategoryMapping','id');
+    }
 }

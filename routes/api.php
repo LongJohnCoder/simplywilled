@@ -382,28 +382,45 @@ Route::group(['prefix' => 'v1'], function() {
         ]);
 
         /**
-         * Route for Commenting to a blog
-         */
-         Route::post('comment', [
-             'uses' => 'Api\V1\BlogController@addBlogComments',
-             'as' => 'api.v1.addBlogComment.post'
-         ]);
+        * Route for Commenting to a blog
+        */
+        Route::post('comment', [
+          'uses' => 'Api\V1\BlogController@addBlogComments',
+          'as' => 'api.v1.addBlogComment.post'
+        ]);
 
-         /**
-          * Route for fetching all comments for a blog
-          */
-          Route::post('fetch-all-comments', [
-              'uses' => 'Api\V1\BlogController@fetchAllBlogComments',
-              'as' => 'api.v1.fetchAllBlogComments.post'
-          ]);
+        /**
+        * Route for fetching all comments for a blog
+        */
+        Route::post('fetch-all-comments', [
+          'uses' => 'Api\V1\BlogController@fetchAllBlogComments',
+          'as' => 'api.v1.fetchAllBlogComments.post'
+        ]);
 
-          /**
-           * Route for fetching comments and replies for a single comment
-           */
-           Route::post('fetch-comments', [
-               'uses' => 'Api\V1\BlogController@fetchBlogComments',
-               'as' => 'api.v1.fetchBlogComments.post'
-           ]);
+        /**
+        * Route for fetching comments and replies for a single comment
+        */
+        Route::post('fetch-comments', [
+          'uses' => 'Api\V1\BlogController@fetchBlogComments',
+          'as' => 'api.v1.fetchBlogComments.post'
+        ]);
+
+
+        /**
+        * Route for fetching comments and replies for a single comment
+        */
+        Route::get('faq-category-list', [
+          'uses' => 'Api\V1\FaqCategoryController@faqCategoryListUser',
+          'as' => 'api.v1.faqCategoryListUser.get'
+        ]);
+
+        /**
+        * Route for fetching comments with status 1
+        */
+        Route::get('all-faq-questions', [
+          'uses' => 'Api\V1\FaqCategoryController@allFaqQuestions',
+          'as' => 'api.v1.allFaqQuestions.get'
+        ]);
 
     });
 });

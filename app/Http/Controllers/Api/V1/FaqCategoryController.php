@@ -24,10 +24,11 @@ use JWTAuthException;
 use Log;
 use Mail;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use App\Faqs;
+use App\FaqCategoryMapping;
 
 class FaqCategoryController extends Controller
 {
-
 
     /*
      * function to get a list of all the faq category
@@ -248,5 +249,70 @@ class FaqCategoryController extends Controller
         }
     }
 
+    /**
+    * get faq from a faqs object
+    */
+    private function getQAs($faqMapping, $admin = true) {
+      $retArr = [];
+      foreach($faqMapping as $key => $eachMapping)
+        if(!$admin) {
+          if($eachMapping->getFaq->first()->status == '1')
+          $retArr[] = $eachMapping->getFaq->toArray();
+        } else {
+          $retArr[] = $eachMapping->getFaq->toArray();
+        }
+      return $retArr;
+    }
 
+    /*
+     * Function to get category list and all questions and answers in ordered maner for that category
+     * @return \Illuminate\Http\Response
+     * */
+    public function faqCategoryListUser() {
+      try {
+        $faqCategories = FaqCategories::whereHas('getFaqMapping.getFaq')->get();
+        $result = [];
+        foreach($faqCategories as $key => $eachCategory) {
+          $result[] = [
+            'id'          =>  $eachCategory->id,
+            'name'        =>  $eachCategory->name,
+            'faq-details' =>  $this->getQAs($eachCategory->getFaqMapping, false)
+          ];
+        }
+        return response()->json([
+            'status' => true,
+            'message' => 'All questions fetched successfully',
+            'data' => $result
+        ], 200);
+      } catch (\Exception $e) {
+        return response()->json([
+            'status' => false,
+            'message' => $e->getMessage(),
+            'errorLineNo' => $e->getLine(),
+            'data' => []
+        ], 500);
+      }
+    }
+
+    /*
+     * Function to get all questions and answers from faq in ordered maner for that category
+     * @return \Illuminate\Http\Response
+     * */
+    public function allFaqQuestions() {
+      try {
+        $faqs = Faqs::where('status','1')->get()->toArray();
+        return response()->json([
+            'status' => true,
+            'message' => 'All Faq Category',
+            'data' => $faqs
+        ], 200);
+      } catch(\Exception $e) {
+        return response()->json([
+            'status' => false,
+            'message' => $e->getMessage(),
+            'errorLineNo' => $e->getLine(),
+            'data' => []
+        ], 500);
+      }
+    }
 }

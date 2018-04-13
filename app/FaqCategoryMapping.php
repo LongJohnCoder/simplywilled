@@ -17,4 +17,18 @@ class FaqCategoryMapping extends Model
     protected $primaryKey = 'id';
 
     protected $softDelete = true;
+
+    /*
+     * function to get faq
+     * */
+    public function getFaq() {
+        return $this->hasMany('App\Faqs','id','faq_id');
+    }
+
+    /*
+     * function to get faqCategory
+     * */
+    public function getFaqCategory() {
+        return $this->hasOne('App\FaqCategories','faq_category_id','id');
+    }
 }

@@ -23,5 +23,10 @@ class FaqCategories extends Model
 
     protected $softDelete = true;
 
-
+    /*
+     * function to get faq_categories
+     * */
+    public function getFaqMapping() {
+        return $this->hasMany('App\FaqCategoryMapping','faq_category_id','id');
+    }
 }
