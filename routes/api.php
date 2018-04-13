@@ -347,17 +347,17 @@ Route::group(['prefix' => 'v1'], function() {
           /**
            * Route for fetching all comments for a blog
            */
-           Route::post('fetch-all-comment', [
-               'uses' => 'Api\V1\BlogController@fetchAllBlogComments',
-               'as' => 'api.v1.fetchAllBlogComments.post'
+           Route::post('fetch-all-comments', [
+               'uses' => 'Api\V1\BlogController@fetchAllBlogCommentsAdmin',
+               'as' => 'api.v1.fetchAllBlogCommentsAdmin.post'
            ]);
 
            /**
             * Route for fetching comments and replies for a single comment
             */
             Route::post('fetch-comments', [
-                'uses' => 'Api\V1\BlogController@fetchBlogComments',
-                'as' => 'api.v1.fetchBlogComments.post'
+                'uses' => 'Api\V1\BlogController@fetchBlogCommentsAdmin',
+                'as' => 'api.v1.fetchBlogCommentsAdmin.post'
             ]);
     });
 
@@ -388,6 +388,22 @@ Route::group(['prefix' => 'v1'], function() {
              'uses' => 'Api\V1\BlogController@addBlogComments',
              'as' => 'api.v1.addBlogComment.post'
          ]);
+
+         /**
+          * Route for fetching all comments for a blog
+          */
+          Route::post('fetch-all-comments', [
+              'uses' => 'Api\V1\BlogController@fetchAllBlogComments',
+              'as' => 'api.v1.fetchAllBlogComments.post'
+          ]);
+
+          /**
+           * Route for fetching comments and replies for a single comment
+           */
+           Route::post('fetch-comments', [
+               'uses' => 'Api\V1\BlogController@fetchBlogComments',
+               'as' => 'api.v1.fetchBlogComments.post'
+           ]);
 
     });
 });

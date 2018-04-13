@@ -650,11 +650,39 @@ class BlogController extends Controller
 
 
        /*
+        *  Function to fetch sub-comments for a particular comment
+        *  @params blogComment object
+        *  @return array of sub-comments
+        * */
+       private function getBlogComments($blogComments , $admin = true) {
+         $commentArray = [];
+         while($blogComments) {
+           \Log::info('blog comment id : '.$blogComments->id);
+           $nextComment = BlogComment::where('parent_comment_id', $blogComments->id)->first();
+           if($nextComment) {
+             $blogComments = $nextComment;
+             //user ccan see only approved comments by admin
+             //where as admin can see all the comments whether they are approved or disapproved
+             if(!$admin) {
+               if($nextComment->status == '1') {
+                 $commentArray[] = $nextComment->toArray();
+               }
+             } else {
+               $commentArray[] = $nextComment->toArray();
+             }
+           } else {
+             break;
+           }
+         }
+         return $commentArray;
+       }
+
+       /*
         *  Function to fetch a particular comment and assosiated replies for a blog
-        *  @params [Request :: [comment_id : (required, integer : type[comment id])]]
+        *  @params [Request :: [id : (required, integer : type[blogComment id])]]
         *  @return \Illuminate\Http\JsonResponse
         * */
-       public function fetchBlogComments(Request $request) {
+       public function fetchBlogCommentsAdmin(Request $request) {
          try {
            if(!$request->has('id') || !is_numeric($request->id)) {
             return response()->json([
@@ -664,26 +692,14 @@ class BlogController extends Controller
             ], 400);
            }
            $commentId = $request->id;
-           $blogComments = BlogComment::findorfail($commentId);
-
            $commentArray = [];
-           while($blogComments) {
-             \Log::info('blog comment id : '.$blogComments->id);
-             $nextComment = BlogComment::where('parent_comment_id', $blogComments->id)->first();
-             if($nextComment) {
-               $blogComments = $nextComment;
-               if($nextComment->status == '1') {
-                 $commentArray[] = $nextComment->toArray();
-               }
-             } else {
-               break;
-             }
-           }
-          return response()->json([
+           $blogComments = BlogComment::findorfail($commentId);
+           $commentArray = $this->getBlogComments($blogComments);
+            return response()->json([
                'status'       => true,
                'message'      => 'Successful',
                'data'         => $commentArray
-           ], 200);
+            ], 200);
          } catch (\Exception $e) {
            return response()->json([
                'status'       => false,
@@ -698,6 +714,79 @@ class BlogController extends Controller
         *  @params [Request :: [id : (required, integer : type[blog id])]]
         *  @return \Illuminate\Http\JsonResponse
         * */
+       public function fetchAllBlogCommentsAdmin(Request $request) {
+         try {
+           if(!$request->has('id') || !is_numeric($request->id)) {
+            return response()->json([
+                'status'   => false,
+                'message'  => 'Invalid blogId!',
+                'data'     => []
+            ], 400);
+           }
+           $blogId = $request->id;
+           $blogComments  = BlogComment::where('blog_id',$blogId)->where('parent_comment_id',0)->get();
+           $commentsArray = [];
+           foreach($blogComments as $key => $eachBlogComment) {
+             $commentsArray[] = [
+               'comment'      => $eachBlogComment->toArray(),
+               'sub-comments' => $this->getBlogComments($eachBlogComment)
+             ];
+           }
+           return response()->json([
+              'status'       => true,
+              'message'      => 'Successful',
+              'data'         => $commentsArray
+           ], 200);
+         } catch (\Exception $e) {
+           return response()->json([
+               'status'       => false,
+               'message'      => $e->getMessage(),
+               'errorLineNo'  => $e->getLine()
+           ], 500);
+         }
+       }
+
+       /*
+        *  Function to fetch a particular comment and assosiated replies for a blog
+        *  @params [Request :: [id : (required, integer : type[blogComment id])]]
+        *  @scope user
+        *  @return \Illuminate\Http\JsonResponse
+        * */
+       public function fetchBlogComments(Request $request) {
+         try {
+           if(!$request->has('id') || !is_numeric($request->id)) {
+            return response()->json([
+                'status'   => false,
+                'message'  => 'Invalid comment_id!',
+                'data'     => []
+            ], 400);
+           }
+           $commentId     = $request->id;
+           $blogComments  = BlogComment::findorfail($commentId);
+           $commentArray  = [];
+           if($blogComments->status == '1') {
+             $commentArray  = $this->getBlogComments($blogComments, false);
+           }
+            return response()->json([
+               'status'       => true,
+               'message'      => 'Successful',
+               'data'         => $commentArray
+            ], 200);
+         } catch (\Exception $e) {
+           return response()->json([
+               'status'       => false,
+               'message'      => $e->getMessage(),
+               'errorLineNo'  => $e->getLine()
+           ], 500);
+         }
+       }
+
+       /*
+        *  Function to fetch comments for a blog
+        *  @scope user
+        *  @params [Request :: [id : (required, integer : type[blog id])]]
+        *  @return \Illuminate\Http\JsonResponse
+        * */
        public function fetchAllBlogComments(Request $request) {
          try {
            if(!$request->has('id') || !is_numeric($request->id)) {
@@ -708,8 +797,19 @@ class BlogController extends Controller
             ], 400);
            }
            $blogId = $request->id;
-           $blogComments = Blogs::findorfail($blogId)->getComments()->get();
-           dd($blogComments);
+           $blogComments = BlogComment::where('blog_id',$blogId)->where('status', '1')->where('parent_comment_id',0)->get();
+           $commentsArray = [];
+           foreach($blogComments as $key => $eachBlogComment) {
+             $commentsArray[] = [
+               'comment'      => $eachBlogComment->toArray(),
+               'sub-comments' => $this->getBlogComments($eachBlogComment, false)
+             ];
+           }
+           return response()->json([
+              'status'       => true,
+              'message'      => 'Successful',
+              'data'         => $commentsArray
+           ], 200);
          } catch (\Exception $e) {
            return response()->json([
                'status'       => false,
