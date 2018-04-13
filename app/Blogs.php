@@ -27,4 +27,11 @@ class Blogs extends Model
         return $this->hasMany('App\CategoryBlogMapping','blog_id','id');
     }
 
+    /*
+     * function to get all comments for a blog
+     * */
+    public function getComments(){
+        return $this->hasMany('App\Models\BlogComment','blog_id','id');
+    }
+
 }

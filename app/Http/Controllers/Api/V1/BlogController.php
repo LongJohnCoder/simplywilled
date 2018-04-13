@@ -646,4 +646,76 @@ class BlogController extends Controller
              ], 500);
            }
        }
+
+
+
+       /*
+        *  Function to fetch a particular comment and assosiated replies for a blog
+        *  @params [Request :: [comment_id : (required, integer : type[comment id])]]
+        *  @return \Illuminate\Http\JsonResponse
+        * */
+       public function fetchBlogComments(Request $request) {
+         try {
+           if(!$request->has('id') || !is_numeric($request->id)) {
+            return response()->json([
+                'status'   => false,
+                'message'  => 'Invalid comment_id!',
+                'data'     => []
+            ], 400);
+           }
+           $commentId = $request->id;
+           $blogComments = BlogComment::findorfail($commentId);
+
+           $commentArray = [];
+           while($blogComments) {
+             \Log::info('blog comment id : '.$blogComments->id);
+             $nextComment = BlogComment::where('parent_comment_id', $blogComments->id)->first();
+             if($nextComment) {
+               $blogComments = $nextComment;
+               if($nextComment->status == '1') {
+                 $commentArray[] = $nextComment->toArray();
+               }
+             } else {
+               break;
+             }
+           }
+          return response()->json([
+               'status'       => true,
+               'message'      => 'Successful',
+               'data'         => $commentArray
+           ], 200);
+         } catch (\Exception $e) {
+           return response()->json([
+               'status'       => false,
+               'message'      => $e->getMessage(),
+               'errorLineNo'  => $e->getLine()
+           ], 500);
+         }
+       }
+
+       /*
+        *  Function to fetch comments for a blog
+        *  @params [Request :: [id : (required, integer : type[blog id])]]
+        *  @return \Illuminate\Http\JsonResponse
+        * */
+       public function fetchAllBlogComments(Request $request) {
+         try {
+           if(!$request->has('id') || !is_numeric($request->id)) {
+            return response()->json([
+                'status'   => false,
+                'message'  => 'Invalid blogId!',
+                'data'     => []
+            ], 400);
+           }
+           $blogId = $request->id;
+           $blogComments = Blogs::findorfail($blogId)->getComments()->get();
+           dd($blogComments);
+         } catch (\Exception $e) {
+           return response()->json([
+               'status'       => false,
+               'message'      => $e->getMessage(),
+               'errorLineNo'  => $e->getLine()
+           ], 500);
+         }
+       }
 }

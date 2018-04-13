@@ -343,6 +343,22 @@ Route::group(['prefix' => 'v1'], function() {
               'uses' => 'Api\V1\BlogController@deleteBlogComments',
               'as' => 'api.v1.deleteBlogComment.delete'
           ]);
+
+          /**
+           * Route for fetching all comments for a blog
+           */
+           Route::post('fetch-all-comment', [
+               'uses' => 'Api\V1\BlogController@fetchAllBlogComments',
+               'as' => 'api.v1.fetchAllBlogComments.post'
+           ]);
+
+           /**
+            * Route for fetching comments and replies for a single comment
+            */
+            Route::post('fetch-comments', [
+                'uses' => 'Api\V1\BlogController@fetchBlogComments',
+                'as' => 'api.v1.fetchBlogComments.post'
+            ]);
     });
 
     /**
