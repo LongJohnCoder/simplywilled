@@ -407,7 +407,7 @@ Route::group(['prefix' => 'v1'], function() {
 
 
         /**
-        * Route for fetching comments and replies for a single comment
+        * Route for fetching faq categorylist with question and answers
         */
         Route::get('faq-category-list', [
           'uses' => 'Api\V1\FaqCategoryController@faqCategoryListUser',
@@ -415,7 +415,7 @@ Route::group(['prefix' => 'v1'], function() {
         ]);
 
         /**
-        * Route for fetching comments with status 1
+        * Route for fetching faq with status 1
         */
         Route::get('all-faq-questions', [
           'uses' => 'Api\V1\FaqCategoryController@allFaqQuestions',
