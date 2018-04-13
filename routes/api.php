@@ -284,7 +284,7 @@ Route::group(['prefix' => 'v1'], function() {
          * Route for create package
          * */
         Route::post('create-package', [
-            'uses' => 'Api\V1\AdminController@createPackage',
+            'uses' => 'Api\V1\PackageController@createPackage',
             'as'   => 'api.v1.createPackage.post'
         ]);
 
@@ -292,7 +292,7 @@ Route::group(['prefix' => 'v1'], function() {
          * Route for delete package
          * */
         Route::delete('delete-package/{id}', [
-            'uses' => 'Api\V1\AdminController@deletePackage',
+            'uses' => 'Api\V1\PackageController@deletePackage',
             'as'   => 'api.v1.deletePackage.delete'
         ]);
 
@@ -300,7 +300,7 @@ Route::group(['prefix' => 'v1'], function() {
          * Route for create package
          * */
         Route::post('edit-package', [
-            'uses' => 'Api\V1\AdminController@editPackage',
+            'uses' => 'Api\V1\PackageController@editPackage',
             'as'   => 'api.v1.editPackage.post'
         ]);
 
