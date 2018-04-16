@@ -102,7 +102,6 @@ class CouponsController extends Controller
      * */
     public function deleteCoupon($id) {
       try {
-
         //rejecting delete request if package id is invalid
         if(!is_numeric($id)) {
          return response()->json([
@@ -134,7 +133,7 @@ class CouponsController extends Controller
 
     /*
      *  Function to edit coupon by an admin
-     *  @params [Request :: title:(text), percentage:(float), expired_on:(datetime), description: text(optional), status:enum[0,1]]
+     *  @params [Request :: id: (int: coupon id), title:(text), percentage:(float), expired_on:(datetime), description: text(optional), status:enum[0,1]]
      *  @return \Illuminate\Http\JsonResponse
      * */
      public function editCoupon(Request $request) {
@@ -177,7 +176,7 @@ class CouponsController extends Controller
          $coupon->expired_on  = $expiredOn == null ? $coupon->expired_on : $expiredOn;
          $coupon->description = $request->has('description') && $request->description != null ? $request->description : '';
          $coupon->status      = $request->has('status') && $request->status != null ? $request->status : $coupon->status;
-         $coupon->token       = str_random(60);
+         $coupon->token       = $coupon->token;
 
          if($coupon->save()) {
            return response()->json([

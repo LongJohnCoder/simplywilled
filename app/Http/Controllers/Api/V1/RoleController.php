@@ -31,7 +31,7 @@ class RoleController extends Controller
                     'data' => []
                 ], 400);
             }
-            
+
 
         } catch(Exception $e){
             return response()->json([
@@ -49,18 +49,26 @@ class RoleController extends Controller
     public function createRole(Request $request)
     {
         try{
-            $roleName = $request->role_name;    //string
 
+            $roleName = $request->role_name;    //string
             $validator = Validator::make($request->all(), [
                 'role_name' => 'required'
             ]);
-    
+
             if ($validator->fails()) {
                 return response()->json([
                     'status' => false,
                     'message' => $validator,
                     'data' => []
                 ], 400);
+            }
+
+            if(Role::where('name', $roleName)->count() > 0) {
+              return response()->json([
+                  'status'  => false,
+                  'message' => 'This role already exists',
+                  'data' => []
+              ], 500);
             }
 
             $role = new Role;
@@ -71,14 +79,15 @@ class RoleController extends Controller
                     'message' => 'Role Details',
                     'data' => ['roleDetails' => $role]
                 ], 200);
+            } else {
+              return response()->json([
+                  'status' => false,
+                  'message' => 'Internal Server Error',
+                  'data' => []
+              ], 500);
             }
-            return response()->json([
-                'status' => false,
-                'message' => 'Internal Server Error',
-                'data' => []
-            ], 500);
-          
-        } catch (Exception $e){
+
+        } catch (\Exception $e){
             return response()->json([
                 'status' => false,
                 'message' => $e->getMessage(),
