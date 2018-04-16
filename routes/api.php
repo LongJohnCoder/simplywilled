@@ -114,7 +114,7 @@ Route::group(['prefix' => 'v1'], function() {
         /**
         * Role Delete
         */
-        Route::post('role-delete', [
+        Route::delete('role-delete/{id}', [
             'uses' => 'Api\V1\RoleController@roleDelete',
             'as'   => 'api.v1.RoleDelete.post'
         ]);
@@ -155,7 +155,7 @@ Route::group(['prefix' => 'v1'], function() {
          *Route for Delete category
          *
          * */
-        Route::post('delete-category', [
+        Route::delete('delete-category/{id}', [
             'uses' => 'Api\V1\CategoryController@deleteCategory',
             'as'   => 'api.v1.DeleteCategory.post'
         ]);

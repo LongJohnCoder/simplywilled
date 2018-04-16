@@ -17,4 +17,6 @@ class Categories extends Model
     protected $dates = ['deleted_at'];
 
     protected $softDelete = true;
+
+    protected $table = 'categories';
 }

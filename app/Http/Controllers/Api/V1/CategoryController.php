@@ -111,7 +111,17 @@ class CategoryController extends Controller {
 
     public function viewCategory($categoryId){
         try {
+            //dd($categoryId);
+            if(!is_numeric($categoryId)) {
+              return response()->json([
+                  'status' => false,
+                  'message' => 'Category id is incorrect',
+                  'data' => []
+              ], 400);
+            }
+            $categoryId = (int)$categoryId;
             if ($categoryId) {
+
                 $category = Categories::find($categoryId);
                 if ($category) {
                     return response()->json([
@@ -155,19 +165,25 @@ class CategoryController extends Controller {
         try{
         $categoryId = $request->categoryId;
         $categoryName = $request->categoryName;
-        if($categoryId){
-            $validator = Validator::make($request->all(), [
-                'categoryName' => 'required'
-            ]);
 
-            if ($validator->fails()) {
-                return response()->json([
-                    'status' => false,
-                    'message' => $validator,
-                    'data' => []
-                ], 400);
-            }
+        if(trim(strlen($categoryName)) == 0) {
+          return response()->json([
+              'status' => false,
+              'message' => 'Category name cannot be empty',
+              'data' => []
+          ], 400);
+        }
+        $categoryName = trim($categoryName);
 
+        if(!is_numeric($categoryId)) {
+          return response()->json([
+              'status' => false,
+              'message' => 'Category id is incorrect',
+              'data' => []
+          ], 400);
+        }
+        $categoryId = (int)$categoryId;
+        if($categoryId) {
             $category = Categories::find($categoryId);
             if($category){
                 $category->name = $categoryName;
@@ -178,14 +194,14 @@ class CategoryController extends Controller {
                         'message' => 'Category updated successfully',
                         'data' => ['categoryDetails' => $category]
                     ], 200);
-                }else{
+                } else {
                     return response()->json([
                         'status' => false,
                         'message' => 'faild to update category ',
                         'data' => []
                     ], 500);
                 }
-            }else{
+            } else {
                 return response()->json([
                     'status' => false,
                     'message' => 'Category not found',
@@ -214,9 +230,9 @@ class CategoryController extends Controller {
      * @return \Illuminate\Http\JsonResponse
      * */
 
-    public function deleteCategory(Request $request){
+    public function deleteCategory($id){
         try {
-            $categoryId = $request->categoryId;
+            $categoryId = $id;
             if ($categoryId) {
                 $category = Categories::find($categoryId);
                 if ($category) {

@@ -68,7 +68,7 @@ class RoleController extends Controller
                   'status'  => false,
                   'message' => 'This role already exists',
                   'data' => []
-              ], 500);
+              ], 400);
             }
 
             $role = new Role;
@@ -147,21 +147,19 @@ class RoleController extends Controller
                     'data' => []
                 ], 400);
             }
-
             $role = Role::find($roleID);
             if($role){
                 $role->name = $roleName;
-
                 if($role->save()){
                     return response()->json([
                         'status' => true,
                         'message' => 'Role updated successfull',
                         'data' => ['roleDetails' => $role]
-                    ], 400);
+                    ], 200);
                 } else {
                     return response()->json([
                         'status' => false,
-                        'message' => 'Internal Error',
+                        'message' => 'This role does not exists',
                         'data' => []
                     ], 500);
                 }
@@ -187,24 +185,23 @@ class RoleController extends Controller
     * Role Delete
     * @return \Illuminate\Http\JsonResponse
     */
-    public function roleDelete(Request $request)
+    public function roleDelete($id)
     {
         try{
-            $roleID = $request->role_id;
-            $role = Role::find($roleID);
+            $role = Role::find($id);
             if($role){
-                if($role->trashed()){
+                if($role->delete()){
                     return response()->json([
                         'status' => true,
                         'message' => 'Role deleted successfull',
                         'data' => []
-                    ], 400);
+                    ], 200);
                 } else {
                     return response()->json([
                         'status' => false,
                         'message' => 'Internal Error',
                         'data' => []
-                    ], 500);
+                    ], 400);
                 }
 
             } else {
