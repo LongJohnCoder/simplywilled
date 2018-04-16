@@ -1,0 +1,15 @@
+.top-navbar .navbar-brand{
+    height: auto;
+}
+.top-navbar .nav > li > a{
+    padding: 8px;
+    cursor: pointer;
+}
+ul.dropdown-user.dropdown-user{
+    min-width: 155px;
+    left: -106px !important;
+    padding: 0 15px;
+}
+ul.dropdown-user.dropdown-user li a{
+    cursor: pointer;
+}

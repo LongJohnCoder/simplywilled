@@ -1,0 +1,73 @@
+nav.navbar-side{
+    background: #27bc9c;
+    height: 100%;
+}
+.sidebar-collapse > .nav > li{
+    width: 100%;
+    background: #27bc9c;
+    transition:  all 0.5s ease 0s;
+    position: relative;
+}
+.sidebar-collapse > .nav > li.dropMenu:after{
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 2px;
+    background: #fff;
+    top: 27px;
+    right: 10px;
+}
+.sidebar-collapse > .nav > li.dropMenu:before{
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 2px;
+    background: #fff;
+    top: 20px;
+    right: 17px;
+    transition:  all 0.5s ease 0s;
+}
+.sidebar-collapse > .nav > li > a {
+    display: inline-block;
+    width: 100%;
+}
+.sidebar-collapse > .nav > li:hover{
+    background: #16a085;
+}
+.sidebar-collapse > .nav > li:hover:before {
+    height: 2px;
+    top:27px;
+}
+.sidebar-collapse > .nav > li:hover > a {
+    text-decoration: none;
+}
+.sidebar-collapse > .nav > li ul{
+    padding-left: 0;
+    transition:  all 0.5s ease 0s;
+    height: 0px;
+    overflow: hidden;
+}
+.sidebar-collapse > .nav > li:hover ul{
+    height: 122px;
+}
+.sidebar-collapse > .nav > li:hover ul.faqMenu{
+    height: 80px;
+}
+.sidebar-collapse > .nav > li:hover ul li{
+    list-style: none;
+}
+.sidebar-collapse > .nav > li ul li a{
+    color: #fff;
+    font-size: 14px;
+    display: block;
+    text-decoration: none;
+    padding: 10px 0 10px 30px;
+    background: #16a085;
+    transition:  all 0.5s ease 0s;
+}
+.sidebar-collapse > .nav > li ul li a i{
+    padding-right: 5px;
+}
+.sidebar-collapse > .nav > li ul li a:hover{
+    background: #14846b;
+}

@@ -1,0 +1,13 @@
+.panel-primary{
+    margin-bottom: 15px;
+}
+.panel-body{
+    padding: 15px 0;  
+}
+.panel-footer{
+    padding:10px 0;
+}
+.dashTable{
+    background: #fff;
+    padding: 10px;
+}
