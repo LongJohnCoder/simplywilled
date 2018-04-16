@@ -9,17 +9,7 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-
-  // logout(token: string): Observable<any> {
-	// 	const header = new Headers({
-	// 		'X-Requested-With': 'XMLHttpRequest',
-	// 		'Authorization': 'Bearer '+ token
-	// 	});
-	// 	return this.http.post( environment.API_URL + 'sign-out', '', {headers: header} );
-	// }
-
-
-  getToken() {
+    getToken() {
 		const data = localStorage.getItem('loggedInAdminData');
 		return JSON.parse(data);
 	}
@@ -40,6 +30,10 @@ export class AuthService {
 		} else {
 			return false;
 		}
+	}
+
+	logOut(){
+		return this.httpClient.post( environment.API_URL + 'admin-panel/sign-out', {} );
 	}
 
 }

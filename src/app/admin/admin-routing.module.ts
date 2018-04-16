@@ -9,7 +9,7 @@ const routes: Routes = [
     { path: 'login', canActivate: [ NotAuthGuard ], loadChildren: './auth/admin-login/admin-login.module#AdminLoginModule' },
     { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
     { path: 'dashboard', canActivate: [ AuthGuard ], loadChildren: './dashboard/dashboard.module#DashboardModule' },
-    { path: 'reset-password', canActivate: [ AuthGuard ], pathMatch: 'full', loadChildren: './auth/reset-password/reset-password.module#ResetPasswordModule'}
+    { path: 'change-password', canActivate: [ AuthGuard ], pathMatch: 'full', loadChildren: './auth/change-password/change-password.module#ChangePasswordModule'}
     
     
 ];

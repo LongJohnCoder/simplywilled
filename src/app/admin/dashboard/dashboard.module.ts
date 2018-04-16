@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { DashboardService } from './dashboard.service';
 
 @NgModule({
   imports: [
@@ -13,6 +14,9 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
   ],
   declarations: [
     DashboardComponent,
+    ],
+    providers: [
+      DashboardService
     ]
 })
 export class DashboardModule { }

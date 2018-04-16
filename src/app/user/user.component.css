@@ -1,0 +1,56 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	font-family: 'OpenSans';
+}
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	outline:none;
+}
+img{
+	max-width:100%;
+	overflow:hidden;
+	height:auto;
+}
+a{
+	text-decoration:none;
+	transition:all ease-in-out .5s;
+	-moz-transition:all ease-in-out .5s;
+	-ms-transition:all ease-in-out .5s;
+	-o-transition:all ease-in-out .5s;
+	-webkit-transition:all ease-in-out .5s;
+}
+*:before,*:after{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+button, input[type='submit']{
+	transition:all 0.5s ease-out;
+	-webkit-transition:all 0.5s ease-out;
+	-moz-transition:all 0.5s ease-out;
+	-ms-transition:all 0.5s ease-out;
+	-o-transition:all 0.5s ease-out;
+}
+li
+{
+	list-style-type:none;
+}
+h1, h2, h3, h4, h5, h6{
+	font-weight:normal;
+}
+.wrapper{
+	max-width:1120px;
+	width:90%;
+	margin:0 auto;
+}
+
