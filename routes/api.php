@@ -329,36 +329,46 @@ Route::group(['prefix' => 'v1'], function() {
         ]);
 
         /**
-         * Route for approving a comment
-         */
-         Route::post('approve-comment', [
-             'uses' => 'Api\V1\BlogController@approveBlogComments',
-             'as' => 'api.v1.approveBlogComment.post'
-         ]);
+        * Route for approving a comment
+        */
+        Route::post('approve-comment', [
+        'uses' => 'Api\V1\BlogController@approveBlogComments',
+        'as' => 'api.v1.approveBlogComment.post'
+        ]);
 
-         /**
-          * Route for deleting a comment
-          */
-          Route::delete('delete-comment/{id}', [
-              'uses' => 'Api\V1\BlogController@deleteBlogComments',
-              'as' => 'api.v1.deleteBlogComment.delete'
-          ]);
+        /**
+        * Route for deleting a comment
+        */
+        Route::delete('delete-comment/{id}', [
+        'uses' => 'Api\V1\BlogController@deleteBlogComments',
+        'as' => 'api.v1.deleteBlogComment.delete'
+        ]);
 
-          /**
-           * Route for fetching all comments for a blog
-           */
-           Route::post('fetch-all-comments', [
-               'uses' => 'Api\V1\BlogController@fetchAllBlogCommentsAdmin',
-               'as' => 'api.v1.fetchAllBlogCommentsAdmin.post'
-           ]);
+        /**
+        * Route for fetching all comments for a blog
+        */
+        Route::post('fetch-all-comments', [
+         'uses' => 'Api\V1\BlogController@fetchAllBlogCommentsAdmin',
+         'as' => 'api.v1.fetchAllBlogCommentsAdmin.post'
+        ]);
 
-           /**
-            * Route for fetching comments and replies for a single comment
-            */
-            Route::post('fetch-comments', [
-                'uses' => 'Api\V1\BlogController@fetchBlogCommentsAdmin',
-                'as' => 'api.v1.fetchBlogCommentsAdmin.post'
-            ]);
+        /**
+        * Route for fetching comments and replies for a single comment
+        */
+        Route::post('fetch-comments', [
+          'uses' => 'Api\V1\BlogController@fetchBlogCommentsAdmin',
+          'as' => 'api.v1.fetchBlogCommentsAdmin.post'
+        ]);
+
+        /**
+        * Route for fetching dashboard contents for admin panel
+        */
+        Route::get('dashboard', [
+           'uses' => 'Api\V1\DashboardController@fetchDashboard',
+           'as' => 'api.v1.fetchDashboard.get'
+        ]);
+
+
     });
 
     /**
