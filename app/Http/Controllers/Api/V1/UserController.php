@@ -1344,6 +1344,57 @@ class UserController extends Controller
                                 ->subject('Selected You As Backup Guardian For Minor Children');
                         });
                     }
+                    if($emailType == 5){
+                         // Send email to the backup Attroney
+                        $data = array();
+                        $data['title'] = $getUser->name." Selected You As Backup Financial Power of Attorney";
+                        $data['banner'] = asset('images/financial-mail-banner.jpg');
+                        $data['name'] = $fullname;
+                        $data['short_description'] = "<p>".$getUser->name." recently joined the thousands of people who have used SimplyWilled.com to create their will and selected you to serve as their Backup Financial Power of Attorney. Being selected as a Backup Financial Power of Attorney is an important role reserved for those we trust the most. This email is being sent to you so you can let ".$getUser->name." know whether you accept or decline this honor.</p>
+					<h3>What being selected as Backup Financial Power of Attorney means for you:</h3>
+					<p>As the Backup Financial Power of Attorney  you will be legally responsible for making financial decision for ".$getUser->name."'s in the event that their Primary Financial Power of Attorney is unwilling or unable to serve. Serving as a Backup Financial Power of Attorney is a very important role and carries with is significant powers should you be called upon to serve. Among them commonly, people give their agent broad power to handle all of their finances.</p>
+					<h3><img src='".asset('images/like-icon-mail.png')."' alt='like'> Confirm you responsibility:</h3>
+					<p>Your duties as Backup Financially Power of Attorney do not take effect unless ".$getUser->name."'s Primary Financial Power of Attorney is unable or unwilling to serve.  If you accept this honor and duty, please take a moment to speak with ".$getUser->name." to have a conversation about the terms of their Financial Power of Attorney, and any special instructions they may have. It is important that you confirm the location of their estate documents so that you can access them if you are called upon to serve. Otherwise, please let ".$getUser->name." know you are unable to accept this responsibility so they can choose someone else.</p>";
+                        $data['accept_url'] = url("/confirmed")."?client-name=".base64_encode($getUser->id);
+                        $data['declined_url'] = url("/declined")."?client-name=".base64_encode($getUser->id);
+
+                        Mail::send('emails.notificationEmail', [
+                            'email' => 'info@simplywilled.com',
+                            'data' => $data
+                        ], function ($mail) use ($emailId) {
+                            /** @noinspection PhpUndefinedMethodInspection */
+                            $mail->from('info@simplywilled.com', 'simplywilled');
+                            /** @noinspection PhpUndefinedMethodInspection */
+                            $mail->to($emailId, "Backup Financial Power of Attorney")
+                                ->subject('Selected You As Backup Financial Power of Attorney');
+                        });
+                    }
+                    if($emailType == 6){
+                        // Send email to the Attroney
+                        $data = array();
+                        $data['title'] = $getUser->name." Selected You As Financial Power of Attorney";
+                        $data['banner'] = asset('images/financial-mail-banner.jpg');
+                        $data['name'] = $fullname;
+                        $data['short_description'] = "<p>".$getUser->name." recently joined the thousands of people who have used SimplyWilled.com to create their will and selected you to serve as their Primary Financial Power of Attorney. Being selected as a Primary Financial Power of Attorney is an important role reserved for those we trust the most. This email is being sent to you so you can let ".$getUser->name." know whether you accept or decline this honor.</p>
+				<h3>What being selected as Primary Financial Power of Attorney means for you:</h3>
+				<p>As the Primary Financial Power of Attorney  you will be legally responsible for making financial decision for ".$getUser->name."'s in the event that their incapacity. Serving as a Primary Financial Power of Attorney is a very important role and carries with is significant powers should you be called upon to serve. Among them commonly, people give their agent broad power to handle all of their finances.</p>
+				<h3><img src='".asset('images/like-icon-mail.png')."' alt='like'> Confirm you responsibility:</h3>
+				<p>Your duties as the Primary Financially Power of Attorney do not take effect unless ".$getUser->name." is incapacitated.  If you accept this honor and duty, please take a moment to speak with ".$getUser->name." to have a conversation about the terms of their Financial Power of Attorney, and any special instructions they may have. It is important that you confirm the location of their estate documents so that you can access them if you are called upon to serve. Otherwise, please let ".$getUser->name." know you are unable to accept this responsibility so they can choose someone else.</p>";
+                        $data['accept_url'] = url("/confirmed")."?client-name=".base64_encode($getUser->id);
+                        $data['declined_url'] = url("/declined")."?client-name=".base64_encode($getUser->id);
+
+                        Mail::send('emails.notificationEmail', [
+                            'email' => 'info@simplywilled.com',
+                            'data' => $data
+                        ], function ($mail) use ($emailId) {
+                            /** @noinspection PhpUndefinedMethodInspection */
+                            $mail->from('info@simplywilled.com', 'simplywilled');
+                            /** @noinspection PhpUndefinedMethodInspection */
+                            $mail->to($emailId, "Financial Power of Attorney")
+                                ->subject('Selected You As Financial Power of Attorney');
+                        });
+
+                    }
                 }
             }
         } catch (Exception $e) {
