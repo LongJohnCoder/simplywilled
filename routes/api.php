@@ -448,5 +448,13 @@ Route::group(['prefix' => 'v1'], function() {
             'as' => 'api.v1.protectFinance.post'
         ]);
 
+        /*
+         *Route for health finance
+         * */
+        Route::post('health-finance',[
+            'uses'=>'Api\V1\UserManagementController@createHealthFinance',
+            'as' => 'api.v1.createHealthFinance.post'
+        ]);
+
     });
 });
