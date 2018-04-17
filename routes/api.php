@@ -440,6 +440,13 @@ Route::group(['prefix' => 'v1'], function() {
             'as' => 'api.v1.editProfile.post'
         ]);
 
+        /*
+         *Route for add/update protect finance
+         * */
+        Route::post('protect-finance',[
+            'uses'=>'Api\V1\UserManagementController@updateProtectFinance',
+            'as' => 'api.v1.protectFinance.post'
+        ]);
 
     });
 });
