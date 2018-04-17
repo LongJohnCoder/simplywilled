@@ -154,6 +154,9 @@ class BlogController extends Controller
             } else {
                 $imageName = "";
             }
+            
+            //interchanging value with key to hash search for faster results
+            $validCategoryId = array_flip(Categories::pluck('id')->toArray());
 
             //try to save the blog
             $saveBlog = new Blogs;
@@ -171,10 +174,12 @@ class BlogController extends Controller
                 $blogId = $saveBlog->id;
                 if ($blogCategorys) {
                     foreach ($blogCategorys as $key => $value) {
-                        $saveBlogcategory = new CategoryBlogMapping;
-                        $saveBlogcategory->blog_id = $blogId;
-                        $saveBlogcategory->category_id = $value;
-                        $saveBlogcategory->save();
+                        if(isset($validCategoryId[$value])) {
+                          $saveBlogcategory = new CategoryBlogMapping;
+                          $saveBlogcategory->blog_id = $blogId;
+                          $saveBlogcategory->category_id = $value;
+                          $saveBlogcategory->save();
+                        }
                     }
                 }
                 $getBlogInfo = $saveBlog::where('id', $blogId)->with('blogCategory')->get(); // query to get created blog data
