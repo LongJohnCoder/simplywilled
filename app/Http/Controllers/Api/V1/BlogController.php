@@ -127,7 +127,7 @@ class BlogController extends Controller
             if ($validator->fails()) {
                 return response()->json([
                     'status' => false,
-                    'message' => $validator,
+                    'message' => $validator->errors(),
                     'data' => []
                 ], 400);
             }
@@ -154,7 +154,7 @@ class BlogController extends Controller
             } else {
                 $imageName = "";
             }
-            
+
             //interchanging value with key to hash search for faster results
             $validCategoryId = array_flip(Categories::pluck('id')->toArray());
 
@@ -235,7 +235,7 @@ class BlogController extends Controller
                     if ($validator->fails()) {
                         return response()->json([
                             'status' => false,
-                            'message' => $validator,
+                            'message' => $validator->errors(),
                             'data' => []
                         ], 400);
                     }
@@ -262,6 +262,10 @@ class BlogController extends Controller
                     } else {
                         $imageName = $getBlogInfo->image;
                     }
+
+                    //interchanging value with key to hash search for faster results
+                    $validCategoryId = array_flip(Categories::pluck('id')->toArray());
+
                     //try to update the blog
                     $getBlogInfo->title = $blogTitle;
                     $getBlogInfo->body = $blogBody;
@@ -278,10 +282,12 @@ class BlogController extends Controller
                         if ($getBlogCategorys) {
                             $deleteOldCategoryMap = CategoryBlogMapping::where('blog_id', $blogId)->delete(); // delete old category map and create new category map
                             foreach ($blogCategorys as $key => $value) {
+                              if(isset($validCategoryId[$value])) {
                                 $saveBlogcategory = new CategoryBlogMapping;
                                 $saveBlogcategory->blog_id = $blogId;
                                 $saveBlogcategory->category_id = $value;
                                 $saveBlogcategory->save();
+                              }
                             }
                         } else {
                             foreach ($blogCategorys as $key => $value) {
@@ -332,10 +338,10 @@ class BlogController extends Controller
      * Function to delete a blog
      *@return \Illuminate\Http\JsonResponse
      * */
-    public function deleteBlog(Request $request)
+    public function deleteBlog($id)
     {
         try {
-            $blogId = $request->blogId;
+            $blogId = $id;
             if ($blogId) {
                 $deleteBlog = Blogs::findorfail($blogId);   // find the blog
                 $deleteBlogCategoryMap = CategoryBlogMapping::where('blog_id', $blogId)->delete();   //delete blog and category map

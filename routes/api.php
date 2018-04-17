@@ -195,7 +195,7 @@ Route::group(['prefix' => 'v1'], function() {
         /*
          * Route for delete a blog
          * */
-        Route::post('delete-blog', [
+        Route::delete('delete-blog/{id}', [
             'uses' => 'Api\V1\BlogController@deleteBlog',
             'as'   => 'api.v1.DeleteBlog.post'
         ]);
@@ -235,7 +235,7 @@ Route::group(['prefix' => 'v1'], function() {
         /*
          * Route for delete faq category
          * */
-        Route::post('delete-faq-category', [
+        Route::delete('delete-faq-category/{id}', [
             'uses' => 'Api\V1\FaqCategoryController@deleteFaqCategory',
             'as'   => 'api.v1.DeleteFaqCategory.post'
         ]);
@@ -275,7 +275,7 @@ Route::group(['prefix' => 'v1'], function() {
         /*
          * Route for deleting a FAQ
          * */
-        Route::post('delete-faq', [
+        Route::delete('delete-faq/{id}', [
             'uses' => 'Api\V1\FaqController@deleteFaq',
             'as'   => 'api.v1.DeleteFaq.post'
         ]);

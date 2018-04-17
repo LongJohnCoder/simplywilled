@@ -115,7 +115,7 @@ class FaqCategoryController extends Controller
             if ($validator->fails()) {
                 return response()->json([
                     'status' => false,
-                    'message' => $validator,
+                    'message' => $validator->errors(),
                     'data' => []
                 ], 400);
             }
@@ -165,7 +165,7 @@ class FaqCategoryController extends Controller
                     if ($validator->fails()) {
                         return response()->json([
                             'status' => false,
-                            'message' => $validator,
+                            'message' => $validator->errors(),
                             'data' => []
                         ], 400);
                     }
@@ -213,10 +213,19 @@ class FaqCategoryController extends Controller
      * Function to delete faq category
      * @return \Illuminate\Http\Response
      * */
-    public function deleteFaqCategory(Request $request)
+    public function deleteFaqCategory($id)
     {
         try {
-            $faqCategoryId = $request->faqCategoryId;
+            $faqCategoryId = $id;
+
+            if(!is_numeric($faqCategoryId)) {
+              return response()->json([
+                  'status'  => false,
+                  'message' => 'Id is incorrect',
+                  'data' => []
+              ], 400);
+            }
+            $faqCategoryId = (int)$faqCategoryId;
             if ($faqCategoryId) {
                 $deletefaqCategory = FaqCategories::findorfail($faqCategoryId);
                 if ($deletefaqCategory->delete()) {

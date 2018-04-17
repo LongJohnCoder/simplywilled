@@ -160,9 +160,9 @@ class AuthController extends Controller {
         return response()->json($response, $responseCode);
     }
 
-   
 
- 
+
+
     /**
      * Function to validate email
      *
@@ -180,15 +180,15 @@ class AuthController extends Controller {
                 'status'      => false,
                 'message'     => 'Email already exists.'
                 ];
-                $responseCode = 200;  
+                $responseCode = 200;
             } else {
                 $response = [
                 'status'      => true,
                 'message'     => 'Email is available.'
                 ];
-                $responseCode = 200;   
+                $responseCode = 200;
             }
-            
+
         } catch (HttpBadRequestException $httpBadRequestException) {
 
             $response = [
@@ -196,7 +196,7 @@ class AuthController extends Controller {
                 'error'     => $httpBadRequestException->getMessage()
             ];
             $responseCode = 400;
-        } 
+        }
 
         return response()->json($response, $responseCode);
     }
@@ -230,7 +230,7 @@ class AuthController extends Controller {
              * Authenticate user using JWTAuth
              */
             if ($token = JWTAuth::attempt($request->only('email', 'password'))) {
-                
+
                 $user = Auth::user();
                 $role = $user->getRole($user->id);
                 if($role == 'User') {
@@ -244,11 +244,11 @@ class AuthController extends Controller {
                     $response = [
                         'status' => true,
                         'message' => "User signed in successfully.",
-                        'user' => [ 
-                                    'id' => $user->id, 'name' => $user->name, 
+                        'user' => [
+                                    'id' => $user->id, 'name' => $user->name,
                                     'email' =>  $user->email, 'role' => $role,
                                     'avatar' => $user->avatar, 'document_path' => $user->document_path,
-                                    'status' => $user->status  
+                                    'status' => $user->status
                                 ],
                         'token' => $token,
                     ];
@@ -270,7 +270,7 @@ class AuthController extends Controller {
                 'error'     => $httpBadRequestException->getMessage()
             ];
             $responseCode = 400;
-        } /** @noinspection PhpUndefinedClassInspection */ 
+        } /** @noinspection PhpUndefinedClassInspection */
         catch (JWTAuthException $JWTAuthException) {
 
             $response = [
@@ -343,6 +343,7 @@ class AuthController extends Controller {
      */
 
     public function forgetPassword(Request $request) {
+
         try {
 
             /**
@@ -351,10 +352,10 @@ class AuthController extends Controller {
             if (!$request->has('email'))
 
                 throw new HttpBadRequestException("Email is required.");
-            
+
             $user = User::where('email',$request->input('email'))->first();
             if ($user) {
-                
+
                 if ($user->deleted_at != null){
                 /** can't login due to soft delete */
                 $response = [
@@ -377,11 +378,10 @@ class AuthController extends Controller {
                     $url = url('/') . '/reset-password/' . $user->email . '/' . $token;
                     $name = $user->name;
 
-                    Mail::send('emails.resetpasswordEmail', [
+                    \Mail::send('emails.resetpasswordEmail', [
                         'email'         => 'info@simplywilled.com',
                         'url'           => $url,
                         'name'          => $name
-                        
                     ], function ($mail) use ($user) {
                         /** @noinspection PhpUndefinedMethodInspection */
                         $mail->from('info@simplywilled.com', 'USER Reset-Password');
@@ -393,7 +393,7 @@ class AuthController extends Controller {
                         'status'            => true,
                         'message'           => "Confirmation mail send to your email address.",
                     ];
-                    $responseCode = 200; 
+                    $responseCode = 200;
                 }
             } else {
                 $response = [
@@ -403,14 +403,14 @@ class AuthController extends Controller {
                 $responseCode = 422;
             }
 
-        } catch (HttpBadRequestException $httpBadRequestException) {    
+        } catch (HttpBadRequestException $httpBadRequestException) {
 
             $response = [
                 'status'    => false,
                 'error'     => $httpBadRequestException->getMessage()
             ];
             $responseCode = 400;
-        } /** @noinspection PhpUndefinedClassInspection */ 
+        } /** @noinspection PhpUndefinedClassInspection */
         catch (JWTAuthException $JWTAuthException) {
 
             $response = [
@@ -440,21 +440,21 @@ class AuthController extends Controller {
      *
      * @return \Illuminate\Http\JsonResponse
      */
-      
+
     public function resetPassword(Request $request) {
         $reset = PasswordReset::where('email', $request->email)->where('token', $request->token)->first();
         if ($reset != null) {
             /*if (strtotime($reset->created_at) > strtotime("-30 minutes")) {*/
                 if ($request->email != null && $request->password != null && $request->confirm_password != null) {
                     if ($request->password == $request->confirm_password) {
-                        
+
                         $user = User::where('email', $request->email)->first();
                         if ($user != null) {
                             $user->password = $request->input('password');
                             $user->uniqueKey = Crypt::encrypt($request->input('password'));
                             $user->update();
                             $password = PasswordReset::where('email', $user->email)->delete();
-                            
+
                             $response = [
                                 'status'        => true,
                                 'message'         => "Password Reset Successfully"
@@ -478,7 +478,7 @@ class AuthController extends Controller {
                         return response()->json($response, $responseCode);
                     }
                 } else {
-                    
+
                     $response = [
                     'status'        => false,
                     'error'         => "Enter Password and confirm password"
