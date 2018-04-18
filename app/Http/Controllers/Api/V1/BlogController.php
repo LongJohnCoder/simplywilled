@@ -350,7 +350,7 @@ class BlogController extends Controller
                         'status' => false,
                         'message' => 'Blog deleted',
                         'data' => []
-                    ], 400);
+                    ], 200);
                 } else {
                     return response()->json([
                         'status' => false,

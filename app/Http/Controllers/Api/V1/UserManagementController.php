@@ -35,6 +35,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use Validator;
 use App\Models\HealthFinance;
 
+
 class UserManagementController extends Controller
 {
     /*
@@ -147,7 +148,7 @@ class UserManagementController extends Controller
      * function to add HealthFinance
      * @return \Illuminate\Http\JsonResponse
      * */
-    
+
     public function createHealthFinance(Request $request){
         try {
 
@@ -305,6 +306,377 @@ class UserManagementController extends Controller
                     'data'    => []
                 ], 400);
             }
+     }
+
+    /*
+     * function to get user details
+     * @return \Illuminate\Http\JsonResponse
+     * */
+
+    public function getUserDetails($id) {
+      try {
+        $responseDataArray    = [];
+        $user                 = User::findorfail($id);
+        $tellUsAboutYouUser   = TellUsAboutYou::where('user_id',$user->id)->first();
+        $spouse               = User::where('parent_id',$user->id)->first();
+        $tellUsAboutYouSpouse = null;
+        if($spouse) {
+          $tellUsAboutYouSpouse = TellUsAboutYou::where('user_id',$spouse->id)->first();
+        }
+
+        //dd( $this->fetchUserInformation($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
+        //step : 1
+        array_push($responseDataArray, $this->fetchUserInformation($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
+
+        //step:2
+        array_push($responseDataArray, $this->fetchChildren($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
+
+        //step:3
+        array_push($responseDataArray, $this->fetchGuardianInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
+
+        //step:4
+        array_push($responseDataArray, $this->fetchLovedOnesInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
+
+        //step:5
+        array_push($responseDataArray, $this->fetchPersonalRepresentativeInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
+
+        //step:6
+        array_push($responseDataArray, $this->fetchTangiblePropertyInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
+
+        //step:7
+        array_push($responseDataArray, $this->fetchGiftInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
+
+        //step:8
+        array_push($responseDataArray, $this->fetchSpecialGiftInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
+
+        //step:9
+        array_push($responseDataArray, $this->fetcgContingentBeneficiary($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
+
+        //step:10
+        array_push($responseDataArray, $this->fetchEstateDisrtibuteInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
+
+        //step:11
+        array_push($responseDataArray, $this->fetchDisinheritInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
+
+        return response()->json([
+          'status'  =>  200,
+          'message' =>  'Fetched user information successfully',
+          'data'    =>  $responseDataArray
+        ], 200);
+      } catch (\Exception $e) {
+        return response()->json([
+            'status'      => false,
+            'message'     => $e->getMessage(),
+            'errorLineNo' => $e->getLine(),
+            'data' => []
+        ], 500);
+      }
+    }
+
+
+    /*
+     * function to get user and spouse info related to an user
+     * @params user , spouse,  tellUsAboutYou instance for both user and spouse
+     * @return response array
+     * */
+    private function fetchUserInformation($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse) {
+      $stepValue  = 1;
+      if($tellUsAboutYouUser) {
+        $userInfoArray = [
+          'step'    =>  $stepValue,
+          'data'    =>  [
+            'userInfo'   => $tellUsAboutYouUser,
+            'spouseInfo' => $spouse != null ? $spouse : null
+          ]
+        ];
+        return $userInfoArray;
+      }
+      return [
+        'step'    =>  $stepValue,
+        'data'    =>  null
+      ];
+    }
+
+    /*
+     * function to get children info related to an user and spouse
+     * @params user , spouse,  tellUsAboutYou instance for both user and spouse
+     * @return response array
+     * */
+    private function fetchChildren($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse) {
+      $stepValue  = 2;
+      $children       = Children::where('user_id', $user->id)->get();
+      $childrenInfoArray  = [];
+      foreach ($children as $key => $child) {
+        array_push($childrenInfoArray, $child);
+      }
+      $totalChildren          = count($children);
+      $isDeceasedChildren     = $tellUsAboutYouUser != null && $tellUsAboutYouUser->deceased_children == '1' ? 'Yes' : 'No';
+      $deceasedChildrenNames  = $tellUsAboutYouUser != null && $tellUsAboutYouUser->deceased_children_names;
+      $childrenArray = [
+        'totalChildren'         =>  $totalChildren,
+        'childrenInformation'   =>  $childrenInfoArray,
+        'isDesceasedChildren'   =>  $isDeceasedChildren,
+        'deceasedChildreNames'  =>  $deceasedChildrenNames
+      ];
+      return [
+        'step'  =>  $stepValue,
+        'data'  =>  $childrenArray
+      ];
+    }
+
+    /*
+     * function to get guardian info related to an user and spouse
+     * @params user , spouse,  tellUsAboutYou instance for both user and spouse
+     * @return response array
+     * */
+    private function fetchGuardianInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse) {
+      $stepValue  = 3;
+      $backupGuardianInfo = GuardianInfo::where('user_id',$user->id)->where('is_backup','1')->first();
+      $guardianInfo       = GuardianInfo::where('user_id',$user->id)->where('is_backup','!=','1')->first();
+      $guardianInfoArray  = [
+        'isguardianMinorChildren' =>  $tellUsAboutYouUser != null && $tellUsAboutYouUser->guardian_minor_children == '1' ? 'Yes' : 'No',
+        'guardian'                =>  $guardianInfo == null ? null : $guardianInfo,
+        'isBackUpGurdian'         =>  $backupGuardianInfo == null ? 'Yes' : 'No',
+        'backupguardian'          =>  $backupGuardianInfo
+      ];
+      return [
+        'step'  =>  $stepValue,
+        'data'  =>  $guardianInfoArray
+      ];
+    }
+
+    /*
+     * function to get loved ones info related to an user and spouse
+     * @params user , spouse,  tellUsAboutYou instance for both user and spouse
+     * @return response array
+     * */
+    private function fetchLovedOnesInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse) {
+      $stepValue  = 4;
+      $lovedOnes  = ProvideYourLovedOnes::where('user_id',$user->id)->first();
+      if($lovedOnes) {
+        $responseArray = [
+          'step' =>  $stepValue,
+          'data' => [
+            'isBusinessInterest'      =>  $lovedOnes->business_interest,
+            'isFarmOrRanch'           =>  $lovedOnes->farm_or_ranch,
+            'isGetCompensate'         =>  $lovedOnes->is_getcompensate,
+            'isPercentage'            =>  $lovedOnes->is_percentage,
+            'compensateAmount'        =>  $lovedOnes->compensation_specific_amount,
+            'isPercentageBasedOnNet'  =>  $lovedOnes->net_value_percent
+          ]
+        ];
+        return $responseArray;
+      }
+      $responseArray = [
+        'step' =>  $stepValue,
+        'data' => null
+      ];
+      return $responseArray;
+    }
+
+    /*
+     * function to get representative info related to an user and spouse
+     * @params user , spouse,  tellUsAboutYou instance for both user and spouse
+     * @return response array
+     * */
+    private function fetchPersonalRepresentativeInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse) {
+      $stepValue        = 5;
+      $representatives  = PersonalRepresentatives::where('user_id',$user->id)->get();
+
+      $representativeArray = [];
+      foreach ($representatives as $key => $eachRepresentative) {
+        if($eachRepresentative->is_backuprepresentative == '1') {
+          $representativeArray = [
+            'isBackUpRepresentative'  => 'Yes',
+            'backUpRepresentative'    => [
+              'fullName'      => $eachRepresentative->fullname,
+              'relationShip'  => $eachRepresentative->relationship_with,
+              'address'       => $eachRepresentative->address,
+              'city'          => $eachRepresentative->city,
+              'state'         => $eachRepresentative->state,
+              'zip'           => $eachRepresentative->zip,
+              'country'       => $eachRepresentative->country,
+              'isInform'      => $eachRepresentative->email_notification,
+              'email'         => $eachRepresentative->email
+            ]
+          ];
+        } else {
+          $representativeArray = [
+            'personalRepresentative'    => [
+              'fullName'      => $eachRepresentative->fullname,
+              'relationShip'  => $eachRepresentative->relationship_with,
+              'address'       => $eachRepresentative->address,
+              'city'          => $eachRepresentative->city,
+              'state'         => $eachRepresentative->state,
+              'zip'           => $eachRepresentative->zip,
+              'country'       => $eachRepresentative->country,
+              'isInform'      => $eachRepresentative->email_notification,
+              'email'         => $eachRepresentative->email
+            ]
+          ];
+        }
+        return [
+          'step'  => $stepValue,
+          'data'  => $representativeArray
+        ];
+      }
+
+      return [
+        'step'  => $stepValue,
+        'data'  => null
+      ];
+    }
+
+    /*
+     * function to get TangibleProperty info related to an user and spouse
+     * @params user , spouse,  tellUsAboutYou instance for both user and spouse
+     * @return response array
+     * */
+    private function fetchTangiblePropertyInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse) {
+       $stepValue      = 6;
+       //responseArray defined to return response array to calling function
+       $responseArray  = ['step' => null, 'data' => null];
+       $data = PersonalRepresentatives::where('user_id',$user->id)->first();
+
+       if($data) {
+         $responseArray = [
+           'step' =>  $stepValue,
+           'data' => [
+             'toTangiblePropertyDistribute' => $data->is_tangible_property_distribute + 1,
+             'tangiblePropertyDistribute'   => $data->tangible_property_distribute
+           ]
+         ];
+         return $responseArray;
+       } else {
+         $responseArray = [
+           'step' => $stepValue,
+           'data' => null
+         ];
+         return $responseArray;
+       }
+    }
+
+    /*
+     * function to get gift info related to an user and spouse
+     * @params user , spouse,  tellUsAboutYou instance for both user and spouse
+     * @return response array
+     * */
+    private function fetchGiftInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse) {
+       $stepValue   = 7;
+       $gifts       = Gifts::where('user_id',$user->id)->get();
+       $giftsArray  = [];
+       foreach ($gifts as $key => $eachGift) {
+          array_push($giftsArray, $eachGift);
+       }
+       $responseArray = [
+         'step' =>  $stepValue,
+         'data' => [
+           'isGift' => count($gifts),
+           'gift'   => $giftsArray
+         ]
+       ];
+       return $responseArray;
+    }
+
+    /*
+     * function to get specal gift info related to an user and spouse
+     * @params user , spouse,  tellUsAboutYou instance for both user and spouse
+     * @return response array
+     * */
+    private function fetchSpecialGiftInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse) {
+       $stepValue = 8;
+       $gift      = ProvideYourLovedOnes::where('user_id',$user->id)->first();
+       if($gift) {
+         return [
+           'step' => $stepValue,
+           'data' => [
+             'isSpecificGift' => $gift->specific_gifts == 1 ? 'Yes' : 'No'
+           ]
+         ];
+       }
+       return [
+         'step' => $stepValue,
+         'data' => null
+       ];
+    }
+
+    /*
+     * function to get specal gift info related to an user and spouse
+     * @params user , spouse,  tellUsAboutYou instance for both user and spouse
+     * @return response array
+     * */
+    private function fetcgContingentBeneficiary($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse) {
+       $stepValue   = 9;
+       $beneficiary = ContingentBeneficiary::where('user_id',$user->id)->first();
+       if($beneficiary) {
+         return [
+           'step' => $stepValue,
+           'data' => [
+             'isContingentBeneficiary' => $beneficiary->is_contingent_beneficiary == 1 ? 'Yes' : 'No'
+           ]
+         ];
+       }
+       return [
+         'step' => $stepValue,
+         'data' => [
+           'isContingentBeneficiary' => null
+         ]
+       ];
+    }
+
+    /*
+     * function to get estate distribute info related to an user and spouse
+     * @params user , spouse,  tellUsAboutYou instance for both user and spouse
+     * @return response array
+     * */
+    private function fetchEstateDisrtibuteInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse) {
+      $stepValue   = 10;
+      $estate = EstateDisrtibute::where('user_id', $user->id)->first();
+      $data   = null;
+      if($estate) {
+        $type = $estate->disrtibute_type;
+        switch($type) {
+          case '1' :  $data = ['type' => '1' , 'totalInfo' => $estate->to_a_single_beneficiary];
+                      break;
+          case '2' :  $data = ['type' => '2' , 'totalInfo' => $estate->to_multiple_beneficiary];
+                      break;
+          case '3' :  $data = ['type' => '3' , 'totalInfo' => $estate->to_my_heirs_law];
+                      break;
+          case '4' :  $data = ['type' => '4' , 'totalInfo' => $estate->some_other_way];
+                      break;
+          default  :  break;
+        }
+      }
+      return [
+        'step' => $stepValue,
+        'data' => $data
+      ];
+    }
+
+     /*
+      * function to get inherit related to an user and spouse
+      * @params user , spouse,  tellUsAboutYou instance for both user and spouse
+      * @return response array
+      * */
+     private function fetchDisinheritInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse) {
+       $stepValue   = 11;
+       $disinherit  = Disinherit::where('user_id', $user->id)->first();
+       $data        = null;
+       if($disinherit) {
+         $data = [
+           'idChoice'       =>  $disinherit->disinherit == '1' ? 'Yes' : 'No',
+           'fullLegalName'  =>  $disinherit->fullname,
+           'relationship'   =>  $disinherit->relationship
+         ];
+         return [
+           'step' => $stepValue,
+           'data' => $data
+         ];
+       }
+       return [
+         'step' => $stepValue,
+         'data' => $data
+       ];
      }
 
 }

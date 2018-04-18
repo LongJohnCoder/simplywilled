@@ -455,13 +455,19 @@ Route::group(['prefix' => 'v1'], function() {
             'uses'=>'Api\V1\UserManagementController@createHealthFinance',
             'as' => 'api.v1.createHealthFinance.post'
         ]);
-
         /**
          *Route for add / update final-agreement
          */
         Route::post('final-agreement',[
             'uses'=>'Api\V1\UserManagementController@updateFinalAgreement',
             'as' => 'api.v1.finalAgreement.post'
+        ]);
+        /*
+         *Route for getting user details
+         * */
+        Route::get('get-user-details/{id}',[
+            'uses'=>'Api\V1\UserManagementController@getUserDetails',
+            'as' => 'api.v1.getUserDetails.get'
         ]);
 
     });
