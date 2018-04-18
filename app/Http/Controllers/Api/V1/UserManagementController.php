@@ -19,6 +19,7 @@ use App\EstateDisrtibute;
 use App\Disinherit;
 use App\Gifts;
 use App\FinancialPowerAttorney;
+use App\FinalArrangements;
 use Auth;
 use Crypt;
 use DB;
@@ -236,4 +237,74 @@ class UserManagementController extends Controller
           ], 400);
         }
     }
+
+    /*
+     * function to create/update final-agreement table
+     * @return \Illuminate\Http\JsonResponse
+     * */
+     public function updateFinalAgreement(Request $request){
+
+            $userId = $request->userId;
+            $type = $request->type; // 0--> buried 1--> Cremated
+            $ashes = $request->ashes;
+            $agreements = $request->agreements;
+            try{
+                if($userId){
+                    $checkExistData = FinalArrangements::where('user_id',$userId)->first();
+                    if(count($checkExistData)){
+                        // update
+                        $checkExistData->user_id = $userId;
+                        $checkExistData->type = $type;
+                        $checkExistData->ashes = $ashes;
+                        $checkExistData->arrangements = $agreements;
+                        if($checkExistData->save()){
+                            return response()->json([
+                                'status' => true,
+                                'message' => 'Final Agreement created/updated successfully',
+                                'data' => ['FinalAgreement' => $checkExistData]
+                            ], 200);
+                        }else{
+                            return response()->json([
+                                'status' => false,
+                                'message' => 'Final Agreement not created/updated successfully',
+                                'data' => []
+                            ], 400);
+                        }
+                    }else{
+                        // insert
+                        $saveData = new FinalArrangements;
+                        $saveData->user_id = $userId;
+                        $saveData->type = $type;
+                        $saveData->ashes = $ashes;
+                        $saveData->arrangements = $agreements;
+                        if($saveData->save()){
+                            return response()->json([
+                                'status' => true,
+                                'message' => 'Final Agreement created/updated successfully',
+                                'data' => ['FinalAgreement' => $saveData]
+                            ], 200);
+                        }else{
+                            return response()->json([
+                                'status' => false,
+                                'message' => 'Final Agreement not created/updated successfully',
+                                'data' => []
+                            ], 400);
+                        }
+                    }
+                }else{
+                    return response()->json([
+                        'status' => false,
+                        'message' => 'something went wrong,user not found ',
+                        'data' => []
+                    ], 400);
+                }
+            }catch (Exception $e){
+                return response()->json([
+                    'status'  => false,
+                    'message' => $e->getMessage(). ' line : '.$e->getLine(),
+                    'data'    => []
+                ], 400);
+            }
+     }
+
 }

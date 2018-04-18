@@ -1,6 +1,6 @@
 <?php
 /**
- * Faq Model for WEM and Pastor with soft delete
+ *  Faqs Model for WEM and Pastor with soft delete
  * @param Request $request
  */
 namespace App;

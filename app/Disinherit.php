@@ -1,5 +1,8 @@
 <?php
-
+/**
+ *  Disinherit Model for WEM and Pastor with soft delete
+ * @param Request $request
+ */
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
