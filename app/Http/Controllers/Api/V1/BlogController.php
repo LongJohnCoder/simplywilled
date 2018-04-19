@@ -923,4 +923,90 @@ class BlogController extends Controller
          }
        }
 
+        /*
+         *
+         * function to edit a comment from admin
+         *@return \Illuminate\Http\JsonResponse
+         * */
+       public function editBlogCommentsAdmin(Request $request){
+            try{
+                $commentId = $request->commentId;
+                $name = $request->name;
+                $email = $request->email;
+                $message = $request->message;
+                $status = $request->status;
+                if($commentId && $status) {
+                    $checkForComment = BlogComment::where('id', $commentId)->first();
+                    if (count($checkForComment)) {
+                        $checkForComment->email = $email;
+                        $checkForComment->name = $name;
+                        $checkForComment->message = $message;
+                        $checkForComment->status = $status;
+                        if ($checkForComment->save()) {
+                            return response()->json([
+                                'status' => true,
+                                'message' => 'comment updated ',
+                                'data' => $checkForComment
+                            ], 200);
+                        } else {
+                            return response()->json([
+                                'status' => false,
+                                'message' => 'comment not updated',
+                                'data' => []
+                            ], 400);
+                        }
+                    } else {
+                        return response()->json([
+                            'status' => false,
+                            'message' => 'comment not found',
+                            'data' => []
+                        ], 400);
+                    }
+                }else{
+                    return response()->json([
+                        'status' => false,
+                        'message' => 'something went wrong,comment not found',
+                        'data' => []
+                    ], 400);
+                }
+            }catch(Exception $e){
+                return response()->json([
+                    'status'       => false,
+                    'message'      => $e->getMessage(),
+                    'errorLineNo'  => $e->getLine()
+                ], 500);
+            }
+       }
+
+       /***
+        *
+        *function view a comment
+        *@return \Illuminate\Http\JsonResponse
+        * @params $commentId
+        */
+        public  function viewBlogCommentsAdmin($commentId){
+            try{
+                $comment = BlogComment::findorfail($commentId);
+                if(count($comment)){
+                    return response()->json([
+                        'status' => true,
+                        'message' => 'comment found ',
+                        'data' => $comment
+                    ], 200);
+                }else{
+                    return response()->json([
+                        'status' => false,
+                        'message' => 'comment not found',
+                        'data' => []
+                    ], 400);
+                }
+            }catch (Exception $e){
+                return response()->json([
+                    'status'       => false,
+                    'message'      => $e->getMessage(),
+                    'errorLineNo'  => $e->getLine()
+                ], 500);
+            }
+        }
+
 }

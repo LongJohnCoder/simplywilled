@@ -56,6 +56,16 @@ Route::group(['prefix' => 'v1'], function() {
     ]);
 
     /**
+     * Route for posting contact us form
+     *
+     * */
+    Route::post('contact-us',[
+        'uses'=>'Api\V1\ContactusController@postContactUs',
+        'as'=>'api.v1.postContactUs.post'
+    ]);
+
+
+    /**
      * Route for Authenticated Admin panel
     */
 
@@ -374,6 +384,24 @@ Route::group(['prefix' => 'v1'], function() {
         Route::get('dashboard', [
            'uses' => 'Api\V1\DashboardController@fetchDashboard',
            'as' => 'api.v1.fetchDashboard.get'
+        ]);
+
+        /**
+         * Route for editing a comment from admin
+         *
+         * */
+        Route::post('edit-comment', [
+            'uses' => 'Api\V1\BlogController@editBlogCommentsAdmin',
+            'as' => 'api.v1.editBlogCommentsAdmin.post'
+        ]);
+
+        /**
+         * Route for view a comment from admin
+         *
+         * */
+        Route::get('view-comment/{commentId}', [
+            'uses' => 'Api\V1\BlogController@viewBlogCommentsAdmin',
+            'as' => 'api.v1.viewBlogCommentsAdmin.post'
         ]);
 
 
