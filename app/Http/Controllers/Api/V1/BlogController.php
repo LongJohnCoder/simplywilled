@@ -858,4 +858,39 @@ class BlogController extends Controller
            ], 500);
          }
        }
+
+       /*
+        *  Function to fetch popular posts for a blog
+        *  @scope user
+        *  @params null
+        *  @return \Illuminate\Http\JsonResponse
+        * */
+       public function getPopularPost() {
+         try {
+           if(!\Auth::check()) {
+             return response()->json([
+               'status'   =>  true,
+               'message'  =>  'Session expired. PLease Log in again!',
+               'data'     =>  null
+             ],400);
+           }
+
+           $user  = \Auth::user();
+           $blogs = Blogs::where('author_id',$user->id)->where('status','1')->where('featured','1')->orderBy('created_at','DESC')->get();
+           return response()->json([
+             'status'   =>  true,
+             'message'  =>  'Most popular comments fetched successfully',
+             'data'     =>  $blogs
+           ],200);
+         } catch(\Exception $e) {
+           return response()->json([
+               'status'       => false,
+               'message'      => $e->getMessage(),
+               'errorLineNo'  => $e->getLine()
+           ], 500);
+         }
+       }
+
+
+
 }

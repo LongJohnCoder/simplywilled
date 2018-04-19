@@ -485,5 +485,13 @@ Route::group(['prefix' => 'v1'], function() {
             'uses'=>'Api\V1\BlogController@blogListUser',
             'as' => 'api.v1.blogListUser.get'
         ]);
+
+        /*
+         *Route for getting blog list
+         * */
+        Route::get('popular-post',[
+            'uses'=>'Api\V1\BlogController@getPopularPost',
+            'as' => 'api.v1.getPopularPost.get'
+        ]);
     });
 });
