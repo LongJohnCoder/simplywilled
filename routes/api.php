@@ -346,6 +346,14 @@ Route::group(['prefix' => 'v1'], function() {
             'as'   => 'api.v1.editCoupon.post'
         ]);
 
+        /*
+         * Route for view coupon
+         * */
+        Route::get('view-coupons', [
+            'uses' => 'Api\V1\CouponsController@viewCoupons',
+            'as'   => 'api.v1.viewCoupons.get'
+        ]);
+
         /**
         * Route for approving a comment
         */

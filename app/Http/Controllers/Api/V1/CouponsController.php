@@ -27,6 +27,28 @@ use App\Models\Coupon;
 class CouponsController extends Controller
 {
   /*
+   *  Function to view all created coupons
+   *  @params null
+   *  @return \Illuminate\Http\JsonResponse
+   * */
+    public function viewCoupons() {
+      try {
+        $coupons = Coupon::get();
+        return response()->json([
+            'status'   => true,
+            'message'  => 'All coupons',
+            'data'     => $coupons
+        ], 200);
+      } catch (\Exception $e) {
+        return response()->json([
+            'status'       => false,
+            'message'      => $e->getMessage(),
+            'errorLineNo'  => $e->getLine(),
+            'data'         => []
+        ], 500);
+      }
+    }
+  /*
    *  Function to create coupon by an admin
    *  @params [Request :: title:(text), percentage:(float), expired_on:(datetime), description: text(optional)]
    *  @return \Illuminate\Http\JsonResponse
