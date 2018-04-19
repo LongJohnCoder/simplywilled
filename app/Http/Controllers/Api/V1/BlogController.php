@@ -62,6 +62,36 @@ class BlogController extends Controller
     }
 
     /*
+     * function to fetch list of blogs for user
+     *
+     * */
+    public function blogListUser()
+    {
+        try {
+            $blogs = Blogs::where('status','1')->with('blogCategory')->get();
+            if ($blogs) {
+                return response()->json([
+                    'status'  => true,
+                    'message' => 'Blog List Fetched successfully',
+                    'data'    => ['BlogDetails' => $blogs]
+                ], 200);
+            } else {
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'Blog not added',
+                    'data'    => ['BlogDetails' => $blogs]
+                ], 400);
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                'status'  => false,
+                'message' => $e->getMessage(),
+                'data'    => []
+            ], 500);
+        }
+    }
+
+    /*
      * function to view blog
      * use : use this function to create a view of the particuller Blog
      * @return \Illuminate\Http\JsonResponse

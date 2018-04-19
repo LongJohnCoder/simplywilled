@@ -478,5 +478,12 @@ Route::group(['prefix' => 'v1'], function() {
             'as' => 'api.v1.getUserDetails.get'
         ]);
 
+        /*
+         *Route for getting blog list
+         * */
+        Route::get('blog-list',[
+            'uses'=>'Api\V1\BlogController@blogListUser',
+            'as' => 'api.v1.blogListUser.get'
+        ]);
     });
 });
