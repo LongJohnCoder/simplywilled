@@ -404,7 +404,7 @@ class UserManagementController extends Controller
      * */
     private function fetchChildren($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse) {
       $stepValue  = 2;
-      $children       = Children::where('user_id', $user->id)->get();
+      $children   = Children::where('user_id', $user->id)->get();
       $childrenInfoArray  = [];
       foreach ($children as $key => $child) {
         array_push($childrenInfoArray, $child);

@@ -82,7 +82,7 @@ Route::group(['prefix' => 'v1'], function() {
         /**
         * Lists of roles
         */
-        Route::post('roles', [
+        Route::get('roles', [
             'uses' => 'Api\V1\RoleController@roleLists',
             'as'   => 'api.v1.RoleLists.post'
         ]);
@@ -302,6 +302,14 @@ Route::group(['prefix' => 'v1'], function() {
         Route::post('edit-package', [
             'uses' => 'Api\V1\PackageController@editPackage',
             'as'   => 'api.v1.editPackage.post'
+        ]);
+
+        /*
+         * Route for get packages
+         * */
+        Route::get('get-packages', [
+            'uses' => 'Api\V1\PackageController@getPackages',
+            'as'   => 'api.v1.getPackages.get'
         ]);
 
         /*

@@ -347,15 +347,15 @@ class BlogController extends Controller
                 $deleteBlogCategoryMap = CategoryBlogMapping::where('blog_id', $blogId)->delete();   //delete blog and category map
                 if ($deleteBlog->delete()) {
                     return response()->json([
-                        'status' => false,
+                        'status'  => true,
                         'message' => 'Blog deleted',
-                        'data' => []
+                        'data'    => []
                     ], 200);
                 } else {
                     return response()->json([
-                        'status' => false,
+                        'status'  => false,
                         'message' => 'Blog not deleted ',
-                        'data' => []
+                        'data'    => []
                     ], 400);
                 }
             } else {
@@ -373,7 +373,6 @@ class BlogController extends Controller
                 'data' => []
             ], 500);
         }
-
     }
 
     /*

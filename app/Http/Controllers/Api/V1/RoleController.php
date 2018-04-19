@@ -31,8 +31,6 @@ class RoleController extends Controller
                     'data' => []
                 ], 400);
             }
-
-
         } catch(Exception $e){
             return response()->json([
                 'status' => false,
