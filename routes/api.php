@@ -487,11 +487,20 @@ Route::group(['prefix' => 'v1'], function() {
         ]);
 
         /*
-         *Route for getting blog list
+         *Route for getting popular blog list
          * */
         Route::get('popular-post',[
-            'uses'=>'Api\V1\BlogController@getPopularPost',
-            'as' => 'api.v1.getPopularPost.get'
+            'uses'=>'Api\V1\BlogController@getPopularPosts',
+            'as' => 'api.v1.getPopularPosts.get'
         ]);
+
+        /*
+         *Route for getting latest blog list
+         * */
+        Route::get('latest-post',[
+            'uses'=>'Api\V1\BlogController@getLatestPosts',
+            'as' => 'api.v1.getLatestPosts.get'
+        ]);
+
     });
 });
