@@ -56,6 +56,16 @@ Route::group(['prefix' => 'v1'], function() {
     ]);
 
     /**
+     * Route for posting contact us form
+     *
+     * */
+    Route::post('contact-us',[
+        'uses'=>'Api\V1\ContactusController@postContactUs',
+        'as'=>'api.v1.postContactUs.post'
+    ]);
+
+
+    /**
      * Route for Authenticated Admin panel
     */
 
