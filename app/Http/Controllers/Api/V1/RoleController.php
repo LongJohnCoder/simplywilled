@@ -149,7 +149,7 @@ class RoleController extends Controller
         try {
 
             $validator = Validator::make($request->all(), [
-                'role_id'   =>  'required|integer|exists:roles,id',
+                'role_id'   =>  'required|integer|exists:roles,id,deleted_at,NULL',
                 'role_name' =>  'required'
             ]);
 
@@ -164,7 +164,16 @@ class RoleController extends Controller
             $roleID   = $request->role_id;
             $roleName = $request->role_name;
 
-            $role       = Role::findorfail($roleID);
+            $role       = Role::find($roleID);
+
+            if(!$role) {
+              return response()->json([
+                  'status'  => false,
+                  'message' => 'Role not found!',
+                  'data'    => []
+              ], 400);
+            }
+
             $role->name = $roleName;
             if($role->save()) {
                 return response()->json([
@@ -177,7 +186,7 @@ class RoleController extends Controller
                     'status'  => false,
                     'message' => 'Database connectivity error. Try again after a while!',
                     'data'    => []
-                ], 500);
+                ], 400);
             }
 
         } catch(Exception $e) {

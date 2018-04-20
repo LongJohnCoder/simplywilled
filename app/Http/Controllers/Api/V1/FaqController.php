@@ -185,30 +185,31 @@ class FaqController extends Controller
     public function editFaq(Request $request)
     {
         try {
+
+            $validator = Validator::make($request->all(), [
+                'faqQuestion' =>  'required',
+                'faqAnswer'   =>  'required',
+                'faqId'       =>  'required|exists:faqs,id,deleted_at,NULL'
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => $validator->errors(),
+                    'data' => []
+                ], 400);
+            }
+
             $faqId = $request->faqId;
             if ($faqId) {
-                $getFaq = Faqs::findorfail($faqId);
+                $getFaq = Faqs::find($faqId);
                 if ($getFaq) {
                     $faqQuestion = $request->faqQuestion;
                     $faqAnswer = $request->faqAnswer;
                     $faqStatus = $request->faqStatus; // 1--> Publish 0-->unPublish
                     $faqCategory = $request->faqCategory;
-                    $validator = Validator::make($request->all(), [
-                        'faqQuestion' => 'required',
-                        'faqAnswer' => 'required'
-                    ]);
-
-                    if ($validator->fails()) {
-                        return response()->json([
-                            'status' => false,
-                            'message' => $validator->errors(),
-                            'data' => []
-                        ], 400);
-                    }
-
                     //interchanging value with key to hash search for faster results
                     $validCategoryId = array_flip(FaqCategories::pluck('id')->toArray());
-
                     // try to update FAQ
                     $getFaq->question = $faqQuestion;
                     $getFaq->answer = $faqAnswer;
@@ -288,7 +289,14 @@ class FaqController extends Controller
             $faqId = (int)$faqId;
 
             if ($faqId) {
-                $deleteFaq = Faqs::findorfail($faqId);
+                $deleteFaq = Faqs::find($faqId);
+                if(!$deleteFaq) {
+                  return response()->json([
+                      'status' => false,
+                      'message' => 'This FAQ could not be found',
+                      'data' => []
+                  ], 400);
+                }
                 if ($deleteFaq->delete()) {
                     $deleteFaqCategoryMap = FaqCategoryMapping::where('faq_id', $faqId)->delete();
                     return response()->json([

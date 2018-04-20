@@ -187,7 +187,16 @@ class PackageController extends Controller
         }
         $status = $request->has('status') ? $request->status : config('default_values.Packages.defaultStatus');
 
-        $package = Packages::findorfail($id);
+        $package = Packages::find($id);
+
+        if(!$package) {
+          return response()->json([
+              'status'   => true,
+              'message'  => 'Package not found!',
+              'data'     => []
+          ], 400);
+        }
+
         $package->name        = $name;
         $package->amount      = $amount;
         $package->description = $request->has('description') ? $request->description : '';
@@ -203,7 +212,7 @@ class PackageController extends Controller
               'status'   => true,
               'message'  => 'Database Conectivity Error',
               'data'     => []
-          ], 200);
+          ], 400);
         }
       } catch(\Exception $e) {
         return response()->json([

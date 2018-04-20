@@ -192,7 +192,16 @@ class CouponsController extends Controller
          }
          $expiredOn = $request->expired_on;
 
-         $coupon = Coupon::findorfail($id);
+         $coupon = Coupon::find($id);
+
+         if(!$coupon) {
+           return response()->json([
+               'status'   => true,
+               'message'  => 'Coupon not found!',
+               'data'     => []
+           ], 400);
+         }
+
          $coupon->title       = $request->has('title') && $request->title != null  ? $request->title : $coupon->title;
          $coupon->percentage  = $percentage == null ? $coupon->percentage : $percentage;
          $coupon->expired_on  = $expiredOn == null ? $coupon->expired_on : $expiredOn;

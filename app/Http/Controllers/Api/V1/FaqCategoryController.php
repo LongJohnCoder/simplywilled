@@ -153,22 +153,35 @@ class FaqCategoryController extends Controller
     public function editFaqCategory(Request $request)
     {
         try {
+
+            $validator = Validator::make($request->all(), [
+                'faqCategoryName' =>  'required',
+                'faqCategoryId'   =>  'required|exists:faqCategories,id,deleted_at,NULL'
+            ]);
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => $validator->errors(),
+                    'data' => []
+                ], 400);
+            }
+
             $faqCategoryId = $request->faqCategoryId;
             if ($faqCategoryId) {
-                $editFaqCategory = FaqCategories::findorfail($faqCategoryId);
+                $editFaqCategory = FaqCategories::find($faqCategoryId);
                 if ($editFaqCategory) {
                     $faqCategoryName = $request->faqCategoryName;
-                    $validator = Validator::make($request->all(), [
-                        'faqCategoryName' => 'required'
-                    ]);
-
-                    if ($validator->fails()) {
-                        return response()->json([
-                            'status' => false,
-                            'message' => $validator->errors(),
-                            'data' => []
-                        ], 400);
-                    }
+                    // $validator = Validator::make($request->all(), [
+                    //     'faqCategoryName' => 'required'
+                    // ]);
+                    //
+                    // if ($validator->fails()) {
+                    //     return response()->json([
+                    //         'status' => false,
+                    //         'message' => $validator->errors(),
+                    //         'data' => []
+                    //     ], 400);
+                    // }
                     // try to update faq category
                     $editFaqCategory->name = $faqCategoryName;
                     $editFaqCategory->slug = $faqCategoryName;
@@ -227,7 +240,15 @@ class FaqCategoryController extends Controller
             }
             $faqCategoryId = (int)$faqCategoryId;
             if ($faqCategoryId) {
-                $deletefaqCategory = FaqCategories::findorfail($faqCategoryId);
+                $deletefaqCategory = FaqCategories::find($faqCategoryId);
+                if(!$deletefaqCategory) {
+                  return response()->json([
+                      'status'  => false,
+                      'message' => 'This FAQ Category is not found',
+                      'data'    => []
+                  ], 400);
+                }
+
                 if ($deletefaqCategory->delete()) {
                     return response()->json([
                         'status' => true,

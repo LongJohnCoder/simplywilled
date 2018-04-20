@@ -316,7 +316,16 @@ class UserManagementController extends Controller
     public function getUserDetails($id) {
       try {
         $responseDataArray    = [];
-        $user                 = User::findorfail($id);
+        $user                 = User::find($id);
+
+        if(!$user) {
+          return response()->json([
+              'status'  => false,
+              'message' => 'User not found!',
+              'data'    => []
+          ], 400);
+        }
+
         $tellUsAboutYouUser   = TellUsAboutYou::where('user_id',$user->id)->first();
         $spouse               = User::where('parent_id',$user->id)->first();
         $tellUsAboutYouSpouse = null;

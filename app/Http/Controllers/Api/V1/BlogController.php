@@ -325,7 +325,7 @@ class BlogController extends Controller
             $blogMetaKeyword = $request->blogMetaKeyword;
             if ($blogId) {
 
-                $getBlogInfo = Blogs::findorfail($blogId);
+                $getBlogInfo = Blogs::find($blogId);
                 if ($getBlogInfo) {
 
                     // Check file is in param
@@ -427,10 +427,19 @@ class BlogController extends Controller
     public function deleteBlog($id)
     {
         try {
-            $blogId = $id;
+            $blogId = (int)$id;
             if ($blogId) {
-                $deleteBlog = Blogs::findorfail($blogId);   // find the blog
+                $deleteBlog = Blogs::find($blogId);   // find the blog
+
+                if(!$deleteBlog) {
+                  return response()->json([
+                      'status'  => false,
+                      'message' => 'Invalid id',
+                      'data'    => []
+                  ], 400);
+                }
                 $deleteBlogCategoryMap = CategoryBlogMapping::where('blog_id', $blogId)->delete();   //delete blog and category map
+
                 if ($deleteBlog->delete()) {
                     return response()->json([
                         'status'  => true,
@@ -444,7 +453,9 @@ class BlogController extends Controller
                         'data'    => []
                     ], 400);
                 }
+
             } else {
+
                 return response()->json([
                     'status' => false,
                     'message' => 'Something went wrong',
@@ -479,62 +490,26 @@ class BlogController extends Controller
             }
             $userId = \Auth::user()->id;
 
-            //checking valid blogid
-            if(!$request->has('blogId') || !is_numeric($request->blogId)) {
-             return response()->json([
-                 'status'   => false,
-                 'message'  => 'Invalid blogId!',
-                 'data'     => []
-             ], 400);
-            }
-            $blogId = $request->blogId;
+            $validator = Validator::make($request->all(), [
+                'blogId'  =>  'required|exists:blogs,id,deleted_at,NULL',
+                'message' =>  'required',
+                'name'    =>  'required',
+                'email'   =>  'required|email',
+                'parentCommentId' => 'required|exists:blogComments,id,deleted_at,NULL'
+            ]);
 
-            //checking valid message
-            if(!$request->has('message') || strlen(trim($request->message)) == 0) {
-             return response()->json([
-                 'status'   => false,
-                 'message'  => 'Invalid Message!',
-                 'data'     => []
-             ], 400);
+            if($validator->fails()) {
+                return response()->json([
+                    'status'  => false,
+                    'message' => $validator->errors(),
+                    'data'    => []
+                ], 400);
             }
-            $message = $request->message;
-
-            //checking valid name
-            if(!$request->has('name') || strlen(trim($request->name)) == 0) {
-              return response()->json([
-                  'status'   => false,
-                  'message'  => 'Name is invalid',
-                  'data'     => []
-              ], 400);
-            }
-            $name    = $request->name;
-
-            //checking valid email
-            if(!$request->has('email') || strlen(trim($request->email)) == 0 || !(filter_var($request->email, FILTER_VALIDATE_EMAIL))) {
-              return response()->json([
-                  'status'   => false,
-                  'message'  => 'Email is invalid',
-                  'data'     => []
-              ], 400);
-            }
-            $email  = $request->email;
-
-            //checking valid parentCommentId
-            if(!$request->has('parentCommentId') || !is_numeric($request->parentCommentId)) {
-              return response()->json([
-                  'status'   => false,
-                  'message'  => 'Incorrect parentCommentId',
-                  'data'     => []
-              ], 400);
-            }
-
-            if($request->parentCommentId > 0 && !BlogComment::find($request->parentCommentId)) {
-              return response()->json([
-                  'status'   => false,
-                  'message'  => 'Incorrect parentCommentId, this parentCommentId does not exist',
-                  'data'     => []
-              ], 400);
-            }
+            $blogId   = (int)$request->blogId;
+            $email    = $request->email;
+            $name     = $request->name;
+            $message  = $request->message;
+            $parentCommentId = (int)$request->parentCommentId;
 
             //if another comment has the same parentCommentId then 2 messages cannot have the same parentCommentId
             $count = BlogComment::where('parent_comment_id', $request->parentCommentId)->count();
@@ -548,7 +523,7 @@ class BlogController extends Controller
             $parentCommentId  = $request->parentCommentId;
 
             // find the blog to which the comment should be added
-            $blog                       = Blogs::findorfail($blogId);
+            $blog                       = Blogs::find($blogId);
             $comment                    = new BlogComment();
             $comment->blog_id           = $blogId;
             $comment->email             = $email;
@@ -558,7 +533,7 @@ class BlogController extends Controller
             $comment->parent_comment_id = $parentCommentId;
             $comment->user_id           = $userId;
 
-            if ($comment->save()) {
+            if($comment->save()) {
                return response()->json([
                    'status'   => true,
                    'message'  => 'Message saved',
@@ -668,22 +643,21 @@ class BlogController extends Controller
        public function approveBlogComments(Request $request)
        {
            try {
-             //rejecting approve request if blogComment id is invalid
-             if(!isset($request->id) || !is_numeric($request->id)) {
-              return response()->json([
-                  'status'   => false,
-                  'message'  => 'Invalid BlogComment id!'
-              ], 400);
-             }
-             $id = (int)$request->id;
 
-             //rejecting approve request if status is invalid
-             if(!isset($request->status) || ($request->status != 0 && $request->status != 1)) {
-              return response()->json([
-                  'status'   => false,
-                  'message'  => 'Invalid BlogComment status!'
-              ], 400);
+             $validator = Validator::make($request->all(), [
+                 'id'     =>  'required|exists:blogComments,id,deleted_at,NULL',
+                 'status' =>  'required|numeric|between:0,1',
+             ]);
+
+             if ($validator->fails()) {
+                 return response()->json([
+                     'status'  => false,
+                     'message' => $validator->errors(),
+                     'data'    => []
+                 ], 400);
              }
+
+             $id = (int)$request->id;
 
              //only permit operation if the logged in user is admin
              if(!\Auth::check()) {
@@ -714,8 +688,8 @@ class BlogController extends Controller
              }
 
              $status = (string)$request->status;
-             $blogComment = BlogComment::findorfail($id);
-             $blogComment->status = $status;
+             $blogComment = BlogComment::find($id);
+             $blogComment->status = (string)$status;
              if($blogComment->save()) {
                return response()->json([
                    'status'   => true,
@@ -724,7 +698,7 @@ class BlogController extends Controller
              } else {
                return response()->json([
                    'status'   => false,
-                   'message'  => 'Comment cannot be found!'
+                   'message'  => 'Database connectivity error!'
                ], 400);
              }
            } catch(ModelNotFoundException $me) {
@@ -789,7 +763,16 @@ class BlogController extends Controller
            }
            $commentId = $request->id;
            $commentArray = [];
-           $blogComments = BlogComment::findorfail($commentId);
+           $blogComments = BlogComment::find($commentId);
+
+           if(!$blogComments) {
+             return response()->json([
+                 'status'   =>  false,
+                 'message'  =>  'Invalid id',
+                 'data'     =>  []
+             ], 400);
+           }
+
            $commentArray = $this->getBlogComments($blogComments);
             return response()->json([
                'status'       => true,
@@ -858,7 +841,15 @@ class BlogController extends Controller
             ], 400);
            }
            $commentId     = $request->id;
-           $blogComments  = BlogComment::findorfail($commentId);
+           $blogComments  = BlogComment::find($commentId);
+
+           if(!$blogComments) {
+             return response()->json([
+                 'status'       => false,
+                 'message'      => $e->getMessage(),
+                 'errorLineNo'  => $e->getLine()
+             ], 400);
+           }
            $commentArray  = [];
            if($blogComments->status == '1') {
              $commentArray  = $this->getBlogComments($blogComments, false);
@@ -986,15 +977,14 @@ class BlogController extends Controller
          * */
        public function editBlogCommentsAdmin(Request $request){
             try{
-                $commentId  = $request->commentId;
-                $name       = $request->name;
-                $email      = $request->email;
-                $message    = $request->message;
-                $status     = $request->status;
+
 
                 $validator = Validator::make($request->all(), [
-                    'name'  => 'required',
-                    'email' => 'required|email'
+                    'name'      =>  'required',
+                    'email'     =>  'required|email',
+                    'commentId' =>  'required|exists:blogComments,id',
+                    'status'    =>  'required|numeric|between:0,1',
+                    'message'   =>  'required'
                 ]);
 
                 if ($validator->fails()) {
@@ -1005,7 +995,14 @@ class BlogController extends Controller
                     ], 400);
                 }
 
+                $commentId  = (int)$request->commentId;
+                $name       = $request->name;
+                $email      = $request->email;
+                $message    = $request->message;
+                $status     = (string)$request->status;
+
                 if($commentId && $status) {
+                    $commentId = $commentId;
                     $checkForComment = BlogComment::find($commentId);
                     if(!$checkForComment) {
                       return response()->json([
@@ -1055,21 +1052,21 @@ class BlogController extends Controller
         */
         public  function viewBlogCommentsAdmin($commentId){
             try{
-                $comment = BlogComment::findorfail($commentId);
-                if(count($comment)){
+                $comment = BlogComment::find($commentId);
+                if($comment){
                     return response()->json([
                         'status' => true,
                         'message' => 'comment found ',
                         'data' => $comment
                     ], 200);
-                }else{
+                } else {
                     return response()->json([
                         'status' => false,
                         'message' => 'comment not found',
                         'data' => []
                     ], 400);
                 }
-            }catch (Exception $e){
+            } catch (Exception $e){
                 return response()->json([
                     'status'       => false,
                     'message'      => $e->getMessage(),
