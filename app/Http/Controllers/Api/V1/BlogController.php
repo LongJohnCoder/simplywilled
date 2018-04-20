@@ -202,7 +202,7 @@ class BlogController extends Controller
             $saveBlog->seo_title = $blogSeoTitle;
             if ($saveBlog->save()) {
                 $blogId = $saveBlog->id;
-                if ($blogCategorys) {
+                if (count($blogCategorys) > 0) {
                     foreach ($blogCategorys as $key => $value) {
                         if(isset($validCategoryId[$value])) {
                           $saveBlogcategory = new CategoryBlogMapping;
@@ -321,10 +321,12 @@ class BlogController extends Controller
                             }
                         } else {
                             foreach ($blogCategorys as $key => $value) {
+                              if(isset($validCategoryId[$value])) {
                                 $saveBlogcategory = new CategoryBlogMapping;
                                 $saveBlogcategory->blog_id = $blogId;
                                 $saveBlogcategory->category_id = $value;
                                 $saveBlogcategory->save();
+                              }
                             }
                         }
                         $getBlogInfo = $getBlogInfo::where('id', $blogId)->with('blogCategory')->get(); // query to get created blog data
@@ -350,7 +352,7 @@ class BlogController extends Controller
             } else {
                 return response()->json([
                     'status' => false,
-                    'message' => 'Something went wrong',
+                    'message' => 'blogId field has incorrect value',
                     'data' => []
                 ], 400);
             }
@@ -935,6 +937,20 @@ class BlogController extends Controller
                 $email = $request->email;
                 $message = $request->message;
                 $status = $request->status;
+
+                $validator = Validator::make($request->all(), [
+                    'name'  => 'required',
+                    'email' => 'required|email'
+                ]);
+
+                if ($validator->fails()) {
+                    return response()->json([
+                        'status' => false,
+                        'message' => $validator->errors(),
+                        'data' => []
+                    ], 400);
+                }
+
                 if($commentId && $status) {
                     $checkForComment = BlogComment::where('id', $commentId)->first();
                     if (count($checkForComment)) {
