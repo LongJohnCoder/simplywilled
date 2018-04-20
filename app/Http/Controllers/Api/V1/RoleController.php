@@ -56,7 +56,7 @@ class RoleController extends Controller
             if ($validator->fails()) {
                 return response()->json([
                     'status' => false,
-                    'message' => $validator,
+                    'message' => $validator->errors(),
                     'data' => []
                 ], 400);
             }
@@ -103,6 +103,18 @@ class RoleController extends Controller
         try{
             $roleID = $request->role_id;    //int
 
+            $validator = Validator::make($request->all(), [
+                'role_id' => 'required|integer|exists:roles,id'
+            ]);
+
+            if($validator->fails()) {
+              return [
+                'status'  =>  false,
+                'message' =>  $validator->errors(),
+                'data'    =>  []
+              ];
+            }
+
             $role = Role::find($roleID);
             if($role){
                 return response()->json([
@@ -134,47 +146,45 @@ class RoleController extends Controller
     */
     public function roleUpdate(Request $request)
     {
-        $roleID = $request->role_id;
-        $roleName = $request->role_name;
+        try {
 
-        try{
-            if($roleName == ''){
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Please provide role name',
-                    'data' => []
-                ], 400);
+            $validator = Validator::make($request->all(), [
+                'role_id'   =>  'required|integer|exists:roles,id',
+                'role_name' =>  'required'
+            ]);
+
+            if($validator->fails()) {
+              return response()->json([
+                  'status'  => false,
+                  'message' => $validator->errors(),
+                  'data'    => []
+              ], 400);
             }
-            $role = Role::find($roleID);
-            if($role){
-                $role->name = $roleName;
-                if($role->save()){
-                    return response()->json([
-                        'status' => true,
-                        'message' => 'Role updated successfull',
-                        'data' => ['roleDetails' => $role]
-                    ], 200);
-                } else {
-                    return response()->json([
-                        'status' => false,
-                        'message' => 'This role does not exists',
-                        'data' => []
-                    ], 500);
-                }
 
+            $roleID   = $request->role_id;
+            $roleName = $request->role_name;
+
+            $role       = Role::findorfail($roleID);
+            $role->name = $roleName;
+            if($role->save()) {
+                return response()->json([
+                    'status'  => true,
+                    'message' => 'Role updated successfull',
+                    'data'    => ['roleDetails' => $role]
+                ], 200);
             } else {
                 return response()->json([
-                    'status' => false,
-                    'message' => 'Role not found',
-                    'data' => []
-                ], 400);
+                    'status'  => false,
+                    'message' => 'Database connectivity error. Try again after a while!',
+                    'data'    => []
+                ], 500);
             }
 
-        } catch(Exception $e){
+        } catch(Exception $e) {
             return response()->json([
-                'status' => false,
+                'status'  => false,
                 'message' => $e->getMessage(),
-                'data' => []
+                'data'    => []
             ], 500);
         }
     }

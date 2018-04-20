@@ -398,7 +398,7 @@ class AuthController extends Controller {
             } else {
                 $response = [
                     'status'    => false,
-                    'error'     => "Sorry! no data avilable for this email address."
+                    'error'     => "Sorry! this email address does not belong to any user in our database!"
                 ];
                 $responseCode = 422;
             }

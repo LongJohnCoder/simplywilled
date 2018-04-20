@@ -425,7 +425,7 @@ class UserController extends Controller
                 if ($validator->fails()) {
                     return response()->json([
                         'status' => false,
-                        'message' => $validator,
+                        'message' => $validator->errors(),
                         'data' => []
                     ], 400);
                 } // validation for the deteased Children name
@@ -554,7 +554,7 @@ class UserController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'status' => false,
-                'message' => $validator,
+                'message' => $validator->errors(),
                 'data' => []
             ], 400);
         }
@@ -625,7 +625,7 @@ class UserController extends Controller
             if ($validator->fails()) {
                 return response()->json([
                     'status' => false,
-                    'message' => $validator,
+                    'message' => $validator->errors(),
                     'data' => []
                 ], 400);
             }
@@ -729,7 +729,7 @@ class UserController extends Controller
                     if ($validator->fails()) {
                         return response()->json([
                             'status' => false,
-                            'message' => $validator,
+                            'message' => $validator->errors(),
                             'data' => []
                         ], 400);
                     }
@@ -760,7 +760,7 @@ class UserController extends Controller
                     if ($validator->fails()) {
                         return response()->json([
                             'status' => false,
-                            'message' => $validator,
+                            'message' => $validator->errors(),
                             'data' => []
                         ], 400);
                     }
@@ -804,7 +804,7 @@ class UserController extends Controller
                     if ($validator->fails()) {
                         return response()->json([
                             'status' => false,
-                            'message' => $validator,
+                            'message' => $validator->errors(),
                             'data' => []
                         ], 400);
                     } // validation for the user data

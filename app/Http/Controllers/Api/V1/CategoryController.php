@@ -71,7 +71,7 @@ class CategoryController extends Controller {
             if ($validator->fails()) {
                 return response()->json([
                     'status' => false,
-                    'message' => $validator,
+                    'message' => $validator->errors(),
                     'data' => []
                 ], 400);
             }
@@ -121,7 +121,6 @@ class CategoryController extends Controller {
             }
             $categoryId = (int)$categoryId;
             if ($categoryId) {
-
                 $category = Categories::find($categoryId);
                 if ($category) {
                     return response()->json([

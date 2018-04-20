@@ -137,12 +137,46 @@ class BlogController extends Controller
     public function createBlog(Request $request)
     {
         try {
+
+            $blogCategorys = $request->blogCategorys;
+            if(!isset($blogCategorys[0])) {
+              return response()->json([
+                  'status'  => false,
+                  'message' => 'blogCategories must be an array type field, and contain category ids',
+                  'data'    => []
+              ], 400);
+            }
+            $blogCategorys = explode(',',$blogCategorys[0]);
+            $validator = Validator::make($request->all(), [
+                'blogTitle'       =>  'required',
+                'blogBody'        =>  'required',
+                'blogStatus'      =>  'required|integer|between:0,1',
+                'blogFeatured'    =>  'required|integer|between:0,1',
+                'blogCategorys'   =>  'nullable|array'
+            ]);
+            if ($validator->fails()) {
+                return response()->json([
+                    'status'  => false,
+                    'message' => $validator->errors(),
+                    'data'    => []
+                ], 400);
+            }
+            foreach ($blogCategorys as $key => $value) {
+              if(!Categories::find($value)) {
+                  return response()->json([
+                    'status'  =>  false,
+                    'message' =>  'category id '.$value.' does not exists',
+                    'data'    =>  []
+                  ],400);
+              }
+            }
+
             $blogAuthorId = Auth::user()->id;
             $blogTitle = $request->blogTitle;
             $blogBody = $request->blogBody;
             $blogStatus = $request->blogStatus;
             $blogFeatured = $request->blogFeatured;
-            $blogCategorys = $request->blogCategorys;
+            //$blogCategorys = $request->blogCategorys;
             $supportedImageFormat = array('jpeg', 'jpg', 'png', 'gif');
             $generateFileName = date("YmdHis");
             $blogSeoTitle = $request->blogSeoTitle;
@@ -197,8 +231,8 @@ class BlogController extends Controller
             $saveBlog->slug = $blogTitle;
             $saveBlog->meta_description = $blogMetaDesc;
             $saveBlog->meta_keywords = $blogMetaKeyword;
-            $saveBlog->status = $blogStatus;
-            $saveBlog->featured = $blogFeatured;
+            $saveBlog->status = (string)$blogStatus;
+            $saveBlog->featured = (string)$blogFeatured;
             $saveBlog->seo_title = $blogSeoTitle;
             if ($saveBlog->save()) {
                 $blogId = $saveBlog->id;
@@ -242,33 +276,58 @@ class BlogController extends Controller
     public function editBlog(Request $request)
     {
         try {
+
+            $blogCategorys = $request->blogCategorys;
+            if(!isset($blogCategorys[0])) {
+              return response()->json([
+                  'status'  => false,
+                  'message' => 'blogCategories must be an array type field, and contain category ids',
+                  'data'    => []
+              ], 400);
+            }
+            $blogCategorys = explode(',',$blogCategorys[0]);
+            $validator = Validator::make($request->all(), [
+                'blogTitle'       =>  'required',
+                'blogBody'        =>  'required',
+                'blogId'          =>  'required|integer|exists:blogs,id,deleted_at,NULL',
+                'blogStatus'      =>  'required|integer|between:0,1',
+                'blogFeatured'    =>  'required|integer|between:0,1',
+                'blogCategorys'   =>  'nullable|array'
+            ]);
+            if ($validator->fails()) {
+                return response()->json([
+                    'status'  => false,
+                    'message' => $validator->errors(),
+                    'data'    => []
+                ], 400);
+            }
+            foreach ($blogCategorys as $key => $value) {
+              if(!Categories::find($value)) {
+                  return response()->json([
+                    'status'  =>  false,
+                    'message' =>  'category id '.$value.' does not exists',
+                    'data'    =>  []
+                  ],400);
+              }
+            }
+
             $blogId = $request->blogId;
+            $blogId = (int)$blogId;
             $blogAuthorId = Auth::user()->id;
             $blogTitle = $request->blogTitle;
             $blogBody = $request->blogBody;
             $blogStatus = $request->blogStatus;
             $blogFeatured = $request->blogFeatured;
-            $blogCategorys = $request->blogCategorys;
             $supportedImageFormat = array('jpeg', 'jpg', 'png', 'gif');
             $generateFileName = date("YmdHis");
             $blogSeoTitle = $request->blogSeoTitle;
             $blogMetaDesc = $request->blogMetaDescription;
             $blogMetaKeyword = $request->blogMetaKeyword;
             if ($blogId) {
+
                 $getBlogInfo = Blogs::findorfail($blogId);
                 if ($getBlogInfo) {
-                    $validator = Validator::make($request->all(), [
-                        'blogTitle' => 'required',
-                        'blogBody' => 'required'
-                    ]);
 
-                    if ($validator->fails()) {
-                        return response()->json([
-                            'status' => false,
-                            'message' => $validator->errors(),
-                            'data' => []
-                        ], 400);
-                    }
                     // Check file is in param
                     if ($request->hasFile('blogImage')) {
 
@@ -293,9 +352,6 @@ class BlogController extends Controller
                         $imageName = $getBlogInfo->image;
                     }
 
-                    //interchanging value with key to hash search for faster results
-                    $validCategoryId = array_flip(Categories::pluck('id')->toArray());
-
                     //try to update the blog
                     $getBlogInfo->title = $blogTitle;
                     $getBlogInfo->body = $blogBody;
@@ -304,29 +360,27 @@ class BlogController extends Controller
                     $getBlogInfo->slug = $blogTitle;
                     $getBlogInfo->meta_description = $blogMetaDesc;
                     $getBlogInfo->meta_keywords = $blogMetaKeyword;
-                    $getBlogInfo->status = $blogStatus;
-                    $getBlogInfo->featured = $blogFeatured;
+                    $getBlogInfo->status = (string)$blogStatus;
+                    $getBlogInfo->featured = (string)$blogFeatured;
                     $getBlogInfo->seo_title = $blogSeoTitle;
+
                     if ($getBlogInfo->save()) {
+
                         $getBlogCategorys = CategoryBlogMapping::where('blog_id', $blogId)->get(); // get blog category's
                         if ($getBlogCategorys) {
                             $deleteOldCategoryMap = CategoryBlogMapping::where('blog_id', $blogId)->delete(); // delete old category map and create new category map
                             foreach ($blogCategorys as $key => $value) {
-                              if(isset($validCategoryId[$value])) {
                                 $saveBlogcategory = new CategoryBlogMapping;
                                 $saveBlogcategory->blog_id = $blogId;
                                 $saveBlogcategory->category_id = $value;
                                 $saveBlogcategory->save();
-                              }
                             }
                         } else {
                             foreach ($blogCategorys as $key => $value) {
-                              if(isset($validCategoryId[$value])) {
                                 $saveBlogcategory = new CategoryBlogMapping;
                                 $saveBlogcategory->blog_id = $blogId;
                                 $saveBlogcategory->category_id = $value;
                                 $saveBlogcategory->save();
-                              }
                             }
                         }
                         $getBlogInfo = $getBlogInfo::where('id', $blogId)->with('blogCategory')->get(); // query to get created blog data
@@ -932,11 +986,11 @@ class BlogController extends Controller
          * */
        public function editBlogCommentsAdmin(Request $request){
             try{
-                $commentId = $request->commentId;
-                $name = $request->name;
-                $email = $request->email;
-                $message = $request->message;
-                $status = $request->status;
+                $commentId  = $request->commentId;
+                $name       = $request->name;
+                $email      = $request->email;
+                $message    = $request->message;
+                $status     = $request->status;
 
                 $validator = Validator::make($request->all(), [
                     'name'  => 'required',
@@ -945,47 +999,46 @@ class BlogController extends Controller
 
                 if ($validator->fails()) {
                     return response()->json([
-                        'status' => false,
+                        'status'  => false,
                         'message' => $validator->errors(),
-                        'data' => []
+                        'data'    => []
                     ], 400);
                 }
 
                 if($commentId && $status) {
-                    $checkForComment = BlogComment::where('id', $commentId)->first();
-                    if (count($checkForComment)) {
-                        $checkForComment->email = $email;
-                        $checkForComment->name = $name;
-                        $checkForComment->message = $message;
-                        $checkForComment->status = $status;
-                        if ($checkForComment->save()) {
-                            return response()->json([
-                                'status' => true,
-                                'message' => 'comment updated ',
-                                'data' => $checkForComment
-                            ], 200);
-                        } else {
-                            return response()->json([
-                                'status' => false,
-                                'message' => 'comment not updated',
-                                'data' => []
-                            ], 400);
-                        }
+                    $checkForComment = BlogComment::find($commentId);
+                    if(!$checkForComment) {
+                      return response()->json([
+                          'status'    => false,
+                          'message'   => 'This comment could not be found',
+                          'data'      => []
+                      ], 500);
+                    }
+                    $checkForComment->email   = $email;
+                    $checkForComment->name    = $name;
+                    $checkForComment->message = $message;
+                    $checkForComment->status  = $status;
+                    if ( $checkForComment->save() ) {
+                        return response()->json([
+                            'status'  => true,
+                            'message' => 'comment updated ',
+                            'data'    => $checkForComment
+                        ], 200);
                     } else {
                         return response()->json([
-                            'status' => false,
-                            'message' => 'comment not found',
-                            'data' => []
+                            'status'  => false,
+                            'message' => 'comment not updated',
+                            'data'    => []
                         ], 400);
                     }
-                }else{
+                } else {
                     return response()->json([
-                        'status' => false,
+                        'status'  => false,
                         'message' => 'something went wrong,comment not found',
-                        'data' => []
+                        'data'    => []
                     ], 400);
                 }
-            }catch(Exception $e){
+            } catch(Exception $e){
                 return response()->json([
                     'status'       => false,
                     'message'      => $e->getMessage(),
