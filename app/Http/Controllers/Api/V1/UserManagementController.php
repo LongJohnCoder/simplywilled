@@ -159,7 +159,7 @@ class UserManagementController extends Controller
               'address'         =>  'required',
               'city'            =>  'required',
               'state'           =>  'required',
-              'zip'             =>  'required|min:5',
+              'zip'             =>  'required|numeric|min:5',
               'country'         =>  'required',
               'isInform'        =>  'required|boolean',
               'emailOfAgent'    =>  'required|email',
@@ -179,7 +179,7 @@ class UserManagementController extends Controller
                 'backupAddress'       =>  'required',
                 'backupCity'          =>  'required',
                 'backupState'         =>  'required',
-                'backupZip'           =>  'required|min:5',
+                'backupZip'           =>  'required|numeric|min:5',
                 'backupCountry'       =>  'required',
                 'isInformBackup'      =>  'required|boolean',
                 'emailOfBackupAgent'  =>  'required|email'
