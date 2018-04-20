@@ -761,7 +761,10 @@ class BlogController extends Controller
                 'data'     => []
             ], 400);
            }
+
            $commentId = $request->id;
+           $commentId = (int)$commentId;
+           //dd($commentId);
            $commentArray = [];
            $blogComments = BlogComment::find($commentId);
 
@@ -803,6 +806,7 @@ class BlogController extends Controller
             ], 400);
            }
            $blogId = $request->id;
+           $blogId = (int)$blogId;
            $blogComments  = BlogComment::where('blog_id',$blogId)->where('parent_comment_id',0)->get();
            $commentsArray = [];
            foreach($blogComments as $key => $eachBlogComment) {

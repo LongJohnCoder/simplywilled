@@ -440,12 +440,12 @@ class UserManagementController extends Controller
      * */
     private function fetchGuardianInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse) {
       $stepValue  = 3;
-      $backupGuardianInfo = GuardianInfo::where('user_id',$user->id)->where('is_backup','1')->first();
-      $guardianInfo       = GuardianInfo::where('user_id',$user->id)->where('is_backup','!=','1')->first();
+      $backupGuardianInfo = GuardianInfo::where('user_id',$user->id)->where('is_backup','1')->get();
+      $guardianInfo       = GuardianInfo::where('user_id',$user->id)->where('is_backup','!=','1')->get();
       $guardianInfoArray  = [
         'isguardianMinorChildren' =>  $tellUsAboutYouUser != null && $tellUsAboutYouUser->guardian_minor_children == '1' ? 'Yes' : 'No',
         'guardian'                =>  $guardianInfo == null ? null : $guardianInfo,
-        'isBackUpGurdian'         =>  $backupGuardianInfo == null ? 'Yes' : 'No',
+        'isBackUpGurdian'         =>  $backupGuardianInfo->count() == 0 ? 'No' : 'Yes',
         'backupguardian'          =>  $backupGuardianInfo
       ];
       return [
@@ -466,12 +466,12 @@ class UserManagementController extends Controller
         $responseArray = [
           'step' =>  $stepValue,
           'data' => [
-            'isBusinessInterest'      =>  $lovedOnes->business_interest,
+            'isBusinessInterest'      =>  $lovedOnes->business_interest == 1 ? 'Yes' : 'No',
             'isFarmOrRanch'           =>  $lovedOnes->farm_or_ranch,
             'isGetCompensate'         =>  $lovedOnes->is_getcompensate,
             'isPercentage'            =>  $lovedOnes->is_percentage,
             'compensateAmount'        =>  $lovedOnes->compensation_specific_amount,
-            'isPercentageBasedOnNet'  =>  $lovedOnes->net_value_percent
+            'isPercentageBasedOnNet'  =>  $lovedOnes->net_value_percent == 1 ? 'Yes' : 'No'
           ]
         ];
         return $responseArray;
@@ -605,7 +605,7 @@ class UserManagementController extends Controller
        }
        return [
          'step' => $stepValue,
-         'data' => null
+         'data' => []
        ];
     }
 
@@ -641,9 +641,9 @@ class UserManagementController extends Controller
     private function fetchEstateDisrtibuteInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse) {
       $stepValue   = 10;
       $estate = EstateDisrtibute::where('user_id', $user->id)->first();
-      $data   = null;
+      $data   = [];
       if($estate) {
-        $type = $estate->disrtibute_type;
+        $type = $estate->distribute_type;
         switch($type) {
           case '1' :  $data = ['type' => '1' , 'totalInfo' => $estate->to_a_single_beneficiary];
                       break;
@@ -670,7 +670,7 @@ class UserManagementController extends Controller
      private function fetchDisinheritInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse) {
        $stepValue   = 11;
        $disinherit  = Disinherit::where('user_id', $user->id)->first();
-       $data        = null;
+       $data        = [];
        if($disinherit) {
          $data = [
            'idChoice'       =>  $disinherit->disinherit == '1' ? 'Yes' : 'No',
