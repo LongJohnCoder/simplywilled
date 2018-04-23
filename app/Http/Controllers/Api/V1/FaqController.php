@@ -124,7 +124,8 @@ class FaqController extends Controller
             $faqCategory = $request->faqCategory;
             $validator = Validator::make($request->all(), [
                 'faqQuestion' => 'required',
-                'faqAnswer' => 'required'
+                'faqAnswer' => 'required',
+                'faqStatus' =>  'required|between:0,1'
             ]);
 
             if ($validator->fails()) {
@@ -155,7 +156,8 @@ class FaqController extends Controller
                       }
                     }
                 }
-                $getCreatedFaq = Faqs::where('id', $faqId)->with('faqCategory')->get();
+                $getCreatedFaq = Faqs::where('id', $faqId)->first();
+
                 return response()->json([
                     'status' => true,
                     'message' => 'FAQ created successfully',
@@ -240,7 +242,7 @@ class FaqController extends Controller
                                 }
                             }
                         }
-                        $getCreatedFaq = Faqs::where('id', $faqId)->with('faqCategory')->get();
+                        $getCreatedFaq = Faqs::where('id', $faqId)->first();
                         return response()->json([
                             'status' => true,
                             'message' => 'FAQ updated successfully',

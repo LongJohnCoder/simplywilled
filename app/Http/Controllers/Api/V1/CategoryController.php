@@ -162,25 +162,22 @@ class CategoryController extends Controller {
     public function editCategory(Request $request){
 
         try{
+
+          $validator = Validator::make($request->all(), [
+              'categoryId'    =>  'required|exists:categories,id,deleted_at,NULL',
+              'categoryName'  =>  'required'
+          ]);
+          if ($validator->fails()) {
+              return response()->json([
+                  'status'  => false,
+                  'message' => $validator->errors(),
+                  'data'    => []
+              ], 400);
+          }
+
         $categoryId = $request->categoryId;
         $categoryName = $request->categoryName;
-
-        if(trim(strlen($categoryName)) == 0) {
-          return response()->json([
-              'status' => false,
-              'message' => 'Category name cannot be empty',
-              'data' => []
-          ], 400);
-        }
         $categoryName = trim($categoryName);
-
-        if(!is_numeric($categoryId)) {
-          return response()->json([
-              'status' => false,
-              'message' => 'Category id is incorrect',
-              'data' => []
-          ], 400);
-        }
         $categoryId = (int)$categoryId;
         if($categoryId) {
             $category = Categories::find($categoryId);

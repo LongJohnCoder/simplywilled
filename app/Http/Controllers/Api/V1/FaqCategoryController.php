@@ -171,18 +171,6 @@ class FaqCategoryController extends Controller
                 $editFaqCategory = FaqCategories::find($faqCategoryId);
                 if ($editFaqCategory) {
                     $faqCategoryName = $request->faqCategoryName;
-                    // $validator = Validator::make($request->all(), [
-                    //     'faqCategoryName' => 'required'
-                    // ]);
-                    //
-                    // if ($validator->fails()) {
-                    //     return response()->json([
-                    //         'status' => false,
-                    //         'message' => $validator->errors(),
-                    //         'data' => []
-                    //     ], 400);
-                    // }
-                    // try to update faq category
                     $editFaqCategory->name = $faqCategoryName;
                     $editFaqCategory->slug = $faqCategoryName;
                     if ($editFaqCategory->save()) {
