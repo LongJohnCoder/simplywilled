@@ -19,6 +19,7 @@ use JWTAuthException;
 use Log;
 use Mail;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Validator;
 
 class AuthController extends Controller {
 
@@ -349,52 +350,47 @@ class AuthController extends Controller {
             /**
              * Validate mandatory fields
              */
-            if (!$request->has('email'))
-
-                throw new HttpBadRequestException("Email is required.");
+             $validator = Validator::make($request->all(), [
+                 'email'       =>  'required|exists:users,email,deleted_at,NULL'
+             ]);
+             if ($validator->fails()) {
+                 return response()->json([
+                     'status'  => false,
+                     'message' => $validator->errors(),
+                     'data'    => []
+                 ], 400);
+             }
 
             $user = User::where('email',$request->input('email'))->first();
             if ($user) {
-
-                if ($user->deleted_at != null){
-                /** can't login due to soft delete */
-                $response = [
-                    'status'    => false,
-                    'error'     => "User already deleted, so cannot reset password.",
-                ];
-                $responseCode = 422;
-
-                } else {
-
                 /**
                  * Fire a mail to user with original subject and message
                  */
-                    $token = str_random(64);
-                    $reset = new PasswordReset();
-                    $reset->email = $user->email;
-                    $reset->token = $token;
-                    $reset->created_at = date('Y-m-d h:i:j');
-                    $reset->save();
-                    $url = url('/') . '/reset-password/' . $user->email . '/' . $token;
-                    $name = $user->name;
+                $token = str_random(64);
+                $reset = new PasswordReset();
+                $reset->email = $user->email;
+                $reset->token = $token;
+                $reset->created_at = date('Y-m-d h:i:j');
+                $reset->save();
+                $url = url('/') . '/reset-password/' . $user->email . '/' . $token;
+                $name = $user->name;
 
-                    \Mail::send('emails.resetpasswordEmail', [
-                        'email'         => 'info@simplywilled.com',
-                        'url'           => $url,
-                        'name'          => $name
-                    ], function ($mail) use ($user) {
-                        /** @noinspection PhpUndefinedMethodInspection */
-                        $mail->from('info@simplywilled.com', 'USER Reset-Password');
-                        /** @noinspection PhpUndefinedMethodInspection */
-                        $mail->to($user->email, "User")
-                            ->subject('User Re-set Password Link');
-                    });
-                    $response = [
-                        'status'            => true,
-                        'message'           => "Confirmation mail send to your email address.",
-                    ];
-                    $responseCode = 200;
-                }
+                \Mail::send('emails.resetpasswordEmail', [
+                    'email'         => 'info@simplywilled.com',
+                    'url'           => $url,
+                    'name'          => $name
+                ], function ($mail) use ($user) {
+                    /** @noinspection PhpUndefinedMethodInspection */
+                    $mail->from('info@simplywilled.com', 'USER Reset-Password');
+                    /** @noinspection PhpUndefinedMethodInspection */
+                    $mail->to($user->email, "User")
+                        ->subject('User Re-set Password Link');
+                });
+                $response = [
+                    'status'            => true,
+                    'message'           => "Confirmation mail send to your email address.",
+                ];
+                $responseCode = 200;
             } else {
                 $response = [
                     'status'    => false,
@@ -402,7 +398,6 @@ class AuthController extends Controller {
                 ];
                 $responseCode = 422;
             }
-
         } catch (HttpBadRequestException $httpBadRequestException) {
 
             $response = [
