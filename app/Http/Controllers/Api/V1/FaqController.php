@@ -118,14 +118,24 @@ class FaqController extends Controller
     public function createFaq(Request $request)
     {
         try {
+
+            $faqCategory = $request->faqCategorys;
+            if(!isset($faqCategory[0])) {
+              return response()->json([
+                  'status'  => false,
+                  'message' => 'faqCategory must be an array type field, and contain category ids',
+                  'data'    => []
+              ], 400);
+            }
+            $faqCategory = explode(',',$faqCategory[0]);
             $faqQuestion = $request->faqQuestion;
             $faqAnswer = $request->faqAnswer;
             $faqStatus = $request->faqStatus; // 1--> Publish 0-->unPublish
-            $faqCategory = $request->faqCategory;
             $validator = Validator::make($request->all(), [
                 'faqQuestion' => 'required',
                 'faqAnswer' => 'required',
-                'faqStatus' =>  'required|between:0,1'
+                'faqStatus' =>  'required|between:0,1',
+                'faqCategorys' =>  'nullable|array'
             ]);
 
             if ($validator->fails()) {
@@ -135,6 +145,17 @@ class FaqController extends Controller
                     'data' => []
                 ], 400);
             }
+
+            foreach ($faqCategory as $key => $value) {
+              if(!FaqCategories::find($value)) {
+                  return response()->json([
+                    'status'  =>  false,
+                    'message' =>  'faq category id '.$value.' does not exists',
+                    'data'    =>  []
+                  ],400);
+              }
+            }
+
             //try to save faq
             $faq = new Faqs;
             $faq->question = $faqQuestion;
@@ -143,10 +164,9 @@ class FaqController extends Controller
 
             //interchanging value with key to hash search for faster results
             $validCategoryId = array_flip(FaqCategories::pluck('id')->toArray());
-
             if ($faq->save()) {
                 $faqId = $faq->id;
-                if ($faqCategory) {
+                if (count($faqCategory) > 0) {
                     foreach ($faqCategory as $key => $value) {
                       if(isset($validCategoryId[$value])) {
                         $saveFaqmap = new FaqCategoryMapping;
@@ -188,10 +208,21 @@ class FaqController extends Controller
     {
         try {
 
+            $faqCategory = $request->faqCategorys;
+            if(!isset($faqCategory[0])) {
+              return response()->json([
+                  'status'  => false,
+                  'message' => 'faqCategory must be an array type field, and contain category ids',
+                  'data'    => []
+              ], 400);
+            }
+            $faqCategory = explode(',',$faqCategory[0]);
             $validator = Validator::make($request->all(), [
-                'faqQuestion' =>  'required',
-                'faqAnswer'   =>  'required',
-                'faqId'       =>  'required|exists:faqs,id,deleted_at,NULL'
+              'faqQuestion'   =>  'required',
+              'faqAnswer'     =>  'required',
+              'faqId'         =>  'required|exists:faqs,id,deleted_at,NULL',
+              'faqCategorys'  =>  'nullable|array',
+              'faqStatus'     =>  'required|numeric|between:0,1'
             ]);
 
             if ($validator->fails()) {
@@ -202,20 +233,34 @@ class FaqController extends Controller
                 ], 400);
             }
 
-            $faqId = $request->faqId;
+            foreach ($faqCategory as $key => $value) {
+              if(!FaqCategories::find($value)) {
+                  return response()->json([
+                    'status'  =>  false,
+                    'message' =>  'faq category id '.$value.' does not exists',
+                    'data'    =>  []
+                  ],400);
+              }
+            }
+
+            $faqQuestion = $request->faqQuestion;
+            $faqAnswer = $request->faqAnswer;
+            $faqStatus = (string)$request->faqStatus; // 1--> Publish 0-->unPublish
+
+            $faqId = (int)$request->faqId;
             if ($faqId) {
                 $getFaq = Faqs::find($faqId);
                 if ($getFaq) {
-                    $faqQuestion = $request->faqQuestion;
-                    $faqAnswer = $request->faqAnswer;
-                    $faqStatus = $request->faqStatus; // 1--> Publish 0-->unPublish
-                    $faqCategory = $request->faqCategory;
+                    $faqQuestion  = $request->faqQuestion;
+                    $faqAnswer    = $request->faqAnswer;
+                    $faqStatus    = $request->faqStatus; // 1--> Publish 0-->unPublish
+                    $faqCategory  = $request->faqCategory;
                     //interchanging value with key to hash search for faster results
                     $validCategoryId = array_flip(FaqCategories::pluck('id')->toArray());
                     // try to update FAQ
                     $getFaq->question = $faqQuestion;
-                    $getFaq->answer = $faqAnswer;
-                    $getFaq->status = $faqStatus;
+                    $getFaq->answer   = $faqAnswer;
+                    $getFaq->status   = $faqStatus;
                     if ($getFaq->save()) {
                         if ($faqCategory) {
                             // try to update faq category
