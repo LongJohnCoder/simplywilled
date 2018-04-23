@@ -754,19 +754,22 @@ class BlogController extends Controller
         * */
        public function fetchBlogCommentsAdmin(Request $request) {
          try {
-           if(!$request->has('id') || !is_numeric($request->id)) {
-            return response()->json([
-                'status'   => false,
-                'message'  => 'Invalid comment_id!',
-                'data'     => []
-            ], 400);
+
+           $validator = Validator::make($request->all(), [
+               'id' =>  'required|exists:blogComments,id,deleted_at,NULL',
+           ]);
+           if ($validator->fails()) {
+               return response()->json([
+                   'status'  => false,
+                   'message' => $validator->errors(),
+                   'data'    => []
+               ], 400);
            }
 
-           $commentId = $request->id;
-           $commentId = (int)$commentId;
-           //dd($commentId);
-           $commentArray = [];
-           $blogComments = BlogComment::find($commentId);
+           $commentId     = $request->id;
+           $commentId     = (int)$commentId;
+           $commentArray  = [];
+           $blogComments  = BlogComment::find($commentId);
 
            if(!$blogComments) {
              return response()->json([
@@ -798,13 +801,18 @@ class BlogController extends Controller
         * */
        public function fetchAllBlogCommentsAdmin(Request $request) {
          try {
-           if(!$request->has('id') || !is_numeric($request->id)) {
-            return response()->json([
-                'status'   => false,
-                'message'  => 'Invalid blogId!',
-                'data'     => []
-            ], 400);
+
+           $validator = Validator::make($request->all(), [
+               'id' =>  'required|exists:blogComments,blog_id,deleted_at,NULL',
+           ]);
+           if ($validator->fails()) {
+               return response()->json([
+                   'status'  => false,
+                   'message' => $validator->errors(),
+                   'data'    => []
+               ], 400);
            }
+
            $blogId = $request->id;
            $blogId = (int)$blogId;
            $blogComments  = BlogComment::where('blog_id',$blogId)->where('parent_comment_id',0)->get();
@@ -837,16 +845,20 @@ class BlogController extends Controller
         * */
        public function fetchBlogComments(Request $request) {
          try {
-           if(!$request->has('id') || !is_numeric($request->id)) {
-            return response()->json([
-                'status'   => false,
-                'message'  => 'Invalid comment_id!',
-                'data'     => []
-            ], 400);
+
+           $validator = Validator::make($request->all(), [
+               'id' =>  'required|exists:blogComments,id,deleted_at,NULL',
+           ]);
+           if ($validator->fails()) {
+               return response()->json([
+                   'status'  => false,
+                   'message' => $validator->errors(),
+                   'data'    => []
+               ], 400);
            }
            $commentId     = $request->id;
+           $commentId     = (int)$commentId;
            $blogComments  = BlogComment::find($commentId);
-
            if(!$blogComments) {
              return response()->json([
                  'status'       => false,
@@ -880,14 +892,20 @@ class BlogController extends Controller
         * */
        public function fetchAllBlogComments(Request $request) {
          try {
-           if(!$request->has('id') || !is_numeric($request->id)) {
-            return response()->json([
-                'status'   => false,
-                'message'  => 'Invalid blogId!',
-                'data'     => []
-            ], 400);
+
+           $validator = Validator::make($request->all(), [
+               'id' =>  'required|exists:blogComments,blog_id,deleted_at,NULL',
+           ]);
+           if ($validator->fails()) {
+               return response()->json([
+                   'status'  => false,
+                   'message' => $validator->errors(),
+                   'data'    => []
+               ], 400);
            }
+
            $blogId = $request->id;
+           $blogId = (int)$blogId;
            $blogComments = BlogComment::where('blog_id',$blogId)->where('status', '1')->where('parent_comment_id',0)->get();
            $commentsArray = [];
            foreach($blogComments as $key => $eachBlogComment) {

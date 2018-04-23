@@ -23,6 +23,7 @@ use Validator;
 use App\Models\Packages;
 use App\Helper\DateTimeHelper;
 use App\Models\Coupon;
+use \Carbon\Carbon;
 
 class CouponsController extends Controller
 {
@@ -56,36 +57,24 @@ class CouponsController extends Controller
     public function createCoupon(Request $request) {
       try {
 
-        if(!$request->has('title') || strlen(trim($request->title)) == 0) {
-         return response()->json([
-             'status'   => false,
-             'message'  => 'Invalid Title Name!',
-             'data'     => []
-         ], 400);
+        $timeNow = Carbon::now()->format('Y-m-d H:i:s');
+        $validator = Validator::make($request->all(), [
+            'title'       =>  'required',
+            'percentage'  =>  'required|numeric|min:0',
+            'expired_on'  =>  'required|date|date_format:Y-m-d H:i:s|after:'.$timeNow,
+            'description' =>  'nullable',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status'  => false,
+                'message' => $validator->errors(),
+                'data'    => []
+            ], 400);
         }
-        $title = $request->title;
 
-        //if request has no amount field or amount field is empty discarding
-        if(!$request->has('percentage') || !is_numeric($request->percentage)) {
-         return response()->json([
-             'status'   => false,
-             'message'  => 'Invalid Percentage Provided!',
-             'data'     => []
-         ], 400);
-        }
+        $title      = $request->title;
         $percentage = $request->percentage;
-
-        //if request has no expired_on field or expired_on field is empty discarding
-        //Calling helper function to check if date field entered matches mysql datetime format
-        $dtHelper = new DateTimeHelper();
-        if(!$request->has('expired_on') || !$dtHelper->verifyDate(trim($request->expired_on))) {
-         return response()->json([
-             'status'   => false,
-             'message'  => 'Invalid Coupons expired_on format!',
-             'data'     => []
-         ], 400);
-        }
-        $expiredOn = $request->expired_on;
+        $expiredOn  = $request->expired_on;
 
         $coupon = new Coupon();
         $coupon->title       = $title;
@@ -161,37 +150,26 @@ class CouponsController extends Controller
      public function editCoupon(Request $request) {
        try {
 
-         if(!$request->has('id') || !is_numeric($request->id)) {
-          return response()->json([
-              'status'   => false,
-              'message'  => 'Invalid Coupon Id!',
-              'data'     => []
-          ], 400);
+
+         $timeNow = Carbon::now()->format('Y-m-d H:i:s');
+         $validator = Validator::make($request->all(), [
+             'id'          =>  'required|exists:coupons,id,deleted_at,NULL',
+             'title'       =>  'required',
+             'percentage'  =>  'required|numeric|min:0',
+             'expired_on'  =>  'required|date|date_format:Y-m-d H:i:s|after:'.$timeNow,
+             'description' =>  'nullable',
+         ]);
+         if ($validator->fails()) {
+             return response()->json([
+                 'status'  => false,
+                 'message' => $validator->errors(),
+                 'data'    => []
+             ], 400);
          }
+
          $id = (int)$request->id;
-
-         //if request has no amount field or amount field is empty discarding
-         if($request->has('percentage') && strlen($request->percentage) > 0 && !is_numeric($request->percentage)) {
-          return response()->json([
-              'status'   => false,
-              'message'  => 'Invalid Percentage Provided!',
-              'data'     => []
-          ], 400);
-         }
          $percentage = (float)$request->percentage;
-
-         //if request has no expired_on field or expired_on field is empty discarding
-         //Calling helper function to check if date field entered matches mysql datetime format
-         $dtHelper = new DateTimeHelper();
-         if($request->has('expired_on') && strlen($request->expired_on) > 0 && !$dtHelper->verifyDate(trim($request->expired_on))) {
-          return response()->json([
-              'status'   => false,
-              'message'  => 'Invalid Package expired_on value!',
-              'data'     => []
-          ], 400);
-         }
          $expiredOn = $request->expired_on;
-
          $coupon = Coupon::find($id);
 
          if(!$coupon) {

@@ -21,6 +21,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use Validator;
 use App\Models\Packages;
 use App\Helper\DateTimeHelper;
+use \Carbon\Carbon;
 
 class PackageController extends Controller
 {
@@ -71,43 +72,24 @@ class PackageController extends Controller
     public function createPackage(Request $request) {
     try {
 
-      //if request has no name field or name field is empty discarding
-      if(!$request->has('name') || strlen(trim($request->name)) == 0) {
-       return response()->json([
-           'status'   => false,
-           'message'  => 'Invalid Package Name!',
-           'data'     => []
-       ], 400);
+      $timeNow = Carbon::now()->format('Y-m-d H:i:s');
+      $validator = Validator::make($request->all(), [
+          'name'        =>  'required',
+          'amount'      =>  'required|numeric|min:0',
+          'valid_till'  =>  'required|date|date_format:Y-m-d H:i:s|after:'.$timeNow,
+          'description' =>  'nullable'
+      ]);
+      if ($validator->fails()) {
+          return response()->json([
+              'status'  => false,
+              'message' => $validator->errors(),
+              'data'    => []
+          ], 400);
       }
-      $name = $request->name;
 
-      //if request has no amount field or amount field is empty discarding
-      if(!$request->has('amount') || !is_numeric($request->amount)) {
-       return response()->json([
-           'status'   => false,
-           'message'  => 'Invalid Package Amount!',
-           'data'     => []
-       ], 400);
-      }
-      $amount = $request->amount;
-
-      //if request has no valid_till field or valid_till field is empty discarding
-      if(!$request->has('valid_till') || strlen(trim($request->valid_till)) == 0) {
-       return response()->json([
-           'status'   => false,
-           'message'  => 'Invalid Package valid_till value!',
-           'data'     => []
-       ], 400);
-      }
-      $dtHelper = new DateTimeHelper();
-      if(!$dtHelper->verifyDate(trim($request->valid_till))) {
-        return response()->json([
-            'status'   => false,
-            'message'  => 'Invalid Package valid_till format!',
-            'data'     => []
-        ], 400);
-      }
-      $validTill = $request->valid_till;
+      $name       = $request->name;
+      $amount     = $request->amount;
+      $validTill  = $request->valid_till;
 
       $package = new Packages();
       $package->name        = $name;
@@ -146,57 +128,25 @@ class PackageController extends Controller
     */
     public function editPackage(Request $request) {
       try {
-
-        //if request has improper id field then return error
-        if(!$request->has('id') || !is_numeric($request->id)) {
-         return response()->json([
-             'status'   => false,
-             'message'  => 'Invalid Package Id!',
-             'data'     => []
-         ], 400);
+        $validator = Validator::make($request->all(), [
+            'id'          =>  'required|exists:packages,id,deleted_at,NULL',
+            'name'        =>  'required',
+            'amount'      =>  'required|numeric|min:0',
+            'status'      =>  'required|numeric|between:0,1',
+            'description' =>  'nullable'
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status'  => false,
+                'message' => $validator->errors(),
+                'data'    => []
+            ], 400);
         }
-        $id = (int)$request->id;
-
-        //if request has no name field or name field is empty discarding
-        if($request->has('name') && strlen(trim($request->name)) == 0) {
-         return response()->json([
-             'status'   => false,
-             'message'  => 'Invalid Package Name!',
-             'data'     => []
-         ], 400);
-        }
-        $name = trim($request->name);
-
-
-        //if request has no amount field or amount field is empty discarding
-        if($request->has('amount') && !is_numeric($request->amount)) {
-         return response()->json([
-             'status'   => false,
-             'message'  => 'Invalid Package Amount!',
-             'data'     => []
-         ], 400);
-        }
+        $id     = (int)$request->id;
+        $name   = trim($request->name);
         $amount = (float)$request->amount;
-
-        if($request->has('status') && ($request->status != '0' && $request->status != '1')) {
-         return response()->json([
-             'status'   => false,
-             'message'  => 'Invalid Package Status!',
-             'data'     => []
-         ], 400);
-        }
         $status = $request->has('status') ? $request->status : config('default_values.Packages.defaultStatus');
-
         $package = Packages::find($id);
-
-        if(!$package) {
-          return response()->json([
-              'status'   => true,
-              'message'  => 'Package not found!',
-              'data'     => []
-          ], 400);
-        }
-
         $package->name        = $name;
         $package->amount      = $amount;
         $package->description = $request->has('description') ? $request->description : '';
