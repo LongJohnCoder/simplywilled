@@ -82,7 +82,7 @@ class AuthController extends Controller {
                 $user->save();
                 $user->assignRole('User');
                 $role = $user->getRole($user->id);
-
+                
                 Mail::send('emails.registerEmail', [
                         'email'         => 'info@simplywilled.com',
                         'user_email'    => $user->email,
@@ -92,7 +92,7 @@ class AuthController extends Controller {
                         $mail->from('info@simplywilled.com', 'Simplywilled Registration');
                         /** @noinspection PhpUndefinedMethodInspection */
                         $mail->to($user->email, "User")
-                            ->subject('Registration Successful');
+                              ->subject('Registration Successful');
                 });
 
                 $response = [

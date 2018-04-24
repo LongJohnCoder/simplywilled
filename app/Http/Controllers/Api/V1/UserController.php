@@ -153,9 +153,23 @@ class UserController extends Controller
     public function editProfile(Request $request)
     {
         try {
+
+            $validator = Validator::make($request->all(), [
+                'userId'     =>  'required|exists:users,id,deleted_at,NULL',
+                'step'       =>  'required|numeric|between:1,11',
+            ]);
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => $validator->errors(),
+                    'data' => []
+                ], 400);
+            } // validation for data
+
             $userId = $request->userId;
             $step = $request->step;
-            $checkUser = User::findorfail($userId);
+
+            $checkUser = User::find($userId);
             if (count($checkUser) && $step) {
                 if ($step == 1) {
                     return $this->updateTellUsAboutYou($request);
@@ -194,7 +208,7 @@ class UserController extends Controller
 
                 return response()->json([
                     'status' => false,
-                    'message' => 'Something went wrong,user not found',
+                    'message' => 'This user is not found',
                     'data' => []
                 ], 400);
             }
@@ -235,19 +249,20 @@ class UserController extends Controller
         $spouseDob = $request->spouseDob;
 
         $validator = Validator::make($request->all(), [
-            'firstName' => 'required',
-            'lastName'=>'required',
-            'gender'=>'required',
-            'dob'=>'required | date_format:"Y-m-d"',
-            'phoneNumber' =>'required',
-            'city'=>'required',
-            'state'=>'required',
-            'zip'=>'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/', // (Zip code validation rules REGX (min value 5))
-            'spouseFirstName'=>'required',
-            'spouseLastName'=>'required',
-            'sposeGender'=>'required',
-            'spouseDob'=>'required | date_format:"Y-m-d"',
-            'phoneNumber'=>'numeric',
+            'userId'          =>  'required|exists:users,id,deleted_at,NULL',
+            'firstName'       =>  'required',
+            'lastName'        =>  'required',
+            'gender'          =>  'required',
+            'dob'             =>  'required | date_format:"Y-m-d"',
+            'phoneNumber'     =>  'required',
+            'city'            =>  'required',
+            'state'           =>  'required',
+            'zip'             =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/', // (Zip code validation rules REGX (min value 5))
+            'spouseFirstName' =>  'required',
+            'spouseLastName'  =>  'required',
+            'sposeGender'     =>  'required',
+            'spouseDob'       =>  'required | date_format:"Y-m-d"',
+            'phoneNumber'     =>  'numeric',
         ]);
 
         if ($validator->fails()) {
@@ -385,10 +400,32 @@ class UserController extends Controller
      * */
     public function updateChildren($request)
     {
+
+
+
+
         // save/update the children information
         $userId = $request->userId;
         $totalChildren = $request->totalChildren;
         $childrenInfoArray = $request->childrenInfo;    // array containing the info of children [userId],[fullname],[dob]
+
+        //foreign key check;
+        $usersArray = User::pluck('id')->toArray();
+        $usersArray = array_flip($usersArray);
+        //error based on foreign key validation
+
+        foreach($childrenInfoArray as $key => $cInfo) {
+          if(!isset($usersArray[$cInfo['userId']])) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'User id '.$cInfo['userId'].' does not exists',
+                'data'    => []
+            ], 400);
+          }
+        }
+
+        //dd($usersArray);
+
         $deceasedChildren = $request->deceasedChildren;   // 0-> No 1-> Yes
         $checkForExistUser = TellUsAboutYou::where('user_id', $userId)->first();
         if ($checkForExistUser) {
@@ -403,16 +440,23 @@ class UserController extends Controller
                 $checkForExistUser->save();
                 // check for the exist children table
                 $checkForExistchildren = Children::where('user_id', $userId)->get();
-                if (count($checkForExistchildren)) {
+
+
+
+
+                if (count($checkForExistchildren) > 0) {
                     if ($childrenInfoArray) {
+
                         //delete the previous list and create a new list of children
                         $deleteExistchildren = Children::where('user_id', $userId)->delete();
                         foreach ($childrenInfoArray as $key => $value) {
                             $createChildren = new Children;
-                            $createChildren->user_id = $value['userId'];
-                            $createChildren->fullname = $value['fullname'];
-                            $createChildren->dob = $value['dob'];
-                            $createChildren->save();
+                            if(isset($usersArray[$value['userId']])) {
+                              $createChildren->user_id = $value['userId'];
+                              $createChildren->fullname = $value['fullname'];
+                              $createChildren->dob = $value['dob'];
+                              $createChildren->save();
+                            }
                         }
                     } else {
                         return response()->json([
@@ -424,12 +468,15 @@ class UserController extends Controller
                 } else {
                     //create a new list of children
                     if ($childrenInfoArray) {
+
                         foreach ($childrenInfoArray as $key => $value) {
                             $createChildren = new Children;
-                            $createChildren->user_id = $value['userId'];
-                            $createChildren->fullname = $value['fullname'];
-                            $createChildren->dob = $value['dob'];
-                            $createChildren->save();
+                            if(isset($usersArray[$value['userId']])) {
+                              $createChildren->user_id = $value['userId'];
+                              $createChildren->fullname = $value['fullname'];
+                              $createChildren->dob = $value['dob'];
+                              $createChildren->save();
+                            }
                         }
                     } else {
                         return response()->json([
@@ -465,7 +512,7 @@ class UserController extends Controller
             $children = Children::where('user_id', $userId)->get();
             return response()->json([
                 'status' => true,
-                'message' => 'user update with the children information',
+                'message' => 'User updated with the children information',
                 'data' => ['childrenData' => $children ]
             ], 200);
         } else {
@@ -483,6 +530,25 @@ class UserController extends Controller
      * */
     public function updateProvideYourLovedOnes($request)
     {
+
+        $validator = Validator::make($request->all(), [
+            'userId'                  =>  'required|exists:users,id,deleted_at,NULL',
+            'isBusinessInterest'      =>  'required|numeric|between:0,1',
+            'isFarmOrRanch'           =>  'required|numeric|between:0,1',
+            'isGetCompensate'         =>  'required|numeric|between:0,1',
+            'isPercentage'            =>  'required|numeric|between:0,1',
+            'compensateAmount'        =>  'required|numeric|min:0',
+            'isPercentageBasedOnNet'  =>  'required|numeric|between:0,1',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors(),
+                'data' => []
+            ], 400);
+        }
+
         $userId = $request->userId;
         $isBusinessInterest = $request->isBusinessInterest; // 0-> No 1->Yes
         $isFarmOrRanch = $request->isFarmOrRanch; // 0-> No 1->Yes
@@ -887,8 +953,12 @@ class UserController extends Controller
                     $backupGuardianCountry = $request->backupGuardianCountry;
 
                     $validator = Validator::make($request->all(), [
-                        'backupGuardianFullName' => 'required', 'backupGuardianRelationShip' => 'required', 'backupGuardianAddress' => 'required',
-                        'backupGuardianCity' => 'required', 'backupGuardianState' => 'required', 'backupGuardianZip' => 'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
+                        'backupGuardianFullName' => 'required',
+                        'backupGuardianRelationShip' => 'required',
+                        'backupGuardianAddress' => 'required',
+                        'backupGuardianCity' => 'required',
+                        'backupGuardianState' => 'required',
+                        'backupGuardianZip' => 'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
                         'backupGuardianCountry' => 'required',
                     ]);
 
@@ -986,13 +1056,26 @@ class UserController extends Controller
      * */
     public function updateTangiblePropertyDistribute($request)
     {
+        $validator = Validator::make($request->all(), [
+            'isTangiblePropertyDistribute'  =>  'required|numeric|between:1,3|integer',
+            'tangiblePropertyDistribute'    =>  'required|string|max:255'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors(),
+                'data' => []
+            ], 400);
+        }
+
         $userId = $request->userId;
-        $isTangiblePropertyDistribute = $request->isTangiblePropertyDistribute; // flags 1,2,3
-        $tangiblePropertyDistribute = $request->tangiblePropertyDistribute;
+        $isTangiblePropertyDistribute = (string)($request->isTangiblePropertyDistribute - 1); // flags 1,2,3
+        $tangiblePropertyDistribute = trim($request->tangiblePropertyDistribute);
         $checkForExistData = ProvideYourLovedOnes::where('user_id', $userId)->first();
         if (count($checkForExistData)) {
             $checkForExistData->is_tangible_property_distribute = $isTangiblePropertyDistribute;
-            $checkForExistData->tangible_property_distribute = $tangiblePropertyDistribute;
+            $checkForExistData->tangible_property_distribute    = $tangiblePropertyDistribute;
             if ($checkForExistData->save()) {
                 return response()->json([
                     'status' => true,
@@ -1013,7 +1096,6 @@ class UserController extends Controller
                 'data' => []
             ], 400);
         }
-
     }
 
     /*
@@ -1022,22 +1104,24 @@ class UserController extends Controller
      * */
     public function updateGift($request)
     {
+        $validator = Validator::make($request->all(), [
+            'userId'    =>  'required|exists:users,id,deleted_at,NULL',
+            'giftType'  =>  'required|numeric|between:1,6|integer',
+            'giftData'  =>  'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors(),
+                'data' => []
+            ], 400);
+        }
+
         $userId = $request->userId;
         $giftType = $request->giftType; // giftType = 1,2,3,4,5,6
         $giftData = $request->giftData; // array of gift data
         if ($userId && $giftType) {
-
-            $validator = Validator::make($request->all(), [
-                'giftType' => 'required|numeric',
-            ]);
-
-            if ($validator->fails()) {
-                return response()->json([
-                    'status' => false,
-                    'message' => $validator->errors(),
-                    'data' => []
-                ], 400);
-            }
 
             $checkGift = Gifts::where('user_id', $userId)->where('type', $giftType)->first();
             if (count($checkGift)) {
@@ -1149,7 +1233,7 @@ class UserController extends Controller
         $userId = $request->userId;
         $specificGift = $request->specificGift; // 0-> NO ,1->Yes
         $validator = Validator::make($request->all(), [
-            'specificGift' => 'required|numeric',
+            'specificGift' => 'required|numeric|between:0,1|integer',
         ]);
 
         if ($validator->fails()) {
@@ -1191,59 +1275,53 @@ class UserController extends Controller
     {
         $userId = $request->userId;
         $isContingentBeneficiary = $request->isContingentBeneficiary;   // 0->no, 1->yes
-        if ($userId && $isContingentBeneficiary) {
 
-            $validator = Validator::make($request->all(), [
-                'isContingentBeneficiary' => 'required|numeric',
-            ]);
+        $validator = Validator::make($request->all(), [
+            'isContingentBeneficiary' => 'required|numeric|between:0,1|integer',
+        ]);
 
-            if ($validator->fails()) {
-                return response()->json([
-                    'status' => false,
-                    'message' => $validator->errors(),
-                    'data' => []
-                ], 400);
-            }
-
-            $checkExistData = ContingentBeneficiary::where('user_id', $userId)->first();
-            if (count($checkExistData)) {
-                $checkExistData->user_id = $userId;
-                $checkExistData->is_contingent_beneficiary = $isContingentBeneficiary;
-                if ($checkExistData->save()) {
-                    return response()->json([
-                        'status' => true,
-                        'message' => 'Contingent beneficiary updated',
-                        'data' => ['userData'=>$checkExistData]
-                    ], 200);
-                } else {
-                    return response()->json([
-                        'status' => false,
-                        'message' => 'Contingent beneficiary not updated',
-                    ], 400);
-                }
-            } else {
-                $saveData = new ContingentBeneficiary;
-                $saveData->user_id = $userId;
-                $saveData->is_contingent_beneficiary = $isContingentBeneficiary;
-                if ($saveData->save()) {
-                    return response()->json([
-                        'status' => true,
-                        'message' => 'Contingent beneficiary updated',
-                        'data' => ['userData'=>$saveData]
-                    ], 200);
-                } else {
-                    return response()->json([
-                        'status' => false,
-                        'message' => 'Contingent beneficiary not updated',
-                    ], 400);
-                }
-            }
-        } else {
+        if ($validator->fails()) {
             return response()->json([
                 'status' => false,
-                'message' => 'User data not found',
+                'message' => $validator->errors(),
+                'data' => []
             ], 400);
         }
+
+        $checkExistData = ContingentBeneficiary::where('user_id', $userId)->first();
+        if (count($checkExistData)) {
+            $checkExistData->user_id = $userId;
+            $checkExistData->is_contingent_beneficiary = $isContingentBeneficiary;
+            if ($checkExistData->save()) {
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Contingent beneficiary updated',
+                    'data' => ['userData'=>$checkExistData]
+                ], 200);
+            } else {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Contingent beneficiary not updated',
+                ], 400);
+            }
+        } else {
+            $saveData = new ContingentBeneficiary;
+            $saveData->user_id = $userId;
+            $saveData->is_contingent_beneficiary = $isContingentBeneficiary;
+            if ($saveData->save()) {
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Contingent beneficiary updated',
+                    'data' => ['userData'=>$saveData]
+                ], 200);
+            } else {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Contingent beneficiary not updated',
+                ], 400);
+            }
+        }
+
     }
 
     /*
@@ -1258,7 +1336,7 @@ class UserController extends Controller
         if ($userId && $disrtibuteType) {
 
             $validator = Validator::make($request->all(), [
-                'disrtibuteType' => 'required|numeric',
+                'disrtibuteType' => 'required|numeric|between:1,4|integer',
             ]);
 
             if ($validator->fails()) {
@@ -1343,6 +1421,23 @@ class UserController extends Controller
      * */
     public function updateDisinherit($request)
     {
+        $validator = Validator::make($request->all(), [
+            'userId'              =>  'required|exists:users,id,deleted_at,NULL',
+            'isDisinherit'        =>  'required|numeric|between:0,1|integer',
+            'fullname'            =>  'required',
+            'relationship'        =>  'required',
+            'other_relationship'  =>  'required',
+            'gender'              =>  'required|string|in:M,F'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors(),
+                'data' => []
+            ], 400);
+        }
+
         $userId = $request->userId;
         $isDisinherit = $request->isDisinherit; // 1-yes,0->no
         $fullname = $request->fullname;

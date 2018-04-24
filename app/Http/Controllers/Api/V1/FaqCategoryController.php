@@ -298,16 +298,16 @@ class FaqCategoryController extends Controller
           ];
         }
         return response()->json([
-            'status' => true,
-            'message' => 'All questions fetched successfully',
-            'data' => $result
+            'status'  => true,
+            'message' => 'All Faq Category with Related Faqs',
+            'data'    => $result
         ], 200);
       } catch (\Exception $e) {
         return response()->json([
-            'status' => false,
-            'message' => $e->getMessage(),
+            'status'      => false,
+            'message'     => $e->getMessage(),
             'errorLineNo' => $e->getLine(),
-            'data' => []
+            'data'        => []
         ], 500);
       }
     }
@@ -320,16 +320,16 @@ class FaqCategoryController extends Controller
       try {
         $faqs = Faqs::where('status','1')->get()->toArray();
         return response()->json([
-            'status' => true,
-            'message' => 'All Faq Category',
-            'data' => $faqs
+            'status'  => true,
+            'message' => 'All Faq Questions',
+            'data'    => $faqs
         ], 200);
       } catch(\Exception $e) {
         return response()->json([
-            'status' => false,
-            'message' => $e->getMessage(),
+            'status'      => false,
+            'message'     => $e->getMessage(),
             'errorLineNo' => $e->getLine(),
-            'data' => []
+            'data'        => []
         ], 500);
       }
     }

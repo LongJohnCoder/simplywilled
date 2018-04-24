@@ -495,8 +495,9 @@ class BlogController extends Controller
                 'message' =>  'required',
                 'name'    =>  'required',
                 'email'   =>  'required|email',
-                'parentCommentId' => 'required|exists:blogComments,id,deleted_at,NULL'
+                'parentCommentId' => 'nullable|exists:blogComments,id,deleted_at,NULL'
             ]);
+            
 
             if($validator->fails()) {
                 return response()->json([
@@ -509,19 +510,19 @@ class BlogController extends Controller
             $email    = $request->email;
             $name     = $request->name;
             $message  = $request->message;
-            $parentCommentId = (int)$request->parentCommentId;
+            $parentCommentId = isset($request->parentCommentId) ? (int)$request->parentCommentId : 0;
 
             //if another comment has the same parentCommentId then 2 messages cannot have the same parentCommentId
-            $count = BlogComment::where('parent_comment_id', $request->parentCommentId)->count();
-            if($count > 0 && $request->parentCommentId != 0 ) {
-              return response()->json([
-                  'status'   => false,
-                  'message'  => 'Other message share the same parentCommentId, thus invalid',
-                  'data'     => []
-              ], 400);
+            if($parentCommentId != 0) {
+              $count = BlogComment::where('parent_comment_id', $request->parentCommentId)->count();
+              if($count > 0 && $request->parentCommentId != 0 ) {
+                return response()->json([
+                    'status'   => false,
+                    'message'  => 'Other message share the same parentCommentId, thus invalid',
+                    'data'     => []
+                ], 400);
+              }
             }
-            $parentCommentId  = $request->parentCommentId;
-
             // find the blog to which the comment should be added
             $blog                       = Blogs::find($blogId);
             $comment                    = new BlogComment();

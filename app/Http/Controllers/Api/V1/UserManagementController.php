@@ -45,12 +45,23 @@ class UserManagementController extends Controller
 
     public function updateProtectFinance(Request $request){
         try {
-        $step = $request->step;
-        $userId = $request->userId;
-        $isBackupAttorney = $request->isBackupAttorney;
-        $attorneyPowers = $request->attorneyPowers;
-        $attorneyHolders = $request->attorneyHolders;
-        $backupAttorney = $request->backupAttorney;
+
+          $validator = Validator::make($request->all(), [
+              'userId'  =>  'required|exists:users,id,deleted_at,NULL',
+              'step'    =>  'required|numeric|between:1,2'
+          ]);
+          if($validator->fails()) {
+              return response()->json([
+                  'status'  => false,
+                  'message' => $validator->errors(),
+                  'data'    => []
+              ], 400);
+          }
+
+          $step = $request->step;
+          $userId = (int)$request->userId;
+          $attorneyPowers = $request->attorneyPowers;
+          $backupAttorney = $request->backupAttorney;
             if ($step && $userId) {
                 $checkExistData = FinancialPowerAttorney::where('user_id',$userId)->first();
                 if($step == 1) {
@@ -90,7 +101,20 @@ class UserManagementController extends Controller
                             ], 400);
                         }
                     }
-                }if($step == 2){
+                } if($step == 2) {
+                    $validator = Validator::make($request->all(), [
+                        'isBackupAttorney'  =>  'required|numeric|between:0,1|integer',
+                        'attorneyHolders'   =>  'required'
+                    ]);
+                    if($validator->fails()) {
+                        return response()->json([
+                            'status'  => false,
+                            'message' => $validator->errors(),
+                            'data'    => []
+                        ], 400);
+                    }
+                    $attorneyHolders = $request->attorneyHolders;
+                    $isBackupAttorney = $request->isBackupAttorney;
                     if (count($checkExistData)){
                         // update
                         $checkExistData->user_id = $userId;
@@ -101,13 +125,13 @@ class UserManagementController extends Controller
                         }
                         if($checkExistData->save()){
                             // dd($backupAttorney[0]['isInformBackup']);
-                            if($backupAttorney[0]['isInformBackup'] == 1){
+                            if(isset($backupAttorney[0]['isInformBackup']) && $backupAttorney[0]['isInformBackup'] == 1){
                                 $emailType = 5; // backup Attroney
                                 $fullLegalName = $backupAttorney[0]['backupFullLegalName'];
                                 $emailId = $backupAttorney[0]['emailOfBackupAttroney'];
                                 app(\App\Http\Controllers\Api\V1\UserController::class)->sendEmail($userId, $fullLegalName, $emailId, $emailType);
                             }
-                            if($attorneyHolders[0]['isInform'] == 1){
+                            if(isset($attorneyHolders[0]['isInform']) && $attorneyHolders[0]['isInform'] == 1){
                                 $emailType = 6; // Attroney
                                 $fullLegalName = $attorneyHolders[0]['fullLegalName'];
                                 $emailId = $attorneyHolders[0]['emailOfAttroney'];
@@ -154,14 +178,14 @@ class UserManagementController extends Controller
 
           $validator = Validator::make($request->all(), [
               'userId'          =>  'required|integer|exists:users,id',
-              'fullLegalName'   =>  'required|min:1',
+              'fullLegalName'   =>  'required|string|min:1',
               'relation'        =>  'required',
               'address'         =>  'required',
               'city'            =>  'required',
               'state'           =>  'required',
               'zip'             =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
               'country'         =>  'required',
-              'isInform'        =>  'required|boolean',
+              'isInform'        =>  'required|numeric|between:0,1|integer',
               'emailOfAgent'    =>  'required|email',
           ]);
           if ($validator->fails()) {
@@ -174,14 +198,14 @@ class UserManagementController extends Controller
 
           if($request->has('isBackupAgent') && ($request->isBackupAgent == 1)) {
             $validator = Validator::make($request->all(), [
-                'backupFullLegalName' =>  'required|min:1',
+                'backupFullLegalName' =>  'required|string|min:1',
                 'backupRelation'      =>  'required',
                 'backupAddress'       =>  'required',
                 'backupCity'          =>  'required',
                 'backupState'         =>  'required',
                 'backupZip'           =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
                 'backupCountry'       =>  'required',
-                'isInformBackup'      =>  'required|boolean',
+                'isInformBackup'      =>  'required|numeric|between:0,1|integer',
                 'emailOfBackupAgent'  =>  'required|email'
             ]);
 
