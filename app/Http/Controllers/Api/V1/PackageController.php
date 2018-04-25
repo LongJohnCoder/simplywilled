@@ -132,7 +132,7 @@ class PackageController extends Controller
             'id'          =>  'required|exists:packages,id,deleted_at,NULL',
             'name'        =>  'required',
             'amount'      =>  'required|numeric|min:0',
-            'status'      =>  'required|numeric|between:0,1',
+            'status'      =>  'required|numeric|between:0,1|integer',
             'description' =>  'nullable'
         ]);
         if ($validator->fails()) {
@@ -150,7 +150,7 @@ class PackageController extends Controller
         $package->name        = $name;
         $package->amount      = $amount;
         $package->description = $request->has('description') ? $request->description : '';
-        $package->status      = $status;
+        $package->status      = (string)$status;
         if($package->save()) {
           return response()->json([
               'status'   => true,

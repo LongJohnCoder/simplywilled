@@ -134,7 +134,7 @@ class FaqController extends Controller
             $validator = Validator::make($request->all(), [
                 'faqQuestion' => 'required',
                 'faqAnswer' => 'required',
-                'faqStatus' =>  'required|between:0,1',
+                'faqStatus' =>  'required|numeric|between:0,1|integer',
                 'faqCategorys' =>  'nullable|array'
             ]);
 
@@ -158,9 +158,9 @@ class FaqController extends Controller
 
             //try to save faq
             $faq = new Faqs;
-            $faq->question = $faqQuestion;
-            $faq->answer = $faqAnswer;
-            $faq->status = $faqStatus;
+            $faq->question  = $faqQuestion;
+            $faq->answer    = $faqAnswer;
+            $faq->status    = (string)$faqStatus;
 
             //interchanging value with key to hash search for faster results
             $validCategoryId = array_flip(FaqCategories::pluck('id')->toArray());
@@ -222,7 +222,7 @@ class FaqController extends Controller
               'faqAnswer'     =>  'required',
               'faqId'         =>  'required|exists:faqs,id,deleted_at,NULL',
               'faqCategorys'  =>  'nullable|array',
-              'faqStatus'     =>  'required|numeric|between:0,1'
+              'faqStatus'     =>  'required|numeric|between:0,1|integer'
             ]);
 
             if ($validator->fails()) {

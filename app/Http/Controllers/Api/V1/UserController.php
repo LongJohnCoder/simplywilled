@@ -156,7 +156,7 @@ class UserController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'userId'     =>  'required|exists:users,id,deleted_at,NULL',
-                'step'       =>  'required|numeric|between:1,11',
+                'step'       =>  'required|numeric|between:1,11|integer',
             ]);
             if ($validator->fails()) {
                 return response()->json([
@@ -533,12 +533,12 @@ class UserController extends Controller
 
         $validator = Validator::make($request->all(), [
             'userId'                  =>  'required|exists:users,id,deleted_at,NULL',
-            'isBusinessInterest'      =>  'required|numeric|between:0,1',
-            'isFarmOrRanch'           =>  'required|numeric|between:0,1',
-            'isGetCompensate'         =>  'required|numeric|between:0,1',
-            'isPercentage'            =>  'required|numeric|between:0,1',
+            'isBusinessInterest'      =>  'required|numeric|between:0,1|integer',
+            'isFarmOrRanch'           =>  'required|numeric|between:0,1|integer',
+            'isGetCompensate'         =>  'required|numeric|between:0,1|integer',
+            'isPercentage'            =>  'required|numeric|between:0,1|integer',
             'compensateAmount'        =>  'required|numeric|min:0',
-            'isPercentageBasedOnNet'  =>  'required|numeric|between:0,1',
+            'isPercentageBasedOnNet'  =>  'required|numeric|between:0,1|integer',
         ]);
 
         if ($validator->fails()) {
@@ -1424,9 +1424,9 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'userId'              =>  'required|exists:users,id,deleted_at,NULL',
             'isDisinherit'        =>  'required|numeric|between:0,1|integer',
-            'fullname'            =>  'required',
-            'relationship'        =>  'required',
-            'other_relationship'  =>  'required',
+            'fullname'            =>  'required|string|max:255',
+            'relationship'        =>  'required|string|max:255',
+            'other_relationship'  =>  'required|string|max:255',
             'gender'              =>  'required|string|in:M,F'
         ]);
 

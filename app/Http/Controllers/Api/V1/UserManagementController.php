@@ -48,7 +48,7 @@ class UserManagementController extends Controller
 
           $validator = Validator::make($request->all(), [
               'userId'  =>  'required|exists:users,id,deleted_at,NULL',
-              'step'    =>  'required|numeric|between:1,2'
+              'step'    =>  'required|numeric|between:1,2|integer'
           ]);
           if($validator->fails()) {
               return response()->json([
@@ -187,6 +187,7 @@ class UserManagementController extends Controller
               'country'         =>  'required',
               'isInform'        =>  'required|numeric|between:0,1|integer',
               'emailOfAgent'    =>  'required|email',
+              'isBackupAgent'   =>  'nullable|numeric|between:0,1|integer'
           ]);
           if ($validator->fails()) {
               return response()->json([
@@ -273,7 +274,7 @@ class UserManagementController extends Controller
              'userId'       =>  'required|exists:users,id,deleted_at,NULL',
              'type'         =>  'required|numeric|between:0,1|integer',
              'ashes'        =>  'required|string|max:255',
-             'agreements' =>  'required|string|max:255'
+             'agreements'   =>  'required|string|max:255'
           ]);
           if($validator->fails()) {
               return response()->json([

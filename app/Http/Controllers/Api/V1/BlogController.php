@@ -150,8 +150,8 @@ class BlogController extends Controller
             $validator = Validator::make($request->all(), [
                 'blogTitle'       =>  'required',
                 'blogBody'        =>  'required',
-                'blogStatus'      =>  'required|integer|between:0,1',
-                'blogFeatured'    =>  'required|integer|between:0,1',
+                'blogStatus'      =>  'required|numeric|integer|between:0,1',
+                'blogFeatured'    =>  'required|numeric|integer|between:0,1',
                 'blogCategorys'   =>  'nullable|array'
             ]);
             if ($validator->fails()) {
@@ -290,8 +290,8 @@ class BlogController extends Controller
                 'blogTitle'       =>  'required',
                 'blogBody'        =>  'required',
                 'blogId'          =>  'required|integer|exists:blogs,id,deleted_at,NULL',
-                'blogStatus'      =>  'required|integer|between:0,1',
-                'blogFeatured'    =>  'required|integer|between:0,1',
+                'blogStatus'      =>  'required|numeric|integer|between:0,1',
+                'blogFeatured'    =>  'required|numeric|integer|between:0,1',
                 'blogCategorys'   =>  'nullable|array'
             ]);
             if ($validator->fails()) {
@@ -497,7 +497,7 @@ class BlogController extends Controller
                 'email'   =>  'required|email',
                 'parentCommentId' => 'nullable|exists:blogComments,id,deleted_at,NULL'
             ]);
-            
+
 
             if($validator->fails()) {
                 return response()->json([
@@ -647,7 +647,7 @@ class BlogController extends Controller
 
              $validator = Validator::make($request->all(), [
                  'id'     =>  'required|exists:blogComments,id,deleted_at,NULL',
-                 'status' =>  'required|numeric|between:0,1',
+                 'status' =>  'required|numeric|between:0,1|integer',
              ]);
 
              if ($validator->fails()) {
@@ -1006,7 +1006,7 @@ class BlogController extends Controller
                     'name'      =>  'required',
                     'email'     =>  'required|email',
                     'commentId' =>  'required|exists:blogComments,id',
-                    'status'    =>  'required|numeric|between:0,1',
+                    'status'    =>  'required|numeric|between:0,1|integer',
                     'message'   =>  'required'
                 ]);
 
