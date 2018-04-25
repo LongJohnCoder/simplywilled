@@ -493,7 +493,7 @@ class BlogController extends Controller
             $validator = Validator::make($request->all(), [
                 'blogId'  =>  'required|exists:blogs,id,deleted_at,NULL',
                 'message' =>  'required',
-                'name'    =>  'required',
+                'name'    =>  'required|string|max:255',
                 'email'   =>  'required|email',
                 'parentCommentId' => 'nullable|exists:blogComments,id,deleted_at,NULL'
             ]);
@@ -513,17 +513,32 @@ class BlogController extends Controller
             $parentCommentId = isset($request->parentCommentId) ? (int)$request->parentCommentId : 0;
 
             //if another comment has the same parentCommentId then 2 messages cannot have the same parentCommentId
+            // if($parentCommentId != 0) {
+            //   $count = BlogComment::where('parent_comment_id', $request->parentCommentId)->count();
+            //   if($count > 0 && $request->parentCommentId != 0 ) {
+            //     return response()->json([
+            //         'status'   => false,
+            //         'message'  => 'Other message share the same parentCommentId, thus invalid',
+            //         'data'     => []
+            //     ], 400);
+            //   }
+            // }
+            // find the blog to which the comment should be added
+
+            //the parent comment id must be an independant comment and have its parent comment id 0
             if($parentCommentId != 0) {
-              $count = BlogComment::where('parent_comment_id', $request->parentCommentId)->count();
-              if($count > 0 && $request->parentCommentId != 0 ) {
+              $blogComment = BlogComment::find((int)$parentCommentId);
+
+              if($blogComment->parent_comment_id > 0) {
                 return response()->json([
                     'status'   => false,
-                    'message'  => 'Other message share the same parentCommentId, thus invalid',
+                    'message'  => 'You cannot comment on a sub-comment!',
                     'data'     => []
                 ], 400);
               }
             }
-            // find the blog to which the comment should be added
+
+
             $blog                       = Blogs::find($blogId);
             $comment                    = new BlogComment();
             $comment->blog_id           = $blogId;
@@ -692,9 +707,10 @@ class BlogController extends Controller
              $blogComment = BlogComment::find($id);
              $blogComment->status = (string)$status;
              if($blogComment->save()) {
+
                return response()->json([
                    'status'   => true,
-                   'message'  => 'Comment Approval Successful!'
+                   'message'  => $blogComment->status == 1 ? 'Comment Approval Successful!' : 'Comment  Disapproval Successful!'
                ], 200);
              } else {
                return response()->json([
@@ -727,25 +743,30 @@ class BlogController extends Controller
         * */
        private function getBlogComments($blogComments , $admin = true) {
          $commentArray = [];
-         while($blogComments) {
+         if($blogComments) {
            \Log::info('blog comment id : '.$blogComments->id);
-           $nextComment = BlogComment::where('parent_comment_id', $blogComments->id)->first();
-           if($nextComment) {
-             $blogComments = $nextComment;
-             //user ccan see only approved comments by admin
-             //where as admin can see all the comments whether they are approved or disapproved
-             if(!$admin) {
-               if($nextComment->status == '1') {
-                 $commentArray[] = $nextComment->toArray();
-               }
-             } else {
-               $commentArray[] = $nextComment->toArray();
-             }
+           if($admin) {
+             $nextComment = BlogComment::where('parent_comment_id', $blogComments->id)->get();
            } else {
-             break;
+             $nextComment = BlogComment::where('parent_comment_id', $blogComments->id)->where('status','1')->get();
            }
+           return $nextComment;
+           // if($nextComment) {
+           //   $blogComments = $nextComment;
+           //   //user ccan see only approved comments by admin
+           //   //where as admin can see all the comments whether they are approved or disapproved
+           //   if(!$admin) {
+           //     if($nextComment->status == '1') {
+           //       $commentArray[] = $nextComment->toArray();
+           //     }
+           //   } else {
+           //     $commentArray[] = $nextComment->toArray();
+           //   }
+           // } else {
+           //   break;
+           // }
          }
-         return $commentArray;
+         return [];
        }
 
        /*
@@ -753,7 +774,7 @@ class BlogController extends Controller
         *  @params [Request :: [id : (required, integer : type[blogComment id])]]
         *  @return \Illuminate\Http\JsonResponse
         * */
-       public function fetchBlogCommentsAdmin(Request $request) {
+       public function fetchBlogSubCommentsAdmin(Request $request) {
          try {
 
            $validator = Validator::make($request->all(), [
@@ -844,7 +865,7 @@ class BlogController extends Controller
         *  @scope user
         *  @return \Illuminate\Http\JsonResponse
         * */
-       public function fetchBlogComments(Request $request) {
+       public function fetchBlogSubComments(Request $request) {
          try {
 
            $validator = Validator::make($request->all(), [

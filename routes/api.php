@@ -381,9 +381,9 @@ Route::group(['prefix' => 'v1'], function() {
         /**
         * Route for fetching comments and replies for a single comment
         */
-        Route::post('fetch-comments', [
-          'uses' => 'Api\V1\BlogController@fetchBlogCommentsAdmin',
-          'as' => 'api.v1.fetchBlogCommentsAdmin.post'
+        Route::post('fetch-sub-comments', [
+          'uses' => 'Api\V1\BlogController@fetchBlogSubCommentsAdmin',
+          'as' => 'api.v1.fetchBlogSubCommentsAdmin.post'
         ]);
 
         /**
@@ -454,9 +454,9 @@ Route::group(['prefix' => 'v1'], function() {
         /**
         * Route for fetching comments and replies for a single comment
         */
-        Route::post('fetch-comments', [
-          'uses' => 'Api\V1\BlogController@fetchBlogComments',
-          'as' => 'api.v1.fetchBlogComments.post'
+        Route::post('fetch-sub-comments', [
+          'uses' => 'Api\V1\BlogController@fetchBlogSubComments',
+          'as' => 'api.v1.fetchBlogSubComments.post'
         ]);
 
 
