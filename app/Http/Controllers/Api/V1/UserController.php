@@ -401,7 +401,18 @@ class UserController extends Controller
     public function updateChildren($request)
     {
 
+        $validator = Validator::make($request->all(), [
+            'userId'          =>  'required|exists:users,id,deleted_at,NULL',
+            'totalChildren'   =>  'required|numeric|integer|min:0'
+        ]);
 
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors(),
+                'data' => []
+            ], 400);
+        }
 
 
         // save/update the children information
@@ -826,6 +837,22 @@ class UserController extends Controller
      * */
     public function updateGuardianInfo($request)
     {
+
+        $validator = Validator::make($request->all(), [
+            'userId'                  =>  'required|exists:users,id,deleted_at,NULL',
+            'isguardianMinorChildren' =>  'required|numeric|between:0,1|integer',
+            'isInformRepresentive'    =>  'required|numeric|between:0,1|integer',
+            'isBackUpGurdian'         =>  'required|numeric|between:0,1|integer'
+        ]);
+        // validation for the user data
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors(),
+                'data' => []
+            ], 400);
+        }
+
         $userId = $request->userId;
         $isguardianMinorChildren = $request->isguardianMinorChildren;   // 1->yes 0->no
         $guardianFullName = $request->guardianFullName;
@@ -850,8 +877,13 @@ class UserController extends Controller
                 if (count($checkForExistGuardianInfo)) {
                     // validation for the GuardianInfo
                     $validator = Validator::make($request->all(), [
-                        'guardianFullName' => 'required', 'relationShip' => 'required', 'address' => 'required',
-                        'city' => 'required', 'state' => 'required', 'zip' => 'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/', 'country' => 'required',
+                        'guardianFullName' => 'required|string|max:255',
+                        'relationShip' => 'required|string|max:255',
+                        'address' => 'required|string|max:255',
+                        'city' => 'required|string|max:255',
+                        'state' => 'required|string|max:255',
+                        'zip' => 'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
+                        'country' => 'required|string|max:255',
                     ]);
 
                     if ($validator->fails()) {
@@ -895,8 +927,13 @@ class UserController extends Controller
                 } else {
                     // validation for the GuardianInfo
                     $validator = Validator::make($request->all(), [
-                        'guardianFullName' => 'required', 'relationShip' => 'required', 'address' => 'required',
-                        'city' => 'required', 'state' => 'required', 'zip' => 'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/', 'country' => 'required',
+                        'guardianFullName' => 'required|string|max:255',
+                        'relationShip' => 'required|string|max:255',
+                        'address' => 'required|string|max:255',
+                        'city' => 'required|string|max:255',
+                        'state' => 'required|string|max:255',
+                        'zip' => 'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
+                        'country' => 'required|string|max:255',
                     ]);
 
                     if ($validator->fails()) {
@@ -953,13 +990,14 @@ class UserController extends Controller
                     $backupGuardianCountry = $request->backupGuardianCountry;
 
                     $validator = Validator::make($request->all(), [
-                        'backupGuardianFullName' => 'required',
-                        'backupGuardianRelationShip' => 'required',
-                        'backupGuardianAddress' => 'required',
-                        'backupGuardianCity' => 'required',
-                        'backupGuardianState' => 'required',
+                        'isInformBackUpRepresentive'  => 'required|numeric|between:0,1|integer',
+                        'backupGuardianFullName' => 'required|string|max:255',
+                        'backupGuardianRelationShip' => 'required|string|max:255',
+                        'backupGuardianAddress' => 'required|string',
+                        'backupGuardianCity' => 'required|string',
+                        'backupGuardianState' => 'required|string',
                         'backupGuardianZip' => 'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
-                        'backupGuardianCountry' => 'required',
+                        'backupGuardianCountry' => 'required|string',
                     ]);
 
                     if ($validator->fails()) {
