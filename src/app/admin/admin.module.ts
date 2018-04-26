@@ -21,6 +21,7 @@ import { DashboardService } from './dashboard.service';
 import { BlogCategoriesComponent } from './blog-categories/blog-categories.component';
 import { BlogCommentsComponent } from './blog-comments/blog-comments.component';
 import { AddBlogComponent } from './add-blog/add-blog.component';
+import { ChangePasswordService } from './auth/change-password/change-password.service';
 
 
 
@@ -37,7 +38,7 @@ import { AddBlogComponent } from './add-blog/add-blog.component';
     // CKEditorModule,
   ],
   declarations: [
-    AdminComponent, 
+    AdminComponent,
     BlogsComponent,
     DashHomeComponent,
     HeaderComponent,
@@ -50,6 +51,7 @@ import { AddBlogComponent } from './add-blog/add-blog.component';
     AuthGuard,
     NotAuthGuard,
     AuthService,
+    ChangePasswordService,
     DashboardService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],

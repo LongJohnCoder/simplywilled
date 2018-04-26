@@ -1,35 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserService } from '../../user.service';
 
 @Component({
-  selector: 'app-user-login',
-  templateUrl: './user-login.component.html',
-  styleUrls: ['./user-login.component.css']
+  selector: 'app-user-register',
+  templateUrl: './user-register.component.html',
+  styleUrls: ['./user-register.component.css']
 })
-export class UserLoginComponent implements OnInit {
+export class UserRegisterComponent implements OnInit {
 
-  constructor( private loginService: UserService , private router: Router ) { }
+  constructor( private userService: UserService ) { }
 
   showLoader: boolean              = false;
   responseReceived: boolean        = false;
   loginRequestStatus: boolean      = false;
   loginRequestResponseMsg: string  = '';
 
-  ngOnInit() {}
 
-  /** Function call on submit of loginform */
+  ngOnInit() {
+  }
 
-  onSubmit( formSignIn: NgForm ) {
+  /** Function call on submit of register */
+
+  onSubmit( formRegister: NgForm ) {
     this.showLoader = true;
-    const body = {
-      email: formSignIn.value.email,
-      password: formSignIn.value.password
-    };
-
-    this.loginService.login( body )
+    console.log(formRegister.value);
+    this.userService.register( formRegister.value )
     .subscribe(
       ( response: any ) => {
 
@@ -46,7 +43,7 @@ export class UserLoginComponent implements OnInit {
       ( error: HttpErrorResponse ) => {
         console.log(error);
         this.loginRequestStatus = false;
-        this.loginRequestResponseMsg = error.error.message;
+        this.loginRequestResponseMsg = 'error';
         this.showLoader = false;
         this.responseReceived = true;
         setTimeout( () => {
@@ -55,7 +52,7 @@ export class UserLoginComponent implements OnInit {
       },
       () => {
 
-        formSignIn.reset();
+        formRegister.reset();
       }
     );
   }

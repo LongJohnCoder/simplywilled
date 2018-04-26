@@ -11,22 +11,40 @@ import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { AuthInterceptor } from '../admin/auth/auth.interceptor';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { NotUserAuthGuard } from './user-auth/not-user-auth.guard';
+import { UserAuthGuard } from './user-auth/user-auth.guard';
+import { UserAuthService } from './user-auth/user-auth.service';
+import { FullLayoutComponent } from './layout/full-layout/full-layout.component';
+import { UserService } from './user.service';
 
 @NgModule({
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    HttpClientModule
   ],
   declarations: [
-    UserComponent, 
-    HeaderComponent, 
-    HomeComponent, 
-    AboutUsComponent, 
-    FaqComponent, 
-    TermsOfUseComponent, 
-    TermsOfServiceComponent, 
-    PrivacyPolicyComponent, 
-    ContactUsComponent
-  ]
+    UserComponent,
+    HeaderComponent,
+    HomeComponent,
+    AboutUsComponent,
+    FaqComponent,
+    TermsOfUseComponent,
+    TermsOfServiceComponent,
+    PrivacyPolicyComponent,
+    ContactUsComponent,
+    FooterComponent,
+    FullLayoutComponent
+  ],
+  providers: [
+    UserAuthGuard,
+    NotUserAuthGuard,
+    UserAuthService,
+    UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
 })
 export class UserModule { }

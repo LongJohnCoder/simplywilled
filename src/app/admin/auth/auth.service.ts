@@ -9,7 +9,7 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-    getToken() {
+	getToken() {
 		const data = localStorage.getItem('loggedInAdminData');
 		return JSON.parse(data);
 	}

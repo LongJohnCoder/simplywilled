@@ -4,16 +4,12 @@ import { Observable } from 'rxjs/Observable';
 
 import { environment } from '../../../../environments/environment.prod';
 
-
 @Injectable()
 export class LoginService {
-	
 
-	constructor( private httpClient: HttpClient ) { }
-	
+  constructor( private httpClient: HttpClient ) { }
 
-	login( body: { email: string, password: string } ): Observable<any> {
-		return this.httpClient.post( environment.API_URL + 'admin-panel/sign-in', body );
-	}
-	
+  login( body: { email: string, password: string } ): Observable<any> {
+    return this.httpClient.post( environment.API_URL + 'admin-panel/sign-in', body );
+  }
 }
