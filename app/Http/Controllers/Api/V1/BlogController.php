@@ -625,7 +625,7 @@ class BlogController extends Controller
               ], 400);
             }
 
-            if(BlogComment::find($id)->delete() && BlogComment::where('parent_comment_id',$id)->delete()) {
+            if(BlogComment::where('id',$id)->delete() && BlogComment::where('parent_comment_id',$id)->delete()) {
               return response()->json([
                   'status'    =>  true,
                   'message'   =>  'Comment Deleted Successfully!',
