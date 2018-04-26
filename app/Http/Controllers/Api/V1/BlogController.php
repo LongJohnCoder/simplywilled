@@ -38,7 +38,7 @@ class BlogController extends Controller
     public function blogList()
     {
         try {
-            $blogs = Blogs::with('blogCategory')->get();
+            $blogs = Blogs::with('blogCategory')->orderBy('created_at','DESC')->get();
             if ($blogs) {
                 return response()->json([
                     'status' => true,
@@ -68,7 +68,7 @@ class BlogController extends Controller
     public function blogListUser()
     {
         try {
-            $blogs = Blogs::where('status','1')->with('blogCategory')->get();
+            $blogs = Blogs::where('status','1')->with('blogCategory')->orderBy('created_at','DESC')->get();
             if ($blogs) {
                 return response()->json([
                     'status'  => true,
@@ -184,7 +184,7 @@ class BlogController extends Controller
             $blogMetaKeyword = $request->blogMetaKeyword;
 
             $validator = Validator::make($request->all(), [
-                'blogTitle' => 'required',
+                'blogTitle' => 'required|string|max:255',
                 'blogBody' => 'required'
             ]);
 
@@ -197,23 +197,18 @@ class BlogController extends Controller
             }
             // Check file is in param
             if ($request->hasFile('blogImage')) {
-
                 $extension = $request->blogImage->extension();
-
                 if (in_array($extension, $supportedImageFormat)) {
-
                     // Save new file
                     $imageName = $generateFileName . '.' . $extension;
                     $request->blogImage->move(public_path('/blogImage'), $imageName);
                     $imagePath = asset('blogImage/' . $imageName);
-
                 } else {
                     return response()->json([
                         'status' => false,
                         'message' => 'File format not supported',
                         'data' => []
                     ], 400);
-
                 }
             } else {
                 $imageName = "";
@@ -366,7 +361,7 @@ class BlogController extends Controller
 
                     if ($getBlogInfo->save()) {
 
-                        $getBlogCategorys = CategoryBlogMapping::where('blog_id', $blogId)->get(); // get blog category's
+                        $getBlogCategorys = CategoryBlogMapping::where('blog_id', $blogId)->orderBy('created_at','DESC')->get(); // get blog category's
                         if ($getBlogCategorys) {
                             $deleteOldCategoryMap = CategoryBlogMapping::where('blog_id', $blogId)->delete(); // delete old category map and create new category map
                             foreach ($blogCategorys as $key => $value) {
@@ -383,7 +378,7 @@ class BlogController extends Controller
                                 $saveBlogcategory->save();
                             }
                         }
-                        $getBlogInfo = $getBlogInfo::where('id', $blogId)->with('blogCategory')->get(); // query to get created blog data
+                        //$getBlogInfo = $getBlogInfo::where('id', $blogId)->with('blogCategory')->orderBy('created_at','DESC')->get(); // query to get created blog data
                         return response()->json([
                             'status' => true,
                             'message' => 'Blog updated successfully',
@@ -528,7 +523,6 @@ class BlogController extends Controller
             //the parent comment id must be an independant comment and have its parent comment id 0
             if($parentCommentId != 0) {
               $blogComment = BlogComment::find((int)$parentCommentId);
-
               if($blogComment->parent_comment_id > 0) {
                 return response()->json([
                     'status'   => false,
@@ -536,8 +530,15 @@ class BlogController extends Controller
                     'data'     => []
                 ], 400);
               }
-            }
 
+              if($blogComment->blog_id != $blogId) {
+                return response()->json([
+                    'status'   => false,
+                    'message'  => 'Blog id of parent comment and sub-comment does not match!',
+                    'data'     => []
+                ], 400);
+              }
+            }
 
             $blog                       = Blogs::find($blogId);
             $comment                    = new BlogComment();
@@ -624,15 +625,17 @@ class BlogController extends Controller
               ], 400);
             }
 
-            if(BlogComment::destroy($id)) {
+            if(BlogComment::find($id)->delete() && BlogComment::where('parent_comment_id',$id)->delete()) {
               return response()->json([
-                  'status'   => true,
-                  'message'  => 'Comment Deleted Successfully!'
+                  'status'    =>  true,
+                  'message'   =>  'Comment Deleted Successfully!',
+                  'data'      =>  []
               ], 200);
             } else {
               return response()->json([
-                  'status'   => false,
-                  'message'  => 'Comment cannot be found!'
+                  'status'    =>  false,
+                  'message'   =>  'Comment cannot be found!',
+                  'data'      =>  []
               ], 400);
             }
           } catch(ModelNotFoundException $me) {
@@ -746,9 +749,9 @@ class BlogController extends Controller
          if($blogComments) {
            \Log::info('blog comment id : '.$blogComments->id);
            if($admin) {
-             $nextComment = BlogComment::where('parent_comment_id', $blogComments->id)->get();
+             $nextComment = BlogComment::where('parent_comment_id', $blogComments->id)->orderBy('created_at','DESC')->get();
            } else {
-             $nextComment = BlogComment::where('parent_comment_id', $blogComments->id)->where('status','1')->get();
+             $nextComment = BlogComment::where('parent_comment_id', $blogComments->id)->where('status','1')->orderBy('created_at','DESC')->get();
            }
            return $nextComment;
            // if($nextComment) {
@@ -967,7 +970,7 @@ class BlogController extends Controller
            }
 
            $user  = \Auth::user();
-           $blogs = Blogs::where('author_id',$user->id)->where('status','1')->where('featured','1')->orderBy('created_at','DESC')->get();
+           $blogs = Blogs::where('status','1')->where('featured','1')->orderBy('created_at','DESC')->get();
            return response()->json([
              'status'   =>  true,
              'message'  =>  'Most popular blogs fetched successfully',
@@ -999,7 +1002,7 @@ class BlogController extends Controller
            }
 
            $user  = \Auth::user();
-           $blogs = Blogs::where('author_id',$user->id)->where('status','1')->orderBy('created_at','DESC')->get();
+           $blogs = Blogs::where('status','1')->orderBy('created_at','DESC')->get();
            return response()->json([
              'status'   =>  true,
              'message'  =>  'Most recent blogs fetched successfully',
