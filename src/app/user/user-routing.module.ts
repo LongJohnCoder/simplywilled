@@ -19,7 +19,8 @@ const routes: Routes = [
     { path: 'terms-of-service', pathMatch: 'full', component: TermsOfServiceComponent },
     { path: 'privacy-policy', pathMatch: 'full', component: PrivacyPolicyComponent },
     { path: 'contact-us', pathMatch: 'full', component: ContactUsComponent },
-    { path: '', component: FullLayoutComponent, data: { title: 'Home' }, children: [
+
+    {path: '', component: FullLayoutComponent, data: { title: 'Home' }, children: [
       { path: 'sign-in', canActivate: [ NotUserAuthGuard ], loadChildren: './user-auth/user-login/user-login.module#UserLoginModule' },
       { path: 'register', canActivate: [ NotUserAuthGuard ], loadChildren: './user-auth/user-register/user-register.module#UserRegisterModule'}
     ]},
