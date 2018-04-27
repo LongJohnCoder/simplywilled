@@ -20,7 +20,7 @@
     <div class="panel panel-primary text-center no-boder bg-color-green">
         <div class="panel-body">
             <i class="fa fa-users fa-5x"></i>
-            <h3>243</h3>
+            <h3>{{userCount}}</h3>
         </div>
         <div class="panel-footer back-footer-green">
             Total Users
@@ -28,21 +28,23 @@
     </div>
 </div>
 <div class="col-md-4 col-sm-12 col-xs-12">
+    <a routerLink="/admin-panel/blogs" class="dashThumLink">
     <div class="panel panel-primary text-center no-boder bg-color-blue">
         <div class="panel-body">
             <i class="fa fa-rss fa-5x"></i>
-            <h3>{{blogListCount}} </h3>
+            <h3>{{blogCount}} </h3>
         </div>
         <div class="panel-footer back-footer-blue">
             Total Blogs
         </div>
     </div>
+    </a>
 </div>
 <div class="col-md-4 col-sm-12 col-xs-12">
     <div class="panel panel-primary text-center no-boder bg-color-red">
         <div class="panel-body">
             <i class="fa fa fa-comments fa-5x"></i>
-            <h3>9 </h3>
+            <h3>{{commentCount}} </h3>
         </div>
         <div class="panel-footer back-footer-red">
             Comments
@@ -53,7 +55,7 @@
     <div class="panel panel-primary text-center no-boder bg-color-red">
         <div class="panel-body">
             <i class="fa fa-shopping-bag fa-5x"></i>
-            <h3>54 </h3>
+            <h3>0</h3>
         </div>
         <div class="panel-footer back-footer-red">
             Packages
@@ -64,7 +66,7 @@
     <div class="panel panel-primary text-center no-boder bg-color-brown">
         <div class="panel-body">
             <i class="fa fa-sitemap fa-5x"></i>
-            <h3>54 </h3>
+            <h3>{{catCount}}</h3>
         </div>
         <div class="panel-footer back-footer-brown">
             Categories
@@ -104,42 +106,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                                                                                                                        <tr>
-                            <td>1</td>
-                            <td>Spike Buster</td>
-                            <td>sparkp70@gmail.com</td>
-                            <td>Yes</td>
-                            <td>4 days ago</td>
+                        <tr *ngFor="let user of users">                                                           <td>{{user.id}}</td>
+                            <td>{{user.name}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.status == "1" ? "Yes" : "No"}}</td>
+                            <td>{{user.created_at}}</td>
                         </tr>
-                                                                                        <tr>
-                            <td>2</td>
-                            <td>Testt Test</td>
-                            <td>work+5@tier5.us</td>
-                            <td>Yes</td>
-                            <td>1 month ago</td>
-                        </tr>
-                                                                                        <tr>
-                            <td>3</td>
-                            <td>Alina Disuzza</td>
-                            <td>work+1@tier5.in</td>
-                            <td>Yes</td>
-                            <td>1 month ago</td>
-                        </tr>
-                                                                                        <tr>
-                            <td>4</td>
-                            <td>Test Users</td>
-                            <td>dipanakar.naskar@tier5.in</td>
-                            <td>Yes</td>
-                            <td>1 month ago</td>
-                        </tr>
-                                                                                        <tr>
-                            <td>5</td>
-                            <td>Jon Vaughn</td>
-                            <td>work@tier5.us</td>
-                            <td>Yes</td>
-                            <td>1 month ago</td>
-                        </tr>
-                                                    </tbody>
+                                                                                        
+                     </tbody>
                 </table>
             </div>
         </div>

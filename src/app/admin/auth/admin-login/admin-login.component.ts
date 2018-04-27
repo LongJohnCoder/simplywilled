@@ -32,7 +32,7 @@ export class AdminLoginComponent implements OnInit {
 
     onSubmit( formSignIn: NgForm ) {
         this.showLoader = true;
-        console.log(formSignIn);
+        //console.log(formSignIn);
 
         const body = {
           email : formSignIn.value.email,
@@ -42,7 +42,7 @@ export class AdminLoginComponent implements OnInit {
         this.loginService.login( body )
         .subscribe(
           ( response: any ) => {
-            console.log(response);
+            //console.log(response);
             if(response.status){
 					    localStorage.setItem( 'loggedInAdminData', JSON.stringify(response) );
               this.loginRequestStatus = true;

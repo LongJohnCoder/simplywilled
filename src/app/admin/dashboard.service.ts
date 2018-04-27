@@ -11,12 +11,20 @@ export class DashboardService {
 
 	constructor( private httpClient: HttpClient ) { }
 
+	dashboard():Observable<any>{
+		return this.httpClient.get(environment.API_URL + 'admin-panel/dashboard');
+	}
+
 	blogList():Observable<any>{
 		return this.httpClient.get(environment.API_URL + 'admin-panel/blog-list');
 	}
 
-	packages():Observable<any>{
-		return this.httpClient.get(environment.API_URL + 'get-packages');
+	deleteBlog(delBlogId):Observable<any>{
+		return this.httpClient.delete(environment.API_URL + 'admin-panel/delete-blog/' + delBlogId);
+	}
+
+	createBlog(createBlogBody):Observable<any>{
+		return this.httpClient.post(environment.API_URL + 'admin-panel/create-blog', createBlogBody);
 	}
 
 }

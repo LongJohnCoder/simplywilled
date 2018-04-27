@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { FormsModule }   from '@angular/forms';
+// import { CKEditorModule } from 'ngx-ckeditor';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
@@ -15,6 +20,7 @@ import { LeftMenuComponent } from './layout/left-menu/left-menu.component';
 import { DashboardService } from './dashboard.service';
 import { BlogCategoriesComponent } from './blog-categories/blog-categories.component';
 import { BlogCommentsComponent } from './blog-comments/blog-comments.component';
+import { AddBlogComponent } from './add-blog/add-blog.component';
 
 
 
@@ -24,6 +30,11 @@ import { BlogCommentsComponent } from './blog-comments/blog-comments.component';
     CommonModule,
     AdminRoutingModule,
     HttpClientModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+    FormsModule
+    // CKEditorModule,
   ],
   declarations: [
     AdminComponent, 
@@ -32,7 +43,8 @@ import { BlogCommentsComponent } from './blog-comments/blog-comments.component';
     HeaderComponent,
     LeftMenuComponent,
     BlogCategoriesComponent,
-    BlogCommentsComponent
+    BlogCommentsComponent,
+    AddBlogComponent
   ],
   providers:[
     AuthGuard,

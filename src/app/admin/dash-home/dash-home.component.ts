@@ -8,32 +8,29 @@ import { DashboardService } from './../dashboard.service';
 })
 export class DashHomeComponent implements OnInit {
 
-  blogList:any;
-  blogListCount:number = 0;
-  packages:any;
-  packagesCount:number = 0;
+  dashData:any;
+  blogCount:number;
+  catCount:number;
+  commentCount:number;
+  userCount:number;
+  users:any[] = [];
 
   constructor(
-    private dashService : DashboardService
+    private dashService : DashboardService,
+    
   ) { }
 
   ngOnInit() {
-    this.dashService.blogList().subscribe(
+    this.dashService.dashboard().subscribe(
       (data:any)=> {
-        this.blogList = data.data;
-        this.blogListCount = this.blogList.BlogDetails.length;
-        console.log('blog',this.blogList)
+        this.dashData = data.data;
+        this.blogCount = this.dashData.totalBlogs;
+        this.catCount = this.dashData.totalCategories;
+        this.commentCount = this.dashData.totalComments;
+        this.userCount = this.dashData.totalUsers;
+        this.users = this.dashData.users;
     }
     )
-
-    this.dashService.packages().subscribe(
-      (data:any)=> {
-        this.packages = data.data;
-        //this.packagesCount = this.blogs.BlogDetails.length;
-        console.log('packages',this.packages)
-    }
-    )
-
 
   }
 
