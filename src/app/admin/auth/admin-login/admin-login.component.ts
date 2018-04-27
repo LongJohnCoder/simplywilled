@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { LoginService } from './admin-login.service';
+import { AdminLoginService } from './admin-login.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -17,7 +17,7 @@ export class AdminLoginComponent implements OnInit {
   loginRequestStatus      = false; // Track response of login request
   loginRequestResponseMsg = ''; // Store success or error message from backend depending on response
 
-  constructor( private loginService: LoginService, private router: Router) { }
+  constructor( private loginService: AdminLoginService, private router: Router) { }
 
   ngOnInit() {}
 

@@ -37,6 +37,8 @@ export class UserLoginComponent implements OnInit {
         if(response.status){
 
           localStorage.setItem( 'loggedInUser', JSON.stringify(response) );
+          this.router.navigate(['/dashboard']);
+
         } else {
 
           this.loginRequestStatus = false;

@@ -24,6 +24,7 @@ const routes: Routes = [
       { path: 'sign-in', canActivate: [ NotUserAuthGuard ], loadChildren: './user-auth/user-login/user-login.module#UserLoginModule' },
       { path: 'register', canActivate: [ NotUserAuthGuard ], loadChildren: './user-auth/user-register/user-register.module#UserRegisterModule'}
     ]},
+    { path: 'dashboard', loadChildren: './user-dashboard/user-dashboard.module#UserDashboardModule'},
 ];
 
 @NgModule({

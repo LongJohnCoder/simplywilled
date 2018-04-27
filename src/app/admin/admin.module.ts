@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 // import { CKEditorModule } from 'ngx-ckeditor';
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -22,6 +22,7 @@ import { BlogCategoriesComponent } from './blog-categories/blog-categories.compo
 import { BlogCommentsComponent } from './blog-comments/blog-comments.component';
 import { AddBlogComponent } from './add-blog/add-blog.component';
 import { ChangePasswordService } from './auth/change-password/change-password.service';
+import { AdminLoginService } from './auth/admin-login/admin-login.service';
 
 
 
@@ -47,12 +48,14 @@ import { ChangePasswordService } from './auth/change-password/change-password.se
     BlogCommentsComponent,
     AddBlogComponent
   ],
-  providers:[
+  providers: [
     AuthGuard,
     NotAuthGuard,
     AuthService,
     ChangePasswordService,
     DashboardService,
+      ChangePasswordService,
+      AdminLoginService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
 })
