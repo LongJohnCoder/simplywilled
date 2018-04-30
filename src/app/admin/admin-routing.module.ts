@@ -8,6 +8,7 @@ import { DashHomeComponent } from './dash-home/dash-home.component';
 import { BlogCategoriesComponent } from './blog-categories/blog-categories.component';
 import { BlogCommentsComponent } from './blog-comments/blog-comments.component';
 import { AddBlogComponent } from './add-blog/add-blog.component';
+import { AddBlogCategoriesComponent } from "./blog-categories/add-blog-categories/add-blog-categories.component";
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -17,6 +18,7 @@ const routes: Routes = [
     { path: 'blogs', canActivate: [ AuthGuard ], pathMatch: 'full', component: BlogsComponent},
     { path: 'add-blog', canActivate: [ AuthGuard ], pathMatch: 'full', component: AddBlogComponent},
     { path: 'blog-categories', canActivate: [ AuthGuard ], pathMatch: 'full', component: BlogCategoriesComponent},
+    { path: 'add-blog-category', canActivate: [ AuthGuard ], pathMatch: 'full', component: AddBlogCategoriesComponent},
     { path: 'blog-comments', canActivate: [ AuthGuard ], pathMatch: 'full', component: BlogCommentsComponent},
     
 ];

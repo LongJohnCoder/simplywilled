@@ -23,6 +23,8 @@ import { BlogCommentsComponent } from './blog-comments/blog-comments.component';
 import { AddBlogComponent } from './add-blog/add-blog.component';
 import { ChangePasswordService } from './auth/change-password/change-password.service';
 import { AdminLoginService } from './auth/admin-login/admin-login.service';
+import { AddBlogCategoriesComponent } from './blog-categories/add-blog-categories/add-blog-categories.component';
+import {BlogService} from "./blog.service";
 
 
 
@@ -46,7 +48,8 @@ import { AdminLoginService } from './auth/admin-login/admin-login.service';
     LeftMenuComponent,
     BlogCategoriesComponent,
     BlogCommentsComponent,
-    AddBlogComponent
+    AddBlogComponent,
+    AddBlogCategoriesComponent
   ],
   providers: [
     AuthGuard,
@@ -54,6 +57,7 @@ import { AdminLoginService } from './auth/admin-login/admin-login.service';
     AuthService,
     ChangePasswordService,
     DashboardService,
+      BlogService,
       ChangePasswordService,
       AdminLoginService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
