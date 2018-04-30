@@ -46,9 +46,8 @@ export class UserLoginComponent implements OnInit {
         }
       },
       ( error: HttpErrorResponse ) => {
-        console.log(error);
         this.loginRequestStatus = false;
-        this.loginRequestResponseMsg = error.error.message;
+        this.loginRequestResponseMsg = error.error.error;
         this.showLoader = false;
         this.responseReceived = true;
         setTimeout( () => {

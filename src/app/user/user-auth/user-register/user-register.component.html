@@ -5,6 +5,18 @@
         <h1 class="form_heading">Let’s get started</h1>
         <p class="form_pera">SimplyWilled is the easiest way to make your estate plan online. Sign up below to get started.</p>
       </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div *ngIf="!setRequestStatus && responseReceived" class="alert alert-danger">
+            <strong>{{ setResponseMsg }}</strong>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div *ngIf="setRequestStatus && responseReceived" class="alert alert-success">
+            <strong>{{ setResponseMsg }}</strong>
+          </div>
+        </div>
+      </div>
       <div class="confirmed_form_white_sec">
         <form id="signInForm" #form="ngForm" (ngSubmit)="onSubmit(form)">
           <input type="email" name="email" placeholder="Email Address" class="email_form"
@@ -21,7 +33,7 @@
           <input type="password" name="password" placeholder="Password" class="email_form"
                  ngModel
                  required
-                 #password="ngModel">
+                 #password="ngModel" minlength="6">
 
           <span class="alert-danger"
                 *ngIf="password.errors && (password.dirty || password.touched)">
@@ -29,15 +41,18 @@
                 <p *ngIf="password.errors?.minlength">Password should be minimum 6!</p>
           </span>
 
-          <input type="password" name="confirm" placeholder="Confirm Password" class="email_form"
+          <input type="password" name="confirm_password" placeholder="Confirm Password" class="email_form"
                  ngModel
                  required
-                 #confirm="ngModel">
+                 #confirm="ngModel" validateEqual="password" minlength="6">
 
           <span class="alert-danger"
                 *ngIf="confirm.errors && (confirm.dirty || confirm.touched)">
                 <p *ngIf="confirm.errors?.required">Confirm Password is required</p>
                 <p *ngIf="confirm.errors?.minlength">Confirm Password should be minimum 6!</p>
+          </span>
+          <span *ngIf="confirm.invalid && (confirm.dirty || confirm.touched)" class="text-danger">
+              <p>Confirm Password should be same as password!</p>
           </span>
 
           <div class="loader_parent" id="response_loader">

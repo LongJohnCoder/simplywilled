@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserAuthService} from '../../user-auth/user-auth.service';
 
 @Component({
   selector: 'app-full-layout',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FullLayoutComponent implements OnInit {
 
-  constructor() { }
+  isLogIn: boolean = false;
+
+  constructor( private authService: UserAuthService) { }
 
   ngOnInit() {
+
+    this.isLogIn = this.authService.isAuthenticated();
   }
 
 }

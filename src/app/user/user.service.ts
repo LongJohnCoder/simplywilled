@@ -19,4 +19,10 @@ export class UserService {
   register( body: any ): Observable<any> {
     return this.httpClient.post( environment.API_URL + 'sign-up', body );
   }
+
+    /** Function call to logout */
+
+  logout(  ): Observable<any> {
+      return this.httpClient.post( environment.API_URL + 'user/sign-out', { });
+  }
 }
