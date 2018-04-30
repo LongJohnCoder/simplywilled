@@ -1,9 +1,9 @@
 <app-header></app-header>
 <app-left-menu></app-left-menu>
 
-  <!-- <ck-editor name="editor1" [(ngModel)]="editorValue" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor> -->
+<!-- <ck-editor name="editor1" [(ngModel)]="editorValue" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor> -->
 
-  <div id="page-wrapper">
+<div id="page-wrapper">
     <div id="page-inner">
 
 
@@ -15,366 +15,104 @@
             </div>
         </div>
         <!-- /. ROW  -->
-        
-        
-<form #createBlog="ngForm" (ngSubmit)="onSubmit(createBlog)">
-<div class="row">
-<div class="col-md-8">
-<div class="panel panel-default">
-<div class="panel-body">
-  <fieldset>
-    <div class="form-group">
-      <label>Blog Title:</label>
-      <input class="form-control" type="text" name="title" ngModel #blogTitle="ngModel">
-    </div>
-    <div class="form-group">
-      <label for="text_editor">Body:</label>
-      <textarea class="form-control" name="body" ngModel #blogBody="ngModel"></textarea>
-    </div>
-  </fieldset>
-            
-</div>
-</div>
-</div>
-<div class="col-md-4">
-<div class="panel panel-bordered panel-primary">
-<div class="panel-heading">
-  <h3 class="panel-title"> Detail</h3>
-</div>
-<div class="panel-body">
-  <div class="form-group">
-    <label for="status">Status</label>
-    <select class="form-control"  name="status" ngModel #blogStatus="ngModel">
-      <option value="published">Published</option>
-      <option value="pending">Pending</option>
-    </select>
-  </div>
-            <div class="checkbox">
-              <label>
-                  <input type="checkbox" name="featured" ngModel #blogFeatured="ngModel"> Featured
-                </label>
-            </div>
-</div>
-</div>
-    <div class="panel panel-bordered panel-success">
-<div class="panel-heading">
-  <h3 class="panel-title"> Category</h3>
-</div>
-<div class="panel-body">
-                            <div class="checkbox">
-              <label>
-                  <input class="blogCh" type="checkbox" value="8" name="blogCat1" ngModel #blogTcat1="ngModel"> Alaska
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input class="blogCh" type="checkbox" value="57" name="blogCat2" ngModel #blogTcat2="ngModel"> Arizona
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input class="blogCh" type="checkbox" value="10" name="blogCat3" ngModel #blogTcat3="ngModel"> Arkansas
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input class="blogCh" type="checkbox" value="5" name="blogCat4" ngModel #blogTcat4="ngModel"> California
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input class="blogCh" type="checkbox" value="11" name="blogCat5" ngModel #blogTcat5="ngModel"> Colorado
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="12"> Connecticut
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="13"> Delaware
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="56"> District Of Columbia
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="3"> Financial Power Of Attorney
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="6"> Florida
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox"  value="14"> Georgia
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="15"> Hawaii
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="4"> Health Care Directives
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="16"> Idaho
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="17"> Illinois
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="18"> Indiana
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="19"> Iowa
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="20"> Kansas
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="21"> Kentucky
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="1"> Last Will &amp; Testament
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="2"> Living Revocable Trusts
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="22"> Louisiana
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="23"> Maine
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="24"> Maryland
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="25"> Massachusetts
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" nvalue="27"> Michigan
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="28"> Minnesota
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="29"> Mississippi
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" nvalue="30"> Missouri
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="31"> Montana
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="32"> Nebraska
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="33"> Nevada
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="34"> New Hampshire
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="35"> New Jersey
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="36"> New Mexico
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="37"> New York
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="38"> North Carolina
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="39"> North Dakota
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="40"> Ohio
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="41"> Oklahoma
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="42"> Oregon
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="43"> Pennsylvania
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="44"> Rhode Island
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="45"> South Carolina
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="46"> South Dakota
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="47"> Tennessee
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="48"> Texas
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="49"> Utah
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="50"> Vermont
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="51"> Virginia
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="52"> Washington State
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="53"> West Virginia
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="54"> Wisconsin
-                </label>
-            </div>
-                              <div class="checkbox">
-              <label>
-                  <input type="checkbox" value="55"> Wyoming
-                </label>
-            </div>
+
+
+        <form #createBlog="ngForm" (ngSubmit)="onSubmit(createBlog)">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label>Blog Title:</label>
+                                    <input class="form-control" type="text" name="title" ngModel #blogTitle="ngModel">
+                                </div>
+                                <div class="form-group">
+                                    <label for="text_editor">Body:</label>
+                                    <textarea class="form-control" name="body" ngModel #blogBody="ngModel"></textarea>
+                                </div>
+                            </fieldset>
+
+                        </div>
                     </div>
-</div>
-<div class="panel panel-bordered panel-info">
-<div class="panel-heading">
-  <h3 class="panel-title"> Image</h3>
-</div>
-<div class="panel-body">
-  <div class="input-group">
-    <span class="input-group-btn">
-    <a class="btn btn-primary">
-      <i class="fa fa-picture-o"></i> Choose
-    </a>
-    </span>
-    <input class="form-control" type="text">
-  </div>
-  <img src="">
-</div>
-</div>
-<div class="panel panel-bordered panel-warning">
-<div class="panel-heading">
-  <h3 class="panel-title"> SEO Content</h3>
-</div>
-<div class="panel-body">
-  <div class="form-group">
-    <label for="seo_title">SEO Title</label>
-    <input class="form-control" value="" type="text" name="blogSeoTitle" ngModel #blogSeoTitle="ngModel">
-  </div>
-  <div class="form-group">
-    <label>Meta Description</label>
-    <textarea class="form-control" name="blogMeta" ngModel #blogMeta="ngModel"></textarea>
-  </div>
-  <div class="form-group">
-    <label >Meta Keywords</label>
-    <textarea class="form-control" name="blogMetaKey" ngModel #blogMetaKey="ngModel"></textarea>
-  </div>
-</div>
-</div>
-<button type="submit">Create Blog</button>
-</div>
-</div>
-</form>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-bordered panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"> Detail</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select class="form-control" name="status" ngModel #blogStatus="ngModel">
+                                    <option value="1">Published</option>
+                                    <option value="0">Pending</option>
+                                </select>
+                            </div>
+                            <div class="checkbox">
+                                <label for="featured">
+                                    <input type="checkbox" name="blogFeatured" ngModel #blogFeatured="ngModel"> Featured
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-bordered panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"> Category</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="checkbox" *ngFor="let category of categoryData">
+                                <label>
+                                    <input class="blogCh" type="checkbox" value="{{category.id}}" name="blogCategory[]" ngModel #blogTcat1="ngModel" (ngModelChange)="selectedValue(category.id, $event)"> {{category.name}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-bordered panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"> Image</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="input-group">
+                            <span class="input-group-btn">
+                            <a class="btn btn-primary">
+                              <i class="fa fa-picture-o"></i> Choose
+                            </a>
+                            </span>
+                                <input class="form-control" type="text">
+                            </div>
+                            <img src="">
+                        </div>
+                    </div>
+                    <div class="panel panel-bordered panel-warning">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"> SEO Content</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="seo_title">SEO Title</label>
+                                <input class="form-control" value="" type="text" name="blogSeoTitle" ngModel
+                                       #blogSeoTitle="ngModel">
+                            </div>
+                            <div class="form-group">
+                                <label>Meta Description</label>
+                                <textarea class="form-control" name="blogMeta" ngModel #blogMeta="ngModel"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Meta Keywords</label>
+                                <textarea class="form-control" name="blogMetaKey" ngModel
+                                          #blogMetaKey="ngModel"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit">Create Blog</button>
+                </div>
+            </div>
+        </form>
 
 
-<footer><p>All right reserved. Developed By <a href="#">TNI</a></p></footer>
+        <footer><p>All right reserved. Developed By <a href="#">TNI</a></p></footer>
     </div>
     <!-- /. PAGE INNER  -->
 </div>

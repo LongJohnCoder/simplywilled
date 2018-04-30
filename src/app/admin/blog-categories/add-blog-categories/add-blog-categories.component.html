@@ -1,0 +1,33 @@
+<app-header></app-header>
+<app-left-menu></app-left-menu>
+<div id="page-wrapper">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">
+                    Add Blog Category
+                </h1>
+            </div>
+        </div>
+
+        <form #createBlogCategory="ngForm" (ngSubmit)="onSubmit(createBlogCategory)">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label>Category Name :</label>
+                                    <input class="form-control" type="text" name="categoryName" ngModel #categoryName="ngModel">
+                                </div>
+                            </fieldset>
+                        <button type="submit">Create Blog Category</button>
+                        </div>
+                        <p>{{createBlogCategoryMessage}}</p>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
