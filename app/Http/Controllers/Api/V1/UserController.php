@@ -170,7 +170,7 @@ class UserController extends Controller
             $step = $request->step;
 
             $checkUser = User::find($userId);
-            if (count($checkUser) && $step) {
+            if ($checkUser && $step) {
                 if ($step == 1) {
                     return $this->updateTellUsAboutYou($request);
                 }
@@ -260,7 +260,7 @@ class UserController extends Controller
             'zip'             =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/', // (Zip code validation rules REGX (min value 5))
             'spouseFirstName' =>  'required',
             'spouseLastName'  =>  'required',
-            'sposeGender'     =>  'required',
+            'spouseGender'     =>  'required',
             'spouseDob'       =>  'required | date_format:"Y-m-d"',
             'phoneNumber'     =>  'numeric',
         ]);
