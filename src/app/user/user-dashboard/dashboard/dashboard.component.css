@@ -264,56 +264,9 @@ header{
     float: right;
     display: inline-block;
 }
-.main-content{
-    background: #fff;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    box-shadow: 0 1px 1px 0 #ddd;
-    -webkit-box-shadow: 0 1px 1px 0 #ddd;
-    display: inline-block;
-    width: 100%;
-    padding: 30px;
-}
-.main-content h2{
-    color: #2479B8;
-    font-size: 36px;
-    margin: 0;
-}
-.main-content p{
-    font-size: 18px;
-    margin: 0;
-    line-height: 24px;
-}
-.single_ul{
-    margin: 0;
-    width: 100%;
-    float: left;
-}
-.single_ul li {
-    margin: 15px 0;
-    width: 100%;
-    float: left;
-}
-.single_ul li:last-child{
-    margin-bottom: 0;
-}
-.single_ul li a{
-    border: 1px solid #4db228;
-    padding: 10px;
-    border-radius: 6px;
-    width: 100%;
-    float: left;
-    background: #fff;
-    position: relative;
-}
-.single_ul li a.inprogress{
-    border: 1px solid #BFBFBF;
-}
-.tell_us_text {
-    color: #373737;
-    float: left;
-    font-size: 20px;
-}
+
+
+
 .inprogress img{
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
@@ -468,23 +421,8 @@ footer ul li a:hover{
     }
 }
 
-.tell_us_about_left {
-    float: left;
-    width: 70%;
-}
-.woman_img {
-    float: left;
-    position: absolute;
-    top: 50%;
-    left: 20px;
-    margin-top: -20px;
-}
 .tell_us_text {
     float: left;
     color: #000000;
     font-size: 20px;
-}
-.single_right {
-    width: 90%;
-    float: right;
 }

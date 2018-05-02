@@ -17,6 +17,7 @@ import { UserAuthGuard } from './user-auth/user-auth.guard';
 import { UserAuthService } from './user-auth/user-auth.service';
 import { FullLayoutComponent } from './layout/full-layout/full-layout.component';
 import { UserService } from './user.service';
+import {UserDashboardService} from './user-dashboard/user-dashboard.service';
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { UserService } from './user.service';
     NotUserAuthGuard,
     UserAuthService,
     UserService,
+    UserDashboardService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
 })
