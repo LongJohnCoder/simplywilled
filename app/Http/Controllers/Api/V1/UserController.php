@@ -252,16 +252,16 @@ class UserController extends Controller
             'userId'          =>  'required|exists:users,id,deleted_at,NULL',
             'firstName'       =>  'required',
             'lastName'        =>  'required',
-            'gender'          =>  'required',
+            'gender'          =>  'required|string',
             'dob'             =>  'required | date_format:"Y-m-d"',
             'phoneNumber'     =>  'required',
             'city'            =>  'required',
             'state'           =>  'required',
             'zip'             =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/', // (Zip code validation rules REGX (min value 5))
-            'spouseFirstName' =>  'required',
-            'spouseLastName'  =>  'required',
-            'spouseGender'     =>  'required',
-            'spouseDob'       =>  'required | date_format:"Y-m-d"',
+            // 'spouseFirstName' =>  'required',
+            // 'spouseLastName'  =>  'required',
+            // 'spouseGender'    =>  'required',
+            // 'spouseDob'       =>  'required | date_format:"Y-m-d"',
             'phoneNumber'     =>  'numeric',
         ]);
 
@@ -284,6 +284,22 @@ class UserController extends Controller
             $checkForExistUser->dob = $dob; // datetimeFormat
             $checkForExistUser->marital_status = $maritalStatus;
             if ($maritalStatus == "M" || $maritalStatus == "R") {
+
+                $validator = Validator::make($request->all(), [
+                    'spouseFirstName' =>  'required',
+                    'spouseLastName'  =>  'required',
+                    'spouseGender'    =>  'required',
+                    'spouseDob'       =>  'required | date_format:"Y-m-d"',
+                ]);
+
+                if ($validator->fails()) {
+                    return response()->json([
+                        'status' => false,
+                        'message' => $validator->errors(),
+                        'data' => []
+                    ], 400);
+                } // validation for data
+
                 $checkForExistUser->partner_firstname = $spouseFirstName;
                 $checkForExistUser->partner_fullname = $spouseFirstName . ' ' . $spouseMiddleName . ' ' . $spouseLastName;
                 $checkForExistUser->partner_gender = $sposeGender; // M || F
@@ -298,14 +314,12 @@ class UserController extends Controller
             $checkForExistUser->state = $state;
             $checkForExistUser->zip = $zip;
             if ($checkForExistUser->save()) {
-
                 return response()->json([
                     'status' => true,
                     'message' => 'User profile updated successfully',
                     'data' => ['userDetails' => $checkForExistUser]
                 ], 200);
             } else {
-
                 return response()->json([
                     'status' => false,
                     'message' => 'User profile not updated !',
@@ -324,6 +338,23 @@ class UserController extends Controller
             $createUser->dob = $dob; // datetimeFormat
             $createUser->marital_status = $maritalStatus;
             if ($maritalStatus == "M" || $maritalStatus == "R") {
+
+              $validator = Validator::make($request->all(), [
+                  'spouseFirstName' =>  'required',
+                  'spouseLastName'  =>  'required',
+                  'spouseGender'    =>  'required',
+                  'spouseDob'       =>  'required | date_format:"Y-m-d"',
+              ]);
+
+              if ($validator->fails()) {
+                  return response()->json([
+                      'status' => false,
+                      'message' => $validator->errors(),
+                      'data' => []
+                  ], 400);
+              } // validation for data
+
+
                 $createUser->partner_firstname = $spouseFirstName;
                 $createUser->partner_fullname = $spouseFirstName . ' ' . $spouseMiddleName . ' ' . $spouseLastName;
                 $createUser->partner_gender = $sposeGender; // M || F
