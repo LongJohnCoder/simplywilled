@@ -10,7 +10,7 @@
         <li><a routerLink="/faq">Blog</a></li>
         <li><a routerLink="/sign-in" *ngIf="!isLogIn">Login</a></li>
         <li><a routerLink="/dashboard" *ngIf="isLogIn">Dashboard</a></li>
-        <li><a routerLink="/sign-in" *ngIf="isLogIn">Logout</a></li>
+        <li (click)="onLogout()"><a href="javascript:void(0)" *ngIf="isLogIn">Logout</a></li>
       </ul>
     </div>
   </div>

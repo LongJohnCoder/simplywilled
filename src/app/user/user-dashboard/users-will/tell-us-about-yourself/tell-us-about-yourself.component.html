@@ -1,0 +1,389 @@
+<div class="main-content tellusaboutyou">
+  <h2>About You</h2>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div class="form-group" [ngClass]="{'valid': firstName.valid}">
+      <label>First Name: </label>
+      <input
+              type="text"
+              class="form-control"
+              ngModel
+              required
+              name ='firstName'
+              #firstName="ngModel">
+      <i class="fa fa-check" *ngIf="firstName.valid"></i>
+      <span class="alert-danger"
+            *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+                        <p *ngIf="firstName.errors?.required">First name is required</p>
+      </span>
+    </div>
+    <div class="form-group">
+      <label>Middle Name: </label>
+      <input type="text" class="form-control"
+             name="middleName"
+             ngModel
+            #middleName="ngModel">
+    </div>
+    <div class="form-group" [ngClass]="{'valid': lastName.valid}">
+      <label>Last Name: </label>
+      <input type="text" class="form-control"
+             name="lastName"
+             ngModel
+             required
+             #lastName="ngModel">
+      <i class="fa fa-check" *ngIf="lastName.valid"></i>
+      <span class="alert-danger"
+            *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+                        <p *ngIf="lastName.errors?.required">Last name is required</p>
+      </span>
+    </div>
+    <div class="form-group">
+      <label>Your Gender: </label>
+      <ul class="radio_ul6">
+        <li>
+          <label class="radio_custom" [ngClass]="{'active': gender.value == 'M'}">
+            <input type="radio"
+                   name="gender"
+                   value="M"
+                   ngModel
+                   required
+                   #gender="ngModel">
+            <span class="human_status">Male</span>
+          </label>
+        </li>
+        <li>
+          <label class="radio_custom" [ngClass]="{'active': gender.value == 'F'}">
+            <input type="radio"
+                   name="gender"
+                   value="F"
+                   ngModel
+                   required
+                   #gender="ngModel">
+            <span class="human_status"> Female</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+    <div class="form-group">
+      <label>Date of Birth: </label>
+      <div class="row">
+        <div class="col-md-6">
+          <input type="date"
+                 class="form-control"
+                 ngModel
+                 name="dob"
+                 required
+                 #dob="ngModel"
+          >
+        </div>
+        <!--<div class="col-md-4">-->
+          <!--<select class="form-control" placeholder="Month"-->
+                  <!--name="month"-->
+                  <!--required-->
+                  <!--ngModel-->
+                  <!--#month="ngModel">-->
+            <!--<option *ngFor="let month of months;let i = index" [value]="month">{{month}}</option>-->
+          <!--</select>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+          <!--<select class="form-control" placeholder="Day"-->
+                  <!--name="day"-->
+                  <!--required-->
+                  <!--ngModel-->
+                  <!--#day="ngModel">-->
+            <!--<option *ngFor="let day of days;let i = index" [value]="day">{{day}}</option>-->
+          <!--</select>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+          <!--<select  class="form-control" placeholder="Year"-->
+                   <!--name="year"-->
+                   <!--required-->
+                   <!--ngModel-->
+                   <!--#year="ngModel">-->
+            <!--<option *ngFor="let year of years;let i = index" [value]="year">{{year}}</option>-->
+          <!--</select>-->
+        <!--</div>-->
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Marital Status: </label>
+      <ul class="first_page_radio" id="customer_status">
+        <li>
+          <label class="radio_custom marital_status" [ngClass]="{'active': maritalStatus.value == 'S'}">
+            <input type="radio"
+                   value="S"
+                   name="maritalStatus"
+                   ngModel
+                   required
+                   #maritalStatus="ngModel">
+            <span class="custom_img2"><img src="../../../../../assets/images/single.png" alt="Single"></span>
+            <span class="human_status2">Single</span>
+          </label>
+        </li>
+        <li>
+          <label class="radio_custom marital_status" [ngClass]="{'active': maritalStatus.value == 'M'}">
+            <input type="radio"
+                   value="M"
+                   name="maritalStatus"
+                   ngModel
+                   required
+                   #maritalStatus="ngModel">
+            <span class="custom_img2"><img src="../../../../../assets/images/married2.png" alt="Married" ></span>
+            <span class="human_status2">Married</span>
+          </label>
+        </li>
+        <li>
+          <label class="radio_custom marital_status" [ngClass]="{'active': maritalStatus.value == 'R'}">
+            <input type="radio"
+                   value="R"
+                   name="maritalStatus"
+                   ngModel
+                   required
+                   #maritalStatus="ngModel">
+            <span class="custom_img2"><img src="../../../../../assets/images/domestic.png" alt="Domestic relationship"></span>
+            <span class="human_status2">Domestic Relationship</span>
+          </label>
+        </li>
+        <li>
+          <label class="radio_custom marital_status" [ngClass]="{'active': maritalStatus.value == 'D'}">
+            <input type="radio" value="D"
+                   name="maritalStatus"
+                   ngModel
+                   required
+                   #maritalStatus="ngModel">
+            <span class="custom_img2"><img src="../../../../../assets/images/divorced.png" alt="Divorced"></span>
+            <span class="human_status2">Divorced</span>
+          </label>
+        </li>
+        <li>
+          <label class="radio_custom marital_status" [ngClass]="{'active': maritalStatus.value == 'W'}">
+            <input type="radio"
+                   value="W"
+                   name="maritalStatus"
+                   ngModel
+                   required
+                   #maritalStatus="ngModel">
+            <span class="custom_img2"><img src="../../../../../assets/images/widowed.png" alt="Widowed"></span>
+            <span class="human_status2">Widowed</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+    <hr>
+    <h2>About Your Spouse</h2>
+    <div *ngIf=" maritalStatus.value == 'M' || maritalStatus.value == 'R'">
+      <div class="form-group" [ngClass]="{'valid': spouseFirstName.valid}">
+        <label>Spouse First Name: </label>
+        <input
+                type="text"
+                class="form-control"
+                ngModel
+                required
+                name='spouseFirstName'
+                #spouseFirstName="ngModel">
+        <i class="fa fa-check" *ngIf="spouseFirstName.valid"></i>
+        <span class="alert-danger"
+              *ngIf="spouseFirstName.errors && (spouseFirstName.dirty || spouseFirstName.touched)">
+                        <p *ngIf="spouseFirstName.errors?.required">First name is required</p>
+        </span>
+      </div>
+      <div class="form-group">
+        <label>Spouse Middle Name: </label>
+        <input type="text" class="form-control"
+               name="spouseMiddleName"
+               ngModel
+               #spouseMiddleName="ngModel">
+      </div>
+      <div class="form-group" [ngClass]="{'valid': spouseLastName.valid}">
+        <label>Spouse Last Name: </label>
+        <input type="text" class="form-control"
+               name="spouseLastName"
+               ngModel
+               required
+               #spouseLastName="ngModel">
+        <i class="fa fa-check" *ngIf="spouseLastName.valid"></i>
+        <span class="alert-danger"
+              *ngIf="spouseLastName.errors && (spouseLastName.dirty || spouseLastName.touched)">
+                        <p *ngIf="spouseLastName.errors?.required">Last name is required</p>
+      </span>
+      </div>
+      <div class="form-group">
+        <label>Spouse Gender: </label>
+        <ul class="radio_ul6">
+          <li>
+            <label class="radio_custom" [ngClass]="{'active': spouseGender.value == 'M'}">
+              <input type="radio"
+                     name="spouseGender"
+                     value="M"
+                     ngModel
+                     required
+                     #spouseGender="ngModel">
+              <span class="human_status">Male</span>
+            </label>
+          </li>
+          <li>
+            <label class="radio_custom" [ngClass]="{'active': spouseGender.value == 'F'}">
+              <input type="radio"
+                     name="spouseGender"
+                     value="F"
+                     ngModel
+                     required
+                     #spouseGender="ngModel">
+              <span class="human_status"> Female</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label>Spouse Date of Birth: </label>
+        <div class="row">
+
+          <div class="col-md-6">
+            <input type="date"
+                   class="form-control"
+                   ngModel
+                   name="spouseDob"
+                   required
+                   #dob="ngModel"
+            >
+          </div>
+          <!--<div class="col-md-4">-->
+            <!--<select class="form-control" placeholder="Month"-->
+                    <!--name="spouseMonth"-->
+                    <!--required-->
+                    <!--ngModel-->
+                    <!--#spouseMonth="ngModel">-->
+              <!--<option *ngFor="let month of months;let i = index" [value]="month">{{month}}</option>-->
+            <!--</select>-->
+          <!--</div>-->
+          <!--<div class="col-md-4">-->
+            <!--<select class="form-control" placeholder="Day"-->
+                    <!--name="spouseDay"-->
+                    <!--required-->
+                    <!--ngModel-->
+                    <!--#spouseDay="ngModel">-->
+              <!--<option *ngFor="let day of days;let i = index" [value]="day">{{day}}</option>-->
+            <!--</select>-->
+          <!--</div>-->
+          <!--<div class="col-md-4">-->
+            <!--<select  class="form-control" placeholder="Year"-->
+                     <!--name="spouseYear"-->
+                     <!--required-->
+                     <!--ngModel-->
+                     <!--#year="ngModel">-->
+              <!--<option *ngFor="let year of years;let i = index" [value]="year">{{year}}</option>-->
+            <!--</select>-->
+          <!--</div>-->
+        </div>
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'valid': phoneNumber.valid}">
+      <label>Phone Number: </label>
+      <input type="text"
+             class="form-control"
+             placeholder="xxx-xxx-xxx"
+             name="phoneNumber"
+             ngModel
+             required
+             #phoneNumber = "ngModel"
+             >
+      <i class="fa fa-check" *ngIf="phoneNumber.valid"></i>
+    </div>
+    <div class="form-group" [ngClass]="{'valid': email.valid}">
+      <label>Email Address: </label>
+      <input type="email"
+             class="form-control"
+             name="email"
+             ngModel
+             required
+             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+             #email = 'ngModel'>
+      <i class="fa fa-check" *ngIf="email.valid"></i>
+      <span class="alert-danger"
+            *ngIf="email.errors && (email.dirty || email.touched)">
+            <p *ngIf="email.errors?.required">Email is required</p>
+            <p *ngIf="email.errors?.pattern">Email is not correct!</p>
+      </span>
+    </div>
+    <div class="form-group" [ngClass]="{'valid': phoneNumber.valid}" >
+      <label>Home Address: </label>
+      <input type="text"
+             class="form-control"
+             placeholder="Address Line 1"
+             required
+             ngModel
+             name="address"
+             #address='ngModel'>
+      <span class="alert-danger"
+            *ngIf="address.errors && (address.dirty || address.touched)">
+                        <p *ngIf="address.errors?.required">Required</p>
+      </span>
+      <div class="row">
+        <div class="col-md-6">
+          <input type="text"
+                 class="form-control"
+                 placeholder="City"
+                 required
+                 ngModel
+                 name="city"
+                 #city='ngModel'>
+          <span class="alert-danger"
+                *ngIf="city.errors && (city.dirty || city.touched)">
+                        <p *ngIf="city.errors?.required">Required</p>
+          </span>
+        </div>
+
+        <div class="col-md-6">
+          <input type="text"
+                 class="form-control"
+                 placeholder="State"
+                 required
+                 ngModel
+                 name="state"
+                 #state='ngModel'>
+          <span class="alert-danger"
+                *ngIf="state.errors && (state.dirty || state.touched)">
+                        <p *ngIf="state.errors?.required">Required</p>
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <input type="text"
+                 class="form-control"
+                 placeholder="Zip Code"
+                 required
+                 ngModel
+                 name="zip"
+                 #zip="ngModel">
+          <span class="alert-danger"
+                *ngIf="zip.errors && (zip.dirty || zip.touched)">
+                        <p *ngIf="zip.errors?.required">Required</p>
+          </span>
+        </div>
+        <div class="col-md-6">
+          <input type="text"
+                 class="form-control"
+                 placeholder="Country"
+                 required
+                 ngModel
+                 name="country"
+                 #country='ngModel'>
+          <span class="alert-danger"
+                *ngIf="country.errors && (country.dirty || country.touched)">
+                        <p *ngIf="country.errors?.required">Required</p>
+          </span>
+        </div>
+      </div>
+      <div class="row" *ngIf="errorMessage">
+        <div class="col-md-12">
+          <div class="alert-danger">
+              {{errorMessage}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-footer">
+      <button class="btn common-button btn-complete" [disabled]="form.invalid">Continue</button>
+    </div>
+  </form>
+</div>

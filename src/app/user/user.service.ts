@@ -25,4 +25,8 @@ export class UserService {
   logout(  ): Observable<any> {
       return this.httpClient.post( environment.API_URL + 'user/sign-out', { });
   }
+
+  editProfile(body): Observable<any> {
+      return this.httpClient.post( environment.API_URL + 'user/edit-profile', body);
+  }
 }

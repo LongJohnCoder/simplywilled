@@ -22,9 +22,9 @@
                 <div class="row">
                     <div class="progress_main">
                         <div class="progres_left">
-                            <span [ngStyle]="{'width': '20%'}"></span>
+                            <span [ngStyle]="{'width': '0%'}"></span>
                         </div>
-                        <span class="progress_right">80% Complete</span>
+                        <span class="progress_right">0% Complete</span>
                     </div>
                 </div>
             </div>
@@ -36,14 +36,14 @@
                         <div class="sidebar-body">
                             <ul>
                                 <li class="active">
-                                    <a href="#">
+                                    <a>
                                         <img src="../../../../assets/images/icon-female-green.png" class="img-responsive green-icon">
                                         <img src="../../../../assets/images/icon-female.png" class="img-responsive white-icon">
-                                        <h1>Elizabeth <br> <span>Jamesson</span></h1>
+                                        <h1>{{loggedInUser.user.name}} <br> <span></span></h1>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a>
                                         <img src="../../../../assets/images/icon-male-green.png" class="img-responsive green-icon">
                                         <img src="../../../../assets/images/icon-male.png" class="img-responsive white-icon">
                                         <h1>Kurt <br> <span>Polensky</span></h1>
@@ -135,7 +135,7 @@
                     <p class="copyright">Copyright © 2017-2018 Keep It Simple, LLC. All Rights Reserved.</p>
                 </div>
                 <div class="col-md-6 text-right">
-                    <p>Shop With Confidence Powered by <a href="#"><img src="../../../../assets/images/paypal-btn.png" class="img-responsive"></a></p>
+                    <p>Shop With Confidence Powered by <a><img src="../../../../assets/images/paypal-btn.png" class="img-responsive"></a></p>
                 </div>
             </div>
         </div>
