@@ -251,7 +251,7 @@ class UserController extends Controller
 
         //$spouseDob = $request->spouseDob;
         $validator = Validator::make($request->all(), [
-            'user_id'          =>  'required|exists:users,id,deleted_at,NULL',
+            'user_id'         =>  'required|exists:users,id,deleted_at,NULL',
             'firstname'       =>  'required|string|max:255',
             'lastname'        =>  'required|string|max:255',
             'gender'          =>  'required|string|in:M,F',
@@ -259,6 +259,7 @@ class UserController extends Controller
             'phone'           =>  'required|digits:10',
             'city'            =>  'required|string',
             'state'           =>  'required|string',
+            'marital_status'  =>  'required|string|in:S,M,R,D,W',
             'zip'             =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/' // (Zip code validation rules REGX (min value 5))
         ]);
 
@@ -486,7 +487,7 @@ class UserController extends Controller
                         ], 400);
                     }
                 } else {
-                  
+
                     //create a new list of children
                     if ($childrenInfoArray) {
 
@@ -860,7 +861,10 @@ class UserController extends Controller
                 'user_id'                 =>  'required|exists:users,id,deleted_at,NULL',
                 'isGuardianMinorChildren' =>  'required|string|in:Yes,No',
                 'isBackUpGurdian'         =>  'required|string|in:Yes,No',
-                'guardian.0.id'           =>  'required|exists:guardianInfo,id,deleted_at,NULL'
+                'guardian.*.id'           =>  'required|exists:guardianInfo,id,deleted_at,NULL',
+                'guardian.*.user_id'      =>  'required|exists:users,id,deleted_at,NULL',
+                'guardian.*.relationship_with' => 'required|string|max:255',
+
             ]);
             // validation for the user data
             if ($validator->fails()) {
