@@ -240,6 +240,8 @@ class UserController extends Controller
         $city       = $request->city;
         $state      = $request->state;
         $zip        = $request->zip;
+        $email      = $request->email;
+        $partnerEmail= $request->partner_email;
         // if $maritalStatus =="M" || "R"   Create another entry in the user table and add spose info there
         $partnerFirstName   = $request->partner_firstname;
         $partnerMiddleName  = $request->partner_middlename;
@@ -260,7 +262,8 @@ class UserController extends Controller
             'city'            =>  'required|string',
             'state'           =>  'required|string',
             'marital_status'  =>  'required|string|in:S,M,R,D,W',
-            'zip'             =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/' // (Zip code validation rules REGX (min value 5))
+            'zip'             =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/', // (Zip code validation rules REGX (min value 5)),
+            'email'           =>  'nullable|email'
         ]);
 
         if($validator->fails()) {
@@ -284,6 +287,7 @@ class UserController extends Controller
         $checkForExistUser->gender          = $gender; // M || F
         $checkForExistUser->dob             = $dob; // datetimeFormat
         $checkForExistUser->marital_status  = $maritalStatus;
+        $checkForExistUser->email           = $email;
         if ($maritalStatus == "M" || $maritalStatus == "R") {
             if($maritalStatus == "R") {
               $validator = Validator::make($request->all(), [
@@ -306,6 +310,7 @@ class UserController extends Controller
                 'partner_firstname' =>  'required',
                 'partner_lastname'  =>  'required',
                 'partner_gender'    =>  'required|string|in:M,F',
+                'partner_email'     =>  'nullable|email'
                 //'spouseDob'       =>  'required | date_format:"Y-m-d"',
             ]);
             if ($validator->fails()) {
@@ -323,6 +328,7 @@ class UserController extends Controller
             $checkForExistUser->partner_middlename  = $partnerMiddleName;
             $checkForExistUser->legal_married       = $legalMarried;
             $checkForExistUser->registered_partner  = $registeredPartner;
+            $checkForExistUser->partner_email       = $partnerEmail;
             // update the user from user table
             $this->updatePartner($userId, $partnerFirstName);
         }
@@ -358,17 +364,16 @@ class UserController extends Controller
                 $checkForUserPartner = User::where('parent_id', $userId)->first();
                 if ($checkForUserPartner) {
                     // update the partner
-                    $checkForUserPartner->name = $spouseFirstName;
+                    $checkForUserPartner->name  = $spouseFirstName;
                     $checkForUserPartner->save();
                 } else {
                     // create a partner
                     $createUserPartner = new User;
                     $createUserPartner->parent_id = $userId;
-                    $createUserPartner->name = $spouseFirstName;
+                    $createUserPartner->name  = $spouseFirstName;
                     $createUserPartner->save();
                 }
             } else {
-
                 return response()->json([
                     'status' => false,
                     'message' => 'Something went wrong',
@@ -376,7 +381,6 @@ class UserController extends Controller
                 ], 400);
             }
         } catch (Exception $e) {
-
             return response()->json([
                 'status' => false,
                 'message' => $e->getMessage(),
@@ -861,10 +865,28 @@ class UserController extends Controller
                 'user_id'                 =>  'required|exists:users,id,deleted_at,NULL',
                 'isGuardianMinorChildren' =>  'required|string|in:Yes,No',
                 'isBackUpGurdian'         =>  'required|string|in:Yes,No',
-                'guardian.*.id'           =>  'required|exists:guardianInfo,id,deleted_at,NULL',
-                'guardian.*.user_id'      =>  'required|exists:users,id,deleted_at,NULL',
-                'guardian.*.relationship_with' => 'required|string|max:255',
 
+                // //validation for normal guardian
+                // 'guardian.*.id'           =>  'required|exists:guardianInfo,id,deleted_at,NULL',
+                // 'guardian.*.user_id'      =>  'required|exists:users,id,deleted_at,NULL',
+                // 'guardian.*.relationship_with' => 'required|string|max:255',
+                // 'guardian.*.address'      =>  'required|string',
+                // 'guardian.*.country'      =>  'required|string',
+                // 'guardian.*.state'        =>  'required|string',
+                // 'guardian.*.city'         =>  'required|string',
+                // 'guardian.*.zip'          =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
+                // 'guardian.*.email_notification' =>  'required|numeric|integer|between:1,0',
+                //
+                // //validation for backup guardian
+                // 'backupGuardian.*.id'           =>  'required|exists:guardianInfo,id,deleted_at,NULL',
+                // 'backupGuardian.*.user_id'      =>  'required|exists:users,id,deleted_at,NULL',
+                // 'backupGuardian.*.relationship_with' => 'required|string|max:255',
+                // 'backupGuardian.*.address'      =>  'required|string',
+                // 'backupGuardian.*.country'      =>  'required|string',
+                // 'backupGuardian.*.state'        =>  'required|string',
+                // 'backupGuardian.*.city'         =>  'required|string',
+                // 'backupGuardian.*.zip'          =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
+                // 'backupGuardian.*.email_notification' =>  'required|numeric|integer|between:1,0',
             ]);
             // validation for the user data
             if ($validator->fails()) {
@@ -874,6 +896,64 @@ class UserController extends Controller
                     'data' => []
                 ], 400);
             }
+
+            $userId                   = $request->user_id;
+            $isGuardianMinorChildren  = $request->isGuardianMinorChildren;   // 1->yes 0->no
+            $isBackUpGurdian          = $request->is_backup; // 1->yes 0->no (default is No)
+
+            if($isGuardianMinorChildren == 'Yes') {
+
+
+              if(isset($request->guardian[0])) {
+                $guardian = $request->guardian[0];
+
+                $validator = Validator::make($guardian, [
+                    //validation for normal guardian
+                    //'guardian.*.id'           =>  'required|exists:guardianInfo,id,deleted_at,NULL',
+                    'user_id'      =>  'required|exists:users,id,deleted_at,NULL',
+                    'relationship_with' => 'required|string|max:255',
+                    'address'      =>  'required|string',
+                    'country'      =>  'required|string',
+                    'state'        =>  'required|string',
+                    'city'         =>  'required|string',
+                    'zip'          =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
+                    'email_notification' =>  'required|numeric|integer|between:1,0',
+                    'fullname'     =>  'required|string'
+                ]);
+
+
+                if ($validator->fails()) {
+                    return response()->json([
+                        'status' => false,
+                        'message' => $validator->errors(),
+                        'data' => []
+                    ], 400);
+                }
+              } else {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'guardian array cannot be null',
+                    'data' => []
+                ], 400);
+              }
+
+              // $guardianFullName         = $request->guardian[0]['fullname'];
+              // $relationShip             = $request->relationship_with;
+              // $address                  = $request->address;
+              // $city                     = $request->city;
+              // $state                    = $request->state;
+              // $zip                      = $request->zip;
+              // $country                  = $request->country;
+              // $isInformRepresentive     = $request->email_notification; // 1->yes 0->No (default Yes)
+              // $emailRepresentive        = $request->email;
+
+            }
+
+
+
+
+
+
             dd('done');
         } catch (\Exception $e) {
           return response()->json([
