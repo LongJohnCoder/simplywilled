@@ -1,41 +1,67 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import * as moment from  'moment';
-import * as _ from 'lodash';
+import * as moment from 'moment';
 import {UserService} from '../../../user.service';
 import {Router} from '@angular/router';
+import {UserAuthService} from '../../../user-auth/user-auth.service';
+
+
 @Component({
   selector: 'app-tell-us-about-yourself',
   templateUrl: './tell-us-about-yourself.component.html',
   styleUrls: ['./tell-us-about-yourself.component.css']
 })
 export class TellUsAboutYourselfComponent implements OnInit {
-  days: string[];
+  days: string[] = [];
   months: string[];
-  years: string[];
+  years: string[] = [];
   errorMessage: string;
+  user: any;
+  today: any;
+  userInfo: any;
 
 
-  constructor(private userService: UserService,private router: Router) {
-    this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '11', '12'];
-    this.days = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '11', '12'];
-    this.years = ['2018', '2017'];
+  constructor(
+      private userService: UserService,
+      private router: Router,
+      private authService: UserAuthService
+  ) {
+      this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '11', '12'];
 
   }
   ngOnInit() {
+    this.user = this.authService.getUser();
+    this.userService.getUserDetails(this.user.id).subscribe(
+        (response: any) => {
+          console.log(response.data[0].data.userInfo);
+          this.userInfo = response.data[0].data.userInfo;
+          let dobData = this.userInfo.dob.split('-');
+          this.userInfo.year = dobData[0];
+          this.userInfo.month = dobData[1];
+          console.log(dobData);
+        },
+        (error: any) => {
+          console.log(error);
+        }
+    );
+    this.today = new Date ;
+    const currentYear = moment(this.today).year();
+    for (let i = currentYear; i > (currentYear - 101) ; i--) {
+      this.years.push(String(i));
+    }
+    for (let i = 1; i <= 31 ; i++) {
+      let day = (i / 10) < 1 ? '0' + String(i) : String(i);
+      this.days.push(day);
+    }
   }
 
   onSubmit(form: NgForm) {
-    console.log(form.value);
+    console.log(form);
     const formData = form.value;
-    // formData.dob = formData.year + '-' + formData.month + '-' + formData.day ;
-    // formData.spouseDob = formData.spouseYear + '-' + formData.spouseMonth + '-' + formData.spouseDay ;
-    const user = JSON.parse(localStorage.getItem('loggedInUser'));
-    formData.userId = user.user.id ;
+    formData.dob = formData.year + '-' + formData.month + '-' + formData.day ;
+    formData.partner_dob = formData.spouseYear + '-' + formData.spouseMonth + '-' + formData.spouseDay ;
+    formData.user_id = this.user.id ;
     formData.step = 1;
-    //formData.dob = moment(formData.dob).format('yyyy-mm-dd');
-    //formData.spouseDob = moment(formData.spouseDob).format('yyyy-mm-dd');
-    console.log(formData);
     this.userService.editProfile(formData).subscribe(
         (data: any) =>  {
           console.log(data);
