@@ -246,17 +246,21 @@ class UserController extends Controller
         $partnerMiddleName  = $request->partner_middlename;
         $partnerLastName    = $request->partner_lastname;
         $partnerGender      = $request->partner_gender;
+
+        $registeredPartner  = $request->registered_partner;
+        $legalMarried       = $request->legal_married;
+
         //$spouseDob = $request->spouseDob;
 
         $validator = Validator::make($request->all(), [
             'userId'          =>  'required|exists:users,id,deleted_at,NULL',
-            'firstName'       =>  'required',
-            'lastName'        =>  'required',
-            'gender'          =>  'required|string',
-            'dob'             =>  'required | date_format:"Y-m-d"',
-            'phoneNumber'     =>  'required',
-            'city'            =>  'required',
-            'state'           =>  'required',
+            'firstName'       =>  'required|string|max:255',
+            'lastName'        =>  'required|string|max:255',
+            'gender'          =>  'required|string|in:M,F',
+            'dob'             =>  'required|date_format:"Y-m-d"',
+            'phoneNumber'     =>  'required|numeric|integer|min:10|max:13',
+            'city'            =>  'required|string',
+            'state'           =>  'required|string',
             'zip'             =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/', // (Zip code validation rules REGX (min value 5))
             // 'spouseFirstName' =>  'required',
             // 'spouseLastName'  =>  'required',
@@ -288,10 +292,29 @@ class UserController extends Controller
         $checkForExistUser->marital_status = $maritalStatus;
         if ($maritalStatus == "M" || $maritalStatus == "R") {
 
+            if($maritalStatus == "R") {
+              $validator = Validator::make($request->all(), [
+                  'registered_partner'  =>  'required|numeric|integer|between:0,1',
+                  'legal_married'       =>  'required|numeric|integer|between:0,1'
+                  //'spouseDob'       =>  'required | date_format:"Y-m-d"',
+              ]);
+
+              if ($validator->fails()) {
+                  return response()->json([
+                      'status' => false,
+                      'message' => $validator->errors(),
+                      'data' => []
+                  ], 400);
+              } // validation for data
+
+
+              //if the partner is legally married oviously the partner is registered partner
+              if($legalMarried == 1) $registeredPartner = 1;
+            }
             $validator = Validator::make($request->all(), [
                 'partner_firstname' =>  'required',
                 'partner_lastname'  =>  'required',
-                'partner_gender'    =>  'required',
+                'partner_gender'    =>  'required|string|in:M,F',
                 //'spouseDob'       =>  'required | date_format:"Y-m-d"',
             ]);
 
@@ -303,11 +326,14 @@ class UserController extends Controller
                 ], 400);
             } // validation for data
 
+
             $checkForExistUser->partner_firstname   = $partnerFirstName;
             $checkForExistUser->partner_fullname    = $partnerFirstName . ' ' . $partnerMiddleName . ' ' . $partnerLastName;
             $checkForExistUser->partner_gender      = $partnerGender; // M || F
             $checkForExistUser->partner_lastname    = $partnerLastName;
             $checkForExistUser->partner_middlename  = $partnerMiddleName;
+            $checkForExistUser->legal_married       = $legalMarried;
+            $checkForExistUser->registered_partner  = $registeredPartner;  
             // update the user from user table
             $this->updatePartner($userId, $partnerFirstName);
         }
@@ -318,18 +344,17 @@ class UserController extends Controller
         $checkForExistUser->zip = $zip;
         if ($checkForExistUser->save()) {
             return response()->json([
-                'status' => true,
+                'status'  => true,
                 'message' => 'User profile updated successfully',
-                'data' => ['userDetails' => $checkForExistUser]
+                'data'    => ['userDetails' => $checkForExistUser]
             ], 200);
         } else {
             return response()->json([
-                'status' => false,
+                'status'  => false,
                 'message' => 'User profile not updated !',
-                'data' => []
+                'data'    => []
             ], 400);
         }
-
     }
 
     /*
