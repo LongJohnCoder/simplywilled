@@ -229,24 +229,24 @@ class UserController extends Controller
      * */
     public function updateTellUsAboutYou($request)
     {
-        $userId = $request->userId;
-        $firstName = $request->firstName;
+        $userId     = $request->userId;
+        $firstName  = $request->firstName;
         $middleName = $request->middleName;
-        $lastName = $request->lastName;
-        $gender = $request->gender; // M || F
-        $dob = $request->dob;
-        $maritalStatus = $request->maritalStatus;
-        $phoneNumber = $request->phoneNumber;
-        $address = $request->address;
-        $city = $request->city;
-        $state = $request->state;
-        $zip = $request->zip;
+        $lastName   = $request->lastName;
+        $gender     = $request->gender; // M || F
+        $dob        = $request->dob;
+        $maritalStatus  = $request->maritalStatus;
+        $phoneNumber    = $request->phoneNumber;
+        $address    = $request->address;
+        $city       = $request->city;
+        $state      = $request->state;
+        $zip        = $request->zip;
         // if $maritalStatus =="M" || "R"   Create another entry in the user table and add spose info there
-        $spouseFirstName = $request->spouseFirstName;
-        $spouseMiddleName = $request->spouseMiddleName;
-        $spouseLastName = $request->spouseLastName;
-        $sposeGender = $request->sposeGender;
-        $spouseDob = $request->spouseDob;
+        $partnerFirstName   = $request->partner_firstname;
+        $partnerMiddleName  = $request->partner_middlename;
+        $partnerLastName    = $request->partner_lastname;
+        $partnerGender      = $request->partner_gender;
+        //$spouseDob = $request->spouseDob;
 
         $validator = Validator::make($request->all(), [
             'userId'          =>  'required|exists:users,id,deleted_at,NULL',
@@ -274,116 +274,62 @@ class UserController extends Controller
         } // validation for data
 
         $checkForExistUser = TellUsAboutYou::where('user_id', $userId)->first();
-        if ($checkForExistUser) {
-            // update TellUsAboutYou
-            $checkForExistUser->firstname = $firstName;
-            $checkForExistUser->fullname = $firstName . ' ' . $middleName . ' ' . $lastName;
-            $checkForExistUser->lastname = $lastName;
-            $checkForExistUser->middlename = $middleName;
-            $checkForExistUser->gender = $gender; // M || F
-            $checkForExistUser->dob = $dob; // datetimeFormat
-            $checkForExistUser->marital_status = $maritalStatus;
-            if ($maritalStatus == "M" || $maritalStatus == "R") {
-
-                $validator = Validator::make($request->all(), [
-                    'spouseFirstName' =>  'required',
-                    'spouseLastName'  =>  'required',
-                    'spouseGender'    =>  'required',
-                    'spouseDob'       =>  'required | date_format:"Y-m-d"',
-                ]);
-
-                if ($validator->fails()) {
-                    return response()->json([
-                        'status' => false,
-                        'message' => $validator->errors(),
-                        'data' => []
-                    ], 400);
-                } // validation for data
-
-                $checkForExistUser->partner_firstname = $spouseFirstName;
-                $checkForExistUser->partner_fullname = $spouseFirstName . ' ' . $spouseMiddleName . ' ' . $spouseLastName;
-                $checkForExistUser->partner_gender = $sposeGender; // M || F
-                $checkForExistUser->partner_lastname = $spouseLastName;
-                $checkForExistUser->partner_middlename = $spouseMiddleName;
-                // update the user from user table
-                $this->updatePartner($userId, $spouseFirstName);
-            }
-            $checkForExistUser->phone = $phoneNumber;
-            $checkForExistUser->address = $address;
-            $checkForExistUser->city = $city;
-            $checkForExistUser->state = $state;
-            $checkForExistUser->zip = $zip;
-            if ($checkForExistUser->save()) {
-                return response()->json([
-                    'status' => true,
-                    'message' => 'User profile updated successfully',
-                    'data' => ['userDetails' => $checkForExistUser]
-                ], 200);
-            } else {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'User profile not updated !',
-                    'data' => []
-                ], 400);
-            }
-        } else {
-            // create TellUsAboutYou
-            $createUser = new TellUsAboutYou;
-            $createUser->user_id = $userId;
-            $createUser->firstname = $firstName;
-            $createUser->fullname = $firstName . ' ' . $middleName . ' ' . $lastName;
-            $createUser->lastname = $lastName;
-            $createUser->middlename = $middleName;
-            $createUser->gender = $gender; // M || F
-            $createUser->dob = $dob; // datetimeFormat
-            $createUser->marital_status = $maritalStatus;
-            if ($maritalStatus == "M" || $maritalStatus == "R") {
-
-              $validator = Validator::make($request->all(), [
-                  'spouseFirstName' =>  'required',
-                  'spouseLastName'  =>  'required',
-                  'spouseGender'    =>  'required',
-                  'spouseDob'       =>  'required | date_format:"Y-m-d"',
-              ]);
-
-              if ($validator->fails()) {
-                  return response()->json([
-                      'status' => false,
-                      'message' => $validator->errors(),
-                      'data' => []
-                  ], 400);
-              } // validation for data
-
-
-                $createUser->partner_firstname = $spouseFirstName;
-                $createUser->partner_fullname = $spouseFirstName . ' ' . $spouseMiddleName . ' ' . $spouseLastName;
-                $createUser->partner_gender = $sposeGender; // M || F
-                $createUser->partner_lastname = $spouseLastName;
-                $createUser->partner_middlename = $spouseMiddleName;
-                //create a new user entry in user table
-                $this->updatePartner($userId, $spouseFirstName);
-            }
-            $createUser->phone = $phoneNumber;
-            $createUser->address = $address;
-            $createUser->city = $city;
-            $createUser->state = $state;
-            $createUser->zip = $zip;
-            if ($createUser->save()) {
-
-                return response()->json([
-                    'status' => true,
-                    'message' => 'User Profile created successfully',
-                    'data' => ['userDetails' => $createUser]
-                ], 200);
-            } else {
-
-                return response()->json([
-                    'status' => false,
-                    'message' => 'User profile not created !',
-                    'data' => []
-                ], 400);
-            }
+        if(!$checkForExistUser) {
+          $checkForExistUser = new TellUsAboutYou;
         }
+
+        // update TellUsAboutYou
+        $checkForExistUser->firstname = $firstName;
+        $checkForExistUser->fullname = $firstName . ' ' . $middleName . ' ' . $lastName;
+        $checkForExistUser->lastname = $lastName;
+        $checkForExistUser->middlename = $middleName;
+        $checkForExistUser->gender = $gender; // M || F
+        $checkForExistUser->dob = $dob; // datetimeFormat
+        $checkForExistUser->marital_status = $maritalStatus;
+        if ($maritalStatus == "M" || $maritalStatus == "R") {
+
+            $validator = Validator::make($request->all(), [
+                'partner_firstname' =>  'required',
+                'partner_lastname'  =>  'required',
+                'partner_gender'    =>  'required',
+                //'spouseDob'       =>  'required | date_format:"Y-m-d"',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => $validator->errors(),
+                    'data' => []
+                ], 400);
+            } // validation for data
+
+            $checkForExistUser->partner_firstname   = $partnerFirstName;
+            $checkForExistUser->partner_fullname    = $partnerFirstName . ' ' . $partnerMiddleName . ' ' . $partnerLastName;
+            $checkForExistUser->partner_gender      = $partnerGender; // M || F
+            $checkForExistUser->partner_lastname    = $partnerLastName;
+            $checkForExistUser->partner_middlename  = $partnerMiddleName;
+            // update the user from user table
+            $this->updatePartner($userId, $partnerFirstName);
+        }
+        $checkForExistUser->phone = $phoneNumber;
+        $checkForExistUser->address = $address;
+        $checkForExistUser->city = $city;
+        $checkForExistUser->state = $state;
+        $checkForExistUser->zip = $zip;
+        if ($checkForExistUser->save()) {
+            return response()->json([
+                'status' => true,
+                'message' => 'User profile updated successfully',
+                'data' => ['userDetails' => $checkForExistUser]
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'User profile not updated !',
+                'data' => []
+            ], 400);
+        }
+
     }
 
     /*
