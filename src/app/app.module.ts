@@ -28,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFontAwesomeModule,
     BsDropdownModule.forRoot(),
     TooltipModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
   ],
   providers: [
     AuthGuard,

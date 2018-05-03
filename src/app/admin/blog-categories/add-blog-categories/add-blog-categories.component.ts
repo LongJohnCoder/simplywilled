@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {DashboardService} from "../../dashboard.service";
 import {BlogService} from "../../blog.service";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-add-blog-categories',
@@ -11,26 +12,35 @@ import {BlogService} from "../../blog.service";
 export class AddBlogCategoriesComponent implements OnInit {
 
     createBlogCategoryMessage:string;
+    editMode:boolean = false;
 
-  constructor(private BlogService : BlogService,) { }
+    blogCategoryData = {
+        id: 0,
+        name: '',
+    };
 
-  ngOnInit() {}
+  constructor(private BlogService : BlogService, private router: Router, private route: ActivatedRoute,) { }
 
-    onSubmit( createBlogCategory : NgForm ){
+  ngOnInit() {
+      const id = +this.route.snapshot.paramMap.get('id');
+      if(id != 0){
+          this.editMode = true;
+          this.getCategory();
+      }
+  }
 
+    onSubmit(){
+    }
+
+    add(){
         const createBlogCategoryBody = {
-            categoryName : createBlogCategory.value.categoryName,
-
+            categoryName : this.blogCategoryData.name,
         }
-
-        console.log(createBlogCategoryBody)
-
         this.BlogService.createBlogCategory(createBlogCategoryBody).subscribe(
             (response:any) => {
-                console.log(response);
-                console.log('craeteBlogCategory',response.data);
-                if(response.status == 'true'){
-                   this.createBlogCategoryMessage = response.message;
+                if(response.status = 'true'){
+                    this.createBlogCategoryMessage = response.message;
+                    this.router.navigate(['admin-panel/blog-categories']);
                 }else{
                     this.createBlogCategoryMessage = response.message;
                 }
@@ -38,4 +48,31 @@ export class AddBlogCategoriesComponent implements OnInit {
         )
     }
 
+    edit(){
+        const updateBlogCategoryBody = {
+            categoryName : this.blogCategoryData.name,
+            categoryId : this.blogCategoryData.id,
+
+        }
+        this.BlogService.updateBlogCategory(updateBlogCategoryBody).subscribe(
+            (response:any) => {
+                if(response.status = 'true'){
+                    this.createBlogCategoryMessage = response.message;
+                    this.router.navigate(['admin-panel/blog-categories']);
+                }else{
+                    this.createBlogCategoryMessage = response.message;
+                }
+            }
+        )
+    }
+
+    getCategory(){
+         const id = +this.route.snapshot.paramMap.get('id');
+        this.BlogService.getCategory(id).subscribe(
+            (data:any)=> {
+                this.blogCategoryData.id = data.data.categoryDetails.id;
+                this.blogCategoryData.name = data.data.categoryDetails.name;
+            }
+        )
+    }
 }

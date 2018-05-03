@@ -64,7 +64,9 @@
                         <div class="panel-body">
                             <div class="checkbox" *ngFor="let category of categoryData">
                                 <label>
-                                    <input class="blogCh" type="checkbox" value="{{category.id}}" name="blogCategory[]" ngModel #blogTcat1="ngModel" (ngModelChange)="selectedValue(category.id, $event)"> {{category.name}}
+                                    <input class="blogCh" type="checkbox" value="{{category.id}}" name="blogCategory[]"
+                                           ngModel #blogTcat1="ngModel"
+                                           (ngModelChange)="selectedValue(category.id, $event)"> {{category.name}}
                                 </label>
                             </div>
                         </div>
@@ -75,14 +77,9 @@
                         </div>
                         <div class="panel-body">
                             <div class="input-group">
-                            <span class="input-group-btn">
-                            <a class="btn btn-primary">
-                              <i class="fa fa-picture-o"></i> Choose
-                            </a>
-                            </span>
-                                <input class="form-control" type="text">
+                                <input type="file" class="form-control input-flat" id="blogImage" required ngModel
+                                       #blogImage="ngModel" name="blogImage" (change)="handleImageUpload($event)">
                             </div>
-                            <img src="">
                         </div>
                     </div>
                     <div class="panel panel-bordered panel-warning">
@@ -107,11 +104,10 @@
                         </div>
                     </div>
                     <button type="submit">Create Blog</button>
+                    <p> {{createBlogMessage}} </p>
                 </div>
             </div>
         </form>
-
-
         <footer><p>All right reserved. Developed By <a href="#">TNI</a></p></footer>
     </div>
     <!-- /. PAGE INNER  -->

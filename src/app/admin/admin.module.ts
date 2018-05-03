@@ -24,9 +24,9 @@ import { AddBlogComponent } from './add-blog/add-blog.component';
 import { ChangePasswordService } from './auth/change-password/change-password.service';
 import { AdminLoginService } from './auth/admin-login/admin-login.service';
 import { AddBlogCategoriesComponent } from './blog-categories/add-blog-categories/add-blog-categories.component';
-import {BlogService} from "./blog.service";
-
-
+import { BlogService } from "./blog.service";
+import { RouterModule } from '@angular/router';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 
 @NgModule({
@@ -37,8 +37,11 @@ import {BlogService} from "./blog.service";
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    FormsModule
+    FormsModule,
     // CKEditorModule,
+    RouterModule,
+    AlertModule.forRoot(),
+
   ],
   declarations: [
     AdminComponent,

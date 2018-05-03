@@ -28,13 +28,13 @@ export class BlogCategoriesComponent implements OnInit {
             (data:any)=> {
                 this.blogCategoryList = data.data.categoryDetails;
                 this.blogCategoryCount = this.blogCategoryList.length;
-                console.log('blogCategorylist',this.blogCategoryList)
+                // console.log('blogCategorylist',this.blogCategoryList)
             }
         )
     }
 
     public openModal(template :  TemplateRef<any>, index){
-        console.log(index);
+        // console.log(index);
         this.modalRef = this.modalService.show(template);
         this.blogCategoryData = this.blogCategoryList[index];
         this.delBlogCategoryId = this.blogCategoryList[index].id;
