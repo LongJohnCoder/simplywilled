@@ -15,5 +15,17 @@ export class BlogService {
     }
 
 
+    getCategory(id: number): Observable<any> {
+        const url = `${environment.API_URL+'admin-panel/view-category'}/${id}`;
+        return this.httpClient.get(url);
+    }
+
+
+
+    updateBlogCategory(updateBlogCategoryBody):Observable<any>{
+        return this.httpClient.post(environment.API_URL + 'admin-panel/edit-category', updateBlogCategoryBody);
+    }
+
+
 
 }

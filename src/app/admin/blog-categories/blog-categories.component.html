@@ -55,7 +55,7 @@
                                     </thead>
                                     <tbody>
                                     <tr *ngFor="let blogCategory of blogCategoryList; let i = index">
-                                        <td class="sorting_1">{{blogCategory.id}}</td>
+                                        <td class="sorting_1">{{i + 1}}</td>
                                         <td>{{blogCategory.name}}</td>
                                         <td>{{blogCategory.slug}}</td>
                                         <td>
@@ -64,7 +64,7 @@
                                         <td>{{blogCategory.created_at}}</td>
                                         <td class="text-center ">
                                             <button type="button" (click)="openModal(viewBlogCategory, i)" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i> View</button>
-                                            <a href="" class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                                            <a routerLink="/admin-panel/edit-blog-category/{{blogCategory.id}}" class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
                                             <a class="btn btn-danger deleteAdminOption" (click)="openModal(deleteBlogCategory, i)">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                                 Delete
@@ -74,7 +74,9 @@
 
 
                                     </tbody>
-                                </table><div class="row"><div class="col-sm-6"><div class="dataTables_info" id="dataTable_info" role="alert" aria-live="polite" aria-relevant="all">Showing 1 to 10 of 70 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate"><ul class="pagination"><li class="paginate_button previous disabled" aria-controls="dataTable" tabindex="0" id="dataTable_previous"><a href="#">Previous</a></li><li class="paginate_button active" aria-controls="dataTable" tabindex="0"><a href="#">1</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">2</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">3</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">4</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">5</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">6</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">7</a></li><li class="paginate_button next" aria-controls="dataTable" tabindex="0" id="dataTable_next"><a href="#">Next</a></li></ul></div></div></div></div>
+                                </table>
+                                <!--<div class="row"><div class="col-sm-6"><div class="dataTables_info" id="dataTable_info" role="alert" aria-live="polite" aria-relevant="all">Showing 1 to 10 of 70 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate"><ul class="pagination"><li class="paginate_button previous disabled" aria-controls="dataTable" tabindex="0" id="dataTable_previous"><a href="#">Previous</a></li><li class="paginate_button active" aria-controls="dataTable" tabindex="0"><a href="#">1</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">2</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">3</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">4</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">5</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">6</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">7</a></li><li class="paginate_button next" aria-controls="dataTable" tabindex="0" id="dataTable_next"><a href="#">Next</a></li></ul></div></div></div>-->
+                            </div>
                         </div>
                     </div>
                 </div>

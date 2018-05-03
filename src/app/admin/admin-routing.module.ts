@@ -20,6 +20,7 @@ const routes: Routes = [
     { path: 'blog-categories', canActivate: [ AuthGuard ], pathMatch: 'full', component: BlogCategoriesComponent},
     { path: 'add-blog-category', canActivate: [ AuthGuard ], pathMatch: 'full', component: AddBlogCategoriesComponent},
     { path: 'blog-comments', canActivate: [ AuthGuard ], pathMatch: 'full', component: BlogCommentsComponent},
+    { path: 'edit-blog-category/:id', canActivate: [ AuthGuard ], pathMatch: 'full', component: AddBlogCategoriesComponent},
     
 ];
 

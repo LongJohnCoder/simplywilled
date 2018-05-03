@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Response } from '@angular/http';
+import { Router } from "@angular/router";
 
 import { DashboardService } from './../dashboard.service'
 
@@ -16,8 +17,13 @@ export class AddBlogComponent implements OnInit {
 
     categoryData:any[] = [];
     categoryIdCollection: any[] = [];
+    blogImage: any;
+    blogFeatured:any;
+    createBlogMessage:string;
+
   constructor(
     private dashService : DashboardService,
+    private router: Router,
   ) { }
 
   // public editorValue: string = '';
@@ -34,24 +40,29 @@ export class AddBlogComponent implements OnInit {
 
   onSubmit( createBlog : NgForm ){
 
-     console.log(createBlog.value)
+      this.blogFeatured = (createBlog.value.blogFeatured==true)?1:0;
 
-    const createBlogBody = {
-      blogTitle : createBlog.value.title,
-      blogBody : createBlog.value.body,
-      blogMetaDescription : createBlog.value.blogMeta,
-      blogStatus : createBlog.value.status,
-      blogFeatured : (createBlog.value.blogFeatured==true)?1:0,
-      blogMetaKeyword : createBlog.value.blogMetaKey,
-      blogSeoTitle : createBlog.value.blogSeoTitle,
-      blogCategorys : this.categoryIdCollection
-    }
+      const createBlogBody = new FormData();
+      createBlogBody.append('blogTitle', createBlog.value.title);
+      createBlogBody.append('blogBody', createBlog.value.body);
+      createBlogBody.append('blogMetaDescription', createBlog.value.blogMeta);
+      createBlogBody.append('blogStatus', createBlog.value.status);
+      createBlogBody.append('blogFeatured', this.blogFeatured);
+      createBlogBody.append('blogMetaKeyword', createBlog.value.blogMetaKey);
+      createBlogBody.append('blogCategorys', JSON.stringify(this.categoryIdCollection));
+      createBlogBody.append('blogImage', this.blogImage);
+
 
      console.log(createBlogBody)
 
     this.dashService.createBlog(createBlogBody).subscribe(
       (response:any) => {
-        console.log('craeteBlog',response.data);
+          if(response.status == 'true'){
+              this.createBlogMessage = response.message;
+              this.router.navigate(['/admin-panel/blogs']);
+          }else{
+              this.createBlogMessage = response.message;
+          }
       }
     )
 
@@ -70,8 +81,15 @@ export class AddBlogComponent implements OnInit {
             // its unchecked then pop
             this.categoryIdCollection = this.categoryIdCollection.filter(item => item !== categoryId);
         }
-      //
-      // console.log(this.categoryIdCollection);
+    }
+
+    /**
+     * this function used for to get the selected blog image
+     * @param {file} blogImage
+     */
+    handleImageUpload(event): void {
+        this.blogImage = <File>event.target.files[0];
+        console.log(this.blogImage);
     }
     populateBlogCategorysData(){
         this.dashService.blogCategoryList().subscribe(
