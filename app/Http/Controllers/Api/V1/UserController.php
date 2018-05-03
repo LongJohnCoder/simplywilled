@@ -906,22 +906,20 @@ class UserController extends Controller
 
               if(isset($request->guardian[0])) {
                 $guardian = $request->guardian[0];
-
+                //dd($guardian);
                 $validator = Validator::make($guardian, [
                     //validation for normal guardian
-                    //'guardian.*.id'           =>  'required|exists:guardianInfo,id,deleted_at,NULL',
+                    //'id'           =>  'nullable|exists:guardianInfo,id,deleted_at,NULL',
                     'user_id'      =>  'required|exists:users,id,deleted_at,NULL',
+                    'fullname'     =>  'required|string',
                     'relationship_with' => 'required|string|max:255',
                     'address'      =>  'required|string',
                     'country'      =>  'required|string',
                     'state'        =>  'required|string',
                     'city'         =>  'required|string',
+                    'email_notification' => 'required|numeric|between:0,1|integer',
                     'zip'          =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
-                    'email_notification' =>  'required|numeric|integer|between:1,0',
-                    'fullname'     =>  'required|string'
                 ]);
-
-
                 if ($validator->fails()) {
                     return response()->json([
                         'status' => false,
@@ -929,6 +927,52 @@ class UserController extends Controller
                         'data' => []
                     ], 400);
                 }
+
+
+                if(isset($guardian['email_notification'])) {
+                  $guardian['email_notification'] = (string)$guardian['email_notification'];
+                  //validation for guardian email
+                  $validator = Validator::make($guardian, [
+                      'email' =>  'required|email'
+                  ]);
+                  if ($validator->fails()) {
+                      return response()->json([
+                          'status' => false,
+                          'message' => $validator->errors(),
+                          'data' => []
+                      ], 400);
+                  }
+                }
+                //dd(13131);
+
+                $checkForExistUser = TellUsAboutYou::where('user_id', $userId)->first();
+                if ($checkForExistUser) {
+
+                  $checkForExistUser->guardian_minor_children = $isGuardianMinorChildren == 'Yes' ? "1" : "0";
+                  $checkForExistUser->save();
+
+                  // $checkForExistGuardianInfo = GuardianInfo::where('user_id', $userId)->where('is_backup', '=', '0')->first();   // find and Update normal guardian data
+                  // if(!$checkForExistGuardianInfo) {
+                  //   $checkForExistGuardianInfo = new GuardianInfo;
+                  // }
+                  //GuardianInfo::firstOrNew($guardian);
+
+                  GuardianInfo::updateOrCreate(['user_id'=>$guardian['user_id']],$guardian);
+                  return response()->json([
+                      'status'  => true,
+                      'message' => 'User details updated',
+                      'data'    => []
+                  ], 200);
+                } else {
+                  return response()->json([
+                      'status' => false,
+                      'message' => 'User details not updated',
+                      'data' => []
+                  ], 400);
+                }
+
+
+
               } else {
                 return response()->json([
                     'status' => false,
