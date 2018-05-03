@@ -155,7 +155,7 @@ class UserController extends Controller
         try {
 
             $validator = Validator::make($request->all(), [
-                'userId'     =>  'required|exists:users,id,deleted_at,NULL',
+                'user_id'     =>  'required|exists:users,id,deleted_at,NULL',
                 'step'       =>  'required|numeric|between:1,11|integer',
             ]);
             if ($validator->fails()) {
@@ -166,7 +166,7 @@ class UserController extends Controller
                 ], 400);
             } // validation for data
 
-            $userId = $request->userId;
+            $userId = $request->user_id;
             $step = $request->step;
 
             $checkUser = User::find($userId);
@@ -205,7 +205,6 @@ class UserController extends Controller
                     return $this->updateDisinherit($request);
                 }
             } else {
-
                 return response()->json([
                     'status' => false,
                     'message' => 'This user is not found',
@@ -229,14 +228,14 @@ class UserController extends Controller
      * */
     public function updateTellUsAboutYou($request)
     {
-        $userId     = $request->userId;
-        $firstName  = $request->firstName;
-        $middleName = $request->middleName;
-        $lastName   = $request->lastName;
+        $userId     = $request->user_id;
+        $firstName  = $request->firstname;
+        $middleName = $request->middlename;
+        $lastName   = $request->lastname;
         $gender     = $request->gender; // M || F
         $dob        = $request->dob;
-        $maritalStatus  = $request->maritalStatus;
-        $phoneNumber    = $request->phoneNumber;
+        $maritalStatus  = $request->marital_status;
+        $phoneNumber    = $request->phone;
         $address    = $request->address;
         $city       = $request->city;
         $state      = $request->state;
@@ -251,31 +250,25 @@ class UserController extends Controller
         $legalMarried       = $request->legal_married;
 
         //$spouseDob = $request->spouseDob;
-
         $validator = Validator::make($request->all(), [
-            'userId'          =>  'required|exists:users,id,deleted_at,NULL',
-            'firstName'       =>  'required|string|max:255',
-            'lastName'        =>  'required|string|max:255',
+            'user_id'          =>  'required|exists:users,id,deleted_at,NULL',
+            'firstname'       =>  'required|string|max:255',
+            'lastname'        =>  'required|string|max:255',
             'gender'          =>  'required|string|in:M,F',
             'dob'             =>  'required|date_format:"Y-m-d"',
-            'phoneNumber'     =>  'required|numeric|integer|min:10|max:13',
+            'phone'           =>  'required|digits:10',
             'city'            =>  'required|string',
             'state'           =>  'required|string',
-            'zip'             =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/', // (Zip code validation rules REGX (min value 5))
-            // 'spouseFirstName' =>  'required',
-            // 'spouseLastName'  =>  'required',
-            // 'spouseGender'    =>  'required',
-            // 'spouseDob'       =>  'required | date_format:"Y-m-d"',
-            'phoneNumber'     =>  'numeric',
+            'zip'             =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/' // (Zip code validation rules REGX (min value 5))
         ]);
 
-        if ($validator->fails()) {
+        if($validator->fails()) {
             return response()->json([
                 'status' => false,
                 'message' => $validator->errors(),
                 'data' => []
             ], 400);
-        } // validation for data
+        }// validation for data
 
         $checkForExistUser = TellUsAboutYou::where('user_id', $userId)->first();
         if(!$checkForExistUser) {
@@ -283,49 +276,44 @@ class UserController extends Controller
         }
 
         // update TellUsAboutYou
-        $checkForExistUser->firstname = $firstName;
-        $checkForExistUser->fullname = $firstName . ' ' . $middleName . ' ' . $lastName;
-        $checkForExistUser->lastname = $lastName;
-        $checkForExistUser->middlename = $middleName;
-        $checkForExistUser->gender = $gender; // M || F
-        $checkForExistUser->dob = $dob; // datetimeFormat
-        $checkForExistUser->marital_status = $maritalStatus;
+        $checkForExistUser->firstname       = $firstName;
+        $checkForExistUser->fullname        = $firstName . ' ' . $middleName . ' ' . $lastName;
+        $checkForExistUser->lastname        = $lastName;
+        $checkForExistUser->middlename      = $middleName;
+        $checkForExistUser->gender          = $gender; // M || F
+        $checkForExistUser->dob             = $dob; // datetimeFormat
+        $checkForExistUser->marital_status  = $maritalStatus;
         if ($maritalStatus == "M" || $maritalStatus == "R") {
-
             if($maritalStatus == "R") {
               $validator = Validator::make($request->all(), [
                   'registered_partner'  =>  'required|numeric|integer|between:0,1',
                   'legal_married'       =>  'required|numeric|integer|between:0,1'
                   //'spouseDob'       =>  'required | date_format:"Y-m-d"',
               ]);
-
               if ($validator->fails()) {
                   return response()->json([
                       'status' => false,
                       'message' => $validator->errors(),
                       'data' => []
                   ], 400);
-              } // validation for data
-
-
+              }// validation for data
               //if the partner is legally married oviously the partner is registered partner
               if($legalMarried == 1) $registeredPartner = 1;
             }
+
             $validator = Validator::make($request->all(), [
                 'partner_firstname' =>  'required',
                 'partner_lastname'  =>  'required',
                 'partner_gender'    =>  'required|string|in:M,F',
                 //'spouseDob'       =>  'required | date_format:"Y-m-d"',
             ]);
-
             if ($validator->fails()) {
                 return response()->json([
                     'status' => false,
                     'message' => $validator->errors(),
                     'data' => []
                 ], 400);
-            } // validation for data
-
+            }// validation for data
 
             $checkForExistUser->partner_firstname   = $partnerFirstName;
             $checkForExistUser->partner_fullname    = $partnerFirstName . ' ' . $partnerMiddleName . ' ' . $partnerLastName;
@@ -333,15 +321,15 @@ class UserController extends Controller
             $checkForExistUser->partner_lastname    = $partnerLastName;
             $checkForExistUser->partner_middlename  = $partnerMiddleName;
             $checkForExistUser->legal_married       = $legalMarried;
-            $checkForExistUser->registered_partner  = $registeredPartner;  
+            $checkForExistUser->registered_partner  = $registeredPartner;
             // update the user from user table
             $this->updatePartner($userId, $partnerFirstName);
         }
-        $checkForExistUser->phone = $phoneNumber;
+        $checkForExistUser->phone   = $phoneNumber;
         $checkForExistUser->address = $address;
-        $checkForExistUser->city = $city;
-        $checkForExistUser->state = $state;
-        $checkForExistUser->zip = $zip;
+        $checkForExistUser->city    = $city;
+        $checkForExistUser->state   = $state;
+        $checkForExistUser->zip     = $zip;
         if ($checkForExistUser->save()) {
             return response()->json([
                 'status'  => true,
@@ -404,7 +392,7 @@ class UserController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'userId'          =>  'required|exists:users,id,deleted_at,NULL',
+            'user_id'         =>  'required|exists:users,id,deleted_at,NULL',
             'totalChildren'   =>  'required|numeric|integer|min:0'
         ]);
 
@@ -418,7 +406,7 @@ class UserController extends Controller
 
 
         // save/update the children information
-        $userId = $request->userId;
+        $userId = $request->user_id;
         $totalChildren = $request->totalChildren;
         $childrenInfoArray = $request->childrenInfo;    // array containing the info of children [userId],[fullname],[dob]
 
@@ -427,15 +415,32 @@ class UserController extends Controller
         $usersArray = array_flip($usersArray);
         //error based on foreign key validation
 
-        foreach($childrenInfoArray as $key => $cInfo) {
-          if(!isset($usersArray[$cInfo['userId']])) {
-            return response()->json([
-                'status'  => false,
-                'message' => 'User id '.$cInfo['userId'].' does not exists',
-                'data'    => []
-            ], 400);
+        if($totalChildren > 0) {
+          $data = ['data' => $request->childrenInfo];
+          $validator = Validator::make($data, [
+              'data.*.user_id'   =>  'required|exists:users,id,deleted_at,NULL',
+              'data.*.fullname'  =>  'required|string|max:255',
+              'data.*.gender'    =>  'required|string|in:M,F',
+              'data.*.dob'       =>  'required|date_format:"Y-m-d"'
+          ]);
+          if ($validator->fails()) {
+              return response()->json([
+                  'status' => false,
+                  'message' => $validator->errors(),
+                  'data' => []
+              ], 400);
           }
         }
+
+        // foreach($childrenInfoArray as $key => $cInfo) {
+        //   if(!isset($usersArray[$cInfo['userId']])) {
+        //     return response()->json([
+        //         'status'  => false,
+        //         'message' => 'User id '.$cInfo['user_id'].' does not exists',
+        //         'data'    => []
+        //     ], 400);
+        //   }
+        // }
 
         //dd($usersArray);
 
@@ -454,9 +459,6 @@ class UserController extends Controller
                 // check for the exist children table
                 $checkForExistchildren = Children::where('user_id', $userId)->get();
 
-
-
-
                 if (count($checkForExistchildren) > 0) {
                     if ($childrenInfoArray) {
 
@@ -464,10 +466,11 @@ class UserController extends Controller
                         $deleteExistchildren = Children::where('user_id', $userId)->delete();
                         foreach ($childrenInfoArray as $key => $value) {
                             $createChildren = new Children;
-                            if(isset($usersArray[$value['userId']])) {
-                              $createChildren->user_id = $value['userId'];
+                            if(isset($usersArray[$value['user_id']])) {
+                              $createChildren->user_id = $value['user_id'];
                               $createChildren->fullname = $value['fullname'];
                               $createChildren->dob = $value['dob'];
+                              $createChildren->gender = $value['gender'] == "M" ? "M" : "F";
                               $createChildren->save();
                             }
                         }
@@ -482,12 +485,15 @@ class UserController extends Controller
                     //create a new list of children
                     if ($childrenInfoArray) {
 
+
+
                         foreach ($childrenInfoArray as $key => $value) {
                             $createChildren = new Children;
-                            if(isset($usersArray[$value['userId']])) {
-                              $createChildren->user_id = $value['userId'];
+                            if(isset($usersArray[$value['user_id']])) {
+                              $createChildren->user_id = $value['user_id'];
                               $createChildren->fullname = $value['fullname'];
                               $createChildren->dob = $value['dob'];
+                              $createChildren->gender = $value['gender'] == "M" ? "M" : "F";
                               $createChildren->save();
                             }
                         }
@@ -514,7 +520,7 @@ class UserController extends Controller
                         'data' => []
                     ], 400);
                 } // validation for the deteased Children name
-                $checkForExistUser->deceased_children = $deceasedChildren;
+                $checkForExistUser->deceased_children = (string)$deceasedChildren;
                 $checkForExistUser->deceased_children_names = $deceasedChildrenNames;
                 $checkForExistUser->save();
             }
@@ -526,7 +532,11 @@ class UserController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'User updated with the children information',
-                'data' => ['childrenData' => $children ]
+                'data' => [
+                  'childrenData'          => $children ,
+                  'isDesceasedChildren'   => $deceasedChildren == 1 ? 'Yes' : 'No',
+                  'deceasedChildrenNames' => isset($deceasedChildrenNames) ? $deceasedChildrenNames : null
+                ]
             ], 200);
         } else {
             return response()->json([
@@ -841,10 +851,10 @@ class UserController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'userId'                  =>  'required|exists:users,id,deleted_at,NULL',
+            'user_id'                 =>  'required|exists:users,id,deleted_at,NULL',
             'isguardianMinorChildren' =>  'required|numeric|between:0,1|integer',
-            'isInformRepresentive'    =>  'required|numeric|between:0,1|integer',
-            'isBackUpGurdian'         =>  'required|numeric|between:0,1|integer'
+            'email_notification'      =>  'required|numeric|between:0,1|integer',
+            'is_backup'               =>  'required|numeric|between:0,1|integer'
         ]);
         // validation for the user data
         if ($validator->fails()) {
@@ -855,37 +865,58 @@ class UserController extends Controller
             ], 400);
         }
 
-        $userId = $request->userId;
-        $isguardianMinorChildren = $request->isguardianMinorChildren;   // 1->yes 0->no
-        $guardianFullName = $request->guardianFullName;
-        $relationShip = $request->relationShip;
-        $address = $request->address;
-        $city = $request->city;
-        $state = $request->state;
-        $zip = $request->zip;
-        $country = $request->country;
-        $isInformRepresentive = $request->isInformRepresentive; // 1->yes 0->No (default Yes)
-        $emailRepresentive = $request->emailRepresentive;
-        $isBackUpGurdian = $request->isBackUpGurdian; // 1->yes 0->no (default is No)
+
+        $userId                   = $request->user_id;
+        $isguardianMinorChildren  = $request->isguardianMinorChildren;   // 1->yes 0->no
+        $guardianFullName         = $request->fullname;
+        $relationShip             = $request->relationship_with;
+        $address                  = $request->address;
+        $city                     = $request->city;
+        $state                    = $request->state;
+        $zip                      = $request->zip;
+        $country                  = $request->country;
+
+
+        $isInformRepresentive = $request->email_notification; // 1->yes 0->No (default Yes)
+        $emailRepresentive    = $request->email;
+
+        $isBackUpGurdian      = $request->is_backup; // 1->yes 0->no (default is No)
 
         $checkForExistUser = TellUsAboutYou::where('user_id', $userId)->first();
-        if (count($checkForExistUser)) {
+        if ($checkForExistUser) {
             if ($isguardianMinorChildren == 1) {
                 // try to save the data in tellus about u table
                 $checkForExistUser->guardian_minor_children = $isguardianMinorChildren;
                 $checkForExistUser->save();
                 // try to save data in  guardian table
                 $checkForExistGuardianInfo = GuardianInfo::where('user_id', $userId)->where('is_backup', '=', '0')->first();   // find and Update normal guardian data
-                if (count($checkForExistGuardianInfo)) {
-                    // validation for the GuardianInfo
+                if(!$checkForExistGuardianInfo) {
+                  $checkForExistGuardianInfo = new GuardianInfo;
+                }
+
+
+                // validation for the GuardianInfo
+                $validator = Validator::make($request->all(), [
+                    'fullname'          => 'required|string|max:255',
+                    'relationship_with' => 'required|string|max:255',
+                    'address'           => 'required|string|max:255',
+                    'city'              => 'required|string|max:255',
+                    'state'             => 'required|string|max:255',
+                    'zip'               => 'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
+                    'country'           => 'required|string|max:255',
+                ]);
+
+                if ($validator->fails()) {
+                    return response()->json([
+                        'status' => false,
+                        'message' => $validator->errors(),
+                        'data' => []
+                    ], 400);
+                }
+
+                if($isInformRepresentive == 1){
                     $validator = Validator::make($request->all(), [
-                        'guardianFullName' => 'required|string|max:255',
-                        'relationShip' => 'required|string|max:255',
-                        'address' => 'required|string|max:255',
-                        'city' => 'required|string|max:255',
-                        'state' => 'required|string|max:255',
-                        'zip' => 'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
-                        'country' => 'required|string|max:255',
+                        'email' => 'required|email',
                     ]);
 
                     if ($validator->fails()) {
@@ -894,91 +925,44 @@ class UserController extends Controller
                             'message' => $validator->errors(),
                             'data' => []
                         ], 400);
-                    }
-
-                    if($isInformRepresentive == 1){
-                        $validator = Validator::make($request->all(), [
-                            'emailRepresentive' => 'required|email',
-                        ]);
-
-                        if ($validator->fails()) {
-                            return response()->json([
-                                'status' => false,
-                                'message' => $validator->errors(),
-                                'data' => []
-                            ], 400);
-                        }
-                    }
-
-                    $checkForExistGuardianInfo->user_id = $userId;
-                    $checkForExistGuardianInfo->fullname = $guardianFullName;
-                    $checkForExistGuardianInfo->relationship_with = $relationShip;
-                    $checkForExistGuardianInfo->address = $address;
-                    $checkForExistGuardianInfo->city = $city;
-                    $checkForExistGuardianInfo->state = $state;
-                    $checkForExistGuardianInfo->zip = $zip;
-                    $checkForExistGuardianInfo->country = $country;
-                    $checkForExistGuardianInfo->email_notification = $isInformRepresentive;
-                    $checkForExistGuardianInfo->email = $emailRepresentive;
-                    $checkForExistGuardianInfo->is_backup = "0";
-                    $checkForExistGuardianInfo->save();
-                    if ($isInformRepresentive == 1) {
-                        $emailType = 3; // send email guardian
-                        $this->sendEmail($userId, $guardianFullName, $emailRepresentive, $emailType);
-                    }
-                } else {
-                    // validation for the GuardianInfo
-                    $validator = Validator::make($request->all(), [
-                        'guardianFullName' => 'required|string|max:255',
-                        'relationShip' => 'required|string|max:255',
-                        'address' => 'required|string|max:255',
-                        'city' => 'required|string|max:255',
-                        'state' => 'required|string|max:255',
-                        'zip' => 'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
-                        'country' => 'required|string|max:255',
-                    ]);
-
-                    if ($validator->fails()) {
-                        return response()->json([
-                            'status' => false,
-                            'message' => $validator->errors(),
-                            'data' => []
-                        ], 400);
-                    }
-
-                    if($isInformRepresentive == 1){
-                        $validator = Validator::make($request->all(), [
-                            'emailRepresentive' => 'required|email',
-                        ]);
-
-                        if ($validator->fails()) {
-                            return response()->json([
-                                'status' => false,
-                                'message' => $validator->errors(),
-                                'data' => []
-                            ], 400);
-                        }
-                    }
-
-                    // create new data in guardian table
-                    $saveGuardianInfo = new GuardianInfo;
-                    $saveGuardianInfo->user_id = $userId;
-                    $saveGuardianInfo->fullname = $guardianFullName;
-                    $saveGuardianInfo->relationship_with = $relationShip;
-                    $saveGuardianInfo->address = $address;
-                    $saveGuardianInfo->city = $city;
-                    $saveGuardianInfo->state = $state;
-                    $saveGuardianInfo->zip = $zip;
-                    $saveGuardianInfo->email_notification = $isInformRepresentive;
-                    $saveGuardianInfo->is_backup = "0";
-                    $saveGuardianInfo->email = $emailRepresentive;
-                    $saveGuardianInfo->save();
-                    if ($isInformRepresentive == 1) {
-                        $emailType = 3; // send email guardian
-                        $this->sendEmail($userId, $guardianFullName, $emailRepresentive, $emailType);
                     }
                 }
-                if ($isBackUpGurdian == 1) {
+
+                $checkForExistGuardianInfo->user_id           = $userId;
+                $checkForExistGuardianInfo->fullname          = $guardianFullName;
+                $checkForExistGuardianInfo->relationship_with = $relationShip;
+                $checkForExistGuardianInfo->address           = $address;
+                $checkForExistGuardianInfo->city              = $city;
+                $checkForExistGuardianInfo->state             = $state;
+                $checkForExistGuardianInfo->zip               = $zip;
+                $checkForExistGuardianInfo->country           = $country;
+                $checkForExistGuardianInfo->email_notification = $isInformRepresentive;
+                $checkForExistGuardianInfo->email             = $emailRepresentive;
+                $checkForExistGuardianInfo->is_backup         = "0";
+
+                $checkForExistGuardianInfo->save();
+
+
+                if ($isInformRepresentive == 1) {
+                    $validator = Validator::make($request->all(), [
+                        'email' =>  'required|email'
+                    ]);
+                    // validation for the user data
+                    if ($validator->fails()) {
+                        return response()->json([
+                            'status' => false,
+                            'message' => $validator->errors(),
+                            'data' => []
+                        ], 400);
+                    }
+                    $emailType = 3; // send email guardian
+                    $this->sendEmail($userId, $guardianFullName, $emailRepresentive, $emailType);
+                }
+
+
+
+                if ($isBackUpGurdian == 1)
+                {
                     $checkForExistBackupGuardianInfo = GuardianInfo::where('user_id', $userId)->where('is_backup', '=', '1')->first();   // find and upate normal gurdian data
 
                     $isInformBackUpRepresentive = $request->isInformBackUpRepresentive;
@@ -1012,7 +996,7 @@ class UserController extends Controller
 
                     if($isInformBackUpRepresentive == 1){
                         $validator = Validator::make($request->all(), [
-                            'emailRepresentive' => 'required|email',
+                            'email' => 'required|email',
                         ]);
 
                         if ($validator->fails()) {
@@ -1064,23 +1048,25 @@ class UserController extends Controller
                     }
                 }
                 // success message
-                $guardianInfo = GuardianInfo::where('user_id',$userId)->get();
-                return response()->json([
-                    'status' => true,
-                    'message' => 'User details updated with GuardianInfo',
-                    'data' => ['guardianInfo'=>$guardianInfo]
-                ], 200);
+
             } else {
                 $checkForExistUser->guardian_minor_children = $isguardianMinorChildren;
                 $checkForExistUser->save();
                 // success message
-                $guardianInfo = GuardianInfo::where('user_id',$userId)->get();
-                return response()->json([
-                    'status' => true,
-                    'message' => 'User details updated final with GuardianInfo',
-                    'data' => ['guardianInfo'=>$guardianInfo]
-                ], 200);
             }
+
+            $guardianInfo       = GuardianInfo::where('user_id',$userId)->where('is_backup','1')->get();
+            $guardianInfoBackup = GuardianInfo::where('user_id',$userId)->where('is_backup','!=','1')->get();
+            return response()->json([
+                'status' => true,
+                'message' => 'User details updated final with GuardianInfo',
+                'data' => [
+                  'isguardianMinorChildren' =>  $isguardianMinorChildren == 1 ? 'Yes' : 'No',
+                  'guardian'                =>  $guardianInfo,
+                  'isBackUpGurdian'         =>  $guardianInfoBackup->count() > 1 ? 'Yes' : 'No' ,
+                  'backupGuardian'          =>  $guardianInfoBackup
+                ]
+            ], 200);
         } else {
             return response()->json([
                 'status' => false,

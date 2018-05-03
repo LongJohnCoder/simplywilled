@@ -459,7 +459,7 @@ class UserManagementController extends Controller
       }
       $totalChildren          = count($children);
       $isDeceasedChildren     = $tellUsAboutYouUser != null && $tellUsAboutYouUser->deceased_children == '1' ? 'Yes' : 'No';
-      $deceasedChildrenNames  = $tellUsAboutYouUser != null && $tellUsAboutYouUser->deceased_children_names;
+      $deceasedChildrenNames  = $tellUsAboutYouUser != null && $tellUsAboutYouUser->deceased_children_names ? $tellUsAboutYouUser->deceased_children_names : null;
       $childrenArray = [
         'totalChildren'         =>  $totalChildren,
         'childrenInformation'   =>  $childrenInfoArray,
@@ -482,10 +482,10 @@ class UserManagementController extends Controller
       $backupGuardianInfo = GuardianInfo::where('user_id',$user->id)->where('is_backup','1')->get();
       $guardianInfo       = GuardianInfo::where('user_id',$user->id)->where('is_backup','!=','1')->get();
       $guardianInfoArray  = [
-        'isguardianMinorChildren' =>  $tellUsAboutYouUser != null && $tellUsAboutYouUser->guardian_minor_children == '1' ? 'Yes' : 'No',
+        'isGuardianMinorChildren' =>  $tellUsAboutYouUser != null && $tellUsAboutYouUser->guardian_minor_children == '1' ? 'Yes' : 'No',
         'guardian'                =>  $guardianInfo == null ? null : $guardianInfo,
         'isBackUpGurdian'         =>  $backupGuardianInfo->count() == 0 ? 'No' : 'Yes',
-        'backupguardian'          =>  $backupGuardianInfo
+        'backupGuardian'          =>  $backupGuardianInfo
       ];
       return [
         'step'  =>  $stepValue,
