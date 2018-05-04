@@ -20,4 +20,6 @@ class ProvideYourLovedOnes extends Model
     protected $primaryKey = 'id';
 
     protected $softDelete = true;
+
+    protected $fillable = ['user_id','business_interest','farm_or_ranch','is_percentage','is_getcompensate','compensation_specific_amount','compensation_percent_amount','net_value_percent'];
 }

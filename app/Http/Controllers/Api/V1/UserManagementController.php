@@ -504,14 +504,7 @@ class UserManagementController extends Controller
       if($lovedOnes) {
         $responseArray = [
           'step' =>  $stepValue,
-          'data' => [
-            'isBusinessInterest'      =>  $lovedOnes->business_interest == 1 ? 'Yes' : 'No',
-            'isFarmOrRanch'           =>  $lovedOnes->farm_or_ranch,
-            'isGetCompensate'         =>  $lovedOnes->is_getcompensate,
-            'isPercentage'            =>  $lovedOnes->is_percentage,
-            'compensateAmount'        =>  $lovedOnes->compensation_specific_amount,
-            'isPercentageBasedOnNet'  =>  $lovedOnes->net_value_percent == 1 ? 'Yes' : 'No'
-          ]
+          'data' =>  ['lovedOnesInfo' => [$lovedOnes]]
         ];
         return $responseArray;
       }

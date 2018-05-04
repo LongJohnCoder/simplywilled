@@ -153,9 +153,8 @@ class UserController extends Controller
     public function editProfile(Request $request)
     {
         try {
-
             $validator = Validator::make($request->all(), [
-                'user_id'     =>  'required|exists:users,id,deleted_at,NULL',
+                'user_id'     =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
                 'step'       =>  'required|numeric|between:1,11|integer',
             ]);
             if ($validator->fails()) {
@@ -254,7 +253,7 @@ class UserController extends Controller
 
         //$spouseDob = $request->spouseDob;
         $validator = Validator::make($request->all(), [
-            'user_id'         =>  'required|exists:users,id,deleted_at,NULL',
+            'user_id'         =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
             'firstname'       =>  'required|string|max:255',
             'lastname'        =>  'required|string|max:255',
             'gender'          =>  'required|string|in:M,F',
@@ -401,7 +400,7 @@ class UserController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'user_id'         =>  'required|exists:users,id,deleted_at,NULL',
+            'user_id'         =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
             'totalChildren'   =>  'required|numeric|integer|min:0'
         ]);
 
@@ -564,15 +563,18 @@ class UserController extends Controller
      * */
     public function updateProvideYourLovedOnes($request)
     {
-
         $validator = Validator::make($request->all(), [
-            'userId'                  =>  'required|exists:users,id,deleted_at,NULL',
-            'isBusinessInterest'      =>  'required|numeric|between:0,1|integer',
-            'isFarmOrRanch'           =>  'required|numeric|between:0,1|integer',
-            'isGetCompensate'         =>  'required|numeric|between:0,1|integer',
-            'isPercentage'            =>  'required|numeric|between:0,1|integer',
-            'compensateAmount'        =>  'required|numeric|min:0',
-            'isPercentageBasedOnNet'  =>  'required|numeric|between:0,1|integer',
+            'lovedOnesInfo'                                 =>  'required|array',
+            'lovedOnesInfo.*.user_id'                       =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
+            'lovedOnesInfo.*.business_interest'             =>  'required|numeric|between:0,1|integer',
+            'lovedOnesInfo.*.farm_or_ranch'                 =>  'required|numeric|between:0,1|integer',
+            'lovedOnesInfo.*.is_percentage'                 =>  'required|numeric|between:0,1|integer',
+            'lovedOnesInfo.*.is_getcompensate'              =>  'required|numeric|between:0,1|integer',
+            'lovedOnesInfo.*.compensation_specific_amount'  =>  'required|numeric|min:0|integer',
+            'lovedOnesInfo.*.compensation_percent_amount'   =>  'required_unless:is_percentage,1|numeric|between:0,100',
+            //'compensateAmount'        =>  'required|numeric|min:0',
+            //'isPercentageBasedOnNet'  =>  'required|numeric|between:0,1|integer',
+            'lovedOnesInfo.0.net_value_percent'             =>  'required|numeric|between:0,1|integer'
         ]);
 
         if ($validator->fails()) {
@@ -583,71 +585,30 @@ class UserController extends Controller
             ], 400);
         }
 
-        $userId = $request->userId;
-        $isBusinessInterest = $request->isBusinessInterest; // 0-> No 1->Yes
-        $isFarmOrRanch = $request->isFarmOrRanch; // 0-> No 1->Yes
-        $isGetCompensate = $request->isGetCompensate; // 0-> No 1->Yes
-        $isPercentage = $request->isPercentage; // 0-> No 1->Yes
-        $compensateAmount = $request->compensateAmount; // if the isPercentage flag is YES then save this to compensation_percent_amount
-        $isPercentageBasedOnNet = $request->isPercentageBasedOnNet; // 0-> No 1->Yes
 
-        $checkForExistData = ProvideYourLovedOnes::where('user_id', $userId)->first();
-        if (count($checkForExistData)) {
-            // update
-            $checkForExistData->user_id = $userId;
-            $checkForExistData->business_interest = $isBusinessInterest;
-            $checkForExistData->farm_or_ranch = $isFarmOrRanch;
-            $checkForExistData->net_value_percent = $isPercentageBasedOnNet;
-            $checkForExistData->is_getcompensate = $isGetCompensate;
-            $checkForExistData->is_percentage = $isPercentage;
-            if ($isPercentage == 1) {
-                $checkForExistData->compensation_percent_amount = $compensateAmount;
-                $checkForExistData->compensation_specific_amount = 0.00;
-            } else {
-                $checkForExistData->compensation_percent_amount = 0.00;
-                $checkForExistData->compensation_specific_amount = $compensateAmount;
-            }
-            if ($checkForExistData->save()) {
-                return response()->json([
-                    'status' => true,
-                    'message' => 'User details updated',
-                    'data' => ['userData'=>$checkForExistData]
-                ], 200);
-            } else {
-                return response()->json([
-                    'status' => true,
-                    'message' => 'User details not updated',
-                    'data' => []
-                ], 400);
-            }
+        if(isset($request->lovedOnesInfo[0])) {
+          $lovedOnesInfo = $request->lovedOnesInfo[0];
+          //var_dump($lovedOnesInfo);die();
+          if (ProvideYourLovedOnes::updateOrCreate(['user_id'=> $lovedOnesInfo['user_id']],$lovedOnesInfo)) {
+              $lovedOnes  = ProvideYourLovedOnes::where('user_id',$lovedOnesInfo['user_id'])->first();
+              return response()->json([
+                  'status'  => true,
+                  'message' => 'User details updated',
+                  'data'    => [ 'lovedOnesInfo' => [$lovedOnes]]
+              ], 200);
+          } else {
+              return response()->json([
+                  'status' => true,
+                  'message' => 'User details not updated',
+                  'data' => []
+              ], 400);
+          }
         } else {
-            // create
-            $checkForExistData = new ProvideYourLovedOnes;
-            $checkForExistData->user_id = $userId;
-            $checkForExistData->business_interest = $isBusinessInterest;
-            $checkForExistData->farm_or_ranch = $isFarmOrRanch;
-            $checkForExistData->net_value_percent = $isPercentageBasedOnNet;
-            $checkForExistData->is_getcompensate = $isGetCompensate;
-            $checkForExistData->is_percentage = $isPercentage;
-            if ($isPercentage == 1) {
-                $checkForExistData->compensation_percent_amount = $compensateAmount;
-            } else {
-                $checkForExistData->compensation_specific_amount = $compensateAmount;
-            }
-            if ($checkForExistData->save()) {
-                return response()->json([
-                    'status' => true,
-                    'message' => 'User details updated',
-                    'data' => ['userData'=>$checkForExistData]
-                ], 200);
-
-            } else {
-                return response()->json([
-                    'status' => true,
-                    'message' => 'User details not updated',
-                    'data' => []
-                ], 400);
-            }
+          return response()->json([
+              'status' => true,
+              'message' => 'Improper data format for loved ones info',
+              'data' => []
+          ], 400);
         }
     }
 
