@@ -1,0 +1,128 @@
+@media screen and (min-width: 992px) and (max-width: 1199px){
+    .common-button {
+        font-size: 12px;
+    }
+    .btn-dashboard {
+        padding: 10px 0 10px 30px;
+    }
+}
+@media screen and (max-width: 991px){
+    .progress_main {
+        text-align: center;
+    }
+    .progress_right {
+        float: none;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 991px){
+    .sidebar h1 {
+        font-size: 28px;
+    }
+    .common-button {
+        font-size: 12px;
+    }
+    .btn-dashboard {
+        padding: 10px 0 10px 30px;
+    }
+}
+@media screen and (max-width: 767px){
+    .logo {
+        position: relative;
+    }
+    .common-button {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+    .logo a{
+        display: block;
+    }
+    .logo img {
+        margin: auto;
+        display: block;
+    }
+}
+
+
+.main-content{
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 1px 0 #ddd;
+    -webkit-box-shadow: 0 1px 1px 0 #ddd;
+    display: inline-block;
+    width: 100%;
+    padding: 30px;
+}
+.main-content h2{
+    color: #2479B8;
+    font-size: 36px;
+    margin: 0;
+}
+.main-content p{
+    font-size: 18px;
+    margin: 0;
+    line-height: 24px;
+}
+
+.single_ul{
+    margin: 0;
+    width: 100%;
+    float: left;
+}
+.single_ul li {
+    margin: 15px 0;
+    width: 100%;
+    float: left;
+}
+.single_ul li:last-child{
+    margin-bottom: 0;
+}
+.single_ul li a{
+    border: 1px solid #4db228;
+    padding: 10px;
+    border-radius: 6px;
+    width: 100%;
+    float: left;
+    background: #fff;
+    position: relative;
+}
+.single_ul li a.inprogress{
+    border: 1px solid #BFBFBF;
+}
+
+.tell_us_about_left {
+    float: left;
+    width: 70%;
+}
+
+.woman_img {
+    float: left;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    margin-top: -20px;
+}
+.single_right {
+    width: 90%;
+    float: right;
+}
+.tell_us_text {
+    color: #373737;
+    float: left;
+    font-size: 20px;
+}
+.inherit_properties {
+    font-family: 'OpenSans-Light';
+    color: #373737;
+    font-size: 16px;
+    width: 100%;
+    float: left;
+}
+.btn-complete{
+    background: url('../../../../../assets/images/complete-green-btn.png') no-repeat center center !important;
+    background-size: 100% 100%;
+    padding: 10px 0 10px 30px;
+    width: 130px;
+    margin: 0;
+    float: right;
+}

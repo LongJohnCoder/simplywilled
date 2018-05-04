@@ -1,0 +1,4 @@
+.login_btn:disabled {
+    opacity:0.3;
+    cursor: auto;
+}

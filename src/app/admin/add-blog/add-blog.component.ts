@@ -63,7 +63,6 @@ export class AddBlogComponent implements OnInit {
      }
 
     add(){
-
         this.blogFeatured = (this.blogData.featured == 'true') ? 1 : 0;
         const createBlogBody = new FormData();
         createBlogBody.append('blogTitle', this.blogData.title);
@@ -171,11 +170,6 @@ export class AddBlogComponent implements OnInit {
         )
     }
 
-    // reset(){
-    //     this.isSubmitted = false;
-    //     this.register.reset();
-    //
-    // }
 
 
 }

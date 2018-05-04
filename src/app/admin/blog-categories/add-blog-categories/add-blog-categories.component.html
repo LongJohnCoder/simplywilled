@@ -18,12 +18,18 @@
                             <fieldset>
                                 <div class="form-group">
                                     <label>Category Name :</label>
-                                    <input class="form-control" type="text" name="categoryName" [(ngModel)]="blogCategoryData.name" #categoryName="ngModel">
-                                    <input class="form-control" type="hidden" name="categoryId" [(ngModel)]="blogCategoryData.id" #categoryId="ngModel">
+                                    <input class="form-control" type="text" name="categoryName"
+                                           [(ngModel)]="blogCategoryData.name" #categoryName="ngModel">
+                                    <input class="form-control" type="hidden" name="categoryId"
+                                           [(ngModel)]="blogCategoryData.id" #categoryId="ngModel">
                                 </div>
                             </fieldset>
-                            <button *ngIf="editMode" type="button" class="btn btn-primary" (click)="edit()"> {{editMode ? 'Edit' : 'Create'}} Blog Category</button>
-                            <button *ngIf="!editMode" type="button" class="btn btn-primary" (click)="add()"> {{editMode ? 'Edit' : 'Create'}} Blog Category</button>
+                            <button *ngIf="editMode" type="button" class="btn btn-primary" (click)="edit()"> {{editMode
+                                ? 'Edit' : 'Create'}} Blog Category
+                            </button>
+                            <button *ngIf="!editMode" type="button" class="btn btn-primary" (click)="add()"> {{editMode
+                                ? 'Edit' : 'Create'}} Blog Category
+                            </button>
                         </div>
 
                         <alert *ngIf="createBlogCategoryMessage" type="info" [dismissOnTimeout]="3000">
@@ -34,5 +40,5 @@
                 </div>
             </div>
         </form>
-        </div>
     </div>
+</div>

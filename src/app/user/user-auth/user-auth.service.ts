@@ -14,12 +14,10 @@ export class UserAuthService {
     localStorage.removeItem('loggedInUser');
   }
 
-  getUserType() {
+  getUser() {
     const data: any = JSON.parse(localStorage.getItem('loggedInUser'));
-    console.log(data);
     return data['user'];
   }
-
   isAuthenticated() {
     const data = this.getToken();
     if ( data && (data.token !== null) ) {

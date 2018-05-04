@@ -54,12 +54,9 @@ h1, h2, h3, h4, h5, h6 {
 .header_container {
 	width: 100%;
 	float: left;
-	border-top: 5px solid #46ac33
 }
 .header_first_sec {
 	width: 100%;
-	background: #0a5cab;
-	box-shadow: 0 6px 10px rgba(0,0,0,.4)
 }
 .logo {
 	margin: 0 0 -58px;
@@ -135,24 +132,12 @@ h1, h2, h3, h4, h5, h6 {
 	color: #1376bb;
 	padding-bottom: 10px
 }
-.index_banner_ul {
-	width: 100%;
-	float: left;
-	margin-bottom: 10px
-}
-.index_banner_ul li {
-	float: left;
-	color: #1376bb;
-	font-size: 20px;
-	padding-left: 30px;
-	margin-left: 20px;
-	position: relative
-}
+
+
 .index_banner_ul li:before {
 	content: '';
 	width: 27px;
 	height: 29px;
-	background-image: url(../../../../public/images/sprite_sheet.png);
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -175,6 +160,7 @@ h1, h2, h3, h4, h5, h6 {
 	padding-top: 5px;
 	background-position: -204px -108px
 }
+
 .enforceable_text {
 	float: right;
 	color: #1376bb;
@@ -469,7 +455,14 @@ h1, h2, h3, h4, h5, h6 {
 	float: left;
 	padding: 75px 0 0
 }
-.sec5_left_main {
+#wrapper #page-wrapper{
+	background: #f2f2f2;
+}
+#wrapper #page-wrapper .panel-primary{
+	border-radius:7px;
+	overflow: hidden;
+}
+#page-wrapper .sec5_left_main {
 	width: 48.5%;
 	float: left
 }
@@ -486,7 +479,7 @@ h1, h2, h3, h4, h5, h6 {
 .its_easy_text span {
 	color: #46ac33
 }
-.print_img {
+#page-wrapper .print_img {
 	width: 83px;
 	height: 83px;
 	float: left;
@@ -544,7 +537,7 @@ h1, h2, h3, h4, h5, h6 {
 .index_sec4 {
 	width: 100%;
 	float: left;
-	background: url(../../../../public/images/sec4-bg.png) center no-repeat;
+	background: url('./assets/images/sec4-bg.png') center no-repeat;
 	margin-top: -140px
 }
 .proprietary_text {
@@ -683,11 +676,6 @@ h1, h2, h3, h4, h5, h6 {
 	box-shadow: 2px 5px 3px rgba(0,0,0,.1);
 	padding: 0 15px
 }
-.book_main {
-	width: 100%;
-	float: left;
-	padding: 0px 60px 15px 60px
-}
 .single_will_book {
 	float: left;
 	margin-top: -30px
@@ -751,7 +739,7 @@ h1, h2, h3, h4, h5, h6 {
 	color: #fff;
 	font-size: 24px;
 	padding: 15px 0 15px 35px;
-	background: url(../../../../public/images/key_bg.png) 13px center no-repeat #44a831
+	background: url('./assets/images/key_bg.png') 13px center no-repeat #44a831
 }
 .pkg_benefits_ul {
 	width: 100%;
@@ -914,7 +902,6 @@ h1, h2, h3, h4, h5, h6 {
 	content: '';
 	width: 45px;
 	height: 45px;
-	background-image: url(../../../../public/images/sprite_sheet.png);
 	position: absolute;
 	top: 7px;
 	left: 0;
@@ -1032,7 +1019,7 @@ h1, h2, h3, h4, h5, h6 {
 	height: 58px!important;
 	display: block;
 	content: '';
-	background: url(../../../../public/images/slider-left.png) center no-repeat;
+	background: url('./assets/images/slider-left.png') center no-repeat;
 	background-size: auto 100%
 }
 .sec9_flexiel_slider .flex-direction-nav a.flex-next:before {
@@ -1040,7 +1027,7 @@ h1, h2, h3, h4, h5, h6 {
 	height: 58px!important;
 	display: block;
 	content: '';
-	background: url(../../../../public/images/slider-right.png) center no-repeat;
+	background: url('./assets/images/slider-right.png') center no-repeat;
 	background-size: auto 100%
 }
 .clients_name, .testimonial_pera {
@@ -1266,7 +1253,7 @@ h1, h2, h3, h4, h5, h6 {
 .about_sec4 {
 	width: 100%;
 	float: left;
-	background: url(../../../../public/images/about-state-bg.png) center no-repeat;
+	background: url('./assets/images/about-state-bg.png') center no-repeat;
 	background-size: cover;
 	border-bottom: 3px solid #fff
 }
@@ -1897,7 +1884,7 @@ color:#b5e5ff
 	float: left;
 	color: #565656;
 	font-size: 24px;
-	background: url(../../../../public/images/click2.png) left center no-repeat;
+	background: url('./assets/images/click2.png') left center no-repeat;
 	padding: 0 0 0 35px;
 	margin-bottom: 15px
 }
@@ -2030,7 +2017,7 @@ color:#b5e5ff
 	display: inline-block;
 	color: #1376ba;
 	font-size: 40px;
-	background: url(../../../../public/images/safe-img.png) left center no-repeat;
+	background: url('./assets/images/safe-img.png') left center no-repeat;
 	padding-left: 50px;
 	margin-left: 20px
 }
@@ -2040,7 +2027,7 @@ color:#b5e5ff
 .pricing_sec3 {
 	width: 100%;
 	float: left;
-	background: url(../../../../public/images/pricing-bg.png) center no-repeat;
+	background: url('./assets/images/pricing-bg.png') center no-repeat;
 	background-size: cover;
 	margin-top: -75px;
 	border-bottom: 3px solid #fff
@@ -2431,14 +2418,14 @@ color:#b5e5ff
 	padding: 0 0 35px 70px;
 	color: #9c9c9c;
 	font-size: 24px;
-	background: url(../../../../public/images/support-img.png) top left no-repeat;
+	background: url('./assets/images/support-img.png') top left no-repeat;
 	word-wrap: break-word
 }
 .contact_social_main_ul li:nth-child(2) {
-	background: url(../../../../public/images/tel.png) top left no-repeat
+	background: url('./assets/images/tel.png') top left no-repeat
 }
 .contact_social_main_ul li:nth-child(3) {
-	background: url(../../../../public/images/live-chat.png) top left no-repeat
+	background: url('./assets/images/live-chat.png') top left no-repeat
 }
 .contact_social_media {
 	width: 100%;
@@ -2607,7 +2594,7 @@ color:#b5e5ff
 	content: '';
 	width: 33px;
 	height: 33px;
-	background-image: url(../../../../public/images/sprite_sheet.png);
+	background-image: url('./assets/images/sprite_sheet.png');
 	position: absolute;
 	top: 4px;
 	left: 0;
@@ -2736,9 +2723,7 @@ a.get_started_btn_styling:hover {
 .border_top_green {
 	border-top: 5px solid #46ac33
 }
-.grey_bg {
-	background-color: #f2f2f2
-}
+
 .blog_pagination {
 	width: 100%;
 	display: inline-block;
@@ -2795,7 +2780,7 @@ a.get_started_btn_styling:hover {
 	float: left;
 	color: #565656;
 	font-size: 24px;
-	background: url(../../../../public/images/click2.png) left center no-repeat;
+	background: url('./assets/images/click2.png') left center no-repeat;
 	padding: 0 0 0 35px;
 	margin-bottom: 15px
 }
@@ -2804,7 +2789,7 @@ a.get_started_btn_styling:hover {
 	display: inline-block
 }
 input[type=text].ui-autocomplete-loading {
-	background: url(../../../../public/images/loading.gif) right center no-repeat
+	background: url('./assets/images/loading.gif') right center no-repeat
 }
 #search_dropdown_container {
 	width: 100%;
@@ -2868,7 +2853,7 @@ input[type=text].ui-autocomplete-loading {
 	color: #fff;
 	font-size: 20px;
 	padding-left: 55px;
-	background: url(../../../../public/images/file-img.png) left top no-repeat;
+	background: url('./assets/images/file-img.png') left top no-repeat;
 	padding-bottom: 10px;
 	padding-top: 10px;
 	margin-top: 8px
@@ -2964,7 +2949,7 @@ background:#f77802
 	background-color: #e74c3c;
 }
 .sprite_sheet {
-	background-image: url(../../../../public/images/sprite_sheet.png)
+	background-image: url('./assets/images/sprite_sheet.png')
 }
 .loader_parent {
 	margin: 5px 0
@@ -3280,10 +3265,10 @@ transform:rotate(360deg)
 .contact_social_media {
 	padding: 20px 0 20px 20px
 }
-.logo {
-	margin: 4px 0 -58px;
-	width: 175px
-}
+/*.logo {*/
+	/*margin: 4px 0 -58px;*/
+	/*width: 175px*/
+/*}*/
 .navigation {
 	padding: 20px 0
 }
@@ -3412,13 +3397,6 @@ transform:rotate(360deg)
 @media only screen and (min-width:768px) and (max-width:960px) {
 .packages_ul>li:nth-child(1), .packages_ul>li:nth-child(2), .sec3_planning_ul {
 	margin-bottom: 70px
-}
-.book_main{
-	padding: 0px 0px 15px 0px
-}
-.logo {
-	width: 120px;
-	margin-top: 5px
 }
 .navigation {
 	padding: 8px 0px 14px 0px
@@ -4124,9 +4102,6 @@ transform:rotate(360deg)
 .contact_right_sec {
 	width: 100%
 }
-.logo {
-	width: 220px
-}
 .footer_ul>li, .last_will_testament, .macfee_left, .sec1_left {
 	width: 100%
 }
@@ -4228,9 +4203,6 @@ transform:rotate(360deg)
 }
 .book_price{
 	font-size:40px
-}
-.book_main{
-	padding: 0px 0px 15px 0px
 }
 
 .paypall_text{
@@ -4394,9 +4366,6 @@ transform:rotate(360deg)
 }
 .sec4_ul {
 	margin-bottom: 20px
-}
-.print_img_right_sec {
-	width: 77%
 }
 .index_sec5 {
 	padding: 50px 0 0
@@ -4629,9 +4598,6 @@ transform:rotate(360deg)
 }
 .confirm_left{
 	margin-bottom:0px;
-}
-.ecforceable_btn, .index_banner_ul{
-	display:none;
 }
 .trending_owl_main{
 	width:100% !important;
@@ -5327,9 +5293,6 @@ h1.msg{
 	display: block;
 	margin: 0 auto
 }
-.ask_owl_text span, .print_img {
-	display: inline-block
-}
 .contact_social_main_ul li {
 	padding: 10px 0 30px 48px;
 	font-size: 16px
@@ -5346,11 +5309,6 @@ h1.msg{
 	font-size: 15px;
 	padding-top: 0;
 	width: 65%
-}
-.print_img, .team_pic {
-	float: none;
-	display:inline-block
-	
 }
 .protect_loved_ul {
 	margin-bottom: 0
@@ -5395,9 +5353,7 @@ h1.msg{
 .protect_loved_right {
 	width: 79%
 }
-.print_img_right_sec {
-	width: 100%
-}
+
 .sec9_flexiel_slider .flex-direction-nav a {
 	height: 30px!important
 }

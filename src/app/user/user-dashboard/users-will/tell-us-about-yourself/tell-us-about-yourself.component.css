@@ -1,0 +1,216 @@
+.main-content {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 1px 0 #ddd;
+    -webkit-box-shadow: 0 1px 1px 0 #ddd;
+    -moz-box-shadow: 0 1px 1px 0 #ddd;
+    display: inline-block;
+    width: 100%;
+    padding: 30px;
+}
+.main-content h2{
+    color: #2479B8;
+    font-size: 36px;
+    margin: 0;
+    text-transform: capitalize;
+}
+.main-content p{
+    font-size: 18px;
+    margin: 0;
+    line-height: 24px;
+}
+.main-content.loading-screen p{
+    margin: 20px 0;
+}
+.main-content.tellusaboutyou{
+    padding: 30px 0 0;
+}
+.main-content.tellusaboutyou h2{
+    padding: 0 30px;
+}
+
+.main-content .valid .form-control{
+    border-color: #42A82D;
+    color: #42A82D;
+}
+.main-content .valid i{
+    position: absolute;
+    top: 44px;
+    right: 44px;
+    background: #42A82D;
+    color: #fff;
+    height: 22px;
+    width: 22px;
+    text-align: center;
+    line-height: 22px;
+    border-radius: 50%;
+}
+.main-content.loading-screen p{
+    margin: 20px 0;
+}
+.main-content.tellusaboutyou{
+    padding: 30px 0 0;
+}
+.main-content.tellusaboutyou h2{
+    padding: 0 30px;
+}
+.main-content .form-group{
+    padding: 0 30px;
+    margin: 25px 0;
+    position: relative;
+}
+.main-content .form-group label{
+    display: block;
+    font-weight: normal;
+    font-size: 18px;
+    text-align: left;
+}
+.main-content .form-control{
+    font-size: 16px;
+    height: 40px;
+    border-radius: 6px;
+    margin-top: 10px;
+    border: 1px solid #BFBFBF;
+    font-style: italic;
+}
+.main-content select.form-control{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.main-content .valid .form-control{
+    border-color: #42A82D;
+    color: #42A82D;
+}
+.main-content .valid i{
+    position: absolute;
+    top: 44px;
+    right: 44px;
+    background: #42A82D;
+    color: #fff;
+    height: 22px;
+    width: 22px;
+    text-align: center;
+    line-height: 22px;
+    border-radius: 50%;
+}
+.radio_ul6{
+    text-align: left;
+}
+.radio_ul6 li, .first_page_radio li{
+    width: auto;
+    margin-right: 5px;
+    margin-left: 0;
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+}
+.radio_custom{
+    height: 105px;
+    width: 105px;
+    position: relative;
+    border: 1px solid #BFBFBF;
+    font-family: 'OpenSans';
+    box-shadow:0 1px 1px 1px #ddd;
+    -webkit-box-shadow:0 1px 1px 1px #ddd;
+    -moz-box-shadow:0 1px 1px 1px #ddd;
+    min-height: 100%;
+}
+
+.percentage-estate .radio_custom{
+    height: 120px;
+    width: 120px;
+}
+.radio_custom .human_status{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    font-size: 16px;
+}
+.radio_custom.active {
+    border-color: #42A82D;
+    background: #42A82D;
+    color: #fff;
+}
+.radio_custom.marital_status{
+    height: 130px;
+    width: 130px;
+}
+.radio_custom.marital_status.active{
+    background: none;
+}
+.radio_custom.marital_status.active .human_status2{
+    color: #42A82D;
+}
+.gifts-list .radio_custom {
+    width: 120px;
+    height: 120px;
+}
+.gifts-list .radio_custom.active{
+    background: #fff;
+}
+.gifts-list .radio_custom.active .human_status3{
+    color: #42A82D;
+}
+.radio_custom .human_status{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    font-size: 16px;
+}
+.radio_ul6 li, .first_page_radio li{
+    width: auto;
+    margin-right: 5px;
+    margin-left: 0;
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+}
+.first_page_radio{
+    text-align: left;
+}
+.custom_img2 {
+    padding-bottom: 2px;
+    display:block;
+    padding-top: 10px;
+    text-align: center;
+}
+.human_status2{
+    font-family: 'OpenSans';
+    position: absolute;
+    transform: translate(-50%,0);
+    left: 50%;
+    top: auto;
+    bottom: 10px;
+    line-height: 20px;
+    text-align: center;
+}
+.radio_custom.marital_status.active .human_status2{
+    color: #42A82D;
+}
+.form-footer{
+    display: inline-block;
+    width: 100%;
+    background: #f4f3f2;
+    vertical-align: top;
+    padding: 40px 25px;
+    box-shadow: inset 0px 2px 10px 0 #e0e0e0;
+}
+.inprogress img{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+.btn-complete{
+    background: url('../../../../../assets/images/complete-green-btn.png') no-repeat center center !important;
+    background-size: 100% 100%;
+    padding: 10px 0 10px 30px;
+    width: 130px;
+    margin: 0;
+    float: right;
+}
+.inprogress .btn-complete{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}

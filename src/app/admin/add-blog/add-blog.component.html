@@ -16,7 +16,6 @@
         </div>
         <!-- /. ROW  -->
 
-
         <form #createBlog="ngForm">
             <div class="row">
                 <div class="col-md-8">
@@ -112,11 +111,10 @@
                         </div>
                     </div>
                     <!--<button type="submit" class="btn btn-primary">Create Blog</button>-->
-
                     <button *ngIf="editMode" type="button" class="btn btn-primary" (click)="edit()"> {{editMode ? 'Edit' : 'Create'}} Blog </button>
                     <button *ngIf="!editMode" type="button" class="btn btn-primary" (click)="add()"> {{editMode ? 'Edit' : 'Create'}} Blog </button>
 
-                    <!--<p> {{createBlogMessage}} </p>-->
+
                 </div>
             </div>
         </form>

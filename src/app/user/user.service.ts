@@ -19,4 +19,20 @@ export class UserService {
   register( body: any ): Observable<any> {
     return this.httpClient.post( environment.API_URL + 'sign-up', body );
   }
+
+  /** Function call to logout */
+
+  logout(  ): Observable<any> {
+      return this.httpClient.post( environment.API_URL + 'user/sign-out', { });
+  }
+  /** Function to edit profile */
+
+  editProfile(body): Observable<any> {
+      return this.httpClient.post( environment.API_URL + 'user/edit-profile', body);
+  }
+
+  /** Function to get users details */
+  getUserDetails(userId): Observable<any> {
+    return this.httpClient.get(environment.API_URL + 'user/get-user-details/' + userId);
+  }
 }

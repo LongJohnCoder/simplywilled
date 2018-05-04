@@ -9,22 +9,21 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { NotUserAuthGuard } from './user-auth/not-user-auth.guard';
 import { FullLayoutComponent } from './layout/full-layout/full-layout.component';
-import { UserRegisterModule } from './user-auth/user-register/user-register.module';
+import {UserAuthGuard} from './user-auth/user-auth.guard';
 
 const routes: Routes = [
-    { path: '', pathMatch: 'full', component: HomeComponent },
-    { path: 'about-us', pathMatch: 'full', component: AboutUsComponent },
-    { path: 'faq', pathMatch: 'full', component: FaqComponent },
-    { path: 'terms-of-use', pathMatch: 'full', component: TermsOfUseComponent },
-    { path: 'terms-of-service', pathMatch: 'full', component: TermsOfServiceComponent },
-    { path: 'privacy-policy', pathMatch: 'full', component: PrivacyPolicyComponent },
-    { path: 'contact-us', pathMatch: 'full', component: ContactUsComponent },
-
-    {path: '', component: FullLayoutComponent, data: { title: 'Home' }, children: [
-      { path: 'sign-in', canActivate: [ NotUserAuthGuard ], loadChildren: './user-auth/user-login/user-login.module#UserLoginModule' },
-      { path: 'register', canActivate: [ NotUserAuthGuard ], loadChildren: './user-auth/user-register/user-register.module#UserRegisterModule'}
-    ]},
-    { path: 'dashboard', loadChildren: './user-dashboard/user-dashboard.module#UserDashboardModule'},
+   {path: '', component: FullLayoutComponent, data: { title: 'Home' }, children: [
+        { path: 'sign-in', canActivate: [ NotUserAuthGuard ], loadChildren: './user-auth/user-login/user-login.module#UserLoginModule' },
+        { path: 'register', canActivate: [ NotUserAuthGuard ], loadChildren: './user-auth/user-register/user-register.module#UserRegisterModule'},
+        { path: '', pathMatch: 'full', component: HomeComponent },
+        { path: 'about-us', pathMatch: 'full', component: AboutUsComponent },
+        { path: 'faq', pathMatch: 'full', component: FaqComponent },
+        { path: 'terms-of-use', pathMatch: 'full', component: TermsOfUseComponent },
+        { path: 'terms-of-service', pathMatch: 'full', component: TermsOfServiceComponent },
+        { path: 'privacy-policy', pathMatch: 'full', component: PrivacyPolicyComponent },
+        { path: 'contact-us', pathMatch: 'full', component: ContactUsComponent },
+   ]},
+    { path: 'dashboard', canActivate: [ UserAuthGuard ], canActivateChild: [ UserAuthGuard ], loadChildren: './user-dashboard/user-dashboard.module#UserDashboardModule'},
 ];
 
 @NgModule({

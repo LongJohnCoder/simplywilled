@@ -1,1 +1,143 @@
-dashboard
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="logo">
+                    <a href="#">
+                        <img src="../../../../assets/images/logo_new.png" class="img-responsive">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6 text-right">
+                <button class="btn common-button green-btn">My account <img src="../../../../assets/images/down-arrow.png" class="img-responsive"></button>
+                <button class="btn common-button green-btn" (click)="onLogOut()">Logout</button>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="main-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="progress_main">
+                        <div class="progres_left">
+                            <span [ngStyle]="{'width': '0%'}"></span>
+                        </div>
+                        <span class="progress_right">0% Complete</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-5">
+                <div class="row">
+                    <div class="sidebar">
+                        <div class="sidebar-body">
+                            <ul>
+                                <li class="active">
+                                    <a>
+                                        <img src="../../../../assets/images/icon-female-green.png" class="img-responsive green-icon">
+                                        <img src="../../../../assets/images/icon-female.png" class="img-responsive white-icon">
+                                        <h1>{{loggedInUser.user.name}} <br> <span></span></h1>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <img src="../../../../assets/images/icon-male-green.png" class="img-responsive green-icon">
+                                        <img src="../../../../assets/images/icon-male.png" class="img-responsive white-icon">
+                                        <h1>Kurt <br> <span>Polensky</span></h1>
+                                    </a>
+                                </li>
+                                <li>
+                                    <button class="btn common-button btn-dashboard">Back to Dashboard</button>
+                                </li>
+                                <li>
+                                    <button class="btn common-button btn-preview">Preview Documents</button>
+                                </li>
+                                <li>
+                                    <button class="btn common-button btn-progress">Save Progress</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="notification">
+                        <span class="imp">i</span>
+                        <p>They’ll be notified via e-mail at the address you provided.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9  col-sm-7">
+                <div class="row">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="footer-logo">
+                        <a href="#">
+                            <img src="../../../../assets/images/footer-logo.png" class="img-responsive">
+                        </a>
+                        <p>
+                            SimplyWilled is an online service that provides legal forms and legal information. We are not a law firm and are not a substitute for an atttorney's advice. Use of this website is subject to our Terms of Service, Terms of Use and Privacy Policy.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="footer-nav">
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Login</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-nav">
+                        <ul>
+                            <li><a href="#">Terms of Use</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="contactus">
+                        <img src="../../../../assets/images/icon-call.png" class="img-responsive">
+                        <div class="footer-label">
+                            <span class="number">1-(855) 965-1789 </span>
+                            <span>Mon-Friday 10 A.M - 6 P.M.</span>
+                        </div>
+                    </div>
+                    <div class="social">
+                        <span>Follow Us: </span>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="copyright">Copyright © 2017-2018 Keep It Simple, LLC. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-right">
+                    <p>Shop With Confidence Powered by <a><img src="../../../../assets/images/paypal-btn.png" class="img-responsive"></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -14,8 +14,8 @@ export class UserRegisterComponent implements OnInit {
 
   showLoader: boolean              = false;
   responseReceived: boolean        = false;
-  loginRequestStatus: boolean      = false;
-  loginRequestResponseMsg: string  = '';
+  setRequestStatus: boolean      = false;
+  setResponseMsg: string  = '';
 
 
   ngOnInit() {
@@ -25,7 +25,6 @@ export class UserRegisterComponent implements OnInit {
 
   onSubmit( formRegister: NgForm ) {
     this.showLoader = true;
-    console.log(formRegister.value);
     this.userService.register( formRegister.value )
     .subscribe(
       ( response: any ) => {
@@ -36,14 +35,13 @@ export class UserRegisterComponent implements OnInit {
           localStorage.setItem( 'loggedInUser', JSON.stringify(response) );
         } else {
 
-          this.loginRequestStatus = false;
-          this.loginRequestResponseMsg = 'error';
+          this.setRequestStatus = false;
+          this.setResponseMsg = 'Some error occured';
         }
       },
       ( error: HttpErrorResponse ) => {
-        console.log(error);
-        this.loginRequestStatus = false;
-        this.loginRequestResponseMsg = 'error';
+        this.setRequestStatus = false;
+        this.setResponseMsg = error.error.error;
         this.showLoader = false;
         this.responseReceived = true;
         setTimeout( () => {

@@ -31,9 +31,9 @@ export class DashboardService {
 		return this.httpClient.get(environment.API_URL + 'admin-panel/category-list');
 	}
 
+
     editBlog(createBlogBody):Observable<any>{
         return this.httpClient.post(environment.API_URL + 'admin-panel/edit-blog', createBlogBody);
     }
-	
 
 }
