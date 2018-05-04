@@ -524,48 +524,58 @@ class UserManagementController extends Controller
       $stepValue        = 5;
       $representatives  = PersonalRepresentatives::where('user_id',$user->id)->get();
 
-      $representativeArray = [];
-      foreach ($representatives as $key => $eachRepresentative) {
-        if($eachRepresentative->is_backuprepresentative == '1') {
-          $representativeArray = [
-            'isBackUpRepresentative'  => 'Yes',
-            'backUpRepresentative'    => [
-              'fullName'      => $eachRepresentative->fullname,
-              'relationShip'  => $eachRepresentative->relationship_with,
-              'address'       => $eachRepresentative->address,
-              'city'          => $eachRepresentative->city,
-              'state'         => $eachRepresentative->state,
-              'zip'           => $eachRepresentative->zip,
-              'country'       => $eachRepresentative->country,
-              'isInform'      => $eachRepresentative->email_notification,
-              'email'         => $eachRepresentative->email
-            ]
-          ];
-        } else {
-          $representativeArray = [
-            'personalRepresentative'    => [
-              'fullName'      => $eachRepresentative->fullname,
-              'relationShip'  => $eachRepresentative->relationship_with,
-              'address'       => $eachRepresentative->address,
-              'city'          => $eachRepresentative->city,
-              'state'         => $eachRepresentative->state,
-              'zip'           => $eachRepresentative->zip,
-              'country'       => $eachRepresentative->country,
-              'isInform'      => $eachRepresentative->email_notification,
-              'email'         => $eachRepresentative->email
-            ]
-          ];
-        }
-        return [
-          'step'  => $stepValue,
-          'data'  => $representativeArray
-        ];
-      }
 
+      $personalRepresentative       = PersonalRepresentatives::where('user_id',$user->id)->where('is_backuprepresentative','0')->first();
+      $backupPersonalRepresentative = PersonalRepresentatives::where('user_id',$user->id)->where('is_backuprepresentative','1')->first();
       return [
-        'step'  => $stepValue,
-        'data'  => null
+        'isPersonalRepresentative'        =>  $personalRepresentative == null ? 'No' : 'Yes',
+        'personalRepresentative'          =>  [$personalRepresentative],
+        'isBackupPersonalRepresentative'  =>  $backupPersonalRepresentative == null ? 'No' : 'Yes',
+        'backupPersonalRepresentative'    =>  [$backupPersonalRepresentative]
       ];
+
+      // $representativeArray = [];
+      // foreach ($representatives as $key => $eachRepresentative) {
+      //   if($eachRepresentative->is_backuprepresentative == '1') {
+      //     $representativeArray = [
+      //       'isBackUpRepresentative'  => 'Yes',
+      //       'backUpRepresentative'    => [
+      //         'fullName'      => $eachRepresentative->fullname,
+      //         'relationShip'  => $eachRepresentative->relationship_with,
+      //         'address'       => $eachRepresentative->address,
+      //         'city'          => $eachRepresentative->city,
+      //         'state'         => $eachRepresentative->state,
+      //         'zip'           => $eachRepresentative->zip,
+      //         'country'       => $eachRepresentative->country,
+      //         'isInform'      => $eachRepresentative->email_notification,
+      //         'email'         => $eachRepresentative->email
+      //       ]
+      //     ];
+      //   } else {
+      //     $representativeArray = [
+      //       'personalRepresentative'    => [
+      //         'fullName'      => $eachRepresentative->fullname,
+      //         'relationShip'  => $eachRepresentative->relationship_with,
+      //         'address'       => $eachRepresentative->address,
+      //         'city'          => $eachRepresentative->city,
+      //         'state'         => $eachRepresentative->state,
+      //         'zip'           => $eachRepresentative->zip,
+      //         'country'       => $eachRepresentative->country,
+      //         'isInform'      => $eachRepresentative->email_notification,
+      //         'email'         => $eachRepresentative->email
+      //       ]
+      //     ];
+      //   }
+      //   return [
+      //     'step'  => $stepValue,
+      //     'data'  => $representativeArray
+      //   ];
+      // }
+      //
+      // return [
+      //   'step'  => $stepValue,
+      //   'data'  => null
+      // ];
     }
 
     /*
