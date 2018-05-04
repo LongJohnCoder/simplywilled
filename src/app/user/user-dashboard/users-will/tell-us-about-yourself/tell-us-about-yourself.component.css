@@ -175,6 +175,7 @@
     padding-bottom: 2px;
     display:block;
     padding-top: 10px;
+    text-align: center;
 }
 .human_status2{
     font-family: 'OpenSans';
@@ -184,6 +185,7 @@
     top: auto;
     bottom: 10px;
     line-height: 20px;
+    text-align: center;
 }
 .radio_custom.marital_status.active .human_status2{
     color: #42A82D;

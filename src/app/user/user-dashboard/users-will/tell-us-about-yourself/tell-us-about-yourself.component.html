@@ -160,7 +160,7 @@
       </ul>
     </div>
     <hr>
-    <h2>About Your {{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}}</h2>
+    <h2 *ngIf=" marital_status.value == 'M' || marital_status.value == 'R'">About Your {{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}}</h2>
     <div *ngIf=" marital_status.value == 'M' || marital_status.value == 'R'">
       <div class="form-group" [ngClass]="{'valid': partner_firstname.valid}">
         <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} First Name: </label>
