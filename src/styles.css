@@ -54,12 +54,9 @@ h1, h2, h3, h4, h5, h6 {
 .header_container {
 	width: 100%;
 	float: left;
-	border-top: 5px solid #46ac33
 }
 .header_first_sec {
 	width: 100%;
-	background: #0a5cab;
-	box-shadow: 0 6px 10px rgba(0,0,0,.4)
 }
 .logo {
 	margin: 0 0 -58px;
@@ -135,24 +132,12 @@ h1, h2, h3, h4, h5, h6 {
 	color: #1376bb;
 	padding-bottom: 10px
 }
-.index_banner_ul {
-	width: 100%;
-	float: left;
-	margin-bottom: 10px
-}
-.index_banner_ul li {
-	float: left;
-	color: #1376bb;
-	font-size: 20px;
-	padding-left: 30px;
-	margin-left: 20px;
-	position: relative
-}
+
+
 .index_banner_ul li:before {
 	content: '';
 	width: 27px;
 	height: 29px;
-	background-image: url('./assets/images/sprite_sheet.png');
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -470,7 +455,14 @@ h1, h2, h3, h4, h5, h6 {
 	float: left;
 	padding: 75px 0 0
 }
-.sec5_left_main {
+#wrapper #page-wrapper{
+	background: #f2f2f2;
+}
+#wrapper #page-wrapper .panel-primary{
+	border-radius:7px;
+	overflow: hidden;
+}
+#page-wrapper .sec5_left_main {
 	width: 48.5%;
 	float: left
 }
@@ -487,7 +479,7 @@ h1, h2, h3, h4, h5, h6 {
 .its_easy_text span {
 	color: #46ac33
 }
-.print_img {
+#page-wrapper .print_img {
 	width: 83px;
 	height: 83px;
 	float: left;
@@ -683,11 +675,6 @@ h1, h2, h3, h4, h5, h6 {
 	background: #fff;
 	box-shadow: 2px 5px 3px rgba(0,0,0,.1);
 	padding: 0 15px
-}
-.book_main {
-	width: 100%;
-	float: left;
-	padding: 0px 60px 15px 60px
 }
 .single_will_book {
 	float: left;
@@ -915,7 +902,6 @@ h1, h2, h3, h4, h5, h6 {
 	content: '';
 	width: 45px;
 	height: 45px;
-	background-image: url('./assets/images/sprite_sheet.png');
 	position: absolute;
 	top: 7px;
 	left: 0;
@@ -2737,9 +2723,7 @@ a.get_started_btn_styling:hover {
 .border_top_green {
 	border-top: 5px solid #46ac33
 }
-.grey_bg {
-	background-color: #f2f2f2
-}
+
 .blog_pagination {
 	width: 100%;
 	display: inline-block;
@@ -3281,10 +3265,10 @@ transform:rotate(360deg)
 .contact_social_media {
 	padding: 20px 0 20px 20px
 }
-.logo {
-	margin: 4px 0 -58px;
-	width: 175px
-}
+/*.logo {*/
+	/*margin: 4px 0 -58px;*/
+	/*width: 175px*/
+/*}*/
 .navigation {
 	padding: 20px 0
 }
@@ -3413,13 +3397,6 @@ transform:rotate(360deg)
 @media only screen and (min-width:768px) and (max-width:960px) {
 .packages_ul>li:nth-child(1), .packages_ul>li:nth-child(2), .sec3_planning_ul {
 	margin-bottom: 70px
-}
-.book_main{
-	padding: 0px 0px 15px 0px
-}
-.logo {
-	width: 120px;
-	margin-top: 5px
 }
 .navigation {
 	padding: 8px 0px 14px 0px
@@ -4125,9 +4102,6 @@ transform:rotate(360deg)
 .contact_right_sec {
 	width: 100%
 }
-.logo {
-	width: 220px
-}
 .footer_ul>li, .last_will_testament, .macfee_left, .sec1_left {
 	width: 100%
 }
@@ -4229,9 +4203,6 @@ transform:rotate(360deg)
 }
 .book_price{
 	font-size:40px
-}
-.book_main{
-	padding: 0px 0px 15px 0px
 }
 
 .paypall_text{
@@ -4395,9 +4366,6 @@ transform:rotate(360deg)
 }
 .sec4_ul {
 	margin-bottom: 20px
-}
-.print_img_right_sec {
-	width: 77%
 }
 .index_sec5 {
 	padding: 50px 0 0
@@ -4630,9 +4598,6 @@ transform:rotate(360deg)
 }
 .confirm_left{
 	margin-bottom:0px;
-}
-.ecforceable_btn, .index_banner_ul{
-	display:none;
 }
 .trending_owl_main{
 	width:100% !important;
@@ -5328,9 +5293,6 @@ h1.msg{
 	display: block;
 	margin: 0 auto
 }
-.ask_owl_text span, .print_img {
-	display: inline-block
-}
 .contact_social_main_ul li {
 	padding: 10px 0 30px 48px;
 	font-size: 16px
@@ -5347,11 +5309,6 @@ h1.msg{
 	font-size: 15px;
 	padding-top: 0;
 	width: 65%
-}
-.print_img, .team_pic {
-	float: none;
-	display:inline-block
-	
 }
 .protect_loved_ul {
 	margin-bottom: 0
@@ -5396,9 +5353,7 @@ h1.msg{
 .protect_loved_right {
 	width: 79%
 }
-.print_img_right_sec {
-	width: 100%
-}
+
 .sec9_flexiel_slider .flex-direction-nav a {
 	height: 30px!important
 }
