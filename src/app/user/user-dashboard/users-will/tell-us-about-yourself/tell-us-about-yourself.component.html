@@ -160,10 +160,10 @@
       </ul>
     </div>
     <hr>
-    <h2>About Your Spouse</h2>
+    <h2>About Your {{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}}</h2>
     <div *ngIf=" marital_status.value == 'M' || marital_status.value == 'R'">
       <div class="form-group" [ngClass]="{'valid': partner_firstname.valid}">
-        <label>Spouse First Name: </label>
+        <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} First Name: </label>
         <input
                 type="text"
                 class="form-control"
@@ -178,7 +178,7 @@
         </span>
       </div>
       <div class="form-group">
-        <label>Spouse Middle Name: </label>
+        <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} Middle Name: </label>
         <input type="text" class="form-control"
                name="partner_middlename"
                [ngModel]="userInfo?.partner_middlename"
@@ -198,7 +198,7 @@
       </span>
       </div>
       <div class="form-group">
-        <label>Spouse Gender: </label>
+        <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} Gender: </label>
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [ngClass]="{'active': partner_gender.value == 'M'}">
@@ -225,13 +225,13 @@
         </ul>
       </div>
       <div class="form-group">
-        <label>Spouse Date of Birth: </label>
+        <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} Date of Birth: </label>
         <div class="row">
           <div class="col-md-4">
             <select class="form-control" placeholder="Month"
                     name="spouseMonth"
                     required
-                    ngModel
+                    [ngModel]="userInfo?.spouseMonth"
                     #spouseMonth="ngModel">
               <option *ngFor="let month of months;let i = index" [value]="month">{{month}}</option>
             </select>
@@ -240,7 +240,7 @@
             <select class="form-control" placeholder="Day"
                     name="spouseDay"
                     required
-                    ngModel
+                    [ngModel]="userInfo?.spouseDay"
                     #spouseDay="ngModel">
               <option *ngFor="let day of days;let i = index" [value]="day">{{day}}</option>
             </select>
@@ -249,7 +249,7 @@
             <select  class="form-control" placeholder="Year"
                      name="spouseYear"
                      required
-                     ngModel
+                     [ngModel]="userInfo?.spouseYear"
                      #year="ngModel">
               <option *ngFor="let year of years;let i = index" [value]="year">{{year}}</option>
             </select>

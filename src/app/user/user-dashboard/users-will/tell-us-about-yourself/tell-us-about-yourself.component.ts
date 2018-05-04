@@ -19,6 +19,7 @@ export class TellUsAboutYourselfComponent implements OnInit {
   user: any;
   today: any;
   userInfo: any;
+  typeOfPartner: string[] = ['Spouse', 'Partner']
 
 
   constructor(
@@ -33,12 +34,17 @@ export class TellUsAboutYourselfComponent implements OnInit {
     this.user = this.authService.getUser();
     this.userService.getUserDetails(this.user.id).subscribe(
         (response: any) => {
-          console.log(response.data[0].data.userInfo);
-          this.userInfo = response.data[0].data.userInfo;
-          let dobData = this.userInfo.dob.split('-');
-          this.userInfo.year = dobData[0];
-          this.userInfo.month = dobData[1];
-          console.log(dobData);
+            if ( response.data[0].data.userInfo ) {
+                this.userInfo = response.data[0].data.userInfo;
+                const dobData = this.userInfo.dob.split('-');
+                const partnerDob = this.userInfo.partner_dob.split('-');
+                this.userInfo.year = dobData[0];
+                this.userInfo.month = dobData[1];
+                this.userInfo.day = dobData[2];
+                this.userInfo.spouseYear = partnerDob[0];
+                this.userInfo.spouseMonth = partnerDob[1];
+                this.userInfo.spouseDay = partnerDob[2];
+            }
         },
         (error: any) => {
           console.log(error);
