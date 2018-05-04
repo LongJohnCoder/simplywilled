@@ -82,18 +82,18 @@ class AuthController extends Controller {
                 $user->save();
                 $user->assignRole('User');
                 $role = $user->getRole($user->id);
-                
-                Mail::send('emails.registerEmail', [
-                        'email'         => 'info@simplywilled.com',
-                        'user_email'    => $user->email,
-                        'password'      => $request->input('password')
-                    ], function ($mail) use ($user) {
-                        /** @noinspection PhpUndefinedMethodInspection */
-                        $mail->from('info@simplywilled.com', 'Simplywilled Registration');
-                        /** @noinspection PhpUndefinedMethodInspection */
-                        $mail->to($user->email, "User")
-                              ->subject('Registration Successful');
-                });
+
+                // Mail::send('emails.registerEmail', [
+                //         'email'         => 'info@simplywilled.com',
+                //         'user_email'    => $user->email,
+                //         'password'      => $request->input('password')
+                //     ], function ($mail) use ($user) {
+                //         /** @noinspection PhpUndefinedMethodInspection */
+                //         $mail->from('info@simplywilled.com', 'Simplywilled Registration');
+                //         /** @noinspection PhpUndefinedMethodInspection */
+                //         $mail->to($user->email, "User")
+                //               ->subject('Registration Successful');
+                // });
 
                 $response = [
                     'status'  => true,

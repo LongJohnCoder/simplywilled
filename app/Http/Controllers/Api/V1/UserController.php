@@ -854,13 +854,14 @@ class UserController extends Controller
         }
     }
 
-    private function updateGuardianInfoHelper($userId, $guardian = [] , $isGuardianMinorChildren = null) {
-      if(isset($request->guardian[0])) {
-        $guardian = $request->guardian[0];
+    /*
+     * A single function to update guardian as well as backup guardian info
+     * @return \Illuminate\Http\JsonResponse
+     * */
+    private function updateGuardianInfoHelper($userId, $guardian = [] , $isGuardianMinorChildren = null, $isBackupGuardian, $emailType = null) {
         //validation for normal guardian
         $validator = Validator::make($guardian, [
-            //'id'           =>  'nullable|exists:guardianInfo,id,deleted_at,NULL',
-            'user_id'      =>  'required|exists:users,id,deleted_at,NULL',
+            //'user_id'      =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|between:'.\Auth::user()->id.','.\Auth::user()->id,
             'fullname'     =>  'required|string',
             'relationship_with' => 'required|string|max:255',
             'address'      =>  'required|string',
@@ -869,6 +870,8 @@ class UserController extends Controller
             'city'         =>  'required|string',
             'email_notification' => 'required|numeric|between:0,1|integer',
             'zip'          =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
+        ],[
+          'user_id.between' => 'User id given is incorrect or unauthenticated!'
         ]);
         if ($validator->fails()) {
             return response()->json([
@@ -878,46 +881,60 @@ class UserController extends Controller
             ], 400);
         }
 
-        //validation for normal guardian email
-        if(isset($guardian['email_notification'])) {
-          $guardian['email_notification'] = (string)$guardian['email_notification'];
-          $validator = Validator::make($guardian, [
-              'email' =>  'required|email'
-          ]);
-          if ($validator->fails()) {
-              return response()->json([
-                  'status' => false,
-                  'message' => $validator->errors(),
-                  'data' => []
-              ], 400);
-          }
+        /*
+        * backup guardian checking
+        * if it is guardian minor children then is backup is 0
+        * if it is backup guardian then is backup is 1
+        **/
+        $guardian['is_backup'] = $isBackupGuardian == 0 ? '0' : '1';
+
+        /*
+        * if email is set then email should fire once a backup guardian
+        * or a guardian is alloted
+        **/
+        if (isset($guardian['email_notification']) && $guardian['email_notification'] == 1) {
+            $validator = Validator::make($guardian, [
+                'email' =>  'required|email'
+            ]);
+            // validation for the user data
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => $validator->errors(),
+                    'data' => []
+                ], 400);
+            }
         }
 
+        //dd(1213431414);
         $checkForExistUser = TellUsAboutYou::where('user_id', $userId)->first();
         if ($checkForExistUser) {
           $checkForExistUser->guardian_minor_children = $isGuardianMinorChildren == 'Yes' ? '1' : '0';
           $checkForExistUser->save();
-          GuardianInfo::updateOrCreate(['user_id'=>$guardian['user_id'] , 'is_backup' => '0'],$guardian);
+          GuardianInfo::updateOrCreate(['user_id'=>$guardian['user_id'] , 'is_backup' => (string)$isBackupGuardian],$guardian);
+          //Sending an email if email notification is set
+          if($emailType != null) {
+            $this->sendEmail($userId, $guardian['fullname'], $guardian['email'], $emailType);
+          }
+          $guardianInfo       = GuardianInfo::where('user_id',$userId)->where('is_backup','0')->get();
+          $guardianInfoBackup = GuardianInfo::where('user_id',$userId)->where('is_backup','1')->get();
           return response()->json([
-              'status'  => true,
-              'message' => 'User details updated',
-              'data'    => []
+              'status' => true,
+              'message' => 'User details updated final with GuardianInfo',
+              'data' => [
+                'isguardianMinorChildren' =>  $guardianInfo->count() > 0 ? 'Yes' : 'No' ,
+                'guardian'                =>  $guardianInfo,
+                'isBackUpGurdian'         =>  $guardianInfoBackup->count() > 0 ? 'Yes' : 'No' ,
+                'backupGuardian'          =>  $guardianInfoBackup
+              ]
           ], 200);
         } else {
           return response()->json([
-              'status' => false,
+              'status'  => false,
               'message' => 'User details not updated',
-              'data' => []
+              'data'    => []
           ], 400);
         }
-
-      } else {
-        return response()->json([
-            'status' => false,
-            'message' => 'guardian array cannot be null',
-            'data' => []
-        ], 400);
-      }
     }
 
     /*
@@ -926,280 +943,270 @@ class UserController extends Controller
      * */
     public function updateGuardianInfo($request)
     {
-        // try {
-        //     //dd($request->all());
-        //     $guardian = ['data' => $request->guardian];
-        //
-        //     $validator = Validator::make($request->all(), [
-        //         'user_id'                 =>  'required|exists:users,id,deleted_at,NULL',
-        //         'isGuardianMinorChildren' =>  'required|string|in:Yes,No',
-        //         'isBackUpGurdian'         =>  'required|string|in:Yes,No',
-        //         // //validation for backup guardian
-        //         // 'backupGuardian.*.id'           =>  'required|exists:guardianInfo,id,deleted_at,NULL',
-        //         // 'backupGuardian.*.user_id'      =>  'required|exists:users,id,deleted_at,NULL',
-        //         // 'backupGuardian.*.relationship_with' => 'required|string|max:255',
-        //         // 'backupGuardian.*.address'      =>  'required|string',
-        //         // 'backupGuardian.*.country'      =>  'required|string',
-        //         // 'backupGuardian.*.state'        =>  'required|string',
-        //         // 'backupGuardian.*.city'         =>  'required|string',
-        //         // 'backupGuardian.*.zip'          =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
-        //         // 'backupGuardian.*.email_notification' =>  'required|numeric|integer|between:1,0',
-        //     ]);
-        //     // validation for the user data
-        //     if ($validator->fails()) {
-        //         return response()->json([
-        //             'status' => false,
-        //             'message' => $validator->errors(),
-        //             'data' => []
-        //         ], 400);
-        //     }
-        //
-        //     $userId                   = $request->user_id;
-        //     $isGuardianMinorChildren  = $request->isGuardianMinorChildren;   // Yes, No
-        //     $isBackUpGurdian          = $request->is_backup; // Yes, No
-        //
-        //     if($isGuardianMinorChildren == 'Yes') {
-        //       self::updateGuardianInfoHelper($userId, $request->guardian[0], '0');
-        //       if($isBackUpGurdian == 'Yes') {
-        //         self::updateGuardianInfoHelper($userId, $request->guardian[0], '1');
-        //       }
-        //     }
-        //
-        //
-        //
-        // } catch (\Exception $e) {
-        //   return response()->json([
-        //           'status' => false,
-        //           'message' => 'Message : '.$e->getMessage().' Line : '.$e->getLine(),
-        //           'data' => []
-        //       ], 500);
-        // }
-
-
-        $validator = Validator::make($request->all(), [
-            'user_id'                 =>  'required|exists:users,id,deleted_at,NULL',
-            'isguardianMinorChildren' =>  'required|numeric|between:0,1|integer',
-            'email_notification'      =>  'required|numeric|between:0,1|integer',
-            'is_backup'               =>  'required|numeric|between:0,1|integer'
-        ]);
-        // validation for the user data
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => false,
-                'message' => $validator->errors(),
-                'data' => []
-            ], 400);
-        }
-
-
-        $userId                   = $request->user_id;
-        $isguardianMinorChildren  = $request->isguardianMinorChildren;   // 1->yes 0->no
-        $guardianFullName         = $request->fullname;
-        $relationShip             = $request->relationship_with;
-        $address                  = $request->address;
-        $city                     = $request->city;
-        $state                    = $request->state;
-        $zip                      = $request->zip;
-        $country                  = $request->country;
-
-
-        $isInformRepresentive = $request->email_notification; // 1->yes 0->No (default Yes)
-        $emailRepresentive    = $request->email;
-
-        $isBackUpGurdian      = $request->is_backup; // 1->yes 0->no (default is No)
-
-        $checkForExistUser = TellUsAboutYou::where('user_id', $userId)->first();
-        if ($checkForExistUser) {
-            if ($isguardianMinorChildren == 1) {
-                // try to save the data in tellus about u table
-                $checkForExistUser->guardian_minor_children = $isguardianMinorChildren;
-                $checkForExistUser->save();
-                // try to save data in  guardian table
-                $checkForExistGuardianInfo = GuardianInfo::where('user_id', $userId)->where('is_backup', '=', '0')->first();   // find and Update normal guardian data
-                if(!$checkForExistGuardianInfo) {
-                  $checkForExistGuardianInfo = new GuardianInfo;
-                }
-
-
-                // validation for the GuardianInfo
-                $validator = Validator::make($request->all(), [
-                    'fullname'          => 'required|string|max:255',
-                    'relationship_with' => 'required|string|max:255',
-                    'address'           => 'required|string|max:255',
-                    'city'              => 'required|string|max:255',
-                    'state'             => 'required|string|max:255',
-                    'zip'               => 'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
-                    'country'           => 'required|string|max:255',
-                ]);
-
-                if ($validator->fails()) {
-                    return response()->json([
-                        'status' => false,
-                        'message' => $validator->errors(),
-                        'data' => []
-                    ], 400);
-                }
-
-                if($isInformRepresentive == 1){
-                    $validator = Validator::make($request->all(), [
-                        'email' => 'required|email',
-                    ]);
-
-                    if ($validator->fails()) {
-                        return response()->json([
-                            'status' => false,
-                            'message' => $validator->errors(),
-                            'data' => []
-                        ], 400);
-                    }
-                }
-
-                $checkForExistGuardianInfo->user_id           = $userId;
-                $checkForExistGuardianInfo->fullname          = $guardianFullName;
-                $checkForExistGuardianInfo->relationship_with = $relationShip;
-                $checkForExistGuardianInfo->address           = $address;
-                $checkForExistGuardianInfo->city              = $city;
-                $checkForExistGuardianInfo->state             = $state;
-                $checkForExistGuardianInfo->zip               = $zip;
-                $checkForExistGuardianInfo->country           = $country;
-                $checkForExistGuardianInfo->email_notification = $isInformRepresentive;
-                $checkForExistGuardianInfo->email             = $emailRepresentive;
-                $checkForExistGuardianInfo->is_backup         = "0";
-
-                $checkForExistGuardianInfo->save();
-
-
-                if ($isInformRepresentive == 1) {
-                    $validator = Validator::make($request->all(), [
-                        'email' =>  'required|email'
-                    ]);
-                    // validation for the user data
-                    if ($validator->fails()) {
-                        return response()->json([
-                            'status' => false,
-                            'message' => $validator->errors(),
-                            'data' => []
-                        ], 400);
-                    }
-                    $emailType = 3; // send email guardian
-                    $this->sendEmail($userId, $guardianFullName, $emailRepresentive, $emailType);
-                }
-
-
-
-                if ($isBackUpGurdian == 1)
-                {
-                    $checkForExistBackupGuardianInfo = GuardianInfo::where('user_id', $userId)->where('is_backup', '=', '1')->first();   // find and upate normal gurdian data
-
-                    $isInformBackUpRepresentive = $request->isInformBackUpRepresentive;
-                    $emailBackUpRepresentive = $request->emailBackUpRepresentive;
-                    $backupGuardianFullName = $request->backupGuardianFullName;
-                    $backupGuardianRelationShip = $request->backupGuardianRelationShip;
-                    $backupGuardianAddress = $request->backupGuardianAddress;
-                    $backupGuardianCity = $request->backupGuardianCity;
-                    $backupGuardianState = $request->backupGuardianState;
-                    $backupGuardianZip = $request->backupGuardianZip;
-                    $backupGuardianCountry = $request->backupGuardianCountry;
-
-                    $validator = Validator::make($request->all(), [
-                        'isInformBackUpRepresentive'  => 'required|numeric|between:0,1|integer',
-                        'backupGuardianFullName' => 'required|string|max:255',
-                        'backupGuardianRelationShip' => 'required|string|max:255',
-                        'backupGuardianAddress' => 'required|string',
-                        'backupGuardianCity' => 'required|string',
-                        'backupGuardianState' => 'required|string',
-                        'backupGuardianZip' => 'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
-                        'backupGuardianCountry' => 'required|string',
-                    ]);
-
-                    if ($validator->fails()) {
-                        return response()->json([
-                            'status' => false,
-                            'message' => $validator->errors(),
-                            'data' => []
-                        ], 400);
-                    } // validation for the user data
-
-                    if($isInformBackUpRepresentive == 1){
-                        $validator = Validator::make($request->all(), [
-                            'email' => 'required|email',
-                        ]);
-
-                        if ($validator->fails()) {
-                            return response()->json([
-                                'status' => false,
-                                'message' => $validator->errors(),
-                                'data' => []
-                            ], 400);
-                        }
-                    }
-
-                    if (count($checkForExistBackupGuardianInfo)) {
-                        // update
-                        $checkForExistBackupGuardianInfo->user_id = $userId;
-                        $checkForExistBackupGuardianInfo->fullname = $backupGuardianFullName;
-                        $checkForExistBackupGuardianInfo->relationship_with = $backupGuardianRelationShip;
-                        $checkForExistBackupGuardianInfo->address = $backupGuardianAddress;
-                        $checkForExistBackupGuardianInfo->city = $backupGuardianCity;
-                        $checkForExistBackupGuardianInfo->state = $backupGuardianState;
-                        $checkForExistBackupGuardianInfo->zip = $backupGuardianZip;
-                        $checkForExistBackupGuardianInfo->country = $backupGuardianCountry;
-                        $checkForExistBackupGuardianInfo->email_notification = $isInformBackUpRepresentive;
-                        $checkForExistBackupGuardianInfo->email = $emailBackUpRepresentive;
-                        $checkForExistBackupGuardianInfo->is_backup = $isBackUpGurdian;
-                        $checkForExistBackupGuardianInfo->save();
-                        if ($isInformBackUpRepresentive == 1) {
-                            $emailType = 4; // send mail to Backup Guardian Email
-                            $this->sendEmail($userId, $backupGuardianFullName, $emailBackUpRepresentive, $emailType);
-                        }
-                    } else {
-                        // insert or create
-                        $saveGuardianInfo = new GuardianInfo;
-                        $saveGuardianInfo->user_id = $userId;
-                        $saveGuardianInfo->fullname = $backupGuardianFullName;
-                        $saveGuardianInfo->relationship_with = $backupGuardianRelationShip;
-                        $saveGuardianInfo->address = $backupGuardianAddress;
-                        $saveGuardianInfo->city = $backupGuardianCity;
-                        $saveGuardianInfo->state = $backupGuardianState;
-                        $saveGuardianInfo->zip = $backupGuardianZip;
-                        $saveGuardianInfo->country = $backupGuardianCountry;
-                        $saveGuardianInfo->email_notification = $isInformBackUpRepresentive;
-                        $saveGuardianInfo->email = $emailBackUpRepresentive;
-                        $saveGuardianInfo->is_backup = $isBackUpGurdian;
-                        $saveGuardianInfo->save();
-                        if ($isInformBackUpRepresentive == 1) {
-                            $emailType = 4; // send mail to Backup Guardian Email
-                            $this->sendEmail($userId, $backupGuardianFullName, $emailBackUpRepresentive, $emailType);
-                        }
-                    }
-                }
-                // success message
-
-            } else {
-                $checkForExistUser->guardian_minor_children = $isguardianMinorChildren;
-                $checkForExistUser->save();
-                // success message
+        try {
+            //validation for necessary flags
+            $validator = Validator::make($request->all(), [
+                'user_id'                   =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
+                'isGuardianMinorChildren'   =>  'required|string|in:Yes,No',
+                'isBackUpGuardian'          =>  'required|string|in:Yes,No',
+                'guardian.*.user_id'        =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
+                'backupGuardian.*.user_id'  =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id
+            ]);
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => $validator->errors(),
+                    'data' => []
+               ], 400);
             }
-
-            $guardianInfo       = GuardianInfo::where('user_id',$userId)->where('is_backup','1')->get();
-            $guardianInfoBackup = GuardianInfo::where('user_id',$userId)->where('is_backup','!=','1')->get();
-            return response()->json([
-                'status' => true,
-                'message' => 'User details updated final with GuardianInfo',
-                'data' => [
-                  'isguardianMinorChildren' =>  $isguardianMinorChildren == 1 ? 'Yes' : 'No',
-                  'guardian'                =>  $guardianInfo,
-                  'isBackUpGurdian'         =>  $guardianInfoBackup->count() > 1 ? 'Yes' : 'No' ,
-                  'backupGuardian'          =>  $guardianInfoBackup
-                ]
-            ], 200);
-        } else {
-            return response()->json([
-                'status' => false,
-                'message' => 'User details not updated',
-                'data' => []
-            ], 400);
+            $userId                   = $request->user_id;
+            $isGuardianMinorChildren  = $request->isGuardianMinorChildren;// Yes, No
+            $isBackUpGuardian         = $request->isBackUpGuardian;//Yes, No
+            $isBackupGuardianCopy     = $isBackUpGuardian == 'Yes' ? '1' : '0';
+            if($isGuardianMinorChildren == 'Yes') {
+              if(isset($request->guardian[0])) {
+                $guardian   = $request->guardian[0];
+                $emailType  = 3;
+                return self::updateGuardianInfoHelper($userId, $guardian, $isGuardianMinorChildren, $isBackupGuardianCopy, $emailType);
+              }
+              if($isBackUpGuardian == 'Yes' && isset($requset->backupGuardian[0])) {
+                $backupGuardian = $requset->backupGuardian[0];
+                $emailType      = 4;
+                return self::updateGuardianInfoHelper($userId, $backupGuardian, $isGuardianMinorChildren, $isBackupGuardianCopy, $emailType);
+              }
+            }
+        } catch (\Exception $e) {
+          return response()->json([
+                  'status' => false,
+                  'message' => 'Message : '.$e->getMessage().' Line : '.$e->getLine(),
+                  'data' => []
+          ], 500);
         }
+
+        // $validator = Validator::make($request->all(), [
+        //     'user_id'                 =>  'required|exists:users,id,deleted_at,NULL',
+        //     'isguardianMinorChildren' =>  'required|numeric|between:0,1|integer',
+        //     'email_notification'      =>  'required|numeric|between:0,1|integer',
+        //     'is_backup'               =>  'required|numeric|between:0,1|integer'
+        // ]);
+        // // validation for the user data
+        // if ($validator->fails()) {
+        //     return response()->json([
+        //         'status' => false,
+        //         'message' => $validator->errors(),
+        //         'data' => []
+        //     ], 400);
+        // }
+        //
+        //
+        // $userId                   = $request->user_id;
+        // $isguardianMinorChildren  = $request->isguardianMinorChildren;   // 1->yes 0->no
+        // $guardianFullName         = $request->fullname;
+        // $relationShip             = $request->relationship_with;
+        // $address                  = $request->address;
+        // $city                     = $request->city;
+        // $state                    = $request->state;
+        // $zip                      = $request->zip;
+        // $country                  = $request->country;
+        //
+        //
+        // $isInformRepresentive = $request->email_notification; // 1->yes 0->No (default Yes)
+        // $emailRepresentive    = $request->email;
+        //
+        // $isBackUpGurdian      = $request->is_backup; // 1->yes 0->no (default is No)
+        //
+        // $checkForExistUser = TellUsAboutYou::where('user_id', $userId)->first();
+        // if ($checkForExistUser) {
+        //     if ($isguardianMinorChildren == 1) {
+        //         // try to save the data in tellus about u table
+        //         $checkForExistUser->guardian_minor_children = $isguardianMinorChildren;
+        //         $checkForExistUser->save();
+        //         // try to save data in  guardian table
+        //         $checkForExistGuardianInfo = GuardianInfo::where('user_id', $userId)->where('is_backup', '=', '0')->first();   // find and Update normal guardian data
+        //         if(!$checkForExistGuardianInfo) {
+        //           $checkForExistGuardianInfo = new GuardianInfo;
+        //         }
+        //
+        //
+        //         // validation for the GuardianInfo
+        //         $validator = Validator::make($request->all(), [
+        //             'fullname'          => 'required|string|max:255',
+        //             'relationship_with' => 'required|string|max:255',
+        //             'address'           => 'required|string|max:255',
+        //             'city'              => 'required|string|max:255',
+        //             'state'             => 'required|string|max:255',
+        //             'zip'               => 'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
+        //             'country'           => 'required|string|max:255',
+        //         ]);
+        //
+        //         if ($validator->fails()) {
+        //             return response()->json([
+        //                 'status' => false,
+        //                 'message' => $validator->errors(),
+        //                 'data' => []
+        //             ], 400);
+        //         }
+        //
+        //         if($isInformRepresentive == 1){
+        //             $validator = Validator::make($request->all(), [
+        //                 'email' => 'required|email',
+        //             ]);
+        //
+        //             if ($validator->fails()) {
+        //                 return response()->json([
+        //                     'status' => false,
+        //                     'message' => $validator->errors(),
+        //                     'data' => []
+        //                 ], 400);
+        //             }
+        //         }
+        //
+        //         $checkForExistGuardianInfo->user_id           = $userId;
+        //         $checkForExistGuardianInfo->fullname          = $guardianFullName;
+        //         $checkForExistGuardianInfo->relationship_with = $relationShip;
+        //         $checkForExistGuardianInfo->address           = $address;
+        //         $checkForExistGuardianInfo->city              = $city;
+        //         $checkForExistGuardianInfo->state             = $state;
+        //         $checkForExistGuardianInfo->zip               = $zip;
+        //         $checkForExistGuardianInfo->country           = $country;
+        //         $checkForExistGuardianInfo->email_notification = $isInformRepresentive;
+        //         $checkForExistGuardianInfo->email             = $emailRepresentive;
+        //         $checkForExistGuardianInfo->is_backup         = "0";
+        //
+        //         $checkForExistGuardianInfo->save();
+        //
+        //
+        //         if ($isInformRepresentive == 1) {
+        //             $validator = Validator::make($request->all(), [
+        //                 'email' =>  'required|email'
+        //             ]);
+        //             // validation for the user data
+        //             if ($validator->fails()) {
+        //                 return response()->json([
+        //                     'status' => false,
+        //                     'message' => $validator->errors(),
+        //                     'data' => []
+        //                 ], 400);
+        //             }
+        //             $emailType = 3; // send email guardian
+        //             $this->sendEmail($userId, $guardianFullName, $emailRepresentive, $emailType);
+        //         }
+        //
+        //
+        //
+        //         if ($isBackUpGurdian == 1)
+        //         {
+        //             $checkForExistBackupGuardianInfo = GuardianInfo::where('user_id', $userId)->where('is_backup', '=', '1')->first();   // find and upate normal gurdian data
+        //
+        //             $isInformBackUpRepresentive = $request->isInformBackUpRepresentive;
+        //             $emailBackUpRepresentive = $request->emailBackUpRepresentive;
+        //             $backupGuardianFullName = $request->backupGuardianFullName;
+        //             $backupGuardianRelationShip = $request->backupGuardianRelationShip;
+        //             $backupGuardianAddress = $request->backupGuardianAddress;
+        //             $backupGuardianCity = $request->backupGuardianCity;
+        //             $backupGuardianState = $request->backupGuardianState;
+        //             $backupGuardianZip = $request->backupGuardianZip;
+        //             $backupGuardianCountry = $request->backupGuardianCountry;
+        //
+        //             $validator = Validator::make($request->all(), [
+        //                 'isInformBackUpRepresentive'  => 'required|numeric|between:0,1|integer',
+        //                 'backupGuardianFullName' => 'required|string|max:255',
+        //                 'backupGuardianRelationShip' => 'required|string|max:255',
+        //                 'backupGuardianAddress' => 'required|string',
+        //                 'backupGuardianCity' => 'required|string',
+        //                 'backupGuardianState' => 'required|string',
+        //                 'backupGuardianZip' => 'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
+        //                 'backupGuardianCountry' => 'required|string',
+        //             ]);
+        //
+        //             if ($validator->fails()) {
+        //                 return response()->json([
+        //                     'status' => false,
+        //                     'message' => $validator->errors(),
+        //                     'data' => []
+        //                 ], 400);
+        //             } // validation for the user data
+        //
+        //             if($isInformBackUpRepresentive == 1){
+        //                 $validator = Validator::make($request->all(), [
+        //                     'email' => 'required|email',
+        //                 ]);
+        //
+        //                 if ($validator->fails()) {
+        //                     return response()->json([
+        //                         'status' => false,
+        //                         'message' => $validator->errors(),
+        //                         'data' => []
+        //                     ], 400);
+        //                 }
+        //             }
+        //
+        //             if (count($checkForExistBackupGuardianInfo)) {
+        //                 // update
+        //                 $checkForExistBackupGuardianInfo->user_id = $userId;
+        //                 $checkForExistBackupGuardianInfo->fullname = $backupGuardianFullName;
+        //                 $checkForExistBackupGuardianInfo->relationship_with = $backupGuardianRelationShip;
+        //                 $checkForExistBackupGuardianInfo->address = $backupGuardianAddress;
+        //                 $checkForExistBackupGuardianInfo->city = $backupGuardianCity;
+        //                 $checkForExistBackupGuardianInfo->state = $backupGuardianState;
+        //                 $checkForExistBackupGuardianInfo->zip = $backupGuardianZip;
+        //                 $checkForExistBackupGuardianInfo->country = $backupGuardianCountry;
+        //                 $checkForExistBackupGuardianInfo->email_notification = $isInformBackUpRepresentive;
+        //                 $checkForExistBackupGuardianInfo->email = $emailBackUpRepresentive;
+        //                 $checkForExistBackupGuardianInfo->is_backup = $isBackUpGurdian;
+        //                 $checkForExistBackupGuardianInfo->save();
+        //                 if ($isInformBackUpRepresentive == 1) {
+        //                     $emailType = 4; // send mail to Backup Guardian Email
+        //                     $this->sendEmail($userId, $backupGuardianFullName, $emailBackUpRepresentive, $emailType);
+        //                 }
+        //             } else {
+        //                 // insert or create
+        //                 $saveGuardianInfo = new GuardianInfo;
+        //                 $saveGuardianInfo->user_id = $userId;
+        //                 $saveGuardianInfo->fullname = $backupGuardianFullName;
+        //                 $saveGuardianInfo->relationship_with = $backupGuardianRelationShip;
+        //                 $saveGuardianInfo->address = $backupGuardianAddress;
+        //                 $saveGuardianInfo->city = $backupGuardianCity;
+        //                 $saveGuardianInfo->state = $backupGuardianState;
+        //                 $saveGuardianInfo->zip = $backupGuardianZip;
+        //                 $saveGuardianInfo->country = $backupGuardianCountry;
+        //                 $saveGuardianInfo->email_notification = $isInformBackUpRepresentive;
+        //                 $saveGuardianInfo->email = $emailBackUpRepresentive;
+        //                 $saveGuardianInfo->is_backup = $isBackUpGurdian;
+        //                 $saveGuardianInfo->save();
+        //                 if ($isInformBackUpRepresentive == 1) {
+        //                     $emailType = 4; // send mail to Backup Guardian Email
+        //                     $this->sendEmail($userId, $backupGuardianFullName, $emailBackUpRepresentive, $emailType);
+        //                 }
+        //             }
+        //         }
+        //         // success message
+        //
+        //     } else {
+        //         $checkForExistUser->guardian_minor_children = $isguardianMinorChildren;
+        //         $checkForExistUser->save();
+        //         // success message
+        //     }
+        //
+        //     $guardianInfo       = GuardianInfo::where('user_id',$userId)->where('is_backup','1')->get();
+        //     $guardianInfoBackup = GuardianInfo::where('user_id',$userId)->where('is_backup','!=','1')->get();
+        //     return response()->json([
+        //         'status' => true,
+        //         'message' => 'User details updated final with GuardianInfo',
+        //         'data' => [
+        //           'isguardianMinorChildren' =>  $isguardianMinorChildren == 1 ? 'Yes' : 'No',
+        //           'guardian'                =>  $guardianInfo,
+        //           'isBackUpGurdian'         =>  $guardianInfoBackup->count() > 1 ? 'Yes' : 'No' ,
+        //           'backupGuardian'          =>  $guardianInfoBackup
+        //         ]
+        //     ], 200);
+        // } else {
+        //     return response()->json([
+        //         'status' => false,
+        //         'message' => 'User details not updated',
+        //         'data' => []
+        //     ], 400);
+        // }
     }
 
     /*
