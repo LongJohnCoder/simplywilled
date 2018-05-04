@@ -27,5 +27,11 @@ export class BlogService {
     }
 
 
+    getBlog(id: number): Observable<any> {
+        const url = `${environment.API_URL+'admin-panel/view-blog'}/${id}`;
+        return this.httpClient.get(url);
+    }
+
+
 
 }

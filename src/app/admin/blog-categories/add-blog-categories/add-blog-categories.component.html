@@ -22,7 +22,7 @@
                                     <input class="form-control" type="hidden" name="categoryId" [(ngModel)]="blogCategoryData.id" #categoryId="ngModel">
                                 </div>
                             </fieldset>
-                        <button *ngIf="editMode" type="button" class="btn btn-primary" (click)="edit()"> {{editMode ? 'Edit' : 'Create'}} Blog Category</button>
+                            <button *ngIf="editMode" type="button" class="btn btn-primary" (click)="edit()"> {{editMode ? 'Edit' : 'Create'}} Blog Category</button>
                             <button *ngIf="!editMode" type="button" class="btn btn-primary" (click)="add()"> {{editMode ? 'Edit' : 'Create'}} Blog Category</button>
                         </div>
 

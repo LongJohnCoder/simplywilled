@@ -1,73 +1,122 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Response } from '@angular/http';
-import { Router } from "@angular/router";
-
-import { DashboardService } from './../dashboard.service'
+import {Component, OnInit} from '@angular/core';
+import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {Response} from '@angular/http';
+import {Router, ActivatedRoute} from "@angular/router";
+import {DashboardService} from './../dashboard.service'
+import {BlogService} from "./../blog.service";
 
 @Component({
-  selector: 'app-add-blog',
-  templateUrl: './add-blog.component.html',
-  styleUrls: ['./add-blog.component.css']
+    selector: 'app-add-blog',
+    templateUrl: './add-blog.component.html',
+    styleUrls: ['./add-blog.component.css']
 })
-
 
 
 export class AddBlogComponent implements OnInit {
 
-    categoryData:any[] = [];
+    categoryData: any[] = [];
     categoryIdCollection: any[] = [];
     blogImage: any;
-    blogFeatured:any;
-    createBlogMessage:string;
+    blogFeatured: any;
+    createBlogMessage: string;
+    editMode: boolean = false;
 
-  constructor(
-    private dashService : DashboardService,
-    private router: Router,
-  ) { }
+    blogData = {
+        id: 0,
+        author_id: 0,
+        title: '',
+        slug: '',
+        seo_title: '',
+        body: '',
+        image: '',
+        meta_description: '',
+        meta_keywords: '',
+        status: '',
+        featured: '',
+        total_views: '',
+        blog_category:'',
+    };
 
-  // public editorValue: string = '';
-
-  
-
-  checkedCat:any = {
-
-  }
-
-  ngOnInit() {
-      this.populateBlogCategorysData();
-  }
-
-  onSubmit( createBlog : NgForm ){
-
-      this.blogFeatured = (createBlog.value.blogFeatured==true)?1:0;
-
-      const createBlogBody = new FormData();
-      createBlogBody.append('blogTitle', createBlog.value.title);
-      createBlogBody.append('blogBody', createBlog.value.body);
-      createBlogBody.append('blogMetaDescription', createBlog.value.blogMeta);
-      createBlogBody.append('blogStatus', createBlog.value.status);
-      createBlogBody.append('blogFeatured', this.blogFeatured);
-      createBlogBody.append('blogMetaKeyword', createBlog.value.blogMetaKey);
-      createBlogBody.append('blogCategorys', JSON.stringify(this.categoryIdCollection));
-      createBlogBody.append('blogImage', this.blogImage);
+    constructor(
+        private dashService: DashboardService,
+        private BlogService: BlogService,
+        private router: Router,
+        private route: ActivatedRoute,
+    ) { }
 
 
-     console.log(createBlogBody)
+    checkedCat: any = {}
 
-    this.dashService.createBlog(createBlogBody).subscribe(
-      (response:any) => {
-          if(response.status == 'true'){
-              this.createBlogMessage = response.message;
-              this.router.navigate(['/admin-panel/blogs']);
-          }else{
-              this.createBlogMessage = response.message;
-          }
-      }
-    )
+    ngOnInit() {
+        this.populateBlogCategorysData();
+        console.log(this.blogData);
+        const id = +this.route.snapshot.paramMap.get('id');
+        if (id != 0) {
+            this.editMode = true;
+            this.getBlog();
+        }
 
-    
-  }
+    }
+
+     onSubmit() {
+
+     }
+
+    add(){
+
+        this.blogFeatured = (this.blogData.featured == 'true') ? 1 : 0;
+        const createBlogBody = new FormData();
+        createBlogBody.append('blogTitle', this.blogData.title);
+        createBlogBody.append('blogBody', this.blogData.body);
+        createBlogBody.append('blogMetaDescription', this.blogData.meta_description);
+        createBlogBody.append('blogStatus', this.blogData.status);
+        createBlogBody.append('blogFeatured', this.blogFeatured);
+        createBlogBody.append('blogMetaKeyword', this.blogData.meta_keywords);
+        createBlogBody.append('blogCategorys', this.blogData.blog_category);
+        createBlogBody.append('blogImage', this.blogImage);
+        createBlogBody.append('blogSeoTitle', this.blogData.seo_title);
+        
+        this.dashService.createBlog(createBlogBody).subscribe(
+            (response: any) => {
+                if (response.status = 'true') {
+                // console.log(response.status);
+                    this.createBlogMessage = response.message;
+                    this.router.navigate(['/admin-panel/blogs']);
+                } else {
+                    this.createBlogMessage = response.message;
+                }
+            }
+        )
+    }
+
+    edit(){
+
+        this.blogFeatured = (this.blogData.featured == 'true') ? 1 : 0;
+        const createBlogBody = new FormData();
+        createBlogBody.append('blogTitle', this.blogData.title);
+        createBlogBody.append('blogBody', this.blogData.body);
+        createBlogBody.append('blogMetaDescription', this.blogData.meta_description);
+        createBlogBody.append('blogStatus', this.blogData.status);
+        createBlogBody.append('blogFeatured', this.blogFeatured);
+        createBlogBody.append('blogMetaKeyword', this.blogData.meta_keywords);
+        createBlogBody.append('blogCategorys', this.blogData.blog_category);
+        createBlogBody.append('blogImage', this.blogImage);
+        createBlogBody.append('blogSeoTitle', this.blogData.seo_title);
+        createBlogBody.append('blogId', this.blogData.id.toString());
+
+
+        this.dashService.editBlog(createBlogBody).subscribe(
+            (response: any) => {
+                if (response.status = 'true') {
+                    // console.log(response.status);
+                    this.createBlogMessage = response.message;
+                    this.router.navigate(['/admin-panel/blogs']);
+                } else {
+                    this.createBlogMessage = response.message;
+                }
+            }
+        )
+    }
 
     /**
      * this function used for to get the selected category array
@@ -89,27 +138,57 @@ export class AddBlogComponent implements OnInit {
      */
     handleImageUpload(event): void {
         this.blogImage = <File>event.target.files[0];
-        console.log(this.blogImage);
+        // console.log(this.blogImage);
     }
-    populateBlogCategorysData(){
+
+    populateBlogCategorysData() {
         this.dashService.blogCategoryList().subscribe(
-            (data:any)=> {
+            (data: any) => {
                 this.categoryData = data.data.categoryDetails;
-                console.log('blogCategorylist',this.categoryData)
+                // console.log('blogCategorylist', this.categoryData)
             }
         )
     }
-  
-  
 
-}
-
-let ch:any = document.getElementsByClassName('blogCh');
-
-for(let i=0; i<ch.length; i++){
-  ch[i].addEventListener("click", function(){
-    if(this.checked){
-      alert();
+    getBlog() {
+        const id = +this.route.snapshot.paramMap.get('id');
+        this.BlogService.getBlog(id).subscribe(
+            (data: any) => {
+                this.blogData.id = data.data.blogDetails.id;
+                this.blogData.author_id = data.data.blogDetails.author_id;
+                this.blogData.title = data.data.blogDetails.title;
+                this.blogData.slug = data.data.blogDetails.slug;
+                this.blogData.seo_title = data.data.blogDetails.seo_title;
+                this.blogData.body = data.data.blogDetails.body;
+                this.blogData.image = data.data.blogDetails.image;
+                this.blogData.meta_description = data.data.blogDetails.meta_description;
+                this.blogData.meta_keywords = data.data.blogDetails.meta_keywords;
+                this.blogData.status = String(data.data.blogDetails.status);
+                this.blogData.featured = data.data.blogDetails.featured;
+                this.blogData.total_views = data.data.blogDetails.total_views;
+                this.blogData.blog_category = data.data.blogDetails.blog_category;
+            }
+        )
     }
-  });
+
+    // reset(){
+    //     this.isSubmitted = false;
+    //     this.register.reset();
+    //
+    // }
+
+
 }
+
+
+
+let ch: any = document.getElementsByClassName('blogCh');
+
+for (let i = 0; i < ch.length; i++) {
+    ch[i].addEventListener("click", function () {
+        if (this.checked) {
+            alert();
+        }
+    });
+}
+

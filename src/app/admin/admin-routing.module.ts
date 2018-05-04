@@ -17,6 +17,7 @@ const routes: Routes = [
     { path: 'change-password', canActivate: [ AuthGuard ], pathMatch: 'full', loadChildren: './auth/change-password/change-password.module#ChangePasswordModule'},
     { path: 'blogs', canActivate: [ AuthGuard ], pathMatch: 'full', component: BlogsComponent},
     { path: 'add-blog', canActivate: [ AuthGuard ], pathMatch: 'full', component: AddBlogComponent},
+    { path: 'edit-blog/:id', canActivate: [ AuthGuard ], pathMatch: 'full', component: AddBlogComponent},
     { path: 'blog-categories', canActivate: [ AuthGuard ], pathMatch: 'full', component: BlogCategoriesComponent},
     { path: 'add-blog-category', canActivate: [ AuthGuard ], pathMatch: 'full', component: AddBlogCategoriesComponent},
     { path: 'blog-comments', canActivate: [ AuthGuard ], pathMatch: 'full', component: BlogCommentsComponent},
