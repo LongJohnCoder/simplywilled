@@ -16,7 +16,7 @@ class UserAuthenticated
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->getRole(Auth::user()->id) == 2){
+        if (Auth::check() && Auth::user()->getRole->roleInfo->name == 'User'){
             return $next($request);
         } else {
             Auth::logout();

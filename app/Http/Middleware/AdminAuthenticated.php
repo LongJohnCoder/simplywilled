@@ -16,7 +16,7 @@ class AdminAuthenticated
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->getRole(Auth::user()->id) == 1){
+        if (Auth::check() && Auth::user()->getRole->roleInfo->name == 'Admin'){
         	return $next($request);
         } else {
             Auth::logout();

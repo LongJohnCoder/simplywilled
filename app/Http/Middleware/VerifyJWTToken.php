@@ -53,7 +53,7 @@ class VerifyJWTToken extends BaseMiddleware
 
         /** @noinspection PhpUndefinedMethodInspection */
         $this->events->fire('tymon.jwt.valid', $user);
-
+        
         return $next($request);
     }
 }

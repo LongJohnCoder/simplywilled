@@ -54,6 +54,8 @@ class User extends Authenticatable{
         $this->attributes['password'] = bcrypt($password);
     }
 
-   
-}
+    public function getRole() {
+        return $this->hasOne('App\RoleUser');
+    }
 
+}

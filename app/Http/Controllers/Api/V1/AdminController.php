@@ -55,26 +55,26 @@ class AdminController extends Controller {
             if ($token = JWTAuth::attempt($request->only('email', 'password'))) {
 
                 $user = Auth::user();
-                $role = $user->getRole($user->id);
-                if($role == 'Admin') {
-                    JWTAuth::invalidate($token);
-                        $response = [
-                        'status' => false,
-                        'error' => "Invalid email or password.",
-                    ];
-                    $responseCode = 400;
-                } else {
+                $role = $user->getRole->roleInfo->name;
 
-                    $response = [
-                        'status' => true,
-                        'message' => "User signed in successfully.",
-                        'user' => [
-                                    'id' => $user->id, 'name' => $user->name,
-                                    'email' => $user->email, 'role' => $role
-                                ],
-                        'token' => $token,
-                    ];
-                    $responseCode = 200;
+                if($role == 'Admin') {
+                  $response = [
+                      'status' => true,
+                      'message' => "User signed in successfully.",
+                      'user' => [
+                                  'id' => $user->id, 'name' => $user->name,
+                                  'email' => $user->email, 'role' => $role
+                              ],
+                      'token' => $token,
+                  ];
+                  $responseCode = 200;
+                } else {
+                  JWTAuth::invalidate($token);
+                      $response = [
+                      'status' => false,
+                      'error' => "Invalid email or password.",
+                  ];
+                  $responseCode = 400;
                 }
             } else {
                 $response = [

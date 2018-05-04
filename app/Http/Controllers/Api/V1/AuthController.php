@@ -230,30 +230,36 @@ class AuthController extends Controller {
             /**
              * Authenticate user using JWTAuth
              */
+
+             /*
+             *  Checking for a fact that admin cannot log in through user login
+             */
             if ($token = JWTAuth::attempt($request->only('email', 'password'))) {
 
                 $user = Auth::user();
-                $role = $user->getRole($user->id);
+
+                $role = $user->getRole->roleInfo->name;
+
                 if($role == 'User') {
-                    JWTAuth::invalidate($token);
-                        $response = [
-                        'status' => false,
-                        'error' => "Invalid email or password.",
-                    ];
-                    $responseCode = 400;
+                  $response = [
+                      'status' => true,
+                      'message' => "User signed in successfully.",
+                      'user' => [
+                                  'id' => $user->id, 'name' => $user->name,
+                                  'email' =>  $user->email, 'role' => $role,
+                                  'avatar' => $user->avatar, 'document_path' => $user->document_path,
+                                  'status' => $user->status
+                              ],
+                      'token' => $token,
+                  ];
+                  $responseCode = 200;
                 } else {
-                    $response = [
-                        'status' => true,
-                        'message' => "User signed in successfully.",
-                        'user' => [
-                                    'id' => $user->id, 'name' => $user->name,
-                                    'email' =>  $user->email, 'role' => $role,
-                                    'avatar' => $user->avatar, 'document_path' => $user->document_path,
-                                    'status' => $user->status
-                                ],
-                        'token' => $token,
-                    ];
-                    $responseCode = 200;
+                  JWTAuth::invalidate($token);
+                      $response = [
+                      'status' => false,
+                      'error' => "Invalid email or password.",
+                  ];
+                  $responseCode = 400;
                 }
             } else {
                 $response = [
