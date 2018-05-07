@@ -20,6 +20,7 @@ export class AddBlogComponent implements OnInit {
     blogFeatured: any;
     createBlogMessage: string;
     editMode: boolean = false;
+    categories = [];
 
     blogData = {
         id: 0,
@@ -32,9 +33,9 @@ export class AddBlogComponent implements OnInit {
         meta_description: '',
         meta_keywords: '',
         status: '',
-        featured: '',
+        featured: false,
         total_views: '',
-        blog_category:'',
+        blog_category: '',
     };
 
     constructor(
@@ -63,7 +64,10 @@ export class AddBlogComponent implements OnInit {
      }
 
     add(){
-        this.blogFeatured = (this.blogData.featured == 'true') ? 1 : 0;
+        this.blogFeatured = 0;
+        if (this.blogData.featured) {
+            this.blogFeatured = 1;
+        }
         const createBlogBody = new FormData();
         createBlogBody.append('blogTitle', this.blogData.title);
         createBlogBody.append('blogBody', this.blogData.body);
@@ -88,9 +92,11 @@ export class AddBlogComponent implements OnInit {
         )
     }
 
-    edit(){
-
-        this.blogFeatured = (this.blogData.featured == 'true') ? 1 : 0;
+    edit() {
+        this.blogFeatured = 0;
+        if (this.blogData.featured) {
+            this.blogFeatured = 1;
+        }
         const createBlogBody = new FormData();
         createBlogBody.append('blogTitle', this.blogData.title);
         createBlogBody.append('blogBody', this.blogData.body);
@@ -163,9 +169,14 @@ export class AddBlogComponent implements OnInit {
                 this.blogData.meta_description = data.data.blogDetails.meta_description;
                 this.blogData.meta_keywords = data.data.blogDetails.meta_keywords;
                 this.blogData.status = String(data.data.blogDetails.status);
-                this.blogData.featured = data.data.blogDetails.featured;
+                this.blogData.featured = data.data.blogDetails.featured == '0' ? false : true;
                 this.blogData.total_views = data.data.blogDetails.total_views;
-                this.blogData.blog_category = data.data.blogDetails.blog_category;
+                // this.blogData.blog_category = data.data.blogDetails.blog_category;
+                for (let i = 0; i < data.data.blogDetails.blog_category.length; i++) {
+                    console.log(data.data.blogDetails.blog_category[i].category_id);
+                    this.categories.push(data.data.blogDetails.blog_category[i].category_id);
+                }
+                this.blogData.blog_category = this.categories;
             }
         )
     }

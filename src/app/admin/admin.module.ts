@@ -5,7 +5,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule } from '@angular/forms';
-// import { CKEditorModule } from 'ngx-ckeditor';
+import { CKEditorModule } from 'ngx-ckeditor';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
@@ -29,6 +29,7 @@ import { RouterModule } from '@angular/router';
 import { AlertModule } from 'ngx-bootstrap/alert';
 
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -37,8 +38,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    FormsModule,
-    // CKEditorModule,
+    FormsModule, CKEditorModule,
     RouterModule,
     AlertModule.forRoot(),
 
