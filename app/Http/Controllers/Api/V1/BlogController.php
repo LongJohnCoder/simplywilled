@@ -102,10 +102,26 @@ class BlogController extends Controller
             if ($blogId) {
                 $blogs = Blogs::where('id', $blogId)->with('blogCategory')->first();
                 if ($blogs) {
+                  $blogDetails = new \stdClass;
+                  $blogDetails->id = $blogs->id;
+                  $blogDetails->author_id = $blogs->author_id;
+                  $blogDetails->body = $blogs->body;
+                  $blogDetails->featured = $blogs->featured;
+                  $blogDetails->meta_description = $blogs->meta_description;
+                  $blogDetails->meta_keywords = $blogs->meta_keywords;
+                  $blogDetails->seo_title = $blogs->seo_title;
+                  $blogDetails->slug = $blogs->slug;
+                  $blogDetails->status = $blogs->status;
+                  $blogDetails->title = $blogs->title;
+                  $blogDetails->total_views = $blogs->total_views;
+                  $blogDetails->image = url('/blogImage').'/'.$blogs->image;
+                  $blogDetails->blog_category = $blogs->blogCategory->pluck('category_id');
+
+
                     return response()->json([
                         'status' => true,
                         'message' => 'Blog details',
-                        'data' => ['blogDetails' => $blogs]
+                        'data' => ['blogDetails' => $blogDetails]
                     ], 200);
                 } else {
                     return response()->json([
