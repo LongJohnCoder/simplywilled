@@ -13,7 +13,7 @@ class MakePartnerGenderNullable extends Migration
      */
      public function up()
      {
-         DB::statement("ALTER TABLE tellUsAboutYou MODIFY 	partner_gender ENUM('M','F') NULL");
+         DB::statement("ALTER TABLE tellUsAboutYou MODIFY partner_gender ENUM('M','F') NULL");
      }
 
      /**

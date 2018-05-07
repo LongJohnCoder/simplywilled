@@ -137,7 +137,7 @@ class BlogController extends Controller
     public function createBlog(Request $request)
     {
         try {
-            $blogCategorys = json_decode($request->blogCategorys);
+            $blogCategorys = $request->blogCategorys;
             if(!isset($blogCategorys[0])) {
               return response()->json([
                   'status'  => false,
@@ -145,11 +145,12 @@ class BlogController extends Controller
                   'data'    => []
               ], 400);
             }
+            $blogCategorys = explode(',',$blogCategorys);
+
             $validator = Validator::make($request->all(), [
                 'blogTitle'       =>  'required|string|max:255',
                 'blogBody'        =>  'required',
                 'blogStatus'      =>  'required|numeric|integer|between:0,1',
-                'blogFeatured'    =>  'numeric|integer|between:0,1',
                 'blogCategorys'   =>  'nullable'
             ]);
             if ($validator->fails()) {
@@ -168,7 +169,6 @@ class BlogController extends Controller
                   ],400);
               }
             }
-
             $blogAuthorId = Auth::user()->id;
             $blogTitle = $request->blogTitle;
             $blogBody = $request->blogBody;
@@ -257,7 +257,7 @@ class BlogController extends Controller
     {
         try {
 
-            $blogCategorys = json_decode($request->blogCategorys);
+            $blogCategorys = $request->blogCategorys;
             if(!isset($blogCategorys[0])) {
               return response()->json([
                   'status'  => false,
@@ -265,7 +265,7 @@ class BlogController extends Controller
                   'data'    => []
               ], 400);
             }
-            // $blogCategorys = explode(',',$blogCategorys[0]);
+            $blogCategorys = explode(',',$blogCategorys);
             $validator = Validator::make($request->all(), [
                 'blogTitle'       =>  'required',
                 'blogBody'        =>  'required',
