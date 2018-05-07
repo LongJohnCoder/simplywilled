@@ -587,14 +587,15 @@ class UserManagementController extends Controller
        $stepValue      = 6;
        //responseArray defined to return response array to calling function
        $responseArray  = ['step' => null, 'data' => null];
-       $data = PersonalRepresentatives::where('user_id',$user->id)->first();
+       $data = ProvideYourLovedOnes::where('user_id',$user->id)->first();
 
        if($data) {
          $responseArray = [
            'step' =>  $stepValue,
            'data' => [
-             'toTangiblePropertyDistribute' => $data->is_tangible_property_distribute + 1,
-             'tangiblePropertyDistribute'   => $data->tangible_property_distribute
+             //'tangibleProperty' => $data,
+             'is_tangible_property_distribute'  => $data->is_tangible_property_distribute,
+             'tangible_property_distribute'     => $data->tangible_property_distribute
            ]
          ];
          return $responseArray;
