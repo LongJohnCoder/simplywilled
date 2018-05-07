@@ -2,6 +2,9 @@ nav.navbar-side{
     background: #27bc9c;
     height: 96%;
 }
+body{
+    position: relative;
+}
 .sidebar-collapse > .nav > li{
     width: 100%;
     background: #27bc9c;
@@ -71,8 +74,9 @@ nav.navbar-side{
 .sidebar-collapse > .nav > li ul li a:hover{
     background: #14846b;
 }
-@media screen and (min-width:768px){
-    nav.navbar-side{
+
+@media screen and (min-width: 768px){
+    nav.navbar-side {
         position: absolute;
     }
 }

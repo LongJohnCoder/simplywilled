@@ -2,7 +2,7 @@ body {
 	font-family: OpenSans;
 	position: relative;
 	background: #f2f2f2;
-}
+	}
 * {
 	margin: 0;
 	padding: 0;
@@ -917,7 +917,7 @@ h1, h2, h3, h4, h5, h6 {
 	padding: 0 200px 70px
 }
 .ask_owl_text {
-	width: 100%;
+	width: 100%;src/styles.css
 	color: #46ac33;
 	font-size: 48px;
 	font-family: OpenSans-Semibold;
