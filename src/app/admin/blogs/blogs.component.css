@@ -26,6 +26,7 @@
 .table-bordered .btn{
     font-size: 12px;
     margin: 2px;
+    color: #fff;
 }
 .modal-body{
     border-bottom: 1px solid #eee;
@@ -55,4 +56,15 @@ font-size: 20px;
 .hide{
     height: 0;
     opacity: 0;
+}
+.dataTables_wrapper{
+    padding-top: 5px;
+}
+footer{
+    background: none;
+    text-align: right;
+    padding: 80px 20px 0;
+}
+footer p {
+    margin-bottom: 0;
 }

@@ -3150,6 +3150,9 @@ input[type=text].ui-autocomplete-loading {
 .banner_margin img{
     width:45%;
 }
+footer{
+	padding: 80px 15px 0;
+}
 /****************end css**********************/
 
 

@@ -1,0 +1,42 @@
+.blogsTab{
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.panel-heading {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: none;
+    font-size: 14px;
+}
+.form-control{
+    padding: 5px;
+    height: 30px !important;
+    font-size: 12px;
+    margin-right: 10px;
+}
+.form-inline label{
+    font-size: 14px;
+}
+[type="search"].form-control {
+    margin-left: 5px;
+}
+.table-bordered {
+    margin: 10px;
+    font-size: 14px;
+}
+.table-bordered .btn{
+    font-size: 12px;
+    margin: 2px;
+    color:#fff;
+}
+footer{
+    background: none;
+    text-align: right;
+    padding: 80px 20px 0;
+}
+footer p {
+    margin-bottom: 0;
+}

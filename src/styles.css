@@ -1,5 +1,7 @@
 body {
-	font-family: OpenSans
+	font-family: OpenSans;
+	position: relative;
+	background: #f2f2f2;
 }
 * {
 	margin: 0;
