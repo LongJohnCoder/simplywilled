@@ -20,7 +20,9 @@ import { UserService } from './user.service';
 import { UserDashboardService } from './user-dashboard/user-dashboard.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
+console.log('user-module is called');
 @NgModule({
+  
   imports: [
     CommonModule,
     UserRoutingModule,
@@ -31,7 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     UserComponent,
     HomeComponent,
     AboutUsComponent,
-    FaqComponent,
+    //FaqComponent,
     TermsOfUseComponent,
     TermsOfServiceComponent,
     PrivacyPolicyComponent,

@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FaqComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() { 
+    console.log('I am called');
   }
 
+  ngOnInit() {
+    console.log('I am called here');
+    console.log('entered here');
+  }
 }

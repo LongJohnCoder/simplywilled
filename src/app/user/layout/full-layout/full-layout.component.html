@@ -9,10 +9,10 @@
       </div>
       <div class="readerRight">
         <ul class="navigation">
-          <li><a routerLink="">Home</a></li>
-          <li><a routerLink="">About Us</a></li>
-          <li><a routerLink="">FAQ</a></li>
-          <li><a routerLink="">Blog</a></li>
+          <li><a routerLink="/">Home</a></li>
+          <li><a routerLink="/about-us">About Us</a></li>
+          <li><a routerLink="/faq">FAQ</a></li>
+          <li><a routerLink="/blog">Blog</a></li>
           <li><a routerLink="/sign-in" *ngIf="!isLogIn">Login</a></li>
           <li><a routerLink="/dashboard" *ngIf="isLogIn">Dashboard</a></li>
           <li (click)="onLogout()"><a href="javascript:void(0)" *ngIf="isLogIn">Logout</a></li>
