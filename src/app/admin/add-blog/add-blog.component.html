@@ -32,7 +32,7 @@
                                     <label for="text_editor">Body:</label>
                                     <ck-editor id="text_editor" class="" skin="moono-lisa" language="en" [fullPage]="true" name="body" [(ngModel)]="blogData.body" #blogBody="ngModel" required></ck-editor>
                                     <!--<ck-editor name="editor1" [(ngModel)]="editorValue" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>-->
-                                    <span *ngIf="blogData.body.invalid && blogData.body.touched" style="color:red;"> Blog body is reqired ! </span>
+                                    <span *ngIf="blogBody.invalid && blogBody.touched" style="color:red;"> Blog body is reqired ! </span>
 
                                 </div>
                             </fieldset>
@@ -52,7 +52,7 @@
                                     <option value="1">Published</option>
                                     <option value="0">Pending</option>
                                 </select>
-                                <span *ngIf="blogData.status.invalid && blogData.status.touched" style="color:red;"> Select blog status ! </span>
+                                <span *ngIf="blogStatus.invalid && blogStatus.touched" style="color:red;"> Select blog status ! </span>
 
                             </div>
                             <div class="checkbox">
@@ -78,7 +78,7 @@
                             <select multiple class="form-control" name="blogCategorys" [(ngModel)]="blogData.blog_category" #blogCategorys="ngModel" required>
                                 <option  *ngFor="let category of categoryData" [ngValue]="category.id">{{category.name}}</option>
                             </select>
-                            <span *ngIf="blogData.blog_category.invalid && blogData.blog_category.touched" style="color:red;"> Select blog status ! </span>
+                            <span *ngIf="blogCategorys.invalid && blogCategorys.touched" style="color:red;"> Select blog categories ! </span>
 
                         </div>
                     </div>
@@ -88,8 +88,26 @@
                         </div>
                         <div class="panel-body">
                             <div class="input-group">
-                                <input type="file" class="form-control input-flat" id="blogImage" required ngModel
-                                       #blogImage="ngModel" name="blogImage" (change)="handleImageUpload($event)">
+                                <div *ngIf="!editMode">
+                                    <input type="file"
+                                           class="form-control input-flat"
+                                           id="blogImage"
+                                           ngModel
+                                           #blogImage="ngModel"
+                                           name="blogImage"
+                                           required
+                                           (change)="handleImageUpload($event)">
+                                    <span *ngIf="blogImage.invalid && blogImage.touched" style="color:red;"> Select blog image ! </span>
+                                </div>
+                                <div *ngIf="editMode">
+                                    <input type="file"
+                                           class="form-control input-flat"
+                                           id="blogImage"
+                                           ngModel
+                                           #blogImage="ngModel"
+                                           name="blogImage"
+                                           (change)="handleImageUpload($event)">
+                                </div>
                             </div>
                             <div *ngIf="blogData.image">
                                 <img src="{{blogData.image}}" alt="{{blogData.image}}">
@@ -128,3 +146,4 @@
         <footer><p>All right reserved. Developed By <a href="#">TNI</a></p></footer>
     </div>
     <!-- /. PAGE INNER  -->
+    
