@@ -1,0 +1,126 @@
+<app-header></app-header>
+<app-left-menu></app-left-menu>
+<div id="page-wrapper">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">
+                    FAQ Category
+                </h1>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-right" style="margin-bottom:10px;">
+                    <a routerLink="/admin-panel/add-faq-category" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Add FAQ Category</a>
+                </div>
+                <div class="panel panel-default faqTab">
+                    <div class="panel-heading">
+                        Total FAQ Category{{faqCategoriesCount <= 1 ? '' : 's'}} {{faqCategoriesCount}}
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <div id="dataTable_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                <div class="row"><div class="col-sm-6">
+                                    <div class="dataTables_length" id="dataTable_length">
+                                        <label>
+                                            <select name="dataTable_length" aria-controls="dataTable" class="form-control input-sm">
+                                                <option value="10">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select> records per page</label>
+                                    </div>
+                                </div>
+                                    <div class="col-sm-6">
+                                        <div id="dataTable_filter" class="dataTables_filter">
+                                            <label>
+                                                Search:
+                                                <input type="search" class="form-control input-sm" aria-controls="dataTable">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTable" aria-describedby="dataTable_info">
+                                    <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="S No.: activate to sort column ascending" style="width: 22px;">S No.</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Title: activate to sort column ascending" style="width: 353px;">Name</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Title: activate to sort column ascending" style="width: 353px;">Slug</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Created Date: activate to sort column ascending" style="width: 52px;">Created Date</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" style="width: 157px;">Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let faqCategory of faqCategories; let i = index">
+                                        <td class="sorting_1">{{i + 1}}</td>
+                                        <td>{{faqCategory.name}}</td>
+                                        <td>{{faqCategory.slug}}</td>
+                                        <td>{{faqCategory.created_at}}</td>
+                                        <td class="text-center ">
+                                            <button type="button" (click)="openModal(viewFAQCategory, i)" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i> View</button>
+                                            <a routerLink="/admin-panel/edit-faq-category/{{faqCategory.id}}" class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                                            <a class="btn btn-danger deleteAdminOption" (click)="openModal(deleteFAQCategory, i)">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                                Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+
+
+                                    </tbody>
+                                </table>
+                                <!--<div class="row"><div class="col-sm-6"><div class="dataTables_info" id="dataTable_info" role="alert" aria-live="polite" aria-relevant="all">Showing 1 to 10 of 70 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate"><ul class="pagination"><li class="paginate_button previous disabled" aria-controls="dataTable" tabindex="0" id="dataTable_previous"><a href="#">Previous</a></li><li class="paginate_button active" aria-controls="dataTable" tabindex="0"><a href="#">1</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">2</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">3</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">4</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">5</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">6</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">7</a></li><li class="paginate_button next" aria-controls="dataTable" tabindex="0" id="dataTable_next"><a href="#">Next</a></li></ul></div></div></div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <ng-template #viewFAQCategory>
+            <div class="panel-body">
+                <div class="modal-header" style="margin-bottom:15px">
+                    <h3 class="modal-title">
+                        View FAQ Category
+                        <!--<span class="badge badge-success"> Active </span>-->
+                    </h3>
+                    <button type="button" class="close" (click)="modalRef.hide()">×</button>
+                </div>
+                <div class="modal-body">
+                    <h4>Title:</h4>
+                    <p>{{faqCategoryData.name}}</p>
+                </div>
+            </div>
+        </ng-template>
+
+        <ng-template #deleteFAQCategory>
+            <div class="modal-header deleteBlogHead">
+                <h3 class="modal-title">
+                    {{delFAQStatusMsg}}
+                </h3>
+            </div>
+            <div class="modal-body deleteBlogFoot"
+                 [ngClass]="[delFAQStatus ? 'hide' : 'show']"
+            >
+                <button type="button" class="btn btn-warning" (click)="onCancel()">
+                    Cancel
+                </button>
+                <button type="button" class="btn btn-danger" (click)="onFAQDel()">
+                    Yes, Delete It!
+                </button>
+            </div>
+        </ng-template>
+
+
+
+        <footer><p>All right reserved. Developed By <a href="#">TNI</a></p></footer>
+        <!-- Main content end -->
+
+    </div>
+</div>
+
+

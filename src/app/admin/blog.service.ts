@@ -30,6 +30,10 @@ export class BlogService {
         const url = `${environment.API_URL+'admin-panel/view-blog'}/${id}`;
         return this.httpClient.get(url);
     }
+
+    deleteBlogCat(id: number): Observable<any>{
+        return this.httpClient.delete(environment.API_URL + 'admin-panel/delete-category/' + id);
+    }
     
 
 }

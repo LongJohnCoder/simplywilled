@@ -1,0 +1,45 @@
+<app-header></app-header>
+<app-left-menu></app-left-menu>
+<div id="page-wrapper">
+  <div id="page-inner">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="page-header">
+          {{editMode === true ? 'Edit' : 'Add'}} FAQ Category
+        </h1>
+      </div>
+    </div>
+
+    <form #createFAQCategory="ngForm">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <fieldset>
+                <div class="form-group">
+                  <label>Category Name :</label>
+                  <input class="form-control" type="text" name="categoryName"
+                         [(ngModel)]="faqCategoryData.name" #categoryName="ngModel" required>
+                  <input class="form-control" type="hidden" name="categoryId"
+                         [(ngModel)]="faqCategoryData.id" #categoryId="ngModel">
+                  <span *ngIf="categoryName.invalid && categoryName.touched" style="color: red;">Category Name is required</span>
+                </div>
+              </fieldset>
+              <button *ngIf="editMode" type="button" [disabled]="!createFAQCategory.form.valid" class="btn btn-primary" (click)="edit()"> {{editMode
+                ? 'Edit' : 'Create'}} FAQ Category
+              </button>
+              <button *ngIf="!editMode" type="button" [disabled]="!createFAQCategory.form.valid" class="btn btn-primary" (click)="add()"> {{editMode
+                ? 'Edit' : 'Create'}} FAQ Category
+              </button>
+            </div>
+
+            <alert *ngIf="createFAQCategoryMessage" type="info" [dismissOnTimeout]="3000">
+              <strong> {{createFAQCategoryMessage}} </strong>
+            </alert>
+
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

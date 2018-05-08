@@ -27,6 +27,11 @@ import { AddBlogCategoriesComponent } from './blog-categories/add-blog-categorie
 import { BlogService } from "./blog.service";
 import { RouterModule } from '@angular/router';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import {FaqsCategoriesComponent} from './faq/faqs-categories/faqs-categories.component';
+import {FaqsComponent} from './faq/faqs/faqs.component';
+import {FaqService} from './faq/faq.service';
+import { FaqsCategoriesFormComponent } from './faq/faqs-categories-form/faqs-categories-form.component';
+import { FaqFormComponent } from './faq/faq-form/faq-form.component';
 
 
 
@@ -52,7 +57,11 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     BlogCategoriesComponent,
     BlogCommentsComponent,
     AddBlogComponent,
-    AddBlogCategoriesComponent
+    AddBlogCategoriesComponent,
+      FaqsCategoriesComponent,
+      FaqsComponent,
+      FaqsCategoriesFormComponent,
+      FaqFormComponent
   ],
   providers: [
     AuthGuard,
@@ -61,6 +70,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     ChangePasswordService,
     DashboardService,
       BlogService,
+      FaqService,
       ChangePasswordService,
       AdminLoginService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

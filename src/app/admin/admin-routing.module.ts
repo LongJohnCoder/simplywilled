@@ -9,6 +9,10 @@ import { BlogCategoriesComponent } from './blog-categories/blog-categories.compo
 import { BlogCommentsComponent } from './blog-comments/blog-comments.component';
 import { AddBlogComponent } from './add-blog/add-blog.component';
 import { AddBlogCategoriesComponent } from "./blog-categories/add-blog-categories/add-blog-categories.component";
+import { FaqsComponent } from './faq/faqs/faqs.component';
+import {FaqsCategoriesComponent} from './faq/faqs-categories/faqs-categories.component';
+import {FaqsCategoriesFormComponent} from './faq/faqs-categories-form/faqs-categories-form.component';
+import {FaqFormComponent} from './faq/faq-form/faq-form.component';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -22,7 +26,13 @@ const routes: Routes = [
     { path: 'add-blog-category', canActivate: [ AuthGuard ], pathMatch: 'full', component: AddBlogCategoriesComponent},
     { path: 'blog-comments', canActivate: [ AuthGuard ], pathMatch: 'full', component: BlogCommentsComponent},
     { path: 'edit-blog-category/:id', canActivate: [ AuthGuard ], pathMatch: 'full', component: AddBlogCategoriesComponent},
-    
+    { path: 'faqs', canActivate: [ AuthGuard ], pathMatch: 'full', component: FaqsComponent},
+    { path: 'faqs-category', canActivate: [ AuthGuard ], pathMatch: 'full', component: FaqsCategoriesComponent},
+    { path: 'add-faq-category', canActivate: [ AuthGuard ], pathMatch: 'full', component: FaqsCategoriesFormComponent},
+    { path: 'edit-faq-category/:id', canActivate: [ AuthGuard ], pathMatch: 'full', component: FaqsCategoriesFormComponent},
+    { path: 'add-faq', canActivate: [ AuthGuard ], pathMatch: 'full', component: FaqFormComponent},
+    { path: 'edit-faq/:id', canActivate: [ AuthGuard ], pathMatch: 'full', component: FaqFormComponent},
+
 ];
 
 @NgModule({

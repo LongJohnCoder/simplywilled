@@ -19,15 +19,17 @@
                                 <div class="form-group">
                                     <label>Category Name :</label>
                                     <input class="form-control" type="text" name="categoryName"
-                                           [(ngModel)]="blogCategoryData.name" #categoryName="ngModel">
+                                           [(ngModel)]="blogCategoryData.name" #categoryName="ngModel" required>
                                     <input class="form-control" type="hidden" name="categoryId"
                                            [(ngModel)]="blogCategoryData.id" #categoryId="ngModel">
+                                    <span *ngIf="categoryName.invalid && categoryName.touched" style="color: red;">Category Name is required</span>
+
                                 </div>
                             </fieldset>
-                            <button *ngIf="editMode" type="button" class="btn btn-primary" (click)="edit()"> {{editMode
+                            <button *ngIf="editMode" type="button" [disabled]="!createBlogCategory.form.valid" class="btn btn-primary" (click)="edit()"> {{editMode
                                 ? 'Edit' : 'Create'}} Blog Category
                             </button>
-                            <button *ngIf="!editMode" type="button" class="btn btn-primary" (click)="add()"> {{editMode
+                            <button *ngIf="!editMode" type="button" [disabled]="!createBlogCategory.form.valid" class="btn btn-primary" (click)="add()"> {{editMode
                                 ? 'Edit' : 'Create'}} Blog Category
                             </button>
                         </div>
