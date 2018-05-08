@@ -4,14 +4,16 @@ import { TellUsAboutYourselfComponent } from './tell-us-about-yourself/tell-us-a
 import {UsersWillRoutingModule} from './users-will-routing.module';
 import {FormsModule} from '@angular/forms';
 import { TuaYourFamilyComponent } from './tua-your-family/tua-your-family.component';
-import {NgxMaskModule} from 'ngx-mask'
+import {NgxMaskModule} from 'ngx-mask';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
       CommonModule,
       FormsModule,
       UsersWillRoutingModule,
-      NgxMaskModule.forRoot()
+      NgxMaskModule.forRoot(),
+      ReactiveFormsModule
   ],
   declarations: [TellUsAboutYourselfComponent, TuaYourFamilyComponent]
 })

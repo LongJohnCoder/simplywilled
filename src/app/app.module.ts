@@ -14,6 +14,7 @@ import { NotUserAuthGuard } from './user/user-auth/not-user-auth.guard';
 import { UserAuthService } from './user/user-auth/user-auth.service';
 import { UserAuthGuard } from './user/user-auth/user-auth.guard';
 import { HttpClientModule } from '@angular/common/http';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     BsDropdownModule.forRoot(),
     TooltipModule,
     ModalModule.forRoot(),
+      ReactiveFormsModule
   ],
   providers: [
     AuthGuard,
