@@ -6,14 +6,6 @@
         padding: 10px 0 10px 30px;
     }
 }
-@media screen and (max-width: 991px){
-    .progress_main {
-        text-align: center;
-    }
-    .progress_right {
-        float: none;
-    }
-}
 @media screen and (min-width: 768px) and (max-width: 991px){
     .sidebar h1 {
         font-size: 28px;
@@ -28,10 +20,6 @@
 @media screen and (max-width: 767px){
     .logo {
         position: relative;
-    }
-    .common-button {
-        margin-top: 0;
-        margin-bottom: 20px;
     }
     .logo a{
         display: block;
