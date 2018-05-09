@@ -34,7 +34,6 @@ import { FaqsCategoriesFormComponent } from './faq/faqs-categories-form/faqs-cat
 import { FaqFormComponent } from './faq/faq-form/faq-form.component';
 
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -45,7 +44,7 @@ import { FaqFormComponent } from './faq/faq-form/faq-form.component';
     ModalModule.forRoot(),
     FormsModule, CKEditorModule,
     RouterModule,
-    AlertModule.forRoot(),
+    AlertModule.forRoot()
 
   ],
   declarations: [

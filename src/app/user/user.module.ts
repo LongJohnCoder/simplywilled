@@ -18,7 +18,11 @@ import { FullLayoutComponent } from './layout/full-layout/full-layout.component'
 import { UserService } from './user.service';
 import { UserDashboardService } from './user-dashboard/user-dashboard.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FaqService } from './services/faq.service';
 
+
+
+console.log('user-module is called');
 @NgModule({
   imports: [
     CommonModule,
@@ -31,7 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserComponent,
     HomeComponent,
     AboutUsComponent,
-    FaqComponent,
+    //FaqComponent,
     TermsOfUseComponent,
     TermsOfServiceComponent,
     PrivacyPolicyComponent,
@@ -43,6 +47,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NotUserAuthGuard,
     UserAuthService,
     UserService,
+    FaqService,
     UserDashboardService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],

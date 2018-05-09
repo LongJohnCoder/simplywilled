@@ -9,7 +9,8 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { NotUserAuthGuard } from './user-auth/not-user-auth.guard';
 import { FullLayoutComponent } from './layout/full-layout/full-layout.component';
-import {UserAuthGuard} from './user-auth/user-auth.guard';
+import { UserAuthGuard} from './user-auth/user-auth.guard';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
    {path: '', component: FullLayoutComponent, data: { title: 'Home' }, children: [
@@ -17,17 +18,27 @@ const routes: Routes = [
         { path: 'register', canActivate: [ NotUserAuthGuard ], loadChildren: './user-auth/user-register/user-register.module#UserRegisterModule'},
         { path: '', pathMatch: 'full', component: HomeComponent },
         { path: 'about-us', pathMatch: 'full', component: AboutUsComponent },
-        { path: 'faq', pathMatch: 'full', component: FaqComponent },
+        { path: 'faq', pathMatch: 'full', component: FaqComponent }, //defined
+        //{ path: 'blog', pathMatch: 'full', component: BlogComponent }, //defined
+        //{ path: 'faq', canActivate: [ NotUserAuthGuard ], loadChildren: './faq/user-login/user-login.module#UserLoginModule' },
         { path: 'terms-of-use', pathMatch: 'full', component: TermsOfUseComponent },
         { path: 'terms-of-service', pathMatch: 'full', component: TermsOfServiceComponent },
         { path: 'privacy-policy', pathMatch: 'full', component: PrivacyPolicyComponent },
         { path: 'contact-us', pathMatch: 'full', component: ContactUsComponent },
    ]},
-    { path: 'dashboard', canActivate: [ UserAuthGuard ], canActivateChild: [ UserAuthGuard ], loadChildren: './user-dashboard/user-dashboard.module#UserDashboardModule'},
+    { 
+      path: 'dashboard', 
+      canActivate: [ UserAuthGuard ], 
+      canActivateChild: [ UserAuthGuard ], 
+      loadChildren: './user-dashboard/user-dashboard.module#UserDashboardModule'
+    },
 ];
-
+console.log('user-routing-module is called');
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), CommonModule],
   exports: [RouterModule],
+  declarations: [
+    FaqComponent
+  ]
 })
 export class UserRoutingModule { }

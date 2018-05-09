@@ -1,6 +1,9 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, TemplateRef} from '@angular/core';
 import { DashboardService } from './../dashboard.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import * as $ from 'jquery';
+import 'datatables.net';
+import 'datatables.net-bs4';
 
 @Component({
   selector: 'app-blogs',
@@ -16,10 +19,13 @@ export class BlogsComponent implements OnInit {
   delBlogId:number;
   delBlogStatus:string;
   delBlogStatusMsg:string = "Are You Sure?";
+  dataTable: any;
 
   constructor(
     private dashService : DashboardService,
     private modalService : BsModalService,
+    private chRef: ChangeDetectorRef
+
   ) { }
 
   populateBlogs(){
@@ -27,9 +33,12 @@ export class BlogsComponent implements OnInit {
       (data:any)=> {
         this.blogList = data.data.BlogDetails;
         this.blogCount = this.blogList.length;
-        console.log('bloglist',this.blogList)
+        // console.log('bloglist',this.blogList);
+          this.chRef.detectChanges();
+          const table: any = $('table');
+          this.dataTable = table.DataTable();
       }
-    )
+    );
   }
 
   ngOnInit() {
