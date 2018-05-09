@@ -1,0 +1,25 @@
+.blogsTab{
+    background: #fff;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.panel-heading{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: none;
+}
+.form-control{
+    padding: 5px;
+    height: 30px !important;
+    font-size: 12px;
+    margin-right: 10px;
+}
+.table-bordered{
+    margin: 10px;
+}
+[type="search"].form-control{
+    margin-left: 5px;
+}
