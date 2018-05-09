@@ -45,4 +45,14 @@ export class FaqService {
         const url = `${environment.API_URL + 'admin-panel/view-faq'}/${id}`;
         return this.httpClient.get(url);
     }
+
+    faqUpdate(formData): Observable<any> {
+        return this.httpClient.post(environment.API_URL + 'admin-panel/edit-faq', formData);
+    }
+
+    createFaq(formData): Observable<any> {
+        return this.httpClient.post(environment.API_URL + 'admin-panel/create-faq', formData);
+    }
 }
+
+

@@ -18,7 +18,7 @@ export class FaqFormComponent implements OnInit {
         question: '',
         answer: '',
         status: '',
-        faq_category: '',
+        faq_category: [],
     };
   constructor(
       private faqService: FaqService,
@@ -53,6 +53,50 @@ export class FaqFormComponent implements OnInit {
                 this.faqData.answer = data.data.faqDetails.answer;
                 this.faqData.status = data.data.faqDetails.status;
                 this.faqData.faq_category = data.data.faqDetails.faq_category;
+            }
+        );
+    }
+
+    edit() {
+        const createFaq = new FormData();
+        createFaq.append('faqId', String(this.faqData.id));
+        createFaq.append('faqQuestion', this.faqData.question);
+        createFaq.append('faqAnswer', this.faqData.answer);
+        createFaq.append('faqStatus', '1');
+        for (let i = 0; i < this.faqData.faq_category.length; i++) {
+            createFaq.append('faqCategorys[]', this.faqData.faq_category[i]);
+        }
+        this.faqService.faqUpdate(createFaq).subscribe(
+            (response: any) => {
+                if (response.status = 'true') {
+                    // console.log(response.status);
+                    this.createfaqMessage = response.message;
+                    this.router.navigate(['/admin-panel/faqs']);
+                } else {
+                    this.createfaqMessage = response.message;
+                }
+            }
+        );
+    }
+
+    add() {
+        const createFaq = new FormData();
+        createFaq.append('faqQuestion', this.faqData.question);
+        createFaq.append('faqAnswer', this.faqData.answer);
+        createFaq.append('faqStatus', '1');
+        for (let i = 0; i < this.faqData.faq_category.length; i++) {
+            createFaq.append('faqCategorys[]', this.faqData.faq_category[i]);
+        }
+
+        this.faqService.createFaq(createFaq).subscribe(
+            (response: any) => {
+                if (response.status = 'true') {
+                    // console.log(response.status);
+                    this.createfaqMessage = response.message;
+                    this.router.navigate(['/admin-panel/faqs']);
+                } else {
+                    this.createfaqMessage = response.message;
+                }
             }
         );
     }

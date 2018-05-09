@@ -1,7 +1,9 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, TemplateRef} from '@angular/core';
 import {FaqService} from '../faq.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-
+import * as $ from 'jquery';
+import 'datatables.net';
+import 'datatables.net-bs4';
 
 @Component({
   selector: 'app-faqs-categories',
@@ -16,7 +18,7 @@ export class FaqsCategoriesComponent implements OnInit {
     delfaqCategoryId: number;
     delFAQStatusMsg: string = "Are You Sure?";
     delFAQStatus: string;
-
+    dataTable: any;
 
 
 
@@ -24,8 +26,10 @@ export class FaqsCategoriesComponent implements OnInit {
 
     constructor(
       private faqService: FaqService,
-      private modalService: BsModalService
-  ) { }
+      private modalService: BsModalService,
+      private chRef: ChangeDetectorRef
+
+    ) { }
 
   ngOnInit() {
       this.getFaqCategories();
@@ -37,6 +41,9 @@ export class FaqsCategoriesComponent implements OnInit {
             // console.log(data.data);
             this.faqCategories = data.data.faqCategoryDetails;
             this.faqCategoriesCount = this.faqCategories.length;
+            this.chRef.detectChanges();
+            const table: any = $('table');
+            this.dataTable = table.DataTable();
         }
     );
   }
