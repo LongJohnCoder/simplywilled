@@ -20,14 +20,19 @@ import { UserService } from './user.service';
 import { UserDashboardService } from './user-dashboard/user-dashboard.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { FaqService } from './services/faq.service';
+import { BrowserModule } from '@angular/platform-browser';
+
+
 console.log('user-module is called');
 @NgModule({
-  
   imports: [
     CommonModule,
     UserRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    //BrowserModule  ,
+      
   ],
   declarations: [
     UserComponent,
@@ -45,6 +50,7 @@ console.log('user-module is called');
     NotUserAuthGuard,
     UserAuthService,
     UserService,
+    FaqService,
     UserDashboardService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],

@@ -10,6 +10,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { NotUserAuthGuard } from './user-auth/not-user-auth.guard';
 import { FullLayoutComponent } from './layout/full-layout/full-layout.component';
 import { UserAuthGuard} from './user-auth/user-auth.guard';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
    {path: '', component: FullLayoutComponent, data: { title: 'Home' }, children: [
@@ -34,7 +35,7 @@ const routes: Routes = [
 ];
 console.log('user-routing-module is called');
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), CommonModule],
   exports: [RouterModule],
   declarations: [
     FaqComponent
