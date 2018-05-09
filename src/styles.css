@@ -3136,6 +3136,24 @@ transform:rotate(360deg)
 .banner_margin img{
 	width:45%;
 }
+
+
+.dataTables_length {
+	float: left;
+	margin-left: 10px;
+	font-size: 13px;
+	margin: 0 5px;
+}
+.dataTables_wrapper .col-sm-12{
+	padding: 0;
+	max-width: 98.4%;
+}
+
+
+
+
+
+
 /****************end css**********************/
 
 
