@@ -17,4 +17,10 @@ class BlogComment extends Model
 
     protected $table = 'blogComments';
 
+    /*
+     * function to fetch blog
+     * */
+    public function blog() {
+        return $this->hasOne('App\Blogs','id','blog_id');
+    }
 }

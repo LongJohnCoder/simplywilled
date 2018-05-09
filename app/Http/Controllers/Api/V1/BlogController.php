@@ -30,6 +30,24 @@ use App\RoleUser;
 
 class BlogController extends Controller
 {
+    public function commentsList() {
+        try {
+            $comments = BlogComment::with(['blog' => function($q) {
+                $q->select('id','title');
+            },'blog'])->get();
+            return response()->json([
+                    'status' => true,
+                    'message' => 'Comment List',
+                    'data' => ['comments' => $comments]
+                ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e->getMessage(),
+                'data' => []
+            ], 500);
+        }
+    }
 
     /*
      * function to fetch list of blogs

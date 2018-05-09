@@ -412,6 +412,13 @@ Route::group(['prefix' => 'v1'], function() {
             'as' => 'api.v1.viewBlogCommentsAdmin.post'
         ]);
 
+        /**
+        * Lists of all comments without association with their blog and subcomments
+        */
+        Route::get('comments-list', [
+            'uses' => 'Api\V1\BlogController@commentsList',
+            'as'   => 'api.v1.commentsList.get'
+        ]);
 
     });
 
@@ -419,54 +426,7 @@ Route::group(['prefix' => 'v1'], function() {
      * Route for Authenticated user panel
      */
 
-    Route::group(['middleware' => ['jwt.auth','user.auth'], 'prefix' => 'user' ], function() {
-
-       /**
-        * Route for Change Password
-        */
-
-        Route::post('change-password',[
-            'uses' => 'Api\V1\UserController@changePassword',
-            'as'   => 'api.v1.ChangePassword.post'
-        ]);
-
-        Route::post('sign-out', [
-            'uses' => 'Api\V1\UserController@signOut',
-            'as' => 'api.v1.signOut.post'
-        ]);
-
-        /**
-        * Route for Commenting to a blog
-        */
-        Route::post('comment', [
-          'uses' => 'Api\V1\BlogController@addBlogComments',
-          'as' => 'api.v1.addBlogComment.post'
-        ]);
-
-        /**
-        * Route for fetching all comments for a blog
-        */
-        Route::post('fetch-all-comments', [
-          'uses' => 'Api\V1\BlogController@fetchAllBlogComments',
-          'as' => 'api.v1.fetchAllBlogComments.post'
-        ]);
-
-        /**
-        * Route for fetching comments and replies for a single comment
-        */
-        Route::post('fetch-sub-comments', [
-          'uses' => 'Api\V1\BlogController@fetchBlogSubComments',
-          'as' => 'api.v1.fetchBlogSubComments.post'
-        ]);
-
-
-        /**
-        * Route for fetching faq categorylist with question and answers
-        */
-        Route::get('faq-category-list', [
-          'uses' => 'Api\V1\FaqCategoryController@faqCategoryListUser',
-          'as' => 'api.v1.faqCategoryListUser.get'
-        ]);
+    Route::group(['prefix' => 'user'], function() {
 
         /**
         * Route for fetching faq with status 1
@@ -476,67 +436,117 @@ Route::group(['prefix' => 'v1'], function() {
           'as' => 'api.v1.allFaqQuestions.get'
         ]);
 
-        /*
-         * Route for edit user profile
-         * */
-        Route::post('edit-profile', [
-            'uses' => 'Api\V1\UserController@editProfile',
-            'as' => 'api.v1.editProfile.post'
-        ]);
-
-        /*
-         *Route for add/update protect finance
-         * */
-        Route::post('protect-finance',[
-            'uses'=>'Api\V1\UserManagementController@updateProtectFinance',
-            'as' => 'api.v1.protectFinance.post'
-        ]);
-
-        /*
-         *Route for health finance
-         * */
-        Route::post('health-finance',[
-            'uses'=>'Api\V1\UserManagementController@createHealthFinance',
-            'as' => 'api.v1.createHealthFinance.post'
-        ]);
         /**
-         *Route for add / update final-agreement
-         */
-        Route::post('final-agreement',[
-            'uses'=>'Api\V1\UserManagementController@updateFinalAgreement',
-            'as' => 'api.v1.finalAgreement.post'
-        ]);
-        /*
-         *Route for getting user details
-         * */
-        Route::get('get-user-details/{id}',[
-            'uses'=>'Api\V1\UserManagementController@getUserDetails',
-            'as' => 'api.v1.getUserDetails.get'
+        * Route for fetching faq categorylist with question and answers
+        */
+        Route::get('faq-category-list', [
+          'uses' => 'Api\V1\FaqCategoryController@faqCategoryListUser',
+          'as' => 'api.v1.faqCategoryListUser.get'
         ]);
 
-        /*
-         *Route for getting blog list
-         * */
-        Route::get('blog-list',[
-            'uses'=>'Api\V1\BlogController@blogListUser',
-            'as' => 'api.v1.blogListUser.get'
-        ]);
+        //user routes where authentication is needed
+        Route::group(['middleware' => ['jwt.auth','user.auth']], function(){
+            /**
+            * Route for Change Password
+            */
+            Route::post('change-password',[
+                'uses' => 'Api\V1\UserController@changePassword',
+                'as'   => 'api.v1.ChangePassword.post'
+            ]);
 
-        /*
-         *Route for getting popular blog list
-         * */
-        Route::get('popular-post',[
-            'uses'=>'Api\V1\BlogController@getPopularPosts',
-            'as' => 'api.v1.getPopularPosts.get'
-        ]);
+            Route::post('sign-out', [
+                'uses' => 'Api\V1\UserController@signOut',
+                'as' => 'api.v1.signOut.post'
+            ]);
 
-        /*
-         *Route for getting latest blog list
-         * */
-        Route::get('latest-post',[
-            'uses'=>'Api\V1\BlogController@getLatestPosts',
-            'as' => 'api.v1.getLatestPosts.get'
-        ]);
+            /**
+            * Route for Commenting to a blog
+            */
+            Route::post('comment', [
+              'uses' => 'Api\V1\BlogController@addBlogComments',
+              'as' => 'api.v1.addBlogComment.post'
+            ]);
 
+            /**
+            * Route for fetching all comments for a blog
+            */
+            Route::post('fetch-all-comments', [
+              'uses' => 'Api\V1\BlogController@fetchAllBlogComments',
+              'as' => 'api.v1.fetchAllBlogComments.post'
+            ]);
+
+            /**
+            * Route for fetching comments and replies for a single comment
+            */
+            Route::post('fetch-sub-comments', [
+              'uses' => 'Api\V1\BlogController@fetchBlogSubComments',
+              'as' => 'api.v1.fetchBlogSubComments.post'
+            ]);
+
+
+            
+
+            /*
+             * Route for edit user profile
+             * */
+            Route::post('edit-profile', [
+                'uses' => 'Api\V1\UserController@editProfile',
+                'as' => 'api.v1.editProfile.post'
+            ]);
+
+            /*
+             *Route for add/update protect finance
+             * */
+            Route::post('protect-finance',[
+                'uses'=>'Api\V1\UserManagementController@updateProtectFinance',
+                'as' => 'api.v1.protectFinance.post'
+            ]);
+
+            /*
+             *Route for health finance
+             * */
+            Route::post('health-finance',[
+                'uses'=>'Api\V1\UserManagementController@createHealthFinance',
+                'as' => 'api.v1.createHealthFinance.post'
+            ]);
+            /**
+             *Route for add / update final-agreement
+             */
+            Route::post('final-agreement',[
+                'uses'=>'Api\V1\UserManagementController@updateFinalAgreement',
+                'as' => 'api.v1.finalAgreement.post'
+            ]);
+            /*
+             *Route for getting user details
+             * */
+            Route::get('get-user-details/{id}',[
+                'uses'=>'Api\V1\UserManagementController@getUserDetails',
+                'as' => 'api.v1.getUserDetails.get'
+            ]);
+
+            /*
+             *Route for getting blog list
+             * */
+            Route::get('blog-list',[
+                'uses'=>'Api\V1\BlogController@blogListUser',
+                'as' => 'api.v1.blogListUser.get'
+            ]);
+
+            /*
+             *Route for getting popular blog list
+             * */
+            Route::get('popular-post',[
+                'uses'=>'Api\V1\BlogController@getPopularPosts',
+                'as' => 'api.v1.getPopularPosts.get'
+            ]);
+
+            /*
+             *Route for getting latest blog list
+             * */
+            Route::get('latest-post',[
+                'uses'=>'Api\V1\BlogController@getLatestPosts',
+                'as' => 'api.v1.getLatestPosts.get'
+            ]);
+        });
     });
 });
