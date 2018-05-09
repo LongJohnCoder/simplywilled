@@ -122,7 +122,7 @@ class FaqCategoryController extends Controller
             // try to save faq category
             $faqCategory = new FaqCategories;
             $faqCategory->name = $faqCategoryName;
-            $faqCategory->slug = $faqCategoryName;
+            $faqCategory->slug = str_slug($faqCategoryName);
             if ($faqCategory->save()) {
                 return response()->json([
                     'status' => true,
@@ -172,7 +172,7 @@ class FaqCategoryController extends Controller
                 if ($editFaqCategory) {
                     $faqCategoryName = $request->faqCategoryName;
                     $editFaqCategory->name = $faqCategoryName;
-                    $editFaqCategory->slug = $faqCategoryName;
+                    // $editFaqCategory->slug = $faqCategoryName;
                     if ($editFaqCategory->save()) {
                         return response()->json([
                             'status' => true,

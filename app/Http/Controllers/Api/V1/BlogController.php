@@ -224,7 +224,7 @@ class BlogController extends Controller
             $saveBlog->body = $blogBody;
             $saveBlog->image = $imageName;
             $saveBlog->author_id = $blogAuthorId;
-            $saveBlog->slug = $blogTitle;
+            $saveBlog->slug = str_slug($blogTitle);
             $saveBlog->meta_description = $blogMetaDesc;
             $saveBlog->meta_keywords = $blogMetaKeyword;
             $saveBlog->status = (string)$blogStatus;
@@ -353,7 +353,7 @@ class BlogController extends Controller
                     $getBlogInfo->body = $blogBody;
                     $getBlogInfo->image = $imageName;
                     $getBlogInfo->author_id = $blogAuthorId;
-                    $getBlogInfo->slug = $blogTitle;
+                    // $getBlogInfo->slug = $blogTitle;
                     $getBlogInfo->meta_description = $blogMetaDesc;
                     $getBlogInfo->meta_keywords = $blogMetaKeyword;
                     $getBlogInfo->status = (string)$blogStatus;

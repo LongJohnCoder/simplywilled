@@ -78,7 +78,7 @@ class CategoryController extends Controller {
 
             $category = new Categories;
             $category->name = $categoryName;
-            $category->slug = $categoryName;
+            $category->slug = str_slug($categoryName);
 
             if($category->save()){
                 return response()->json([
@@ -183,7 +183,7 @@ class CategoryController extends Controller {
             $category = Categories::find($categoryId);
             if($category){
                 $category->name = $categoryName;
-                $category->slug = $categoryName;
+                // $category->slug = $categoryName;
                 if($category->save()){
                     return response()->json([
                         'status' => true,
