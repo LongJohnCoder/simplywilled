@@ -15,42 +15,39 @@
         <div *ngIf="otherChildren" class="form-group">
             <input type="text" name="otherChildrenNumber" (keyup)="selectedNumberOfChildren($event)" placeholder="Enter the number of children" formControlName="totalChildren">
         </div>
-        <div *ngIf="columns.length">
-            <table calss="table">
+        <div>
+            <table calss="table" *ngIf="showTable">
                 <tr>
                     <td>Fullname</td>
                     <td>Gender</td>
                     <td>Birthday</td>
                 </tr>
-                <tr *ngFor="let column of columns" formArrayName="childrenInfo">
-                    <td><input type="text" class="form-control" formControlName="childrenInfo.fullname" required></td>
-                    <td>
-                        <input type="radio" value="M" formControlName="gender" required >Male
-                        <input type="radio" formControlName="gender" value="F" required >Female
-                    </td>
-                    <td>
-                        <select class="form-control" placeholder="Month"
-                                name="spouseMonth"
-                                required
-                                [ngModel]="userInfo?.spouseMonth"
-                                #spouseMonth="ngModel">
-                            <option *ngFor="let month of months;let i = index" [value]="month">{{month}}</option>
-                        </select>
-                        <select class="form-control" placeholder="Day"
-                                name="spouseDay"
-                                required
-                                [ngModel]="userInfo?.spouseDay"
-                                #spouseDay="ngModel">
-                            <option *ngFor="let day of days;let i = index" [value]="day">{{day}}</option>
-                        </select>
-                        <select  class="form-control" placeholder="Year"
-                                 name="spouseYear"
-                                 required
-                                 [ngModel]="userInfo?.spouseYear"
-                                 #year="ngModel">
-                            <option *ngFor="let year of years;let i = index" [value]="year">{{year}}</option>
-                        </select>
-                    </td>
+                <tr formArrayName="childrenInfo" >
+                    <div *ngFor="let item of childrenInfo.controls; let i = index;"  >
+                        <div [formGroupName]="i">
+                            <td><input type="text" class="form-control" formControlName="fullname" required></td>
+                            <td>
+                                <input type="radio" value="M" formControlName="gender" required >Male
+                                <input type="radio" formControlName="gender" value="F" required >Female
+                            </td>
+                            <td>
+                                <select class="form-control" placeholder="Month"
+                                        formControlName="spouseMonth"
+                                        required>
+                                    <option *ngFor="let month of months;let i = index" [value]="month">{{month}}</option>
+                                </select>
+                                <select class="form-control" placeholder="Day"
+                                        formControlName="spouseDay"
+                                >
+                                    <option *ngFor="let day of days;let i = index" [value]="day">{{day}}</option>
+                                </select>
+                                <select  class="form-control" placeholder="Year"
+                                         formControlName="spouseYear">
+                                    <option *ngFor="let year of years;let i = index" [value]="year">{{year}}</option>
+                                </select>
+                            </td>
+                        </div>
+                    </div>
                 </tr>
             </table>
         </div>
@@ -59,7 +56,7 @@
             <label>Do you have any deceased children? </label>
             <ul class="radio_ul6">
                 <li>
-                    <label class="radio_custom">
+                    <label class="radio_custom" [ngClass]="{'active': IsDeceasedChildrenValue == 'Yes'}">
                         <input type="radio"
                                value="1"
                                formControlName="deceasedChildren"
@@ -69,7 +66,7 @@
                     </label>
                 </li>
                 <li>
-                    <label class="radio_custom" >
+                    <label class="radio_custom" [ngClass]="{'active': IsDeceasedChildrenValue == 'No'}">
                         <input type="radio"
                                value="0"
                                formControlName="deceasedChildren"
