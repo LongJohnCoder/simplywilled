@@ -32,9 +32,7 @@ class BlogController extends Controller
 {
     public function commentsList() {
         try {
-            $comments = BlogComment::with(['blog' => function($q) {
-                $q->select('id','title');
-            },'blog'])->get();
+            $comments = BlogComment::with('blog')->get();
             return response()->json([
                     'status' => true,
                     'message' => 'Comment List',
@@ -455,6 +453,7 @@ class BlogController extends Controller
                 $deleteBlogCategoryMap = CategoryBlogMapping::where('blog_id', $blogId)->delete();   //delete blog and category map
 
                 if ($deleteBlog->delete()) {
+                    BlogComment::where('blog_id',$blogId)->delete();
                     return response()->json([
                         'status'  => true,
                         'message' => 'Blog deleted',
