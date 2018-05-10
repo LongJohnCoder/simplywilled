@@ -206,11 +206,10 @@ class BlogController extends Controller
                 ], 200);
             } else {
                 return response()->json([
-                    'status'  => false,
-                    'message' => 'Blog not added',
+                    'status'  => true,
+                    'message' => 'success',
                     'data'    => compact('blog','imageLink')
-
-                ], 400);
+                ], 200);
             }
         } catch (\Exception $e) {
             return response()->json([

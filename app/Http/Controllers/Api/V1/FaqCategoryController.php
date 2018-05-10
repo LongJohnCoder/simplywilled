@@ -286,18 +286,28 @@ class FaqCategoryController extends Controller
      * Function to get category list and all questions and answers in ordered maner for that category
      * @return \Illuminate\Http\Response
      * */
-    public function faqCategoryListUser() {
+    public function faqCategoryListUser(Request $request) {
       try {
-        //$faqCategories = FaqCategories::whereHas('getFaqMapping.getFaq')->get();
-        $faqCategories = FaqCategories::orderBy('created_at','DESC')->with('faq')->get();
-        // $result = [];
-        // foreach($faqCategories as $key => $eachCategory) {
-        //   $result[] = [
-        //     'id'          =>  $eachCategory->id,
-        //     'name'        =>  $eachCategory->name,
-        //     'faq-details' =>  $this->getQAs($eachCategory->getFaqMapping, false)
-        //   ];
-        // }
+        
+        $validator = Validator::make($request->all(), [
+          'query'    =>  'nullable|string'
+        ]);
+        if($validator->fails()) {
+          return response()->json([
+              'status'  => false,
+              'message' => $validator->errors(),
+              'data'    => []
+          ], 400);
+        }
+        $query = $request->has('query') ? $request->get('query') : null;
+
+        if($query == null) {    
+            $faqCategories = FaqCategories::orderBy('created_at','DESC')->with('faq')->get();
+        } else {
+            $faqCategories = FaqCategories::orderBy('created_at','DESC')->with(['faq' => function($q) use($query) {
+                $q->where('question','LIKE','%'.$query.'%');
+            }])->get();
+        }
         return response()->json([
             'status'  => true,
             'message' => 'All Faq Category with Related Faqs',

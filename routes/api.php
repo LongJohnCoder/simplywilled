@@ -439,7 +439,7 @@ Route::group(['prefix' => 'v1'], function() {
         /**
         * Route for fetching faq categorylist with question and answers
         */
-        Route::get('faq-category-list', [
+        Route::get('faq-category-list/{query?}', [
           'uses' => 'Api\V1\FaqCategoryController@faqCategoryListUser',
           'as' => 'api.v1.faqCategoryListUser.get'
         ]);
