@@ -26,7 +26,7 @@
     <div class="wrapper">
       <h2 class="secHeading">Safeguard Your Legacy, Assets
         <br> & Loved Ones.</h2>
-      <div class="video_main">
+      <div class="video_main" (click)="openModal(viewVideo)">
         <img src="../../../../assets/images/video.png" alt="video img">
       </div>
       <ul class="protect_loved_ul">
@@ -387,7 +387,30 @@
         <div class="wrapper">
           <section class="slider">
             <div class="flexslider2">
-              <ul class="slides">
+                <carousel class="slides">
+                  <slide>
+                    <span class="slider_left_img"><img src="../../../../assets/images/mitch-and-donna.png" alt="error img"></span>
+                    <div class="sec9_slider_right">
+                      <p class="slider_content">As a newly wed couple with a growing family, thank you SimplyWilled for making planning our estate so simple.</p>
+                      <h4 class="client_name">Mitch & Donna</h4>
+                    </div>
+                  </slide>
+                  <slide>
+                      <span class="slider_left_img"><img src="../../../../assets/images/mitch-and-donna.png" alt="error img"></span>
+                      <div class="sec9_slider_right">
+                        <p class="slider_content">As a newly wed couple with a growing family, thank you SimplyWilled for making planning our estate so simple.</p>
+                        <h4 class="client_name">Mitch & Donna</h4>
+                      </div>
+                    </slide>
+                    <slide>
+                        <span class="slider_left_img"><img src="../../../../assets/images/mitch-and-donna.png" alt="error img"></span>
+                        <div class="sec9_slider_right">
+                          <p class="slider_content">As a newly wed couple with a growing family, thank you SimplyWilled for making planning our estate so simple.</p>
+                          <h4 class="client_name">Mitch & Donna</h4>
+                        </div>
+                      </slide>
+                </carousel>
+              <!-- <ul class="slides">
                 <li>
                   <span class="slider_left_img"><img src="../../../../assets/images/mitch-and-donna.png" alt="error img"></span>
                   <div class="sec9_slider_right">
@@ -409,7 +432,7 @@
                     <h4 class="client_name">Mitch & Donna</h4>
                   </div>
                 </li>
-              </ul>
+              </ul> -->
             </div>
           </section>
         </div>
@@ -417,3 +440,12 @@
     </div>
   </div>
 </div>
+
+<ng-template #viewVideo>
+  <div class="videoArea">
+    <button type="button" class="close" (click)="modalRef.hide()">×</button>
+    <div class="videoBox">
+        <iframe width="854" height="480" src="https://www.youtube.com/embed/DsOpMzQ65DI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+</ng-template>
