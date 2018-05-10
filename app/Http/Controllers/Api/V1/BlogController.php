@@ -177,6 +177,53 @@ class BlogController extends Controller
         }
     }
 
+    
+    /*
+     * function to fetch list of blog category
+     *
+     * */
+    public function viewBlogUser(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+              'query'  =>  'nullable|min:1',
+            ]);
+            if($validator->fails()) {
+              return response()->json([
+                  'status'  => false,
+                  'message' => $validator->errors(),
+                  'data'    => []
+              ], 400);
+            }
+
+            $query  = $request->has('query') ? $request->get('query') : null;
+            $blog   = Blogs::orderBy('created_at','DESC');
+            $blog   = $query != null ?  $blog->where('slug','LIKE',$query) : $blog;
+            $blog   = $blog->with('getComments')->first();
+            $imageLink  = url('/blogImage').'/';
+            if ($blog) {
+                return response()->json([
+                    'status'    => true,
+                    'message'   => 'Blog List Fetched successfully',
+                    'data'      => compact('blog','imageLink')
+                ], 200);
+            } else {
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'Blog not added',
+                    'data'    => ['BlogDetails' => $blogs]
+                ], 400);
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                'status'  => false,
+                'message' => $e->getMessage(),
+                'data'    => []
+            ], 500);
+        }
+    }
+
+
     /*
      * function to view blog
      * use : use this function to create a view of the particuller Blog

@@ -288,19 +288,20 @@ class FaqCategoryController extends Controller
      * */
     public function faqCategoryListUser() {
       try {
-        $faqCategories = FaqCategories::whereHas('getFaqMapping.getFaq')->get();
-        $result = [];
-        foreach($faqCategories as $key => $eachCategory) {
-          $result[] = [
-            'id'          =>  $eachCategory->id,
-            'name'        =>  $eachCategory->name,
-            'faq-details' =>  $this->getQAs($eachCategory->getFaqMapping, false)
-          ];
-        }
+        //$faqCategories = FaqCategories::whereHas('getFaqMapping.getFaq')->get();
+        $faqCategories = FaqCategories::orderBy('created_at','DESC')->with('faq')->get();
+        // $result = [];
+        // foreach($faqCategories as $key => $eachCategory) {
+        //   $result[] = [
+        //     'id'          =>  $eachCategory->id,
+        //     'name'        =>  $eachCategory->name,
+        //     'faq-details' =>  $this->getQAs($eachCategory->getFaqMapping, false)
+        //   ];
+        // }
         return response()->json([
             'status'  => true,
             'message' => 'All Faq Category with Related Faqs',
-            'data'    => $result
+            'data'    => $faqCategories
         ], 200);
       } catch (\Exception $e) {
         return response()->json([

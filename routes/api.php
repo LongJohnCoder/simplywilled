@@ -476,6 +476,22 @@ Route::group(['prefix' => 'v1'], function() {
             'as' => 'api.v1.getPopularPosts.get'
         ]);
 
+        /*
+         *Route for getting popular blog list
+         * */
+        Route::get('view-blog/{query?}',[
+            'uses'=>'Api\V1\BlogController@viewBlogUser',
+            'as' => 'api.v1.viewBlog.get'
+        ]);
+
+        /**
+        * Route for Commenting to a blog
+        */
+        Route::any('comment', [
+          'uses' => 'Api\V1\BlogController@addBlogComments',
+          'as' => 'api.v1.addBlogComment.post'
+        ]);
+
         //user routes where authentication is needed
         Route::group(['middleware' => ['jwt.auth','user.auth']], function(){
             /**
@@ -491,13 +507,7 @@ Route::group(['prefix' => 'v1'], function() {
                 'as' => 'api.v1.signOut.post'
             ]);
 
-            /**
-            * Route for Commenting to a blog
-            */
-            Route::post('comment', [
-              'uses' => 'Api\V1\BlogController@addBlogComments',
-              'as' => 'api.v1.addBlogComment.post'
-            ]);
+            
 
             /**
             * Route for fetching all comments for a blog

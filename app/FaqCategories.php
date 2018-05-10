@@ -29,4 +29,26 @@ class FaqCategories extends Model
     public function getFaqMapping() {
         return $this->hasMany('App\FaqCategoryMapping','faq_category_id','id');
     }
+
+    public function faq() {
+        return $this->hasManyThrough(
+            'App\Faqs',
+            'App\FaqCategoryMapping',
+            'faq_category_id', // Foreign key on FaqCategoryMapping table...
+            'id', // Foreign key on faqs table...
+            'id', // Local key on FaqCategories table...
+            'faq_id' // Local key on CategoryBlogMapping table...
+        );
+    }
+
+    // public function blogs() {
+    //     return $this->hasManyThrough(
+    //         'App\Blogs',
+    //         'App\CategoryBlogMapping',
+    //         'category_id', // Foreign key on CategoryBlogMapping table...
+    //         'id', // Foreign key on blogs table...
+    //         'id', // Local key on Categories table...
+    //         'blog_id' // Local key on CategoryBlogMapping table...
+    //     );
+    // }
 }
