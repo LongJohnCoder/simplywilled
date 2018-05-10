@@ -18,7 +18,7 @@ import { FullLayoutComponent } from './layout/full-layout/full-layout.component'
 import { UserService } from './user.service';
 import { UserDashboardService } from './user-dashboard/user-dashboard.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FaqService } from './services/faq.service';
+import { FaqService } from './faq/faq.service';
 
 
 

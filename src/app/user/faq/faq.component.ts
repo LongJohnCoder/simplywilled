@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { FaqService } from '../services/faq.service';
+import { FaqService } from './faq.service';
 
 
 @Component({
