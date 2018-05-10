@@ -27,6 +27,7 @@ use Mail;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Models\BlogComment;
 use App\RoleUser;
+use Carbon\Carbon;
 
 class BlogController extends Controller
 {
@@ -55,17 +56,43 @@ class BlogController extends Controller
     {
         try {
             $blogs = Blogs::with('blogCategory')->orderBy('created_at','DESC')->get();
+            // $blogCol = new \stdClass;
+            $blogArr = [];
             if ($blogs) {
+              foreach ($blogs as $key => $value) {
+                $blogArr[$key]['author_id'] = $value->author_id;
+                $blogArr[$key]['body'] = $value->body;
+                $blogArr[$key]['created_at'] = $value->created_at->toDateTimeString();
+                $blogArr[$key]['featured'] = $value->featured;
+                $blogArr[$key]['id'] = $value->id;
+                $blogArr[$key]['image'] = url('/blogImage').'/'.$value->image;
+                $blogArr[$key]['meta_description'] = $value->meta_description;
+                $blogArr[$key]['meta_keywords'] = $value->meta_keywords;
+                $blogArr[$key]['seo_title'] = $value->seo_title;
+                $blogArr[$key]['slug'] = $value->slug;
+                $blogArr[$key]['status'] = $value->status;
+                $blogArr[$key]['title'] = $value->title;
+                $blogArr[$key]['total_views'] = $value->total_views;
+                $categories = [];
+                foreach ($value->blogCategory as $ckey => $cvalue) {
+                  $categories[$ckey] = $cvalue->category->name;
+                }
+                $blogArr[$key]['blog_category'] = $categories;
+                $blogArr[$key]['status'] = $value->status;
+                $blogArr[$key]['status'] = $value->status;
+                $blogArr[$key]['status'] = $value->status;
+
+              }
                 return response()->json([
                     'status' => true,
                     'message' => 'Blog List',
-                    'data' => ['BlogDetails' => $blogs]
+                    'data' => ['BlogDetails' => $blogArr]
                 ], 200);
             } else {
                 return response()->json([
                     'status' => false,
                     'message' => 'Blog not added',
-                    'data' => ['BlogDetails' => $blogs]
+                    'data' => []
                 ], 400);
             }
         } catch (Exception $e) {

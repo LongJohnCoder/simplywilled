@@ -13,4 +13,12 @@ class CategoryBlogMapping extends Model
 
     protected  $table = 'categoryBlogMapping';
 
+    /*
+     * function to get blog category
+     * */
+    public function category(){
+
+        return $this->hasOne('App\Categories','id','category_id');
+    }
+
 }
