@@ -14,7 +14,7 @@ import { UserAuthService } from './user/user-auth/user-auth.service';
 import { UserAuthGuard } from './user/user-auth/user-auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from "@angular/forms";
-import { BlogService } from "./user/blog/blog.service";
+// import { BlogService } from "./user/blog/blog.service";
 
 
 @NgModule({
@@ -39,7 +39,6 @@ import { BlogService } from "./user/blog/blog.service";
     UserAuthGuard,
     NotUserAuthGuard,
     UserAuthService,
-    BlogService,
   ],
   bootstrap: [AppComponent],
   exports: [BsDropdownModule, TooltipModule, ModalModule]

@@ -25,6 +25,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { BlogComponent } from './blog/blog.component';
 import { BlogdetailsComponent } from './blog/blogdetails/blogdetails.component';
+import { BlogService } from "./blog/blog.service";
 
 
 
@@ -61,6 +62,7 @@ console.log('user-module is called');
     UserService,
     FaqService,
     UserDashboardService,
+    BlogService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
 })
