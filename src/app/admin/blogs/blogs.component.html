@@ -23,7 +23,7 @@
                 </div>
                 <div class="panel panel-default blogsTab">
                     <div class="panel-heading">
-                        Total Blog{{blogCount <= 1 ? '' : 's'}} {{blogCount}}
+                        Total Blog{{blogCount <= 1 ? '' : 's'}} - {{blogCount}}
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
@@ -139,7 +139,7 @@
                     </div>
                     <div class="modal-body">
                         <h4>Featured:</h4>
-                        <p>{{blogData.featured}}</p>
+                        <p>{{blogData.featured == '0' ? 'No':'Yes'}}</p>
                     </div>
                     <div class="modal-body">
                         <h4>Body:</h4>

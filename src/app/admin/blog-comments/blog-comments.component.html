@@ -21,7 +21,7 @@
         </div>
         <div class="panel panel-default blogsTab">
           <div class="panel-heading">
-            Total Comments{{commentCount <= 1 ? '' : 's'}} {{commentCount}}
+            Total Comment{{commentCount <= 1 ? '' : 's'}} - {{commentCount}}
           </div>
           <div class="panel-body">
             <div class="table-responsive">
@@ -174,8 +174,15 @@
                         </div>
                         <div class="modal-body">
                             <label for="email">Email:</label>
-                            <input id="email" class="form-control" type="email" [(ngModel)]="comData.email" name="email" ngModel #email="ngModel" required>
-                            <span *ngIf="email.invalid && email.touched" style="color:red;"> User email is reqired ! </span>
+                            <input id="email"
+                                   class="form-control"
+                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                                   type="email" [(ngModel)]="comData.email"
+                                   name="email" ngModel
+                                   #email="ngModel" required>
+                            <span *ngIf="email.errors?.required" style="color:red;">Email is required</span>
+                            <span *ngIf="email.errors?.pattern" style="color:red;">This is not a email format</span>
+
                         </div>
                         <div class="modal-body">
                             <label for="message">Message:</label>

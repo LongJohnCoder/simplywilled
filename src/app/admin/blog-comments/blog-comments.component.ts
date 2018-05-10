@@ -14,7 +14,13 @@ export class BlogCommentsComponent implements OnInit {
     commentCount: number = 0;
     dataTable: any;
     public modalRef: BsModalRef;
-    comData: any[] = [];
+    comData: {
+        id: '',
+        name: '',
+        email: '',
+        message: '',
+        status: ''
+    };
     delcomID: number;
     delcomStatusMsg: string = 'Are You Sure?';
     delcomStatus: string;
@@ -75,24 +81,24 @@ export class BlogCommentsComponent implements OnInit {
     }
 
     update() {
-        // const createcomment = new FormData();
-        // createcomment.append('commentId', this.comData.id);
-        // createcomment.append('name', this.comData.name);
-        // createcomment.append('email', this.comData.email);
-        // createcomment.append('message', this.comData.message);
-        // createcomment.append('status', this.comData.status);
-        //
-        // // console.log(createcomment);
-        // this.blogService.updateComment(createcomment).subscribe(
-        //     (response: any) => {
-        //         if (response.status = 'true') {
-        //             // console.log(response.status);
-        //             this.respMessage = response.message;
-        //             this.router.navigate(['/admin-panel/blog-comments']);
-        //         } else {
-        //             this.respMessage = response.message;
-        //         }
-        //     }
-        // );
+        const createcomment = new FormData();
+        createcomment.append('commentId', this.comData.id);
+        createcomment.append('name', this.comData.name);
+        createcomment.append('email', this.comData.email);
+        createcomment.append('message', this.comData.message);
+        createcomment.append('status', this.comData.status);
+
+        // console.log(createcomment);
+        this.blogService.updateComment(createcomment).subscribe(
+            (response: any) => {
+                if (response.status = 'true') {
+                    // console.log(response.status);
+                    this.respMessage = response.message;
+                    this.router.navigate(['/admin-panel/blog-comments']);
+                } else {
+                    this.respMessage = response.message;
+                }
+            }
+        );
     }
 }
