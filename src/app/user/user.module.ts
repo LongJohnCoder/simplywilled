@@ -19,7 +19,9 @@ import { UserService } from './user.service';
 import { UserDashboardService } from './user-dashboard/user-dashboard.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FaqService } from './services/faq.service';
-
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 console.log('user-module is called');
@@ -30,6 +32,9 @@ console.log('user-module is called');
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
   ],
   declarations: [
     UserComponent,

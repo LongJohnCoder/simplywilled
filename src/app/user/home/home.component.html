@@ -26,7 +26,7 @@
     <div class="wrapper">
       <h2 class="secHeading">Safeguard Your Legacy, Assets
         <br> & Loved Ones.</h2>
-      <div class="video_main">
+      <div class="video_main" (click)="openModal(viewVideo)">
         <img src="../../../../assets/images/video.png" alt="video img">
       </div>
       <ul class="protect_loved_ul">
@@ -417,3 +417,12 @@
     </div>
   </div>
 </div>
+
+<ng-template #viewVideo>
+  <div class="videoArea">
+    <button type="button" class="close" (click)="modalRef.hide()">×</button>
+    <div class="videoBox">
+        <iframe width="854" height="480" src="https://www.youtube.com/embed/DsOpMzQ65DI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+</ng-template>
