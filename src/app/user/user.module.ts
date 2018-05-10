@@ -22,6 +22,7 @@ import { FaqService } from './services/faq.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 
 console.log('user-module is called');
@@ -35,6 +36,7 @@ console.log('user-module is called');
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
+    CarouselModule.forRoot()
   ],
   declarations: [
     UserComponent,

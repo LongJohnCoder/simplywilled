@@ -8,7 +8,6 @@
 @media screen and (max-width:1372px){
     .wrapper{
         max-width:1342px;
-        margin:0 15px;
     }
 }
 
@@ -247,6 +246,9 @@
     .videoArea iframe {
         width: 560px;
         height: 315px;
+    }
+    .happy_user_text{
+        margin-top: 50px;
     }
 }
 
@@ -961,6 +963,9 @@
     }
     .footer-logo {
         text-align: center;
+    }
+    .carousel-control-prev, .carousel-control-next{
+        top: 20%;
     }
 }
 
