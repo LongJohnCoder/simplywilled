@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { DashboardService } from "../../admin/dashboard.service";
-import { BlogService } from '../services/blog.service';
+import {BlogService} from "./blog.service";
 
 @Component({
   selector: 'app-blog',
@@ -9,7 +8,7 @@ import { BlogService } from '../services/blog.service';
 })
 export class BlogComponent implements OnInit {
     blogList: any[] = [];
-    blogCount: number;
+    imageLink: string;
   constructor( private BlogService : BlogService ) {
 
   }
@@ -22,12 +21,8 @@ export class BlogComponent implements OnInit {
     populateBlog(){
         this.BlogService.blogList().subscribe(
             (data:any)=> {
-                console.log(data);
-                // this.blogList = data.data.categoryDetails;
-                // this.blogCount = this.blogCategoryList.length;
-                // this.chRef.detectChanges();
-                // const table: any = $('table');
-                // this.dataTable = table.DataTable();
+                 this.blogList = data.data.BlogDetails;
+                 this.imageLink = data.data.imageLink;
             }
         )
     }

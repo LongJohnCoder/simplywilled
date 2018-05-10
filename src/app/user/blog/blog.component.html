@@ -1,4 +1,4 @@
-<!--<header>-->
+<header>
   <!--<div class="heaser_sec2_slider inner-banner">-->
     <!--<div class="slider">-->
       <!--<img src="../../../../assets/images/blog-banner.png">-->
@@ -12,19 +12,19 @@
     <div class="trending_main">
       <div class="trending_left">
         <ul class="trending_ul">
-          <li>
-            <a href="#" class="trending_img"><img src="../../../../assets/images/news1.jpg" alt="error img"></a>
-            <h1 class="news_heading">What is a Will and Why Do I Need One?</h1>
+          <li *ngFor="let blog of blogList">
+              <a href="#" class="trending_img"><img src="{{imageLink}}{{blog.image}}" alt="{{blog.image}}"></a>
+            <h1 class="news_heading">{{blog.title}}</h1>
             <ul class="trending_sub_left_ul">
               <li>
                 <span class="news_owl"><img src="../../../../assets/images/news_owl.png" alt="error img"></span>
                 <span class="by_simply_willed_text">By Simply<span>Willed</span></span>
               </li>
               <li>
-                <span class="by_simply_willed_text">05 may 2017</span>
+                <span class="by_simply_willed_text">{{blog.created_at}}</span>
               </li>
               <li>
-                <span class="by_simply_willed_text">11 comments</span>
+                <span class="by_simply_willed_text">{{blog.get_comments.length}}</span>
               </li>
             </ul>
             <ul class="trending_right_ul">
@@ -36,62 +36,8 @@
               <li><a href="#" title="Skype"><img src="../../../../assets/images/skype-icon.png"></a></li>
               <li><a href="#" title="Linkedin"><img src="../../../../assets/images/linkedin-icon.png"></a></li>
             </ul>
-            <p class="legal_requirement">Legal Requirements For A Valid Will. The formal requirements for a valid will often vary by jurisdiction.  Therefore, when creating...</p>
-            <button class="btn-green"><img src="../../../../assets/images/arrow-right.png"> Read More</button>
-          </li>
-          <li>
-            <a href="#" class="trending_img"><img src="../../../../assets/images/news2.jpg" alt="error img"></a>
-            <h1 class="news_heading">Dying Without a Last Will and Testament</h1>
-            <ul class="trending_sub_left_ul">
-              <li>
-                <span class="news_owl"><img src="../../../../assets/images/news_owl.png" alt="error img"></span>
-                <span class="by_simply_willed_text">By Simply<span>Willed</span></span>
-              </li>
-              <li>
-                <span class="by_simply_willed_text">05 may 2017</span>
-              </li>
-              <li>
-                <span class="by_simply_willed_text">11 comments</span>
-              </li>
-            </ul>
-            <ul class="trending_right_ul">
-              <li><a href="#">Share:</a></li>
-              <li><a href="#" title="Twitter"><img src="../../../../assets/images/twitter-icon.png"></a></li>
-              <li><a href="#" title="Facebook"><img src="../../../../assets/images/facebook-icon.png"></a></li>
-              <li><a href="#" title="Google-plus"><img src="../../../../assets/images/gplus-icon.png"></a></li>
-              <li><a href="#" title="Vimeo"><img src="../../../../assets/images/vimeo-icon.png"></a></li>
-              <li><a href="#" title="Skype"><img src="../../../../assets/images/skype-icon.png"></a></li>
-              <li><a href="#" title="Linkedin"><img src="../../../../assets/images/linkedin-icon.png"></a></li>
-            </ul>
-            <p class="legal_requirement">A will provides a set of instructions for distributing assets after an individual’s death.  When you die without a will, however, no su...</p>
-            <button class="btn-green"><img src="../../../../assets/images/arrow-right.png"> Read More</button>
-          </li>
-          <li>
-            <a href="#" class="trending_img"><img src="../../../../assets/images/news3.jpg" alt="error img"></a>
-            <h1 class="news_heading">Life Events to Consider When Making a Will</h1>
-            <ul class="trending_sub_left_ul">
-              <li>
-                <span class="news_owl"><img src="../../../../assets/images/news_owl.png" alt="error img"></span>
-                <span class="by_simply_willed_text">By Simply<span>Willed</span></span>
-              </li>
-              <li>
-                <span class="by_simply_willed_text">05 may 2017</span>
-              </li>
-              <li>
-                <span class="by_simply_willed_text">11 comments</span>
-              </li>
-            </ul>
-            <ul class="trending_right_ul">
-              <li><a href="#">Share:</a></li>
-              <li><a href="#" title="Twitter"><img src="../../../../assets/images/twitter-icon.png"></a></li>
-              <li><a href="#" title="Facebook"><img src="../../../../assets/images/facebook-icon.png"></a></li>
-              <li><a href="#" title="Google-plus"><img src="../../../../assets/images/gplus-icon.png"></a></li>
-              <li><a href="#" title="Vimeo"><img src="../../../../assets/images/vimeo-icon.png"></a></li>
-              <li><a href="#" title="Skype"><img src="../../../../assets/images/skype-icon.png"></a></li>
-              <li><a href="#" title="Linkedin"><img src="../../../../assets/images/linkedin-icon.png"></a></li>
-            </ul>
-            <p class="legal_requirement">Life Events to Consider When Making a Will Throughout life, there are different events that people take into consideration when making a...</p>
-            <button class="btn-green"><img src="../../../../assets/images/arrow-right.png"> Read More</button>
+            <p class="legal_requirement" innerHTML="{{ blog.body | slice:0:650 }}"></p>
+            <a class="btn-green" routerLink="/blogdetails/{{blog.slug}}" ><img src="../../../../assets/images/arrow-right.png"> Read More</a>
           </li>
         </ul>
         <a href="#" class="older_post_text">OLDER POSTS >></a>

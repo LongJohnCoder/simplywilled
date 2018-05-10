@@ -25,4 +25,8 @@ export class BlogService {
     blogList():Observable<any>{
         return this.httpClient.get(environment.API_URL + 'user/blog-list');
     }
+
+    getBlogDetails(slug: string):Observable<any>{
+        return this.httpClient.get(environment.API_URL + 'user/view-blog/?query='+slug );
+    }
 }

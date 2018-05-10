@@ -13,8 +13,8 @@ import { NotUserAuthGuard } from './user/user-auth/not-user-auth.guard';
 import { UserAuthService } from './user/user-auth/user-auth.service';
 import { UserAuthGuard } from './user/user-auth/user-auth.guard';
 import { HttpClientModule } from '@angular/common/http';
-import {ReactiveFormsModule} from "@angular/forms";
-import {BlogService} from "./user/services/blog.service";
+import { ReactiveFormsModule } from "@angular/forms";
+import { BlogService } from "./user/blog/blog.service";
 
 
 @NgModule({

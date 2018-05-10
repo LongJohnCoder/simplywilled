@@ -24,6 +24,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { BlogComponent } from './blog/blog.component';
+import { BlogdetailsComponent } from './blog/blogdetails/blogdetails.component';
 
 
 
@@ -50,7 +51,8 @@ console.log('user-module is called');
     PrivacyPolicyComponent,
     ContactUsComponent,
     FullLayoutComponent,
-    BlogComponent
+    BlogComponent,
+    BlogdetailsComponent
   ],
   providers: [
     UserAuthGuard,
