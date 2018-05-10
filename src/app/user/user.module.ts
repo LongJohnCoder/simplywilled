@@ -18,12 +18,12 @@ import { FullLayoutComponent } from './layout/full-layout/full-layout.component'
 import { UserService } from './user.service';
 import { UserDashboardService } from './user-dashboard/user-dashboard.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { FaqService } from './faq/faq.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { BlogComponent } from './blog/blog.component';
 
 
 
@@ -44,12 +44,13 @@ console.log('user-module is called');
     UserComponent,
     HomeComponent,
     AboutUsComponent,
-    //FaqComponent,
+    // FaqComponent,
     TermsOfUseComponent,
     TermsOfServiceComponent,
     PrivacyPolicyComponent,
     ContactUsComponent,
-    FullLayoutComponent
+    FullLayoutComponent,
+    BlogComponent
   ],
   providers: [
     UserAuthGuard,

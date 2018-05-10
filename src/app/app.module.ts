@@ -14,6 +14,7 @@ import { UserAuthService } from './user/user-auth/user-auth.service';
 import { UserAuthGuard } from './user/user-auth/user-auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import {ReactiveFormsModule} from "@angular/forms";
+import {BlogService} from "./user/services/blog.service";
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     BsDropdownModule.forRoot(),
     TooltipModule,
     ModalModule.forRoot(),
-      ReactiveFormsModule
+    ReactiveFormsModule
   ],
   providers: [
     AuthGuard,
@@ -37,7 +38,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     AuthService,
     UserAuthGuard,
     NotUserAuthGuard,
-    UserAuthService
+    UserAuthService,
+    BlogService,
   ],
   bootstrap: [AppComponent],
   exports: [BsDropdownModule, TooltipModule, ModalModule]
