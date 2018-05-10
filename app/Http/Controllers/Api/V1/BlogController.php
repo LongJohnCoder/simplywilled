@@ -195,11 +195,8 @@ class BlogController extends Controller
                   'data'    => []
               ], 400);
             }
-
             $query  = $request->has('query') ? $request->get('query') : null;
-            $blog   = Blogs::orderBy('created_at','DESC');
-            $blog   = $query != null ?  $blog->where('slug','LIKE',$query) : $blog;
-            $blog   = $blog->with('getComments')->first();
+            $blog   = Blogs::orderBy('created_at','DESC')->where('slug','=',$query)->with('getComments')->first();
             $imageLink  = url('/blogImage').'/';
             if ($blog) {
                 return response()->json([
@@ -211,7 +208,8 @@ class BlogController extends Controller
                 return response()->json([
                     'status'  => false,
                     'message' => 'Blog not added',
-                    'data'    => ['BlogDetails' => $blogs]
+                    'data'    => compact('blog','imageLink')
+
                 ], 400);
             }
         } catch (\Exception $e) {
