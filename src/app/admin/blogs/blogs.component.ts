@@ -31,6 +31,7 @@ export class BlogsComponent implements OnInit {
   populateBlogs(){
     this.dashService.blogList().subscribe(
       (data:any)=> {
+          console.log(data.data);
         this.blogList = data.data.BlogDetails;
         this.blogCount = this.blogList.length;
         // console.log('bloglist',this.blogList);

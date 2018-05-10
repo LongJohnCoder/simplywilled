@@ -143,11 +143,13 @@
                     </div>
                     <div class="modal-body">
                         <h4>Body:</h4>
-                        <p>{{blogData.body}}</p>
+                        <p [innerHTML]="blogData.body"></p>
                     </div>
                     <div class="modal-body">
                         <h4>Image:</h4>
-                        <p>{{blogData.image}}</p>
+                        <div *ngIf="blogData.image">
+                            <img src="{{blogData.image}}" alt="{{blogData.image}}">
+                        </div>
                     </div>
                     <div class="modal-body">
                         <h4>Categories:</h4>
@@ -155,15 +157,15 @@
                     </div>
                     <div class="modal-body">
                         <h4>Seo Title:</h4>
-                        <p>{{blogData.seo_title}}</p>
+                        <p>{{blogData.seo_title == 'null' ? '--' : blogData.seo_title}}</p>
                     </div>
                     <div class="modal-body">
                         <h4>Meta Description:</h4>
-                        <p>{{blogData.meta_description}}</p>
+                        <p>{{blogData.meta_description == 'null' ? '--' : blogData.meta_description}}</p>
                     </div>
                     <div class="modal-body">
                         <h4>Meta Keywords:</h4>
-                        <p>{{blogData.meta_keywords}}</p>
+                        <p>{{blogData.meta_keywords == 'null' ? '--' : blogData.meta_keywords}}</p>
                     </div>
                 </div>
             </ng-template>

@@ -34,6 +34,17 @@ export class BlogService {
     deleteBlogCat(id: number): Observable<any>{
         return this.httpClient.delete(environment.API_URL + 'admin-panel/delete-category/' + id);
     }
-    
+
+    comments(): Observable<any> {
+        return this.httpClient.get(environment.API_URL + 'admin-panel/comments-list/');
+    }
+
+    deleteComment(id: number): Observable<any> {
+        return this.httpClient.delete(environment.API_URL + 'admin-panel/delete-comment/' + id);
+    }
+
+    updateComment(createcomment): Observable<any> {
+        return this.httpClient.post(environment.API_URL + 'admin-panel/edit-comment', createcomment);
+    }
 
 }
