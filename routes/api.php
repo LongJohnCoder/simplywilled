@@ -452,6 +452,22 @@ Route::group(['prefix' => 'v1'], function() {
             'as' => 'api.v1.blogListUser.get'
         ]);
 
+        /*
+         *Route for getting latest blog list
+         * */
+        Route::get('latest-post',[
+            'uses'=>'Api\V1\BlogController@getLatestPosts',
+            'as' => 'api.v1.getLatestPosts.get'
+        ]);
+
+        /*
+         *Route for getting popular blog list
+         * */
+        Route::get('popular-post',[
+            'uses'=>'Api\V1\BlogController@getPopularPosts',
+            'as' => 'api.v1.getPopularPosts.get'
+        ]);
+
         //user routes where authentication is needed
         Route::group(['middleware' => ['jwt.auth','user.auth']], function(){
             /**
@@ -491,9 +507,6 @@ Route::group(['prefix' => 'v1'], function() {
               'as' => 'api.v1.fetchBlogSubComments.post'
             ]);
 
-
-
-
             /*
              * Route for edit user profile
              * */
@@ -532,21 +545,7 @@ Route::group(['prefix' => 'v1'], function() {
                 'as' => 'api.v1.getUserDetails.get'
             ]);
 
-            /*
-             *Route for getting popular blog list
-             * */
-            Route::get('popular-post',[
-                'uses'=>'Api\V1\BlogController@getPopularPosts',
-                'as' => 'api.v1.getPopularPosts.get'
-            ]);
-
-            /*
-             *Route for getting latest blog list
-             * */
-            Route::get('latest-post',[
-                'uses'=>'Api\V1\BlogController@getLatestPosts',
-                'as' => 'api.v1.getLatestPosts.get'
-            ]);
+            
         });
     });
 });
