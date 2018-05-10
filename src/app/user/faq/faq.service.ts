@@ -10,8 +10,10 @@ export class FaqService {
       private httpClient: HttpClient
   ) { }
 
-    getFaqCategories(): Observable<any>{
-        let url = `${environment.API_URL + 'user/faq-category-list'}`;
+    getFaqCategories(search : string = null): Observable<any>{
+        console.log('search : '+search)
+        let url = `${environment.API_URL}user/faq-category-list`;
+        url = search != null ? `${url}/?query=${search}` : url;
         console.log('url is : ',url);
         return this.httpClient.get(url);
     }
@@ -22,5 +24,12 @@ export class FaqService {
         return this.httpClient.get(url);
     }
 
-    
+    // getFaqCategoriesQa( search: string ): Observable<any> {
+    //     let url = `${environment.API_URL + 'user/faq-category-list/?query='+${search}}`;
+    //     //url = search != '' ? `${url}/?query=${search}'}` : url;
+    //     console.log('search url is : ',url);
+    //     return this.httpClient.get(url);
+    //   }
+
+
 }

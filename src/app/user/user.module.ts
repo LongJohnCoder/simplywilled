@@ -47,6 +47,7 @@ console.log('user-module is called');
     HomeComponent,
     AboutUsComponent,
     // FaqComponent,
+    FaqComponent,
     TermsOfUseComponent,
     TermsOfServiceComponent,
     PrivacyPolicyComponent,

@@ -39,9 +39,6 @@ const routes: Routes = [
 console.log('user-routing-module is called');
 @NgModule({
   imports: [RouterModule.forChild(routes), CommonModule],
-  exports: [RouterModule],
-  declarations: [
-    FaqComponent
-  ]
+  exports: [RouterModule]
 })
 export class UserRoutingModule { }
