@@ -23,4 +23,15 @@ class Categories extends Model
     public function blogMapping(){
         return $this->hasMany('App\CategoryBlogMapping','category_id','id');
     }
+
+    public function blogs() {
+    	return $this->hasManyThrough(
+            'App\Blogs',
+            'App\CategoryBlogMapping',
+            'category_id', // Foreign key on CategoryBlogMapping table...
+            'id', // Foreign key on blogs table...
+            'id', // Local key on Categories table...
+            'blog_id' // Local key on CategoryBlogMapping table...
+        );
+    }
 }

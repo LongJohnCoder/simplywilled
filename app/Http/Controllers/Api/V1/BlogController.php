@@ -110,14 +110,56 @@ class BlogController extends Controller
     {
         try {
             //$blogs = Blogs::where('status','1')->with('blogCategory')->orderBy('created_at','DESC')->get();
-            $blogs = Categories::with(['blogMapping.blog' => function($q) {
-                $q->where('status','1');
-            }])->orderBy('created_at','DESC')->get();
+            // $blogs = Categories::with(['blogMapping.blog' => function($q) {
+            //     $q->where('status','1');
+            // }])->orderBy('created_at','DESC')->get();
+
+            $blogs      = Blogs::where('status','1')->with('getComments')->orderBy('created_at','DESC')->get();
+            $imageLink  = url('/blogImage').'/';
             if ($blogs) {
                 return response()->json([
-                    'status'  => true,
+                    'status' => true,
                     'message' => 'Blog List Fetched successfully',
-                    'data'    => ['BlogCategories' => $blogs]
+                    'data' => ['BlogDetails' => $blogs,'imageLink' => $imageLink]
+                ], 200);
+            } else {
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'Blog not added',
+                    'data'    => ['BlogDetails' => $blogs]
+                ], 400);
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                'status'  => false,
+                'message' => $e->getMessage(),
+                'data'    => []
+            ], 500);
+        }
+    }
+
+    
+    /*
+     * function to fetch list of blog category
+     *
+     * */
+    public function blogCategoryListUser()
+    {
+        try {
+            $categories = Categories::orderBy('created_at','DESC')->with('blogs')->get();
+            $categoriesDetails = [];
+            foreach ($categories as $key => $value) {
+                $array['name'] =    $value->name;
+                $array['slug'] =    $value->slug;
+                $array['blogCount']     = count($value->blogs);
+                $array['category_id']   = $value->id;
+                $categoriesDetails[]    = $array;
+            }
+            if ($categories) {
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Blog List Fetched successfully',
+                    'data' => ['categories' => $categoriesDetails]
                 ], 200);
             } else {
                 return response()->json([

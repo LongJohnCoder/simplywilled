@@ -452,6 +452,14 @@ Route::group(['prefix' => 'v1'], function() {
             'as' => 'api.v1.blogListUser.get'
         ]);
 
+        /**
+         * Route for getting blog category list
+         */
+        Route::get('blog-category-list',[
+            'uses'=>'Api\V1\BlogController@blogCategoryListUser',
+            'as' => 'api.v1.blogCategoryListUser.get'
+        ]);
+
         /*
          *Route for getting latest blog list
          * */
