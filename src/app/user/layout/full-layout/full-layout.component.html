@@ -2,12 +2,12 @@
   <div class="header_first_sec">
     <div class="wrapper">
       <a href="#" class="logo"><img src="../../../../assets/images/logo_new.png" alt="logo"></a>
-      <div class="menu">
+      <div class="menu" (click)="menuOpen()" [ngClass]="{'active': menutogle}">
         <span></span>
         <span></span>
         <span></span>
       </div>
-      <div class="readerRight">
+      <div class="readerRight" [ngClass]="{'open': menutogle}">
         <ul class="navigation">
           <li><a routerLink="/">Home</a></li>
           <li><a routerLink="/about-us">About Us</a></li>

@@ -20,7 +20,7 @@
     }
 }
 
-@media screen and (max-width:1130px){
+@media screen and (max-width:1190px){
     .searchBar:hover input[type='text'], .searchBar input[type='text']:focus{
         width: 246px;
         opacity: 1;
@@ -39,6 +39,26 @@
     }
     .getStarted{
         margin-left: 0;
+    }
+    .readerRight{
+        display: none;
+        position: absolute;
+        background: #0853a0;
+        right: 0;
+        width: 338px;
+        top: 49px;
+        z-index: 100;
+        padding: 20px;
+        border: 3px solid #9c3;
+    }
+    .navigation{
+        padding: 0 0 20px 0;
+    }
+    .menu{
+        display: block;
+    }
+    .open{
+        display: block;
     }
 }
 
@@ -186,25 +206,7 @@
     }
 }
 
-@media screen and (max-width:1130px){
-    .readerRight{
-        display: none;
-        position: absolute;
-        background: #0853a0;
-        right: 0;
-        width: 338px;
-        top: 49px;
-        z-index: 100;
-        padding: 20px;
-        border: 3px solid #9c3;
-    }
-    .navigation{
-        padding: 0 0 20px 0;
-    }
-    .menu{
-        display: block;
-    }
-}
+
 
 @media only screen and (max-width: 1100px){
     .footerTxtArea{
@@ -235,6 +237,9 @@
     }
     .print_img_right_sec{
         width: calc(100% - 66px);
+    }
+    .index_banner{
+        margin-top: -49px;
     }
 }
 
@@ -564,6 +569,12 @@
     }
     .why_do_need_will{
         font-size:40px;
+    }
+}
+
+@media only screen and (max-width: 860px){
+    .index_banner {
+        margin-top: -16px;
     }
 }
 
@@ -1286,7 +1297,7 @@
         margin-top: 0;
     }
     .index_banner{
-        margin-top: 0;
+        margin-top: -16px;
     }
     .index_banner_ul li{
         margin-left: 10px;

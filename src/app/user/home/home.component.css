@@ -1,0 +1,20 @@
+.sec3_btn_main a:hover {
+    background: linear-gradient(#4fb73a, #3da12c);
+    border: 2px solid #fff;
+    color: #fff;
+    text-decoration: none;
+}
+.get_start_btn:hover{
+    background: linear-gradient(#53ba3c, #3fa62e);
+    border: 1px solid #40a52f;
+    color: #fff;
+    text-decoration: none;
+}
+.book_sec_main .get_start_pkg_btn:hover{
+    color:#fff;
+    text-decoration: none;
+}
+
+
+
+
