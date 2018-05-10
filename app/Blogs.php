@@ -23,7 +23,6 @@ class Blogs extends Model
      * function to get blog category
      * */
     public function blogCategory(){
-
         return $this->hasMany('App\CategoryBlogMapping','blog_id','id');
     }
 
@@ -33,5 +32,4 @@ class Blogs extends Model
     public function getComments(){
         return $this->hasMany('App\Models\BlogComment','blog_id','id');
     }
-
 }

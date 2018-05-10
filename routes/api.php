@@ -444,6 +444,14 @@ Route::group(['prefix' => 'v1'], function() {
           'as' => 'api.v1.faqCategoryListUser.get'
         ]);
 
+        /**
+         * Route for getting blog list
+         */
+        Route::get('blog-list',[
+            'uses'=>'Api\V1\BlogController@blogListUser',
+            'as' => 'api.v1.blogListUser.get'
+        ]);
+
         //user routes where authentication is needed
         Route::group(['middleware' => ['jwt.auth','user.auth']], function(){
             /**
@@ -522,14 +530,6 @@ Route::group(['prefix' => 'v1'], function() {
             Route::get('get-user-details/{id}',[
                 'uses'=>'Api\V1\UserManagementController@getUserDetails',
                 'as' => 'api.v1.getUserDetails.get'
-            ]);
-
-            /*
-             *Route for getting blog list
-             * */
-            Route::get('blog-list',[
-                'uses'=>'Api\V1\BlogController@blogListUser',
-                'as' => 'api.v1.blogListUser.get'
             ]);
 
             /*

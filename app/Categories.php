@@ -19,4 +19,8 @@ class Categories extends Model
     protected $softDelete = true;
 
     protected $table = 'categories';
+
+    public function blogMapping(){
+        return $this->hasMany('App\CategoryBlogMapping','category_id','id');
+    }
 }

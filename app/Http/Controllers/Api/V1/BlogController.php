@@ -56,7 +56,6 @@ class BlogController extends Controller
     {
         try {
             $blogs = Blogs::with('blogCategory')->orderBy('created_at','DESC')->get();
-            // $blogCol = new \stdClass;
             $blogArr = [];
             if ($blogs) {
               foreach ($blogs as $key => $value) {
@@ -81,7 +80,6 @@ class BlogController extends Controller
                 $blogArr[$key]['status'] = $value->status;
                 $blogArr[$key]['status'] = $value->status;
                 $blogArr[$key]['status'] = $value->status;
-
               }
                 return response()->json([
                     'status' => true,
@@ -111,12 +109,15 @@ class BlogController extends Controller
     public function blogListUser()
     {
         try {
-            $blogs = Blogs::where('status','1')->with('blogCategory')->orderBy('created_at','DESC')->get();
+            //$blogs = Blogs::where('status','1')->with('blogCategory')->orderBy('created_at','DESC')->get();
+            $blogs = Categories::with(['blogMapping.blog' => function($q) {
+                $q->where('status','1');
+            }])->orderBy('created_at','DESC')->get();
             if ($blogs) {
                 return response()->json([
                     'status'  => true,
                     'message' => 'Blog List Fetched successfully',
-                    'data'    => ['BlogDetails' => $blogs]
+                    'data'    => ['BlogCategories' => $blogs]
                 ], 200);
             } else {
                 return response()->json([
