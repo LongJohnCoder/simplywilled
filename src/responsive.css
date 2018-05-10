@@ -250,6 +250,19 @@
     .happy_user_text{
         margin-top: 50px;
     }
+    .legal_requirement p{
+        font-size: 16px;
+    }
+    .legal_requirement h2{
+        font-size: 20px;
+    }
+    .trending_right_ul {
+        position: absolute;
+        float: none;
+        width: auto;
+        right: 0;
+        bottom: 5px;
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 960px){
@@ -951,6 +964,7 @@
     }
     .trending_ul > li{
         margin-bottom:40px;
+        position:relative;
     }
     .post_right_main{
         width:78%;
@@ -1227,7 +1241,6 @@
         margin-left: 10px;
     }
     .trending_right_ul{
-        width:100%;
         float:left;
     }
     .trending_right_ul > li:first-child a {
@@ -1242,7 +1255,7 @@
     .trending_main{
         padding-top:40px;
     }
-    .why_do_need_will {
+    .why_do_need_will, .blogContainer h2  {
         font-size: 22px;
     }
     .whats_will_text{
@@ -1251,6 +1264,9 @@
     }
     .executer_ul li{
         font-size: 20px;
+    }
+    .blogContainer p {
+        font-size: 16px;
     }
 }
 
@@ -1276,6 +1292,21 @@
     }
     .footer-nav ul li{
         text-align: center;
+    }
+    .trending_sub_left_ul > li:first-child{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .trending_sub_left_ul > li:nth-child(2){
+        width: auto;
+        margin-right: 10px;
+    }
+    .trending_sub_left_ul > li:nth-child(2) .by_simply_willed_text{
+        border-left:0;
+        padding-left: 0;
+    }
+    .trending_sub_left_ul > li:nth-child(3){
+        width: auto;
     }
 }
 
@@ -1539,14 +1570,7 @@
         width:100%;
         margin-left:0px;
     }
-    .trending_sub_left_ul > li:nth-child(2){
-        width:49%;
-        margin-left:0px;
-    }
-    .trending_sub_left_ul > li:nth-child(3){
-        width:49%;
-        margin-left:2%;
-    }
+
     .legal_requirement{
         text-align:justify;
     }
@@ -1594,6 +1618,15 @@
     .videoArea iframe {
         width: 263px;
         height: 148px;
+    }
+    .trending_right_ul {
+        width: 230px;
+        right: auto;
+        bottom: 0;
+        left: 0;
+    }
+    .trending_ul > li{
+        padding-bottom: 50px;
     }
 }
 
