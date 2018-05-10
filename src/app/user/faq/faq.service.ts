@@ -21,4 +21,6 @@ export class FaqService {
         console.log('url is : ',url);
         return this.httpClient.get(url);
     }
+
+    
 }

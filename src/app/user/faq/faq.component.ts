@@ -52,7 +52,7 @@ export class FaqComponent implements OnInit {
     getQuestions(faqEachData : any[], count : number) : any {
         this.counter        = count;
         this.innerCounter   = null;
-        this.faqDetails     = faqEachData[count]['faq-details'] !== undefined ? faqEachData[count]['faq-details'] : [];
+        this.faqDetails     = faqEachData[count]['faq'] !== undefined ? faqEachData[count]['faq'] : [];
         return this.faqDetails;
     }
 
