@@ -19,6 +19,13 @@ import { UserService } from './user.service';
 import { UserDashboardService } from './user-dashboard/user-dashboard.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FaqService } from './faq/faq.service';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { BlogComponent } from './blog/blog.component';
+import { BlogdetailsComponent } from './blog/blogdetails/blogdetails.component';
+import { BlogService } from "./blog/blog.service";
 
 
 
@@ -30,17 +37,23 @@ console.log('user-module is called');
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+    CarouselModule.forRoot()
   ],
   declarations: [
     UserComponent,
     HomeComponent,
     AboutUsComponent,
-    //FaqComponent,
+    // FaqComponent,
     TermsOfUseComponent,
     TermsOfServiceComponent,
     PrivacyPolicyComponent,
     ContactUsComponent,
-    FullLayoutComponent
+    FullLayoutComponent,
+    BlogComponent,
+    BlogdetailsComponent
   ],
   providers: [
     UserAuthGuard,
@@ -49,6 +62,7 @@ console.log('user-module is called');
     UserService,
     FaqService,
     UserDashboardService,
+    BlogService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
 })

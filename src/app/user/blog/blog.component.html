@@ -1,0 +1,98 @@
+<div class="body_container">
+  <div class="wrapper">
+    <div class="trending_main">
+      <div class="trending_left">
+        <ul class="trending_ul">
+          <li *ngFor="let blog of blogList">
+              <a href="#" class="trending_img"><img src="{{imageLink}}{{blog.image}}" alt="{{blog.image}}"></a>
+            <h1 class="news_heading">{{blog.title}}</h1>
+            <ul class="trending_sub_left_ul">
+              <li>
+                <span class="news_owl"><img src="../../../../assets/images/news_owl.png" alt="error img"></span>
+                <span class="by_simply_willed_text">By Simply<span>Willed</span></span>
+              </li>
+              <li>
+                <span class="by_simply_willed_text">{{blog.created_at}}</span>
+              </li>
+              <li>
+                <span class="by_simply_willed_text">{{blog.get_comments.length}}</span>
+              </li>
+            </ul>
+            <ul class="trending_right_ul">
+              <li><a href="#">Share:</a></li>
+              <li><a href="#" title="Twitter"><img src="../../../../assets/images/twitter-icon.png"></a></li>
+              <li><a href="#" title="Facebook"><img src="../../../../assets/images/facebook-icon.png"></a></li>
+              <li><a href="#" title="Google-plus"><img src="../../../../assets/images/gplus-icon.png"></a></li>
+              <li><a href="#" title="Vimeo"><img src="../../../../assets/images/vimeo-icon.png"></a></li>
+              <li><a href="#" title="Skype"><img src="../../../../assets/images/skype-icon.png"></a></li>
+              <li><a href="#" title="Linkedin"><img src="../../../../assets/images/linkedin-icon.png"></a></li>
+            </ul>
+            <p class="legal_requirement" innerHTML="{{ blog.body | slice:0:650 }}"></p>
+            <a class="btn-green" routerLink="/blogdetails/{{blog.slug}}" ><img src="../../../../assets/images/arrow-right.png"> Read More</a>
+          </li>
+        </ul>
+        <a href="#" class="older_post_text">OLDER POSTS >></a>
+      </div>
+      <div class="trending_right_main">
+        <h2 class="subscribe_text_main"><span class="subscribe_text">SUBSCRIBE</span></h2>
+        <form>
+          <div class="subscribe_form_main">
+            <input type="email" placeholder="Your email address" class="subscribe_mail">
+            <input type="submit" class="btn-green" value="Subscribe">
+          </div>
+        </form>
+        <h2 class="subscribe_text_main"><span class="subscribe_text">CATEGORIES</span></h2>
+        <ul class="cat_ul">
+          <li><a href="#">Financial Power Of Attorney &nbsp;<span>(1)</span></a></li>
+          <li class="active"><a href="#">Health Care Directives &nbsp;<span>(3)</span></a></li>
+          <li><a href="#">Last Will & Testament &nbsp;<span>(3)</span></a></li>
+          <li><a href="#">Living Revocable Trusts &nbsp;<span>(3)</span></a></li>
+        </ul>
+        <h2 class="subscribe_text_main"><span class="subscribe_text">POPULAR POSTS </span></h2>
+        <ul class="post_ul">
+          <li>
+            <a href="#" class="post_img"><img src="../../../../assets/images/post1.jpg"></a>
+            <div class="post_right_main">
+              <a href="#" class="post_heading">Health Care Power of Attorney Explained</a>
+              <h4 class="healthcare_text">Health Care Directives</h4>
+            </div>
+          </li>
+          <li>
+            <a href="#" class="post_img"><img src="../../../../assets/images/post2.jpg"></a>
+            <div class="post_right_main">
+              <a href="#" class="post_heading">What is a Living Will?</a>
+              <h4 class="healthcare_text">Health Care Directives</h4>
+            </div>
+          </li>
+          <li>
+            <a href="#" class="post_img"><img src="../../../../assets/images/post3.jpg"></a>
+            <div class="post_right_main">
+              <a href="#" class="post_heading">Selecting an Executor for Your Estate</a>
+              <h4 class="healthcare_text">Last Will & Testament</h4>
+            </div>
+          </li>
+          <li>
+            <a href="#" class="post_img"><img src="../../../../assets/images/post4.jpg"></a>
+            <div class="post_right_main">
+              <a href="#" class="post_heading">Updating and Revoking Your Last Will and Testament</a>
+              <h4 class="healthcare_text">Last Will & Testament</h4>
+            </div>
+          </li>
+          <li>
+            <a href="#" class="post_img"><img src="../../../../assets/images/post5.jpg"></a>
+            <div class="post_right_main">
+              <a href="#" class="post_heading">How to Select a Trustee for Your Estate Plan</a>
+              <h4 class="healthcare_text">Living Revocable Trusts</h4>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="about_sec4">
+    <div class="wrapper">
+      <h1 class="about_state_planning_text">Estate Planning Made Simple &amp; Affordable.</h1>
+      <h4 class="select_plan">Select your plan now and Keep your loved ones safe!</h4>
+    </div>
+  </div>
+</div>

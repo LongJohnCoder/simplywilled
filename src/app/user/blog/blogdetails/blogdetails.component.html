@@ -1,0 +1,57 @@
+<div class="body_container">
+  <div class="wrapper">
+    <div class="trending_main">
+      <div class="relative">
+        <span class="single_post"><img src="{{imageLink}}{{blogDetails.image}}" alt="{{blogDetails.image}}"></span>
+        <h1 class="why_do_need_will">{{blogDetails.title}}</h1>
+        <ul class="trending_sub_left_ul">
+          <li>
+            <span class="news_owl"><img src="../../../../assets/images/news_owl.png" alt="error img"></span>
+            <span class="by_simply_willed_text">By Simply<span>Willed</span></span>
+          </li>
+          <li>
+            <span class="by_simply_willed_text">{{blogDetails.created_at}}</span>
+          </li>
+          <li>
+            <span class="by_simply_willed_text">{{blogDetails.get_comments.length}} comments</span>
+          </li>
+        </ul>
+        <ul class="trending_right_ul">
+          <li><a href="#">Share:</a></li>
+          <li><a href="#" title="Twitter"><img src="../../../../assets/images/twitter-icon.png"></a></li>
+          <li><a href="#" title="Facebook"><img src="../../../../assets/images/facebook-icon.png"></a></li>
+          <li><a href="#" title="Google-plus"><img src="../../../../assets/images/gplus-icon.png"></a></li>
+          <li><a href="#" title="Vimeo"><img src="../../../../assets/images/vimeo-icon.png"></a></li>
+          <li><a href="#" title="Skype"><img src="../../../../assets/images/skype-icon.png"></a></li>
+          <li><a href="#" title="Linkedin"><img src="../../../../assets/images/linkedin-icon.png"></a></li>
+        </ul>
+          <div class='col-md-12' [innerHTML]="blogDetails.body"> </div>
+      </div>
+      <h3 class="comments_text">No Comments</h3>
+      <form>
+        <div class="from_main2">
+          <h3 class="post_comment_text">POST a COMMENT:</h3>
+          <ul class="form2_ul">
+            <li>
+              <input type="text" placeholder="Your Name">
+            </li>
+            <li>
+              <input type="email" placeholder="Your Email">
+            </li>
+            <li>
+              <textarea placeholder="Your Comment"></textarea>
+            </li>
+          </ul>
+          <input type="submit" value="Submit" class="form2_submit">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="about_sec4">
+    <div class="wrapper">
+      <h1 class="about_state_planning_text">Estate Planning Made Simple &amp; Affordable.</h1>
+      <h4 class="select_plan">Select your plan now and Keep your loved ones safe!</h4>
+      <button class="btn-green" type="button"><img src="../../../../assets/images/arrow-right.png"> get started</button>
+    </div>
+  </div>
+</div>

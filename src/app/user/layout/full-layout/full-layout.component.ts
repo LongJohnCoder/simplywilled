@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 export class FullLayoutComponent implements OnInit {
 
   isLogIn: boolean = false;
+  menutogle: boolean = false;
 
   constructor( private authService: UserAuthService, private router: Router) { }
 
@@ -21,6 +22,10 @@ export class FullLayoutComponent implements OnInit {
     localStorage.removeItem('loggedInUser');
     this.router.navigate(['/']);
     this.isLogIn = false ;
+  }
+
+  menuOpen(){
+    this.menutogle = !this.menutogle;
   }
 
 }
