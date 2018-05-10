@@ -1514,34 +1514,7 @@ color:#b5e5ff
 	width: 100%;
 	float: left
 }
-.trending_ul > li {
-	width: 49%;
-	float: left;
-	margin-bottom: 25px;
-	box-shadow: 0px 0px 15px rgba(0,0,0,.2);
-	margin-left:0%;
-	clear:left;
-}
-.trending_ul > li:nth-child(3n+1){
-	width:100%;
-	margin-left:0px;
-}
-.trending_ul > li:nth-child(3n){
-	margin-left:2%;
-	clear:none;
-}
-.trending_img, .trending_img img {
-	width: 100%;
-	float: left
-}
-.trending_ul > li .trending_img img
-{
-	max-height:263px;
-}
-.trending_ul > li:nth-child(3n+1) .trending_img img
-{
-	max-height:none;
-}
+
 .author_date{
 	width:100%;
 	float:left;
@@ -1567,24 +1540,7 @@ color:#b5e5ff
 	float:left;
 	margin-top:20px;
 }
-.trending_ul > li:nth-child(3n+1) .trending_owl_main{
-	width:auto;
-	float:right;
-	margin-top:0px;
-}
-.trending_ul > li:nth-child(3n+1) .news_heading {
-	font-size:30px;
-	min-height:inherit;
-}
-.news_heading {
-	width: 100%;
-	float: left;
-	color: #4f4f6f;
-	font-size: 20px;
-	font-family: OpenSans-Semibold;
-	padding: 20px 0px 5px 0px;
-	min-height:81px;
-}
+
 .by_simply_willed_text {
 	text-decoration: none
 }
@@ -1628,14 +1584,7 @@ color:#b5e5ff
 .trending_ul > li:nth-child(3n+1) .trending_right_ul{
 	float:none;
 }
-.legal_requirement {
-	width: 100%;
-	float: left;
-	color: #9fa4af;
-	font-size: 20px;
-	padding:0px 0px 40px 0px;
-	min-height:185px;
-}
+
 .trending_ul > li:nth-child(3n+1) .legal_requirement {
 	min-height:inherit;
 }
@@ -3396,11 +3345,6 @@ select.form-control{
 	float:left;
 	margin-top:15px;
 }
-.trending_ul > li:nth-child(3n+1) .trending_right_ul {
-    float: none;
-    width: auto;
-    margin-top: 6px;
-}
 .state_planning_text{
 	padding: 80px 0 0;
 	line-height: 40px;
@@ -3795,17 +3739,10 @@ select.form-control{
 	font-size:15px;
 }
 .trending_right_ul{
-	width:100%;
-	float:left;
-	margin-top:10px;
+	float: right;
 }
 .trending_owl_main{
 	margin-top:10px;
-}
-.trending_ul > li:nth-child(3n+1) .trending_right_ul {
-    float: none;
-    width: auto;
-    margin-top: 7px;
 }
 .slider_realitive_div{
 	padding-bottom:30px;
