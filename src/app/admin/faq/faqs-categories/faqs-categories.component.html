@@ -103,15 +103,16 @@
                     {{delFAQStatusMsg}}
                 </h3>
             </div>
-            <div class="modal-body deleteBlogFoot"
-                 [ngClass]="[delFAQStatus ? 'hide' : 'show']"
-            >
-                <button type="button" class="btn btn-warning" (click)="onCancel()">
-                    Cancel
-                </button>
-                <button type="button" class="btn btn-danger" (click)="onFAQDel()">
-                    Yes, Delete It!
-                </button>
+
+            <div class="modal-body deleteBlogFoot">
+                <div *ngIf="!delFAQStatus">
+                    <button type="button" class="btn btn-warning" (click)="onCancel()">
+                        Cancel
+                    </button>
+                    <button type="button" class="btn btn-danger" (click)="onFAQDel()">
+                        Yes, Delete It!
+                    </button>
+                </div>
             </div>
         </ng-template>
 

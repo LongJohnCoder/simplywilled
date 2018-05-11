@@ -157,13 +157,14 @@
 
         <ng-template #editComment>
             <div class="panel-body">
-                <div class="modal-header" style="margin-bottom:15px">
-                    <h3 class="modal-title">
-                        Edit Comment
-                        <!--<span class="badge" [ngClass]="[comData.status == '1' ? 'badge-success' : 'badge-danger']">{{comData.status == '1' ? 'Approved' : 'Unapproved'}}</span>-->
-                    </h3>
-                    <button type="button" class="close" (click)="modalRef.hide()">×</button>
-                </div>
+            <div class="modal-header" style="margin-bottom:15px">
+                <h3 class="modal-title">
+                    Edit Comment
+                    <!--<span class="badge" [ngClass]="[comData.status == '1' ? 'badge-success' : 'badge-danger']">{{comData.status == '1' ? 'Approved' : 'Unapproved'}}</span>-->
+                </h3>
+                <button type="button" class="close" (click)="modalRef.hide()">×</button>
+            </div>
+            <div *ngIf="!delcomStatus">
                 <form #editComment="ngForm">
                     <fieldset>
                         <div class="modal-body">
@@ -203,17 +204,21 @@
                     </fieldset>
                 </form>
             </div>
+            <div class="modal-body" *ngIf="delcomStatus">
+                <h3 class="modal-title">
+                    {{delcomStatusMsg}}
+                </h3>
+            </div>
+            </div>
         </ng-template>
 
       <ng-template #deleteitem>
         <div class="modal-header deleteitemHead">
           <h3 class="modal-title">
-            Are you sure?
+            {{delcomStatusMsg}}
           </h3>
         </div>
-        <div class="modal-body deleteBlogFoot"
-             [ngClass]="[delcomStatus ? 'hide' : 'show']"
-        >
+        <div *ngIf="!delcomStatus" class="modal-body deleteBlogFoot">
           <button type="button" class="btn btn-warning" (click)="onCancel()">
             Cancel
           </button>
@@ -221,6 +226,7 @@
             Yes, Delete It!
           </button>
         </div>
+          <div class="modal-body"></div>
       </ng-template>
 
 

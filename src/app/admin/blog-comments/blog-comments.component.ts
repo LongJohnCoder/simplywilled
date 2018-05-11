@@ -23,7 +23,7 @@ export class BlogCommentsComponent implements OnInit {
     };
     delcomID: number;
     delcomStatusMsg: string = 'Are You Sure?';
-    delcomStatus: string;
+    delcomStatus: false;
     respMessage: string;
 
     constructor(
@@ -70,11 +70,15 @@ export class BlogCommentsComponent implements OnInit {
                 if (this.delcomStatus) {
                     let itemModalRef = this;
                     itemModalRef.delcomStatusMsg = data.message;
-                    setTimeout(function() {
+                    setTimeout(() => {
                         itemModalRef.modalRef.hide();
                         this.delcomID = null;
                     }, 2000);
-                    this.getComments();
+                    window.location.reload();
+                    // this.getComments();
+                    // this.delcomStatusMsg = "Are You Sure?";
+                    // this.delcomStatus = false;
+                    // this.delcomID = null;
                 }
             }
         );
@@ -90,14 +94,25 @@ export class BlogCommentsComponent implements OnInit {
 
         // console.log(createcomment);
         this.blogService.updateComment(createcomment).subscribe(
-            (response: any) => {
-                if (response.status = 'true') {
-                    // console.log(response.status);
-                    this.respMessage = response.message;
-                    this.router.navigate(['/admin-panel/blog-comments']);
-                } else {
-                    this.respMessage = response.message;
+            (data: any) => {
+                this.delcomStatus = data.status;
+                // console.log(this.delcomStatus);
+                if (this.delcomStatus) {
+                    let itemModalRef = this;
+                    itemModalRef.delcomStatusMsg = data.message;
+                    setTimeout(() => {
+                        itemModalRef.modalRef.hide();
+                    }, 2000);
+                    window.location.reload();
                 }
+
+                // if (response.status = 'true') {
+                //     // console.log(response.status);
+                //     this.respMessage = response.message;
+                //     this.router.navigate(['/admin-panel/blog-comments']);
+                // } else {
+                //     this.respMessage = response.message;
+                // }
             }
         );
     }

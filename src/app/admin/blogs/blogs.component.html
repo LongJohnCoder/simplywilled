@@ -110,9 +110,9 @@
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                                 Delete
                                             </a>
-                                            <a href="" data-toggle="modal" data-target="#adminPanelModal"
+                                            <button type="button" (click)="openModal(viewcomment, i)"
                                                class="btn btn-warning"><i class="fa fa-commenting"
-                                                                          aria-hidden="true"></i> Comments 1</a>
+                                                                          aria-hidden="true"></i> Comments {{blog.comments.length}}</button>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -125,6 +125,22 @@
                 </div>
             </div>
 
+            <ng-template #viewcomment>
+                <div class="panel-body">
+                    <div class="modal-header" style="margin-bottom:15px">
+                        <h3 class="modal-title">
+                            View Comments
+                        </h3>
+                        <button type="button" class="close" (click)="modalRef.hide()">×</button>
+                    </div>
+                    <div *ngIf="comments.length == 0" class="modal-body">
+                        No Comments
+                    </div>
+                    <div class="modal-body" *ngFor="let comment of comments">
+                        {{comment.message}} - By {{comment.name}}
+                    </div>
+                </div>
+            </ng-template>
 
             <ng-template #viewBlog>
                 <div class="adminModal">
@@ -176,19 +192,19 @@
             <ng-template #deleteBlog>
                 <div class="adminModalSmall">
                     <div class="modal-header deleteBlogHead">
-                        <h3 class="modal-title">
-                            {{delBlogStatusMsg}}
-                        </h3>
+                    <h3 class="modal-title">
+                        {{delBlogStatusMsg}}
+                    </h3>
                     </div>
-                    <div class="modal-body deleteBlogFoot"
-                        [ngClass]="[delBlogStatus ? 'hide' : 'show']"
-                    >
-                        <button type="button" class="btn btn-warning" (click)="onCancel()">
-                            Cancel
-                        </button>
-                        <button type="button" class="btn btn-danger" (click)="onBlogDel()">
-                            Yes, Delete It!
-                        </button>
+                    <div class="modal-body deleteBlogFoot">
+                        <div *ngIf="!delBlogStatus">
+                            <button type="button" class="btn btn-warning" (click)="onCancel()">
+                                Cancel
+                            </button>
+                            <button type="button" class="btn btn-danger" (click)="onBlogDel()">
+                                Yes, Delete It!
+                            </button>
+                        </div>
                     </div>
                 </div>
             </ng-template>

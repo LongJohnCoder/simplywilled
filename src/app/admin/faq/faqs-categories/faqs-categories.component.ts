@@ -4,6 +4,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import * as $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-bs4';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-faqs-categories',
@@ -17,7 +18,7 @@ export class FaqsCategoriesComponent implements OnInit {
     faqCategoryData: any[] = [];
     delfaqCategoryId: number;
     delFAQStatusMsg: string = "Are You Sure?";
-    delFAQStatus: string;
+    delFAQStatus: false;
     dataTable: any;
 
 
@@ -27,15 +28,28 @@ export class FaqsCategoriesComponent implements OnInit {
     constructor(
       private faqService: FaqService,
       private modalService: BsModalService,
-      private chRef: ChangeDetectorRef
+      private chRef: ChangeDetectorRef,
+      private router: Router,
+
 
     ) { }
 
   ngOnInit() {
-      this.getFaqCategories();
+      // this.getFaqCategories();
+      this.faqService.getFaqCategories().subscribe(
+          (data: any) => {
+              // console.log(data.data);
+              this.faqCategories = data.data.faqCategoryDetails;
+              this.faqCategoriesCount = this.faqCategories.length;
+              this.chRef.detectChanges();
+              const table: any = $('table');
+              this.dataTable = table.DataTable();
+          }
+      );
   }
 
   getFaqCategories() {
+
     this.faqService.getFaqCategories().subscribe(
         (data: any) => {
             // console.log(data.data);
@@ -63,14 +77,22 @@ export class FaqsCategoriesComponent implements OnInit {
         this.faqService.deleteFaqCat(this.delfaqCategoryId).subscribe(
             (data: any) => {
                 this.delFAQStatus = data.status;
+                // console.log(this.delFAQStatus);
                 if (this.delFAQStatus) {
                     let faqModalRef = this;
                     faqModalRef.delFAQStatusMsg = data.message;
-                    setTimeout(function(){
+                    setTimeout(() => {
                         faqModalRef.modalRef.hide();
-                        this.delBlogId = null;
+                        // setTimeout(() => {
+                        //     this.delfaqCategoryId = null;
+                        //     this.delFAQStatusMsg = "Are You Sure?";
+                        //     this.delFAQStatus = false;
+                        // }, 500);
+                        // this.router.navigate(['/admin-panel/faqs-category']);
+
                     }, 2000);
-                    this.getFaqCategories();
+                    window.location.reload();
+                    // this.getFaqCategories();
                 }
             }
         );

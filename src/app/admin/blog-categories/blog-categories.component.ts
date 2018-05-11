@@ -36,6 +36,7 @@ export class BlogCategoriesComponent implements OnInit {
     populateBlogCategorys(){
         this.dashService.blogCategoryList().subscribe(
             (data:any)=> {
+                // console.log(data.data);
                 this.blogCategoryList = data.data.categoryDetails;
                 this.blogCategoryCount = this.blogCategoryList.length;
                 this.chRef.detectChanges();
@@ -66,9 +67,11 @@ export class BlogCategoriesComponent implements OnInit {
                     blogModalRef.delBlogStatusMsg = data.message;
                     setTimeout(function(){
                         blogModalRef.modalRef.hide();
-                        this.delBlogId = null;
+                        // this.delBlogId = null;
                     }, 2000);
-                    this.populateBlogCategorys();
+                    window.location.reload();
+
+                    // this.populateBlogCategorys();
                 }
             }
         );

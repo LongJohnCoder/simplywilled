@@ -19,6 +19,7 @@ export class FaqsComponent implements OnInit {
     delfaqStatus: string;
     delfaqStatusMsg: string = 'Are You Sure?';
     dataTable: any;
+    categories: any[] = [];
   constructor(
       private faqService: FaqService,
       private modalService: BsModalService,
@@ -33,7 +34,7 @@ export class FaqsComponent implements OnInit {
   getFaqs() {
       this.faqService.faqList().subscribe(
           (data: any) => {
-              // console.log(data.data);
+              console.log(data.data);
               this.faqList = data.data.faqDetails;
               this.faqCount = this.faqList.length;
               this.chRef.detectChanges();
@@ -45,9 +46,13 @@ export class FaqsComponent implements OnInit {
 
     public openModal(template:  TemplateRef<any>, index) {
         // console.log(index);
+        this.categories = [];
         this.modalRef = this.modalService.show(template);
         this.faqData = this.faqList[index];
         this.delfaqId = this.faqList[index].id;
+        for (let i = 0; i < this.faqList[index].faq_category.length ; i++) {
+            this.categories.push(this.faqList[index].faq_category[i].get_faq_category.name);
+        }
     }
 
     onCancel() {
@@ -62,13 +67,19 @@ export class FaqsComponent implements OnInit {
                 if (this.delfaqStatus) {
                     let itemModalRef = this;
                     itemModalRef.delfaqStatusMsg = data.message;
-                    setTimeout(function() {
+                    setTimeout(() => {
                         itemModalRef.modalRef.hide();
-                        this.delfaqId = null;
+                        setTimeout(() => {
+                            // this.delfaqStatus = false;
+                            // this.delfaqStatusMsg = 'Are You Sure?';
+                            // this.delfaqId = null;
+                        }, 500);
                     }, 2000);
-                    this.getFaqs();
+                    window.location.reload();
+                    // this.getFaqs();
                 }
             }
         );
     }
 }
+

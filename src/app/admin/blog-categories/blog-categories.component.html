@@ -48,7 +48,7 @@
                                         <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="S No.: activate to sort column ascending" style="width: 22px;">S No.</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Title: activate to sort column ascending" style="width: 353px;">Name</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Title: activate to sort column ascending" style="width: 353px;">Slug</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 62px;">Status</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 62px;">Blogs</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Created Date: activate to sort column ascending" style="width: 52px;">Created Date</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" style="width: 157px;">Actions</th>
                                     </tr>
@@ -58,12 +58,10 @@
                                         <td class="sorting_1">{{i + 1}}</td>
                                         <td>{{blogCategory.name}}</td>
                                         <td>{{blogCategory.slug}}</td>
-                                        <td>
-                                            <span class="badge badge-success"> Active </span>
-                                        </td>
+                                        <td>{{blogCategory.blog_mapping.length}}</td>
                                         <td>{{blogCategory.created_at}}</td>
                                         <td class="text-center ">
-                                            <button type="button" (click)="openModal(viewBlogCategory, i)" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i> View</button>
+                                            <!--<button type="button" (click)="openModal(viewBlogCategory, i)" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i> View</button>-->
                                             <a routerLink="/admin-panel/edit-blog-category/{{blogCategory.id}}" class="btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
                                             <a class="btn btn-danger deleteAdminOption" (click)="openModal(deleteBlogCategory, i)">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>

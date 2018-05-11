@@ -133,6 +133,10 @@
             <h4>Answer:</h4>
             <p>{{faqData.answer}}</p>
           </div>
+            <div class="modal-body">
+                <h4>Categories:</h4>
+                <p>{{categories}}</p>
+            </div>
         </div>
       </ng-template>
 
@@ -142,15 +146,15 @@
             {{delfaqStatusMsg}}
           </h3>
         </div>
-        <div class="modal-body deleteBlogFoot"
-             [ngClass]="[delfaqStatus ? 'hide' : 'show']"
-        >
-          <button type="button" class="btn btn-warning" (click)="onCancel()">
-            Cancel
-          </button>
-          <button type="button" class="btn btn-danger" (click)="onitemDel()">
-            Yes, Delete It!
-          </button>
+        <div class="modal-body deleteBlogFoot">
+          <div *ngIf="!delfaqStatus">
+            <button type="button" class="btn btn-warning" (click)="onCancel()">
+              Cancel
+            </button>
+            <button type="button" class="btn btn-danger" (click)="onitemDel()">
+              Yes, Delete It!
+            </button>
+          </div>
         </div>
       </ng-template>
 

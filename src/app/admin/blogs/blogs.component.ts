@@ -13,13 +13,14 @@ import 'datatables.net-bs4';
 export class BlogsComponent implements OnInit {
 
   blogList:any[] = [];
-  blogCount:number;
+  blogCount:number = 0;
   public modalRef : BsModalRef;
   blogData:any[] = [];
   delBlogId:number;
-  delBlogStatus:string;
+  delBlogStatus: false;
   delBlogStatusMsg:string = "Are You Sure?";
   dataTable: any;
+  comments: any[] = [];
 
   constructor(
     private dashService : DashboardService,
@@ -47,10 +48,10 @@ export class BlogsComponent implements OnInit {
   }
 
  public openModal(template :  TemplateRef<any>, index){
-   console.log(index);
   this.modalRef = this.modalService.show(template);
   this.blogData = this.blogList[index];
   this.delBlogId = this.blogList[index].id;
+  this.comments = this.blogList[index].comments;
  }
  
  onCancel(){
@@ -58,18 +59,24 @@ export class BlogsComponent implements OnInit {
   this.delBlogId = null;
  }
 
- onBlogDel(){
+ onBlogDel() {
   this.dashService.deleteBlog(this.delBlogId).subscribe(
     (data:any)=> {
       this.delBlogStatus = data.status;
-      if(this.delBlogStatus){ 
+      if(this.delBlogStatus){
         let blogModalRef = this;
         blogModalRef.delBlogStatusMsg = data.message;
-        setTimeout(function(){
-          blogModalRef.modalRef.hide();
-          this.delBlogId = null;
+        setTimeout(() => {
+            blogModalRef.modalRef.hide();
+            setTimeout(() => {
+                // this.delBlogStatusMsg = "Are You Sure?";
+                // this.delBlogStatus = false;
+                // this.delBlogId = null;
+            }, 500);
         }, 2000);
-        this.populateBlogs();
+        window.location.reload();
+
+          // this.populateBlogs();
       }
     }
   );
