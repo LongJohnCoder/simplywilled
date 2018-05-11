@@ -22,6 +22,8 @@ use Log;
 use Mail;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
+use App\CategoryBLogMapping;
+
 class CategoryController extends Controller {
 
 
@@ -233,6 +235,7 @@ class CategoryController extends Controller {
                 $category = Categories::find($categoryId);
                 if ($category) {
                     if ($category->delete()) {
+                        CategoryBLogMapping::where('category_id',$categoryId)->delete();
                         return response()->json([
                             'status' => true,
                             'message' => 'Category Deleted',
