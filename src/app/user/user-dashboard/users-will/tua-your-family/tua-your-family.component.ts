@@ -69,10 +69,11 @@ export class TuaYourFamilyComponent implements OnInit {
                      console.log(response.data[1].data);
                 if ( response.data[1].data ) {
                     console.log('here');
+                    console.log(response.data[1].data)
                     this.editFlag = true;
                     this.userInfo = response.data[1].data;
                     this.userInfo.totalChildren = response.data[1].data.totalChildren;
-                    this.userInfo.isDesceasedChildren = response.data[1].data.isDesceasedChildren;
+                    this.userInfo.isDesceasedChildren = response.data[1].data.isDesceasedChildren === 'No' ? '0' : '1';
                     this.userInfo.deceasedChildreNames = response.data[1].data.deceasedChildreNames;
                     this.userInfo.childrenInformation = response.data[1].data.childrenInformation;
                     this.setData(this.editFlag,this.userInfo);
@@ -118,7 +119,8 @@ export class TuaYourFamilyComponent implements OnInit {
             }
             this.showTable = true;
         }
-        if (numberofChild == 'other') {
+        if (numberofChild === 'other') {
+            this.chidrenForm.controls['totalChildren'].setValue('');
             this.otherChildren = true;
         }else{
             this.otherChildren = false;

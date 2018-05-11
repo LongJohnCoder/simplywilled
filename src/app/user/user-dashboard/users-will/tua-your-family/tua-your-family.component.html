@@ -1,4 +1,4 @@
-<div class="main-content tellusaboutyou" style="width: 234%">
+<div class="main-content tellusaboutyou">
     <h2>Your Family</h2>
     <form [formGroup] = "chidrenForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
@@ -13,50 +13,61 @@
             </select>
         </div>
         <div *ngIf="otherChildren" class="form-group">
-            <input type="text" name="otherChildrenNumber" (keyup)="selectedNumberOfChildren($event)" placeholder="Enter the number of children" formControlName="totalChildren">
+            <input class="form-control"
+                   type="text"
+                   name="otherChildrenNumber"
+                   (change)="selectedNumberOfChildren($event)"
+                   placeholder="Enter the number of children"
+                   formControlName="totalChildren">
         </div>
-        <div>
-            <table calss="table" *ngIf="showTable">
-                <tr>
-                    <td>Fullname</td>
-                    <td>Gender</td>
-                    <td>Birthday</td>
-                </tr>
-                <tr formArrayName="childrenInfo" >
-                    <div *ngFor="let item of childrenInfo.controls; let i = index;"  >
-                        <div [formGroupName]="i">
-                            <td><input type="text" class="form-control" formControlName="fullname" required></td>
-                            <td>
-                                <input type="radio" value="M" formControlName="gender" required >Male
-                                <input type="radio" formControlName="gender" value="F" required >Female
-                            </td>
-                            <td>
-                                <select class="form-control" placeholder="Month"
-                                        formControlName="spouseMonth"
-                                        required>
-                                    <option *ngFor="let month of months;let i = index" [value]="month">{{month}}</option>
-                                </select>
-                                <select class="form-control" placeholder="Day"
-                                        formControlName="spouseDay"
-                                >
-                                    <option *ngFor="let day of days;let i = index" [value]="day">{{day}}</option>
-                                </select>
-                                <select  class="form-control" placeholder="Year"
-                                         formControlName="spouseYear">
-                                    <option *ngFor="let year of years;let i = index" [value]="year">{{year}}</option>
-                                </select>
-                            </td>
-                        </div>
+        <div *ngIf="showTable">
+            <div formArrayName="childrenInfo" *ngFor="let item of childrenInfo.controls; let i = index;">
+                <div class="row form-group" [formGroupName]="i">
+                    <div class="col-md-3">
+                        <label>Name</label>
+                        <input type="text" class="form-control" formControlName="fullname" required>
                     </div>
-                </tr>
-            </table>
+                    <div class="col-md-3">
+                        <label>Gender</label>
+                        <select class="form-control" required formControlName="gender" >
+                            <option value="">Select Gender</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Month</label>
+                        <select class="form-control"
+                                placeholder="Month"
+                                formControlName="spouseMonth"
+                                required>
+                            <option *ngFor="let month of months;let i = index" [value]="month">{{month}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Day</label>
+                        <select class="form-control" placeholder="Day"
+                                formControlName="spouseDay">
+                            <option *ngFor="let day of days;let i = index" [value]="day">{{day}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Year</label>
+                        <select class="form-control" placeholder="Month"
+                                required formControlName="spouseYear">
+                            <option *ngFor="let year of years;let i = index" [value]="year">{{year}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="form-group">
             <label>Do you have any deceased children? </label>
             <ul class="radio_ul6">
                 <li>
-                    <label class="radio_custom" [ngClass]="{'active': IsDeceasedChildrenValue == 'Yes'}">
+                    <label class="radio_custom" [ngClass]="{'active': chidrenForm.value.deceasedChildren == '1'}">
                         <input type="radio"
                                value="1"
                                formControlName="deceasedChildren"
@@ -66,7 +77,7 @@
                     </label>
                 </li>
                 <li>
-                    <label class="radio_custom" [ngClass]="{'active': IsDeceasedChildrenValue == 'No'}">
+                    <label class="radio_custom" [ngClass]="{'active': chidrenForm.value.deceasedChildren == '0'}">
                         <input type="radio"
                                value="0"
                                formControlName="deceasedChildren"
@@ -77,8 +88,8 @@
                 </li>
             </ul>
         </div>
-        <div class="form-group" *ngIf="deceasedChildrenNames">
-            <textarea name="" id="" cols="30" rows="10" formControlName="deceasedChildrenNames">
+        <div class="form-group" *ngIf="chidrenForm.value.deceasedChildren == '1'">
+            <textarea class="form-control" name="" id="" cols="30" rows="10" formControlName="deceasedChildrenNames">
                 enter children names seperated by comma
             </textarea>
         </div>
