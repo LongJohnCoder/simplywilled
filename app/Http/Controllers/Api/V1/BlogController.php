@@ -99,9 +99,7 @@ class BlogController extends Controller
                   $categories[$ckey] = $cvalue->category->name;
                 }
                 $blogArr[$key]['blog_category'] = $categories;
-                $blogArr[$key]['status'] = $value->status;
-                $blogArr[$key]['status'] = $value->status;
-                $blogArr[$key]['status'] = $value->status;
+                $blogArr[$key]['comments'] = $value->getComments;
               }
                 return response()->json([
                     'status' => true,
@@ -160,7 +158,7 @@ class BlogController extends Controller
         }
     }
 
-    
+
     /*
      * function to fetch list of blog category
      *
@@ -200,7 +198,7 @@ class BlogController extends Controller
         }
     }
 
-    
+
     /*
      * function to fetch list of blog category
      *
