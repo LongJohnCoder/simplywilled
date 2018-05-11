@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../user.service';
 import {Router} from '@angular/router';
+import {UserAuthService} from '../../user-auth/user-auth.service';
+import {UserDashboardService} from '../user-dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,14 +11,18 @@ import {Router} from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
     loggedInUser: any;
-  constructor(
+    userDetails: any = {}
+    constructor(
       private userService: UserService,
-      private router: Router
-  ) { }
+      private router: Router,
+      private userAuth: UserAuthService,
+      private userDashboardService: UserDashboardService
+    ) { }
 
-  ngOnInit() {
-      this.loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-  }
+    ngOnInit() {
+      this.loggedInUser = this.userAuth.getUser();
+      this.getUserDetails();
+    }
 
     onLogOut() {
       this.userService.logout().subscribe(
@@ -28,6 +34,24 @@ export class DashboardComponent implements OnInit {
               console.log(error);
           }
       );
+    }
+    getUserDetails() {
+        this.userService.getUserDetails(this.loggedInUser.id).subscribe(
+            (response: any ) => {
+                this.userDetails = response.data;
+                this.userDashboardService.updateUserDetails(this.userDetails);
+                const step1 = this.userDetails[0];
+                if (step1.data === null) {
+                   this.router.navigate(['/dashboard/will']);
+                }
+            },
+            (error: any) => {
+                console.log(error);
+            }
+        );
+    }
+    userDasboardRoute(link: string) {
+        this.router.navigate([link]);
     }
 
 }

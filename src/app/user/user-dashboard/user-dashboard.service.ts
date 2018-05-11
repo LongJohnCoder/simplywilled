@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { environment } from '../../../environments/environment.prod';
-import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class UserDashboardService {
-    constructor(){ }
-}
+    public userDetails = new Subject<any>();
+    constructor() { }
+
+    updateUserDetails(value: any) {
+        this.userDetails.next(value);
+    }
+};

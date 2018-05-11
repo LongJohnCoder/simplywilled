@@ -208,3 +208,10 @@
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
 }
+.btn-grey{
+    background: url('../../../../../assets/images/btn-grey-back.png') no-repeat center center !important;
+    background-size: 100% 100%;
+    padding: 10px 0 10px 30px;
+    width: 130px;
+    margin-top: 0;
+}
