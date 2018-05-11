@@ -25,6 +25,7 @@ export class FaqComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.searchFaqQstn = this._route.snapshot.queryParamMap['params'].query;
         this.getFaqCategories();
     }
 
@@ -33,8 +34,10 @@ export class FaqComponent implements OnInit {
     *   slice that in 2 parts : categories as faqData , q & a from categories as faqDetails
     * */
     getFaqCategories() {
-
-        this.faqService.getFaqCategories().subscribe(
+        this._route.params.subscribe( params => {
+            console.log('params',params);
+          });
+        this.faqService.getFaqCategories(this.searchFaqQstn).subscribe(
             (data: any) => {
                 this.faqData      = data.data;
                 this.faqDetails   = this.getQuestions(this.faqData,0);
@@ -47,6 +50,11 @@ export class FaqComponent implements OnInit {
     //so we can loop over the questions in angular
     onSubmit( formFaqQa: NgForm ) {
         console.log('submiting form ',formFaqQa.value.search);
+        this.router.navigate(['/faq'], {
+            queryParams: {
+              query:formFaqQa.value.search
+            }
+        });
         this.faqService.getFaqCategories( formFaqQa.value.search )
         .subscribe(
             ( response: any ) => {
