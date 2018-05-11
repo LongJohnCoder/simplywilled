@@ -34,7 +34,7 @@ class CategoryController extends Controller {
 
     public function categoryList(){
         try{
-            $category = Categories::get();
+            $category = Categories::with('blogMapping.blog')->get();
             if($category){
                 return response()->json([
                     'status' => true,
@@ -234,8 +234,9 @@ class CategoryController extends Controller {
             if ($categoryId) {
                 $category = Categories::find($categoryId);
                 if ($category) {
+                    $category->blogMapping()->delete();
                     if ($category->delete()) {
-                        CategoryBLogMapping::where('category_id',$categoryId)->delete();
+                        // CategoryBLogMapping::where('category_id',$categoryId)->delete();
                         return response()->json([
                             'status' => true,
                             'message' => 'Category Deleted',

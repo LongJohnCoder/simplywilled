@@ -1195,7 +1195,7 @@ class BlogController extends Controller
                 $message    = $request->message;
                 $status     = (string)$request->status;
 
-                if($commentId && $status) {
+                if($commentId) {
                     $commentId = $commentId;
                     $checkForComment = BlogComment::find($commentId);
                     if(!$checkForComment) {
@@ -1212,7 +1212,7 @@ class BlogController extends Controller
                     if ( $checkForComment->save() ) {
                         return response()->json([
                             'status'  => true,
-                            'message' => 'comment updated ',
+                            'message' => 'Comment updated successfully',
                             'data'    => $checkForComment
                         ], 200);
                     } else {

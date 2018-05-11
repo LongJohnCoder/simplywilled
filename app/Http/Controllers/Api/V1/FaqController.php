@@ -120,14 +120,14 @@ class FaqController extends Controller
         try {
 
             $faqCategory = $request->faqCategorys;
-            if(!isset($faqCategory[0])) {
+            if(empty($faqCategory)) {
               return response()->json([
                   'status'  => false,
                   'message' => 'faqCategory must be an array type field, and contain category ids',
                   'data'    => []
               ], 400);
             }
-            $faqCategory = explode(',',$faqCategory[0]);
+            // $faqCategory = explode(',',$faqCategory[0]);
             $faqQuestion = $request->faqQuestion;
             $faqAnswer = $request->faqAnswer;
             $faqStatus = $request->faqStatus; // 1--> Publish 0-->unPublish

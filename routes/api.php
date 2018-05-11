@@ -444,6 +444,7 @@ Route::group(['prefix' => 'v1'], function() {
           'as' => 'api.v1.faqCategoryListUser.get'
         ]);
 
+
         /**
          * Route for getting blog list
          */
@@ -515,7 +516,7 @@ Route::group(['prefix' => 'v1'], function() {
                 'as' => 'api.v1.signOut.post'
             ]);
 
-            
+
 
             /**
             * Route for fetching all comments for a blog
@@ -571,7 +572,7 @@ Route::group(['prefix' => 'v1'], function() {
                 'as' => 'api.v1.getUserDetails.get'
             ]);
 
-            
+
         });
     });
 });
