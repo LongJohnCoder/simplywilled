@@ -1115,12 +1115,23 @@ class BlogController extends Controller
         * */
        public function getPopularPosts() {
          try {
-           $blogs = Blogs::where('status','1')->where('featured','1')->orderBy('created_at','DESC')->get();
-           return response()->json([
+            $returnData = null;            
+            $blogs = Blogs::where('status','1')->where('featured','1')->orderBy('created_at','DESC')->whereHas('category')->get();
+
+            foreach ($blogs as $key => $blog) {
+                $categoryNames = '';
+                $array['blog'] = clone($blog);
+                foreach ($blog->category as $key => $categoryDetails) 
+                    $categoryNames =$categoryNames == '' ? $categoryDetails->name : ','.$categoryDetails->name;
+                $array['categoryNames'] = $categoryNames;
+                $returnData[] = $array;
+            }
+
+            return response()->json([
              'status'   =>  true,
              'message'  =>  'Most popular blogs fetched successfully',
-             'data'     =>  $blogs
-           ],200);
+             'data'     =>  $returnData
+            ],200);
          } catch(\Exception $e) {
            return response()->json([
                'status'       => false,
