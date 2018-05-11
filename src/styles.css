@@ -705,10 +705,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 20px;
 	border: 1px solid #4cb337
 }
-.get_start_pkg_btn:hover {
-	background: #fff;
-	color: #4cb337
-}
+
 .get_start_pkg_btn i {
 	font-size: 20px
 }
@@ -819,9 +816,6 @@ h1, h2, h3, h4, h5, h6 {
 .start_btn_2 {
 	background: #1479bd;
 	border: 1px solid #1479bd
-}
-.start_btn_2:hover {
-	color: #1479bd
 }
 .after_color1>li>.faster_text:before {
 	color: #565656
@@ -1520,34 +1514,7 @@ color:#b5e5ff
 	width: 100%;
 	float: left
 }
-.trending_ul > li {
-	width: 49%;
-	float: left;
-	margin-bottom: 25px;
-	box-shadow: 0px 0px 15px rgba(0,0,0,.2);
-	margin-left:0%;
-	clear:left;
-}
-.trending_ul > li:nth-child(3n+1){
-	width:100%;
-	margin-left:0px;
-}
-.trending_ul > li:nth-child(3n){
-	margin-left:2%;
-	clear:none;
-}
-.trending_img, .trending_img img {
-	width: 100%;
-	float: left
-}
-.trending_ul > li .trending_img img
-{
-	max-height:263px;
-}
-.trending_ul > li:nth-child(3n+1) .trending_img img
-{
-	max-height:none;
-}
+
 .author_date{
 	width:100%;
 	float:left;
@@ -1573,24 +1540,7 @@ color:#b5e5ff
 	float:left;
 	margin-top:20px;
 }
-.trending_ul > li:nth-child(3n+1) .trending_owl_main{
-	width:auto;
-	float:right;
-	margin-top:0px;
-}
-.trending_ul > li:nth-child(3n+1) .news_heading {
-	font-size:30px;
-	min-height:inherit;
-}
-.news_heading {
-	width: 100%;
-	float: left;
-	color: #4f4f6f;
-	font-size: 20px;
-	font-family: OpenSans-Semibold;
-	padding: 20px 0px 5px 0px;
-	min-height:81px;
-}
+
 .by_simply_willed_text {
 	text-decoration: none
 }
@@ -1634,14 +1584,7 @@ color:#b5e5ff
 .trending_ul > li:nth-child(3n+1) .trending_right_ul{
 	float:none;
 }
-.legal_requirement {
-	width: 100%;
-	float: left;
-	color: #9fa4af;
-	font-size: 20px;
-	padding:0px 0px 40px 0px;
-	min-height:185px;
-}
+
 .trending_ul > li:nth-child(3n+1) .legal_requirement {
 	min-height:inherit;
 }
@@ -3140,19 +3083,41 @@ transform:rotate(360deg)
 
 .dataTables_length {
 	float: left;
-	margin-left: 10px;
 	font-size: 13px;
-	margin: 0 5px;
+	margin: 0 15px;
 }
 .dataTables_wrapper .col-sm-12{
 	padding: 0;
 	max-width: 98.4%;
 }
+select.form-control{
+	margin: 0 7px;
+}
+.dataTables_filter{
+	float: right;
+	margin-right: 15px;
+}
+.dataTables_filter .form-control{
+	margin-left: 7px;
+}
+.dataTables_info{
+	float: left;
+	margin-left: 15px;
+}
 
 
-
-
-
+.adminModal{
+	width: 768px;
+	margin: 0 auto;
+	background: #fff;
+	border-radius: 10px;
+}
+.adminModalSmall{
+	width: 480px;
+	margin: 0 auto;
+	background: #fff;
+	border-radius: 10px;
+}
 
 /****************end css**********************/
 
@@ -3380,11 +3345,6 @@ transform:rotate(360deg)
 	float:left;
 	margin-top:15px;
 }
-.trending_ul > li:nth-child(3n+1) .trending_right_ul {
-    float: none;
-    width: auto;
-    margin-top: 6px;
-}
 .state_planning_text{
 	padding: 80px 0 0;
 	line-height: 40px;
@@ -3412,6 +3372,12 @@ transform:rotate(360deg)
 .slider_banner_main .carousel-cell{
 	height: 420px;
 }
+}
+
+@media screen and (max-width:775px){
+	.adminModal{
+		width: 95%;
+	}
 }
 
 @media only screen and (min-width:768px) and (max-width:960px) {
@@ -3773,17 +3739,10 @@ transform:rotate(360deg)
 	font-size:15px;
 }
 .trending_right_ul{
-	width:100%;
-	float:left;
-	margin-top:10px;
+	float: right;
 }
 .trending_owl_main{
 	margin-top:10px;
-}
-.trending_ul > li:nth-child(3n+1) .trending_right_ul {
-    float: none;
-    width: auto;
-    margin-top: 7px;
 }
 .slider_realitive_div{
 	padding-bottom:30px;
@@ -3821,30 +3780,7 @@ transform:rotate(360deg)
 .header_first_sec {
 	position: relative
 }
-.navigation {
-	display: none;
-	padding-top: 0;
-	position: absolute;
-	top: 100%;
-	left: 0;
-	z-index: 9
-}
-.navigation li {
-	width: 100%;
-	padding: 0
-}
-.navigation li a {
-	width: 100%;
-	display: inline-block;
-	padding: 12px 0;
-	background: #5fc645;
-	border-bottom: 1px solid #fff;
-	font-size: 18px
-}
-.navigation li a:hover {
-	color: #5fc645;
-	background: #fff
-}
+
 .state_planning_text {
 	font-size: 30px;
 	line-height: 35px;
@@ -4645,6 +4581,12 @@ transform:rotate(360deg)
 .slider_banner_main .carousel-cell{
 	height:350px;
 }
+}
+
+@media screen and (max-width:500px){
+	.adminModalSmall{
+		width: 100%;
+	}
 }
 
 
