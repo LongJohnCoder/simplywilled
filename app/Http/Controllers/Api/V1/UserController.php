@@ -154,7 +154,7 @@ class UserController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'user_id'     =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
+                'user_id'    =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
                 'step'       =>  'required|numeric|between:1,11|integer',
             ]);
             if ($validator->fails()) {
@@ -400,8 +400,10 @@ class UserController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'user_id'         =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
-            'totalChildren'   =>  'required|numeric|integer|min:0'
+            'user_id'           =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
+            'totalChildren'     =>  'required|numeric|integer|min:0',
+            'deceasedChildren'  =>  'required|string|in:Yes,No',
+            
         ]);
 
         if ($validator->fails()) {
@@ -452,7 +454,7 @@ class UserController extends Controller
 
         //dd($usersArray);
 
-        $deceasedChildren = $request->deceasedChildren;   // 0-> No 1-> Yes
+        $deceasedChildren = $request->deceasedChildren == "Yes" ? '1' : '0';   // 0-> No 1-> Yes
         $checkForExistUser = TellUsAboutYou::where('user_id', $userId)->first();
         if ($checkForExistUser) {
 
@@ -544,7 +546,7 @@ class UserController extends Controller
                 'message' => 'User updated with the children information',
                 'data' => [
                   'childrenData'          => $children ,
-                  'isDesceasedChildren'   => $deceasedChildren == 1 ? 'Yes' : 'No',
+                  'desceasedChildren'     => $deceasedChildren == 1 ? 'Yes' : 'No',
                   'deceasedChildrenNames' => isset($deceasedChildrenNames) ? $deceasedChildrenNames : null
                 ]
             ], 200);

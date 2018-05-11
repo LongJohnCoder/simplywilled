@@ -463,7 +463,7 @@ class UserManagementController extends Controller
       $childrenArray = [
         'totalChildren'         =>  $totalChildren,
         'childrenInformation'   =>  $childrenInfoArray,
-        'isDesceasedChildren'   =>  $isDeceasedChildren,
+        'desceasedChildren'   =>  $isDeceasedChildren,
         'deceasedChildreNames'  =>  $deceasedChildrenNames
       ];
       return [
