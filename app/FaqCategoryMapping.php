@@ -29,6 +29,6 @@ class FaqCategoryMapping extends Model
      * function to get faqCategory
      * */
     public function getFaqCategory() {
-        return $this->hasOne('App\FaqCategories','faq_category_id','id');
+        return $this->hasOne('App\FaqCategories','id','faq_category_id');
     }
 }

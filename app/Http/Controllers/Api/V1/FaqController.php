@@ -37,7 +37,7 @@ class FaqController extends Controller
     public function faqList()
     {
         try {
-            $getAllFaq = Faqs::with('faqCategory')->get();
+            $getAllFaq = Faqs::with('faqCategory.getFaqCategory')->get();
             if ($getAllFaq) {
                 return response()->json([
                     'status' => true,
@@ -120,14 +120,14 @@ class FaqController extends Controller
         try {
 
             $faqCategory = $request->faqCategorys;
-            if(empty($faqCategory)) {
+            if(!isset($faqCategory[0])) {
               return response()->json([
                   'status'  => false,
                   'message' => 'faqCategory must be an array type field, and contain category ids',
                   'data'    => []
               ], 400);
             }
-            // $faqCategory = explode(',',$faqCategory[0]);
+            $faqCategory = explode(',',$faqCategory[0]);
             $faqQuestion = $request->faqQuestion;
             $faqAnswer = $request->faqAnswer;
             $faqStatus = $request->faqStatus; // 1--> Publish 0-->unPublish
