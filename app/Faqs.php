@@ -31,4 +31,15 @@ class Faqs extends Model
     public function faqMapping(){
         return $this->hasMany('App\FaqCategoryMapping','id');
     }
+
+    public function category() {
+        return $this->hasManyThrough(
+            'App\FaqCategories',
+            'App\FaqCategoryMapping',
+            'faq_id', // Foreign key on CategoryBlogMapping table...
+            'id', // Foreign key on blogs table...
+            'id', // Local key on Categories table...
+            'faq_category_id' // Local key on CategoryBlogMapping table...
+        );
+    }
 }

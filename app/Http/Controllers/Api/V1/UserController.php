@@ -876,7 +876,7 @@ class UserController extends Controller
           'status' => true,
           'message' => 'User details updated final with GuardianInfo',
           'data' => [
-            'isguardianMinorChildren' =>  $guardianInfo->count() > 0 ? 'Yes' : 'No' ,
+            'isGuardianMinorChildren' =>  $guardianInfo->count() > 0 ? 'Yes' : 'No' ,
             'guardian'                =>  $guardianInfo,
             'isBackUpGuardian'        =>  $guardianInfoBackup->count() > 0 ? 'Yes' : 'No' ,
             'backupGuardian'          =>  $guardianInfoBackup

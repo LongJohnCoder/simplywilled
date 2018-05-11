@@ -1114,32 +1114,30 @@ class BlogController extends Controller
         *  @return \Illuminate\Http\JsonResponse
         * */
        public function getPopularPosts() {
-         try {
-            $returnData = null;            
-            $blogs = Blogs::where('status','1')->where('featured','1')->orderBy('created_at','DESC')->whereHas('category')->get();
-
+        try {
+            $returnData = null;
+            $blogs = Blogs::where('status','1')->where('featured','1')->orderBy('created_at','DESC')->whereHas('category')->take('5')->get();
             foreach ($blogs as $key => $blog) {
                 $categoryNames = '';
                 $array['blog'] = clone($blog);
-                foreach ($blog->category as $key => $categoryDetails) 
+                foreach ($blog->category as $key => $categoryDetails)
                     $categoryNames =$categoryNames == '' ? $categoryDetails->name : ','.$categoryDetails->name;
-                $array['categoryNames'] = $categoryNames;
+                $array['blog']['categoryNames'] = $categoryNames;
                 $returnData[] = $array;
             }
-
             return response()->json([
-             'status'   =>  true,
-             'message'  =>  'Most popular blogs fetched successfully',
-             'data'     =>  $returnData
+            'status' => true,
+            'message' => 'Most popular blogs fetched successfully',
+            'data' => $returnData
             ],200);
-         } catch(\Exception $e) {
-           return response()->json([
-               'status'       => false,
-               'message'      => $e->getMessage(),
-               'errorLineNo'  => $e->getLine()
-           ], 500);
-         }
-       }
+        } catch(\Exception $e) {
+                return response()->json([
+                    'status' => false,
+                    'message' => $e->getMessage(),
+                    'errorLineNo' => $e->getLine()
+                ], 500);
+            }
+        }
 
        /*
         *  Function to fetch latest posts for a blog
@@ -1147,22 +1145,31 @@ class BlogController extends Controller
         *  @params null
         *  @return \Illuminate\Http\JsonResponse
         * */
-       public function getLatestPosts() {
-         try {
-           $blogs = Blogs::where('status','1')->orderBy('created_at','DESC')->get();
-           return response()->json([
-             'status'   =>  true,
-             'message'  =>  'Most recent blogs fetched successfully',
-             'data'     =>  $blogs
-           ],200);
-         } catch (\Exception $e) {
-           return response()->json([
-               'status'       => false,
-               'message'      => $e->getMessage(),
-               'errorLineNo'  => $e->getLine()
-           ], 500);
-         }
-       }
+        public function getLatestPosts() {
+            try {
+                $returnData = null;
+                $blogs = Blogs::where('status','1')->orderBy('created_at','DESC')->whereHas('category')->take('5')->get();
+                foreach ($blogs as $key => $blog) {
+                    $categoryNames = '';
+                    $array['blog'] = clone($blog);
+                    foreach ($blog->category as $key => $categoryDetails)
+                        $categoryNames =$categoryNames == '' ? $categoryDetails->name : ','.$categoryDetails->name;
+                    $array['blog']['categoryNames'] = $categoryNames;
+                    $returnData[] = $array;
+                }
+                return response()->json([
+                 'status'   =>  true,
+                 'message'  =>  'Most recent blogs fetched successfully',
+                 'data'     =>  $returnData
+                ],200);
+            } catch (\Exception $e) {
+                return response()->json([
+                   'status'       => false,
+                   'message'      => $e->getMessage(),
+                   'errorLineNo'  => $e->getLine()
+                ], 500);
+            }
+        }
 
         /*
          *

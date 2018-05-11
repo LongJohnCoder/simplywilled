@@ -304,12 +304,12 @@ class FaqCategoryController extends Controller
         if($query == null) {    
             $faqCategories = FaqCategories::with('faq')->orderBy('created_at','DESC')->whereHas('faq')->get();
         } else {
-            //dd($query);
-            $faqCategories = FaqCategories::with('faq')->orderBy('created_at','DESC')->whereHas('faq' , function($q) use($query) {
+            $faqCategories = FaqCategories::orderBy('created_at','DESC')
+            ->whereHas('faq',function($q) use($query) {
                 $q->where('question','LIKE','%'.$query.'%');
-            })->get();
-
-            //dd($faqCategories);
+            })->with(['faq' => function($q) use($query) {
+                $q->where('question','LIKE','%'.$query.'%');
+            }])->get();
         }
         return response()->json([
             'status'  => true,

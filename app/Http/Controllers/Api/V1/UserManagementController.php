@@ -484,7 +484,7 @@ class UserManagementController extends Controller
       $guardianInfoArray  = [
         'isGuardianMinorChildren' =>  $tellUsAboutYouUser != null && $tellUsAboutYouUser->guardian_minor_children == '1' ? 'Yes' : 'No',
         'guardian'                =>  $guardianInfo == null ? null : $guardianInfo,
-        'isBackUpGurdian'         =>  $backupGuardianInfo->count() == 0 ? 'No' : 'Yes',
+        'isBackUpGuardian'         =>  $backupGuardianInfo->count() == 0 ? 'No' : 'Yes',
         'backupGuardian'          =>  $backupGuardianInfo
       ];
       return [
