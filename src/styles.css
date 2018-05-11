@@ -2665,9 +2665,6 @@ a.get_started_btn_styling:hover {
 .collaps_table, .menu {
 	display: none
 }
-.border_top_green {
-	border-top: 5px solid #46ac33
-}
 
 .blog_pagination {
 	width: 100%;
