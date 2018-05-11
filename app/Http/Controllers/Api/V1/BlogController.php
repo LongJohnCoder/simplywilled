@@ -41,7 +41,7 @@ class BlogController extends Controller
         $blog   = null;
         $imageLink  = url('/blogImage').'/';
         if(strlen(trim($query)) > 0) {
-            $blog = Blogs::whereHas('category', function($q) use($query){
+            $blog = Blogs::with('getComments')->whereHas('category', function($q) use($query){
                 $q->where('slug','LIKE','%'.$query.'%');
             })->get();
         }
@@ -1115,15 +1115,6 @@ class BlogController extends Controller
         * */
        public function getPopularPosts() {
          try {
-           if(!\Auth::check()) {
-             return response()->json([
-               'status'   =>  true,
-               'message'  =>  'Session expired. PLease Log in again!',
-               'data'     =>  null
-             ],400);
-           }
-
-           $user  = \Auth::user();
            $blogs = Blogs::where('status','1')->where('featured','1')->orderBy('created_at','DESC')->get();
            return response()->json([
              'status'   =>  true,
@@ -1147,15 +1138,6 @@ class BlogController extends Controller
         * */
        public function getLatestPosts() {
          try {
-           if(!\Auth::check()) {
-             return response()->json([
-               'status'   =>  true,
-               'message'  =>  'Session expired. PLease Log in again!',
-               'data'     =>  null
-             ],400);
-           }
-
-           $user  = \Auth::user();
            $blogs = Blogs::where('status','1')->orderBy('created_at','DESC')->get();
            return response()->json([
              'status'   =>  true,
