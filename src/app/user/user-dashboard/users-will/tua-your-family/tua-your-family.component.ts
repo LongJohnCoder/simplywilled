@@ -48,7 +48,6 @@ export class TuaYourFamilyComponent implements OnInit {
 
     createItem(editFlag = false,userInfo = null): FormGroup {
         let dobSplit = userInfo !== null ? userInfo.dob.split('-') : '';
-        console.log(dobSplit);
         return this.fb.group({
             fullname: new FormControl( editFlag && userInfo !== null && userInfo !== undefined ? userInfo.fullname : '',[Validators.required]),
             gender: new FormControl(editFlag && userInfo !== null && userInfo !== undefined ? userInfo.gender : '',[Validators.required]),
@@ -66,14 +65,11 @@ export class TuaYourFamilyComponent implements OnInit {
         this.chidrenForm.controls['user_id'].setValue(this.user.id);
         this.userService.getUserDetails(this.user.id).subscribe(
             (response: any) => {
-                     console.log(response.data[1].data);
                 if ( response.data[1].data ) {
-                    console.log('here');
-                    console.log(response.data[1].data)
                     this.editFlag = true;
                     this.userInfo = response.data[1].data;
                     this.userInfo.totalChildren = response.data[1].data.totalChildren;
-                    this.userInfo.isDesceasedChildren = response.data[1].data.isDesceasedChildren === 'No' ? '0' : '1';
+                    this.userInfo.isDesceasedChildren = response.data[1].data.desceasedChildren ;
                     this.userInfo.deceasedChildreNames = response.data[1].data.deceasedChildreNames;
                     this.userInfo.childrenInformation = response.data[1].data.childrenInformation;
                     this.setData(this.editFlag,this.userInfo);
@@ -94,13 +90,12 @@ export class TuaYourFamilyComponent implements OnInit {
         }
     }
 
-    setData(editFlag,userInfo) {
+    setData(editFlag, userInfo) {
         this.deceasedChildrenNames = this.userInfo.isDesceasedChildren == "Yes" ;
         this.chidrenForm.controls['totalChildren'].setValue( this.userInfo.totalChildren);
         this.chidrenForm.controls['deceasedChildren'].setValue( this.userInfo.isDesceasedChildren);
         this.chidrenForm.controls['deceasedChildrenNames'].setValue( this.userInfo.deceasedChildreNames);
         this.columnFormArray = this.chidrenForm.get('childrenInfo') as FormArray;
-        console.log(userInfo.childrenInformation.length);
         for (let i=0; i < userInfo.childrenInformation.length ; i++) {
             this.columnFormArray.push(this.createItem(editFlag,userInfo.childrenInformation[i]));
         }
@@ -111,11 +106,11 @@ export class TuaYourFamilyComponent implements OnInit {
         this.columnFormArray = this.chidrenForm.get('childrenInfo') as FormArray;
         this.clearFormArray(this.columnFormArray);
         let numberofChild = event.target.value;
-        if (numberofChild != '0' && numberofChild != '') {
+        if (numberofChild !== '0' && numberofChild !== '') {
             this.otherChildren = false;
          //   this.columns = [];
-            for (var i=0 ; i < numberofChild; i++) {
-                this.columnFormArray.push(this.createItem(this.editFlag,this.userInfo.childrenInformation[i]));
+            for (let i = 0 ; i < numberofChild; i++) {
+                this.columnFormArray.push(this.createItem(this.editFlag, this.userInfo.childrenInformation[i]));
             }
             this.showTable = true;
         }
@@ -128,15 +123,15 @@ export class TuaYourFamilyComponent implements OnInit {
     }
     clearFormArray(formArray: FormArray)  {
         while (formArray.length !== 0) {
-            formArray.removeAt(0)
+            formArray.removeAt(0);
         }
     }
 
-    checkIsDeceasedChildren(event: any){
-        var IsDeceasedChildrenValue = event.target.value;
-        if(IsDeceasedChildrenValue == '1'){
+    checkIsDeceasedChildren(event: any) {
+        const IsDeceasedChildrenValue = event.target.value;
+        if (IsDeceasedChildrenValue === '1') {
             this.deceasedChildrenNames = true;
-        }else{
+        } else {
             this.deceasedChildrenNames = false;
         }
     }
@@ -152,8 +147,7 @@ export class TuaYourFamilyComponent implements OnInit {
         }
         this.userService.editProfile(this.chidrenForm.value).subscribe(
             (data: any) =>  {
-                console.log(data);
-                this.router.navigate(['/dashboard/will/2']);
+                this.router.navigate(['/dashboard/will/3']);
             },
             (error: any) => {
                 console.log(error);

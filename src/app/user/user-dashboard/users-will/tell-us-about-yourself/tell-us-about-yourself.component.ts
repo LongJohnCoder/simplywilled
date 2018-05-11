@@ -62,7 +62,6 @@ export class TellUsAboutYourselfComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form);
     const formData = form.value;
     formData.dob = formData.year + '-' + formData.month + '-' + formData.day ;
     formData.partner_dob = formData.spouseYear + '-' + formData.spouseMonth + '-' + formData.spouseDay ;
@@ -70,7 +69,6 @@ export class TellUsAboutYourselfComponent implements OnInit {
     formData.step = 1;
     this.userService.editProfile(formData).subscribe(
         (data: any) =>  {
-          console.log(data);
           this.router.navigate(['/dashboard/will/2']);
         },
         (error: any) => {
