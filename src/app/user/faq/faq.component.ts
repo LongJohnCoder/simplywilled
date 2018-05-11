@@ -11,12 +11,12 @@ import { NgForm } from '@angular/forms';
   styleUrls     : ['./faq.component.css','../../../custom-inner.css']
 })
 export class FaqComponent implements OnInit {
-    faqDetails    : any[] = [];
+    faqDetails    : any[] = []; //holds faq questions and answers for single categories
     errorMessage  : string;
-    faqData       : any[] = [];
+    faqData       : any[] = []; //holds faq metadata
     counter       : number; // a common counter used to index the categories
     innerCounter  : number; // a common counter used to index the faq data per categories
-    searchFaq     : string = '';
+    searchFaqQstn : string = '';
 
     constructor(
         private faqService: FaqService,
@@ -43,33 +43,46 @@ export class FaqComponent implements OnInit {
         );
     }
 
+    //we have all the necessary question sfrom 1 api
+    //so we can loop over the questions in angular
     onSubmit( formFaqQa: NgForm ) {
         console.log('submiting form ',formFaqQa.value.search);
         this.faqService.getFaqCategories( formFaqQa.value.search )
         .subscribe(
-          ( response: any ) => {
+            ( response: any ) => {
             if(response.status){
-            
-                this.faqData      = response.data;
-                this.faqDetails   = this.getQuestions(this.faqData,0);
+                this.searchFaqQstn  = formFaqQa.value.search;
+                this.faqData        = response.data;
+                this.faqDetails     = this.getQuestions(this.faqData,0);
+                this.takeMeThere();
             } else {
-              console.log('error : some err');
+                console.log('error : some err');
             }
-          },
-          ( error: HttpErrorResponse ) => {
-            // this.loginRequestStatus = false;
-            // this.loginRequestResponseMsg = error.error.error;
-            // this.showLoader = false;
-            // this.responseReceived = true;
+            },
+            ( error: HttpErrorResponse ) => {
+            console.log(error);
             setTimeout( () => {
-              //this.responseReceived = false;
+                //this.responseReceived = false;
             }, 5000);
-          },
-          () => {
-            formFaqQa.reset();
-          }
+            },
+            () => {
+            //formFaqQa.reset();
+            }
         );
-      }
+    }
+
+    /**
+     * This function navigates to the question asked from the data
+     * Once the question is reached the div opens and shows up the answer
+     */
+    takeMeThere() {
+        for(let i in this.faqDetails) {
+            if(this.faqDetails[i].question.toLowerCase().trim() === this.searchFaqQstn.toLowerCase().trim()) {
+                this.innerCounter =  parseInt(i);
+                break;
+            }
+        }
+    }
 
     /* *
     *   Get questions from the data object
