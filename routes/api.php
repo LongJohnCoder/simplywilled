@@ -455,7 +455,7 @@ Route::group(['prefix' => 'v1'], function() {
         /**
          * Route for getting blog category list
          */
-        Route::get('blog-category-list',[
+        Route::get('blog-category-list/{query?}',[
             'uses'=>'Api\V1\BlogController@blogCategoryListUser',
             'as' => 'api.v1.blogCategoryListUser.get'
         ]);
@@ -490,6 +490,14 @@ Route::group(['prefix' => 'v1'], function() {
         Route::any('comment', [
           'uses' => 'Api\V1\BlogController@addBlogComments',
           'as' => 'api.v1.addBlogComment.post'
+        ]);
+
+        /**
+        * Route for getting blog from blog category slug
+        */
+        Route::any('get-blog-details', [
+          'uses' => 'Api\V1\BlogController@getBLogDetails',
+          'as' => 'api.v1.getBLogDetails.post'
         ]);
 
         //user routes where authentication is needed

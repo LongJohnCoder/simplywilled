@@ -31,6 +31,28 @@ use Carbon\Carbon;
 
 class BlogController extends Controller
 {
+
+    /*
+     * function to fetch list of blogs from blog category slug
+     * @param query : slug
+     * */
+    public function getBLogDetails(Request $request) {
+        $query  = $request->has('query') ? $request->get('query') : null;
+        $blog   = null;
+        $imageLink  = url('/blogImage').'/';
+        if(strlen(trim($query)) > 0) {
+            $blog = Blogs::whereHas('category', function($q) use($query){
+                $q->where('slug','LIKE','%'.$query.'%');
+            })->get();
+        }
+        return response()->json([
+            'status'    => true,
+            'message'   => 'Selected Blogs',
+            'data'      => compact('blog','imageLink')
+        ], 200);
+    }
+
+
     public function commentsList() {
         try {
             $comments = BlogComment::with('blog')->get();
@@ -143,9 +165,10 @@ class BlogController extends Controller
      * function to fetch list of blog category
      *
      * */
-    public function blogCategoryListUser()
+    public function blogCategoryListUser(Request $request)
     {
         try {
+
             $categories = Categories::orderBy('created_at','DESC')->with('blogs')->get();
             $categoriesDetails = [];
             foreach ($categories as $key => $value) {

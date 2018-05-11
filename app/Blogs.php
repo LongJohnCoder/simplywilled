@@ -32,4 +32,15 @@ class Blogs extends Model
     public function getComments(){
         return $this->hasMany('App\Models\BlogComment','blog_id','id');
     }
+
+    public function category() {
+        return $this->hasManyThrough(
+            'App\Categories',
+            'App\CategoryBlogMapping',
+            'blog_id', // Foreign key on CategoryBlogMapping table...
+            'id', // Foreign key on blogs table...
+            'id', // Local key on Categories table...
+            'category_id' // Local key on CategoryBlogMapping table...
+        );
+    }
 }
