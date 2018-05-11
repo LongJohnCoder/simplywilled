@@ -1,0 +1,65 @@
+.subscribe_form_main .btn-green{
+    width: 100%;
+    font-size: 18px;
+    padding: 8px 0;
+    font-weight: bold;
+}
+.about_sec4{
+    position: relative;
+}
+.about_sec4 .btn-green{
+    width: 180px;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(#53ba3c, #3fa62e);
+    border: 2px solid #fff;
+    font-family: 'OpenSans';
+    font-size: 22px;
+    padding: 10px 0px;
+    border-radius: 10px;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+    transition: all 0.3s ease 0s;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 50%);
+    outline: 0;
+    cursor: pointer;
+}
+
+@media screen and (max-width:1310px){
+    .trending_right_ul{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 960px) and (min-width: 768px){
+   .trending_right_ul {
+        width: auto;
+        right: 0;
+        left: auto;
+    } 
+    .by_simply_willed_text{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 960px){
+    .trending_right_ul {
+        width: 100%;
+        bottom: -40px;
+    }
+}
+
+@media screen and (max-width: 960px){
+    .trending_ul > li{
+        margin-bottom: 80px;
+    }
+}
+
+@media only screen and (max-width: 480px) and (min-width: 100px){
+    .trending_ul > li {
+        padding-bottom: 0;
+    }
+}

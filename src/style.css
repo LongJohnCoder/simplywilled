@@ -137,6 +137,10 @@ h1, h2, h3, h4, h5, h6{
     margin-top: 0;
     margin: 0 25px;
 }
+.getStarted:hover{
+    color:#fff;
+    text-decoration: none;
+}
 .headerContact{
     color: #fff;
     font-weight: bold;
@@ -1274,16 +1278,16 @@ h1, h2, h3, h4, h5, h6{
     float:left;
 }
 .core_value_text{
-    width:100%;
-    display:inline-block;
-    text-align:center;
-    color:#1376bb;
-    font-size:48px;
-    font-family: 'OpenSans-Semibold';
-    padding:70px 0px 40px 0px;
+	width:100%;
+	display:inline-block;
+	text-align:center;
+	color:#1376bb;
+	font-size:48px;
+	font-family: 'OpenSans';
+	padding:70px 0px 40px 0px;
 }
 .about_first_left_sec{
-    width:44%;
+    width:34%;
     float:left;
     position:relative;
 }
@@ -1292,66 +1296,85 @@ h1, h2, h3, h4, h5, h6{
     float:left;
 }
 .have_q_btn2{
-    width:235px;
-    float:left;
-    background:#2781bd;
-    color:#fff;
-    font-size:28px;
-    padding:10px 10px 10px 10px;
-    border-radius:20px;
-    border:3px solid #0d5b95;
-    line-height:32px;
-    position:absolute;
-    top:0px;
-    right:0px;
-}
-.have_q_btn2:hover{
-    background:#fff;
-    color:#2781bd;
+	width:330px;
+	display: block;
+	margin: 70px auto 0;
+	background:url('./assets/images/blueBoxBg.jpg') no-repeat;
+	background-size:100% 100%; 
+	color:#fff;
+	font-size:44px;
+	padding:20px;
+	box-sizing: border-box;
+	text-shadow: 2px 2px 0 rgba(0,0,0,.1);
+	border-radius:25px;
+	border:3px solid #0d5b95;
+	line-height:56px;
+    position: relative;
+    text-align: left;
 }
 .have_q_btn2:before{
-    background:url('./assets/images/btn-img.png') no-repeat center;
-    content:'';
-    width:19px;
-    display:block;
-    height:20px;
-    position:absolute;
-    top: 100%;
-    left: 30px;
+	background:url('./assets/images/btn-img.png') no-repeat center;
+	content:'';
+	width:19px;
+	display:block;
+	height:20px;
+	position:absolute;
+	top: 100%;
+	right: 32%;
 }
 .about_first_right_ul{
-    width:52%;
-    float:right;
-    display:inline-block;
-    margin-bottom:40px;
+	width:62%;
+	float:right;
+	display:inline-block;
+	margin-bottom:40px;
 }
 .about_first_right_ul li{
-    width:100%;
-    float:left;
-    margin-bottom:30px;
+	width:100%;
+	float:left;
+	margin-bottom:30px;
 }
 .estate_planning_img{
     float:left;
 }
-.estate_planning_right_main{
-    width:80%;
-    float:right;
-    display:inline-block;
+.estate_planning_right_main {
+    width: calc(100% - 120px);
+    float: right;
+    display: inline-block;
 }
-.estate_planning_right_main h1{
-    width:100%;
-    float:left;
-    color:#1173b7;
-    font-size:24px;
+.estate_planning_right_main h1 {
+    width: 100%;
+    float: left;
+    color: #1173b7;
+    font-size: 22px;
     font-family: 'OpenSans-Semibold';
-    line-height:26px;
-    padding-bottom:10px;
+    line-height: 26px;
 }
-.estate_planning_right_main p{
-    width:100%;
-    float:left;
-    color:#a2a1a1;
-    font-size:15px;
+.estate_planning_right_main p {
+    width: 100%;
+    float: left;
+    color: #373737;
+    font-size: 16px;
+}
+.AboutUsBanner {
+    background: url('./assets/images/about-banner.jpg') no-repeat;
+    background-size: cover;
+    background-position: center top;
+    height: 293px;
+    display: inline-block;
+    width: 100%;
+    margin-top: -34px;
+}
+.AboutUsBanner h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 50px;
+    padding-top: 83px;
+    display: inline-block;
+    width: 100%;
+}
+.AboutUsBanner h1 span {
+    font-size: 35px;
+    display: block;
 }
 .about_sec2{
     width:100%;
@@ -1363,7 +1386,7 @@ h1, h2, h3, h4, h5, h6{
     width:100%;
     display:inline-block;
     text-align:center;
-    color:#a2a1a1;
+    color: #373737;
     font-size:20px;
     line-height:26px;
     padding-bottom:25px;
@@ -1372,66 +1395,90 @@ h1, h2, h3, h4, h5, h6{
     width:100%;
     float:left;
 }
-.about_team_ul{
-    width:100%;
-    float:left;
-    margin-bottom:35px;
+.about_team_ul {
+    width: 100%;
+    float: left;
+    margin-bottom: 35px;
 }
-.about_team_ul li{
-    width:17.6%;
-    float:left;
-    margin-left:3%;
-    text-align:center;
+.about_team_ul li {
+    width: 25%;
+    min-width: 184px;
+    float: left;
+    text-align: center;
 }
-.about_team_ul li:nth-child(5n+1){
-    margin-left:0px;
-    clear:left;
+.about_team_ul li:nth-child(5n+1) {
+    margin-left: 0px;
+    clear: left;
 }
-.team_pic{
-    width:100%;
-    display:inline-block;
-    float:left;
+.team_pic {
+    width: 100%;
+    display: inline-block;
+    float: left;
 }
-.team_pic img{
-    width:100%;
-    border-bottom:5px solid #2782be;
-    border-radius:10px;
+.team_pic img {
+    max-width: 184px;
+    height: auto;
+    border-bottom: 7px solid #2782be;
+    padding-bottom: 2px;
+    border-radius: 16px;
 }
 .team_name{
     width:100%;
     display:inline-block;
     color:#1376bb;
-    font-size:20px;
+    font-size:22px;
     font-family: 'OpenSans-Semibold';
+    margin-bottom: 0;
+    margin-top: 10px;
 }
 .team_descreption{
     width:100%;
     display:inline-block;
-    color:#a2a1a1;
+    color:#373737;
     font-size:16px;
 }
 .about_sec4{
-    width:100%;
-    float:left;
-    background:url('./assets/images/about-state-bg.png') no-repeat center;
-    background-size:100% 100%;
-    text-align:center;
-    border-bottom:3px solid #fff;
+	width:100%;
+	float:left;
+	background:url('./assets/images/about-state-bg.png') no-repeat center top;
+	background-size:100% 100%;
+	text-align:center;
+	border-bottom:3px solid #fff;
+	position: relative;
 }
-.about_state_planning_text{
-    width:100%;
-    display:inline-block;
-    color:#fff;
-    font-size:48px;
-    padding:190px 0px 10px 0px;
+.about_state_planning_text {
+    width: 100%;
+    display: inline-block;
+    color: #fff;
+    font-size: 48px;
+    padding: 200px 0px 10px 0px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,.1);
 }
-.select_plan{
-    width:100%;
-    display:inline-block;
-    color:#fff;
-    font-size:24px;
-    font-family: 'OpenSans-Semibold';
-    padding-bottom:80px;
+.select_plan {
+    width: 100%;
+    display: inline-block;
+    color: #fff;
+    font-size: 24px;
+    padding-bottom: 50px;
+    font-family: 'OpenSans';
+    text-shadow: 2px 2px 0 rgba(0,0,0,.1);
+}
+.aboutGetStarted{
+	z-index: 50;
+	width: 213px;
+	text-align: center;
+	color: #fff;
+	background: linear-gradient(#53ba3c, #3fa62e);
+	font-family: 'OpenSans';
+	font-size: 22px;
+	padding: 10px 0px;
+	border-radius: 10px;
+	text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+	box-shadow: inset 0 2px 0 rgba(255,255,255,0.4);
+	transition: all 0.3s ease 0s;
+	margin: 0 auto -27px;
+	display: block;
+	border: 3px solid #fff;
 }
 .confirm_bg{
     background:#f2f2f2;
@@ -1680,10 +1727,10 @@ h1, h2, h3, h4, h5, h6{
 .trending_main{
     width:100%;
     float:left;
-    padding:80px 0px 0px 0px;
+    padding:50px 0px 0px 0px;
 }
 .trending_left{
-    width:63%;
+    width:64%;
     float:left;
 }
 .trending_ul{
@@ -1694,6 +1741,7 @@ h1, h2, h3, h4, h5, h6{
     width:100%;
     float:left;
     margin-bottom:75px;
+    position: relative;
 }
 .trending_ul > li:last-child{
     margin-bottom:0px;
@@ -1767,6 +1815,9 @@ h1, h2, h3, h4, h5, h6{
     display:inline-block;
     font-size:18px;
 }
+.trending_right_ul > li > a img{
+    opacity: 0.5;
+}
 .legal_requirement{
     width:100%;
     float:left;
@@ -1823,9 +1874,9 @@ h1, h2, h3, h4, h5, h6{
     float:right;
     display:inline-block;
 }
-.subscribe_text{
+ .subscribe_text{
     float: left;
-    color: #565656;
+    color: #333;
     font-size: 20px;
     text-transform: uppercase;
     background: #fff;
@@ -1849,7 +1900,7 @@ h1, h2, h3, h4, h5, h6{
     left: 0px;
     margin-top: -.5px;
     z-index: -1;
-}
+} 
 .subscribe_form_main{
     width:100%;
     float:left;
@@ -1904,7 +1955,7 @@ h1, h2, h3, h4, h5, h6{
 }
 .cat_ul li a{
     float:left;
-    color:#a9a8a8;
+    color:#333;
     font-size:16px;
 }
 .cat_ul li a span{
@@ -1912,6 +1963,7 @@ h1, h2, h3, h4, h5, h6{
 }
 .cat_ul li a:hover{
     color:#1376bb;
+    text-decoration: none;
 }
 .post_ul{
     width:100%;
@@ -1927,14 +1979,14 @@ h1, h2, h3, h4, h5, h6{
     float:left;
 }
 .post_right_main{
-    width:62%;
+    width:69%;
     float:right;
     display:inline-block;
 }
 .post_heading{
     width:100%;
     float:left;
-    color:#a9a8a8;
+    color:#333;
     font-size:14px;
     margin-bottom:5px;
 }

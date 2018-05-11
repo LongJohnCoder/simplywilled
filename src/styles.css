@@ -1,7 +1,6 @@
 body {
 	font-family: OpenSans;
 	position: relative;
-	background: #f2f2f2;
 	}
 * {
 	margin: 0;
@@ -1180,78 +1179,14 @@ h1, h2, h3, h4, h5, h6 {
 	line-height: 26px;
 	padding-bottom: 25px
 }
-.about_team_ul {
-	padding: 0 80px;
-	margin-bottom: 35px
-}
-.about_team_ul li {
-	margin-bottom: 40px
-}
-.team_pic {
-	float: left;
-	width: 160px;
-	height: 160px;
-	border-radius: 50%;
-	border: 2px solid #46ac33;
-	text-align: center;
-	position: relative
-}
-.team_pic img {
-	display: inline-block;
-	position: absolute;
-	top: 0;
-	left: 50%;
-	margin-left: -99px;
-	max-width: none
-}
-.team_name {
-	width: 100%;
-	color: #1376bb;
-	font-family: OpenSans-Semibold;
-	margin-bottom: 5px
-}
-.team_descreption, .team_info {
-	display: inline-block;
-	font-size: 16px
-}
-.team_descreption {
-	width: 100%;
-	color: #a2a1a1
-}
-.about_img_right {
-	width: 55%;
-	float: right;
-	display: inline-block;
-	padding: 50px 10px 0 0
-}
-.team_left_sec {
-	width: 45%;
-	float: left
-}
-.team_info {
-	width: 55%;
-	float: right;
-	color: #818181;
-	line-height: 25px;
-	text-align: justify;
-	margin-top: 25px;
-	border-left: 1px solid #f5f5f5;
-	padding-left: 30px
-}
+
 .about_state_planning_text, .select_plan {
 	display: inline-block;
 	color: #fff;
 	width: 100%
 }
-.about_sec4, .confirmed_form_top, .form_start_btn, .login_btn, .news_read_more, .single_post {
+.confirmed_form_top, .form_start_btn, .login_btn, .news_read_more, .single_post {
 	text-align: center
-}
-.about_sec4 {
-	width: 100%;
-	float: left;
-	background: url('./assets/images/about-state-bg.png') center no-repeat;
-	background-size: cover;
-	border-bottom: 3px solid #fff
 }
 .about_state_planning_text {
 	font-size: 48px;
@@ -1504,7 +1439,6 @@ color:#b5e5ff
 	width: 100%;
 	float: left;
 	padding: 80px 0 0;
-	background:#f9fafc;
 }
 .trending_left {
 	width: 72%;
@@ -1613,33 +1547,11 @@ color:#b5e5ff
 	font-family: OpenSans-Semibold;
 	margin: 30px 0
 }
-.trending_right_main {
-	width: 26%;
-	float: right;
-	display: inline-block
-}
-.subscribe_text {
-	width:100%;
-	float: left;
-	color: #565656;
-	font-size: 20px;
-	text-transform: uppercase;
-	padding-bottom:30px;
-	position:relative;
-}
-.subscribe_text:before{
-	content: '';
-	width: 3px;
-	height: 35px;
-	background: #46ac33;
-	position: absolute;
-	top: -6px;
-	left: -20px;
-}
 
 
 
 
+/* 
 
 .subscribe_text2 {
 	width:100%;
@@ -1658,7 +1570,7 @@ color:#b5e5ff
 	position: absolute;
 	top: -6px;
 	left: 0px;
-}
+} */
 
 
 
@@ -1707,46 +1619,8 @@ color:#b5e5ff
 	border: 1px solid #3ea32d;
 	color: #3ea32d
 }
-.cat_main{
-	width: 100%;
-	float: left;
-	background: #fff;
-	box-shadow: 0px 18px 40px rgba(204,204,223,.73);
-	padding: 30px 0px;
-	border-radius: 5px;
-	position: relative;
-	margin-top: 25px;
-}
 
-.cat_ul li a, .cat_ul li a span {
-	color: #a9a8a8;
-	transition: all ease-in-out .5s;
-	-moz-transition: all ease-in-out .5s;
-	-ms-transition: all ease-in-out .5s;
-	-o-transition: all ease-in-out .5s;
-	-webkit-transition: all ease-in-out .5s;
-}
-.cat_ul {
-	width: 100%;
-	float: left;
-}
-.cat_ul li {
-	width: 100%;
-	float: left;
-}
-.cat_ul li:last-child {
-	margin-bottom: 0
-}
-.cat_ul li a {
-	width:100%;
-	float: left;
-	font-size: 16px;
-	padding:10px 20px;
-}
-.cat_ul li a:hover, .cat_ul li a:hover span {
-	color: #46ac33;
-	background:#efffec;
-}
+
 .post_ul {
 	width: 100%;
 	float: left
@@ -1754,27 +1628,16 @@ color:#b5e5ff
 .post_ul li {
 	width: 100%;
 	float: left;
-	margin-bottom: 20px;
-	border:1px solid #d7dbe8;
-	padding:10px;
 	border-radius:10px;
 }
 .post_img {
 	width: 80px;
 	float: left
 }
-.post_img img{
-	border-radius:5px;
-}
-.post_right_main {
-	width: 60%;
-	float: right;
-	display: inline-block
-}
+
 .post_heading {
 	width: 100%;
 	float: left;
-	color: #a9a8a8;
 	font-size: 13px;
 	margin-bottom: 5px
 }
@@ -3904,9 +3767,7 @@ select.form-control{
 .our_history_pera {
 	font-size: 16px
 }
-.about_sec4 {
-	background: #58b048 !important;
-}
+
 .about_state_planning_text {
 	font-size: 30px;
 	padding: 50px 0 10px
@@ -5146,10 +5007,7 @@ h1.msg{
 .our_history_pera {
 	text-align: justify
 }
-.about_team_ul li {
-	width: 100%;
-	margin-left: 0
-}
+
 .about_state_planning_text {
 	font-size: 26px;
 	padding: 30px 0 10px

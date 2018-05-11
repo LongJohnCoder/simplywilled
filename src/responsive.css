@@ -3,12 +3,18 @@
     .index_sec4{
         background-size: auto 100%;
     }
+    .about_sec4 {
+        background-size: auto 100%;
+    }
 }
 
 @media screen and (max-width:1372px){
     .wrapper{
         max-width:1342px;
     }
+    .about_sec4{
+		background-position: right 64% top; 
+	}
 }
 
 @media screen and (max-width:1270px) and (min-width:1131px){
@@ -134,11 +140,6 @@
     .blue_video iframe{
         height:350px;
     }
-    .have_q_btn2{
-        line-height:inherit;
-        font-size: 20px;
-        width: 170px;
-    }
     .estate_planning_right_main{
         width:78%;
     }
@@ -221,7 +222,19 @@
     .FooterRight .contactus{
         margin-top: 40px;
     }
+    .have_q_btn2 {
+        width: 280px;
+        font-size: 34px;
+    }
 }
+
+
+@media only screen and (max-width: 980px){
+.AboutUsBanner h1 {
+    font-size: 40px;
+}
+}
+
 
 @media only screen and (max-width: 960px){
     .sec5_easy_ul li{
@@ -260,9 +273,14 @@
         position: absolute;
         float: none;
         width: auto;
-        right: 0;
+        right: auto;
+        left:0;
         bottom: 5px;
     }
+    .about_sec4{
+		background-position: right 64% top -60px; 
+		background-size: auto 126%;
+	}
 }
 
 @media only screen and (min-width: 768px) and (max-width: 960px){
@@ -451,12 +469,6 @@
         padding-top: 40px;
         width: 50%;
     }
-    .have_q_btn2{
-        width: 150px;
-        line-height:inherit;
-        font-size: 16px;
-        right: 20px;
-    }
     .about_first_right_ul{
         width:56%;
     }
@@ -469,19 +481,7 @@
     .estate_planning_right_main h1{
         font-size:20px;
     }
-    .about_team_ul li{
-        width:32%;
-        margin-left:2%;
-        margin-bottom:15px;
-    }
-    .about_team_ul li:nth-child(4n+1){
-        margin-left:2%;
-        clear:none;
-    }
-    .about_team_ul li:nth-child(3n+1){
-        margin-left:0px;
-        clear:left;
-    }
+   
     .team_name{
         font-size: 16px;
     }
@@ -598,9 +598,6 @@
     .index_banner {
         margin-top: -16px;
     }
-}
-
-@media only screen and (max-width: 860px){
     .copyrightArea, .copyrightArea p{
         width: 100%;
         text-align: center;
@@ -620,6 +617,19 @@
         width: 100%;
         text-align: center;
         padding: 5px 0;
+    }
+    .post_heading{
+        font-size: 13px;
+        line-height: 14px;
+    }
+    .have_q_btn2{
+        width:280px;
+        margin: 70px auto 32px;
+        font-size:36px;
+    }
+    .about_team_ul li{
+        width: 50%;
+        margin-bottom: 32px;
     }
 }
 
@@ -832,40 +842,21 @@
     .our_history_pera{
         font-size:16px;
     }
-    .have_q_btn2{
-        font-size:18px;
-        line-height:inherit;
-        width:170px;
-        right: 90px;
-    }
-    .about_team_ul li{
-        width:32%;
-        margin-left:2%;
-        margin-bottom:15px;
-    }
-    .about_team_ul li:nth-child(4n+1){
-        margin-left:2%;
-        clear:none;
-    }
-    .about_team_ul li:nth-child(3n+1){
-        margin-left:0px;
-        clear:left;
-    }
+    
     .team_name{
         font-size: 16px;
     }
     .team_descreption{
         font-size:14px;
     }
-    .about_sec4{
-        background:#58b048;
-    }
+
     .about_state_planning_text{
         font-size:30px;
-        padding: 50px 0px 10px 0px;
+        padding: 100px 0px 10px 0px;
     }
     .select_plan{
         font-size:20px;
+        padding-bottom: 32px;
     }
     .confirm_left{
         width:100%;
@@ -981,6 +972,10 @@
     .carousel-control-prev, .carousel-control-next{
         top: 20%;
     }
+    .about_sec4{
+		background-size: auto 125%; 
+		position: relative;
+	}
 }
 
 @media only screen and (max-width: 680px){
@@ -1011,6 +1006,9 @@
     .slider_left_img {
         width: 160px;
         height: 160px;
+    }
+    .about_sec4 {
+        background-position: right 64% top -86px;
     }
 }
 
@@ -1185,9 +1183,6 @@
     .footer_content {
         padding: 0px 0px 25px 0px;
     }
-    .have_q_btn2{
-        right:20px;
-    }
     .estate_planning_img{
         width:70px;
     }
@@ -1267,6 +1262,18 @@
     }
     .blogContainer p {
         font-size: 16px;
+    }
+    .select_plan {
+        font-size: 28px;
+        padding-bottom: 32px;
+        font-family: 'OpenSans';
+    }
+    .AboutUsBanner {
+        background-image: url('./assets/images/about-banner-mobile.jpg');
+        height: 437px;
+    }
+    .AboutUsBanner h1 {
+        font-size: 37px;
     }
 }
 
@@ -1478,11 +1485,6 @@
         font-size: 20px;
         padding-bottom: 30px;
     }
-    .have_q_btn2 {
-        right: 0px;
-        font-size: 14px;
-        width: 140px;
-    }
     .estate_planning_img {
         width: 90px;
         display: block;
@@ -1506,11 +1508,8 @@
         margin-left:0px;
     }
     .about_state_planning_text {
-        font-size: 26px;
-        padding: 30px 0px 10px 0px;
-    }
-    .select_plan {
-        font-size: 18px;
+        font-size: 30px;
+        padding: 100px 0px 10px 0px;
     }
     .agree_to_be_responsible, .wishes_text, .email_text{
         font-size: 16px;
