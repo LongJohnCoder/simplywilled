@@ -26,6 +26,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { BlogComponent } from './blog/blog.component';
 import { BlogdetailsComponent } from './blog/blogdetails/blogdetails.component';
 import { BlogService } from "./blog/blog.service";
+import { BlogCategoryComponent } from './blog/blog-category/blog-category.component';
 
 
 
@@ -54,7 +55,8 @@ console.log('user-module is called');
     ContactUsComponent,
     FullLayoutComponent,
     BlogComponent,
-    BlogdetailsComponent
+    BlogdetailsComponent,
+    BlogCategoryComponent
   ],
   providers: [
     UserAuthGuard,

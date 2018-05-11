@@ -13,6 +13,7 @@ import { UserAuthGuard} from './user-auth/user-auth.guard';
 import { CommonModule } from '@angular/common';
 import { BlogComponent } from "./blog/blog.component";
 import { BlogdetailsComponent } from './blog/blogdetails/blogdetails.component';
+import {BlogCategoryComponent} from "./blog/blog-category/blog-category.component";
 
 const routes: Routes = [
    {path: '', component: FullLayoutComponent, data: { title: 'Home' }, children: [
@@ -20,9 +21,10 @@ const routes: Routes = [
         { path: 'register', canActivate: [ NotUserAuthGuard ], loadChildren: './user-auth/user-register/user-register.module#UserRegisterModule'},
         { path: '', pathMatch: 'full', component: HomeComponent },
         { path: 'about-us', pathMatch: 'full', component: AboutUsComponent },
-        { path: 'faq', pathMatch: 'full', component: FaqComponent }, //defined
-        { path: 'blog', pathMatch: 'full', component: BlogComponent }, //defined
-        { path: 'blogdetails/:slug', pathMatch: 'full', component: BlogdetailsComponent }, //defined
+        { path: 'faq', pathMatch: 'full', component: FaqComponent },
+        { path: 'blog', pathMatch: 'full', component: BlogComponent },
+        { path: 'blogdetails/:slug', pathMatch: 'full', component: BlogdetailsComponent },
+        { path: 'category/:slug', pathMatch: 'full', component: BlogCategoryComponent },
         //{ path: 'faq', canActivate: [ NotUserAuthGuard ], loadChildren: './faq/user-login/user-login.module#UserLoginModule' },
         { path: 'terms-of-use', pathMatch: 'full', component: TermsOfUseComponent },
         { path: 'terms-of-service', pathMatch: 'full', component: TermsOfServiceComponent },

@@ -23,7 +23,7 @@ export class BlogdetailsComponent implements OnInit {
           (data: any) => {
               this.blogDetails = data.data.blog;
               this.imageLink = data.data.imageLink;
-              console.log(this.blogDetails);
+              // console.log(this.blogDetails);
           }
 
       )

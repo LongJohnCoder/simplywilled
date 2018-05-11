@@ -10,18 +10,6 @@ export class BlogService {
         private httpClient: HttpClient
     ) { }
 
-    getFaqCategories(): Observable<any>{
-        let url = `${environment.API_URL + 'user/faq-category-list'}`;
-        console.log('url is : ',url);
-        return this.httpClient.get(url);
-    }
-
-    getFaqQuestions(): Observable<any>{
-        let url = `${environment.API_URL + 'user/all-faq-questions'}`;
-        console.log('url is : ',url);
-        return this.httpClient.get(url);
-    }
-
     blogList():Observable<any>{
         return this.httpClient.get(environment.API_URL + 'user/blog-list');
     }
@@ -29,4 +17,21 @@ export class BlogService {
     getBlogDetails(slug: string):Observable<any>{
         return this.httpClient.get(environment.API_URL + 'user/view-blog/?query='+slug );
     }
+
+    getBlogCategoryList():Observable<any>{
+        return this.httpClient.get(environment.API_URL + 'user/blog-category-list');
+    }
+
+    getBlogDetailsFromCategory(slug: string):Observable<any>{
+        return this.httpClient.get(environment.API_URL + 'user/get-blog-details/?query='+slug );
+    }
+
+    getPopularBlogPosts():Observable<any>{
+        return this.httpClient.get(environment.API_URL + 'user/popular-post');
+    }
+
+    getRecentBlogPosts():Observable<any>{
+        return this.httpClient.get(environment.API_URL + 'user/latest-post');
+    }
+
 }

@@ -1,7 +1,7 @@
 <div class="body_container">
   <div class="wrapper">
     <div class="trending_main">
-      <div class="relative">
+      <div class="relative" *ngIf="blogDetails">
         <span class="single_post"><img src="{{imageLink}}{{blogDetails.image}}" alt="{{blogDetails.image}}"></span>
         <h1 class="why_do_need_will">{{blogDetails.title}}</h1>
         <ul class="trending_sub_left_ul">
