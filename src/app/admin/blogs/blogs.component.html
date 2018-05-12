@@ -126,18 +126,20 @@
             </div>
 
             <ng-template #viewcomment>
-                <div class="panel-body">
-                    <div class="modal-header" style="margin-bottom:15px">
-                        <h3 class="modal-title">
-                            View Comments
-                        </h3>
-                        <button type="button" class="close" (click)="modalRef.hide()">×</button>
-                    </div>
-                    <div *ngIf="comments.length == 0" class="modal-body">
-                        No Comments
-                    </div>
-                    <div class="modal-body" *ngFor="let comment of comments">
-                        {{comment.message}} - By {{comment.name}}
+                <div class="adminModal">
+                    <div class="panel-body">
+                        <div class="modal-header" style="margin-bottom:15px">
+                            <h3 class="modal-title">
+                                View Comments
+                            </h3>
+                            <button type="button" class="close" (click)="modalRef.hide()">×</button>
+                        </div>
+                        <div *ngIf="comments.length == 0" class="modal-body">
+                            No Comments
+                        </div>
+                        <div class="modal-body" *ngFor="let comment of comments">
+                            {{comment.message}} - By {{comment.name}}
+                        </div>
                     </div>
                 </div>
             </ng-template>

@@ -124,38 +124,41 @@
 
 
       <ng-template #viewComment>
-        <div class="panel-body">
-          <div class="modal-header" style="margin-bottom:15px">
-            <h3 class="modal-title">
-              View Comment
-              <span class="badge" [ngClass]="[comData.status == '1' ? 'badge-success' : 'badge-danger']">{{comData.status == '1' ? 'Approved' : 'Unapproved'}}</span>
-            </h3>
-            <button type="button" class="close" (click)="modalRef.hide()">×</button>
-          </div>
-          <div class="modal-body">
-            <h4>Post Name:</h4>
-            <p>{{comData.blog.title}}</p>
-          </div>
-          <div class="modal-body">
-            <h4>Name:</h4>
-            <p>{{comData.name}}</p>
-          </div>
-          <div class="modal-body">
-            <h4>Email:</h4>
-            <p>{{comData.email}}</p>
-          </div>
-          <!--<div class="modal-body">-->
-            <!--<h4>Website:</h4>-->
-            <!--<p></p>-->
-          <!--</div>-->
-          <div class="modal-body">
-            <h4>Message:</h4>
-            <p>{{comData.message}}</p>
+        <div class="adminModal">
+          <div class="panel-body">
+            <div class="modal-header" style="margin-bottom:15px">
+              <h3 class="modal-title">
+                View Comment
+                <span class="badge" [ngClass]="[comData.status == '1' ? 'badge-success' : 'badge-danger']">{{comData.status == '1' ? 'Approved' : 'Unapproved'}}</span>
+              </h3>
+              <button type="button" class="close" (click)="modalRef.hide()">×</button>
+            </div>
+            <div class="modal-body">
+              <h4>Post Name:</h4>
+              <p>{{comData.blog.title}}</p>
+            </div>
+            <div class="modal-body">
+              <h4>Name:</h4>
+              <p>{{comData.name}}</p>
+            </div>
+            <div class="modal-body">
+              <h4>Email:</h4>
+              <p>{{comData.email}}</p>
+            </div>
+            <!--<div class="modal-body">-->
+              <!--<h4>Website:</h4>-->
+              <!--<p></p>-->
+            <!--</div>-->
+            <div class="modal-body">
+              <h4>Message:</h4>
+              <p>{{comData.message}}</p>
+            </div>
           </div>
         </div>
       </ng-template>
 
         <ng-template #editComment>
+          <div class="adminModal">
             <div class="panel-body">
             <div class="modal-header" style="margin-bottom:15px">
                 <h3 class="modal-title">
@@ -210,9 +213,11 @@
                 </h3>
             </div>
             </div>
+          </div>
         </ng-template>
 
       <ng-template #deleteitem>
+        <div class="adminModalSmall">
         <div class="modal-header deleteitemHead">
           <h3 class="modal-title">
             {{delcomStatusMsg}}
@@ -227,6 +232,7 @@
           </button>
         </div>
           <div class="modal-body"></div>
+        </div>
       </ng-template>
 
 

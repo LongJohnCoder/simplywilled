@@ -86,36 +86,40 @@
 
 
         <ng-template #viewBlogCategory>
-            <div class="panel-body">
-                <div class="modal-header" style="margin-bottom:15px">
-                    <h3 class="modal-title">
-                        View Blog Category
-                        <span class="badge badge-success"> Active </span>
-                    </h3>
-                    <button type="button" class="close" (click)="modalRef.hide()">×</button>
-                </div>
-                <div class="modal-body">
-                    <h4>Title:</h4>
-                    <p>{{blogCategoryData.name}}</p>
+            <div class="adminModal">
+                <div class="panel-body">
+                    <div class="modal-header" style="margin-bottom:15px">
+                        <h3 class="modal-title">
+                            View Blog Category
+                            <span class="badge badge-success"> Active </span>
+                        </h3>
+                        <button type="button" class="close" (click)="modalRef.hide()">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Title:</h4>
+                        <p>{{blogCategoryData.name}}</p>
+                    </div>
                 </div>
             </div>
         </ng-template>
 
         <ng-template #deleteBlogCategory>
-            <div class="modal-header deleteBlogHead">
-                <h3 class="modal-title">
-                    {{delBlogStatusMsg}}
-                </h3>
-            </div>
-            <div class="modal-body deleteBlogFoot"
-                 [ngClass]="[delBlogStatus ? 'hide' : 'show']"
-            >
-                <button type="button" class="btn btn-warning" (click)="onCancel()">
-                    Cancel
-                </button>
-                <button type="button" class="btn btn-danger" (click)="onBlogDel()">
-                    Yes, Delete It!
-                </button>
+            <div class="adminModalSmall">
+                <div class="modal-header deleteBlogHead">
+                    <h3 class="modal-title">
+                        {{delBlogStatusMsg}}
+                    </h3>
+                </div>
+                <div class="modal-body deleteBlogFoot"
+                    [ngClass]="[delBlogStatus ? 'hide' : 'show']"
+                >
+                    <button type="button" class="btn btn-warning" (click)="onCancel()">
+                        Cancel
+                    </button>
+                    <button type="button" class="btn btn-danger" (click)="onBlogDel()">
+                        Yes, Delete It!
+                    </button>
+                </div>
             </div>
         </ng-template>
 
