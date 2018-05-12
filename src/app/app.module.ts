@@ -13,7 +13,7 @@ import { NotUserAuthGuard } from './user/user-auth/not-user-auth.guard';
 import { UserAuthService } from './user/user-auth/user-auth.service';
 import { UserAuthGuard } from './user/user-auth/user-auth.guard';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 // import { BlogService } from "./user/blog/blog.service";
 
 
@@ -29,8 +29,8 @@ import { ReactiveFormsModule } from "@angular/forms";
     AngularFontAwesomeModule,
     BsDropdownModule.forRoot(),
     TooltipModule,
-    ModalModule.forRoot(),
-    ReactiveFormsModule
+    ModalModule.forRoot(), FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     AuthGuard,

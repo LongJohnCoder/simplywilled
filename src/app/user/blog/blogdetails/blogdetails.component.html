@@ -27,24 +27,42 @@
         </ul>
           <div class='col-md-12 blogContainer' [innerHTML]="blogDetails.body"> </div>
       </div>
-      <h3 class="comments_text">No Comments</h3>
-      <form>
+      <h3 class="comments_text" *ngIf="blogDetails?.get_comments.length == 0">No Comments</h3>
+      <div *ngIf="blogDetails?.get_comments.length != 0">
+        <div *ngFor="let comment of blogDetails?.get_comments">
+            {{comment.name}}
+            {{comment.email}}
+            {{comment.message}}
+            {{comment.created_at}}
+        </div>
+      </div>
+        <form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+            <input type="hidden" class="form-control" formControlName="blogId" [(ngModel)]="BlogId">
         <div class="from_main2">
-          <h3 class="post_comment_text">POST a COMMENT:</h3>
+          <h3 class="post_comment_text">POST a COMMENT: </h3>
           <ul class="form2_ul">
             <li>
-              <input type="text" placeholder="Your Name">
+                <input type="text" class="form-control" formControlName="name" placeholder="Your name">
+                <div class="form-control-feedback"
+                     *ngIf="name.errors && (name.dirty || name.touched)">
+                    <p *ngIf="name.errors">Name is required</p>
+                </div>
             </li>
             <li>
-              <input type="email" placeholder="Your Email">
+                <input type="text" class="form-control" formControlName="email" placeholder="Your email">
+                <div class="form-control-feedback"
+                     *ngIf="email.errors && (email.dirty || email.touched)">
+                    <p *ngIf="email.errors">The email address must contain at least the @ character</p>
+                </div>
             </li>
             <li>
-              <textarea placeholder="Your Comment"></textarea>
+                <textarea formControlName="message" cols="30" rows="10"  placeholder="Your Comment"></textarea>
             </li>
           </ul>
-          <input type="submit" value="Submit" class="form2_submit">
+            <button type="submit" class="form2_submit" >Submit</button>
         </div>
       </form>
+
     </div>
   </div>
   <div class="about_sec4">

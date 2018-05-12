@@ -34,4 +34,8 @@ export class BlogService {
         return this.httpClient.get(environment.API_URL + 'user/latest-post');
     }
 
+    makeBlogComment(commentData):Observable<any>{
+        return this.httpClient.post(environment.API_URL + 'user/comment',commentData);
+    }
+
 }
