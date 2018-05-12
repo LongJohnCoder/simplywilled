@@ -79,29 +79,29 @@ export class AddBlogComponent implements OnInit {
         createBlogBody.append('blogStatus', this.blogData.status);
         createBlogBody.append('blogFeatured', this.blogFeatured);
         createBlogBody.append('blogMetaKeyword', this.blogData.meta_keywords);
-        createBlogBody.append('blogCategorys', this.blogData.blog_category);
+        if(this.blogData.blog_category.length > -1){
+            createBlogBody.append('blogCategorys', this.blogData.blog_category);
+        }
         createBlogBody.append('blogImage', this.blogImage);
         createBlogBody.append('blogSeoTitle', this.blogData.seo_title);
 
+        console.log(this.blogData.blog_category.length);
         this.dashService.createBlog(createBlogBody).subscribe(
             (response: any) => {
                 if (response.status === 'true') {
                 // console.log(response.status);
                     this.createBlogMessage = response.message;
-                    // let blogModalRef = this;
-                    // setTimeout(() => {
-                    //     blogModalRef.modalRef.hide();
-                    // }, 2000);
-                    // this.router.navigate(['/admin-panel/blogs']);
+                    let blogModalRef = this;
+                    setTimeout(() => {
+                        blogModalRef.modalRef.hide();
+                    }, 2000);
                 } else {
-                    console.log(response.message);
-
                     this.createBlogMessage = response.message;
                 }
-            },(error: any) => {
-                // this.createBlogMessage = error.message;
+                this.router.navigate(['/admin-panel/blogs']);
 
-                console.log(error);
+            },(error: any) => {
+                this.createBlogMessage = error.error.message;
         });
     }
 
@@ -117,7 +117,9 @@ export class AddBlogComponent implements OnInit {
         createBlogBody.append('blogStatus', this.blogData.status);
         createBlogBody.append('blogFeatured', this.blogFeatured);
         createBlogBody.append('blogMetaKeyword', this.blogData.meta_keywords);
-        createBlogBody.append('blogCategorys', this.blogData.blog_category);
+        if(this.blogData.blog_category.length > -1){
+            createBlogBody.append('blogCategorys', this.blogData.blog_category);
+        }
         createBlogBody.append('blogImage', this.blogImage);
         createBlogBody.append('blogSeoTitle', this.blogData.seo_title);
         createBlogBody.append('blogId', this.blogData.id.toString());
@@ -125,7 +127,7 @@ export class AddBlogComponent implements OnInit {
 
         this.dashService.editBlog(createBlogBody).subscribe((response: any) => {
             if (response.status = 'true') {
-                // console.log(response.status);
+                console.log(response.status);
                 this.createBlogMessage = response.message;
                 let blogModalRef = this;
                 setTimeout(() => {

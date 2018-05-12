@@ -75,10 +75,10 @@
                                            <!--(ngModelChange)="selectedValue(category.id, $event)"> {{category.name}}-->
                                 <!--</label>-->
                             <!--</div>-->
-                            <select multiple class="form-control" name="blogCategorys" [(ngModel)]="blogData.blog_category" #blogCategorys="ngModel" required>
+                            <select multiple class="form-control" name="blogCategorys" [(ngModel)]="blogData.blog_category" #blogCategorys="ngModel">
                                 <option  *ngFor="let category of categoryData" [ngValue]="category.id">{{category.name}}</option>
                             </select>
-                            <span *ngIf="blogCategorys.invalid && blogCategorys.touched" style="color:red;"> Select blog categories ! </span>
+                            <!--<span *ngIf="blogCategorys.invalid && blogCategorys.touched" style="color:red;"> Select blog categories ! </span>-->
 
                         </div>
                     </div>
