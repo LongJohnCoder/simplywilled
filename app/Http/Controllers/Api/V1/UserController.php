@@ -403,6 +403,7 @@ class UserController extends Controller
             'user_id'           =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
             'totalChildren'     =>  'required|numeric|integer|min:0',
             'deceasedChildren'  =>  'required|string|in:Yes,No',
+            'deceasedChildrenNames'  =>  'required_if:deceasedChildren,Yes|string',
             
         ]);
 
@@ -440,6 +441,8 @@ class UserController extends Controller
                   'data' => []
               ], 400);
           }
+        } else {
+            Children::where('user_id',$userId)->delete();
         }
 
         // foreach($childrenInfoArray as $key => $cInfo) {

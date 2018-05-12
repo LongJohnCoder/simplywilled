@@ -663,7 +663,7 @@ class BlogController extends Controller
                return response()->json([
                    'status'   => true,
                    'message'  => 'Message saved',
-                   'data'     => ['message' => $comment]
+                   'data'     => ['blog' => $comment]
                ], 200);
             } else {
                return response()->json([
