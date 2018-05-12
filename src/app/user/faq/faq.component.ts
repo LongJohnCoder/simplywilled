@@ -26,6 +26,7 @@ export class FaqComponent implements OnInit {
 
     ngOnInit() {
         this.searchFaqQstn = this._route.snapshot.queryParamMap['params'].query;
+        console.log(this.searchFaqQstn);
         this.getFaqCategories();
     }
 
@@ -50,28 +51,28 @@ export class FaqComponent implements OnInit {
     //so we can loop over the questions in angular
     onSubmit( formFaqQa: NgForm ) {
         console.log('submiting form ',formFaqQa.value.search);
+        this.searchFaqQstn = formFaqQa.value.search.split(' ').join('+');
         this.router.navigate(['/faq'], {
             queryParams: {
-              query:formFaqQa.value.search
+              query : this.searchFaqQstn
             }
         });
-        this.faqService.getFaqCategories( formFaqQa.value.search )
+        this.faqService.getFaqCategories( this.searchFaqQstn )
         .subscribe(
             ( response: any ) => {
-            if(response.status){
-                this.searchFaqQstn  = formFaqQa.value.search;
-                this.faqData        = response.data;
-                this.faqDetails     = this.getQuestions(this.faqData,0);
-                this.takeMeThere();
-            } else {
-                console.log('error : some err');
-            }
+                if(response.status){
+                    this.faqData        = response.data;
+                    this.faqDetails     = this.getQuestions(this.faqData,0);
+                    this.takeMeThere();
+                } else {
+                    console.log('error : some err');
+                }
             },
             ( error: HttpErrorResponse ) => {
-            console.log(error);
-            setTimeout( () => {
-                //this.responseReceived = false;
-            }, 5000);
+                console.log(error);
+                setTimeout( () => {
+                    //this.responseReceived = false;
+                }, 5000);
             },
             () => {
             //formFaqQa.reset();
@@ -98,7 +99,7 @@ export class FaqComponent implements OnInit {
     getQuestions(faqEachData : any[], count : number) : any {
         this.counter        = count;
         this.innerCounter   = null;
-        this.faqDetails     = faqEachData[count]['faq'] !== undefined ? faqEachData[count]['faq'] : [];
+        this.faqDetails     = faqEachData[count] !== undefined && faqEachData[count]['faq'] !== undefined ? faqEachData[count]['faq'] : [];
         return this.faqDetails;
     }
 
