@@ -15,22 +15,23 @@ class MakeDefaultCategory extends Seeder
      */
     public function run()
     {
-		$data = [
+
+		Categories::insert([
+			'id' => '1',
 			'name' => 'Uncategorized',
 			'slug' => 'uncategorized',
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 			'deleted_at' => null
-		];
+		]);
 
-		Categories::updateOrCreate(
-			['id' => '1'],
-			$data
-		);
-
-		FaqCategories::updateOrCreate(
-			['id' => '1'],
-			$data
-		);
+		FaqCategories::updateOrCreate([
+            'id' => '1',
+            'name' => 'Uncategorized',
+            'slug' => 'uncategorized',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'deleted_at' => null
+        ]);
     }
 }
