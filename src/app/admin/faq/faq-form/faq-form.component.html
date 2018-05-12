@@ -38,6 +38,19 @@
           </div>
         </div>
         <div class="col-md-4">
+          <div class="panel panel-bordered panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"> Status</h3>
+            </div>
+            <div class="panel-body">
+              <select class="form-control" name="status" [(ngModel)]="faqData.status" #status="ngModel" required>
+                <option  value="0">Hidden</option>
+                <option  value="1">Publish</option>
+              </select>
+              <span *ngIf="status.invalid && status.touched" style="color:red;"> Select status ! </span>
+
+            </div>
+          </div>
           <div class="panel panel-bordered panel-success">
             <div class="panel-heading">
               <h3 class="panel-title"> Category</h3>

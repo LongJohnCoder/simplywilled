@@ -62,7 +62,7 @@ export class FaqFormComponent implements OnInit {
         createFaq.append('faqId', String(this.faqData.id));
         createFaq.append('faqQuestion', this.faqData.question);
         createFaq.append('faqAnswer', this.faqData.answer);
-        createFaq.append('faqStatus', '1');
+        createFaq.append('faqStatus', this.faqData.status);
         for (let i = 0; i < this.faqData.faq_category.length; i++) {
             createFaq.append('faqCategorys[]', this.faqData.faq_category[i]);
         }
@@ -83,7 +83,7 @@ export class FaqFormComponent implements OnInit {
         const createFaq = new FormData();
         createFaq.append('faqQuestion', this.faqData.question);
         createFaq.append('faqAnswer', this.faqData.answer);
-        createFaq.append('faqStatus', '1');
+        createFaq.append('faqStatus', this.faqData.status);
         for (let i = 0; i < this.faqData.faq_category.length; i++) {
             createFaq.append('faqCategorys[]', this.faqData.faq_category[i]);
         }
