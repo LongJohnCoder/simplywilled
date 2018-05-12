@@ -28,12 +28,24 @@
           <div class='col-md-12 blogContainer' [innerHTML]="blogDetails.body"> </div>
       </div>
       <h3 class="comments_text" *ngIf="blogDetails?.get_comments.length == 0">No Comments</h3>
-      <div *ngIf="blogDetails?.get_comments.length != 0">
-        <div *ngFor="let comment of blogDetails?.get_comments">
-            {{comment.name}}
-            {{comment.email}}
-            {{comment.message}}
-            {{comment.created_at}}
+      <div *ngIf="blogDetails?.get_comments.length != 0" class="blogCommentSec">
+        <h2>Comments</h2>
+        <div class="commentArea">
+            <div class="commentRow" *ngFor="let comment of blogDetails?.get_comments">
+              <div class="commentImg">
+                <img src="../../../../assets/images/commentImg.png" alt="">
+              </div>
+              <div class="commentMain">
+                <div class="commentHead">
+                  <span class="commentUBy">{{comment.name}} / </span>
+                  <span class="commentDate">{{comment.created_at}}</span>
+                </div>
+                <div class="commentEmail">{{comment.email}}</div>
+                <div class="commentBody">
+                  <p>{{comment.message}}</p>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
         <form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()">
