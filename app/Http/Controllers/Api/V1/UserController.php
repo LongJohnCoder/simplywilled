@@ -427,9 +427,9 @@ class UserController extends Controller
         //error based on foreign key validation
 
         if($totalChildren > 0) {
-          $data = ['data' => $request->childrenInfo];
+          $data = ['data' => $childrenInfoArray];
           $validator = Validator::make($data, [
-              'data.*.user_id'   =>  'required|exists:users,id,deleted_at,NULL',
+              'data.*.user_id'   =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
               'data.*.fullname'  =>  'required|string|max:255',
               'data.*.gender'    =>  'required|string|in:M,F',
               'data.*.dob'       =>  'required|date_format:"Y-m-d"'
@@ -441,19 +441,9 @@ class UserController extends Controller
                   'data' => []
               ], 400);
           }
-        } else {
-            Children::where('user_id',$userId)->delete();
         }
 
-        // foreach($childrenInfoArray as $key => $cInfo) {
-        //   if(!isset($usersArray[$cInfo['userId']])) {
-        //     return response()->json([
-        //         'status'  => false,
-        //         'message' => 'User id '.$cInfo['user_id'].' does not exists',
-        //         'data'    => []
-        //     ], 400);
-        //   }
-        // }
+        
 
         //dd($usersArray);
 
@@ -461,11 +451,11 @@ class UserController extends Controller
         $checkForExistUser = TellUsAboutYou::where('user_id', $userId)->first();
         if ($checkForExistUser) {
 
-            if ($totalChildren && $totalChildren == 0) {
-                // update children
-                $checkForExistUser->children = $totalChildren;
-                $checkForExistUser->save();
-            }
+            // if ($totalChildren && $totalChildren == 0) {
+            //     // update children
+            //     $checkForExistUser->children = $totalChildren;
+            //     $checkForExistUser->save();
+            // }
             if ($totalChildren && $totalChildren > 0) {
 
                 // create entry in children table
@@ -475,53 +465,34 @@ class UserController extends Controller
                 $checkForExistchildren = Children::where('user_id', $userId)->get();
 
                 if (count($checkForExistchildren) > 0) {
+                    Children::where('user_id', $userId)->delete();
+                } 
 
-                    if ($childrenInfoArray) {
-
-                        //delete the previous list and create a new list of children
-                        $deleteExistchildren = Children::where('user_id', $userId)->delete();
-                        foreach ($childrenInfoArray as $key => $value) {
-                            $createChildren = new Children;
-                            if(isset($usersArray[$value['user_id']])) {
-                              $createChildren->user_id = $value['user_id'];
-                              $createChildren->fullname = $value['fullname'];
-                              $createChildren->dob = $value['dob'];
-                              $createChildren->gender = $value['gender'] == "M" ? "M" : "F";
-                              $createChildren->save();
-                            }
+                //create a new list of children
+                if ($childrenInfoArray) {
+                    foreach ($childrenInfoArray as $key => $value) {
+                        $createChildren = new Children;
+                        if(isset($usersArray[$value['user_id']])) {
+                          $createChildren->user_id = $value['user_id'];
+                          $createChildren->fullname = $value['fullname'];
+                          $createChildren->dob = $value['dob'];
+                          $createChildren->gender = $value['gender'] == "M" ? "M" : "F";
+                          $createChildren->save();
                         }
-                    } else {
-                        return response()->json([
-                            'status' => false,
-                            'message' => 'Data not found for update this step',
-                            'data' => []
-                        ], 400);
                     }
                 } else {
-
-                    //create a new list of children
-                    if ($childrenInfoArray) {
-
-                        foreach ($childrenInfoArray as $key => $value) {
-                            $createChildren = new Children;
-                            if(isset($usersArray[$value['user_id']])) {
-                              $createChildren->user_id = $value['user_id'];
-                              $createChildren->fullname = $value['fullname'];
-                              $createChildren->dob = $value['dob'];
-                              $createChildren->gender = $value['gender'] == "M" ? "M" : "F";
-                              $createChildren->save();
-                            }
-                        }
-                    } else {
-                        return response()->json([
-                            'status' => false,
-                            'message' => 'Data not found for update this step',
-                            'data' => []
-                        ], 400);
-                    }
+                    // return response()->json([
+                    //     'status' => false,
+                    //     'message' => 'Data not found for update this step',
+                    //     'data' => []
+                    // ], 400);
                 }
+                
 
+            } else {
+                Children::where('user_id', $userId)->delete();
             }
+
             if ($deceasedChildren == 1) {
                 $deceasedChildrenNames = $request->deceasedChildrenNames;
                 $validator = Validator::make($request->all(), [
