@@ -546,8 +546,8 @@ var environment = {
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
     production: false,
-    API_URL: 'http://localhost:8000/api/v1/',
-    base_url: 'http://localhost:8000/',
+    API_URL: 'http://18.188.1.146/api/v1/',
+    base_url: 'http://18.188.1.146/',
 };
 
 
