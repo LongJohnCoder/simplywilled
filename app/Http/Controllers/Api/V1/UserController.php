@@ -840,7 +840,7 @@ class UserController extends Controller
         $checkForExistUser = TellUsAboutYou::where('user_id', $guardian['user_id'])->first();
 
         if ($checkForExistUser) {
-          $checkForExistUser->guardian_minor_children = $isGuardianMinorChildren;
+          $checkForExistUser->guardian_minor_children = '1';
           $checkForExistUser->save();
           GuardianInfo::updateOrCreate(['user_id'=>$guardian['user_id'] , 'is_backup' => $guardian['is_backup']],$guardian);
           //Sending an email if email notification is set
@@ -957,6 +957,15 @@ class UserController extends Controller
             } else {
                 GuardianInfo::where('user_id',$userId)->where('is_backup','1')->delete();
             }
+
+            if(GuardianInfo::where('user_id',$userId)->first() == null) {
+                $tuau = TellUsAboutYou::where('user_id',$userId)->first();
+                if($tuau) {
+                    $tuau->guardian_minor_children = '0';
+                    $tuau->save();
+                }
+            }
+
             $response = isset($response['response']) ? $response['response'] : self::generateGuardianInfoResponse($userId);
             return $response;
         } catch (\Exception $e) {

@@ -482,9 +482,9 @@ class UserManagementController extends Controller
       $backupGuardianInfo = GuardianInfo::where('user_id',$user->id)->where('is_backup','1')->get();
       $guardianInfo       = GuardianInfo::where('user_id',$user->id)->where('is_backup','!=','1')->get();
       $guardianInfoArray  = [
-        'isGuardianMinorChildren' =>  $tellUsAboutYouUser != null && $tellUsAboutYouUser->guardian_minor_children == '1' ? 'Yes' : 'No',
+        'isGuardianMinorChildren' =>  $tellUsAboutYouUser != null && $tellUsAboutYouUser->guardian_minor_children == 1 ? 'Yes' : 'No',
         'guardian'                =>  $guardianInfo == null ? null : $guardianInfo,
-        'isBackUpGuardian'         =>  $backupGuardianInfo->count() == 0 ? 'No' : 'Yes',
+        'isBackUpGuardian'        =>  $backupGuardianInfo->count() == 0 ? 'No' : 'Yes',
         'backupGuardian'          =>  $backupGuardianInfo
       ];
       return [
