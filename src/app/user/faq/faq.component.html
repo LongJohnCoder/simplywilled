@@ -39,46 +39,32 @@
                     </div>
                 </div>
 
-                <!-- <div class="accordion accordion-mobile">
+                <div class="accordion accordion-mobile">
                     <div class="sidebar-left">
                         <h2>Topic</h2>
                         <ul>
-                            
-                            <li>General</li>
-                            <li>Pricing</li>
-                            <li class="active">
-                                <span>Wills & Trust</span>
-                                <div class="open-accordion">
-                                    <div class="each-statement">
-                                        <div class="statement">
-                                            <span class="plus"><img src="../../../../assets/images/plus.png"></span><span class="minus"><img src="../../../../assets/images/minus.png"></span>
-                                            <p>What4 is the difference between a “Last Will and Testament” and a “Living Revocable Trust”</p>
-                                        </div>
-                                        <p>Here at SimplyWilled.com we believe everyone should have their Here at SimplyWilled.com we believe everyone should have their Here at SimplyWilled.com we believe everyone should have their Here at SimplyWilled.com we believe everyone should have their Here at SimplyWilled.com we believe everyone should have their Here at SimplyWilled.com we believe everyone should have their </p>
+                            <li *ngFor="let faq of faqData; let i = index" 
+                                (click)="getQuestions(faqData,i)" 
+                                [ngClass] = "{active: counter == i}">
+                                    <span>{{ faq.name }}</span>
+                                    <div class="open-accordion">
+                                        <div (click)="showOrHideAnswers(eachFaq,j)" class="each-statement"  *ngFor="let eachFaq of faqDetails; let j = index" [ngClass] = "{active: innerCounter == j}">
+                                            <div class="statement">
+                                                <span class="plus">
+                                                    <img src="../../../../assets/images/plus.png">
+                                                </span>
+                                                <span class="minus">
+                                                    <img src="../../../../assets/images/minus.png">
+                                                </span>
+                                                <p>{{eachFaq.question}}</p>
+                                            </div>
+                                            <p>{{eachFaq.answer}}</p>
+                                        </div>    
                                     </div>
-                                    <div class="each-statement">
-                                        <div class="statement">
-                                            <span class="plus"><img src="../../../../assets/images/plus.png"></span><span class="minus"><img src="../../../../assets/images/minus.png"></span>
-                                            7:32    <p>What5 is the difference between a “Last Will and Testament” and a “Living Revocable Trust”</p>
-                                        </div>
-                                        <p>Here at SimplyWilled.com we believe everyone should have their Here at SimplyWilled.com we believe everyone should have their Here at SimplyWilled.com we believe everyone should have their Here at SimplyWilled.com we believe everyone should have their Here at SimplyWilled.com we believe everyone should have their Here at SimplyWilled.com we believe everyone should have their </p>
-                                    </div>
-                                    <div class="each-statement active">
-                                        <div class="statement">
-                                            <span class="plus"><img src="../../../../assets/images/plus.png"></span><span class="minus"><img src="../../../../assets/images/minus.png"></span>
-                                            <p>What6 is the difference between a “Last Will and Testament” and a “Living Revocable Trust”</p>
-                                        </div>
-                                        <p>Here at SimplyWilled.com we believe everyone should have their Here at SimplyWilled.com we believe everyone should have their Here at SimplyWilled.com we believe everyone should have their Here at SimplyWilled.com we believe everyone should have their Here at SimplyWilled.com we believe everyone should have their Here at SimplyWilled.com we believe everyone should have their </p>
-                                    </div>
-                                </div>
                             </li>
-                            <li>Protect Your Family</li>
-                            <li>Provide for Your Loved Ones</li>
-                            <li>Make Final Arrangements</li>
-                            <li>Plan for a Medical Emergency</li>
                         </ul>
                     </div>
-                </div> -->
+                </div>
 
             </div>
             <div class="clear"></div>

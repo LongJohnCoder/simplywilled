@@ -108,6 +108,7 @@ export class FaqComponent implements OnInit {
     *   question based on their related states
     * */
     showOrHideAnswers(faqDetailsData : any, index : number) {
+        console.log('faqDetailsData: ',faqDetailsData, 'index : ',index);
         this.innerCounter = this.innerCounter == index ? null : index;
     }
 }
