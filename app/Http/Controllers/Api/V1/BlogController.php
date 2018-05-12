@@ -657,7 +657,7 @@ class BlogController extends Controller
             $comment->message           = $message;
             $comment->status            = config('default_values.BlogComment.defaultBlogCommentStatus');
             $comment->parent_comment_id = $parentCommentId;
-            $comment->user_id           = $userId;
+            //$comment->user_id           = $userId;
 
             if($comment->save()) {
                return response()->json([
