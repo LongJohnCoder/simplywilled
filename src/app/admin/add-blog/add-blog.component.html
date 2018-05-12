@@ -84,7 +84,7 @@
                     </div>
                     <div class="panel panel-bordered panel-info">
                         <div class="panel-heading">
-                            <h3 class="panel-title"> Image</h3>
+                            <h3 class="panel-title"> Image</h3> <h6>(Only .jpg .jpeg .png .gif format supported)</h6>
                         </div>
                         <div class="panel-body">
                             <div class="input-group">
@@ -96,6 +96,7 @@
                                            #blogImage="ngModel"
                                            name="blogImage"
                                            required
+                                           accept="image/x-png,image/gif,image/jpeg"
                                            (change)="handleImageUpload($event)">
                                     <span *ngIf="blogImage.invalid && blogImage.touched" style="color:red;"> Select blog image ! </span>
                                 </div>
@@ -104,6 +105,7 @@
                                            class="form-control input-flat"
                                            id="blogImage"
                                            ngModel
+                                           accept="image/x-png,image/gif,image/jpeg"
                                            #blogImage="ngModel"
                                            name="blogImage"
                                            (change)="handleImageUpload($event)">
@@ -136,13 +138,29 @@
                         </div>
                     </div>
                     <!--<button type="submit" class="btn btn-primary">Create Blog</button>-->
-                    <button *ngIf="editMode" type="button" class="btn btn-primary" (click)="edit()" [disabled]="!createBlog.form.valid"> {{editMode ? 'Edit' : 'Create'}} Blog </button>
-                    <button *ngIf="!editMode" type="button" class="btn btn-primary" (click)="add()" [disabled]="!createBlog.form.valid"> {{editMode ? 'Edit' : 'Create'}} Blog </button>
+                    <button *ngIf="editMode" type="button" class="btn btn-primary" (click)="edit(); openModal(message)" [disabled]="!createBlog.form.valid"> {{editMode ? 'Edit' : 'Create'}} Blog </button>
+                    <button *ngIf="!editMode" type="button" class="btn btn-primary" (click)="add(); openModal(message)" [disabled]="!createBlog.form.valid"> {{editMode ? 'Edit' : 'Create'}} Blog </button>
 
 
                 </div>
             </div>
         </form>
+
+        <ng-template #message>
+            <div class="adminModalSmall">
+                <div class="modal-header deleteBlogHead">
+                    <h3 class="modal-title">
+                        {{createBlogMessage}}
+                    </h3>
+
+                </div>
+                <div class="modal-body deleteBlogFoot">
+                    <button type="button" class="btn btn-warning" (click)="onCancel()">
+                        Cancel
+                    </button>
+                </div>
+                </div>
+        </ng-template>
         <footer><p>All right reserved. Developed By <a href="#">TNI</a></p></footer>
     </div>
     <!-- /. PAGE INNER  -->

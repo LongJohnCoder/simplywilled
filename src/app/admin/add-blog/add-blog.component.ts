@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {Response} from '@angular/http';
 import {Router, ActivatedRoute} from "@angular/router";
-import {DashboardService} from './../dashboard.service'
+import {DashboardService} from "./../dashboard.service";
 import {BlogService} from "./../blog.service";
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
     selector: 'app-add-blog',
@@ -16,11 +17,12 @@ export class AddBlogComponent implements OnInit {
 
     categoryData: any[] = [];
     categoryIdCollection: any[] = [];
-    blogImage: any;
+    blogImage: File;
     blogFeatured: any;
-    createBlogMessage: string;
+    createBlogMessage: string = 'Processing...';
     editMode: boolean = false;
     categories = [];
+    public modalRef: BsModalRef;
 
     blogData = {
         id: 0,
@@ -43,6 +45,8 @@ export class AddBlogComponent implements OnInit {
         private BlogService: BlogService,
         private router: Router,
         private route: ActivatedRoute,
+        private modalService: BsModalService,
+
     ) { }
 
 
@@ -78,18 +82,27 @@ export class AddBlogComponent implements OnInit {
         createBlogBody.append('blogCategorys', this.blogData.blog_category);
         createBlogBody.append('blogImage', this.blogImage);
         createBlogBody.append('blogSeoTitle', this.blogData.seo_title);
-        
+
         this.dashService.createBlog(createBlogBody).subscribe(
             (response: any) => {
-                if (response.status = 'true') {
+                if (response.status === 'true') {
                 // console.log(response.status);
                     this.createBlogMessage = response.message;
-                    this.router.navigate(['/admin-panel/blogs']);
+                    // let blogModalRef = this;
+                    // setTimeout(() => {
+                    //     blogModalRef.modalRef.hide();
+                    // }, 2000);
+                    // this.router.navigate(['/admin-panel/blogs']);
                 } else {
+                    console.log(response.message);
+
                     this.createBlogMessage = response.message;
                 }
-            }
-        )
+            },(error: any) => {
+                // this.createBlogMessage = error.message;
+
+                console.log(error);
+        });
     }
 
     edit() {
@@ -110,17 +123,21 @@ export class AddBlogComponent implements OnInit {
         createBlogBody.append('blogId', this.blogData.id.toString());
 
 
-        this.dashService.editBlog(createBlogBody).subscribe(
-            (response: any) => {
-                if (response.status = 'true') {
-                    // console.log(response.status);
-                    this.createBlogMessage = response.message;
-                    this.router.navigate(['/admin-panel/blogs']);
-                } else {
-                    this.createBlogMessage = response.message;
-                }
+        this.dashService.editBlog(createBlogBody).subscribe((response: any) => {
+            if (response.status = 'true') {
+                // console.log(response.status);
+                this.createBlogMessage = response.message;
+                let blogModalRef = this;
+                setTimeout(() => {
+                    blogModalRef.modalRef.hide();
+                }, 2000);
+                this.router.navigate(['/admin-panel/blogs']);
+            } else {
+                this.createBlogMessage = response.message;
             }
-        )
+        }, (error) => {
+            this.createBlogMessage = error.error.message;
+        });
     }
 
     /**
@@ -143,6 +160,9 @@ export class AddBlogComponent implements OnInit {
      */
     handleImageUpload(event): void {
         this.blogImage = <File>event.target.files[0];
+        console.log(<File>event.target.files);
+        console.log(event.target.width);
+        // console.log(this.blogImage.type);
         // console.log(this.blogImage);
     }
 
@@ -181,7 +201,13 @@ export class AddBlogComponent implements OnInit {
         )
     }
 
+    public openModal(template:  TemplateRef<any>) {
+        this.modalRef = this.modalService.show(template);
+    }
 
+    onCancel() {
+        this.modalRef.hide();
+    }
 
 }
 
