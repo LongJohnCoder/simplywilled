@@ -1,0 +1,29 @@
+.sidebar-left h2{
+    margin-bottom: 0;
+}
+.faqName{
+    display: block;
+}
+.accordion-mobile li{
+    padding: 0 16px;
+}
+.accordion-mobile li .open-accordion{
+    display: none;
+}
+.accordion-mobile li.active .open-accordion{
+    display: block;
+}
+.accordion-mobile .statement{
+    margin-bottom: 0;
+}
+.each-statement.active p{
+    padding: 10px;
+}
+.each-statement .statement p{
+    margin: 16px 0 !important;
+    padding: 10px;
+}
+.accordion-mobile .each-statement .statement p{
+    margin:  0 !important;
+    padding: 0;
+}

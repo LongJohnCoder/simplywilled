@@ -46,7 +46,7 @@
                             <li *ngFor="let faq of faqData; let i = index" 
                                 (click)="getQuestions(faqData,i)" 
                                 [ngClass] = "{active: counter == i}">
-                                    <span>{{ faq.name }}</span>
+                                    <span class="faqName">{{ faq.name }}</span>
                                     <div class="open-accordion">
                                         <div (click)="showOrHideAnswers(eachFaq,j)" class="each-statement"  *ngFor="let eachFaq of faqDetails; let j = index" [ngClass] = "{active: innerCounter == j}">
                                             <div class="statement">
