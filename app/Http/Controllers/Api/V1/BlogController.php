@@ -304,21 +304,13 @@ class BlogController extends Controller
     public function createBlog(Request $request)
     {
         try {
-            $blogCategorys = $request->blogCategorys;
-            if(!isset($blogCategorys[0])) {
-              return response()->json([
-                  'status'  => false,
-                  'message' => 'blogCategories must be an array type field, and contain category ids',
-                  'data'    => []
-              ], 400);
-            }
-            $blogCategorys = explode(',',$blogCategorys);
-
+            $blogCategorys = $request->has('blogCategorys') ? $request->get('blogCategorys') : null;
+            
             $validator = Validator::make($request->all(), [
                 'blogTitle'       =>  'required|string|max:255',
                 'blogBody'        =>  'required',
                 'blogStatus'      =>  'required|numeric|integer|between:0,1',
-                'blogCategorys'   =>  'nullable'
+                'blogCategorys.*' =>  'nullable|exists:categories,id,deleted_at,NULL'
             ]);
             if ($validator->fails()) {
                 return response()->json([
@@ -327,15 +319,8 @@ class BlogController extends Controller
                     'data'    => []
                 ], 400);
             }
-            foreach ($blogCategorys as $key => $value) {
-              if(!Categories::find($value)) {
-                  return response()->json([
-                    'status'  =>  false,
-                    'message' =>  'category id '.$value.' does not exists',
-                    'data'    =>  []
-                  ],400);
-              }
-            }
+            
+            
             $blogAuthorId = Auth::user()->id;
             $blogTitle = $request->blogTitle;
             $blogBody = $request->blogBody;
@@ -375,7 +360,7 @@ class BlogController extends Controller
             $saveBlog->body = $blogBody;
             $saveBlog->image = $imageName;
             $saveBlog->author_id = $blogAuthorId;
-            $saveBlog->slug = str_slug($blogTitle);
+            $saveBlog->slug = str_slug($blogTitle).strtotime("now");
             $saveBlog->meta_description = $blogMetaDesc;
             $saveBlog->meta_keywords = $blogMetaKeyword;
             $saveBlog->status = (string)$blogStatus;
@@ -392,6 +377,12 @@ class BlogController extends Controller
                           $saveBlogcategory->save();
                         }
                     }
+                } else {
+                    //map it to default categories
+                    $saveBlogcategory = new CategoryBlogMapping;
+                    $saveBlogcategory->blog_id = $blogId;
+                    $saveBlogcategory->category_id = 1; // for default
+                    $saveBlogcategory->save();
                 }
                 $getBlogInfo = $saveBlog::where('id', $blogId)->with('blogCategory')->get(); // query to get created blog data
                 return response()->json([
@@ -424,22 +415,15 @@ class BlogController extends Controller
     {
         try {
 
-            $blogCategorys = $request->blogCategorys;
-            if(!isset($blogCategorys[0])) {
-              return response()->json([
-                  'status'  => false,
-                  'message' => 'blogCategories must be an array type field, and contain category ids',
-                  'data'    => []
-              ], 400);
-            }
-            $blogCategorys = explode(',',$blogCategorys);
+            $blogCategorys = $request->has('blogCategorys') ? $request->get('blogCategorys') : null;
             $validator = Validator::make($request->all(), [
                 'blogTitle'       =>  'required',
                 'blogBody'        =>  'required',
                 'blogId'          =>  'required|integer|exists:blogs,id,deleted_at,NULL',
                 'blogStatus'      =>  'required|numeric|integer|between:0,1',
                 'blogFeatured'    =>  'numeric|integer|between:0,1',
-                'blogCategorys'   =>  'nullable'
+                'blogCategorys.*' =>  'nullable|exists:categories,id,deleted_at,NULL',
+                'blogImage'       =>  'dimensions:min_width=900,min_height=600'
             ]);
             if ($validator->fails()) {
                 return response()->json([
@@ -448,15 +432,7 @@ class BlogController extends Controller
                     'data'    => []
                 ], 400);
             }
-            foreach ($blogCategorys as $key => $value) {
-              if(!Categories::find($value)) {
-                  return response()->json([
-                    'status'  =>  false,
-                    'message' =>  'category id '.$value.' does not exists',
-                    'data'    =>  []
-                  ],400);
-              }
-            }
+            
 
             $blogId = $request->blogId;
             $blogId = (int)$blogId;
@@ -477,16 +453,12 @@ class BlogController extends Controller
 
                     // Check file is in param
                     if ($request->hasFile('blogImage')) {
-
                         $extension = $request->blogImage->extension();
-
                         if (in_array($extension, $supportedImageFormat)) {
-
                             // Save new file
                             $imageName = $generateFileName . '.' . $extension;
                             $request->blogImage->move(public_path('/blogImage'), $imageName);
                             $imagePath = asset('blogImage/' . $imageName);
-
                         } else {
                             return response()->json([
                                 'status' => false,
@@ -500,11 +472,10 @@ class BlogController extends Controller
                     }
 
                     //try to update the blog
-                    $getBlogInfo->title = $blogTitle;
-                    $getBlogInfo->body = $blogBody;
-                    $getBlogInfo->image = $imageName;
+                    $getBlogInfo->title     = $blogTitle;
+                    $getBlogInfo->body      = $blogBody;
+                    $getBlogInfo->image     = $imageName;
                     $getBlogInfo->author_id = $blogAuthorId;
-                    // $getBlogInfo->slug = $blogTitle;
                     $getBlogInfo->meta_description = $blogMetaDesc;
                     $getBlogInfo->meta_keywords = $blogMetaKeyword;
                     $getBlogInfo->status = (string)$blogStatus;
@@ -513,24 +484,32 @@ class BlogController extends Controller
 
                     if ($getBlogInfo->save()) {
 
-                        $getBlogCategorys = CategoryBlogMapping::where('blog_id', $blogId)->orderBy('created_at','DESC')->get(); // get blog category's
-                        if ($getBlogCategorys) {
-                            $deleteOldCategoryMap = CategoryBlogMapping::where('blog_id', $blogId)->delete(); // delete old category map and create new category map
-                            foreach ($blogCategorys as $key => $value) {
-                                $saveBlogcategory = new CategoryBlogMapping;
-                                $saveBlogcategory->blog_id = $blogId;
-                                $saveBlogcategory->category_id = $value;
-                                $saveBlogcategory->save();
-                            }
+                        if(!isset($blogCategorys) || count($blogCategorys) == 0) {
+                            $saveBlogcategory = new CategoryBlogMapping;
+                            $saveBlogcategory->blog_id = $blogId;
+                            $saveBlogcategory->category_id = 1;
+                            $saveBlogcategory->save();
                         } else {
-                            foreach ($blogCategorys as $key => $value) {
-                                $saveBlogcategory = new CategoryBlogMapping;
-                                $saveBlogcategory->blog_id = $blogId;
-                                $saveBlogcategory->category_id = $value;
-                                $saveBlogcategory->save();
+                            $getBlogCategorys = CategoryBlogMapping::where('blog_id', $blogId)->orderBy('created_at','DESC')->get(); // get blog category's
+                            if ($getBlogCategorys) {
+                                $deleteOldCategoryMap = CategoryBlogMapping::where('blog_id', $blogId)->delete(); // delete old category map and create new category map
+                                foreach ($blogCategorys as $key => $value) {
+                                    $saveBlogcategory = new CategoryBlogMapping;
+                                    $saveBlogcategory->blog_id = $blogId;
+                                    $saveBlogcategory->category_id = $value;
+                                    $saveBlogcategory->save();
+                                }
+                            } else {
+                                foreach ($blogCategorys as $key => $value) {
+                                    $saveBlogcategory = new CategoryBlogMapping;
+                                    $saveBlogcategory->blog_id = $blogId;
+                                    $saveBlogcategory->category_id = $value;
+                                    $saveBlogcategory->save();
+                                }
                             }
                         }
-                        //$getBlogInfo = $getBlogInfo::where('id', $blogId)->with('blogCategory')->orderBy('created_at','DESC')->get(); // query to get created blog data
+                        
+                        $getBlogInfo = $getBlogInfo::where('id', $blogId)->with('blogCategory')->get(); // query to get created blog data
                         return response()->json([
                             'status' => true,
                             'message' => 'Blog updated successfully',
@@ -628,16 +607,6 @@ class BlogController extends Controller
      public function addBlogComments(Request $request)
      {
          try {
-            //if User assosiated with this session is not found return valid error
-            if(!\Auth::check()) {
-              return response()->json([
-                  'status'   => false,
-                  'message'  => 'User data not found! Please log in again.',
-                  'data'     => []
-              ], 400);
-            }
-            $userId = \Auth::user()->id;
-
             $validator = Validator::make($request->all(), [
                 'blogId'  =>  'required|exists:blogs,id,deleted_at,NULL',
                 'message' =>  'required',
@@ -659,19 +628,6 @@ class BlogController extends Controller
             $name     = $request->name;
             $message  = $request->message;
             $parentCommentId = isset($request->parentCommentId) ? (int)$request->parentCommentId : 0;
-
-            //if another comment has the same parentCommentId then 2 messages cannot have the same parentCommentId
-            // if($parentCommentId != 0) {
-            //   $count = BlogComment::where('parent_comment_id', $request->parentCommentId)->count();
-            //   if($count > 0 && $request->parentCommentId != 0 ) {
-            //     return response()->json([
-            //         'status'   => false,
-            //         'message'  => 'Other message share the same parentCommentId, thus invalid',
-            //         'data'     => []
-            //     ], 400);
-            //   }
-            // }
-            // find the blog to which the comment should be added
 
             //the parent comment id must be an independant comment and have its parent comment id 0
             if($parentCommentId != 0) {

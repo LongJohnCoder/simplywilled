@@ -119,23 +119,11 @@ class FaqController extends Controller
     {
         try {
 
-            $faqCategory = $request->faqCategorys;
-            if(!isset($faqCategory[0])) {
-              return response()->json([
-                  'status'  => false,
-                  'message' => 'faqCategory must be an array type field, and contain category ids',
-                  'data'    => []
-              ], 400);
-            }
-            $faqCategory = explode(',',$faqCategory[0]);
-            $faqQuestion = $request->faqQuestion;
-            $faqAnswer = $request->faqAnswer;
-            $faqStatus = $request->faqStatus; // 1--> Publish 0-->unPublish
             $validator = Validator::make($request->all(), [
                 'faqQuestion' => 'required',
                 'faqAnswer' => 'required',
                 'faqStatus' =>  'required|numeric|between:0,1|integer',
-                'faqCategorys' =>  'nullable|array'
+                'faqCategorys.*' =>  'required|exists:faqCategories,id,deleted_at,NULL'
             ]);
 
             if ($validator->fails()) {
@@ -146,15 +134,10 @@ class FaqController extends Controller
                 ], 400);
             }
 
-            foreach ($faqCategory as $key => $value) {
-              if(!FaqCategories::find($value)) {
-                  return response()->json([
-                    'status'  =>  false,
-                    'message' =>  'faq category id '.$value.' does not exists',
-                    'data'    =>  []
-                  ],400);
-              }
-            }
+            $faqCategory  = $request->has('faqCategorys') ? $request->get('faqCategorys') : null;
+            $faqQuestion  = $request->faqQuestion;
+            $faqAnswer    = $request->faqAnswer;
+            $faqStatus    = $request->faqStatus; // 1--> Publish 0-->unPublish
 
             //try to save faq
             $faq = new Faqs;
@@ -176,7 +159,7 @@ class FaqController extends Controller
                       }
                     }
                 }
-                $getCreatedFaq = Faqs::where('id', $faqId)->first();
+                $getCreatedFaq = Faqs::where('id', $faqId)->with('category')->first();
 
                 return response()->json([
                     'status' => true,
@@ -207,180 +190,68 @@ class FaqController extends Controller
     public function editFaq(Request $request)
     {
         try {
-          $faqId       = $request->faqId;
-          $faqQuestion = $request->faqQuestion;
-          $faqAnswer   = $request->faqAnswer;
-          $faqStatus   = $request->faqStatus;
-          $getFaq      = Faqs::find($faqId);
-          if (!$getFaq) {
-            return response()->json([
-                'status'  => false,
-                'message' => 'Faq is not existed',
-                'data'    => []
-            ], 400);
-          }
-          $faqCategories = $request->faqCategorys;
-          if(empty($faqCategories)) {
-            return response()->json([
-                'status'  => false,
-                'message' => 'faqCategory must be an array type field, and contain category ids',
-                'data'    => []
-            ], 400);
-          } else {
-            $deleteFaqCategory = FaqCategoryMapping::where('faq_id', $faqId)
-                  ->whereNotIn('faq_category_id', $faqCategories)
-                  ->delete();
-            foreach ($faqCategories as $key => $value) {
-              if(!FaqCategories::find($value)) {
-                  return response()->json([
-                    'status'  =>  false,
-                    'message' =>  'faq category id '.$value.' does not exists',
-                    'data'    =>  []
-                  ],400);
-              } else {
-                $faqCategory = FaqCategoryMapping::where('faq_id', $faqId)->where('faq_category_id', $value)->first();
-                if (!$faqCategory) {
-                  $saveFaqmap = new FaqCategoryMapping;
-                  $saveFaqmap->faq_category_id = $value;
-                  $saveFaqmap->faq_id = $faqId;
-                  $saveFaqmap->save();
-                }
-              }
+
+            $validator = Validator::make($request->all(), [
+                'faqId' =>  'required|exists:faqs,id,deleted_at,NULL',
+                'faqQuestion' => 'required',
+                'faqAnswer' => 'required',
+                'faqStatus' =>  'required|numeric|between:0,1|integer',
+                'faqCategorys.*' => 'required|exists:faqCategories,id,deleted_at,NULL'
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => $validator->errors(),
+                    'data' => []
+                ], 400);
             }
-          }
 
-          $getFaq->question = $faqQuestion;
-          $getFaq->answer   = $faqAnswer;
-          $getFaq->status   = $faqStatus;
-          if ($getFaq->save()) {
-            return response()->json([
-                'status' => true,
-                'message' => 'FAQ updated successfully',
-                'data' => []
-            ], 200);
-          }
+            $faqCategory  = $request->has('faqCategorys') ? $request->get('faqCategorys') : null;
+            $faqQuestion  = $request->faqQuestion;
+            $faqAnswer    = $request->faqAnswer;
+            $faqStatus    = $request->faqStatus; // 1--> Publish 0-->unPublish
+            $faqId        = $request->faqId;
+            //try to save faq
 
-          return response()->json([
-              'status' => false,
-              'message' => 'FAQ updated failed',
-              'data' => []
-          ], 400);
+            $faq = Faqs::find($faqId);
+            $faq->question  = $faqQuestion;
+            $faq->answer    = $faqAnswer;
+            $faq->status    = (string)$faqStatus;
 
-          // $validator = Validator::make($request->all(), [
-          //   'faqQuestion'   =>  'required',
-          //   'faqAnswer'     =>  'required',
-          //   'faqId'         =>  'required|exists:faqs,id,deleted_at,NULL',
-          //   // 'faqCategorys'  =>  'array',
-          //   'faqStatus'     =>  'required|numeric|between:0,1|integer'
-          // ]);
-          //
-          // if ($validator->fails()) {
-          //     return response()->json([
-          //         'status' => false,
-          //         'message' => $validator->errors(),
-          //         'data' => []
-          //     ], 400);
-          // }
-          //
-          //   $faqCategory = $request->faqCategorys;
-          //   if(empty($faqCategory)) {
-          //     return response()->json([
-          //         'status'  => false,
-          //         'message' => 'faqCategory must be an array type field, and contain category ids',
-          //         'data'    => []
-          //     ], 400);
-          //   }
-          //   $validator = Validator::make($request->all(), [
-          //     'faqQuestion'   =>  'required',
-          //     'faqAnswer'     =>  'required',
-          //     'faqId'         =>  'required|exists:faqs,id,deleted_at,NULL',
-          //     'faqCategorys'  =>  'array',
-          //     'faqStatus'     =>  'required|numeric|between:0,1|integer'
-          //   ]);
-          //
-          //   if ($validator->fails()) {
-          //       return response()->json([
-          //           'status' => false,
-          //           'message' => $validator->errors(),
-          //           'data' => []
-          //       ], 400);
-          //   }
-          //
-          //   foreach ($faqCategory as $key => $value) {
-          //     if(!FaqCategories::find($value)) {
-          //         return response()->json([
-          //           'status'  =>  false,
-          //           'message' =>  'faq category id '.$value.' does not exists',
-          //           'data'    =>  []
-          //         ],400);
-          //     }
-          //   }
-          //
-          //   $faqQuestion = $request->faqQuestion;
-          //   $faqAnswer = $request->faqAnswer;
-          //   $faqStatus = (string)$request->faqStatus; // 1--> Publish 0-->unPublish
-          //
-          //   $faqId = (int)$request->faqId;
-          //   if ($faqId) {
-          //       $getFaq = Faqs::find($faqId);
-          //       if ($getFaq) {
-          //           $faqQuestion  = $request->faqQuestion;
-          //           $faqAnswer    = $request->faqAnswer;
-          //           $faqStatus    = $request->faqStatus; // 1--> Publish 0-->unPublish
-          //           $faqCategory  = $request->faqCategory;
-          //           //interchanging value with key to hash search for faster results
-          //           $validCategoryId = array_flip(FaqCategories::pluck('id')->toArray());
-          //           // try to update FAQ
-          //           $getFaq->question = $faqQuestion;
-          //           $getFaq->answer   = $faqAnswer;
-          //           $getFaq->status   = $faqStatus;
-          //           if ($getFaq->save()) {
-          //               if ($faqCategory) {
-          //                   // try to update faq category
-          //                   $getFaqCategory = FaqCategoryMapping::where('faq_id', $faqId)->get();
-          //                   if ($getFaqCategory) {
-          //                       $deleteFaqCategory = FaqCategoryMapping::where('faq_id', $faqId)->delete();
-          //                       foreach ($faqCategory as $key => $value) {
-          //                         if(isset($validCategoryId[$value])) {
-          //                           $saveFaqmap = new FaqCategoryMapping;
-          //                           $saveFaqmap->faq_category_id = $value;
-          //                           $saveFaqmap->faq_id = $faqId;
-          //                           $saveFaqmap->save();
-          //                         }
-          //                       }
-          //                   } else {
-          //                       // try to create faq category
-          //                       foreach ($faqCategory as $key => $value) {
-          //                         if(isset($validCategoryId[$value])) {
-          //                           $saveFaqmap = new FaqCategoryMapping;
-          //                           $saveFaqmap->faq_category_id = $value;
-          //                           $saveFaqmap->faq_id = $faqId;
-          //                           $saveFaqmap->save();
-          //                         }
-          //                       }
-          //                   }
-          //               }
-          //               $getCreatedFaq = Faqs::where('id', $faqId)->first();
-          //               return response()->json([
-          //                   'status' => true,
-          //                   'message' => 'FAQ updated successfully',
-          //                   'data' => ['faqDetails' => $getCreatedFaq]
-          //               ], 200);
-          //           }
-          //       } else {
-          //           return response()->json([
-          //               'status' => false,
-          //               'message' => 'FAQ not found',
-          //               'data' => []
-          //           ], 400);
-          //       }
-          //   } else {
-          //       return response()->json([
-          //           'status' => false,
-          //           'message' => 'Something went wrong',
-          //           'data' => []
-          //       ], 400);
-          //   }
+            //interchanging value with key to hash search for faster results
+            $validCategoryId = array_flip(FaqCategories::pluck('id')->toArray());
+            if ($faq->save()) {
+                $faqId = $faq->id;
+
+                //delete previous mapping
+
+
+                if (count($faqCategory) > 0) {
+                  FaqCategoryMapping::where('faq_id',$faqId)->delete();
+                  foreach ($faqCategory as $key => $value) {
+                    if(isset($validCategoryId[$value])) {
+                      $saveFaqmap = new FaqCategoryMapping;
+                      $saveFaqmap->faq_category_id = $value;
+                      $saveFaqmap->faq_id = $faqId;
+                      $saveFaqmap->save();
+                    }
+                  }
+                }
+                $getCreatedFaq = Faqs::where('id', $faqId)->with('category')->get();
+
+                return response()->json([
+                    'status' => true,
+                    'message' => 'FAQ created successfully',
+                    'data' => ['faqDetails' => $getCreatedFaq]
+                ], 200);
+            } else {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'FAQ category not created',
+                    'data' => []
+                ], 400);
+            }
         } catch (Exception $e) {
             return response()->json([
                 'status' => false,
