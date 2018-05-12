@@ -11,9 +11,9 @@ import { NotUserAuthGuard } from './user-auth/not-user-auth.guard';
 import { FullLayoutComponent } from './layout/full-layout/full-layout.component';
 import { UserAuthGuard} from './user-auth/user-auth.guard';
 import { CommonModule } from '@angular/common';
-import { BlogComponent } from "./blog/blog.component";
+import { BlogComponent } from './blog/blog.component';
 import { BlogdetailsComponent } from './blog/blogdetails/blogdetails.component';
-import {BlogCategoryComponent} from "./blog/blog-category/blog-category.component";
+import {BlogCategoryComponent} from './blog/blog-category/blog-category.component';
 
 const routes: Routes = [
    {path: '', component: FullLayoutComponent, data: { title: 'Home' }, children: [

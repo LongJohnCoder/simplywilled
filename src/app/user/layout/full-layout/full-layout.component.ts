@@ -9,22 +9,27 @@ import {Router} from '@angular/router';
 })
 export class FullLayoutComponent implements OnInit {
 
-  isLogIn: boolean = false;
-  menutogle: boolean = false;
+  isLogIn: boolean;
+  menutogle: boolean;
 
   constructor( private authService: UserAuthService, private router: Router) { }
 
   ngOnInit() {
-
     this.isLogIn = this.authService.isAuthenticated();
+    this.isLogIn = false;
+    this.menutogle = false;
   }
+  /**
+   * this function hits when user log out
+   */
   onLogout() {
     localStorage.removeItem('loggedInUser');
+    localStorage.removeItem('_loggedInToken');
     this.router.navigate(['/']);
     this.isLogIn = false ;
   }
 
-  menuOpen(){
+  menuOpen() {
     this.menutogle = !this.menutogle;
   }
 

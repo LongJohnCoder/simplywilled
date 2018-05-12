@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserService } from '../../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-register',
@@ -10,29 +11,35 @@ import { UserService } from '../../user.service';
 })
 export class UserRegisterComponent implements OnInit {
 
-  constructor( private userService: UserService ) { }
+  constructor( private userService: UserService , private router: Router) { }
 
-  showLoader: boolean              = false;
-  responseReceived: boolean        = false;
-  setRequestStatus: boolean      = false;
-  setResponseMsg: string  = '';
+  showLoader: boolean;
+  responseReceived: boolean;
+  setRequestStatus: boolean;
+  setResponseMsg: string;
 
 
   ngOnInit() {
+    this.showLoader =  false;
+    this.responseReceived = false;
+    this.setRequestStatus = false;
+    this.setResponseMsg = '';
   }
 
-  /** Function call on submit of register */
-
+  /**
+   * this function logs user in
+   * @param {NgForm} formRegister
+   */
   onSubmit( formRegister: NgForm ) {
     this.showLoader = true;
     this.userService.register( formRegister.value )
     .subscribe(
       ( response: any ) => {
-
         this.showLoader = false;
-        if(response.status){
-
+        if (response.status) {
           localStorage.setItem( 'loggedInUser', JSON.stringify(response) );
+          localStorage.setItem('_loggedInToken', response.token);
+          this.router.navigate(['/dashboard']);
         } else {
 
           this.setRequestStatus = false;

@@ -12,6 +12,6 @@ import {EqualValidatorDirective} from './edual-validator.directive';
     UserRegisterRoutingModule,
     FormsModule
   ],
-  declarations: [UserRegisterComponent,EqualValidatorDirective]
+  declarations: [UserRegisterComponent, EqualValidatorDirective]
 })
 export class UserRegisterModule { }
