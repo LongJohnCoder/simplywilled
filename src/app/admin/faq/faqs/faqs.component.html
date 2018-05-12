@@ -23,7 +23,7 @@
         </div>
         <div class="panel panel-default blogsTab">
           <div class="panel-heading">
-            Total Faq{{faqCount <= 1 ? '' : 's'}} - {{faqCount}}
+            Total Faq - {{faqCount}}
           </div>
           <div class="panel-body">
             <div class="table-responsive">
@@ -85,10 +85,10 @@
                   <tbody>
                   <tr *ngFor="let item of faqList; let i = index">
                     <td class="sorting_1">{{i + 1}}</td>
-                    <td>{{item.question | slice:0:15}}</td>
-                    <td>{{item.answer | slice:0:20}}</td>
+                    <td>{{item.question}}</td>
+                    <td>{{item.answer | slice:0:30}}</td>
                     <td><span class="badge"
-                              [ngClass]="[item.status == '1' ? 'badge-success' : 'badge-danger']">{{item.status == '1' ? 'Published' : 'Pending'}}</span>
+                              [ngClass]="[item.status == '1' ? 'badge-success' : 'badge-danger']">{{item.status == '1' ? 'Published' : 'Hidden'}}</span>
                     </td>
                     <td>{{item.created_at}}</td>
                     <td class="text-center ">
@@ -121,7 +121,7 @@
           <div class="modal-header" style="margin-bottom:15px">
             <h3 class="modal-title">
               View Faq
-              <span class="badge" [ngClass]="[faqData.status == '1' ? 'badge-success' : 'badge-danger']">{{faqData.status == '1' ? 'Published' : 'Pending'}}</span>
+              <span class="badge" [ngClass]="[faqData.status == '1' ? 'badge-success' : 'badge-danger']">{{faqData.status == '1' ? 'Published' : 'Hidden'}}</span>
             </h3>
             <button type="button" class="close" (click)="modalRef.hide()">×</button>
           </div>

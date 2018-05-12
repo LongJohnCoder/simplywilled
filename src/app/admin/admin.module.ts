@@ -32,6 +32,7 @@ import {FaqsComponent} from './faq/faqs/faqs.component';
 import {FaqService} from './faq/faq.service';
 import { FaqsCategoriesFormComponent } from './faq/faqs-categories-form/faqs-categories-form.component';
 import { FaqFormComponent } from './faq/faq-form/faq-form.component';
+import { DiscountComponent } from './discount/discount.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { FaqFormComponent } from './faq/faq-form/faq-form.component';
       FaqsCategoriesComponent,
       FaqsComponent,
       FaqsCategoriesFormComponent,
-      FaqFormComponent
+      FaqFormComponent,
+      DiscountComponent
   ],
   providers: [
     AuthGuard,

@@ -13,6 +13,7 @@ import { FaqsComponent } from './faq/faqs/faqs.component';
 import {FaqsCategoriesComponent} from './faq/faqs-categories/faqs-categories.component';
 import {FaqsCategoriesFormComponent} from './faq/faqs-categories-form/faqs-categories-form.component';
 import {FaqFormComponent} from './faq/faq-form/faq-form.component';
+import {DiscountComponent} from './discount/discount.component';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -32,6 +33,7 @@ const routes: Routes = [
     { path: 'edit-faq-category/:id', canActivate: [ AuthGuard ], pathMatch: 'full', component: FaqsCategoriesFormComponent},
     { path: 'add-faq', canActivate: [ AuthGuard ], pathMatch: 'full', component: FaqFormComponent},
     { path: 'edit-faq/:id', canActivate: [ AuthGuard ], pathMatch: 'full', component: FaqFormComponent},
+    { path: 'discount-coupon', canActivate: [ AuthGuard ], pathMatch: 'full', component: DiscountComponent},
 
 ];
 
