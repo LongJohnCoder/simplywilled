@@ -81,7 +81,7 @@ class AuthController extends Controller {
                 $user->parent_id = 0;
                 $user->save();
                 $user->assignRole('User');
-                $role = $user->getRole($user->id);
+                $role = $user->getRole->roleInfo->name;
 
                 // Mail::send('emails.registerEmail', [
                 //         'email'         => 'info@simplywilled.com',
@@ -95,12 +95,34 @@ class AuthController extends Controller {
                 //               ->subject('Registration Successful');
                 // });
 
-                $response = [
-                    'status'  => true,
-                    'message' => 'Registration completed Successfully',
-                    'user'    => $user
-                ];
-                $responseCode = 200;
+                if ($token = JWTAuth::attempt($request->only('email', 'password'))) {
+                    $response = [
+                      'status' => true,
+                      'message' => "User signed in successfully.",
+                      'user' => [
+                                  'id' => $user->id, 'name' => $user->name,
+                                  'email' =>  $user->email, 'role' => $role,
+                                  'avatar' => $user->avatar, 'document_path' => $user->document_path,
+                                  'status' => $user->status
+                              ],
+                      'token' => $token,
+                    ];
+                    $responseCode = 200;
+                } else {
+                    JWTAuth::invalidate($token);
+                      $response = [
+                      'status' => false,
+                      'error' => "Invalid email or password.",
+                    ];
+                    $responseCode = 400;
+                }
+
+                // $response = [
+                //     'status'  => true,
+                //     'message' => 'Registration completed Successfully',
+                //     'user'    => $user
+                // ];
+                // $responseCode = 200;
             }
         } catch (HttpBadRequestException $httpBadRequestException) {
             $response = [
