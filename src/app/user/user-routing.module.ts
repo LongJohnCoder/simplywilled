@@ -25,16 +25,16 @@ const routes: Routes = [
         { path: 'blog', pathMatch: 'full', component: BlogComponent },
         { path: 'blogdetails/:slug', pathMatch: 'full', component: BlogdetailsComponent },
         { path: 'category/:slug', pathMatch: 'full', component: BlogCategoryComponent },
-        //{ path: 'faq', canActivate: [ NotUserAuthGuard ], loadChildren: './faq/user-login/user-login.module#UserLoginModule' },
+        // { path: 'faq', canActivate: [ NotUserAuthGuard ], loadChildren: './faq/user-login/user-login.module#UserLoginModule' },
         { path: 'terms-of-use', pathMatch: 'full', component: TermsOfUseComponent },
         { path: 'terms-of-service', pathMatch: 'full', component: TermsOfServiceComponent },
         { path: 'privacy-policy', pathMatch: 'full', component: PrivacyPolicyComponent },
         { path: 'contact-us', pathMatch: 'full', component: ContactUsComponent },
    ]},
-    { 
-      path: 'dashboard', 
-      canActivate: [ UserAuthGuard ], 
-      canActivateChild: [ UserAuthGuard ], 
+    {
+      path: 'dashboard',
+      canActivate: [ UserAuthGuard ],
+      canActivateChild: [ UserAuthGuard ],
       loadChildren: './user-dashboard/user-dashboard.module#UserDashboardModule'
     },
 ];
