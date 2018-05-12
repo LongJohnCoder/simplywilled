@@ -8,15 +8,15 @@
           <label class="radio_custom" [ngClass]="{'active': myForm.value.isGuardianMinorChildren == 'Yes'}">
             <input type="radio"
                    value="Yes"
-                   formControlName="isGuardianMinorChildren" >
-            <span class="human_status">Yes</span>
+                   formControlName="isGuardianMinorChildren" (change)="addRemoveValidation()">
+            <span class="human_status" >Yes</span>
           </label>
         </li>
         <li>
           <label class="radio_custom" [ngClass]="{'active': myForm.value.isGuardianMinorChildren == 'No'}">
             <input type="radio"
                    value="No"
-                   formControlName="isGuardianMinorChildren">
+                   formControlName="isGuardianMinorChildren" (change)="addRemoveValidation()">
             <span class="human_status" > No</span>
           </label>
         </li>
@@ -30,7 +30,13 @@
           <div [formGroupName]="i">
             <div class="form-group ">
               <label>Full Legal Name: </label>
-              <input type="text" value="" class="form-control" formControlName="fullname">
+              <input type="text" value="" class="form-control" formControlName="fullname" >
+              <span
+                      *ngIf="!myForm.get('guardian.0.fullname').valid && myForm.get('guardian.0.fullname').touched"
+                      class="help-block">
+              <span *ngIf="myForm.get('guardian.0.fullname').errors['required']" style="color: red">This field is required!</span>
+
+            </span>
             </div>
             <div class="form-group ">
               <label>Their Relationship To You: </label>
@@ -50,24 +56,58 @@
                 <option value="Friend">Friend</option>
                 <option value="Other">Other</option>
               </select>
+              <span
+                      *ngIf="!myForm.get('guardian.0.relationship_with').valid && myForm.get('guardian.0.relationship_with').touched"
+                      class="help-block">
+               <span *ngIf="myForm.get('guardian.0.relationship_with').errors['required']" style="color: red">This field is required!</span>
+
+             </span>
             </div>
             <div class="form-group">
               <label>Their Address: </label>
               <input type="text" class="form-control"  placeholder="Address Line 1" formControlName="address">
+              <span
+                      *ngIf="!myForm.get('guardian.0.address').valid && myForm.get('guardian.0.address').touched"
+                      class="help-block">
+                    <span *ngIf="myForm.get('guardian.0.address').errors['required']" style="color: red">This field is required!</span>
+
+              </span>
               <div class="row">
                 <div class="col-md-6">
                   <input type="text" class="form-control"  placeholder="City" formControlName="city">
+                  <span
+                          *ngIf="!myForm.get('guardian.0.city').valid && myForm.get('guardian.0.city').touched"
+                          class="help-block">
+                    <span *ngIf="myForm.get('guardian.0.city').errors['required']" style="color: red">This field is required!</span>
+
+                  </span>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" class="form-control"  placeholder="State" formControlName="state">
+                  <select class="form-control" formControlName="state">
+                    <option value="">States</option>
+                    <option *ngFor="let state of states" [value]="state">{{state}}</option>
+                  </select>
+                  <span
+                          *ngIf="!myForm.get('guardian.0.state').valid && myForm.get('guardian.0.state').touched"
+                          class="help-block">
+                    <span *ngIf="myForm.get('guardian.0.state').errors['required']" style="color: red">This field is required!</span>
+
+                  </span>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <input type="text" class="form-control"  placeholder="Zip Code" formControlName="zip">
+                  <span
+                          *ngIf="!myForm.get('guardian.0.zip').valid && myForm.get('guardian.0.zip').touched"
+                          class="help-block">
+                    <span *ngIf="myForm.get('guardian.0.zip').errors['required']" style="color: red">Required!</span>
+                    <span *ngIf="myForm.get('guardian.0.zip').errors['pattern']" style="color: red">Invalid!</span>
+
+                  </span>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" class="form-control"  placeholder="Country" formControlName="country">
+                  <input type="text" class="form-control" placeholder="Country" formControlName="country" [value]="'United States'" disabled="true">
                 </div>
               </div>
             </div>
@@ -75,17 +115,23 @@
               <label>Would you like to notify this person by email that you appointed them as guardian for minor children? </label>
               <ul class="radio_ul6">
                 <li>
-                  <label class="radio_custom" [ngClass]="{'active': myForm.value.guardian[i].email_notification == '1'}">
+                  <label class="radio_custom" [ngClass]="{'active': myForm.get('guardian.0.email_notification').value == '1'}">
                     <input type="radio"  value="1" formControlName="email_notification">
                     <span class="human_status">Yes</span>
                   </label>
-                  <div class="email-box valid" *ngIf="myForm.value.guardian[i].email_notification == '1'">
+                  <div class="email-box valid" *ngIf="myForm.get('guardian.0.email_notification').value == '1'">
                     <input type="email" placeholder="Enter Email Address" class="form-control" formControlName="email">
-                    <i class="fa fa-check"></i>
+                    <span
+                            *ngIf="!myForm.get('guardian.0.email').valid && myForm.get('guardian.0.email').touched"
+                            class="help-block">
+                    <span *ngIf="myForm.get('guardian.0.email').errors['email']" style="color: red">Must be an email type!</span>
+
+                    </span>
+                    <i [ngClass]="{'fa fa-check': myForm.get('guardian.0.email').valid}"></i>
                   </div>
                 </li>
                 <li>
-                  <label class="radio_custom" [ngClass]="{'active': myForm.value.guardian[i].email_notification == '0'}">
+                  <label class="radio_custom" [ngClass]="{'active': myForm.get('guardian.0.email_notification').value == '0'}">
                     <input type="radio" value="0" formControlName="email_notification">
                     <span class="human_status"> No</span>
                   </label>
@@ -100,13 +146,13 @@
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [ngClass]="{'active': myForm.value.isBackUpGuardian == 'Yes'}">
-              <input type="radio"  value="Yes" formControlName="isBackUpGuardian">
+              <input type="radio"  value="Yes" formControlName="isBackUpGuardian" (change)="addRemoveValidation()">
               <span class="human_status">Yes</span>
             </label>
           </li>
           <li>
             <label class="radio_custom" [ngClass]="{'active': myForm.value.isBackUpGuardian == 'No'}">
-              <input type="radio" value="No" formControlName="isBackUpGuardian">
+              <input type="radio" value="No" formControlName="isBackUpGuardian" (change)="addRemoveValidation()">
               <span class="human_status"> No</span>
             </label>
           </li>
@@ -119,7 +165,13 @@
           <div *ngFor="let item of myForm.controls.backUpGuardian.controls; let j=index" [formGroupName]="j">
             <div class="form-group ">
               <label>Full Legal Name: </label>
-              <input type="text" value="" class="form-control" formControlName="fullname">
+              <input type="text" value="" class="form-control" formControlName="fullname" >
+              <span
+                      *ngIf="!myForm.get('backUpGuardian.0.fullname').valid && myForm.get('backUpGuardian.0.fullname').touched"
+                      class="help-block">
+              <span *ngIf="myForm.get('backUpGuardian.0.fullname').errors['required']" style="color: red">This field is required!</span>
+
+            </span>
             </div>
             <div class="form-group ">
               <label>Their Relationship To You: </label>
@@ -139,24 +191,58 @@
                 <option value="Friend">Friend</option>
                 <option value="Other">Other</option>
               </select>
+              <span
+                      *ngIf="!myForm.get('backUpGuardian.0.relationship_with').valid && myForm.get('backUpGuardian.0.relationship_with').touched"
+                      class="help-block">
+               <span *ngIf="myForm.get('backUpGuardian.0.relationship_with').errors['required']" style="color: red">This field is required!</span>
+
+             </span>
             </div>
             <div class="form-group">
               <label>Their Address: </label>
               <input type="text" class="form-control"  placeholder="Address Line 1" formControlName="address">
+              <span
+                      *ngIf="!myForm.get('backUpGuardian.0.address').valid && myForm.get('backUpGuardian.0.address').touched"
+                      class="help-block">
+                    <span *ngIf="myForm.get('backUpGuardian.0.address').errors['required']" style="color: red">This field is required!</span>
+
+              </span>
               <div class="row">
                 <div class="col-md-6">
                   <input type="text" class="form-control"  placeholder="City" formControlName="city">
+                  <span
+                          *ngIf="!myForm.get('backUpGuardian.0.city').valid && myForm.get('backUpGuardian.0.city').touched"
+                          class="help-block">
+                    <span *ngIf="myForm.get('backUpGuardian.0.city').errors['required']" style="color: red">This field is required!</span>
+
+                  </span>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" class="form-control"  placeholder="State" formControlName="state">
+                  <select class="form-control" formControlName="state">
+                    <option value="">States</option>
+                    <option *ngFor="let state of states" [value]="state">{{state}}</option>
+                  </select>
+                  <span
+                          *ngIf="!myForm.get('backUpGuardian.0.state').valid && myForm.get('backUpGuardian.0.state').touched"
+                          class="help-block">
+                    <span *ngIf="myForm.get('backUpGuardian.0.state').errors['required']" style="color: red">This field is required!</span>
+
+                  </span>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <input type="text" class="form-control"  placeholder="Zip Code" formControlName="zip">
+                  <span
+                          *ngIf="!myForm.get('backUpGuardian.0.zip').valid && myForm.get('backUpGuardian.0.zip').touched"
+                          class="help-block">
+                    <span *ngIf="myForm.get('backUpGuardian.0.zip').errors['pattern']" style="color: red">Invalid!</span>
+                    <span *ngIf="myForm.get('backUpGuardian.0.zip').errors['required']" style="color: red">Required!</span>
+
+                  </span>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" class="form-control"  placeholder="Country" formControlName="country">
+                  <input type="text" class="form-control" placeholder="Country" formControlName="country" [value]="'United States'" disabled="true">
                 </div>
               </div>
             </div>
@@ -164,17 +250,23 @@
               <label>Would you like to notify this person by email that you appointed them as guardian for minor children? </label>
               <ul class="radio_ul6">
                 <li>
-                  <label class="radio_custom" [ngClass]="{'active': myForm.value.backUpGuardian[j].email_notification == '1'}">
+                  <label class="radio_custom" [ngClass]="{'active': myForm.get('backUpGuardian.0.email_notification').value == '1'}">
                     <input type="radio"  value="1" formControlName="email_notification">
                     <span class="human_status">Yes</span>
                   </label>
-                  <div class="email-box valid" *ngIf="myForm.value.backUpGuardian[j].email_notification == '1'">
+                  <div class="email-box valid" *ngIf="myForm.get('backUpGuardian.0.email_notification').value == '1'">
                     <input type="email" placeholder="Enter Email Address" class="form-control" formControlName="email">
-                    <i class="fa fa-check"></i>
+                    <span
+                            *ngIf="!myForm.get('backUpGuardian.0.email').valid && myForm.get('backUpGuardian.0.email').touched"
+                            class="help-block">
+                    <span *ngIf="myForm.get('backUpGuardian.0.email').errors['email']" style="color: red">Must be an email type!</span>
+
+                    </span>
+                    <i [ngClass]="{'fa fa-check': myForm.get('backUpGuardian.0.email').valid}"></i>
                   </div>
                 </li>
                 <li>
-                  <label class="radio_custom" [ngClass]="{'active': myForm.value.backUpGuardian[j].email_notification == '0'}">
+                  <label class="radio_custom" [ngClass]="{'active': myForm.get('backUpGuardian.0.email_notification').value == '0'}">
                     <input type="radio" value="0" formControlName="email_notification">
                     <span class="human_status"> No</span>
                   </label>
@@ -185,8 +277,13 @@
         </div>
       </div>
     </div>
+    <div class="form-group" *ngIf="errorMessage">
+      <div class="col-md-12">
+        <span class="alert alert-danger">{{errorMessage}}</span>
+      </div>
+    </div>
     <div class="form-footer">
-      <button class="btn common-button btn-grey pull-left">Go Back</button>
+      <button class="btn common-button btn-grey pull-left" (click)="goBack()">Go Back</button>
       <button class="btn common-button btn-complete" type="submit" [disabled]="!myForm.valid">Continue</button>
     </div>
   </form>

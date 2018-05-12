@@ -11,17 +11,24 @@ import {UserDashboardService} from '../user-dashboard.service';
 })
 export class DashboardComponent implements OnInit {
     loggedInUser: any;
-    userDetails: any = {}
+    userDetails: any = {};
+    step1Data: any = {}
+
     constructor(
       private userService: UserService,
       private router: Router,
       private userAuth: UserAuthService,
-      private userDashboardService: UserDashboardService
+      private userDashboardService: UserDashboardService,
     ) { }
 
     ngOnInit() {
       this.loggedInUser = this.userAuth.getUser();
       this.getUserDetails();
+      this.userDashboardService.step1Data.subscribe(
+          (data: any) => {
+              this.step1Data = data;
+          }
+      );
     }
 
     onLogOut() {

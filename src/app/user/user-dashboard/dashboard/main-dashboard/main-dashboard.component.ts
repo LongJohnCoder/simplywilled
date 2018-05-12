@@ -25,6 +25,7 @@ export class MainDashboardComponent implements OnInit{
         (response: any) => {
           this.userDetails = response.data;
           this.step1Data = this.userDetails[0];
+          this.userDashboardService.updateUserDetails(response.data);
         },
         (error: any) => {
           console.log(error);

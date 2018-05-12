@@ -19,14 +19,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="row">
-                    <div class="progress_main">
-                        <div class="progres_left">
-                            <span [ngStyle]="{'width': '0%'}"></span>
-                        </div>
-                        <span class="progress_right">0% Complete</span>
-                    </div>
-                </div>
+                <!--<div class="row">-->
+                    <!--<div class="progress_main">-->
+                        <!--<div class="progres_left">-->
+                            <!--<span [ngStyle]="{'width': '0%'}"></span>-->
+                        <!--</div>-->
+                        <!--<span class="progress_right">0% Complete</span>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
         </div>
         <div class="row">
@@ -37,18 +37,18 @@
                             <ul>
                                 <li class="active">
                                     <a>
-                                        <img src="../../../../assets/images/icon-female-green.png" class="img-responsive green-icon">
-                                        <img src="../../../../assets/images/icon-female.png" class="img-responsive white-icon">
-                                        <h1>{{loggedInUser.name}} <br> <span></span></h1>
+                                        <img src="../../../../assets/images/icon-male-green.png" class="img-responsive green-icon">
+                                        <img src="../../../../assets/images/icon-male.png" class="img-responsive white-icon">
+                                        <h1>{{loggedInUser.name ? loggedInUser.name : 'Your'}} <br> <span></span></h1>
                                     </a>
                                 </li>
-                                <!--<li>-->
-                                    <!--<a>-->
-                                        <!--<img src="../../../../assets/images/icon-male-green.png" class="img-responsive green-icon">-->
-                                        <!--<img src="../../../../assets/images/icon-male.png" class="img-responsive white-icon">-->
-                                        <!--<h1>Kurt <br> <span>Polensky</span></h1>-->
-                                    <!--</a>-->
-                                <!--</li>-->
+                                <li *ngIf="step1Data?.data?.spouseInfo?.name">
+                                    <a>
+                                        <img src="../../../../assets/images/icon-male-green.png" class="img-responsive green-icon">
+                                        <img src="../../../../assets/images/icon-male.png" class="img-responsive white-icon">
+                                        <h1>{{step1Data?.data?.spouseInfo?.name}}<br> <span></span></h1>
+                                    </a>
+                                </li>
                                 <li>
                                     <button class="btn common-button btn-dashboard" (click)="userDasboardRoute('/dashboard')">Back to Dashboard</button>
                                 </li>

@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import {UserService} from '../../../user.service';
 import {Router} from '@angular/router';
 import {UserAuthService} from '../../../user-auth/user-auth.service';
+import {UserDashboardService} from '../../user-dashboard.service';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class TellUsAboutYourselfComponent implements OnInit {
   constructor(
       private userService: UserService,
       private router: Router,
-      private authService: UserAuthService
+      private authService: UserAuthService,
+      private dashboardService: UserDashboardService
   ) {
       this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '11', '12'];
 
@@ -34,7 +36,8 @@ export class TellUsAboutYourselfComponent implements OnInit {
     this.user = this.authService.getUser();
     this.userService.getUserDetails(this.user.id).subscribe(
         (response: any) => {
-            if ( response.data[0].data.userInfo ) {
+            this.dashboardService.updateUserDetails(response.data);
+            if ( response.data[0].data) {
                 this.userInfo = response.data[0].data.userInfo;
                 const dobData = this.userInfo.dob.split('-');
                 const partnerDob = this.userInfo.partner_dob.split('-');
@@ -72,12 +75,10 @@ export class TellUsAboutYourselfComponent implements OnInit {
           this.router.navigate(['/dashboard/will/2']);
         },
         (error: any) => {
-          console.log(error);
-          for(let prop in error.error.message){
+          for(let prop in error.error.message) {
             this.errorMessage = error.error.message[prop];
             break;
           };
-          console.log(this.errorMessage);
           setTimeout(() => {
             this.errorMessage = '';
           },3000)

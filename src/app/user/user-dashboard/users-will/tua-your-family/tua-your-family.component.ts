@@ -4,6 +4,7 @@ import { UserService } from '../../../user.service';
 import { UserAuthService } from '../../../user-auth/user-auth.service';
 import * as moment from 'moment';
 import { FormBuilder, FormControl, FormGroup, Validators, FormArray } from "@angular/forms";
+import {UserDashboardService} from '../../user-dashboard.service';
 
 
 @Component({
@@ -25,10 +26,12 @@ export class TuaYourFamilyComponent implements OnInit {
     chidrenForm: FormGroup;
     showTable : boolean =  false;
     editFlag: boolean = false;
+    maxChidren: string = '';
     constructor( private router: Router,
                  private userService: UserService,
                  private authService: UserAuthService,
-                 private fb : FormBuilder) {
+                 private dashboardService: UserDashboardService,
+                 private fb: FormBuilder) {
         this.createForm();
         this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '11', '12'];
         this.user = this.authService.getUser();
@@ -37,7 +40,7 @@ export class TuaYourFamilyComponent implements OnInit {
 
     createForm() {
         this.chidrenForm = this.fb.group({
-            'totalChildren' : ['',Validators.required],
+            'totalChildren' : ['', [Validators.required, Validators.maxLength(20)]],
             'user_id' : '',
             'step' : ['2'],
             'childrenInfo' : this.fb.array([]),
@@ -65,12 +68,13 @@ export class TuaYourFamilyComponent implements OnInit {
         this.chidrenForm.controls['user_id'].setValue(this.user.id);
         this.userService.getUserDetails(this.user.id).subscribe(
             (response: any) => {
+                    this.dashboardService.updateUserDetails(response.data);
                 if ( response.data[1].data ) {
                     this.editFlag = true;
                     this.userInfo = response.data[1].data;
                     this.userInfo.totalChildren = response.data[1].data.totalChildren;
                     this.userInfo.isDesceasedChildren = response.data[1].data.desceasedChildren ;
-                    this.userInfo.deceasedChildreNames = response.data[1].data.deceasedChildreNames;
+                    this.userInfo.deceasedChildreNames = response.data[1].data.deceasedChildrenNames;
                     this.userInfo.childrenInformation = response.data[1].data.childrenInformation;
                     this.setData(this.editFlag,this.userInfo);
                 }
@@ -106,7 +110,12 @@ export class TuaYourFamilyComponent implements OnInit {
         this.columnFormArray = this.chidrenForm.get('childrenInfo') as FormArray;
         this.clearFormArray(this.columnFormArray);
         let numberofChild = event.target.value;
-        if (numberofChild !== '0' && numberofChild !== '') {
+        if (Number(numberofChild) > 20) {
+            this.maxChidren = 'Max'
+            return;
+        }
+        this.maxChidren = '';
+        if (numberofChild !== '0' && numberofChild !== '' ) {
             this.otherChildren = false;
          //   this.columns = [];
             for (let i = 0 ; i < numberofChild; i++) {
@@ -145,20 +154,24 @@ export class TuaYourFamilyComponent implements OnInit {
             let dob = this.chidrenForm.value.childrenInfo[i].spouseYear + '-' + this.chidrenForm.value.childrenInfo[i].spouseMonth + '-' + this.chidrenForm.value.childrenInfo[i].spouseDay;
             this.chidrenForm.value.childrenInfo[i].dob = dob;
         }
+        //console.log(this.chidrenForm.value);
         this.userService.editProfile(this.chidrenForm.value).subscribe(
             (data: any) =>  {
-                this.router.navigate(['/dashboard/will/3']);
+                console.log(data.data);
+                if (!data.data.childrenData.length) {
+                    this.router.navigate(['/dashboard']);
+                } else {
+                    this.router.navigate(['/dashboard/will/3']);
+                }
             },
             (error: any) => {
-                console.log(error);
-                for(let prop in error.error.message){
+                for(let prop in error.error.message) {
                     this.errorMessage = error.error.message[prop];
                     break;
                 };
-                console.log(this.errorMessage);
                 setTimeout(() => {
                     this.errorMessage = '';
-                },3000)
+                },3000);
 
             }
         );

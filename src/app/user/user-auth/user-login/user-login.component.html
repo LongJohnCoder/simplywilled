@@ -57,9 +57,9 @@
                                #email="ngModel">
                         <span class="alert-danger"
                               *ngIf="email.errors && (email.dirty || email.touched)">
-                        <p *ngIf="email.errors?.required">Email is required</p>
-                        <p *ngIf="email.errors?.pattern">Email is not correct!</p>
-                    </span>
+                            <p *ngIf="email.errors?.required">Email is required</p>
+                            <p *ngIf="email.errors?.pattern">Email is not correct!</p>
+                        </span>
 
                         <input type="password" name="password" placeholder="Password" class="email_form"
                                ngModel
