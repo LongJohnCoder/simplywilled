@@ -11,6 +11,7 @@
 @media screen and (max-width:1372px){
     .wrapper{
         max-width:1342px;
+        margin: 0 15px;
     }
     .about_sec4{
 		background-position: right 64% top; 
@@ -576,6 +577,9 @@
     }
     .trending_right_main{
         width:31%;
+    }
+    .trending_left{
+        width: 66%;
     }
     .cat_ul li a{
         font-size:13px;

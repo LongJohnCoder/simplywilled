@@ -82,36 +82,40 @@
         
 
         <ng-template #viewFAQCategory>
-            <div class="panel-body">
-                <div class="modal-header" style="margin-bottom:15px">
-                    <h3 class="modal-title">
-                        View FAQ Category
-                        <!--<span class="badge badge-success"> Active </span>-->
-                    </h3>
-                    <button type="button" class="close" (click)="modalRef.hide()">×</button>
-                </div>
-                <div class="modal-body">
-                    <h4>Title:</h4>
-                    <p>{{faqCategoryData.name}}</p>
+            <div class="adminModal">
+                <div class="panel-body">
+                    <div class="modal-header" style="margin-bottom:15px">
+                        <h3 class="modal-title">
+                            View FAQ Category
+                            <!--<span class="badge badge-success"> Active </span>-->
+                        </h3>
+                        <button type="button" class="close" (click)="modalRef.hide()">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Title:</h4>
+                        <p>{{faqCategoryData.name}}</p>
+                    </div>
                 </div>
             </div>
         </ng-template>
 
         <ng-template #deleteFAQCategory>
-            <div class="modal-header deleteBlogHead">
-                <h3 class="modal-title">
-                    {{delFAQStatusMsg}}
-                </h3>
-            </div>
+            <div class="adminModalSmall">
+                <div class="modal-header deleteBlogHead">
+                    <h3 class="modal-title">
+                        {{delFAQStatusMsg}}
+                    </h3>
+                </div>
 
-            <div class="modal-body deleteBlogFoot">
-                <div *ngIf="!delFAQStatus">
-                    <button type="button" class="btn btn-warning" (click)="onCancel()">
-                        Cancel
-                    </button>
-                    <button type="button" class="btn btn-danger" (click)="onFAQDel()">
-                        Yes, Delete It!
-                    </button>
+                <div class="modal-body deleteBlogFoot">
+                    <div *ngIf="!delFAQStatus">
+                        <button type="button" class="btn btn-warning" (click)="onCancel()">
+                            Cancel
+                        </button>
+                        <button type="button" class="btn btn-danger" (click)="onFAQDel()">
+                            Yes, Delete It!
+                        </button>
+                    </div>
                 </div>
             </div>
         </ng-template>

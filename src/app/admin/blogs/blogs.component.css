@@ -68,4 +68,6 @@ footer{
 footer p {
     margin-bottom: 0;
 }
-
+.row{
+    margin: 0;
+}
