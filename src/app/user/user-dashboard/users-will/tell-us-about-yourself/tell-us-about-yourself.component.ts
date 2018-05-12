@@ -70,6 +70,10 @@ export class TellUsAboutYourselfComponent implements OnInit {
     formData.partner_dob = formData.spouseYear + '-' + formData.spouseMonth + '-' + formData.spouseDay ;
     formData.user_id = this.user.id ;
     formData.step = 1;
+    if ( formData.registered_partner !== 'D') {
+        formData.registered_partner = '0' ;
+        formData.legal_married = '0';
+    }
     this.userService.editProfile(formData).subscribe(
         (data: any) =>  {
           this.router.navigate(['/dashboard/will/2']);
