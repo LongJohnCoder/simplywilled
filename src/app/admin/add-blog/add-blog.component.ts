@@ -72,6 +72,8 @@ export class AddBlogComponent implements OnInit {
         if (this.blogData.featured) {
             this.blogFeatured = 1;
         }
+        console.log(this.blogImage);
+
         const createBlogBody = new FormData();
         createBlogBody.append('blogTitle', this.blogData.title);
         createBlogBody.append('blogBody', this.blogData.body);
@@ -79,8 +81,9 @@ export class AddBlogComponent implements OnInit {
         createBlogBody.append('blogStatus', this.blogData.status);
         createBlogBody.append('blogFeatured', this.blogFeatured);
         createBlogBody.append('blogMetaKeyword', this.blogData.meta_keywords);
-        if(this.blogData.blog_category.length > -1){
-            createBlogBody.append('blogCategorys', this.blogData.blog_category);
+        createBlogBody.append('blogCategorys', this.blogData.blog_category);
+        for (let i=0; i<this.blogData.blog_category.length; i++) {
+            createBlogBody.append('blogCategorys['+i+']', this.blogData.blog_category[i]);
         }
         createBlogBody.append('blogImage', this.blogImage);
         createBlogBody.append('blogSeoTitle', this.blogData.seo_title);
@@ -88,16 +91,16 @@ export class AddBlogComponent implements OnInit {
         console.log(this.blogData.blog_category.length);
         this.dashService.createBlog(createBlogBody).subscribe(
             (response: any) => {
-                if (response.status === 'true') {
+                // if (response.status = 'true') {
                 // console.log(response.status);
                     this.createBlogMessage = response.message;
                     let blogModalRef = this;
                     setTimeout(() => {
                         blogModalRef.modalRef.hide();
                     }, 2000);
-                } else {
-                    this.createBlogMessage = response.message;
-                }
+                // } else {
+                //     this.createBlogMessage = response.message;
+                // }
                 this.router.navigate(['/admin-panel/blogs']);
 
             },(error: any) => {
@@ -106,6 +109,8 @@ export class AddBlogComponent implements OnInit {
     }
 
     edit() {
+        console.log(this.blogImage);
+
         this.blogFeatured = 0;
         if (this.blogData.featured) {
             this.blogFeatured = 1;
@@ -117,8 +122,8 @@ export class AddBlogComponent implements OnInit {
         createBlogBody.append('blogStatus', this.blogData.status);
         createBlogBody.append('blogFeatured', this.blogFeatured);
         createBlogBody.append('blogMetaKeyword', this.blogData.meta_keywords);
-        if(this.blogData.blog_category.length > -1){
-            createBlogBody.append('blogCategorys', this.blogData.blog_category);
+        for (let i=0; i<this.blogData.blog_category.length; i++) {
+            createBlogBody.append('blogCategorys['+i+']', this.blogData.blog_category[i]);
         }
         createBlogBody.append('blogImage', this.blogImage);
         createBlogBody.append('blogSeoTitle', this.blogData.seo_title);
@@ -126,7 +131,7 @@ export class AddBlogComponent implements OnInit {
 
 
         this.dashService.editBlog(createBlogBody).subscribe((response: any) => {
-            if (response.status = 'true') {
+            // if (response.status = 'true') {
                 console.log(response.status);
                 this.createBlogMessage = response.message;
                 let blogModalRef = this;
@@ -134,9 +139,9 @@ export class AddBlogComponent implements OnInit {
                     blogModalRef.modalRef.hide();
                 }, 2000);
                 this.router.navigate(['/admin-panel/blogs']);
-            } else {
-                this.createBlogMessage = response.message;
-            }
+            // } else {
+            //     this.createBlogMessage = response.message;
+            // }
         }, (error) => {
             this.createBlogMessage = error.error.message;
         });
@@ -162,8 +167,8 @@ export class AddBlogComponent implements OnInit {
      */
     handleImageUpload(event): void {
         this.blogImage = <File>event.target.files[0];
-        console.log(<File>event.target.files);
-        console.log(event.target.width);
+        // console.log(<File>event.target.files);
+        // console.log(event.target.width);
         // console.log(this.blogImage.type);
         // console.log(this.blogImage);
     }
