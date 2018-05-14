@@ -15,6 +15,7 @@ import { BlogComponent } from './blog/blog.component';
 import { BlogdetailsComponent } from './blog/blogdetails/blogdetails.component';
 import {BlogCategoryComponent} from './blog/blog-category/blog-category.component';
 
+
 const routes: Routes = [
    {path: '', component: FullLayoutComponent, data: { title: 'Home' }, children: [
         { path: 'sign-in', canActivate: [ NotUserAuthGuard ], loadChildren: './user-auth/user-login/user-login.module#UserLoginModule' },
