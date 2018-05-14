@@ -501,6 +501,14 @@ Route::group(['prefix' => 'v1'], function() {
           'as' => 'api.v1.getBLogDetails.post'
         ]);
 
+        /**
+         * Route for creating a newsletter subscriber
+         */
+        Route::any('create-newsletter-subscriber', [
+            'uses' => 'Api\V1\NewsletterController@createSubscriber',
+            'as' => 'api.v1.createNewsletterSubscriber.post'
+        ]);
+
         //user routes where authentication is needed
         Route::group(['middleware' => ['jwt.auth','user.auth']], function(){
             /**
