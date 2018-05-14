@@ -312,6 +312,7 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__user_user_auth_user_auth_guard__ = __webpack_require__("./src/app/user/user-auth/user-auth.guard.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_ngx_pagination__ = __webpack_require__("./node_modules/ngx-pagination/dist/ngx-pagination.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -335,6 +336,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // import { BlogService } from "./user/blog/blog.service";
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -352,6 +354,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_4_ngx_bootstrap_tooltip__["a" /* TooltipModule */],
                 __WEBPACK_IMPORTED_MODULE_5_ngx_bootstrap_modal__["b" /* ModalModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_15__angular_forms__["FormsModule"],
                 __WEBPACK_IMPORTED_MODULE_15__angular_forms__["ReactiveFormsModule"],
+                __WEBPACK_IMPORTED_MODULE_16_ngx_pagination__["a" /* NgxPaginationModule */],
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_9__admin_auth_auth_guard__["a" /* AuthGuard */],
@@ -529,7 +532,7 @@ var UserAuthService = /** @class */ (function () {
 var environment = {
     production: true,
     API_URL: 'http://18.188.1.146/api/v1/',
-    base_url: 'http://18.188.1.146',
+    base_url: 'http://18.188.1.146/',
 };
 
 

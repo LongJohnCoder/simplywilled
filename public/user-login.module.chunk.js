@@ -74,13 +74,17 @@ var UserLoginComponent = /** @class */ (function () {
     function UserLoginComponent(loginService, router) {
         this.loginService = loginService;
         this.router = router;
+    }
+    UserLoginComponent.prototype.ngOnInit = function () {
         this.showLoader = false;
         this.responseReceived = false;
         this.loginRequestStatus = false;
         this.loginRequestResponseMsg = '';
-    }
-    UserLoginComponent.prototype.ngOnInit = function () { };
-    /** Function call on submit of loginform */
+    };
+    /**
+     * this function logs user in
+     * @param {NgForm} formSignIn
+     */
     UserLoginComponent.prototype.onSubmit = function (formSignIn) {
         var _this = this;
         this.showLoader = true;

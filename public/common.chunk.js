@@ -322,8 +322,8 @@ var UserDashboardService = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environments_environment_prod__ = __webpack_require__("./src/environments/environment.prod.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -342,27 +342,27 @@ var UserService = /** @class */ (function () {
     }
     /** Function call for logging in*/
     UserService.prototype.login = function (body) {
-        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_1__environments_environment_prod__["a" /* environment */].API_URL + 'sign-in', body);
+        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'sign-in', body);
     };
     /** Function call to register */
     UserService.prototype.register = function (body) {
-        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_1__environments_environment_prod__["a" /* environment */].API_URL + 'sign-up', body);
+        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'sign-up', body);
     };
     /** Function call to logout */
     UserService.prototype.logout = function () {
-        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_1__environments_environment_prod__["a" /* environment */].API_URL + 'user/sign-out', {});
+        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'user/sign-out', {});
     };
     /** Function to edit profile */
     UserService.prototype.editProfile = function (body) {
-        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_1__environments_environment_prod__["a" /* environment */].API_URL + 'user/edit-profile', body);
+        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'user/edit-profile', body);
     };
     /** Function to get users details */
     UserService.prototype.getUserDetails = function (userId) {
-        return this.httpClient.get(__WEBPACK_IMPORTED_MODULE_1__environments_environment_prod__["a" /* environment */].API_URL + 'user/get-user-details/' + userId);
+        return this.httpClient.get(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'user/get-user-details/' + userId);
     };
     UserService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["b" /* HttpClient */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */]])
     ], UserService);
     return UserService;
 }());
