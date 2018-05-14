@@ -6676,7 +6676,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["Version"]('5.2.9'
 /* unused harmony export HttpBackend */
 /* unused harmony export HttpHandler */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return HttpClient; });
-/* unused harmony export HttpHeaders */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return HttpHeaders; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HTTP_INTERCEPTORS; });
 /* unused harmony export JsonpClientBackend */
 /* unused harmony export JsonpInterceptor */
@@ -6690,7 +6690,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["Version"]('5.2.9'
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return HttpErrorResponse; });
 /* unused harmony export HttpEventType */
 /* unused harmony export HttpHeaderResponse */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return HttpResponse; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return HttpResponse; });
 /* unused harmony export HttpResponseBase */
 /* unused harmony export HttpXhrBackend */
 /* unused harmony export XhrFactory */

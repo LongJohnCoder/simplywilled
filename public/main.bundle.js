@@ -19,6 +19,14 @@ var map = {
 		"common",
 		"change-password.module"
 	],
+	"./personal-representative-details/personal-representative-details.module": [
+		"./src/app/user/user-dashboard/personal-representative-details/personal-representative-details.module.ts",
+		"personal-representative-details.module"
+	],
+	"./personal-representative-power/personal-representative-power.module": [
+		"./src/app/user/user-dashboard/personal-representative-power/personal-representative-power.module.ts",
+		"personal-representative-power.module"
+	],
 	"./user-auth/user-login/user-login.module": [
 		"./src/app/user/user-auth/user-login/user-login.module.ts",
 		"common",

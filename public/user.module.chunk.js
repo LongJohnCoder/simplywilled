@@ -1752,7 +1752,7 @@ var AuthInterceptor = /** @class */ (function () {
         }
         return next.handle(copiedReq)
             .do(function (event) {
-            if (event instanceof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["e" /* HttpResponse */]) {
+            if (event instanceof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["f" /* HttpResponse */]) {
                 // do stuff with response if you want
             }
         }, function (err) {
@@ -1832,7 +1832,7 @@ var routes = [
             { path: 'terms-of-use', pathMatch: 'full', component: __WEBPACK_IMPORTED_MODULE_5__terms_of_use_terms_of_use_component__["a" /* TermsOfUseComponent */] },
             { path: 'terms-of-service', pathMatch: 'full', component: __WEBPACK_IMPORTED_MODULE_6__terms_of_service_terms_of_service_component__["a" /* TermsOfServiceComponent */] },
             { path: 'privacy-policy', pathMatch: 'full', component: __WEBPACK_IMPORTED_MODULE_7__privacy_policy_privacy_policy_component__["a" /* PrivacyPolicyComponent */] },
-            { path: 'contact-us', pathMatch: 'full', component: __WEBPACK_IMPORTED_MODULE_8__contact_us_contact_us_component__["a" /* ContactUsComponent */] },
+            { path: 'contact-us', pathMatch: 'full', component: __WEBPACK_IMPORTED_MODULE_8__contact_us_contact_us_component__["a" /* ContactUsComponent */] }
         ] },
     {
         path: 'dashboard',
@@ -2010,7 +2010,7 @@ var UserModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_16__layout_full_layout_full_layout_component__["a" /* FullLayoutComponent */],
                 __WEBPACK_IMPORTED_MODULE_25__blog_blog_component__["a" /* BlogComponent */],
                 __WEBPACK_IMPORTED_MODULE_26__blog_blogdetails_blogdetails_component__["a" /* BlogdetailsComponent */],
-                __WEBPACK_IMPORTED_MODULE_28__blog_blog_category_blog_category_component__["a" /* BlogCategoryComponent */]
+                __WEBPACK_IMPORTED_MODULE_28__blog_blog_category_blog_category_component__["a" /* BlogCategoryComponent */],
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_14__user_auth_user_auth_guard__["a" /* UserAuthGuard */],
