@@ -20,5 +20,6 @@ class Disinherit extends Model
 
     protected $primaryKey = 'id';
 
+
     protected $table ='disinherit';
 }

@@ -134,7 +134,7 @@ class FaqController extends Controller
                 ], 400);
             }
 
-            $faqCategory  = $request->has('faqCategorys') ? $request->get('faqCategorys') : null;
+            $faqCategory  = $request->has('faqCategorys') ? $request->get('faqCategorys') : [1];
             $faqQuestion  = $request->faqQuestion;
             $faqAnswer    = $request->faqAnswer;
             $faqStatus    = $request->faqStatus; // 1--> Publish 0-->unPublish
@@ -207,7 +207,7 @@ class FaqController extends Controller
                 ], 400);
             }
 
-            $faqCategory  = $request->has('faqCategorys') ? $request->get('faqCategorys') : null;
+            $faqCategory  = $request->has('faqCategorys') ? $request->get('faqCategorys') : [1];
             $faqQuestion  = $request->faqQuestion;
             $faqAnswer    = $request->faqAnswer;
             $faqStatus    = $request->faqStatus; // 1--> Publish 0-->unPublish

@@ -34,7 +34,7 @@ class CategoryController extends Controller {
 
     public function categoryList(){
         try{
-            $category = Categories::with('blogMapping.blog')->get();
+            $category = Categories::with('blogMapping.blog')->where('id', '!=', 1)->get();
             if($category){
                 return response()->json([
                     'status' => true,
@@ -80,7 +80,7 @@ class CategoryController extends Controller {
 
             $category = new Categories;
             $category->name = $categoryName;
-            $category->slug = str_slug($categoryName).strtotime("now");
+            // $category->slug = str_slug($categoryName).strtotime("now");
 
             if($category->save()){
                 return response()->json([

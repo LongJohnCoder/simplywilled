@@ -304,13 +304,11 @@ class BlogController extends Controller
     public function createBlog(Request $request)
     {
         try {
-            $blogCategorys = $request->has('blogCategorys') ? $request->get('blogCategorys') : null;
-            
             $validator = Validator::make($request->all(), [
                 'blogTitle'       =>  'required|string|max:255',
                 'blogBody'        =>  'required',
                 'blogStatus'      =>  'required|numeric|integer|between:0,1',
-                'blogCategorys.*' =>  'nullable|exists:categories,id,deleted_at,NULL'
+                'blogImage'       =>  'required'
             ]);
             if ($validator->fails()) {
                 return response()->json([
@@ -319,8 +317,32 @@ class BlogController extends Controller
                     'data'    => []
                 ], 400);
             }
-            
-            
+
+            $blogCategorys = $request->blogCategorys;
+            if (!empty($blogCategorys)) {
+              foreach ($blogCategorys as $ckey => $cvalue) {
+                $checkCategory = Categories::find($cvalue);
+                if (!$checkCategory) {
+                  return response()->json([
+                      'status'  => false,
+                      'message' => 'Category not found',
+                      'data'    => []
+                  ], 400);
+                }
+              }
+            }
+
+            if ($request->hasFile('blogImage')) {
+              list($width, $height, $type, $attr) = getimagesize($request->blogImage);
+              if ($width < 899 || $height < 599) {
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'Image dimesion should be 900x600',
+                    'data'    => []
+                ], 400);
+              }
+            }
+
             $blogAuthorId = Auth::user()->id;
             $blogTitle = $request->blogTitle;
             $blogBody = $request->blogBody;
@@ -351,16 +373,12 @@ class BlogController extends Controller
                 $imageName = "";
             }
 
-            //interchanging value with key to hash search for faster results
-            $validCategoryId = array_flip(Categories::pluck('id')->toArray());
-
             //try to save the blog
             $saveBlog = new Blogs;
             $saveBlog->title = $blogTitle;
             $saveBlog->body = $blogBody;
             $saveBlog->image = $imageName;
             $saveBlog->author_id = $blogAuthorId;
-            $saveBlog->slug = str_slug($blogTitle).strtotime("now");
             $saveBlog->meta_description = $blogMetaDesc;
             $saveBlog->meta_keywords = $blogMetaKeyword;
             $saveBlog->status = (string)$blogStatus;
@@ -370,12 +388,10 @@ class BlogController extends Controller
                 $blogId = $saveBlog->id;
                 if (count($blogCategorys) > 0) {
                     foreach ($blogCategorys as $key => $value) {
-                        if(isset($validCategoryId[$value])) {
-                          $saveBlogcategory = new CategoryBlogMapping;
-                          $saveBlogcategory->blog_id = $blogId;
-                          $saveBlogcategory->category_id = $value;
-                          $saveBlogcategory->save();
-                        }
+                        $saveBlogcategory = new CategoryBlogMapping;
+                        $saveBlogcategory->blog_id = $blogId;
+                        $saveBlogcategory->category_id = $value;
+                        $saveBlogcategory->save();
                     }
                 } else {
                     //map it to default categories
@@ -414,8 +430,6 @@ class BlogController extends Controller
     public function editBlog(Request $request)
     {
         try {
-
-            $blogCategorys = $request->has('blogCategorys') ? $request->get('blogCategorys') : null;
             $validator = Validator::make($request->all(), [
                 'blogTitle'       =>  'required',
                 'blogBody'        =>  'required',
@@ -423,7 +437,7 @@ class BlogController extends Controller
                 'blogStatus'      =>  'required|numeric|integer|between:0,1',
                 'blogFeatured'    =>  'numeric|integer|between:0,1',
                 'blogCategorys.*' =>  'nullable|exists:categories,id,deleted_at,NULL',
-                'blogImage'       =>  'dimensions:min_width=900,min_height=600'
+                // 'blogImage'       =>  'nullable|dimensions:min_width=900,min_height=600'
             ]);
             if ($validator->fails()) {
                 return response()->json([
@@ -432,7 +446,32 @@ class BlogController extends Controller
                     'data'    => []
                 ], 400);
             }
-            
+
+            if ($request->hasFile('blogImage')) {
+              list($width, $height, $type, $attr) = getimagesize($request->blogImage);
+              if ($width < 899 || $height < 599) {
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'Image dimesion should be 900x600',
+                    'data'    => []
+                ], 400);
+              }
+            }
+
+            $blogCategorys = $request->blogCategorys;
+            if (!empty($blogCategorys)) {
+              foreach ($blogCategorys as $ckey => $cvalue) {
+                $checkCategory = Categories::find($cvalue);
+                if (!$checkCategory) {
+                  return response()->json([
+                      'status'  => false,
+                      'message' => 'Category not found',
+                      'data'    => []
+                  ], 400);
+                }
+              }
+            }
+
 
             $blogId = $request->blogId;
             $blogId = (int)$blogId;
@@ -474,7 +513,9 @@ class BlogController extends Controller
                     //try to update the blog
                     $getBlogInfo->title     = $blogTitle;
                     $getBlogInfo->body      = $blogBody;
-                    $getBlogInfo->image     = $imageName;
+                    if ($request->hasFile('blogImage')) {
+                      $getBlogInfo->image     = $imageName;
+                    }
                     $getBlogInfo->author_id = $blogAuthorId;
                     $getBlogInfo->meta_description = $blogMetaDesc;
                     $getBlogInfo->meta_keywords = $blogMetaKeyword;
@@ -483,8 +524,8 @@ class BlogController extends Controller
                     $getBlogInfo->seo_title = $blogSeoTitle;
 
                     if ($getBlogInfo->save()) {
-
                         if(!isset($blogCategorys) || count($blogCategorys) == 0) {
+                            $getBlogCategorys = CategoryBlogMapping::where('blog_id', $blogId)->orderBy('created_at','DESC')->delete();
                             $saveBlogcategory = new CategoryBlogMapping;
                             $saveBlogcategory->blog_id = $blogId;
                             $saveBlogcategory->category_id = 1;
@@ -508,7 +549,7 @@ class BlogController extends Controller
                                 }
                             }
                         }
-                        
+
                         $getBlogInfo = $getBlogInfo::where('id', $blogId)->with('blogCategory')->get(); // query to get created blog data
                         return response()->json([
                             'status' => true,

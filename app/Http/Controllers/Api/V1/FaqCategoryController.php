@@ -37,7 +37,7 @@ class FaqCategoryController extends Controller
     public function faqCategoryList()
     {
         try {
-            $faqCategory = FaqCategories::get();
+            $faqCategory = FaqCategories::where('id','!=', 1)->get();
             if ($faqCategory) {
                 return response()->json([
                     'status' => true,
@@ -122,7 +122,7 @@ class FaqCategoryController extends Controller
             // try to save faq category
             $faqCategory = new FaqCategories;
             $faqCategory->name = $faqCategoryName;
-            $faqCategory->slug = str_slug($faqCategoryName).strtotime("now");
+            // $faqCategory->slug = str_slug($faqCategoryName).strtotime("now");
             if ($faqCategory->save()) {
                 return response()->json([
                     'status' => true,
@@ -288,7 +288,7 @@ class FaqCategoryController extends Controller
      * */
     public function faqCategoryListUser(Request $request) {
       try {
-        
+
         $validator = Validator::make($request->all(), [
           'query'    =>  'nullable|string'
         ]);
@@ -301,7 +301,7 @@ class FaqCategoryController extends Controller
         }
         $query = $request->has('query') ? $request->get('query') : null;
 
-        if($query == null) {    
+        if($query == null) {
             $faqCategories = FaqCategories::with('faq')->orderBy('created_at','DESC')->whereHas('faq')->get();
         } else {
             $faqCategories = FaqCategories::orderBy('created_at','DESC')
