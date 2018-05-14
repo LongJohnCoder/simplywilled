@@ -1,0 +1,99 @@
+<div class="col-md-12 col-sm-12">
+  <div class="main-content tellusaboutyou">
+    <h2>Your Personal Representative</h2>
+    <form (ngSubmit)="savePersonalRepresentative(personalRepresentativeForm)" #personalRepresentativeForm = "ngForm">
+      <div class="form-group">
+        <label>Should your personal representative have the power to maintain a business interest?</label>
+        <ul class="radio_ul6">
+          <li>
+            <label class="radio_custom" [class.active]="businessInterestClassFlag" (click)="changeState('BI', true)">
+              <input type="radio" id="business_interest_yes" name="business_interest" required="true" ngModel #business_interest="ngModel" [ngModel]="true" [value]="true">
+              <span class="human_status">Yes</span>
+            </label>
+          </li>
+          <li>
+            <label class="radio_custom" [class.active]="!businessInterestClassFlag" (click)="changeState('BI', false)">
+              <input type="radio" id="business_interest_no" name="business_interest" required="true" ngModel #business_interest="ngModel" [ngModel]="false" [value]="false">
+              <span class="human_status">No</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label>Should your personal representative have the power to maintain a farm or a ranch?</label>
+        <ul class="radio_ul6">
+          <li>
+            <label class="radio_custom" [class.active]="farmRanchFlag" (click)="changeState('FR', true)">
+              <input type="radio" id="farm_or_ranch_yes" name="farm_or_ranch" required="true" ngModel #farm_or_ranch="ngModel" [ngModel]="true" [value]="true">
+              <span class="human_status">Yes</span>
+            </label>
+          </li>
+          <li>
+            <label class="radio_custom" [class.active]="!farmRanchFlag" (click)="changeState('FR', false)">
+              <input type="radio" id="farm_or_ranch_no" name="farm_or_ranch" required="true" ngModel #farm_or_ranch="ngModel" [ngModel]="false" [value]="false">
+              <span class="human_status">No</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label>Select to provide for a speciﬁc amount or percentage as compensation for the Personal Representative.</label>
+        <ul class="radio_ul6">
+          <li>
+            <label class="radio_custom" [class.active]="personalRepresentativeFlag" (click)="changeState('PR', true)">
+              <input type="radio" id="percentage_compensation_yes" name="percentage_compensation" required="true" ngModel #percentage_compensation="ngModel" [ngModel]="true" [value]="true">
+              <span class="human_status">Yes</span>
+            </label>
+          </li>
+          <li>
+            <label class="radio_custom" [class.active]="!personalRepresentativeFlag" (click)="changeState('PR', false)">
+              <input type="radio" id="percentage_compensation_no" name="percentage_compensation" required="true" ngModel #percentage_compensation="ngModel" [ngModel]="false" [value]="false">
+              <span class="human_status">No</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label>Select if the amount will be a speciﬁed sum; otherwise, it will be a percentage of the Estate.</label>
+        <ul class="radio_ul6 percentage-estate">
+          <li>
+            <label class="radio_custom" [class.active]="amountTypeFlag" (click)="changeState('AT', true)">
+              <input type="radio" id="percentage_estate_yes" name="percentage_estate" required="true" ngModel #percentage_estate="ngModel" [ngModel]="true" [value]="true">
+              <span class="human_status">$ <br> Specific Sum</span>
+            </label>
+          </li>
+          <li>
+            <label class="radio_custom" [class.active]="!amountTypeFlag" (click)="changeState('AT', false)">
+              <input type="radio" id="percentage_estate_no" name="percentage_estate" required="true" ngModel #percentage_estate="ngModel" [ngModel]="false" [value]="false">
+              <span class="human_status">% <br> Percentage</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label>Percentage of the Estate as compensation to the Personal Representative: </label>
+        <input type="text" id="compensation_value" name="compensation_value" required="true" ngModel #compensation_value="ngModel" placeholder="{{amountTypeFlag ? '$' : '%'}}" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Select if the percentage is based on the "net“ value of the estate.</label>
+        <ul class="radio_ul6">
+          <li>
+            <label class="radio_custom" [class.active]="isNetValueFlag" (click)="changeState('NV', true)">
+              <input type="radio" id="net_value_yes" name="net_value" required="true" ngModel #net_value="ngModel" [ngModel]="true" [value]="true">
+              <span class="human_status">Yes</span>
+            </label>
+          </li>
+          <li>
+            <label class="radio_custom" [class.active]="!isNetValueFlag" (click)="changeState('NV', false)">
+              <input type="radio" id="net_value_no" name="net_value" required="true" ngModel #net_value="ngModel" [ngModel]="true" [value]="true">
+              <span class="human_status">No</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+      <div class="form-footer">
+        <button class="btn common-button btn-complete" type="submit" [disabled]="!personalRepresentativeForm.form.valid">Continue</button>
+      </div>
+    </form>
+  </div>
+</div>

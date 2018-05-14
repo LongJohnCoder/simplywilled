@@ -55,7 +55,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FullLayoutComponent,
     BlogComponent,
     BlogdetailsComponent,
-    BlogCategoryComponent
+    BlogCategoryComponent,
   ],
   providers: [
     UserAuthGuard,
