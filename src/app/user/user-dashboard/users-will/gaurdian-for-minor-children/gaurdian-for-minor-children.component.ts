@@ -105,23 +105,27 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
               this.userInfo = response.data[2].data;
               // set values to myForm
               this.myForm.patchValue({
-                  isGuardianMinorChildren: this.userInfo.isGuardianMinorChildren,
-                  isBackUpGuardian: this.userInfo.isBackUpGuardian
+                  isGuardianMinorChildren: this.userInfo.isGuardianMinorChildren || 'No',
+                  isBackUpGuardian: this.userInfo.isBackUpGuardian || 'No'
               });
-              // reactive form data sets for guardian
-              const guardianFGs = this.userInfo.guardian.map(gr => this.fb.group(gr));
-              const guardianFormArray = this.fb.array(guardianFGs);
-              this.myForm.setControl('guardian', guardianFormArray);
+              if (!!this.userInfo.guardian.length) {
+                  // reactive form data sets for guardian
+                  const guardianFGs = this.userInfo.guardian.map(gr => this.fb.group(gr));
+                  const guardianFormArray = this.fb.array(guardianFGs);
+                  this.myForm.setControl('guardian', guardianFormArray);
 
-              // reactive form data sets for backUpGuardian
-              const backUpGuardianFGs = this.userInfo.guardian.map(gr => this.fb.group(gr));
-              const backUpGuardianFormArray = this.fb.array(backUpGuardianFGs);
-              this.myForm.setControl('backUpGuardian', backUpGuardianFormArray);
-              if (this.myForm.value.isGuardianMinorChildren === 'Yes') {
-                  this.addValidationGaurdianToForm();
-              }
-              if (this.myForm.value.isBackUpGuardian === 'Yes') {
-                  this.addValidationBackUpGaurdianToForm();
+                  if ( this.userInfo.backupGuardian.length) {
+                      // reactive form data sets for backUpGuardian
+                      const backUpGuardianFGs = this.userInfo.backupGuardian.map(gr => this.fb.group(gr));
+                      const backUpGuardianFormArray = this.fb.array(backUpGuardianFGs);
+                      this.myForm.setControl('backUpGuardian', backUpGuardianFormArray);
+                  }
+                  if (this.myForm.value.isGuardianMinorChildren === 'Yes') {
+                      this.addValidationGaurdianToForm();
+                  }
+                  if (this.myForm.value.isBackUpGuardian === 'Yes') {
+                      this.addValidationBackUpGaurdianToForm();
+                  }
               }
           },
           (error: any) => {
@@ -134,13 +138,20 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
       this.router.navigate(['/dashboard/will/2']);
   }
   addRemoveValidation() {
+
     if (this.myForm.value.isGuardianMinorChildren === 'No') {
         this.removeValidationGaurdianToForm();
-    } else if (this.myForm.value.isGuardianMinorChildren === 'Yes') {
+        this.myForm.patchValue({
+            isBackUpGuardian : 'No'
+        });
+    } else {
         this.addValidationGaurdianToForm();
-    } else if (this.myForm.value.isBackUpGuardian === 'No') {
+    }
+    if (this.myForm.value.isBackUpGuardian === 'No') {
+        console.log('no')
         this.removeValidationBackUpGaurdianToForm();
-    } else if (this.myForm.value.isBackUpGuardian === 'Yes') {
+    } else {
+        console.log('yes');
         this.addValidationBackUpGaurdianToForm();
     }
   }
@@ -158,8 +169,8 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
       this.myForm.get(`guardian.0.state`).updateValueAndValidity();
       this.myForm.get(`guardian.0.zip`).setValidators([Validators.required, Validators.pattern('^\\d{5}$')]);
       this.myForm.get(`guardian.0.zip`).updateValueAndValidity();
-      this.myForm.get(`guardian.0.email`).setValidators([Validators.email]);
-      this.myForm.get(`guardian.0.email`).updateValueAndValidity();
+      // this.myForm.get(`guardian.0.email`).setValidators([Validators.email]);
+      // this.myForm.get(`guardian.0.email`).updateValueAndValidity();
       this.myForm.get(`guardian.0.email_notification`).setValidators([Validators.required]);
       this.myForm.get(`guardian.0.email_notification`).updateValueAndValidity();
 
@@ -179,8 +190,8 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
       this.myForm.get(`backUpGuardian.0.state`).updateValueAndValidity();
       this.myForm.get(`backUpGuardian.0.zip`).setValidators([Validators.required, Validators.pattern('^\\d{5}$')]);
       this.myForm.get(`backUpGuardian.0.zip`).updateValueAndValidity();
-      this.myForm.get(`backUpGuardian.0.email`).setValidators([Validators.email]);
-      this.myForm.get(`backUpGuardian.0.email`).updateValueAndValidity();
+      // this.myForm.get(`backUpGuardian.0.email`).setValidators([Validators.email]);
+      // this.myForm.get(`backUpGuardian.0.email`).updateValueAndValidity();
       this.myForm.get(`backUpGuardian.0.email_notification`).setValidators([Validators.required]);
       this.myForm.get(`backUpGuardian.0.email_notification`).updateValueAndValidity();
   }
@@ -198,8 +209,8 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
       this.myForm.get(`guardian.0.state`).updateValueAndValidity();
       this.myForm.get(`guardian.0.zip`).setValidators([]);
       this.myForm.get(`guardian.0.zip`).updateValueAndValidity();
-      this.myForm.get(`guardian.0.email`).setValidators([]);
-      this.myForm.get(`guardian.0.email`).updateValueAndValidity();
+      // this.myForm.get(`guardian.0.email`).setValidators([]);
+      // this.myForm.get(`guardian.0.email`).updateValueAndValidity();
       this.myForm.get(`guardian.0.email_notification`).setValidators([]);
       this.myForm.get(`guardian.0.email_notification`).updateValueAndValidity();
   }
@@ -217,8 +228,8 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
         this.myForm.get(`backUpGuardian.0.state`).updateValueAndValidity();
         this.myForm.get(`backUpGuardian.0.zip`).setValidators([]);
         this.myForm.get(`backUpGuardian.0.zip`).updateValueAndValidity();
-        this.myForm.get(`backUpGuardian.0.email`).setValidators([]);
-        this.myForm.get(`backUpGuardian.0.email`).updateValueAndValidity();
+        // this.myForm.get(`backUpGuardian.0.email`).setValidators([]);
+        // this.myForm.get(`backUpGuardian.0.email`).updateValueAndValidity();
         this.myForm.get(`backUpGuardian.0.email_notification`).setValidators([]);
         this.myForm.get(`backUpGuardian.0.email_notification`).updateValueAndValidity();
     }
