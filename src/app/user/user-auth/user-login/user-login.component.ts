@@ -13,35 +13,39 @@ export class UserLoginComponent implements OnInit {
 
   constructor( private loginService: UserService , private router: Router ) { }
 
-  showLoader: boolean              = false;
-  responseReceived: boolean        = false;
-  loginRequestStatus: boolean      = false;
-  loginRequestResponseMsg: string  = '';
+  showLoader: boolean;
+  responseReceived: boolean;
+  loginRequestStatus: boolean;
+  loginRequestResponseMsg: string;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.showLoader  = false;
+    this.responseReceived = false;
+    this.loginRequestStatus = false;
+    this.loginRequestResponseMsg = '';
+  }
 
-  /** Function call on submit of loginform */
-
+  /**
+   * this function logs user in
+   * @param {NgForm} formSignIn
+   */
   onSubmit( formSignIn: NgForm ) {
     this.showLoader = true;
     const body = {
       email: formSignIn.value.email,
       password: formSignIn.value.password
     };
-    
+
 
     this.loginService.login( body )
     .subscribe(
       ( response: any ) => {
 
         this.showLoader = false;
-        if(response.status){
-
+        if (response.status) {
           localStorage.setItem( 'loggedInUser', JSON.stringify(response) );
           this.router.navigate(['/dashboard']);
-
         } else {
-
           this.loginRequestStatus = false;
           this.loginRequestResponseMsg = 'error';
         }
