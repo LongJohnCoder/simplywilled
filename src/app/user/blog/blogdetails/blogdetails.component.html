@@ -38,7 +38,7 @@
               <div class="commentMain">
                 <div class="commentHead">
                   <span class="commentUBy">{{comment.name}} / </span>
-                  <span class="commentDate">{{comment.created_at}}</span>
+                  <span class="commentDate">{{comment.created_at  | date  }}</span>
                 </div>
                 <div class="commentEmail">{{comment.email}}</div>
                 <div class="commentBody">

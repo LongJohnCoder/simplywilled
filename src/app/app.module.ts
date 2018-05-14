@@ -13,9 +13,9 @@ import { NotUserAuthGuard } from './user/user-auth/not-user-auth.guard';
 import { UserAuthService } from './user/user-auth/user-auth.service';
 import { UserAuthGuard } from './user/user-auth/user-auth.guard';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule,ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { BlogService } from "./user/blog/blog.service";
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -31,6 +31,7 @@ import { FormsModule,ReactiveFormsModule } from "@angular/forms";
     TooltipModule,
     ModalModule.forRoot(), FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
   ],
   providers: [
     AuthGuard,

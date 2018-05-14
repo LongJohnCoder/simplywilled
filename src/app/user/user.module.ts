@@ -25,12 +25,10 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { BlogComponent } from './blog/blog.component';
 import { BlogdetailsComponent } from './blog/blogdetails/blogdetails.component';
-import { BlogService } from "./blog/blog.service";
+import { BlogService } from './blog/blog.service';
 import { BlogCategoryComponent } from './blog/blog-category/blog-category.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
-
-
-console.log('user-module is called');
 @NgModule({
   imports: [
     CommonModule,
@@ -41,7 +39,8 @@ console.log('user-module is called');
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    NgxPaginationModule
   ],
   declarations: [
     UserComponent,

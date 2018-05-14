@@ -1,7 +1,7 @@
 import {Component, OnInit, NgModule} from '@angular/core';
-import {Router, ActivatedRoute} from "@angular/router";
-import {BlogService} from "../blog.service";
-import {FormControl, Validators, FormGroup} from "@angular/forms";
+import {Router, ActivatedRoute} from '@angular/router';
+import {BlogService} from '../blog.service';
+import {FormControl, Validators, FormGroup} from '@angular/forms';
 
 @Component({
     selector: 'app-blogdetails',
@@ -64,13 +64,13 @@ export class BlogdetailsComponent implements OnInit {
     onSubmit() {
         if (this.commentForm.valid) {
             this.BlogService.makeBlogComment(this.commentForm.value).subscribe(
-                (response:any) => {
-                    if(response.status = 'true'){
+                (response: any) => {
+                    if (response.status = 'true') {
                         this.createBlogCommentMessage = response.message;
                         alert(this.createBlogCommentMessage);
                         this.commentForm.reset();
                         this.getBlogDetails();
-                    }else{
+                    } else {
                         this.createBlogCommentMessage = response.message;
                         alert(this.createBlogCommentMessage);
                     }

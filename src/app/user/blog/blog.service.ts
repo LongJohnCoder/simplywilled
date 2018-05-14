@@ -10,32 +10,35 @@ export class BlogService {
         private httpClient: HttpClient
     ) { }
 
-    blogList():Observable<any>{
+    blogList(): Observable <any> {
         return this.httpClient.get(environment.API_URL + 'user/blog-list');
     }
 
-    getBlogDetails(slug: string):Observable<any>{
-        return this.httpClient.get(environment.API_URL + 'user/view-blog/?query='+slug );
+    getBlogDetails(slug: string): Observable <any> {
+        return this.httpClient.get(environment.API_URL + 'user/view-blog/?query=' + slug );
     }
 
-    getBlogCategoryList():Observable<any>{
+    getBlogCategoryList(): Observable <any> {
         return this.httpClient.get(environment.API_URL + 'user/blog-category-list');
     }
 
-    getBlogDetailsFromCategory(slug: string):Observable<any>{
-        return this.httpClient.get(environment.API_URL + 'user/get-blog-details/?query='+slug );
+    getBlogDetailsFromCategory(slug: string): Observable <any> {
+        return this.httpClient.get(environment.API_URL + 'user/get-blog-details/?query=' + slug );
     }
 
-    getPopularBlogPosts():Observable<any>{
+    getPopularBlogPosts(): Observable <any> {
         return this.httpClient.get(environment.API_URL + 'user/popular-post');
     }
 
-    getRecentBlogPosts():Observable<any>{
+    getRecentBlogPosts(): Observable <any> {
         return this.httpClient.get(environment.API_URL + 'user/latest-post');
     }
 
-    makeBlogComment(commentData):Observable<any>{
-        return this.httpClient.post(environment.API_URL + 'user/comment',commentData);
+    makeBlogComment(commentData): Observable <any> {
+        return this.httpClient.post(environment.API_URL + 'user/comment', commentData);
     }
 
+    subscribeEmailNewsletter(subscriberEmail): Observable <any> {
+        return this.httpClient.post(environment.API_URL + 'user/create-newsletter-subscriber', subscriberEmail);
+    }
 }

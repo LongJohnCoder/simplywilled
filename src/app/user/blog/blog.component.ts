@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogService } from "./blog.service";
-import * as moment from "moment";
+import { BlogService } from './blog.service';
+import * as moment from 'moment';
 import _date = moment.unitOfTime._date;
+import {NgxPaginationModule} from 'ngx-pagination';
+import {FormControl, Validators, FormGroup} from '@angular/forms';
+
 
 @Component({
   selector: 'app-blog',
@@ -14,7 +17,9 @@ export class BlogComponent implements OnInit {
     imageLink: string;
     popularBlogPost: any[] = [];
     recentBlogPost: any[] = [];
-  constructor( private BlogService : BlogService ) {
+    subscriberEmailForm: any;
+    subscriberEmail: FormControl;
+   constructor( private BlogService : BlogService ) {
 
   }
 
@@ -23,29 +28,31 @@ export class BlogComponent implements OnInit {
       this.populateBlogCategory();
       this.populatePopularBlogPosts();
       this.populateRecentBlogPosts();
+      this.createFormControls();
+      this.createForm();
   }
 
 
-    populateBlog(){
+    populateBlog() {
         this.BlogService.blogList().subscribe(
-            (data:any)=> {
+            (data: any) => {
                  this.blogList = data.data.BlogDetails;
                  this.imageLink = data.data.imageLink;
             }
         )
     }
 
-    populateBlogCategory(){
+    populateBlogCategory() {
       this.BlogService.getBlogCategoryList().subscribe(
-          (data:any)=>{
+          (data: any) => {
               this.blogCategoryList = data.data.categories;
           }
       )
     }
 
-    populatePopularBlogPosts(){
+    populatePopularBlogPosts() {
         this.BlogService.getPopularBlogPosts().subscribe(
-            (data:any)=>{
+            (data: any) => {
                 let list: string[] = [];
                 data.data.forEach(function (value) {
                     list.push(value.blog);
@@ -54,16 +61,43 @@ export class BlogComponent implements OnInit {
             }
         )
     }
-    populateRecentBlogPosts(){
+    populateRecentBlogPosts() {
         this.BlogService.getRecentBlogPosts().subscribe(
-            (data:any)=>{
-                let list: string[] = [];
+            (data: any) => {
+                let list : string[] = [];
                 data.data.forEach(function (value) {
                     list.push(value.blog);
                 });
                 this.recentBlogPost = list;
             }
         )
+    }
+
+    createFormControls() {
+        this.subscriberEmailForm = new FormControl();
+        this.subscriberEmail = new FormControl('', [
+            Validators.required,
+            Validators.pattern('[^ @]*@[^ @]*')
+        ]);
+    }
+
+    createForm() {
+        this.subscriberEmailForm = new FormGroup({
+            subscriberEmail : this.subscriberEmail
+        });
+    }
+
+    onSubmit() {
+        if (this.subscriberEmailForm.valid) {
+            this.BlogService.subscribeEmailNewsletter(this.subscriberEmailForm.value).subscribe(
+                (data: any) => {
+                    if (data.status = 'true' ) {
+                        alert(data.message);
+                        this.subscriberEmailForm.reset();
+                    }
+                }
+            )
+        }
     }
 
 

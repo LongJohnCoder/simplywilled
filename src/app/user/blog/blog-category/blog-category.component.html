@@ -3,7 +3,8 @@
     <div class="trending_main">
       <div class="trending_left">
         <ul class="trending_ul">
-          <li *ngFor="let blog of blogList">
+          <li *ngIf="!blogList.length">No posts found !</li>
+          <li *ngFor="let blog of blogList | paginate: { itemsPerPage: 10, currentPage: p }">
             <a routerLink="/blogdetails/{{blog.slug}}" class="trending_img"><img src="{{imageLink}}{{blog.image}}" alt="{{blog.image}}"></a>
             <h1 class="news_heading">{{blog.title}}</h1>
             <ul class="trending_sub_left_ul">
@@ -12,7 +13,7 @@
                 <span class="by_simply_willed_text">By Simply<span>Willed</span></span>
               </li>
               <li>
-                <span class="by_simply_willed_text">{{blog.created_at}}</span>
+                <span class="by_simply_willed_text">{{blog.created_at | date  }}</span>
               </li>
               <li>
                 <span class="by_simply_willed_text">{{blog.get_comments.length}} comments</span>
@@ -31,22 +32,38 @@
             <a class="btn-green" routerLink="/blogdetails/{{blog.slug}}" ><img src="../../../../assets/images/arrow-right.png"> Read More</a>
           </li>
         </ul>
-        <a href="#" class="older_post_text">OLDER POSTS >></a>
+        <pagination-controls class="older_post_text"
+                             (pageChange)="p=$event"
+                             maxSize="9"
+                             directionLinks="true"
+                             autoHide="true"
+                             previousLabel="NEWER POSTS"
+                             nextLabel="OLDER POSTS"
+                             screenReaderPaginationLabel="OLDER POSTS"
+                             screenReaderPageLabel="page"
+                             screenReaderCurrentLabel="You're on page">
+        </pagination-controls>
       </div>
       <div class="trending_right_main">
         <h2 class="subscribe_text_main"><span class="subscribe_text">SUBSCRIBE</span></h2>
-        <form>
-          <div class="subscribe_form_main">
-            <input type="email" placeholder="Your email address" class="subscribe_mail">
-            <input type="submit" class="btn-green" value="Subscribe">
-          </div>
+          <form novalidate [formGroup]="subscriberEmailForm" (ngSubmit)="onSubmit()">
+              <div class="subscribe_form_main">
+                  <input type="email" class="subscribe_mail" formControlName="subscriberEmail" placeholder="Your email address">
+                  <div class="form-control-feedback"
+                       *ngIf="subscriberEmail.errors && (subscriberEmail.dirty || subscriberEmail.touched)">
+                      <p *ngIf="subscriberEmail.errors">The email address must contain at least the @ character</p>
+                  </div>
+                  <input type="submit" class="btn-green" value="Subscribe">
+              </div>
         </form>
         <h2 class="subscribe_text_main"><span class="subscribe_text">CATEGORIES</span></h2>
+        <span *ngIf="!blogCategoryList.length">No category found !</span>
         <ul class="cat_ul" *ngFor="let category of blogCategoryList">
           <li><a routerLink="/category/{{category.slug}}">{{category.name}} <span> ({{category.blogCount}})</span></a></li>
         </ul>
         <h2 class="subscribe_text_main"><span class="subscribe_text">POPULAR POSTS </span></h2>
         <ul class="post_ul">
+          <li *ngIf="!popularBlogPost.length">No popular post found !</li>
             <li *ngFor="let popularPost of popularBlogPost">
                 <a routerLink="/blogdetails/{{popularPost.slug}}" class="post_img"><img src="{{imageLink}}{{popularPost.image}}"></a>
                 <div class="post_right_main">
@@ -57,6 +74,7 @@
         </ul>
           <h2 class="subscribe_text_main"><span class="subscribe_text">RECENT POSTS </span></h2>
           <ul class="post_ul">
+            <li *ngIf="!recentBlogPost.length">No recent post found !</li>
               <li *ngFor="let popularPost of recentBlogPost">
                   <a routerLink="/blogdetails/{{popularPost.slug}}" class="post_img"><img src="{{imageLink}}{{popularPost.image}}"></a>
                   <div class="post_right_main">

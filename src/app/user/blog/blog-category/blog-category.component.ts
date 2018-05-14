@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {BlogService} from "../blog.service";
-import {ActivatedRoute, Router, Event, NavigationStart, NavigationEnd, NavigationError} from "@angular/router";
+import {BlogService} from '../blog.service';
+import {ActivatedRoute, Router, Event, NavigationStart, NavigationEnd, NavigationError} from '@angular/router';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {FormControl, Validators, FormGroup} from '@angular/forms';
 
 @Component({
     selector: 'app-blog-category',
@@ -13,8 +15,11 @@ export class BlogCategoryComponent implements OnInit {
     imageLink: string;
     popularBlogPost: any[] = [];
     recentBlogPost: any[] = [];
+    subscriberEmailForm: any;
+    subscriberEmail: FormControl;
+
     constructor(private router: Router,
-                private route: ActivatedRoute, private BlogService: BlogService,) {
+                private route: ActivatedRoute, private BlogService: BlogService, ) {
 
         router.events.subscribe( (event: Event) => {
             if (event instanceof NavigationEnd) {
@@ -35,6 +40,8 @@ export class BlogCategoryComponent implements OnInit {
         this.populateBlogCategory();
         this.populatePopularBlogPosts();
         this.populateRecentBlogPosts();
+        this.createFormControls();
+        this.createForm();
     }
 
 
@@ -79,5 +86,33 @@ export class BlogCategoryComponent implements OnInit {
             }
         )
     }
+
+    createFormControls() {
+        this.subscriberEmailForm = new FormControl();
+        this.subscriberEmail = new FormControl('', [
+            Validators.required,
+            Validators.pattern('[^ @]*@[^ @]*')
+        ]);
+    }
+
+    createForm() {
+        this.subscriberEmailForm = new FormGroup({
+            subscriberEmail : this.subscriberEmail
+        });
+    }
+
+    onSubmit() {
+        if (this.subscriberEmailForm.valid) {
+            this.BlogService.subscribeEmailNewsletter(this.subscriberEmailForm.value).subscribe(
+                (data: any) => {
+                    if (data.status = 'true' ) {
+                        alert(data.message);
+                        this.subscriberEmailForm.reset();
+                    }
+                }
+            )
+        }
+    }
+
 
 }
