@@ -539,8 +539,8 @@ var UserAuthService = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
     production: true,
-    API_URL: 'http://18.188.1.146/api/v1/',
-    base_url: 'http://18.188.1.146/',
+    API_URL: 'http://localhost:8000/api/v1/',
+    base_url: 'http://localhost:8000/',
 };
 
 
