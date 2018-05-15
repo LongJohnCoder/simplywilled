@@ -7,13 +7,13 @@
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [class.active]="businessInterestClassFlag" (click)="changeState('BI', true)">
-              <input type="radio" id="business_interest_yes" name="business_interest" required="true" ngModel #business_interest="ngModel" [ngModel]="true" [value]="true">
+              <input type="radio" id="business_interest_yes" name="business_interest_val" required="true" ngModel #business_interest_val="ngModel" [ngModel]="businessInterestClassFlag" [value]="true">
               <span class="human_status">Yes</span>
             </label>
           </li>
           <li>
             <label class="radio_custom" [class.active]="!businessInterestClassFlag" (click)="changeState('BI', false)">
-              <input type="radio" id="business_interest_no" name="business_interest" required="true" ngModel #business_interest="ngModel" [ngModel]="false" [value]="false">
+              <input type="radio" id="business_interest_no" name="business_interest_val" required="true" ngModel #business_interest_val="ngModel" [ngModel]="businessInterestClassFlag" [value]="false">
               <span class="human_status">No</span>
             </label>
           </li>
@@ -24,13 +24,13 @@
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [class.active]="farmRanchFlag" (click)="changeState('FR', true)">
-              <input type="radio" id="farm_or_ranch_yes" name="farm_or_ranch" required="true" ngModel #farm_or_ranch="ngModel" [ngModel]="true" [value]="true">
+              <input type="radio" id="farm_or_ranch_yes" name="farm_or_ranch_val" required="true" ngModel #farm_or_ranch_val="ngModel" [ngModel]="farmRanchFlag" [value]="true">
               <span class="human_status">Yes</span>
             </label>
           </li>
           <li>
             <label class="radio_custom" [class.active]="!farmRanchFlag" (click)="changeState('FR', false)">
-              <input type="radio" id="farm_or_ranch_no" name="farm_or_ranch" required="true" ngModel #farm_or_ranch="ngModel" [ngModel]="false" [value]="false">
+              <input type="radio" id="farm_or_ranch_no" name="farm_or_ranch_val" required="true" ngModel #farm_or_ranch_val="ngModel" [ngModel]="farmRanchFlag" [value]="false">
               <span class="human_status">No</span>
             </label>
           </li>
@@ -41,13 +41,13 @@
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [class.active]="personalRepresentativeFlag" (click)="changeState('PR', true)">
-              <input type="radio" id="percentage_compensation_yes" name="percentage_compensation" required="true" ngModel #percentage_compensation="ngModel" [ngModel]="true" [value]="true">
+              <input type="radio" id="percentage_compensation_yes" name="percentage_compensation_val" required="true" ngModel #percentage_compensation_val="ngModel" [ngModel]="personalRepresentativeFlag" [value]="true">
               <span class="human_status">Yes</span>
             </label>
           </li>
           <li>
             <label class="radio_custom" [class.active]="!personalRepresentativeFlag" (click)="changeState('PR', false)">
-              <input type="radio" id="percentage_compensation_no" name="percentage_compensation" required="true" ngModel #percentage_compensation="ngModel" [ngModel]="false" [value]="false">
+              <input type="radio" id="percentage_compensation_no" name="percentage_compensation_val" required="true" ngModel #percentage_compensation_val="ngModel" [ngModel]="personalRepresentativeFlag" [value]="false">
               <span class="human_status">No</span>
             </label>
           </li>
@@ -58,13 +58,13 @@
         <ul class="radio_ul6 percentage-estate">
           <li>
             <label class="radio_custom" [class.active]="amountTypeFlag" (click)="changeState('AT', true)">
-              <input type="radio" id="percentage_estate_yes" name="percentage_estate" required="true" ngModel #percentage_estate="ngModel" [ngModel]="true" [value]="true">
+              <input type="radio" id="percentage_estate_yes" name="percentage_estate_val" required="true" ngModel #percentage_estate_val="ngModel" [ngModel]="amountTypeFlag" [value]="true">
               <span class="human_status">$ <br> Specific Sum</span>
             </label>
           </li>
           <li>
             <label class="radio_custom" [class.active]="!amountTypeFlag" (click)="changeState('AT', false)">
-              <input type="radio" id="percentage_estate_no" name="percentage_estate" required="true" ngModel #percentage_estate="ngModel" [ngModel]="false" [value]="false">
+              <input type="radio" id="percentage_estate_no" name="percentage_estate_val" required="true" ngModel #percentage_estate_val="ngModel" [ngModel]="amountTypeFlag" [value]="false">
               <span class="human_status">% <br> Percentage</span>
             </label>
           </li>
@@ -72,20 +72,20 @@
       </div>
       <div class="form-group">
         <label>Percentage of the Estate as compensation to the Personal Representative: </label>
-        <input type="text" id="compensation_value" name="compensation_value" required="true" ngModel #compensation_value="ngModel" placeholder="{{amountTypeFlag ? '$' : '%'}}" class="form-control">
+        <input type="text" id="compensation_value" name="compensation_value_val" required="true" ngModel #compensation_value_val="ngModel" placeholder="{{amountTypeFlag ? '$' : '%'}}" class="form-control" [ngModel]="compensation_value_data">
       </div>
       <div class="form-group">
         <label>Select if the percentage is based on the "net“ value of the estate.</label>
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [class.active]="isNetValueFlag" (click)="changeState('NV', true)">
-              <input type="radio" id="net_value_yes" name="net_value" required="true" ngModel #net_value="ngModel" [ngModel]="true" [value]="true">
+              <input type="radio" id="net_value_yes" name="net_value_val" required="true" ngModel #net_value_val="ngModel" [ngModel]="isNetValueFlag" [value]="true">
               <span class="human_status">Yes</span>
             </label>
           </li>
           <li>
             <label class="radio_custom" [class.active]="!isNetValueFlag" (click)="changeState('NV', false)">
-              <input type="radio" id="net_value_no" name="net_value" required="true" ngModel #net_value="ngModel" [ngModel]="true" [value]="true">
+              <input type="radio" id="net_value_no" name="net_value_val" required="true" ngModel #net_value_val="ngModel" [ngModel]="isNetValueFlag" [value]="false">
               <span class="human_status">No</span>
             </label>
           </li>
