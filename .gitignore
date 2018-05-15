@@ -11,8 +11,6 @@ resources/assets/simplywilled
 public/storage
 public/hot
 storage/*.key
-.env.*.php
-.env.php
 .env
 Homestead.yaml
 Homestead.json
@@ -20,3 +18,5 @@ Homestead.json
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
 public/blogImage
+.idea/
+package-lock.json
