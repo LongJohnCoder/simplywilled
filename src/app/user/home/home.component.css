@@ -14,7 +14,13 @@
     color:#fff;
     text-decoration: none;
 }
-
+.sec3_btn_main a{
+    color: #fff !important;
+    cursor: pointer;
+}
+.hide_show_main_pkg.open{
+    display: block;
+}
 
 
 

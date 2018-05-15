@@ -13,7 +13,7 @@
                 <li>Takes Less Than 15 Minutes To Complete</li>
                 <li>Enforceable In All 50 States</li>
               </ul>
-              <a href="#" class="get_start_btn"><i class="fa fa-chevron-right" aria-hidden="true"></i> Get Started</a>
+              <a routerLink="/register" class="get_start_btn"><i class="fa fa-chevron-right" aria-hidden="true"></i> Get Started</a>
             </div>
           </div>
         </li>
@@ -125,7 +125,7 @@
           <p>Quickly create documents that are tailored to achieve your needs and objectives.</p>
         </li>
       </ul>
-      <span class="sec3_btn_main"><a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i> Meet Our Team</a></span>
+      <span class="sec3_btn_main"><a (click)="ourTeam()"><i class="fa fa-chevron-right" aria-hidden="true"></i> Meet Our Team</a></span>
     </div>
   </div>
   <div class="index_sec4">
@@ -212,7 +212,7 @@
             <a href="#" class="get_start_pkg_btn hide_btn"><i class="fa fa-chevron-right" aria-hidden="true"></i> Buy Now</a>
           </div>
 
-          <div class="hide_show_main_pkg">
+          <div class="hide_show_main_pkg" [ngClass]="{'open': whatIncl}">
             <span class="key_benefits_text">Key Benefits</span>
             <ul class="pkg_benefits_ul">
               <li>
@@ -278,7 +278,9 @@
             </ul>
             <a href="#" class="get_start_pkg_btn"><i class="fa fa-chevron-right" aria-hidden="true"></i> Buy Now</a>
           </div>
-          <a href="javascript:void(0)" class="include_text">See what’s included</a>
+          <a href="javascript:void(0)" class="include_text" (click)="showIncluded()">
+            {{whatIncl == true ? 'Hide' : 'See what’s included'}}
+          </a>
         </li>
         <li>
           <div class="pkg_first_sec">
@@ -297,7 +299,7 @@
             <a href="#" class="get_start_pkg_btn start_btn_2 hide_btn"><i class="fa fa-chevron-right" aria-hidden="true"></i> Buy Now</a>
           </div>
 
-          <div class="hide_show_main_pkg">
+          <div class="hide_show_main_pkg" [ngClass]="{'open': whatIncl}">
             <span class="key_benefits_text">Key Benefits</span>
             <ul class="pkg_benefits_ul after_color1">
               <li>
@@ -363,7 +365,9 @@
             </ul>
             <a href="#" class="get_start_pkg_btn start_btn_2"><i class="fa fa-chevron-right" aria-hidden="true"></i> Buy Now</a>
           </div>
-          <a href="javascript:void(0)" class="include_text">See what’s included</a>
+          <a href="javascript:void(0)" class="include_text" (click)="showIncluded()">
+              {{whatIncl == true ? 'Hide' : 'See what’s included'}}
+          </a>
         </li>
       </ul>
     </div>
@@ -376,7 +380,7 @@
         <li>Simple</li>
         <li>Smart</li>
       </ul>
-      <span class="sec2_btn_main"><a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i> Get Started!</a></span>
+      <span class="sec2_btn_main"><a routerLink="/register"><i class="fa fa-chevron-right" aria-hidden="true"></i> Get Started!</a></span>
     </div>
   </div>
 
@@ -391,24 +395,31 @@
                   <slide>
                     <span class="slider_left_img"><img src="../../../../assets/images/mitch-and-donna.png" alt="error img"></span>
                     <div class="sec9_slider_right">
-                      <p class="slider_content">As a newly wed couple with a growing family, thank you SimplyWilled for making planning our estate so simple.</p>
-                      <h4 class="client_name">Mitch & Donna</h4>
+                      <p class="slider_content">As a newly wed couple with a growing family, thank you <strong>SimplyWilled</strong> for making planning our estate so simple.<br>&nbsp;</p>
+                      <h4 class="client_name">Donna M.</h4>
                     </div>
                   </slide>
                   <slide>
-                      <span class="slider_left_img"><img src="../../../../assets/images/mitch-and-donna.png" alt="error img"></span>
-                      <div class="sec9_slider_right">
-                        <p class="slider_content">As a newly wed couple with a growing family, thank you SimplyWilled for making planning our estate so simple.</p>
-                        <h4 class="client_name">Mitch & Donna</h4>
-                      </div>
-                    </slide>
-                    <slide>
-                        <span class="slider_left_img"><img src="../../../../assets/images/mitch-and-donna.png" alt="error img"></span>
-                        <div class="sec9_slider_right">
-                          <p class="slider_content">As a newly wed couple with a growing family, thank you SimplyWilled for making planning our estate so simple.</p>
-                          <h4 class="client_name">Mitch & Donna</h4>
-                        </div>
-                      </slide>
+                    <span class="slider_left_img"><img src="../../../../assets/images/sliderImg1.png" alt="error img"></span>
+                    <div class="sec9_slider_right">
+                      <p class="slider_content">My husband and i had put off making our wills for years. With <strong>SimplyWilled</strong> we were able to make our wills and revocable trusts in less than 20 minutes.</p>
+                      <h4 class="client_name">Georgia W.</h4>
+                    </div>
+                  </slide>
+                  <slide>
+                    <span class="slider_left_img"><img src="../../../../assets/images/sliderImg2.png" alt="error img"></span>
+                    <div class="sec9_slider_right">
+                      <p class="slider_content">We love <strong>SimplyWilled</strong>, after talking to a few expensive lawyers we decided to use <strong>SimplyWilled</strong>. It made planning our estate simple and affordable.</p>
+                      <h4 class="client_name">Josh W.</h4>
+                    </div>
+                  </slide>
+                  <slide>
+                    <span class="slider_left_img"><img src="../../../../assets/images/sliderImg3.png" alt="error img"></span>
+                    <div class="sec9_slider_right">
+                      <p class="slider_content">I used <strong>SimplyWilled</strong> to make my single will package to make sure the ones I care about were covered.<br>&nbsp;</p>
+                      <h4 class="client_name">Carter E.</h4>
+                    </div>
+                  </slide>
                 </carousel>
               <!-- <ul class="slides">
                 <li>
