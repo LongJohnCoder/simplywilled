@@ -16,7 +16,6 @@ export class FullLayoutComponent implements OnInit {
 
   ngOnInit() {
     this.isLogIn = this.authService.isAuthenticated();
-    this.isLogIn = false;
     this.menutogle = false;
   }
   /**
