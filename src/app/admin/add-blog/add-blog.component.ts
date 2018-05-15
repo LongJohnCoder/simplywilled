@@ -65,13 +65,12 @@ export class AddBlogComponent implements OnInit {
 
      }
 
-    add(){
+    add() {
+        this.createBlogMessage = 'Processing...';
         this.blogFeatured = 0;
         if (this.blogData.featured) {
             this.blogFeatured = 1;
         }
-        console.log(this.blogImage);
-
         const createBlogBody = new FormData();
         createBlogBody.append('blogTitle', this.blogData.title);
         createBlogBody.append('blogBody', this.blogData.body);
@@ -89,17 +88,14 @@ export class AddBlogComponent implements OnInit {
         console.log(this.blogData.blog_category.length);
         this.dashService.createBlog(createBlogBody).subscribe(
             (response: any) => {
-                // if (response.status = 'true') {
-                // console.log(response.status);
+                if (response.status = 'true') {
                     this.createBlogMessage = response.message;
                     const blogModalRef = this;
                     setTimeout(() => {
                         blogModalRef.modalRef.hide();
                     }, 2000);
-                // } else {
-                //     this.createBlogMessage = response.message;
-                // }
-                this.router.navigate(['/admin-panel/blogs']);
+                    this.router.navigate(['/admin-panel/blogs']);
+                }
 
             }, (error: any) => {
                 this.createBlogMessage = error.error.message;
@@ -107,8 +103,7 @@ export class AddBlogComponent implements OnInit {
     }
 
     edit() {
-        console.log(this.blogImage);
-
+        this.createBlogMessage = 'Processing...';
         this.blogFeatured = 0;
         if (this.blogData.featured) {
             this.blogFeatured = 1;
@@ -129,7 +124,7 @@ export class AddBlogComponent implements OnInit {
 
 
         this.dashService.editBlog(createBlogBody).subscribe((response: any) => {
-            // if (response.status = 'true') {
+            if (response.status = 'true') {
                 console.log(response.status);
                 this.createBlogMessage = response.message;
                 const blogModalRef = this;
@@ -137,9 +132,7 @@ export class AddBlogComponent implements OnInit {
                     blogModalRef.modalRef.hide();
                 }, 2000);
                 this.router.navigate(['/admin-panel/blogs']);
-            // } else {
-            //     this.createBlogMessage = response.message;
-            // }
+            }
         }, (error) => {
             this.createBlogMessage = error.error.message;
         });
