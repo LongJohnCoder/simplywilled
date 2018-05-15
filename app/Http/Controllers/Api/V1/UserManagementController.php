@@ -47,7 +47,7 @@ class UserManagementController extends Controller
         try {
 
           $validator = Validator::make($request->all(), [
-              'userId'  =>  'required|exists:users,id,deleted_at,NULL',
+              'userId'  =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
               'step'    =>  'required|numeric|between:1,2|integer'
           ]);
           if($validator->fails()) {
@@ -66,6 +66,7 @@ class UserManagementController extends Controller
                 $checkExistData = FinancialPowerAttorney::where('user_id',$userId)->first();
                 if($step == 1) {
                     if (count($checkExistData)){
+                        //dd('here1');
                         // update
                         $checkExistData->user_id = $userId;
                         $checkExistData->attorney_powers = json_encode($attorneyPowers);
@@ -75,7 +76,8 @@ class UserManagementController extends Controller
                                 'message' => 'User profile updated successfully',
                                 'data' => ['userDetails' => $checkExistData]
                             ], 200);
-                        }else{
+                        } else {
+                            //dd('here2');
                             return response()->json([
                                 'status' => false,
                                 'message' => 'failed to update user profile ',
@@ -348,6 +350,70 @@ class UserManagementController extends Controller
      }
 
     /*
+    * Function to decide the completion flag in tellUsAboutYou section
+    * if all the relative tables are populated it assumes that the tell us about section is complete
+    * @return \Illuminate\Http\JsonResponse
+    * */
+    public function isTellUsAboutYouComplete() {
+        //Tables related : tellUsAboutYou, children, guardianInfo
+
+        //checking guardian's info table
+        $guardianInfo = GuardianInfo::where('user_id',\Auth::user()->id)->first();
+
+        //checking childrens table
+        $childrens = Children::where('user_id',\Auth::user()->id)->first();
+
+        //checkinh tellUsAboutYouTable
+        $tellUsAboutYou = TellUsAboutYou::where('user_id',\Auth::user()->id)->first();
+
+        //if step 1 is completed by the user
+        //i.e fill up tellUsAboutYou Table
+        if($tellUsAboutYou) {
+            
+            //if the user has single status : single,widowed,divorced
+            $relationshipStatus = $tellUsAboutYou->marital_status;
+            if($relationshipStatus == 'M' || $relationshipStatus == 'R') {
+                //if spouse info is not present then mark this step as incomplete
+                $spouse = User::where('parent_id',\Auth::user()->id)->first();
+                if(!$spouse) {
+                    $tellUsAboutYou->is_complete = '0';
+                    $tellUsAboutYou->save();
+                    
+                    return false;
+                }
+            }
+
+            //if the number of children is more than 1
+            //and no names are inserted for children then step is incomplete
+            if($tellUsAboutYou->children > 0) {
+                //if childrens info is not absent then this step is incomplete
+                if(!$childrens) {
+                    $tellUsAboutYou->is_complete = '0';
+                    $tellUsAboutYou->save();
+                    
+                    return false;
+                }
+
+                //if children is present and no guardians are appointed for the minor children 
+                //then the step is in complete
+                if(!$guardianInfo) {
+                    $tellUsAboutYou->is_complete = '0';
+                    $tellUsAboutYou->save();
+                    
+                    return false;
+                }
+            }
+
+            $tellUsAboutYou->is_complete = '1';
+            $tellUsAboutYou->save();
+            return true;
+        } else {
+          
+            return false;
+        }
+    }
+
+    /*
      * function to get user details
      * @return \Illuminate\Http\JsonResponse
      * */
@@ -365,12 +431,15 @@ class UserManagementController extends Controller
           ], 400);
         }
 
+        self::isTellUsAboutYouComplete();
+
         $tellUsAboutYouUser   = TellUsAboutYou::where('user_id',$user->id)->first();
         $spouse               = User::where('parent_id',$user->id)->first();
         $tellUsAboutYouSpouse = null;
         if($spouse) {
           $tellUsAboutYouSpouse = TellUsAboutYou::where('user_id',$spouse->id)->first();
         }
+
 
         //dd( $this->fetchUserInformation($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
         //step : 1

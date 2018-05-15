@@ -221,6 +221,8 @@ class UserController extends Controller
         }
     }
 
+
+
     /*
      * Function to create/update TellUsAboutYou table
      * @return \Illuminate\Http\JsonResponse
@@ -464,8 +466,10 @@ class UserController extends Controller
                 // check for the exist children table
                 $checkForExistchildren = Children::where('user_id', $userId)->get();
 
-                if (count($checkForExistchildren) > 0) {
+                if(count($checkForExistchildren) > 0) {
                     Children::where('user_id', $userId)->delete();
+                    $checkForExistUser->children = count($checkForExistchildren);
+                    $checkForExistUser->save();
                 } 
 
                 //create a new list of children
@@ -491,6 +495,8 @@ class UserController extends Controller
 
             } else {
                 Children::where('user_id', $userId)->delete();
+                $checkForExistUser->children = 0;
+                $checkForExistUser->save();
             }
 
             if ($deceasedChildren == 1) {
