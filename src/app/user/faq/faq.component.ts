@@ -16,8 +16,10 @@ export class FaqComponent implements OnInit {
     faqData       : any[] = []; //holds faq metadata
     counter       : number; // a common counter used to index the categories
     innerCounter  : number; // a common counter used to index the faq data per categories
+    innerCounterSm: number; // a common counter used to index the faq data per categories -- for mobile
+    
     searchFaqQstn : string = '';
-
+    
     constructor(
         private faqService: FaqService,
         private router: Router,
@@ -108,8 +110,10 @@ export class FaqComponent implements OnInit {
     *   question based on their related states
     * */
     showOrHideAnswers(faqDetailsData : any, index : number) {
-        //console.log('faqDetailsData: ',faqDetailsData, 'index : ',index);
-        this.innerCounter = this.innerCounter == index ? null : index;
-        console.log(this.innerCounter)
+        console.log(index);
+        
+        this.innerCounter       = this.innerCounter === index ? null : index;
+        this.innerCounterSm     = this.innerCounterSm === index ? null : index;
+        // console.log('faqDetailsData: ',faqDetailsData, 'index : ',index,'innerCounter : ',this.innerCounter);
     }
 }
