@@ -51,6 +51,9 @@ a{
     -o-transition:all ease-in-out .5s;
     -webkit-transition:all ease-in-out .5s;
 }
+a:hover{
+    text-decoration: none;
+}
 *:before,*:after{
     box-sizing:border-box;
     -moz-box-sizing:border-box;
@@ -117,8 +120,9 @@ h1, h2, h3, h4, h5, h6{
     color:#fff;
     font-size:14px;
 }
-.navigation li a:hover{
+.navigation li a:hover, .navigation li a.active{
     color:#4db438;
+    text-decoration: none;
 }
 .getStarted{
     background: #50b73a;
@@ -386,6 +390,9 @@ h1, h2, h3, h4, h5, h6{
     bottom: -30px;
     left: 50%;
     margin-left: -126px;
+}
+.sec2_btn_main a:hover{
+    text-decoration: none;
 }
 .index_sec2{
     width:100%;

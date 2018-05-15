@@ -298,11 +298,7 @@ h1, h2, h3, h4, h5, h6 {
 	left: 50%;
 	margin-left: -100px
 }
-.sec2_btn_main a:hover {
-	background: #fff;
-	border: 3px solid #f88a24;
-	color: #f88a24
-}
+
 .get_start_btn_main {
 	width: 100%;
 	float: left;
@@ -4625,9 +4621,6 @@ footer p {
     font-size: 13px;
     line-height: 21px;
     padding-top: 4px;
-}
-.active-menu {
-    background-color: #16a085!important;
 }
 .arrow {
     float: right;

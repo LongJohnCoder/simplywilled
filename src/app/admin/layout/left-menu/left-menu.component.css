@@ -34,10 +34,10 @@ body{
     display: inline-block;
     width: 100%;
 }
-.sidebar-collapse > .nav > li:hover{
+.sidebar-collapse > .nav > li:hover, .sidebar-collapse > .nav > li.active-menu{
     background: #16a085;
 }
-.sidebar-collapse > .nav > li:hover:before {
+.sidebar-collapse > .nav > li:hover:before, .sidebar-collapse > .nav > li.active-menu:before{
     height: 2px;
     top:27px;
 }
@@ -50,10 +50,10 @@ body{
     height: 0px;
     overflow: hidden;
 }
-.sidebar-collapse > .nav > li:hover ul{
+.sidebar-collapse > .nav > li:hover ul, .sidebar-collapse > .nav > li.active-menu ul{
     height: 122px;
 }
-.sidebar-collapse > .nav > li:hover ul.faqMenu{
+.sidebar-collapse > .nav > li:hover ul.faqMenu, .sidebar-collapse > .nav > li.active-menu ul.faqMenu{
     height: 80px;
 }
 .sidebar-collapse > .nav > li:hover ul li{
@@ -71,7 +71,7 @@ body{
 .sidebar-collapse > .nav > li ul li a i{
     padding-right: 5px;
 }
-.sidebar-collapse > .nav > li ul li a:hover{
+.sidebar-collapse > .nav > li ul li:hover a, .sidebar-collapse > .nav > li ul li.active-menu a{
     background: #14846b;
 }
 
