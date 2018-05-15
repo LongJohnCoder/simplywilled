@@ -611,9 +611,10 @@ class UserController extends Controller
           'zip'               => 'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
           'city'              => 'required',
           'email_notification'      => 'required|numeric|between:0,1|integer',
-          'email'             =>  "required_if:email_notification,'1'|email",
+          'email'             =>  "nullable|required_if:email_notification,1|email",
           'is_backuprepresentative' => 'required|numeric|integer|between:0,1'
       ]);
+
       // validation for the user data
       if ($validator->fails()) {
           $response = response()->json([
@@ -657,12 +658,15 @@ class UserController extends Controller
       //if user has not completed previous step in tellUsYou section then this step is not permited
 
       PersonalRepresentatives::updateOrCreate(['user_id' => $personalRepresentative['user_id'], 'is_backuprepresentative' => (string)$isBackupRepresentative], $personalRepresentative);
+      
+
       if(isset($personalRepresentative['email_notification']) && $personalRepresentative['email_notification'] ==1 ) {
-        $this->sendEmail($personalRepresentative['user_id'], $personalRepresentative['fullname'], $personalRepresentative['email'], $emailType);
+        //$this->sendEmail($personalRepresentative['user_id'], $personalRepresentative['fullname'], $personalRepresentative['email'], $emailType);
       }
+      
       return [
-        'response'  =>  self::generatePersonalRepresentativeResponse($personalRepresentative['user_id']),
-        'status'    =>  200
+        'status'    =>  200,
+        'response'  =>  'success'
       ];
     }
 
@@ -704,7 +708,7 @@ class UserController extends Controller
                 'data'    => []
             ], 400);
         }
-
+        
         $userId                         = $request->user_id;
         $personalRepresentative         = $request->personalRepresentative;
         $backupPersonalRepresentative   = $request->backupPersonalRepresentative;
@@ -728,7 +732,6 @@ class UserController extends Controller
           }
         } else {
           PersonalRepresentatives::where('user_id',$userId)->where('is_backuprepresentative','0')->delete();
-          $response = self::generatePersonalRepresentativeResponse($userId);
         }
 
         if($isBackupPersonalRepresentative == 'Yes') {
@@ -748,9 +751,10 @@ class UserController extends Controller
           }
         } else {
           PersonalRepresentatives::where('user_id',$userId)->where('is_backuprepresentative','1')->delete();
-          $response = self::generatePersonalRepresentativeResponse($userId);
         }
-        return isset($response['response']) ? $response['response'] : self::generatePersonalRepresentativeResponse($userId);
+
+        $response = self::generatePersonalRepresentativeResponse($userId);
+        return $response;        
 
       } catch (\Exception $e) {
         return response()->json([
@@ -776,7 +780,7 @@ class UserController extends Controller
             'state'        =>  'required|string',
             'city'         =>  'required|string',
             'email_notification' => 'required|numeric|between:0,1|integer',
-            'email'         => 'required_if:email_notification,1|email',
+            'email'         => 'nullable|required_if:email_notification,1|email',
             'zip'          =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
         ]);
         if ($validator->fails()) {
