@@ -3,7 +3,6 @@ import {Router} from '@angular/router';
 import {UserService} from '../../../user.service';
 import {UserAuthService} from '../../../user-auth/user-auth.service';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
-
 import * as States from '../../../shared/models/states.model' ;
 
 @Component({
