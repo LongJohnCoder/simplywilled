@@ -69,31 +69,39 @@ export class PersonalRepresentativePowerComponent implements OnInit {
       }, () => {
         this.fetchInfo = true;
         // set dynamic values to the form
-        if (this.fetchedUserData.business_interest === '1') {
-          this.businessInterestClassFlag = true;
+        if (this.fetchedUserData) {
+          if (this.fetchedUserData.business_interest === '1') {
+            this.businessInterestClassFlag = true;
+          } else {
+            this.businessInterestClassFlag = false;
+          }
+          if (this.fetchedUserData.farm_or_ranch === '1') {
+            this.farmRanchFlag = true;
+          } else {
+            this.farmRanchFlag = false;
+          }
+          if (this.fetchedUserData.is_getcompensate === '1') {
+            this.personalRepresentativeFlag = true;
+          } else {
+            this.personalRepresentativeFlag  = false;
+          }
+          if (this.fetchedUserData.is_percentage !== '1') {
+            this.amountTypeFlag = false;
+            this.compensation_value_data = this.fetchedUserData.compensation_percent_amount;
+          } else {
+            this.amountTypeFlag  = true;
+            this.compensation_value_data = this.fetchedUserData.compensation_specific_amount;
+          }
+          if (this.fetchedUserData.net_value_percent === '1') {
+            this.isNetValueFlag = true;
+          } else {
+            this.isNetValueFlag  = false;
+          }
         } else {
           this.businessInterestClassFlag = false;
-        }
-        if (this.fetchedUserData.farm_or_ranch === '1') {
-          this.farmRanchFlag = true;
-        } else {
           this.farmRanchFlag = false;
-        }
-        if (this.fetchedUserData.is_getcompensate === '1') {
-          this.personalRepresentativeFlag = true;
-        } else {
-          this.personalRepresentativeFlag  = false;
-        }
-        if (this.fetchedUserData.is_percentage !== '1') {
+          this.personalRepresentativeFlag = false;
           this.amountTypeFlag = false;
-          this.compensation_value_data = this.fetchedUserData.compensation_percent_amount;
-        } else {
-          this.amountTypeFlag  = true;
-          this.compensation_value_data = this.fetchedUserData.compensation_specific_amount;
-        }
-        if (this.fetchedUserData.net_value_percent === '1') {
-          this.isNetValueFlag = true;
-        } else {
           this.isNetValueFlag  = false;
         }
       });
@@ -114,7 +122,7 @@ export class PersonalRepresentativePowerComponent implements OnInit {
       this.savePersonalRepresentativeDB.subscribe(data => {
         if (data.status) {
           // router link to next page
-          this.router.navigate(['/personal-representative-details\n']);
+          this.router.navigate(['/dashboard/personal-representative-details']);
         } else {
           this.errFlag = true;
           this.errString = 'Something went wrong while updating the dataset. Please try again later!';

@@ -4,7 +4,8 @@
         <form [formGroup]="personalRepresentativeDetailsForm" novalidate
               (ngSubmit)="onSubmit(personalRepresentativeDetailsForm)">
             <div formArrayName="personalRepresentative">
-                <div *ngFor="let item of personalRepresentativeDetailsForm.controls.personalRepresentative.controls; let i=index">
+                <div *ngFor="let item of personalRepresentativeDetailsForm['controls'].personalRepresentative['controls']; let i=index">
+              <!--<div *ngFor="let item of personalRepresentativeDetailsForm.get('personalRepresentative'); let i=index">-->
                     <div [formGroupName]="i">
                         <div class="form-group">
                             <label>Full Legal Name: </label>
@@ -157,7 +158,7 @@
             <div *ngIf="personalRepresentativeDetailsForm.value.isBackupPersonalRepresentative == 'Yes'">
                 <h2>Name Your Backup Personal Representative</h2>
                 <div formArrayName="backupPersonalRepresentative">
-                    <div *ngFor="let item of personalRepresentativeDetailsForm.controls.backupPersonalRepresentative.controls; let i=index">
+                    <div *ngFor="let item of personalRepresentativeDetailsForm['controls'].backupPersonalRepresentative['controls']; let i=index">
                         <div [formGroupName]="i">
                             <div class="form-group ">
                                 <label>Full Legal Name: </label>

@@ -8,7 +8,8 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
   imports: [
     CommonModule,
     PersonalRepresentativeDetailsRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [PersonalRepresentativeDetailsComponent]
 })

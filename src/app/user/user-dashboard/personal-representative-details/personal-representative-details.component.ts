@@ -1,6 +1,6 @@
 import {Component, OnInit, ɵNOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR} from '@angular/core';
 import {Router} from '@angular/router';
-import {Validators, FormGroup, FormBuilder, FormControl} from '@angular/forms';
+import {Validators, FormGroup, FormBuilder, FormControl, FormArray} from '@angular/forms';
 import {UserAuthService} from '../../user-auth/user-auth.service';
 import {UserService} from '../../user.service';
 
@@ -27,7 +27,6 @@ export class PersonalRepresentativeDetailsComponent implements OnInit {
     ngOnInit() {
         this.getUserData();
     }
-
     /**
      *This function is fetching user data
      */
