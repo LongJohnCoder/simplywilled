@@ -27,3 +27,14 @@
     margin:  0 !important;
     padding: 0;
 }
+
+@media screen and (max-width: 767px){
+   .inner-banner h1 span{
+        display: inline !important;
+    } 
+}
+@media screen and (max-width: 400px){
+    .inner-banner h1{
+         font-size: 30px !important;
+     } 
+ }
