@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BlogService} from '../blog.service';
-import {ActivatedRoute, Router, Event, NavigationStart, NavigationEnd, NavigationError} from '@angular/router';
-import {NgxPaginationModule} from 'ngx-pagination';
+import {ActivatedRoute, Router, Event, NavigationEnd} from '@angular/router';
 import {FormControl, Validators, FormGroup} from '@angular/forms';
 
 @Component({
@@ -17,9 +16,9 @@ export class BlogCategoryComponent implements OnInit {
     recentBlogPost: any[] = [];
     subscriberEmailForm: any;
     subscriberEmail: FormControl;
-
-    constructor(private router: Router,
-                private route: ActivatedRoute, private BlogService: BlogService, ) {
+    BlogService: BlogService
+    p: number;
+    constructor(private router: Router, private route: ActivatedRoute ) {
 
         router.events.subscribe( (event: Event) => {
             if (event instanceof NavigationEnd) {
@@ -29,13 +28,14 @@ export class BlogCategoryComponent implements OnInit {
                         this.blogList = data.data.blog;
                         this.imageLink = data.data.imageLink;
                     }
-                )
+                );
             }
         });
 
     }
 
     ngOnInit() {
+        this.p = 1;
         this.getBlogDetailsFromCategory();
         this.populateBlogCategory();
         this.populatePopularBlogPosts();
@@ -52,39 +52,39 @@ export class BlogCategoryComponent implements OnInit {
                 this.blogList = data.data.blog;
                 this.imageLink = data.data.imageLink;
             }
-        )
+        );
     }
 
     populateBlogCategory(){
         this.BlogService.getBlogCategoryList().subscribe(
-            (data:any)=>{
+            (data: any) => {
                 this.blogCategoryList = data.data.categories;
             }
-        )
+        );
     }
 
     populatePopularBlogPosts(){
         this.BlogService.getPopularBlogPosts().subscribe(
-            (data:any)=>{
-                let list: string[] = [];
+            (data: any) => {
+                const list: string[] = [];
                 data.data.forEach(function (value) {
                     list.push(value.blog);
                 });
                 this.popularBlogPost = list;
             }
-        )
+        );
     }
 
-    populateRecentBlogPosts(){
+    populateRecentBlogPosts() {
         this.BlogService.getRecentBlogPosts().subscribe(
-            (data:any)=>{
-                let list: string[] = [];
+            ( data: any ) => {
+                const list: string[] = [];
                 data.data.forEach(function (value) {
                     list.push(value.blog);
                 });
                 this.recentBlogPost = list;
             }
-        )
+        );
     }
 
     createFormControls() {
@@ -110,7 +110,7 @@ export class BlogCategoryComponent implements OnInit {
                         this.subscriberEmailForm.reset();
                     }
                 }
-            )
+            );
         }
     }
 

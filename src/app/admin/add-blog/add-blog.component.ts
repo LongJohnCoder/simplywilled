@@ -1,9 +1,7 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
-import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {Response} from '@angular/http';
-import {Router, ActivatedRoute} from "@angular/router";
-import {DashboardService} from "./../dashboard.service";
-import {BlogService} from "./../blog.service";
+import {Router, ActivatedRoute} from '@angular/router';
+import {DashboardService} from './../dashboard.service';
+import {BlogService} from './../blog.service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
@@ -19,11 +17,11 @@ export class AddBlogComponent implements OnInit {
     categoryIdCollection: any[] = [];
     blogImage: File;
     blogFeatured: any;
-    createBlogMessage: string = 'Processing...';
-    editMode: boolean = false;
+    createBlogMessage: string;
+    editMode: boolean;
     categories = [];
     public modalRef: BsModalRef;
-
+    private BlogService: BlogService;
     blogData = {
         id: 0,
         author_id: 0,
@@ -42,7 +40,6 @@ export class AddBlogComponent implements OnInit {
 
     constructor(
         private dashService: DashboardService,
-        private BlogService: BlogService,
         private router: Router,
         private route: ActivatedRoute,
         private modalService: BsModalService,
@@ -53,10 +50,11 @@ export class AddBlogComponent implements OnInit {
     checkedCat: any = {}
 
     ngOnInit() {
+        this.createBlogMessage = 'Processing...';
+        this.editMode = false;
         this.populateBlogCategorysData();
-        console.log(this.blogData);
         const id = +this.route.snapshot.paramMap.get('id');
-        if (id != 0) {
+        if (id !== 0) {
             this.editMode = true;
             this.getBlog();
         }
@@ -82,8 +80,8 @@ export class AddBlogComponent implements OnInit {
         createBlogBody.append('blogFeatured', this.blogFeatured);
         createBlogBody.append('blogMetaKeyword', this.blogData.meta_keywords);
         createBlogBody.append('blogCategorys', this.blogData.blog_category);
-        for (let i=0; i<this.blogData.blog_category.length; i++) {
-            createBlogBody.append('blogCategorys['+i+']', this.blogData.blog_category[i]);
+        for (let i = 0; i < this.blogData.blog_category.length; i++) {
+            createBlogBody.append('blogCategorys[' + i + ']', this.blogData.blog_category[i]);
         }
         createBlogBody.append('blogImage', this.blogImage);
         createBlogBody.append('blogSeoTitle', this.blogData.seo_title);
@@ -94,7 +92,7 @@ export class AddBlogComponent implements OnInit {
                 // if (response.status = 'true') {
                 // console.log(response.status);
                     this.createBlogMessage = response.message;
-                    let blogModalRef = this;
+                    const blogModalRef = this;
                     setTimeout(() => {
                         blogModalRef.modalRef.hide();
                     }, 2000);
@@ -103,7 +101,7 @@ export class AddBlogComponent implements OnInit {
                 // }
                 this.router.navigate(['/admin-panel/blogs']);
 
-            },(error: any) => {
+            }, (error: any) => {
                 this.createBlogMessage = error.error.message;
         });
     }
@@ -122,8 +120,8 @@ export class AddBlogComponent implements OnInit {
         createBlogBody.append('blogStatus', this.blogData.status);
         createBlogBody.append('blogFeatured', this.blogFeatured);
         createBlogBody.append('blogMetaKeyword', this.blogData.meta_keywords);
-        for (let i=0; i<this.blogData.blog_category.length; i++) {
-            createBlogBody.append('blogCategorys['+i+']', this.blogData.blog_category[i]);
+        for (let i = 0; i < this.blogData.blog_category.length; i++) {
+            createBlogBody.append('blogCategorys[' + i + ']', this.blogData.blog_category[i]);
         }
         createBlogBody.append('blogImage', this.blogImage);
         createBlogBody.append('blogSeoTitle', this.blogData.seo_title);
@@ -134,7 +132,7 @@ export class AddBlogComponent implements OnInit {
             // if (response.status = 'true') {
                 console.log(response.status);
                 this.createBlogMessage = response.message;
-                let blogModalRef = this;
+                const blogModalRef = this;
                 setTimeout(() => {
                     blogModalRef.modalRef.hide();
                 }, 2000);
@@ -167,10 +165,6 @@ export class AddBlogComponent implements OnInit {
      */
     handleImageUpload(event): void {
         this.blogImage = <File>event.target.files[0];
-        // console.log(<File>event.target.files);
-        // console.log(event.target.width);
-        // console.log(this.blogImage.type);
-        // console.log(this.blogImage);
     }
 
     populateBlogCategorysData() {
@@ -179,7 +173,7 @@ export class AddBlogComponent implements OnInit {
                 this.categoryData = data.data.categoryDetails;
                 // console.log('blogCategorylist', this.categoryData)
             }
-        )
+        );
     }
 
     getBlog() {
@@ -205,7 +199,7 @@ export class AddBlogComponent implements OnInit {
                 // }
                 // this.blogData.blog_category = this.categories;
             }
-        )
+        );
     }
 
     public openModal(template:  TemplateRef<any>) {
@@ -220,10 +214,10 @@ export class AddBlogComponent implements OnInit {
 
 
 
-let ch: any = document.getElementsByClassName('blogCh');
+const ch: any = document.getElementsByClassName('blogCh');
 
 for (let i = 0; i < ch.length; i++) {
-    ch[i].addEventListener("click", function () {
+    ch[i].addEventListener('click', function () {
         if (this.checked) {
             alert();
         }

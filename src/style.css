@@ -1300,7 +1300,7 @@ h1, h2, h3, h4, h5, h6{
 	display: block;
 	margin: 70px auto 0;
 	background:url('./assets/images/blueBoxBg.jpg') no-repeat;
-	background-size:100% 100%; 
+	background-size:100% 100%;
 	color:#fff;
 	font-size:44px;
 	padding:20px;
@@ -1900,7 +1900,7 @@ h1, h2, h3, h4, h5, h6{
     left: 0px;
     margin-top: -.5px;
     z-index: -1;
-} 
+}
 .subscribe_form_main{
     width:100%;
     float:left;
@@ -2281,7 +2281,7 @@ footer{
 }
 .footer-nav ul li a{
     color: #373737;
-    font-size: 14px;      
+    font-size: 14px;
 }
 .FooterRight{
     width: 326px;
@@ -2520,7 +2520,6 @@ select.form-control{
 	background: #fff;
 	border-radius: 10px;
 }
-
 
 
 

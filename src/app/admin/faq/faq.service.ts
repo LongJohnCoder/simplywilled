@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {environment} from '../../../environments/environment.prod';
+import {environment} from '../../../environments/environment';
 
 @Injectable()
 export class FaqService {
@@ -10,7 +10,7 @@ export class FaqService {
       private httpClient: HttpClient
   ) { }
 
-  getFaqCategories(): Observable<any>{
+  getFaqCategories(): Observable<any> {
       const url = `${environment.API_URL + 'admin-panel/faq-category-list'}`;
       return this.httpClient.get(url);
   }

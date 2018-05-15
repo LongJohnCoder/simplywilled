@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from './blog.service';
 import * as moment from 'moment';
-import _date = moment.unitOfTime._date;
-import {NgxPaginationModule} from 'ngx-pagination';
 import {FormControl, Validators, FormGroup} from '@angular/forms';
 
 
@@ -19,11 +17,14 @@ export class BlogComponent implements OnInit {
     recentBlogPost: any[] = [];
     subscriberEmailForm: any;
     subscriberEmail: FormControl;
-   constructor( private BlogService : BlogService ) {
+    BlogService: BlogService
+    p: number;
+   constructor() {
 
-  }
+   }
 
   ngOnInit() {
+      this.p = 1;
       this.populateBlog();
       this.populateBlogCategory();
       this.populatePopularBlogPosts();
@@ -39,7 +40,7 @@ export class BlogComponent implements OnInit {
                  this.blogList = data.data.BlogDetails;
                  this.imageLink = data.data.imageLink;
             }
-        )
+        );
     }
 
     populateBlogCategory() {
@@ -47,30 +48,30 @@ export class BlogComponent implements OnInit {
           (data: any) => {
               this.blogCategoryList = data.data.categories;
           }
-      )
+      );
     }
 
     populatePopularBlogPosts() {
         this.BlogService.getPopularBlogPosts().subscribe(
             (data: any) => {
-                let list: string[] = [];
+                const list: string[] = [];
                 data.data.forEach(function (value) {
                     list.push(value.blog);
                 });
                  this.popularBlogPost = list;
             }
-        )
+        );
     }
     populateRecentBlogPosts() {
         this.BlogService.getRecentBlogPosts().subscribe(
             (data: any) => {
-                let list : string[] = [];
+                const list: string[] = [];
                 data.data.forEach(function (value) {
                     list.push(value.blog);
                 });
                 this.recentBlogPost = list;
             }
-        )
+        );
     }
 
     createFormControls() {
@@ -96,7 +97,7 @@ export class BlogComponent implements OnInit {
                         this.subscriberEmailForm.reset();
                     }
                 }
-            )
+            );
         }
     }
 
