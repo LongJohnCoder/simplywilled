@@ -22,7 +22,7 @@ use Log;
 use Mail;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
-use App\CategoryBLogMapping;
+use App\CategoryBlogMapping;
 
 class CategoryController extends Controller {
 
@@ -233,6 +233,16 @@ class CategoryController extends Controller {
             if ($categoryId) {
                 $category = Categories::find($categoryId);
                 if ($category) {
+                    $blogs = CategoryBlogMapping::where('category_id', $categoryId)->get();
+                    foreach ($blogs as $fkey => $fvalue) {
+                        $blogCat = CategoryBlogMapping::where('blog_id', $fvalue->blog_id)->count();
+                        if ($blogCat == 1) {
+                          $newBlogCat = new CategoryBlogMapping;
+                          $newBlogCat->blog_id = $fvalue->blog_id;
+                          $newBlogCat->category_id = 1;
+                          $newBlogCat->save();
+                        }
+                    }
                     $category->blogMapping()->delete();
                     if ($category->delete()) {
                         // CategoryBLogMapping::where('category_id',$categoryId)->delete();

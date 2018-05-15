@@ -237,6 +237,18 @@ class FaqCategoryController extends Controller
                   ], 400);
                 }
 
+                $faqs = FaqCategoryMapping::where('faq_category_id', $faqCategoryId)->get();
+                foreach ($faqs as $fkey => $fvalue) {
+                    $faqCat = FaqCategoryMapping::where('faq_id', $fvalue->faq_id)->count();
+                    if ($faqCat == 1) {
+                      $newFaqCat = new FaqCategoryMapping;
+                      $newFaqCat->faq_id = $fvalue->faq_id;
+                      $newFaqCat->faq_category_id = 1;
+                      $newFaqCat->save();
+                    }
+                }
+                $deletefaqCategory->getFaqMapping()->delete();
+
                 if ($deletefaqCategory->delete()) {
                     return response()->json([
                         'status' => true,
