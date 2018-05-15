@@ -8,7 +8,8 @@ const routes: Routes = [
       { path: '', component: MainDashboardComponent},
       { path: 'will', loadChildren: './users-will/users-will.module#UsersWillModule'},
       { path: 'your-personal-representative-powers', loadChildren: './personal-representative-power/personal-representative-power.module#PersonalRepresentativePowerModule'},
-      { path: 'personal-representative-details', loadChildren: './personal-representative-details/personal-representative-details.module#PersonalRepresentativeDetailsModule' }
+      { path: 'personal-representative-details', loadChildren: './personal-representative-details/personal-representative-details.module#PersonalRepresentativeDetailsModule' },
+      { path: 'protect-your-finances', loadChildren: './protect-your-finances/protect-your-finances.module#ProtectYourFinancesModule'}
     ]},
 ]
 
