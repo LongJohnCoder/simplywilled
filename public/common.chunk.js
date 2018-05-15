@@ -369,6 +369,20 @@ var UserService = /** @class */ (function () {
 
 
 
+/***/ }),
+
+/***/ "./src/environments/environment.prod.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
+var environment = {
+    production: true,
+    API_URL: 'http://18.188.1.146/api/v1/',
+    base_url: 'http://18.188.1.146/',
+};
+
+
 /***/ })
 
 });

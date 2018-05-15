@@ -337,7 +337,7 @@ class BlogController extends Controller
               if ($width < 899 || $height < 599) {
                 return response()->json([
                     'status'  => false,
-                    'message' => 'Image dimesion should be 900x600',
+                    'message' => 'Image dimension should be minimum 900x600',
                     'data'    => []
                 ], 400);
               }

@@ -794,9 +794,8 @@ module.exports = "<div class=\"body_container\">\n  <div class=\"wrapper\">\n   
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BlogCategoryComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blog_service__ = __webpack_require__("./src/app/user/blog/blog.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -809,19 +808,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var BlogCategoryComponent = /** @class */ (function () {
-    function BlogCategoryComponent(router, route, BlogService) {
+    function BlogCategoryComponent(router, route) {
         var _this = this;
         this.router = router;
         this.route = route;
-        this.BlogService = BlogService;
         this.blogList = [];
         this.blogCategoryList = [];
         this.popularBlogPost = [];
         this.recentBlogPost = [];
         router.events.subscribe(function (event) {
-            if (event instanceof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* NavigationEnd */]) {
+            if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* NavigationEnd */]) {
                 var slug = _this.route.snapshot.paramMap.get('slug');
                 _this.BlogService.getBlogDetailsFromCategory(slug).subscribe(function (data) {
                     _this.blogList = data.data.blog;
@@ -831,6 +828,7 @@ var BlogCategoryComponent = /** @class */ (function () {
         });
     }
     BlogCategoryComponent.prototype.ngOnInit = function () {
+        this.p = 1;
         this.getBlogDetailsFromCategory();
         this.populateBlogCategory();
         this.populatePopularBlogPosts();
@@ -873,14 +871,14 @@ var BlogCategoryComponent = /** @class */ (function () {
         });
     };
     BlogCategoryComponent.prototype.createFormControls = function () {
-        this.subscriberEmailForm = new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormControl"]();
-        this.subscriberEmail = new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormControl"]('', [
-            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].required,
-            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["Validators"].pattern('[^ @]*@[^ @]*')
+        this.subscriberEmailForm = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]();
+        this.subscriberEmail = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('', [
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required,
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].pattern('[^ @]*@[^ @]*')
         ]);
     };
     BlogCategoryComponent.prototype.createForm = function () {
-        this.subscriberEmailForm = new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormGroup"]({
+        this.subscriberEmailForm = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormGroup"]({
             subscriberEmail: this.subscriberEmail
         });
     };
@@ -901,8 +899,7 @@ var BlogCategoryComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/user/blog/blog-category/blog-category.component.html"),
             styles: [__webpack_require__("./src/app/user/blog/blog-category/blog-category.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_router__["d" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_1__blog_service__["a" /* BlogService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]])
     ], BlogCategoryComponent);
     return BlogCategoryComponent;
 }());
@@ -931,8 +928,7 @@ module.exports = "<div class=\"body_container\">\n  <div class=\"wrapper\">\n   
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BlogComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blog_service__ = __webpack_require__("./src/app/user/blog/blog.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -944,16 +940,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
 var BlogComponent = /** @class */ (function () {
-    function BlogComponent(BlogService) {
-        this.BlogService = BlogService;
+    function BlogComponent() {
         this.blogList = [];
         this.blogCategoryList = [];
         this.popularBlogPost = [];
         this.recentBlogPost = [];
     }
     BlogComponent.prototype.ngOnInit = function () {
+        this.p = 1;
         this.populateBlog();
         this.populateBlogCategory();
         this.populatePopularBlogPosts();
@@ -995,14 +990,14 @@ var BlogComponent = /** @class */ (function () {
         });
     };
     BlogComponent.prototype.createFormControls = function () {
-        this.subscriberEmailForm = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]();
-        this.subscriberEmail = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('', [
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required,
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].pattern('[^ @]*@[^ @]*')
+        this.subscriberEmailForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]();
+        this.subscriberEmail = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormControl"]('', [
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required,
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].pattern('[^ @]*@[^ @]*')
         ]);
     };
     BlogComponent.prototype.createForm = function () {
-        this.subscriberEmailForm = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormGroup"]({
+        this.subscriberEmailForm = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormGroup"]({
             subscriberEmail: this.subscriberEmail
         });
     };
@@ -1023,7 +1018,7 @@ var BlogComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/user/blog/blog.component.html"),
             styles: [__webpack_require__("./src/app/user/blog/blog.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__blog_service__["a" /* BlogService */]])
+        __metadata("design:paramtypes", [])
     ], BlogComponent);
     return BlogComponent;
 }());

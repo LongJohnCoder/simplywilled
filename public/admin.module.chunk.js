@@ -26255,7 +26255,7 @@ module.exports = ".row{\n    margin: 0;\n}"
 /***/ "./src/app/admin/add-blog/add-blog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-left-menu></app-left-menu>\n\n<!-- <ck-editor name=\"editor1\" [(ngModel)]=\"editorValue\" skin=\"moono-lisa\" language=\"en\" [fullPage]=\"true\"></ck-editor> -->\n\n<div id=\"page-wrapper\">\n    <div id=\"page-inner\">\n\n\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <h1 class=\"page-header\">\n                    {{blogData.id == '' ? 'Add' : 'Edit'}} Blog\n                </h1>\n            </div>\n        </div>\n        <!-- /. ROW  -->\n\n        <form #createBlog=\"ngForm\">\n            <div class=\"row\">\n                <div class=\"col-md-8\">\n                    <div class=\"panel panel-default\">\n                        <div class=\"panel-body\">\n                            <fieldset>\n                                <div class=\"form-group\">\n                                    <label for=\"blogTitle\">Blog Title:</label>\n                                    <input id=\"blogTitle\" class=\"form-control\" type=\"text\" [(ngModel)]=\"blogData.title\" name=\"title\" ngModel #blogTitle=\"ngModel\" required>\n                                    <span *ngIf=\"blogTitle.invalid && blogTitle.touched\" style=\"color:red;\"> Blog title is reqired ! </span>\n                                    <input type=\"hidden\" [(ngModel)]=\"blogData.id\" name=\"blogId\" ngModel #blogId=\"ngModel\">\n                                </div>\n                                <div class=\"form-group\">\n                                    <label for=\"text_editor\">Body:</label>\n                                    <ck-editor id=\"text_editor\" class=\"\" skin=\"moono-lisa\" language=\"en\" [fullPage]=\"true\" name=\"body\" [(ngModel)]=\"blogData.body\" #blogBody=\"ngModel\" required></ck-editor>\n                                    <!--<ck-editor name=\"editor1\" [(ngModel)]=\"editorValue\" skin=\"moono-lisa\" language=\"en\" [fullPage]=\"true\"></ck-editor>-->\n                                    <span *ngIf=\"blogBody.invalid && blogBody.touched\" style=\"color:red;\"> Blog body is reqired ! </span>\n\n                                </div>\n                            </fieldset>\n\n                        </div>\n                    </div>\n                </div>\n                <div class=\"col-md-4\">\n                    <div class=\"panel panel-bordered panel-primary\">\n                        <div class=\"panel-heading\">\n                            <h3 class=\"panel-title\"> Detail</h3>\n                        </div>\n                        <div class=\"panel-body\">\n                            <div class=\"form-group\">\n                                <label for=\"status\">Status</label>\n                                <select id=\"status\" class=\"form-control\" name=\"status\" [(ngModel)]=\"blogData.status\" #blogStatus=\"ngModel\" required>\n                                    <option value=\"1\">Published</option>\n                                    <option value=\"0\">Pending</option>\n                                </select>\n                                <span *ngIf=\"blogStatus.invalid && blogStatus.touched\" style=\"color:red;\"> Select blog status ! </span>\n\n                            </div>\n                            <div class=\"checkbox\">\n                                <label for=\"featured\">\n                                    <input id=\"featured\" type=\"checkbox\" name=\"blogFeatured\" [(ngModel)]=\"blogData.featured\" #blogFeatured=\"ngModel\"> Featured\n                                </label>\n\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"panel panel-bordered panel-success\">\n                        <div class=\"panel-heading\">\n                            <h3 class=\"panel-title\"> Category</h3>\n                        </div>\n                        <div class=\"panel-body\">\n                            <!--<div class=\"checkbox\" *ngFor=\"let category of categoryData\">-->\n                                <!--<label>-->\n                                    <!--<input class=\"blogCh\" type=\"checkbox\" value=\"{{category.id}}\" name=\"blogCategory[]\"-->\n                                           <!--[(ngModel)]=\"blogData.blog_category\" #blogTcat1=\"ngModel\"-->\n                                           <!--(ngModelChange)=\"selectedValue(category.id, $event)\"> {{category.name}}-->\n                                <!--</label>-->\n                            <!--</div>-->\n                            <select multiple class=\"form-control\" name=\"blogCategorys\" [(ngModel)]=\"blogData.blog_category\" #blogCategorys=\"ngModel\">\n                                <option  *ngFor=\"let category of categoryData\" [ngValue]=\"category.id\">{{category.name}}</option>\n                            </select>\n                            <!--<span *ngIf=\"blogCategorys.invalid && blogCategorys.touched\" style=\"color:red;\"> Select blog categories ! </span>-->\n\n                        </div>\n                    </div>\n                    <div class=\"panel panel-bordered panel-info\">\n                        <div class=\"panel-heading\">\n                            <h3 class=\"panel-title\"> Image</h3> <h6>(Only .jpg .jpeg .png .gif format supported)</h6>\n                        </div>\n                        <div class=\"panel-body\">\n                            <div class=\"input-group\">\n                                <div *ngIf=\"!editMode\">\n                                    <input type=\"file\"\n                                           class=\"form-control input-flat\"\n                                           id=\"blogImage\"\n                                           ngModel\n                                           #blogImage=\"ngModel\"\n                                           name=\"blogImage\"\n                                           required\n                                           accept=\"image/x-png,image/gif,image/jpeg\"\n                                           (change)=\"handleImageUpload($event)\">\n                                    <span *ngIf=\"blogImage.invalid && blogImage.touched\" style=\"color:red;\"> Select blog image ! </span>\n                                </div>\n                                <div *ngIf=\"editMode\">\n                                    <input type=\"file\"\n                                           class=\"form-control input-flat\"\n                                           id=\"blogImage\"\n                                           ngModel\n                                           accept=\"image/x-png,image/gif,image/jpeg\"\n                                           #blogImage=\"ngModel\"\n                                           name=\"blogImage\"\n                                           (change)=\"handleImageUpload($event)\">\n                                </div>\n                            </div>\n                            <div *ngIf=\"blogData.image\">\n                                <img src=\"{{blogData.image}}\" alt=\"{{blogData.image}}\">\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"panel panel-bordered panel-warning\">\n                        <div class=\"panel-heading\">\n                            <h3 class=\"panel-title\"> SEO Content</h3>\n                        </div>\n                        <div class=\"panel-body\">\n                            <div class=\"form-group\">\n                                <label for=\"seo_title\">SEO Title</label>\n                                <input id=\"seo_title\" class=\"form-control\" value=\"\" type=\"text\" name=\"blogSeoTitle\" [(ngModel)]=\"blogData.seo_title\"\n                                       #blogSeoTitle=\"ngModel\">\n                            </div>\n                            <div class=\"form-group\">\n                                <label>Meta Description</label>\n                                <textarea class=\"form-control\" name=\"blogMeta\" [(ngModel)]=\"blogData.meta_description\" #blogMeta=\"ngModel\"></textarea>\n                            </div>\n                            <div class=\"form-group\">\n                                <label>Meta Keywords</label>\n                                <textarea class=\"form-control\" name=\"blogMetaKey\" [(ngModel)]=\"blogData.meta_keywords\"\n                                          #blogMetaKey=\"ngModel\"></textarea>\n                            </div>\n                        </div>\n                    </div>\n                    <!--<button type=\"submit\" class=\"btn btn-primary\">Create Blog</button>-->\n                    <button *ngIf=\"editMode\" type=\"button\" class=\"btn btn-primary\" (click)=\"edit(); openModal(message)\" [disabled]=\"!createBlog.form.valid\"> {{editMode ? 'Edit' : 'Create'}} Blog </button>\n                    <button *ngIf=\"!editMode\" type=\"button\" class=\"btn btn-primary\" (click)=\"add(); openModal(message)\" [disabled]=\"!createBlog.form.valid\"> {{editMode ? 'Edit' : 'Create'}} Blog </button>\n\n\n                </div>\n            </div>\n        </form>\n\n        <ng-template #message>\n            <div class=\"adminModalSmall\">\n                <div class=\"modal-header deleteBlogHead\">\n                    <h3 class=\"modal-title\">\n                        {{createBlogMessage}}\n                    </h3>\n\n                </div>\n                <div class=\"modal-body deleteBlogFoot\">\n                    <button type=\"button\" class=\"btn btn-warning\" (click)=\"onCancel()\">\n                        Cancel\n                    </button>\n                </div>\n                </div>\n        </ng-template>\n        <footer><p>All right reserved. Developed By <a href=\"#\">TNI</a></p></footer>\n    </div>\n    <!-- /. PAGE INNER  -->\n"
+module.exports = "<app-header></app-header>\n<app-left-menu></app-left-menu>\n\n<!-- <ck-editor name=\"editor1\" [(ngModel)]=\"editorValue\" skin=\"moono-lisa\" language=\"en\" [fullPage]=\"true\"></ck-editor> -->\n\n<div id=\"page-wrapper\">\n    <div id=\"page-inner\">\n\n\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <h1 class=\"page-header\">\n                    {{blogData.id === 0 ? 'Add' : 'Edit'}} Blog\n                </h1>\n            </div>\n        </div>\n        <!-- /. ROW  -->\n\n        <form #createBlog=\"ngForm\">\n            <div class=\"row\">\n                <div class=\"col-md-8\">\n                    <div class=\"panel panel-default\">\n                        <div class=\"panel-body\">\n                            <fieldset>\n                                <div class=\"form-group\">\n                                    <label for=\"blogTitle\">Blog Title:</label>\n                                    <input id=\"blogTitle\" class=\"form-control\" type=\"text\" [(ngModel)]=\"blogData.title\" name=\"title\" ngModel #blogTitle=\"ngModel\" required>\n                                    <span *ngIf=\"blogTitle.invalid && blogTitle.touched\" style=\"color:red;\"> Blog title is reqired ! </span>\n                                    <input type=\"hidden\" [(ngModel)]=\"blogData.id\" name=\"blogId\" ngModel #blogId=\"ngModel\">\n                                </div>\n                                <div class=\"form-group\">\n                                    <label for=\"text_editor\">Body:</label>\n                                    <ck-editor id=\"text_editor\" class=\"\" skin=\"moono-lisa\" language=\"en\" [fullPage]=\"true\" name=\"body\" [(ngModel)]=\"blogData.body\" #blogBody=\"ngModel\" required></ck-editor>\n                                    <!--<ck-editor name=\"editor1\" [(ngModel)]=\"editorValue\" skin=\"moono-lisa\" language=\"en\" [fullPage]=\"true\"></ck-editor>-->\n                                    <span *ngIf=\"blogBody.invalid && blogBody.touched\" style=\"color:red;\"> Blog body is reqired ! </span>\n\n                                </div>\n                            </fieldset>\n\n                        </div>\n                    </div>\n                </div>\n                <div class=\"col-md-4\">\n                    <div class=\"panel panel-bordered panel-primary\">\n                        <div class=\"panel-heading\">\n                            <h3 class=\"panel-title\"> Detail</h3>\n                        </div>\n                        <div class=\"panel-body\">\n                            <div class=\"form-group\">\n                                <label for=\"status\">Status</label>\n                                <select id=\"status\" class=\"form-control\" name=\"status\" [(ngModel)]=\"blogData.status\" #blogStatus=\"ngModel\" required>\n                                    <option value=\"1\">Published</option>\n                                    <option value=\"0\">Pending</option>\n                                </select>\n                                <span *ngIf=\"blogStatus.invalid && blogStatus.touched\" style=\"color:red;\"> Select blog status ! </span>\n\n                            </div>\n                            <div class=\"checkbox\">\n                                <label for=\"featured\">\n                                    <input id=\"featured\" type=\"checkbox\" name=\"blogFeatured\" [(ngModel)]=\"blogData.featured\" #blogFeatured=\"ngModel\"> Featured\n                                </label>\n\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"panel panel-bordered panel-success\">\n                        <div class=\"panel-heading\">\n                            <h3 class=\"panel-title\"> Category</h3>\n                        </div>\n                        <div class=\"panel-body\">\n                            <!--<div class=\"checkbox\" *ngFor=\"let category of categoryData\">-->\n                                <!--<label>-->\n                                    <!--<input class=\"blogCh\" type=\"checkbox\" value=\"{{category.id}}\" name=\"blogCategory[]\"-->\n                                           <!--[(ngModel)]=\"blogData.blog_category\" #blogTcat1=\"ngModel\"-->\n                                           <!--(ngModelChange)=\"selectedValue(category.id, $event)\"> {{category.name}}-->\n                                <!--</label>-->\n                            <!--</div>-->\n                            <select multiple class=\"form-control\" name=\"blogCategorys\" [(ngModel)]=\"blogData.blog_category\" #blogCategorys=\"ngModel\">\n                                <option  *ngFor=\"let category of categoryData\" [ngValue]=\"category.id\">{{category.name}}</option>\n                            </select>\n                            <!--<span *ngIf=\"blogCategorys.invalid && blogCategorys.touched\" style=\"color:red;\"> Select blog categories ! </span>-->\n\n                        </div>\n                    </div>\n                    <div class=\"panel panel-bordered panel-info\">\n                        <div class=\"panel-heading\">\n                            <h3 class=\"panel-title\"> Image</h3> <h6>(Only .jpg .jpeg .png .gif format supported)</h6>\n                        </div>\n                        <div class=\"panel-body\">\n                            <div class=\"input-group\">\n                                <div *ngIf=\"!editMode\">\n                                    <input type=\"file\"\n                                           class=\"form-control input-flat\"\n                                           id=\"blogImage\"\n                                           ngModel\n                                           #blogImage=\"ngModel\"\n                                           name=\"blogImage\"\n                                           required\n                                           accept=\"image/x-png,image/gif,image/jpeg\"\n                                           (change)=\"handleImageUpload($event)\">\n                                    <span *ngIf=\"blogImage.invalid && blogImage.touched\" style=\"color:red;\"> Select blog image ! </span>\n                                </div>\n                                <div *ngIf=\"editMode\">\n                                    <input type=\"file\"\n                                           class=\"form-control input-flat\"\n                                           id=\"blogImage\"\n                                           ngModel\n                                           accept=\"image/x-png,image/gif,image/jpeg\"\n                                           #blogImage=\"ngModel\"\n                                           name=\"blogImage\"\n                                           (change)=\"handleImageUpload($event)\">\n                                </div>\n                            </div>\n                            <div *ngIf=\"blogData.image\">\n                                <img src=\"{{blogData.image}}\" alt=\"{{blogData.image}}\">\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"panel panel-bordered panel-warning\">\n                        <div class=\"panel-heading\">\n                            <h3 class=\"panel-title\"> SEO Content</h3>\n                        </div>\n                        <div class=\"panel-body\">\n                            <div class=\"form-group\">\n                                <label for=\"seo_title\">SEO Title</label>\n                                <input id=\"seo_title\" class=\"form-control\" value=\"\" type=\"text\" name=\"blogSeoTitle\" [(ngModel)]=\"blogData.seo_title\"\n                                       #blogSeoTitle=\"ngModel\">\n                            </div>\n                            <div class=\"form-group\">\n                                <label>Meta Description</label>\n                                <textarea class=\"form-control\" name=\"blogMeta\" [(ngModel)]=\"blogData.meta_description\" #blogMeta=\"ngModel\"></textarea>\n                            </div>\n                            <div class=\"form-group\">\n                                <label>Meta Keywords</label>\n                                <textarea class=\"form-control\" name=\"blogMetaKey\" [(ngModel)]=\"blogData.meta_keywords\"\n                                          #blogMetaKey=\"ngModel\"></textarea>\n                            </div>\n                        </div>\n                    </div>\n                    <!--<button type=\"submit\" class=\"btn btn-primary\">Create Blog</button>-->\n                    <button *ngIf=\"editMode\" type=\"button\" class=\"btn btn-primary\" (click)=\"edit(); openModal(message)\" [disabled]=\"!createBlog.form.valid\"> {{editMode ? 'Edit' : 'Create'}} Blog </button>\n                    <button *ngIf=\"!editMode\" type=\"button\" class=\"btn btn-primary\" (click)=\"add(); openModal(message)\" [disabled]=\"!createBlog.form.valid\"> {{editMode ? 'Edit' : 'Create'}} Blog </button>\n\n\n                </div>\n            </div>\n        </form>\n\n        <ng-template #message>\n            <div class=\"adminModalSmall\">\n                <div class=\"modal-header deleteBlogHead\">\n                    <h3 class=\"modal-title\">\n                        {{createBlogMessage}}\n                    </h3>\n\n                </div>\n                <div class=\"modal-body deleteBlogFoot\">\n                    <button type=\"button\" class=\"btn btn-warning\" (click)=\"onCancel()\">\n                        Cancel\n                    </button>\n                </div>\n                </div>\n        </ng-template>\n        <footer><p>All right reserved. Developed By <a href=\"#\">TNI</a></p></footer>\n    </div>\n    <!-- /. PAGE INNER  -->\n"
 
 /***/ }),
 
@@ -26267,8 +26267,7 @@ module.exports = "<app-header></app-header>\n<app-left-menu></app-left-menu>\n\n
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dashboard_service__ = __webpack_require__("./src/app/admin/dashboard.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__blog_service__ = __webpack_require__("./src/app/admin/blog.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_bootstrap_modal__ = __webpack_require__("./node_modules/ngx-bootstrap/modal/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ngx_bootstrap_modal__ = __webpack_require__("./node_modules/ngx-bootstrap/modal/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -26282,18 +26281,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var AddBlogComponent = /** @class */ (function () {
-    function AddBlogComponent(dashService, BlogService, router, route, modalService) {
+    function AddBlogComponent(dashService, router, route, modalService) {
         this.dashService = dashService;
-        this.BlogService = BlogService;
         this.router = router;
         this.route = route;
         this.modalService = modalService;
         this.categoryData = [];
         this.categoryIdCollection = [];
-        this.createBlogMessage = 'Processing...';
-        this.editMode = false;
         this.categories = [];
         this.blogData = {
             id: 0,
@@ -26313,10 +26308,11 @@ var AddBlogComponent = /** @class */ (function () {
         this.checkedCat = {};
     }
     AddBlogComponent.prototype.ngOnInit = function () {
+        this.createBlogMessage = 'Processing...';
+        this.editMode = false;
         this.populateBlogCategorysData();
-        console.log(this.blogData);
         var id = +this.route.snapshot.paramMap.get('id');
-        if (id != 0) {
+        if (id !== 0) {
             this.editMode = true;
             this.getBlog();
         }
@@ -26416,10 +26412,6 @@ var AddBlogComponent = /** @class */ (function () {
      */
     AddBlogComponent.prototype.handleImageUpload = function (event) {
         this.blogImage = event.target.files[0];
-        // console.log(<File>event.target.files);
-        // console.log(event.target.width);
-        // console.log(this.blogImage.type);
-        // console.log(this.blogImage);
     };
     AddBlogComponent.prototype.populateBlogCategorysData = function () {
         var _this = this;
@@ -26465,17 +26457,16 @@ var AddBlogComponent = /** @class */ (function () {
             styles: [__webpack_require__("./src/app/admin/add-blog/add-blog.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__dashboard_service__["a" /* DashboardService */],
-            __WEBPACK_IMPORTED_MODULE_3__blog_service__["a" /* BlogService */],
             __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */],
             __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */],
-            __WEBPACK_IMPORTED_MODULE_4_ngx_bootstrap_modal__["a" /* BsModalService */]])
+            __WEBPACK_IMPORTED_MODULE_3_ngx_bootstrap_modal__["a" /* BsModalService */]])
     ], AddBlogComponent);
     return AddBlogComponent;
 }());
 
 var ch = document.getElementsByClassName('blogCh');
 for (var i = 0; i < ch.length; i++) {
-    ch[i].addEventListener("click", function () {
+    ch[i].addEventListener('click', function () {
         if (this.checked) {
             alert();
         }
@@ -27174,7 +27165,7 @@ var BlogCommentsComponent = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BlogService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__ = __webpack_require__("./src/environments/environment.prod.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -27192,30 +27183,30 @@ var BlogService = /** @class */ (function () {
         this.httpClient = httpClient;
     }
     BlogService.prototype.createBlogCategory = function (createBlogCategoryBody) {
-        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/create-category', createBlogCategoryBody);
+        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/create-category', createBlogCategoryBody);
     };
     BlogService.prototype.getCategory = function (id) {
-        var url = __WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/view-category' + "/" + id;
+        var url = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/view-category' + "/" + id;
         return this.httpClient.get(url);
     };
     BlogService.prototype.updateBlogCategory = function (updateBlogCategoryBody) {
-        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/edit-category', updateBlogCategoryBody);
+        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/edit-category', updateBlogCategoryBody);
     };
     BlogService.prototype.getBlog = function (id) {
-        var url = __WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/view-blog' + "/" + id;
+        var url = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/view-blog' + "/" + id;
         return this.httpClient.get(url);
     };
     BlogService.prototype.deleteBlogCat = function (id) {
-        return this.httpClient.delete(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/delete-category/' + id);
+        return this.httpClient.delete(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/delete-category/' + id);
     };
     BlogService.prototype.comments = function () {
-        return this.httpClient.get(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/comments-list/');
+        return this.httpClient.get(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/comments-list/');
     };
     BlogService.prototype.deleteComment = function (id) {
-        return this.httpClient.delete(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/delete-comment/' + id);
+        return this.httpClient.delete(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/delete-comment/' + id);
     };
     BlogService.prototype.updateComment = function (createcomment) {
-        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/edit-comment', createcomment);
+        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/edit-comment', createcomment);
     };
     BlogService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
@@ -27414,7 +27405,7 @@ var DashHomeComponent = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__ = __webpack_require__("./src/environments/environment.prod.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -27432,22 +27423,22 @@ var DashboardService = /** @class */ (function () {
         this.httpClient = httpClient;
     }
     DashboardService.prototype.dashboard = function () {
-        return this.httpClient.get(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/dashboard');
+        return this.httpClient.get(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/dashboard');
     };
     DashboardService.prototype.blogList = function () {
-        return this.httpClient.get(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/blog-list');
+        return this.httpClient.get(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/blog-list');
     };
     DashboardService.prototype.deleteBlog = function (delBlogId) {
-        return this.httpClient.delete(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/delete-blog/' + delBlogId);
+        return this.httpClient.delete(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/delete-blog/' + delBlogId);
     };
     DashboardService.prototype.createBlog = function (createBlogBody) {
-        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/create-blog', createBlogBody);
+        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/create-blog', createBlogBody);
     };
     DashboardService.prototype.blogCategoryList = function () {
-        return this.httpClient.get(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/category-list');
+        return this.httpClient.get(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/category-list');
     };
     DashboardService.prototype.editBlog = function (createBlogBody) {
-        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/edit-blog', createBlogBody);
+        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/edit-blog', createBlogBody);
     };
     DashboardService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
@@ -27654,7 +27645,7 @@ var FaqFormComponent = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FaqService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__ = __webpack_require__("./src/environments/environment.prod.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -27672,38 +27663,38 @@ var FaqService = /** @class */ (function () {
         this.httpClient = httpClient;
     }
     FaqService.prototype.getFaqCategories = function () {
-        var url = "" + (__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/faq-category-list');
+        var url = "" + (__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/faq-category-list');
         return this.httpClient.get(url);
     };
     FaqService.prototype.getCategory = function (id) {
-        var url = __WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/view-faq-category' + "/" + id;
+        var url = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/view-faq-category' + "/" + id;
         return this.httpClient.get(url);
     };
     FaqService.prototype.createBlogCategory = function (createFAQCategoryBody) {
-        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/create-faq-category', createFAQCategoryBody);
+        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/create-faq-category', createFAQCategoryBody);
     };
     FaqService.prototype.updateFAQCategory = function (updateFAQCategoryBody) {
-        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/edit-faq-category', updateFAQCategoryBody);
+        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/edit-faq-category', updateFAQCategoryBody);
     };
     FaqService.prototype.deleteFaqCat = function (id) {
-        return this.httpClient.delete(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/delete-faq-category/' + id);
+        return this.httpClient.delete(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/delete-faq-category/' + id);
     };
     FaqService.prototype.faqList = function () {
-        var url = "" + (__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/faq-list');
+        var url = "" + (__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/faq-list');
         return this.httpClient.get(url);
     };
     FaqService.prototype.deletefaq = function (id) {
-        return this.httpClient.delete(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/delete-faq/' + id);
+        return this.httpClient.delete(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/delete-faq/' + id);
     };
     FaqService.prototype.faqDetails = function (id) {
-        var url = __WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/view-faq' + "/" + id;
+        var url = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/view-faq' + "/" + id;
         return this.httpClient.get(url);
     };
     FaqService.prototype.faqUpdate = function (formData) {
-        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/edit-faq', formData);
+        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/edit-faq', formData);
     };
     FaqService.prototype.createFaq = function (formData) {
-        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment_prod__["a" /* environment */].API_URL + 'admin-panel/create-faq', formData);
+        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'admin-panel/create-faq', formData);
     };
     FaqService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
