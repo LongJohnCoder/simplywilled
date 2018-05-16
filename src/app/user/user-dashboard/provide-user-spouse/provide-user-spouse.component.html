@@ -1,0 +1,42 @@
+<div class="col-md-9 col-sm-7">
+  <div class="main-content tellusaboutyou">
+    <h2>Provide For Your {{pageText}}</h2>
+    <form [formGroup]="provideYourSpouseForm" novalidate
+          (ngSubmit)="onSubmit(provideYourSpouseForm)">
+      <div class="form-group">
+        <ul class="Instructions_ul_Radio" style="margin-bottom:0">
+          <li>
+            <label class="two_child_radio special_instrucion active">
+              <span class="two_child_img"><img src="../../../../assets/images/couple-p.png" alt="couple-p"></span>
+            </label>
+          </li>
+        </ul>
+          <div class="form-group">
+              <label>Would you like to distribute the residue of your estate to your {{pageText}} first? </label>
+              <ul class="radio_ul6">
+                  <li>
+                      <label class="radio_custom"
+                             [ngClass]="{'active': provideYourSpouseForm.value.residue_to_partner_first == '1'}">
+                          <input type="radio" formControlName="residue_to_partner_first" value="1">
+                          <span class="human_status">Yes</span>
+                      </label>
+
+                  </li>
+                  <li>
+                      <label class="radio_custom"
+                             [ngClass]="{'active': provideYourSpouseForm.value.residue_to_partner_first == '0'}">
+                          <input type="radio" formControlName="residue_to_partner_first" value="0">
+                          <span class="human_status"> No</span>
+                      </label>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div class="form-footer">
+        <button class="btn common-button btn-grey pull-left" (click)="goBack()">Go Back</button>
+        <button class="btn common-button btn-complete" type="submit"
+                [disabled]="!provideYourSpouseForm.valid">Continue</button>
+      </div>
+    </form>
+  </div>
+</div>

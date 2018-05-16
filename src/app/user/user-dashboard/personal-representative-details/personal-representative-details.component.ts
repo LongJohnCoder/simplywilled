@@ -1,4 +1,4 @@
-import {Component, OnInit, ɵNOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Validators, FormGroup, FormBuilder, FormControl, FormArray} from '@angular/forms';
 import {UserAuthService} from '../../user-auth/user-auth.service';
@@ -12,7 +12,7 @@ import {UserService} from '../../user.service';
 export class PersonalRepresentativeDetailsComponent implements OnInit {
     public personalRepresentativeDetailsForm: FormGroup;
     errorMessage: any = '';
-    userInfo: any;
+    fullUserInfo: any;
     states: string[] = [];
 
     constructor(
@@ -33,16 +33,15 @@ export class PersonalRepresentativeDetailsComponent implements OnInit {
     getUserData() {
         this.userService.getUserDetails(this.authService.getUser()['id']).subscribe(
             (response: any) => {
-                this.userInfo = response.data[4];
-                console.log(this.userInfo);
-                this.personalRepresentativeDetailsForm.controls['isBackupPersonalRepresentative'].setValue( this.userInfo.isBackupPersonalRepresentative);
-                if (this.userInfo.personalRepresentative[0]) {
-                    const guardianFGs = this.userInfo.personalRepresentative.map(gr => this.fb.group(gr));
+                this.fullUserInfo = response.data[4];
+                this.personalRepresentativeDetailsForm.controls['isBackupPersonalRepresentative'].setValue( this.fullUserInfo.isBackupPersonalRepresentative);
+                if (this.fullUserInfo.personalRepresentative[0]) {
+                    const guardianFGs = this.fullUserInfo.personalRepresentative.map(gr => this.fb.group(gr));
                     const guardianFormArray = this.fb.array(guardianFGs);
                     this.personalRepresentativeDetailsForm.setControl('personalRepresentative', guardianFormArray);
                 }
-                if (this.userInfo.backupPersonalRepresentative[0]) {
-                    const guardianFGs = this.userInfo.backupPersonalRepresentative.map(gr => this.fb.group(gr));
+                if (this.fullUserInfo.backupPersonalRepresentative[0]) {
+                    const guardianFGs = this.fullUserInfo.backupPersonalRepresentative.map(gr => this.fb.group(gr));
                     const guardianFormArray = this.fb.array(guardianFGs);
                     this.personalRepresentativeDetailsForm.setControl('backupPersonalRepresentative', guardianFormArray);
                 }
@@ -113,7 +112,8 @@ export class PersonalRepresentativeDetailsComponent implements OnInit {
         console.log(modelData);
         this.userService.editProfile(modelData).subscribe(
             (response: any) => {
-                this.router.navigate(['/dashboard']);
+                // this.router.navigate(['/dashboard']);
+                this.checkUserSpouseStatus();
             },
             (error: any) => {
                 for(let prop in error.error.message) {
@@ -205,4 +205,22 @@ export class PersonalRepresentativeDetailsComponent implements OnInit {
         this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.email_notification`).updateValueAndValidity();
     }
 
+    /**
+     *check User Spouse status for Routing
+     */
+     checkUserSpouseStatus() {
+        this.userService.getUserDetails(this.authService.getUser()['id']).subscribe(
+            (response: any) => {
+                console.log(response.data[0].data);
+                   if ( response.data[0].data.userInfo.marital_status === 'M' || response.data[0].data.userInfo.marital_status === 'R' ) {
+                       // move to spouse page
+                       this.router.navigate(['/dashboard/provide-user-spouse']);
+                   } else {
+                      // move to personal property page
+                       this.router.navigate(['/dashboard/personal-property-distributed']);
+                   }
+                }, ( error: any ) => {
+                    console.log(error.error);
+                });
+    }
 }

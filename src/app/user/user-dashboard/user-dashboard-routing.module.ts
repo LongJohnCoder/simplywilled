@@ -9,7 +9,9 @@ const routes: Routes = [
       { path: 'will', loadChildren: './users-will/users-will.module#UsersWillModule'},
       { path: 'your-personal-representative-powers', loadChildren: './personal-representative-power/personal-representative-power.module#PersonalRepresentativePowerModule'},
       { path: 'personal-representative-details', loadChildren: './personal-representative-details/personal-representative-details.module#PersonalRepresentativeDetailsModule' },
-      { path: 'protect-your-finances', loadChildren: './protect-your-finances/protect-your-finances.module#ProtectYourFinancesModule'}
+      { path: 'protect-your-finances', loadChildren: './protect-your-finances/protect-your-finances.module#ProtectYourFinancesModule'},
+      { path: 'provide-user-spouse', loadChildren: './provide-user-spouse/provide-user-spouse.module#ProvideUserSpouseModule' },
+      { path: 'personal-property-distributed', loadChildren: './personal-property-distributed/personal-property-distributed.module#PersonalPropertyDistributedModule' }
     ]},
 ]
 

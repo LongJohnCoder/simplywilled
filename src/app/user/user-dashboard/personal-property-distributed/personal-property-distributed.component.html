@@ -1,0 +1,54 @@
+<div class="col-md-9 col-sm-7">
+  <div class="main-content tellusaboutyou">
+    <h2>How Should Your Personal Property Be Distributed?</h2>
+    <form [formGroup]="personalPropertyDistributedForm" novalidate
+          (ngSubmit)="onSubmit(personalPropertyDistributedForm)">
+      <div class="form-group">
+        <ul class="Instructions_ul_Radio" style="margin-bottom:0">
+          <li *ngIf="showChildRadio">
+            <label class="two_child_radio special_instrucion active">
+              <span class="two_child_img"><img src="../../../../assets/images/two-child.png" alt="Two Child"></span>
+              <span class="two_child_text">To My Children in <br>Equal Shares</span>
+              <input type="radio" formControlName="is_tangible_property_distribute" value="1" (change)="addRemoveValidation()">
+            </label>
+          </li>
+          <li *ngIf="showSpouseRadio">
+            <label class="two_child_radio special_instrucion">
+              <span class="two_child_img"><img src="../../../../assets/images/couple-p.png" alt="To My Spouse"></span>
+              <span class="two_child_text">To My {{pageText}} </span>
+                <input type="radio" formControlName="is_tangible_property_distribute" value="2" (change)="addRemoveValidation()">
+            </label>
+          </li>
+          <li>
+            <label class="two_child_radio special_instrucion">
+              <span class="two_child_img"><img src="../../../../assets/images/estate.png" alt="Estate"></span>
+              <span class="two_child_text">With the Residue of <br>My Estate</span>
+                <input type="radio" formControlName="is_tangible_property_distribute" value="3" (change)="addRemoveValidation()">
+            </label>
+          </li>
+          <li>
+            <label class="two_child_radio special_instrucion">
+              <span class="two_child_img"><img src="../../../../assets/images/other-ways.png" alt="Otherways"></span>
+              <span class="two_child_text">Some Other Way</span>
+                <input type="radio" formControlName="is_tangible_property_distribute" value="4" (change)="addRemoveValidation()">
+            </label>
+          </li>
+        </ul>
+      </div>
+      <div class="form-group" *ngIf="personalPropertyDistributedForm.value.is_tangible_property_distribute == 4">
+        <label>Otherwise, to be distributed to: </label>
+        <textarea class="form-control" formControlName="tangible_property_distribute" rows="6"></textarea>
+          <span
+                  *ngIf="!personalPropertyDistributedForm.get('tangible_property_distribute').valid && personalPropertyDistributedForm.get('tangible_property_distribute').touched"
+                  class="help-block">
+                    <span *ngIf="personalPropertyDistributedForm.get('tangible_property_distribute').errors['required']" style="color: red">This field Required !</span>
+                    <span *ngIf="personalPropertyDistributedForm.get('tangible_property_distribute').errors['pattern']" style="color: red">Invalid!</span>
+                  </span>
+      </div>
+      <div class="form-footer">
+        <button class="btn common-button btn-grey pull-left" (click)="goBack()">Go Back</button>
+        <button class="btn common-button btn-complete"  type="submit" [disabled]="!personalPropertyDistributedForm.valid">Continue</button>
+      </div>
+    </form>
+  </div>
+</div>
