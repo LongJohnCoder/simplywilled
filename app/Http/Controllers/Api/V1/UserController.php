@@ -968,7 +968,7 @@ class UserController extends Controller
     public function updateTangiblePropertyDistribute($request)
     {
         $validator = Validator::make($request->all(), [
-            'is_tangible_property_distribute'   =>  'required|numeric|between:1,4|integer',
+            'is_tangible_property_distribute'   =>  'nullable|numeric|between:1,4|integer',
             'tangible_property_distribute'      =>  'nullable|required_if:is_tangible_property_distribute,4|string|max:255',
             'residue_to_partner_first'          =>  'nullable|numeric|between:0,1|integer'
         ]);
@@ -982,17 +982,20 @@ class UserController extends Controller
         }
 
         $userId = $request->user_id;
-        $tangibleProperty = $request->tangibleProperty;
+        //$tangibleProperty = $request->tangibleProperty;
         $residueToPartnerFirst = $request->has('residue_to_partner_first') ? $request->get('residue_to_partner_first') : '0';
-        $isTangiblePropertyDistribute = (string)($request->get('is_tangible_property_distribute')); // flags 0,1,2
+        $isTangiblePropertyDistribute = $request->has('is_tangible_property_distribute') 
+                                        ? (string)($request->get('is_tangible_property_distribute')) : null; // flags 0,1,2
         $tangiblePropertyDistribute   = $request->has('tangible_property_distribute') 
-                                        ? $request->get('tangible_property_distribute') : '';
+                                        ? $request->get('tangible_property_distribute') : null;
         $checkForExistData = ProvideYourLovedOnes::where('user_id', $userId)->first();
 
         if ($checkForExistData) {
-            $checkForExistData->is_tangible_property_distribute = (string)$isTangiblePropertyDistribute;
+            $checkForExistData->is_tangible_property_distribute = $isTangiblePropertyDistribute;
             $checkForExistData->tangible_property_distribute    = $isTangiblePropertyDistribute == 4 ? $tangiblePropertyDistribute : null;
             $checkForExistData->residue_to_partner_first        = (string)$residueToPartnerFirst;
+
+            //dd($checkForExistData);
 
             if ($checkForExistData->save()) {
                 return response()->json([
