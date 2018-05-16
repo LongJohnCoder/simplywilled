@@ -21,6 +21,7 @@ class CreateRolesTable extends Migration
         });
     }
 
+
     /**
      * Reverse the migrations.
      *
@@ -31,5 +32,5 @@ class CreateRolesTable extends Migration
         Schema::dropIfExists('roles');
     }
 
-    
+
 }
