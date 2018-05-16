@@ -1,4 +1,4 @@
-<body>
+
   <div class="body_container">
     <div class="inner_banner">
       <div class="wrapper">
@@ -28,30 +28,29 @@
             <form #form="ngForm">
               <div class="form-group">
                   <input type="text" placeholder="Your Name" id="name" [(ngModel)]="formData.name" ngModel #name="ngModel" required  name="name" class="get_in_tuch_field">
-                    <span *ngIf="name.invalid && name.touched" style="color:red;"> Name is reqired ! </span>
+                    <div *ngIf="name.invalid && name.touched" class="alert alert-danger"> Name is reqired ! </div>
               </div>
               <div class="form-group">
                 <input type="email" name="email"
                      [(ngModel)]="formData.email" ngModel #email="ngModel"
                      required placeholder="Your Email" class="get_in_tuch_field"
                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-                <span *ngIf="email.invalid && email.touched" style="color:red;">Email is required</span>
-                <span *ngIf="email.errors?.pattern" style="color:red;">This is not a email format</span>
+                <div *ngIf="email.invalid && email.touched" class="alert alert-danger">Email is required</div>
+                <div *ngIf="email.errors?.pattern" class="alert alert-danger">This is not a email format</div>
 
               </div>
               <div class="form-group">
                     <textarea placeholder="Message" class="get_in_tuch_textarea" [(ngModel)]="formData.message" ngModel #message="ngModel" required name="message"></textarea>
-                <span *ngIf="message.invalid && message.touched" style="color:red;"> Message is reqired ! </span>
+                <div *ngIf="message.invalid && message.touched" class="alert alert-danger"> Message is reqired ! </div>
               </div>
               <p class="contactbtn_area" style="margin-top:10px;">
                   <i *ngIf="showLoader" class="fa fa-spinner fa-pulse fa-lg fa-fw"></i>
                   <button type="button" [disabled]="!form.form.valid" class="get_in_tuch_btn" (click)="contactUs()"><i class="fa fa-chevron-right" aria-hidden="true"></i> Send Message</button>
               </p>
             </form>
-              <span style="color: red;">{{respMessage}}</span>
+              <div class="alert alert-danger" [style.display]="respMessage == '' ? 'none' : 'block'">{{respMessage}}</div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</body>
