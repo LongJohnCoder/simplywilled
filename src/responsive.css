@@ -1029,6 +1029,9 @@
         right: -18px;
         top: -18px;
     }
+    .privacy_order_list li, .privacy_pera{
+        word-wrap: break-word;
+    }
 }
 
 @media only screen and (min-width: 100px) and (max-width: 600px){
@@ -1627,6 +1630,11 @@
     }
     .trending_ul > li{
         padding-bottom: 50px;
+    }
+    .click-to-top{
+        width: 45px;
+        height: 45px;
+        line-height: 40px;
     }
 }
 

@@ -2083,8 +2083,8 @@ color:#b5e5ff
 	padding-bottom: 20px
 }
 .privacy_order_list li, .privacy_pera {
-	font-size: 18px;
-	color: rgba(37,37,37,.76);
+	font-size: 16px;
+	color: #333;
 	line-height: 25px;
 	padding-bottom: 15px;
 	width: 100%;
@@ -2181,7 +2181,6 @@ color:#b5e5ff
 }
 .why-us-main {
 	width: 100%;
-	background: #f2f2f2;
 	display: inline-block
 }
 .contact_new_main {
@@ -2592,26 +2591,6 @@ input[type=text].ui-autocomplete-loading {
 	float: left;
 	position: relative;
 	text-align: left
-}
-.click-to-top, .popup2_main {
-	display: none;
-	position: fixed
-}
-.click-to-top, .close_popup2, .popup2_start_btn {
-	text-align: center;
-	color: #fff
-}
-.click-to-top {
-	width: 70px;
-	height: 70px;
-	line-height: 65px;
-	border-radius: 50%;
-	background: #f6701d;
-	border: 1px solid #f78021;
-	font-size: 20px;
-	bottom: 10px;
-	left: 10px;
-	cursor: pointer
 }
 .popup2_main {
 	width: 860px;
@@ -4275,12 +4254,6 @@ transform:rotate(360deg)
 }
 .index_sec8 {
 	padding: 0 0 20px
-}
-.click-to-top {
-	width: 40px;
-	height: 40px;
-	line-height: 37px;
-	font-size: 14px
 }
 .close_popup2 {
 	width: auto;

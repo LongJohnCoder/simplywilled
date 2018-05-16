@@ -2257,6 +2257,16 @@ h1, h2, h3, h4, h5, h6{
     min-height:68px;
 }
 
+ol.privacy_order_list{
+    width: calc(100% - 33px);
+}
+ol.privacy_order_list li{
+    font-size: 16px;
+    color: #333;
+    padding-left: 10px;
+    margin-left: 23px;
+}
+
 /****************footer**************/
 footer{
     background: #fff;
@@ -2361,6 +2371,26 @@ footer .social ul li a {
 .footerBottomRight span{
     float: left;
     padding-top: 3px;
+}
+
+
+.click-to-top {
+	display: none;
+	position: fixed;
+	text-align: center;
+	color: #fff;
+	width: 70px;
+	height: 70px;
+	line-height: 65px;
+	border-radius: 50%;
+	background: #f6701d;
+	font-size: 20px;
+	bottom: 10px;
+	left: 10px;
+	cursor: pointer
+}
+.click-to-top.show {
+    display: block;
 }
 
 
