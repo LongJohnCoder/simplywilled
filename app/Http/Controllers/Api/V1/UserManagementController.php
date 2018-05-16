@@ -45,10 +45,29 @@ class UserManagementController extends Controller
 
     public function updateProtectFinance(Request $request){
         try {
-
+          dd($request->all());
           $validator = Validator::make($request->all(), [
               'userId'  =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
               'step'    =>  'required|numeric|between:1,2|integer'
+          ]);
+          if($validator->fails()) {
+              return response()->json([
+                  'status'  => false,
+                  'message' => $validator->errors(),
+                  'data'    => []
+              ], 400);
+          }
+
+          //validation for attorney durable power
+          $validator = Validator::make($request->attorneyPowers, [
+              'isDurable'                 =>  'required|numeric|between:0,1|integer',
+              'isEffectiveOnIncapacity'   =>  'nullable|required_if:isDurable,1|numeric|between:0,1|integer',
+              'isOperatedBusiness'        =>  'required|numeric|between:0,1|integer',
+              'isAuthorizeToTrade'        =>  'required|numeric|between:0,1|integer',
+              'isGiftOption'              =>  'required|numeric|between:0,1|integer',
+              'isAuthorizeToMakeGift'     =>  'nullable|required_if:isGiftOption,1|numeric|between:0,1|integer',
+              'isTradeOptionCommodities'  =>  'nullable|numeric|between:0,1|integer',
+              'isTspCsrsFersAccount'      =>  'nullable|numeric|between:0,1|integer',
           ]);
           if($validator->fails()) {
               return response()->json([
@@ -621,8 +640,9 @@ class UserManagementController extends Controller
            'step' =>  $stepValue,
            'data' => [
              //'tangibleProperty' => $data,
-             'is_tangible_property_distribute'  => $data->is_tangible_property_distribute,
-             'tangible_property_distribute'     => $data->tangible_property_distribute
+             'is_tangible_property_distribute'  =>  $data->is_tangible_property_distribute,
+             'tangible_property_distribute'     =>  $data->tangible_property_distribute,
+             'residue_to_partner_first'         =>  $data->residue_to_partner_first
            ]
          ];
          return $responseArray;
