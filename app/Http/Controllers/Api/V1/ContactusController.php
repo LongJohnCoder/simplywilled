@@ -56,7 +56,8 @@ class ContactusController extends Controller
             $createContact->email = $email;
             $createContact->message = $message;
             if($createContact->save()){
-                $this->sendContactUsEmail($email, $name, $message);
+                return $sendMail = $this->sendContactUsEmail($email, $name, $message);
+
             }else{
                 return response()->json([
                     'status' => false,
@@ -67,7 +68,8 @@ class ContactusController extends Controller
         }catch(Exception $e){
             return response()->json([
                 'status'       => false,
-                'message'      => $e->getMessage(),
+                'message'      => 'Failed to send email. Try with valid email id',
+                // 'message'      => $e->getMessage(),
                 'errorLineNo'  => $e->getLine()
             ], 500);
         }
@@ -93,8 +95,13 @@ class ContactusController extends Controller
                 $mail->from('info@simplywilled.com', 'Simplywilled Contact Us');
                 /** @noinspection PhpUndefinedMethodInspection */
                 $mail->to($email, $name)
-                    ->subject('Thanks for contact us [Simplywilled]');
+                    ->subject('Thanks for contacting us [Simplywilled]');
             });
+            return response()->json([
+                'status' => true,
+                'message' => 'Thanks for contacting with us',
+                'data' => []
+            ], 200);
         }else{
             return response()->json([
                 'status' => false,
