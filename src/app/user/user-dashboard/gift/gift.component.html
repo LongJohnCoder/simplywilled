@@ -1,0 +1,27 @@
+<div class="col-md-12 col-sm-12">
+  <div class="main-content tellusaboutyou">
+    <h2>Would You Like to Make Specific gifts?</h2>
+    <form [formGroup]="giftFormStepOne" (ngSubmit)="makeSpecificGift(giftFormStepOne.value)">
+      <div class="form-group">
+        <ul class="radio_ul6">
+          <li>
+            <label class="radio_custom" [ngClass]="{'active': giftFormStepOne.value.gift_status === '1'}">
+              <input type="radio" formControlName="gift_status" value="1">
+              <span class="human_status">Yes</span>
+            </label>
+          </li>
+          <li>
+            <label class="radio_custom" [ngClass]="{'active': giftFormStepOne.value.gift_status === '0'}">
+              <input type="radio" formControlName="gift_status" value="0">
+              <span class="human_status">No</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+      <div class="form-footer">
+        <button class="btn common-button btn-grey pull-left">Go Back</button>
+        <button class="btn common-button btn-complete" [disabled]="!giftFormStepOne.valid">Continue</button>
+      </div>
+    </form>
+  </div>
+</div>

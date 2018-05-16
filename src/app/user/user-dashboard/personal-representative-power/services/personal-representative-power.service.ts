@@ -14,7 +14,7 @@ export class PersonalRepresentativePowerService {
    * @param {SavePersonalRepresentativePower} data
    * @returns {Observable<Object>}
    */
-  savePersonalRepresentativePower(token: string, data: SavePersonalRepresentativePower) {
+  savePersonalRepresentativePower(token: string, data: SavePersonalRepresentativePower): any {
     return this.http.post(environment.API_URL + 'user/edit-profile', data, {headers: new HttpHeaders(
         {'Authorization': token})});
   }
