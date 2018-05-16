@@ -1,4 +1,57 @@
+<body>
+  <div class="body_container">
+    <div class="inner_banner">
+      <div class="wrapper">
+        <h1 class="banner_heading_one">At SimplyWilled our mission is to make</h1>
+        <h3 class="banner_heading_two">estate planning simple and affordable for everyone</h3>
+      </div>
+    </div>
+    <div class="about_sec1 grey_bg border_top_green">
+      <div class="wrapper">
+        <div class="contact_new_main">
+          <div class="contact_left">
+            <h1 class="contact_left_heading">Contact Us</h1>
+            <ul class="contact_social_main_ul">
+              <li>support@simplywilled.com</li>
+              <li>1-855-965-1789</li>
+            </ul>
+            <ul class="contact_social_media">
+              <li><a href="https://www.facebook.com/SimplyWilled" class="fb_hover"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+              <li><a href="https://twitter.com/simplywilled" class="tw_hover"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+              <li><a href="#" class="gplus_hover"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+              <li><a href="#" class="pintrst_hover"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+          <div class="contact_right_sec">
+            <h1 class="get_touch_text">Get in Touch</h1>
+            <p class="get_in_tuch_sub_heading">Feel free to drop us a line below!</p>
+            <form #form="ngForm">
+              <div class="form-group">
+                  <input type="text" placeholder="Your Name" id="name" [(ngModel)]="formData.name" ngModel #name="ngModel" required  name="name" class="get_in_tuch_field">
+                    <span *ngIf="name.invalid && name.touched" style="color:red;"> Name is reqired ! </span>
+              </div>
+              <div class="form-group">
+                <input type="email" name="email"
+                     [(ngModel)]="formData.email" ngModel #email="ngModel"
+                     required placeholder="Your Email" class="get_in_tuch_field"
+                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                <span *ngIf="email.invalid && email.touched" style="color:red;">Email is required</span>
+                <span *ngIf="email.errors?.pattern" style="color:red;">This is not a email format</span>
 
-<p>
-  contact-us works!
-</p>
+              </div>
+              <div class="form-group">
+                    <textarea placeholder="Message" class="get_in_tuch_textarea" [(ngModel)]="formData.message" ngModel #message="ngModel" required name="message"></textarea>
+                <span *ngIf="message.invalid && message.touched" style="color:red;"> Message is reqired ! </span>
+              </div>
+              <p class="contactbtn_area" style="margin-top:10px;">
+                  <i *ngIf="showLoader" class="fa fa-spinner fa-pulse fa-lg fa-fw"></i>
+                  <button type="button" [disabled]="!form.form.valid" class="get_in_tuch_btn" (click)="contactUs()"><i class="fa fa-chevron-right" aria-hidden="true"></i> Send Message</button>
+              </p>
+            </form>
+              <span style="color: red;">{{respMessage}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

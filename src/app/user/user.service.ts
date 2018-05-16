@@ -35,4 +35,9 @@ export class UserService {
   getUserDetails(userId): Observable<any> {
     return this.httpClient.get(environment.API_URL + 'user/get-user-details/' + userId);
   }
+
+  /** Function for contact us*/
+  contactUs(formBody): Observable<any> {
+      return this.httpClient.post(environment.API_URL + 'contact-us', formBody);
+  }
 }
