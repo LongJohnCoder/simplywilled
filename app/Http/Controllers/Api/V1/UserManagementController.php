@@ -45,7 +45,7 @@ class UserManagementController extends Controller
 
     public function updateProtectFinance(Request $request){
         try {
-          dd($request->all());
+          //dd($request->all());
           $validator = Validator::make($request->all(), [
               'userId'  =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
               'step'    =>  'required|numeric|between:1,2|integer'
