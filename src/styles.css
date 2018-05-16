@@ -2309,26 +2309,9 @@ color:#b5e5ff
 	display: inline-block;
 	text-align: center
 }
-.get_in_tuch_btn {
-	width: 250px;
-	display: inline-block;
-	text-align: center;
-	background: #41a730;
-	border: 1px solid #41a730;
-	padding: 10px 0;
-	border-radius: 10px;
-	cursor: pointer;
-	color: #fff;
-	font-size: 24px
-}
 .footer_container, .footer_pera, .footer_ul {
 	width: 100%;
 	float: left
-}
-.get_in_tuch_btn:hover {
-	background: #fff;
-	border: 1px solid #41a730;
-	color: #41a730
 }
 .footer_container {
 	background: #fff

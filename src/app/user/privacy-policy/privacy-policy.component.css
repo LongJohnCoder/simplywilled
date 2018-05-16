@@ -1,8 +1,11 @@
 .body_container{
-    background: #f2f2f2;
+    background: #fff;
     margin-top: -33px;
     padding-bottom: 23px;
 }
 .sec2_btn_main a{
     margin-bottom: -53px;
+}
+a:hover{
+    color: #fff;
 }

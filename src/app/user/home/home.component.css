@@ -10,9 +10,16 @@
     color: #fff;
     text-decoration: none;
 }
-.book_sec_main .get_start_pkg_btn:hover{
+.hide_show_main_pkg .get_start_pkg_btn{
+    width: 100%;
+}
+.get_start_pkg_btn:hover{
     color:#fff;
     text-decoration: none;
+}
+.include_text:hover{
+    color: #979797;
+    text-decoration: underline;
 }
 .sec3_btn_main a{
     color: #fff !important;

@@ -1009,7 +1009,7 @@
         height: 160px;
     }
     .about_sec4 {
-        background-position: right 64% top -86px;
+        background-position: right 64% top -61px;
     }
 }
 
@@ -1635,6 +1635,9 @@
         width: 45px;
         height: 45px;
         line-height: 40px;
+    }
+    .about_state_planning_text{
+        font-size: 28px;
     }
 }
 
