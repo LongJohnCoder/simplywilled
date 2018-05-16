@@ -44,7 +44,7 @@ module.exports = "/*@font-face {*/\n    /*font-family: 'OpenSans-Light';*/\n    
 /***/ "./src/app/user/user-dashboard/personal-representative-details/personal-representative-details.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-9 col-sm-7\">\n  <div class=\"main-content tellusaboutyou\">\n    <h2>Name your personal representative</h2>\n    <form>\n      <div class=\"form-group \">\n        <label>Full Legal Name: </label>\n        <input type=\"text\" value=\"\" class=\"form-control\">\n      </div>\n      <div class=\"form-group \">\n        <label>Their Relationship To You: </label>\n        <select name=\"first_guardian_relationship\" class=\"form-control\">\n          <option value=\"\">Select Relationship</option>\n          <option value=\"Wife\">Wife</option>\n          <option value=\"Husband\">Husband</option>\n          <option value=\"Mother\">Mother</option>\n          <option value=\"Father\">Father</option>\n          <option value=\"Son\">Son</option>\n          <option value=\"Daughter\">Daughter</option>\n          <option value=\"Sister\">Sister</option>\n          <option value=\"Brother\">Brother</option>\n          <option value=\"Aunt\">Aunt</option>\n          <option value=\"Uncle\">Uncle</option>\n          <option value=\"Cousin\">Cousin</option>\n          <option value=\"Friend\">Friend</option>\n          <option value=\"Other\">Other</option>\n        </select>\n      </div>\n      <div class=\"form-group\">\n        <label>Their Address: </label>\n        <input type=\"email\" value=\"\" class=\"form-control\"  placeholder=\"Address Line 1\">\n        <div class=\"row\">\n          <div class=\"col-md-6\"><input type=\"text\" value=\"\" class=\"form-control\"  placeholder=\"City\"></div>\n          <div class=\"col-md-6\"><input type=\"text\" value=\"\" class=\"form-control\"  placeholder=\"State\"></div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-md-6\"><input type=\"text\" value=\"\" class=\"form-control\"  placeholder=\"Zip Code\"></div>\n          <div class=\"col-md-6\"><input type=\"text\" value=\"\" class=\"form-control\"  placeholder=\"Country\"></div>\n        </div>\n      </div>\n      <div class=\"form-group\">\n        <label>Would you like to notify this person that you appointed them as your personal representative? </label>\n        <ul class=\"radio_ul6\">\n          <li>\n            <label class=\"radio_custom active\">\n              <input type=\"radio\" name=\"notify_person\" value=\"Yes\">\n              <span class=\"human_status\">Yes</span>\n            </label>\n            <div class=\"email-box valid\">\n              <input type=\"email\" placeholder=\"Enter Email Address\" class=\"form-control\">\n              <i class=\"fa fa-check\"></i>\n            </div>\n          </li>\n          <li>\n            <label class=\"radio_custom\">\n              <input type=\"radio\" name=\"notify_person\" value=\"No\" checked>\n              <span class=\"human_status\"> No</span>\n            </label>\n          </li>\n        </ul>\n      </div>\n      <div class=\"form-group\">\n        <label>Would you like to name a backup Personal Representative? </label>\n        <ul class=\"radio_ul6\">\n          <li>\n            <label class=\"radio_custom\">\n              <input type=\"radio\" name=\"appoint_backup_guardians\" value=\"Yes\">\n              <span class=\"human_status\">Yes</span>\n            </label>\n          </li>\n          <li>\n            <label class=\"radio_custom active\">\n              <input type=\"radio\" name=\"appoint_backup_guardians\" value=\"No\" checked>\n              <span class=\"human_status\"> No</span>\n            </label>\n          </li>\n        </ul>\n      </div>\n      <hr>\n      <h2>Name Your Backup Personal Representative</h2>\n      <div class=\"form-group \">\n        <label>Full Legal Name: </label>\n        <input type=\"text\" value=\"\" class=\"form-control\">\n      </div>\n      <div class=\"form-group \">\n        <label>Their Relationship To You: </label>\n        <select name=\"first_guardian_relationship\" class=\"form-control\">\n          <option value=\"\">Select Relationship</option>\n          <option value=\"Wife\">Wife</option>\n          <option value=\"Husband\">Husband</option>\n          <option value=\"Mother\">Mother</option>\n          <option value=\"Father\">Father</option>\n          <option value=\"Son\">Son</option>\n          <option value=\"Daughter\">Daughter</option>\n          <option value=\"Sister\">Sister</option>\n          <option value=\"Brother\">Brother</option>\n          <option value=\"Aunt\">Aunt</option>\n          <option value=\"Uncle\">Uncle</option>\n          <option value=\"Cousin\">Cousin</option>\n          <option value=\"Friend\">Friend</option>\n          <option value=\"Other\">Other</option>\n        </select>\n      </div>\n      <div class=\"form-group\">\n        <label>Their Address: </label>\n        <input type=\"email\" value=\"\" class=\"form-control\"  placeholder=\"Address Line 1\">\n        <div class=\"row\">\n          <div class=\"col-md-6\"><input type=\"text\" value=\"\" class=\"form-control\"  placeholder=\"City\"></div>\n          <div class=\"col-md-6\"><input type=\"text\" value=\"\" class=\"form-control\"  placeholder=\"State\"></div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-md-6\"><input type=\"text\" value=\"\" class=\"form-control\"  placeholder=\"Zip Code\"></div>\n          <div class=\"col-md-6\"><input type=\"text\" value=\"\" class=\"form-control\"  placeholder=\"Country\"></div>\n        </div>\n      </div>\n      <div class=\"form-group\">\n        <label>Would you like to notify this person that you appointed them as your Personal Representative? </label>\n        <ul class=\"radio_ul6\">\n          <li>\n            <label class=\"radio_custom active\">\n              <input type=\"radio\" name=\"notify_person_bkp\" value=\"Yes\">\n              <span class=\"human_status\">Yes</span>\n            </label>\n            <div class=\"email-box valid\">\n              <input type=\"email\" placeholder=\"Enter Email Address\" class=\"form-control\">\n              <i class=\"fa fa-check\"></i>\n            </div>\n          </li>\n          <li>\n            <label class=\"radio_custom\">\n              <input type=\"radio\" name=\"notify_person_bkp\" value=\"No\" checked>\n              <span class=\"human_status\"> No</span>\n            </label>\n          </li>\n        </ul>\n      </div>\n      <div class=\"form-footer\">\n        <button class=\"btn common-button btn-grey pull-left\">Go Back</button>\n        <button class=\"btn common-button btn-complete\">Continue</button>\n      </div>\n    </form>\n  </div>\n</div>"
+module.exports = "<div class=\"col-md-9 col-sm-7\">\n    <div class=\"main-content tellusaboutyou\">\n        <h2>Name your personal representative</h2>\n        <form [formGroup]=\"personalRepresentativeDetailsForm\" novalidate\n              (ngSubmit)=\"onSubmit(personalRepresentativeDetailsForm)\">\n            <div formArrayName=\"personalRepresentative\">\n                <div *ngFor=\"let item of personalRepresentativeDetailsForm['controls'].personalRepresentative['controls']; let i=index\">\n              <!--<div *ngFor=\"let item of personalRepresentativeDetailsForm.get('personalRepresentative'); let i=index\">-->\n                    <div [formGroupName]=\"i\">\n                        <div class=\"form-group\">\n                            <label>Full Legal Name: </label>\n                            <input type=\"text\" class=\"form-control\" placeholder=\"Full legal name\"\n                                   formControlName=\"fullname\">\n                            <span\n                                    *ngIf=\"!personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').touched\"\n                                    class=\"help-block\">\n                            <span *ngIf=\"personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').errors['required']\"\n                                  style=\"color: red\">This field is required!</span>\n\n                    </span>\n                        </div>\n                        <div class=\"form-group \">\n                            <label>Their Relationship To You: </label>\n                            <select class=\"form-control\" formControlName=\"relationship_with\">\n                                <option value=\"\">Select Relationship</option>\n                                <option value=\"Wife\">Wife</option>\n                                <option value=\"Husband\">Husband</option>\n                                <option value=\"Mother\">Mother</option>\n                                <option value=\"Father\">Father</option>\n                                <option value=\"Son\">Son</option>\n                                <option value=\"Daughter\">Daughter</option>\n                                <option value=\"Sister\">Sister</option>\n                                <option value=\"Brother\">Brother</option>\n                                <option value=\"Aunt\">Aunt</option>\n                                <option value=\"Uncle\">Uncle</option>\n                                <option value=\"Cousin\">Cousin</option>\n                                <option value=\"Friend\">Friend</option>\n                                <option value=\"Other\">Other</option>\n                            </select>\n                            <span\n                                    *ngIf=\"!personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_with').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_with').touched\"\n                                    class=\"help-block\">\n               <span *ngIf=\"personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_with').errors['required']\"\n                     style=\"color: red\">This field is required!</span>\n\n             </span>\n                        </div>\n                        <div class=\"form-group\">\n                            <label>Their Address: </label>\n                            <input type=\"text\" class=\"form-control\" placeholder=\"Address Line 1\"\n                                   formControlName=\"address\">\n                            <span\n                                    *ngIf=\"!personalRepresentativeDetailsForm.get('personalRepresentative.0.address').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.address').touched\"\n                                    class=\"help-block\">\n                    <span *ngIf=\"personalRepresentativeDetailsForm.get('personalRepresentative.0.address').errors['required']\"\n                          style=\"color: red\">This field is required!</span>\n\n                        </span>\n                            <div class=\"row\">\n                                <div class=\"col-md-6\"><input type=\"text\" class=\"form-control\" placeholder=\"city\"\n                                                             formControlName=\"city\">\n                                    <span\n                                            *ngIf=\"!personalRepresentativeDetailsForm.get('personalRepresentative.0.city').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.city').touched\"\n                                            class=\"help-block\">\n                    <span *ngIf=\"personalRepresentativeDetailsForm.get('personalRepresentative.0.city').errors['required']\"\n                          style=\"color: red\">This field is required!</span>\n\n              </span>\n                                </div>\n                                <div class=\"col-md-6\"><input type=\"text\" class=\"form-control\" placeholder=\"state\"\n                                                             formControlName=\"state\">\n                                    <span\n                                            *ngIf=\"!personalRepresentativeDetailsForm.get('personalRepresentative.0.state').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.state').touched\"\n                                            class=\"help-block\">\n                    <span *ngIf=\"personalRepresentativeDetailsForm.get('personalRepresentative.0.state').errors['required']\"\n                          style=\"color: red\">This field is required!</span>\n\n              </span>\n                                </div>\n                            </div>\n                            <div class=\"row\">\n                                <div class=\"col-md-6\"><input type=\"text\" class=\"form-control\" placeholder=\"zip\"\n                                                             formControlName=\"zip\">\n                                    <span\n                                            *ngIf=\"!personalRepresentativeDetailsForm.get('personalRepresentative.0.zip').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.zip').touched\"\n                                            class=\"help-block\">\n                    <span *ngIf=\"personalRepresentativeDetailsForm.get('personalRepresentative.0.zip').errors['required']\"\n                          style=\"color: red\">This field is required!</span>\n\n              </span>\n                                </div>\n                                <div class=\"col-md-6\"><input type=\"text\" class=\"form-control\" placeholder=\"country\"\n                                                             formControlName=\"country\">\n                                    <span\n                                            *ngIf=\"!personalRepresentativeDetailsForm.get('personalRepresentative.0.country').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.country').touched\"\n                                            class=\"help-block\">\n                    <span *ngIf=\"personalRepresentativeDetailsForm.get('personalRepresentative.0.country').errors['required']\"\n                          style=\"color: red\">This field is required!</span>\n\n              </span>\n                                </div>\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <label>Would you like to notify this person that you appointed them as your personal\n                                representative? </label>\n                            <ul class=\"radio_ul6\">\n                                <li>\n                                    <label class=\"radio_custom\"\n                                           [ngClass]=\"{'active': personalRepresentativeDetailsForm.get('personalRepresentative.0.email_notification').value == '1'}\">\n                                        <input type=\"radio\" formControlName=\"email_notification\" value=\"1\">\n                                        <span class=\"human_status\">Yes</span>\n                                    </label>\n                                    <div *ngIf=\"personalRepresentativeDetailsForm.get('personalRepresentative.0.email_notification').value == '1'\"\n                                         class=\"email-box valid\">\n                                        <input type=\"email\" placeholder=\"Enter Email Address\" class=\"form-control\"\n                                               formControlName=\"email\">\n                                        <span *ngIf=\"!personalRepresentativeDetailsForm.get('personalRepresentative.0.email').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.email').touched\" class=\"help-block\">\n                                            <span *ngIf=\"personalRepresentativeDetailsForm.get('personalRepresentative.0.email').errors['email']\" style=\"color: red\">Must be an email type!</span>\n                                        </span>\n                                        <i [ngClass]=\"{'fa fa-check': personalRepresentativeDetailsForm.get('personalRepresentative.0.email').valid}\"></i>\n                                    </div>\n                                </li>\n                                <li>\n                                    <label class=\"radio_custom\"\n                                           [ngClass]=\"{'active': personalRepresentativeDetailsForm.get('personalRepresentative.0.email_notification').value == '0'}\">\n                                        <input type=\"radio\" formControlName=\"email_notification\" value=\"0\">\n                                        <span class=\"human_status\"> No</span>\n                                    </label>\n                                </li>\n                            </ul>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div class=\"form-group\">\n                <label>Would you like to name a backup Personal Representative? </label>\n                <ul class=\"radio_ul6\">\n                    <li>\n                        <label class=\"radio_custom\"\n                               [ngClass]=\"{'active': personalRepresentativeDetailsForm.value.isBackupPersonalRepresentative == 'Yes'}\">\n                            <input type=\"radio\" formControlName=\"isBackupPersonalRepresentative\" value=\"Yes\"\n                                   (change)=\"addRemoveValidation()\">\n                            <span class=\"human_status\">Yes</span>\n                        </label>\n                    </li>\n                    <li>\n                        <label class=\"radio_custom\"\n                               [ngClass]=\"{'active': personalRepresentativeDetailsForm.value.isBackupPersonalRepresentative == 'No'}\">\n                            <input type=\"radio\" formControlName=\"isBackupPersonalRepresentative\" value=\"No\"\n                                   (change)=\"addRemoveValidation()\">\n                            <span class=\"human_status\"> No</span>\n                        </label>\n                    </li>\n                </ul>\n            </div>\n            <hr>\n            <div *ngIf=\"personalRepresentativeDetailsForm.value.isBackupPersonalRepresentative == 'Yes'\">\n                <h2>Name Your Backup Personal Representative</h2>\n                <div formArrayName=\"backupPersonalRepresentative\">\n                    <div *ngFor=\"let item of personalRepresentativeDetailsForm['controls'].backupPersonalRepresentative['controls']; let i=index\">\n                        <div [formGroupName]=\"i\">\n                            <div class=\"form-group \">\n                                <label>Full Legal Name: </label>\n                                <input type=\"text\" class=\"form-control\" placeholder=\"Full legal name\"\n                                       formControlName=\"fullname\">\n                                <span\n                                        *ngIf=\"!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.fullname').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.fullname').touched\"\n                                        class=\"help-block\">\n                            <span *ngIf=\"personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.fullname').errors['required']\"\n                                  style=\"color: red\">This field is required!</span>\n\n                    </span>\n                            </div>\n                            <div class=\"form-group \">\n                                <label>Their Relationship To You: </label>\n                                <select class=\"form-control\" formControlName=\"relationship_with\">\n                                    <option value=\"\">Select Relationship</option>\n                                    <option value=\"Wife\">Wife</option>\n                                    <option value=\"Husband\">Husband</option>\n                                    <option value=\"Mother\">Mother</option>\n                                    <option value=\"Father\">Father</option>\n                                    <option value=\"Son\">Son</option>\n                                    <option value=\"Daughter\">Daughter</option>\n                                    <option value=\"Sister\">Sister</option>\n                                    <option value=\"Brother\">Brother</option>\n                                    <option value=\"Aunt\">Aunt</option>\n                                    <option value=\"Uncle\">Uncle</option>\n                                    <option value=\"Cousin\">Cousin</option>\n                                    <option value=\"Friend\">Friend</option>\n                                    <option value=\"Other\">Other</option>\n                                </select>\n                                <span\n                                        *ngIf=\"!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.relationship_with').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.relationship_with').touched\"\n                                        class=\"help-block\">\n                            <span *ngIf=\"personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.relationship_with').errors['required']\"\n                                  style=\"color: red\">This field is required!</span>\n\n                    </span>\n                            </div>\n                            <div class=\"form-group\">\n                                <label>Their Address: </label>\n                                <input type=\"text\" class=\"form-control\" placeholder=\"Address Line 1\"\n                                       formControlName=\"address\">\n                                <span\n                                        *ngIf=\"!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.address').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.address').touched\"\n                                        class=\"help-block\">\n                            <span *ngIf=\"personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.address').errors['required']\"\n                                  style=\"color: red\">This field is required!</span>\n\n                    </span>\n                                <div class=\"row\">\n                                    <div class=\"col-md-6\"><input type=\"text\" class=\"form-control\" placeholder=\"city\"\n                                                                 formControlName=\"city\">\n                                        <span\n                                                *ngIf=\"!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.city').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.city').touched\"\n                                                class=\"help-block\">\n                            <span *ngIf=\"personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.city').errors['required']\"\n                                  style=\"color: red\">This field is required!</span>\n\n                    </span>\n                                    </div>\n                                    <div class=\"col-md-6\"><input type=\"text\" class=\"form-control\" placeholder=\"state\"\n                                                                 formControlName=\"state\">\n                                        <span\n                                                *ngIf=\"!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.state').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.state').touched\"\n                                                class=\"help-block\">\n                            <span *ngIf=\"personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.state').errors['required']\"\n                                  style=\"color: red\">This field is required!</span>\n\n                    </span>\n                                    </div>\n                                </div>\n                                <div class=\"row\">\n                                    <div class=\"col-md-6\"><input type=\"text\" class=\"form-control\" placeholder=\"zip\"\n                                                                 formControlName=\"zip\">\n                                        <span\n                                                *ngIf=\"!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.zip').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.zip').touched\"\n                                                class=\"help-block\">\n                            <span *ngIf=\"personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.zip').errors['required']\"\n                                  style=\"color: red\">This field is required!</span>\n\n                    </span>\n                                    </div>\n                                    <div class=\"col-md-6\"><input type=\"text\" class=\"form-control\" placeholder=\"country\"\n                                                                 formControlName=\"country\">\n                                        <span\n                                                *ngIf=\"!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.country').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.country').touched\"\n                                                class=\"help-block\">\n                            <span *ngIf=\"personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.country').errors['required']\"\n                                  style=\"color: red\">This field is required!</span>\n\n                    </span>\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"form-group\">\n                                <label>Would you like to notify this person that you appointed them as your Personal\n                                    Representative? </label>\n                                <ul class=\"radio_ul6\">\n                                    <li>\n                                        <label class=\"radio_custom\"\n                                               [ngClass]=\"{'active': personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email_notification').value == '1'}\">\n                                            <input type=\"radio\" formControlName=\"email_notification\" value=\"1\">\n                                            <span class=\"human_status\">Yes</span>\n                                        </label>\n                                        <div *ngIf=\"personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email_notification').value == '1'\"\n                                             class=\"email-box valid\">\n                                            <input type=\"email\" placeholder=\"Enter Email Address\" class=\"form-control\"\n                                                   formControlName=\"email\">\n                                            <span\n                                                    *ngIf=\"!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email').touched\"\n                                                    class=\"help-block\">\n                    <span *ngIf=\"personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email').errors['email']\"\n                          style=\"color: red\">Must be an email type!</span>\n\n                    </span>\n                                            <i [ngClass]=\"{'fa fa-check': personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email').valid}\"></i>\n                                        </div>\n                                    </li>\n                                    <li>\n                                        <label class=\"radio_custom\"\n                                               [ngClass]=\"{'active': personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email_notification').value == '0'}\">\n                                            <input type=\"radio\" formControlName=\"email_notification\" value=\"0\">\n                                            <span class=\"human_status\"> No</span>\n                                        </label>\n                                    </li>\n                                </ul>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div class=\"form-footer\">\n                <button class=\"btn common-button btn-grey pull-left\" (click)=\"goBack()\">Go Back</button>\n                <button class=\"btn common-button btn-complete\" type=\"submit\"\n                        [disabled]=\"!personalRepresentativeDetailsForm.valid\">Continue\n                </button>\n            </div>\n        </form>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -54,6 +54,10 @@ module.exports = "<div class=\"col-md-9 col-sm-7\">\n  <div class=\"main-content
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PersonalRepresentativeDetailsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_auth_user_auth_service__ = __webpack_require__("./src/app/user/user-auth/user-auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__user_service__ = __webpack_require__("./src/app/user/user.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -64,10 +68,205 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
 var PersonalRepresentativeDetailsComponent = /** @class */ (function () {
-    function PersonalRepresentativeDetailsComponent() {
+    function PersonalRepresentativeDetailsComponent(authService, userService, router, fb) {
+        this.authService = authService;
+        this.userService = userService;
+        this.router = router;
+        this.fb = fb;
+        this.errorMessage = '';
+        this.states = [];
+        this.createForm();
     }
     PersonalRepresentativeDetailsComponent.prototype.ngOnInit = function () {
+        this.getUserData();
+    };
+    /**
+     *This function is fetching user data
+     */
+    PersonalRepresentativeDetailsComponent.prototype.getUserData = function () {
+        var _this = this;
+        this.userService.getUserDetails(this.authService.getUser()['id']).subscribe(function (response) {
+            _this.fullUserInfo = response.data[4];
+            _this.personalRepresentativeDetailsForm.controls['isBackupPersonalRepresentative'].setValue(_this.fullUserInfo.isBackupPersonalRepresentative);
+            if (_this.fullUserInfo.personalRepresentative[0]) {
+                var guardianFGs = _this.fullUserInfo.personalRepresentative.map(function (gr) { return _this.fb.group(gr); });
+                var guardianFormArray = _this.fb.array(guardianFGs);
+                _this.personalRepresentativeDetailsForm.setControl('personalRepresentative', guardianFormArray);
+            }
+            if (_this.fullUserInfo.backupPersonalRepresentative[0]) {
+                var guardianFGs = _this.fullUserInfo.backupPersonalRepresentative.map(function (gr) { return _this.fb.group(gr); });
+                var guardianFormArray = _this.fb.array(guardianFGs);
+                _this.personalRepresentativeDetailsForm.setControl('backupPersonalRepresentative', guardianFormArray);
+            }
+        }, function (error) {
+            console.log(error.error);
+        });
+    };
+    /**
+     * function to create the Reactive form
+     */
+    PersonalRepresentativeDetailsComponent.prototype.createForm = function () {
+        this.personalRepresentativeDetailsForm = this.fb.group({
+            isPersonalRepresentative: ['Yes', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            isBackupPersonalRepresentative: ['No', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            personalRepresentative: this.fb.array([
+                this.fb.group({
+                    user_id: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"](this.authService.getUser()['id'], [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]),
+                    fullname: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]),
+                    relationship_with: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]),
+                    address: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]),
+                    country: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('United States', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]),
+                    city: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]),
+                    state: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]),
+                    zip: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]),
+                    email_notification: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]),
+                    email: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]),
+                    is_backuprepresentative: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormControl"]('0'),
+                })
+            ]),
+            backupPersonalRepresentative: this.fb.array([
+                this.fb.group({
+                    user_id: this.authService.getUser()['id'],
+                    fullname: [''],
+                    relationship_with: [''],
+                    address: [''],
+                    country: ['United States'],
+                    city: [''],
+                    state: [''],
+                    zip: [''],
+                    email_notification: [''],
+                    email: [''],
+                    is_backuprepresentative: ['1']
+                })
+            ])
+        });
+    };
+    /**
+     *This function is for getting the back page link
+     */
+    PersonalRepresentativeDetailsComponent.prototype.goBack = function () {
+        this.router.navigate(['/dashboard/your-personal-representative-powers']);
+    };
+    /**
+     * submit the data to save
+     * @param model
+     */
+    PersonalRepresentativeDetailsComponent.prototype.onSubmit = function (model) {
+        var _this = this;
+        var modelData = model.value;
+        modelData.step = 5;
+        modelData.user_id = this.authService.getUser()['id'];
+        console.log(modelData);
+        this.userService.editProfile(modelData).subscribe(function (response) {
+            // this.router.navigate(['/dashboard']);
+            _this.checkUserSpouseStatus();
+        }, function (error) {
+            for (var prop in error.error.message) {
+                _this.errorMessage = error.error.message[prop];
+                break;
+            }
+            setTimeout(function () {
+                _this.errorMessage = '';
+            }, 3000);
+        });
+    };
+    /**
+     *function for add or remove backup personal representative form
+     */
+    PersonalRepresentativeDetailsComponent.prototype.addRemoveValidation = function () {
+        if (this.personalRepresentativeDetailsForm.value.isBackupPersonalRepresentative === 'No') {
+            this.removeValidationToBackupRepresentativeForm();
+        }
+        else {
+            this.addValidationToBackupRepresentativeForm();
+        }
+    };
+    /**
+     *This function is uses to add validation to the backup personal representative form
+     */
+    PersonalRepresentativeDetailsComponent.prototype.addValidationToBackupRepresentativeForm = function () {
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.fullname").setValidators([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]);
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.fullname").updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.relationship_with").setValidators([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]);
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.relationship_with").updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.address").setValidators([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]);
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.address").updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.city").setValidators([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]);
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.city").updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.state").setValidators([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]);
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.state").updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.zip").setValidators([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].pattern('^\\d{5}$')]);
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.zip").updateValueAndValidity();
+        // this.myForm.get(`guardian.0.email`).setValidators([Validators.email]);
+        // this.myForm.get(`guardian.0.email`).updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.email_notification").setValidators([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]);
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.email_notification").updateValueAndValidity();
+    };
+    /**
+     *Function to remove validation from the backup representative form
+     * */
+    PersonalRepresentativeDetailsComponent.prototype.removeValidationToBackupRepresentativeForm = function () {
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.fullname").setValidators([]);
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.fullname").updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.relationship_with").setValidators([]);
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.relationship_with").updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.address").setValidators([]);
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.address").updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.city").setValidators([]);
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.city").updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.state").setValidators([]);
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.state").updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.zip").setValidators([]);
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.zip").updateValueAndValidity();
+        // this.myForm.get(`backUpGuardian.0.email`).setValidators([]);
+        // this.myForm.get(`backUpGuardian.0.email`).updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.email_notification").setValidators([]);
+        this.personalRepresentativeDetailsForm.get("backupPersonalRepresentative.0.email_notification").updateValueAndValidity();
+    };
+    /**
+     *function to add validation to the personal representative form
+     */
+    PersonalRepresentativeDetailsComponent.prototype.addFormValidation = function () {
+        this.personalRepresentativeDetailsForm.get("personalRepresentative.0.fullname").setValidators([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]);
+        this.personalRepresentativeDetailsForm.get("personalRepresentative.0.fullname").updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("personalRepresentative.0.relationship_with").setValidators([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]);
+        this.personalRepresentativeDetailsForm.get("personalRepresentative.0.relationship_with").updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("personalRepresentative.0.address").setValidators([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]);
+        this.personalRepresentativeDetailsForm.get("personalRepresentative.0.address").updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("personalRepresentative.0.city").setValidators([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]);
+        this.personalRepresentativeDetailsForm.get("personalRepresentative.0.city").updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("personalRepresentative.0.state").setValidators([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]);
+        this.personalRepresentativeDetailsForm.get("personalRepresentative.0.state").updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("personalRepresentative.0.zip").setValidators([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].pattern('^\\d{5}$')]);
+        this.personalRepresentativeDetailsForm.get("personalRepresentative.0.zip").updateValueAndValidity();
+        // this.myForm.get(`guardian.0.email`).setValidators([Validators.email]);
+        // this.myForm.get(`guardian.0.email`).updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get("personalRepresentative.0.email_notification").setValidators([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]);
+        this.personalRepresentativeDetailsForm.get("personalRepresentative.0.email_notification").updateValueAndValidity();
+    };
+    /**
+     *check User Spouse status for Routing
+     */
+    PersonalRepresentativeDetailsComponent.prototype.checkUserSpouseStatus = function () {
+        var _this = this;
+        this.userService.getUserDetails(this.authService.getUser()['id']).subscribe(function (response) {
+            console.log(response.data[0].data);
+            if (response.data[0].data.userInfo.marital_status === 'M' || response.data[0].data.userInfo.marital_status === 'R') {
+                // move to spouse page
+                _this.router.navigate(['/dashboard/provide-user-spouse']);
+            }
+            else {
+                // move to personal property page
+                _this.router.navigate(['/dashboard/personal-property-distributed']);
+            }
+        }, function (error) {
+            console.log(error.error);
+        });
     };
     PersonalRepresentativeDetailsComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -75,7 +274,10 @@ var PersonalRepresentativeDetailsComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/user/user-dashboard/personal-representative-details/personal-representative-details.component.html"),
             styles: [__webpack_require__("./src/app/user/user-dashboard/personal-representative-details/personal-representative-details.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__user_auth_user_auth_service__["a" /* UserAuthService */],
+            __WEBPACK_IMPORTED_MODULE_4__user_service__["a" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"]])
     ], PersonalRepresentativeDetailsComponent);
     return PersonalRepresentativeDetailsComponent;
 }());
@@ -94,12 +296,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__personal_representative_details_routing_module__ = __webpack_require__("./src/app/user/user-dashboard/personal-representative-details/personal-representative-details-routing.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__personal_representative_details_component__ = __webpack_require__("./src/app/user/user-dashboard/personal-representative-details/personal-representative-details.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -111,7 +315,9 @@ var PersonalRepresentativeDetailsModule = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */],
-                __WEBPACK_IMPORTED_MODULE_2__personal_representative_details_routing_module__["a" /* PersonalRepresentativeDetailsRoutingModule */]
+                __WEBPACK_IMPORTED_MODULE_2__personal_representative_details_routing_module__["a" /* PersonalRepresentativeDetailsRoutingModule */],
+                __WEBPACK_IMPORTED_MODULE_4__angular_forms__["ReactiveFormsModule"],
+                __WEBPACK_IMPORTED_MODULE_4__angular_forms__["FormsModule"]
             ],
             declarations: [__WEBPACK_IMPORTED_MODULE_3__personal_representative_details_component__["a" /* PersonalRepresentativeDetailsComponent */]]
         })

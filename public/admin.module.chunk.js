@@ -26321,11 +26321,11 @@ var AddBlogComponent = /** @class */ (function () {
     };
     AddBlogComponent.prototype.add = function () {
         var _this = this;
+        this.createBlogMessage = 'Processing...';
         this.blogFeatured = 0;
         if (this.blogData.featured) {
             this.blogFeatured = 1;
         }
-        console.log(this.blogImage);
         var createBlogBody = new FormData();
         createBlogBody.append('blogTitle', this.blogData.title);
         createBlogBody.append('blogBody', this.blogData.body);
@@ -26341,24 +26341,21 @@ var AddBlogComponent = /** @class */ (function () {
         createBlogBody.append('blogSeoTitle', this.blogData.seo_title);
         console.log(this.blogData.blog_category.length);
         this.dashService.createBlog(createBlogBody).subscribe(function (response) {
-            // if (response.status = 'true') {
-            // console.log(response.status);
-            _this.createBlogMessage = response.message;
-            var blogModalRef = _this;
-            setTimeout(function () {
-                blogModalRef.modalRef.hide();
-            }, 2000);
-            // } else {
-            //     this.createBlogMessage = response.message;
-            // }
-            _this.router.navigate(['/admin-panel/blogs']);
+            if (response.status = 'true') {
+                _this.createBlogMessage = response.message;
+                var blogModalRef_1 = _this;
+                setTimeout(function () {
+                    blogModalRef_1.modalRef.hide();
+                }, 2000);
+                _this.router.navigate(['/admin-panel/blogs']);
+            }
         }, function (error) {
             _this.createBlogMessage = error.error.message;
         });
     };
     AddBlogComponent.prototype.edit = function () {
         var _this = this;
-        console.log(this.blogImage);
+        this.createBlogMessage = 'Processing...';
         this.blogFeatured = 0;
         if (this.blogData.featured) {
             this.blogFeatured = 1;
@@ -26377,17 +26374,15 @@ var AddBlogComponent = /** @class */ (function () {
         createBlogBody.append('blogSeoTitle', this.blogData.seo_title);
         createBlogBody.append('blogId', this.blogData.id.toString());
         this.dashService.editBlog(createBlogBody).subscribe(function (response) {
-            // if (response.status = 'true') {
-            console.log(response.status);
-            _this.createBlogMessage = response.message;
-            var blogModalRef = _this;
-            setTimeout(function () {
-                blogModalRef.modalRef.hide();
-            }, 2000);
-            _this.router.navigate(['/admin-panel/blogs']);
-            // } else {
-            //     this.createBlogMessage = response.message;
-            // }
+            if (response.status = 'true') {
+                console.log(response.status);
+                _this.createBlogMessage = response.message;
+                var blogModalRef_2 = _this;
+                setTimeout(function () {
+                    blogModalRef_2.modalRef.hide();
+                }, 2000);
+                _this.router.navigate(['/admin-panel/blogs']);
+            }
         }, function (error) {
             _this.createBlogMessage = error.error.message;
         });
@@ -28130,14 +28125,14 @@ var HeaderComponent = /** @class */ (function () {
 /***/ "./src/app/admin/layout/left-menu/left-menu.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "nav.navbar-side{\n    background: #27bc9c;\n    height: 96%;\n}\nbody{\n    position: relative;\n}\n.sidebar-collapse > .nav > li{\n    width: 100%;\n    background: #27bc9c;\n    -webkit-transition:  all 0.5s ease 0s;\n    transition:  all 0.5s ease 0s;\n    position: relative;\n}\n.sidebar-collapse > .nav > li.dropMenu:after{\n    content: \"\";\n    position: absolute;\n    width: 16px;\n    height: 2px;\n    background: #fff;\n    top: 27px;\n    right: 10px;\n}\n.sidebar-collapse > .nav > li.dropMenu:before{\n    content: \"\";\n    position: absolute;\n    height: 16px;\n    width: 2px;\n    background: #fff;\n    top: 20px;\n    right: 17px;\n    -webkit-transition:  all 0.5s ease 0s;\n    transition:  all 0.5s ease 0s;\n}\n.sidebar-collapse > .nav > li > a {\n    display: inline-block;\n    width: 100%;\n}\n.sidebar-collapse > .nav > li:hover{\n    background: #16a085;\n}\n.sidebar-collapse > .nav > li:hover:before {\n    height: 2px;\n    top:27px;\n}\n.sidebar-collapse > .nav > li:hover > a {\n    text-decoration: none;\n}\n.sidebar-collapse > .nav > li ul{\n    padding-left: 0;\n    -webkit-transition:  all 0.5s ease 0s;\n    transition:  all 0.5s ease 0s;\n    height: 0px;\n    overflow: hidden;\n}\n.sidebar-collapse > .nav > li:hover ul{\n    height: 122px;\n}\n.sidebar-collapse > .nav > li:hover ul.faqMenu{\n    height: 80px;\n}\n.sidebar-collapse > .nav > li:hover ul li{\n    list-style: none;\n}\n.sidebar-collapse > .nav > li ul li a{\n    color: #fff;\n    font-size: 14px;\n    display: block;\n    text-decoration: none;\n    padding: 10px 0 10px 30px;\n    background: #16a085;\n    -webkit-transition:  all 0.5s ease 0s;\n    transition:  all 0.5s ease 0s;\n}\n.sidebar-collapse > .nav > li ul li a i{\n    padding-right: 5px;\n}\n.sidebar-collapse > .nav > li ul li a:hover{\n    background: #14846b;\n}\n@media screen and (min-width: 768px){\n    nav.navbar-side {\n        position: absolute;\n    }\n}"
+module.exports = "nav.navbar-side{\n    background: #27bc9c;\n    height: 96%;\n}\nbody{\n    position: relative;\n}\n.sidebar-collapse > .nav > li{\n    width: 100%;\n    background: #27bc9c;\n    -webkit-transition:  all 0.5s ease 0s;\n    transition:  all 0.5s ease 0s;\n    position: relative;\n}\n.sidebar-collapse > .nav > li.dropMenu:after{\n    content: \"\";\n    position: absolute;\n    width: 16px;\n    height: 2px;\n    background: #fff;\n    top: 27px;\n    right: 10px;\n}\n.sidebar-collapse > .nav > li.dropMenu:before{\n    content: \"\";\n    position: absolute;\n    height: 16px;\n    width: 2px;\n    background: #fff;\n    top: 20px;\n    right: 17px;\n    -webkit-transition:  all 0.5s ease 0s;\n    transition:  all 0.5s ease 0s;\n}\n.sidebar-collapse > .nav > li > a {\n    display: inline-block;\n    width: 100%;\n}\n.sidebar-collapse > .nav > li:hover, .sidebar-collapse > .nav > li.active-menu{\n    background: #16a085;\n}\n.sidebar-collapse > .nav > li:hover:before, .sidebar-collapse > .nav > li.active-menu:before{\n    height: 2px;\n    top:27px;\n}\n.sidebar-collapse > .nav > li:hover > a {\n    text-decoration: none;\n}\n.sidebar-collapse > .nav > li ul{\n    padding-left: 0;\n    -webkit-transition:  all 0.5s ease 0s;\n    transition:  all 0.5s ease 0s;\n    height: 0px;\n    overflow: hidden;\n}\n.sidebar-collapse > .nav > li:hover ul, .sidebar-collapse > .nav > li.active-menu ul{\n    height: 122px;\n}\n.sidebar-collapse > .nav > li:hover ul.faqMenu, .sidebar-collapse > .nav > li.active-menu ul.faqMenu{\n    height: 80px;\n}\n.sidebar-collapse > .nav > li:hover ul li{\n    list-style: none;\n}\n.sidebar-collapse > .nav > li ul li a{\n    color: #fff;\n    font-size: 14px;\n    display: block;\n    text-decoration: none;\n    padding: 10px 0 10px 30px;\n    background: #16a085;\n    -webkit-transition:  all 0.5s ease 0s;\n    transition:  all 0.5s ease 0s;\n}\n.sidebar-collapse > .nav > li ul li a i{\n    padding-right: 5px;\n}\n.sidebar-collapse > .nav > li ul li:hover a, .sidebar-collapse > .nav > li ul li.active-menu a{\n    background: #14846b;\n}\n@media screen and (min-width: 768px){\n    nav.navbar-side {\n        position: absolute;\n    }\n}"
 
 /***/ }),
 
 /***/ "./src/app/admin/layout/left-menu/left-menu.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar-default navbar-side\" role=\"navigation\">\n  <div class=\"sidebar-collapse\">\n      <ul class=\"nav\" id=\"main-menu\">\n          <li>\n              <a class=\"active-menu\" routerLink=\"/admin-panel\"><i class=\"fa fa-dashboard\"></i> Dashboard</a>\n          </li>\n          \n          <li class=\"dropMenu\">\n              <a routerLink=\"/admin-panel/blogs\"><i class=\"fa fa-rss\"></i> Blog</a>\n              <ul>\n                  <li><a routerLink=\"/admin-panel/blogs\"><i class=\"fa fa-rss\"></i> Blogs</a></li>\n                  <li><a routerLink=\"/admin-panel/blog-categories\"><i class=\"fa fa-sitemap\"></i> Blog Categories</a></li>\n                  <li><a routerLink=\"/admin-panel/blog-comments\"><i class=\"fa fa-comments\"></i> Blogs Comments</a></li>\n              </ul>\n          </li>\n          <li class=\"dropMenu\">\n              <a class=\"\" routerLink=\"/admin-panel/faqs\"><i class=\"fa fa-question-circle\"></i> Faq</a>\n              <ul class=\"faqMenu\">\n                <li><a routerLink=\"/admin-panel/faqs\"><i class=\"fa fa-question-circle\"></i>Faqs</a></li>\n                <li><a routerLink=\"/admin-panel/faqs-category\"><i class=\"fa fa-question\"></i>Faq Categories</a></li>\n              </ul>\n          </li>\n          <li>\n              <a class=\"\" href=\"\"><i class=\"fa fa-commenting\"></i> Packages</a>\n          </li>\n          <li>\n              <a class=\"\" href=\"\"><i class=\"fa fa-question-circle\"></i> Role</a>\n          </li>\n          <li>\n              <a class=\"\" routerLink=\"/admin-panel/discount-coupon\"><i class=\"fa fa-tags\"></i> Discount Coupons</a>\n          </li>\n          \n      </ul>\n\n  </div>\n\n</nav>"
+module.exports = "<nav class=\"navbar-default navbar-side\" role=\"navigation\">\n  <div class=\"sidebar-collapse\">\n      <ul class=\"nav\" id=\"main-menu\">\n          <li routerLinkActive=\"active-menu\" [routerLinkActiveOptions]=\"{exact: true}\">\n              <a routerLink=\"/admin-panel/dashboard\"><i class=\"fa fa-dashboard\"></i> Dashboard</a>\n          </li>\n          \n          <li class=\"dropMenu\" routerLinkActive=\"active-menu\">\n              <a routerLink=\"/admin-panel/blogs\"><i class=\"fa fa-rss\"></i> Blog</a>\n              <ul>\n                  <li routerLinkActive=\"active-menu\"><a routerLink=\"/admin-panel/blogs\"><i class=\"fa fa-rss\"></i> Blogs</a></li>\n                  <li routerLinkActive=\"active-menu\"><a routerLink=\"/admin-panel/blog-categories\"><i class=\"fa fa-sitemap\"></i> Blog Categories</a></li>\n                  <li routerLinkActive=\"active-menu\"><a routerLink=\"/admin-panel/blog-comments\"><i class=\"fa fa-comments\"></i> Blogs Comments</a></li>\n              </ul>\n          </li>\n          <li class=\"dropMenu\" routerLinkActive=\"active-menu\">\n              <a class=\"\" routerLink=\"/admin-panel/faqs\"><i class=\"fa fa-question-circle\"></i> Faq</a>\n              <ul class=\"faqMenu\">\n                <li routerLinkActive=\"active-menu\"><a routerLink=\"/admin-panel/faqs\"><i class=\"fa fa-question-circle\"></i>Faqs</a></li>\n                <li routerLinkActive=\"active-menu\"><a routerLink=\"/admin-panel/faqs-category\"><i class=\"fa fa-question\"></i>Faq Categories</a></li>\n              </ul>\n          </li>\n          <li routerLinkActive=\"active-menu\">\n              <a class=\"\" href=\"\"><i class=\"fa fa-commenting\"></i> Packages</a>\n          </li>\n          <li routerLinkActive=\"active-menu\">\n              <a class=\"\" href=\"\"><i class=\"fa fa-question-circle\"></i> Role</a>\n          </li>\n          <li routerLinkActive=\"active-menu\">\n              <a class=\"\" routerLink=\"/admin-panel/discount-coupon\"><i class=\"fa fa-tags\"></i> Discount Coupons</a>\n          </li>\n          \n      </ul>\n\n  </div>\n\n</nav>"
 
 /***/ }),
 

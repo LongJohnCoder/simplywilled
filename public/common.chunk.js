@@ -360,6 +360,10 @@ var UserService = /** @class */ (function () {
     UserService.prototype.getUserDetails = function (userId) {
         return this.httpClient.get(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'user/get-user-details/' + userId);
     };
+    /** Function for contact us*/
+    UserService.prototype.contactUs = function (formBody) {
+        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].API_URL + 'contact-us', formBody);
+    };
     UserService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */]])

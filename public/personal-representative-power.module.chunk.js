@@ -46,7 +46,7 @@ module.exports = "body{\n  font-family: 'OpenSans';\n  color: #373737;\n}\n\nhr 
 /***/ "./src/app/user/user-dashboard/personal-representative-power/personal-representative-power.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-12 col-sm-12\">\n  <div class=\"main-content tellusaboutyou\">\n    <h2>Your Personal Representative</h2>\n    <form (ngSubmit)=\"savePersonalRepresentative(personalRepresentativeForm)\" #personalRepresentativeForm = \"ngForm\">\n      <div class=\"form-group\">\n        <label>Should your personal representative have the power to maintain a business interest?</label>\n        <ul class=\"radio_ul6\">\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"businessInterestClassFlag\" (click)=\"changeState('BI', true)\">\n              <input type=\"radio\" id=\"business_interest_yes\" name=\"business_interest\" required=\"true\" ngModel #business_interest=\"ngModel\" [ngModel]=\"true\" [value]=\"true\">\n              <span class=\"human_status\">Yes</span>\n            </label>\n          </li>\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"!businessInterestClassFlag\" (click)=\"changeState('BI', false)\">\n              <input type=\"radio\" id=\"business_interest_no\" name=\"business_interest\" required=\"true\" ngModel #business_interest=\"ngModel\" [ngModel]=\"false\" [value]=\"false\">\n              <span class=\"human_status\">No</span>\n            </label>\n          </li>\n        </ul>\n      </div>\n      <div class=\"form-group\">\n        <label>Should your personal representative have the power to maintain a farm or a ranch?</label>\n        <ul class=\"radio_ul6\">\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"farmRanchFlag\" (click)=\"changeState('FR', true)\">\n              <input type=\"radio\" id=\"farm_or_ranch_yes\" name=\"farm_or_ranch\" required=\"true\" ngModel #farm_or_ranch=\"ngModel\" [ngModel]=\"true\" [value]=\"true\">\n              <span class=\"human_status\">Yes</span>\n            </label>\n          </li>\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"!farmRanchFlag\" (click)=\"changeState('FR', false)\">\n              <input type=\"radio\" id=\"farm_or_ranch_no\" name=\"farm_or_ranch\" required=\"true\" ngModel #farm_or_ranch=\"ngModel\" [ngModel]=\"false\" [value]=\"false\">\n              <span class=\"human_status\">No</span>\n            </label>\n          </li>\n        </ul>\n      </div>\n      <div class=\"form-group\">\n        <label>Select to provide for a speciﬁc amount or percentage as compensation for the Personal Representative.</label>\n        <ul class=\"radio_ul6\">\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"personalRepresentativeFlag\" (click)=\"changeState('PR', true)\">\n              <input type=\"radio\" id=\"percentage_compensation_yes\" name=\"percentage_compensation\" required=\"true\" ngModel #percentage_compensation=\"ngModel\" [ngModel]=\"true\" [value]=\"true\">\n              <span class=\"human_status\">Yes</span>\n            </label>\n          </li>\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"!personalRepresentativeFlag\" (click)=\"changeState('PR', false)\">\n              <input type=\"radio\" id=\"percentage_compensation_no\" name=\"percentage_compensation\" required=\"true\" ngModel #percentage_compensation=\"ngModel\" [ngModel]=\"false\" [value]=\"false\">\n              <span class=\"human_status\">No</span>\n            </label>\n          </li>\n        </ul>\n      </div>\n      <div class=\"form-group\">\n        <label>Select if the amount will be a speciﬁed sum; otherwise, it will be a percentage of the Estate.</label>\n        <ul class=\"radio_ul6 percentage-estate\">\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"amountTypeFlag\" (click)=\"changeState('AT', true)\">\n              <input type=\"radio\" id=\"percentage_estate_yes\" name=\"percentage_estate\" required=\"true\" ngModel #percentage_estate=\"ngModel\" [ngModel]=\"true\" [value]=\"true\">\n              <span class=\"human_status\">$ <br> Specific Sum</span>\n            </label>\n          </li>\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"!amountTypeFlag\" (click)=\"changeState('AT', false)\">\n              <input type=\"radio\" id=\"percentage_estate_no\" name=\"percentage_estate\" required=\"true\" ngModel #percentage_estate=\"ngModel\" [ngModel]=\"false\" [value]=\"false\">\n              <span class=\"human_status\">% <br> Percentage</span>\n            </label>\n          </li>\n        </ul>\n      </div>\n      <div class=\"form-group\">\n        <label>Percentage of the Estate as compensation to the Personal Representative: </label>\n        <input type=\"text\" id=\"compensation_value\" name=\"compensation_value\" required=\"true\" ngModel #compensation_value=\"ngModel\" placeholder=\"{{amountTypeFlag ? '$' : '%'}}\" class=\"form-control\">\n      </div>\n      <div class=\"form-group\">\n        <label>Select if the percentage is based on the \"net“ value of the estate.</label>\n        <ul class=\"radio_ul6\">\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"isNetValueFlag\" (click)=\"changeState('NV', true)\">\n              <input type=\"radio\" id=\"net_value_yes\" name=\"net_value\" required=\"true\" ngModel #net_value=\"ngModel\" [ngModel]=\"true\" [value]=\"true\">\n              <span class=\"human_status\">Yes</span>\n            </label>\n          </li>\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"!isNetValueFlag\" (click)=\"changeState('NV', false)\">\n              <input type=\"radio\" id=\"net_value_no\" name=\"net_value\" required=\"true\" ngModel #net_value=\"ngModel\" [ngModel]=\"true\" [value]=\"true\">\n              <span class=\"human_status\">No</span>\n            </label>\n          </li>\n        </ul>\n      </div>\n      <div class=\"form-footer\">\n        <button class=\"btn common-button btn-complete\" type=\"submit\" [disabled]=\"!personalRepresentativeForm.form.valid\">Continue</button>\n      </div>\n    </form>\n  </div>\n</div>\n"
+module.exports = "<div class=\"col-md-12 col-sm-12\">\n  <div class=\"main-content tellusaboutyou\">\n    <h2>Your Personal Representative</h2>\n    <form (ngSubmit)=\"savePersonalRepresentative(personalRepresentativeForm)\" #personalRepresentativeForm = \"ngForm\">\n      <div class=\"form-group\">\n        <label>Should your personal representative have the power to maintain a business interest?</label>\n        <ul class=\"radio_ul6\">\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"businessInterestClassFlag\" (click)=\"changeState('BI', true)\">\n              <input type=\"radio\" id=\"business_interest_yes\" name=\"business_interest_val\" required=\"true\" ngModel #business_interest_val=\"ngModel\" [ngModel]=\"businessInterestClassFlag\" [value]=\"true\">\n              <span class=\"human_status\">Yes</span>\n            </label>\n          </li>\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"!businessInterestClassFlag\" (click)=\"changeState('BI', false)\">\n              <input type=\"radio\" id=\"business_interest_no\" name=\"business_interest_val\" required=\"true\" ngModel #business_interest_val=\"ngModel\" [ngModel]=\"businessInterestClassFlag\" [value]=\"false\">\n              <span class=\"human_status\">No</span>\n            </label>\n          </li>\n        </ul>\n      </div>\n      <div class=\"form-group\">\n        <label>Should your personal representative have the power to maintain a farm or a ranch?</label>\n        <ul class=\"radio_ul6\">\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"farmRanchFlag\" (click)=\"changeState('FR', true)\">\n              <input type=\"radio\" id=\"farm_or_ranch_yes\" name=\"farm_or_ranch_val\" required=\"true\" ngModel #farm_or_ranch_val=\"ngModel\" [ngModel]=\"farmRanchFlag\" [value]=\"true\">\n              <span class=\"human_status\">Yes</span>\n            </label>\n          </li>\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"!farmRanchFlag\" (click)=\"changeState('FR', false)\">\n              <input type=\"radio\" id=\"farm_or_ranch_no\" name=\"farm_or_ranch_val\" required=\"true\" ngModel #farm_or_ranch_val=\"ngModel\" [ngModel]=\"farmRanchFlag\" [value]=\"false\">\n              <span class=\"human_status\">No</span>\n            </label>\n          </li>\n        </ul>\n      </div>\n      <div class=\"form-group\">\n        <label>Select to provide for a speciﬁc amount or percentage as compensation for the Personal Representative.</label>\n        <ul class=\"radio_ul6\">\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"personalRepresentativeFlag\" (click)=\"changeState('PR', true)\">\n              <input type=\"radio\" id=\"percentage_compensation_yes\" name=\"percentage_compensation_val\" required=\"true\" ngModel #percentage_compensation_val=\"ngModel\" [ngModel]=\"personalRepresentativeFlag\" [value]=\"true\">\n              <span class=\"human_status\">Yes</span>\n            </label>\n          </li>\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"!personalRepresentativeFlag\" (click)=\"changeState('PR', false)\">\n              <input type=\"radio\" id=\"percentage_compensation_no\" name=\"percentage_compensation_val\" required=\"true\" ngModel #percentage_compensation_val=\"ngModel\" [ngModel]=\"personalRepresentativeFlag\" [value]=\"false\">\n              <span class=\"human_status\">No</span>\n            </label>\n          </li>\n        </ul>\n      </div>\n      <div class=\"form-group\">\n        <label>Select if the amount will be a speciﬁed sum; otherwise, it will be a percentage of the Estate.</label>\n        <ul class=\"radio_ul6 percentage-estate\">\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"amountTypeFlag\" (click)=\"changeState('AT', true)\">\n              <input type=\"radio\" id=\"percentage_estate_yes\" name=\"percentage_estate_val\" required=\"true\" ngModel #percentage_estate_val=\"ngModel\" [ngModel]=\"amountTypeFlag\" [value]=\"true\">\n              <span class=\"human_status\">$ <br> Specific Sum</span>\n            </label>\n          </li>\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"!amountTypeFlag\" (click)=\"changeState('AT', false)\">\n              <input type=\"radio\" id=\"percentage_estate_no\" name=\"percentage_estate_val\" required=\"true\" ngModel #percentage_estate_val=\"ngModel\" [ngModel]=\"amountTypeFlag\" [value]=\"false\">\n              <span class=\"human_status\">% <br> Percentage</span>\n            </label>\n          </li>\n        </ul>\n      </div>\n      <div class=\"form-group\">\n        <label>Percentage of the Estate as compensation to the Personal Representative: </label>\n        <input type=\"text\" id=\"compensation_value\" name=\"compensation_value_val\" required=\"true\" ngModel #compensation_value_val=\"ngModel\" placeholder=\"{{amountTypeFlag ? '$' : '%'}}\" class=\"form-control\" [ngModel]=\"compensation_value_data\">\n      </div>\n      <div class=\"form-group\">\n        <label>Select if the percentage is based on the \"net“ value of the estate.</label>\n        <ul class=\"radio_ul6\">\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"isNetValueFlag\" (click)=\"changeState('NV', true)\">\n              <input type=\"radio\" id=\"net_value_yes\" name=\"net_value_val\" required=\"true\" ngModel #net_value_val=\"ngModel\" [ngModel]=\"isNetValueFlag\" [value]=\"true\">\n              <span class=\"human_status\">Yes</span>\n            </label>\n          </li>\n          <li>\n            <label class=\"radio_custom\" [class.active]=\"!isNetValueFlag\" (click)=\"changeState('NV', false)\">\n              <input type=\"radio\" id=\"net_value_no\" name=\"net_value_val\" required=\"true\" ngModel #net_value_val=\"ngModel\" [ngModel]=\"isNetValueFlag\" [value]=\"false\">\n              <span class=\"human_status\">No</span>\n            </label>\n          </li>\n        </ul>\n      </div>\n      <div class=\"form-footer\">\n        <button class=\"btn common-button btn-grey pull-left\" routerLink=\"/dashboard\">Go Back</button>\n        <button class=\"btn common-button btn-complete\" type=\"submit\" [disabled]=\"!personalRepresentativeForm.form.valid\">Continue</button>\n      </div>\n    </form>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -57,6 +57,8 @@ module.exports = "<div class=\"col-md-12 col-sm-12\">\n  <div class=\"main-conte
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PersonalRepresentativePowerComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_personal_representative_power_service__ = __webpack_require__("./src/app/user/user-dashboard/personal-representative-power/services/personal-representative-power.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_service__ = __webpack_require__("./src/app/user/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -68,16 +70,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
 var PersonalRepresentativePowerComponent = /** @class */ (function () {
-    function PersonalRepresentativePowerComponent(prService) {
+    function PersonalRepresentativePowerComponent(prService, usrService, router) {
         this.prService = prService;
+        this.usrService = usrService;
+        this.router = router;
     }
     PersonalRepresentativePowerComponent.prototype.ngOnInit = function () {
-        this.businessInterestClassFlag = false;
-        this.farmRanchFlag = false;
-        this.personalRepresentativeFlag = false;
-        this.amountTypeFlag = false;
-        this.isNetValueFlag = false;
+        this.getStepDetails();
+        this.fetchInfo = false;
         if (JSON.parse(localStorage.getItem('loggedInUser')).hasOwnProperty('token')) {
             this.access_token = JSON.parse(localStorage.getItem('loggedInUser')).token;
         }
@@ -85,15 +88,103 @@ var PersonalRepresentativePowerComponent = /** @class */ (function () {
             this.access_token = '';
         }
     };
+    /**
+     * get step user details
+     */
+    PersonalRepresentativePowerComponent.prototype.getStepDetails = function () {
+        var _this = this;
+        this.session_user_id = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+        if (this.session_user_id) {
+            this.fetchPersonalRepresentativeDB = this.usrService.getUserDetails(this.session_user_id);
+            this.fetchPersonalRepresentativeDB.subscribe(function (data) {
+                if (data.status && data.status === 200) {
+                    if (data.data.hasOwnProperty(3)) {
+                        if (data.data[3].hasOwnProperty('data') && data.data[3].data) {
+                            _this.fetchedUserData = data.data[3].data.lovedOnesInfo[0];
+                        }
+                        else {
+                            console.log('No records found. Please fill up the form');
+                            _this.errFlag = true;
+                            _this.errString = 'No records found. Please fill up the form';
+                        }
+                    }
+                    else {
+                        _this.errFlag = true;
+                        _this.errString = 'No array index exists for this step';
+                    }
+                }
+                else {
+                    _this.errFlag = true;
+                    _this.errString = 'Error while fetching records';
+                }
+            }, function (error) {
+                _this.errFlag = true;
+                _this.errString = error.error.message;
+            }, function () {
+                _this.fetchInfo = true;
+                // set dynamic values to the form
+                if (_this.fetchedUserData) {
+                    if (_this.fetchedUserData.business_interest === '1') {
+                        _this.businessInterestClassFlag = true;
+                    }
+                    else {
+                        _this.businessInterestClassFlag = false;
+                    }
+                    if (_this.fetchedUserData.farm_or_ranch === '1') {
+                        _this.farmRanchFlag = true;
+                    }
+                    else {
+                        _this.farmRanchFlag = false;
+                    }
+                    if (_this.fetchedUserData.is_getcompensate === '1') {
+                        _this.personalRepresentativeFlag = true;
+                    }
+                    else {
+                        _this.personalRepresentativeFlag = false;
+                    }
+                    if (_this.fetchedUserData.is_percentage !== '1') {
+                        _this.amountTypeFlag = false;
+                        _this.compensation_value_data = _this.fetchedUserData.compensation_percent_amount;
+                    }
+                    else {
+                        _this.amountTypeFlag = true;
+                        _this.compensation_value_data = _this.fetchedUserData.compensation_specific_amount;
+                    }
+                    if (_this.fetchedUserData.net_value_percent === '1') {
+                        _this.isNetValueFlag = true;
+                    }
+                    else {
+                        _this.isNetValueFlag = false;
+                    }
+                }
+                else {
+                    _this.businessInterestClassFlag = false;
+                    _this.farmRanchFlag = false;
+                    _this.personalRepresentativeFlag = false;
+                    _this.amountTypeFlag = false;
+                    _this.isNetValueFlag = false;
+                }
+            });
+        }
+        else {
+            this.errFlag = true;
+            this.errString = 'We are unable to log you in. Please login to continue';
+        }
+    };
+    /**
+     * this function update the record in database
+     * @param {NgForm} formData
+     * @returns {any}
+     */
     PersonalRepresentativePowerComponent.prototype.savePersonalRepresentative = function (formData) {
         var _this = this;
         if (this.access_token.length) {
-            var dataset = { 'step': 4, 'user_id': JSON.parse(localStorage.getItem('loggedInUser')).user.id, 'lovedOnesInfo': [{ 'user_id': JSON.parse(localStorage.getItem('loggedInUser')).user.id, 'business_interest': formData.value.business_interest ? '1' : '0', 'farm_or_ranch': formData.value.farm_or_ranch ? '1' : '0', 'is_percentage': formData.value.percentage_estate ? '1' : '0', 'is_getcompensate': formData.value.percentage_compensation ? '1' : '0', 'compensation_specific_amount': formData.value.percentage_estate ? formData.value.compensation_value : 0, 'compensation_percent_amount': !formData.value.percentage_estate ? formData.value.compensation_value : 0, 'net_value_percent': formData.value.net_value ? '1' : '0' }] };
+            var dataset = { 'step': 4, 'user_id': JSON.parse(localStorage.getItem('loggedInUser')).user.id, 'lovedOnesInfo': [{ 'user_id': JSON.parse(localStorage.getItem('loggedInUser')).user.id, 'business_interest': formData.value.business_interest_val ? '1' : '0', 'farm_or_ranch': formData.value.farm_or_ranch_val ? '1' : '0', 'is_percentage': formData.value.percentage_estate_val ? '1' : '0', 'is_getcompensate': formData.value.percentage_compensation_val ? '1' : '0', 'compensation_specific_amount': formData.value.percentage_estate_val ? formData.value.compensation_value_val : 0, 'compensation_percent_amount': !formData.value.percentage_estate_val ? formData.value.compensation_value_val : 0, 'net_value_percent': formData.value.net_value_val ? '1' : '0' }] };
             this.savePersonalRepresentativeDB = this.prService.savePersonalRepresentativePower(this.access_token, dataset);
             this.savePersonalRepresentativeDB.subscribe(function (data) {
                 if (data.status) {
                     // router link to next page
-                    console.log('updated');
+                    _this.router.navigate(['/dashboard/personal-representative-details']);
                 }
                 else {
                     _this.errFlag = true;
@@ -141,7 +232,7 @@ var PersonalRepresentativePowerComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/user/user-dashboard/personal-representative-power/personal-representative-power.component.html"),
             styles: [__webpack_require__("./src/app/user/user-dashboard/personal-representative-power/personal-representative-power.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_personal_representative_power_service__["a" /* PersonalRepresentativePowerService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_personal_representative_power_service__["a" /* PersonalRepresentativePowerService */], __WEBPACK_IMPORTED_MODULE_2__user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["d" /* Router */]])
     ], PersonalRepresentativePowerComponent);
     return PersonalRepresentativePowerComponent;
 }());

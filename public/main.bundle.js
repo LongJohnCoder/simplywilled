@@ -19,13 +19,33 @@ var map = {
 		"common",
 		"change-password.module"
 	],
+	"./gift/gift.module": [
+		"./src/app/user/user-dashboard/gift/gift.module.ts",
+		"gift.module"
+	],
+	"./personal-property-distributed/personal-property-distributed.module": [
+		"./src/app/user/user-dashboard/personal-property-distributed/personal-property-distributed.module.ts",
+		"common",
+		"personal-property-distributed.module"
+	],
 	"./personal-representative-details/personal-representative-details.module": [
 		"./src/app/user/user-dashboard/personal-representative-details/personal-representative-details.module.ts",
+		"common",
 		"personal-representative-details.module"
 	],
 	"./personal-representative-power/personal-representative-power.module": [
 		"./src/app/user/user-dashboard/personal-representative-power/personal-representative-power.module.ts",
+		"common",
 		"personal-representative-power.module"
+	],
+	"./protect-your-finances/protect-your-finances.module": [
+		"./src/app/user/user-dashboard/protect-your-finances/protect-your-finances.module.ts",
+		"protect-your-finances.module"
+	],
+	"./provide-user-spouse/provide-user-spouse.module": [
+		"./src/app/user/user-dashboard/provide-user-spouse/provide-user-spouse.module.ts",
+		"common",
+		"provide-user-spouse.module"
 	],
 	"./user-auth/user-login/user-login.module": [
 		"./src/app/user/user-auth/user-login/user-login.module.ts",
