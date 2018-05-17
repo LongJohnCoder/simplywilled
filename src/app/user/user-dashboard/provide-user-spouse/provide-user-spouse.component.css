@@ -402,6 +402,7 @@ footer ul li a{
 }
 .main-content.tellusaboutyou{
     padding: 30px 0 0;
+    width: 845px;
 }
 .main-content.tellusaboutyou h2{
     padding: 0 30px;
@@ -561,9 +562,14 @@ footer ul li a{
 }
 .two_child_radio.active{
     border: 1px solid #42b12a;
+    text-align: center;
 }
 .two_child_radio.active .two_child_text{
     color: #42b12a;
+}
+.two_child_img{
+    padding-top: 40px;
+    display: inline-block;
 }
 .two_child_radio .two_child_text{
     font-family: 'OpenSans';
@@ -688,6 +694,13 @@ footer .social ul li a i{
 .footer-bottom img{
     display: inline-block;
 }
+
+@media screen and (max-width: 1199px){
+    .main-content.tellusaboutyou{
+        width: 705px;
+    }
+}
+
 @media screen and (min-width: 992px) and (max-width: 1199px){
     .sidebar h1 {
         font-size: 27px;
@@ -723,6 +736,13 @@ footer .social ul li a i{
     .main-content.hotdocs .col-md-4.text-right{
         text-align: center;
     }
+    .main-content.tellusaboutyou{
+        width: 480px;
+    }
+    .main-content.tellusaboutyou h2 {
+        font-size: 24px;
+        margin: 0 0 20px;
+    }
 }
 @media screen and (min-width: 768px) and (max-width: 991px){
     .sidebar h1 {
@@ -748,10 +768,6 @@ footer .social ul li a i{
         position: relative;
         top: 0;
         margin: 0;
-    }
-    .main-content h2 {
-        font-size: 32px;
-        margin: 0 0 20px;
     }
     .main-content .email-box {
         width: 235px;
@@ -814,7 +830,9 @@ footer .social ul li a i{
         margin: 20px 0;
         text-align: center;
     }
-
+    .main-content.tellusaboutyou{
+        width: 100%;
+    }
 }
 
 @media screen  and (max-width: 480px){

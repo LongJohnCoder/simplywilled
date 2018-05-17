@@ -694,6 +694,10 @@ footer .social ul li a i{
   .main-content.hotdocs .col-md-4.text-right{
     text-align: center;
   }
+  .main-content.tellusaboutyou h2 {
+    font-size: 24px;
+    margin: 0 0 20px;
+  }
 }
 @media screen and (min-width: 768px) and (max-width: 991px){
   .sidebar h1 {
@@ -719,10 +723,6 @@ footer .social ul li a i{
     position: relative;
     top: 0;
     margin: 0;
-  }
-  .main-content h2 {
-    font-size: 32px;
-    margin: 0 0 20px;
   }
   .main-content .email-box {
     width: 235px;
@@ -1218,6 +1218,7 @@ footer ul li a{
   display: block;
   font-weight: normal;
   font-size: 18px;
+  cursor: pointer;
 }
 .main-content .form-group label span.leavetxt{
   display: block;
@@ -1551,10 +1552,6 @@ footer .social ul li a i{
     position: relative;
     top: 0;
     margin: 0;
-  }
-  .main-content h2 {
-    font-size: 32px;
-    margin: 0 0 20px;
   }
   .main-content .email-box {
     width: 235px;

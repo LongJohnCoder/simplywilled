@@ -13,7 +13,7 @@ const routes: Routes = [
       { path: 'protect-your-finances', loadChildren: './protect-your-finances/protect-your-finances.module#ProtectYourFinancesModule'},
       { path: 'provide-user-spouse', loadChildren: './provide-user-spouse/provide-user-spouse.module#ProvideUserSpouseModule' },
       { path: 'personal-property-distributed', loadChildren: './personal-property-distributed/personal-property-distributed.module#PersonalPropertyDistributedModule' },
-          {path: 'tell-you-make-specific-gifts', loadChildren: './gift/gift.module#GiftModule'}
+      {path: 'tell-you-make-specific-gifts', loadChildren: './gift/gift.module#GiftModule'}
     ]},
 ]
 

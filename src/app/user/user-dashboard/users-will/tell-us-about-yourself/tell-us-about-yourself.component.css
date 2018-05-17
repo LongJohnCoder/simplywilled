@@ -130,6 +130,7 @@
 .radio_custom.marital_status{
     height: 130px;
     width: 130px;
+    cursor: pointer;
 }
 .radio_custom.marital_status.active{
     background: none;
@@ -207,6 +208,9 @@
 .inprogress .btn-complete{
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
+}
+select.form-control{
+    margin: 0;
 }
 
 @media screen and (max-width:1199px){

@@ -353,6 +353,12 @@ header{
     header .common-button {
         margin: 0 0 10px 0;
     }
+    .sidebar, .notification{
+        width: 100%;
+    }
+    .notification{
+        margin-bottom: 32px;
+    }
 }
 
 .tell_us_text {

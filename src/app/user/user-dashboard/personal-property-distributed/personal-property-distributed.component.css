@@ -410,11 +410,14 @@ footer ul li a{
     padding: 0 30px;
     margin: 25px 0;
     position: relative;
+    float: left;
+    width: 100%;
 }
 .main-content .form-group label{
     display: block;
     font-weight: normal;
     font-size: 18px;
+    cursor: pointer;
 }
 .main-content .form-group label span.leavetxt{
     display: block;
@@ -546,6 +549,8 @@ footer ul li a{
 }
 .Instructions_ul_Radio{
     text-align: left;
+    float: left;
+    width: 100%;
 }
 .special_instrucion{
     min-height: 100%;
@@ -565,11 +570,24 @@ footer ul li a{
 .two_child_radio.active .two_child_text{
     color: #42b12a;
 }
+input[type='radio']{
+    opacity: 0;
+}
+.two_child_img {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 10px;
+    text-align: center;
+    padding-top: 14px;
+}
 .two_child_radio .two_child_text{
     font-family: 'OpenSans';
     line-height: 20px;
     color: rgba(0,0,0,.7);
-    font-size: 16px;
+    font-size: 15px;
+    display: block;
+    padding: 0 10px;
+    text-align: center;
 }
 .Instructions_ul_Radio li{
     height: 100%;
@@ -577,6 +595,7 @@ footer ul li a{
     margin-right: 10px;
     margin-bottom: 6px;
     margin-left: 0;
+    float: left;
 }
 .main-content textarea.form-control{
     height: auto;
@@ -723,6 +742,10 @@ footer .social ul li a i{
     .main-content.hotdocs .col-md-4.text-right{
         text-align: center;
     }
+    .main-content h2 {
+        font-size: 24px;
+        margin: 0 0 20px;
+    }
 }
 @media screen and (min-width: 768px) and (max-width: 991px){
     .sidebar h1 {
@@ -748,10 +771,6 @@ footer .social ul li a i{
         position: relative;
         top: 0;
         margin: 0;
-    }
-    .main-content h2 {
-        font-size: 32px;
-        margin: 0 0 20px;
     }
     .main-content .email-box {
         width: 235px;

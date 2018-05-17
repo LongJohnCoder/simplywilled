@@ -22,16 +22,44 @@
 .each-statement .statement p{
     margin: 16px 0 !important;
     padding: 10px;
+    width: calc(100% - 65px);
+    float: right;
 }
 .accordion-mobile .each-statement .statement p{
     margin:  0 !important;
     padding: 0;
 }
+.statement{
+    position: relative;
+}
+.each-statement .plus, .each-statement .minus{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+}
+.each-statement .plus img, .each-statement .minus img{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 
 @media screen and (max-width: 767px){
    .inner-banner h1 span{
         display: inline !important;
     } 
+    .accordion-mobile .sidebar-left ul li span.plus, .accordion-mobile .sidebar-left ul li span.minus{
+        position: absolute !important;
+        height: 100%;
+    }
+    .accordion-mobile .each-statement .statement p {
+        width: calc(100% - 45px);
+        float: right;
+    }
+    .accordion-mobile .statement{
+        padding: 15px 10px;
+    }
 }
 @media screen and (max-width: 400px){
     .inner-banner h1{

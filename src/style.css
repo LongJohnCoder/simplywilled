@@ -525,6 +525,7 @@ h1, h2, h3, h4, h5, h6{
     width:100%;
     float:left;
     margin-top: 50px;
+    overflow: hidden;
 }
 .sec5_easy_ul li{
     width:28%;
@@ -2561,6 +2562,10 @@ select.form-control{
 	border-radius: 10px;
 }
 
-
-
+.btn-complete{
+    color: #fff;
+}
+.main-content .form-group label{
+    cursor: pointer;
+}
 
