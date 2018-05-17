@@ -16,6 +16,7 @@ export class PersonalPropertyDistributedComponent implements OnInit {
     showSpouseRadio: boolean;
     errorMessage: any;
     pageText: string;
+    maritalStatus: any;
 
     constructor(private  authService: UserAuthService,
                 private userService: UserService,
@@ -47,6 +48,7 @@ export class PersonalPropertyDistributedComponent implements OnInit {
         this.userService.getUserDetails(this.authService.getUser()['id']).subscribe(
             (response: any) => {
                 this.fullUserInfo = response.data[5].data;
+                this.maritalStatus = response.data[0].data.userInfo.marital_status;
                 this.personalPropertyDistributedForm.controls['is_tangible_property_distribute'].setValue( this.fullUserInfo.is_tangible_property_distribute);
                 this.personalPropertyDistributedForm.controls['tangible_property_distribute'].setValue( this.fullUserInfo.tangible_property_distribute);
                 if (response.data[0].data.userInfo.marital_status === 'M' || response.data[0].data.userInfo.marital_status === 'R') {
@@ -119,35 +121,20 @@ export class PersonalPropertyDistributedComponent implements OnInit {
      *function to navigate to last page
      */
     goBack() {
-        this.userService.getUserDetails(this.authService.getUser()['id']).subscribe(
-            (response: any) => {
-                if (response.data[0].data.userInfo.marital_status === 'M' || response.data[0].data.userInfo.marital_status === 'R') {
-                    this.router.navigate(['/dashboard/provide-user-spouse']);
-                } else {
-                    this.router.navigate(['/dashboard/personal-representative-details']);
-                }
-            },
-            (error: any) => {
-                console.log(error.error);
-            }
-        );
+        if (this.maritalStatus === 'M' || this.maritalStatus === 'R') {
+            this.router.navigate(['/dashboard/provide-user-spouse']);
+        } else {
+            this.router.navigate(['/dashboard/personal-representative-details']);
+        }
     }
     /**
      *function to check marital Status of the user for a textFlag
      */
     checkMaritalStatus() {
-        this.userService.getUserDetails(this.authService.getUser()['id']).subscribe(
-            (response: any) => {
-                if (response.data[0].data.userInfo.marital_status === 'M') {
-                    this.pageText = 'Spouse';
-                }
-                if (response.data[0].data.userInfo.marital_status === 'R') {
-                    this.pageText = 'Partner';
-                }
-            },
-            (error: any) => {
-                console.log(error.error);
-            }
-        );
+        if ( this.maritalStatus === 'M' ) {
+            this.pageText = 'Spouse';
+        } if ( this.maritalStatus === 'R' ) {
+            this.pageText = 'Partner';
+        }
     }
 }
