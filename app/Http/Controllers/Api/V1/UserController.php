@@ -1219,7 +1219,7 @@ class UserController extends Controller
             }
 
             
-            //update
+            // create or update
             $checkForTheExistingDisrtibute->user_id = $userId;
             $checkForTheExistingDisrtibute->distribute_type = $disrtibuteType;
             if ($disrtibuteType == 1) {
@@ -1262,13 +1262,13 @@ class UserController extends Controller
      * */
     public function updateDisinherit($request)
     {
-        $validator = Validator::make($request->all(), [
-            'userId'              =>  'required|exists:users,id,deleted_at,NULL',
-            'isDisinherit'        =>  'required|numeric|between:0,1|integer',
-            'fullname'            =>  'required|string|max:255',
-            'relationship'        =>  'required|string|max:255',
-            'other_relationship'  =>  'required|string|max:255',
-            'gender'              =>  'required|string|in:M,F'
+        $validator = Validator::make($request->disinherit, [
+            'user_id'               =>  'required|exists:users,id,deleted_at,NULL',
+            'disinherit'          =>  'required|numeric|between:0,1|integer',
+            'fullname'              =>  'required|string|max:255',
+            'relationship'          =>  'required|string|max:255',
+            'other_relationship'    =>  'required|string|max:255',
+            'gender'                =>  'required|string|in:M,F'
         ]);
 
         if ($validator->fails()) {
@@ -1279,57 +1279,43 @@ class UserController extends Controller
             ], 400);
         }
 
-        $userId = $request->userId;
-        $isDisinherit = $request->isDisinherit; // 1-yes,0->no
-        $fullname = $request->fullname;
-        $relationship = $request->relationship;
-        $other_relationship = $request->other_relationship;
-        $gender = $request->gender; // M || F
+        $disinherit = $request->disinherit;
+        $userId = $disinherit['user_id'];
+        $isDisinherit = (string)$disinherit['disinherit']; // 1-yes,0->no
+        $fullname = $disinherit['fullname'];
+        $relationship = $disinherit['relationship'];
+        $other_relationship = $disinherit['other_relationship'];
+        $gender = $disinherit['gender']; // M || F
+
+
 
         $checkForExistsDisinherit = Disinherit::where('user_id', $userId)->first();
-        if (count($checkForExistsDisinherit)) {
-            // update
+        if(!$checkForExistsDisinherit) {
+            $checkForExistsDisinherit = new Disinherit;
             $checkForExistsDisinherit->user_id = $userId;
-            $checkForExistsDisinherit->disinherit = $isDisinherit;
-            $checkForExistsDisinherit->fullname = $fullname;
-            $checkForExistsDisinherit->relationship = $relationship;
-            $checkForExistsDisinherit->other_relationship = $other_relationship;
-            $checkForExistsDisinherit->gender = $gender;
-            if ($checkForExistsDisinherit->save()) {
-                return response()->json([
-                    'status' => true,
-                    'message' => 'Disinherit updated',
-                    'data' => ['userData'=>$checkForExistsDisinherit]
-                ], 200);
-            } else {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Disinherit not found',
-                ], 400);
-            }
-        } else {
-            // insert
-            $saveDisinherit = new Disinherit;
-            $saveDisinherit->user_id = $userId;
-            $saveDisinherit->disinherit = $isDisinherit;
-            $saveDisinherit->fullname = $fullname;
-            $saveDisinherit->relationship = $relationship;
-            $saveDisinherit->other_relationship = $other_relationship;
-            $saveDisinherit->gender = $gender;
-            if ($saveDisinherit->save()) {
-                return response()->json([
-                    'status' => true,
-                    'message' => 'Disinherit updated',
-                    'data' => ['userData'=>$saveDisinherit]
-                ], 200);
-            } else {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Disinherit not found',
-                ], 400);
-            }
         }
-
+        
+        // create or update
+        $checkForExistsDisinherit->user_id = $userId;
+        $checkForExistsDisinherit->disinherit = $isDisinherit;
+        $checkForExistsDisinherit->fullname = $fullname;
+        $checkForExistsDisinherit->relationship = $relationship;
+        $checkForExistsDisinherit->other_relationship = $other_relationship;
+        $checkForExistsDisinherit->gender = $gender;
+        $checkForExistsDisinherit->is_complete = '1';
+        if ($checkForExistsDisinherit->save()) {
+            return response()->json([
+                'status' => true,
+                'message' => 'Disinherit updated',
+                'data' => ['disinherit' => $checkForExistsDisinherit]
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Disinherit not found',
+            ], 400);
+        }
+        
     }
 
     /*

@@ -801,11 +801,7 @@ class UserManagementController extends Controller
        $disinherit  = Disinherit::where('user_id', $user->id)->first();
        $data        = [];
        if($disinherit) {
-         $data = [
-           'idChoice'       =>  $disinherit->disinherit == '1' ? 'Yes' : 'No',
-           'fullLegalName'  =>  $disinherit->fullname,
-           'relationship'   =>  $disinherit->relationship
-         ];
+         $data = $disinherit;
          return [
            'step' => $stepValue,
            'data' => $data
