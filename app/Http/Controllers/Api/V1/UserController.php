@@ -1224,15 +1224,27 @@ class UserController extends Controller
             $checkForTheExistingDisrtibute->distribute_type = $disrtibuteType;
             if ($disrtibuteType == 1) {
                 $checkForTheExistingDisrtibute->to_a_single_beneficiary = json_encode($disrtibuteData);
+                $checkForTheExistingDisrtibute->to_multiple_beneficiary = null;
+                $checkForTheExistingDisrtibute->to_my_heirs_law = null;
+                $checkForTheExistingDisrtibute->some_other_way = null;
             }
             if ($disrtibuteType == 2) {
                 $checkForTheExistingDisrtibute->to_multiple_beneficiary = json_encode($disrtibuteData);
+                $checkForTheExistingDisrtibute->to_a_single_beneficiary = null;
+                $checkForTheExistingDisrtibute->to_my_heirs_law = null;
+                $checkForTheExistingDisrtibute->some_other_way = null;
             }
             if ($disrtibuteType == 3) {
                 $checkForTheExistingDisrtibute->to_my_heirs_law = json_encode($disrtibuteData);
+                $checkForTheExistingDisrtibute->to_a_single_beneficiary = null;
+                $checkForTheExistingDisrtibute->to_multiple_beneficiary = null;
+                $checkForTheExistingDisrtibute->some_other_way = null;
             }
             if ($disrtibuteType == 4) {
                 $checkForTheExistingDisrtibute->some_other_way = json_encode($disrtibuteData);
+                $checkForTheExistingDisrtibute->to_a_single_beneficiary = null;
+                $checkForTheExistingDisrtibute->to_multiple_beneficiary = null;
+                $checkForTheExistingDisrtibute->to_my_heirs_law = null;
             }
             if ($checkForTheExistingDisrtibute->save()) {
                 return response()->json([
@@ -1286,8 +1298,6 @@ class UserController extends Controller
         $relationship = $disinherit['relationship'];
         $other_relationship = $disinherit['other_relationship'];
         $gender = $disinherit['gender']; // M || F
-
-
 
         $checkForExistsDisinherit = Disinherit::where('user_id', $userId)->first();
         if(!$checkForExistsDisinherit) {
