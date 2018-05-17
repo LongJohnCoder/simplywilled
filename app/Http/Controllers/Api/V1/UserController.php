@@ -1181,8 +1181,20 @@ class UserController extends Controller
      * */
     public function updateEstateDisrtibute($request)
     {
-        $userId = $request->userId;
-        $disrtibuteType = $request->disrtibuteType; // 1,2,3,4
+        $validator = Validator::make($request->all(), [
+            'user_id'             =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
+            'disrtibuteType'      =>  'required|numeric|between:1,4|integer'
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors(),
+                'data' => []
+            ], 400);
+        }
+
+        $userId = $request->user_id;
+        $disrtibuteType = (string)$request->disrtibuteType; // 1,2,3,4
         $disrtibuteData = $request->disrtibuteData; // disrtibute data array
         if ($userId && $disrtibuteType) {
 
@@ -1198,65 +1210,43 @@ class UserController extends Controller
                 ], 400);
             }
 
-            $checkForTheExistingDisrtibute = EstateDisrtibute::where('user_id', $userId)->where('distribute_type', $disrtibuteType)->first();
-            if (count($checkForTheExistingDisrtibute)) {
-                //update
+            $checkForTheExistingDisrtibute = EstateDisrtibute::where('user_id', $userId)->first();
+
+            if(!$checkForTheExistingDisrtibute) {
+                $checkForTheExistingDisrtibute = new EstateDisrtibute();
                 $checkForTheExistingDisrtibute->user_id = $userId;
                 $checkForTheExistingDisrtibute->distribute_type = $disrtibuteType;
-                if ($disrtibuteType == 1) {
-                    $checkForTheExistingDisrtibute->to_a_single_beneficiary = json_encode($disrtibuteData);
-                }
-                if ($disrtibuteType == 2) {
-                    $checkForTheExistingDisrtibute->to_multiple_beneficiary = json_encode($disrtibuteData);
-                }
-                if ($disrtibuteType == 3) {
-                    $checkForTheExistingDisrtibute->to_my_heirs_law = json_encode($disrtibuteData);
-                }
-                if ($disrtibuteType == 4) {
-                    $checkForTheExistingDisrtibute->some_other_way = json_encode($disrtibuteData);
-                }
-                if ($checkForTheExistingDisrtibute->save()) {
-                    return response()->json([
-                        'status' => true,
-                        'message' => 'Estate disrtibute updated',
-                        'data' => ['userData'=>$checkForTheExistingDisrtibute]
-                    ], 200);
-                } else {
-                    return response()->json([
-                        'status' => false,
-                        'message' => 'Estate disrtibute data not updated',
-                    ], 400);
-                }
-            } else {
-                // insert
-                $saveDisrtibute = new EstateDisrtibute;
-                $saveDisrtibute->user_id = $userId;
-                $saveDisrtibute->distribute_type = $disrtibuteType;
-                if ($disrtibuteType == 1) {
-                    $saveDisrtibute->to_a_single_beneficiary = json_encode($disrtibuteData);
-                }
-                if ($disrtibuteType == 2) {
-                    $saveDisrtibute->to_multiple_beneficiary = json_encode($disrtibuteData);
-                }
-                if ($disrtibuteType == 3) {
-                    $saveDisrtibute->to_my_heirs_law = json_encode($disrtibuteData);
-                }
-                if ($disrtibuteType == 4) {
-                    $saveDisrtibute->some_other_way = json_encode($disrtibuteData);
-                }
-                if ($saveDisrtibute->save()) {
-                    return response()->json([
-                        'status' => true,
-                        'message' => 'Estate disrtibute updated',
-                        'data' => ['userData'=>$saveDisrtibute]
-                    ], 200);
-                } else {
-                    return response()->json([
-                        'status' => false,
-                        'message' => 'User data not found',
-                    ], 400);
-                }
             }
+
+            
+            //update
+            $checkForTheExistingDisrtibute->user_id = $userId;
+            $checkForTheExistingDisrtibute->distribute_type = $disrtibuteType;
+            if ($disrtibuteType == 1) {
+                $checkForTheExistingDisrtibute->to_a_single_beneficiary = json_encode($disrtibuteData);
+            }
+            if ($disrtibuteType == 2) {
+                $checkForTheExistingDisrtibute->to_multiple_beneficiary = json_encode($disrtibuteData);
+            }
+            if ($disrtibuteType == 3) {
+                $checkForTheExistingDisrtibute->to_my_heirs_law = json_encode($disrtibuteData);
+            }
+            if ($disrtibuteType == 4) {
+                $checkForTheExistingDisrtibute->some_other_way = json_encode($disrtibuteData);
+            }
+            if ($checkForTheExistingDisrtibute->save()) {
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Estate disrtibute updated',
+                    'data' => ['userData'=>$checkForTheExistingDisrtibute]
+                ], 200);
+            } else {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Estate disrtibute data not updated',
+                ], 400);
+            }
+            
         } else {
             return response()->json([
                 'status' => false,
