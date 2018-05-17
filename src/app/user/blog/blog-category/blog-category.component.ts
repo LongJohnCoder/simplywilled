@@ -18,12 +18,12 @@ export class BlogCategoryComponent implements OnInit {
     subscriberEmail: FormControl;
     BlogService: BlogService
     p: number;
-    constructor(private router: Router, private route: ActivatedRoute ) {
+    constructor(private blogService: BlogService, private router: Router, private route: ActivatedRoute ) {
 
         router.events.subscribe( (event: Event) => {
             if (event instanceof NavigationEnd) {
                 const slug = this.route.snapshot.paramMap.get('slug');
-                this.BlogService.getBlogDetailsFromCategory(slug).subscribe(
+                this.blogService.getBlogDetailsFromCategory(slug).subscribe(
                     (data: any) => {
                         this.blogList = data.data.blog;
                         this.imageLink = data.data.imageLink;
@@ -47,7 +47,7 @@ export class BlogCategoryComponent implements OnInit {
 
     getBlogDetailsFromCategory() {
         const slug = this.route.snapshot.paramMap.get('slug');
-        this.BlogService.getBlogDetailsFromCategory(slug).subscribe(
+        this.blogService.getBlogDetailsFromCategory(slug).subscribe(
             (data: any) => {
                 this.blogList = data.data.blog;
                 this.imageLink = data.data.imageLink;
@@ -56,7 +56,7 @@ export class BlogCategoryComponent implements OnInit {
     }
 
     populateBlogCategory(){
-        this.BlogService.getBlogCategoryList().subscribe(
+        this.blogService.getBlogCategoryList().subscribe(
             (data: any) => {
                 this.blogCategoryList = data.data.categories;
             }
@@ -64,7 +64,7 @@ export class BlogCategoryComponent implements OnInit {
     }
 
     populatePopularBlogPosts(){
-        this.BlogService.getPopularBlogPosts().subscribe(
+        this.blogService.getPopularBlogPosts().subscribe(
             (data: any) => {
                 const list: string[] = [];
                 data.data.forEach(function (value) {
@@ -76,7 +76,7 @@ export class BlogCategoryComponent implements OnInit {
     }
 
     populateRecentBlogPosts() {
-        this.BlogService.getRecentBlogPosts().subscribe(
+        this.blogService.getRecentBlogPosts().subscribe(
             ( data: any ) => {
                 const list: string[] = [];
                 data.data.forEach(function (value) {
@@ -103,7 +103,7 @@ export class BlogCategoryComponent implements OnInit {
 
     onSubmit() {
         if (this.subscriberEmailForm.valid) {
-            this.BlogService.subscribeEmailNewsletter(this.subscriberEmailForm.value).subscribe(
+            this.blogService.subscribeEmailNewsletter(this.subscriberEmailForm.value).subscribe(
                 (data: any) => {
                     if (data.status = 'true' ) {
                         alert(data.message);
@@ -113,6 +113,4 @@ export class BlogCategoryComponent implements OnInit {
             );
         }
     }
-
-
 }

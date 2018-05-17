@@ -17,10 +17,10 @@ export class BlogComponent implements OnInit {
     recentBlogPost: any[] = [];
     subscriberEmailForm: any;
     subscriberEmail: FormControl;
-    BlogService: BlogService
+    
     p: number;
-   constructor() {
-
+   constructor(private blogService: BlogService) {
+        
    }
 
   ngOnInit() {
@@ -35,7 +35,7 @@ export class BlogComponent implements OnInit {
 
 
     populateBlog() {
-        this.BlogService.blogList().subscribe(
+        this.blogService.blogList().subscribe(
             (data: any) => {
                  this.blogList = data.data.BlogDetails;
                  this.imageLink = data.data.imageLink;
@@ -44,7 +44,7 @@ export class BlogComponent implements OnInit {
     }
 
     populateBlogCategory() {
-      this.BlogService.getBlogCategoryList().subscribe(
+      this.blogService.getBlogCategoryList().subscribe(
           (data: any) => {
               this.blogCategoryList = data.data.categories;
           }
@@ -52,7 +52,7 @@ export class BlogComponent implements OnInit {
     }
 
     populatePopularBlogPosts() {
-        this.BlogService.getPopularBlogPosts().subscribe(
+        this.blogService.getPopularBlogPosts().subscribe(
             (data: any) => {
                 const list: string[] = [];
                 data.data.forEach(function (value) {
@@ -63,7 +63,7 @@ export class BlogComponent implements OnInit {
         );
     }
     populateRecentBlogPosts() {
-        this.BlogService.getRecentBlogPosts().subscribe(
+        this.blogService.getRecentBlogPosts().subscribe(
             (data: any) => {
                 const list: string[] = [];
                 data.data.forEach(function (value) {
@@ -90,7 +90,7 @@ export class BlogComponent implements OnInit {
 
     onSubmit() {
         if (this.subscriberEmailForm.valid) {
-            this.BlogService.subscribeEmailNewsletter(this.subscriberEmailForm.value).subscribe(
+            this.blogService.subscribeEmailNewsletter(this.subscriberEmailForm.value).subscribe(
                 (data: any) => {
                     if (data.status = 'true' ) {
                         alert(data.message);
@@ -100,8 +100,6 @@ export class BlogComponent implements OnInit {
             );
         }
     }
-
-
 
 
 }
