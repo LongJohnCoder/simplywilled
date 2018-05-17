@@ -101,7 +101,7 @@ class FaqTableSeeder extends Seeder
 		    		$lastFaqId = Faqs::insertGetId($eachQuestion);
 		    		FaqCategoryMapping::insert([
 		    			'faq_id' => $lastFaqId,
-		    			'faq_category_id'	=> 2,
+		    			'faq_category_id'	=> $faqCategoryId,
 		    			'created_at'	=> Carbon::now(),
 		    			'updated_at'	=> Carbon::now()
 		    		]);
