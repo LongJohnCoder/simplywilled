@@ -23,7 +23,7 @@ use Illuminate\Http\Request;
 Route::group(['prefix' => 'v1'], function() {
     /**
      * Routes for unauthenticated user
-     */
+     */    
 
     Route::post('sign-up', [
         'uses' => 'Api\V1\AuthController@signUp',
@@ -512,6 +512,13 @@ Route::group(['prefix' => 'v1'], function() {
         //user routes where authentication is needed
         Route::group(['middleware' => ['jwt.auth','user.auth']], function(){
 
+            /**
+            * Route for getting states information for tellUsAboutYou first step for a user
+            */
+            Route::get('get-state-info', [
+                'uses' => 'Api\V1\UserManagementController@getStateInfo',
+                'as' => 'api.v1.UserManagementController.post'
+            ]);
 
             /**
             * Route for deleting a gift

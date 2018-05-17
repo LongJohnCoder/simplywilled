@@ -34,10 +34,43 @@ use Mail;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Validator;
 use App\Models\HealthFinance;
-
+use App\StatesInfo;
 
 class UserManagementController extends Controller
 {
+    /*
+     * function to state information for an user for TellUsAboutYou 1st step
+     * @param null
+     * @return \Illuminate\Http\JsonResponse
+     * */
+    public function getStateInfo(){
+
+      try {
+        $user = \Auth::user();
+        $tellUsAboutYou = TellUsAboutYou::where('user_id',$user->id)->first();
+        if($tellUsAboutYou) {  
+          $state = StatesInfo::where('name',$tellUsAboutYou->state)->first();
+          return response()->json([
+            'status' => true,
+            'message'   => 'Success',
+            'stateInfo' => $state,
+          ],200);
+        } else {
+          return response()->json([
+            'status' => false,
+            'message'   => 'Not Found',
+            'stateInfo' => null,
+          ],400);
+        }
+      } catch(\Exception $e){
+        return response()->json([
+            'status' => false,
+            'message'   => 'Error',
+            'stateInfo' => null,
+        ],500);
+      }
+    }
+
 
 
     /*
