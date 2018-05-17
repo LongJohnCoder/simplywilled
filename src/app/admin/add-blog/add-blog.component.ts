@@ -21,7 +21,6 @@ export class AddBlogComponent implements OnInit {
     editMode: boolean;
     categories = [];
     public modalRef: BsModalRef;
-    private BlogService: BlogService;
     blogData = {
         id: 0,
         author_id: 0,
@@ -43,7 +42,7 @@ export class AddBlogComponent implements OnInit {
         private router: Router,
         private route: ActivatedRoute,
         private modalService: BsModalService,
-
+        private BlogService: BlogService
     ) { }
 
 
