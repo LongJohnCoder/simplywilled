@@ -1,0 +1,75 @@
+<!--If any gift show here start-->
+<div class="row" *ngIf="!onNewModule">
+  <div class="col-md-12 col-sm-12 col-xs-12" *ngFor="let each_gift of giftResp; let i= index">
+    <h2 class="singing_instruction3">Gift <span class="gift_list_number">{{i+1}}</span></h2>
+    <div class="gift_text_content" id="gift_text_content_{{i+1}}">
+      <div class="gift_text">
+        <app-my-gift-text [type]="each_gift.type"></app-my-gift-text>
+      </div>
+      <ul class="back_next_btn_ul" style="margin:20px 0 10px;">
+        <li><a href="javascript:void(0)" class="gift_remove_form">Remove</a></li>
+        <li><a href="javascript:void(0)" class="gift_edit_form">Edit</a></li>
+      </ul>
+    </div>
+  </div>
+  <span class="add_another_btn3" id="another_gift_add" style="">
+    <a (click)="showAddGiftSection()" *ngIf="!showAddGift">+ Add Another Gift</a>
+  </span>
+  <ul class="back_next_btn_ul" style="margin:20px 0 10px;">
+    <li><a routerLink="/dashboard/tell-you-make-specific-gifts" class="gift_remove_form" *ngIf="!showAddGift">Back</a></li>
+    <li><a routerLink="/" class="gift_edit_form" *ngIf="!showAddGift">Next</a></li>
+  </ul>
+</div>
+<!--If any gift show here end-->
+<!--make decision which view to open-->
+<div id="gift_packages" *ngIf="showAddGift">
+  <h2 class="singing_instruction3">Please Tell Us What Types Of Gifts You Would Like To Make?</h2>
+  <ul class="radio_ul3">
+    <li>
+      <label class="radio_custom singing_instruction">
+        <span class="custom_img3"><img src="../../../../assets/images/other-ways.png" alt="Otherways"></span>
+      </label>
+    </li>
+  </ul>
+  <h2 class="gift_type blue_font">Please tell us what type of gift you would like to make?</h2>
+  <ul class="radio_ul5">
+    <li>
+      <label class="radio_custom gift_type_radio" (click)="openModule('_ca')">
+        <!--<input type="radio" name="gift_type" value="Cash">-->
+        <span class="custom_img4"><img src="../../../../assets/images/cash.png" alt="Cash"></span>
+        <span class="human_status3">Cash</span>
+      </label>
+    </li>
+    <li>
+      <label class="radio_custom gift_type_radio" (click)="openModule('_rp')">
+        <!--<input type="radio" name="gift_type" value="Real Prperty">-->
+        <span class="custom_img4"><img src="../../../../assets/images/property.png" alt="Property"></span>
+        <span class="human_status3">Real <br>Property</span>
+      </label>
+    </li>
+    <li>
+      <label class="radio_custom gift_type_radio" (click)="openModule('_bi')">
+        <!--<input type="radio" name="gift_type" value="Business Interest">-->
+        <span class="custom_img4"><img src="../../../../assets/images/busines-interest.png" alt="Business"></span>
+        <span class="human_status3">Business <br>Interest</span>
+      </label>
+    </li>
+    <li>
+      <label class="radio_custom gift_type_radio" (click)="openModule('_sa')">
+        <!--<input type="radio" name="gift_type" value="Specific Asset">-->
+        <span class="custom_img4"><img src="../../../../assets/images/specific.png" alt="Specific"></span>
+        <span class="human_status3">Specific Asset</span>
+      </label>
+    </li>
+  </ul>
+</div>
+<ul class="back_next_btn_ul" style="margin-top:20px;" id="gift_nav_btn" *ngIf="showAddGift">
+  <li><a routerLink="/dashboard/tell-you-make-specific-gifts">Back</a></li>
+  <li><a routerLink="/">Next</a></li>
+</ul>
+<!--make decision which view to open start-->
+<app-cash-gift *ngIf="cash_module" [giftCount]="giftCount+1"></app-cash-gift>
+<app-real-property *ngIf="real_property_module" [giftCount]="giftCount+1"></app-real-property>
+<app-business-interest *ngIf="business_interest" [giftCount]="giftCount+1"></app-business-interest>
+<app-specific-asset *ngIf="specific_asset" [giftCount]="giftCount+1"></app-specific-asset>
+<!--make decision which view to open start-->

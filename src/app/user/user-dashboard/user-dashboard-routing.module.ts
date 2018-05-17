@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {MainDashboardComponent} from './dashboard/main-dashboard/main-dashboard.component';
 import {GiftModule} from './gift/gift.module';
+import {YourSpecificGiftModule} from './your-specific-gift/your-specific-gift.module';
 
 const routes: Routes = [
       { path: '', component: DashboardComponent, children: [
@@ -13,7 +14,8 @@ const routes: Routes = [
       { path: 'protect-your-finances', loadChildren: './protect-your-finances/protect-your-finances.module#ProtectYourFinancesModule'},
       { path: 'provide-user-spouse', loadChildren: './provide-user-spouse/provide-user-spouse.module#ProvideUserSpouseModule' },
       { path: 'personal-property-distributed', loadChildren: './personal-property-distributed/personal-property-distributed.module#PersonalPropertyDistributedModule' },
-      {path: 'tell-you-make-specific-gifts', loadChildren: './gift/gift.module#GiftModule'}
+          {path: 'tell-you-make-specific-gifts', loadChildren: './gift/gift.module#GiftModule'},
+          {path: 'your-specific-gifts', loadChildren: './your-specific-gift/your-specific-gift.module#YourSpecificGiftModule'}
     ]},
 ]
 

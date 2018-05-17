@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {GiftService} from './services/gift.service';
 import {GiftModel} from './models/giftModel';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-gift',
   templateUrl: './gift.component.html',
@@ -19,7 +19,7 @@ export class GiftComponent implements OnInit {
   giftStatus: string;
   saveDataInDb: Observable<any>;
   dataset: GiftModel;
-  constructor(private fb: FormBuilder, private gftService: GiftService) {
+  constructor(private fb: FormBuilder, private gftService: GiftService, private router: Router) {
     this.giftFormStepOne = fb.group({
       'gift_status' : [null, Validators.required]
     });
@@ -38,11 +38,15 @@ export class GiftComponent implements OnInit {
   }
   makeSpecificGift(formData): void {
     if (this.access_token) {
-      this.dataset = {'user_id': this.myUserId, 'step': 8, 'data': {'isSpecificGift': formData.gift_status == '1' ? 'Yes' : 'No'}};
+      this.dataset = {'user_id': this.myUserId, 'step': 8, 'data': {'isSpecificGift': formData.gift_status === '1' ? 'Yes' : 'No'}};
       this.saveDataInDb = this.gftService.saveData(this.access_token, this.dataset);
       this.saveDataInDb.subscribe(data => {
         if (data.status) {
-          console.log('next page');
+          if (formData.gift_status === '1') {
+            this.router.navigate(['/dashboard/your-specific-gifts']);
+          } else {
+           console.log('need to build this section');
+          }
         } else {
           this.errFlag = true;
           this.errString = 'Error while updating data';
@@ -68,7 +72,6 @@ export class GiftComponent implements OnInit {
       this.fetchGiftDB = this.gftService.fetchData(this.access_token, this.myUserId);
       this.fetchGiftDB.subscribe(data => {
         if (data.status === 200) {
-          console.log(data.data);
           if (data.data) {
             if (data.data.hasOwnProperty(7)) {
                 if (data.data[7].data.hasOwnProperty('isSpecificGift')) {
