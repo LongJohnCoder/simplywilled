@@ -38,6 +38,45 @@ use App\Models\HealthFinance;
 
 class UserManagementController extends Controller
 {
+
+
+    /*
+     * function to delete Gift for an user
+     * @param gifts table id [integer]
+     * @return \Illuminate\Http\JsonResponse
+     * */
+    public function deleteGift($id) {
+      try {
+          $gift = Gifts::where('id',(int)$id)->where('user_id',\Auth::user()->id)->first();
+          if(!$gift) {
+            return response()->json([
+                  'status'  => false,
+                  'message' => 'Gift not found or this gift does not belong to this user',
+            ], 400);
+          } else {
+            if($gift->delete()) {
+              return response()->json([
+                  'status'  => true,
+                  'message' => 'Gift deleted successfully',
+              ], 200);
+            } else {
+              return response()->json([
+                  'status'  => false,
+                  'message' => 'Gift cannot be deleted',
+              ], 400);
+            }
+          }
+      } catch(\Exception $e) {
+        return response()->json([
+                    'status' => false,
+                    'message' => $e->getMessage(),
+                    'errorLineNo' => $e->getLine(),
+                    'data' => []
+                ], 500);
+      }     
+    }
+
+
     /*
      * function to add/update Protect finance
      * @return \Illuminate\Http\JsonResponse

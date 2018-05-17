@@ -511,6 +511,17 @@ Route::group(['prefix' => 'v1'], function() {
 
         //user routes where authentication is needed
         Route::group(['middleware' => ['jwt.auth','user.auth']], function(){
+
+
+            /**
+            * Route for deleting a gift
+            */
+            Route::delete('delete-gift/{id}', [
+                'uses' => 'Api\V1\UserManagementController@deleteGift',
+                'as' => 'api.v1.deleteGift.delete'
+            ]);
+
+
             /**
             * Route for Change Password
             */
