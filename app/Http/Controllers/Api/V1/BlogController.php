@@ -41,7 +41,7 @@ class BlogController extends Controller
         $blog   = null;
         $imageLink  = url('/blogImage').'/';
         if(strlen(trim($query)) > 0) {
-            $blog = Blogs::with('getComments')->whereHas('category', function($q) use($query){
+            $blog = Blogs::with('getComments')->where('status','1')->whereHas('category', function($q) use($query){
                 $q->where('slug','LIKE','%'.$query.'%');
             })->get();
         }

@@ -314,16 +314,20 @@ class FaqCategoryController extends Controller
         $query = $request->has('query') ? $request->get('query') : null;
 
         //category 1 is uncategorized
-        if($query == null) {
-            $faqCategories = FaqCategories::where('id','>',1)->with('faq')->orderBy('created_at','DESC')->whereHas('faq')->get();
-        } else {
-            $faqCategories = FaqCategories::where('id','>',1)->orderBy('created_at','DESC')
-            ->whereHas('faq',function($q) use($query) {
+        
+        $faqCategories = FaqCategories::where('id','>',1)->orderBy('created_at','DESC')
+        ->whereHas('faq',function($q) use($query) {
+            $q->where('status','1');
+            if($query != null) {
                 $q->where('question','LIKE','%'.$query.'%');
-            })->with(['faq' => function($q) use($query) {
+            }
+        })->with(['faq' => function($q) use($query) {
+            $q->where('status','1');
+            if($query != null) {
                 $q->where('question','LIKE','%'.$query.'%');
-            }])->get();
-        }
+            }
+        }])->get();
+        
         return response()->json([
             'status'  => true,
             'message' => 'All Faq Category with Related Faqs',
