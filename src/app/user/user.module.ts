@@ -29,6 +29,7 @@ import { BlogService } from './blog/blog.service';
 import { BlogCategoryComponent } from './blog/blog-category/blog-category.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {MedicalEmergencyService} from './user-dashboard/plan-for-medical-emergency/medical-emergency.service';
+import { ProtectYourFinancesService } from './user-dashboard/protect-your-finances/protect-your-finances.service';
 
 @NgModule({
   imports: [
@@ -59,6 +60,7 @@ import {MedicalEmergencyService} from './user-dashboard/plan-for-medical-emergen
     BlogCategoryComponent,
   ],
   providers: [
+    ProtectYourFinancesService,
     UserAuthGuard,
     NotUserAuthGuard,
     UserAuthService,
