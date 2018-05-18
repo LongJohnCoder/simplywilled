@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {MyGifts} from '../models/myGifts';
+import {MyGiftsInterface} from '../interface/myGiftsInterface';
 
 @Injectable()
 export class EditGiftService {
-  editable_object: MyGifts;
+  editable_object: any;
   constructor() { }
 
   /**
@@ -27,7 +28,7 @@ export class EditGiftService {
    * @returns {any}
    */
   unsetData(): any {
-    this.editable_object = {};
+    this.editable_object = <MyGiftsInterface>{};
     return this.editable_object;
   }
 }

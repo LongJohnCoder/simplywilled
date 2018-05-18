@@ -157,6 +157,7 @@ export class YourSpecificGiftComponent implements OnInit {
    * @param {MyGifts} giftData
    */
   editGift(giftData: MyGifts): void {
+    this.giftCount -= 1;
     this.showAddGift = false;
     this.onNewModule = true;
     if (giftData.type === '1') {
