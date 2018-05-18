@@ -54,4 +54,28 @@
       </url>
     @endforeach
   @endif
+  <url>
+    <loc>{{url('/')}}/terms-of-use</loc>
+    <lastmod>2018-05-12T04:46:53+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>{{url('/')}}/terms-of-service</loc>
+    <lastmod>2018-05-12T04:46:53+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>{{url('/')}}/privacy-policy</loc>
+    <lastmod>2018-05-12T04:46:53+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>{{url('/')}}/contact-us</loc>
+    <lastmod>2018-05-12T04:46:53+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
