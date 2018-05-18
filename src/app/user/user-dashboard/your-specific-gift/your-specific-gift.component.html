@@ -4,11 +4,11 @@
     <h2 class="singing_instruction3">Gift <span class="gift_list_number">{{i+1}}</span></h2>
     <div class="gift_text_content" id="gift_text_content_{{i+1}}">
       <div class="gift_text">
-        <app-my-gift-text [type]="each_gift.type"></app-my-gift-text>
+        <app-my-gift-text [dataSet]="each_gift"></app-my-gift-text>
       </div>
       <ul class="back_next_btn_ul" style="margin:20px 0 10px;">
-        <li><a href="javascript:void(0)" class="gift_remove_form">Remove</a></li>
-        <li><a href="javascript:void(0)" class="gift_edit_form">Edit</a></li>
+        <li><a href="javascript:void(0)" class="gift_remove_form" (click)="deleteGift(each_gift.id)">Remove</a></li>
+        <li><a href="javascript:void(0)" class="gift_edit_form" (click)="editGift(each_gift)">Edit</a></li>
       </ul>
     </div>
   </div>
@@ -17,7 +17,7 @@
   </span>
   <ul class="back_next_btn_ul" style="margin:20px 0 10px;">
     <li><a routerLink="/dashboard/tell-you-make-specific-gifts" class="gift_remove_form" *ngIf="!showAddGift">Back</a></li>
-    <li><a routerLink="/" class="gift_edit_form" *ngIf="!showAddGift">Next</a></li>
+    <li><a routerLink="/dashboard/your-estate-distributed" class="gift_edit_form" *ngIf="!showAddGift">Next</a></li>
   </ul>
 </div>
 <!--If any gift show here end-->
@@ -65,7 +65,7 @@
 </div>
 <ul class="back_next_btn_ul" style="margin-top:20px;" id="gift_nav_btn" *ngIf="showAddGift">
   <li><a routerLink="/dashboard/tell-you-make-specific-gifts">Back</a></li>
-  <li><a routerLink="/">Next</a></li>
+  <li><a routerLink="/dashboard/your-estate-distributed">Next</a></li>
 </ul>
 <!--make decision which view to open start-->
 <app-cash-gift *ngIf="cash_module" [giftCount]="giftCount+1"></app-cash-gift>

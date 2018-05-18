@@ -1,4 +1,4 @@
-<div class="col-md-9 col-sm-7">
+ <div class="col-md-9 col-sm-7">
   <div class="main-content tellusaboutyou">
     <h2>How should The Rest of Your Estate Distributed??</h2>
     <form [formGroup]="estateDistributedForm" novalidate (ngSubmit)="onSubmit(estateDistributedForm)">
@@ -289,7 +289,7 @@
             </div>
         </div><!-- some Other wat form Ends -->
       <div class="form-footer">
-        <button class="btn common-button btn-grey pull-left">Go Back</button>
+        <button class="btn common-button btn-grey pull-left" routerLink="/dashboard/your-specific-gifts">Go Back</button>
         <button class="btn common-button btn-complete" type="submit" [disabled]="!estateDistributedForm.valid">Continue</button>
       </div>
     </form>

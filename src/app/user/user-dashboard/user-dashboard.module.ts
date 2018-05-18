@@ -8,8 +8,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
-      UserDashboardRoutingModule,
-      ReactiveFormsModule
+    UserDashboardRoutingModule,
+    ReactiveFormsModule,
   ],
   declarations: [DashboardComponent, MainDashboardComponent]
 })

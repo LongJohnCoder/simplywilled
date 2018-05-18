@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./my-gift-text.component.css']
 })
 export class MyGiftTextComponent implements OnInit {
-  @Input() type: string;
+  @Input() dataSet: any;
   constructor() { }
 
   ngOnInit() {
