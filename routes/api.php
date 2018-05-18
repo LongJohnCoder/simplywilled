@@ -595,3 +595,11 @@ Route::group(['prefix' => 'v1'], function() {
         });
     });
 });
+
+/**
+* Generate sitemap.xml
+*/
+Route::get('sitemap.xml',[
+    'uses'=>'Api\SitemapController@sitemap',
+    'as' => 'api.sitemap'
+]);
