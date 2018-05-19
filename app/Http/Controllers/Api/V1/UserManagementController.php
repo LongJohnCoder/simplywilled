@@ -39,6 +39,101 @@ use App\StatesInfo;
 class UserManagementController extends Controller
 {
     /*
+     * function to get provide-your-loved-ones-user data
+     * @param null
+     * @return \Illuminate\Http\JsonResponse
+     * */
+    public function getPYFUserData() {
+      try {
+        $user = \Auth::user();
+        $financialPOA = FinancialPowerAttorney::where('user_id',$user->id)->first();
+        return response()->json([
+          'status'  =>  true,
+          'message' =>  'success',
+          'data'    =>  $financialPOA
+        ],200);
+      } catch(\Exception $e) {
+        return response()->json([
+          'status'  =>  true,
+          'message' =>  'Error : '.$e->getMessage().' LINE : '.$e->getLine(),
+          'data'    =>  null
+        ],500);
+      }
+    }
+
+
+    /*
+     * function to get provide-your-loved-ones-user data
+     * @param null
+     * @return \Illuminate\Http\JsonResponse
+     * */
+    public function postPYFUserData(Request $request) {
+      try {
+        //dd($request->all());
+          //validation for attorney durable power
+          $validator = Validator::make($request->all(), [
+              'attorney_powers'   =>  'nullable',
+              'attorney_holders'  =>  'nullable',
+              'user_id'           =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
+              'is_backupattorney' =>  'required|numeric|between:0,1|integer',
+              'attorney_backup'   =>  'nullable|required_if:is_backupattorney,1',
+          ]);
+          if($validator->fails()) {
+              return response()->json([
+                  'status'  => false,
+                  'message' => $validator->errors(),
+                  'data'    => []
+              ], 400);
+          }
+
+          $attorneyPowers   = $request->has('attorney_powers') ? json_encode($request->get('attorney_powers')) : null;
+          $attorneyHolders  = $request->has('attorney_holders') ? json_encode($request->get('attorney_holders')) : null;
+          $attorneyBackup   = $request->has('attorney_backup') ? json_encode($request->get('attorney_backup')) : null;
+          $userId           = $request->user_id;
+          $isBackupAttorney = (string)$request->is_backupattorney;
+
+          $financialPowerAttorney = FinancialPowerAttorney::where('user_id',$userId)->first();
+          if(!$financialPowerAttorney) {
+            $financialPowerAttorney = new FinancialPowerAttorney;
+            $financialPowerAttorney->user_id = $userId;
+          }
+
+          $financialPowerAttorney->attorney_powers    = $attorneyPowers == null ? $financialPowerAttorney->attorney_powers : $attorneyPowers;
+          $financialPowerAttorney->attorney_holders   = $attorneyHolders == null ? $financialPowerAttorney->attorney_holders : $attorneyHolders;
+          $financialPowerAttorney->attorney_backup    = $attorneyBackup == null ? $financialPowerAttorney->attorney_backup : $attorneyBackup;
+          $financialPowerAttorney->is_backupattorney  = $isBackupAttorney == null ? $financialPowerAttorney->is_backupattorney : $isBackupAttorney;
+
+          // if($financialPowerAttorney->attorney_holders != null 
+          //   && (($financialPowerAttorney->is_backupattorney == 1 && $financialPowerAttorney->attorney_backup != null) 
+          //   || ($financialPowerAttorney->is_backupattorney == 0 && $financialPowerAttorney->attorney_backup == null))) {
+
+          // }
+
+          //dd($attorneyHolders);
+
+          if($financialPowerAttorney->save()) {
+            return response()->json([
+                  'status'  => true,
+                  'message' => 'success',
+                  'data'    => $financialPowerAttorney
+            ], 200);
+          } else {
+            return response()->json([
+                  'status'  => true,
+                  'message' => 'Database connectivity error',
+                  'data'    => null
+            ], 400);
+          }
+      } catch (\Exception $e) {
+        return response()->json([
+          'status'  =>  true,
+          'message' =>  'Error : '.$e->getMessage().' LINE : '.$e->getLine(),
+          'data'    =>  null
+        ],500);
+      }
+    }
+
+    /*
      * function to state information for an user for TellUsAboutYou 1st step
      * @param null
      * @return \Illuminate\Http\JsonResponse

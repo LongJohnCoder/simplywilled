@@ -521,6 +521,25 @@ Route::group(['prefix' => 'v1'], function() {
             ]);
 
             /**
+            * Route for getting protect-your-finance details
+            * power of attorney details
+            */
+            Route::get('get-poa-user-data', [
+                'uses' => 'Api\V1\UserManagementController@getPYFUserData',
+                'as' => 'api.v1.getPYFUserData.get'
+            ]);
+
+            /**
+            * related to protect-your-finance
+            * getting power of attorney for user
+            * Route for posting data of attorney holders and backup attorney
+            */
+            Route::post('post-poa-user-data', [
+                'uses' => 'Api\V1\UserManagementController@postPYFUserData',
+                'as' => 'api.v1.postPYFUserData.get'
+            ]);
+
+            /**
             * Route for deleting a gift
             */
             Route::delete('delete-gift/{id}', [
