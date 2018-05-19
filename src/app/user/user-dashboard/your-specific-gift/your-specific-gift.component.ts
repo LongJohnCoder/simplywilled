@@ -120,7 +120,7 @@ export class YourSpecificGiftComponent implements OnInit {
    * this function delete one gift from database
    * @param {number} id
    */
-  deleteGift(id: number): void {
+  deleteGift(id: number): any {
     if (this.access_token) {
       if (id) {
         const confirmation = confirm('Are You Sure?');
@@ -139,6 +139,8 @@ export class YourSpecificGiftComponent implements OnInit {
             this.errString = error.error.message;
             console.log(this.errString);
           }, () => {});
+        } else {
+          window.location.reload();
         }
       } else {
         this.errFlag = true;

@@ -1,3 +1,203 @@
-<p>
-  real-property works!
-</p>
+<div id="gift_list_container">
+  <ul id="gift_list">
+    <li>
+      <h2 class="singing_instruction3">Gift <span class="gift_list_number">{{giftCount}}</span></h2>
+      <div class="gift_form_container">
+        <form>
+          <h2 class="singing_instruction3" style="padding-top:0;">Tell Us About Gifts of Real Property</h2>
+          <ul class="radio_ul3">
+            <li><label class="radio_custom singing_instruction"><span class="custom_img3"><img src="../../../../../assets/images/home-pic.png" alt="Cash"></span></label></li>
+          </ul>
+          <h2 class="beneficiary_predeceases blue_font">Is this property your primary residence?</h2>
+          <ul class="radio_ul7">
+            <li>
+              <label class="radio_custom gift_their_kids">
+                <input type="radio" value="Yes">
+                <span class="custom_img"><img src="../../../../../assets/images/yes.png" alt="Passed_by"></span>
+                <span class="human_status">Yes</span> </label>
+            </li>
+            <li>
+              <label class="radio_custom gift_their_kids">
+                <input type="radio" value="No">
+                <span class="custom_img"><img src="../../../../../assets/images/no.png" alt="Passed_by"></span>
+                <span class="human_status"> No</span> </label>
+            </li>
+          </ul>
+          <div class="gift_individual_container">
+            <label class="legal_name_benifets">Street Address of the Property?</label>
+            <input type="text" class="legal_benifit_input capitalize_txt">
+            <label class="legal_name_benifets">City</label>
+            <input type="text" class="legal_benifit_input capitalize_txt">
+            <label class="legal_name_benifets">State</label>
+            <input type="text" class="legal_benifit_input capitalize_txt">
+          </div>
+          <h2 class="beneficiary_predeceases blue_font">Is this a gift to an Individual(s) or Charity?</h2>
+          <ul class="radio_ul7">
+            <li>
+              <label class="radio_custom gift_their_kids" (click)="showSectionInorCh('IN')">
+                <input type="radio" value="Individual">
+                <span class="custom_img"><img src="../../../../../assets/images/yes.png" alt="Passed_by"></span>
+                <span class="human_status">Individual</span> </label>
+            </li>
+            <li>
+              <label class="radio_custom gift_their_kids" (click)="showSectionInorCh('CH')">
+                <input type="radio" value="Charity">
+                <span class="custom_img"><img src="../../../../../assets/images/no.png" alt="Passed_by"></span>
+                <span class="human_status"> Charity</span> </label>
+            </li>
+          </ul>
+          <div *ngIf="isIndividualRP">
+            <h2 class="beneficiary_predeceases blue_font">Who would you like to leave this gift to in your will?</h2>
+            <ul class="radio_ul7">
+              <li>
+                <label class="radio_custom gift_their_kids">
+                  <input type="radio" value="single_beneficiary" (click)="beneficiaryToggle('S')">
+                  <span class="custom_img"><img src="../../../../../assets/images/yes.png" alt="Passed_by"></span>
+                  <span class="human_status">To A Single Beneficiary</span> </label>
+              </li>
+              <li>
+                <label class="radio_custom gift_their_kids" (click)="beneficiaryToggle('M')">
+                  <input type="radio" value="multiple_beneficiary">
+                  <span class="custom_img"><img src="../../../../../assets/images/no.png" alt="Passed_by"></span>
+                  <span class="human_status"> To Multiple Beneficiary</span> </label>
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="isCharityRP">
+            <label class="legal_name_benifets">Organization name?</label>
+            <input type="text" class="legal_benifit_input capitalize_txt">
+            <label class="legal_name_benifets">Organization address?</label>
+            <input type="text" class="legal_benifit_input capitalize_txt" placeholder="Street Address, City, State, Zip Code">
+          </div>
+
+
+          <!--single beneficiary start-->
+          <div *ngIf="singleBeneficiaryRP">
+            <label class="legal_name_benifets">Beneficiary's full legal name ?</label>
+            <input type="text" class="legal_benifit_input capitalize_txt">
+            <label class="legal_name_benifets">Beneficiary's relationship to you?</label>
+            <span class="drop_down" style="margin-bottom:20px;">
+               <select class="beneficiary_relationship_dropdown" (change)="toggleRelationship($event)">
+                  <option value="">Select Relationship</option>
+                  <option value="Wife">Wife</option>
+                  <option value="Husband">Husband</option>
+                  <option value="Mother">Mother</option>
+                  <option value="Father">Father</option>
+                  <option value="Son">Son</option>
+                  <option value="Daughter">Daughter</option>
+                  <option value="Sister">Sister</option>
+                  <option value="Brother">Brother</option>
+                  <option value="Aunt">Aunt</option>
+                  <option value="Uncle">Uncle</option>
+                  <option value="Cousin">Cousin</option>
+                  <option value="Friend">Friend</option>
+                  <option value="Other">Other</option>
+               </select>
+            </span>
+            <div class="beneficiary_relationship_other" *ngIf="otherRelationshipRp">
+              <input type="text" class="personal_representative_input capitalize_txt" placeholder="Type Here Relationship">
+            </div>
+            <h2 class="beneficiary_predeceases blue_font">Beneficiary's gender?</h2>
+            <ul class="radio_ul7">
+              <li>
+                <label class="radio_custom gift_their_kids">
+                  <input type="radio" value="Male">
+                  <span class="custom_img"><img src="../../../../../assets/images/john.png" alt="Passed_by"></span>
+                  <span class="human_status">Male</span> </label>
+              </li>
+              <li>
+                <label class="radio_custom gift_their_kids">
+                  <input type="radio" value="Female">
+                  <span class="custom_img"><img src="../../../../../assets/images/leza.png" alt="Passed_by"></span>
+                  <span class="human_status"> Female</span> </label>
+              </li>
+            </ul>
+            <h2 class="beneficiary_predeceases blue_font">How should the property distributed if the beneficiary passes before you?</h2>
+            <ul class="radio_ul7">
+              <li>
+                <label class="radio_custom property_to_be_distributed" (click)="propertyDistibutionToggle('TTI')">
+                  <input type="radio" value="to_their_issue">
+                  <span class="custom_img"><img src="../../../../../assets/images/kids.png" alt="Passed_by"></span>
+                  <span class="human_status">To Their Issue</span> </label>
+              </li>
+              <li>
+                <label class="radio_custom property_to_be_distributed" (click)="propertyDistibutionToggle('RE')">
+                  <input type="radio" value="residue_of_estate">
+                  <span class="custom_img"><img src="../../../../../assets/images/my-estate.png" alt="Passed_by"></span>
+                  <span class="human_status">With The Residue of My Estate </span> </label>
+              </li>
+              <li>
+                <label class="radio_custom property_to_be_distributed" (click)="propertyDistibutionToggle('TSE')">
+                  <input type="radio" value="to_someone_else">
+                  <span class="custom_img"><img src="../../../../../assets/images/some-one-else.png" alt="Passed_by"></span>
+                  <span class="human_status">To Someone Else</span> </label>
+              </li>
+            </ul>
+            <div *ngIf="toTheirIssue">
+              <div class="beneficiary_pass_another_select_txt">You still need another choice in the event no issue survives the beneficiary.</div>
+              <ul class="radio_ul7">
+                <li>
+                  <label class="radio_custom property_to_be_distributed" (click)="propertyDistibutionToggleChild('RE')">
+                    <input type="radio" value="residue_of_estate">
+                    <span class="custom_img"><img src="../../../../../assets/images/my-estate.png" alt="Passed_by"></span>
+                    <span class="human_status">With The Residue of My Estate </span> </label>
+                </li>
+                <li>
+                  <label class="radio_custom property_to_be_distributed" (click)="propertyDistibutionToggleChild('TSE')">
+                    <input type="radio" value="to_someone_else">
+                    <span class="custom_img"><img src="../../../../../assets/images/some-one-else.png" alt="Passed_by"></span>
+                    <span class="human_status">To Someone Else</span> </label>
+                </li>
+              </ul>
+            </div>
+            <div *ngIf="isSomeoneElse">
+              <label class="legal_name_benifets">Individual's name?</label>
+              <input type="text" class="legal_benifit_input capitalize_txt">
+              <label class="legal_name_benifets">Relationship?</label>
+              <span class="drop_down" style="margin-bottom:20px;">
+                 <select class="beneficiary_relationship_dropdown" (change)="toggleRelationshipSomeOneElse($event)">
+                    <option value="">Select Relationship</option>
+                    <option value="Wife">Wife</option>
+                    <option value="Husband">Husband</option>
+                    <option value="Mother">Mother</option>
+                    <option value="Father">Father</option>
+                    <option value="Son">Son</option>
+                    <option value="Daughter">Daughter</option>
+                    <option value="Sister">Sister</option>
+                    <option value="Brother">Brother</option>
+                    <option value="Aunt">Aunt</option>
+                    <option value="Uncle">Uncle</option>
+                    <option value="Cousin">Cousin</option>
+                    <option value="Friend">Friend</option>
+                    <option value="Other">Other</option>
+                 </select>
+              </span>
+              <div class="beneficiary_relationship_other" *ngIf="otherRelationshipRpSomeOneElse">
+                <input type="text" class="personal_representative_input capitalize_txt" placeholder="Type Here Relationship">
+              </div>
+            </div>
+          </div>
+          <!--single beneficiary end-->
+
+
+          <h2 class="beneficiary_predeceases blue_font">Should this property be distributed "free & clear" of any mortgage?</h2>
+          <ul class="radio_ul7">
+            <li>
+              <label class="radio_custom gift_their_kids">
+                <input type="radio" value="Yes">
+                <span class="custom_img"><img src="../../../../../assets/images/yes.png" alt="Passed_by"></span>
+                <span class="human_status">Yes</span> </label>
+            </li>
+            <li>
+              <label class="radio_custom gift_their_kids">
+                <input type="radio" value="No">
+                <span class="custom_img"><img src="../../../../../assets/images/no.png" alt="Passed_by"></span>
+                <span class="human_status"> No</span> </label>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </li>
+  </ul>
+</div>
+
