@@ -576,6 +576,15 @@ Route::group(['prefix' => 'v1'], function() {
                 'uses'=>'Api\V1\UserManagementController@createHealthFinance',
                 'as' => 'api.v1.createHealthFinance.post'
             ]);
+
+            /*
+             *Route for get health finance
+             * */
+            Route::post('fetch-health-finance',[
+                'uses'=>'Api\V1\UserManagementController@fetchHealthFinance',
+                'as' => 'api.v1.fetchHealthFinance.post'
+            ]);
+
             /**
              *Route for add / update final-agreement
              */

@@ -73,7 +73,7 @@ class UserManagementController extends Controller
                     'errorLineNo' => $e->getLine(),
                     'data' => []
                 ], 500);
-      }     
+      }
     }
 
 
@@ -324,6 +324,38 @@ class UserManagementController extends Controller
         }
     }
 
+    /**
+    * @param Request (id)
+    * @return \Illuminate\Http\JsonResponse
+    */
+    public function fetchHealthFinance(Request $request)
+    {
+      try {
+        $userID        = $request->user_id;
+        $healthFinance = HealthFinance::where('userId', $userID)->first();
+
+        if ($healthFinance) {
+          return response()->json([
+              'status'  => true,
+              'message' => 'Health Finance data fetched',
+              'data'    => ['healthFinance' => $healthFinance]
+          ], 200);
+        } else {
+          return response()->json([
+              'status'  => false,
+              'message' => 'Data not found',
+              'data'    => []
+          ], 400);
+        }
+      } catch (\Exception $e) {
+        return response()->json([
+            'status'  => false,
+            'message' => $e->getMessage(). ' line : '.$e->getLine(),
+            'data'    => []
+        ], 500);
+      }
+    }
+
     /*
      * function to create/update final-agreement table
      * @return \Illuminate\Http\JsonResponse
@@ -427,7 +459,7 @@ class UserManagementController extends Controller
         //if step 1 is completed by the user
         //i.e fill up tellUsAboutYou Table
         if($tellUsAboutYou) {
-            
+
             //if the user has single status : single,widowed,divorced
             $relationshipStatus = $tellUsAboutYou->marital_status;
             if($relationshipStatus == 'M' || $relationshipStatus == 'R') {
@@ -436,7 +468,7 @@ class UserManagementController extends Controller
                 if(!$spouse) {
                     $tellUsAboutYou->is_complete = '0';
                     $tellUsAboutYou->save();
-                    
+
                     return false;
                 }
             }
@@ -448,16 +480,16 @@ class UserManagementController extends Controller
                 if(!$childrens) {
                     $tellUsAboutYou->is_complete = '0';
                     $tellUsAboutYou->save();
-                    
+
                     return false;
                 }
 
-                //if children is present and no guardians are appointed for the minor children 
+                //if children is present and no guardians are appointed for the minor children
                 //then the step is in complete
                 if(!$guardianInfo) {
                     $tellUsAboutYou->is_complete = '0';
                     $tellUsAboutYou->save();
-                    
+
                     return false;
                 }
             }
@@ -466,7 +498,7 @@ class UserManagementController extends Controller
             $tellUsAboutYou->save();
             return true;
         } else {
-          
+
             return false;
         }
     }
