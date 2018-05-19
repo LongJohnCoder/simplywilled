@@ -1,3 +1,228 @@
-<p>
-  plan-for-medical-emergency works!
-</p>
+<div class="col-md-12 col-sm-12">
+    <div class="main-content tellusaboutyou">
+        <h2>Tell Us About Your Healthcare Agents</h2>
+        <h3>Tell Us About Your First Choice For Healthcare Agent.</h3>
+        <img src="http://simplywilled-old.local/user-dashboard/images/t3.png" alt="owl tooltip">
+        <form #medicalEmergencyForm="ngForm">
+            <div class="form-group">
+                <label for="firstLegalName">What is first legal name?</label>
+                <input id="firstLegalName" class="form-control" type="text" [(ngModel)]="medicalAgent.firstLegalName" name="firstLegalName" ngModel #firstLegalName="ngModel" required>
+                <span *ngIf="firstLegalName.invalid && firstLegalName.touched" style="color:red;"> First legal name is required ! </span>
+            </div>
+            <div class="form-group">
+                <label for="lastLegalName">What is last legal name?</label>
+                <input id="lastLegalName" class="form-control" type="text" [(ngModel)]="medicalAgent.lastLegalName" name="lastLegalName" ngModel #lastLegalName="ngModel" required>
+                <span *ngIf="lastLegalName.invalid && lastLegalName.touched" style="color:red;"> First legal name is required ! </span>
+            </div>
+            <div class="form-group">
+                <label for="relation">What is their relationship to you?</label>
+                <select id="relation" class="form-control" [(ngModel)]="medicalAgent.relation" name="relation" ngModel #relation="ngModel" required>
+                    <!--<option value="">Select Option</option>-->
+                    <option *ngFor="let relation of relations" value="{{relation}}">{{relation}}</option>
+                </select>
+                <span *ngIf="relation.invalid && relation.touched" style="color:red;"> Relation is required ! </span>
+            </div>
+            <div class="form-group">
+                <label for="address">What is address?</label>
+                <input id="address" class="form-control" type="text" [(ngModel)]="medicalAgent.address" name="address" ngModel #address="ngModel" required>
+                <span *ngIf="address.invalid && address.touched" style="color:red;"> Address is required ! </span>
+            </div>
+            <div class="form-group">
+                <label for="city">What is city?</label>
+                <input id="city" class="form-control" type="text" [(ngModel)]="medicalAgent.city" name="city" ngModel #city="ngModel" required>
+                <span *ngIf="city.invalid && city.touched" style="color:red;"> City is required ! </span>
+            </div>
+            <div class="form-group">
+                <label for="state">What is state?</label>
+                <input id="state" class="form-control" type="text" [(ngModel)]="medicalAgent.state" name="state" ngModel #state="ngModel" required>
+                <span *ngIf="state.invalid && state.touched" style="color:red;"> State is required ! </span>
+            </div>
+            <div class="form-group">
+                <label for="zip">What is Zip?</label>
+                <input id="zip" class="form-control" type="text" [(ngModel)]="medicalAgent.zip" name="zip" ngModel #zip="ngModel" required>
+                <span *ngIf="zip.invalid && zip.touched" style="color:red;"> Zip is required ! </span>
+            </div>
+            <div class="form-group">
+                <label for="country">What is Country?</label>
+                <input id="country" class="form-control" type="text" [(ngModel)]="medicalAgent.country" name="country" ngModel #country="ngModel" disabled required>
+                <span *ngIf="country.invalid && country.touched" style="color:red;"> Country is required ! </span>
+            </div>
+            <div class="form-group">
+                <label for="phone">What is Phone Number?</label>
+                <input id="phone" class="form-control" type="text" [(ngModel)]="medicalAgent.phone" name="phone" ngModel #phone="ngModel" required>
+                <span *ngIf="phone.invalid && phone.touched" style="color:red;"> Phone is required ! </span>
+            </div>
+            <div class="form-group">
+                <label>Would you like to inform this person that you appointed them as your Healthcare Agent? </label>
+                <ul class="" id="">
+                    <li>
+                        <label class="">
+                            <input type="radio"
+                                   name="willInform"
+                                   [ngModel]="medicalAgent.willInform"
+                                   required
+                                   value="true"
+                                   #willInform="ngModel"
+                            (click)="changewillinform(true)">
+                            <!--<span class="custom_img2"><img src="../../../../../assets/images/single.png" alt="Single"></span>-->
+                            <span class="human_status2">Yes</span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="">
+                            <input type="radio"
+                                   name="willInform"
+                                   [ngModel]="medicalAgent.willInform"
+                                   required
+                                   value="false"
+                                   #willInform="ngModel"
+                                   (click)="changewillinform(false)">
+                            <!--<span class="custom_img2"><img src="../../../../../assets/images/single.png" alt="Single"></span>-->
+                            <span class="human_status2">No</span>
+                        </label>
+                    </li>
+                </ul>
+
+                <div [hidden]="!toggleWillInform">
+                    <input type="email" name="emailOfAgent"
+                           [ngModel]="medicalAgent.emailOfAgent"
+                           #emailOfAgent="ngModel"
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                           required="{{toggleWillInform===true? 'required': '' }}">
+                    <span *ngIf="emailOfAgent.errors?.required" style="color:red;">Email is required</span>
+                    <span *ngIf="emailOfAgent.errors?.pattern" style="color:red;">This is not a email format</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Do You Need To Appoint A Backup Healthcare Agents? </label>
+                <ul class="">
+                    <li>
+                        <label class="">
+                            <input type="radio"
+                                   name="anyBackupAgent"
+                                   [ngModel]="medicalAgent.anyBackupAgent"
+                                   required
+                                   value="true"
+                                   #anyBackupAgent="ngModel"
+                                   (click)="changeBackupAgentToggle(true)">
+                            <!--<span class="custom_img2"><img src="../../../../../assets/images/single.png" alt="Single"></span>-->
+                            <span class="human_status2">Yes</span>
+                        </label>
+                    </li>
+                    <li>
+                        <label class="">
+                            <input type="radio"
+                                   name="anyBackupAgent"
+                                   [ngModel]="medicalAgent.anyBackupAgent"
+                                   required
+                                   value="false"
+                                   #anyBackupAgent="ngModel"
+                                   (click)="changeBackupAgentToggle(false)">
+                            <!--<span class="custom_img2"><img src="../../../../../assets/images/single.png" alt="Single"></span>-->
+                            <span class="human_status2">No</span>
+                        </label>
+                    </li>
+                </ul>
+
+                <div *ngIf="toggleBackupAgent">
+                    <div class="form-group">
+                        <h2>Tell Us About Your Second Choice For Healthcare Agent.</h2>
+                        <div class="form-group">
+                            <label for="backupfirstLegalName">What is their first legal name?</label>
+                            <input id="backupfirstLegalName" class="form-control" type="text" [(ngModel)]="medicalAgent.backupfirstLegalName" name="backupfirstLegalName" ngModel #backupfirstLegalName="ngModel" required>
+                            <span *ngIf="backupfirstLegalName.invalid && backupfirstLegalName.touched" style="color:red;"> First Name is required ! </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="backuplastLegalName">What is their last legal name?</label>
+                            <input id="backuplastLegalName" class="form-control" type="text" [(ngModel)]="medicalAgent.backuplastLegalName" name="backuplastLegalName" ngModel #backuplastLegalName="ngModel" required>
+                            <span *ngIf="backuplastLegalName.invalid && backuplastLegalName.touched" style="color:red;"> Last Name is required ! </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="backupRelation">What is their relationship to you?</label>
+                            <select id="backupRelation" class="form-control" [(ngModel)]="medicalAgent.backupRelation" name="backupRelation" ngModel #backupRelation="ngModel" required>
+                                <!--<option value="">Select Option</option>-->
+                                <option *ngFor="let relation of relations" value="{{relation}}">{{relation}}</option>
+                            </select>
+                            <span *ngIf="backupRelation.invalid && backupRelation.touched" style="color:red;"> Relation is required ! </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="backupAddress">What is address?</label>
+                        <input id="backupAddress" class="form-control" type="text" [(ngModel)]="medicalAgent.backupAddress" name="backupAddress" ngModel #backupAddress="ngModel" required>
+                        <span *ngIf="backupAddress.invalid && backupAddress.touched" style="color:red;"> Address is required ! </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="backupCity">What is city?</label>
+                        <input id="backupCity" class="form-control" type="text" [(ngModel)]="medicalAgent.backupCity" name="backupCity" ngModel #backupCity="ngModel" required>
+                        <span *ngIf="backupCity.invalid && backupCity.touched" style="color:red;"> City is required ! </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="backupState">What is state?</label>
+                        <input id="backupState" class="form-control" type="text" [(ngModel)]="medicalAgent.backupState" name="backupState" ngModel #backupState="ngModel" required>
+                        <span *ngIf="backupState.invalid && backupState.touched" style="color:red;"> State is required ! </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="backupZip">What is Zip?</label>
+                        <input id="backupZip" class="form-control" type="text" [(ngModel)]="medicalAgent.backupZip" name="backupZip" ngModel #backupZip="ngModel" required>
+                        <span *ngIf="backupZip.invalid && backupZip.touched" style="color:red;"> Zip is required ! </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="backupCountry">What is Country?</label>
+                        <input id="backupCountry" class="form-control" type="text" [(ngModel)]="medicalAgent.backupCountry" name="backupCountry" ngModel #backupCountry="ngModel" disabled required>
+                        <span *ngIf="backupCountry.invalid && backupCountry.touched" style="color:red;"> Country is required ! </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="backupphone">What is Phone Number?</label>
+                        <input id="backupphone" class="form-control" type="text" [(ngModel)]="medicalAgent.backupphone" name="backupphone" ngModel #backupphone="ngModel" required>
+                        <span *ngIf="backupphone.invalid && backupphone.touched" style="color:red;"> Phone is required ! </span>
+                    </div>
+                    <div class="form-group">
+                        <label>Would you like to inform this person that you appointed them as your Healthcare Agent? </label>
+                        <ul class="">
+                            <li>
+                                <label class="">
+                                    <input type="radio"
+                                           name="willInformBackup"
+                                           [ngModel]="medicalAgent.willInformBackup"
+                                           required
+                                           value="true"
+                                           #willInformBackup="ngModel"
+                                           (click)="changewillBackupinform(true)">
+                                    <!--<span class="custom_img2"><img src="../../../../../assets/images/single.png" alt="Single"></span>-->
+                                    <span class="human_status2">Yes</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="">
+                                    <input type="radio"
+                                           name="willInformBackup"
+                                           [ngModel]="medicalAgent.willInformBackup"
+                                           required
+                                           value="false"
+                                           #willInformBackup="ngModel"
+                                           (click)="changewillBackupinform(false)">
+                                    <!--<span class="custom_img2"><img src="../../../../../assets/images/single.png" alt="Single"></span>-->
+                                    <span class="human_status2">No</span>
+                                </label>
+                            </li>
+                        </ul>
+
+                        <div [hidden]="!toggleWillBackupInform">
+                            <input type="email" name="emailOfBackupAgent"
+                                   [ngModel]="medicalAgent.emailOfBackupAgent"
+                                   #emailOfBackupAgent="ngModel"
+                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                                   required="{{toggleWillBackupInform===true? 'required': '' }}">
+                            <span *ngIf="emailOfBackupAgent.errors?.required" style="color:red;">Email is required</span>
+                            <span *ngIf="emailOfBackupAgent.errors?.pattern" style="color:red;">This is not a email format</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" [disabled]="!medicalEmergencyForm.form.valid">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

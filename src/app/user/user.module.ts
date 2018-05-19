@@ -28,6 +28,7 @@ import { BlogdetailsComponent } from './blog/blogdetails/blogdetails.component';
 import { BlogService } from './blog/blog.service';
 import { BlogCategoryComponent } from './blog/blog-category/blog-category.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import {MedicalEmergencyService} from './user-dashboard/plan-for-medical-emergency/medical-emergency.service';
 
 @NgModule({
   imports: [
@@ -65,6 +66,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FaqService,
     UserDashboardService,
     BlogService,
+    MedicalEmergencyService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
 })
