@@ -147,7 +147,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
         this.addValidationGaurdianToForm();
     }
     if (this.myForm.value.isBackUpGuardian === 'No') {
-        console.log('no')
+        console.log('no');
         this.removeValidationBackUpGaurdianToForm();
     } else {
         console.log('yes');

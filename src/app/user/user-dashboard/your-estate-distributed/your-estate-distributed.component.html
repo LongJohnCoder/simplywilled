@@ -1,4 +1,8 @@
+<<<<<<< HEAD
  <div class="col-md-9 col-sm-7">
+=======
+<!--<div class="col-md-9 col-sm-7">-->
+>>>>>>> Estate distributed v1.1
   <div class="main-content tellusaboutyou">
     <h2>How should The Rest of Your Estate Distributed??</h2>
     <form [formGroup]="estateDistributedForm" novalidate (ngSubmit)="onSubmit(estateDistributedForm)">
@@ -40,10 +44,24 @@
             <div class="form-group">
                 <label>What is your Beneficiary's First name? </label>
                 <input type="text" class="form-control" formControlName="firstName">
+
+                <span
+                        *ngIf="!estateDistributedForm.get('toASingleBeneficiary.0.firstName').valid && estateDistributedForm.get('toASingleBeneficiary.0.firstName').touched"
+                        class="help-block">
+              <span *ngIf="estateDistributedForm.get('toASingleBeneficiary.0.firstName').errors['required']" style="color: red">This field is required!</span>
+            </span>
+
             </div>
             <div class="form-group">
                 <label>What is your Beneficiary's full legal name?</label>
                 <input type="text" class="form-control" formControlName="fullName">
+
+                <span
+                        *ngIf="!estateDistributedForm.get('toASingleBeneficiary.0.fullName').valid && estateDistributedForm.get('toASingleBeneficiary.0.fullName').touched"
+                        class="help-block">
+              <span *ngIf="estateDistributedForm.get('toASingleBeneficiary.0.fullName').errors['required']" style="color: red">This field is required!</span>
+            </span>
+
             </div>
             <div class="form-group ">
                 <label>What is their relationship to you?</label>
@@ -63,6 +81,11 @@
                     <option value="Friend">Friend</option>
                     <option value="Other">Other</option>
                 </select>
+                <span
+                        *ngIf="!estateDistributedForm.get('toASingleBeneficiary.0.relationship').valid && estateDistributedForm.get('toASingleBeneficiary.0.relationship').touched"
+                        class="help-block">
+              <span *ngIf="estateDistributedForm.get('toASingleBeneficiary.0.relationship').errors['required']" style="color: red">This field is required!</span>
+            </span>
             </div>
             <div class="form-group">
                 <label>What is your beneficiary's gender?</label>
@@ -80,36 +103,53 @@
                         </label>
                     </li>
                 </ul>
+                <span
+                        *ngIf="!estateDistributedForm.get('toASingleBeneficiary.0.gender').valid && estateDistributedForm.get('toASingleBeneficiary.0.gender').touched"
+                        class="help-block">
+              <span *ngIf="estateDistributedForm.get('toASingleBeneficiary.0.gender').errors['required']" style="color: red">This field is required!</span>
+            </span>
             </div>
             <div class="form-group">
                 <label>What happens if your beneficiary passes before you? </label>
                 <ul class="radio_ul6 gifts-list">
                     <li>
                         <label class="radio_custom property_to_be_distributed" [ngClass]="{'active': estateDistributedForm.get('toASingleBeneficiary.0.ifPassesbeforeyou').value == '1'}">
-                            <input type="radio" formControlName="ifPassesbeforeyou" value="1">
+                            <input type="radio" formControlName="ifPassesbeforeyou" value="1" (change)="addRemoveValidationToSomeotherway()">
                             <span class="custom_img5"><img src="../../../../assets/images/multiple.png" alt="Multiple"></span>
                             <span class="human_status3">Distribute To My Beneficiary's Issue</span>
                         </label>
                     </li>
                     <li>
                         <label class="radio_custom property_to_be_distributed" [ngClass]="{'active': estateDistributedForm.get('toASingleBeneficiary.0.ifPassesbeforeyou').value == '2'}">
-                            <input type="radio" formControlName="ifPassesbeforeyou" value="2">
+                            <input type="radio" formControlName="ifPassesbeforeyou" value="2" (change)="addRemoveValidationToSomeotherway()">
                             <span class="custom_img5"><img src="../../../../assets/images/law.png" alt="Heirs At Law"></span>
                             <span class="human_status3">Distribute The Rest To My Heirs At Law</span>
                         </label>
                     </li>
                     <li>
                         <label class="radio_custom property_to_be_distributed" [ngClass]="{'active': estateDistributedForm.get('toASingleBeneficiary.0.ifPassesbeforeyou').value == '3'}">
-                            <input type="radio" formControlName="ifPassesbeforeyou" value="3">
+                            <input type="radio" formControlName="ifPassesbeforeyou" value="3" (change)="addRemoveValidationToSomeotherway()">
                             <span class="custom_img5"><img src="../../../../assets/images/otherway-icon.png" alt="Otherway"></span>
                             <span class="human_status3">Some Other Way</span>
                         </label>
                     </li>
                 </ul>
+
+                <span
+                        *ngIf="!estateDistributedForm.get('toASingleBeneficiary.0.ifPassesbeforeyou').valid && estateDistributedForm.get('toASingleBeneficiary.0.ifPassesbeforeyou').touched"
+                        class="help-block">
+              <span *ngIf="estateDistributedForm.get('toASingleBeneficiary.0.ifPassesbeforeyou').errors['required']" style="color: red">This field is required!</span>
+            </span>
+
             </div>
             <div class="form-group" *ngIf="estateDistributedForm.get('toASingleBeneficiary.0.ifPassesbeforeyou').value == '3'">
                 <label> Otherwise, to be distributed to: </label>
                 <textarea formControlName="someotherway" cols="60" rows="8" placeholder="Type..."></textarea>
+                <span
+                        *ngIf="!estateDistributedForm.get('toASingleBeneficiary.0.someotherway').valid && estateDistributedForm.get('toASingleBeneficiary.0.someotherway').touched"
+                        class="help-block">
+              <span *ngIf="estateDistributedForm.get('toASingleBeneficiary.0.someotherway').errors['required']" style="color: red">This field is required!</span>
+            </span>
             </div>
             </div>
             </div>
@@ -124,59 +164,56 @@
                 <ul class="radio_ul6">
                     <li>
                         <label class="radio_custom" [ngClass]="{'active': estateDistributedForm.get('toMultipleBeneficiary.0.isEstateIntoEqualShares').value == 'Yes'}">
-                            <input type="radio" formControlName="isEstateIntoEqualShares" value="Yes">
+                            <input type="radio" formControlName="isEstateIntoEqualShares" value="Yes" (change)="addValidationIsEstateIntoEqualShares()">
                             <span class="human_status">Yes</span>
                         </label>
                     </li>
                     <li>
                         <label class="radio_custom" [ngClass]="{'active': estateDistributedForm.get('toMultipleBeneficiary.0.isEstateIntoEqualShares').value == 'No'}">
-                            <input type="radio" formControlName="isEstateIntoEqualShares" value="No">
+                            <input type="radio" formControlName="isEstateIntoEqualShares" value="No" (change)="addValidationIsEstateIntoEqualShares()">
                             <span class="human_status">No</span>
                         </label>
                     </li>
                 </ul>
+                <span
+                        *ngIf="!estateDistributedForm.get('toMultipleBeneficiary.0.isEstateIntoEqualShares').valid && estateDistributedForm.get('toMultipleBeneficiary.0.isEstateIntoEqualShares').touched"
+                        class="help-block">
+              <span *ngIf="estateDistributedForm.get('toMultipleBeneficiary.0.isEstateIntoEqualShares').errors['required']" style="color: red">This field is required!</span>
+            </span>
             </div>
                 <div *ngIf="estateDistributedForm.get('toMultipleBeneficiary.0.isEstateIntoEqualShares').value == 'Yes'" class="form-group">
-                            <div formArrayName="beneficiaryYes">
-                                <div  *ngFor="let newItem of item.get('beneficiaryYes').controls; let m=index"  [formGroupName]="m">
-                    <div class="form-row">
-                        <div class="col">
-                            <label>Beneficiary's Full Legal Name</label>
-                            <input type="text" class="form-control" formControlName="beneficiaryFullName">
-                        </div>
-                        <div class="col">
-                            <label>Beneficiary’s Relationship To You</label>
-                            <input type="text" class="form-control" formControlName="beneficiaryRelationship">
-                        </div>
-                        <div class="col" *ngIf="m > 0">
-                        <button class="btn-xs btn-danger" (click)="removeOption(item.controls.beneficiaryYes, m, 1)">X</button>
-                        </div>
-                    </div>
-                    </div>
-                    </div>
+                                    <div formArrayName="beneficiaryYes">
+                                        <table class="table">
+                                            <tr>
+                                                <td>Beneficiary's Full Legal Name</td>
+                                                <td>Beneficiary’s Relationship To You</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr *ngFor="let newItem of item.get('beneficiaryYes').controls; let m=index"  [formGroupName]="m">
+                                                <td><input type="text" class="form-control" formControlName="beneficiaryFullName"></td>
+                                                <td><input type="text" class="form-control" formControlName="beneficiaryRelationship"></td>
+                                                <td *ngIf="m > 0"><button class="btn-md btn-danger" (click)="removeOption(item.controls.beneficiaryYes, m, 1)">X</button></td>
+                                            </tr>
+                                        </table>
+                                    </div>
                     <button type="button" class="btn-xs btn-default" (click)="addMoreOption(item.controls.beneficiaryYes, 1)">+ Add</button>
                 </div>
                 <div *ngIf="estateDistributedForm.get('toMultipleBeneficiary.0.isEstateIntoEqualShares').value == 'No'" class="form-group">
                     <div formArrayName="beneficiaryNo">
-                        <div  *ngFor="let newItem of item.get('beneficiaryNo').controls; let n=index"  [formGroupName]="n">
-                    <div class="form-row">
-                        <div class="col">
-                            <label>Beneficiary's Full Legal Name</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col">
-                            <label>Beneficiary’s Relationship To You</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col">
-                            <label>Beneficiary's Percentage of the Estate?</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col" *ngIf="n > 0">
-                        <button class="btn-xs btn-danger" (click)="removeOption(item.controls.beneficiaryNo, n, 2)">X</button>
-                    </div>
-                    </div>
-                    </div>
+                    <table class="table">
+                        <tr>
+                            <td>Beneficiary's Full Legal Name</td>
+                            <td>Beneficiary’s Relationship To You</td>
+                            <td>Beneficiary's Percentage of the Estate?</td>
+                            <td></td>
+                        </tr>
+                        <tr *ngFor="let newItems of item.get('beneficiaryNo').controls; let n=index"  [formGroupName]="n">
+                            <td><input type="text" class="form-control" formControlName="beneficiaryNoFullName"></td>
+                            <td><input type="text" class="form-control" formControlName="beneficiaryNoRelationship"></td>
+                            <td><input type="text" class="form-control" formControlName="beneficiaryNoPercentageToEstate"></td>
+                            <td *ngIf="n > 0"><button class="btn-md btn-danger" (click)="removeOption(item.controls.beneficiaryNo, n, 2)">X</button></td>
+                        </tr>
+                    </table>
                     </div>
                     <button type="button" class="btn-xs btn-default" (click)="addMoreOption(item.controls.beneficiaryNo, 2)">+ Add</button>
                 </div>
@@ -196,8 +233,13 @@
                             </label>
                         </li>
                     </ul>
+                    <span
+                            *ngIf="!estateDistributedForm.get('toMultipleBeneficiary.0.deceasedBeneficiaryShareToKids').valid && estateDistributedForm.get('toMultipleBeneficiary.0.deceasedBeneficiaryShareToKids').touched"
+                            class="help-block">
+              <span *ngIf="estateDistributedForm.get('toMultipleBeneficiary.0.deceasedBeneficiaryShareToKids').errors['required']" style="color: red">This field is required!</span>
+                    </span>
                 </div>
-                <div class="form-group">
+                <div class="form-group"  *ngIf="estateDistributedForm.get('toMultipleBeneficiary.0.isEstateIntoEqualShares').value == 'No'">
                     <label>If the initial allocation of shares among beneficiaries is unequal, should a deceased beneficiarie's share be allocated to the other beneficiaries' shares in the same ratio as the initial division?</label>
                     <ul class="radio_ul6">
                         <li>
@@ -213,23 +255,35 @@
                             </label>
                         </li>
                     </ul>
+                    <span
+                            *ngIf="!estateDistributedForm.get('toMultipleBeneficiary.0.deceasedBeneficiarieShare').valid && estateDistributedForm.get('toMultipleBeneficiary.0.deceasedBeneficiarieShare').touched"
+                            class="help-block">
+              <span *ngIf="estateDistributedForm.get('toMultipleBeneficiary.0.deceasedBeneficiarieShare').errors['required']" style="color: red">This field is required!</span>
+                    </span>
                 </div>
                 <div class="form-group">
                     <label>Would you like for any minor beneficiary's share to be held in trust until they are an adult?</label>
                     <ul class="radio_ul6">
                         <li>
                             <label class="radio_custom" [ngClass]="{'active': estateDistributedForm.get('toMultipleBeneficiary.0.minorBeneficiaryShareToBeHeldInTrust').value == 'Yes'}">
-                                <input type="radio" formControlName="minorBeneficiaryShareToBeHeldInTrust" value="Yes">
+                                <input type="radio" formControlName="minorBeneficiaryShareToBeHeldInTrust" value="Yes" (change)="addValidationToMinorBeneficiaryShareToBeHeldInTrust()">
                                 <span class="human_status">Yes</span>
                             </label>
                         </li>
                         <li>
                             <label class="radio_custom" [ngClass]="{'active': estateDistributedForm.get('toMultipleBeneficiary.0.minorBeneficiaryShareToBeHeldInTrust').value == 'No'}">
-                                <input type="radio" formControlName="minorBeneficiaryShareToBeHeldInTrust" value="No">
+                                <input type="radio" formControlName="minorBeneficiaryShareToBeHeldInTrust" value="No" (change)="addValidationToMinorBeneficiaryShareToBeHeldInTrust()">
                                 <span class="human_status">No</span>
                             </label>
                         </li>
                     </ul>
+
+                    <span
+                            *ngIf="!estateDistributedForm.get('toMultipleBeneficiary.0.minorBeneficiaryShareToBeHeldInTrust').valid && estateDistributedForm.get('toMultipleBeneficiary.0.minorBeneficiaryShareToBeHeldInTrust').touched"
+                            class="help-block">
+              <span *ngIf="estateDistributedForm.get('toMultipleBeneficiary.0.minorBeneficiaryShareToBeHeldInTrust').errors['required']" style="color: red">This field is required!</span>
+                    </span>
+
                 </div>
                 <div *ngIf="estateDistributedForm.get('toMultipleBeneficiary.0.minorBeneficiaryShareToBeHeldInTrust').value == 'Yes'">
                 <div class="form-group">
@@ -254,27 +308,46 @@
                             </label>
                         </li>
                     </ul>
+
+                    <span
+                            *ngIf="!estateDistributedForm.get('toMultipleBeneficiary.0.whatAgeMinorShareDistributed').valid && estateDistributedForm.get('toMultipleBeneficiary.0.whatAgeMinorShareDistributed').touched"
+                            class="help-block">
+              <span *ngIf="estateDistributedForm.get('toMultipleBeneficiary.0.whatAgeMinorShareDistributed').errors['required']" style="color: red">This field is required!</span>
+                    </span>
+
                 </div>
                 <div class="form-group">
                     <label>Would you like the minor‘s parents to be the trustee of the account?</label>
                     <ul class="radio_ul6">
                         <li>
                             <label class="radio_custom" [ngClass]="{'active': estateDistributedForm.get('toMultipleBeneficiary.0.minorParentsTrustee').value == 'Yes'}">
-                                <input type="radio" formControlName="minorParentsTrustee" value="Yes">
+                                <input type="radio" formControlName="minorParentsTrustee" value="Yes" (change)="addValidationToMinorParentsTrustee()">
                                 <span class="human_status">Yes</span>
                             </label>
                         </li>
                         <li>
                             <label class="radio_custom" [ngClass]="{'active': estateDistributedForm.get('toMultipleBeneficiary.0.minorParentsTrustee').value == 'No'}">
-                                <input type="radio" formControlName="minorParentsTrustee" value="No">
+                                <input type="radio" formControlName="minorParentsTrustee" value="No" (change)="addValidationToMinorParentsTrustee()">
                                 <span class="human_status">No</span>
                             </label>
                         </li>
                     </ul>
+
+                    <span
+                            *ngIf="!estateDistributedForm.get('toMultipleBeneficiary.0.minorParentsTrustee').valid && estateDistributedForm.get('toMultipleBeneficiary.0.minorParentsTrustee').touched"
+                            class="help-block">
+              <span *ngIf="estateDistributedForm.get('toMultipleBeneficiary.0.minorParentsTrustee').errors['required']" style="color: red">This field is required!</span>
+                    </span>
+
                 </div>
                 <div class="form-group" *ngIf="estateDistributedForm.get('toMultipleBeneficiary.0.minorParentsTrustee').value == 'Yes'"><!-- based on the minorParentsTrustee it will show -->
                     <label> Who would you like to serve as trustee of the account?</label>
                     <input type="text" formControlName="whoServeAsTrusteeAccount" class="form-control">
+                    <span
+                            *ngIf="!estateDistributedForm.get('toMultipleBeneficiary.0.whoServeAsTrusteeAccount').valid && estateDistributedForm.get('toMultipleBeneficiary.0.whoServeAsTrusteeAccount').touched"
+                            class="help-block">
+              <span *ngIf="estateDistributedForm.get('toMultipleBeneficiary.0.whoServeAsTrusteeAccount').errors['required']" style="color: red">This field is required!</span>
+                    </span>
                 </div>
                 </div>
             </div>
@@ -287,6 +360,11 @@
             <textarea formControlName="someOtherWayText" cols="60" rows="8" placeholder="Type..."></textarea>
                 </div>
             </div>
+            <span
+                    *ngIf="!estateDistributedForm.get('toSomeOtherWay.0.someOtherWayText').valid && estateDistributedForm.get('toSomeOtherWay.0.someOtherWayText').touched"
+                    class="help-block">
+              <span *ngIf="estateDistributedForm.get('toSomeOtherWay.0.someOtherWayText').errors['required']" style="color: red">This field is required!</span>
+                    </span>
         </div><!-- some Other wat form Ends -->
       <div class="form-footer">
         <button class="btn common-button btn-grey pull-left" routerLink="/dashboard/your-specific-gifts">Go Back</button>

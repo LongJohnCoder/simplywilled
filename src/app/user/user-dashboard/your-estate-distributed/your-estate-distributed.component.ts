@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {Validators, FormGroup, FormBuilder, FormControl, FormArray} from '@angular/forms';
 import {UserAuthService} from '../../user-auth/user-auth.service';
 import {UserService} from '../../user.service';
+
 @Component({
   selector: 'app-your-estate-distributed',
   templateUrl: './your-estate-distributed.component.html',
@@ -10,9 +11,12 @@ import {UserService} from '../../user.service';
 })
 export class YourEstateDistributedComponent implements OnInit {
   public estateDistributedForm: FormGroup;
+  columnFormArray: FormArray;
   fullUserInfo: any;
   singleBeneficiary: boolean;
   errorMessage: any;
+  editFlag = false;
+  beneficiaryNoFormArray: FormArray;
   constructor( private  authService: UserAuthService,
                private userService: UserService,
                private router: Router,
@@ -46,20 +50,20 @@ export class YourEstateDistributedComponent implements OnInit {
             ]),
             toMultipleBeneficiary: this.fb.array([
                 this.fb.group({
-                        isEstateIntoEqualShares: [''],
-                        beneficiaryYes: this.fb.array([
-                            this.fb.group({
-                                beneficiaryFullName: [''],
-                                beneficiaryRelationship: [''],
-                            })
-                        ]),
-                    beneficiaryNo: this.fb.array([
+                    beneficiaryYes: this.fb.array([
                         this.fb.group({
                             beneficiaryFullName: [''],
                             beneficiaryRelationship: [''],
-                            beneficiaryPercentageToEstate: [''],
                         })
                     ]),
+                    beneficiaryNo: this.fb.array([
+                        this.fb.group({
+                            beneficiaryNoFullName: [''],
+                            beneficiaryNoRelationship: [''],
+                            beneficiaryNoPercentageToEstate: [''],
+                        })
+                    ]),
+                        isEstateIntoEqualShares: [''],
                         deceasedBeneficiaryShareToKids: [''],
                         deceasedBeneficiarieShare: [''],
                         minorBeneficiaryShareToBeHeldInTrust : [''],
@@ -83,13 +87,102 @@ export class YourEstateDistributedComponent implements OnInit {
         this.userService.getUserDetails(this.authService.getUser()['id']).subscribe(
             (response: any) => {
                 this.fullUserInfo = response.data[9].data;
-                console.log(this.fullUserInfo);
-                // this.provideYourSpouseForm.controls['residue_to_partner_first'].setValue( this.fullUserInfo.residue_to_partner_first);
+                this.estateDistributedForm.controls['disrtibuteType'].setValue( this.fullUserInfo.type);
+                if (this.fullUserInfo.type === '1') {
+                    // set value to the singleBeneficiary Form
+                    this.estateDistributedForm.patchValue({
+                        singleBeneficiary: 'Yes',
+                        multiBeneficiary: 'No',
+                        someOtherWay: 'No'
+                    });
+                    const estactInfo = JSON.parse(this.fullUserInfo.totalInfo);
+                    const toASingleBeneficiaryFGs = estactInfo.map(gr => this.fb.group(gr));
+                    const toASingleBeneficiaryFormArray = this.fb.array(toASingleBeneficiaryFGs);
+                    this.estateDistributedForm.setControl('toASingleBeneficiary', toASingleBeneficiaryFormArray);
+                } if (this.fullUserInfo.type === '2') {
+                    // set value to the multiBeneficiary Form
+                    this.estateDistributedForm.patchValue({
+                        singleBeneficiary: 'No',
+                        multiBeneficiary: 'Yes',
+                        someOtherWay: 'No',
+                    });
+                    const estactInfo = JSON.parse(this.fullUserInfo.totalInfo);
+                    this.editFlag = false;
+                    this.columnFormArray = this.estateDistributedForm.get('toMultipleBeneficiary.0.beneficiaryYes') as FormArray;
+                    this.beneficiaryNoFormArray = this.estateDistributedForm.get('toMultipleBeneficiary.0.beneficiaryNo') as FormArray;
+                    if ( estactInfo[0].isEstateIntoEqualShares === 'Yes' && estactInfo[0].beneficiaryYes.length > 0 ) {
+                        this.clearFormArray(true, this.columnFormArray);
+                    }
+                    if ( estactInfo[0].isEstateIntoEqualShares === 'No' && estactInfo[0].beneficiaryNo.length > 0 ) {
+                        this.clearBeneficiaryNoFormArray(true, this.beneficiaryNoFormArray);
+                    }
+                    this.setValues(true, estactInfo);
+                    } if (this.fullUserInfo.type === '4') {
+                    // set value to the someOtherWay Form
+                    this.estateDistributedForm.patchValue({
+                        singleBeneficiary: 'No',
+                        multiBeneficiary: 'No',
+                        someOtherWay: 'Yes'
+                    });
+                    const estactInfo = JSON.parse(this.fullUserInfo.totalInfo);
+                    const toSomeOtherWayFGs = estactInfo.map(gr => this.fb.group(gr));
+                    const toSomeOtherWayFormArray = this.fb.array(toSomeOtherWayFGs);
+                    this.estateDistributedForm.setControl('toSomeOtherWay', toSomeOtherWayFormArray);
+                }
             },
             (error: any) => {
                 console.log(error.error);
             }
         );
+    }
+
+     clearFormArray(editFlag, formArray: FormArray)  {
+        while (formArray.length !== 0) {
+            formArray.removeAt(0);
+        }
+    }
+
+    clearBeneficiaryNoFormArray(editFlag, formArray: FormArray) {
+        while (formArray.length !== 0) {
+            formArray.removeAt(0);
+        }
+    }
+
+    setValues(editFlag, data = null) {
+        this.estateDistributedForm.get('toMultipleBeneficiary.0.isEstateIntoEqualShares').setValue(data[0].isEstateIntoEqualShares);
+        this.estateDistributedForm.get('toMultipleBeneficiary.0.deceasedBeneficiarieShare').setValue(data[0].deceasedBeneficiarieShare);
+        this.estateDistributedForm.get('toMultipleBeneficiary.0.deceasedBeneficiaryShareToKids').setValue(data[0].deceasedBeneficiaryShareToKids);
+        this.estateDistributedForm.get('toMultipleBeneficiary.0.minorBeneficiaryShareToBeHeldInTrust').setValue(data[0].minorBeneficiaryShareToBeHeldInTrust);
+        this.estateDistributedForm.get('toMultipleBeneficiary.0.whatAgeMinorShareDistributed').setValue(data[0].whatAgeMinorShareDistributed);
+        this.estateDistributedForm.get('toMultipleBeneficiary.0.minorParentsTrustee').setValue(data[0].minorParentsTrustee);
+        this.estateDistributedForm.get('toMultipleBeneficiary.0.whoServeAsTrusteeAccount').setValue(data[0].whoServeAsTrusteeAccount);
+        if (data[0].isEstateIntoEqualShares === 'Yes') {
+            for (let i = 0; i < data[0].beneficiaryYes.length ; i++) {
+                this.columnFormArray.push(this.createItem(true, data[0].beneficiaryYes[i]));
+            }
+        }
+        if (data[0].isEstateIntoEqualShares === 'No') {
+            for (let i = 0; i < data[0].beneficiaryNo.length ; i++) {
+                this.beneficiaryNoFormArray.push(this.createBeneficiaryNoItem(true, data[0].beneficiaryNo[i]));
+            }
+        }
+    }
+
+    createBeneficiaryNoItem(editFlag = false, beneficiaryNoFormArray = null) {
+        return this.fb.group({
+            // beneficiaryNo
+            beneficiaryNoFullName: [beneficiaryNoFormArray.beneficiaryNoFullName],
+            beneficiaryNoRelationship: [beneficiaryNoFormArray.beneficiaryNoRelationship],
+            beneficiaryNoPercentageToEstate: [beneficiaryNoFormArray.beneficiaryNoPercentageToEstate],
+        });
+    }
+
+    createItem(editFlag = false, beneficiaryYesFormArray = null) {
+        return this.fb.group({
+            // beneficiaryYes
+            beneficiaryFullName: [beneficiaryYesFormArray.beneficiaryFullName],
+            beneficiaryRelationship: [beneficiaryYesFormArray.beneficiaryRelationship],
+        });
     }
 
     /**
@@ -101,7 +194,8 @@ export class YourEstateDistributedComponent implements OnInit {
         modelData.step = 10;
         modelData.user_id = this.authService.getUser()['id'];
         const disrtibuteData = [];
-        console.log(modelData.toASingleBeneficiary.length, modelData.toMultipleBeneficiary.length, modelData.toSomeOtherWay.length);
+        // console.log(modelData.toMultipleBeneficiary[0].beneficiaryNo.length);
+        // console.log(modelData.toMultipleBeneficiary[0].beneficiaryYes.length);
         if(modelData.singleBeneficiary === 'Yes') {
             modelData.disrtibuteData = modelData.toASingleBeneficiary;
         }
@@ -111,10 +205,12 @@ export class YourEstateDistributedComponent implements OnInit {
         if(modelData.someOtherWay === 'Yes') {
             modelData.disrtibuteData = modelData.toSomeOtherWay;
         }
+        // console.log(modelData);
         this.userService.editProfile(modelData).subscribe(
             (response: any) => {
-                this.router.navigate(['/dashboard']);
-                // alert('Done');
+                alert('Done');
+                this.router.navigate(['/dashboard/your-estate-distributed']);
+                // this.router.navigate(['/dashboard']);
             },
             (error: any) => {
                 for (let prop in error.error.message) {
@@ -138,24 +234,36 @@ export class YourEstateDistributedComponent implements OnInit {
                 multiBeneficiary: 'No',
                 someOtherWay: 'No'
             });
+            this.addValidationToASingleBeneficiaryForm();
+            this.removeValidationToSomeOtherWay();
+            this.removeValidationtoMultipleBeneficiary();
         } if (this.estateDistributedForm.value.disrtibuteType === '2') {
             this.estateDistributedForm.patchValue({
                 multiBeneficiary: 'Yes',
                 singleBeneficiary: 'No',
                 someOtherWay: 'No'
             });
+            this.addValidationtoMultipleBeneficiary();
+            this.removeValidationToASingleBeneficiaryForm();
+            this.removeValidationToSomeOtherWay();
         } if (this.estateDistributedForm.value.disrtibuteType === '3') {
             this.estateDistributedForm.patchValue({
                 multiBeneficiary: 'No',
                 singleBeneficiary: 'No',
                 someOtherWay: 'No'
             });
+            this.removeValidationToASingleBeneficiaryForm();
+            this.removeValidationToSomeOtherWay();
+            this.removeValidationtoMultipleBeneficiary();
         } if (this.estateDistributedForm.value.disrtibuteType === '4') {
             this.estateDistributedForm.patchValue({
                 multiBeneficiary: 'No',
                 singleBeneficiary: 'No',
                 someOtherWay: 'Yes'
             });
+            this.addValidationToSomeOtherWay();
+            this.removeValidationToASingleBeneficiaryForm();
+            this.removeValidationtoMultipleBeneficiary();
         }
     }
 
@@ -166,15 +274,15 @@ export class YourEstateDistributedComponent implements OnInit {
         if ( type === 1 ) {
             control.push(
                 this.fb.group({
-                    beneficiaryFullName: [''],
-                    beneficiaryRelationship: [''],
+                    beneficiaryFullName: ['', Validators.required],
+                    beneficiaryRelationship: ['', Validators.required],
                 }));
         } if ( type === 2 ) {
             control.push(
                 this.fb.group({
-                    beneficiaryFullName: [''],
-                    beneficiaryRelationship: [''],
-                    beneficiaryPercentageToEstate: [''],
+                    beneficiaryNoFullName: ['', Validators.required],
+                    beneficiaryNoRelationship: ['', Validators.required],
+                    beneficiaryNoPercentageToEstate: ['', Validators.required],
                 }));
         }
     }
@@ -184,6 +292,135 @@ export class YourEstateDistributedComponent implements OnInit {
      */
     removeOption(control, index) {
         control.removeAt(index);
+    }
+
+    /**
+     *Add validation to the  SingleBeneficiaryForm
+     */
+    addValidationToASingleBeneficiaryForm() {
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.firstName`).setValidators([Validators.required]);
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.firstName`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.fullName`).setValidators([Validators.required]);
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.fullName`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.relationship`).setValidators([Validators.required]);
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.relationship`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.gender`).setValidators([Validators.required]);
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.gender`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.ifPassesbeforeyou`).setValidators([Validators.required]);
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.ifPassesbeforeyou`).updateValueAndValidity();
+
+    }
+
+    /**
+     *Remove validation to the  SingleBeneficiaryForm
+     */
+    removeValidationToASingleBeneficiaryForm() {
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.firstName`).setValidators([]);
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.firstName`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.fullName`).setValidators([]);
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.fullName`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.relationship`).setValidators([]);
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.relationship`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.gender`).setValidators([]);
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.gender`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.ifPassesbeforeyou`).setValidators([]);
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.ifPassesbeforeyou`).updateValueAndValidity();
+    }
+
+    /**
+     *add validation to the  someOtherWayText
+     */
+    addValidationToSomeOtherWay() {
+        this.estateDistributedForm.get(`toSomeOtherWay.0.someOtherWayText`).setValidators([Validators.required]);
+        this.estateDistributedForm.get(`toSomeOtherWay.0.someOtherWayText`).updateValueAndValidity();
+    }
+    /**
+     *Remove validation to the  someOtherWayText
+     */
+    removeValidationToSomeOtherWay() {
+        this.estateDistributedForm.get(`toSomeOtherWay.0.someOtherWayText`).setValidators([]);
+        this.estateDistributedForm.get(`toSomeOtherWay.0.someOtherWayText`).updateValueAndValidity();
+    }
+
+    /**
+     *add / Remove validation to the  someOtherWayText depending on the ifPassesbeforeyou value
+     */
+    addRemoveValidationToSomeotherway() {
+        if (this.estateDistributedForm.get('toASingleBeneficiary.0.ifPassesbeforeyou').value === '3') {
+            this.estateDistributedForm.get(`toASingleBeneficiary.0.someotherway`).setValidators([Validators.required]);
+            this.estateDistributedForm.get(`toASingleBeneficiary.0.someotherway`).updateValueAndValidity();
+        } else {
+            this.estateDistributedForm.get(`toASingleBeneficiary.0.someotherway`).setValidators([]);
+            this.estateDistributedForm.get(`toASingleBeneficiary.0.someotherway`).updateValueAndValidity();
+        }
+    }
+
+    /**
+     * add Validationto to MultipleBeneficiary form
+     */
+    addValidationtoMultipleBeneficiary() {
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.isEstateIntoEqualShares`).setValidators([Validators.required]);
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.isEstateIntoEqualShares`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.deceasedBeneficiaryShareToKids`).setValidators([Validators.required]);
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.deceasedBeneficiaryShareToKids`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.minorBeneficiaryShareToBeHeldInTrust`).setValidators([Validators.required]);
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.minorBeneficiaryShareToBeHeldInTrust`).updateValueAndValidity();
+    }
+
+    /**
+     * remove Validationto to MultipleBeneficiary form
+     */
+    removeValidationtoMultipleBeneficiary() {
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.isEstateIntoEqualShares`).setValidators([]);
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.isEstateIntoEqualShares`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.deceasedBeneficiaryShareToKids`).setValidators([]);
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.deceasedBeneficiaryShareToKids`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.minorBeneficiaryShareToBeHeldInTrust`).setValidators([]);
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.minorBeneficiaryShareToBeHeldInTrust`).updateValueAndValidity();
+    }
+
+    /**
+     * add / remove Validation To Minor Beneficiary Share To BeHeld In Trust depending on the  minorBeneficiaryShareToBeHeldInTrust value
+     */
+    addValidationToMinorBeneficiaryShareToBeHeldInTrust() {
+        if (this.estateDistributedForm.get('toMultipleBeneficiary.0.minorBeneficiaryShareToBeHeldInTrust').value === 'Yes') {
+            this.estateDistributedForm.get(`toMultipleBeneficiary.0.whatAgeMinorShareDistributed`).setValidators([Validators.required]);
+            this.estateDistributedForm.get(`toMultipleBeneficiary.0.whatAgeMinorShareDistributed`).updateValueAndValidity();
+            this.estateDistributedForm.get(`toMultipleBeneficiary.0.minorParentsTrustee`).setValidators([Validators.required]);
+            this.estateDistributedForm.get(`toMultipleBeneficiary.0.minorParentsTrustee`).updateValueAndValidity();
+        } else {
+            this.estateDistributedForm.get(`toMultipleBeneficiary.0.whatAgeMinorShareDistributed`).setValidators([]);
+            this.estateDistributedForm.get(`toMultipleBeneficiary.0.whatAgeMinorShareDistributed`).updateValueAndValidity();
+            this.estateDistributedForm.get(`toMultipleBeneficiary.0.minorParentsTrustee`).setValidators([]);
+            this.estateDistributedForm.get(`toMultipleBeneficiary.0.minorParentsTrustee`).updateValueAndValidity();
+        }
+    }
+
+    /**
+     * add / remove Validation add Validation To Minor Parents Trustee depending on the  minorParentsTrustee value
+     */
+    addValidationToMinorParentsTrustee() {
+        console.log(this.estateDistributedForm.get('toMultipleBeneficiary.0.minorParentsTrustee').value);
+        if (this.estateDistributedForm.get('toMultipleBeneficiary.0.minorParentsTrustee').value === 'Yes') {
+            this.estateDistributedForm.get(`toMultipleBeneficiary.0.whoServeAsTrusteeAccount`).setValidators([Validators.required]);
+            this.estateDistributedForm.get(`toMultipleBeneficiary.0.whoServeAsTrusteeAccount`).updateValueAndValidity();
+        } else {
+            this.estateDistributedForm.get(`toMultipleBeneficiary.0.whoServeAsTrusteeAccount`).setValidators([]);
+            this.estateDistributedForm.get(`toMultipleBeneficiary.0.whoServeAsTrusteeAccount`).updateValueAndValidity();
+        }
+    }
+
+    /**
+     * add / remove Validation Is Estate Into Equal Shares depending on the isEstateIntoEqualShares value
+     */
+    addValidationIsEstateIntoEqualShares() {
+        if ( this.estateDistributedForm.get('toMultipleBeneficiary.0.isEstateIntoEqualShares').value === 'No' ) {
+            this.estateDistributedForm.get(`toMultipleBeneficiary.0.deceasedBeneficiarieShare`).setValidators([Validators.required]);
+            this.estateDistributedForm.get(`toMultipleBeneficiary.0.deceasedBeneficiarieShare`).updateValueAndValidity();
+        } else {
+            this.estateDistributedForm.get(`toMultipleBeneficiary.0.deceasedBeneficiarieShare`).setValidators([]);
+            this.estateDistributedForm.get(`toMultipleBeneficiary.0.deceasedBeneficiarieShare`).updateValueAndValidity();
+        }
     }
 
 }
