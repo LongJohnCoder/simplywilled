@@ -1,121 +1,146 @@
 <div class="col-md-12 col-sm-12">
   <div class="main-content tellusaboutyou">
     <h2>Your Financial Power of Attorney</h2>
-    <form>
+    <!-- <form (ngSubmit)="submit(myForm)" #myForm = "ngForm"> -->
+    <form [formGroup] = "myForm" (ngSubmit)="send()"> 
       <div class="form-group">
         <label>Would you like this power of Attorney to be durable?</label>
         <ul class="radio_ul6">
           <li>
-            <label class="radio_custom active">
-              <input type="radio" id="business_interest_yes" name="business_interest" required="true">
+            <label class="radio_custom" [ngClass]='{active: (myForm.get("isDurable").value === 1)}'>
+              <input type="radio" id="business_interest_yes" required="true" value=1 formControlName="isDurable" #isDurableYes (click)="changeMe('isDurable',isDurableYes.value)">
               <span class="human_status">Yes</span>
             </label>
           </li>
           <li>
-            <label class="radio_custom">
-              <input type="radio" id="business_interest_no" name="business_interest" required="true" >
+            <label class="radio_custom" [ngClass]='{active: (myForm.get("isDurable").value === 0)}'>
+              <input type="radio" id="business_interest_no" required="true" value=0 formControlName="isDurable" #isDurableNo (click)="changeMe('isDurable',isDurableNo.value)">
               <span class="human_status">No</span>
             </label>
           </li>
         </ul>
       </div>
 
-        <div class="form-group">
-          <label>Should your power of attorney only be effective upon your incapacity?</label>
-          <ul class="radio_ul6">
-            <li>
-              <label class="radio_custom active">
-                <input type="radio" id="business_interest_yes" name="business_interest" required="true">
-                <span class="human_status">Yes</span>
-              </label>
-            </li>
-            <li>
-              <label class="radio_custom">
-                <input type="radio" id="business_interest_no" name="business_interest" required="true" >
-                <span class="human_status">No</span>
-              </label>
-            </li>
-          </ul>
-        </div>
+      <div class="form-group" *ngIf="myForm.get('isDurable').value == 1">
+        <label>Should your power of attorney only be effective upon your incapacity?</label>
+        <ul class="radio_ul6">
+          <li>
+            <label class="radio_custom" [ngClass]='{active: (myForm.get("isIncapacity").value === 1)}'>
+              <input type="radio" required="true" value=1 formControlName="isIncapacity" #isIncapacityYes (click)="changeMe('isIncapacity',isIncapacityYes.value)">
+              <span class="human_status">Yes</span>
+            </label>
+          </li>
+          <li>
+            <label class="radio_custom" [ngClass]='{active: (myForm.get("isIncapacity").value === 0)}'>
+              <input type="radio" required="true" value=0 formControlName="isIncapacity" #isIncapacityNo (click)="changeMe('isIncapacity',isIncapacityNo.value)">
+              <span class="human_status">No</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <div class="form-group">
+        <label>Would you like to authorize your power of attorney to make gifts?</label>
+        <ul class="radio_ul6">
+          <li>
+            <label class="radio_custom" [ngClass]='{active: (myForm.get("isAuthorizeToMakeGift").value === 1)}'>
+              <input type="radio" #isAuthorizeToMakeGiftYes value=1 (click)="changeMe('isAuthorizeToMakeGift',isAuthorizeToMakeGiftYes.value)">
+              <span class="human_status">Yes</span>
+            </label>
+          </li>
+          <li>
+            <label class="radio_custom" [ngClass]='{active: (myForm.get("isAuthorizeToMakeGift").value === 0)}'>
+              <input type="radio" #isAuthorizeToMakeGiftNo value=0 (click)="changeMe('isAuthorizeToMakeGift',isAuthorizeToMakeGiftNo.value)">
+              <span class="human_status">No</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <div class="form-group" *ngIf="myForm.get('isAuthorizeToMakeGift').value == 1">
+        <label>Would you like your agent to be authorized to make gifts to themselves and persons the agent has a legal obligation to support?</label>
+        <ul class="radio_ul6">
+          <li>
+            <label class="radio_custom" [ngClass]='{active: (myForm.get("isAuthorizeToOperategift").value === 1)}'>
+              <input type="radio" #isAuthorizeToOperategiftYes value=1 (click)="changeMe('isAuthorizeToOperategift',isAuthorizeToOperategiftYes.value)">
+              <span class="human_status">Yes</span>
+            </label>
+          </li>
+          <li>
+            <label class="radio_custom" [ngClass]='{active: (myForm.get("isAuthorizeToOperategift").value === 0)}'>
+              <input type="radio" #isAuthorizeToOperategiftNo value=0 (click)="changeMe('isAuthorizeToOperategift',isAuthorizeToOperategiftNo.value)">
+              <span class="human_status">No</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="stateInfo === 'non-uniform'">
+        <!-- options falling under non-uniform group of states-->
 
         <div class="form-group">
-          <label>Would you like to authorize your power of attorney to make gifts?</label>
-          <ul class="radio_ul6">
-            <li>
-              <label class="radio_custom active">
-                <input type="radio" id="business_interest_yes" name="business_interest" required="true">
-                <span class="human_status">Yes</span>
-              </label>
-            </li>
-            <li>
-              <label class="radio_custom">
-                <input type="radio" id="business_interest_no" name="business_interest" required="true" >
-                <span class="human_status">No</span>
-              </label>
-            </li>
-          </ul>
-        </div>
-        
-        <div class="form-group">
-          <label>Would you like your agent to be authorized to make gifts to themselves and persons the agent has a legal obligation to support?</label>
-          <ul class="radio_ul6">
-            <li>
-              <label class="radio_custom active">
-                <input type="radio" id="business_interest_yes" name="business_interest" required="true">
-                <span class="human_status">Yes</span>
-              </label>
-            </li>
-            <li>
-              <label class="radio_custom">
-                <input type="radio" id="business_interest_no" name="business_interest" required="true" >
-                <span class="human_status">No</span>
-              </label>
-            </li>
-          </ul>
-        </div>
-
-        <div *ngIf="stateInfo === 'uniform'">
-          <div class="form-group">
             <label>Would you like to authorize your power of attorney to trade options and commodities on your behalf?</label>
             <ul class="radio_ul6">
               <li>
-                <label class="radio_custom active">
-                  <input type="radio" id="business_interest_yes" name="business_interest" required="true">
+                <label class="radio_custom" [ngClass]='{active: (myForm.get("isAuthorizeTotrade").value === 1)}'>
+                  <input type="radio" #isAuthorizeTotradeYes value=1 (click)="changeMe('isAuthorizeTotrade',isAuthorizeTotradeYes.value)">
                   <span class="human_status">Yes</span>
                 </label>
               </li>
               <li>
-                <label class="radio_custom">
-                  <input type="radio" id="business_interest_no" name="business_interest" required="true" >
+                <label class="radio_custom" [ngClass]='{active: (myForm.get("isAuthorizeTotrade").value === 0)}'>
+                  <input type="radio" #isAuthorizeTotradeNo value=0 (click)="changeMe('isAuthorizeTotrade',isAuthorizeTotradeNo.value)">
                   <span class="human_status">No</span>
                 </label>
               </li>
             </ul>
           </div>
   
+  
           <div class="form-group">
-            <label>For Federal Employees Only: Would you like to authorize your power of attorney to have access to your TSP, CSRS, or FERS accounts.</label>
+            <label>Would you like to authorize your power of attorney to operate your business?</label>
             <ul class="radio_ul6">
               <li>
-                <label class="radio_custom active">
-                  <input type="radio" id="business_interest_yes" name="business_interest" required="true">
+                <label class="radio_custom" [ngClass]='{active: (myForm.get("isAuthorisedToOperateBusiness").value === 1)}'>
+                  <input type="radio" #isAuthorisedToOperateBusinessYes value=1 (click)="changeMe('isAuthorisedToOperateBusiness',isAuthorisedToOperateBusinessYes.value)">
                   <span class="human_status">Yes</span>
                 </label>
               </li>
               <li>
-                <label class="radio_custom">
-                  <input type="radio" id="business_interest_no" name="business_interest" required="true" >
+                <label class="radio_custom" [ngClass]='{active: (myForm.get("isAuthorisedToOperateBusiness").value === 0)}'>
+                  <input type="radio" #isAuthorisedToOperateBusinessNo value=0 (click)="changeMe('isAuthorisedToOperateBusiness',isAuthorisedToOperateBusinessNo.value)">
                   <span class="human_status">No</span>
                 </label>
               </li>
             </ul>
           </div>
-        </div>
+  
+  
+          <div class="form-group">
+            <label>For Federal Employees Only: Would you like to authorize your power of attorney to have access to your TSP, CSRS, or FERS accounts.</label>
+            <ul class="radio_ul6">
+              <li>
+                <label class="radio_custom" [ngClass]='{active: (myForm.get("isAuthorizeToAccessOthers").value === 1)}'>
+                  <input type="radio" #isAuthorizeToAccessOthersYes value=1 (click)="changeMe('isAuthorizeToAccessOthers',isAuthorizeToAccessOthersYes.value)">
+                  <span class="human_status">Yes</span>
+                </label>
+              </li>
+              <li>
+                <label class="radio_custom" [ngClass]='{active: (myForm.get("isAuthorizeToAccessOthers").value === 0)}'>
+                  <input type="radio" #isAuthorizeToAccessOthersNo value=0 (click)="changeMe('isAuthorizeToAccessOthers',isAuthorizeToAccessOthersNo.value)">
+                  <span class="human_status">No</span>
+                </label>
+              </li>
+            </ul>
+          </div>
         
 
-      <div class="form-footer">
-        <button class="btn common-button btn-complete" type="submit">Continue</button>
+        <div class="form-footer">
+          <button class="btn common-button btn-grey pull-left" routerLink="/dashboard">Go Back</button>
+          <button class="btn common-button btn-complete pull-right" type="submit">Continue</button>
+        </div>
       </div>
     </form>
+    
   </div>
 </div>

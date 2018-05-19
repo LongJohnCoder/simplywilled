@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {FormsModule} from '@angular/forms';
 import { ProtectYourFinancesRoutingModule } from './protect-your-finances-routing.module';
 import { ProtectYourFinancesComponent } from './protect-your-finances.component';
 //import {PersonalRepresentativePowerService} from './services/personal-representative-power.service';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     ProtectYourFinancesRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [ProtectYourFinancesComponent],
   providers: [
