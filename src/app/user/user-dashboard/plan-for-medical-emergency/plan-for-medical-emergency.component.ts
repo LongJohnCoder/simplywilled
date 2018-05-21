@@ -162,7 +162,7 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
     }
 
     formSubmit() {
-        // console.log(this.medicalAgent);
+        console.log(this.medicalAgent);
         // console.log(this.medicalAgent.emailOfAgent);
         const formBody = new FormData();
         formBody.append('userId', this.medicalAgent.userId);
