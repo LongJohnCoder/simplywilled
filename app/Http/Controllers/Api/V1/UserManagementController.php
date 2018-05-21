@@ -543,7 +543,7 @@ class UserManagementController extends Controller
              'user_id'    =>  'required|exists:users,id,deleted_at,NULL',
              'type'       =>  'required|numeric|between:0,1|integer',
              'ashes'      =>  'nullable|string|max:255',
-             'agreements' =>  'nullable|string|max:255'
+             'arrangements' =>  'nullable|string|max:255'
           ]);
           if($validator->fails()) {
               return response()->json([
@@ -565,7 +565,7 @@ class UserManagementController extends Controller
                       $checkExistData->user_id = $userId;
                       $checkExistData->type = $type;
                       $checkExistData->ashes = $ashes;
-                      $checkExistData->arrangements = $agreements;
+                      $checkExistData->arrangements = $arrangements;
                       if($checkExistData->save()) {
                           return response()->json([
                               'status' => true,
@@ -585,7 +585,7 @@ class UserManagementController extends Controller
                       $saveData->user_id = $userId;
                       $saveData->type = $type;
                       $saveData->ashes = $ashes;
-                      $saveData->arrangements = $agreements;
+                      $saveData->arrangements = $arrangements;
                       if($saveData->save()){
                           return response()->json([
                               'status' => true,
