@@ -618,6 +618,12 @@ Route::group(['prefix' => 'v1'], function() {
                 'uses'=>'Api\V1\UserManagementController@updateFinalAgrangement',
                 'as' => 'api.v1.finalAgreement.post'
             ]);
+
+            Route::get('final-agrangement',[
+                'uses'=>'Api\V1\UserManagementController@getFinalArrangements',
+                'as' => 'api.v1.getFinalArrangements.get'
+            ]);
+
             /*
              *Route for getting user details
              * */

@@ -515,12 +515,30 @@ class UserManagementController extends Controller
       }
     }
 
+    public function getFinalArrangements() {
+      try {
+        $userId = \Auth::user()->id;
+        $finalArrangement = FinalArrangements::where('user_id',$userId)->first();
+        return response()->json([
+              'status'  => true,
+              'message' => 'Final Arrangements Data',
+              'data'    => $finalArrangement
+          ], 200);
+      } catch(\Exception $e) {
+        return response()->json([
+            'status'  => false,
+            'message' => $e->getMessage(). ' line : '.$e->getLine(),
+            'data'    => []
+        ], 500);
+      }
+    }
+
     /*
      * function to create/update final-agreement table
      * @return \Illuminate\Http\JsonResponse
      * */
      public function updateFinalAgrangement(Request $request){
-
+          //dd($request->all());
           $validator = Validator::make($request->all(), [
              'user_id'    =>  'required|exists:users,id,deleted_at,NULL',
              'type'       =>  'required|numeric|between:0,1|integer',
