@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ProtectYourFinancesService } from './protect-your-finances.service';
+import { ProtectYourFinancesService } from '../services/protect-your-finances.service';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Router, ActivatedRoute, Route } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 
-import { UserAuthService } from '../../user-auth/user-auth.service';
-import { UserService } from '../../user.service';
+import { UserAuthService } from '../../../user-auth/user-auth.service';
+import { UserService } from '../../../user.service';
 import { Validators, FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
 // import { ProtectYourFinances } from './models/protectYourFinances';
-import { PYFAttorneyPowers } from './models/pyf-attorney-powers';
+import { PYFAttorneyPowers } from '../models/pyf-attorney-powers';
 
 @Component({
   selector: 'app-protect-your-finances',

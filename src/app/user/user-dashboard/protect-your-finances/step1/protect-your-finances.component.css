@@ -8,7 +8,7 @@ body{
   }
   
   header{
-    background: url('../../../../assets/images/header-bg.png');
+    background: url('../../../../../assets/images/header-bg.png');
     background-size: 100% 100%;
     min-height: 115px;
   }
@@ -59,7 +59,7 @@ body{
   }
   
   .green-btn{
-    background: url('../../../../assets/images/btn-green.png') no-repeat center center !important;
+    background: url('../../../../../assets/images/btn-green.png') no-repeat center center !important;
     background-size: 100% 100%;
     padding: 10px 0 10px 30px;
     width: 164px;
@@ -126,7 +126,7 @@ body{
     display: block;
   }
   .sidebar-body ul li:first-child.active, .sidebar-body ul li:nth-child(2).active{
-    background: url('../../../../assets/images/sidebar-head-bg.png');
+    background: url('../../../../../assets/images/sidebar-head-bg.png');
     background-size: 100% 100%;
     padding: 20px;
     position: relative;
@@ -163,7 +163,7 @@ body{
     padding: 10px 0 10px 30px;
     width: 100%;
     margin-top: 0;
-    background: url('../../../../assets/images/btn-dashboard.png') no-repeat center !important;
+    background: url('../../../../../assets/images/btn-dashboard.png') no-repeat center !important;
     background-size: 100% 100%;
     text-shadow: 1px 1px 1px #2150b0;
   }
@@ -171,7 +171,7 @@ body{
     padding: 10px 0 10px 30px;
     width: 100%;
     margin-top: 0;
-    background: url('../../../../assets/images/btn-preview.png') no-repeat center !important;
+    background: url('../../../../../assets/images/btn-preview.png') no-repeat center !important;
     background-size: 100% 100%;
     text-shadow: 1px 1px 1px #2150b0;
   }
@@ -179,7 +179,7 @@ body{
     padding: 10px 0 10px 30px;
     width: 100%;
     margin-top: 0;
-    background: url('../../../../assets/images/btn-progress.png') no-repeat center !important;
+    background: url('../../../../../assets/images/btn-progress.png') no-repeat center !important;
     background-size: 100% 100%;
     text-shadow: 1px 1px 1px #2150b0;
   }
@@ -299,7 +299,7 @@ body{
     font-size: 16px;
   }
   .btn-complete{
-    background: url(../../../../assets/images/complete-green-btn.png) no-repeat center center !important;
+    background: url('../../../../../assets/images/complete-green-btn.png') no-repeat center center !important;
     background-size: 100% 100%;
     padding: 10px 0 10px 30px;
     width: 130px;
@@ -311,7 +311,7 @@ body{
     filter: grayscale(100%);
   }
   .btn-grey{
-    background: url(../../../../assets/images/btn-grey-back.png) no-repeat center center !important;
+    background: url('../../../../../assets/images/btn-grey-back.png') no-repeat center center !important;
     background-size: 100% 100%;
     padding: 10px 0 10px 30px;
     width: 130px;
@@ -576,7 +576,7 @@ body{
     text-decoration: none;
   }
   .title-bar{
-    background: url(../../../../assets/images/header-bg.png);
+    background: url('../../../../../assets/images/header-bg.png');
     background-size: 100% 100%;
     padding: 40px 20px;
     border-top-left-radius: 10px;
