@@ -15,6 +15,10 @@ export class RealPropertyComponent implements OnInit {
   toTheirIssue: boolean;
   isSomeoneElse: boolean;
   otherRelationshipRpSomeOneElse: boolean;
+  toTheirIssueMB: boolean;
+  isSomeoneElseMB: boolean;
+  otherRelationshipRpSomeOneElseMB: boolean;
+  isSomeoneElseMBChild: boolean;
   constructor() { }
 
   ngOnInit() {
@@ -26,6 +30,10 @@ export class RealPropertyComponent implements OnInit {
     this.toTheirIssue = false;
     this.isSomeoneElse = false;
     this.otherRelationshipRpSomeOneElse = false;
+    this.toTheirIssueMB = false;
+    this.isSomeoneElseMB = false;
+    this.otherRelationshipRpSomeOneElseMB = false;
+    this.isSomeoneElseMBChild = false;
   }
   showSectionInorCh(identifier: string): void {
     if (identifier === 'IN') {
@@ -39,6 +47,8 @@ export class RealPropertyComponent implements OnInit {
       this.otherRelationshipRp = false;
       this.toTheirIssue = false;
       this.isSomeoneElse = false;
+      this.toTheirIssueMB = false;
+      this.isSomeoneElseMB = false;
     }
   }
   beneficiaryToggle(identifier: string): void {
@@ -90,6 +100,50 @@ export class RealPropertyComponent implements OnInit {
         this.isSomeoneElse = true;
       } else {
         this.isSomeoneElse = false;
+      }
+    }
+  }
+  propertyDistributionToggleMB(identifier: string): any {
+    if (this.isIndividualRP && this.multipleBeneficiaryRP) {
+      if (identifier === 'TTI') {
+        this.toTheirIssueMB = true;
+        this.isSomeoneElseMB = false;
+      } else if (identifier === 'TSE') {
+        this.toTheirIssueMB = false;
+        this.isSomeoneElseMB = true;
+      } else if (identifier === 'TTS') {
+        this.toTheirIssueMB = false;
+        this.isSomeoneElseMB = false;
+      } else {
+        this.toTheirIssueMB = false;
+        this.isSomeoneElseMB = false;
+      }
+    }
+  }
+  propertyDistibutionToggleChildMB(identifier: any): void {
+    if (this.isIndividualRP && this.multipleBeneficiaryRP) {
+      if (identifier === 'TSE') {
+        this.isSomeoneElseMBChild = true;
+      } else {
+        this.isSomeoneElseMBChild = false;
+      }
+    }
+  }
+  toggleRelationshipSomeOneElseMB(event: any): void {
+    if (this.isIndividualRP && this.multipleBeneficiaryRP) {
+      if (event.target.value === 'Other') {
+        this.otherRelationshipRpSomeOneElseMB = true;
+      } else {
+        this.otherRelationshipRpSomeOneElseMB = false;
+      }
+    }
+  }
+  toggleRelationshipSomeOneElseMBChild(event: any): void {
+    if (this.isIndividualRP && this.multipleBeneficiaryRP) {
+      if (event.target.value === 'Other') {
+        this.otherRelationshipRpSomeOneElseMB = true;
+      } else {
+        this.otherRelationshipRpSomeOneElseMB = false;
       }
     }
   }
