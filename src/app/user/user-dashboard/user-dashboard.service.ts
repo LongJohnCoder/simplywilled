@@ -4,7 +4,7 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class UserDashboardService {
     public userDetails = new Subject<any>();
-    public step1Data = new Subject<any>()
+    public step1Data = new Subject<any>();
     constructor() {
 
     }
@@ -14,4 +14,4 @@ export class UserDashboardService {
         this.step1Data.next(value[0]);
     }
 
-};
+}

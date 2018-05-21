@@ -1,0 +1,54 @@
+<div class="col-xs-12 col-md-12">
+  <div class="main-content tellusaboutyou">
+    <h2>Select your final arrangements</h2>
+    <form [formGroup] = "finalarrangementForm">
+      <div class="form-group">
+        <ul class="Instructions_ul_Radio" style="margin-bottom:0">
+          <li>
+            <label class="two_child_radio special_instrucion" [ngClass]="{'active': flags.burial}">
+              <span class="two_child_img"><img src="../../../../assets/images/Ground-Burial-2-01.png" alt="Ground-Burial"></span>
+              <span class="two_child_text">I wish to be <br> buried</span>
+              <input type="radio" name="type" value = 0 formControlName="type" #typeBury (click)="changeWish(typeBury.value)">
+            </label>
+          </li>
+          <li>
+            <label class="two_child_radio special_instrucion" [ngClass]="{'active': flags.cremation}">
+              <span class="two_child_img"><img src="../../../../assets/images/save-money.png" alt="save-money"></span>
+              <span class="two_child_text">I wish to be <br>Cremated</span>
+              <input type="radio" name="type" value = 1 formControlName="type" #typeCremate (click)="changeWish(typeCremate.value)">
+            </label>
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="flags.burial">
+        <div class="form-group">
+          <label>I would like my remains interred as follows: <span class="leavetxt">(If you are not sure, leave this box blank)</span></label>
+          <input type="text" class="form-control" formControlName="burial">
+        </div>
+        <div class="form-group">
+          <label>I have made the following final arrangements: <span class="leavetxt">(If you are not sure, leave this box blank)</span></label>
+          <input type="text" class="form-control" formControlName="burial_arrangements">
+        </div>
+      </div>
+
+      <div *ngIf="flags.cremation">
+        <div class="form-group" >
+          <label>How would you like your ashes handled? <span class="leavetxt">(If you are not sure, leave this box blank)</span></label>
+          <input type="text" class="form-control" formControlName="ashes">
+        </div>
+        <div class="form-group">
+          <label>I have made the following final arrangements: <span class="leavetxt">(If you are not sure, leave this box blank)</span></label>
+          <input type="text" class="form-control" formControlName="creamation_arrangements">
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <div class="alert alert-danger" *ngIf="errors.errorFlag">
+          {{errors.errorMessage}}
+        </div>
+        <button class="btn common-button btn-grey pull-left" (click)="goBack()" >Go Back</button>
+        <button class="btn common-button btn-complete" (click) = "submit()">Continue</button>
+      </div>
+    </form>
+  </div>
+</div>
