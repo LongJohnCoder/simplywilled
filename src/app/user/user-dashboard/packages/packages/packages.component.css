@@ -32,6 +32,14 @@
 .book_main {
     width: 290px;
 }
+span.bestValue {
+    right: 15px;
+    top: -24px;
+    position: absolute;
+}
+span.bestValue img {
+    width: 60px;
+}
 .payPal {
     text-align: center;
 }
