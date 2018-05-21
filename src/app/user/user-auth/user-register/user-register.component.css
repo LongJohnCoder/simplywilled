@@ -5,3 +5,7 @@
 a:hover{
     color: #fff;
 }
+.already_account:hover{
+    color:#373737;
+    text-decoration: underline;
+}

@@ -19,6 +19,8 @@ import {BlogCategoryComponent} from './blog/blog-category/blog-category.componen
 const routes: Routes = [
    {path: '', component: FullLayoutComponent, data: { title: 'Home' }, children: [
         { path: 'sign-in', canActivate: [ NotUserAuthGuard ], loadChildren: './user-auth/user-login/user-login.module#UserLoginModule' },
+        { path: 'forget-password', canActivate: [ NotUserAuthGuard ], loadChildren: './user-auth/forget-password/forget-password.module#ForgetPasswordModule' },
+        { path: 'reset-password', canActivate: [ NotUserAuthGuard ], loadChildren: './user-auth/reset-password/reset-password.module#ResetPasswordModule' },
         { path: 'register', canActivate: [ NotUserAuthGuard ], loadChildren: './user-auth/user-register/user-register.module#UserRegisterModule'},
         { path: '', pathMatch: 'full', component: HomeComponent },
         { path: 'about-us', pathMatch: 'full', component: AboutUsComponent },

@@ -8,3 +8,7 @@ a:hover{
     color: #fff;
     background: linear-gradient(#53ba3c, #3fa62e);
 }
+.already_account:hover{
+    color:#373737;
+    text-decoration: underline;
+}
