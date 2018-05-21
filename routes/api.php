@@ -614,8 +614,8 @@ Route::group(['prefix' => 'v1'], function() {
             /**
              *Route for add / update final-agreement
              */
-            Route::post('final-agreement',[
-                'uses'=>'Api\V1\UserManagementController@updateFinalAgreement',
+            Route::post('final-agrangement',[
+                'uses'=>'Api\V1\UserManagementController@updateFinalAgrangement',
                 'as' => 'api.v1.finalAgreement.post'
             ]);
             /*

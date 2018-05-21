@@ -1142,7 +1142,9 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'user_id'                       => 'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
-            'data.isContingentBeneficiary'  => "required|string|in:Yes,No",
+            'isContingentBeneficiary'  => "required|numeric|between:0,1|integer",
+            'distribution_type' =>  "nullable|required_if:isContingentBeneficiary,1|string|in:to_my_heirs,other",
+            'info'  =>  "nullable|required_if:distribution_type,other|string"
         ]);
         if ($validator->fails()) {
             return response()->json([
@@ -1153,14 +1155,28 @@ class UserController extends Controller
         }
 
         $userId = $request->user_id;
-        $isContingentBeneficiary = $request->data['isContingentBeneficiary'];   // 0->no, 1->yes
+        $isContingentBeneficiary = (string)$request->isContingentBeneficiary;   // 0->no, 1->yes
+        $distributionType = $request->has('distribution_type') ? $request->get('distribution_type') : null;
+        $info = $request->has('info') ? $request->get('info') : null;
 
         $checkExistData = ContingentBeneficiary::where('user_id', $userId)->first();
         if(!$checkExistData) {
           $checkExistData = new ContingentBeneficiary;
           $checkExistData->user_id = $userId;
         }
-        $checkExistData->is_contingent_beneficiary = $isContingentBeneficiary == 'Yes' ? '1' : '0';
+        $checkExistData->is_contingent_beneficiary = $isContingentBeneficiary;
+        if($isContingentBeneficiary == 0) {
+            $checkExistData->distribution_type = null;
+            $checkExistData->info = null;
+        } else {    
+            $checkExistData->distribution_type = $distributionType == null ? $checkExistData->distribution_type : $distributionType;
+            $checkExistData->info = $info == null ? $checkExistData->info : $info;
+        }
+
+        if($checkExistData->distribution_type == 'to_my_heirs') {
+            $checkExistData->info = null;
+        }
+
         if ($checkExistData->save()) {
             return response()->json([
                 'status'  => true,
@@ -1276,11 +1292,11 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->disinherit, [
             'user_id'               =>  'required|exists:users,id,deleted_at,NULL',
-            'disinherit'          =>  'required|numeric|between:0,1|integer',
-            'fullname'              =>  'required|string|max:255',
-            'relationship'          =>  'required|string|max:255',
-            'other_relationship'    =>  'required|string|max:255',
-            'gender'                =>  'required|string|in:M,F'
+            'disinherit'            =>  'required|numeric|between:0,1|integer',
+            'fullname'              =>  'nullable|required_if:disinherit,1|string|max:255',
+            'relationship'          =>  'nullable|required_if:disinherit,1|string|max:255',
+            'other_relationship'    =>  'nullable|required_if:disinherit,1|string|max:255',
+            'gender'                =>  'nullable|required_if:disinherit,1|string|in:M,F'
         ]);
 
         if ($validator->fails()) {

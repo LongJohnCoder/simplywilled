@@ -488,13 +488,13 @@ class UserManagementController extends Controller
      * function to create/update final-agreement table
      * @return \Illuminate\Http\JsonResponse
      * */
-     public function updateFinalAgreement(Request $request){
+     public function updateFinalAgrangement(Request $request){
 
           $validator = Validator::make($request->all(), [
-             'userId'       =>  'required|exists:users,id,deleted_at,NULL',
-             'type'         =>  'required|numeric|between:0,1|integer',
-             'ashes'        =>  'required|string|max:255',
-             'agreements'   =>  'required|string|max:255'
+             'user_id'    =>  'required|exists:users,id,deleted_at,NULL',
+             'type'       =>  'required|numeric|between:0,1|integer',
+             'ashes'      =>  'required|string|max:255',
+             'agreements' =>  'required|string|max:255'
           ]);
           if($validator->fails()) {
               return response()->json([
@@ -504,7 +504,7 @@ class UserManagementController extends Controller
               ], 400);
           }
 
-          $userId = (int)$request->userId;
+          $userId = (int)$request->user_id;
           $type = (string)$request->type; // 0--> buried 1--> Cremated
           $ashes = $request->ashes;
           $agreements = $request->agreements;
