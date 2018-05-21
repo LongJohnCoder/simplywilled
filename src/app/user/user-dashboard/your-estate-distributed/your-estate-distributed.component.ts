@@ -194,8 +194,6 @@ export class YourEstateDistributedComponent implements OnInit {
         modelData.step = 10;
         modelData.user_id = this.authService.getUser()['id'];
         const disrtibuteData = [];
-        // console.log(modelData.toMultipleBeneficiary[0].beneficiaryNo.length);
-        // console.log(modelData.toMultipleBeneficiary[0].beneficiaryYes.length);
         if(modelData.singleBeneficiary === 'Yes') {
             modelData.disrtibuteData = modelData.toASingleBeneficiary;
         }
@@ -205,12 +203,9 @@ export class YourEstateDistributedComponent implements OnInit {
         if(modelData.someOtherWay === 'Yes') {
             modelData.disrtibuteData = modelData.toSomeOtherWay;
         }
-        // console.log(modelData);
         this.userService.editProfile(modelData).subscribe(
             (response: any) => {
-                alert('Done');
-                this.router.navigate(['/dashboard/your-estate-distributed']);
-                // this.router.navigate(['/dashboard']);
+                this.router.navigate(['/dashboard/contingent-beneficiaries']);
             },
             (error: any) => {
                 for (let prop in error.error.message) {

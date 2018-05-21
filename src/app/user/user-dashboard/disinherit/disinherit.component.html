@@ -1,0 +1,82 @@
+<div class="col-md-9 col-sm-7">
+  <div class="main-content tellusaboutyou">
+    <h2>Would you like to disinherit anyone?</h2>
+    <form [formGroup]="disinheritForm" novalidate
+          (ngSubmit)="onSubmit(disinheritForm)">
+      <div class="form-group">
+        <ul class="radio_ul6">
+          <li>
+            <label class="radio_custom" [ngClass]="{'active': disinheritForm.value.disinherit == '1'}">
+              <input type="radio" formControlName="disinherit" value="1" (change)="addRemoveOprions()">
+              <span class="human_status">Yes</span>
+            </label>
+          </li>
+          <li>
+            <label class="radio_custom" [ngClass]="{'active': disinheritForm.value.disinherit == '0'}">
+              <input type="radio" formControlName="disinherit" value="0" (change)="addRemoveOprions()">
+              <span class="human_status">No</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+      <div  *ngIf="disinheritForm.value.disinherit == '1'">
+      <div class="form-group">
+        <label>What is the full legal name of the person you would like to disinherit? </label>
+        <input type="text" formControlName="fullname" class="form-control">
+          <span *ngIf="!disinheritForm.get('disinherit').valid && disinheritForm.get('disinherit').touched" class="help-block">
+              <span *ngIf="disinheritForm.get('disinherit').errors['required']" style="color: red">This field is required!</span>
+          </span>
+      </div>
+      <div class="form-group">
+        <label>What is their relationship to you? </label>
+        <select formControlName="relationship"  class="form-control" (change)="addRemoveOprions()">
+          <option value="">Select Relationship</option>
+          <option value="Wife">Wife</option>
+          <option value="Husband">Husband</option>
+          <option value="Mother">Mother</option>
+          <option value="Father">Father</option>
+          <option value="Son">Son</option>
+          <option value="Daughter">Daughter</option>
+          <option value="Sister">Sister</option>
+          <option value="Brother">Brother</option>
+          <option value="Aunt">Aunt</option>
+          <option value="Uncle">Uncle</option>
+          <option value="Cousin">Cousin</option>
+          <option value="Friend">Friend</option>
+          <option value="Other">Other</option>
+        </select>
+          <span *ngIf="!disinheritForm.get('relationship').valid && disinheritForm.get('relationship').touched" class="help-block">
+              <span *ngIf="disinheritForm.get('relationship').errors['required']" style="color: red">This field is required!</span>
+          </span>
+      </div>
+          <div class="form-group" *ngIf="disinheritForm.value.relationship == 'Other'">
+              <input type="text" formControlName="other_relationship" class="form-control" placeholder="Type here relationship">
+              <span *ngIf="!disinheritForm.get('other_relationship').valid && disinheritForm.get('other_relationship').touched" class="help-block">
+              <span *ngIf="disinheritForm.get('other_relationship').errors['required']" style="color: red">This field is required!</span>
+          </span>
+          </div>
+      <div class="form-group">
+        <label>What is their gender?</label>
+        <ul class="radio_ul6">
+          <li>
+            <label class="radio_custom" [ngClass]="{'active': disinheritForm.value.gender == 'M'}">
+              <input type="radio" formControlName="gender" value="M">
+              <span class="human_status">Male</span>
+            </label>
+          </li>
+          <li>
+            <label class="radio_custom" [ngClass]="{'active': disinheritForm.value.gender == 'F'}">
+              <input type="radio" formControlName="gender" value="F">
+              <span class="human_status">Female</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+      </div>
+      <div class="form-footer">
+        <button class="btn common-button btn-grey pull-left"  routerLink="/dashboard/contingent-beneficiaries">Go Back</button>
+        <button class="btn common-button btn-complete" type="submit" [disabled]="!disinheritForm.valid">Continue</button>
+      </div>
+    </form>
+  </div>
+</div>

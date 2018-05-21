@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {MainDashboardComponent} from './dashboard/main-dashboard/main-dashboard.component';
+
 const routes: Routes = [
       { path: '', component: DashboardComponent, children: [
       { path: '', component: MainDashboardComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'your-estate-distributed', loadChildren: './your-estate-distributed/your-estate-distributed.module#YourEstateDistributedModule'},
       { path: 'plan-for-medical-emergency', loadChildren: './plan-for-medical-emergency/plan-for-medical-emergency.module#PlanForMedicalEmergencyModule'},
       { path: 'contingent-beneficiaries', loadChildren: './contingent-beneficiaries/contingent-beneficiaries.module#ContingentBeneficiariesModule'},
+      { path: 'disinherit', loadChildren: './disinherit/disinherit.module#DisinheritModule'},
     ]},
 ]
 

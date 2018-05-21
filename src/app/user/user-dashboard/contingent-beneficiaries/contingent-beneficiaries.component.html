@@ -7,13 +7,13 @@
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [ngClass]="{'active' : contingentBeneficiariesForm.value.isContingentBeneficiary == '1'}">
-              <input type="radio" formControlName="isContingentBeneficiary" value="1" (click)="addRemoveOptions()">
+              <input type="radio" formControlName="isContingentBeneficiary" value="1" (change)="addRemoveOptions()">
               <span class="human_status">Yes</span>
             </label>
           </li>
           <li>
             <label class="radio_custom" [ngClass]="{'active' : contingentBeneficiariesForm.value.isContingentBeneficiary == '0'}">
-             <input type="radio" formControlName="isContingentBeneficiary" value="0" (click)="addRemoveOptions()">
+             <input type="radio" formControlName="isContingentBeneficiary" value="0" (change)="addRemoveOptions()">
              <span class="human_status">No</span>
             </label>
           </li>
@@ -24,14 +24,16 @@
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [ngClass]="{'active' : contingentBeneficiariesForm.value.distribution_type == 'to_my_heirs'}">
-              <input type="radio" formControlName="distribution_type" value="to_my_heirs" (click)="addRemoveOptions()">
-              <span class="human_status">Distribute The Rest To My Heirs At Law </span>
+              <input type="radio" formControlName="distribution_type" value="to_my_heirs" (change)="addRemoveOptions()">
+                <span class="custom_img5"><img src="../../../../assets/images/law.png" alt="Law"></span>
+              <span class="human_status3">Distribute The Rest To <br> My Heirs At Law</span>
             </label>
           </li>
           <li>
             <label class="radio_custom" [ngClass]="{'active' : contingentBeneficiariesForm.value.distribution_type == 'other'}">
-              <input type="radio" formControlName="distribution_type" value="other" (click)="addRemoveOptions()">
-              <span class="human_status">Some Other Way</span>
+              <input type="radio" formControlName="distribution_type" value="other" (change)="addRemoveOptions()">
+                <span class="custom_img5"><img src="../../../../assets/images/otherway-icon.png" alt="Otherway"></span>
+                <span class="human_status3">Some Other <br> Way</span>
             </label>
           </li>
         </ul>
@@ -39,6 +41,10 @@
         <div class="form-group" *ngIf="contingentBeneficiariesForm.value.distribution_type == 'other'">
             <label> Otherwise, to be distributed to: </label>
             <textarea formControlName="info" cols="59" rows="6"></textarea>
+            <span *ngIf="!contingentBeneficiariesForm.get('info').valid && contingentBeneficiariesForm.get('info').touched" class="help-block">
+                    <span *ngIf="contingentBeneficiariesForm.get('info').errors['required']" style="color: red">This field Required !</span>
+                    <span *ngIf="contingentBeneficiariesForm.get('info').errors['pattern']" style="color: red">Invalid!</span>
+                  </span>
         </div>
 
       <div class="form-footer">
