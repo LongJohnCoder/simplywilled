@@ -542,8 +542,8 @@ class UserManagementController extends Controller
           $validator = Validator::make($request->all(), [
              'user_id'    =>  'required|exists:users,id,deleted_at,NULL',
              'type'       =>  'required|numeric|between:0,1|integer',
-             'ashes'      =>  'required|string|max:255',
-             'agreements' =>  'required|string|max:255'
+             'ashes'      =>  'nullable|string|max:255',
+             'agreements' =>  'nullable|string|max:255'
           ]);
           if($validator->fails()) {
               return response()->json([

@@ -614,12 +614,12 @@ Route::group(['prefix' => 'v1'], function() {
             /**
              *Route for add / update final-agreement
              */
-            Route::post('final-agrangement',[
+            Route::post('final-arrangement',[
                 'uses'=>'Api\V1\UserManagementController@updateFinalAgrangement',
                 'as' => 'api.v1.finalAgreement.post'
             ]);
 
-            Route::get('final-agrangement',[
+            Route::get('final-arrangement',[
                 'uses'=>'Api\V1\UserManagementController@getFinalArrangements',
                 'as' => 'api.v1.getFinalArrangements.get'
             ]);
@@ -631,8 +631,6 @@ Route::group(['prefix' => 'v1'], function() {
                 'uses'=>'Api\V1\UserManagementController@getUserDetails',
                 'as' => 'api.v1.getUserDetails.get'
             ]);
-
-
         });
     });
 });
