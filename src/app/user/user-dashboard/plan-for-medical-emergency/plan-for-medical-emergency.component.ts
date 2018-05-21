@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MedicalEmergencyService} from './medical-emergency.service';
 import {MedicalEmergency} from './medicalEmergency';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-plan-for-medical-emergency',
@@ -19,6 +20,8 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
   toggleWillBackupInform: boolean;
   constructor(
       private medicalEmergencyService: MedicalEmergencyService,
+      private router: Router,
+
   ) { }
 
   ngOnInit() {
@@ -97,7 +100,7 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
               this.medicalAgent.state = response.data.healthFinance.state;
               this.medicalAgent.zip = response.data.healthFinance.zip;
               this.medicalAgent.phone = response.data.healthFinance.phone;
-              this.medicalAgent.country = response.data.healthFinance.country;
+              this.medicalAgent.country = response.data.healthFinance.country === null ? 'United States' : response.data.healthFinance.country;
               this.medicalAgent.willInform = response.data.healthFinance.willInform;
               this.medicalAgent.emailOfAgent = response.data.healthFinance.emailOfAgent;
               this.medicalAgent.anyBackupAgent = response.data.healthFinance.anyBackupAgent;
@@ -106,7 +109,7 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
               this.medicalAgent.backupCity = response.data.healthFinance.backupCity;
               this.medicalAgent.backupState = response.data.healthFinance.backupState;
               this.medicalAgent.backupZip = response.data.healthFinance.backupZip;
-              this.medicalAgent.backupCountry = response.data.healthFinance.backupCountry;
+              this.medicalAgent.backupCountry = response.data.healthFinance.backupCountry === null ? 'United States' : response.data.healthFinance.backupCountry;
               this.medicalAgent.willInformBackup = response.data.healthFinance.willInformBackup;
               this.medicalAgent.emailOfBackupAgent = response.data.healthFinance.emailOfBackupAgent;
               this.medicalAgent.backupphone = response.data.healthFinance.backupphone;
@@ -147,7 +150,7 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
 
     changewillinform(status: boolean) {
       this.toggleWillInform = status;
-      console.log(this.toggleWillInform);
+      // console.log(this.toggleWillInform);
     }
 
     changeBackupAgentToggle(status: boolean) {
@@ -156,5 +159,43 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
 
     changewillBackupinform(status: boolean) {
       this.toggleWillBackupInform = status;
+    }
+
+    formSubmit() {
+        // console.log(this.medicalAgent);
+        // console.log(this.medicalAgent.emailOfAgent);
+        const formBody = new FormData();
+        formBody.append('userId', this.medicalAgent.userId);
+        formBody.append('firstLegalName', this.medicalAgent.firstLegalName);
+        formBody.append('lastLegalName', this.medicalAgent.lastLegalName);
+        formBody.append('backupfirstLegalName', this.medicalAgent.backupfirstLegalName);
+        formBody.append('backuplastLegalName', this.medicalAgent.backuplastLegalName);
+        formBody.append('relation', this.medicalAgent.relation);
+        formBody.append('address', this.medicalAgent.address);
+        formBody.append('city', this.medicalAgent.city);
+        formBody.append('state', this.medicalAgent.state);
+        formBody.append('zip', this.medicalAgent.zip);
+        formBody.append('phone', this.medicalAgent.phone);
+        formBody.append('country', this.medicalAgent.country);
+        formBody.append('willInform', this.toggleWillInform === true ? 'true' : 'false');
+        formBody.append('emailOfAgent', this.medicalAgent.emailOfAgent);
+        formBody.append('anyBackupAgent', this.toggleBackupAgent === true ? 'true' : 'false');
+        formBody.append('backupRelation', this.medicalAgent.backupRelation);
+        formBody.append('backupAddress', this.medicalAgent.backupAddress);
+        formBody.append('backupCity', this.medicalAgent.backupCity);
+        formBody.append('backupState', this.medicalAgent.backupState);
+        formBody.append('backupZip', this.medicalAgent.backupZip === '' ? null : this.medicalAgent.backupZip);
+        formBody.append('backupCountry', this.medicalAgent.backupCountry);
+        formBody.append('willInformBackup', this.toggleWillBackupInform === true ? 'true' : 'false');
+        formBody.append('emailOfBackupAgent', this.medicalAgent.emailOfBackupAgent);
+        formBody.append('backupphone', this.medicalAgent.backupphone);
+        this.medicalEmergencyService.updatemedicalEmergency(this.token, formBody).subscribe(
+            (response: any) => {
+                this.router.navigate(['/dashboard']);
+            }, (error: any) => {
+                console.log(error.error);
+            }
+        );
+
     }
 }

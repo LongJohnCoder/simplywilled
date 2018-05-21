@@ -46,6 +46,19 @@
         <button class="btn common-button btn-complete">Complete</button>
       </a>
     </li>
+    <li>
+      <a routerLink="/dashboard/plan-for-medical-emergency">
+        <div class="tell_us_about_left">
+          <span class="woman_img"><img src="../../../../assets/images/emergency-green.png" alt="Plan for a Medical Emergency"></span>
+          <div class="single_right">
+            <span class="tell_us_text">Plan for a Medical Emergency</span>
+            <span class="inherit_properties">Name a Healthcare Power of Attorney and make end of life choices.</span>
+          </div>
+        </div>
+        <button class="btn common-button btn-complete">{{step2 === true ? 'Complete' : 'In progress'}}</button>
+      </a>
+    </li>
+    <li>
 
     <!-- <li>
       <a routerLink="/dashboard/your-personal-representative-powers">

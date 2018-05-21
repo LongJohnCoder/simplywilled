@@ -34,23 +34,95 @@
             </div>
             <div class="form-group">
                 <label for="state">What is state?</label>
-                <input id="state" class="form-control" type="text" [(ngModel)]="medicalAgent.state" name="state" ngModel #state="ngModel" required>
+                <select id="state" class="form-control"
+                        [(ngModel)]="medicalAgent.state"
+                        name="state" ngModel
+                        #state="ngModel" required>
+                    <option value="">State</option>
+                    <option value="Alabama">Alabama</option>
+                    <option value="Alaska">Alaska</option>
+                    <option value="Arizona">Arizona</option>
+                    <option value="Arkansas">Arkansas</option>
+                    <option value="California">California</option>
+                    <option value="Colorado">Colorado</option>
+                    <option value="Connecticut">Connecticut</option>
+                    <option value="Delaware">Delaware</option>
+                    <option value="District Of Columbia">District of Columbia</option>
+                    <option value="Florida">Florida</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Hawaii">Hawaii</option>
+                    <option value="Idaho">Idaho</option>
+                    <option value="Illinois">Illinois</option>
+                    <option value="Indiana">Indiana</option>
+                    <option value="Iowa">Iowa</option>
+                    <option value="Kansas">Kansas</option>
+                    <option value="Kentucky">Kentucky</option>
+                    <option value="Louisiana">Louisiana</option>
+                    <option value="Maine">Maine</option>
+                    <option value="Maryland">Maryland</option>
+                    <option value="Massachusetts">Massachusetts</option>
+                    <option value="Michigan">Michigan</option>
+                    <option value="Minnesota">Minnesota</option>
+                    <option value="Mississippi">Mississippi</option>
+                    <option value="Missouri">Missouri</option>
+                    <option value="Montana">Montana</option>
+                    <option value="Nebraska">Nebraska</option>
+                    <option value="Nevada">Nevada</option>
+                    <option value="New Hampshire">New Hampshire</option>
+                    <option value="New Jersey">New Jersey</option>
+                    <option value="New Mexico">New Mexico</option>
+                    <option value="New York">New York</option>
+                    <option value="North Carolina">North Carolina</option>
+                    <option value="North Dakota">North Dakota</option>
+                    <option value="Ohio">Ohio</option>
+                    <option value="Oklahoma">Oklahoma</option>
+                    <option value="Oregon">Oregon</option>
+                    <option value="Pennsylvania">Pennsylvania</option>
+                    <option value="Rhode Island">Rhode Island</option>
+                    <option value="South Carolina">South Carolina</option>
+                    <option value="South Dakota">South Dakota</option>
+                    <option value="Tennessee">Tennessee</option>
+                    <option value="Texas">Texas</option>
+                    <option value="Utah">Utah</option>
+                    <option value="Vermont">Vermont</option>
+                    <option value="Virginia">Virginia</option>
+                    <option value="Washington">Washington</option>
+                    <option value="West Virginia">West Virginia</option>
+                    <option value="Wisconsin">Wisconsin</option>
+                    <option value="Wyoming">Wyoming</option>
+                </select>
+                <!--<input id="state" class="form-control" type="text" [(ngModel)]="medicalAgent.state" name="state" ngModel #state="ngModel" required>-->
                 <span *ngIf="state.invalid && state.touched" style="color:red;"> State is required ! </span>
             </div>
             <div class="form-group">
                 <label for="zip">What is Zip?</label>
-                <input id="zip" class="form-control" type="text" [(ngModel)]="medicalAgent.zip" name="zip" ngModel #zip="ngModel" required>
-                <span *ngIf="zip.invalid && zip.touched" style="color:red;"> Zip is required ! </span>
+                <input id="zip" class="form-control" type="text"
+                       [(ngModel)]="medicalAgent.zip" name="zip"
+                       ngModel #zip="ngModel" pattern="^\d{5}$" required>
+
+                <span class="alert-danger"
+                      *ngIf="zip.errors && (zip.dirty || zip.touched)">
+                        <p *ngIf="zip.errors?.required">Required</p>
+                        <p *ngIf="zip.errors?.pattern">Invalid!</p>
+          </span>
             </div>
             <div class="form-group">
                 <label for="country">What is Country?</label>
                 <input id="country" class="form-control" type="text" [(ngModel)]="medicalAgent.country" name="country" ngModel #country="ngModel" disabled required>
                 <span *ngIf="country.invalid && country.touched" style="color:red;"> Country is required ! </span>
             </div>
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{'valid': phone.valid}">
                 <label for="phone">What is Phone Number?</label>
-                <input id="phone" class="form-control" type="text" [(ngModel)]="medicalAgent.phone" name="phone" ngModel #phone="ngModel" required>
-                <span *ngIf="phone.invalid && phone.touched" style="color:red;"> Phone is required ! </span>
+                <input id="phone" class="form-control" type="text"
+                       [(ngModel)]="medicalAgent.phone" name="phone" ngModel
+                       mask="(000)-000-0000" minlength="10" placeholder="(xxx)-xxx-xxxx"
+                       #phone="ngModel" required>
+                <i class="fa fa-check" *ngIf="phone.valid"></i>
+                <span class="alert-danger"
+                              *ngIf="phone.errors && (phone.dirty || phone.touched)">
+                    <p *ngIf="phone.errors?.required">Phone is required</p>
+                    <p *ngIf="phone.errors?.minlength">Incorrect Number</p>
+                </span>
             </div>
             <div class="form-group">
                 <label>Would you like to inform this person that you appointed them as your Healthcare Agent? </label>
@@ -59,10 +131,10 @@
                         <label class="">
                             <input type="radio"
                                    name="willInform"
-                                   [ngModel]="medicalAgent.willInform"
+                                   [(ngModel)]="medicalAgent.willInform"
                                    required
                                    value="true"
-                                   #willInform="ngModel"
+                                   #willInform="ngModel" ngModel
                             (click)="changewillinform(true)">
                             <!--<span class="custom_img2"><img src="../../../../../assets/images/single.png" alt="Single"></span>-->
                             <span class="human_status2">Yes</span>
@@ -72,23 +144,21 @@
                         <label class="">
                             <input type="radio"
                                    name="willInform"
-                                   [ngModel]="medicalAgent.willInform"
+                                   [(ngModel)]="medicalAgent.willInform"
                                    required
                                    value="false"
-                                   #willInform="ngModel"
+                                   #willInform="ngModel" ngModel
                                    (click)="changewillinform(false)">
                             <!--<span class="custom_img2"><img src="../../../../../assets/images/single.png" alt="Single"></span>-->
                             <span class="human_status2">No</span>
                         </label>
                     </li>
                 </ul>
-
-                <div [hidden]="!toggleWillInform">
+                <div *ngIf="toggleWillInform">
                     <input type="email" name="emailOfAgent"
-                           [ngModel]="medicalAgent.emailOfAgent"
-                           #emailOfAgent="ngModel"
-                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-                           required="{{toggleWillInform===true? 'required': '' }}">
+                           [(ngModel)]="medicalAgent.emailOfAgent"
+                           #emailOfAgent="ngModel" ngModel
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
                     <span *ngIf="emailOfAgent.errors?.required" style="color:red;">Email is required</span>
                     <span *ngIf="emailOfAgent.errors?.pattern" style="color:red;">This is not a email format</span>
                 </div>
@@ -158,13 +228,74 @@
                     </div>
                     <div class="form-group">
                         <label for="backupState">What is state?</label>
-                        <input id="backupState" class="form-control" type="text" [(ngModel)]="medicalAgent.backupState" name="backupState" ngModel #backupState="ngModel" required>
+                        <select id="backupState" class="form-control"
+                                [(ngModel)]="medicalAgent.backupState"
+                                name="backupState" ngModel
+                                #backupState="ngModel" required>
+                            <option value="">State</option>
+                            <option value="Alabama">Alabama</option>
+                            <option value="Alaska">Alaska</option>
+                            <option value="Arizona">Arizona</option>
+                            <option value="Arkansas">Arkansas</option>
+                            <option value="California">California</option>
+                            <option value="Colorado">Colorado</option>
+                            <option value="Connecticut">Connecticut</option>
+                            <option value="Delaware">Delaware</option>
+                            <option value="District Of Columbia">District of Columbia</option>
+                            <option value="Florida">Florida</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Hawaii">Hawaii</option>
+                            <option value="Idaho">Idaho</option>
+                            <option value="Illinois">Illinois</option>
+                            <option value="Indiana">Indiana</option>
+                            <option value="Iowa">Iowa</option>
+                            <option value="Kansas">Kansas</option>
+                            <option value="Kentucky">Kentucky</option>
+                            <option value="Louisiana">Louisiana</option>
+                            <option value="Maine">Maine</option>
+                            <option value="Maryland">Maryland</option>
+                            <option value="Massachusetts">Massachusetts</option>
+                            <option value="Michigan">Michigan</option>
+                            <option value="Minnesota">Minnesota</option>
+                            <option value="Mississippi">Mississippi</option>
+                            <option value="Missouri">Missouri</option>
+                            <option value="Montana">Montana</option>
+                            <option value="Nebraska">Nebraska</option>
+                            <option value="Nevada">Nevada</option>
+                            <option value="New Hampshire">New Hampshire</option>
+                            <option value="New Jersey">New Jersey</option>
+                            <option value="New Mexico">New Mexico</option>
+                            <option value="New York">New York</option>
+                            <option value="North Carolina">North Carolina</option>
+                            <option value="North Dakota">North Dakota</option>
+                            <option value="Ohio">Ohio</option>
+                            <option value="Oklahoma">Oklahoma</option>
+                            <option value="Oregon">Oregon</option>
+                            <option value="Pennsylvania">Pennsylvania</option>
+                            <option value="Rhode Island">Rhode Island</option>
+                            <option value="South Carolina">South Carolina</option>
+                            <option value="South Dakota">South Dakota</option>
+                            <option value="Tennessee">Tennessee</option>
+                            <option value="Texas">Texas</option>
+                            <option value="Utah">Utah</option>
+                            <option value="Vermont">Vermont</option>
+                            <option value="Virginia">Virginia</option>
+                            <option value="Washington">Washington</option>
+                            <option value="West Virginia">West Virginia</option>
+                            <option value="Wisconsin">Wisconsin</option>
+                            <option value="Wyoming">Wyoming</option>
+                        </select>
+                        <!--<input id="backupState" class="form-control" type="text" [(ngModel)]="medicalAgent.backupState" name="backupState" ngModel #backupState="ngModel" required>-->
                         <span *ngIf="backupState.invalid && backupState.touched" style="color:red;"> State is required ! </span>
                     </div>
                     <div class="form-group">
                         <label for="backupZip">What is Zip?</label>
-                        <input id="backupZip" class="form-control" type="text" [(ngModel)]="medicalAgent.backupZip" name="backupZip" ngModel #backupZip="ngModel" required>
-                        <span *ngIf="backupZip.invalid && backupZip.touched" style="color:red;"> Zip is required ! </span>
+                        <input id="backupZip" class="form-control" type="text" pattern="^\d{5}$" [(ngModel)]="medicalAgent.backupZip" name="backupZip" ngModel #backupZip="ngModel" required>
+                        <span class="alert-danger"
+                              *ngIf="backupZip.errors && (backupZip.dirty || backupZip.touched)">
+                            <p *ngIf="backupZip.errors?.required">Required</p>
+                            <p *ngIf="backupZip.errors?.pattern">Invalid!</p>
+                        </span>
                     </div>
                     <div class="form-group">
                         <label for="backupCountry">What is Country?</label>
@@ -173,8 +304,15 @@
                     </div>
                     <div class="form-group">
                         <label for="backupphone">What is Phone Number?</label>
-                        <input id="backupphone" class="form-control" type="text" [(ngModel)]="medicalAgent.backupphone" name="backupphone" ngModel #backupphone="ngModel" required>
-                        <span *ngIf="backupphone.invalid && backupphone.touched" style="color:red;"> Phone is required ! </span>
+                        <input id="backupphone" class="form-control" type="text"
+                               [(ngModel)]="medicalAgent.backupphone" name="backupphone"
+                               mask="(000)-000-0000" minlength="10" placeholder="(xxx)-xxx-xxxx"
+                               ngModel #backupphone="ngModel" required>
+                        <span class="alert-danger"
+                              *ngIf="backupphone.errors && (backupphone.dirty || backupphone.touched)">
+                            <p *ngIf="backupphone.errors?.required">Phone is required</p>
+                            <p *ngIf="backupphone.errors?.minlength">Incorrect Number</p>
+                        </span>
                     </div>
                     <div class="form-group">
                         <label>Would you like to inform this person that you appointed them as your Healthcare Agent? </label>
@@ -183,8 +321,8 @@
                                 <label class="">
                                     <input type="radio"
                                            name="willInformBackup"
-                                           [ngModel]="medicalAgent.willInformBackup"
-                                           required
+                                           [(ngModel)]="medicalAgent.willInformBackup"
+                                           required ngModel
                                            value="true"
                                            #willInformBackup="ngModel"
                                            (click)="changewillBackupinform(true)">
@@ -196,8 +334,8 @@
                                 <label class="">
                                     <input type="radio"
                                            name="willInformBackup"
-                                           [ngModel]="medicalAgent.willInformBackup"
-                                           required
+                                           [(ngModel)]="medicalAgent.willInformBackup"
+                                           required ngModel
                                            value="false"
                                            #willInformBackup="ngModel"
                                            (click)="changewillBackupinform(false)">
@@ -207,10 +345,10 @@
                             </li>
                         </ul>
 
-                        <div [hidden]="!toggleWillBackupInform">
+                        <div *ngIf="toggleWillBackupInform">
                             <input type="email" name="emailOfBackupAgent"
-                                   [ngModel]="medicalAgent.emailOfBackupAgent"
-                                   #emailOfBackupAgent="ngModel"
+                                   [(ngModel)]="medicalAgent.emailOfBackupAgent"
+                                   #emailOfBackupAgent="ngModel" ngModel
                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
                                    required="{{toggleWillBackupInform===true? 'required': '' }}">
                             <span *ngIf="emailOfBackupAgent.errors?.required" style="color:red;">Email is required</span>
@@ -221,7 +359,9 @@
 
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary" [disabled]="!medicalEmergencyForm.form.valid">Submit</button>
+                <button type="submit" class="btn btn-primary"
+                        (click)="formSubmit()"
+                        [disabled]="!medicalEmergencyForm.form.valid">Submit</button>
             </div>
         </form>
     </div>

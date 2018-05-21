@@ -21,4 +21,15 @@ export class MedicalEmergencyService {
               {'Authorization': token})});
   }
 
+    /**
+     * this function update medical emergency agents to database
+     * @param {string} token
+     * @param {user_id} form data of medical emergency agent form
+     * @returns {Observable<Object>}
+     */
+  updatemedicalEmergency(token: string, data: any) {
+      return this.http.post(environment.API_URL + 'user/health-finance', data, {headers: new HttpHeaders(
+              {'Authorization': token})});
+  }
+
 }
