@@ -6,13 +6,11 @@
                 <label for="firstLegalName">First Legal Name:</label>
                 <input id="firstLegalName" class="form-control" type="text" [(ngModel)]="medicalAgent.firstLegalName" name="firstLegalName" ngModel #firstLegalName="ngModel" required>
                 <i class="fa fa-check" *ngIf="firstLegalName.valid"></i>
-                <i class="fa fa-times" *ngIf="firstLegalName.invalid"></i>
             </div>
             <div class="form-group" [ngClass]="{'valid': lastLegalName.valid}">
                 <label for="lastLegalName">Last Legal Name:</label>
                 <input id="lastLegalName" class="form-control" type="text" [(ngModel)]="medicalAgent.lastLegalName" name="lastLegalName" ngModel #lastLegalName="ngModel" required>
                 <i class="fa fa-check" *ngIf="lastLegalName.valid"></i>
-                <i class="fa fa-times" *ngIf="lastLegalName.invalid"></i>
             </div>
 
             <div class="form-group" [ngClass]="{'valid': relation.valid}">
@@ -22,7 +20,6 @@
                     <option *ngFor="let relation of relations" value="{{relation}}">{{relation}}</option>
                 </select>
                 <i class="fa fa-check" *ngIf="relation.valid"></i>
-                <i class="fa fa-times" *ngIf="relation.invalid"></i>
             </div>
 
             <div class="form-group">
@@ -30,14 +27,12 @@
                     <label>Their Address: </label>
                     <input id="address" class="form-control" type="text" [(ngModel)]="medicalAgent.address" name="address" ngModel #address="ngModel" required>
                     <i class="fa fa-check" *ngIf="address.valid"></i>
-                    <i class="fa fa-times" *ngIf="address.invalid"></i>
                 </div>
                 
                 <div class="row">
                     <div class="col-md-6 smallField" [ngClass]="{'valid': city.valid}">
                         <input id="city" class="form-control" type="text" [(ngModel)]="medicalAgent.city" name="city" ngModel #city="ngModel" required>
                         <i class="fa fa-check" *ngIf="city.valid"></i>
-                        <i class="fa fa-times" *ngIf="city.invalid"></i>
                     </div>
                     <div class="col-md-6 smallField" [ngClass]="{'valid': state.valid}">
                         <select id="state" class="form-control"
@@ -98,7 +93,6 @@
                             <option value="Wyoming">Wyoming</option>
                         </select>
                         <i class="fa fa-check" *ngIf="state.valid"></i>
-                        <i class="fa fa-times" *ngIf="state.invalid"></i>
                     </div>
                 </div>
                 <div class="row">
@@ -107,14 +101,10 @@
                                [(ngModel)]="medicalAgent.zip" name="zip"
                                ngModel #zip="ngModel" pattern="^\d{5}$" required>
                         <i class="fa fa-check" *ngIf="zip.valid"></i>
-                        <i class="fa fa-times" *ngIf="zip.errors?.required"></i>
-                        <i class="fa fa-times" *ngIf="zip.errors?.pattern"></i>
                     </div>
                     <div class="col-md-6 smallField" [ngClass]="{'valid': country.valid}">
                         <input id="country" class="form-control" type="text" [(ngModel)]="medicalAgent.country" name="country" ngModel #country="ngModel" disabled required>
                         <i class="fa fa-times" *ngIf="country.invalid && country.touched"></i>
-                        <i class="fa fa-check" *ngIf="country.valid"></i>
-
                     </div>
                 </div>
             </div>
@@ -126,8 +116,6 @@
                        mask="(000)-000-0000" pattern="^\d{10}$" placeholder="(xxx)-xxx-xxxx"
                        #phone="ngModel" required>
                 <i class="fa fa-check" *ngIf="phone.valid"></i>
-                <i class="fa fa-times" *ngIf="phone.errors?.required"></i>
-                <i class="fa fa-times" *ngIf="phone.errors?.pattern"></i>
             </div>
 
 
@@ -152,8 +140,6 @@
                                    #emailOfAgent="ngModel" ngModel
                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
                             <i class="fa fa-check" *ngIf="emailOfAgent.valid"></i>
-                            <i class="fa fa-times" *ngIf="emailOfAgent.errors?.required"></i>
-                            <i class="fa fa-times" *ngIf="emailOfAgent.errors?.pattern"></i>
                         </div>
                     </li>
                     <li>
@@ -212,13 +198,11 @@
                     <label for="backupfirstLegalName">First Legal Name:</label>
                     <input id="backupfirstLegalName" class="form-control" type="text" [(ngModel)]="medicalAgent.backupfirstLegalName" name="backupfirstLegalName" ngModel #backupfirstLegalName="ngModel" required>
                     <i class="fa fa-check" *ngIf="backupfirstLegalName.valid"></i>
-                    <i class="fa fa-times" *ngIf="backupfirstLegalName.invalid"></i>
                 </div>
                 <div class="form-group" [ngClass]="{'valid': backuplastLegalName.valid}">
                     <label for="backuplastLegalName">Last Legal Name:</label>
                     <input id="backuplastLegalName" class="form-control" type="text" [(ngModel)]="medicalAgent.backuplastLegalName" name="backuplastLegalName" ngModel #backuplastLegalName="ngModel" required>
                     <i class="fa fa-check" *ngIf="backuplastLegalName.valid"></i>
-                    <i class="fa fa-times" *ngIf="backuplastLegalName.invalid"></i>
                 </div>
 
                 <div class="form-group" [ngClass]="{'valid': backupRelation.valid}">
@@ -228,7 +212,6 @@
                         <option *ngFor="let relation of relations" value="{{relation}}">{{relation}}</option>
                     </select>
                     <i class="fa fa-check" *ngIf="backupRelation.valid"></i>
-                    <i class="fa fa-times" *ngIf="backupRelation.invalid"></i>
                 </div>
 
                 <div class="form-group">
@@ -238,7 +221,6 @@
                             [(ngModel)]="medicalAgent.backupAddress" name="backupAddress"
                             ngModel #backupAddress="ngModel" required>
                         <i class="fa fa-check" *ngIf="backupAddress.valid"></i>
-                        <i class="fa fa-times" *ngIf="backupAddress.invalid"></i>
                     </div>
                     
                     <div class="row">
@@ -247,7 +229,6 @@
                                    [(ngModel)]="medicalAgent.backupCity" name="backupCity"
                                    ngModel #backupCity="ngModel" required>
                             <i class="fa fa-check" *ngIf="backupCity.valid"></i>
-                            <i class="fa fa-times" *ngIf="backupCity.invalid"></i>
                         </div>
                         <div class="col-md-6 smallField" [ngClass]="{'valid': backupState.valid}">
                             <select id="backupState" class="form-control"
@@ -308,7 +289,6 @@
                                 <option value="Wyoming">Wyoming</option>
                             </select>
                             <i class="fa fa-check" *ngIf="backupState.valid"></i>
-                            <i class="fa fa-times" *ngIf="backupState.invalid"></i>
                         </div>
                     </div>
                     <div class="row">
@@ -317,8 +297,6 @@
                                    [(ngModel)]="medicalAgent.backupZip" name="backupZip"
                                    ngModel #backupZip="ngModel" pattern="^\d{5}$" required>
                             <i class="fa fa-check" *ngIf="backupZip.valid"></i>
-                            <i class="fa fa-times" *ngIf="backupZip.errors?.required"></i>
-                            <i class="fa fa-times" *ngIf="backupZip.errors?.pattern"></i>
                         </div>
                         <div class="col-md-6 smallField" [ngClass]="{'valid': backupCountry.valid}">
                             <input id="backupCountry" class="form-control" type="text"
@@ -326,8 +304,6 @@
                                    name="backupCountry" ngModel #backupCountry="ngModel"
                                    disabled required>
                             <i class="fa fa-times" *ngIf="backupCountry.invalid && backupCountry.touched"></i>
-                            <i class="fa fa-check" *ngIf="backupCountry.valid"></i>
-
                         </div>
                     </div>
                 </div>
@@ -339,8 +315,6 @@
                            mask="(000)-000-0000" pattern="^\d{10}$" placeholder="(xxx)-xxx-xxxx"
                            #backupphone="ngModel" required>
                     <i class="fa fa-check" *ngIf="backupphone.valid"></i>
-                    <i class="fa fa-times" *ngIf="backupphone.errors?.required"></i>
-                    <i class="fa fa-times" *ngIf="backupphone.errors?.pattern"></i>
                 </div>
 
                 <div class="form-group">
@@ -364,8 +338,6 @@
                                        #emailOfBackupAgent="ngModel" ngModel
                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
                                 <i class="fa fa-check" *ngIf="emailOfBackupAgent.valid"></i>
-                                <i class="fa fa-times" *ngIf="emailOfBackupAgent.errors?.required"></i>
-                                <i class="fa fa-times" *ngIf="emailOfBackupAgent.errors?.pattern"></i>
                             </div>
                         </li>
                         <li>
