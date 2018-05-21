@@ -10,18 +10,25 @@ export class ProtectYourFinancesService {
       private httpClient: HttpClient
   ) { }
 
-    getStates() : Observable<any>{
-        let url = `${environment.API_URL + 'user/get-state-info'}`;
-        return this.httpClient.get(url);
+    /**
+     * API to get states information during the tellUsAboutYou 1st section
+     */
+    getStates(): Observable<any> {
+        return this.httpClient.get(`${environment.API_URL + 'user/get-state-info'}`);
     }
 
-    getPoaDetails() : Observable<any>{
-        let url = `${environment.API_URL + 'user/get-poa-user-data'}`;
-        return this.httpClient.get(url);
+    /**
+     * API to get power of attorney data for the user
+     */
+    getPoaDetails(): Observable<any> {
+        return this.httpClient.get(`${environment.API_URL + 'user/get-poa-user-data'}`);
     }
 
-    postPoaDetails(data) : Observable<any>{
-        let url = `${environment.API_URL + 'user/post-poa-user-data'}`;
-        return this.httpClient.post(url,data);
+    /**
+     * API to post power of attorney data for the user
+     * this single API can be used for all post request for power-of-attorney
+     */
+    postPoaDetails(data): Observable<any> {
+        return this.httpClient.post(`${environment.API_URL + 'user/post-poa-user-data'}` , data);
     }
 }
