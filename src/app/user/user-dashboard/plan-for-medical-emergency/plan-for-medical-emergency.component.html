@@ -1,4 +1,4 @@
-<div class="col-md-9 col-sm-7">
+<div class="col-md-9 col-sm-12 rightPanel">
     <div class="main-content tellusaboutyou">
         <h2>Name your first choice for healthcare agent</h2>
         <form #medicalEmergencyForm="ngForm">
@@ -26,17 +26,20 @@
             </div>
 
             <div class="form-group">
-                <label>Their Address: </label>
-                <input id="address" class="form-control" type="text" [(ngModel)]="medicalAgent.address" name="address" ngModel #address="ngModel" required>
-                <i class="fa fa-check" *ngIf="address.valid"></i>
-                <i class="fa fa-times" *ngIf="address.invalid"></i>
+                <div class="" [ngClass]="{'valid': address.valid}">
+                    <label>Their Address: </label>
+                    <input id="address" class="form-control" type="text" [(ngModel)]="medicalAgent.address" name="address" ngModel #address="ngModel" required>
+                    <i class="fa fa-check" *ngIf="address.valid"></i>
+                    <i class="fa fa-times" *ngIf="address.invalid"></i>
+                </div>
+                
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 smallField" [ngClass]="{'valid': city.valid}">
                         <input id="city" class="form-control" type="text" [(ngModel)]="medicalAgent.city" name="city" ngModel #city="ngModel" required>
                         <i class="fa fa-check" *ngIf="city.valid"></i>
                         <i class="fa fa-times" *ngIf="city.invalid"></i>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 smallField" [ngClass]="{'valid': state.valid}">
                         <select id="state" class="form-control"
                                 [(ngModel)]="medicalAgent.state"
                                 name="state" ngModel
@@ -99,7 +102,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 smallField" [ngClass]="{'valid': zip.valid}">
                         <input id="zip" class="form-control" type="text"
                                [(ngModel)]="medicalAgent.zip" name="zip"
                                ngModel #zip="ngModel" pattern="^\d{5}$" required>
@@ -107,7 +110,7 @@
                         <i class="fa fa-times" *ngIf="zip.errors?.required"></i>
                         <i class="fa fa-times" *ngIf="zip.errors?.pattern"></i>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 smallField" [ngClass]="{'valid': country.valid}">
                         <input id="country" class="form-control" type="text" [(ngModel)]="medicalAgent.country" name="country" ngModel #country="ngModel" disabled required>
                         <i class="fa fa-times" *ngIf="country.invalid && country.touched"></i>
                         <i class="fa fa-check" *ngIf="country.valid"></i>
@@ -144,7 +147,7 @@
                             <span class="human_status">Yes</span>
                         </label>
                         <div class="email-box" *ngIf="toggleWillInform" [ngClass]="{'valid': emailOfAgent.valid}">
-                            <input type="email" name="emailOfAgent"
+                            <input type="email" name="emailOfAgent" class="form-control" 
                                    [(ngModel)]="medicalAgent.emailOfAgent"
                                    #emailOfAgent="ngModel" ngModel
                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
@@ -199,9 +202,10 @@
                 </ul>
             </div>
 
-            <hr>
+            
 
             <div *ngIf="toggleBackupAgent">
+                <hr>
                 <h2>Name Your Backup Healthcare Agent</h2>
 
                 <div class="form-group" [ngClass]="{'valid': backupfirstLegalName.valid}">
@@ -228,21 +232,24 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Their Address: </label>
-                    <input id="backupAddress" class="form-control" type="text"
-                           [(ngModel)]="medicalAgent.backupAddress" name="backupAddress"
-                           ngModel #backupAddress="ngModel" required>
-                    <i class="fa fa-check" *ngIf="backupAddress.valid"></i>
-                    <i class="fa fa-times" *ngIf="backupAddress.invalid"></i>
+                    <div class="" [ngClass]="{'valid': backupAddress.valid}">
+                        <label>Their Address: </label>
+                        <input id="backupAddress" class="form-control" type="text"
+                            [(ngModel)]="medicalAgent.backupAddress" name="backupAddress"
+                            ngModel #backupAddress="ngModel" required>
+                        <i class="fa fa-check" *ngIf="backupAddress.valid"></i>
+                        <i class="fa fa-times" *ngIf="backupAddress.invalid"></i>
+                    </div>
+                    
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 smallField" [ngClass]="{'valid': backupCity.valid}">
                             <input id="backupCity" class="form-control" type="text"
                                    [(ngModel)]="medicalAgent.backupCity" name="backupCity"
                                    ngModel #backupCity="ngModel" required>
                             <i class="fa fa-check" *ngIf="backupCity.valid"></i>
                             <i class="fa fa-times" *ngIf="backupCity.invalid"></i>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 smallField" [ngClass]="{'valid': backupState.valid}">
                             <select id="backupState" class="form-control"
                                     [(ngModel)]="medicalAgent.backupState"
                                     name="backupState" ngModel
@@ -305,7 +312,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 smallField" [ngClass]="{'valid': backupZip.valid}">
                             <input id="backupZip" class="form-control" type="text"
                                    [(ngModel)]="medicalAgent.backupZip" name="backupZip"
                                    ngModel #backupZip="ngModel" pattern="^\d{5}$" required>
@@ -313,7 +320,7 @@
                             <i class="fa fa-times" *ngIf="backupZip.errors?.required"></i>
                             <i class="fa fa-times" *ngIf="backupZip.errors?.pattern"></i>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 smallField" [ngClass]="{'valid': backupCountry.valid}">
                             <input id="backupCountry" class="form-control" type="text"
                                    [(ngModel)]="medicalAgent.backupCountry"
                                    name="backupCountry" ngModel #backupCountry="ngModel"
@@ -352,7 +359,7 @@
                                 <span class="human_status">Yes</span>
                             </label>
                             <div class="email-box" *ngIf="toggleWillBackupInform" [ngClass]="{'valid': emailOfBackupAgent.valid}">
-                                <input type="email" name="emailOfBackupAgent"
+                                <input type="email" name="emailOfBackupAgent" class="form-control"
                                        [(ngModel)]="medicalAgent.emailOfBackupAgent"
                                        #emailOfBackupAgent="ngModel" ngModel
                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
