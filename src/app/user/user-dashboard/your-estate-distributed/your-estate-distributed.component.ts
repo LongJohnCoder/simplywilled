@@ -17,6 +17,8 @@ export class YourEstateDistributedComponent implements OnInit {
   errorMessage: any;
   editFlag = false;
   beneficiaryNoFormArray: FormArray;
+  inputCheck: boolean;
+  showErrorMessage: boolean;
   constructor( private  authService: UserAuthService,
                private userService: UserService,
                private router: Router,
@@ -25,6 +27,8 @@ export class YourEstateDistributedComponent implements OnInit {
 
   ngOnInit() {
       this.getUserData();
+      this.inputCheck = true;
+      this.showErrorMessage = false;
   }
 
     /**
@@ -45,6 +49,7 @@ export class YourEstateDistributedComponent implements OnInit {
                     gender: [''],
                     ifPassesbeforeyou: [''],
                     someotherway: [''],
+                    otherRelationship: [''],
                     }
                 )
             ]),
@@ -287,6 +292,7 @@ export class YourEstateDistributedComponent implements OnInit {
      */
     removeOption(control, index) {
         control.removeAt(index);
+        this.checkInput();
     }
 
     /**
@@ -320,6 +326,10 @@ export class YourEstateDistributedComponent implements OnInit {
         this.estateDistributedForm.get(`toASingleBeneficiary.0.gender`).updateValueAndValidity();
         this.estateDistributedForm.get(`toASingleBeneficiary.0.ifPassesbeforeyou`).setValidators([]);
         this.estateDistributedForm.get(`toASingleBeneficiary.0.ifPassesbeforeyou`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.otherRelationship`).setValidators([]);
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.otherRelationship`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.someotherway`).setValidators([]);
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.someotherway`).updateValueAndValidity();
     }
 
     /**
@@ -372,6 +382,14 @@ export class YourEstateDistributedComponent implements OnInit {
         this.estateDistributedForm.get(`toMultipleBeneficiary.0.deceasedBeneficiaryShareToKids`).updateValueAndValidity();
         this.estateDistributedForm.get(`toMultipleBeneficiary.0.minorBeneficiaryShareToBeHeldInTrust`).setValidators([]);
         this.estateDistributedForm.get(`toMultipleBeneficiary.0.minorBeneficiaryShareToBeHeldInTrust`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.whatAgeMinorShareDistributed`).setValidators([]);
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.whatAgeMinorShareDistributed`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.minorParentsTrustee`).setValidators([]);
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.minorParentsTrustee`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.whoServeAsTrusteeAccount`).setValidators([]);
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.whoServeAsTrusteeAccount`).updateValueAndValidity();
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.deceasedBeneficiarieShare`).setValidators([]);
+        this.estateDistributedForm.get(`toMultipleBeneficiary.0.deceasedBeneficiarieShare`).updateValueAndValidity();
     }
 
     /**
@@ -395,7 +413,6 @@ export class YourEstateDistributedComponent implements OnInit {
      * add / remove Validation add Validation To Minor Parents Trustee depending on the  minorParentsTrustee value
      */
     addValidationToMinorParentsTrustee() {
-        console.log(this.estateDistributedForm.get('toMultipleBeneficiary.0.minorParentsTrustee').value);
         if (this.estateDistributedForm.get('toMultipleBeneficiary.0.minorParentsTrustee').value === 'Yes') {
             this.estateDistributedForm.get(`toMultipleBeneficiary.0.whoServeAsTrusteeAccount`).setValidators([Validators.required]);
             this.estateDistributedForm.get(`toMultipleBeneficiary.0.whoServeAsTrusteeAccount`).updateValueAndValidity();
@@ -415,6 +432,64 @@ export class YourEstateDistributedComponent implements OnInit {
         } else {
             this.estateDistributedForm.get(`toMultipleBeneficiary.0.deceasedBeneficiarieShare`).setValidators([]);
             this.estateDistributedForm.get(`toMultipleBeneficiary.0.deceasedBeneficiarieShare`).updateValueAndValidity();
+        }
+    }
+
+    /**
+     *Add/Remove validation to the Other Relationship textbox
+     */
+    addRemoveValidationToOtherRelationship() {
+        if ( this.estateDistributedForm.get('toASingleBeneficiary.0.relationship').value === 'Other' ) {
+            this.estateDistributedForm.get(`toASingleBeneficiary.0.otherRelationship`).setValidators([Validators.required]);
+            this.estateDistributedForm.get(`toASingleBeneficiary.0.otherRelationship`).updateValueAndValidity();
+        } else {
+            this.estateDistributedForm.get(`toASingleBeneficiary.0.otherRelationship`).setValidators([]);
+            this.estateDistributedForm.get(`toASingleBeneficiary.0.otherRelationship`).updateValueAndValidity();
+        }
+    }
+
+    /**
+     * function to allow only number and period
+     * @param e
+     * @returns {boolean}
+     */
+    checkOnlyNumbers(e) {
+        let input;
+        if (e.metaKey || e.ctrlKey) {
+            return true;
+        }
+        if (e.which === 32) {
+            return false;
+        }
+        if (e.which === 0) {
+            return true;
+        }
+        if (e.which === 46) {
+            return true;
+        }
+        if (e.which < 33) {
+            return true;
+        }
+        input = String.fromCharCode(e.which);
+        return !!/[\d\s]/.test(input);
+    }
+
+    /**
+     *function to check validation of percentage
+     */
+    checkInput() {
+        const checkValue = this.estateDistributedForm.get('toMultipleBeneficiary.0.beneficiaryNo').value;
+        let percentage = 0;
+        for (let i = 0; i < checkValue.length; i++) {
+            percentage += parseFloat(checkValue[i].beneficiaryNoPercentageToEstate);
+        }
+        // console.log(percentage);
+        if ( percentage > 100 ) {
+            this.showErrorMessage = true;
+            this.inputCheck = false;
+        } else {
+            this.showErrorMessage = false;
+            this.inputCheck = true;
         }
     }
 
