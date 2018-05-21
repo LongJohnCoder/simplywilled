@@ -538,7 +538,8 @@ class UserManagementController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * */
      public function updateFinalAgrangement(Request $request){
-          //dd($request->all());
+      try {
+        //dd($request->all());
           $validator = Validator::make($request->all(), [
              'user_id'    =>  'required|exists:users,id,deleted_at,NULL',
              'type'       =>  'required|numeric|between:0,1|integer',
@@ -556,64 +557,38 @@ class UserManagementController extends Controller
           $userId = (int)$request->user_id;
           $type = (string)$request->type; // 0--> buried 1--> Cremated
           $ashes = $request->ashes;
-          $agreements = $request->agreements;
-          try {
-              if($userId) {
-                  $checkExistData = FinalArrangements::where('user_id',$userId)->first();
-                  if(count($checkExistData)) {
-                      // update
-                      $checkExistData->user_id = $userId;
-                      $checkExistData->type = $type;
-                      $checkExistData->ashes = $ashes;
-                      $checkExistData->arrangements = $arrangements;
-                      if($checkExistData->save()) {
-                          return response()->json([
-                              'status' => true,
-                              'message' => 'Final Agreement created/updated successfully',
-                              'data' => ['FinalAgreement' => $checkExistData]
-                          ], 200);
-                      } else {
-                          return response()->json([
-                              'status' => false,
-                              'message' => 'Final Agreement not created/updated successfully',
-                              'data' => []
-                          ], 400);
-                      }
-                  } else {
-                      // insert
-                      $saveData = new FinalArrangements;
-                      $saveData->user_id = $userId;
-                      $saveData->type = $type;
-                      $saveData->ashes = $ashes;
-                      $saveData->arrangements = $arrangements;
-                      if($saveData->save()){
-                          return response()->json([
-                              'status' => true,
-                              'message' => 'Final Agreement created/updated successfully',
-                              'data' => ['FinalAgreement' => $saveData]
-                          ], 200);
-                      } else {
-                          return response()->json([
-                              'status' => false,
-                              'message' => 'Final Agreement not created/updated successfully',
-                              'data' => []
-                          ], 400);
-                      }
-                  }
-              } else {
-                  return response()->json([
-                      'status' => false,
-                      'message' => 'something went wrong,user not found ',
-                      'data' => []
-                  ], 400);
-              }
-          } catch (Exception $e) {
+          $arrangements = $request->arrangements;
+
+          $checkExistData = FinalArrangements::where('user_id',$userId)->first();
+          if(!$checkExistData) {
+            $checkExistData = new FinalArrangements();
+            $checkExistData->user_id = $userId;
+          }
+
+          $checkExistData->type = $type;
+          $checkExistData->ashes = $ashes;
+          $checkExistData->arrangements = $arrangements;
+
+          if($checkExistData->save()){
               return response()->json([
+                  'status' => true,
+                  'message' => 'Final Agreement created/updated successfully',
+                  'data' => $checkExistData
+              ], 200);
+          } else {
+              return response()->json([
+                  'status' => false,
+                  'message' => 'Some error occoured. Try again later',
+                  'data' => []
+              ], 400);
+          }
+      } catch(\Exception $e) {
+        return response()->json([
                   'status'  => false,
                   'message' => $e->getMessage(). ' line : '.$e->getLine(),
                   'data'    => []
               ], 500);
-          }
+      }
      }
 
     /*
