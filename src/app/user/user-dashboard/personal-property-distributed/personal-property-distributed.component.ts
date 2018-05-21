@@ -21,7 +21,7 @@ export class PersonalPropertyDistributedComponent implements OnInit {
     constructor(private  authService: UserAuthService,
                 private userService: UserService,
                 private router: Router,
-                private fb: FormBuilder,) {
+                private fb: FormBuilder, ) {
         this.createForm();
     }
 

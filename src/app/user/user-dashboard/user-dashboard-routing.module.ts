@@ -14,7 +14,8 @@ const routes: Routes = [
       { path: 'tell-you-make-specific-gifts', loadChildren: './gift/gift.module#GiftModule'},
       { path: 'your-specific-gifts', loadChildren: './your-specific-gift/your-specific-gift.module#YourSpecificGiftModule'},
       { path: 'your-estate-distributed', loadChildren: './your-estate-distributed/your-estate-distributed.module#YourEstateDistributedModule'},
-      { path: 'plan-for-medical-emergency', loadChildren: './plan-for-medical-emergency/plan-for-medical-emergency.module#PlanForMedicalEmergencyModule'}
+      { path: 'plan-for-medical-emergency', loadChildren: './plan-for-medical-emergency/plan-for-medical-emergency.module#PlanForMedicalEmergencyModule'},
+      { path: 'contingent-beneficiaries', loadChildren: './contingent-beneficiaries/contingent-beneficiaries.module#ContingentBeneficiariesModule'},
     ]},
 ]
 
