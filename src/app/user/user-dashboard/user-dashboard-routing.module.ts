@@ -18,6 +18,7 @@ const routes: Routes = [
       { path: 'plan-for-medical-emergency', loadChildren: './plan-for-medical-emergency/plan-for-medical-emergency.module#PlanForMedicalEmergencyModule'},
       { path: 'contingent-beneficiaries', loadChildren: './contingent-beneficiaries/contingent-beneficiaries.module#ContingentBeneficiariesModule'},
       { path: 'disinherit', loadChildren: './disinherit/disinherit.module#DisinheritModule'},
+      { path: 'packages', loadChildren: './packages/packages.module#PackagesModule' }
     ]},
 ]
 

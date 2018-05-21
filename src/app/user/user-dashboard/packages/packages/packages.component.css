@@ -1,0 +1,133 @@
+.main-content {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 1px 0 #ddd;
+    display: inline-block;
+    width: 100%;
+    padding: 30px;
+}
+.get_start_pkg_btn:hover {
+    color: #fff;
+}
+.include_text:hover {
+    text-decoration: underline;
+    color: #979797;
+}
+.main-content h2 {
+    color: #2479B8;
+    font-size: 36px;
+    margin: 0;
+    text-align: center;
+}
+.packages_ul {
+    margin-top: 100px;
+}
+.packages_ul > li {
+    width: 47%;    
+}
+.book_sec_main{
+    box-shadow: 0px 4px 7px rgba(0,0,0,.1);
+}
+.book_main {
+    width: 290px;
+}
+.payPal {
+    text-align: center;
+}
+.payPal span, .payPal a {
+    float: none;
+}
+.packages_ul > li:first-child .book_main {
+    width: 264px;
+}
+.promoCode {
+    float: left;
+    width: 100%;
+    margin: 20px 0;
+}
+.promoCode label {
+    text-align: left;
+    float: left;
+    font-size: 14px;
+    color: #373737;
+}
+.promoCode p{
+    float: left;
+    width: 100%;
+}
+.promoCode input[type="text"] {
+    border: 1px solid #d0d0d0;
+    border-radius: 5px;
+    background: #fff;
+    font-size: 14px;
+    color: #373737;
+    padding: 5px;
+    width: 60%;
+    height: 35px;
+    float: left;
+}
+.hide_show_main_pkg.open {
+    display: block;
+}
+.applyCodeBtn {
+    width: 35%;
+    float: right;
+    text-align: center;
+    background: linear-gradient(#4fb73a, #3da22d);
+    border: 0;
+    font-family: 'OpenSans';
+    font-size: 16px;
+    border-radius: 5px;
+    border-bottom: 3px solid #2a881d;
+    padding: 4px 0px;
+    color: #fff;
+    cursor: pointer;
+    text-shadow: 2px 2px 0 rgba(0,0,0,.2);
+}
+.hide_show_main_pkg .get_start_pkg_btn {
+    width: 100%;
+}
+.get_start_pkg_btn{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.applyCodeBtn.disable {
+    cursor: not-allowed;
+    background: linear-gradient(#c4c4c4, #b2b2b2);
+    border-bottom: 3px solid #999;
+}
+
+@media screen and (max-width: 1200px){
+    .get_start_pkg_btn {
+        margin: 25px 0 25px 50%;
+        width: 202px;
+    }
+    .payPal{
+        width: auto;
+    }
+    .book_main {
+        width: 175px;
+    }
+    .packages_ul > li:first-child .book_main {
+        width: 155px;
+    }
+}
+
+@media screen and (max-width: 991px){
+    .packages_ul > li {
+        width: 100%;
+        margin-bottom: 80px;
+    }
+
+    .packages_ul > li:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .applyCodeBtn{
+        font-size: 12px;
+        padding: 7px 0;
+    }
+}
