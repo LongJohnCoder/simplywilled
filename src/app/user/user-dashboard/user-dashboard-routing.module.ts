@@ -27,7 +27,7 @@ const routes: Routes = [
             },
             {
                 path: 'protect-your-finances',
-                loadChildren: './protect-your-finances/protect-your-finances.module#ProtectYourFinancesModule'
+                loadChildren: './protect-your-finances/step1/protect-your-finances.module#ProtectYourFinancesModule'
             },
             {
                 path: 'provide-user-spouse',
