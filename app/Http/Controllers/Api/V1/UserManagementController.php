@@ -103,8 +103,8 @@ class UserManagementController extends Controller
           $financialPowerAttorney->attorney_backup    = $attorneyBackup == null ? $financialPowerAttorney->attorney_backup : $attorneyBackup;
           $financialPowerAttorney->is_backupattorney  = $isBackupAttorney == null ? $financialPowerAttorney->is_backupattorney : $isBackupAttorney;
 
-          // if($financialPowerAttorney->attorney_holders != null 
-          //   && (($financialPowerAttorney->is_backupattorney == 1 && $financialPowerAttorney->attorney_backup != null) 
+          // if($financialPowerAttorney->attorney_holders != null
+          //   && (($financialPowerAttorney->is_backupattorney == 1 && $financialPowerAttorney->attorney_backup != null)
           //   || ($financialPowerAttorney->is_backupattorney == 0 && $financialPowerAttorney->attorney_backup == null))) {
 
           // }
@@ -143,7 +143,7 @@ class UserManagementController extends Controller
       try {
         $user = \Auth::user();
         $tellUsAboutYou = TellUsAboutYou::where('user_id',$user->id)->first();
-        if($tellUsAboutYou) {  
+        if($tellUsAboutYou) {
           $state = StatesInfo::where('name',$tellUsAboutYou->state)->first();
           return response()->json([
             'status' => true,
@@ -363,72 +363,103 @@ class UserManagementController extends Controller
 
     public function createHealthFinance(Request $request){
         try {
-
-          $validator = Validator::make($request->all(), [
-              'userId'          =>  'required|integer|exists:users,id',
-              'fullLegalName'   =>  'required|string|min:1',
-              'relation'        =>  'required',
-              'address'         =>  'required',
-              'city'            =>  'required',
-              'state'           =>  'required',
-              'zip'             =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
-              'country'         =>  'required',
-              'isInform'        =>  'required|numeric|between:0,1|integer',
-              'emailOfAgent'    =>  'required|email',
-              'isBackupAgent'   =>  'nullable|numeric|between:0,1|integer'
-          ]);
-          if ($validator->fails()) {
-              return response()->json([
-                  'status' => false,
-                  'message' => $validator->errors(),
-                  'data' => []
-              ], 400);
+          // return $request->all();
+          // $validator = Validator::make($request->all(), [
+          //     'userId'          =>  'required|integer|exists:users,id',
+          //     'firstLegalName'   =>  'required|string|min:1',
+          //     'lastLegalName'   =>  'required|string|min:1',
+          //     'phone' => 'required',
+          //     'relation'        =>  'required',
+          //     'address'         =>  'required',
+          //     'city'            =>  'required',
+          //     'state'           =>  'required',
+          //     'zip'             =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
+          //     'country'         =>  'required',
+          //     'willInform'        =>  'required',
+          //     'isBackupAgent'   =>  'nullable|numeric|between:0,1|integer'
+          // ]);
+          // if (condition) {
+          //   # code...
+          // }
+          // if ($validator->fails()) {
+          //     return response()->json([
+          //         'status' => false,
+          //         'message' => $validator->errors(),
+          //         'data' => []
+          //     ], 400);
+          // }
+          //
+          // if($request->has('isBackupAgent') && ($request->isBackupAgent == 1)) {
+          //   $validator = Validator::make($request->all(), [
+          //       'backupFullLegalName' =>  'required|string|min:1',
+          //       'backupRelation'      =>  'required',
+          //       'backupAddress'       =>  'required',
+          //       'backupCity'          =>  'required',
+          //       'backupState'         =>  'required',
+          //       'backupZip'           =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
+          //       'backupCountry'       =>  'required',
+          //       'isInformBackup'      =>  'required|numeric|between:0,1|integer',
+          //       'emailOfBackupAgent'  =>  'required|email'
+          //   ]);
+          //
+          //   if($validator->fails()) {
+          //       return response()->json([
+          //           'status' => false,
+          //           'message' => $validator->errors(),
+          //           'data' => []
+          //       ], 400);
+          //   }
+          // }
+          $healthFinance = HealthFinance::where('userId', $request->userId)->first();
+          if (!$healthFinance) {
+            $healthFinance         = new HealthFinance();
+            $healthFinance->userId = $request->userId;
+          }
+          $healthFinance->firstLegalName = $request->firstLegalName;
+          $healthFinance->lastLegalName  = $request->lastLegalName;
+          $healthFinance->phone          = $request->phone;
+          $healthFinance->relation       = $request->relation;
+          $healthFinance->address        = $request->address;
+          $healthFinance->city           = $request->city;
+          $healthFinance->state          = $request->state;
+          $healthFinance->zip            = $request->zip;
+          $healthFinance->country        = $request->country;
+          $healthFinance->willInform     = $request->willInform;
+          $healthFinance->anyBackupAgent = $request->anyBackupAgent;
+          if ($request->willInform == 'true') {
+            $healthFinance->emailOfAgent = $request->emailOfAgent;
+          } else {
+            $healthFinance->emailOfAgent = null;
           }
 
-          if($request->has('isBackupAgent') && ($request->isBackupAgent == 1)) {
-            $validator = Validator::make($request->all(), [
-                'backupFullLegalName' =>  'required|string|min:1',
-                'backupRelation'      =>  'required',
-                'backupAddress'       =>  'required',
-                'backupCity'          =>  'required',
-                'backupState'         =>  'required',
-                'backupZip'           =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
-                'backupCountry'       =>  'required',
-                'isInformBackup'      =>  'required|numeric|between:0,1|integer',
-                'emailOfBackupAgent'  =>  'required|email'
-            ]);
-
-            if($validator->fails()) {
-                return response()->json([
-                    'status' => false,
-                    'message' => $validator->errors(),
-                    'data' => []
-                ], 400);
+          if ($request->anyBackupAgent == 'true') {
+            $healthFinance->backupfirstLegalName = $request->backupfirstLegalName;
+            $healthFinance->backuplastLegalName  = $request->backuplastLegalName;
+            $healthFinance->backupphone          = $request->backupphone;
+            $healthFinance->backupRelation       = $request->backupRelation;
+            $healthFinance->backupAddress        = $request->backupAddress;
+            $healthFinance->backupCity           = $request->backupCity;
+            $healthFinance->backupState          = $request->backupState;
+            $healthFinance->backupZip            = $request->backupZip;
+            $healthFinance->backupCountry        = $request->backupCountry;
+            $healthFinance->willInformBackup     = $request->willInformBackup;
+            if ($request->willInformBackup == 'true') {
+              $healthFinance->emailOfBackupAgent = $request->emailOfBackupAgent;
+            } else {
+              $healthFinance->emailOfBackupAgent = null;
             }
+          } else {
+            $healthFinance->backupfirstLegalName = null;
+            $healthFinance->backuplastLegalName  = null;
+            $healthFinance->backupphone          = null;
+            $healthFinance->backupRelation       = null;
+            $healthFinance->backupAddress        = null;
+            $healthFinance->backupCity           = null;
+            $healthFinance->backupState          = null;
+            $healthFinance->backupZip            = null;
+            $healthFinance->backupCountry        = null;
+            $healthFinance->emailOfBackupAgent   = null;
           }
-
-          $healthFinance = new HealthFinance();
-          $healthFinance->userId        = $request->userId;
-          $healthFinance->fullLegalName = $request->fullLegalName;
-          $healthFinance->relation      = $request->relation;
-          $healthFinance->address       = $request->address;
-          $healthFinance->city          = $request->city;
-          $healthFinance->state         = $request->state;
-          $healthFinance->zip           = $request->zip;
-          $healthFinance->country       = $request->country;
-          $healthFinance->isInform      = $request->isInform;
-          $healthFinance->emailOfAgent  = $request->emailOfAgent;
-          $healthFinance->isBackupAgent = $request->isBackupAgent;
-
-          $healthFinance->backupFullLegalName = $request->backupFullLegalName;
-          $healthFinance->backupRelation      = $request->backupRelation;
-          $healthFinance->backupAddress       = $request->backupAddress;
-          $healthFinance->backupCity          = $request->backupCity;
-          $healthFinance->backupState         = $request->backupState;
-          $healthFinance->backupZip           = $request->backupZip;
-          $healthFinance->backupCountry       = $request->backupCountry;
-          $healthFinance->isInformBackup      = $request->isInformBackup;
-          $healthFinance->emailOfBackupAgent  = $request->emailOfBackupAgent;
 
           if($healthFinance->save()) {
             return response()->json([
