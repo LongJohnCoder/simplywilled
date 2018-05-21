@@ -959,7 +959,9 @@ class UserManagementController extends Controller
          return [
            'step' => $stepValue,
            'data' => [
-             'isContingentBeneficiary' => $beneficiary->is_contingent_beneficiary == 1 ? 'Yes' : 'No'
+             'isContingentBeneficiary' => $beneficiary->is_contingent_beneficiary,
+              'distribution_type'=>$beneficiary->distribution_type,
+              'info'=>$beneficiary->info,
            ]
          ];
        }

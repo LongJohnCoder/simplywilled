@@ -1290,12 +1290,12 @@ class UserController extends Controller
      * */
     public function updateDisinherit($request)
     {
-        $validator = Validator::make($request->disinherit, [
+        $validator = Validator::make($request->all(), [
             'user_id'               =>  'required|exists:users,id,deleted_at,NULL',
             'disinherit'            =>  'required|numeric|between:0,1|integer',
             'fullname'              =>  'nullable|required_if:disinherit,1|string|max:255',
             'relationship'          =>  'nullable|required_if:disinherit,1|string|max:255',
-            'other_relationship'    =>  'nullable|required_if:disinherit,1|string|max:255',
+            'other_relationship'    =>  'nullable|required_if:relationship,Other|string|max:255',
             'gender'                =>  'nullable|required_if:disinherit,1|string|in:M,F'
         ]);
 
@@ -1307,13 +1307,12 @@ class UserController extends Controller
             ], 400);
         }
 
-        $disinherit = $request->disinherit;
-        $userId = $disinherit['user_id'];
-        $isDisinherit = (string)$disinherit['disinherit']; // 1-yes,0->no
-        $fullname = $disinherit['fullname'];
-        $relationship = $disinherit['relationship'];
-        $other_relationship = $disinherit['other_relationship'];
-        $gender = $disinherit['gender']; // M || F
+        $userId = $request->user_id;
+        $isDisinherit = (string)$request->disinherit; // 1-yes,0->no
+        $fullname = $request->fullname;
+        $relationship = $request->relationship;
+        $other_relationship = $request->other_relationship;
+        $gender = $request->gender; // M || F
 
         $checkForExistsDisinherit = Disinherit::where('user_id', $userId)->first();
         if(!$checkForExistsDisinherit) {
