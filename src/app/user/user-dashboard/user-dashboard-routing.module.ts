@@ -19,8 +19,9 @@ const routes: Routes = [
       { path: 'contingent-beneficiaries', loadChildren: './contingent-beneficiaries/contingent-beneficiaries.module#ContingentBeneficiariesModule'},
       { path: 'disinherit', loadChildren: './disinherit/disinherit.module#DisinheritModule'},
       { path: 'packages', loadChildren: './packages/packages.module#PackagesModule' }
+      { path: 'protect-your-finances-details', loadChildren: './protect-your-finances/step2/protect-your-finances-details.module#ProtectYourFinancesDetailsModule'}
     ]},
-]
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

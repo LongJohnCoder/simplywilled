@@ -125,6 +125,9 @@ export class ProtectYourFinancesComponent implements OnInit {
       this.myForm.get(field).setValue(parseInt(value, 10));
   }
 
+  /**
+   * send request to backend
+   */
   send(): void {
       this.response.attorney_powers   = this.myForm.value;
       this.response.attorney_holders  = JSON.parse(this.response.attorney_holders);
@@ -132,6 +135,7 @@ export class ProtectYourFinancesComponent implements OnInit {
       this.protectYourFinancesService.postPoaDetails(this.response).subscribe(
         (data) => {
           console.log('form data after submit response :', data);
+          this.router.navigate(['/dashboard/protect-your-finances-details']);
         }, (error) => {
           console.log('form data after submit error :', error);
         }

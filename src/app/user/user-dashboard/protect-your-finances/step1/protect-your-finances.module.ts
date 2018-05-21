@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProtectYourFinancesRoutingModule } from './protect-your-finances-routing.module';
 import { ProtectYourFinancesComponent } from './protect-your-finances.component';
-//import {PersonalRepresentativePowerService} from './services/personal-representative-power.service';
+// import {PersonalRepresentativePowerService} from './services/personal-representative-power.service';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 @NgModule({
@@ -14,7 +14,7 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
   ],
   declarations: [ProtectYourFinancesComponent],
   providers: [
-    //PersonalRepresentativePowerService
+    // PersonalRepresentativePowerService
   ]
 })
 export class ProtectYourFinancesModule { }
