@@ -10,6 +10,7 @@ import { BusinessInterestComponent } from './business-interest/business-interest
 import { RealPropertyComponent } from './real-property/real-property.component';
 import { SpecificAssetComponent } from './specific-asset/specific-asset.component';
 import {EditGiftService} from './services/edit-gift.service';
+import {RealPropertyService} from './services/real-property.service';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import {EditGiftService} from './services/edit-gift.service';
     ReactiveFormsModule
   ],
   declarations: [YourSpecificGiftComponent, MyGiftTextComponent, CashGiftComponent, BusinessInterestComponent, RealPropertyComponent, SpecificAssetComponent],
-  providers: [YourSpecificGiftService, EditGiftService]
+  providers: [YourSpecificGiftService, EditGiftService, RealPropertyService]
 })
 export class YourSpecificGiftModule { }

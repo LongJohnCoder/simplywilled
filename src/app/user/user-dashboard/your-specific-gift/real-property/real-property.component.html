@@ -3,7 +3,7 @@
     <li>
       <h2 class="singing_instruction3">Gift <span class="gift_list_number">{{giftCount}}</span></h2>
       <div class="gift_form_container">
-        <form>
+        <form [formGroup]="realPropertyForm">
           <h2 class="singing_instruction3" style="padding-top:0;">Tell Us About Gifts of Real Property</h2>
           <ul class="radio_ul3">
             <li><label class="radio_custom singing_instruction"><span class="custom_img3"><img src="../../../../../assets/images/home-pic.png" alt="Cash"></span></label></li>
@@ -11,140 +11,156 @@
           <h2 class="beneficiary_predeceases blue_font">Is this property your primary residence?</h2>
           <ul class="radio_ul7">
             <li>
-              <label class="radio_custom gift_their_kids">
-                <input type="radio" value="Yes">
+              <label class="radio_custom gift_their_kids" [ngClass]="{'active': realPropertyForm.value.primary_residence === 'Yes'}">
+                <input type="radio" value="Yes" formControlName="primary_residence" (click)="getUsrData(true)">
                 <span class="custom_img"><img src="../../../../../assets/images/yes.png" alt="Passed_by"></span>
                 <span class="human_status">Yes</span> </label>
             </li>
             <li>
-              <label class="radio_custom gift_their_kids">
-                <input type="radio" value="No">
+              <label class="radio_custom gift_their_kids" [ngClass]="{'active': realPropertyForm.value.primary_residence === 'No'}">
+                <input type="radio" value="No" formControlName="primary_residence" (click)="getUsrData(false)">
                 <span class="custom_img"><img src="../../../../../assets/images/no.png" alt="Passed_by"></span>
                 <span class="human_status"> No</span> </label>
             </li>
           </ul>
           <div class="gift_individual_container">
             <label class="legal_name_benifets">Street Address of the Property?</label>
-            <input type="text" class="legal_benifit_input capitalize_txt">
+            <input type="text" class="legal_benifit_input capitalize_txt" formControlName="street_address">
             <label class="legal_name_benifets">City</label>
-            <input type="text" class="legal_benifit_input capitalize_txt">
+            <input type="text" class="legal_benifit_input capitalize_txt" formControlName="city">
             <label class="legal_name_benifets">State</label>
-            <input type="text" class="legal_benifit_input capitalize_txt">
+            <input type="text" class="legal_benifit_input capitalize_txt" formControlName="state">
           </div>
           <h2 class="beneficiary_predeceases blue_font">Is this a gift to an Individual(s) or Charity?</h2>
           <ul class="radio_ul7">
             <li>
-              <label class="radio_custom gift_their_kids" (click)="showSectionInorCh('IN')">
-                <input type="radio" value="Individual">
+              <label class="radio_custom gift_their_kids" [ngClass]="{'active': realPropertyForm.value.gift_type === 'Individual'}">
+                <input type="radio" value="Individual" (click)="showSectionInOrCh('IN')" formControlName="gift_type">
                 <span class="custom_img"><img src="../../../../../assets/images/yes.png" alt="Passed_by"></span>
                 <span class="human_status">Individual</span> </label>
             </li>
             <li>
-              <label class="radio_custom gift_their_kids" (click)="showSectionInorCh('CH')">
-                <input type="radio" value="Charity">
+              <label class="radio_custom gift_their_kids" [ngClass]="{'active': realPropertyForm.value.gift_type === 'Charity'}">
+                <input type="radio" value="Charity" (click)="showSectionInOrCh('CH')" formControlName="gift_type">
                 <span class="custom_img"><img src="../../../../../assets/images/no.png" alt="Passed_by"></span>
                 <span class="human_status"> Charity</span> </label>
             </li>
           </ul>
           <div *ngIf="isIndividualRP">
-            <h2 class="beneficiary_predeceases blue_font">Who would you like to leave this gift to in your will?</h2>
-            <ul class="radio_ul7">
-              <li>
-                <label class="radio_custom gift_their_kids">
-                  <input type="radio" value="single_beneficiary" (click)="beneficiaryToggle('S')">
-                  <span class="custom_img"><img src="../../../../../assets/images/yes.png" alt="Passed_by"></span>
-                  <span class="human_status">To A Single Beneficiary</span> </label>
-              </li>
-              <li>
-                <label class="radio_custom gift_their_kids" (click)="beneficiaryToggle('M')">
-                  <input type="radio" value="multiple_beneficiary">
-                  <span class="custom_img"><img src="../../../../../assets/images/no.png" alt="Passed_by"></span>
-                  <span class="human_status"> To Multiple Beneficiary</span> </label>
-              </li>
-            </ul>
+            <div formArrayName="individualControls">
+              <div *ngFor="let item of realPropertyForm['controls'].individualControls['controls']; let i = index;"  [formGroupName]="i">
+                <h2 class="beneficiary_predeceases blue_font">Who would you like to leave this gift to in your will?</h2>
+                <ul class="radio_ul7">
+                  <li>
+                    <label class="radio_custom gift_their_kids" [ngClass]="{'active': realPropertyForm.get('individualControls.0.beneficiary').value === 'single_beneficiary'}">
+                      <input type="radio" value="single_beneficiary" (click)="beneficiaryToggle('S')" formControlName="beneficiary">
+                      <span class="custom_img"><img src="../../../../../assets/images/yes.png" alt="Passed_by"></span>
+                      <span class="human_status">To A Single Beneficiary</span> </label>
+                  </li>
+                  <li>
+                    <label class="radio_custom gift_their_kids" [ngClass]="{'active': realPropertyForm.get('individualControls.0.beneficiary').value === 'multiple_beneficiary'}">
+                      <input type="radio" value="multiple_beneficiary" (click)="beneficiaryToggle('M')" formControlName="beneficiary">
+                      <span class="custom_img"><img src="../../../../../assets/images/no.png" alt="Passed_by"></span>
+                      <span class="human_status"> To Multiple Beneficiary</span> </label>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
           <div *ngIf="isCharityRP">
-            <label class="legal_name_benifets">Organization name?</label>
-            <input type="text" class="legal_benifit_input capitalize_txt">
-            <label class="legal_name_benifets">Organization address?</label>
-            <input type="text" class="legal_benifit_input capitalize_txt" placeholder="Street Address, City, State, Zip Code">
+            <div formArrayName="charityControls">
+              <div *ngFor="let item of realPropertyForm['controls'].charityControls['controls']; let i = index;"  [formGroupName]="i">
+                <label class="legal_name_benifets">Organization name?</label>
+                <input type="text" class="legal_benifit_input capitalize_txt" formControlName="organization_name">
+                <label class="legal_name_benifets">Organization address?</label>
+                <input type="text" class="legal_benifit_input capitalize_txt" placeholder="Street Address, City, State, Zip Code" formControlName="organization_address">
+              </div>
+            </div>
           </div>
 
 
           <!--single beneficiary start-->
           <div *ngIf="singleBeneficiaryRP">
-            <label class="legal_name_benifets">Beneficiary's full legal name ?</label>
-            <input type="text" class="legal_benifit_input capitalize_txt">
-            <label class="legal_name_benifets">Beneficiary's relationship to you?</label>
-            <span class="drop_down" style="margin-bottom:20px;">
-               <select class="beneficiary_relationship_dropdown" (change)="toggleRelationship($event)">
-                  <option value="">Select Relationship</option>
-                  <option value="Wife">Wife</option>
-                  <option value="Husband">Husband</option>
-                  <option value="Mother">Mother</option>
-                  <option value="Father">Father</option>
-                  <option value="Son">Son</option>
-                  <option value="Daughter">Daughter</option>
-                  <option value="Sister">Sister</option>
-                  <option value="Brother">Brother</option>
-                  <option value="Aunt">Aunt</option>
-                  <option value="Uncle">Uncle</option>
-                  <option value="Cousin">Cousin</option>
-                  <option value="Friend">Friend</option>
-                  <option value="Other">Other</option>
-               </select>
-            </span>
-            <div class="beneficiary_relationship_other" *ngIf="otherRelationshipRp">
-              <input type="text" class="personal_representative_input capitalize_txt" placeholder="Type Here Relationship">
+            <div formArrayName="individualControls">
+              <div *ngFor="let item of realPropertyForm['controls'].individualControls['controls']; let i = index;"  [formGroupName]="i">
+                <div formArrayName="singleBeneficiaryControls">
+                  <div *ngFor="let newItem of item.get('singleBeneficiaryControls').controls; let j = index;"  [formGroupName]="j">
+                    <label class="legal_name_benifets">Beneficiary's full legal name ?</label>
+                    <input type="text" class="legal_benifit_input capitalize_txt" formControlName="full_legal_name">
+                    <label class="legal_name_benifets">Beneficiary's relationship to you?</label>
+                    <span class="drop_down" style="margin-bottom:20px;">
+                   <select class="beneficiary_relationship_dropdown" (change)="toggleRelationship($event)" formControlName="relationship_single_b_parent">
+                      <option value="">Select Relationship</option>
+                      <option value="Wife">Wife</option>
+                      <option value="Husband">Husband</option>
+                      <option value="Mother">Mother</option>
+                      <option value="Father">Father</option>
+                      <option value="Son">Son</option>
+                      <option value="Daughter">Daughter</option>
+                      <option value="Sister">Sister</option>
+                      <option value="Brother">Brother</option>
+                      <option value="Aunt">Aunt</option>
+                      <option value="Uncle">Uncle</option>
+                      <option value="Cousin">Cousin</option>
+                      <option value="Friend">Friend</option>
+                      <option value="Other">Other</option>
+                   </select>
+                </span>
+                    <div class="beneficiary_relationship_other" *ngIf="otherRelationshipRp">
+                      <input type="text" class="personal_representative_input capitalize_txt" placeholder="Type Here Relationship" formControlName="relationship_single_b_parent_other">
+                    </div>
+                    <h2 class="beneficiary_predeceases blue_font">Beneficiary's gender?</h2>
+                    <ul class="radio_ul7">
+                      <li>
+                        <label class="radio_custom gift_their_kids" [ngClass]="{'active': item.get('singleBeneficiaryControls.0.single_beneficiary_gender').value === 'Male'}">
+                          <input type="radio" value="Male" formControlName="single_beneficiary_gender">
+                          <span class="custom_img"><img src="../../../../../assets/images/john.png" alt="Passed_by"></span>
+                          <span class="human_status">Male</span> </label>
+                      </li>
+                      <li>
+                        <label class="radio_custom gift_their_kids" [ngClass]="{'active': item.get('singleBeneficiaryControls.0.single_beneficiary_gender').value === 'Female'}">
+                          <input type="radio" value="Female" formControlName="single_beneficiary_gender">
+                          <span class="custom_img"><img src="../../../../../assets/images/leza.png" alt="Passed_by"></span>
+                          <span class="human_status"> Female</span> </label>
+                      </li>
+                    </ul>
+                    <h2 class="beneficiary_predeceases blue_font">How should the property distributed if the beneficiary passes before you?</h2>
+                    <ul class="radio_ul7">
+                      <li>
+                        <label class="radio_custom property_to_be_distributed" [ngClass]="{'active': item.get('singleBeneficiaryControls.0.property_distributed_single_beneficiary').value === 'to_their_issue'}">
+                          <input type="radio" value="to_their_issue" (click)="propertyDistibutionToggle('TTI')" formControlName="property_distributed_single_beneficiary">
+                          <span class="custom_img"><img src="../../../../../assets/images/kids.png" alt="Passed_by"></span>
+                          <span class="human_status">To Their Issue</span> </label>
+                      </li>
+                      <li>
+                        <label class="radio_custom property_to_be_distributed" [ngClass]="{'active': item.get('singleBeneficiaryControls.0.property_distributed_single_beneficiary').value === 'residue_of_estate'}">
+                          <input type="radio" value="residue_of_estate" (click)="propertyDistibutionToggle('RE')" formControlName="property_distributed_single_beneficiary">
+                          <span class="custom_img"><img src="../../../../../assets/images/my-estate.png" alt="Passed_by"></span>
+                          <span class="human_status">With The Residue of My Estate </span> </label>
+                      </li>
+                      <li>
+                        <label class="radio_custom property_to_be_distributed" [ngClass]="{'active': item.get('singleBeneficiaryControls.0.property_distributed_single_beneficiary').value === 'to_someone_else'}">
+                          <input type="radio" value="to_someone_else" (click)="propertyDistibutionToggle('TSE')" formControlName="property_distributed_single_beneficiary">
+                          <span class="custom_img"><img src="../../../../../assets/images/some-one-else.png" alt="Passed_by"></span>
+                          <span class="human_status">To Someone Else</span> </label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
-            <h2 class="beneficiary_predeceases blue_font">Beneficiary's gender?</h2>
-            <ul class="radio_ul7">
-              <li>
-                <label class="radio_custom gift_their_kids">
-                  <input type="radio" value="Male">
-                  <span class="custom_img"><img src="../../../../../assets/images/john.png" alt="Passed_by"></span>
-                  <span class="human_status">Male</span> </label>
-              </li>
-              <li>
-                <label class="radio_custom gift_their_kids">
-                  <input type="radio" value="Female">
-                  <span class="custom_img"><img src="../../../../../assets/images/leza.png" alt="Passed_by"></span>
-                  <span class="human_status"> Female</span> </label>
-              </li>
-            </ul>
-            <h2 class="beneficiary_predeceases blue_font">How should the property distributed if the beneficiary passes before you?</h2>
-            <ul class="radio_ul7">
-              <li>
-                <label class="radio_custom property_to_be_distributed" (click)="propertyDistibutionToggle('TTI')">
-                  <input type="radio" value="to_their_issue">
-                  <span class="custom_img"><img src="../../../../../assets/images/kids.png" alt="Passed_by"></span>
-                  <span class="human_status">To Their Issue</span> </label>
-              </li>
-              <li>
-                <label class="radio_custom property_to_be_distributed" (click)="propertyDistibutionToggle('RE')">
-                  <input type="radio" value="residue_of_estate">
-                  <span class="custom_img"><img src="../../../../../assets/images/my-estate.png" alt="Passed_by"></span>
-                  <span class="human_status">With The Residue of My Estate </span> </label>
-              </li>
-              <li>
-                <label class="radio_custom property_to_be_distributed" (click)="propertyDistibutionToggle('TSE')">
-                  <input type="radio" value="to_someone_else">
-                  <span class="custom_img"><img src="../../../../../assets/images/some-one-else.png" alt="Passed_by"></span>
-                  <span class="human_status">To Someone Else</span> </label>
-              </li>
-            </ul>
             <div *ngIf="toTheirIssue">
               <div class="beneficiary_pass_another_select_txt">You still need another choice in the event no issue survives the beneficiary.</div>
               <ul class="radio_ul7">
                 <li>
-                  <label class="radio_custom property_to_be_distributed" (click)="propertyDistibutionToggleChild('RE')">
-                    <input type="radio" value="residue_of_estate">
+                  <label class="radio_custom property_to_be_distributed">
+                    <input type="radio" value="residue_of_estate" (click)="propertyDistibutionToggleChild('RE')">
                     <span class="custom_img"><img src="../../../../../assets/images/my-estate.png" alt="Passed_by"></span>
                     <span class="human_status">With The Residue of My Estate </span> </label>
                 </li>
                 <li>
-                  <label class="radio_custom property_to_be_distributed" (click)="propertyDistibutionToggleChild('TSE')">
-                    <input type="radio" value="to_someone_else">
+                  <label class="radio_custom property_to_be_distributed">
+                    <input type="radio" value="to_someone_else" (click)="propertyDistibutionToggleChild('TSE')">
                     <span class="custom_img"><img src="../../../../../assets/images/some-one-else.png" alt="Passed_by"></span>
                     <span class="human_status">To Someone Else</span> </label>
                 </li>
@@ -301,21 +317,21 @@
           <h2 class="beneficiary_predeceases blue_font">Should this property be distributed "free & clear" of any mortgage?</h2>
           <ul class="radio_ul7">
             <li>
-              <label class="radio_custom gift_their_kids">
-                <input type="radio" value="Yes">
+              <label class="radio_custom gift_their_kids" [ngClass]="{'active': realPropertyForm.value.free_clear_mortgage === 'Yes'}">
+                <input type="radio" value="Yes" formControlName="free_clear_mortgage">
                 <span class="custom_img"><img src="../../../../../assets/images/yes.png" alt="Passed_by"></span>
                 <span class="human_status">Yes</span> </label>
             </li>
             <li>
-              <label class="radio_custom gift_their_kids">
-                <input type="radio" value="No">
+              <label class="radio_custom gift_their_kids" [ngClass]="{'active': realPropertyForm.value.free_clear_mortgage === 'No'}">
+                <input type="radio" value="No" formControlName="free_clear_mortgage">
                 <span class="custom_img"><img src="../../../../../assets/images/no.png" alt="Passed_by"></span>
                 <span class="human_status"> No</span> </label>
             </li>
           </ul>
           <ul class="back_next_btn_ul" style="margin-top:20px;">
             <li><a href="javascript:void(0)" class="gift_remove_form">Remove</a></li>
-            <li><button class="saveBtn" type="submit">Save</button></li>
+            <li><button class="saveBtn" type="submit" [disabled]="!realPropertyForm.valid">Save</button></li>
           </ul>
         </form>
       </div>
