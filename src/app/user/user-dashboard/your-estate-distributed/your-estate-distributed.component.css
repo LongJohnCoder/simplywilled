@@ -188,6 +188,9 @@ header{
 .sidebar ul li.active img.green-icon{
     display: none;
 }
+.rightPanel{
+    width: 855px;
+}
 .btn-dashboard{
     padding: 10px 0 10px 30px;
     width: 100%;
@@ -698,6 +701,64 @@ footer .social ul li a i{
 .footer-bottom img{
     display: inline-block;
 }
+
+.threeColField {
+    width: calc(50% - 53px);
+    float: left;
+    margin: 0 10px;
+}
+.threeColField2 {
+    width: calc(33.33% - 40px);
+    float: left;
+    margin: 0 10px;
+}
+.threeColField:nth-child(3n) {
+    width: 40px;
+}
+.threeColField2:nth-child(4n) {
+    width: 40px;
+}
+.form-group .threeColField label, .form-group .threeColField2 label{
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+.form-group .threeColField2 label{
+    font-size: 14px;
+}
+.delRow, .addRow {
+    margin-top: 11px;
+    height: 40px;
+    border: 0;
+    border-bottom: 3px solid #a92521;
+    background: #d9534f;
+    border-radius: 10px;
+    width: 40px;
+    font-size: 20px;
+}
+.addRowBtn{
+    float: right;
+}
+.addRow {
+    border-bottom: 3px solid #1c588a;
+    background: #337ab7;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 24px;
+    float: right;
+}
+.addRowBtnRow{
+    width: 100%;
+    float: left;
+}
+.threeColField .form-control::placeholder{
+    color: #fff;
+}
+.threeColField2 .form-control::placeholder{
+    color: #fff;
+}
+
+
 @media screen and (min-width: 992px) and (max-width: 1199px){
     .sidebar h1 {
         font-size: 27px;
@@ -716,6 +777,13 @@ footer .social ul li a i{
         font-size: 25px;
     }
 }
+
+@media screen and (max-width: 1199px){
+    .rightPanel{
+        width: 720px;
+    }
+}
+
 @media screen and (max-width: 991px){
     .progress_main {
         text-align: center;
@@ -732,6 +800,34 @@ footer .social ul li a i{
     }
     .main-content.hotdocs .col-md-4.text-right{
         text-align: center;
+    }
+    .rightPanel{
+        width: 480px;
+    }
+    .formHeadingRow2{
+        display: none;
+    }
+    .threeColField2 {
+        width: 100%;
+    }
+    .threeColField2 .form-control::placeholder{
+        color: #777;
+        font-size: 11px;
+    }
+    .addRowBtn2 {
+        float: none;
+        width: 40px;
+        margin: 10px auto 0;
+        display: block;
+    }
+    .threeColField2:nth-child(4n) {
+        width: 40px;
+        float: none;
+        margin: 0 auto;
+    }
+    .formRow2{
+        border-bottom:1px solid #e2e2e2;
+        padding: 10px 0 20px;
     }
 }
 @media screen and (min-width: 768px) and (max-width: 991px){
@@ -824,7 +920,9 @@ footer .social ul li a i{
         margin: 20px 0;
         text-align: center;
     }
-
+    .rightPanel{
+        width: 100%;
+    }
 }
 
 @media screen  and (max-width: 480px){
@@ -833,5 +931,34 @@ footer .social ul li a i{
     }
     .logo img{
         width: 100%;
+    }
+    .formHeadingRow{
+        display: none;
+    }
+    .form-group .threeColField label{
+        font-size: 14px;
+    }
+    .threeColField{
+        width: 100%;
+    }
+    .threeColField .form-control{
+        font-size: 14px;
+    }
+    .threeColField .form-control::placeholder{
+        color: #999;
+    }
+    .threeColField:nth-child(3n) {
+        width: 40px;
+        float: none;
+        margin: 0 auto;
+    }
+    .formRow{
+        border-bottom:1px solid #e2e2e2;
+        padding: 10px 0 20px;
+    }
+    .addRowBtn {
+        float: none;
+        width: 40px;
+        margin: 0 auto;
     }
 }

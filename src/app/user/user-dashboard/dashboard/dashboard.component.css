@@ -99,7 +99,7 @@ header{
 .sidebar img{
     display: inline-block;
     vertical-align: top;
-    margin: 10px 10px 0 0;
+    margin: 0 10px 0 0;
 }
 .sidebar img.white-icon{
     display: none;
@@ -293,7 +293,7 @@ header{
 
 @media screen and (min-width: 992px) and (max-width: 1199px){
     .sidebar h1 {
-        font-size: 30px;
+        font-size: 22px;
     }
     .sidebar-body  .common-button {
         font-size: 14px;
@@ -317,11 +317,11 @@ header{
     .progres_left{
         width: calc(100% - 100px);
     }
+    .sidebar h1 {
+        font-size: 20px;
+    }
 }
 @media screen and (min-width: 768px) and (max-width: 991px){
-    .sidebar h1 {
-        font-size: 28px;
-    }
     .common-button {
         font-size: 12px;
     }

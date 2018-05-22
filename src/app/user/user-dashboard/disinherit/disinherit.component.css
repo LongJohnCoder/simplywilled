@@ -245,6 +245,10 @@ header{
     transform: translate(-50%,-50%);
 }
 
+.rightPanel{
+    width: 855px;
+}
+
 .progress_main{
     margin: 0 0 30px;
     padding: 10px;
@@ -432,6 +436,9 @@ footer ul li a{
     background: url('../../../../assets/images/bottom-caret.png') 98% no-repeat;
     -webkit-appearance: none;
     -moz-appearance: none;
+}
+select.form-control{
+    margin: 0;
 }
 .main-content .valid .form-control{
     border-color: #42A82D;
@@ -706,6 +713,13 @@ footer .social ul li a i{
         font-size: 25px;
     }
 }
+
+@media screen and (max-width:1199px){
+    .rightPanel {
+        width: 720px;
+    }
+}
+
 @media screen and (max-width: 991px){
     .progress_main {
         text-align: center;
@@ -722,6 +736,9 @@ footer .social ul li a i{
     }
     .main-content.hotdocs .col-md-4.text-right{
         text-align: center;
+    }
+    .rightPanel {
+        width: 480px;
     }
 }
 @media screen and (min-width: 768px) and (max-width: 991px){
@@ -814,7 +831,9 @@ footer .social ul li a i{
         margin: 20px 0;
         text-align: center;
     }
-
+    .rightPanel {
+        width: 100%;
+    }
 }
 
 @media screen  and (max-width: 480px){

@@ -72,6 +72,9 @@
     -webkit-appearance: none;
     -moz-appearance: none;
 }
+select.form-control {
+    margin: 0;
+}
 .main-content .valid .form-control{
     border-color: #42A82D;
     color: #42A82D;
