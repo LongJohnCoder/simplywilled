@@ -12,6 +12,7 @@ export class ContactUsComponent implements OnInit {
   formData: any;
   respMessage: string;
   showLoader: boolean;
+  respType: boolean;
   constructor(
       private userService: UserService,
       private router: Router
@@ -32,11 +33,13 @@ export class ContactUsComponent implements OnInit {
         this.userService.contactUs(this.formData).subscribe(
             (data: any) => {
                 this.showLoader = false;
+                this.respType = true;
                 this.respMessage = data.message;
                 setTimeout(() => {
                     this.router.navigate(['/']);
                 }, 1000);
             }, (error: any) => {
+                this.respType = false;
                 this.showLoader = false;
                 this.respMessage = error.error.message;
             }

@@ -35,7 +35,7 @@
                      [(ngModel)]="formData.email" ngModel #email="ngModel"
                      required placeholder="Your Email" class="get_in_tuch_field"
                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-                <div *ngIf="email.invalid && email.touched" class="alert alert-danger">Email is required</div>
+                <div *ngIf="email.errors?.required" class="alert alert-danger">Email is required</div>
                 <div *ngIf="email.errors?.pattern" class="alert alert-danger">This is not a email format</div>
 
               </div>
@@ -43,12 +43,14 @@
                     <textarea placeholder="Message" class="get_in_tuch_textarea" [(ngModel)]="formData.message" ngModel #message="ngModel" required name="message"></textarea>
                 <div *ngIf="message.invalid && message.touched" class="alert alert-danger"> Message is reqired ! </div>
               </div>
+              <div class="alert alert-success" *ngIf="respType === true">{{respMessage}}</div>
+              <div class="alert alert-danger" *ngIf="respType === false">{{respMessage}}</div>
               <p class="contactbtn_area" style="margin-top:10px;">
                   <i *ngIf="showLoader" class="fa fa-spinner fa-pulse fa-lg fa-fw"></i>
                   <button type="button" [disabled]="!form.form.valid" class="get_in_tuch_btn" (click)="contactUs()"><i class="fa fa-chevron-right" aria-hidden="true"></i> Send Message</button>
               </p>
             </form>
-              <div class="alert alert-danger" [style.display]="respMessage == '' ? 'none' : 'block'">{{respMessage}}</div>
+
           </div>
         </div>
       </div>
