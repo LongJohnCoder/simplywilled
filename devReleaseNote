@@ -1,4 +1,7 @@
 Final arrangement V1.0 stable released to dev
-
 	UI created
 	API created to fetch the data and store the data.
+
+Business interest v0.1 unstable released to dev
+	UI for business interest and specific asset created
+	Validation is work in progress.
