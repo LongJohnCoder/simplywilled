@@ -40,4 +40,14 @@ export class UserService {
   contactUs(formBody): Observable<any> {
       return this.httpClient.post(environment.API_URL + 'contact-us', formBody);
   }
+
+  /** Function for forget-password*/
+  forgetPassword(formBody): Observable<any> {
+      return this.httpClient.post(environment.API_URL + 'forgot-password', formBody);
+  }
+
+  /** Function for reset-password-form*/
+  resetPasswordSubmit(formBody): Observable<any> {
+      return this.httpClient.post(environment.API_URL + 'reset-password', formBody);
+  }
 }
