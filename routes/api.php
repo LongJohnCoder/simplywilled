@@ -23,7 +23,7 @@ use Illuminate\Http\Request;
 Route::group(['prefix' => 'v1'], function() {
     /**
      * Routes for unauthenticated user
-     */    
+     */
 
     Route::post('sign-up', [
         'uses' => 'Api\V1\AuthController@signUp',
@@ -585,6 +585,14 @@ Route::group(['prefix' => 'v1'], function() {
             Route::post('edit-profile', [
                 'uses' => 'Api\V1\UserController@editProfile',
                 'as' => 'api.v1.editProfile.post'
+            ]);
+
+            /*
+             * Route for update gift
+             * */
+            Route::post('update-gift', [
+                'uses' => 'Api\V1\UserController@updateProfileGift',
+                'as' => 'api.v1.updateProfileGift.post'
             ]);
 
             /*

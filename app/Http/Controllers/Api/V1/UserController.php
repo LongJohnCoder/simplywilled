@@ -406,7 +406,7 @@ class UserController extends Controller
             'totalChildren'     =>  'required|numeric|integer|min:0',
             'deceasedChildren'  =>  'required|string|in:Yes,No',
             'deceasedChildrenNames'  =>  'required_if:deceasedChildren,Yes|string',
-            
+
         ]);
 
         if ($validator->fails()) {
@@ -445,7 +445,7 @@ class UserController extends Controller
           }
         }
 
-        
+
 
         //dd($usersArray);
 
@@ -470,7 +470,7 @@ class UserController extends Controller
                     Children::where('user_id', $userId)->delete();
                     $checkForExistUser->children = count($checkForExistchildren);
                     $checkForExistUser->save();
-                } 
+                }
 
                 //create a new list of children
                 if ($childrenInfoArray) {
@@ -491,7 +491,7 @@ class UserController extends Controller
                     //     'data' => []
                     // ], 400);
                 }
-                
+
 
             } else {
                 Children::where('user_id', $userId)->delete();
@@ -664,12 +664,12 @@ class UserController extends Controller
       //if user has not completed previous step in tellUsYou section then this step is not permited
 
       PersonalRepresentatives::updateOrCreate(['user_id' => $personalRepresentative['user_id'], 'is_backuprepresentative' => (string)$isBackupRepresentative], $personalRepresentative);
-      
+
 
       if(isset($personalRepresentative['email_notification']) && $personalRepresentative['email_notification'] ==1 ) {
         //$this->sendEmail($personalRepresentative['user_id'], $personalRepresentative['fullname'], $personalRepresentative['email'], $emailType);
       }
-      
+
       return [
         'status'    =>  200,
         'response'  =>  'success'
@@ -714,7 +714,7 @@ class UserController extends Controller
                 'data'    => []
             ], 400);
         }
-        
+
         $userId                         = $request->user_id;
         $personalRepresentative         = $request->personalRepresentative;
         $backupPersonalRepresentative   = $request->backupPersonalRepresentative;
@@ -760,7 +760,7 @@ class UserController extends Controller
         }
 
         $response = self::generatePersonalRepresentativeResponse($userId);
-        return $response;        
+        return $response;
 
       } catch (\Exception $e) {
         return response()->json([
@@ -984,20 +984,20 @@ class UserController extends Controller
         $userId = $request->user_id;
         //$tangibleProperty = $request->tangibleProperty;
         $residueToPartnerFirst = $request->has('residue_to_partner_first') ? (string)$request->get('residue_to_partner_first') : null;
-        $isTangiblePropertyDistribute = $request->has('is_tangible_property_distribute') 
+        $isTangiblePropertyDistribute = $request->has('is_tangible_property_distribute')
                                         ? (string)($request->get('is_tangible_property_distribute')) : null; // flags 0,1,2
-        $tangiblePropertyDistribute   = $request->has('tangible_property_distribute') 
+        $tangiblePropertyDistribute   = $request->has('tangible_property_distribute')
                                         ? $request->get('tangible_property_distribute') : null;
         $checkForExistData = ProvideYourLovedOnes::where('user_id', $userId)->first();
 
         if ($checkForExistData) {
-            $checkForExistData->is_tangible_property_distribute = $isTangiblePropertyDistribute == null 
-                                                                    ? $checkForExistData->is_tangible_property_distribute 
+            $checkForExistData->is_tangible_property_distribute = $isTangiblePropertyDistribute == null
+                                                                    ? $checkForExistData->is_tangible_property_distribute
                                                                     : $isTangiblePropertyDistribute;
-            $checkForExistData->tangible_property_distribute    = $isTangiblePropertyDistribute == 4 
-                                                                    ? $tangiblePropertyDistribute 
+            $checkForExistData->tangible_property_distribute    = $isTangiblePropertyDistribute == 4
+                                                                    ? $tangiblePropertyDistribute
                                                                     : $checkForExistData->tangible_property_distribute;
-            $checkForExistData->residue_to_partner_first        = $residueToPartnerFirst == null 
+            $checkForExistData->residue_to_partner_first        = $residueToPartnerFirst == null
                                                                     ? $checkForExistData->residue_to_partner_first
                                                                     : $residueToPartnerFirst;
 
@@ -1048,7 +1048,7 @@ class UserController extends Controller
         $giftData = $request->giftData; // array of gift data
 
         //update existing gift
-        $saveGift = Gifts::where('user_id', $userId)->where('type', $giftType)->first();
+        $saveGift = Gifts::where('user_id', $userId)->first();
 
         //or create new gift
         // dd($giftType);
@@ -1084,10 +1084,73 @@ class UserController extends Controller
             ], 200);
         }
         return response()->json([
-            'status'  => true,
+            'status'  => false,
             'message' => 'Something went wrong',
             'data'    => []
         ], 400);
+    }
+
+    /*
+     *  function to update Gift table
+     *  @return \Illuminate\Http\JsonResponse
+     * */
+    public function updateProfileGift(Request $request)
+    {
+      try {
+        $giftId = $request->id;
+        $gift = Gifts::find($giftId);
+        $giftType = $request->giftType; // giftType = 1,2,3,4,5,6
+        $giftData = $request->giftData; // array of gift data
+        if ($gift) {
+          $gift->type = $giftType;
+          switch($giftType) {
+            case 1 :  $gift->cash_description = json_encode($giftData);
+                      break;
+            case 2 :  $gift->property_details = json_encode($giftData);
+                      break;
+            case 3 :  $gift->business_details = json_encode($giftData);
+                      break;
+            case 4 :  $gift->asset_details = json_encode($giftData);
+                      break;
+            case 5 :  $gift->rest_deatils = json_encode($giftData);
+                      break;
+            case 6 :  $gift->disinherit_details = json_encode($giftData);
+                      break;
+            default:  return response()->json([
+                          'status' => true,
+                          'message' => 'Something went wrong',
+                          'data' => []
+                      ], 400);
+          }
+          if ($gift->save()) {
+              return response()->json([
+                  'status'  => true,
+                  'message' => 'User gift details updated',
+                  'data'    => [ 'userData' => $gift ]
+              ], 200);
+          } else {
+              return response()->json([
+                  'status'  => false,
+                  'message' => 'Gift not saved',
+                  'data'    => []
+              ], 500);
+          }
+        } else {
+          return response()->json([
+              'status'  => false,
+              'message' => 'Gift not found',
+              'data'    => []
+          ], 400);
+        }
+      } catch (Exception $e) {
+        return response()->json([
+            'status'  => false,
+            'message' => 'Internal server error',
+            'data'    => []
+        ], 500);
+      }
+
+
     }
 
     /*
@@ -1168,7 +1231,7 @@ class UserController extends Controller
         if($isContingentBeneficiary == 0) {
             $checkExistData->distribution_type = null;
             $checkExistData->info = null;
-        } else {    
+        } else {
             $checkExistData->distribution_type = $distributionType == null ? $checkExistData->distribution_type : $distributionType;
             $checkExistData->info = $info == null ? $checkExistData->info : $info;
         }
@@ -1234,7 +1297,7 @@ class UserController extends Controller
                 $checkForTheExistingDisrtibute->distribute_type = $disrtibuteType;
             }
 
-            
+
             // create or update
             $checkForTheExistingDisrtibute->user_id = $userId;
             $checkForTheExistingDisrtibute->distribute_type = $disrtibuteType;
@@ -1274,7 +1337,7 @@ class UserController extends Controller
                     'message' => 'Estate disrtibute data not updated',
                 ], 400);
             }
-            
+
         } else {
             return response()->json([
                 'status' => false,
@@ -1319,7 +1382,7 @@ class UserController extends Controller
             $checkForExistsDisinherit = new Disinherit;
             $checkForExistsDisinherit->user_id = $userId;
         }
-        
+
         // create or update
         $checkForExistsDisinherit->user_id = $userId;
         $checkForExistsDisinherit->disinherit = $isDisinherit;
@@ -1340,7 +1403,7 @@ class UserController extends Controller
                 'message' => 'Disinherit not found',
             ], 400);
         }
-        
+
     }
 
     /*

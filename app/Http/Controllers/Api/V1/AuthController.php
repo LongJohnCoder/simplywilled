@@ -378,16 +378,16 @@ class AuthController extends Controller {
             /**
              * Validate mandatory fields
              */
-             $validator = Validator::make($request->all(), [
-                 'email'       =>  'required|exists:users,email,deleted_at,NULL'
-             ]);
-             if ($validator->fails()) {
-                 return response()->json([
-                     'status'  => false,
-                     'message' => $validator->errors(),
-                     'data'    => []
-                 ], 400);
-             }
+             // $validator = Validator::make($request->all(), [
+             //     'email'       =>  'required|exists:users,email,deleted_at,NULL'
+             // ]);
+             // if ($validator->fails()) {
+             //     return response()->json([
+             //         'status'  => false,
+             //         'message' => $validator->errors(),
+             //         'data'    => []
+             //     ], 400);
+             // }
 
             $user = User::where('email',$request->input('email'))->first();
             if ($user) {
@@ -422,34 +422,17 @@ class AuthController extends Controller {
             } else {
                 $response = [
                     'status'    => false,
-                    'error'     => "Sorry! this email address does not belong to any user in our database!"
+                    'message'     => "Sorry! this email address does not belong to any user in our database!"
                 ];
                 $responseCode = 422;
             }
-        } catch (HttpBadRequestException $httpBadRequestException) {
-
-            $response = [
-                'status'    => false,
-                'error'     => $httpBadRequestException->getMessage()
-            ];
-            $responseCode = 400;
-        } /** @noinspection PhpUndefinedClassInspection */
-        catch (JWTAuthException $JWTAuthException) {
-
-            $response = [
-                'status'        => false,
-                'error'         => "Failed to create token.",
-                'error_info'    => $JWTAuthException->getMessage()
-            ];
-            $responseCode = 500;
-
         } catch (Exception $exception) {
 
             Log::error($exception->getMessage());
 
             $response = [
                 'status'        => false,
-                'error'         => "Internal server error.",
+                'message'         => "Internal server error.",
                 "error_info"    => $exception->getMessage()
             ];
             $responseCode = 500;
@@ -474,7 +457,7 @@ class AuthController extends Controller {
                         $user = User::where('email', $request->email)->first();
                         if ($user != null) {
                             $user->password = $request->input('password');
-                            $user->uniqueKey = Crypt::encrypt($request->input('password'));
+                            // $user->uniqueKey = Crypt::encrypt($request->input('password'));
                             $user->update();
                             $password = PasswordReset::where('email', $user->email)->delete();
 
@@ -487,7 +470,7 @@ class AuthController extends Controller {
                         } else {
                             $response = [
                                 'status'        => false,
-                                'error'         => "User not Found"
+                                'message'         => "User not Found"
                             ];
                             $responseCode = 400;
                             return response()->json($response, $responseCode);
@@ -495,7 +478,7 @@ class AuthController extends Controller {
                     } else {
                         $response = [
                             'status'        => false,
-                            'error'         => "Password and confirm should be same"
+                            'message'         => "Password and confirm should be same"
                         ];
                         $responseCode = 406;
                         return response()->json($response, $responseCode);
@@ -504,7 +487,7 @@ class AuthController extends Controller {
 
                     $response = [
                     'status'        => false,
-                    'error'         => "Enter Password and confirm password"
+                    'message'         => "Enter Password and confirm password"
                     ];
                     $responseCode = 406;
                     return response()->json($response, $responseCode);
@@ -520,7 +503,7 @@ class AuthController extends Controller {
         } else {
             $response = [
                 'status'        => false,
-                'error'         => "Token not valid or You Use this token already"
+                'message'         => "Token not valid or You Use this token already"
             ];
             $responseCode = 403;
             return response()->json($response, $responseCode);
