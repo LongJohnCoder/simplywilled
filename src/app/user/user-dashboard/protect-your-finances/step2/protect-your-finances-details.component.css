@@ -218,5 +218,50 @@ select.form-control{
         width: 100%;
     }
 }
+@media screen and (max-width:480px){
+    .form-group label{
+        font-size: 16px;
+    }
+}
 
-
+.drop_down {
+    width: 100%;
+    display: inline-block;
+    float: right;
+    position: relative;
+    border: 1px solid #dbdbdb;
+    background: #fff;
+    z-index: 1;
+    margin-bottom: 50px;
+  }
+  .drop_down:after {
+    font-family: 'FontAwesome';
+    display: block;
+    content: "\f0d7";
+    font-size: 20px;
+    color: #dadada;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    line-height: 15px;
+    margin-top: -7.5px;
+    z-index: -1;
+  }
+  .drop_down select {
+    width: 100%;
+    display: inline-block;
+    float: left;
+    padding: 15px;
+    color: rgba(0,0,0,.8);
+    font-size: 18px;
+    border-radius: 2px;
+    background: none;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-family: 'OpenSans-Light';
+  }
+  .drop_down select option {
+    padding-left: 10px;
+  }

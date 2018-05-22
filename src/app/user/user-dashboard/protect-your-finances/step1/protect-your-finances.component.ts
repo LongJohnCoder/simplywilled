@@ -47,8 +47,7 @@ export class ProtectYourFinancesComponent implements OnInit {
     this.protectYourFinancesService.getPoaDetails().subscribe(
       (response: any) => {
         this.response = response.data;
-        // console.log('response received : ', this.response);
-        this.pyfData = JSON.parse(response.data.attorney_powers);
+        this.pyfData = response.data === null || response.data.attorney_powers === null ? null : JSON.parse(response.data.attorney_powers);
         this.poaData = new Array(this.pyfData).map(gr => gr );
         this.createForm(this.poaData);
       },
@@ -87,7 +86,7 @@ export class ProtectYourFinancesComponent implements OnInit {
    * returns void
    */
   createForm(dt: Array<PYFAttorneyPowers> = []): void {
-    const formObj = typeof dt[0] !== undefined ? dt[0] : null;
+    const formObj = dt[0] !== undefined ? dt[0] : null;
 
     this.myForm = this.fb.group({
       // this are 2 inter dependant fields
@@ -121,7 +120,6 @@ export class ProtectYourFinancesComponent implements OnInit {
    * @returns void : just sets the form element value to 1 or 0
    */
   changeMe(field: string , value): void {
-      console.log('field : ', field, 'value', value);
       this.myForm.get(field).setValue(parseInt(value, 10));
   }
 
@@ -129,15 +127,30 @@ export class ProtectYourFinancesComponent implements OnInit {
    * send request to backend
    */
   send(): void {
+      this.response = this.response === null ? {} : this.response;
+
+      const userId = this.authService.getUser().id;
+
+      // tslint:disable-next-line:max-line-length
+      this.response.user_id = this.response.user_id == null ? parseInt(userId, 10) : parseInt(this.response.user_id, 10);
+
+      this.response.is_backupattorney = this.response.is_backupattorney == null ? '0' : this.response.is_backupattorney;
+
       this.response.attorney_powers   = this.myForm.value;
-      this.response.attorney_holders  = JSON.parse(this.response.attorney_holders);
-      this.response.attorney_backup   = JSON.parse(this.response.attorney_backup);
+
+      // tslint:disable-next-line:max-line-length
+      this.response.attorney_holders  = typeof this.response.attorney_holders === 'string' ? JSON.parse(this.response.attorney_holders) : null;
+
+      // tslint:disable-next-line:max-line-length
+      this.response.attorney_backup   = typeof this.response.attorney_backup === 'string' ? JSON.parse(this.response.attorney_backup) : null;
+
+      console.log( this.response);
+
       this.protectYourFinancesService.postPoaDetails(this.response).subscribe(
         (data) => {
-          console.log('form data after submit response :', data);
           this.router.navigate(['/dashboard/protect-your-finances-details']);
         }, (error) => {
-          console.log('form data after submit error :', error);
+          console.log('error to send data : ', error);
         }
       );
     }

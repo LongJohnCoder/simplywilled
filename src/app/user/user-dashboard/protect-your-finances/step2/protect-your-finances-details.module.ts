@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProtectYourFinancesDetailsRoutingModule } from './protect-your-finances-details-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FiananceComponent } from './fianance/fianance.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  declarations: [ProtectYourFinancesDetailsComponent]
+  declarations: [ProtectYourFinancesDetailsComponent, FiananceComponent]
 })
 export class ProtectYourFinancesDetailsModule { }

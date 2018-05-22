@@ -1,86 +1,243 @@
-<div class="main-content tellusaboutyou">
-      <h2>Power of attorney details</h2>
-      <div class="form-group valid">
-        <label>What is their full legal name? </label>
-        <input
-                type="text"
-                class="form-control"
-                
-                required
-                name ='firstname'
-                >
-                <i class="fa fa-check"></i>
-      </div>
+<div class='finances'>
+    <form [formGroup] = "poaDetailsForm" (ngSubmit)="send()"> 
+      <div class="main-content tellusaboutyou" >
+        <h2>Power of attorney details</h2>
+        <!-- <app-fianance [data]="poaDetailsForm.get('attorney_holders')"></app-fianance> -->
 
-      <div class="form-group valid">
-        <label>What is their address? </label>
-        <input
-                type="text"
-                class="form-control"
-                
-                required
-                name ='address'
-                >
-                <i class="fa fa-check"></i>
-      </div>
+        <div formGroupName="attorney_holders">
+            <div class="form-group valid">
+              <label>What is their full legal name? </label>
+              <input
+                      type="text"
+                      class="form-control"
+                      formControlName="fullname"
+                      required
+                      name ='fullname'>
+                      <i class="fa fa-check"></i>
+            </div>
+            
+            
+            <div class="form-group valid">
+              <label>What is their address? </label>
+              <input
+                      type="text"
+                      class="form-control"
+                      formControlName="address"
+                      required
+                      name ='address'>
+                      <i class="fa fa-check"></i>
+            </div>
+            
+            
+            <div class="form-group" [ngClass]= '{valid : phone.valid}'>
+              <label>What is phone number? </label>
+              <input
+                      type="text"
+                      class="form-control"
+                      formControlName="phone"
+                      
+                      #phone
+                      mask="(000)-000-0000"
+                      placeholder="(xxx)-xxx-xxxx"
+                      name ='phone'>
+                      <i class="fa fa-check" *ngIf="phone.valid"></i>                      
+                      <span class="alert-danger"
+                        *ngIf="phone.errors && (phone.dirty || phone.touched)">
+                          <p *ngIf="phone.errors?.required">Phone is required</p>
+                          <p *ngIf="phone.errors?.minlength">Incorrect Number</p>
+                      </span>
+            </div>
 
-      
-      <div class="form-group valid">
-        <label>What is phone number? </label>
-        <input
-                type="text"
-                class="form-control"
-                
-                required
-                name ='phone'
-                >
-                <i class="fa fa-check"></i>
-      </div>
+            <div class="form-group valid">
+                <label>Beneficiary's relationship to you?</label>
+                <span class="drop_down" style="margin-bottom:20px;">
+                    <select class="beneficiary_relationship_dropdown" (change)="relationshipChange('attorney_holders.relationship',$event.target.value)" formControlName="relationship">
+                        <option value="">Select Relationship</option>
+                        <option value="Wife">Wife</option>
+                        <option value="Husband">Husband</option>
+                        <option value="Mother">Mother</option>
+                        <option value="Father">Father</option>
+                        <option value="Son">Son</option>
+                        <option value="Daughter">Daughter</option>
+                        <option value="Sister">Sister</option>
+                        <option value="Brother">Brother</option>
+                        <option value="Aunt">Aunt</option>
+                        <option value="Uncle">Uncle</option>
+                        <option value="Cousin">Cousin</option>
+                        <option value="Friend">Friend</option>
+                        <option value="Other">Other</option>
+                     </select>
+                </span>
+            </div>
 
-      
-      <div class="form-group valid">
-        <label>Would you like to inform this person that you appointed them as your Financial Power of Attorney?</label>
-          <ul class="radio_ul6">
-              <li>
-                <label class="radio_custom">
-                  <input type="radio" required="true" value=1>
-                  <span class="human_status">Yes</span>
-                </label>
-              </li>
-              <li>
-                <label class="radio_custom">
-                  <input type="radio" required="true" value=0>
-                  <span class="human_status">No</span>
-                </label>
-              </li>
-            </ul>
-      </div>
-
-      <div class="form-group valid">
-        <label>What is their email address?</label>
-        <input type="text" class="form-control" required name ='phone'>
-        <i class="fa fa-check"></i>
-      </div>
-
-      <div class="form-group valid">
-          <label>Do you need to provide a backup Financial Power of Attorney?</label>
-            <ul class="radio_ul6">
+            <div class="form-group valid" *ngIf="poaDetailsForm.get('attorney_holders.relationship').value == 'Other'">
+                <label>Mention your relationship </label>
+                <input
+                        type="text"
+                        class="form-control"
+                        formControlName="other_relationship"
+                        required
+                        name ='other_relationship'>
+                        <i class="fa fa-check"></i>
+            </div>
+            
+            <div class="form-group">
+              <label>Would you like to inform this person that you appointed them as your Financial Power of Attorney?</label>
+              <ul class="radio_ul6">
                 <li>
-                  <label class="radio_custom">
-                    <input type="radio" required="true" value=1>
+                  <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("attorney_holders.is_inform").value === 1)}'>
+                    <input type="radio" #isInformYes value=1 (click)="changeMe('attorney_holders.is_inform', 1)">
                     <span class="human_status">Yes</span>
                   </label>
                 </li>
                 <li>
-                  <label class="radio_custom">
-                    <input type="radio" required="true" value=0>
+                  <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("attorney_holders.is_inform").value === 0)}'>
+                    <input type="radio" #isInformNo value=0 (click)="changeMe('attorney_holders.is_inform', 0)">
                     <span class="human_status">No</span>
                   </label>
                 </li>
-            </ul>
-      </div>
+              </ul>
+            </div>
 
-      <div class="form-footer">
-        <button class="btn common-button btn-complete">Continue</button>
+            <div class="form-group valid" *ngIf='poaDetailsForm.get("attorney_holders.is_inform").value === 1'>
+              <label>What is their email address?</label>
+              <input 
+                    type = "text" 
+                    class = "form-control" 
+                    required 
+                    name ='email'
+                    formControlName = "email">
+              <i class="fa fa-check"></i>
+            </div>
+            
+          </div>
+
+
+          <div class="form-group valid">
+            <label>Do you need to provide a backup Financial Power of Attorney?</label>
+              <ul class="radio_ul6">
+                  <li>
+                    <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("is_backupattorney").value == 1)}'>
+                      <input type="radio" required="true" value=1 (click)="changeMe('is_backupattorney', 1)">
+                      <span class="human_status">Yes</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("is_backupattorney").value == 0)}'>
+                      <input type="radio" required="true" value=0 (click)="changeMe('is_backupattorney', 0)">
+                      <span class="human_status">No</span>
+                    </label>
+                  </li>
+              </ul>
+          </div>
+
+        <div *ngIf='poaDetailsForm.get("is_backupattorney").value == 1'>
+          <h2>Backup Power of attorney details</h2>
+          <!-- <app-fianance></app-fianance> -->
+          <div formGroupName="attorney_backup">
+              <div class="form-group valid">
+                <label>What is their full legal name? </label>
+                <input
+                        type="text"
+                        class="form-control"
+                        formControlName="fullname"
+                        required
+                        name ='fullname'>
+                        <i class="fa fa-check"></i>
+              </div>
+              
+              
+              <div class="form-group valid">
+                <label>What is their address? </label>
+                <input
+                        type="text"
+                        class="form-control"
+                        formControlName="address"
+                        required
+                        name ='address'>
+                        <i class="fa fa-check"></i>
+              </div>
+              
+              
+              <div class="form-group valid">
+                <label>What is phone number? </label>
+                <input
+                        type="text"
+                        class="form-control"
+                        formControlName="phone"
+                        required
+                        name ='phone'>
+                        <i class="fa fa-check"></i>
+              </div>
+  
+              <div class="form-group valid">
+                  <label>Beneficiary's relationship to you?</label>
+                  <span class="drop_down" style="margin-bottom:20px;">
+                      <select class="beneficiary_relationship_dropdown" (change)="relationshipChange('attorney_backup.relationship',$event.target.value)" formControlName="relationship">
+                          <option value="">Select Relationship</option>
+                          <option value="Wife">Wife</option>
+                          <option value="Husband">Husband</option>
+                          <option value="Mother">Mother</option>
+                          <option value="Father">Father</option>
+                          <option value="Son">Son</option>
+                          <option value="Daughter">Daughter</option>
+                          <option value="Sister">Sister</option>
+                          <option value="Brother">Brother</option>
+                          <option value="Aunt">Aunt</option>
+                          <option value="Uncle">Uncle</option>
+                          <option value="Cousin">Cousin</option>
+                          <option value="Friend">Friend</option>
+                          <option value="Other">Other</option>
+                       </select>
+                  </span>
+              </div>
+
+              <div class="form-group valid" *ngIf="poaDetailsForm.get('attorney_backup.relationship').value == 'Other'">
+                <label>Mention your relationship </label>
+                <input
+                        type="text"
+                        class="form-control"
+                        formControlName="other_relationship"
+                        required
+                        name ='other_relationship'>
+                        <i class="fa fa-check"></i>
+              </div>
+              
+              <div class="form-group">
+                <label>Would you like to inform this person that you appointed them as your Financial Power of Attorney?</label>
+                <ul class="radio_ul6">
+                  <li>
+                    <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("attorney_backup.is_inform").value === 1)}'>
+                      <input type="radio" #isInformYes value=1 (click)="changeMe('attorney_backup.is_inform', 1)">
+                      <span class="human_status">Yes</span>
+                    </label>
+                  </li>
+                  <li>
+                    <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("attorney_backup.is_inform").value === 0)}'>
+                      <input type="radio" #isInformNo value=0 (click)="changeMe('attorney_backup.is_inform', 0)">
+                      <span class="human_status">No</span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+  
+              <div class="form-group valid" *ngIf='poaDetailsForm.get("attorney_backup.is_inform").value === 1'>
+                <label>What is their email address?</label>
+                <input 
+                      type = "text" 
+                      class = "form-control" 
+                      required 
+                      name ='email'
+                      formControlName = "email">
+                <i class="fa fa-check"></i>
+              </div>
+              
+            </div>
+        </div>
+
+        <div class="form-footer">
+          <button class="btn common-button btn-complete">Continue</button>
+        </div>
       </div>
+    </form>
 </div>

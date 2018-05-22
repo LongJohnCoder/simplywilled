@@ -1,0 +1,58 @@
+.form-group{
+    padding: 0 30px;
+    margin: 25px 0;
+    position: relative;
+}
+.form-group.valid input{
+    border: 1px solid #42A82D;
+}
+.form-group.valid i {
+    position: absolute;
+    top: 42px;
+    right: 38px;
+    background: #42A82D;
+    color: #fff;
+    height: 22px;
+    width: 22px;
+    text-align: center;
+    line-height: 24px;
+    border-radius: 50%;
+}
+.radio_ul6 li{
+    display: inline-block;
+    margin-right: 5px;
+}
+.form-group label {
+    display: block;
+    font-weight: normal;
+    font-size: 18px;
+    text-align: left;
+}
+.radio_custom {
+    height: 105px;
+    width: 105px;
+    position: relative;
+    border: 1px solid #BFBFBF;
+    font-family: 'OpenSans';
+    box-shadow: 0 1px 1px 1px #ddd;
+    min-height: 100%;
+}
+.radio_custom .human_status {
+    position: absolute;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    font-size: 16px;
+}
+.radio_custom.active {
+    border-color: #42A82D;
+    background: #42A82D;
+    color: #fff;
+}
+
+@media screen and (max-width:480px){
+    .form-group label{
+        font-size: 16px;
+    }
+}
