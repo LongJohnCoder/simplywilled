@@ -133,8 +133,15 @@
             </div>
             <div class="form-group" *ngIf="estateDistributedForm.get('toASingleBeneficiary.0.ifPassesbeforeyou').value == '3'">
                 <label> Otherwise, to be distributed to: </label>
+<<<<<<< HEAD
                 <textarea formControlName="someotherway" cols="60" rows="8" placeholder="Type..."></textarea>
                 <span *ngIf="!estateDistributedForm.get('toASingleBeneficiary.0.someotherway').valid && estateDistributedForm.get('toASingleBeneficiary.0.someotherway').touched" class="help-block">
+=======
+                <textarea formControlName="someotherway" cols="60" rows="8" placeholder="Type..." class="form-control"></textarea>
+                <span
+                        *ngIf="!estateDistributedForm.get('toASingleBeneficiary.0.someotherway').valid && estateDistributedForm.get('toASingleBeneficiary.0.someotherway').touched"
+                        class="help-block">
+>>>>>>> your-estate-distributed UI v0.5
               <span *ngIf="estateDistributedForm.get('toASingleBeneficiary.0.someotherway').errors['required']" style="color: red">This field is required!</span>
             </span>
             </div>
@@ -327,7 +334,7 @@
             <div formArrayName="toSomeOtherWay">
                 <div  *ngFor="let item of estateDistributedForm['controls'].toSomeOtherWay['controls']; let k=index"  [formGroupName]="k">
             <label> Otherwise, to be distributed to: </label>
-            <textarea formControlName="someOtherWayText" cols="60" rows="8" placeholder="Type..."></textarea>
+            <textarea formControlName="someOtherWayText" cols="60" rows="8" placeholder="Type..." class="form-control"></textarea>
                 </div>
             </div>
             <span *ngIf="!estateDistributedForm.get('toSomeOtherWay.0.someOtherWayText').valid && estateDistributedForm.get('toSomeOtherWay.0.someOtherWayText').touched" class="help-block">

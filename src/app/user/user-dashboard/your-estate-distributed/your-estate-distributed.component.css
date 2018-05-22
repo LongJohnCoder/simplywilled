@@ -415,6 +415,16 @@ footer ul li a{
     display: block;
     font-weight: normal;
     font-size: 18px;
+    padding: 10px;
+}
+.main-content .form-group label span{
+    display: block;
+    text-align: center;
+    font-size: 13px;
+    line-height: 14px;
+}
+.main-content .form-group label .human_status3{
+    margin-top: 10px;
 }
 .main-content .form-group label span.leavetxt{
     display: block;
