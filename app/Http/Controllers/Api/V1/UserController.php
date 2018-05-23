@@ -400,12 +400,11 @@ class UserController extends Controller
      * */
     public function updateChildren($request)
     {
-
         $validator = Validator::make($request->all(), [
             'user_id'           =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
             'totalChildren'     =>  'required|numeric|integer|min:0',
             'deceasedChildren'  =>  'required|string|in:Yes,No',
-            'deceasedChildrenNames'  =>  'required_if:deceasedChildren,Yes|string',
+            // 'deceasedChildrenNames'  =>  'required_if:deceasedChildren,Yes|string',
 
         ]);
 
@@ -417,7 +416,19 @@ class UserController extends Controller
             ], 400);
         }
 
-
+        if ($request->deceasedChildren == 'Yes') {
+          $validator = Validator::make($request->all(), [
+              'deceasedChildrenNames'  =>  'required_if:deceasedChildren,Yes|string',
+          ]);
+        }
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors(),
+                'data' => []
+            ], 400);
+        }
+        
         // save/update the children information
         $userId = $request->user_id;
         $totalChildren = $request->totalChildren;
