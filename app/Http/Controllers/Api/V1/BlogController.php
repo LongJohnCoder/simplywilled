@@ -217,7 +217,11 @@ class BlogController extends Controller
               ], 400);
             }
             $query  = $request->has('query') ? $request->get('query') : null;
-            $blog   = Blogs::orderBy('created_at','DESC')->where('slug','=',$query)->with('getComments')->first();
+            $blog   = Blogs::orderBy('created_at','DESC')->where('slug','=',$query)
+                          ->with(array('getComments' => function($q){
+                              $q->where('status','1');
+                            }))
+                          ->first();
             $imageLink  = url('/blogImage').'/';
             if ($blog) {
                 return response()->json([

@@ -135,7 +135,7 @@ class AuthController extends Controller {
             if (!empty($queryException->errorInfo) && $queryException->errorInfo[1] == 1062) {
                 $response = [
                     'status'    => false,
-                    'error'     => "User is already signed up.",
+                    'error'     => "User is already signed up.Please login or register with different e-mail id.",
                 ];
                 $responseCode = 409;
             } else {

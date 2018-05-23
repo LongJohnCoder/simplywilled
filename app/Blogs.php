@@ -62,4 +62,9 @@ class Blogs extends Model
            }
        });
     }
+
+    public function activeComments()
+    {
+      return $this->hasMany('App\Models\BlogComment','blog_id','id')->where('status','1');
+    }
 }
