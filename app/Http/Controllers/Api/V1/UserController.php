@@ -418,7 +418,7 @@ class UserController extends Controller
 
         if ($request->deceasedChildren == 'Yes') {
           $validator = Validator::make($request->all(), [
-              'deceasedChildrenNncames'  =>  'required_if:deceasedChildren,Yes|string',
+              'deceasedChildrenNames'  =>  'required_if:deceasedChildren,Yes|string',
           ]);
         }
         if ($validator->fails()) {
@@ -440,20 +440,42 @@ class UserController extends Controller
         //error based on foreign key validation
 
         if($totalChildren > 0) {
-          $data = ['data' => $childrenInfoArray];
-          $validator = Validator::make($data, [
-              'data.*.user_id'   =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
-              'data.*.fullname'  =>  'required|string|max:255',
-              'data.*.gender'    =>  'required|string|in:M,F',
-              'data.*.dob'       =>  'required|date_format:"Y-m-d"'
-          ]);
-          if ($validator->fails()) {
-              return response()->json([
-                  'status' => false,
-                  'message' => $validator->errors(),
-                  'data' => []
-              ], 400);
+          // $data = ['data' => $childrenInfoArray];
+          // $validator = Validator::make($data, [
+          //     'data.*.user_id'   =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
+          //     'data.*.fullname'  =>  'required|string|max:255',
+          //     'data.*.gender'    =>  'required|string|in:M,F',
+          //     'data.*.dob'       =>  'required|date_format:"Y-m-d"'
+          // ],[
+          //   'data.*.user_id'   =>  'ID is required',
+          //   'data.*.fullname'  =>  'Children fullname is required',
+          //   'data.*.gender'    =>  'Children gender is required',
+          //   'data.*.dob'       =>  'Date of birth is required'
+          // ]);
+
+          foreach ($childrenInfoArray as $ckey => $cvalue) {
+            $index = $ckey + 1;
+            $message = [
+              'user_id.*'   =>  'Child '.$index.' ID is required',
+              'fullname.*'  =>  'Child '.$index.' fullname is required',
+              'gender.*'    =>  'Child '.$index.' gender is required',
+              'dob.*'       =>  'Date of birth of child '.$index.' is required'
+            ];
+            $validator = Validator::make($cvalue, [
+                'user_id'   =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
+                'fullname'  =>  'required|string|max:255',
+                'gender'    =>  'required|string|in:M,F',
+                'dob'       =>  'required|date_format:"Y-m-d"'
+            ],$message);
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => $validator->errors(),
+                    'data' => []
+                ], 400);
+            }
           }
+
         }
 
 
@@ -1059,14 +1081,14 @@ class UserController extends Controller
         $giftData = $request->giftData; // array of gift data
 
         //update existing gift
-        $saveGift = Gifts::where('user_id', $userId)->where('type',$giftType)->first();
+        // $saveGift = Gifts::where('user_id', $userId)->where('type',$giftType)->first();
 
         //or create new gift
         // dd($giftType);
-        if(!$saveGift) {
+        // if(!$saveGift) {
           $saveGift = new Gifts();
           $saveGift->user_id = $userId;
-        }
+        // }
         $saveGift->type = $giftType;
         switch($giftType) {
           case 1 :  $saveGift->cash_description = json_encode($giftData);
