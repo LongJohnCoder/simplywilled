@@ -2569,3 +2569,39 @@ select.form-control{
     cursor: pointer;
 }
 
+
+/*deep*/
+#dataTable_info{
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+#dataTable_paginate{
+    margin-left: 10px;
+    font-size: 13px;
+}
+#dataTable_wrapper .row:first-child .col-sm-12.col-md-6 .dataTables_filter{
+    font-size: 13px;
+}
+@media screen and (max-width: 820px){
+    #dataTable_wrapper .row:first-child .col-sm-12.col-md-6{
+        width: 100%;
+        max-width: 100%;
+        flex: unset;
+    } 
+    #dataTable_wrapper .row:first-child .col-sm-12.col-md-6 .dataTables_length label{
+        width: 200px;
+    }
+    #dataTable_wrapper .row:first-child .col-sm-12.col-md-6 .dataTables_length label select{
+        width: 80px;
+        display: inline-block;
+    }
+    #dataTable_wrapper .row:first-child .col-sm-12.col-md-6 .dataTables_filter{
+        float: left;
+        margin: 10px 0 0 14px;
+    }
+    #dataTable_wrapper .row:first-child .col-sm-12.col-md-6 .dataTables_filter label .form-control{
+        width: 150px;
+        display: inline-block;
+    }
+    
+}
