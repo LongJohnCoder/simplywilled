@@ -5,19 +5,20 @@
         <h1 class="form_heading">Let’s get started</h1>
         <p class="form_pera">SimplyWilled is the easiest way to make your estate plan online. Sign up below to get started.</p>
       </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <div *ngIf="!setRequestStatus && responseReceived" class="alert alert-danger">
-            <strong>{{ setResponseMsg }}</strong>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div *ngIf="setRequestStatus && responseReceived" class="alert alert-success">
-            <strong>{{ setResponseMsg }}</strong>
-          </div>
-        </div>
-      </div>
+
       <div class="confirmed_form_white_sec">
+          <div class="row" *ngIf="responseReceived">
+              <div class="col-lg-12">
+                  <div *ngIf="!setRequestStatus" class="alert alert-danger">
+                      <strong>{{ setResponseMsg }}</strong>
+                  </div>
+              </div>
+              <div class="col-lg-12">
+                  <div *ngIf="setRequestStatus" class="alert alert-success">
+                      <strong>{{ setResponseMsg }}</strong>
+                  </div>
+              </div>
+          </div>
         <form id="signInForm" #form="ngForm" (ngSubmit)="onSubmit(form)">
           <input type="email" name="email" placeholder="Email Address" class="email_form"
                  ngModel
