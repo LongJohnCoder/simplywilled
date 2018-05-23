@@ -418,7 +418,7 @@ class UserController extends Controller
 
         if ($request->deceasedChildren == 'Yes') {
           $validator = Validator::make($request->all(), [
-              'deceasedChildrenNames'  =>  'required_if:deceasedChildren,Yes|string',
+              'deceasedChildrenNncames'  =>  'required_if:deceasedChildren,Yes|string',
           ]);
         }
         if ($validator->fails()) {
@@ -428,7 +428,7 @@ class UserController extends Controller
                 'data' => []
             ], 400);
         }
-        
+
         // save/update the children information
         $userId = $request->user_id;
         $totalChildren = $request->totalChildren;
