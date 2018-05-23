@@ -1059,7 +1059,7 @@ class UserController extends Controller
         $giftData = $request->giftData; // array of gift data
 
         //update existing gift
-        $saveGift = Gifts::where('user_id', $userId)->first();
+        $saveGift = Gifts::where('user_id', $userId)->where('type',$giftType)->first();
 
         //or create new gift
         // dd($giftType);
