@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {RealPropertyService} from '../services/real-property.service';
 import {Observable} from 'rxjs/Observable';
 
@@ -63,82 +63,6 @@ export class RealPropertyComponent implements OnInit {
       }
     }
   }
-  toggleRelationshipSomeOneElse(event: any): void {
-    if (this.isIndividualRP && this.singleBeneficiaryRP) {
-      if (event.target.value === 'Other') {
-        this.otherRelationshipRpSomeOneElse = true;
-      } else {
-        this.otherRelationshipRpSomeOneElse = false;
-      }
-    }
-  }
-  propertyDistibutionToggle(identifier: any): void {
-    if (this.isIndividualRP && this.singleBeneficiaryRP) {
-      if (identifier === 'TTI') {
-        this.toTheirIssue = true;
-        this.isSomeoneElse = false;
-      } else if (identifier === 'RE') {
-        this.toTheirIssue = false;
-        this.isSomeoneElse = false;
-      } else {
-        this.toTheirIssue = false;
-        this.isSomeoneElse = true;
-      }
-    }
-  }
-  propertyDistibutionToggleChild(identifier: any): void {
-    if (this.isIndividualRP && this.singleBeneficiaryRP) {
-      if (identifier === 'TSE') {
-        this.isSomeoneElse = true;
-      } else {
-        this.isSomeoneElse = false;
-      }
-    }
-  }
-  propertyDistributionToggleMB(identifier: string): any {
-    if (this.isIndividualRP && this.multipleBeneficiaryRP) {
-      if (identifier === 'TTI') {
-        this.toTheirIssueMB = true;
-        this.isSomeoneElseMB = false;
-      } else if (identifier === 'TSE') {
-        this.toTheirIssueMB = false;
-        this.isSomeoneElseMB = true;
-      } else if (identifier === 'TTS') {
-        this.toTheirIssueMB = false;
-        this.isSomeoneElseMB = false;
-      } else {
-        this.toTheirIssueMB = false;
-        this.isSomeoneElseMB = false;
-      }
-    }
-  }
-  propertyDistibutionToggleChildMB(identifier: any): void {
-    if (this.isIndividualRP && this.multipleBeneficiaryRP) {
-      if (identifier === 'TSE') {
-        this.isSomeoneElseMBChild = true;
-      } else {
-        this.isSomeoneElseMBChild = false;
-      }
-    }
-  }
-  toggleRelationshipSomeOneElseMB(event: any): void {
-    if (this.isIndividualRP && this.multipleBeneficiaryRP) {
-      if (event.target.value === 'Other') {
-        this.otherRelationshipRpSomeOneElseMB = true;
-      } else {
-        this.otherRelationshipRpSomeOneElseMB = false;
-      }
-    }
-  }
-  toggleRelationshipSomeOneElseMBChild(event: any): void {
-    if (this.isIndividualRP && this.multipleBeneficiaryRP) {
-      if (event.target.value === 'Other') {
-        this.otherRelationshipRpSomeOneElseMB = true;
-      } else {
-        this.otherRelationshipRpSomeOneElseMB = false;
-      }
-    }
-  }
 
   /**
    * this function is used for creating the reactive form
@@ -167,14 +91,23 @@ export class RealPropertyComponent implements OnInit {
               'relationship_single_b_parent': [''],
               'relationship_single_b_parent_other': [''],
               'single_beneficiary_gender': [''],
-              'property_distributed_single_beneficiary': ['']
+              'property_distributed_single_beneficiary': [''],
+              'issue_survival': [''],
+              'issue_survival_full_name': [''],
+              'issue_survival_relationship': [''],
+              'issue_survival_other_relationship': ['']
             })
           ]),
-          // multipleBeneficiaryControls: this.fb.array([
-          //   this.fb.group({
-          //
-          //   })
-          // ])
+          multipleBeneficiaryControls: this.fb.array([
+            this.fb.group({
+              'itemRows': this.fb.array([this.initItemRows()]),
+              'property_distributed_multiple_beneficiary': [''],
+              'issue_survival_mb': [''],
+              'individual_name': [''],
+              'relationship_mb': [''],
+              'other_relationship_mb': ['']
+            })
+          ])
         })
       ])
     });
@@ -287,6 +220,9 @@ export class RealPropertyComponent implements OnInit {
         this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.single_beneficiary_gender').updateValueAndValidity();
         this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.property_distributed_single_beneficiary').setValidators([Validators.required]);
         this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.property_distributed_single_beneficiary').updateValueAndValidity();
+        // remove multiple beneficiary validations
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.property_distributed_multiple_beneficiary').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.property_distributed_multiple_beneficiary').updateValueAndValidity();
       } else {
         this.singleBeneficiaryRP = false;
         this.multipleBeneficiaryRP = true;
@@ -299,6 +235,208 @@ export class RealPropertyComponent implements OnInit {
         this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.single_beneficiary_gender').updateValueAndValidity();
         this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.property_distributed_single_beneficiary').setValidators([]);
         this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.property_distributed_single_beneficiary').updateValueAndValidity();
+        // multiple beneficiary validations
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.property_distributed_multiple_beneficiary').setValidators([Validators.required]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.property_distributed_multiple_beneficiary').updateValueAndValidity();
+      }
+    }
+  }
+
+  /**
+   * this function helps to show option according to property distribution
+   * @param identifier
+   */
+  propertyDistibutionToggle(identifier: any): void {
+    if (this.isIndividualRP && this.singleBeneficiaryRP) {
+      if (identifier === 'TTI') {
+        this.toTheirIssue = true;
+        this.isSomeoneElse = false;
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').setValidators([Validators.required]);
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').updateValueAndValidity();
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').updateValueAndValidity();
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_relationship').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_relationship').updateValueAndValidity();
+      } else if (identifier === 'RE') {
+        this.toTheirIssue = false;
+        this.isSomeoneElse = false;
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').updateValueAndValidity();
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').updateValueAndValidity();
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_relationship').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_relationship').updateValueAndValidity();
+      } else {
+        this.toTheirIssue = false;
+        this.isSomeoneElse = true;
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').updateValueAndValidity();
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').setValidators([Validators.required]);
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').updateValueAndValidity();
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_relationship').setValidators([Validators.required]);
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_relationship').updateValueAndValidity();
+      }
+    }
+  }
+
+  /**
+   * this function helps to show child data in property distribution
+   * @param identifier
+   */
+  propertyDistibutionToggleChild(identifier: any): void {
+    if (this.isIndividualRP && this.singleBeneficiaryRP) {
+      if (identifier === 'TSE') {
+        this.isSomeoneElse = true;
+      } else {
+        this.isSomeoneElse = false;
+      }
+    }
+  }
+  /**
+   * this function toggles between relationship someone else in case of issue survival
+   * @param event
+   */
+  toggleRelationshipSomeOneElse(event: any): void {
+    if (this.isIndividualRP && this.singleBeneficiaryRP) {
+      if (event.target.value === 'Other') {
+        this.otherRelationshipRpSomeOneElse = true;
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_other_relationship').setValidators([Validators.required]);
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_other_relationship').updateValueAndValidity();
+      } else {
+        this.otherRelationshipRpSomeOneElse = false;
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_other_relationship').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_other_relationship').updateValueAndValidity();
+      }
+    }
+  }
+  saveRealProperty(fd): void {
+    console.log(fd);
+  }
+
+  /**
+   * this function add multiple beneficiary line items
+   */
+  addLineItems(): void {
+    const control = <FormArray>this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.itemRows');
+    control.push(this.initItemRows());
+  }
+
+  /**
+   * this helper function add line item controls
+   * @returns {FormGroup}
+   */
+  initItemRows() {
+    return this.fb.group({
+      // list all your form controls here, which belongs to your form array
+      'full_legal_name_l_item': [''],
+      'relationship_l_item': ['']
+    });
+  }
+
+  /**
+   *this function removes the control
+   * @param {number} index
+   */
+  deleteRow(index: number) {
+    // control refers to your formarray
+    const control = <FormArray>this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.itemRows');
+    // remove the chosen row
+    control.removeAt(index);
+  }
+
+  /**
+   * for multiple beneficiary this function shows the controls
+   * @param {string} identifier
+   * @returns {any}
+   */
+  propertyDistributionToggleMB(identifier: string): any {
+    if (this.isIndividualRP && this.multipleBeneficiaryRP) {
+      if (identifier === 'TTI') {
+        this.toTheirIssueMB = true;
+        this.isSomeoneElseMB = false;
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').setValidators([Validators.required]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').updateValueAndValidity();
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').updateValueAndValidity();
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').updateValueAndValidity();
+      } else if (identifier === 'TSE') {
+        this.toTheirIssueMB = false;
+        this.isSomeoneElseMB = true;
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').updateValueAndValidity();
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').setValidators([Validators.required]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').updateValueAndValidity();
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').setValidators([Validators.required]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').updateValueAndValidity();
+      } else if (identifier === 'TTS') {
+        this.toTheirIssueMB = false;
+        this.isSomeoneElseMB = false;
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').updateValueAndValidity();
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').updateValueAndValidity();
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').updateValueAndValidity();
+      } else {
+        this.toTheirIssueMB = false;
+        this.isSomeoneElseMB = false;
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').updateValueAndValidity();
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').updateValueAndValidity();
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').updateValueAndValidity();
+      }
+    }
+  }
+
+  /**
+   * this function toggles relationship in multiple beneficiary parent
+   * @param event
+   */
+  toggleRelationshipSomeOneElseMB(event: any): void {
+    if (this.isIndividualRP && this.multipleBeneficiaryRP) {
+      if (event.target.value === 'Other') {
+        this.otherRelationshipRpSomeOneElseMB = true;
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.other_relationship_mb').setValidators([Validators.required]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.other_relationship_mb').updateValueAndValidity();
+      } else {
+        this.otherRelationshipRpSomeOneElseMB = false;
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.other_relationship_mb').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.other_relationship_mb').updateValueAndValidity();
+      }
+    }
+  }
+  /**
+   * this function toggles relationship in multiple beneficiary child
+   * @param event
+   */
+  toggleRelationshipSomeOneElseMBChild(event: any): void {
+    if (this.isIndividualRP && this.multipleBeneficiaryRP) {
+      if (event.target.value === 'Other') {
+        this.otherRelationshipRpSomeOneElseMB = true;
+      } else {
+        this.otherRelationshipRpSomeOneElseMB = false;
+      }
+    }
+  }
+  propertyDistibutionToggleChildMB(identifier: any): void {
+    if (this.isIndividualRP && this.multipleBeneficiaryRP) {
+      if (identifier === 'TSE') {
+        // this.isSomeoneElseMBChild = true;
+        this.isSomeoneElseMB = true;
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').setValidators([Validators.required]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').updateValueAndValidity();
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').setValidators([Validators.required]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').updateValueAndValidity();
+      } else {
+        // this.isSomeoneElseMBChild = false;
+        this.isSomeoneElseMB = false;
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').updateValueAndValidity();
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').setValidators([]);
+        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').updateValueAndValidity();
       }
     }
   }
