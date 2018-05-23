@@ -658,27 +658,39 @@ h1, h2, h3, h4, h5, h6 {
 .back_next_btn_ul li:first-child {
   margin-left: 0px;
 }
-.back_next_btn_ul li a, .saveBtn {
-  width: 130px;
-  display: inline-block;
-  text-align: center;
-  background: #a7a7a7;
-  color: #fff;
-  border-radius: 30px;
-  padding: 10px 0px;
-  font-size: 16px;
-  font-family: 'Lato-Regular';
+.saveBtn{
+  width: 110px;
   border: 0;
+  border-bottom: 3px solid #308f25;
+  background: linear-gradient(#53ba3c,#3fa62e);
+  font-size: 18px;
+  line-height: 24px;
+  text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+  color: #fff;
+  padding: 8px 0;
+  display: inline-block;
+  border-radius: 5px;
   cursor: pointer;
 }
-.saveBtn[disabled], .saveBtn[disabled]:hover{
+.gift_remove_form{
+  width: 110px;
+  border: 0;
+  border-bottom: 3px solid #a92521;
+  background: linear-gradient(#e86a66,#d9534f);
+  font-size: 18px;
+  line-height: 24px;
+  text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+  color: #fff;
+  padding: 8px 0;
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.saveBtn[disabled]{
   cursor: not-allowed;
   background: #ccc;
+  border-bottom: 3px solid #aaa;
 }
-.back_next_btn_ul li a:hover, .saveBtn:hover {
-  background: #4db228;
-}
-
 
 .singing_instruction {
   width: 100%;
@@ -1320,6 +1332,15 @@ h1, h2, h3, h4, h5, h6 {
   color: #000000;
   font-size: 20px;
   padding: 25px 0px;
+}
+.main-content{
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 1px 0 #ddd;
+  display: inline-block;
+  width: 100%;
+  padding: 30px;
 }
 .property_to_be_distributed {
   padding: 15px 0px 10px 0px;

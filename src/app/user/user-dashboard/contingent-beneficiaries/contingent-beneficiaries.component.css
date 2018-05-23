@@ -402,6 +402,7 @@ footer ul li a{
 }
 .main-content.tellusaboutyou{
     padding: 30px 0 0;
+    width: 855px;
 }
 .main-content.tellusaboutyou h2{
     padding: 0 30px;
@@ -415,6 +416,8 @@ footer ul li a{
     display: block;
     font-weight: normal;
     font-size: 18px;
+    color: rgba(0,0,0,.7);
+    font-size: 15px;
 }
 .main-content .form-group label span.leavetxt{
     display: block;
@@ -469,7 +472,7 @@ footer ul li a{
     text-align: left;
 }
 .radio_custom{
-    height: 105px;
+    height: 112px;
     width: 105px;
     position: relative;
     border: 1px solid #BFBFBF;
@@ -498,10 +501,22 @@ footer ul li a{
     float: none;
     vertical-align: top;
 }
-.radio_custom.active {
+.main-content .form-group label.radio_custom.active {
     border-color: #42A82D;
     background: #42A82D;
     color: #fff;
+}
+.form-group textarea{
+    font-size: 16px;
+    width: 100%;
+    height: 100px;
+    border-radius: 6px;
+    margin-top: 10px;
+    border: 1px solid #BFBFBF;
+    display: inline-block;
+    color:#373737;
+    padding: 10px;
+    background: #fff;
 }
 .radio_custom.marital_status{
     height: 130px;
@@ -584,7 +599,15 @@ footer ul li a{
 .human_status3 {
     font-family: 'OpenSans';
     height: auto;
-    line-height: 20px;
+    line-height: 14px;
+    font-size: 12px;
+    display: block;
+    text-align: center;
+}
+.custom_img5{
+    display: block;
+    text-align: center;
+    padding: 5px 0;
 }
 .gifts-list .radio_custom {
     width: 120px;
@@ -705,6 +728,9 @@ footer .social ul li a i{
     .contactus span.number {
         font-size: 25px;
     }
+    .main-content.tellusaboutyou {
+        width: 690px;
+    }
 }
 @media screen and (max-width: 991px){
     .progress_main {
@@ -722,6 +748,9 @@ footer .social ul li a i{
     }
     .main-content.hotdocs .col-md-4.text-right{
         text-align: center;
+    }
+    .main-content.tellusaboutyou {
+        width: 450px;
     }
 }
 @media screen and (min-width: 768px) and (max-width: 991px){
@@ -813,6 +842,9 @@ footer .social ul li a i{
     .main-content.hotdocs h2 {
         margin: 20px 0;
         text-align: center;
+    }
+    .main-content.tellusaboutyou {
+        width: 100%;
     }
 
 }

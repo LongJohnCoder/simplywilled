@@ -373,6 +373,7 @@ footer ul li a{
 }
 .main-content.tellusaboutyou{
   padding: 30px 0 0;
+  width: 855px;
 }
 .main-content.tellusaboutyou h2{
   padding: 0 30px;
@@ -676,6 +677,9 @@ footer .social ul li a i{
   .contactus span.number {
     font-size: 25px;
   }
+  .main-content.tellusaboutyou{
+    width: 690px;
+  }
 }
 @media screen and (max-width: 991px){
   .progress_main {
@@ -697,6 +701,9 @@ footer .social ul li a i{
   .main-content.tellusaboutyou h2 {
     font-size: 24px;
     margin: 0 0 20px;
+  }
+  .main-content.tellusaboutyou{
+    width: 450px;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px){
@@ -785,7 +792,9 @@ footer .social ul li a i{
     margin: 20px 0;
     text-align: center;
   }
-
+  .main-content.tellusaboutyou{
+    width: 100%;
+  }
 }
 
 @media screen  and (max-width: 480px){
