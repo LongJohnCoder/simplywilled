@@ -162,10 +162,23 @@ export class YourSpecificGiftComponent implements OnInit {
     this.giftCount -= 1;
     this.showAddGift = false;
     this.onNewModule = true;
-    if (giftData.type === '1') {
+    switch (giftData.type ) {
       // cash gift
-      this.cash_module = true;
-      this.editService.setData(giftData);
+      case '1': this.cash_module = true;
+                this.business_interest = false;
+                this.specific_asset = false;
+                this.editService.setData(giftData);
+                break;
+      case '3': this.business_interest = true;
+                this.cash_module = false;
+                this.specific_asset = false;
+                this.editService.setData(giftData);
+                break;
+      case '4': this.specific_asset = true;
+                this.business_interest = false;
+                this.cash_module = false;
+                this.editService.setData(giftData);
+                break;
     }
   }
 
