@@ -30,6 +30,16 @@ export class YourSpecificGiftService {
   }
 
   /**
+   * this function update gift in database
+   * @param {string} token
+   * @param {SaveCashGift} data
+   * @returns {any}
+   */
+  updateGift(token: string, data: SaveCashGift): any {
+    return this.http.post(environment.API_URL + 'user/update-gift', data, {headers: new HttpHeaders(
+        {'Authorization': token})});
+  }
+  /**
    * this function remove gift from database
    * @param {string} token
    * @param {number} gift_id

@@ -187,5 +187,7 @@ export class YourSpecificGiftComponent implements OnInit {
    */
   changeViewState(): void {
     this.cash_module = false;
+    this.business_interest = false;
+    this.specific_asset = false;
   }
 }

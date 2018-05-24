@@ -324,19 +324,11 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
       this.giftData.push(this.businessInterestForm.value);
       if (token) {
         let cashGiftDataSet = this.flags.editFlag ? {'id': this.giftId, 'step': 7, 'user_id': user, 'giftType': 4, 'giftData': this.giftData} : {'step': 7, 'user_id': user, 'giftType': 4, 'giftData': this.giftData};
-        this.ysgService.saveCashGiftData(token, cashGiftDataSet).subscribe((data) => {
-          if (data.status) {
-            window.location.reload();
-          } else {
-            this.errors.errorFlag = true;
-            this.errors.errorMsg = 'Something went wrong while updating data';
-            console.log(this.errors.errorMsg);
-          }
-        }, (error) => {
-          this.errors.errorFlag = true;
-          this.errors.errorMsg = error.error.message;
-          console.log(this.errors.errorMsg);
-        });
+        if (this.flags.editFlag) {
+          this.editGiftData(token, cashGiftDataSet);
+        } else {
+          this.createGiftData(token, cashGiftDataSet);
+        }
       } else {
         this.errors.errorFlag = true;
         this.errors.errorMsg = 'Please login again.';
@@ -348,6 +340,39 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**Calls update gift data api*/
+  editGiftData(token: string, cashGiftDataSet) {
+    this.ysgService.saveCashGiftData(token, cashGiftDataSet).subscribe((data) => {
+      if (data.status) {
+        window.location.reload();
+      } else {
+        this.errors.errorFlag = true;
+        this.errors.errorMsg = 'Something went wrong while updating data';
+        console.log(this.errors.errorMsg);
+      }
+    }, (error) => {
+      this.errors.errorFlag = true;
+      this.errors.errorMsg = error.error.message;
+      console.log(this.errors.errorMsg);
+    });
+  }
+
+  /**Calls create gift data api*/
+  createGiftData(token: string, cashGiftDataSet) {
+    this.ysgService.saveCashGiftData(token, cashGiftDataSet).subscribe((data) => {
+      if (data.status) {
+        window.location.reload();
+      } else {
+        this.errors.errorFlag = true;
+        this.errors.errorMsg = 'Something went wrong while updating data';
+        console.log(this.errors.errorMsg);
+      }
+    }, (error) => {
+      this.errors.errorFlag = true;
+      this.errors.errorMsg = error.error.message;
+      console.log(this.errors.errorMsg);
+    });
+  }
   /**
    * Marks all controls in a form group as touched
    * @param formGroup
@@ -426,7 +451,6 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
     this.ysgComponent.deleteGift(id);
     this.ysgComponent.changeViewState();
     this.editService.unsetData();
-    window.location.reload();
   }
 
   /**
