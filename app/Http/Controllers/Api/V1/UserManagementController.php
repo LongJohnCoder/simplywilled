@@ -144,7 +144,7 @@ class UserManagementController extends Controller
         $user = \Auth::user();
         $tellUsAboutYou = TellUsAboutYou::where('user_id',$user->id)->first();
         if($tellUsAboutYou) {
-          $state = StatesInfo::where('name',$tellUsAboutYou->state)->first();
+          $state = StatesInfo::where('name',trim($tellUsAboutYou->state))->first();
           return response()->json([
             'status' => true,
             'message'   => 'Success',
