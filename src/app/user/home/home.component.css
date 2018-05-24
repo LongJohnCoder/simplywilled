@@ -10,6 +10,9 @@
     color: #fff;
     text-decoration: none;
 }
+.get_start_pkg_btn{
+    width: 202px;
+}
 .hide_show_main_pkg .get_start_pkg_btn{
     width: 100%;
 }
@@ -29,5 +32,15 @@
     display: block;
 }
 
-
+@media screen and (max-width:1200px){
+    .get_start_pkg_btn{
+        width: 202px;
+        margin-left: 50%;
+    }
+    .hide_show_main_pkg .get_start_pkg_btn{
+        width: 100%;
+        transform: unset;
+        margin-left: 0;
+    }
+}
 

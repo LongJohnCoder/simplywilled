@@ -707,12 +707,11 @@ h1, h2, h3, h4, h5, h6{
     margin-bottom:75px;
 }
 .packages_ul > li{
-    width:43%;
-    float:left;
-    margin-left:2%;
+    width:50%;
+    margin: 0 auto;
     position:relative;
 }
-.packages_ul > li:last-child{
+/* .packages_ul > li:last-child{
     float: right;
 }
 .packages_ul > li:last-child .pkg_first_sec{
@@ -732,7 +731,7 @@ h1, h2, h3, h4, h5, h6{
 }
 .packages_ul > li:last-child .whats_included_text{
     color: #1376bb;
-}
+} */
 .pkg_first_sec{
     width:100%;
     float:left;
