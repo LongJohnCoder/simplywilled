@@ -17,8 +17,10 @@ export class MedicalEmergencyService {
    * @returns {Observable<Object>}
    */
   getmedicalEmergency(token: string, data: any) {
-      return this.http.post(environment.API_URL + 'user/fetch-health-finance', data, {headers: new HttpHeaders(
-              {'Authorization': token})});
+      /*return this.http.post(environment.API_URL + 'user/fetch-health-finance', data, {headers: new HttpHeaders(
+              {'Authorization': token})});*/
+      return this.http.get(environment.API_URL + 'user/fetch-health-finance', {headers: new HttpHeaders(
+        {'Authorization': token})});
   }
 
     /**

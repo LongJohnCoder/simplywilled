@@ -1,29 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { ProtectYourFinancesService } from '../services/protect-your-finances.service';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Router, ActivatedRoute, Route } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
-import { NgForm } from '@angular/forms';
 
 import { UserAuthService } from '../../../user-auth/user-auth.service';
 import { UserService } from '../../../user.service';
 import { Validators, FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
-// import { ProtectYourFinances } from './models/protectYourFinances';
 import { PYFAttorneyPowers } from '../models/pyf-attorney-powers';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-protect-your-finances',
   templateUrl: './protect-your-finances.component.html',
   styleUrls: ['./protect-your-finances.component.css']
 })
-export class ProtectYourFinancesComponent implements OnInit {
+export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
 
-  public poaData: any;
-  public myForm: FormGroup;
-  public pyfData: any; // PYFAttorneyPowers;
-  public response: any;
-  public errorMessage: string;
-  public stateInfo: string;
+  poaData: any;
+  myForm: FormGroup;
+  pyfData: any; // PYFAttorneyPowers;
+  response: any;
+  errors = {
+    errorFlag: false,
+    errorMessage: '',
+  };
+  stateInfo: string;
+  accessToken: string;
+  poaSubscription: Subscription;
+  stateInfoSubscription: Subscription;
 
   constructor(
     private protectYourFinancesService: ProtectYourFinancesService,
@@ -32,26 +35,38 @@ export class ProtectYourFinancesComponent implements OnInit {
     private userService: UserService,
     private router: Router
   ) {
-    this.createForm();
+    this.accessToken = this.parseToken();
     this.getStates();
+    this.createForm();
   }
 
   ngOnInit() {
     this.getPoaData();
   }
 
+  /**Checks for authorization user id.*/
+  parseToken() {
+    if (JSON.parse(localStorage.getItem('loggedInUser')).hasOwnProperty('token')) {
+      return JSON.parse(localStorage.getItem('loggedInUser')).token;
+    }
+    return null;
+  }
+
+
   /**
    * Function to get power of attorney data as a JSON response
    */
   getPoaData(): void {
-    this.protectYourFinancesService.getPoaDetails().subscribe(
+    this.protectYourFinancesService.getPoaDetails(this.accessToken).subscribe(
       (response: any) => {
+        console.log(response);
         this.response = response.data;
         this.pyfData = response.data === null || response.data.attorney_powers === null ? null : JSON.parse(response.data.attorney_powers);
         this.poaData = new Array(this.pyfData).map(gr => gr );
         this.createForm(this.poaData);
       },
       (error: any) => {
+        console.log(error);
       }
     );
   }
@@ -61,22 +76,21 @@ export class ProtectYourFinancesComponent implements OnInit {
     *   slice that in 2 parts : categories as faqData , q & a from categories as faqDetails
     * */
   getStates(): void {
-    this.protectYourFinancesService.getStates().subscribe(
+    this.protectYourFinancesService.getStates(this.accessToken).subscribe(
         (data: any) => {
-            this.stateInfo = data.stateInfo.type;
-            // this.stateInfo = 'trans';
-            // switch(this.stateInfo) {
-            //   case 'trans': this.router.navigate(['/dashboard']);
-            //         break;
-            //   default: break;
-            // }
-            console.log('state : ', this.stateInfo);
+            this.stateInfo = data !== null ? data.stateInfo.type : 'uniform';
+            let stateName = data !== null ? data.stateInfo.name : '';
+            switch (stateName) {
+                case 'Florida':
+                case 'Maryland':
+                case 'Minnesota':
+                case 'New York': this.router.navigate(['/dashboard/protect-your-finances-details']);
+                                 break;
+                default: break;
+            }
         }, (error: any) => {
-            console.log(error);
-            setTimeout(() => {
-              this.errorMessage = '';
-          }, 3000);
-        }
+          console.log(error);
+        }, () => {}
     );
   }
 
@@ -86,8 +100,7 @@ export class ProtectYourFinancesComponent implements OnInit {
    * returns void
    */
   createForm(dt: Array<PYFAttorneyPowers> = []): void {
-    const formObj = dt[0] !== undefined ? dt[0] : null;
-
+    let formObj = dt[0] !== undefined ? dt[0] : null;
     this.myForm = this.fb.group({
       // this are 2 inter dependant fields
       isDurable                 : new FormControl(formObj !== undefined && formObj !== null && formObj.isDurable !== undefined
@@ -128,25 +141,13 @@ export class ProtectYourFinancesComponent implements OnInit {
    */
   send(): void {
       this.response = this.response === null ? {} : this.response;
-
-      const userId = this.authService.getUser().id;
-
-      // tslint:disable-next-line:max-line-length
+      let userId = this.authService.getUser().id;
       this.response.user_id = this.response.user_id == null ? parseInt(userId, 10) : parseInt(this.response.user_id, 10);
-
       this.response.is_backupattorney = this.response.is_backupattorney == null ? '0' : this.response.is_backupattorney;
-
       this.response.attorney_powers   = this.myForm.value;
-
-      // tslint:disable-next-line:max-line-length
       this.response.attorney_holders  = typeof this.response.attorney_holders === 'string' ? JSON.parse(this.response.attorney_holders) : null;
-
-      // tslint:disable-next-line:max-line-length
       this.response.attorney_backup   = typeof this.response.attorney_backup === 'string' ? JSON.parse(this.response.attorney_backup) : null;
-
-      console.log( this.response);
-
-      this.protectYourFinancesService.postPoaDetails(this.response).subscribe(
+      this.protectYourFinancesService.postPoaDetails(this.accessToken, this.response).subscribe(
         (data) => {
           this.router.navigate(['/dashboard/protect-your-finances-details']);
         }, (error) => {
@@ -154,4 +155,14 @@ export class ProtectYourFinancesComponent implements OnInit {
         }
       );
     }
+
+  /**When the component is destroyed.*/
+  ngOnDestroy() {
+    if (this.poaSubscription) {
+      this.poaSubscription.unsubscribe();
+    }
+    if (this.stateInfoSubscription) {
+      this.stateInfoSubscription.unsubscribe();
+    }
+  }
 }

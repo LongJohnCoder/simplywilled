@@ -27,6 +27,16 @@
     border-color: #42A82D;
     color: #42A82D;
 }
+.error_txt {
+  width: 100%;
+  display: inline-block;
+  background-color: #ff5959;
+  color: #fff;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+}
+
 .main-content .valid i{
     position: absolute;
     top: 44px;
@@ -67,6 +77,9 @@
     margin-top: 10px;
     border: 1px solid #BFBFBF;
     font-style: italic;
+}
+.main-content .form-control.error_input {
+  border: 1px solid #ff5959;
 }
 .main-content select.form-control{
     -webkit-appearance: none;

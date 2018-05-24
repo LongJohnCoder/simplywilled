@@ -1,57 +1,92 @@
 <div class='finances'>
-    <form [formGroup] = "poaDetailsForm" (ngSubmit)="send()"> 
+    <form [formGroup] = "poaDetailsForm" (ngSubmit)="send()">
       <div class="main-content tellusaboutyou" >
         <h2>Power of attorney details</h2>
         <!-- <app-fianance [data]="poaDetailsForm.get('attorney_holders')"></app-fianance> -->
 
-        <div formGroupName="attorney_holders">
-            <div class="form-group valid">
+        <div>
+            <div class="form-group" [ngClass]='{"valid": poaDetailsForm.get("fullname").touched && poaDetailsForm.get("fullname").dirty && !poaDetailsForm.get("fullname").hasError("required") && !poaDetailsForm.get("fullname").hasError("pattern")}'>
               <label>What is their full legal name? </label>
               <input
                       type="text"
                       class="form-control"
                       formControlName="fullname"
                       required
+                      [ngClass]='{"error_input": poaDetailsForm.get("fullname").touched && poaDetailsForm.get("fullname").dirty && (poaDetailsForm.get("fullname").hasError("required") || poaDetailsForm.get("fullname").hasError("pattern"))}'
                       name ='fullname'>
-                      <i class="fa fa-check"></i>
+                      <i
+                        *ngIf="poaDetailsForm.get('fullname').touched && poaDetailsForm.get('fullname').dirty && !poaDetailsForm.get('fullname').hasError('required') && !poaDetailsForm.get('fullname').hasError('pattern')"
+                        class="fa fa-check"
+                      ></i>
+                     <i class="fa fa-times" *ngIf="poaDetailsForm.get('fullname').touched && poaDetailsForm.get('fullname').dirty && (poaDetailsForm.get('fullname').hasError('required') || poaDetailsForm.get('fullname').hasError('pattern'))"></i>
+
+              <span class="error_txt"
+                    *ngIf="poaDetailsForm.get('fullname').touched && poaDetailsForm.get('fullname').dirty && poaDetailsForm.get('fullname').hasError('required')">
+                    Full name is required
+              </span>
+
+              <span class="error_txt"
+                    *ngIf="poaDetailsForm.get('fullname').touched && poaDetailsForm.get('fullname').dirty && poaDetailsForm.get('fullname').hasError('pattern')">
+                    Please enter a properly capitalized first power attorney name
+              </span>
             </div>
-            
-            
-            <div class="form-group valid">
+
+
+            <div class="form-group" [ngClass]='{"valid": poaDetailsForm.get("address").touched && poaDetailsForm.get("address").dirty && !poaDetailsForm.get("address").hasError("required")}'>
               <label>What is their address? </label>
               <input
                       type="text"
                       class="form-control"
                       formControlName="address"
                       required
+                      [ngClass]='{"error_input": poaDetailsForm.get("address").touched && poaDetailsForm.get("address").dirty && poaDetailsForm.get("address").hasError("required")}'
                       name ='address'>
-                      <i class="fa fa-check"></i>
+                      <i
+                        *ngIf="poaDetailsForm.get('address').touched && poaDetailsForm.get('address').dirty && !poaDetailsForm.get('address').hasError('required')"
+                        class="fa fa-check"
+                      ></i>
+                    <i class="fa fa-times" *ngIf="poaDetailsForm.get('address').touched && poaDetailsForm.get('address').dirty && poaDetailsForm.get('address').hasError('required')"></i>
+
+              <span class="error_txt"
+                    *ngIf="poaDetailsForm.get('address').touched && poaDetailsForm.get('address').dirty && poaDetailsForm.get('address').hasError('required')">
+                    Please enter first power attorney address
+              </span>
             </div>
-            
-            
-            <div class="form-group" [ngClass]= '{valid : phone.valid}'>
+
+
+            <div
+              class="form-group"
+              [ngClass]='{"valid": poaDetailsForm.get("phone").touched && poaDetailsForm.get("phone").dirty && !poaDetailsForm.get("phone").hasError("required") && !poaDetailsForm.get("phone").hasError("minlength")}'
+            >
               <label>What is phone number? </label>
               <input
-                      type="text"
-                      class="form-control"
-                      formControlName="phone"
-                      
-                      #phone
-                      mask="(000)-000-0000"
-                      placeholder="(xxx)-xxx-xxxx"
-                      name ='phone'>
-                      <i class="fa fa-check" *ngIf="phone.valid"></i>                      
-                      <span class="alert-danger"
-                        *ngIf="phone.errors && (phone.dirty || phone.touched)">
-                          <p *ngIf="phone.errors?.required">Phone is required</p>
-                          <p *ngIf="phone.errors?.minlength">Incorrect Number</p>
-                      </span>
+                type="text"
+                class="form-control"
+                formControlName="phone"
+                [ngClass]='{"error_input": poaDetailsForm.get("phone").touched && poaDetailsForm.get("phone").dirty && (poaDetailsForm.get("phone").hasError("required") || poaDetailsForm.get("phone").hasError("minlength"))}'
+                #phone
+                mask="(000)-000-0000"
+                placeholder="(xxx)-xxx-xxxx"
+                name ='phone'>
+                <i class="fa fa-check" *ngIf="poaDetailsForm.get('phone').touched && poaDetailsForm.get('phone').dirty && (!poaDetailsForm.get('phone').hasError('required') && !poaDetailsForm.get('phone').hasError('minlength'))"></i>
+                <i class="fa fa-times" *ngIf="poaDetailsForm.get('phone').touched && poaDetailsForm.get('phone').dirty && (poaDetailsForm.get('phone').hasError('required') || poaDetailsForm.get('phone').hasError('minlength'))"></i>
+
+                <span class="error_txt"
+                  *ngIf="poaDetailsForm.get('phone').touched && poaDetailsForm.get('phone').dirty && poaDetailsForm.get('phone').hasError('required')">
+                    Please enter first power attorney phone
+                </span>
+
+                <span class="error_txt"
+                    *ngIf="poaDetailsForm.get('phone').touched && poaDetailsForm.get('phone').dirty && poaDetailsForm.get('phone').hasError('minlength')">
+                    Please provide a  first power attorney phone
+                </span>
             </div>
+
 
             <div class="form-group valid">
                 <label>Beneficiary's relationship to you?</label>
                 <span class="drop_down" style="margin-bottom:20px;">
-                    <select class="beneficiary_relationship_dropdown" (change)="relationshipChange('attorney_holders.relationship',$event.target.value)" formControlName="relationship">
+                    <select class="beneficiary_relationship_dropdown" #selectRelationship (change)="relationshipChange('relationship',selectRelationship.value)" formControlName="relationship">
                         <option value="">Select Relationship</option>
                         <option value="Wife">Wife</option>
                         <option value="Husband">Husband</option>
@@ -70,7 +105,7 @@
                 </span>
             </div>
 
-            <div class="form-group valid" *ngIf="poaDetailsForm.get('attorney_holders.relationship').value == 'Other'">
+            <div class="form-group" *ngIf="poaDetailsForm.get('relationship').value == 'Other'">
                 <label>Mention your relationship </label>
                 <input
                         type="text"
@@ -78,38 +113,37 @@
                         formControlName="other_relationship"
                         required
                         name ='other_relationship'>
-                        <i class="fa fa-check"></i>
             </div>
-            
+
             <div class="form-group">
               <label>Would you like to inform this person that you appointed them as your Financial Power of Attorney?</label>
               <ul class="radio_ul6">
                 <li>
-                  <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("attorney_holders.is_inform").value === 1)}'>
-                    <input type="radio" #isInformYes value=1 (click)="changeMe('attorney_holders.is_inform', 1)">
+                  <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("is_inform").value === 1)}'>
+                    <input type="radio" #isInformYes value=1 (click)="changeMe('is_inform', 1)">
                     <span class="human_status">Yes</span>
                   </label>
                 </li>
                 <li>
-                  <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("attorney_holders.is_inform").value === 0)}'>
-                    <input type="radio" #isInformNo value=0 (click)="changeMe('attorney_holders.is_inform', 0)">
+                  <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("is_inform").value === 0)}'>
+                    <input type="radio" #isInformNo value=0 (click)="changeMe('is_inform', 0)">
                     <span class="human_status">No</span>
                   </label>
                 </li>
               </ul>
             </div>
 
-            <div class="form-group valid" *ngIf='poaDetailsForm.get("attorney_holders.is_inform").value === 1'>
+            <div class="form-group valid" *ngIf='poaDetailsForm.get("is_inform").value === 1'>
               <label>What is their email address?</label>
-              <input 
-                    type = "text" 
-                    class = "form-control" 
-                    required 
+              <input
+                    type = "text"
+                    class = "form-control"
+                    required
                     name ='email'
                     formControlName = "email">
               <i class="fa fa-check"></i>
             </div>
-            
+
           </div>
 
 
@@ -134,46 +168,72 @@
         <div *ngIf='poaDetailsForm.get("is_backupattorney").value == 1'>
           <h2>Backup Power of attorney details</h2>
           <!-- <app-fianance></app-fianance> -->
-          <div formGroupName="attorney_backup">
-              <div class="form-group valid">
+          <div>
+              <div class="form-group" [ngClass]='{"valid": poaDetailsForm.get("backup_fullname").touched && poaDetailsForm.get("backup_fullname").dirty && !poaDetailsForm.get("backup_fullname").hasError("required") && !poaDetailsForm.get("backup_fullname").hasError("pattern")}'>
                 <label>What is their full legal name? </label>
                 <input
                         type="text"
                         class="form-control"
-                        formControlName="fullname"
+                        formControlName="backup_fullname"
                         required
                         name ='fullname'>
-                        <i class="fa fa-check"></i>
+                        <i
+                          *ngIf="poaDetailsForm.get('backup_fullname').touched && poaDetailsForm.get('backup_fullname').dirty && !poaDetailsForm.get('backup_fullname').hasError('required') && !poaDetailsForm.get('backup_fullname').hasError('pattern')"
+                          class="fa fa-check"
+                        ></i>
+                        <i class="fa fa-times" *ngIf="poaDetailsForm.get('backup_fullname').touched && poaDetailsForm.get('backup_fullname').dirty && (poaDetailsForm.get('backup_fullname').hasError('required') || poaDetailsForm.get('backup_fullname').hasError('pattern'))"></i>
+
+                <span class="error_txt"
+                      *ngIf="poaDetailsForm.get('backup_fullname').touched && poaDetailsForm.get('backup_fullname').dirty && poaDetailsForm.get('backup_fullname').hasError('required')">
+                    Full name is required
+                </span>
+
+                <span class="error_txt"
+                      *ngIf="poaDetailsForm.get('backup_fullname').touched && poaDetailsForm.get('backup_fullname').dirty && poaDetailsForm.get('backup_fullname').hasError('pattern')">
+                    Please enter a properly capitalized second power attorney name
+                </span>
               </div>
-              
-              
-              <div class="form-group valid">
+
+
+              <div class="form-group" [ngClass]='{"valid": poaDetailsForm.get("backup_address").touched && poaDetailsForm.get("backup_address").dirty && !poaDetailsForm.get("backup_address").hasError("required")}'>
                 <label>What is their address? </label>
                 <input
                         type="text"
                         class="form-control"
-                        formControlName="address"
+                        formControlName="backup_address"
                         required
+                        [ngClass]='{"error_input": poaDetailsForm.get("backup_address").touched && poaDetailsForm.get("backup_address").dirty && poaDetailsForm.get("backup_address").hasError("required")}'
                         name ='address'>
-                        <i class="fa fa-check"></i>
+                      <i
+                        *ngIf="poaDetailsForm.get('address').touched && poaDetailsForm.get('address').dirty && !poaDetailsForm.get('address').hasError('required')"
+                        class="fa fa-check"
+                      ></i>
+                      <i class="fa fa-times" *ngIf="poaDetailsForm.get('address').touched && poaDetailsForm.get('address').dirty && poaDetailsForm.get('address').hasError('required')"></i>
+
+                      <span class="error_txt"
+                            *ngIf="poaDetailsForm.get('backup_address').touched && poaDetailsForm.get('backup_address').dirty && poaDetailsForm.get('backup_address').hasError('required')">
+                          Please enter first power attorney address
+                      </span>
               </div>
-              
-              
+
+
               <div class="form-group valid">
                 <label>What is phone number? </label>
                 <input
                         type="text"
                         class="form-control"
-                        formControlName="phone"
+                        formControlName="backup_phone"
+                        mask="(000)-000-0000"
+                        placeholder="(xxx)-xxx-xxxx"
                         required
                         name ='phone'>
                         <i class="fa fa-check"></i>
               </div>
-  
+
               <div class="form-group valid">
                   <label>Beneficiary's relationship to you?</label>
                   <span class="drop_down" style="margin-bottom:20px;">
-                      <select class="beneficiary_relationship_dropdown" (change)="relationshipChange('attorney_backup.relationship',$event.target.value)" formControlName="relationship">
+                      <select class="beneficiary_relationship_dropdown" #selectBackupRelationship (change)="relationshipChange('backup_relationship', selectBackupRelationship.value)" formControlName="backup_relationship">
                           <option value="">Select Relationship</option>
                           <option value="Wife">Wife</option>
                           <option value="Husband">Husband</option>
@@ -192,46 +252,46 @@
                   </span>
               </div>
 
-              <div class="form-group valid" *ngIf="poaDetailsForm.get('attorney_backup.relationship').value == 'Other'">
+              <div class="form-group valid" *ngIf="poaDetailsForm.get('backup_relationship').value == 'Other'">
                 <label>Mention your relationship </label>
                 <input
                         type="text"
                         class="form-control"
-                        formControlName="other_relationship"
+                        formControlName="backup_other_relationship"
                         required
                         name ='other_relationship'>
                         <i class="fa fa-check"></i>
               </div>
-              
+
               <div class="form-group">
                 <label>Would you like to inform this person that you appointed them as your Financial Power of Attorney?</label>
                 <ul class="radio_ul6">
                   <li>
-                    <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("attorney_backup.is_inform").value === 1)}'>
-                      <input type="radio" #isInformYes value=1 (click)="changeMe('attorney_backup.is_inform', 1)">
+                    <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("backup_is_inform").value === 1)}'>
+                      <input type="radio" #isInformYes value=1 (click)="changeMe('backup_is_inform', 1)">
                       <span class="human_status">Yes</span>
                     </label>
                   </li>
                   <li>
-                    <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("attorney_backup.is_inform").value === 0)}'>
-                      <input type="radio" #isInformNo value=0 (click)="changeMe('attorney_backup.is_inform', 0)">
+                    <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("backup_is_inform").value === 0)}'>
+                      <input type="radio" #isInformNo value=0 (click)="changeMe('backup_is_inform', 0)">
                       <span class="human_status">No</span>
                     </label>
                   </li>
                 </ul>
               </div>
-  
-              <div class="form-group valid" *ngIf='poaDetailsForm.get("attorney_backup.is_inform").value === 1'>
+
+              <div class="form-group valid" *ngIf='poaDetailsForm.get("backup_is_inform").value === 1'>
                 <label>What is their email address?</label>
-                <input 
-                      type = "text" 
-                      class = "form-control" 
-                      required 
+                <input
+                      type = "text"
+                      class = "form-control"
+                      required
                       name ='email'
                       formControlName = "email">
                 <i class="fa fa-check"></i>
               </div>
-              
+
             </div>
         </div>
 
