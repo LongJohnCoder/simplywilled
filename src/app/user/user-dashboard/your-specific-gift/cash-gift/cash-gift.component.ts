@@ -196,6 +196,11 @@ export class CashGiftComponent implements OnInit {
       window.location.reload();
     }
   }
+
+  /**
+   * this function delete the gift from database
+   * @param {number} id
+   */
   popUpDelete(id: number): void {
     this.ysgComponent.deleteGift(id);
     this.ysgComponent.changeViewState();

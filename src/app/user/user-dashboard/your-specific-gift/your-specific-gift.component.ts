@@ -165,6 +165,13 @@ export class YourSpecificGiftComponent implements OnInit {
     switch (giftData.type ) {
       // cash gift
       case '1': this.cash_module = true;
+                this.real_property_module = false;
+                this.business_interest = false;
+                this.specific_asset = false;
+                this.editService.setData(giftData);
+                break;
+      case '2': this.cash_module = false;
+                this.real_property_module = true;
                 this.business_interest = false;
                 this.specific_asset = false;
                 this.editService.setData(giftData);
@@ -179,6 +186,13 @@ export class YourSpecificGiftComponent implements OnInit {
                 this.cash_module = false;
                 this.editService.setData(giftData);
                 break;
+      default: this.cash_module = false;
+               this.cash_module = false;
+               this.real_property_module = false;
+               this.business_interest = false;
+               this.specific_asset = false;
+               console.log('something went wrong');
+               break;
     }
   }
 
@@ -187,6 +201,7 @@ export class YourSpecificGiftComponent implements OnInit {
    */
   changeViewState(): void {
     this.cash_module = false;
+    this.real_property_module = false;
     this.business_interest = false;
     this.specific_asset = false;
   }

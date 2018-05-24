@@ -361,7 +361,8 @@
               </li>
             </ul>
             <ul class="back_next_btn_ul" style="margin-top:20px;">
-              <li><a href="javascript:void(0)" class="gift_remove_form">Remove</a></li>
+              <li *ngIf="isEdit"><a href="javascript:void(0)" class="gift_remove_form" (click)="popUpDelete(formEditDataSet.id)">Remove</a></li>
+              <li *ngIf="!isEdit"><a href="javascript:void(0)" class="gift_remove_form" (click)="popUp()">Remove</a></li>
               <li><button class="saveBtn" type="submit" [disabled]="!realPropertyForm.valid">Save</button></li>
             </ul>
           </form>
