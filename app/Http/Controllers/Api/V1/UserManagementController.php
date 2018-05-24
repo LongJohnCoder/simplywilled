@@ -490,9 +490,8 @@ class UserManagementController extends Controller
     public function fetchHealthFinance()
     {
       try {
-        $userID        = \Auth::user()->user_id;
+        $userID        = \Auth::user()->id;
         $healthFinance = HealthFinance::where('userId', $userID)->first();
-
         if ($healthFinance) {
           return response()->json([
               'status'  => true,
