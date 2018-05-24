@@ -484,13 +484,13 @@ class UserManagementController extends Controller
     }
 
     /**
-    * @param Request (id)
+    * @param 
     * @return \Illuminate\Http\JsonResponse
     */
-    public function fetchHealthFinance(Request $request)
+    public function fetchHealthFinance()
     {
       try {
-        $userID        = $request->user_id;
+        $userID        = \Auth::user()->user_id;
         $healthFinance = HealthFinance::where('userId', $userID)->first();
 
         if ($healthFinance) {
@@ -504,7 +504,7 @@ class UserManagementController extends Controller
               'status'  => false,
               'message' => 'Data not found',
               'data'    => []
-          ], 400);
+          ], 200);
         }
       } catch (\Exception $e) {
         return response()->json([

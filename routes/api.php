@@ -614,7 +614,7 @@ Route::group(['prefix' => 'v1'], function() {
             /*
              *Route for get health finance
              * */
-            Route::post('fetch-health-finance',[
+            Route::get('fetch-health-finance',[
                 'uses'=>'Api\V1\UserManagementController@fetchHealthFinance',
                 'as' => 'api.v1.fetchHealthFinance.post'
             ]);
