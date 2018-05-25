@@ -76,7 +76,7 @@ class PackageController extends Controller
       $validator = Validator::make($request->all(), [
           'name'        =>  'required',
           'amount'      =>  'required|numeric|min:0',
-          'valid_till'  =>  'required|date|date_format:Y-m-d H:i:s|after:'.$timeNow,
+          // 'valid_till'  =>  'required|date|date_format:Y-m-d H:i:s|after:'.$timeNow,
           'description' =>  'nullable'
       ]);
       if ($validator->fails()) {
@@ -89,12 +89,12 @@ class PackageController extends Controller
 
       $name       = $request->name;
       $amount     = $request->amount;
-      $validTill  = $request->valid_till;
+      // $validTill  = $request->valid_till;
 
       $package = new Packages();
       $package->name        = $name;
       $package->amount      = $amount;
-      $package->valid_till  = $validTill;
+      $package->valid_till  = $timeNow;
       $package->description = $request->has('description') ? $request->description : '';
       $package->status      = '1';
       if($package->save()) {

@@ -584,13 +584,13 @@ class UserController extends Controller
             'lovedOnesInfo.*.user_id'                       =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
             'lovedOnesInfo.*.business_interest'             =>  'required|numeric|between:0,1|integer',
             'lovedOnesInfo.*.farm_or_ranch'                 =>  'required|numeric|between:0,1|integer',
-            'lovedOnesInfo.*.is_percentage'                 =>  'required|numeric|between:0,1|integer',
+            // 'lovedOnesInfo.*.is_percentage'                 =>  'required|numeric|between:0,1|integer',
             'lovedOnesInfo.*.is_getcompensate'              =>  'required|numeric|between:0,1|integer',
-            'lovedOnesInfo.*.compensation_specific_amount'  =>  'required|numeric|min:0|integer',
-            'lovedOnesInfo.*.compensation_percent_amount'   =>  'required_if:is_percentage,1|numeric|between:0,100',
+            // 'lovedOnesInfo.*.compensation_specific_amount'  =>  'required|numeric|min:0|integer',
+            // 'lovedOnesInfo.*.compensation_percent_amount'   =>  'required_if:is_percentage,1|numeric|between:0,100',
             //'compensateAmount'        =>  'required|numeric|min:0',
             //'isPercentageBasedOnNet'  =>  'required|numeric|between:0,1|integer',
-            'lovedOnesInfo.0.net_value_percent'             =>  'required|numeric|between:0,1|integer'
+            // 'lovedOnesInfo.0.net_value_percent'             =>  'required|numeric|between:0,1|integer'
         ]);
 
         if ($validator->fails()) {
