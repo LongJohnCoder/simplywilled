@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserAuthService} from '../../user-auth/user-auth.service';
 import { Router, NavigationEnd } from '@angular/router';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-full-layout',
@@ -13,6 +14,7 @@ export class FullLayoutComponent implements OnInit {
   menutogle: boolean;
   goUp:boolean = false;
   public pageLoad : boolean = true;
+  baseURL = environment.base_url;
 
   constructor( private authService: UserAuthService, private router: Router) { 
     router.events

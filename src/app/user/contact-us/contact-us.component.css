@@ -39,6 +39,10 @@ a:hover{
     display: block;
     border: 0;
 }
+[disabled].get_in_tuch_btn {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
 
 @media screen and (max-width:600px){
     .inner_banner{
