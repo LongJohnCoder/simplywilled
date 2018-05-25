@@ -139,7 +139,7 @@
               <!-- Multiple Beneficiaries -->
               <div class="multipleBeneficiaries" formArrayName="multiple_beneficiaries" *ngIf="flags.multipleBeneficiaryFlag">
                   <div class="table_main3_main table_main4_main multiple_beneficiary_table">
-                    <table>
+                    <!-- <table>
                       <thead>
                         <tr>
                           <th>Beneficiary's Full Legal Name</th>
@@ -157,11 +157,31 @@
                             </td>
                         </tr>
                       </tbody>
-                    </table>
+                    </table> -->
 
-                    <span>
-                      <a href="javascript:void(0)" class="add_field2 add_row_beneficiary"  (click)="addNewRow()">+ Add</a>
-                    </span>
+                    <div class="form-group">
+                      <div class="row colFormHeading">
+                          <div class="threeColField">
+                              <label>Beneficiary's full legal name</label>
+                          </div>
+                          <div class="threeColField">
+                              <label>Beneficiary's relationship to you</label>
+                          </div>
+                      </div>
+                      <div class="row formRow" *ngFor="let item of businessInterestForm.get('multiple_beneficiaries').controls; let i = index;" [formGroupName] = "i">
+                        <div class="threeColField"><input type="text" value="" class="form-control" formControlName="multiple_beneficiary_name" placeholder="Beneficiary's full legal name"></div>
+                        <div class="threeColField"><input type="text" value="" class="form-control" formControlName="multiple_beneficiary_relationship" placeholder="Beneficiary's relationship to you"></div>
+                        <div class="threeColField"><button type="button" class="btn btn btn-danger delRow" *ngIf="i > 0" (click)="removeBeneficiary(i)"><i class="fa fa-trash"></i></button></div>
+                      </div>
+                      
+                      <div class="">
+                          <div class="addRowBtn"><button type="button" class="btn btn btn-primary addRow" (click)="addNewRow()">+</button></div>
+                      </div>
+                    </div>
+
+                    <!-- <span>
+                      <a href="javascript:void(0)" class="add_field2 add_row_beneficiary" >+ Add</a>
+                    </span> -->
                   </div>
                 <span class="error_txt" *ngIf="this.flags.setValidationFlag">
                   Please answer this question.
@@ -222,23 +242,27 @@
                   <span class="error_txt" *ngIf="businessInterestForm.get('individual_name').dirty && businessInterestForm.get('individual_name').touched && businessInterestForm.get('individual_name').hasError('required')">
                     Please answer this question.
                   </span>
-                  <label class="legal_name_benifets">Beneficiary's relationship to you?</label>
-                  <select class="beneficiary_relationship_dropdown" formControlName="individual_relationship">
-                    <option value="">Select Relationship</option>
-                    <option value="Wife">Wife</option>
-                    <option value="Husband">Husband</option>
-                    <option value="Mother">Mother</option>
-                    <option value="Father">Father</option>
-                    <option value="Son">Son</option>
-                    <option value="Daughter">Daughter</option>
-                    <option value="Sister">Sister</option>
-                    <option value="Brother">Brother</option>
-                    <option value="Aunt">Aunt</option>
-                    <option value="Uncle">Uncle</option>
-                    <option value="Cousin">Cousin</option>
-                    <option value="Friend">Friend</option>
-                    <option value="Other">Other</option>
-                  </select>
+                  
+                    <label class="legal_name_benifets">Beneficiary's relationship to you?</label>
+                  
+                  <span class="drop_down">
+                    <select class="beneficiary_relationship_dropdown" formControlName="individual_relationship">
+                      <option value="">Select Relationship</option>
+                      <option value="Wife">Wife</option>
+                      <option value="Husband">Husband</option>
+                      <option value="Mother">Mother</option>
+                      <option value="Father">Father</option>
+                      <option value="Son">Son</option>
+                      <option value="Daughter">Daughter</option>
+                      <option value="Sister">Sister</option>
+                      <option value="Brother">Brother</option>
+                      <option value="Aunt">Aunt</option>
+                      <option value="Uncle">Uncle</option>
+                      <option value="Cousin">Cousin</option>
+                      <option value="Friend">Friend</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </span>
                 </div>
               </div>
 

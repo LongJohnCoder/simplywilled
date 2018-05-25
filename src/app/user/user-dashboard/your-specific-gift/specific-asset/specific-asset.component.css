@@ -1610,6 +1610,9 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   margin-left: 15px;
 }
+.residue_ul_Radio2 li label{
+  height: 200px;
+}
 .residue_ul_Radio2 li:nth-child(4n+1) {
   margin-left: 0px;
 }

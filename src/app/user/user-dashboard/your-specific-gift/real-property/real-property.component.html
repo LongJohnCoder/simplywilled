@@ -204,31 +204,38 @@
             <!--multiple beneficiary start-->
             <div *ngIf="multipleBeneficiaryRP">
               <!--line items for multiple beneficiary start-->
+              <div class="row mtop colFormHeading">
+                <div class="threeColField"><label class="legal_name_benifets">Beneficiary's Full Legal Name</label></div>
+                <div class="threeColField"><label class="legal_name_benifets">Beneficiary's Relationship To You</label></div>
+              </div>
               <div class="row">
-                <div formArrayName="individualControls">
+                <div formArrayName="individualControls" style="width: 100%;">
                   <div *ngFor="let item of realPropertyForm['controls'].individualControls['controls']; let i = index;"  [formGroupName]="i">
                     <div formArrayName="multipleBeneficiaryControls">
                       <div *ngFor="let newItem of item.get('multipleBeneficiaryControls').controls; let j = index;"  [formGroupName]="j">
                         <div formArrayName="itemRows">
-                          <div *ngFor="let newItem2 of newItem.get('itemRows').controls; let k= index;" [formGroupName]="k">
-                            <div class="col-md-6">
-                              <label class="legal_name_benifets">Beneficiary's Full Legal Name</label>
-                              <input type="text" class="legal_benifit_input capitalize_txt" formControlName="full_legal_name_l_item">
+                          <div *ngFor="let newItem2 of newItem.get('itemRows').controls; let k= index;" [formGroupName]="k" class="formRow">
+                            <div class="threeColField">
+                              <input type="text" class="form-control capitalize_txt" formControlName="full_legal_name_l_item" placeholder="Beneficiary's Full Legal Name">
                             </div>
-                            <div class="col-md-4">
-                              <label class="legal_name_benifets">Beneficiary's Relationship To You</label>
-                              <input type="text" class="legal_benifit_input capitalize_txt" formControlName="relationship_l_item">
+                            <div class="threeColField">
+                              <input type="text" class="form-control capitalize_txt" formControlName="relationship_l_item" placeholder="Beneficiary's Relationship To You">
                             </div>
-                            <button *ngIf="newItem.get('itemRows').controls.length > 1" (click)="deleteRow(i)" class="btn btn-danger">Delete Button</button>
+                            <div class="threeColField">
+                              <button *ngIf="newItem.get('itemRows').controls.length > 1" (click)="deleteRow(i)" class="btn btn-danger delRow">
+                                  <i class="fa fa-trash"></i>
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-2">
-                  <button type="button" class="saveBtn" (click)="addLineItems()">+</button>
-                </div>
+                
+              </div>
+              <div class="addRowBtn">
+                <button type="button" class="btn btn-primary addRow" (click)="addLineItems()">+</button>
               </div>
               <!--line items for multiple beneficiary end-->
               <div formArrayName="individualControls">
@@ -236,11 +243,11 @@
                   <div formArrayName="multipleBeneficiaryControls">
                     <div *ngFor="let newItem of item.get('multipleBeneficiaryControls').controls; let j = index;"  [formGroupName]="j">
                       <h2 class="beneficiary_predeceases blue_font">How should the property distributed if the beneficiary passes before you?</h2>
-                      <ul class="radio_ul7">
+                      <ul class="radio_ul7 pdb">
                         <li>
                           <label class="radio_custom gift_their_kids" [ngClass]="{'active': item.get('multipleBeneficiaryControls.0.property_distributed_multiple_beneficiary').value === 'to_the_surviving'}">
                             <input type="radio" value="to_the_surviving" (click)="propertyDistributionToggleMB('TTS')" formControlName="property_distributed_multiple_beneficiary">
-                            <span class="custom_img"><img src="../../../../../assets/images/gift.png" alt="Passed_by"></span>
+                            <span class="custom_img"><img src="../../../../../assets/images/gift.png" alt="Passed_by" width="49"></span>
                             <span class="human_status">To The Surviving Gift Beneficiaries</span>
                           </label>
                         </li>

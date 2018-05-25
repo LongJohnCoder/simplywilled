@@ -441,8 +441,8 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   border: 2px solid #dadada;
   text-align: center;
-  font-family: 'OpenSans-Light';
-  font-size: 20px;
+  font-family: 'OpenSans';
+  font-size: 16px;
   color: rgba(0,0,0,.7);
   padding: 30px 0;
   cursor: pointer;
@@ -462,6 +462,7 @@ h1, h2, h3, h4, h5, h6 {
 .human_status {
   display: inline-block;
   width: 100%;
+  padding: 0 10px;
 }
 /*******end radio*********/
 
@@ -751,10 +752,9 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   float: right;
   position: relative;
-  border: 1px solid #dbdbdb;
   background: #fff;
   z-index: 1;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 .drop_down:after {
   font-family: 'FontAwesome';
@@ -773,16 +773,17 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   display: inline-block;
   float: left;
-  padding: 15px;
+  height: 40px;
+  padding: 5px 10px;
   color: rgba(0,0,0,.8);
   font-size: 18px;
-  border-radius: 2px;
+  border-radius: 6px;
   background: none;
-  border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  font-family: 'OpenSans-Light';
+  font-family: 'OpenSans';
+  border: 1px solid #BFBFBF;
 }
 .drop_down select option {
   padding-left: 10px;
@@ -1191,14 +1192,16 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 10px;
 }
 .legal_benifit_input {
+  font-size: 16px;
+  height: 40px;
+  border-radius: 6px;
+  margin-top: 10px;
+  border: 1px solid #BFBFBF;
+  font-style: italic;
+  display: block;
   width: 100%;
-  float: left;
-  color: rgba(0,0,0,.9);
-  font-size: 18px;
-  padding: 15px 20px;
-  border: 1px solid #dadada;
-  font-family: 'OpenSans-Light';
-  margin-bottom: 20px;
+  padding: 5px 10px;
+  margin-bottom: 25px;
 }
 .zero_nine_page {
   padding: 15px 0px;
@@ -1243,21 +1246,6 @@ h1, h2, h3, h4, h5, h6 {
 .at_age_text{
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .radio_ul7 {
   width: 100%;
   display: inline-block;
@@ -1347,7 +1335,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .property_to_be_distributed {
   padding: 15px 0px 10px 0px;
-  min-height: 136px;
+  min-height: 189px;
 }
 .radio_ul8 {
   width: 100%;
@@ -3370,7 +3358,72 @@ input[disabled] {
 }
 
 
+.threeColField {
+  width: calc(50% - 53px);
+  float: left;
+  margin: 0 10px;
+}
+.threeColField .form-control{
+  padding: 7px 10px;
+  margin-top: 10px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+.threeColField .form-control::-webkit-input-placeholder{
+  color: #fff;
+  font-size: 14px;
+} 
+.threeColField .form-control::-moz-placeholder {
+  color: #fff;
+  font-size: 14px;
+}
+.threeColField .form-control:-ms-input-placeholder {
+  color: #fff;
+  font-size: 14px;
+}
+.threeColField .form-control:-moz-placeholder {
+  color: #fff;
+  font-size: 14px;
+}
+.threeColField:nth-child(3n) {
+  width: 40px;
+}
+.addRowBtn{
+  float: right;
+  margin-right: 15px;
+}
+.mtop{
+  margin-top: 32px;
+}
+.delRow, .addRow {
+  margin-top: 11px;
+  height: 40px;
+  border: 0;
+  border-bottom: 3px solid #a92521;
+  border-radius: 10px;
+  width: 40px;
+  font-size: 20px;
+  background: #d9534f;
+  cursor: pointer;
+}
+.addRow {
+  border-bottom: 3px solid #1c588a;
+  background-color: #337ab7;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 24px;
+  float: right;
+}
 
+.pdb li{
+  margin: 0 10px;
+}
+.pdb li:first-child{
+  margin-left: 10px;
+}
+.pdb li label{
+  height: 195px;
+  margin: 0px 0 25px;
+}
 
 
 /************responsive***************/
@@ -3464,21 +3517,54 @@ input[disabled] {
     width:40px;
     top: -6px;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+@media screen and (max-width:991px){
+  .threeColField .form-control::-webkit-input-placeholder{
+    color: #9fa4aa;
+    font-size: 14px;
+  } 
+  .threeColField .form-control::-moz-placeholder {
+    color: #9fa4aa;
+    font-size: 14px;
+  }
+  .threeColField .form-control:-ms-input-placeholder {
+    color: #9fa4aa;
+    font-size: 14px;
+  }
+  .threeColField .form-control:-moz-placeholder {
+    color: #9fa4aa;
+    font-size: 14px;
+  }
+  .threeColField {
+    width: calc(100% - 51px);
+    margin-left: 0;
+  }
+  .threeColField:nth-child(3n) {
+    width: 40px;
+    margin-right: 0;
+  }
+  .addRowBtn{
+    margin-right: 0;
+  }
+  .colFormHeading{
+    display: none;
+  }
+  .formRow{
+    padding: 15px 0;
+    border-bottom: 1px solid #dadada;
+    float: left;
+    width: 100%;
+  }
+  .radio_ul7 li {
+    margin: 0 10px;
+  }
+  .radio_ul7 li:first-child {
+    margin-left: 10px;
+  }
+  
+}
+
 @media only screen and (min-width: 768px) and (max-width: 960px) {
   .tell_us_about_main {
     padding: 0px 20px;
@@ -4101,26 +4187,6 @@ input[disabled] {
     width:50px;
     top: -8px;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 @media only screen and (min-width: 100px) and (max-width: 480px) {
   .owl_tablet_right {
@@ -4406,18 +4472,50 @@ input[disabled] {
   .faster_text {
     font-size: 15px;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
+  .pdb li:first-child{
+    margin-left: 0;
+  }
+  .radio_ul7 li label{
+    height: auto;
+  }
+  .radio_ul7 li:first-child {
+    margin-left: 0;
+  }
 }
 
+@media screen and (max-width: 380px){
+  .back_next_btn_ul li a {
+    width: 101px;
+  }
+
+  .threeColField .form-control::-webkit-input-placeholder{
+    font-size: 12px;
+  } 
+  .threeColField .form-control::-moz-placeholder {
+    font-size: 12px;
+  }
+  .threeColField .form-control:-ms-input-placeholder {
+    font-size: 12px;
+  }
+  .threeColField .form-control:-moz-placeholder {
+    font-size: 12px;
+  }
+  .threeColField .form-control{
+    padding: 7px 5px;
+  }
+}
+
+@media screen and (max-width:335px){
+  .threeColField .form-control::-webkit-input-placeholder{
+    font-size: 11px;
+  } 
+  .threeColField .form-control::-moz-placeholder {
+    font-size: 11px;
+  }
+  .threeColField .form-control:-ms-input-placeholder {
+    font-size: 11px;
+  }
+  .threeColField .form-control:-moz-placeholder {
+    font-size: 11px;
+  }
+}
