@@ -12,6 +12,7 @@ export class FullLayoutComponent implements OnInit {
   isLogIn: boolean;
   menutogle: boolean;
   goUp:boolean = false;
+  public pageLoad : boolean = true;
 
   constructor( private authService: UserAuthService, private router: Router) { 
     router.events
@@ -22,6 +23,7 @@ export class FullLayoutComponent implements OnInit {
           let h:any = document.getElementById('ourTeam').offsetTop;
           window.scroll(0, h);
         }
+        
       });
   }
 
@@ -29,6 +31,7 @@ export class FullLayoutComponent implements OnInit {
     this.isLogIn = this.authService.isAuthenticated();
     this.menutogle = false;
     window.addEventListener('scroll', this.scroll, true);
+    console.log('Ready');
   }
 
   scroll = (): void => {
@@ -60,6 +63,12 @@ export class FullLayoutComponent implements OnInit {
     this.menutogle = !this.menutogle;
   }
 
-  
+  ngAfterViewInit(){
+    setTimeout(() => {
+      this.pageLoad = false;
+    }, 3000)
+    console.log('Loaded');
+  }
+
 
 }

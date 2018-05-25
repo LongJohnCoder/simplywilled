@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
 
   public modalRef : BsModalRef;
   public whatIncl : boolean = false;
+  
 
   constructor(
     private modalService : BsModalService,
@@ -31,4 +32,5 @@ export class HomeComponent implements OnInit {
     this.whatIncl = !this.whatIncl;
   }
 
+  
 }

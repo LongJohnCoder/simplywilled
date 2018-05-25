@@ -32,6 +32,7 @@
     display: block;
 }
 
+
 @media screen and (max-width:1200px){
     .get_start_pkg_btn{
         width: 202px;
