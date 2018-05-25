@@ -72,5 +72,9 @@ export class FullLayoutComponent implements OnInit {
     console.log('Loaded');
   }
 
+  sitemapOpen() {
+      window.open(this.baseURL + 'api/sitemap.xml', '_blank');
+  }
+
 
 }
