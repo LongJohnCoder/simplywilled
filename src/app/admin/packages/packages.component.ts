@@ -118,4 +118,10 @@ export class PackagesComponent implements OnInit {
         }
     );
   }
+
+    preventNegative(event) {
+      if (event.key === '-') {
+          return false;
+      }
+  }
 }
