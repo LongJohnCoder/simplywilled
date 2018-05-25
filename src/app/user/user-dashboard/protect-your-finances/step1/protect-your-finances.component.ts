@@ -27,6 +27,8 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
   accessToken: string;
   poaSubscription: Subscription;
   stateInfoSubscription: Subscription;
+  mainSubscription: Subscription;
+  loading = true;
 
   constructor(
     private protectYourFinancesService: ProtectYourFinancesService,
@@ -37,11 +39,11 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
   ) {
     this.accessToken = this.parseToken();
     this.getStates();
-    this.createForm();
+    this.getPoaData();
+    //this.createForm();
   }
 
   ngOnInit() {
-    this.getPoaData();
   }
 
   /**Checks for authorization user id.*/
@@ -59,15 +61,13 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
   getPoaData(): void {
     this.protectYourFinancesService.getPoaDetails(this.accessToken).subscribe(
       (response: any) => {
-        console.log(response);
         this.response = response.data;
         this.pyfData = response === null && response.data === null && response.data.attorney_powers === null ? null : JSON.parse(response.data.attorney_powers);
         this.poaData = new Array(this.pyfData).map(gr => gr );
-        this.createForm(this.poaData);
       },
       (error: any) => {
         console.log(error);
-      }
+      }, () => {this.createForm(this.poaData);}
     );
   }
 
@@ -125,6 +125,7 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
       isAuthorizeToAccessOthers : new FormControl(formObj !== undefined && formObj !== null && formObj.isAuthorizeToAccessOthers !== undefined
                                       ? formObj.isAuthorizeToAccessOthers : 0),
     });
+    this.loading = false;
   }
 
   /**
@@ -162,6 +163,9 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
 
   /**When the component is destroyed.*/
   ngOnDestroy() {
+    if (this.mainSubscription !== undefined) {
+      this.mainSubscription.unsubscribe();
+    }
     if (this.poaSubscription) {
       this.poaSubscription.unsubscribe();
     }
