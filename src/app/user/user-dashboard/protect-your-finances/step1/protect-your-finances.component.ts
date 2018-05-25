@@ -61,7 +61,7 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
       (response: any) => {
         console.log(response);
         this.response = response.data;
-        this.pyfData = response.data === null || response.data.attorney_powers === null ? null : JSON.parse(response.data.attorney_powers);
+        this.pyfData = response === null && response.data === null && response.data.attorney_powers === null ? null : JSON.parse(response.data.attorney_powers);
         this.poaData = new Array(this.pyfData).map(gr => gr );
         this.createForm(this.poaData);
       },
@@ -78,8 +78,8 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
   getStates(): void {
     this.protectYourFinancesService.getStates(this.accessToken).subscribe(
         (data: any) => {
-            this.stateInfo = data !== null ? data.stateInfo.type : 'uniform';
-            let stateName = data !== null ? data.stateInfo.name : '';
+            this.stateInfo = data !== null && data.stateInfo !== null ? data.stateInfo.type : 'uniform';
+            let stateName = data !== null && data.stateInfo !== null ? data.stateInfo.name : '';
             switch (stateName) {
                 case 'Florida':
                 case 'Maryland':
@@ -149,7 +149,11 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
       this.response.attorney_backup   = typeof this.response.attorney_backup === 'string' ? JSON.parse(this.response.attorney_backup) : null;
       this.protectYourFinancesService.postPoaDetails(this.accessToken, this.response).subscribe(
         (data) => {
-          this.router.navigate(['/dashboard/protect-your-finances-details']);
+          if (data.status) {
+            this.router.navigate(['/dashboard/protect-your-finances-details']);
+          } else {
+            console.log(data.message);
+          }
         }, (error) => {
           console.log('error to send data : ', error);
         }

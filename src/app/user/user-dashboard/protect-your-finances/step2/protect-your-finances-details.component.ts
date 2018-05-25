@@ -1,15 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { ProtectYourFinancesService } from '../services/protect-your-finances.service';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Router, ActivatedRoute, Route } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
-
 import { UserAuthService } from '../../../user-auth/user-auth.service';
 import { UserService } from '../../../user.service';
-import { NgForm, Validators, FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
-// import { ProtectYourFinances } from './models/protectYourFinances';
-import { PYFAttorneyPowers } from '../models/pyf-attorney-powers';
-import { ProtectYourFinanceDetails } from '../models/protect-your-finance-details';
+import { NgForm, Validators, FormGroup, FormBuilder, FormControl} from '@angular/forms';
 import {Subscription} from 'rxjs/Subscription';
 
 @Component({
@@ -17,15 +11,21 @@ import {Subscription} from 'rxjs/Subscription';
   templateUrl: './protect-your-finances-details.component.html',
   styleUrls: ['./protect-your-finances-details.component.css']
 })
-export class ProtectYourFinancesDetailsComponent implements OnInit {
+export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
   public poaDetailsForm: FormGroup;
   public response: any;
-  public relationshipOtherHolder: number;
-  public relationshipOtherBackup: number;
+  data = {
+    poaDetailsPowers: null,
+    poaDetailsHolders: null,
+    poaDetailsBackup: null,
+    isBackupattorney: 0
+  };
   accessToken: string;
+  mainSubscription: Subscription;
   isInformSubscription: Subscription;
   isBackupAttorneySubscription: Subscription;
   isBackupInformSubscription: Subscription;
+  loading = true;
 
   constructor(
     private protectYourFinancesService: ProtectYourFinancesService,
@@ -35,12 +35,11 @@ export class ProtectYourFinancesDetailsComponent implements OnInit {
     private router: Router
   ) {
     this.accessToken = this.parseToken();
-    this.createForm();
   }
 
+  /**When the component initialises*/
   ngOnInit() {
     this.getPoaDetailsData();
-    this.addConditionalValidators();
   }
 
   /**Checks for authorization user id.*/
@@ -54,16 +53,19 @@ export class ProtectYourFinancesDetailsComponent implements OnInit {
    * get the power of attorney details in a json object
    */
   getPoaDetailsData(): void {
-    this.protectYourFinancesService.getPoaDetails(this.accessToken).subscribe(
+    this.mainSubscription = this.protectYourFinancesService.getPoaDetails(this.accessToken).subscribe(
       (response: any) => {
         this.response = response.data;
-        let poaDetailsHolders = response.data !== null ? JSON.parse(this.response.attorney_holders) : null;
-        let poaDetailsBackup  = response.data !== null ? JSON.parse(this.response.attorney_backup) : null;
-        let isBackupattorney  = response.data !== null ?  parseInt(this.response.is_backupattorney, 10) : 0;
-        this.createForm(poaDetailsHolders, poaDetailsBackup, isBackupattorney);
+        this.data.poaDetailsPowers  = response.data !== null ? JSON.parse(this.response.attorney_powers) : null;
+        this.data.poaDetailsHolders = response.data !== null ? JSON.parse(this.response.attorney_holders) : null;
+        this.data.poaDetailsBackup  = response.data !== null ? JSON.parse(this.response.attorney_backup) : null;
+        this.data.isBackupattorney  = response.data !== null ?  parseInt(this.response.is_backupattorney, 10) : 0;
       },
       (error: any) => {
         console.log('error in protectYourFinancesService: ', error);
+      }, () => {
+        this.createForm(this.data);
+        this.addConditionalValidators();
       }
     );
   }
@@ -74,9 +76,8 @@ export class ProtectYourFinancesDetailsComponent implements OnInit {
    * creates the form structure of the html with the data comming from poaData
    * returns void
    */
-  createForm(dt: ProtectYourFinanceDetails = null , dtBackup: ProtectYourFinanceDetails = null , isBackupattorney = 0) {
-    const formObj = dt !== undefined ? dt : null;
-    const formObjBackup = dtBackup !== undefined ? dtBackup : null;
+  createForm(data = null) {
+    console.log(data);
     this.poaDetailsForm = this.fb.group({
      /* is_backupattorney: new FormControl(isBackupattorney !== undefined && isBackupattorney !== null ? isBackupattorney : 0),
       is_inform           : new FormControl(formObj !== undefined && formObj !== null && formObj.is_inform !== undefined
@@ -109,30 +110,29 @@ export class ProtectYourFinancesDetailsComponent implements OnInit {
                                 ? formObjBackup.relationship : ''),
       backup_other_relationship  : new FormControl(formObjBackup !== undefined && formObjBackup !== null && formObjBackup.other_relationship !== undefined
                                 ? formObjBackup.other_relationship : ''),*/
-      is_backupattorney: new FormControl( 0),
-      is_inform           : new FormControl(0, [
-        Validators.required
-      ]),
-      email               : new FormControl(''),
-      phone               : new FormControl('', [Validators.required, Validators.minLength(10)]),
-      address             : new FormControl('', [Validators.required]),
-      fullname            : new FormControl('', [Validators.required, Validators.pattern(/\s/ )]),
-      relationship        : new FormControl(''),
-      other_relationship  : new FormControl(''),
-      backup_is_inform    : new FormControl(0),
-      backup_email        : new FormControl(''),
-      backup_phone        : new FormControl(''),
-      backup_address      : new FormControl(''),
-      backup_fullname     : new FormControl(''),
-      backup_relationship : new FormControl(''),
-      backup_other_relationship  : new FormControl(''),
+      is_backupattorney   : new FormControl(data !== null && data.isBackupattorney  !== null ? data.isBackupattorney : 0),
+      is_inform           : new FormControl(data !== null && data.poaDetailsHolders !== null ? (data.poaDetailsHolders.is_inform !== null ? data.poaDetailsHolders.is_inform : 0) : 0, [Validators.required]),
+      email               : new FormControl(data !== null && data.poaDetailsHolders !== null ? (data.poaDetailsHolders.email !== null ? data.poaDetailsHolders.email : '') : '' ),
+      phone               : new FormControl(data !== null && data.poaDetailsHolders !== null ? (data.poaDetailsHolders.phone !== null ? data.poaDetailsHolders.phone : '') : '' , [Validators.required, Validators.minLength(10)]),
+      address             : new FormControl(data !== null && data.poaDetailsHolders !== null ? (data.poaDetailsHolders.address !== null ? data.poaDetailsHolders.address : '') : '', [Validators.required]),
+      fullname            : new FormControl(data !== null && data.poaDetailsHolders !== null ? (data.poaDetailsHolders.fullname !== null ? data.poaDetailsHolders.fullname : '') : '', [Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]),
+      relationship        : new FormControl(data !== null && data.poaDetailsHolders !== null ? (data.poaDetailsHolders.relationship !== null ? data.poaDetailsHolders.relationship : '')  : ''),
+      other_relationship  : new FormControl(data !== null && data.poaDetailsHolders !== null ? (data.poaDetailsHolders.other_relationship !== null ? data.poaDetailsHolders.other_relationship : '')  : ''),
+      backup_is_inform    : new FormControl(data !== null && data.poaDetailsBackup  !== null ? (data.poaDetailsBackup.is_inform !== null ? data.poaDetailsBackup.is_inform : 0)  : 0),
+      backup_email        : new FormControl(data !== null && data.poaDetailsBackup  !== null ? (data.poaDetailsBackup.email !== null ? data.poaDetailsBackup.email : '')  : ''),
+      backup_phone        : new FormControl(data !== null && data.poaDetailsBackup  !== null ? (data.poaDetailsBackup.phone !== null ? data.poaDetailsBackup.phone : '')  : ''),
+      backup_address      : new FormControl(data !== null && data.poaDetailsBackup  !== null ? (data.poaDetailsBackup.address !== null ? data.poaDetailsBackup.address : '')  : ''),
+      backup_fullname     : new FormControl(data !== null && data.poaDetailsBackup  !== null ? (data.poaDetailsBackup.fullname !== null ? data.poaDetailsBackup.fullname : '')  : ''),
+      backup_relationship : new FormControl(data !== null && data.poaDetailsBackup  !== null ? (data.poaDetailsBackup.relationship !== null ? data.poaDetailsBackup.relationship : '')  : ''),
+      backup_other_relationship  : new FormControl(data !== null && data.poaDetailsBackup  !== null ? (data.poaDetailsBackup.other_relationship !== null ? data.poaDetailsBackup.other_relationship : '')  : ''),
     });
+    this.loading = false;
   }
 
   /**Set dynamic validations*/
   addConditionalValidators() {
     this.isInformSubscription = this.poaDetailsForm.get('is_inform').valueChanges.subscribe(
-      (is_inform: number) => {
+      (is_inform) => { console.log(is_inform);
         switch (is_inform) {
           case 0:   if (this.poaDetailsForm.get('is_backupattorney').value === 1) {
                       this.clearValidationFor([
@@ -144,7 +144,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit {
                       ]);
                     }
                    break;
-          case 1:  this.poaDetailsForm.get('email').setValidators([Validators.required, Validators.email]);
+          case 1:  this.poaDetailsForm.get('email').setValidators([Validators.required, Validators.pattern(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)]);
                    this.poaDetailsForm.get('email').updateValueAndValidity();
                    break;
           default: this.clearValidationFor([
@@ -156,7 +156,8 @@ export class ProtectYourFinancesDetailsComponent implements OnInit {
     );
 
     this.isBackupAttorneySubscription = this.poaDetailsForm.get('is_backupattorney').valueChanges.subscribe(
-      (is_backupattorney: number) => {
+      (is_backupattorney) => {
+        console.log(is_backupattorney);
         switch (is_backupattorney) {
           case 0:   this.clearValidationFor([
                        'backup_phone', 'backup_fullname', 'backup_address', 'backup_email'
@@ -164,7 +165,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit {
                     break;
           case 1:   this.poaDetailsForm.get('backup_phone').setValidators([Validators.required, Validators.minLength(10)]);
                     this.poaDetailsForm.get('backup_address').setValidators([Validators.required]);
-                    this.poaDetailsForm.get('backup_fullname').setValidators([Validators.required, Validators.pattern(/\s/ )]);
+                    this.poaDetailsForm.get('backup_fullname').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
                     this.poaDetailsForm.get('backup_phone').updateValueAndValidity();
                     this.poaDetailsForm.get('backup_address').updateValueAndValidity();
                     this.poaDetailsForm.get('backup_fullname').updateValueAndValidity();
@@ -178,13 +179,13 @@ export class ProtectYourFinancesDetailsComponent implements OnInit {
     );
 
     this.isBackupInformSubscription = this.poaDetailsForm.get('backup_is_inform').valueChanges.subscribe(
-      (backup_is_inform: number) => {
+      (backup_is_inform) => {
         switch (backup_is_inform) {
           case 0:  this.clearValidationFor([
                       'backup_email'
                     ]);
                    break;
-          case 1:  this.poaDetailsForm.get('backup_email').setValidators([Validators.required, Validators.email]);
+          case 1:  this.poaDetailsForm.get('backup_email').setValidators([Validators.required, Validators.pattern(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)]);
                    this.poaDetailsForm.get('backup_email').updateValueAndValidity();
                    break;
           default: this.clearValidationFor([
@@ -217,18 +218,91 @@ export class ProtectYourFinancesDetailsComponent implements OnInit {
    * sends the data to the server
    */
   send() {
-    console.log('type : ', typeof JSON.parse(this.response.attorney_powers));
-    this.response.is_backupattorney = this.poaDetailsForm.get('is_backupattorney').value;
-    this.response.attorney_holders = this.poaDetailsForm.get('attorney_holders').value;
-    this.response.attorney_backup = this.poaDetailsForm.get('attorney_backup').value;
-    this.response.attorney_powers = JSON.parse(this.response.attorney_powers);
-    this.protectYourFinancesService.postPoaDetails(this.accessToken, this.response).subscribe(
-      (data) => {
-        this.router.navigate(['/dashboard']);
-      }, (error) => {
+    if (this.poaDetailsForm.valid) {
+      let request = this.createRequest();
+      console.log(request);
+      /*
+      console.log('type : ', typeof JSON.parse(this.response.attorney_powers));
+      this.response.is_backupattorney = this.poaDetailsForm.get('is_backupattorney').value;
+      this.response.attorney_holders = this.poaDetailsForm.get('attorney_holders').value;
+      this.response.attorney_backup = this.poaDetailsForm.get('attorney_backup').value;
+      this.response.attorney_powers = JSON.parse(this.response.attorney_powers);*/
+      this.protectYourFinancesService.postPoaDetails(this.accessToken, request).subscribe(
+        (data) => {
+          if (data.status) {
+            this.router.navigate(['/dashboard']);
+          }
+        }, (error) => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.markValidity();
+    }
+  }
 
-      }
-    );
+  /**Creates the request dataset*/
+  createRequest() {
+    let userId =  this.parseUserId();
+    let request = {
+      user_id: userId,
+      is_backupattorney: this.poaDetailsForm.get('is_backupattorney').value,
+      attorney_powers:   this.data.poaDetailsPowers,
+      attorney_holders: {
+        is_inform           : this.poaDetailsForm.get('is_inform').value,
+        email               : this.poaDetailsForm.get('email').value,
+        phone               : this.poaDetailsForm.get('phone').value,
+        address             : this.poaDetailsForm.get('address').value,
+        fullname            : this.poaDetailsForm.get('fullname').value,
+        relationship        : this.poaDetailsForm.get('relationship').value,
+        other_relationship  : this.poaDetailsForm.get('other_relationship').value,
+      },
+      attorney_backup: {
+        is_inform           : this.poaDetailsForm.get('backup_is_inform').value,
+        email               : this.poaDetailsForm.get('backup_email').value,
+        phone               : this.poaDetailsForm.get('backup_phone').value,
+        address             : this.poaDetailsForm.get('backup_address').value,
+        fullname            : this.poaDetailsForm.get('backup_fullname').value,
+        relationship        : this.poaDetailsForm.get('backup_relationship').value,
+        other_relationship  : this.poaDetailsForm.get('backup_other_relationship').value,
+      },
+      is_complete: 1
+    };
+    return request;
+  }
+
+  /**Checks for authorization user id.*/
+  parseUserId() {
+    if (JSON.parse(localStorage.getItem('loggedInUser')).hasOwnProperty('user')) {
+      return JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    }
+    return null;
+  }
+
+  /**Checks the validity when the form is submitted*/
+  markValidity() {
+    this.poaDetailsForm.get('fullname').markAsTouched();
+    this.poaDetailsForm.get('fullname').markAsDirty();
+    this.poaDetailsForm.get('address').markAsTouched();
+    this.poaDetailsForm.get('address').markAsDirty();
+    this.poaDetailsForm.get('phone').markAsTouched();
+    this.poaDetailsForm.get('phone').markAsDirty();
+    if (this.poaDetailsForm.get('is_inform').value === 1) {
+      this.poaDetailsForm.get('email').markAsTouched();
+      this.poaDetailsForm.get('email').markAsDirty();
+    }
+    if (this.poaDetailsForm.get('is_backupattorney').value === 1) {
+      this.poaDetailsForm.get('backup_fullname').markAsTouched();
+      this.poaDetailsForm.get('backup_fullname').markAsDirty();
+      this.poaDetailsForm.get('backup_address').markAsTouched();
+      this.poaDetailsForm.get('backup_address').markAsDirty();
+      this.poaDetailsForm.get('backup_phone').markAsTouched();
+      this.poaDetailsForm.get('backup_phone').markAsDirty();
+    }
+    if (this.poaDetailsForm.get('backup_is_inform').value === 1) {
+      this.poaDetailsForm.get('backup_email').markAsTouched();
+      this.poaDetailsForm.get('backup_email').markAsDirty();
+    }
   }
 
   /**
@@ -237,5 +311,21 @@ export class ProtectYourFinancesDetailsComponent implements OnInit {
    */
   changeMe(field, newValue) {
     this.poaDetailsForm.get(field).setValue(parseInt(newValue, 10));
+  }
+
+  /**When the component is destroyed*/
+  ngOnDestroy() {
+    if (this.mainSubscription  !== undefined) {
+      this.mainSubscription.unsubscribe();
+    }
+    if (this.isInformSubscription  !== undefined) {
+      this.isInformSubscription.unsubscribe();
+    }
+    if (this.isBackupAttorneySubscription  !== undefined) {
+      this.isBackupAttorneySubscription.unsubscribe();
+    }
+    if (this.isBackupInformSubscription  !== undefined) {
+      this.isBackupInformSubscription.unsubscribe();
+    }
   }
 }
