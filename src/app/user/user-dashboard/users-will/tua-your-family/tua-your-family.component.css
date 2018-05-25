@@ -216,3 +216,8 @@
     width: 130px;
     margin-top: 0;
 }
+.children-form-validation {
+  color: red;
+  text-align: center;
+  margin-top: 1% !important;
+}

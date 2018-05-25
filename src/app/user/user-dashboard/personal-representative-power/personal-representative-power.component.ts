@@ -85,18 +85,18 @@ export class PersonalRepresentativePowerComponent implements OnInit {
           } else {
             this.personalRepresentativeFlag  = false;
           }
-          if (this.fetchedUserData.is_percentage !== '1') {
-            this.amountTypeFlag = false;
-            this.compensation_value_data = this.fetchedUserData.compensation_percent_amount;
-          } else {
-            this.amountTypeFlag  = true;
-            this.compensation_value_data = this.fetchedUserData.compensation_specific_amount;
-          }
-          if (this.fetchedUserData.net_value_percent === '1') {
-            this.isNetValueFlag = true;
-          } else {
-            this.isNetValueFlag  = false;
-          }
+          // if (this.fetchedUserData.is_percentage !== '1') {
+          //   this.amountTypeFlag = false;
+          //   this.compensation_value_data = this.fetchedUserData.compensation_percent_amount;
+          // } else {
+          //   this.amountTypeFlag  = true;
+          //   this.compensation_value_data = this.fetchedUserData.compensation_specific_amount;
+          // }
+          // if (this.fetchedUserData.net_value_percent === '1') {
+          //   this.isNetValueFlag = true;
+          // } else {
+          //   this.isNetValueFlag  = false;
+          // }
         } else {
           this.businessInterestClassFlag = false;
           this.farmRanchFlag = false;
@@ -117,7 +117,7 @@ export class PersonalRepresentativePowerComponent implements OnInit {
    */
   savePersonalRepresentative(formData: NgForm): any {
     if (this.access_token.length) {
-      const dataset = {'step': 4, 'user_id': JSON.parse(localStorage.getItem('loggedInUser')).user.id, 'lovedOnesInfo': [{'user_id': JSON.parse(localStorage.getItem('loggedInUser')).user.id, 'business_interest': formData.value.business_interest_val ? '1' : '0', 'farm_or_ranch': formData.value.farm_or_ranch_val ? '1' : '0', 'is_percentage': formData.value.percentage_estate_val ? '1' : '0', 'is_getcompensate': formData.value.percentage_compensation_val ? '1' : '0' , 'compensation_specific_amount' : formData.value.percentage_estate_val ? formData.value.compensation_value_val : 0 , 'compensation_percent_amount' : !formData.value.percentage_estate_val ? formData.value.compensation_value_val : 0, 'net_value_percent' : formData.value.net_value_val ? '1' : '0'}]};
+      const dataset = {'step': 4, 'user_id': JSON.parse(localStorage.getItem('loggedInUser')).user.id, 'lovedOnesInfo': [{'user_id': JSON.parse(localStorage.getItem('loggedInUser')).user.id, 'business_interest': formData.value.business_interest_val ? '1' : '0', 'farm_or_ranch': formData.value.farm_or_ranch_val ? '1' : '0', 'is_getcompensate': formData.value.percentage_compensation_val ? '1' : '0'}]};
       this.savePersonalRepresentativeDB = this.prService.savePersonalRepresentativePower(this.access_token, dataset);
       this.savePersonalRepresentativeDB.subscribe(data => {
         if (data.status) {

@@ -11,10 +11,11 @@
                 <option value="4">4</option>
                 <option value="other">Other</option>
             </select>
+          <p class="children-form-validation">Please provide their name(s), gender and date of birth</p>
         </div>
         <div class="form-group">
             <div *ngIf="maxChidren">
-                <span style="color: red">
+                <span style="color: red;">
                     Max length is 20
                 </span>
             </div>
@@ -96,9 +97,8 @@
             </ul>
         </div>
         <div class="form-group" *ngIf="chidrenForm.value.deceasedChildren == 'Yes'">
-            <textarea class="form-control" name="" id="" cols="30" rows="10" formControlName="deceasedChildrenNames">
-                enter children names seperated by comma
-            </textarea>
+            <p class="children-form-validation">Please provide their name(s) comma seperarated</p>
+            <textarea class="form-control" name="" id="" cols="30" rows="10" formControlName="deceasedChildrenNames"></textarea>
         </div>
         <div class="form-group" *ngIf="errorMessage">
             <div class="col-md-12">

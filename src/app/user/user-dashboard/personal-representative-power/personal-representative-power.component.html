@@ -37,7 +37,7 @@
         </ul>
       </div>
       <div class="form-group">
-        <label>Select to provide for a speciﬁc amount or percentage as compensation for the Personal Representative.</label>
+        <label>Would you like your Personal Representative to receive reasonable compensation from your net estate?</label>
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [class.active]="personalRepresentativeFlag" (click)="changeState('PR', true)">
@@ -53,7 +53,7 @@
           </li>
         </ul>
       </div>
-      <div class="form-group">
+      <!--<div class="form-group">
         <label>Select if the amount will be a speciﬁed sum; otherwise, it will be a percentage of the Estate.</label>
         <ul class="radio_ul6 percentage-estate">
           <li>
@@ -90,7 +90,7 @@
             </label>
           </li>
         </ul>
-      </div>
+      </div>-->
       <div class="form-footer">
         <button class="btn common-button btn-grey pull-left" routerLink="/dashboard">Go Back</button>
         <button class="btn common-button btn-complete" type="submit" [disabled]="!personalRepresentativeForm.form.valid">Continue</button>
