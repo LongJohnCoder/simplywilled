@@ -62,7 +62,7 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
     this.protectYourFinancesService.getPoaDetails(this.accessToken).subscribe(
       (response: any) => {
         this.response = response.data;
-        this.pyfData = response === null && response.data === null && response.data.attorney_powers === null ? null : JSON.parse(response.data.attorney_powers);
+        this.pyfData = response === null || response.data === null || response.data.attorney_powers === null ? null : JSON.parse(response.data.attorney_powers);
         this.poaData = new Array(this.pyfData).map(gr => gr );
       },
       (error: any) => {
