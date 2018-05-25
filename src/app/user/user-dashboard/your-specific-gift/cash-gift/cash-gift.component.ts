@@ -25,7 +25,7 @@ export class CashGiftComponent implements OnInit {
   myUserId: any;
   errFlag: boolean;
   errString: string;
-  cashGiftDataSet: SaveCashGift;
+  cashGiftDataSet: any;
   value: string;
   formEditDataSet: MyGifts;
   parsedDataSet: any;
@@ -46,6 +46,7 @@ export class CashGiftComponent implements OnInit {
       this.access_token = '';
     }
     this.setFormData();
+    // console.log(this.isEdit);
   }
   /**
    * this function create the form controls of reactive form
@@ -116,13 +117,25 @@ export class CashGiftComponent implements OnInit {
       if (fd.gift_to === 'IN') {
         // individual
         fd.individualControls[0].gift_to = fd.gift_to;
-        this.cashGiftDataSet = {'step': 7, 'user_id': this.myUserId, 'giftType': 1, 'giftData': fd.individualControls};
+        if (this.isEdit) {
+          this.cashGiftDataSet = {'id': this.editService.getData().id, 'step': 7, 'user_id': this.myUserId, 'giftType': 1, 'giftData': fd.individualControls};
+        } else {
+          this.cashGiftDataSet = {'step': 7, 'user_id': this.myUserId, 'giftType': 1, 'giftData': fd.individualControls};
+        }
       } else {
         // charity
         fd.charityControls[0].gift_to = fd.gift_to;
-        this.cashGiftDataSet = {'step': 7, 'user_id': this.myUserId, 'giftType': 1 , 'giftData': fd.charityControls};
+        if (this.isEdit) {
+          this.cashGiftDataSet = {'id': this.editService.getData().id, 'step': 7, 'user_id': this.myUserId, 'giftType': 1 , 'giftData': fd.charityControls};
+        } else {
+          this.cashGiftDataSet = {'step': 7, 'user_id': this.myUserId, 'giftType': 1 , 'giftData': fd.charityControls};
+        }
       }
-      this.saveCashGiftDB = this.ysgService.saveCashGiftData(this.access_token, this.cashGiftDataSet);
+      if (this.isEdit) {
+        this.saveCashGiftDB = this.ysgService.updateGift(this.access_token, this.cashGiftDataSet);
+      } else {
+        this.saveCashGiftDB = this.ysgService.saveCashGiftData(this.access_token, this.cashGiftDataSet);
+      }
       this.saveCashGiftDB.subscribe(data => {
         if (data.status) {
           window.location.reload();

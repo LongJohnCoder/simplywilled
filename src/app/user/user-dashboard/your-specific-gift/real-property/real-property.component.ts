@@ -34,7 +34,7 @@ export class RealPropertyComponent implements OnInit {
   userDataResponse: Observable<any>;
   errFlag: boolean;
   errString: string;
-  realPropertyDataSet: SaveRealProperty;
+  realPropertyDataSet: any;
   saveRealPropertyDB: Observable<any>;
   isEdit: boolean;
   formEditDataSet: MyGifts;
@@ -67,6 +67,7 @@ export class RealPropertyComponent implements OnInit {
       this.access_token = '';
     }
     this.setFormData();
+    // console.log(this.isEdit);
   }
   toggleRelationship(event: any): void {
     if (this.isIndividualRP && this.singleBeneficiaryRP) {
@@ -468,7 +469,11 @@ export class RealPropertyComponent implements OnInit {
         fd.individualControls[0].state = fd.state;
         fd.individualControls[0].primary_residence = fd.primary_residence;
         fd.individualControls[0].free_clear_mortgage = fd.free_clear_mortgage;
-        this.realPropertyDataSet = {'step': 7, 'user_id': this.myUserId, 'giftType': 2, 'giftData': fd.individualControls};
+        if (this.isEdit) {
+          this.realPropertyDataSet = {'id': this.editService.getData().id, 'step': 7, 'user_id': this.myUserId, 'giftType': 2, 'giftData': fd.individualControls};
+        } else {
+          this.realPropertyDataSet = {'step': 7, 'user_id': this.myUserId, 'giftType': 2, 'giftData': fd.individualControls};
+        }
       } else {
         // charity
         fd.charityControls[0].gift_to = fd.gift_type;
@@ -478,9 +483,17 @@ export class RealPropertyComponent implements OnInit {
         fd.charityControls[0].state = fd.state;
         fd.charityControls[0].primary_residence = fd.primary_residence;
         fd.charityControls[0].free_clear_mortgage = fd.free_clear_mortgage;
-        this.realPropertyDataSet = {'step': 7, 'user_id': this.myUserId, 'giftType': 2 , 'giftData': fd.charityControls};
+        if (this.isEdit) {
+          this.realPropertyDataSet = {'id': this.editService.getData().id, 'step': 7, 'user_id': this.myUserId, 'giftType': 2 , 'giftData': fd.charityControls};
+        } else {
+          this.realPropertyDataSet = {'step': 7, 'user_id': this.myUserId, 'giftType': 2 , 'giftData': fd.charityControls};
+        }
       }
-       this.saveRealPropertyDB = this.ysgService.saveRealPropertyData(this.access_token, this.realPropertyDataSet);
+      if (this.isEdit) {
+        this.saveRealPropertyDB = this.ysgService.updateGift(this.access_token, this.realPropertyDataSet);
+      } else {
+        this.saveRealPropertyDB = this.ysgService.saveRealPropertyData(this.access_token, this.realPropertyDataSet);
+      }
        this.saveRealPropertyDB.subscribe(data => {
         if (data.status) {
           window.location.reload();

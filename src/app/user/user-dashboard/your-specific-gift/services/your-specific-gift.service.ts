@@ -3,6 +3,7 @@ import {environment} from '../../../../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {SaveCashGift} from '../models/saveCashGift';
 import {SaveRealProperty} from '../models/saveRealProperty';
+import {UpdateGift} from '../models/updateGift';
 @Injectable()
 export class YourSpecificGiftService {
 
@@ -36,7 +37,7 @@ export class YourSpecificGiftService {
    * @param {SaveCashGift} data
    * @returns {any}
    */
-  updateGift(token: string, data: SaveCashGift): any {
+  updateGift(token: string, data: UpdateGift): any {
     return this.http.post(environment.API_URL + 'user/update-gift', data, {headers: new HttpHeaders(
         {'Authorization': token})});
   }
