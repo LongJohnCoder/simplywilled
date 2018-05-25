@@ -739,10 +739,9 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   float: right;
   position: relative;
-  border: 1px solid #dbdbdb;
   background: #fff;
   z-index: 1;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 .drop_down:after {
   font-family: 'FontAwesome';
@@ -761,16 +760,15 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   display: inline-block;
   float: left;
-  padding: 15px;
+  height: 40px;
+  padding: 5px 10px;
   color: rgba(0,0,0,.8);
   font-size: 18px;
-  border-radius: 2px;
+  border-radius: 6px;
   background: none;
-  border: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
-  font-family: 'OpenSans-Light';
+  font-family: 'OpenSans';
+  border: 1px solid #BFBFBF;
 }
 .drop_down select option {
   padding-left: 10px;
@@ -1179,14 +1177,16 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 10px;
 }
 .legal_benifit_input {
+  font-size: 16px;
+  height: 40px;
+  border-radius: 6px;
+  margin-top: 10px;
+  border: 1px solid #BFBFBF;
+  font-style: italic;
+  display: block;
   width: 100%;
-  float: left;
-  color: rgba(0,0,0,.9);
-  font-size: 18px;
-  padding: 15px 20px;
-  border: 1px solid #dadada;
-  font-family: 'OpenSans-Light';
-  margin-bottom: 20px;
+  padding: 5px 10px;
+  margin-bottom: 25px;
 }
 .zero_nine_page {
   padding: 15px 0px;
@@ -4404,9 +4404,12 @@ input[disabled] {
     font-size: 15px;
   }
 
-
-
-
+  .saveBtn{
+    width: 105px;
+  }
+  .back_next_btn_ul li a{
+    width: 105px;
+  }
 
 
 

@@ -2733,7 +2733,7 @@ input[disabled] {
 }
 .gift_text
 {
-  font-size:20px;
+  font-size:16px;
   text-align:center;
   color: #393939;
   width:100%;
@@ -3383,6 +3383,21 @@ input[disabled] {
   float: right;
   color:#fff;
   text-shadow: 1px 1px 1px #666;
+}
+
+
+.giftSec{
+  float: left;
+  border-radius: 5px;
+  border: 1px solid #c2c2c2;
+  margin-bottom: 23px;
+}
+.giftSec .gift_text_content{
+  border: 0;
+  background: none;
+}
+.giftSec .gift_text p {
+  font-size: 16px;
 }
 
 /************responsive***************/
@@ -4108,7 +4123,16 @@ input[disabled] {
 
 
 
-
+@media screen and (max-width:400px){
+  .btn-complete{
+    width: 110px;
+    border-radius: 15px;
+  }
+  .btn-grey{
+    width: 110px;
+    border-radius: 15px;
+  }
+}
 
 
 
