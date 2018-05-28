@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {FormArray, FormGroup, NgForm} from '@angular/forms';
 import * as moment from 'moment';
 import {UserService} from '../../../user.service';
 import {Router} from '@angular/router';
@@ -13,16 +13,22 @@ import {UserDashboardService} from '../../user-dashboard.service';
   styleUrls: ['./tell-us-about-yourself.component.css']
 })
 export class TellUsAboutYourselfComponent implements OnInit {
+  /**Variable declaration*/
   days: string[] = [];
   months: string[];
   years: string[] = [];
-  errorMessage: string;
+  errors = {
+    errorFlag: false,
+    errorMessage: ''
+  };
   user: any;
   today: any;
   userInfo: any;
-  typeOfPartner: string[] = ['Spouse', 'Partner']
+  typeOfPartner: string[] = ['Spouse', 'Partner'];
+  loading = true;
 
 
+  /**Constructor call*/
   constructor(
       private userService: UserService,
       private router: Router,
@@ -32,26 +38,29 @@ export class TellUsAboutYourselfComponent implements OnInit {
       this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '11', '12'];
 
   }
+
+  /**When the component is initialised*/
   ngOnInit() {
     this.user = this.authService.getUser();
     this.userService.getUserDetails(this.user.id).subscribe(
         (response: any) => {
             this.dashboardService.updateUserDetails(response.data);
             if ( response.data[0].data) {
+                console.log(response.data[0].data);
                 this.userInfo = response.data[0].data.userInfo;
-                const dobData = this.userInfo.dob.split('-');
-                const partnerDob = this.userInfo.partner_dob.split('-');
-                this.userInfo.year = dobData[0];
-                this.userInfo.month = dobData[1];
-                this.userInfo.day = dobData[2];
-                this.userInfo.spouseYear = partnerDob[0];
-                this.userInfo.spouseMonth = partnerDob[1];
-                this.userInfo.spouseDay = partnerDob[2];
+                let dobData = this.userInfo.dob !== null ? this.userInfo.dob.split('-') : '';
+                let partnerDob = this.userInfo.partner_dob !== null ? this.userInfo.partner_dob.split('-') : '';
+                this.userInfo.year =  dobData !== '' ? dobData[0] : '';
+                this.userInfo.month = dobData !== '' ? dobData[1] : '';
+                this.userInfo.day = dobData !== '' ? dobData[2] : '';
+                this.userInfo.spouseYear = partnerDob !== '' ? partnerDob[0] : '';
+                this.userInfo.spouseMonth = partnerDob !== '' ?  partnerDob[1] : '';
+                this.userInfo.spouseDay = partnerDob !== '' ?  partnerDob[2] : '';
             }
         },
         (error: any) => {
           console.log(error);
-        }
+        }, () => { this.loading = false; }
     );
     this.today = new Date ;
     const currentYear = moment(this.today).year();
@@ -64,31 +73,42 @@ export class TellUsAboutYourselfComponent implements OnInit {
     }
   }
 
+  /**When the form submits*/
   onSubmit(form: NgForm) {
-    const formData = form.value;
-    formData.dob = formData.year + '-' + formData.month + '-' + formData.day ;
-    formData.partner_dob = formData.spouseYear + '-' + formData.spouseMonth + '-' + formData.spouseDay ;
-    formData.user_id = this.user.id ;
-    formData.step = 1;
-    if ( formData.registered_partner !== 'D') {
+    if (form.valid) {
+      let formData = form.value;
+      formData.dob = formData.year + '-' + formData.month + '-' + formData.day ;
+      formData.partner_dob = formData.spouseYear + '-' + formData.spouseMonth + '-' + formData.spouseDay ;
+      formData.user_id = this.user.id ;
+      formData.step = 1;
+      if ( formData.registered_partner !== 'D') {
         formData.registered_partner = '0' ;
         formData.legal_married = '0';
-    }
-    this.userService.editProfile(formData).subscribe(
+      }
+      this.userService.editProfile(formData).subscribe(
         (data: any) =>  {
           this.router.navigate(['/dashboard/will/2']);
         },
         (error: any) => {
-          for(let prop in error.error.message) {
-            this.errorMessage = error.error.message[prop];
+          this.errors.errorFlag = true;
+          for (let prop in error.error.message) {
+            this.errors.errorMessage = error.error.message[prop];
             break;
-          };
-          setTimeout(() => {
-            this.errorMessage = '';
-          },3000)
-
+          }
         }
-    );
+      );
+    } else {
+      alert('Please fill up all the fields');
+      this.markFormGroupTouched(form);
+    }
+  }
+
+  /**Mark all form controls as touched*/
+  markFormGroupTouched (formGroup) {
+    (<any>Object).values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+      control.markAsDirty();
+    });
   }
 
 }

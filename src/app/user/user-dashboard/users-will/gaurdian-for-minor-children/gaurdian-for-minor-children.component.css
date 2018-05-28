@@ -39,6 +39,23 @@
     line-height: 22px;
     border-radius: 50%;
 }
+
+.main-content .invalid .form-control{
+  border-color: #ff5959;
+  color: #ff5959;
+}
+.main-content .invalid i{
+  position: absolute;
+  top: 44px;
+  right: 44px;
+  background: #ff5959;
+  color: #fff;
+  height: 22px;
+  width: 22px;
+  text-align: center;
+  line-height: 22px;
+  border-radius: 50%;
+}
 .main-content.loading-screen p{
     margin: 20px 0;
 }
@@ -91,6 +108,22 @@ select.form-control {
     line-height: 22px;
     border-radius: 50%;
 }
+.main-content .invalid .form-control{
+  border-color: #ff5959;
+  color: #ff5959;
+}
+.main-content .invalid i{
+  position: absolute;
+  top: 44px;
+  right: 44px;
+  background: #ff5959;
+  color: #fff;
+  height: 22px;
+  width: 22px;
+  text-align: center;
+  line-height: 22px;
+  border-radius: 50%;
+}
 .radio_ul6{
     text-align: left;
 }
@@ -115,6 +148,18 @@ select.form-control {
     float: left;
 }
 
+.error_input {
+  border: 1px solid #ff5959;
+}
+.error_txt {
+  width: 100%;
+  display: inline-block;
+  background-color: #ff5959;
+  color: #fff;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+}
 .percentage-estate .radio_custom{
     height: 120px;
     width: 120px;
@@ -236,6 +281,13 @@ select.form-control {
 .main-content .valid.email-box i {
     top: 40px;
     right: 30px;
+}
+.main-content .invalid.email-box{
+  border-color: #ff5959;
+}
+.main-content .invalid.email-box i {
+  top: 40px;
+  right: 30px;
 }
 .btn-grey{
     background: url('../../../../../assets/images/btn-grey-back.png') no-repeat center center !important;

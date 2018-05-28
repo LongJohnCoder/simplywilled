@@ -1,7 +1,7 @@
-<div class="main-content tellusaboutyou">
+<div *ngIf="!loading" class="main-content tellusaboutyou">
   <h2>About You</h2>
   <form #form="ngForm" (ngSubmit)="onSubmit(form)">
-    <div class="form-group" [ngClass]="{'valid': firstname.valid}">
+    <div class="form-group" [ngClass]="{'valid': firstname.valid, 'invalid': firstname.errors && (firstname.dirty || firstname.touched)}">
       <label>First Name: </label>
       <input
               type="text"
@@ -11,9 +11,10 @@
               name ='firstname'
               #firstname="ngModel">
       <i class="fa fa-check" *ngIf="firstname.valid"></i>
-      <span class="alert-danger"
+      <i class="fa fa-times" *ngIf="firstname.errors && (firstname.dirty || firstname.touched)"></i>
+      <span class="error_txt"
             *ngIf="firstname.errors && (firstname.dirty || firstname.touched)">
-                        <p *ngIf="firstname.errors?.required">First name is required</p>
+                        <p *ngIf="firstname.errors?.required">Please enter only first name</p>
       </span>
     </div>
     <div class="form-group">
@@ -23,7 +24,7 @@
              [ngModel]="userInfo?.middlename"
             #middlename="ngModel">
     </div>
-    <div class="form-group" [ngClass]="{'valid': lastname.valid}">
+    <div class="form-group" [ngClass]="{'valid': lastname.valid, 'invalid': lastname.errors && (lastname.dirty || lastname.touched)}">
       <label>Last Name: </label>
       <input type="text" class="form-control"
              name="lastname"
@@ -31,9 +32,10 @@
              required
              #lastname="ngModel">
       <i class="fa fa-check" *ngIf="lastname.valid"></i>
-      <span class="alert-danger"
+      <i class="fa fa-times" *ngIf="lastname.errors && (lastname.dirty || lastname.touched)"></i>
+      <span class="error_txt"
             *ngIf="lastname.errors && (lastname.dirty || lastname.touched)">
-                        <p *ngIf="lastname.errors?.required">Last name is required</p>
+                        <p *ngIf="lastname.errors?.required">Please enter only last name</p>
       </span>
     </div>
     <div class="form-group">
@@ -72,6 +74,7 @@
                   required
                   [ngModel]="userInfo?.month"
                   #month="ngModel">
+            <option value="">MONTH</option>
             <option *ngFor="let month of months;let i = index" [value]="month">{{month}}</option>
           </select>
         </div>
@@ -81,19 +84,25 @@
                   required
                   [ngModel]="userInfo?.day"
                   #day="ngModel">
+            <option value="">DAY</option>
             <option *ngFor="let day of days;let i = index" [value]="day">{{day}}</option>
           </select>
         </div>
         <div class="col-md-4">
           <select  class="form-control" placeholder="Year"
                    name="year"
-                   required
+                   requiredDAY
                    [ngModel]="userInfo?.year"
                    #year="ngModel">
+            <option value="">YEAR</option>
             <option *ngFor="let year of years;let i = index" [value]="year">{{year}}</option>
           </select>
         </div>
       </div>
+      <span class="error_txt"
+            *ngIf="(month.errors && (month.dirty || month.touched)) || (day.errors && (day.dirty || day.touched)) || (year.errors && (year.dirty || year.touched))">
+                        <p *ngIf="month.errors?.required || day.errors?.required || year.errors?.required">Please fill all fields</p>
+      </span>
     </div>
     <div class="form-group">
       <label>Marital Status: </label>
@@ -162,7 +171,7 @@
     <hr>
     <h2 *ngIf=" marital_status.value == 'M' || marital_status.value == 'R'">About Your {{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}}</h2>
     <div *ngIf=" marital_status.value == 'M' || marital_status.value == 'R'">
-      <div class="form-group" [ngClass]="{'valid': partner_firstname.valid}">
+      <div class="form-group" [ngClass]="{'valid': partner_firstname.valid, 'invalid': partner_firstname.errors && (partner_firstname.dirty || partner_firstname.touched)}">
         <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} First Name: </label>
         <input
                 type="text"
@@ -172,9 +181,10 @@
                 name='partner_firstname'
                 #partner_firstname="ngModel">
         <i class="fa fa-check" *ngIf="partner_firstname.valid"></i>
-        <span class="alert-danger"
+        <i class="fa fa-times" *ngIf="partner_firstname.errors && (partner_firstname.dirty || partner_firstname.touched)"></i>
+        <span class="error_txt"
               *ngIf="partner_firstname.errors && (partner_firstname.dirty || partner_firstname.touched)">
-                        <p *ngIf="partner_firstname.errors?.required">First name is required</p>
+                        <p *ngIf="partner_firstname.errors?.required">Please enter only first name</p>
         </span>
       </div>
       <div class="form-group">
@@ -184,7 +194,7 @@
                [ngModel]="userInfo?.partner_middlename"
                #partner_middlename="ngModel">
       </div>
-      <div class="form-group" [ngClass]="{'valid': partner_lastname.valid}">
+      <div class="form-group" [ngClass]="{'valid': partner_lastname.valid, 'invalid': partner_lastname.errors && (partner_lastname.dirty || partner_lastname.touched)}">
         <label>Spouse Last Name: </label>
         <input type="text" class="form-control"
                name="partner_lastname"
@@ -192,9 +202,10 @@
                required
                #partner_lastname="ngModel">
         <i class="fa fa-check" *ngIf="partner_lastname.valid"></i>
-        <span class="alert-danger"
+        <i class="fa fa-times" *ngIf="partner_lastname.errors && (partner_lastname.dirty || partner_lastname.touched)"></i>
+        <span class="error_txt"
               *ngIf="partner_lastname.errors && (partner_lastname.dirty || partner_lastname.touched)">
-                        <p *ngIf="partner_lastname.errors?.required">Last name is required</p>
+                        <p *ngIf="partner_lastname.errors?.required">Please enter only last name</p>
       </span>
       </div>
       <div class="form-group">
@@ -233,6 +244,7 @@
                     required
                     [ngModel]="userInfo?.spouseMonth"
                     #spouseMonth="ngModel">
+              <option value="">MONTH</option>
               <option *ngFor="let month of months;let i = index" [value]="month">{{month}}</option>
             </select>
           </div>
@@ -242,6 +254,7 @@
                     required
                     [ngModel]="userInfo?.spouseDay"
                     #spouseDay="ngModel">
+              <option value="">DAY</option>
               <option *ngFor="let day of days;let i = index" [value]="day">{{day}}</option>
             </select>
           </div>
@@ -250,11 +263,16 @@
                      name="spouseYear"
                      required
                      [ngModel]="userInfo?.spouseYear"
-                     #year="ngModel">
+                     #spouseYear="ngModel">
+              <option value="">YEAR</option>
               <option *ngFor="let year of years;let i = index" [value]="year">{{year}}</option>
             </select>
           </div>
         </div>
+        <span class="error_txt"
+              *ngIf="(spouseMonth.errors && (spouseMonth.dirty || spouseMonth.touched)) || (spouseDay.errors && (spouseDay.dirty || spouseDay.touched)) || (spouseYear.errors && (spouseYear.dirty || spouseYear.touched))">
+                        <p *ngIf="spouseMonth.errors?.required || spouseDay.errors?.required || spouseYear.errors?.required">Please fill all fields</p>
+        </span>
       </div>
       <div *ngIf=" marital_status.value == 'R'">
         <div class="form-group">
@@ -317,7 +335,7 @@
         </div>
       </div>
     </div>
-    <div class="form-group" [ngClass]="{'valid': phone.valid}">
+    <div class="form-group" [ngClass]="{'valid': phone.valid, 'invalid': phone.errors && (phone.dirty || phone.touched)}">
       <label>Phone Number: </label>
       <input type="text"
              class="form-control"
@@ -330,13 +348,14 @@
              mask="(000)-000-0000"
              >
       <i class="fa fa-check" *ngIf="phone.valid"></i>
-      <span class="alert-danger"
+      <i class="fa fa-times" *ngIf="phone.errors && (phone.dirty || phone.touched)"></i>
+      <span class="error_txt"
             *ngIf="phone.errors && (phone.dirty || phone.touched)">
-            <p *ngIf="phone.errors?.required">Phone is required</p>
-            <p *ngIf="phone.errors?.minlength">Incorrect Number</p>
+            <p *ngIf="phone.errors?.required">Please enter phone number</p>
+            <p *ngIf="phone.errors?.minlength">Please enter a correct phone number</p>
       </span>
     </div>
-    <div class="form-group" [ngClass]="{'valid': email.valid}">
+    <div class="form-group" [ngClass]="{'valid': email.valid, 'invalid': email.errors && (email.dirty || email.touched)}">
       <label>Email Address: </label>
       <input type="email"
              class="form-control"
@@ -346,7 +365,8 @@
              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
              #email = 'ngModel'>
       <i class="fa fa-check" *ngIf="email.valid"></i>
-      <span class="alert-danger"
+      <i class="fa fa-times" *ngIf="email.errors && (email.dirty || email.touched)"></i>
+      <span class="error_txt"
             *ngIf="email.errors && (email.dirty || email.touched)">
             <p *ngIf="email.errors?.required">Email is required</p>
             <p *ngIf="email.errors?.pattern">Email is not correct!</p>
@@ -361,9 +381,9 @@
              [ngModel]="userInfo?.address"
              name="address"
              #address='ngModel'>
-      <span class="alert-danger"
+      <span class="error_txt"
             *ngIf="address.errors && (address.dirty || address.touched)">
-                        <p *ngIf="address.errors?.required">Required</p>
+                        <p *ngIf="address.errors?.required">Please enter address</p>
       </span>
       <div class="row">
         <div class="col-md-6">
@@ -374,9 +394,9 @@
                  [ngModel]="userInfo?.city"
                  name="city"
                  #city='ngModel'>
-          <span class="alert-danger"
+          <span class="error_txt"
                 *ngIf="city.errors && (city.dirty || city.touched)">
-                        <p *ngIf="city.errors?.required">Required</p>
+                        <p *ngIf="city.errors?.required">Please enter city</p>
           </span>
         </div>
 
@@ -440,9 +460,9 @@
             <option value="Wyoming">Wyoming</option>
           </select>
 
-          <span class="alert-danger"
+          <span class="error_txt"
                 *ngIf="state.errors && (state.dirty || state.touched)">
-                        <p *ngIf="state.errors?.required">Required</p>
+                        <p *ngIf="state.errors?.required">Please enter state</p>
           </span>
         </div>
       </div>
@@ -456,10 +476,10 @@
                  name="zip"
                  pattern="^\d{5}$"
                  #zip="ngModel">
-          <span class="alert-danger"
+          <span class="error_txt"
                 *ngIf="zip.errors && (zip.dirty || zip.touched)">
-                        <p *ngIf="zip.errors?.required">Required</p>
-                        <p *ngIf="zip.errors?.pattern">Invalid!</p>
+                        <p *ngIf="zip.errors?.required">Please enter zip</p>
+                        <p *ngIf="zip.errors?.pattern">Please enter a proper zip</p>
           </span>
         </div>
         <div class="col-md-6">
@@ -471,16 +491,16 @@
                  disabled>
         </div>
       </div>
-      <div class="row" *ngIf="errorMessage">
+      <div class="row" *ngIf="errors.errorFlag">
         <div class="col-md-12">
-          <div class="alert-danger">
-              {{errorMessage}}
+          <div class="error_txt">
+              {{errors.errorMessage}}
           </div>
         </div>
       </div>
     </div>
     <div class="form-footer">
-      <button class="btn common-button btn-complete" [disabled]="form.invalid">Continue</button>
+      <button class="btn common-button btn-complete">Continue</button>
     </div>
   </form>
 </div>

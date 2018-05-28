@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService} from '../../../user.service';
 import {UserAuthService} from '../../../user-auth/user-auth.service';
-import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import {Validators, FormGroup, FormArray, FormBuilder, FormControl} from '@angular/forms';
 import * as States from '../../../shared/models/states.model' ;
 
 @Component({
@@ -16,6 +16,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
   errorMessage: any = '';
   userInfo: any;
   states: string[] = [];
+  loading = true;
 
   constructor(
       private userService: UserService,
@@ -41,11 +42,11 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
                       fullname: [''],
                       relationship_with: [''],
                       address: [''],
-                      country: ['United States'],
+                      country: new FormControl('United States'),
                       city: [''],
                       state: [''],
                       zip: [''],
-                      email_notification: [''],
+                      email_notification: ['0'],
                       email: [''],
                       is_backup: ['']
                   }
@@ -57,11 +58,11 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
                       fullname: [''],
                       relationship_with: [''],
                       address: [''],
-                      country: ['United States'],
+                      country: new FormControl('United States'),
                       city: [''],
                       state: [''],
                       zip: [''],
-                      email_notification: [''],
+                      email_notification: ['0'],
                       email: [''],
                       is_backup: ['']
                   }
@@ -71,30 +72,55 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
   }
 
   onSubmit(model: any) {
+    if (model.valid) {
       let data = model.value;
       data.step = 3 ;
       data.user_id = this.authService.getUser()['id'];
       if (data.isBackUpGuardian === 'Yes') {
-       data.guardian[0].is_backup = '0';
-       data.backUpGuardian[0].is_backup = '1';
+        data.guardian[0].is_backup = '0';
+        data.backUpGuardian[0].is_backup = '1';
       } else {
-          data.guardian[0].is_backup = '0';
-          data.backUpGuardian[0].is_backup = '0';
+        data.guardian[0].is_backup = '0';
+        data.backUpGuardian[0].is_backup = '0';
       }
       this.userService.editProfile(data).subscribe(
-          (response: any) => {
-              this.router.navigate(['/dashboard']);
-          },
-          (error: any) => {
-              for(let prop in error.error.message) {
-                  this.errorMessage = error.error.message[prop];
-                  break;
-              }
-              setTimeout(() => {
-                  this.errorMessage = '';
-              }, 3000);
+        (response: any) => {
+          this.router.navigate(['/dashboard']);
+        },
+        (error: any) => {
+          for(let prop in error.error.message) {
+            this.errorMessage = error.error.message[prop];
+            break;
           }
+          setTimeout(() => {
+            this.errorMessage = '';
+          }, 3000);
+        }
       );
+    } else {
+      alert('Please fill up the required fields');
+      this.markFormGroupTouched(this.myForm);
+    }
+  }
+
+  /**Mark all form controls as touched*/
+  markFormGroupTouched (formGroup) {
+    (<any>Object).values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+      control.markAsDirty();
+    });
+    this.checkValidation((formGroup.get('guardian') as FormArray).controls);
+    this.checkValidation((formGroup.get('backUpGuardian') as FormArray).controls);
+  }
+
+  /**Checks validation for form arrays*/
+  checkValidation(formArray) {
+    for (let item of formArray) {
+      (<any>Object).values(item.controls).forEach(control => {
+          control.markAsTouched();
+          control.markAsDirty();
+        });
+    }
   }
 
   getUserData() {
@@ -129,8 +155,33 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
           },
           (error: any) => {
               console.log(error.error);
+          },
+          () => {
+            this.loading = false;
           }
       );
+  }
+
+  changeNotification(control: string, value: string) {
+    this.myForm.get(control).setValue(value);
+    if (value === '1') {
+      this.myForm.get(`guardian.0.email`).setValidators([Validators.required, Validators.pattern(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)]);
+      this.myForm.get(`guardian.0.email`).updateValueAndValidity();
+    } else {
+      this.myForm.get(`guardian.0.email`).clearValidators();
+      this.myForm.get(`guardian.0.email`).updateValueAndValidity();
+    }
+  }
+
+  changeNotificationBackup(control: string, value: string) {
+    this.myForm.get(control).setValue(value);
+    if (value === '1') {
+      this.myForm.get(`backUpGuardian.0.email`).setValidators([Validators.required, Validators.pattern(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)]);
+      this.myForm.get(`backUpGuardian.0.email`).updateValueAndValidity();
+    } else {
+      this.myForm.get(`backUpGuardian.0.email`).clearValidators();
+      this.myForm.get(`backUpGuardian.0.email`).updateValueAndValidity();
+    }
   }
 
   goBack() {
@@ -156,7 +207,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
   }
   addValidationGaurdianToForm() {
 
-      this.myForm.get(`guardian.0.fullname`).setValidators([Validators.required]);
+      this.myForm.get(`guardian.0.fullname`).setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
       this.myForm.get(`guardian.0.fullname`).updateValueAndValidity();
       this.myForm.get(`guardian.0.relationship_with`).setValidators([Validators.required]);
       this.myForm.get(`guardian.0.relationship_with`).updateValueAndValidity();
@@ -177,7 +228,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
 
   addValidationBackUpGaurdianToForm() {
 
-      this.myForm.get(`backUpGuardian.0.fullname`).setValidators([Validators.required]);
+      this.myForm.get(`backUpGuardian.0.fullname`).setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
       this.myForm.get(`backUpGuardian.0.fullname`).updateValueAndValidity();
       this.myForm.get(`backUpGuardian.0.relationship_with`).setValidators([Validators.required]);
       this.myForm.get(`backUpGuardian.0.relationship_with`).updateValueAndValidity();

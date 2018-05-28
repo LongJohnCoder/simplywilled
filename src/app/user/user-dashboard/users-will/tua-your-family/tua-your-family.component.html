@@ -1,9 +1,9 @@
-<div class="main-content tellusaboutyou">
+<div *ngIf="!loading" class="main-content tellusaboutyou" style="width: 860px">
     <h2>Your Family</h2>
     <form [formGroup] = "chidrenForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label>How many children do you have?</label>
-            <select class="form-control" (change)="selectedNumberOfChildren($event)" formControlName="totalChildren">
+            <select class="form-control" #totalChildren (change)="selectedNumberOfChildren(totalChildren.value)" formControlName="totalChildren">
                 <option value="0">None</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -11,22 +11,38 @@
                 <option value="4">4</option>
                 <option value="other">Other</option>
             </select>
-          <p class="children-form-validation">Please provide their name(s), gender and date of birth</p>
+          <span class="error_txt" *ngIf="!otherChildren && chidrenForm.get('totalChildren').invalid && (chidrenForm.get('totalChildren').dirty || chidrenForm.get('totalChildren').touched)">
+            <p *ngIf="chidrenForm.get('totalChildren').hasError('required')">
+              Please provide their name(s), gender and date of birth
+            </p>
+          </span>
         </div>
-        <div class="form-group">
-            <div *ngIf="maxChidren">
-                <span style="color: red;">
-                    Max length is 20
-                </span>
-            </div>
-        </div>
+          <!--<div class="form-group">-->
+              <!--<div *ngIf="maxChidren">-->
+                  <!--<span style="color: red;">-->
+                      <!--Max length is 20-->
+                  <!--</span>-->
+              <!--</div>-->
+          <!--<span class="error_txt">-->
+            <!--Please provide their name(s), gender and date of birth-->
+          <!--</span>-->
+          <!--</div>-->
         <div *ngIf="otherChildren" class="form-group">
             <input class="form-control"
-                   type="text"
+                   type="number"
                    name="otherChildrenNumber"
-                   (change)="selectedNumberOfChildren($event)"
+                   #totalChildrenText
+                   (change)="selectedNumberOfChildren(totalChildrenText.value)"
                    placeholder="Enter the number of children"
-                   formControlName="totalChildren">
+                   formControlName="totalChildrenOther">
+          <span class="error_txt" *ngIf="chidrenForm.get('totalChildrenOther').invalid && (chidrenForm.get('totalChildrenOther').dirty || chidrenForm.get('totalChildrenOther').touched)">
+              <p *ngIf="chidrenForm.get('totalChildrenOther').hasError('required')">
+                Please provide their name(s), gender and date of birth
+              </p>
+          </span>
+          <span class="error_txt" *ngIf="maxChidren">
+            Maximum length is 20.
+          </span>
         </div>
         <div *ngIf="showTable">
             <div formArrayName="childrenInfo" *ngFor="let item of childrenInfo.controls; let i = index;">
@@ -49,6 +65,7 @@
                                 placeholder="Month"
                                 formControlName="spouseMonth"
                                 required>
+                            <option value="">MONTH</option>
                             <option *ngFor="let month of months;let i = index" [value]="month">{{month}}</option>
                         </select>
                     </div>
@@ -56,6 +73,7 @@
                         <label>Day</label>
                         <select class="form-control" placeholder="Day"
                                 formControlName="spouseDay">
+                            <option value="">DAY</option>
                             <option *ngFor="let day of days;let i = index" [value]="day">{{day}}</option>
                         </select>
                     </div>
@@ -63,10 +81,16 @@
                         <label>Year</label>
                         <select class="form-control" placeholder="Month"
                                 required formControlName="spouseYear">
+                            <option value="">YEAR</option>
                             <option *ngFor="let year of years;let i = index" [value]="year">{{year}}</option>
                         </select>
                     </div>
                 </div>
+            </div>
+            <div class="form-group">
+              <span class="error_txt" *ngIf="setValidationFlag">
+                Please fill up all the fields.
+              </span>
             </div>
 
         </div>
@@ -75,7 +99,7 @@
             <label>Do you have any deceased children? </label>
             <ul class="radio_ul6">
                 <li>
-                    <label class="radio_custom" [ngClass]="{'active': chidrenForm.value.deceasedChildren == 'Yes'}">
+                    <label class="radio_custom" [ngClass]="{'active': chidrenForm.value.deceasedChildren === 'Yes'}">
                         <input type="radio"
                                value="Yes"
                                formControlName="deceasedChildren"
@@ -85,7 +109,7 @@
                     </label>
                 </li>
                 <li>
-                    <label class="radio_custom" [ngClass]="{'active': chidrenForm.value.deceasedChildren == 'No'}">
+                    <label class="radio_custom" [ngClass]="{'active': chidrenForm.value.deceasedChildren === 'No'}">
                         <input type="radio"
                                value="No"
                                formControlName="deceasedChildren"
@@ -97,13 +121,13 @@
             </ul>
         </div>
         <div class="form-group" *ngIf="chidrenForm.value.deceasedChildren == 'Yes'">
-            <p class="children-form-validation">Please provide their name(s) comma seperarated</p>
             <textarea class="form-control" name="" id="" cols="30" rows="10" formControlName="deceasedChildrenNames"></textarea>
+            <small>Please provide their name(s) comma seperarated</small>
         </div>
-        <div class="form-group" *ngIf="errorMessage">
+        <div class="form-group" *ngIf="errors.errorFlag">
             <div class="col-md-12">
                 <span class="alert alert-danger">
-                    {{ errorMessage }}
+                    {{ errors.errorMessage }}
                 </span>
             </div>
         </div>
