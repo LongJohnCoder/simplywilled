@@ -97,6 +97,7 @@ class AuthController extends Controller {
                     Mail::send('new_emails.registration_first',[], function($mail) use($user){
                             /** @noinspection PhpUndefinedMethodInspection */
                             //$mail->from('info@simplywilled.com', 'Simplywilled Registration');
+                            $mail->from('info@simplywilled.com', 'Simplywilled Registration Successful');
                             /** @noinspection PhpUndefinedMethodInspection */
                             $mail->to($user->email, $user->name)->subject('You Registered Successfully in Simplywilled!');
                     });
