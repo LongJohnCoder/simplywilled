@@ -39,7 +39,7 @@ export class PackagesComponent implements OnInit {
   getPackages() {
       this.packageService.packages().subscribe(
           (data: any) => {
-              console.log(data.data);
+              // console.log(data.data);
               this.lists = data.data;
               this.count = this.lists.length;
               this.chRef.detectChanges();
