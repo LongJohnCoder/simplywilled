@@ -639,6 +639,22 @@ Route::group(['prefix' => 'v1'], function() {
                 'uses'=>'Api\V1\UserManagementController@getUserDetails',
                 'as' => 'api.v1.getUserDetails.get'
             ]);
+
+            /*
+             * Route for get packages
+             * */
+            Route::get('get-packages', [
+                'uses' => 'Api\V1\PackageController@getPackages',
+                'as'   => 'api.v1.getuserPackages.get'
+            ]);
+
+            /*
+             * Route for get packages
+             * */
+            Route::post('purchase-package', [
+                'uses' => 'Api\V1\PackageController@purchasePackage',
+                'as'   => 'api.v1.purchasePackage.post'
+            ]);
         });
     });
 });

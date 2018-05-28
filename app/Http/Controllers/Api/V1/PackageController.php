@@ -146,11 +146,13 @@ class PackageController extends Controller
         $name   = trim($request->name);
         $amount = (float)$request->amount;
         $status = $request->has('status') ? $request->status : config('default_values.Packages.defaultStatus');
-        $package = Packages::find($id);
-        $package->name        = $name;
-        $package->amount      = $amount;
-        $package->description = $request->has('description') ? $request->description : '';
-        $package->status      = (string)$status;
+        $package               = Packages::find($id);
+        $package->name         = $name;
+        $package->amount       = $amount;
+        $package->description  = $request->has('description') ? $request->description: '';
+        $package->status       = (string)$status;
+        $package->key_benefits = json_encode($request->key_benefits);
+        $package->included     = json_encode($request->included);
         if($package->save()) {
           return response()->json([
               'status'   => true,
@@ -196,5 +198,11 @@ class PackageController extends Controller
           'data'    =>  null
         ];
       }
+    }
+
+    public function purchasePackage(Request $request)
+    {
+      $pkgID  = $request->pkg_id;
+      $userID = $request->user_id;
     }
 }
