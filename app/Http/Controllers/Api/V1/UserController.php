@@ -707,12 +707,30 @@ class UserController extends Controller
             $arr = [
                 'firstName'     =>  $tellUsAboutYou->firstname,
                 'middleName'    =>  $tellUsAboutYou->middlename,
-                'lastName'      =>  $tellUsAboutYou->lastname
+                'lastName'      =>  $tellUsAboutYou->lastname,
+                'executorName'  =>  $personalRepresentative['firstname']
             ];
             Mail::send('new_emails.personal_representative_appoint', $arr, function($mail) use($personalRepresentative){
                 $mail->from(config('settings.email'), 'Notice for Executor');
                 $mail->to($personalRepresentative['email'], $personalRepresentative['fullname'])
                 ->subject('You are requested to be an executor');
+            });
+
+            if(Mail::failures()) {
+                \Log::info('email sending error for personal representative');
+            }
+        } else {
+            \Log::info('email getting send for backup personal representative');
+            $arr = [
+                'firstName'     =>  $tellUsAboutYou->firstname,
+                'middleName'    =>  $tellUsAboutYou->middlename,
+                'lastName'      =>  $tellUsAboutYou->lastname,
+                'executorName'  =>  $personalRepresentative['firstname']
+            ];
+            Mail::send('new_emails.personal_representative_appoint_backup', $arr, function($mail) use($personalRepresentative){
+                $mail->from(config('settings.email'), 'Notice for Backup Executor');
+                $mail->to($personalRepresentative['email'], $personalRepresentative['fullname'])
+                ->subject('You are requested to be an backup executor');
             });
 
             if(Mail::failures()) {
@@ -727,7 +745,6 @@ class UserController extends Controller
         'response'  =>  'success'
       ];
     }
-
     /*
      *  Function to give a response for the personal representative section
      *  @return \Illuminate\Http\JsonResponse
