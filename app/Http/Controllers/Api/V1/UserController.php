@@ -639,7 +639,7 @@ class UserController extends Controller
      *  Reusable function for personal representative to update personal representative as well as backup personal representative
      *  @return \Illuminate\Http\JsonResponse
      * */
-    private function updatePersonalRepresentativesHelper($personalRepresentative = [], $isBackupRepresentative, $emailType) {
+    private function updatePersonalRepresentativesHelper($personalRepresentative = [], $isBackupRepresentative, $emailType, $tellUsAboutYou) {
       $validator = Validator::make($personalRepresentative, [
           'user_id'           =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
           'fullname'          =>  'required|string',
@@ -699,8 +699,27 @@ class UserController extends Controller
       PersonalRepresentatives::updateOrCreate(['user_id' => $personalRepresentative['user_id'], 'is_backuprepresentative' => (string)$isBackupRepresentative], $personalRepresentative);
 
 
-      if(isset($personalRepresentative['email_notification']) && $personalRepresentative['email_notification'] ==1 ) {
+      if(isset($personalRepresentative['email_notification']) && $personalRepresentative['email_notification'] ==1) {
         //$this->sendEmail($personalRepresentative['user_id'], $personalRepresentative['fullname'], $personalRepresentative['email'], $emailType);
+
+        if($isBackupRepresentative == 0) {
+            \Log::info('email getting send for personal representative');
+            $arr = [
+                'firstName'     =>  $tellUsAboutYou->firstname,
+                'middleName'    =>  $tellUsAboutYou->middlename,
+                'lastName'      =>  $tellUsAboutYou->lastname
+            ];
+            Mail::send('new_emails.personal_representative_appoint', $arr, function($mail) use($personalRepresentative){
+                $mail->from(config('settings.email'), 'Notice for Executor');
+                $mail->to($personalRepresentative['email'], $personalRepresentative['fullname'])
+                ->subject('You are requested to be an executor');
+            });
+
+            if(Mail::failures()) {
+                \Log::info('email sending error for personal representative');
+            }
+        }
+        
       }
 
       return [
@@ -729,8 +748,7 @@ class UserController extends Controller
      *Function to create update personal representative table
      * @return \Illuminate\Http\JsonResponse
      * */
-    public function updatePersonalRepresentatives($request)
-    {
+    public function updatePersonalRepresentatives($request) {
       try {
         $validator = Validator::make($request->all(), [
             'user_id'                         =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
@@ -748,7 +766,17 @@ class UserController extends Controller
             ], 400);
         }
 
-        $userId                         = $request->user_id;
+        $userId = $request->user_id;
+
+        $tellUsAboutYou = TellUsAboutYou::where('user_id',$userId)->first();
+        if(!$tellUsAboutYou) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Please fill Tell Us About You details first',
+                'data'    => []
+            ], 400);   
+        }
+
         $personalRepresentative         = $request->personalRepresentative;
         $backupPersonalRepresentative   = $request->backupPersonalRepresentative;
         $isPersonalRepresentative       = $request->isPersonalRepresentative;
@@ -758,7 +786,7 @@ class UserController extends Controller
           if(isset($request->personalRepresentative[0])) {
             $personalRepresentative = $request->personalRepresentative[0];
             $emailType  = 1;
-            $response   = self::updatePersonalRepresentativesHelper($personalRepresentative, '0', $emailType);
+            $response   = self::updatePersonalRepresentativesHelper($personalRepresentative, '0', $emailType, $tellUsAboutYou);
             if($response['status'] != 200) {
               return $response['response'];
             }
@@ -777,7 +805,7 @@ class UserController extends Controller
           if(isset($request->backupPersonalRepresentative[0])) {
             $backupPersonalRepresentative = $request->backupPersonalRepresentative[0];
             $emailType  = 2;
-            $response   = self::updatePersonalRepresentativesHelper($backupPersonalRepresentative, '1', $emailType);
+            $response   = self::updatePersonalRepresentativesHelper($backupPersonalRepresentative, '1', $emailType, $tellUsAboutYou);
             if($response['status'] != 200) {
               return $response['response'];
             }
