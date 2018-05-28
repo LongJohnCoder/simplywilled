@@ -708,7 +708,7 @@ class UserController extends Controller
                 'firstName'     =>  $tellUsAboutYou->firstname,
                 'middleName'    =>  $tellUsAboutYou->middlename,
                 'lastName'      =>  $tellUsAboutYou->lastname,
-                'executorName'  =>  $personalRepresentative['firstname']
+                'executorName'  =>  $personalRepresentative['fullname']
             ];
             Mail::send('new_emails.personal_representative_appoint', $arr, function($mail) use($personalRepresentative){
                 $mail->from(config('settings.email'), 'Notice for Executor');
@@ -725,7 +725,7 @@ class UserController extends Controller
                 'firstName'     =>  $tellUsAboutYou->firstname,
                 'middleName'    =>  $tellUsAboutYou->middlename,
                 'lastName'      =>  $tellUsAboutYou->lastname,
-                'executorName'  =>  $personalRepresentative['firstname']
+                'executorName'  =>  $personalRepresentative['fullname']
             ];
             Mail::send('new_emails.personal_representative_appoint_backup', $arr, function($mail) use($personalRepresentative){
                 $mail->from(config('settings.email'), 'Notice for Backup Executor');
