@@ -462,6 +462,9 @@ h1, h2, h3, h4, h5, h6 {
 .human_status {
   display: inline-block;
   width: 100%;
+  padding: 0 10px;
+  font-size: 16px;
+  font-family: 'OpenSans';
 }
 /*******end radio*********/
 
@@ -1184,7 +1187,10 @@ h1, h2, h3, h4, h5, h6 {
   float: left;
   color: rgba(0,0,0,.9);
   font-size: 18px;
-  padding-bottom: 10px;
+}
+.legal_name_benifets.smallHeading{
+  text-align: center;
+  padding: 30px 0 20px;
 }
 .legal_benifit_input {
   width: 100%;
@@ -1343,7 +1349,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .property_to_be_distributed {
   padding: 15px 0px 10px 0px;
-  min-height: 136px;
+  min-height: 175px;
 }
 .radio_ul8 {
   width: 100%;
@@ -1611,7 +1617,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 15px;
 }
 .residue_ul_Radio2 li label{
-  height: 200px;
+  height: 175px;
 }
 .residue_ul_Radio2 li:nth-child(4n+1) {
   margin-left: 0px;
@@ -3368,7 +3374,87 @@ input[disabled] {
   padding: 0px 0px 20px 0px;
 }
 
+.form-control {
+  font-size: 16px;
+  height: 40px;
+  border-radius: 6px;
+  margin: 10px 0 20px;
+  border: 1px solid #BFBFBF;
+  font-style: italic;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  appearance: none;
+  padding: 6px 12px;
+  color: #555;
+}
+textarea.form-control{
+  min-height: 150px;
+}
+select.form-control{
+  background: url('../../../../../assets/images/bottom-caret.png') 98% no-repeat;
+}
+.distributeBusiness ul.residue_ul_Radio2.singleBen li label img{
+  width: 49px;
+}
+.distributeBusiness ul.residue_ul_Radio2.singleBen li{
+  width: 145px;
+}
+.residue_ul_Radio2.singleBen li:nth-child(4n+1){
+  margin-left: 10px;
+}
 
+.threeColField {
+  width: calc(50% - 53px);
+  float: left;
+  margin: 0 10px;
+}
+.threeColField .form-control{
+  padding: 7px 10px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+.threeColField .form-control::-webkit-input-placeholder{
+  color: #fff;
+  font-size: 14px;
+} 
+.threeColField .form-control::-moz-placeholder {
+  color: #fff;
+  font-size: 14px;
+}
+.threeColField .form-control:-ms-input-placeholder {
+  color: #fff;
+  font-size: 14px;
+}
+.threeColField .form-control:-moz-placeholder {
+  color: #fff;
+  font-size: 14px;
+}
+.threeColField:nth-child(3n) {
+  width: 40px;
+}
+.addRowBtn{
+  float: right;
+  margin-right: 15px;
+}
+.delRow, .addRow {
+  margin-top: 11px;
+  height: 40px;
+  border: 0;
+  border-bottom: 3px solid #a92521;
+  border-radius: 10px;
+  width: 40px;
+  font-size: 20px;
+  background: #d9534f;
+  cursor: pointer;
+}
+.addRow {
+  border-bottom: 3px solid #1c588a;
+  background-color: #337ab7;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 24px;
+  float: right;
+}
 
 
 
@@ -3463,20 +3549,6 @@ input[disabled] {
     width:40px;
     top: -6px;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 @media only screen and (min-width: 768px) and (max-width: 960px) {
   .tell_us_about_main {
@@ -3650,14 +3722,45 @@ input[disabled] {
     line-height:70px;
     min-height:70px;
   }
-
-
-
-
-
-
-
 }
+
+@media screen and (max-width:991px){
+  .threeColField .form-control::-webkit-input-placeholder{
+    color: #9fa4aa;
+    font-size: 14px;
+  } 
+  .threeColField .form-control::-moz-placeholder {
+    color: #9fa4aa;
+    font-size: 14px;
+  }
+  .threeColField .form-control:-ms-input-placeholder {
+    color: #9fa4aa;
+    font-size: 14px;
+  }
+  .threeColField .form-control:-moz-placeholder {
+    color: #9fa4aa;
+    font-size: 14px;
+  }
+  .threeColField {
+    width: calc(100% - 51px);
+    margin-left: 0;
+  }
+  .threeColField:nth-child(3n) {
+    width: 40px;
+    margin-right: 0;
+  }
+  .addRowBtn{
+    margin-right: 0;
+  }
+  .colFormHeading{
+    display: none;
+  }
+  .formRow{
+    padding: 15px 0;
+    border-bottom: 1px solid #dadada;
+  }
+}
+
 @media only screen and (min-width: 100px) and (max-width: 767px) {
   .header_left {
     width: 100%;
@@ -3882,16 +3985,8 @@ input[disabled] {
   .single_package_pera{
     padding-bottom:10px;
   }
-
-
-
-
-
-
-
-
-
 }
+
 @media only screen and (min-width: 100px) and (max-width: 600px) {
   .owl_tablet_right {
     width: 85%;
@@ -3937,6 +4032,9 @@ input[disabled] {
   .residue_ul_Radio2 li:nth-child(2n+1) {
     margin-left: 0px;
     clear: left;
+  }
+  .residue_ul_Radio2.singleBen li:nth-child(2n+1) {
+    margin-left: 10px;
   }
   .relation_ship_text {
     font-size: 13px;
@@ -4076,16 +4174,6 @@ input[disabled] {
     font-size: 12px;
   }
 
-
-
-
-
-
-
-
-
-
-
   /**************pricing css*****************/
   .single_package_main {
     min-height: 200px;
@@ -4100,27 +4188,8 @@ input[disabled] {
     width:50px;
     top: -8px;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
 @media only screen and (min-width: 100px) and (max-width: 480px) {
   .owl_tablet_right {
     width: 78%;
@@ -4405,6 +4474,53 @@ input[disabled] {
   .faster_text {
     font-size: 15px;
   }
-
+  .distributeBusiness ul.residue_ul_Radio2.singleBen li {
+    width: 100%;
+  }
+  .residue_ul_Radio2.singleBen li:nth-child(2n+1) {
+    margin-left: 0;
+  }
+  .residue_ul_Radio2 li label {
+    height: 150px;
+    min-height: 150px;
+  }
 }
 
+@media screen and (max-width:380px){
+  .threeColField .form-control::-webkit-input-placeholder{
+    font-size: 12px;
+  } 
+  .threeColField .form-control::-moz-placeholder {
+    font-size: 12px;
+  }
+  .threeColField .form-control:-ms-input-placeholder {
+    font-size: 12px;
+  }
+  .threeColField .form-control:-moz-placeholder {
+    font-size: 12px;
+  }
+  .threeColField .form-control{
+    padding: 7px 5px;
+  }
+}
+
+@media screen and (max-width:335px){
+  .threeColField .form-control::-webkit-input-placeholder{
+    font-size: 11px;
+  } 
+  .threeColField .form-control::-moz-placeholder {
+    font-size: 11px;
+  }
+  .threeColField .form-control:-ms-input-placeholder {
+    font-size: 11px;
+  }
+  .threeColField .form-control:-moz-placeholder {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 360px){
+  .back_next_btn_ul li a {
+    width: 100px;
+  }
+}

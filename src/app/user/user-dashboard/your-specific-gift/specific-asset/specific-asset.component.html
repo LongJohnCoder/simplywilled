@@ -20,7 +20,7 @@
 
             <div class="form-group">
               <label class="legal_name_benifets">Description of asset being gifted</label>
-              <textarea class="legal_benifit_input capitalize_txt" [ngClass]="{'error_input': businessInterestForm.get('full_legal_name').dirty && businessInterestForm.get('full_legal_name').touched && businessInterestForm.get('full_legal_name').hasError('required')}" formControlName="full_legal_name">
+              <textarea class="form-control capitalize_txt" [ngClass]="{'error_input': businessInterestForm.get('full_legal_name').dirty && businessInterestForm.get('full_legal_name').touched && businessInterestForm.get('full_legal_name').hasError('required')}" formControlName="full_legal_name">
               </textarea>
 
               <!--<div class="alert alert-danger" *ngIf="businessInterestForm.dirty && businessInterestForm.touched">-->
@@ -35,14 +35,14 @@
               <ul class="radio_ul4">
                 <li>
                   <label class="radio_custom zero_nine_page"  [ngClass]="{'active': flags.individualFlag}">
-                    <input type="radio" class="cash_individual_charity" formControlName="gift_to" value="IN" #giftIndividual (click)="giftIndividualOrCharity(giftIndividual.value)">
+                    <input type="radio" class="form-control" formControlName="gift_to" value="IN" #giftIndividual (click)="giftIndividualOrCharity(giftIndividual.value)">
                     <span class="custom_img"><img src="../../../../../assets/images/hippa.png" alt="Hippa"></span>
                     <span class="human_status">Individual</span>
                   </label>
                 </li>
                 <li>
                   <label class="radio_custom zero_nine_page"  [ngClass]="{'active': flags.charityFlag}">
-                    <input type="radio" class="cash_individual_charity" #giftCharity formControlName="gift_to" value="CH" (click)="giftIndividualOrCharity(giftCharity.value)">
+                    <input type="radio" class="form-control" #giftCharity formControlName="gift_to" value="CH" (click)="giftIndividualOrCharity(giftCharity.value)">
                     <span class="custom_img"><img src="../../../../../assets/images/gift.png" alt="gift"></span>
                     <span class="human_status">Charity</span>
                   </label>
@@ -55,13 +55,13 @@
 
             <div class="gift_charity_container" *ngIf="flags.charityFlag">
               <label class="legal_name_benifets">Organization name?</label>
-              <input type="text" class="legal_benifit_input capitalize_txt" [ngClass]="{'error_input': businessInterestForm.get('organization_name').dirty && businessInterestForm.get('organization_name').touched && businessInterestForm.get('organization_name').hasError('required')}" formControlName="organization_name">
+              <input type="text" class="form-control capitalize_txt" [ngClass]="{'error_input': businessInterestForm.get('organization_name').dirty && businessInterestForm.get('organization_name').touched && businessInterestForm.get('organization_name').hasError('required')}" formControlName="organization_name">
               <span class="error_txt" *ngIf="businessInterestForm.get('organization_name').dirty && businessInterestForm.get('organization_name').touched && businessInterestForm.get('organization_name').hasError('required')">
                     Please answer this question.
                 </span>
 
               <label class="legal_name_benifets">Organization address?</label>
-              <input type="text" class="legal_benifit_input" [ngClass]="{'error_input': businessInterestForm.get('organization_address').dirty && businessInterestForm.get('organization_address').touched && businessInterestForm.get('organization_address').hasError('required')}" formControlName="organization_address" placeholder="Street Address, City, State, Zip Code">
+              <input type="text" class="form-control" [ngClass]="{'error_input': businessInterestForm.get('organization_address').dirty && businessInterestForm.get('organization_address').touched && businessInterestForm.get('organization_address').hasError('required')}" formControlName="organization_address" placeholder="Street Address, City, State, Zip Code">
               <span class="error_txt" *ngIf="businessInterestForm.get('organization_address').dirty && businessInterestForm.get('organization_address').touched && businessInterestForm.get('organization_address').hasError('required')">
                     Please answer this question.
                 </span>
@@ -97,13 +97,13 @@
                 <!-- Single Beneficiary -->
                 <div class="singleBeneficiary" *ngIf="flags.singleBeneficiaryFlag">
                   <label class="legal_name_benifets">Beneficiary's full legal name?</label>
-                  <input type="text" class="legal_benifit_input capitalize_txt" [ngClass]="{'error_input': businessInterestForm.get('beneficiary_legal_name').dirty && businessInterestForm.get('beneficiary_legal_name').touched && businessInterestForm.get('beneficiary_legal_name').hasError('required')}" formControlName="beneficiary_legal_name">
+                  <input type="text" class="form-control capitalize_txt" [ngClass]="{'error_input': businessInterestForm.get('beneficiary_legal_name').dirty && businessInterestForm.get('beneficiary_legal_name').touched && businessInterestForm.get('beneficiary_legal_name').hasError('required')}" formControlName="beneficiary_legal_name">
                   <span class="error_txt" *ngIf="businessInterestForm.get('beneficiary_legal_name').dirty && businessInterestForm.get('beneficiary_legal_name').touched && businessInterestForm.get('beneficiary_legal_name').hasError('required')">
                       Please answer this question.
                     </span>
                   <label class="legal_name_benifets">Beneficiary's relationship to you?</label>
-                  <span class="drop_down" style="margin-bottom:20px;">
-                        <select class="beneficiary_relationship_dropdown" formControlName="beneficiary_legal_relation" >
+                  <span class="" style="margin-bottom:20px;">
+                        <select class="form-control" formControlName="beneficiary_legal_relation" >
                             <option value="">Select Relationship</option>
                             <option value="Wife">Wife</option>
                             <option value="Husband">Husband</option>
@@ -139,7 +139,7 @@
 
                 <!-- Multiple Beneficiaries -->
                 <div class="multipleBeneficiaries" formArrayName="multiple_beneficiaries" *ngIf="flags.multipleBeneficiaryFlag">
-                  <div class="table_main3_main table_main4_main multiple_beneficiary_table">
+                  <!-- <div class="table_main3_main table_main4_main multiple_beneficiary_table">
                     <table>
                       <thead>
                       <tr>
@@ -150,10 +150,10 @@
                       <tbody>
                       <tr *ngFor="let item of businessInterestForm.get('multiple_beneficiaries').controls; let i = index;" [formGroupName] = "i">
                         <td>
-                          <input type="text" class="relation_ship_input3 capitalize_txt" formControlName="multiple_beneficiary_name">
+                          <input type="text" class="form-control capitalize_txt" formControlName="multiple_beneficiary_name">
                         </td>
                         <td>
-                          <input type="text" class="relation_ship_input4" formControlName="multiple_beneficiary_relationship">
+                          <input type="text" class="form-control" formControlName="multiple_beneficiary_relationship">
                           <a *ngIf="i > 0" (click)="removeBeneficiary(i)" class="close_icon remove_table_row"><i class="fa fa-times"></i></a>
                         </td>
                       </tr>
@@ -163,7 +163,28 @@
                     <span>
                         <a href="javascript:void(0)" class="add_field2 add_row_beneficiary"  (click)="addNewRow()">+ Add</a>
                       </span>
+                  </div> -->
+
+                  <div class="form-group">
+                    <div class="row colFormHeading">
+                        <div class="threeColField">
+                            <label>Beneficiary's full legal name</label>
+                        </div>
+                        <div class="threeColField">
+                            <label>Beneficiary's relationship to you</label>
+                        </div>
+                    </div>
+                    <div class="row formRow" *ngFor="let item of businessInterestForm.get('multiple_beneficiaries').controls; let i = index;" [formGroupName] = "i">
+                      <div class="threeColField"><input type="text" value="" class="form-control" formControlName="multiple_beneficiary_name" placeholder="Beneficiary's full legal name"></div>
+                      <div class="threeColField"><input type="text" value="" class="form-control" formControlName="multiple_beneficiary_relationship" placeholder="Beneficiary's relationship to you"></div>
+                      <div class="threeColField" *ngIf="i > 0" (click)="removeBeneficiary(i)"><button type="button" class="btn btn btn-danger delRow"><i class="fa fa-trash"></i></button></div>
+                    </div>
+                    
+                    <div class="">
+                        <div class="addRowBtn"><button type="button" class="btn btn btn-primary addRow" (click)="addNewRow()">+</button></div>
+                    </div>
                   </div>
+
                   <span class="error_txt" *ngIf="this.flags.setValidationFlag">
                     Please answer this question.
                   </span>
@@ -171,7 +192,7 @@
 
                 <div class="distributeBusiness" *ngIf="flags.singleBeneficiaryFlag || flags.multipleBeneficiaryFlag">
                   <h2 class="beneficiary_predeceases blue_font">How should your business interest be distributed if the beneficiary passes before you?</h2>
-                  <ul class="residue_ul_Radio2">
+                  <ul class="residue_ul_Radio2 singleBen">
                     <li *ngIf="flags.multipleBeneficiaryFlag">
                       <label class="radio_custom property_to_be_distributed " [ngClass]="{'active': flags.survivingGiftBeneficiariesFlag}">
                         <input type="radio" formControlName="passed_by" value="_sgb" #radiosgb (click)="changeProperty(radiosgb.value)">
@@ -202,7 +223,7 @@
                   </span>
 
                   <div class="totheirIssue" *ngIf="flags.toTheirIssueFlag">
-                    <h2 class="legal_name_benifets">You still need another choice in the event no issue survives the beneficiary.</h2>
+                    <h2 class="legal_name_benifets smallHeading">You still need another choice in the event no issue survives the beneficiary.</h2>
                     <ul class="radio_ul8">
                       <li>
                         <label class="radio_custom property_to_be_distributed" [ngClass]="{'active': flags.residueEstateChildFlag}">
@@ -224,12 +245,12 @@
 
                   <div class="toSomeOneElse" *ngIf="(!flags.toTheirIssueFlag && flags.someoneElseFlag) || (flags.toTheirIssueFlag && flags.someoneElseChildFlag)">
                     <label class="legal_name_benifets">Individual's name?</label>
-                    <input type="text" class="legal_benifit_input capitalize_txt" formControlName="individual_name">
+                    <input type="text" class="form-control capitalize_txt" formControlName="individual_name">
                     <span class="error_txt" *ngIf="businessInterestForm.get('individual_name').dirty && businessInterestForm.get('individual_name').touched && businessInterestForm.get('individual_name').hasError('required')">
                       Please answer this question.
                     </span>
                     <label class="legal_name_benifets">Beneficiary's relationship to you?</label>
-                    <select class="beneficiary_relationship_dropdown" formControlName="individual_relationship">
+                    <select class="form-control" formControlName="individual_relationship">
                       <option value="">Select Relationship</option>
                       <option value="Wife">Wife</option>
                       <option value="Husband">Husband</option>

@@ -70,8 +70,8 @@
 
             <div class="form-group">
                 <label>Beneficiary's relationship to you?</label>
-                <span class="drop_down" style="margin-bottom:20px;">
-                    <select class="beneficiary_relationship_dropdown" #selectRelationship (change)="relationshipChange('relationship',selectRelationship.value)" formControlName="relationship">
+                
+                    <select class="form-control" #selectRelationship (change)="relationshipChange('relationship',selectRelationship.value)" formControlName="relationship">
                         <option value="">Select Relationship</option>
                         <option value="Wife">Wife</option>
                         <option value="Husband">Husband</option>
@@ -87,7 +87,7 @@
                         <option value="Friend">Friend</option>
                         <option value="Other">Other</option>
                      </select>
-                </span>
+                
             </div>
 
             <div class="form-group" *ngIf="poaDetailsForm.get('relationship').value == 'Other'">
@@ -104,21 +104,36 @@
               <label>Would you like to inform this person that you appointed them as your Financial Power of Attorney?</label>
               <ul class="radio_ul6">
                 <li>
-                  <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("is_inform").value === 1)}'>
+                  <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("is_inform").value === 1)}' style="float: left;">
                     <input type="radio" formControlName="is_inform" #isInformYes value=1 (click)="changeMe('is_inform', 1)">
                     <span class="human_status">Yes</span>
                   </label>
+                  <div class="email-box valid" *ngIf='poaDetailsForm.get("is_inform").value === 1'>
+                    <input type="email" placeholder="Enter Email Address" class="form-control"  required
+                    name ='email'
+                    formControlName = "email">
+                    <span class="error_txt"
+                    *ngIf="poaDetailsForm.get('email').touched && poaDetailsForm.get('email').dirty && poaDetailsForm.get('email').hasError('required')">
+                    Please enter email
+                </span>
+
+              <span class="error_txt"
+                    *ngIf="poaDetailsForm.get('email').touched && poaDetailsForm.get('email').dirty && poaDetailsForm.get('email').hasError('pattern')">
+                    Please enter valid email
+                </span>
+                    <i class="fa fa-check"></i>
+                  </div>
                 </li>
                 <li>
                   <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("is_inform").value === 0)}'>
                     <input type="radio" formControlName="is_inform" #isInformNo value=0 (click)="changeMe('is_inform', 0)">
                     <span class="human_status">No</span>
-                  </label>
+                  </label> 
                 </li>
               </ul>
             </div>
 
-            <div class="form-group" *ngIf='poaDetailsForm.get("is_inform").value === 1'>
+            <!-- <div class="form-group" *ngIf='poaDetailsForm.get("is_inform").value === 1'>
               <label>What is their email address?</label>
               <input
                     type = "text"
@@ -137,7 +152,7 @@
                     *ngIf="poaDetailsForm.get('email').touched && poaDetailsForm.get('email').dirty && poaDetailsForm.get('email').hasError('pattern')">
                     Please enter valid email address
                 </span>
-            </div>
+            </div> -->
 
           </div>
 
@@ -226,8 +241,8 @@
 
               <div class="form-group">
                   <label>Beneficiary's relationship to you?</label>
-                  <span class="drop_down" style="margin-bottom:20px;">
-                      <select class="beneficiary_relationship_dropdown" #selectBackupRelationship (change)="relationshipChange('backup_relationship', selectBackupRelationship.value)" formControlName="backup_relationship">
+                  
+                      <select class="form-control" #selectBackupRelationship (change)="relationshipChange('backup_relationship', selectBackupRelationship.value)" formControlName="backup_relationship">
                           <option value="">Select Relationship</option>
                           <option value="Wife">Wife</option>
                           <option value="Husband">Husband</option>
@@ -243,7 +258,7 @@
                           <option value="Friend">Friend</option>
                           <option value="Other">Other</option>
                        </select>
-                  </span>
+                 
               </div>
 
               <div class="form-group" *ngIf="poaDetailsForm.get('backup_relationship').value == 'Other'">
@@ -260,10 +275,30 @@
                 <label>Would you like to inform this person that you appointed them as your Financial Power of Attorney?</label>
                 <ul class="radio_ul6">
                   <li>
-                    <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("backup_is_inform").value === 1)}'>
+                    <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("backup_is_inform").value === 1)}' style="float: left;">
                       <input type="radio" formControlName="backup_is_inform" #isInformYes value=1 (click)="changeMe('backup_is_inform', 1)">
                       <span class="human_status">Yes</span>
                     </label>
+                    <div class="email-box valid" *ngIf='poaDetailsForm.get("backup_is_inform").value === 1'>
+                      <input
+                      type = "text"
+                      class = "form-control"
+                      required
+                      name ='email'
+                      formControlName = "backup_email"
+                      placeholder="Enter Email Address"
+                      >
+                      <span class="error_txt"
+                      *ngIf="poaDetailsForm.get('backup_email').touched && poaDetailsForm.get('backup_email').dirty && poaDetailsForm.get('backup_email').hasError('required')">
+                    Please enter email
+                </span>
+
+                <span class="error_txt"
+                      *ngIf="poaDetailsForm.get('backup_email').touched && poaDetailsForm.get('backup_email').dirty && poaDetailsForm.get('backup_email').hasError('pattern')">
+                    Please enter valid email 
+                </span>
+                      <i class="fa fa-check"></i>
+                    </div>
                   </li>
                   <li>
                     <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("backup_is_inform").value === 0)}'>
@@ -274,7 +309,7 @@
                 </ul>
               </div>
 
-              <div class="form-group" *ngIf='poaDetailsForm.get("backup_is_inform").value === 1'>
+              <!-- <div class="form-group" *ngIf='poaDetailsForm.get("backup_is_inform").value === 1'>
                 <label>What is their email address?</label>
                 <input
                       type = "text"
@@ -291,7 +326,7 @@
                       *ngIf="poaDetailsForm.get('backup_email').touched && poaDetailsForm.get('backup_email').dirty && poaDetailsForm.get('backup_email').hasError('pattern')">
                     Please enter valid email address
                 </span>
-              </div>
+              </div> -->
 
             </div>
         </div>

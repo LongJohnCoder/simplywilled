@@ -1,4 +1,4 @@
-<div class="main-content tellusaboutyou" style="width: 860px">
+<div class="main-content tellusaboutyou">
     <h2>Your Family</h2>
     <form [formGroup] = "chidrenForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
@@ -30,12 +30,12 @@
         </div>
         <div *ngIf="showTable">
             <div formArrayName="childrenInfo" *ngFor="let item of childrenInfo.controls; let i = index;">
-                <div class="row form-group" [formGroupName]="i">
-                    <div class="col-md-3">
+                <div class="row form-group allChild" [formGroupName]="i">
+                    <div class="col-lg-3">
                         <label>Name</label>
                         <input type="text" class="form-control" formControlName="fullname" required>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-lg-3 col-sm-6">
                         <label>Gender</label>
                         <select class="form-control" required formControlName="gender" >
                             <option value="">Select Gender</option>
@@ -43,7 +43,7 @@
                             <option value="F">Female</option>
                         </select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-lg-2 col-sm-6">
                         <label>Month</label>
                         <select class="form-control"
                                 placeholder="Month"
@@ -52,14 +52,14 @@
                             <option *ngFor="let month of months;let i = index" [value]="month">{{month}}</option>
                         </select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-lg-2 col-sm-6">
                         <label>Day</label>
                         <select class="form-control" placeholder="Day"
                                 formControlName="spouseDay">
                             <option *ngFor="let day of days;let i = index" [value]="day">{{day}}</option>
                         </select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-lg-2 col-sm-6">
                         <label>Year</label>
                         <select class="form-control" placeholder="Month"
                                 required formControlName="spouseYear">

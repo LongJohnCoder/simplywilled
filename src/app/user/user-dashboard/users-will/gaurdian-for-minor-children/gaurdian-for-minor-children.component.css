@@ -228,6 +228,7 @@ select.form-control {
     padding: 20px;
     position: relative;
     float:left;
+    margin-bottom: 20px;
 }
 .main-content .valid.email-box{
     border-color: #42A82D;
@@ -244,4 +245,24 @@ select.form-control {
     margin-top: 0;
 }
 
+@media screen and (max-width:551px){
+    .main-content .email-box{
+        width: 100%;
+    }
+}
 
+@media screen and (max-width:360px){
+    .btn-complete, .btn-grey{
+        width: 110px;
+        border-radius: 10px;
+    }
+    .main-content .email-box{
+        padding: 0;
+        border: none;
+        background: none;
+        margin-bottom: 0;
+    }
+    .main-content .email-box i{
+        display: none;
+    }
+}

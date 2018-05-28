@@ -537,6 +537,7 @@ footer ul li a{
     width: 350px;
     padding: 20px;
     position: relative;
+    margin-bottom: 20px;
 }
 .main-content .valid.email-box{
     border-color: #42A82D;
@@ -690,6 +691,11 @@ footer .social ul li a i{
 .footer-bottom img{
     display: inline-block;
 }
+
+select.form-control{
+    margin: 0;
+}
+
 @media screen and (min-width: 992px) and (max-width: 1199px){
     .sidebar h1 {
         font-size: 27px;
@@ -825,5 +831,17 @@ footer .social ul li a i{
     }
     .logo img{
         width: 100%;
+    }
+}
+
+@media screen  and (max-width: 360px){
+    .main-content .email-box{
+        padding: 0;
+        border: none;
+        background: none;
+        margin-bottom: 0;
+    }
+    .main-content .email-box i{
+        display: none;
     }
 }

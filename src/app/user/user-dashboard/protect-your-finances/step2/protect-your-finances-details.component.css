@@ -31,9 +31,10 @@
   width: 100%;
   display: inline-block;
   background-color: #ff5959;
+  border-radius: 5px;
   color: #fff;
-  padding: 10px;
-  margin: 10px 0;
+  padding: 2px;
+  margin: 2px 0;
   text-align: center;
 }
 
@@ -226,6 +227,31 @@ select.form-control{
     margin: 0;
 }
 
+.main-content .email-box{
+    display: inline-block;
+    border: 1px solid #ddd;
+    background: #F2F2F2;
+    height: 105px;
+    width: 350px;
+    padding: 20px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.main-content .valid.email-box{
+    border-color: #42A82D;
+    margin-bottom: 10px;
+}
+.main-content .valid.email-box i {
+    top: 40px;
+    right: 30px;
+}
+
+.main-content select.form-control{
+    background: url('../../../../../assets/images/bottom-caret.png') 98% no-repeat;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
 @media screen and (max-width:1199px){
     .main-content.tellusaboutyou{
         width: 100%;
@@ -234,6 +260,9 @@ select.form-control{
 @media screen and (max-width:480px){
     .form-group label{
         font-size: 16px;
+    }
+    .main-content .email-box{
+        width: 100%;
     }
 }
 
@@ -278,3 +307,16 @@ select.form-control{
   .drop_down select option {
     padding-left: 10px;
   }
+
+
+  @media screen  and (max-width: 360px){
+    .main-content .email-box{
+        padding: 0;
+        border: none;
+        background: none;
+        margin-bottom: 0;
+    }
+    .main-content .email-box i{
+        display: none;
+    }
+}
