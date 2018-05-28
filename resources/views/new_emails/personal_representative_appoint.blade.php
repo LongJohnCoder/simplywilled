@@ -64,9 +64,11 @@
                         </td>
                         <tr>
                             <td style="padding:40px 30px; background: #f2f2f2; text-align: center;">
+                                {{--
                                 <a href="#"><img src="{{url('/')}}/images/acceptBtn.png" alt="accept"></a>
                                 <br><br>
                                 <a href="#"><img src="{{url('/')}}/images/declineBtn.png" alt="No Thank You, I Respectfully Decline"></a>
+                                --}}
                             </td>
                         </tr>
                         <tr>
