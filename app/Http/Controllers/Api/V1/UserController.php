@@ -853,7 +853,7 @@ class UserController extends Controller
      * A single function to update guardian as well as backup guardian info
      * @return \Illuminate\Http\JsonResponse
      * */
-    private function updateGuardianInfoHelper($guardian = [] , $isGuardianMinorChildren = null, $isBackupGuardian, $emailType = null) {
+    private function updateGuardianInfoHelper($guardian = [] , $isGuardianMinorChildren = null, $isBackupGuardian, $emailType = null, $tellUsAboutYou) {
         //validation for normal guardian
         $validator = Validator::make($guardian, [
             //'user_id'      =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|between:'.\Auth::user()->id.','.\Auth::user()->id,
@@ -907,7 +907,43 @@ class UserController extends Controller
           GuardianInfo::updateOrCreate(['user_id'=>$guardian['user_id'] , 'is_backup' => $guardian['is_backup']],$guardian);
           //Sending an email if email notification is set
           if($emailType != null && isset($guardian['email_notification']) && $guardian['email_notification'] == 1) {
-            $this->sendEmail($guardian['user_id'], $guardian['fullname'], $guardian['email'], $emailType);
+
+            //$this->sendEmail($guardian['user_id'], $guardian['fullname'], $guardian['email'], $emailType);
+            if($isBackupGuardian == 0) {
+                \Log::info('email getting send for guardian for minor children');
+                $arr = [
+                    'firstName'     =>  $tellUsAboutYou->firstname,
+                    'middleName'    =>  $tellUsAboutYou->middlename,
+                    'lastName'      =>  $tellUsAboutYou->lastname,
+                    'guardianName'  =>  $guardian['fullname']
+                ];
+                Mail::send('new_emails.guardian', $arr, function($mail) use($personalRepresentative){
+                    $mail->from(config('settings.email'), 'Notice for Guardian Appointment');
+                    $mail->to($guardian['email'], $guardian['fullname'])
+                    ->subject('You are requested to be Guardian for Minor Children');
+                });
+
+                if(Mail::failures()) {
+                    \Log::info('email sending error for guardian for minor children');
+                }
+            } else {
+                \Log::info('email getting send for backup guardian for minor children');
+                $arr = [
+                    'firstName'     =>  $tellUsAboutYou->firstname,
+                    'middleName'    =>  $tellUsAboutYou->middlename,
+                    'lastName'      =>  $tellUsAboutYou->lastname,
+                    'backupGuardianName'  =>  $guardian['fullname']
+                ];
+                Mail::send('new_emails.guardian', $arr, function($mail) use($personalRepresentative){
+                    $mail->from(config('settings.email'), 'Notice for Backup Guardian Appointment');
+                    $mail->to($guardian['email'], $guardian['fullname'])
+                    ->subject('You are requested to be Backup Guardian for Minor Children');
+                });
+
+                if(Mail::failures()) {
+                    \Log::info('email sending error for guardian for minor children');
+                }
+            }
           }
           $response = self::generateGuardianInfoResponse($guardian['user_id']);
           return [
@@ -988,7 +1024,16 @@ class UserController extends Controller
                   ], 400);
             }
 
-            $userId                   = $request->user_id;
+            $userId = $request->user_id;
+            $tellUsAboutYou = TellUsAboutYou::where('user_id',$userId)->first();
+            if(!$tellUsAboutYou) {
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'Please fill Tell Us About You details first',
+                    'data'    => []
+                ], 400);   
+            }
+            
             $isGuardianMinorChildren  = $request->isGuardianMinorChildren;// Yes, No
             $isBackUpGuardian         = $request->isBackUpGuardian;//Yes, No
             $isBackupGuardianCopy     = $isBackUpGuardian == 'Yes' ? '1' : '0';
@@ -1000,7 +1045,7 @@ class UserController extends Controller
             if($isGuardianMinorChildren == 'Yes') {
                 if(isset($guardian)) {
                   $emailType  = 3;
-                  $response   = self::updateGuardianInfoHelper($guardian,$isGuardianMinorChildren,'0',$emailType);
+                  $response   = self::updateGuardianInfoHelper($guardian,$isGuardianMinorChildren,'0',$emailType, $tellUsAboutYou);
                   if($response['status'] != 200) {
                     return $response['response'];
                   }
@@ -1011,7 +1056,7 @@ class UserController extends Controller
             if($isBackUpGuardian == 'Yes') {
                 if(isset($backUpGuardian)) {
                   $emailType  = 4;
-                  $response   = self::updateGuardianInfoHelper($backUpGuardian,'No',$isBackupGuardianCopy,$emailType);
+                  $response   = self::updateGuardianInfoHelper($backUpGuardian,'No',$isBackupGuardianCopy,$emailType, $tellUsAboutYou);
                   if($response['status'] != 200) {
                     return $response['response'];
                   }
