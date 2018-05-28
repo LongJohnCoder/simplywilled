@@ -35,10 +35,7 @@ class AuthController extends Controller {
         try {
 
             DB::beginTransaction();
-
             $user = new User();
-
-
 
             /**
              * Validate mandatory fields and register a new user
@@ -83,18 +80,6 @@ class AuthController extends Controller {
                 $user->assignRole('User');
                 $role = $user->getRole->roleInfo->name;
 
-                // Mail::send('emails.registerEmail', [
-                //         'email'         => 'info@simplywilled.com',
-                //         'user_email'    => $user->email,
-                //         'password'      => $request->input('password')
-                //     ], function ($mail) use ($user) {
-                //         /** @noinspection PhpUndefinedMethodInspection */
-                //         $mail->from('info@simplywilled.com', 'Simplywilled Registration');
-                //         /** @noinspection PhpUndefinedMethodInspection */
-                //         $mail->to($user->email, "User")
-                //               ->subject('Registration Successful');
-                // });
-
                 if ($token = JWTAuth::attempt($request->only('email', 'password'))) {
                     $response = [
                       'status' => true,
@@ -108,6 +93,14 @@ class AuthController extends Controller {
                       'token' => $token,
                     ];
                     $responseCode = 200;
+
+                    Mail::send('new_emails.registration_first',[], function($mail) use($user){
+                            /** @noinspection PhpUndefinedMethodInspection */
+                            //$mail->from('info@simplywilled.com', 'Simplywilled Registration');
+                            /** @noinspection PhpUndefinedMethodInspection */
+                            $mail->to($user->email, $user->name)->subject('You Registered Successfully in Simplywilled!');
+                    });
+
                 } else {
                     JWTAuth::invalidate($token);
                       $response = [
@@ -131,7 +124,6 @@ class AuthController extends Controller {
             ];
             $responseCode = 400;
         } catch (QueryException $queryException) {
-
             if (!empty($queryException->errorInfo) && $queryException->errorInfo[1] == 1062) {
                 $response = [
                     'status'    => false,
