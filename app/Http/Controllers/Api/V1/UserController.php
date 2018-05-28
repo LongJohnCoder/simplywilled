@@ -934,7 +934,7 @@ class UserController extends Controller
                     'lastName'      =>  $tellUsAboutYou->lastname,
                     'backupGuardianName'  =>  $guardian['fullname']
                 ];
-                Mail::send('new_emails.guardian', $arr, function($mail) use($guardian){
+                Mail::send('new_emails.guardian_backup', $arr, function($mail) use($guardian){
                     $mail->from(config('settings.email'), 'Notice for Backup Guardian Appointment');
                     $mail->to($guardian['email'], $guardian['fullname'])
                     ->subject('You are requested to be Backup Guardian for Minor Children');
