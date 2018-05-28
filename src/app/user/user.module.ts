@@ -30,6 +30,7 @@ import { BlogCategoryComponent } from './blog/blog-category/blog-category.compon
 import { NgxPaginationModule } from 'ngx-pagination';
 import {MedicalEmergencyService} from './user-dashboard/plan-for-medical-emergency/medical-emergency.service';
 import { ProtectYourFinancesService } from './user-dashboard/protect-your-finances/services/protect-your-finances.service';
+import {PackagesService} from './user-dashboard/packages/packages.service';
 
 @NgModule({
   imports: [
@@ -69,6 +70,7 @@ import { ProtectYourFinancesService } from './user-dashboard/protect-your-financ
     UserDashboardService,
     BlogService,
     MedicalEmergencyService,
+    PackagesService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
 })
