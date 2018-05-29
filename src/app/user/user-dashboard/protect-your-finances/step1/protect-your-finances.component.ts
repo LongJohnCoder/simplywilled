@@ -28,6 +28,7 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
   poaSubscription: Subscription;
   stateInfoSubscription: Subscription;
   mainSubscription: Subscription;
+  postPOASubscription: Subscription;
   loading = true;
 
   constructor(
@@ -67,7 +68,7 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
       },
       (error: any) => {
         console.log(error);
-      }, () => {this.createForm(this.poaData);}
+      }, () => {this.createForm(this.poaData); }
     );
   }
 
@@ -79,7 +80,7 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
     this.protectYourFinancesService.getStates(this.accessToken).subscribe(
         (data: any) => {
             this.stateInfo = data !== null && data.stateInfo !== null ? data.stateInfo.type : 'uniform';
-            let stateName = data !== null && data.stateInfo !== null ? data.stateInfo.name : '';
+            const stateName = data !== null && data.stateInfo !== null ? data.stateInfo.name : '';
             switch (stateName) {
                 case 'Florida':
                 case 'Maryland':
@@ -100,7 +101,7 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
    * returns void
    */
   createForm(dt: Array<PYFAttorneyPowers> = []): void {
-    let formObj = dt[0] !== undefined ? dt[0] : null;
+    const formObj = dt[0] !== undefined ? dt[0] : null;
     this.myForm = this.fb.group({
       // this are 2 inter dependant fields
       isDurable                 : new FormControl(formObj !== undefined && formObj !== null && formObj.isDurable !== undefined
@@ -142,13 +143,14 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
    */
   send(): void {
       this.response = this.response === null ? {} : this.response;
-      let userId = this.authService.getUser().id;
+      const userId = this.authService.getUser().id;
       this.response.user_id = this.response.user_id == null ? parseInt(userId, 10) : parseInt(this.response.user_id, 10);
       this.response.is_backupattorney = this.response.is_backupattorney == null ? '0' : this.response.is_backupattorney;
       this.response.attorney_powers   = this.myForm.value;
       this.response.attorney_holders  = typeof this.response.attorney_holders === 'string' ? JSON.parse(this.response.attorney_holders) : null;
       this.response.attorney_backup   = typeof this.response.attorney_backup === 'string' ? JSON.parse(this.response.attorney_backup) : null;
-      this.protectYourFinancesService.postPoaDetails(this.accessToken, this.response).subscribe(
+      const request = this.createRequest(userId);
+      this.postPOASubscription = this.protectYourFinancesService.postPoaDetails(this.accessToken, request).subscribe(
         (data) => {
           if (data.status) {
             this.router.navigate(['/dashboard/protect-your-finances-details']);
@@ -161,6 +163,15 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
       );
     }
 
+  /**Creates the request*/
+  createRequest(userId) {
+    const request = {
+      user_id : this.response.user_id == null ? parseInt(userId, 10) : parseInt(this.response.user_id, 10),
+      attorney_powers: this.myForm.value,
+      is_complete: this.response.is_complete !== null ? this.response.is_complete : '0'
+    };
+    return request;
+  }
   /**When the component is destroyed.*/
   ngOnDestroy() {
     if (this.mainSubscription !== undefined) {
@@ -171,6 +182,9 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
     }
     if (this.stateInfoSubscription) {
       this.stateInfoSubscription.unsubscribe();
+    }
+    if(this.postPOASubscription !== undefined) {
+      this.postPOASubscription.unsubscribe();
     }
   }
 }

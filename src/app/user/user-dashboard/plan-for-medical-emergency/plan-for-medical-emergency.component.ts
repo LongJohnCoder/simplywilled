@@ -88,35 +88,37 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
   getData() {
       this.medicalEmergencyService.getmedicalEmergency(this.token, {user_id: this.userId}).subscribe(
           (response: any) => {
-              this.medicalAgent.id = response.data.healthFinance.id;
-              this.medicalAgent.userId = this.userId;
-              this.medicalAgent.firstLegalName = response.data.healthFinance.firstLegalName;
-              this.medicalAgent.lastLegalName = response.data.healthFinance.lastLegalName;
-              this.medicalAgent.backupfirstLegalName = response.data.healthFinance.backupfirstLegalName;
-              this.medicalAgent.backuplastLegalName = response.data.healthFinance.backuplastLegalName;
-              this.medicalAgent.relation = response.data.healthFinance.relation;
-              this.medicalAgent.address = response.data.healthFinance.address;
-              this.medicalAgent.city = response.data.healthFinance.city;
-              this.medicalAgent.state = response.data.healthFinance.state;
-              this.medicalAgent.zip = response.data.healthFinance.zip;
-              this.medicalAgent.phone = response.data.healthFinance.phone;
-              this.medicalAgent.country = response.data.healthFinance.country === null ? 'United States' : response.data.healthFinance.country;
-              this.medicalAgent.willInform = response.data.healthFinance.willInform;
-              this.medicalAgent.emailOfAgent = response.data.healthFinance.emailOfAgent;
-              this.medicalAgent.anyBackupAgent = response.data.healthFinance.anyBackupAgent;
-              this.medicalAgent.backupRelation = response.data.healthFinance.backupRelation;
-              this.medicalAgent.backupAddress = response.data.healthFinance.backupAddress;
-              this.medicalAgent.backupCity = response.data.healthFinance.backupCity;
-              this.medicalAgent.backupState = response.data.healthFinance.backupState;
-              this.medicalAgent.backupZip = response.data.healthFinance.backupZip;
-              this.medicalAgent.backupCountry = response.data.healthFinance.backupCountry === null ? 'United States' : response.data.healthFinance.backupCountry;
-              this.medicalAgent.willInformBackup = response.data.healthFinance.willInformBackup;
-              this.medicalAgent.emailOfBackupAgent = response.data.healthFinance.emailOfBackupAgent;
-              this.medicalAgent.backupphone = response.data.healthFinance.backupphone;
+              if (response !== null && response.status) {
+                    this.medicalAgent.id = response.data.healthFinance.id;
+                    this.medicalAgent.userId = this.userId;
+                    this.medicalAgent.firstLegalName = response.data.healthFinance.firstLegalName;
+                    this.medicalAgent.lastLegalName = response.data.healthFinance.lastLegalName;
+                    this.medicalAgent.backupfirstLegalName = response.data.healthFinance.backupfirstLegalName;
+                    this.medicalAgent.backuplastLegalName = response.data.healthFinance.backuplastLegalName;
+                    this.medicalAgent.relation = response.data.healthFinance.relation;
+                    this.medicalAgent.address = response.data.healthFinance.address;
+                    this.medicalAgent.city = response.data.healthFinance.city;
+                    this.medicalAgent.state = response.data.healthFinance.state;
+                    this.medicalAgent.zip = response.data.healthFinance.zip;
+                    this.medicalAgent.phone = response.data.healthFinance.phone;
+                    this.medicalAgent.country = response.data.healthFinance.country === null ? 'United States' : response.data.healthFinance.country;
+                    this.medicalAgent.willInform = response.data.healthFinance.willInform;
+                    this.medicalAgent.emailOfAgent = response.data.healthFinance.emailOfAgent;
+                    this.medicalAgent.anyBackupAgent = response.data.healthFinance.anyBackupAgent;
+                    this.medicalAgent.backupRelation = response.data.healthFinance.backupRelation;
+                    this.medicalAgent.backupAddress = response.data.healthFinance.backupAddress;
+                    this.medicalAgent.backupCity = response.data.healthFinance.backupCity;
+                    this.medicalAgent.backupState = response.data.healthFinance.backupState;
+                    this.medicalAgent.backupZip = response.data.healthFinance.backupZip;
+                    this.medicalAgent.backupCountry = response.data.healthFinance.backupCountry === null ? 'United States' : response.data.healthFinance.backupCountry;
+                    this.medicalAgent.willInformBackup = response.data.healthFinance.willInformBackup;
+                    this.medicalAgent.emailOfBackupAgent = response.data.healthFinance.emailOfBackupAgent;
+                    this.medicalAgent.backupphone = response.data.healthFinance.backupphone;
 
-              this.toggleWillInform = JSON.parse(response.data.healthFinance.willInform);
-              this.toggleBackupAgent = JSON.parse(response.data.healthFinance.anyBackupAgent);
-              this.toggleWillBackupInform = JSON.parse(response.data.healthFinance.willInformBackup);
+                    this.toggleWillInform = JSON.parse(response.data.healthFinance.willInform);
+                    this.toggleBackupAgent = JSON.parse(response.data.healthFinance.anyBackupAgent);
+                    this.toggleWillBackupInform = JSON.parse(response.data.healthFinance.willInformBackup);
+              }
               // console.log(this.medicalAgent);
               // console.log(this.toggleWillInform);
 

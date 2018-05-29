@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {PersonalRepresentativePowerService} from './services/personal-representative-power.service';
 import {Observable} from 'rxjs/Observable';
 import {UserService} from '../../user.service';
 import {LovedOnesInfo} from './models/lovedOnesInfo';
 import {Router} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
 @Component({
   selector: 'app-personal-representative-power',
   templateUrl: './personal-representative-power.component.html',
   styleUrls: ['./personal-representative-power.component.css']
 })
-export class PersonalRepresentativePowerComponent implements OnInit {
+export class PersonalRepresentativePowerComponent implements OnInit, OnDestroy {
 
-  constructor(private prService: PersonalRepresentativePowerService, private usrService: UserService, private router: Router) { }
+  /**Variable declaration*/
   businessInterestClassFlag: boolean;
   farmRanchFlag: boolean;
   personalRepresentativeFlag: boolean;
@@ -27,6 +28,14 @@ export class PersonalRepresentativePowerComponent implements OnInit {
   fetchedUserData: LovedOnesInfo;
   fetchInfo: boolean;
   compensation_value_data: any;
+  loading = true;
+  userSubscription: Subscription;
+  savePersonalRepresentativeDBSubscription: Subscription;
+
+  /**Constructor call*/
+  constructor(private prService: PersonalRepresentativePowerService, private usrService: UserService, private router: Router) { }
+
+  /**When component initialises*/
   ngOnInit() {
     this.getStepDetails();
     this.fetchInfo = false;
@@ -45,7 +54,7 @@ export class PersonalRepresentativePowerComponent implements OnInit {
     this.session_user_id = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     if (this.session_user_id) {
       this.fetchPersonalRepresentativeDB = this.usrService.getUserDetails(this.session_user_id);
-      this.fetchPersonalRepresentativeDB.subscribe(data => {
+      this.userSubscription = this.fetchPersonalRepresentativeDB.subscribe((data) => {
         if (data.status && data.status === 200) {
           if (data.data.hasOwnProperty(3)) {
             if (data.data[3].hasOwnProperty('data') && data.data[3].data) {
@@ -63,7 +72,7 @@ export class PersonalRepresentativePowerComponent implements OnInit {
           this.errFlag = true;
           this.errString = 'Error while fetching records';
         }
-      }, error => {
+      }, (error) => {
         this.errFlag = true;
         this.errString = error.error.message;
       }, () => {
@@ -104,6 +113,7 @@ export class PersonalRepresentativePowerComponent implements OnInit {
           this.amountTypeFlag = false;
           this.isNetValueFlag  = false;
         }
+        this.loading = false;
       });
     } else {
       this.errFlag = true;
@@ -119,7 +129,7 @@ export class PersonalRepresentativePowerComponent implements OnInit {
     if (this.access_token.length) {
       const dataset = {'step': 4, 'user_id': JSON.parse(localStorage.getItem('loggedInUser')).user.id, 'lovedOnesInfo': [{'user_id': JSON.parse(localStorage.getItem('loggedInUser')).user.id, 'business_interest': formData.value.business_interest_val ? '1' : '0', 'farm_or_ranch': formData.value.farm_or_ranch_val ? '1' : '0', 'is_getcompensate': formData.value.percentage_compensation_val ? '1' : '0'}]};
       this.savePersonalRepresentativeDB = this.prService.savePersonalRepresentativePower(this.access_token, dataset);
-      this.savePersonalRepresentativeDB.subscribe(data => {
+      this.savePersonalRepresentativeDBSubscription = this.savePersonalRepresentativeDB.subscribe(data => {
         if (data.status) {
           // router link to next page
           this.router.navigate(['/dashboard/personal-representative-details']);
@@ -161,6 +171,16 @@ export class PersonalRepresentativePowerComponent implements OnInit {
         break;
       default :
         console.log('Something went wrong. Please try again later');
+    }
+  }
+
+  /**When the component is destroyed*/
+  ngOnDestroy() {
+    if (this.savePersonalRepresentativeDBSubscription !== undefined) {
+      this.savePersonalRepresentativeDBSubscription.unsubscribe();
+    }
+    if (this.userSubscription !== undefined) {
+      this.userSubscription.unsubscribe();
     }
   }
 }

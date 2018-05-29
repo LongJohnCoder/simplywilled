@@ -1,8 +1,7 @@
-<div class="">
+<div class="" *ngIf="!loading">
     <div class="main-content tellusaboutyou">
         <h2>Name your personal representative</h2>
-        <form [formGroup]="personalRepresentativeDetailsForm" novalidate
-              (ngSubmit)="onSubmit(personalRepresentativeDetailsForm)">
+        <form [formGroup]="personalRepresentativeDetailsForm" (ngSubmit)="onSubmit(personalRepresentativeDetailsForm)">
             <div formArrayName="personalRepresentative">
                 <div *ngFor="let item of personalRepresentativeDetailsForm['controls'].personalRepresentative['controls']; let i=index">
               <!--<div *ngFor="let item of personalRepresentativeDetailsForm.get('personalRepresentative'); let i=index">-->
@@ -11,13 +10,10 @@
                             <label>Full Legal Name: </label>
                             <input type="text" class="form-control" placeholder="Full legal name"
                                    formControlName="fullname">
-                            <span
-                                    *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').touched"
-                                    class="help-block">
-                            <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').errors['required']"
-                                  style="color: red">This field is required!</span>
-
-                    </span>
+                            <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').dirty && personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').touched">
+                                <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').hasError('required')" class="error_txt"> Please enter a properly capitalized legal name</span>
+                                <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').hasError('pattern')" class="error_txt"> Please enter a properly capitalized legal name</span>
+                            </span>
                         </div>
                         <div class="form-group ">
                             <label>Their Relationship To You: </label>
@@ -37,67 +33,44 @@
                                 <option value="Friend">Friend</option>
                                 <option value="Other">Other</option>
                             </select>
-                            <span
-                                    *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_with').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_with').touched"
-                                    class="help-block">
-               <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_with').errors['required']"
-                     style="color: red">This field is required!</span>
-
-             </span>
+                            <span *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_with').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_with').touched">
+                                  <span class="error_txt" *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_with').hasError('required')">Please fill up this field.</span>
+                             </span>
                         </div>
                         <div class="form-group">
                             <label>Their Address: </label>
                             <input type="text" class="form-control" placeholder="Address Line 1"
                                    formControlName="address">
-                            <span
-                                    *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.address').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.address').touched"
-                                    class="help-block">
-                    <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.address').errors['required']"
-                          style="color: red">This field is required!</span>
-
-                        </span>
+                            <span *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.address').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.address').touched">
+                                <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.address').hasError('required')" class="error_txt">Address is required</span>
+                            </span>
                             <div class="row">
                                 <div class="col-md-6"><input type="text" class="form-control" placeholder="city"
                                                              formControlName="city">
-                                    <span
-                                            *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.city').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.city').touched"
-                                            class="help-block">
-                    <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.city').errors['required']"
-                          style="color: red">This field is required!</span>
-
-              </span>
+                                    <span *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.city').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.city').touched">
+                                        <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.city').hasError('required')" class="error_txt">City is required</span>
+                                    </span>
                                 </div>
                                 <div class="col-md-6"><input type="text" class="form-control" placeholder="state"
                                                              formControlName="state">
-                                    <span
-                                            *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.state').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.state').touched"
-                                            class="help-block">
-                    <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.state').errors['required']"
-                          style="color: red">This field is required!</span>
-
-              </span>
+                                    <span *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.state').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.state').touched">
+                                        <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.state').hasError('required')" class="error_txt">State is required</span>
+                                    </span>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6"><input type="text" class="form-control" placeholder="zip"
                                                              formControlName="zip">
-                                    <span
-                                            *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.zip').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.zip').touched"
-                                            class="help-block">
-                    <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.zip').errors['required']"
-                          style="color: red">This field is required!</span>
-
-              </span>
+                                    <span *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.zip').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.zip').touched">
+                                        <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.zip').hasError('required')" class="error_txt">Zip is required</span>
+                                        <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.zip').hasError('pattern')" class="error_txt">Please provide a valid zip.</span>
+                                    </span>
                                 </div>
                                 <div class="col-md-6"><input type="text" class="form-control" placeholder="country"
-                                                             formControlName="country">
-                                    <span
-                                            *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.country').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.country').touched"
-                                            class="help-block">
-                    <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.country').errors['required']"
-                          style="color: red">This field is required!</span>
-
-              </span>
+                                                             formControlName="country" readonly>
+                                    <span *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.country').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.country').touched">
+                                        <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.country').errors['required']" class="error_txt">Country is required</span>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -108,23 +81,24 @@
                                 <li>
                                     <label class="radio_custom"
                                            [ngClass]="{'active': personalRepresentativeDetailsForm.get('personalRepresentative.0.email_notification').value == '1'}">
-                                        <input type="radio" formControlName="email_notification" value="1">
+                                        <input type="radio" formControlName="email_notification" value="1" #notifyYes (click)="changeValidationEmail(notifyYes.value)">
                                         <span class="human_status">Yes</span>
                                     </label>
                                     <div *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.email_notification').value == '1'"
-                                         class="email-box valid">
+                                         class="email-box" [ngClass] = "{'valid': personalRepresentativeDetailsForm.get('personalRepresentative.0.email').valid,'invalid':!personalRepresentativeDetailsForm.get('personalRepresentative.0.email').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.email').touched}">
                                         <input type="email" placeholder="Enter Email Address" class="form-control"
                                                formControlName="email">
-                                        <span *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.email').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.email').touched" class="help-block">
+                                       <!-- <span *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.email').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.email').touched" class="help-block">
                                             <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.email').errors['email']" style="color: red">Must be an email type!</span>
-                                        </span>
-                                        <i [ngClass]="{'fa fa-check': personalRepresentativeDetailsForm.get('personalRepresentative.0.email').valid}"></i>
+                                        </span>-->
+                                        <i class= 'fa fa-check' *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.email').valid"></i>
+                                        <i class= 'fa fa-times' *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.email').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.email').touched"></i>
                                     </div>
                                 </li>
                                 <li>
                                     <label class="radio_custom"
                                            [ngClass]="{'active': personalRepresentativeDetailsForm.get('personalRepresentative.0.email_notification').value == '0'}">
-                                        <input type="radio" formControlName="email_notification" value="0">
+                                        <input type="radio" formControlName="email_notification" value="0" #notifyNo (click)="changeValidationEmail(notifyNo.value)">
                                         <span class="human_status"> No</span>
                                     </label>
                                 </li>
@@ -164,13 +138,10 @@
                                 <label>Full Legal Name: </label>
                                 <input type="text" class="form-control" placeholder="Full legal name"
                                        formControlName="fullname">
-                                <span
-                                        *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.fullname').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.fullname').touched"
-                                        class="help-block">
-                            <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.fullname').errors['required']"
-                                  style="color: red">This field is required!</span>
-
-                    </span>
+                                <span *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.fullname').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.fullname').touched">
+                                    <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.fullname').hasError('required')" class="error_txt"> Please enter a properly capitalized legal name</span>
+                                    <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.fullname').hasError('pattern')" class="error_txt"> Please enter a properly capitalized legal name</span>
+                                </span>
                             </div>
                             <div class="form-group ">
                                 <label>Their Relationship To You: </label>
@@ -190,67 +161,45 @@
                                     <option value="Friend">Friend</option>
                                     <option value="Other">Other</option>
                                 </select>
-                                <span
-                                        *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.relationship_with').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.relationship_with').touched"
-                                        class="help-block">
-                            <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.relationship_with').errors['required']"
-                                  style="color: red">This field is required!</span>
-
-                    </span>
+                                <span *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.relationship_with').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.relationship_with').touched">
+                                  <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.relationship_with').hasError('required')" class="error_txt">Please fill up this field.</span>
+                                </span>
                             </div>
                             <div class="form-group">
                                 <label>Their Address: </label>
                                 <input type="text" class="form-control" placeholder="Address Line 1"
                                        formControlName="address">
-                                <span
-                                        *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.address').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.address').touched"
-                                        class="help-block">
-                            <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.address').errors['required']"
-                                  style="color: red">This field is required!</span>
-
-                    </span>
+                                <span *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.address').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.address').touched">
+                                      <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.address').hasError('required')" class="error_txt">Address is required</span>
+                                </span>
                                 <div class="row">
-                                    <div class="col-md-6"><input type="text" class="form-control" placeholder="city"
+                                    <div class="col-md-6">
+                                      <input type="text" class="form-control" placeholder="city"
                                                                  formControlName="city">
-                                        <span
-                                                *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.city').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.city').touched"
-                                                class="help-block">
-                            <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.city').errors['required']"
-                                  style="color: red">This field is required!</span>
-
-                    </span>
+                                        <span *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.city').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.city').touched">
+                                            <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.city').hasError('required')" class="error_txt">City is required</span>
+                                        </span>
                                     </div>
-                                    <div class="col-md-6"><input type="text" class="form-control" placeholder="state"
-                                                                 formControlName="state">
-                                        <span
-                                                *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.state').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.state').touched"
-                                                class="help-block">
-                            <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.state').errors['required']"
-                                  style="color: red">This field is required!</span>
-
-                    </span>
+                                    <div class="col-md-6"><input type="text" class="form-control" placeholder="state" formControlName="state">
+                                        <span *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.state').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.state').touched">
+                                            <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.state').hasError('required')" class="error_txt">State is required</span>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6"><input type="text" class="form-control" placeholder="zip"
                                                                  formControlName="zip">
-                                        <span
-                                                *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.zip').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.zip').touched"
-                                                class="help-block">
-                            <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.zip').errors['required']"
-                                  style="color: red">This field is required!</span>
-
-                    </span>
+                                        <span *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.zip').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.zip').touched">
+                                            <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.zip').hasError('required')" class="error_txt">Zip is required</span>
+                                            <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.zip').hasError('pattern')" class="error_txt">Please provide a valid zip</span>
+                                        </span>
                                     </div>
-                                    <div class="col-md-6"><input type="text" class="form-control" placeholder="country"
-                                                                 formControlName="country">
-                                        <span
-                                                *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.country').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.country').touched"
-                                                class="help-block">
-                            <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.country').errors['required']"
-                                  style="color: red">This field is required!</span>
+                                    <div class="col-md-6">
+                                      <input type="text" class="form-control" placeholder="country" formControlName="country" readonly>
+                                        <span *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.country').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.country').touched">
+                                        <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.country').hasError('required')" class="error_txt">Country is required</span>
 
-                    </span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -261,27 +210,29 @@
                                     <li>
                                         <label class="radio_custom"
                                                [ngClass]="{'active': personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email_notification').value == '1'}">
-                                            <input type="radio" formControlName="email_notification" value="1">
+                                            <input type="radio" formControlName="email_notification" #emailYes value="1" (click)="changeValidation(emailYes.value)">
                                             <span class="human_status">Yes</span>
                                         </label>
                                         <div *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email_notification').value == '1'"
-                                             class="email-box valid">
+                                             class="email-box" [ngClass]="{'valid':personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email').valid, 'invalid': !personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email').touched}">
                                             <input type="email" placeholder="Enter Email Address" class="form-control"
                                                    formControlName="email">
-                                            <span
+                                            <!--<span
                                                     *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email').touched"
                                                     class="help-block">
-                    <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email').errors['email']"
-                          style="color: red">Must be an email type!</span>
+                                              <span *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email').errors['email']"
+                                                    style="color: red">Must be an email type!</span>
 
-                    </span>
-                                            <i [ngClass]="{'fa fa-check': personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email').valid}"></i>
+                                              </span>
+                                            <i [ngClass]="{'fa fa-check': personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email').valid}"></i>-->
+                                          <i class= 'fa fa-check' *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email').valid"></i>
+                                          <i class= 'fa fa-times' *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email').touched"></i>
                                         </div>
                                     </li>
                                     <li>
                                         <label class="radio_custom"
                                                [ngClass]="{'active': personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.email_notification').value == '0'}">
-                                            <input type="radio" formControlName="email_notification" value="0">
+                                            <input type="radio" formControlName="email_notification" #emailNo value="0" (click)="changeValidation(emailNo.value)">
                                             <span class="human_status"> No</span>
                                         </label>
                                     </li>

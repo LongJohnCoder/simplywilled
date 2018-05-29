@@ -38,12 +38,10 @@
       <div class="form-group" *ngIf="personalPropertyDistributedForm.value.is_tangible_property_distribute == 4">
         <label>Otherwise, to be distributed to: </label>
         <textarea class="form-control" formControlName="tangible_property_distribute" rows="6"></textarea>
-          <span
-                  *ngIf="!personalPropertyDistributedForm.get('tangible_property_distribute').valid && personalPropertyDistributedForm.get('tangible_property_distribute').touched"
-                  class="help-block">
-                    <span *ngIf="personalPropertyDistributedForm.get('tangible_property_distribute').errors['required']" style="color: red">This field Required !</span>
-                    <span *ngIf="personalPropertyDistributedForm.get('tangible_property_distribute').errors['pattern']" style="color: red">Invalid!</span>
-                  </span>
+          <div *ngIf="!personalPropertyDistributedForm.get('tangible_property_distribute').valid && personalPropertyDistributedForm.get('tangible_property_distribute').touched">
+              <span *ngIf="personalPropertyDistributedForm.get('tangible_property_distribute').hasError('required')" class="error_txt">Please fill up this field</span>
+              <!--<span *ngIf="personalPropertyDistributedForm.get('tangible_property_distribute').errors['pattern']" class="error_txt">Invalid!</span>-->
+          </div>
       </div>
       <div class="form-footer">
         <button class="btn common-button btn-grey pull-left" (click)="goBack()">Go Back</button>

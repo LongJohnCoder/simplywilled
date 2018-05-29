@@ -45,7 +45,7 @@ export class GiftComponent implements OnInit {
           if (formData.gift_status === '1') {
             this.router.navigate(['/dashboard/your-specific-gifts']);
           } else {
-           console.log('need to build this section');
+            this.router.navigate(['/dashboard/your-estate-distributed']);
           }
         } else {
           this.errFlag = true;

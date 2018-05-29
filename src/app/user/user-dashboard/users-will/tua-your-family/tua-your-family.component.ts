@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../../user.service';
 import { UserAuthService } from '../../../user-auth/user-auth.service';
@@ -13,7 +13,7 @@ import {Subscription} from 'rxjs/Subscription';
     templateUrl: './tua-your-family.component.html',
     styleUrls: ['./tua-your-family.component.css']
 })
-export class TuaYourFamilyComponent implements OnInit {
+export class TuaYourFamilyComponent implements OnInit, OnDestroy {
   /**Variable declaration*/
   columnFormArray: FormArray;
   days: string[] = [];
@@ -31,6 +31,9 @@ export class TuaYourFamilyComponent implements OnInit {
   maxChidren = '';
   loading = true;
   totalChildrenSubscription: Subscription;
+  deceasedChildrenNameSubscription: Subscription;
+  userSubscription: Subscription;
+  editSubscription: Subscription;
   setValidationFlag = false;
   errors = {
     errorFlag: false,
@@ -83,7 +86,7 @@ export class TuaYourFamilyComponent implements OnInit {
   /**When the component initialises*/
   ngOnInit() {
     this.chidrenForm.controls['user_id'].setValue(this.user.id);
-    this.userService.getUserDetails(this.user.id).subscribe(
+    this.userSubscription = this.userService.getUserDetails(this.user.id).subscribe(
       (response: any) => {
         this.dashboardService.updateUserDetails(response.data);
         if (response.data[1].data) {
@@ -124,6 +127,17 @@ export class TuaYourFamilyComponent implements OnInit {
         } else {
           this.chidrenForm.get('totalChildrenOther').clearValidators();
           this.chidrenForm.get('totalChildrenOther').updateValueAndValidity();
+        }
+      }
+    );
+    this.deceasedChildrenNameSubscription = this.chidrenForm.get('deceasedChildren').valueChanges.subscribe(
+      (deceasedChildren) => {
+        if (deceasedChildren === 'Yes') {
+          this.chidrenForm.get('deceasedChildrenNames').setValidators([Validators.required]);
+          this.chidrenForm.get('deceasedChildrenNames').updateValueAndValidity();
+        } else {
+          this.chidrenForm.get('deceasedChildrenNames').clearValidators();
+          this.chidrenForm.get('deceasedChildrenNames').updateValueAndValidity();
         }
       }
     );
@@ -192,9 +206,8 @@ export class TuaYourFamilyComponent implements OnInit {
     this.router.navigate(['/dashboard/will']);
   }
 
+  /**When the form is submitted*/
   onSubmit() {
-
-    console.log(this.chidrenForm.valid);
     if (this.chidrenForm.valid) {
       if (this.chidrenForm.value.totalChildren === 'other') {
         this.chidrenForm.value.totalChildren = this.chidrenForm.value.totalChildrenOther;
@@ -203,8 +216,7 @@ export class TuaYourFamilyComponent implements OnInit {
         let dob = this.chidrenForm.value.childrenInfo[i].spouseYear + '-' + this.chidrenForm.value.childrenInfo[i].spouseMonth + '-' + this.chidrenForm.value.childrenInfo[i].spouseDay;
         this.chidrenForm.value.childrenInfo[i].dob = dob;
       }
-      console.log(this.chidrenForm.value);
-      this.userService.editProfile(this.chidrenForm.value).subscribe(
+      this.editSubscription = this.userService.editProfile(this.chidrenForm.value).subscribe(
         (data: any) => {
           console.log(data.data);
           if (!data.data.childrenData.length) {
@@ -251,6 +263,22 @@ export class TuaYourFamilyComponent implements OnInit {
         break;
       }
       this.setValidationFlag = false;
+    }
+  }
+
+  /**When the component is destroyed*/
+  ngOnDestroy() {
+    if (this.userSubscription !== undefined) {
+      this.userSubscription.unsubscribe();
+    }
+    if (this.editSubscription !== undefined) {
+      this.editSubscription.unsubscribe();
+    }
+    if (this.totalChildrenSubscription !== undefined) {
+      this.totalChildrenSubscription.unsubscribe();
+    }
+    if (this.deceasedChildrenNameSubscription !== undefined) {
+      this.deceasedChildrenNameSubscription.unsubscribe();
     }
   }
 }

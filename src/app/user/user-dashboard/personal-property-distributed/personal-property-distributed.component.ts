@@ -103,7 +103,7 @@ export class PersonalPropertyDistributedComponent implements OnInit {
         this.userService.editProfile(modelData).subscribe(
             (response: any) => {
                 // go to gift section
-                this.router.navigate(['/dashboard']);
+                this.router.navigate(['/dashboard/tell-you-make-specific-gifts']);
             },
             (error: any) => {
                 for (let prop in error.error.message) {

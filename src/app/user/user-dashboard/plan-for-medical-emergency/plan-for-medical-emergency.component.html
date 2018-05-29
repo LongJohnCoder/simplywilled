@@ -2,39 +2,64 @@
     <div class="main-content tellusaboutyou">
         <h2>Name your first choice for healthcare agent</h2>
         <form #medicalEmergencyForm="ngForm">
-            <div class="form-group" [ngClass]="{'valid': firstLegalName.valid}">
+            <div class="form-group" [ngClass]="{'valid': firstLegalName.valid, 'invalid': firstLegalName.touched && firstLegalName.touched && !firstLegalName.valid}">
                 <label for="firstLegalName">First Legal Name:</label>
                 <input id="firstLegalName" class="form-control" type="text" [(ngModel)]="medicalAgent.firstLegalName" name="firstLegalName" ngModel #firstLegalName="ngModel" required>
                 <i class="fa fa-check" *ngIf="firstLegalName.valid"></i>
+                <i class="fa fa-times" *ngIf="firstLegalName.touched && firstLegalName.touched && !firstLegalName.valid"></i>
+
+              <span class="error_txt" *ngIf="firstLegalName.touched && firstLegalName.touched && firstLegalName.hasError('required')">
+                  Please provide first name.
+              </span>
             </div>
-            <div class="form-group" [ngClass]="{'valid': lastLegalName.valid}">
+            <div class="form-group" [ngClass]="{'valid': lastLegalName.valid, 'invalid': lastLegalName.touched && lastLegalName.touched && !lastLegalName.valid}">
                 <label for="lastLegalName">Last Legal Name:</label>
                 <input id="lastLegalName" class="form-control" type="text" [(ngModel)]="medicalAgent.lastLegalName" name="lastLegalName" ngModel #lastLegalName="ngModel" required>
                 <i class="fa fa-check" *ngIf="lastLegalName.valid"></i>
+                <i class="fa fa-times" *ngIf="lastLegalName.touched && lastLegalName.touched && !lastLegalName.valid"></i>
+
+              <span class="error_txt" *ngIf="lastLegalName.touched && lastLegalName.touched && lastLegalName.hasError('required')">
+                  Please provide last name.
+              </span>
             </div>
 
-            <div class="form-group" [ngClass]="{'valid': relation.valid}">
+            <div class="form-group" [ngClass]="{'valid': relation.valid, 'invalid': relation.touched && relation.touched && !relation.valid}">
                 <label for="relation">Their Relationship To You:</label>
                 <select id="relation" class="form-control" [(ngModel)]="medicalAgent.relation" name="relation" ngModel #relation="ngModel" required>
                     <!--<option value="">Select Option</option>-->
                     <option *ngFor="let relation of relations" value="{{relation}}">{{relation}}</option>
                 </select>
                 <i class="fa fa-check" *ngIf="relation.valid"></i>
+                <i class="fa fa-times" *ngIf="relation.touched && relation.touched && !relation.valid"></i>
+
+                <span class="error_txt" *ngIf="relation.touched && relation.touched && relation.hasError('required')">
+                    Please fill up this field.
+                </span>
             </div>
 
             <div class="form-group">
-                <div class="" [ngClass]="{'valid': address.valid}">
+                <div class="" [ngClass]="{'valid': address.valid, 'invalid': address.touched && address.touched && !address.valid}">
                     <label>Their Address: </label>
                     <input id="address" class="form-control" type="text" [(ngModel)]="medicalAgent.address" name="address" ngModel #address="ngModel" required>
                     <i class="fa fa-check" *ngIf="address.valid"></i>
+                    <i class="fa fa-times" *ngIf="address.touched && address.touched && !address.valid"></i>
+
+                    <span class="error_txt" *ngIf="address.touched && address.touched && address.hasError('required')">
+                      Address is required.
+                    </span>
                 </div>
-                
+
                 <div class="row">
-                    <div class="col-md-6 smallField" [ngClass]="{'valid': city.valid}">
+                    <div class="col-md-6 smallField" [ngClass]="{'valid': city.valid, 'invalid': city.touched && city.touched && !city.valid}">
                         <input id="city" class="form-control" type="text" [(ngModel)]="medicalAgent.city" name="city" ngModel #city="ngModel" required>
                         <i class="fa fa-check" *ngIf="city.valid"></i>
+                        <i class="fa fa-times" *ngIf="city.touched && city.touched && !city.valid"></i>
+
+                        <span class="error_txt" *ngIf="city.touched && city.touched && city.hasError('required')">
+                            City is required.
+                        </span>
                     </div>
-                    <div class="col-md-6 smallField" [ngClass]="{'valid': state.valid}">
+                    <div class="col-md-6 smallField" [ngClass]="{'valid': state.valid , 'invalid': state.touched && state.touched && !state.valid}">
                         <select id="state" class="form-control"
                                 [(ngModel)]="medicalAgent.state"
                                 name="state" ngModel
@@ -93,14 +118,27 @@
                             <option value="Wyoming">Wyoming</option>
                         </select>
                         <i class="fa fa-check" *ngIf="state.valid"></i>
+                        <i class="fa fa-times" *ngIf="state.touched && state.touched && !state.valid"></i>
+
+                        <span class="error_txt" *ngIf="state.touched && state.touched && state.hasError('required')">
+                            State is required.
+                        </span>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 smallField" [ngClass]="{'valid': zip.valid}">
+                    <div class="col-md-6 smallField" [ngClass]="{'valid': zip.valid,'invalid': zip.touched && zip.touched && !zip.valid}">
                         <input id="zip" class="form-control" type="text"
                                [(ngModel)]="medicalAgent.zip" name="zip"
                                ngModel #zip="ngModel" pattern="^\d{5}$" required>
                         <i class="fa fa-check" *ngIf="zip.valid"></i>
+                        <i class="fa fa-times" *ngIf="zip.touched && zip.touched && !zip.valid"></i>
+
+                        <span class="error_txt" *ngIf="zip.touched && zip.touched && zip.hasError('required')">
+                            Zip is required.
+                        </span>
+                        <span class="error_txt" *ngIf="zip.touched && zip.touched && zip.hasError('pattern')">
+                            Please provide a valid zip.
+                        </span>
                     </div>
                     <div class="col-md-6 smallField" [ngClass]="{'valid': country.valid}">
                         <input id="country" class="form-control" type="text" [(ngModel)]="medicalAgent.country" name="country" ngModel #country="ngModel" disabled required>
@@ -109,13 +147,21 @@
                 </div>
             </div>
 
-            <div class="form-group" [ngClass]="{'valid': phone.valid}">
+            <div class="form-group" [ngClass]="{'valid': phone.valid, 'invalid': phone.touched && phone.touched && !phone.valid}">
                 <label for="phone">Their Phone Number?</label>
                 <input id="phone" class="form-control" type="text"
                        [(ngModel)]="medicalAgent.phone" name="phone" ngModel
                        mask="(000)-000-0000" pattern="^\d{10}$" placeholder="(xxx)-xxx-xxxx"
                        #phone="ngModel" required>
                 <i class="fa fa-check" *ngIf="phone.valid"></i>
+                <i class="fa fa-times" *ngIf="phone.touched && phone.touched && !phone.valid"></i>
+
+                 <span class="error_txt" *ngIf="phone.touched && phone.touched && phone.hasError('required')">
+                      Phone is required.
+                 </span>
+                 <span class="error_txt" *ngIf="phone.touched && phone.touched && phone.hasError('pattern')">
+                      Please provide a valid phone number.
+                 </span>
             </div>
 
 
@@ -134,12 +180,20 @@
                             (click)="changewillinform(true)">
                             <span class="human_status">Yes</span>
                         </label>
-                        <div class="email-box" *ngIf="toggleWillInform" [ngClass]="{'valid': emailOfAgent.valid}">
-                            <input type="email" name="emailOfAgent" class="form-control" 
+                        <div class="email-box" *ngIf="toggleWillInform" [ngClass]="{'valid': emailOfAgent.valid, 'invalid': emailOfAgent.touched && emailOfAgent.touched && !emailOfAgent.valid}">
+                            <input type="email" name="emailOfAgent" class="form-control"
                                    [(ngModel)]="medicalAgent.emailOfAgent"
                                    #emailOfAgent="ngModel" ngModel
                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
                             <i class="fa fa-check" *ngIf="emailOfAgent.valid"></i>
+                            <i class="fa fa-times" *ngIf="emailOfAgent.touched && emailOfAgent.touched && !emailOfAgent.valid"></i>
+
+                            <!--<span class="error_txt" *ngIf="phone.touched && phone.touched && phone.hasError('required')">
+                              Phone is required.
+                            </span>
+                            <span class="error_txt" *ngIf="phone.touched && phone.touched && phone.hasError('pattern')">
+                              Please provide a valid phone number.
+                            </span>-->
                         </div>
                     </li>
                     <li>
@@ -188,49 +242,74 @@
                 </ul>
             </div>
 
-            
+
 
             <div *ngIf="toggleBackupAgent">
                 <hr>
                 <h2>Name Your Backup Healthcare Agent</h2>
 
-                <div class="form-group" [ngClass]="{'valid': backupfirstLegalName.valid}">
+                <div class="form-group" [ngClass]="{'valid': backupfirstLegalName.valid, 'invalid': backupfirstLegalName.touched && backupfirstLegalName.touched && !backupfirstLegalName.valid}">
                     <label for="backupfirstLegalName">First Legal Name:</label>
                     <input id="backupfirstLegalName" class="form-control" type="text" [(ngModel)]="medicalAgent.backupfirstLegalName" name="backupfirstLegalName" ngModel #backupfirstLegalName="ngModel" required>
                     <i class="fa fa-check" *ngIf="backupfirstLegalName.valid"></i>
+                    <i class="fa fa-times" *ngIf="backupfirstLegalName.touched && backupfirstLegalName.touched && !backupfirstLegalName.valid"></i>
+
+                    <span class="error_txt" *ngIf="backupfirstLegalName.touched && backupfirstLegalName.touched && backupfirstLegalName.hasError('required')">
+                      First name is required.
+                    </span>
                 </div>
-                <div class="form-group" [ngClass]="{'valid': backuplastLegalName.valid}">
+                <div class="form-group" [ngClass]="{'valid': backuplastLegalName.valid, 'invalid': backuplastLegalName.touched && backuplastLegalName.touched && !backuplastLegalName.valid}">
                     <label for="backuplastLegalName">Last Legal Name:</label>
                     <input id="backuplastLegalName" class="form-control" type="text" [(ngModel)]="medicalAgent.backuplastLegalName" name="backuplastLegalName" ngModel #backuplastLegalName="ngModel" required>
                     <i class="fa fa-check" *ngIf="backuplastLegalName.valid"></i>
+                    <i class="fa fa-times" *ngIf="backuplastLegalName.touched && backuplastLegalName.touched && !backuplastLegalName.valid"></i>
+
+                  <span class="error_txt" *ngIf="backuplastLegalName.touched && backuplastLegalName.touched && backuplastLegalName.hasError('required')">
+                    Last name is required.
+                  </span>
                 </div>
 
-                <div class="form-group" [ngClass]="{'valid': backupRelation.valid}">
+                <div class="form-group" [ngClass]="{'valid': backupRelation.valid, 'invalid': backupRelation.touched && backupRelation.touched && !backupRelation.valid}">
                     <label for="backupRelation">Their Relationship To You:</label>
                     <select id="backupRelation" class="form-control" [(ngModel)]="medicalAgent.backupRelation" name="backupRelation" ngModel #backupRelation="ngModel" required>
                         <!--<option value="">Select Option</option>-->
                         <option *ngFor="let relation of relations" value="{{relation}}">{{relation}}</option>
                     </select>
                     <i class="fa fa-check" *ngIf="backupRelation.valid"></i>
+                    <i class="fa fa-times" *ngIf="backupRelation.touched && backupRelation.touched && !backupRelation.valid"></i>
+
+                    <span class="error_txt" *ngIf="backupRelation.touched && backupRelation.touched && backupRelation.hasError('required')">
+                      Please fill up this field.
+                    </span>
                 </div>
 
                 <div class="form-group">
-                    <div class="" [ngClass]="{'valid': backupAddress.valid}">
+                    <div class="" [ngClass]="{'valid': backupAddress.valid, 'invalid': backupAddress.touched && backupAddress.touched && !backupAddress.valid}">
                         <label>Their Address: </label>
                         <input id="backupAddress" class="form-control" type="text"
                             [(ngModel)]="medicalAgent.backupAddress" name="backupAddress"
                             ngModel #backupAddress="ngModel" required>
                         <i class="fa fa-check" *ngIf="backupAddress.valid"></i>
+                        <i class="fa fa-times" *ngIf="backupAddress.touched && backupAddress.touched && !backupAddress.valid"></i>
+
+                        <span class="error_txt" *ngIf="backupAddress.touched && backupAddress.touched && backupAddress.hasError('required')">
+                          Address is required.
+                        </span>
                     </div>
-                    
+
                     <div class="row">
-                        <div class="col-md-6 smallField" [ngClass]="{'valid': backupCity.valid}">
+                        <div class="col-md-6 smallField" [ngClass]="{'valid': backupCity.valid, 'invalid': backupCity.touched && backupCity.touched && !backupCity.valid}">
                             <input id="backupCity" class="form-control" type="text"
                                    [(ngModel)]="medicalAgent.backupCity" name="backupCity"
                                    ngModel #backupCity="ngModel" required>
                             <i class="fa fa-check" *ngIf="backupCity.valid"></i>
+                            <i class="fa fa-times" *ngIf="backupCity.touched && backupCity.touched && !backupCity.valid"></i>
+
+                            <span class="error_txt" *ngIf="backupCity.touched && backupCity.touched && backupCity.hasError('required')">
+                              City is required.
+                            </span>
                         </div>
-                        <div class="col-md-6 smallField" [ngClass]="{'valid': backupState.valid}">
+                        <div class="col-md-6 smallField" [ngClass]="{'valid': backupState.valid, 'invalid': backupState.touched && backupAddress.touched && !backupState.valid}">
                             <select id="backupState" class="form-control"
                                     [(ngModel)]="medicalAgent.backupState"
                                     name="backupState" ngModel
@@ -289,32 +368,58 @@
                                 <option value="Wyoming">Wyoming</option>
                             </select>
                             <i class="fa fa-check" *ngIf="backupState.valid"></i>
+                            <i class="fa fa-times" *ngIf="backupState.touched && backupState.touched && !backupState.valid"></i>
+
+                            <span class="error_txt" *ngIf="backupState.touched && backupState.touched && backupState.hasError('required')">
+                              State is required.
+                            </span>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 smallField" [ngClass]="{'valid': backupZip.valid}">
+                        <div class="col-md-6 smallField" [ngClass]="{'valid': backupZip.valid, 'invalid': backupZip.touched && backupZip.touched && !backupZip.valid}">
                             <input id="backupZip" class="form-control" type="text"
                                    [(ngModel)]="medicalAgent.backupZip" name="backupZip"
                                    ngModel #backupZip="ngModel" pattern="^\d{5}$" required>
                             <i class="fa fa-check" *ngIf="backupZip.valid"></i>
+                            <i class="fa fa-times" *ngIf="backupZip.touched && backupZip.touched && !backupZip.valid"></i>
+
+                            <span class="error_txt" *ngIf="backupZip.touched && backupZip.touched && backupZip.hasError('required')">
+                              Zip is required.
+                            </span>
+                            <span class="error_txt" *ngIf="backupZip.touched && backupZip.touched && backupZip.hasError('pattern')">
+                              Please provide a valid zip.
+                            </span>
                         </div>
-                        <div class="col-md-6 smallField" [ngClass]="{'valid': backupCountry.valid}">
+                        <div class="col-md-6 smallField" [ngClass]="{'valid': backupCountry.valid, 'invalid': backupCountry.touched && backupCountry.touched && !backupCountry.valid}">
                             <input id="backupCountry" class="form-control" type="text"
                                    [(ngModel)]="medicalAgent.backupCountry"
                                    name="backupCountry" ngModel #backupCountry="ngModel"
                                    disabled required>
                             <i class="fa fa-times" *ngIf="backupCountry.invalid && backupCountry.touched"></i>
+                            <i class="fa fa-times" *ngIf="backupCountry.touched && backupCountry.touched && !backupCountry.valid"></i>
+
+                            <span class="error_txt" *ngIf="backupCountry.touched && backupCountry.touched && backupCountry.hasError('required')">
+                              Country is required.
+                            </span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group" [ngClass]="{'valid': backupphone.valid}">
+                <div class="form-group" [ngClass]="{'valid': backupphone.valid, 'invalid': backupphone.touched && backupphone.touched && !backupphone.valid}">
                     <label for="backupphone">Their Phone Number?</label>
                     <input id="backupphone" class="form-control" type="text"
                            [(ngModel)]="medicalAgent.backupphone" name="backupphone" ngModel
                            mask="(000)-000-0000" pattern="^\d{10}$" placeholder="(xxx)-xxx-xxxx"
                            #backupphone="ngModel" required>
                     <i class="fa fa-check" *ngIf="backupphone.valid"></i>
+                    <i class="fa fa-times" *ngIf="backupphone.touched && backupphone.touched && !backupphone.valid"></i>
+
+                    <span class="error_txt" *ngIf="backupphone.touched && backupphone.touched && backupphone.hasError('required')">
+                      Phone is required.
+                    </span>
+                    <span class="error_txt" *ngIf="backupphone.touched && backupphone.touched && backupphone.hasError('pattern')">
+                      Please provide a valid phone number.
+                    </span>
                 </div>
 
                 <div class="form-group">
@@ -332,12 +437,20 @@
                                        (click)="changewillBackupinform(true)">
                                 <span class="human_status">Yes</span>
                             </label>
-                            <div class="email-box" *ngIf="toggleWillBackupInform" [ngClass]="{'valid': emailOfBackupAgent.valid}">
+                            <div class="email-box" *ngIf="toggleWillBackupInform" [ngClass]="{'valid': emailOfBackupAgent.valid, 'invalid': emailOfBackupAgent.touched && emailOfBackupAgent.touched && !emailOfBackupAgent.valid}">
                                 <input type="email" name="emailOfBackupAgent" class="form-control"
                                        [(ngModel)]="medicalAgent.emailOfBackupAgent"
                                        #emailOfBackupAgent="ngModel" ngModel
                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
                                 <i class="fa fa-check" *ngIf="emailOfBackupAgent.valid"></i>
+                                <i class="fa fa-times" *ngIf="emailOfBackupAgent.touched && emailOfBackupAgent.touched && !emailOfBackupAgent.valid"></i>
+
+                              <!--<span class="error_txt" *ngIf="phone.touched && phone.touched && phone.hasError('required')">
+                                Phone is required.
+                              </span>
+                              <span class="error_txt" *ngIf="phone.touched && phone.touched && phone.hasError('pattern')">
+                                Please provide a valid phone number.
+                              </span>-->
                             </div>
                         </li>
                         <li>

@@ -270,6 +270,18 @@ header{
     color: #42A82D;
     font-family: 'OpenSans';
 }
+
+.error_txt {
+  width: 100%;
+  display: inline-block;
+  background-color: #ff5959;
+  border-radius: 5px;
+  color: #fff;
+  padding: 2px;
+  margin: 2px 0;
+  text-align: center;
+}
+
 .main-content{
     background: #fff;
     border-radius: 10px;

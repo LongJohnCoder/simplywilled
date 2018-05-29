@@ -234,6 +234,10 @@
             </label>
           </li>
         </ul>
+        <span class="error_txt"
+              *ngIf="partner_gender.errors && (partner_gender.dirty || partner_gender.touched)">
+                        <p *ngIf="partner_gender.hasError('required')">Please select one of these fields.</p>
+        </span>
       </div>
       <div class="form-group">
         <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} Date of Birth: </label>

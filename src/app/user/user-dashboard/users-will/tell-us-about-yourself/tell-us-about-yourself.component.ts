@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormArray, FormGroup, NgForm} from '@angular/forms';
 import * as moment from 'moment';
 import {UserService} from '../../../user.service';
 import {Router} from '@angular/router';
 import {UserAuthService} from '../../../user-auth/user-auth.service';
 import {UserDashboardService} from '../../user-dashboard.service';
+import {Subscription} from 'rxjs/Subscription';
 
 
 @Component({
@@ -12,7 +13,7 @@ import {UserDashboardService} from '../../user-dashboard.service';
   templateUrl: './tell-us-about-yourself.component.html',
   styleUrls: ['./tell-us-about-yourself.component.css']
 })
-export class TellUsAboutYourselfComponent implements OnInit {
+export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
   /**Variable declaration*/
   days: string[] = [];
   months: string[];
@@ -26,7 +27,8 @@ export class TellUsAboutYourselfComponent implements OnInit {
   userInfo: any;
   typeOfPartner: string[] = ['Spouse', 'Partner'];
   loading = true;
-
+  userSubscription: Subscription;
+  editSubscription: Subscription;
 
   /**Constructor call*/
   constructor(
@@ -42,11 +44,10 @@ export class TellUsAboutYourselfComponent implements OnInit {
   /**When the component is initialised*/
   ngOnInit() {
     this.user = this.authService.getUser();
-    this.userService.getUserDetails(this.user.id).subscribe(
+    this.userSubscription = this.userService.getUserDetails(this.user.id).subscribe(
         (response: any) => {
             this.dashboardService.updateUserDetails(response.data);
             if ( response.data[0].data) {
-                console.log(response.data[0].data);
                 this.userInfo = response.data[0].data.userInfo;
                 let dobData = this.userInfo.dob !== null ? this.userInfo.dob.split('-') : '';
                 let partnerDob = this.userInfo.partner_dob !== null ? this.userInfo.partner_dob.split('-') : '';
@@ -85,7 +86,7 @@ export class TellUsAboutYourselfComponent implements OnInit {
         formData.registered_partner = '0' ;
         formData.legal_married = '0';
       }
-      this.userService.editProfile(formData).subscribe(
+      this.editSubscription = this.userService.editProfile(formData).subscribe(
         (data: any) =>  {
           this.router.navigate(['/dashboard/will/2']);
         },
@@ -111,4 +112,13 @@ export class TellUsAboutYourselfComponent implements OnInit {
     });
   }
 
+  /**When the component is destroyed*/
+  ngOnDestroy() {
+    if (this.userSubscription !== undefined) {
+      this.userSubscription.unsubscribe();
+    }
+    if (this.editSubscription !== undefined) {
+      this.editSubscription.unsubscribe();
+    }
+  }
 }
