@@ -92,6 +92,15 @@ class UserManagementController extends Controller
           $userId           = $request->user_id;
           $isBackupAttorney = (string)$request->is_backupattorney;
 
+          $tellUsAboutYou = TellUsAboutYou::where('user_id', $userId)->first();
+          if(!$tellUsAboutYou) {
+            return response()->json([
+                  'status'  => false,
+                  'message' => 'Please fill Tell Us About You details',
+                  'data'    => []
+            ], 400);
+          }
+
           $financialPowerAttorney = FinancialPowerAttorney::where('user_id',$userId)->first();
           if(!$financialPowerAttorney) {
             $financialPowerAttorney = new FinancialPowerAttorney;
@@ -103,15 +112,54 @@ class UserManagementController extends Controller
           $financialPowerAttorney->attorney_backup    = $attorneyBackup == null ? $financialPowerAttorney->attorney_backup : $attorneyBackup;
           $financialPowerAttorney->is_backupattorney  = $isBackupAttorney == null ? $financialPowerAttorney->is_backupattorney : $isBackupAttorney;
 
-          // if($financialPowerAttorney->attorney_holders != null
-          //   && (($financialPowerAttorney->is_backupattorney == 1 && $financialPowerAttorney->attorney_backup != null)
-          //   || ($financialPowerAttorney->is_backupattorney == 0 && $financialPowerAttorney->attorney_backup == null))) {
-
-          // }
-
-          //dd($attorneyHolders);
-
           if($financialPowerAttorney->save()) {
+
+            $attorneyHoldersArr = $attorneyHolders != null ? json_decode($attorneyHolders, true) : [];
+
+            if(isset($attorneyHoldersArr['is_inform']) && $attorneyHoldersArr['is_inform'] == 1 && isset($attorneyHoldersArr['email']) && strlen(trim($attorneyHoldersArr['email'])) > 0 ) {
+
+              \Log::info('email getting send for power of attorney 1st choice');
+              $arr = [
+                  'firstName'   => $tellUsAboutYou->firstname,
+                  'middleName'  => $tellUsAboutYou->middlename,
+                  'lastName'    => $tellUsAboutYou->lastname,
+                  'fullname'    => isset($attorneyHoldersArr['fullname']) ? $attorneyHoldersArr['fullname'] : '',
+                  'email'       => $attorneyHoldersArr['email']
+              ];
+              Mail::send('new_emails.power_of_attorney', $arr, function($mail) use($arr){
+                  $mail->from(config('settings.email'), 'Notice for Power Of Attorney');
+                  $mail->to($arr['email'], $arr['fullname']);
+                  $mail->subject('You are requested to be Power of Attorney 1st choice');
+              });
+
+              if(Mail::failures()) {
+                  \Log::info('email sending error for Power of Attorney 1st choice');
+              }
+            }
+
+            $attorneyBackupArr  = $attorneyBackup != null ? json_decode($attorneyBackup, true) : [];
+
+            if(isset($attorneyBackupArr['is_inform']) && $attorneyBackupArr['is_inform'] == 1 && isset($attorneyBackupArr['email']) && strlen(trim($attorneyBackupArr['email'])) > 0) {
+
+              \Log::info('email getting send for power of attorney 2nd choice');
+              $arr = [
+                  'firstName'   => $tellUsAboutYou->firstname,
+                  'middleName'  => $tellUsAboutYou->middlename,
+                  'lastName'    => $tellUsAboutYou->lastname,
+                  'fullname'    => isset($attorneyBackupArr['fullname']) ? $attorneyBackupArr['fullname'] : '',
+                  'email'       => $attorneyBackupArr['email']
+              ];
+              Mail::send('new_emails.power_of_attorney_backup', $arr, function($mail) use($arr){
+                  $mail->from(config('settings.email'), 'Notice for Power Of Attorney 2nd choice');
+                  $mail->to($arr['email'], $arr['fullname']);
+                  $mail->subject('You are requested to be Power of Attorney 2nd choice');
+              });
+
+              if(Mail::failures()) {
+                  \Log::info('email sending error for Power of Attorney 2nd choice');
+              }
+            }
+
             return response()->json([
                   'status'  => true,
                   'message' => 'success',
