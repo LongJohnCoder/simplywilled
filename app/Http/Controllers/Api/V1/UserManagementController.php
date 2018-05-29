@@ -424,8 +424,10 @@ class UserManagementController extends Controller
               ], 400);
           }
 
-          $tellUsAboutYou = TellUsAboutYou::where('user_id', $userId)->first();
+          $email  = $backUpEmail = null;
+          $userId = $request->userId;
 
+          $tellUsAboutYou = TellUsAboutYou::where('user_id', $userId)->first();
           if(!$tellUsAboutYou) {
             return response()->json([
                   'status'  => false,
@@ -434,8 +436,6 @@ class UserManagementController extends Controller
             ], 400);
           }
 
-          $email  = $backUpEmail = null;
-          $userId = $request->userId;
           $healthFinance = HealthFinance::where('userId', $request->userId)->first();
           if (!$healthFinance) {
             $healthFinance         = new HealthFinance();
