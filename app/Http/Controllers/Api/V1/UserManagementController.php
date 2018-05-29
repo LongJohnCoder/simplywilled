@@ -504,6 +504,8 @@ class UserManagementController extends Controller
             ], 400);
           }
 
+          $healthFinanceEmail = $healthFinanceBackupEmail = null;
+
           $healthFinance = HealthFinance::where('userId', $request->userId)->first();
           if (!$healthFinance) {
             $healthFinance         = new HealthFinance();
@@ -521,6 +523,7 @@ class UserManagementController extends Controller
           $healthFinance->willInform     = $request->willInform;
           $healthFinance->anyBackupAgent = $request->anyBackupAgent;
           if ($request->willInform == 'true') {
+            $healthFinanceEmail = $healthFinance->emailOfAgent;
             $email = trim($request->emailOfAgent);
             $healthFinance->emailOfAgent = trim($request->emailOfAgent);
           } else {
@@ -539,8 +542,9 @@ class UserManagementController extends Controller
             $healthFinance->backupCountry        = $request->backupCountry;
             $healthFinance->willInformBackup     = $request->willInformBackup;
             if ($request->willInformBackup == 'true') {
+              $healthFinanceBackupEmail = $healthFinance->emailOfBackupAgent;
               $backUpEmail = trim($request->emailOfBackupAgent);
-              $healthFinance->emailOfBackupAgent = trim($request->emailOfBackupAgent);
+              $healthFinance->emailOfBackupAgent = strtolower(trim($request->emailOfBackupAgent));
             } else {
               $healthFinance->emailOfBackupAgent = null;
             }
@@ -561,40 +565,57 @@ class UserManagementController extends Controller
 
 
             if($email != null) {
-              \Log::info('email getting send for health care power of attorney');
-              $arr = [
-                  'firstName'  => $tellUsAboutYou->firstname,
-                  'middleName' => $tellUsAboutYou->middlename,
-                  'lastName'   => $tellUsAboutYou->lastname,
-                  'executiveFirstName' => $request->firstLegalName,
-                  'executiveLastName'  => $request->lastLegalName
-              ];
-              Mail::send('new_emails.health_care', $arr, function($mail) use($email, $arr){
-                  $mail->from(config('settings.email'), 'Notice for Health Care Executive');
-                  $mail->to($email, $arr['executiveFirstName'].' '.$arr['executiveLastName']);
-                  $mail->subject('You are requested to be Health Care Executive');
-              });
-              if(Mail::failures()) {
-                  \Log::info('email sending error for health care power of attorney');
+
+              $flag = true;
+              if($healthFinanceEmail != null && strlen($healthFinanceEmail) > 0 && strtolower(trim($healthFinanceEmail)) == strtolower(trim($email))) {
+                $flag = false;
               }
+
+              if($flag) {
+                \Log::info('email getting send for health care power of attorney');
+                $arr = [
+                    'firstName'  => $tellUsAboutYou->firstname,
+                    'middleName' => $tellUsAboutYou->middlename,
+                    'lastName'   => $tellUsAboutYou->lastname,
+                    'executiveFirstName' => $request->firstLegalName,
+                    'executiveLastName'  => $request->lastLegalName
+                ];
+                Mail::send('new_emails.health_care', $arr, function($mail) use($email, $arr){
+                    $mail->from(config('settings.email'), 'Notice for Health Care Executive');
+                    $mail->to($email, $arr['executiveFirstName'].' '.$arr['executiveLastName']);
+                    $mail->subject('You are requested to be Health Care Executive');
+                });
+                if(Mail::failures()) {
+                    \Log::info('email sending error for health care power of attorney');
+                }
+              }
+              
             }
 
             if($backUpEmail != null) {
-              \Log::info('email getting send for backup health care power of attorney');
-              $arr = [
-                  'firstName'  => $tellUsAboutYou->firstname,
-                  'middleName' => $tellUsAboutYou->middlename,
-                  'lastName'   => $tellUsAboutYou->lastname,
-                  'executiveFirstName' => $request->backupfirstLegalName,
-                  'executiveLastName'  => $request->backuplastLegalName
-              ];
-              Mail::send('new_emails.health_care_backup', $arr, function($mail) use($email, $arr){
-                  $mail->from(config('settings.email'), 'Notice for Health Care Executive');
-                  $mail->to($email, $arr['executiveFirstName'].' '.$arr['executiveLastName']);
-                  $mail->subject('You are requested to be Backup Health Care Executive');
-              });
-              if(Mail::failures()) {
-                  \Log::info('email sending error for health care power of attorney');
+
+              $flag = true;
+              if($healthFinanceBackupEmail != null && strlen($healthFinanceBackupEmail) > 0 && strtolower(trim($healthFinanceBackupEmail)) == strtolower(trim($backUpEmail))) {
+                $flag = false;
+              }
+
+              if($flag) {
+                \Log::info('email getting send for backup health care power of attorney');
+                $arr = [
+                    'firstName'  => $tellUsAboutYou->firstname,
+                    'middleName' => $tellUsAboutYou->middlename,
+                    'lastName'   => $tellUsAboutYou->lastname,
+                    'executiveFirstName' => $request->backupfirstLegalName,
+                    'executiveLastName'  => $request->backuplastLegalName
+                ];
+                Mail::send('new_emails.health_care_backup', $arr, function($mail) use($email, $arr){
+                    $mail->from(config('settings.email'), 'Notice for Health Care Executive');
+                    $mail->to($backUpEmail, $arr['executiveFirstName'].' '.$arr['executiveLastName']);
+                    $mail->subject('You are requested to be Backup Health Care Executive');
+                });
+                if(Mail::failures()) {
+                    \Log::info('email sending error for health care power of attorney');
+                }
               }
             }
 
