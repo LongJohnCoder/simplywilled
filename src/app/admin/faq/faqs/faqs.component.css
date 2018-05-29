@@ -18,7 +18,7 @@
     margin-right: 10px;
 }
 .table-bordered{
-    margin: 10px;
+    margin: 10px 0;
 }
 [type="search"].form-control{
     margin-left: 5px;

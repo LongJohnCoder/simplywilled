@@ -411,7 +411,7 @@ footer ul li a{
     margin: 25px 0;
     position: relative;
     float: left;
-    width: 100%;
+    width: 100% !important;
 }
 .main-content .form-group label{
     display: block;

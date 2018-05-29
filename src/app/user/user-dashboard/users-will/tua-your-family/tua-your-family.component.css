@@ -265,6 +265,9 @@ select.form-control{
     margin-top: 0;
     font-size: 14px;
 }
+.main-content textarea.form-control{
+    height: 150px;
+}
 
 
 @media screen and (max-width:1299px){

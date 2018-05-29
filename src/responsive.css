@@ -975,7 +975,11 @@
     .about_sec4{
 		background-size: auto 125%; 
 		position: relative;
-	}
+    }
+    .adminModal {
+        width: 95%;
+        margin: 0 2.5%;
+    }
 }
 
 @media only screen and (max-width: 680px){
@@ -1637,6 +1641,9 @@
     }
     .about_state_planning_text{
         font-size: 28px;
+    }
+    .adminModalSmall {
+        width: 100%;
     }
 }
 

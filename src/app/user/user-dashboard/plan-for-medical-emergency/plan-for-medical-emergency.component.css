@@ -279,4 +279,16 @@ select.form-control{
         margin: 0 0 14px;
     }
 }
-
+@media screen and (max-width:380px){
+    .main-content .email-box {
+        background: none;
+        border: 0;
+        padding: 0;
+    }
+    .main-content .email-box .form-control{
+        padding: 5px;
+    }
+    .main-content .email-box i{
+        display: none;
+    }
+}

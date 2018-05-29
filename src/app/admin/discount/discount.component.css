@@ -29,3 +29,6 @@
     margin: 2px;
     color:#fff !important;
 }
+div#page-inner {
+    padding: 0 15px;
+}

@@ -1,0 +1,25 @@
+
+.blogsTab {
+    background: #fff;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.panel-heading {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: none;
+}
+.table-bordered {
+    margin: 10px 0;
+}
+.table-bordered .btn {
+    font-size: 12px;
+    margin: 2px;
+    color: #fff;
+}
+div#page-inner {
+    padding: 0 15px;
+}
