@@ -105,6 +105,12 @@ class UserManagementController extends Controller
           if(!$financialPowerAttorney) {
             $financialPowerAttorney = new FinancialPowerAttorney;
             $financialPowerAttorney->user_id = $userId;
+          } else {
+            $previousHoldersArr = json_decode($financialPowerAttorney->attorney_holders, true);
+            $holderEmail = isset($previousHoldersArr['email']) ? $previousHoldersArr['email'] : null;
+
+            $previousBackupArr  = json_decode($financialPowerAttorney->attorney_backup, true);
+            $backupEmail = isset($previousBackupArr['email']) ? $previousBackupArr['email'] : null;            
           }
 
           $financialPowerAttorney->attorney_powers    = $attorneyPowers == null ? $financialPowerAttorney->attorney_powers : $attorneyPowers;
@@ -116,24 +122,31 @@ class UserManagementController extends Controller
 
             $attorneyHoldersArr = $attorneyHolders != null ? json_decode($attorneyHolders, true) : [];
 
-            if(isset($attorneyHoldersArr['is_inform']) && $attorneyHoldersArr['is_inform'] == 1 && isset($attorneyHoldersArr['email']) && strlen(trim($attorneyHoldersArr['email'])) > 0 ) {
+            if(isset($attorneyHoldersArr['is_inform']) && $attorneyHoldersArr['is_inform'] == 1 && isset($attorneyHoldersArr['email']) && strlen(trim($attorneyHoldersArr['email'])) > 0) {
 
-              \Log::info('email getting send for power of attorney 1st choice');
-              $arr = [
-                  'firstName'   => $tellUsAboutYou->firstname,
-                  'middleName'  => $tellUsAboutYou->middlename,
-                  'lastName'    => $tellUsAboutYou->lastname,
-                  'fullname'    => isset($attorneyHoldersArr['fullname']) ? $attorneyHoldersArr['fullname'] : '',
-                  'email'       => $attorneyHoldersArr['email']
-              ];
-              Mail::send('new_emails.power_of_attorney', $arr, function($mail) use($arr){
-                  $mail->from(config('settings.email'), 'Notice for Power Of Attorney');
-                  $mail->to($arr['email'], $arr['fullname']);
-                  $mail->subject('You are requested to be Power of Attorney 1st choice');
-              });
+              $flag = true;
+              if($holderEmail != null && strtolower(trim($holderEmail)) == strtolower(trim($attorneyHoldersArr['email']))) {
+                $flag = false;
+              }
 
-              if(Mail::failures()) {
-                  \Log::info('email sending error for Power of Attorney 1st choice');
+              if($flag) {
+                \Log::info('email getting send for power of attorney 1st choice');
+                $arr = [
+                    'firstName'   => $tellUsAboutYou->firstname,
+                    'middleName'  => $tellUsAboutYou->middlename,
+                    'lastName'    => $tellUsAboutYou->lastname,
+                    'fullname'    => isset($attorneyHoldersArr['fullname']) ? $attorneyHoldersArr['fullname'] : '',
+                    'email'       => $attorneyHoldersArr['email']
+                ];
+                Mail::send('new_emails.power_of_attorney', $arr, function($mail) use($arr){
+                    $mail->from(config('settings.email'), 'Notice for Power Of Attorney');
+                    $mail->to($arr['email'], $arr['fullname']);
+                    $mail->subject('You are requested to be Power of Attorney 1st choice');
+                });
+
+                if(Mail::failures()) {
+                    \Log::info('email sending error for Power of Attorney 1st choice');
+                }
               }
             }
 
@@ -141,22 +154,29 @@ class UserManagementController extends Controller
 
             if(isset($attorneyBackupArr['is_inform']) && $attorneyBackupArr['is_inform'] == 1 && isset($attorneyBackupArr['email']) && strlen(trim($attorneyBackupArr['email'])) > 0) {
 
-              \Log::info('email getting send for power of attorney 2nd choice');
-              $arr = [
-                  'firstName'   => $tellUsAboutYou->firstname,
-                  'middleName'  => $tellUsAboutYou->middlename,
-                  'lastName'    => $tellUsAboutYou->lastname,
-                  'fullname'    => isset($attorneyBackupArr['fullname']) ? $attorneyBackupArr['fullname'] : '',
-                  'email'       => $attorneyBackupArr['email']
-              ];
-              Mail::send('new_emails.power_of_attorney_backup', $arr, function($mail) use($arr){
-                  $mail->from(config('settings.email'), 'Notice for Power Of Attorney 2nd choice');
-                  $mail->to($arr['email'], $arr['fullname']);
-                  $mail->subject('You are requested to be Power of Attorney 2nd choice');
-              });
+              $flag = true;
+              if($backupEmail != null && strtolower(trim($backupEmail)) == strtolower(trim($attorneyBackupArr['email']))) {
+                $flag = false;
+              }
 
-              if(Mail::failures()) {
-                  \Log::info('email sending error for Power of Attorney 2nd choice');
+              if($flag) {
+                \Log::info('email getting send for power of attorney 2nd choice');
+                $arr = [
+                    'firstName'   => $tellUsAboutYou->firstname,
+                    'middleName'  => $tellUsAboutYou->middlename,
+                    'lastName'    => $tellUsAboutYou->lastname,
+                    'fullname'    => isset($attorneyBackupArr['fullname']) ? $attorneyBackupArr['fullname'] : '',
+                    'email'       => $attorneyBackupArr['email']
+                ];
+                Mail::send('new_emails.power_of_attorney_backup', $arr, function($mail) use($arr){
+                    $mail->from(config('settings.email'), 'Notice for Power Of Attorney 2nd choice');
+                    $mail->to($arr['email'], $arr['fullname']);
+                    $mail->subject('You are requested to be Power of Attorney 2nd choice');
+                });
+
+                if(Mail::failures()) {
+                    \Log::info('email sending error for Power of Attorney 2nd choice');
+                }
               }
             }
 
