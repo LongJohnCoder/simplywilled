@@ -694,8 +694,18 @@ class UserController extends Controller
         }
       }
 
-      //if user has not completed previous step in tellUsYou section then this step is not permited
 
+        $perRepresentative = PersonalRepresentatives::where('user_id',$personalRepresentative['user_id'])
+                                                        ->where('is_backuprepresentative',0)
+                                                        ->first();
+        $oldPersonalEmail = $perRepresentative != null ? $perRepresentative->email : null;
+
+        $perBackupRepresentative = PersonalRepresentatives::where('user_id',$personalRepresentative['user_id'])
+                                                        ->where('is_backuprepresentative',1)
+                                                        ->first();
+        $oldBackupEmail = $perBackupRepresentative != null ? $perBackupRepresentative->email : null;
+
+      //if user has not completed previous step in tellUsYou section then this step is not permited
       PersonalRepresentatives::updateOrCreate(['user_id' => $personalRepresentative['user_id'], 'is_backuprepresentative' => (string)$isBackupRepresentative], $personalRepresentative);
 
 
@@ -703,41 +713,59 @@ class UserController extends Controller
         //$this->sendEmail($personalRepresentative['user_id'], $personalRepresentative['fullname'], $personalRepresentative['email'], $emailType);
 
         if($isBackupRepresentative == 0) {
-            \Log::info('email getting send for personal representative');
-            $arr = [
-                'firstName'     =>  $tellUsAboutYou->firstname,
-                'middleName'    =>  $tellUsAboutYou->middlename,
-                'lastName'      =>  $tellUsAboutYou->lastname,
-                'executorName'  =>  $personalRepresentative['fullname']
-            ];
-            Mail::send('new_emails.personal_representative_appoint', $arr, function($mail) use($personalRepresentative){
-                $mail->from(config('settings.email'), 'Notice for Executor');
-                $mail->to($personalRepresentative['email'], $personalRepresentative['fullname'])
-                ->subject('You are requested to be an executor');
-            });
 
-            if(Mail::failures()) {
-                \Log::info('email sending error for personal representative');
+            $flag = true;
+            if(isset($personalRepresentative['email']) && strtolower(trim($personalRepresentative['email'])) == strtolower(trim($oldPersonalEmail)))
+            {
+                $flag = false;
             }
-        } else {
-            \Log::info('email getting send for backup personal representative');
-            $arr = [
-                'firstName'     =>  $tellUsAboutYou->firstname,
-                'middleName'    =>  $tellUsAboutYou->middlename,
-                'lastName'      =>  $tellUsAboutYou->lastname,
-                'executorName'  =>  $personalRepresentative['fullname']
-            ];
-            Mail::send('new_emails.personal_representative_appoint_backup', $arr, function($mail) use($personalRepresentative){
-                $mail->from(config('settings.email'), 'Notice for Backup Executor');
-                $mail->to($personalRepresentative['email'], $personalRepresentative['fullname'])
-                ->subject('You are requested to be an backup executor');
-            });
 
-            if(Mail::failures()) {
-                \Log::info('email sending error for personal representative');
+            if($flag) {
+                \Log::info('email getting send for personal representative');
+                $arr = [
+                    'firstName'     =>  $tellUsAboutYou->firstname,
+                    'middleName'    =>  $tellUsAboutYou->middlename,
+                    'lastName'      =>  $tellUsAboutYou->lastname,
+                    'executorName'  =>  $personalRepresentative['fullname']
+                ];
+                Mail::send('new_emails.personal_representative_appoint', $arr, function($mail) use($personalRepresentative){
+                    $mail->from(config('settings.email'), 'Notice for Executor');
+                    $mail->to($personalRepresentative['email'], $personalRepresentative['fullname'])
+                    ->subject('You are requested to be an executor');
+                });
+
+                if(Mail::failures()) {
+                    \Log::info('email sending error for personal representative');
+                } 
+            }
+            
+        } else {
+            
+            $flag = true;
+            if(isset($personalRepresentative['email']) && strtolower(trim($personalRepresentative['email'])) == strtolower(trim($oldBackupEmail)))
+            {
+                $flag = false;
+            }
+
+            if($flag) {
+                \Log::info('email getting send for backup personal representative');
+                $arr = [
+                    'firstName'     =>  $tellUsAboutYou->firstname,
+                    'middleName'    =>  $tellUsAboutYou->middlename,
+                    'lastName'      =>  $tellUsAboutYou->lastname,
+                    'executorName'  =>  $personalRepresentative['fullname']
+                ];
+                Mail::send('new_emails.personal_representative_appoint_backup', $arr, function($mail) use($personalRepresentative){
+                    $mail->from(config('settings.email'), 'Notice for Backup Executor');
+                    $mail->to($personalRepresentative['email'], $personalRepresentative['fullname'])
+                    ->subject('You are requested to be an backup executor');
+                });
+
+                if(Mail::failures()) {
+                    \Log::info('email sending error for personal representative');
+                }
             }
         }
-        
       }
 
       return [
