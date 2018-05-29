@@ -75,7 +75,7 @@ class UserManagementController extends Controller
               'attorney_powers'   =>  'nullable',
               'attorney_holders'  =>  'nullable',
               'user_id'           =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
-              'is_backupattorney' =>  'required|numeric|between:0,1|integer',
+              'is_backupattorney' =>  'nullable|numeric|between:0,1|integer',
               'attorney_backup'   =>  'nullable|required_if:is_backupattorney,1',
           ]);
           if($validator->fails()) {
