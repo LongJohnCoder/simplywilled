@@ -930,54 +930,86 @@ class UserController extends Controller
         $checkForExistUser = TellUsAboutYou::where('user_id', $guardian['user_id'])->first();
 
         if ($checkForExistUser) {
-          $checkForExistUser->guardian_minor_children = '1';
-          $checkForExistUser->save();
-          GuardianInfo::updateOrCreate(['user_id'=>$guardian['user_id'] , 'is_backup' => $guardian['is_backup']],$guardian);
-          //Sending an email if email notification is set
-          if($emailType != null && isset($guardian['email_notification']) && $guardian['email_notification'] == 1) {
 
-            //$this->sendEmail($guardian['user_id'], $guardian['fullname'], $guardian['email'], $emailType);
-            if($isBackupGuardian == 0) {
-                \Log::info('email getting send for guardian for minor children');
-                $arr = [
-                    'firstName'     =>  $tellUsAboutYou->firstname,
-                    'middleName'    =>  $tellUsAboutYou->middlename,
-                    'lastName'      =>  $tellUsAboutYou->lastname,
-                    'guardianName'  =>  $guardian['fullname']
-                ];
-                Mail::send('new_emails.guardian', $arr, function($mail) use($guardian){
-                    $mail->from(config('settings.email'), 'Notice for Guardian Appointment');
-                    $mail->to($guardian['email'], $guardian['fullname'])
-                    ->subject('You are requested to be Guardian for Minor Children');
-                });
+            $checkForExistUser->guardian_minor_children = '1';
+            $checkForExistUser->save();
 
-                if(Mail::failures()) {
-                    \Log::info('email sending error for guardian for minor children');
-                }
-            } else {
-                \Log::info('email getting send for backup guardian for minor children');
-                $arr = [
-                    'firstName'     =>  $tellUsAboutYou->firstname,
-                    'middleName'    =>  $tellUsAboutYou->middlename,
-                    'lastName'      =>  $tellUsAboutYou->lastname,
-                    'backupGuardianName'  =>  $guardian['fullname']
-                ];
-                Mail::send('new_emails.guardian_backup', $arr, function($mail) use($guardian){
-                    $mail->from(config('settings.email'), 'Notice for Backup Guardian Appointment');
-                    $mail->to($guardian['email'], $guardian['fullname'])
-                    ->subject('You are requested to be Backup Guardian for Minor Children');
-                });
 
-                if(Mail::failures()) {
-                    \Log::info('email sending error for guardian for minor children');
+            $Guardian = GuardianInfo::where('user_id',$guardian['user_id'])
+                                                            ->where('is_backup','0')
+                                                            ->first();
+            $oldGuardianEmail = $Guardian != null ? $Guardian->email : null;
+
+            $backupGuardian = GuardianInfo::where('user_id',$guardian['user_id'])
+                                                            ->where('is_backup','1')
+                                                            ->first();
+            $oldBackupGuardianEmail = $backupGuardian != null ? $backupGuardian->email : null;
+
+            //if user has not completed previous step in tellUsYou section then this step is not permited
+
+            GuardianInfo::updateOrCreate(['user_id'=>$guardian['user_id'] , 'is_backup' => $guardian['is_backup']],$guardian);
+            //Sending an email if email notification is set
+            if($emailType != null && isset($guardian['email_notification']) && $guardian['email_notification'] == 1) {
+
+                //$this->sendEmail($guardian['user_id'], $guardian['fullname'], $guardian['email'], $emailType);
+                if($isBackupGuardian == 0) {
+
+                    $flag = true;
+                    if(isset($guardian['email']) && strtolower(trim($guardian['email'])) == strtolower(trim($oldGuardianEmail)))
+                    {
+                        $flag = false;
+                    }
+
+                    if($flag) {
+                        \Log::info('email getting send for guardian for minor children');
+                        $arr = [
+                            'firstName'     =>  $tellUsAboutYou->firstname,
+                            'middleName'    =>  $tellUsAboutYou->middlename,
+                            'lastName'      =>  $tellUsAboutYou->lastname,
+                            'guardianName'  =>  $guardian['fullname']
+                        ];
+                        Mail::send('new_emails.guardian', $arr, function($mail) use($guardian){
+                            $mail->from(config('settings.email'), 'Notice for Guardian Appointment');
+                            $mail->to($guardian['email'], $guardian['fullname'])
+                            ->subject('You are requested to be Guardian for Minor Children');
+                        });
+                        if(Mail::failures()) {
+                            \Log::info('email sending error for guardian for minor children');
+                        }
+                    }
+
+                } else {
+
+
+                    if(isset($guardian['email']) && strtolower(trim($guardian['email'])) == strtolower(trim($oldBackupGuardianEmail)))
+                    {
+                        $flag = false;
+                    }
+
+                    if($flag) {
+                        \Log::info('email getting send for backup guardian for minor children');
+                        $arr = [
+                            'firstName'     =>  $tellUsAboutYou->firstname,
+                            'middleName'    =>  $tellUsAboutYou->middlename,
+                            'lastName'      =>  $tellUsAboutYou->lastname,
+                            'backupGuardianName'  =>  $guardian['fullname']
+                        ];
+                        Mail::send('new_emails.guardian_backup', $arr, function($mail) use($guardian){
+                            $mail->from(config('settings.email'), 'Notice for Backup Guardian Appointment');
+                            $mail->to($guardian['email'], $guardian['fullname'])
+                            ->subject('You are requested to be Backup Guardian for Minor Children');
+                        });
+                        if(Mail::failures()) {
+                            \Log::info('email sending error for guardian for minor children');
+                        }
+                    }
                 }
             }
-          }
-          $response = self::generateGuardianInfoResponse($guardian['user_id']);
-          return [
+            $response = self::generateGuardianInfoResponse($guardian['user_id']);
+            return [
             'response'  =>  $response,
             'status'    =>  200
-          ];
+            ];
         } else {
           $response = response()->json([
               'status'  => false,
