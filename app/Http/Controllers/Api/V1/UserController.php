@@ -696,12 +696,12 @@ class UserController extends Controller
 
 
         $perRepresentative = PersonalRepresentatives::where('user_id',$personalRepresentative['user_id'])
-                                                        ->where('is_backuprepresentative',0)
+                                                        ->where('is_backuprepresentative','0')
                                                         ->first();
         $oldPersonalEmail = $perRepresentative != null ? $perRepresentative->email : null;
 
         $perBackupRepresentative = PersonalRepresentatives::where('user_id',$personalRepresentative['user_id'])
-                                                        ->where('is_backuprepresentative',1)
+                                                        ->where('is_backuprepresentative','1')
                                                         ->first();
         $oldBackupEmail = $perBackupRepresentative != null ? $perBackupRepresentative->email : null;
 
@@ -740,7 +740,7 @@ class UserController extends Controller
             }
             
         } else {
-            
+
             $flag = true;
             if(isset($personalRepresentative['email']) && strtolower(trim($personalRepresentative['email'])) == strtolower(trim($oldBackupEmail)))
             {
