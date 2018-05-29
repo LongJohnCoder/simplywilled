@@ -980,7 +980,7 @@ class UserController extends Controller
 
                 } else {
 
-
+                    $flag = true;
                     if(isset($guardian['email']) && strtolower(trim($guardian['email'])) == strtolower(trim($oldBackupGuardianEmail)))
                     {
                         $flag = false;
