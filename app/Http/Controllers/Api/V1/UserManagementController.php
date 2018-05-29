@@ -523,7 +523,7 @@ class UserManagementController extends Controller
               Mail::send('new_emails.health_care_backup', $arr, function($mail) use($email, $arr){
                   $mail->from(config('settings.email'), 'Notice for Health Care Executive');
                   $mail->to($email, $arr['executiveFirstName'].' '.$arr['executiveLastName']);
-                  $mail->subject('You are requested to be Health Care Executive');
+                  $mail->subject('You are requested to be Backup Health Care Executive');
               });
               if(Mail::failures()) {
                   \Log::info('email sending error for health care power of attorney');
