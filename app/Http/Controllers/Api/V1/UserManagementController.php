@@ -564,7 +564,7 @@ class UserManagementController extends Controller
           if($healthFinance->save()) {
 
 
-            if($email != null) {
+            if(isset($email) && $email != null) {
 
               $flag = true;
               if($healthFinanceEmail != null && strlen($healthFinanceEmail) > 0 && strtolower(trim($healthFinanceEmail)) == strtolower(trim($email))) {
@@ -592,7 +592,7 @@ class UserManagementController extends Controller
               
             }
 
-            if($backUpEmail != null) {
+            if(isset($backUpEmail) && $backUpEmail != null) {
 
               $flag = true;
               if($healthFinanceBackupEmail != null && strlen($healthFinanceBackupEmail) > 0 && strtolower(trim($healthFinanceBackupEmail)) == strtolower(trim($backUpEmail))) {
@@ -608,7 +608,7 @@ class UserManagementController extends Controller
                     'executiveFirstName' => $request->backupfirstLegalName,
                     'executiveLastName'  => $request->backuplastLegalName
                 ];
-                Mail::send('new_emails.health_care_backup', $arr, function($mail) use($email, $arr){
+                Mail::send('new_emails.health_care_backup', $arr, function($mail) use($backUpEmail, $arr){
                     $mail->from(config('settings.email'), 'Notice for Health Care Executive');
                     $mail->to($backUpEmail, $arr['executiveFirstName'].' '.$arr['executiveLastName']);
                     $mail->subject('You are requested to be Backup Health Care Executive');
