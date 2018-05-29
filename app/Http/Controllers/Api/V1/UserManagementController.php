@@ -410,6 +410,32 @@ class UserManagementController extends Controller
           //       ], 400);
           //   }
           // }
+
+
+          $validator = Validator::make($request->all(), [
+              'userId' => 'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
+          ]);
+        
+          if($validator->fails()) {
+              return response()->json([
+                  'status' => false,
+                  'message' => $validator->errors(),
+                  'data' => []
+              ], 400);
+          }
+
+          $tellUsAboutYou = TellUsAboutYou::where('user_id', $userId)->first();
+
+          if(!$tellUsAboutYou) {
+            return response()->json([
+                  'status'  => false,
+                  'message' => 'Please fill up Tell Us About You Step',
+                  'data'    => []
+            ], 400);
+          }
+
+          $email  = $backUpEmail = null;
+          $userId = $request->userId;
           $healthFinance = HealthFinance::where('userId', $request->userId)->first();
           if (!$healthFinance) {
             $healthFinance         = new HealthFinance();
@@ -427,7 +453,8 @@ class UserManagementController extends Controller
           $healthFinance->willInform     = $request->willInform;
           $healthFinance->anyBackupAgent = $request->anyBackupAgent;
           if ($request->willInform == 'true') {
-            $healthFinance->emailOfAgent = $request->emailOfAgent;
+            $email = trim($request->emailOfAgent);
+            $healthFinance->emailOfAgent = trim($request->emailOfAgent);
           } else {
             $healthFinance->emailOfAgent = null;
           }
@@ -444,7 +471,8 @@ class UserManagementController extends Controller
             $healthFinance->backupCountry        = $request->backupCountry;
             $healthFinance->willInformBackup     = $request->willInformBackup;
             if ($request->willInformBackup == 'true') {
-              $healthFinance->emailOfBackupAgent = $request->emailOfBackupAgent;
+              $backUpEmail = trim($request->emailOfBackupAgent);
+              $healthFinance->emailOfBackupAgent = trim($request->emailOfBackupAgent);
             } else {
               $healthFinance->emailOfBackupAgent = null;
             }
@@ -462,6 +490,46 @@ class UserManagementController extends Controller
           }
 
           if($healthFinance->save()) {
+
+
+            if($email != null) {
+              \Log::info('email getting send for health care power of attorney');
+              $arr = [
+                  'firstName'  => $tellUsAboutYou->firstname,
+                  'middleName' => $tellUsAboutYou->middlename,
+                  'lastName'   => $tellUsAboutYou->lastname,
+                  'executiveFirstName' => $request->firstLegalName,
+                  'executiveLastName'  => $request->lastLegalName
+              ];
+              Mail::send('new_emails.health_care', $arr, function($mail) use($email, $arr){
+                  $mail->from(config('settings.email'), 'Notice for Health Care Executive');
+                  $mail->to($email, $arr['executiveFirstName'].' '.$arr['executiveLastName']);
+                  $mail->subject('You are requested to be Health Care Executive');
+              });
+              if(Mail::failures()) {
+                  \Log::info('email sending error for health care power of attorney');
+              }
+            }
+
+            if($backUpEmail != null) {
+              \Log::info('email getting send for backup health care power of attorney');
+              $arr = [
+                  'firstName'  => $tellUsAboutYou->firstname,
+                  'middleName' => $tellUsAboutYou->middlename,
+                  'lastName'   => $tellUsAboutYou->lastname,
+                  'executiveFirstName' => $request->backupfirstLegalName,
+                  'executiveLastName'  => $request->backuplastLegalName
+              ];
+              Mail::send('new_emails.health_care_backup', $arr, function($mail) use($email, $arr){
+                  $mail->from(config('settings.email'), 'Notice for Health Care Executive');
+                  $mail->to($email, $arr['executiveFirstName'].' '.$arr['executiveLastName']);
+                  $mail->subject('You are requested to be Health Care Executive');
+              });
+              if(Mail::failures()) {
+                  \Log::info('email sending error for health care power of attorney');
+              }
+            }
+
             return response()->json([
                 'status' => true,
                 'message' => 'new health finance created successfully!',
