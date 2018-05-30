@@ -46,6 +46,7 @@ class PackageSeeder extends Seeder
       Coupon::updateOrCreate(
         ['id'=> 1],
         [
+          'title' => 'Coupon1',
           'description'=> 'Default Coupon',
           'token'=> '123456',
           'percentage'=>0,
