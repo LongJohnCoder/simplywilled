@@ -229,6 +229,8 @@ class UserController extends Controller
      * */
     public function updateTellUsAboutYou($request)
     {
+        $invitationFlag = false;
+
         $userId     = $request->user_id;
         $firstName  = $request->firstname;
         $middleName = $request->middlename;
@@ -252,6 +254,7 @@ class UserController extends Controller
 
         $registeredPartner  = $request->registered_partner;
         $legalMarried       = $request->legal_married;
+        $referral           = $request->referral;
 
         //$spouseDob = $request->spouseDob;
         $validator = Validator::make($request->all(), [
@@ -265,7 +268,8 @@ class UserController extends Controller
             'state'           =>  'required|string',
             'marital_status'  =>  'required|string|in:S,M,R,D,W',
             'zip'             =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/', // (Zip code validation rules REGX (min value 5)),
-            'email'           =>  'nullable|email'
+            'email'           =>  'nullable|email',
+            'referral'        =>  'nullable|string'
         ]);
 
         if($validator->fails()) {
@@ -313,8 +317,9 @@ class UserController extends Controller
                 'partner_lastname'  =>  'required',
                 'partner_gender'    =>  'required|string|in:M,F',
                 'partner_email'     =>  'nullable|email',
-                'partner_dob'       =>  'required|date_format:"Y-m-d"'
-                //'spouseDob'       =>  'required | date_format:"Y-m-d"',
+                'partner_dob'       =>  'required|date_format:"Y-m-d"',
+                'partner_invitation'  =>  'required|numeric|integer|between:0,1',
+                'partner_email'       =>  'nullable|required_if:partner_invitation,1|email'
             ]);
             if ($validator->fails()) {
                 return response()->json([
@@ -322,7 +327,20 @@ class UserController extends Controller
                     'message' => $validator->errors(),
                     'data' => []
                 ], 400);
-            }// validation for data
+            }
+            // validation for data
+
+            $partnerInvitation = (string)$request->partner_invitation;
+            $partnerEmail      = strtolower(trim($request->partner_email));
+
+            if($partnerInvitation == 1 && strlen($partnerEmail) > 0) {
+                $invitationFlag = true;
+            }
+
+            if(strtolower(trim($checkForExistUser->partner_email)) == $partnerEmail) {
+                $invitationFlag = false;
+            }
+            
 
             $checkForExistUser->partner_firstname   = $partnerFirstName;
             $checkForExistUser->partner_fullname    = $partnerFirstName . ' ' . $partnerMiddleName . ' ' . $partnerLastName;
@@ -333,16 +351,42 @@ class UserController extends Controller
             $checkForExistUser->registered_partner  = $registeredPartner;
             $checkForExistUser->partner_email       = $partnerEmail;
             $checkForExistUser->partner_dob         = $partnerDob;
+            $checkForExistUser->partner_invitation  = $partnerInvitation;
+
             // update the user from user table
             $this->updatePartner($userId, $partnerFirstName);
         }
+        
         $checkForExistUser->phone   = $phoneNumber;
         $checkForExistUser->address = $address;
         $checkForExistUser->city    = $city;
         $checkForExistUser->state   = $state;
         $checkForExistUser->zip     = $zip;
         $checkForExistUser->user_id = $checkForExistUser->user_id ? $checkForExistUser->user_id : $userId;
+        $checkForExistUser->referral= $referral;
+        
         if ($checkForExistUser->save()) {
+
+            if($invitationFlag) {
+                \Log::info('email getting send for spouse invitation');
+                $arr = [
+                    'firstName'         =>  $checkForExistUser->firstname,
+                    'middleName'        =>  $checkForExistUser->middlename,
+                    'lastName'          =>  $checkForExistUser->lastname,
+                    'spouseFullName'    =>  $checkForExistUser->partner_fullname,
+                    'email'             =>  $checkForExistUser->partner_email
+                ];
+                Mail::send('new_emails.spouse_invitation', $arr, function($mail) use($arr){
+                    $mail->from(config('settings.email'), 'Notice for Backup Executor');
+                    $mail->to($arr['email'], $arr['spouseFullName'])
+                    ->subject('Your spouse invited you to Simplywilled.com');
+                });
+
+                if(Mail::failures()) {
+                    \Log::info('email sending error for spouse invitation');
+                }
+            }
+
             return response()->json([
                 'status'  => true,
                 'message' => 'User profile updated successfully',
