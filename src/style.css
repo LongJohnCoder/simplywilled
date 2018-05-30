@@ -2572,14 +2572,50 @@ select.form-control{
     background: rgba(255, 255, 255, 0.86);
     z-index: 99999;
 }
-.pageLoader p{ 
+.pageLoader .loaderInner{ 
     max-width: 362px;
     padding: 10px;
     margin: 0 auto;
     top: 50%;
     transform: translateY(-50%);
     position: relative;
+    text-align: center;
 }
+.pageLoader .loaderInner img{
+    max-width: 250px;
+}
+.pageLoader p.loadingTxt{
+    text-align: center;
+    font-size: 18px;
+    color: #ffb700;
+    font-weight: bold;
+}
+.pageLoader p.loadingTxt span{
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius:5px; 
+    background: #ffb700;
+    opacity: 1;
+    animation-name: loading;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+.pageLoader p.loadingTxt span:nth-child(2n){
+    background: #3ee11f;
+    animation-delay: 0.3s;
+}
+.pageLoader p.loadingTxt span:nth-child(3n){
+    background: #0094ff;
+    animation-delay: 0.5s;
+}
+
+@keyframes loading{
+    0% {opacity: 0;}
+    50% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
 
 #wrapper #page-wrapper .panel-primary{
     border: 1px solid;

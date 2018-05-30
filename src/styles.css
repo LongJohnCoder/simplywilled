@@ -836,7 +836,7 @@ h1, h2, h3, h4, h5, h6 {
 	width: 42px;
 	height: 32px;
 	float: left;
-	background-position: -209px -598px
+	background-position: -209px -598px;
 }
 .paypall_main {
 	width: 100%;
@@ -854,35 +854,35 @@ h1, h2, h3, h4, h5, h6 {
 }
 .index_sec7, .index_sec8 {
 	text-align: center;
-	float: left
+	float: left;
 }
 .paypall_text span {
-	color: #199ddb
+	color: #199ddb;
 }
 .index_sec7 {
 	width: 100%;
-	background: #1479bd
+	background: #1479bd;
 }
 .save_text {
 	width: 100%;
 	color: #fff;
 	font-size: 48px;
-	padding: 50px 0 25px
+	padding: 50px 0 25px;
 }
 .save_text span {
 	color: #a4e17b;
-	font-family: OpenSans-Bold
+	font-family: OpenSans-Bold;
 }
 .sec7_ul {
 	width: 100%;
-	margin-bottom: 80px
+	margin-bottom: 80px;
 }
 .sec7_ul li {
 	color: #fff;
 	font-size: 40px;
 	padding-left: 50px;
 	margin-left: 30px;
-	position: relative
+	position: relative;
 }
 .sec7_ul li:before {
 	content: '';
@@ -891,17 +891,17 @@ h1, h2, h3, h4, h5, h6 {
 	position: absolute;
 	top: 7px;
 	left: 0;
-	background-position: -75px -590px
+	background-position: -75px -590px;
 }
 .sec7_ul li:first-child {
 	margin-left: 0
 }
 .index_sec8 {
 	width: 100%;
-	padding: 0 200px 70px
+	padding: 0 200px 70px;
 }
 .ask_owl_text {
-	width: 100%;src/styles.css
+	width: 100%;
 	color: #46ac33;
 	font-size: 48px;
 	font-family: OpenSans-Semibold;

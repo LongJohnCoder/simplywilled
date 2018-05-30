@@ -32,8 +32,12 @@
 .row{
     margin: 0;
 }
-
-
+select.form-control{
+    margin: 0;
+}
+textarea.form-control{
+    min-height: 100px;
+}
 
 
 
