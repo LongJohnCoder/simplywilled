@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import {PackagesService} from '../packages.service';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-packages',
@@ -13,8 +14,13 @@ export class PackagesComponent implements OnInit {
   data: any;
   currFirst: number;
   currLast: number;
+  public modalRef: BsModalRef;
+  respType: boolean;
+  respMsg: string;
   constructor(
-      private packageService: PackagesService
+      private packageService: PackagesService,
+      private modalService: BsModalService,
+
   ) { }
 
   ngOnInit() {
@@ -33,6 +39,8 @@ export class PackagesComponent implements OnInit {
       this.userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
       this.token = JSON.parse(localStorage.getItem('loggedInUser')).token;
       this.getPackages();
+      this.respMsg = 'Please wait...';
+      this.respType = false;
   }
 
   showIncluded() {
@@ -67,16 +75,21 @@ export class PackagesComponent implements OnInit {
     );
   }
 
+  public openModal(template:  TemplateRef<any>) {
+      this.modalRef = this.modalService.show(template);
+  }
+
   purchase(id: string) {
+      // this.openModal('loading');
       const body = new FormData();
       body.append('pkg_id', id);
       body.append('user_id', this.userId);
       body.append('token', this.token);
     this.packageService.purchasePackage(body).subscribe(
         (resp: any) => {
-
+            window.location.href = resp.approval_url;
         }, (error: any) => {
-
+            this.respMsg = error.error.error;
         }
     );
   }
