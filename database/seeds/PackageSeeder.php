@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Packages;
+use App\Models\Coupon;
 
 class PackageSeeder extends Seeder
 {
@@ -42,5 +43,17 @@ class PackageSeeder extends Seeder
             ])
           ]
       );
+      Coupon::updateOrCreate(
+        ['id'=> 1],
+        [
+          'description'=> 'Default Coupon',
+          'token'=> '123456',
+          'percentage'=>0,
+          'max_user'=>0,
+          'status'=>1,
+          'expired_on'=>date('Y-m-d H:i:s')
+        ]
+      );
+
     }
 }

@@ -656,6 +656,31 @@ Route::group(['prefix' => 'v1'], function() {
                 'as'   => 'api.v1.purchasePackage.post'
             ]);
         });
+
+        /**
+         * Route for success paypal payment
+         */
+        Route::get('paypal-package-success', [
+            'uses' => 'Api\V1\PackageController@paypalPackageSuccess',
+            'as' => 'api.v1.paypalPackageSuccess.get'
+        ]);
+        /**
+         * Route for failed paypal payment
+         */
+        Route::get('paypal-package-failed', [
+            'uses' => 'Api\V1\PackageController@paypalPackageFailed',
+            'as' => 'api.v1.paypalPackageFailed.get'
+        ]);
+
+        Route::get('paypal-flow-button', [
+            'uses' => 'Api\V1\PackageController@paypalFlowButton',
+            'as' => 'api.v1.paypalFlowButton.get'
+        ]);
+
+        Route::post('paypal-direct-payment', [
+            'uses' => 'Api\V1\PackageController@paypalDirectPayment',
+            'as' => 'api.v1.paypalDirectPayment.get'
+        ]);
     });
 });
 
