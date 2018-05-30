@@ -118,6 +118,12 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
         } else {
           this.removeValidationToBackupRepresentativeForm();
         }
+        if (guardian !== null && guardian.email_notification !== null) {
+          this.changeValidationEmail(guardian.email_notification);
+        }
+        if (backupGuardian !== null && backupGuardian.is_backuprepresentative !== null) {
+          this.changeValidation(backupGuardian.email_notification);
+        }
     }
 
   /**Set dynamic validations*/

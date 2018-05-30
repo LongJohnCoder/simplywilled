@@ -13,9 +13,12 @@
             </select>
           <span class="error_txt" *ngIf="!otherChildren && chidrenForm.get('totalChildren').invalid && (chidrenForm.get('totalChildren').dirty || chidrenForm.get('totalChildren').touched)">
             <p *ngIf="chidrenForm.get('totalChildren').hasError('required')">
-              Please provide their name(s), gender and date of birth
+              Please fill up this field.
             </p>
           </span>
+        </div>
+        <div class="form-group">
+          <small>Please provide their name(s), gender and date of birth</small>
         </div>
           <!--<div class="form-group">-->
               <!--<div *ngIf="maxChidren">-->
@@ -119,10 +122,10 @@
                     </label>
                 </li>
             </ul>
+          <small>Please provide their name(s) comma seperarated</small>
         </div>
         <div class="form-group" *ngIf="chidrenForm.value.deceasedChildren == 'Yes'">
             <textarea class="form-control" name="" id="" cols="30" rows="10" formControlName="deceasedChildrenNames"></textarea>
-            <small>Please provide their name(s) comma seperarated</small>
             <div *ngIf="chidrenForm.get('deceasedChildrenNames').touched && chidrenForm.get('deceasedChildrenNames').dirty">
                 <span class="error_txt" *ngIf="chidrenForm.get('deceasedChildrenNames').hasError('required')">
                   Please fill this field.
