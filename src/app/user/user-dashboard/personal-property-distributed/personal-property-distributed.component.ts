@@ -1,34 +1,41 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserAuthService} from '../../user-auth/user-auth.service';
 import {UserService} from '../../user.service';
 import {FormBuilder, FormGroup, Validators, FormControl, FormArray} from '@angular/forms';
 import {Router} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
     selector: 'app-personal-property-distributed',
     templateUrl: './personal-property-distributed.component.html',
     styleUrls: ['./personal-property-distributed.component.css']
 })
-export class PersonalPropertyDistributedComponent implements OnInit {
+export class PersonalPropertyDistributedComponent implements OnInit, OnDestroy {
+    /**Variable declaration*/
     personalPropertyDistributedForm: FormGroup;
     fullUserInfo: any;
-    showChildRadio: boolean;
-    showSpouseRadio: boolean;
+    showChildRadio = false;
+    showSpouseRadio = false;
     errorMessage: any;
     pageText: string;
     maritalStatus: any;
+    getUserDetailSubscription: Subscription;
+    editProfileSubscription: Subscription;
+    loading = true;
 
+    /**Constructor call*/
     constructor(private  authService: UserAuthService,
                 private userService: UserService,
                 private router: Router,
                 private fb: FormBuilder, ) {
         this.createForm();
+        this.getUserData();
     }
 
+    /**When the component is initialised*/
     ngOnInit() {
-        this.showChildRadio = false;
-        this.showSpouseRadio = false;
-        this.getUserData();
+        //this.showChildRadio = false;
+        //this.showSpouseRadio = false;
     }
 
     /**
@@ -45,11 +52,13 @@ export class PersonalPropertyDistributedComponent implements OnInit {
      *function to get user data
      */
     getUserData() {
-        this.userService.getUserDetails(this.authService.getUser()['id']).subscribe(
+        this.getUserDetailSubscription = this.userService.getUserDetails(this.authService.getUser()['id']).subscribe(
             (response: any) => {
                 this.fullUserInfo = response.data[5].data;
                 this.maritalStatus = response.data[0].data.userInfo.marital_status;
                 this.personalPropertyDistributedForm.controls['is_tangible_property_distribute'].setValue( this.fullUserInfo.is_tangible_property_distribute);
+                this.personalPropertyDistributedForm.controls['is_tangible_property_distribute'].setValidators([Validators.required]);
+                this.personalPropertyDistributedForm.controls['is_tangible_property_distribute'].updateValueAndValidity();
                 this.personalPropertyDistributedForm.controls['tangible_property_distribute'].setValue( this.fullUserInfo.tangible_property_distribute);
                 if (response.data[0].data.userInfo.marital_status === 'M' || response.data[0].data.userInfo.marital_status === 'R') {
                     this.showSpouseRadio = true;
@@ -61,7 +70,7 @@ export class PersonalPropertyDistributedComponent implements OnInit {
             },
             (error: any) => {
                 console.log(error.error);
-            }
+            }, () => { this.loading = false; }
         );
     }
 
@@ -97,24 +106,40 @@ export class PersonalPropertyDistributedComponent implements OnInit {
      * @param model
      */
     onSubmit(model: any) {
+      if (this.personalPropertyDistributedForm.valid) {
         let modelData = model.value;
         modelData.step = 6;
         modelData.user_id = this.authService.getUser()['id'];
-        this.userService.editProfile(modelData).subscribe(
-            (response: any) => {
-                // go to gift section
-                this.router.navigate(['/dashboard/tell-you-make-specific-gifts']);
-            },
-            (error: any) => {
-                for (let prop in error.error.message) {
-                    this.errorMessage = error.error.message[prop];
-                    break;
-                }
-                setTimeout(() => {
-                    this.errorMessage = '';
-                }, 3000);
+        this.editProfileSubscription = this.userService.editProfile(modelData).subscribe(
+          (response: any) => {
+            // go to gift section
+            this.router.navigate(['/dashboard/tell-you-make-specific-gifts']);
+          },
+          (error: any) => {
+            for (let prop in error.error.message) {
+              this.errorMessage = error.error.message[prop];
+              break;
             }
+            setTimeout(() => {
+              this.errorMessage = '';
+            }, 3000);
+          }
         );
+      } else {
+        alert('Please fill up the required fields');
+        this.markFormGroupTouched(model);
+      }
+    }
+
+  /**
+   * Marks all controls in a form group as touched
+   * @param formGroup
+   */
+    markFormGroupTouched (formGroup: FormGroup) {
+      (<any>Object).values(formGroup.controls).forEach(control => {
+        control.markAsTouched();
+        control.markAsDirty();
+      });
     }
 
     /**
@@ -136,5 +161,15 @@ export class PersonalPropertyDistributedComponent implements OnInit {
         } if ( this.maritalStatus === 'R' ) {
             this.pageText = 'Partner';
         }
+    }
+
+    /**When the component is destroyed*/
+    ngOnDestroy() {
+      if (this.getUserDetailSubscription !== undefined) {
+        this.getUserDetailSubscription.unsubscribe();
+      }
+      if (this.editProfileSubscription !== undefined) {
+        this.getUserDetailSubscription.unsubscribe();
+      }
     }
 }

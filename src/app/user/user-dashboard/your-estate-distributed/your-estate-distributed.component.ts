@@ -19,6 +19,9 @@ export class YourEstateDistributedComponent implements OnInit {
   beneficiaryNoFormArray: FormArray;
   inputCheck: boolean;
   showErrorMessage: boolean;
+  setValidationFlagYes = false;
+  setValidationFlagNo = false;
+
   constructor( private  authService: UserAuthService,
                private userService: UserService,
                private router: Router,
@@ -195,35 +198,145 @@ export class YourEstateDistributedComponent implements OnInit {
      * @param model
      */
     onSubmit(model: any) {
-        const modelData = model.value;
-        modelData.step = 10;
-        modelData.user_id = this.authService.getUser()['id'];
-        const disrtibuteData = [];
-        if(modelData.singleBeneficiary === 'Yes') {
+        if (model.valid) {
+        /*  let modelData = model.value;
+          modelData.step = 10;
+          modelData.user_id = this.authService.getUser()['id'];
+          const disrtibuteData = [];
+          if(modelData.singleBeneficiary === 'Yes') {
             modelData.disrtibuteData = modelData.toASingleBeneficiary;
-        }
-        if(modelData.multiBeneficiary === 'Yes') {
+          }
+          if(modelData.multiBeneficiary === 'Yes') {
             modelData.disrtibuteData = modelData.toMultipleBeneficiary;
-        }
-        if(modelData.someOtherWay === 'Yes') {
+          }
+          if(modelData.someOtherWay === 'Yes') {
             modelData.disrtibuteData = modelData.toSomeOtherWay;
-        }
-        this.userService.editProfile(modelData).subscribe(
+          }
+          this.userService.editProfile(modelData).subscribe(
             (response: any) => {
-                this.router.navigate(['/dashboard/contingent-beneficiaries']);
+              this.router.navigate(['/dashboard/contingent-beneficiaries']);
             },
             (error: any) => {
-                for (let prop in error.error.message) {
-                    this.errorMessage = error.error.message[prop];
-                    break;
-                }
-                setTimeout(() => {
-                    this.errorMessage = '';
-                }, 3000);
+              for (let prop in error.error.message) {
+                this.errorMessage = error.error.message[prop];
+                break;
+              }
+              setTimeout(() => {
+                this.errorMessage = '';
+              }, 3000);
             }
-        );
+          );*/
+        } else {
+          alert('Please fill up the required fields');
+          this.markFormGroupTouched(model);
+        }
+
     }
 
+  /**
+   * Marks all controls in a form group as touched
+   * @param formGroup
+   */
+  markFormGroupTouched (formGroup: FormGroup) {
+    (<any>Object).values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+      control.markAsDirty();
+    });
+
+    this.checkValidation((this.estateDistributedForm.get('toASingleBeneficiary') as FormArray).controls);
+    this.checkValidation((this.estateDistributedForm.get('toMultipleBeneficiary') as FormArray).controls);
+    this.checkValidationFormArray((this.estateDistributedForm.get('toMultipleBeneficiary.0.beneficiaryNo') as FormArray).controls, 0);
+    this.checkValidationFormArray((this.estateDistributedForm.get('toMultipleBeneficiary.0.beneficiaryYes') as FormArray).controls, 1);
+  }
+
+  /**Checks validation for form arrays*/
+  checkValidation(formArray) {
+    for (let item of formArray) {
+      (<any>Object).values(item.controls).forEach(control => {
+        control.markAsTouched();
+        control.markAsDirty();
+        if (control.controls) {
+          (<any>Object).values(control.controls).forEach(controlchild => {
+            controlchild.markAsTouched();
+            controlchild.markAsDirty();
+          });
+        }
+      });
+      /*if (item.controls['multiple_beneficiary_name'].hasError('required') || item.controls['multiple_beneficiary_relationship'].hasError('required')) {
+      //  this.flags.setValidationFlag = true;
+        break;
+      }*/
+      //this.flags.setValidationFlag = false;
+    }
+  }
+
+  checkValidationFormArray(formArray, flag = 0) {
+    this.setValidationFlagNo = false;
+    this.setValidationFlagYes = false;
+    if (flag === 0) {
+      for (let item of formArray) {
+        if (
+          item.controls['beneficiaryNoFullName'].hasError('required') || item.controls['beneficiaryNoPercentageToEstate'].hasError('required') || item.controls['beneficiaryNoRelationship'].hasError('required')) {
+          this.setValidationFlagNo = true;
+          break;
+        }
+        this.setValidationFlagNo = false;
+      }
+    } else {
+      for (let item of formArray) {
+        if (item.controls['beneficiaryFullName'].hasError('required') || item.controls['beneficiaryRelationship'].hasError('required')) {
+          this.setValidationFlagYes = true;
+          break;
+        }
+        this.setValidationFlagYes = false;
+      }
+    }
+    console.log(this.setValidationFlagNo);
+    console.log(this.setValidationFlagYes);
+  }
+
+  /**Set validation for form array*/
+  setValidationFormArray(formArray, flag = 0) {
+    if (flag === 1) {
+      for (let item of formArray) {
+          item.controls['beneficiaryFullName'].setValidators([Validators.required]);
+          item.controls['beneficiaryRelationship'].setValidators([Validators.required]);
+          item.controls['beneficiaryFullName'].updateValueAndValidity();
+          item.controls['beneficiaryRelationship'].updateValueAndValidity();
+      }
+    } else {
+      for (let item of formArray) {
+        console.log(item.controls['beneficiaryNoPercentageToEstate']);
+        item.controls['beneficiaryNoPercentageToEstate'].setValidators([Validators.required]);
+        item.controls['beneficiaryNoPercentageToEstate'].clearValidators();
+        item.controls['beneficiaryNoFullName'].setValidators([Validators.required]);
+        item.controls['beneficiaryNoRelationship'].setValidators([Validators.required]);
+        item.controls['beneficiaryNoFullName'].updateValueAndValidity();
+        item.controls['beneficiaryNoRelationship'].updateValueAndValidity();
+      }
+    }
+  }
+
+  /**Clears validation for form arrays*/
+  clearValidationForFormArray(formArray, flag = 0) {
+    if (flag === 1) {
+      for (let item of formArray) {
+        item.controls['beneficiaryFullName'].clearValidators();
+        item.controls['beneficiaryRelationship'].clearValidators();
+        item.controls['beneficiaryFullName'].updateValueAndValidity();
+        item.controls['beneficiaryRelationship'].updateValueAndValidity();
+      }
+    } else {
+      for (let item of formArray) {
+        item.controls['beneficiaryNoPercentageToEstate'].clearValidators();
+        item.controls['beneficiaryNoFullName'].clearValidators();
+        item.controls['beneficiaryNoRelationship'].clearValidators();
+        item.controls['beneficiaryNoPercentageToEstate'].updateValueAndValidity();
+        item.controls['beneficiaryNoFullName'].updateValueAndValidity();
+        item.controls['beneficiaryNoRelationship'].updateValueAndValidity();
+      }
+    }
+  }
     /**
      *function to add remove  validation
      */
@@ -301,7 +414,7 @@ export class YourEstateDistributedComponent implements OnInit {
     addValidationToASingleBeneficiaryForm() {
         this.estateDistributedForm.get(`toASingleBeneficiary.0.firstName`).setValidators([Validators.required]);
         this.estateDistributedForm.get(`toASingleBeneficiary.0.firstName`).updateValueAndValidity();
-        this.estateDistributedForm.get(`toASingleBeneficiary.0.fullName`).setValidators([Validators.required]);
+        this.estateDistributedForm.get(`toASingleBeneficiary.0.fullName`).setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
         this.estateDistributedForm.get(`toASingleBeneficiary.0.fullName`).updateValueAndValidity();
         this.estateDistributedForm.get(`toASingleBeneficiary.0.relationship`).setValidators([Validators.required]);
         this.estateDistributedForm.get(`toASingleBeneficiary.0.relationship`).updateValueAndValidity();
@@ -309,7 +422,12 @@ export class YourEstateDistributedComponent implements OnInit {
         this.estateDistributedForm.get(`toASingleBeneficiary.0.gender`).updateValueAndValidity();
         this.estateDistributedForm.get(`toASingleBeneficiary.0.ifPassesbeforeyou`).setValidators([Validators.required]);
         this.estateDistributedForm.get(`toASingleBeneficiary.0.ifPassesbeforeyou`).updateValueAndValidity();
-
+        if (this.estateDistributedForm.get('toASingleBeneficiary.0.ifPassesbeforeyou').value === '3') {
+          this.estateDistributedForm.get('toASingleBeneficiary.0.someotherway').setValidators([Validators.required]);
+        } else {
+          this.estateDistributedForm.get('toASingleBeneficiary.0.someotherway').clearValidators();
+        }
+        this.estateDistributedForm.updateValueAndValidity();
     }
 
     /**
@@ -427,9 +545,15 @@ export class YourEstateDistributedComponent implements OnInit {
      */
     addValidationIsEstateIntoEqualShares() {
         if ( this.estateDistributedForm.get('toMultipleBeneficiary.0.isEstateIntoEqualShares').value === 'No' ) {
+            alert('Are you sure you want to continue ?');
+            this.setValidationFormArray((this.estateDistributedForm.get('toMultipleBeneficiary.0.beneficiaryNo') as FormArray).controls, 0);
+            this.clearValidationForFormArray((this.estateDistributedForm.get('toMultipleBeneficiary.0.beneficiaryYes') as FormArray).controls, 1);
             this.estateDistributedForm.get(`toMultipleBeneficiary.0.deceasedBeneficiarieShare`).setValidators([Validators.required]);
             this.estateDistributedForm.get(`toMultipleBeneficiary.0.deceasedBeneficiarieShare`).updateValueAndValidity();
         } else {
+            alert('Are you sure you want to continue ?');
+            this.setValidationFormArray((this.estateDistributedForm.get('toMultipleBeneficiary.0.beneficiaryYes') as FormArray).controls, 1);
+            this.clearValidationForFormArray((this.estateDistributedForm.get('toMultipleBeneficiary.0.beneficiaryNo') as FormArray).controls, 0);
             this.estateDistributedForm.get(`toMultipleBeneficiary.0.deceasedBeneficiarieShare`).setValidators([]);
             this.estateDistributedForm.get(`toMultipleBeneficiary.0.deceasedBeneficiarieShare`).updateValueAndValidity();
         }

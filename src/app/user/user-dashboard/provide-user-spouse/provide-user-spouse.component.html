@@ -1,4 +1,4 @@
-<div class="col-xs-12">
+<div class="col-xs-12" *ngIf="!loading">
   <div class="main-content tellusaboutyou">
     <h2>Provide For Your {{pageText}}</h2>
     <form [formGroup]="provideYourSpouseForm" novalidate
@@ -34,8 +34,7 @@
       </div>
       <div class="form-footer">
         <button class="btn common-button btn-grey pull-left" (click)="goBack()">Go Back</button>
-        <button class="btn common-button btn-complete" type="submit"
-                [disabled]="!provideYourSpouseForm.valid">Continue</button>
+        <button class="btn common-button btn-complete" type="submit">Continue</button>
       </div>
     </form>
   </div>

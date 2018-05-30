@@ -273,6 +273,19 @@ header{
     color: #42A82D;
     font-family: 'OpenSans';
 }
+.error_input {
+  border: 1px solid #ff5959;
+}
+.error_txt {
+  width: 100%;
+  display: inline-block;
+  background-color: #ff5959;
+  color: #fff;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+}
+
 .main-content{
     background: #fff;
     border-radius: 10px;
