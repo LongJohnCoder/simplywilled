@@ -76,7 +76,7 @@
                                     <tr>
                                     <td style="padding:40px 30px; background: #f2f2f2; text-align: center;">
                                         <br>
-                                        <a href="#"><img src="{{url('/')}}/register" alt="Check Now"></a>
+                                        <a href="{{url('/')}}/register"><img src="{{url('/')}}/images/acceptBtn.png" alt="Check Now"></a>
                                         <br>
                                     </td>
                                     <tr>
