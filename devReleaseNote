@@ -27,3 +27,8 @@ Validation V0.1 stable released to dev
 
 Validation V0.2 stable released to dev
 	Validation for step 4 and step 2 partially
+
+UI changes V0.1 stable released to dev
+	Removed Get Started button from login, register, forget password and reset password page in footer section 
+	changed package text
+
