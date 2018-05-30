@@ -1,3 +1,33 @@
+.main-content .email-box{
+    display: inline-block;
+    border: 1px solid #ddd;
+    background: #F2F2F2;
+    height: 105px;
+    width: 350px;
+    padding: 20px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.main-content .valid.email-box{
+    border-color: #42A82D;
+    margin-bottom: 10px;
+}
+.main-content .valid.email-box i {
+    top: 40px;
+    right: 30px;
+}
+.main-content .invalid.email-box{
+  border-color: #ff5959;
+  margin-bottom: 10px;
+}
+.main-content .invalid.email-box i {
+  top: 40px;
+  right: 30px;
+}
+
+
+
+
 .main-content {
     background: #fff;
     border-radius: 10px;
@@ -75,6 +105,9 @@
     font-weight: normal;
     font-size: 18px;
     text-align: left;
+}
+.main-content .form-group .radio_ul6 label{
+    float: left;
 }
 .main-content .form-control{
     font-size: 16px;
