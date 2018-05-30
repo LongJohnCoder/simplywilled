@@ -410,11 +410,7 @@
                   <i class= 'fa fa-check' *ngIf="partner_email.valid"></i>
                   <i class= 'fa fa-times' *ngIf="partner_email.errors && (partner_email.dirty || partner_email.touched)">
                   </i>
-                  <span class="error_txt"
-                      *ngIf="partner_email.errors && (partner_email.dirty || partner_email.touched)">
-                      <p *ngIf="partner_email.errors?.required">Email is required</p>
-                      <p *ngIf="partner_email.errors?.pattern">Email is not correct!</p>
-                  </span>
+                  
               </div>
           </li>
           <li>
