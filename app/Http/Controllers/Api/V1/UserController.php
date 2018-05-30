@@ -377,7 +377,7 @@ class UserController extends Controller
                     'email'             =>  $checkForExistUser->partner_email
                 ];
                 Mail::send('new_emails.spouse_invitation', $arr, function($mail) use($arr){
-                    $mail->from(config('settings.email'), 'Notice for Backup Executor');
+                    $mail->from(config('settings.email'), 'Invitation to Simplywilled.com');
                     $mail->to($arr['email'], $arr['spouseFullName'])
                     ->subject('Your spouse invited you to Simplywilled.com');
                 });
