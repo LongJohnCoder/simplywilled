@@ -106,11 +106,13 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
       'beneficiary': new FormControl(data === null ? '' : data.beneficiary),
       'beneficiary_legal_name': new FormControl(data === null ? '' : data.beneficiary_legal_name),
       'beneficiary_legal_relation': new FormControl(data === null ? '' : (data.beneficiary_legal_relation === null ? '' : data.beneficiary_legal_relation)),
+      'beneficiary_legal_relation_other': new FormControl(data === null ? '' : (data.beneficiary_legal_relation_other === null ? '' : data.beneficiary_legal_relation_other)),
       'gender': new FormControl(data === null ? 'Male' : data.gender),
       'passed_by': new FormControl(data === null ? '' : data.passed_by),
       'passed_by_child': new FormControl(data === null ? '' : data.passed_by_child),
       'individual_name': new FormControl(data === null ? '' : data.individual_name),
       'individual_relationship': new FormControl(data === null ? '' : (data.individual_relationship === null ? '' : data.individual_relationship)),
+      'individual_relationship_other': new FormControl(data === null ? '' : (data.individual_relationship_other === null ? '' : data.individual_relationship_other)),
     });
   }
 

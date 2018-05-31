@@ -34,6 +34,7 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
     multipleBeneficiaryFlag: false,
     maleFlag: true,
     femaleFlag: false,
+    survivingGiftBeneficiariesFlag: false,
     toTheirIssueFlag: false,
     residueEstateFlag: false,
     someoneElseFlag: false,
@@ -85,12 +86,17 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
         this.flags.multipleBeneficiaryFlag = parsedDataSet.beneficiary === '_mu';
         this.flags.maleFlag = parsedDataSet.gender === 'Male';
         this.flags.femaleFlag = parsedDataSet.gender === 'Female';
-        this.flags.toTheirIssueFlag = parsedDataSet.passed_by === '_tth';
+        this.flags.survivingGiftBeneficiariesFlag = parsedDataSet.passed_by === '_sgb';
+        this.flags.toTheirIssueFlag = parsedDataSet.passed_by === '_tti';
         this.flags.residueEstateFlag = parsedDataSet.passed_by === '_re';
         this.flags.someoneElseFlag = parsedDataSet.passed_by === '_se';
         this.flags.residueEstateChildFlag = parsedDataSet.passed_by_child === '_re';
         this.flags.someoneElseChildFlag = parsedDataSet.passed_by_child === '_se';
         this.showDataMultipleBeneficiaries(parsedDataSet);
+        this.setValidatorsGiftTo(parsedDataSet === null ? '' : parsedDataSet.gift_to);
+        this.setValidatorsBeneficiary(parsedDataSet === null ? '' : parsedDataSet.beneficiary);
+        this.setValidatorsPassedBy(parsedDataSet === null ? '' : parsedDataSet.passed_by);
+        this.setValidatorsPassedByChild(parsedDataSet === null ? '' : parsedDataSet.passed_by_child);
       }
     }
   }
@@ -106,11 +112,13 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
       'beneficiary': new FormControl(data === null ? '' : data.beneficiary),
       'beneficiary_legal_name': new FormControl(data === null ? '' : data.beneficiary_legal_name),
       'beneficiary_legal_relation': new FormControl(data === null ? '' : (data.beneficiary_legal_relation === null ? '' : data.beneficiary_legal_relation)),
+      'beneficiary_legal_relation_other': new FormControl(data === null ? '' : (data.beneficiary_legal_relation_other === null ? '' : data.beneficiary_legal_relation_other)),
       'gender': new FormControl(data === null ? 'Male' : data.gender),
       'passed_by': new FormControl(data === null ? '' : data.passed_by),
       'passed_by_child': new FormControl(data === null ? '' : data.passed_by_child),
       'individual_name': new FormControl(data === null ? '' : data.individual_name),
       'individual_relationship': new FormControl(data === null ? '' : (data.individual_relationship === null ? '' : data.individual_relationship)),
+      'individual_relationship_other': new FormControl(data === null ? '' : (data.individual_relationship_other === null ? '' : data.individual_relationship_other)),
     });
   }
 
@@ -140,138 +148,159 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
   addConditionalValidators() {
     this.giftInfoSubscription = this.businessInterestForm.get('gift_to').valueChanges.subscribe(
       (gift_to: string) => {
-          switch (gift_to) {
-            case 'IN':  console.log("IN");
-                        this.businessInterestForm.get('beneficiary').setValidators([Validators.required]);
-                        this.businessInterestForm.get('beneficiary').updateValueAndValidity();
-                        this.clearValidationFor([
-                          'organization_name',
-                          'organization_address',
-                          'multiple_beneficiaries',
-                          'beneficiary_legal_name',
-                          'passed_by',
-                          'passed_by_child',
-                          'individual_name']);
-                        this.clearValidationForFormArray((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
-                        break;
-            case 'CH':  console.log("CH");
-                        this.businessInterestForm.get('organization_name').setValidators([Validators.required]);
-                        this.businessInterestForm.get('organization_address').setValidators([Validators.required]);
-                        this.businessInterestForm.get('organization_name').updateValueAndValidity();
-                        this.businessInterestForm.get('organization_address').updateValueAndValidity();
-                        this.clearValidationFor([
-                          'beneficiary',
-                          'multiple_beneficiaries',
-                          'beneficiary_legal_name',
-                          'passed_by',
-                          'passed_by_child',
-                          'individual_name']);
-                        this.clearValidationForFormArray((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
-                        break;
-            case '':    console.log("empty");
-                        this.clearValidationFor([
-                          'organization_name',
-                          'organization_address',
-                          'beneficiary',
-                          'multiple_beneficiaries',
-                          'beneficiary_legal_name',
-                          'passed_by',
-                          'passed_by_child',
-                          'individual_name']);
-                        this.clearValidationForFormArray((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
-                        break;
-            default:   console.log("default");
-                       this.clearValidationFor([
-                          'organization_name',
-                          'organization_address',
-                          'beneficiary',
-                          'multiple_beneficiaries',
-                          'beneficiary_legal_name',
-                          'passed_by',
-                          'passed_by_child',
-                          'individual_name']);
-                        this.clearValidationForFormArray((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
-                        break;
-          }
+         this.setValidatorsGiftTo(gift_to);
       }
     );
 
     this.beneficiarySubscription = this.businessInterestForm.get('beneficiary').valueChanges.subscribe(
       (beneficiary: string) => {
-        switch (beneficiary) {
-          case '_si':  console.log('si');
-                        this.businessInterestForm.get('beneficiary_legal_name').setValidators([Validators.required]);
-                        this.businessInterestForm.get('passed_by').setValidators([Validators.required]);
-                        this.businessInterestForm.get('beneficiary_legal_name').updateValueAndValidity();
-                        this.businessInterestForm.get('passed_by').updateValueAndValidity();
-                        this.clearValidationForFormArray((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
-                        //this.businessInterestForm.get('multiple_beneficiaries').clearValidators();
-                        break;
-          case '_mu':   console.log('mu');
-                        //console.log(this.businessInterestForm.get('multiple_beneficiaries'));
-                        //this.businessInterestForm.get('multiple_beneficiaries').setValidators([Validators.required]);
-                        this.setValidation((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
-                        this.businessInterestForm.get('passed_by').setValidators([Validators.required]);
-                        this.businessInterestForm.get('passed_by').updateValueAndValidity();
-                        this.businessInterestForm.get('beneficiary_legal_name').clearValidators();
-                        this.businessInterestForm.get('beneficiary_legal_name').updateValueAndValidity();
-                        break;
-          /*case '':     console.log('ben_empty');
-                        this.businessInterestForm.get('multiple_beneficiaries').clearValidators();
-                        this.businessInterestForm.get('beneficiary_legal_name').clearValidators();
-                        this.businessInterestForm.get('passed_by').clearValidators();
-                        break;*/
-        }
+          this.setValidatorsBeneficiary(beneficiary);
       }
     );
 
     this.passedBySubscription = this.businessInterestForm.get('passed_by').valueChanges.subscribe(
-      (beneficiary: string) => {
-        switch (beneficiary) {
-          case '_tth':   console.log('tth');
-                         this.businessInterestForm.get('individual_name').clearValidators();
-                         this.businessInterestForm.get('passed_by_child').setValidators([Validators.required]);
-                         this.businessInterestForm.get('individual_name').updateValueAndValidity();
-                         this.businessInterestForm.get('passed_by_child').updateValueAndValidity();
-                         break;
-          case '_re':    console.log('re');
-                         this.businessInterestForm.get('individual_name').clearValidators();
-                         this.businessInterestForm.get('passed_by_child').clearValidators();
-                         this.businessInterestForm.get('individual_name').updateValueAndValidity();
-                         this.businessInterestForm.get('passed_by_child').updateValueAndValidity();
-                         break;
-          case '_se':    console.log('Se');
-                         this.businessInterestForm.get('individual_name').setValidators([Validators.required]);
-                         this.businessInterestForm.get('passed_by_child').clearValidators();
-                         this.businessInterestForm.get('individual_name').updateValueAndValidity();
-                         this.businessInterestForm.get('passed_by_child').updateValueAndValidity();
-                         break;
-         /* case '':       console.log('passed_by_empty');
-                         this.businessInterestForm.get('individual_name').clearValidators();
-                         this.businessInterestForm.get('passed_by_child').clearValidators();
-                         break;*/
-        }
+      (passedBy: string) => {
+          this.setValidatorsPassedBy(passedBy);
       }
     );
 
     this.passedByChildSubscription = this.businessInterestForm.get('passed_by_child').valueChanges.subscribe(
-      (beneficiary: string) => {
-        switch (beneficiary) {
-          case '_re':   console.log('_rechi');
-                        this.businessInterestForm.get('individual_name').clearValidators();
-                        this.businessInterestForm.get('individual_name').updateValueAndValidity();
-                        break;
-          case '_se':   console.log('_sechi');
-                        this.businessInterestForm.get('individual_name').setValidators([Validators.required]);
-                        this.businessInterestForm.get('individual_name').updateValueAndValidity();
-                        break;
-          /*case '':      console.log('_remoty');
-                        this.businessInterestForm.get('individual_name').clearValidators();
-                        break;*/
-        }
+      (passedByChildren: string) => {
+        this.setValidatorsPassedByChild(passedByChildren);
       }
     );
   }
+
+  /**Set validators when gift to is selected*/
+  setValidatorsGiftTo(gift_to) {
+    switch (gift_to) {
+      case 'IN':  console.log("IN");
+        this.businessInterestForm.get('beneficiary').setValidators([Validators.required]);
+        this.businessInterestForm.get('beneficiary').updateValueAndValidity();
+        this.clearValidationFor([
+          'organization_name',
+          'organization_address',
+          'multiple_beneficiaries',
+          'beneficiary_legal_name',
+          'passed_by',
+          'passed_by_child',
+          'individual_name']);
+        this.clearValidationForFormArray((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
+        break;
+      case 'CH':  console.log("CH");
+        this.businessInterestForm.get('organization_name').setValidators([Validators.required]);
+        this.businessInterestForm.get('organization_address').setValidators([Validators.required]);
+        this.businessInterestForm.get('organization_name').updateValueAndValidity();
+        this.businessInterestForm.get('organization_address').updateValueAndValidity();
+        this.clearValidationFor([
+          'beneficiary',
+          'multiple_beneficiaries',
+          'beneficiary_legal_name',
+          'passed_by',
+          'passed_by_child',
+          'individual_name']);
+        this.clearValidationForFormArray((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
+        break;
+      case '':    console.log("empty");
+        this.clearValidationFor([
+          'organization_name',
+          'organization_address',
+          'beneficiary',
+          'multiple_beneficiaries',
+          'beneficiary_legal_name',
+          'passed_by',
+          'passed_by_child',
+          'individual_name']);
+        this.clearValidationForFormArray((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
+        break;
+      default:   console.log("default");
+        this.clearValidationFor([
+          'organization_name',
+          'organization_address',
+          'beneficiary',
+          'multiple_beneficiaries',
+          'beneficiary_legal_name',
+          'passed_by',
+          'passed_by_child',
+          'individual_name']);
+        this.clearValidationForFormArray((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
+        break;
+    }
+  }
+
+  /**Set validators when passed by is selected*/
+  setValidatorsPassedBy(passedBy) {
+    switch (passedBy) {
+      case '_tti':   console.log('tth');
+        this.businessInterestForm.get('individual_name').clearValidators();
+        this.businessInterestForm.get('passed_by_child').setValidators([Validators.required]);
+        this.businessInterestForm.get('individual_name').updateValueAndValidity();
+        this.businessInterestForm.get('passed_by_child').updateValueAndValidity();
+        break;
+      case '_re':    console.log('re');
+        this.businessInterestForm.get('individual_name').clearValidators();
+        this.businessInterestForm.get('passed_by_child').clearValidators();
+        this.businessInterestForm.get('individual_name').updateValueAndValidity();
+        this.businessInterestForm.get('passed_by_child').updateValueAndValidity();
+        break;
+      case '_se':    console.log('Se');
+        this.businessInterestForm.get('individual_name').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
+        this.businessInterestForm.get('passed_by_child').clearValidators();
+        this.businessInterestForm.get('individual_name').updateValueAndValidity();
+        this.businessInterestForm.get('passed_by_child').updateValueAndValidity();
+        break;
+      /* case '':       console.log('passed_by_empty');
+                      this.businessInterestForm.get('individual_name').clearValidators();
+                      this.businessInterestForm.get('passed_by_child').clearValidators();
+                      break;*/
+    }
+  }
+
+  /**Set validators when beneficiary is selected*/
+  setValidatorsBeneficiary(beneficiary) {
+    switch (beneficiary) {
+      case '_si':  console.log('si');
+        this.businessInterestForm.get('beneficiary_legal_name').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
+        this.businessInterestForm.get('passed_by').setValidators([Validators.required]);
+        this.businessInterestForm.get('beneficiary_legal_name').updateValueAndValidity();
+        this.businessInterestForm.get('passed_by').updateValueAndValidity();
+        this.clearValidationForFormArray((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
+        //this.businessInterestForm.get('multiple_beneficiaries').clearValidators();
+        break;
+      case '_mu':   console.log('mu');
+        //console.log(this.businessInterestForm.get('multiple_beneficiaries'));
+        //this.businessInterestForm.get('multiple_beneficiaries').setValidators([Validators.required]);
+        this.setValidation((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
+        this.businessInterestForm.get('passed_by').setValidators([Validators.required]);
+        this.businessInterestForm.get('passed_by').updateValueAndValidity();
+        this.businessInterestForm.get('beneficiary_legal_name').clearValidators();
+        this.businessInterestForm.get('beneficiary_legal_name').updateValueAndValidity();
+        break;
+      /*case '':     console.log('ben_empty');
+                    this.businessInterestForm.get('multiple_beneficiaries').clearValidators();
+                    this.businessInterestForm.get('beneficiary_legal_name').clearValidators();
+                    this.businessInterestForm.get('passed_by').clearValidators();
+                    break;*/
+    }
+  }
+
+  /**Set validators when beneficiary is selected*/
+  setValidatorsPassedByChild(passedByChildren) {
+    switch (passedByChildren) {
+      case '_re':   console.log('_rechi');
+        this.businessInterestForm.get('individual_name').clearValidators();
+        this.businessInterestForm.get('individual_name').updateValueAndValidity();
+        break;
+      case '_se':   console.log('_sechi');
+        this.businessInterestForm.get('individual_name').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
+        this.businessInterestForm.get('individual_name').updateValueAndValidity();
+        break;
+      /*case '':      console.log('_remoty');
+                    this.businessInterestForm.get('individual_name').clearValidators();
+                    break;*/
+    }
+  }
+
   /**Function call when radio button for individual/charity is toggled*/
   giftIndividualOrCharity(value: string) {
       this.flags.individualFlag = value === 'IN';
@@ -292,7 +321,8 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
 
   /**Function call when radio button when property is toggled*/
   changeProperty(value: string) {
-      this.flags.toTheirIssueFlag = value === '_tth';
+      this.flags.survivingGiftBeneficiariesFlag = value === '_sgb';
+      this.flags.toTheirIssueFlag = value === '_tti';
       this.flags.residueEstateFlag = value === '_re';
       this.flags.someoneElseFlag = value === '_se';
   }

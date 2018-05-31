@@ -333,7 +333,6 @@ export class RealPropertyComponent implements OnInit {
       this.realPropertyForm.get('individualControls.0.beneficiary').setValidators([Validators.required]);
       this.realPropertyForm.get('individualControls.0.beneficiary').updateValueAndValidity();
       this.clearValidationForFormArray((this.realPropertyForm.get('charityControls') as FormArray).controls);
-      this.setValidation((this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.itemRows') as FormArray).controls);
     } else {
       /// charity
       this.isIndividualRP = false;
@@ -395,6 +394,7 @@ export class RealPropertyComponent implements OnInit {
         // multiple beneficiary validations
         this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.property_distributed_multiple_beneficiary').setValidators([Validators.required]);
         this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.property_distributed_multiple_beneficiary').updateValueAndValidity();
+        this.setValidation((this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.itemRows') as FormArray).controls);
       }
     }
   }
@@ -434,7 +434,7 @@ export class RealPropertyComponent implements OnInit {
         this.isSomeoneElse = true;
         this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').setValidators([]);
         this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').setValidators([Validators.required]);
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
         this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').updateValueAndValidity();
         this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_relationship').setValidators([Validators.required]);
         this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_relationship').updateValueAndValidity();
@@ -450,7 +450,7 @@ export class RealPropertyComponent implements OnInit {
     if (this.isIndividualRP && this.singleBeneficiaryRP) {
       if (identifier === 'TSE') {
         this.isSomeoneElse = true;
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').setValidators([Validators.required]);
+        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
         this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').updateValueAndValidity();
       } else {
         this.isSomeoneElse = false;
@@ -467,12 +467,12 @@ export class RealPropertyComponent implements OnInit {
     if (this.isIndividualRP && this.singleBeneficiaryRP) {
       if (event.target.value === 'Other') {
         this.otherRelationshipRpSomeOneElse = true;
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_other_relationship').setValidators([Validators.required]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_other_relationship').updateValueAndValidity();
+        //this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_other_relationship').setValidators([Validators.required]);
+        //this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_other_relationship').updateValueAndValidity();
       } else {
         this.otherRelationshipRpSomeOneElse = false;
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_other_relationship').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_other_relationship').updateValueAndValidity();
+        //this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_other_relationship').setValidators([]);
+        //this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_other_relationship').updateValueAndValidity();
       }
     }
   }
