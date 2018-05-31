@@ -32,6 +32,8 @@ use Mail;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Validator;
 
+use App\Helper\GiftStatement;
+
 class UserController extends Controller
 {
 
@@ -1256,7 +1258,9 @@ class UserController extends Controller
      * */
     public function updateGift($request)
     {
-        $validator = Validator::make($request->all(), [
+        try {
+
+            $validator = Validator::make($request->all(), [
             'user_id'   =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
             'giftType'  =>  'required|numeric|between:1,6|integer',
             'giftData'  =>  'required'
@@ -1266,6 +1270,15 @@ class UserController extends Controller
             return response()->json([
                 'status'  => false,
                 'message' => $validator->errors(),
+                'data'    => []
+            ], 400);
+        }
+
+        $tuay = TellUsAboutYou::where('user_id',\Auth::user()->id)->first();
+        if(!$tuay) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Please TellUsAboutYOu details first and then proceed to this section',
                 'data'    => []
             ], 400);
         }
@@ -1285,11 +1298,13 @@ class UserController extends Controller
         // }
         $saveGift->type = $giftType;
         switch($giftType) {
-          case 1 :  $saveGift->cash_description = json_encode($giftData);
+          case 1 :  $saveGift->cash_description = GiftStatement::cashDescription($giftData[0],$tuay);
+                    //$saveGift->cash_description = json_encode($giftData);
                     break;
           case 2 :  $saveGift->property_details = json_encode($giftData);
                     break;
-          case 3 :  $saveGift->business_details = json_encode($giftData);
+          case 3 :  $saveGift->business_details = GiftStatement::businessDetails($giftData[0],$tuay);
+                    //$saveGift->business_details = json_encode($giftData);
                     break;
           case 4 :  $saveGift->asset_details = json_encode($giftData);
                     break;
@@ -1315,6 +1330,14 @@ class UserController extends Controller
             'message' => 'Something went wrong',
             'data'    => []
         ], 400);
+
+        } catch(\Exception $e) {
+            return response()->json([
+                'status'  => false,
+                'message' => ' ERROR : '.$e->getMessage().' LINE : '.$e->getLine(),
+                'data'    => []
+            ], 500);
+        }
     }
 
     /*
