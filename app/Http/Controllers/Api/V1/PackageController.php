@@ -94,14 +94,12 @@ class PackageController extends Controller
       $amount     = $request->amount;
       // $validTill  = $request->valid_till;
 
-      $package               = new Packages();
-      $package->name         = $name;
-      $package->amount       = $amount;
-      $package->valid_till   = $timeNow;
-      $package->description  = $request->has('description') ? $request->description: '';
-      $package->key_benefits = json_encode($request->key_benefits);
-      $package->included     = json_encode($request->included);
-      $package->status       = '1';
+      $package = new Packages();
+      $package->name        = $name;
+      $package->amount      = $amount;
+      $package->valid_till  = $timeNow;
+      $package->description = $request->has('description') ? $request->description : '';
+      $package->status      = '1';
       if($package->save()) {
         return response()->json([
             'status'   => true,
@@ -205,12 +203,6 @@ class PackageController extends Controller
       }
     }
 
-    /**
-    * Paypal Express Checkout
-    *
-    * @param Request
-    * @return \Illuminate\Http\JsonResponse
-    */
     public function purchasePackage(Request $request)
     {
       $pkgID         = $request->pkg_id;
@@ -328,9 +320,6 @@ class PackageController extends Controller
       return response()->json([$payment->toArray(), 'approval_url' => $payment->getApprovalLink()], 200);
     }
 
-    /**
-    * Paypal Express Checkout Success function
-    */
     public function paypalPackageSuccess()
     {
       try {
@@ -350,18 +339,12 @@ class PackageController extends Controller
         return redirect('/dashboard/packages/status/'.$paymentID);
       }
     }
-    /**
-    * Paypal Express Checkout Failed function
-    */
+
     public function paypalPackageFailed()
     {
       return redirect('/dashboard/packages/status/paymentID');
     }
 
-    /**
-    * Paypal Flow
-    * @return \Illuminate\Http\JsonResponse
-    */
     public function paypalFlowButton()
     {
       $amount = 199.00;
@@ -411,11 +394,6 @@ class PackageController extends Controller
       ], 200);
     }
 
-    /**
-    * Paypal Pro DoDirect Payment
-    * @param Request
-    * @return \Illuminate\Http\JsonResponse
-    */
     public function paypalDirectPayment(Request $request)
     {
       try {
@@ -477,8 +455,8 @@ class PackageController extends Controller
 
         $pfHostAddr = config('paypal_direct.host');
 
-        $postData = 'VERSION=56.0'.'&SIGNATURE='.$SIGNATURE.'&USER='.$USER.'&PWD='.$PWD.
-                    '&METHOD='.$METHOD.'&PAYMENTACTION='.$PAYMENTACTION.'&IPADDRESS='.$IPADDRESS.'&AMT='.$AMT.'&CREDITCARDTYPE='.$CREDITCARDTYPE.'&ACCT='.$ACCT.'&EXPDATE='.$EXPDATE.'&CVV2='.$CVV2.'&FIRSTNAME='.$FIRSTNAME.'&LASTNAME='.$LASTNAME.'&STREET='.$STREET.'&CITY='.$CITY.'&STATE='.$STATE.'&ZIP='.$ZIP.'&COUNTRYCODE='.$COUNTRYCODE;
+        $postData = 'VERSION=56.0&COUNTRYCODE='.$COUNTRYCODE.'&SIGNATURE='.$SIGNATURE.'&USER='.$USER.'&PWD='.$PWD.
+                    '&METHOD='.$METHOD.'&PAYMENTACTION='.$PAYMENTACTION.'&IPADDRESS='.$IPADDRESS.'&AMT='.$AMT.'&CREDITCARDTYPE='.$CREDITCARDTYPE.'&ACCT='.$ACCT.'&EXPDATE='.$EXPDATE.'&CVV2='.$CVV2.'&FIRSTNAME='.$FIRSTNAME.'&LASTNAME='.$LASTNAME.'&STREET='.$STREET.'&CITY='.$CITY.'&STATE='.$STATE.'&ZIP='.$ZIP;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $pfHostAddr);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -522,8 +500,7 @@ class PackageController extends Controller
         } else {
           return response()->json([
             'status' => false,
-            'message' => $arr['L_LONGMESSAGE0'],
-            'data' => $arr
+            'message' => $arr['L_LONGMESSAGE0']
           ], 500);
         }
       } catch (\Exception $e) {
