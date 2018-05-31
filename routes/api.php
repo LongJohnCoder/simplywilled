@@ -643,20 +643,19 @@ Route::group(['prefix' => 'v1'], function() {
             /*
              * Route for get packages
              * */
-            Route::get('get-packages', [
-                'uses' => 'Api\V1\PackageController@getPackages',
-                'as'   => 'api.v1.getuserPackages.get'
-            ]);
-
-            /*
-             * Route for get packages
-             * */
             Route::post('purchase-package', [
                 'uses' => 'Api\V1\PackageController@purchasePackage',
                 'as'   => 'api.v1.purchasePackage.post'
             ]);
         });
 
+        /*
+         * Route for get packages
+         * */
+        Route::get('get-packages', [
+            'uses' => 'Api\V1\PackageController@getPackages',
+            'as'   => 'api.v1.getuserPackages.get'
+        ]);
         /**
          * Route for success paypal payment
          */
