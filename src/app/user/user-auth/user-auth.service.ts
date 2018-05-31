@@ -26,4 +26,13 @@ export class UserAuthService {
       return false;
     }
   }
+
+  isPaid() {
+      const data = this.getToken();
+      if ( data && (data.user.package_id !== null) ) {
+          return true;
+      } else {
+          return false;
+      }
+  }
 }

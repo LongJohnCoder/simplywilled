@@ -48,7 +48,7 @@ export class PackagesComponent implements OnInit {
   }
 
   getPackages() {
-    this.packageService.getPackages(this.token).subscribe(
+    this.packageService.getPackages().subscribe(
         (resp: any) => {
             this.data.id = resp.data[0].id;
             this.data.name = resp.data[0].name;

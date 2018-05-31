@@ -15,9 +15,8 @@ export class PackagesService {
    * @param {string} token
    * @returns {Observable<Object>}
    */
-  getPackages(token: string) {
-      return this.http.get(environment.API_URL + 'user/get-packages', {headers: new HttpHeaders(
-              {'Authorization': token})});
+  getPackages() {
+      return this.http.get(environment.API_URL + 'user/get-packages');
   }
 
   /**

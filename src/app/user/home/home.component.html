@@ -198,78 +198,33 @@
         <li>
           <div class="pkg_first_sec">
             <span class="single_pkg"><img src="../../../../assets/images/pkg1.png" alt="error img"></span>
-            <h3 class="single_text_heading">Single Will</h3>
+            <h3 class="single_text_heading">{{data.name}}</h3>
             <h4 class="pkg_text">Package</h4>
-            <p class="will_package_info">The Perfect Last Will Package For You To Get Your Estate In Order.</p>
+            <p class="will_package_info">{{data.description}}</p>
           </div>
           <div class="book_sec_main">
             <div class="book_main">
               <span class="single_will_book"><img src="../../../../assets/images/single-pkg-book.png" alt="error img"></span>
-              <h1 class="book_price">$99</h1>
+              <h1 class="book_price">${{data.amount}}</h1>
             </div>
             <div class="clear"></div>
             <p class="payPal"><span>Shop With Confidence Powered by</span> <a href="#"><img src="../../../../assets/images/paypal-btn.png" class="img-responsive"></a></p>
-            <a href="#" class="get_start_pkg_btn hide_btn"><i class="fa fa-chevron-right" aria-hidden="true"></i> Buy Now</a>
+            <a routerLink="/register" class="get_start_pkg_btn hide_btn"><i class="fa fa-chevron-right" aria-hidden="true"></i> Buy Now</a>
           </div>
 
           <div class="hide_show_main_pkg" [ngClass]="{'open': whatIncl}">
             <span class="key_benefits_text">Key Benefits</span>
             <ul class="pkg_benefits_ul">
-              <li>
-                <span class="faster_text" >Faster and easier than hiring a lawyer*</span>
-              </li>
-              <li>
-                <span class="faster_text">Make a Simple Will & Supporting Documents for you</span>
-              </li>
-              <li>
-                <span class="faster_text">Leave property to those you love</span>
-              </li>
-              <li>
-                <span class="faster_text">Provide for your children & your estate</span>
-              </li>
-              <li>
-                <span class="faster_text">Appoint a guardian for minor children</span>
-              </li>
-              <li>
-                <span class="faster_text">Plan for a medical emergency</span>
-              </li>
-              <li>
-                <span class="faster_text">Appoint a financial power of attorney</span>
-              </li>
-              <li>
-                <span class="faster_text">Make your final wishes known</span>
-              </li>
-              <li>
-                <span class="faster_text">Update your plan as often as you wish</span>
-              </li>
-
+              <li *ngFor="let benefit of data.key_benefits"><span class="faster_text">{{benefit}}</span></li>
             </ul>
+
             <span class="whats_included_text">What’s Included:</span>
             <ul class="include_ul">
-              <li>
-                <span class="faster_text2">Includes a Complete Set of Documents For 1 Person</span>
+              <li *ngFor="let inclu of data.included">
+                <span class="faster_text2">{{inclu}}</span>
               </li>
-              <li>
-                <span class="faster_text2">A Last Will & Testament</span>
-              </li>
-              <li>
-                <span class="faster_text2">Healthcare Power of Attorney</span>
-              </li>
-              <li>
-                <span class="faster_text2">Durable General Power of Attorney</span>
-              </li>
-              <li>
-                <span class="faster_text2">Living Will</span>
-              </li>
-              <li>
-                <span class="faster_text2">HIPAA Wavier</span>
-              </li>
-              <li>
-                <span class="faster_text2">Burial Instructions</span>
-              </li>
-
             </ul>
-            <a href="#" class="get_start_pkg_btn"><i class="fa fa-chevron-right" aria-hidden="true"></i> Buy Now</a>
+            <a routerLink="/register" class="get_start_pkg_btn"><i class="fa fa-chevron-right" aria-hidden="true"></i> Buy Now</a>
           </div>
           <a href="javascript:void(0)" class="include_text" (click)="showIncluded()">
             {{whatIncl == true ? 'Hide' : 'See what’s included'}}
