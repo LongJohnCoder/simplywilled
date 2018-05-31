@@ -506,7 +506,8 @@ class PackageController extends Controller
       } catch (\Exception $e) {
         return response()->json([
           'status' => false,
-          'message' => $e->getMessage()
+          'message' => $e->getMessage(),
+          'line' => "The exception was created on line: ".$e->getLine()
         ], 500);
       }
     }
