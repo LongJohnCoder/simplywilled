@@ -99,6 +99,8 @@ class PackageController extends Controller
       $package->amount      = $amount;
       $package->valid_till  = $timeNow;
       $package->description = $request->has('description') ? $request->description : '';
+      $package->key_benefits = json_encode($request->key_benefits);
+      $package->included     = json_encode($request->included);
       $package->status      = '1';
       if($package->save()) {
         return response()->json([
@@ -203,6 +205,12 @@ class PackageController extends Controller
       }
     }
 
+    /**
+    * Paypal Express Checkout
+    *
+    * @param Request $request
+    * @return \Illuminate\Http\JsonResponse
+    */
     public function purchasePackage(Request $request)
     {
       $pkgID         = $request->pkg_id;
@@ -320,6 +328,10 @@ class PackageController extends Controller
       return response()->json([$payment->toArray(), 'approval_url' => $payment->getApprovalLink()], 200);
     }
 
+    /**
+    * Paypal Express Checkout Success
+    * @return \Illuminate\Http\JsonResponse
+    */
     public function paypalPackageSuccess()
     {
       try {
@@ -340,11 +352,19 @@ class PackageController extends Controller
       }
     }
 
+    /**
+    * Paypal Express Checkout Failed
+    * @return \Illuminate\Http\JsonResponse
+    */
     public function paypalPackageFailed()
     {
       return redirect('/dashboard/packages/status/paymentID');
     }
 
+    /**
+    * Paypal FLow Process
+    * @return \Illuminate\Http\JsonResponse
+    */
     public function paypalFlowButton()
     {
       $amount = 199.00;
@@ -393,7 +413,11 @@ class PackageController extends Controller
         'message' => 'Generated Form Data'
       ], 200);
     }
-
+    /**
+    * Paypal DoDirectPayment Process
+    * @param Request $request
+    * @return \Illuminate\Http\JsonResponse
+    */
     public function paypalDirectPayment(Request $request)
     {
       try {
