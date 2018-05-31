@@ -129,17 +129,55 @@
                                     <span *ngIf="description.invalid && description.touched" style="color:red;"> Description is reqired ! </span>
                                 </div>
                                 <div class="modal-body">
-                                    <label for="amount">Amount:</label>
-                                    <input type="number" id="amount" class="form-control" pattern="^\d+(\.\d+)?$" [(ngModel)]="row.amount" name="amount" ngModel #amount="ngModel" required>
-                                    <span *ngIf="amount.invalid && amount.touched" style="color:red;"> Amount is required ! </span>
+                                    <div class="row">
+                                        <div class="twoCol">
+                                            <label for="amount">Amount:</label>
+                                            <input type="number" id="amount" class="form-control" pattern="^\d+(\.\d+)?$" [(ngModel)]="row.amount" name="amount" ngModel #amount="ngModel" required>
+                                            <span *ngIf="amount.invalid && amount.touched" style="color:red;"> Amount is required ! </span>
+                                        </div>
+                                        <div class="twoCol">
+                                            <label for="status">Status</label>
+                                            <select id="status" class="form-control" name="status" [(ngModel)]="row.status" #status="ngModel" required>
+                                                <option value="1">Active</option>
+                                                <option value="0">In Active</option>
+                                            </select>
+                                            <span *ngIf="status.invalid && status.touched" style="color:red;"> Select package status ! </span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    <label for="status">Status</label>
-                                    <select id="status" class="form-control" name="status" [(ngModel)]="row.status" #status="ngModel" required>
-                                        <option value="1">Active</option>
-                                        <option value="0">In Active</option>
-                                    </select>
-                                    <span *ngIf="status.invalid && status.touched" style="color:red;"> Select package status ! </span>
+                                <div class="modal-body denefit">
+                                    <div class="row formHeadingRow">
+                                        <div class="threeColField">
+                                            <label>Key Benefits</label>
+                                        </div>
+                                    </div>
+                                    <div class="row formRow" >
+                                        <div class="threeColField"><input type="text" class="form-control" placeholder="Key Benefits"></div>
+                                        <div class="threeColField"><button type="button" class="btn btn btn-danger delRow"><i class="fa fa-trash"></i></button></div>
+                                    </div>
+                                    <div class="addRowBtnRow">
+                                        <div class="addRowBtn">
+                                            <button type="button" class="btn btn btn-primary addRow">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="modal-body denefit">
+                                    <div class="row formHeadingRow"> 
+                                        <div class="threeColField">
+                                            <label>What's Included</label>
+                                        </div>
+                                    </div>
+                                    <div class="row formRow" >
+                                        <div class="threeColField"><input type="text" class="form-control" placeholder="What's Included"></div>
+                                        <div class="threeColField"><button type="button" class="btn btn btn-danger delRow"><i class="fa fa-trash"></i></button></div>
+                                    </div>
+                                    <div class="addRowBtnRow">
+                                        <div class="addRowBtn">
+                                            <button type="button" class="btn btn btn-primary addRow">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
                                 </div>
                                 <div class="modal-body">
                                     <button type="button" class="btn btn-primary" (click)="additem()" [disabled]="!addPackage.form.valid"> Add Package </button>
