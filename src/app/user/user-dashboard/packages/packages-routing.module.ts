@@ -5,7 +5,8 @@ import {PaymentStatusComponent} from './payment-status/payment-status.component'
 
 const routes: Routes = [
     { path: '', component: PackagesComponent},
-    { path: 'status/:id', component: PaymentStatusComponent}
+    { path: 'status/:id', component: PaymentStatusComponent},
+    { path: 'payment', loadChildren: './payment/payment.module#PaymentModule'}
 ];
 
 @NgModule({

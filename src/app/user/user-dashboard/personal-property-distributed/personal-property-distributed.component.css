@@ -636,7 +636,7 @@ a.add-btn{
     text-decoration: none;
 }
 .title-bar{
-    background: url(../../../../assets/images/header-bg.png);
+    background: url('../../../../assets/images/header-bg.png');
     background-size: 100% 100%;
     padding: 40px 20px;
     border-top-left-radius: 10px;
