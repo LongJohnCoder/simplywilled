@@ -2571,8 +2571,10 @@ select.form-control{
     height: 100%;
     background: rgba(255, 255, 255, 0.86);
     z-index: 99999;
+    top: 0;
+    left: 0;
 }
-.pageLoader .loaderInner{ 
+.pageLoader .loaderInner{
     max-width: 362px;
     padding: 10px;
     margin: 0 auto;
@@ -2594,7 +2596,7 @@ select.form-control{
     display: inline-block;
     width: 5px;
     height: 5px;
-    border-radius:5px; 
+    border-radius:5px;
     background: #ffb700;
     opacity: 1;
     animation-name: loading;
@@ -2652,7 +2654,7 @@ select.form-control{
         width: 100%;
         max-width: 100%;
         flex: unset;
-    } 
+    }
     #dataTable_wrapper .row:first-child .col-sm-12.col-md-6 .dataTables_length label{
         width: 200px;
         text-align: left;
@@ -2672,5 +2674,5 @@ select.form-control{
         width: 150px;
         display: inline-block;
     }
-    
+
 }

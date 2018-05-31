@@ -1,5 +1,17 @@
 <!--If any gift show here start-->
+<div class="pageLoader" *ngIf="loading">
+  <div class="loaderInner">
+    <img src="../../../../assets/images/owl-loading.gif" alt="Loading...">
+    <p class="loadingTxt">
+      Please Wait
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+  </div>
+</div>
 
+<div *ngIf="!loading" >
 <div class="row" *ngIf="!onNewModule">
   <div class="main-content tellusaboutyou">
     <div class="col-md-12 col-sm-12 col-xs-12 giftSec" *ngFor="let each_gift of giftResp; let i= index">
@@ -88,5 +100,5 @@
 <app-business-interest *ngIf="business_interest" [giftCount]="giftCount+1"></app-business-interest>
 <app-specific-asset *ngIf="specific_asset" [giftCount]="giftCount+1"></app-specific-asset>
 
-
+</div>
 <!--make decision which view to open start-->

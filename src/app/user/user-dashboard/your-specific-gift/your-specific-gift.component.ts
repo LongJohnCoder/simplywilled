@@ -25,6 +25,7 @@ export class YourSpecificGiftComponent implements OnInit {
   business_interest: boolean;
   specific_asset: boolean;
   deleteGiftDb: Observable<any>;
+  loading = true;
   constructor(private ysgService: YourSpecificGiftService, private editService: EditGiftService) { }
   ngOnInit() {
     this.errFlag = false;
@@ -74,7 +75,7 @@ export class YourSpecificGiftComponent implements OnInit {
         this.errFlag = true;
         this.errString = err.error.message;
         console.log(this.errString);
-      }, () => {});
+      }, () => {this.loading = false;});
     } else {
       this.errFlag = true;
       this.errString = 'Please login to continue';

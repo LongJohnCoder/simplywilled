@@ -18,14 +18,18 @@
             </label>
           </li>
         </ul>
+        <div *ngIf="!disinheritForm.get('disinherit').valid && disinheritForm.get('disinherit').touched" >
+          <span *ngIf="disinheritForm.get('disinherit').hasError('required')" class="error_txt">Please fill up this field.</span>
+        </div>
       </div>
       <div  *ngIf="disinheritForm.value.disinherit == '1'">
       <div class="form-group">
         <label>What is the full legal name of the person you would like to disinherit? </label>
         <input type="text" formControlName="fullname" class="form-control">
-          <span *ngIf="!disinheritForm.get('disinherit').valid && disinheritForm.get('disinherit').touched" class="help-block">
-              <span *ngIf="disinheritForm.get('disinherit').errors['required']" style="color: red">This field is required!</span>
-          </span>
+          <div *ngIf="!disinheritForm.get('fullname').valid && disinheritForm.get('fullname').touched">
+              <span *ngIf="disinheritForm.get('fullname').hasError('required')" class="error_txt">Please provide a proper capitalized full legal name</span>
+              <span *ngIf="disinheritForm.get('fullname').hasError('pattern')" class="error_txt">Please provide a proper capitalized full legal name</span>
+          </div>
       </div>
       <div class="form-group">
         <label>What is their relationship to you? </label>
@@ -45,15 +49,15 @@
           <option value="Friend">Friend</option>
           <option value="Other">Other</option>
         </select>
-          <span *ngIf="!disinheritForm.get('relationship').valid && disinheritForm.get('relationship').touched" class="help-block">
-              <span *ngIf="disinheritForm.get('relationship').errors['required']" style="color: red">This field is required!</span>
-          </span>
+          <div *ngIf="!disinheritForm.get('relationship').valid && disinheritForm.get('relationship').touched" >
+              <span *ngIf="disinheritForm.get('relationship').hasError('required')" class="error_txt">Please fill up this field.</span>
+          </div>
       </div>
           <div class="form-group" *ngIf="disinheritForm.value.relationship == 'Other'">
               <input type="text" formControlName="other_relationship" class="form-control" placeholder="Type here relationship">
-              <span *ngIf="!disinheritForm.get('other_relationship').valid && disinheritForm.get('other_relationship').touched" class="help-block">
-              <span *ngIf="disinheritForm.get('other_relationship').errors['required']" style="color: red">This field is required!</span>
-          </span>
+              <div *ngIf="!disinheritForm.get('other_relationship').valid && disinheritForm.get('other_relationship').touched" class="help-block">
+                  <span *ngIf="disinheritForm.get('other_relationship').hasError('required')" class="error_txt">Please fill up this field.</span>
+              </div>
           </div>
       <div class="form-group">
         <label>What is their gender?</label>
@@ -71,11 +75,14 @@
             </label>
           </li>
         </ul>
+        <div *ngIf="!disinheritForm.get('gender').valid && disinheritForm.get('gender').touched" >
+          <span *ngIf="disinheritForm.get('gender').hasError('required')" class="error_txt">Gender is required.</span>
+        </div>
       </div>
       </div>
       <div class="form-footer">
         <button class="btn common-button btn-grey pull-left"  routerLink="/dashboard/contingent-beneficiaries">Go Back</button>
-        <button class="btn common-button btn-complete" type="submit" [disabled]="!disinheritForm.valid">Continue</button>
+        <button class="btn common-button btn-complete" type="submit" >Continue</button>
       </div>
     </form>
   </div>

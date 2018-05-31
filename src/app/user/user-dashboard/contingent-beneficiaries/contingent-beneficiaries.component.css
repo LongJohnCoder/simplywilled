@@ -135,6 +135,19 @@ header{
     font-weight: bold;
 }
 
+.error_input {
+  border: 1px solid #ff5959;
+}
+.error_txt {
+  width: 100%;
+  display: inline-block;
+  background-color: #ff5959;
+  color: #fff;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+}
+
 .sidebar-body{
     background: #fff;
     border-radius: 10px;

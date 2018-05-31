@@ -17,27 +17,45 @@
               <li><label class="radio_custom singing_instruction"><span class="custom_img3"><img src="../../../../../assets/images/cash2.png" alt="Cash"></span></label></li>
             </ul>
             <h3 class="registered_domestic2 blue_font">Is this a gift to an Individual or Charity?</h3>
-            <ul class="radio_ul4">
-              <li>
-                <label class="radio_custom zero_nine_page" (click)="showChild('IN')" [ngClass]="{'active': cashGiftForm.value.gift_to === 'IN'}">
-                  <input type="radio" class="cash_individual_charity" formControlName="gift_to" value="IN">
-                  <span class="custom_img"><img src="../../../../../assets/images/hippa.png" alt="Hippa"></span>
-                  <span class="human_status">Individual</span>
-                </label>
-              </li>
-              <li>
-                <label class="radio_custom zero_nine_page" (click)="showChild('CH')" [ngClass]="{'active': cashGiftForm.value.gift_to === 'CH'}">
-                  <input type="radio" class="cash_individual_charity" formControlName="gift_to" value="CH">
-                  <span class="custom_img"><img src="../../../../../assets/images/gift.png" alt="gift"></span>
-                  <span class="human_status">Charity</span>
-                </label>
-              </li>
-            </ul>
+            <div>
+              <ul class="radio_ul4">
+                <li>
+                  <label class="radio_custom zero_nine_page" (click)="showChild('IN')" [ngClass]="{'active': cashGiftForm.value.gift_to === 'IN'}">
+                    <input type="radio" class="cash_individual_charity" formControlName="gift_to" value="IN">
+                    <span class="custom_img"><img src="../../../../../assets/images/hippa.png" alt="Hippa"></span>
+                    <span class="human_status">Individual</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="radio_custom zero_nine_page" (click)="showChild('CH')" [ngClass]="{'active': cashGiftForm.value.gift_to === 'CH'}">
+                    <input type="radio" class="cash_individual_charity" formControlName="gift_to" value="CH">
+                    <span class="custom_img"><img src="../../../../../assets/images/gift.png" alt="gift"></span>
+                    <span class="human_status">Charity</span>
+                  </label>
+                </li>
+              </ul>
+              <span class="error_txt" *ngIf="cashGiftForm.get('gift_to').dirty && cashGiftForm.get('gift_to').touched && cashGiftForm.get('gift_to').hasError('required')">
+                  Please answer this question.
+              </span>
+            </div>
+
             <div class="gift_individual_container" *ngIf="isIndividual">
               <div formArrayName="individualControls">
                 <div *ngFor="let item of cashGiftForm['controls'].individualControls['controls']; let i = index;"  [formGroupName]="i">
-                  <label class="legal_name_benifets">Beneficiary's full legal name?</label>
-                  <input type="text" class="legal_benifit_input capitalize_txt" formControlName="full_legal_name">
+                  <div  class="form-group">
+                    <label class="legal_name_benifets">Beneficiary's full legal name?</label>
+                    <input type="text" class="legal_benifit_input capitalize_txt" formControlName="full_legal_name" [ngClass] = "{'error_input': !cashGiftForm.get('individualControls.0.full_legal_name').valid && cashGiftForm.get('individualControls.0.full_legal_name').touched}">
+
+                    <div *ngIf="!cashGiftForm.get('individualControls.0.full_legal_name').valid && cashGiftForm.get('individualControls.0.full_legal_name').touched">
+                        <span class="error_txt" *ngIf="cashGiftForm.get('individualControls.0.full_legal_name').hasError('required')">
+                          Please provide a proper capitalized full legal name.
+                        </span>
+                        <span class="error_txt" *ngIf="cashGiftForm.get('individualControls.0.full_legal_name').hasError('pattern')">
+                          Please provide a proper capitalized full legal name.
+                        </span>
+                    </div>
+                  </div>
+
                   <label class="legal_name_benifets">Beneficiary's relationship to you?</label>
                   <span class="drop_down">
                       <select class="beneficiary_relationship_dropdown" (change)="handleChange($event.target.value)" formControlName="relationship">
@@ -56,12 +74,28 @@
                           <option value="Friend">Friend</option>
                           <option value="Other">Other</option>
                       </select>
-                    </span>
+                  </span>
+                  <span class="error_txt" *ngIf="!cashGiftForm.get('individualControls.0.relationship').valid && cashGiftForm.get('individualControls.0.relationship').touched && cashGiftForm.get('individualControls.0.relationship').hasError('required')">
+                        Please answer this question.
+                  </span>
                   <div class="beneficiary_relationship_other" *ngIf="isOtherRelationship">
                     <input type="text" class="personal_representative_input capitalize_txt" formControlName="other_relationship_string" placeholder="Type Here Relationship">
+                    <span class="error_txt" *ngIf="!cashGiftForm.get('individualControls.0.other_relationship_string').valid && cashGiftForm.get('individualControls.0.other_relationship_string').touched && cashGiftForm.get('individualControls.0.other_relationship_string').hasError('required')">
+                        Please answer this question.
+                    </span>
                   </div>
-                  <label class="legal_name_benifets">What is the amount of the gift?</label>
-                  <input type="text" class="legal_benifit_input" formControlName="gift_amt" placeholder="$">
+
+                  <div class="form-group">
+                    <label class="legal_name_benifets">What is the amount of the gift?</label>
+                    <input type="text" class="legal_benifit_input" formControlName="gift_amt" placeholder="$" [ngClass] = "{'error_input': !cashGiftForm.get('individualControls.0.gift_amt').valid && cashGiftForm.get('individualControls.0.gift_amt').touched}">
+                    <span class="error_txt" *ngIf="!cashGiftForm.get('individualControls.0.gift_amt').valid && cashGiftForm.get('individualControls.0.gift_amt').touched && cashGiftForm.get('individualControls.0.gift_amt').hasError('required')">
+                        Please answer this question.
+                    </span>
+                    <span class="error_txt" *ngIf="!cashGiftForm.get('individualControls.0.gift_amt').valid && cashGiftForm.get('individualControls.0.gift_amt').touched && cashGiftForm.get('individualControls.0.gift_amt').hasError('pattern')">
+                        Please enter a valid amount.
+                    </span>
+                  </div>
+
                   <h2 class="full_legal_name2">Beneficiary's gender?</h2>
                   <ul class="radio_ul6">
                     <li>
@@ -76,6 +110,9 @@
                         <span class="custom_img"><img src="../../../../../assets/images/leza.png" alt="Female"></span>
                         <span class="human_status"> Female</span> </label>
                     </li>
+                    <span class="error_txt" *ngIf="!cashGiftForm.get('individualControls.0.b_gender').valid && cashGiftForm.get('individualControls.0.b_gender').touched && cashGiftForm.get('individualControls.0.b_gender').hasError('required')">
+                        Gender is required.
+                    </span>
                   </ul>
                   <h2 class="beneficiary_predeceases blue_font">If your beneficiary passes before you, should this gift go to your beneficiary&#39;s issue?</h2>
                   <ul class="radio_ul7">
@@ -92,6 +129,9 @@
                         <span class="human_status"> No</span> </label>
                     </li>
                   </ul>
+                    <span class="error_txt" *ngIf="!cashGiftForm.get('individualControls.0.passed_by').valid && cashGiftForm.get('individualControls.0.passed_by').touched && cashGiftForm.get('individualControls.0.passed_by').hasError('required')">
+                        Please fill up this field.
+                    </span>
                 </div>
               </div>
             </div>
@@ -99,18 +139,30 @@
               <div formArrayName="charityControls">
                 <div *ngFor="let item of cashGiftForm['controls'].charityControls['controls']; let j = index" [formGroupName]="j">
                   <label class="legal_name_benifets">Organization name?</label>
-                  <input type="text" class="legal_benifit_input capitalize_txt" formControlName="organization_name">
+                  <input type="text" class="legal_benifit_input capitalize_txt" formControlName="organization_name" [ngClass] ="{'error_input': !cashGiftForm.get('charityControls.0.organization_name').valid && cashGiftForm.get('charityControls.0.organization_name').touched}">
+                  <span class="error_txt" *ngIf="!cashGiftForm.get('charityControls.0.organization_name').valid && cashGiftForm.get('charityControls.0.organization_name').touched && cashGiftForm.get('charityControls.0.organization_name').hasError('required')">
+                      Please fill up this field.
+                  </span>
                   <label class="legal_name_benifets">Organization address?</label>
-                  <input type="text" class="legal_benifit_input" formControlName="organization_address" placeholder="Street Address, City, State, Zip Code">
+                  <input type="text" class="legal_benifit_input" formControlName="organization_address" placeholder="Street Address, City, State, Zip Code" [ngClass] ="{'error_input':!cashGiftForm.get('charityControls.0.organization_address').valid && cashGiftForm.get('charityControls.0.organization_address').touched}">
+                  <span class="error_txt" *ngIf="!cashGiftForm.get('charityControls.0.organization_address').valid && cashGiftForm.get('charityControls.0.organization_address').touched && cashGiftForm.get('charityControls.0.organization_address').hasError('required')">
+                      Please fill up this field.
+                  </span>
                   <label class="legal_name_benifets">What is the amount of the gift?</label>
-                  <input type="text" class="legal_benifit_input" formControlName="charity_gift_amt" placeholder="$">
+                  <input type="text" class="legal_benifit_input" formControlName="charity_gift_amt" placeholder="$" [ngClass] ="{'error_input':!cashGiftForm.get('charityControls.0.charity_gift_amt').valid && cashGiftForm.get('charityControls.0.charity_gift_amt').touched}">
+                  <span class="error_txt" *ngIf="!cashGiftForm.get('charityControls.0.charity_gift_amt').valid && cashGiftForm.get('charityControls.0.charity_gift_amt').touched && cashGiftForm.get('charityControls.0.charity_gift_amt').hasError('required')">
+                      Please fill up this field.
+                  </span>
+                  <span class="error_txt" *ngIf="!cashGiftForm.get('charityControls.0.charity_gift_amt').valid && cashGiftForm.get('charityControls.0.charity_gift_amt').touched && cashGiftForm.get('charityControls.0.charity_gift_amt').hasError('pattern')">
+                      Please enter a valid amount.
+                  </span>
                 </div>
               </div>
             </div>
             <ul class="back_next_btn_ul" style="margin-top:20px;">
               <li *ngIf="isEdit"><a href="javascript:void(0)" class="gift_remove_form" (click)="popUpDelete(formEditDataSet.id)">Remove</a></li>
               <li *ngIf="!isEdit"><a href="javascript:void(0)" class="gift_remove_form" (click)="popUp()">Remove</a></li>
-              <li><button class="saveBtn" type="submit" [disabled]="!cashGiftForm.valid">Save</button></li>
+              <li><button class="saveBtn" type="submit" >Save</button></li>
             </ul>
           </form>
         </div>

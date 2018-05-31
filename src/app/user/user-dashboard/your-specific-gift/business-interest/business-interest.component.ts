@@ -242,7 +242,7 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
                          break;
           case '_se':    console.log('Se');
                          this.businessInterestForm.get('individual_name').setValidators([Validators.required]);
-                         this.businessInterestForm.get('passed_by_child').setValidators([Validators.required]);
+                         this.businessInterestForm.get('passed_by_child').clearValidators();
                          this.businessInterestForm.get('individual_name').updateValueAndValidity();
                          this.businessInterestForm.get('passed_by_child').updateValueAndValidity();
                          break;

@@ -18,6 +18,9 @@
             </label>
           </li>
         </ul>
+        <div *ngIf="!contingentBeneficiariesForm.get('isContingentBeneficiary').valid && contingentBeneficiariesForm.get('isContingentBeneficiary').touched" class="help-block">
+          <span *ngIf="contingentBeneficiariesForm.get('isContingentBeneficiary').hasError('required')" class="error_txt">Please fill up this field.</span>
+        </div>
       </div>
 
       <div class="form-group" *ngIf="contingentBeneficiariesForm.value.isContingentBeneficiary == '1'">
@@ -37,19 +40,21 @@
             </label>
           </li>
         </ul>
+        <div *ngIf="!contingentBeneficiariesForm.get('distribution_type').valid && contingentBeneficiariesForm.get('distribution_type').touched" class="help-block">
+          <span *ngIf="contingentBeneficiariesForm.get('distribution_type').hasError('required')" class="error_txt">Please fill up this field.</span>
+        </div>
       </div>
         <div class="form-group" *ngIf="contingentBeneficiariesForm.value.distribution_type == 'other'">
             <label> Otherwise, to be distributed to: </label>
             <textarea formControlName="info" cols="59" rows="6"></textarea>
-            <span *ngIf="!contingentBeneficiariesForm.get('info').valid && contingentBeneficiariesForm.get('info').touched" class="help-block">
-                    <span *ngIf="contingentBeneficiariesForm.get('info').errors['required']" style="color: red">This field Required !</span>
-                    <span *ngIf="contingentBeneficiariesForm.get('info').errors['pattern']" style="color: red">Invalid!</span>
-                  </span>
+            <div *ngIf="!contingentBeneficiariesForm.get('info').valid && contingentBeneficiariesForm.get('info').touched" class="help-block">
+              <span *ngIf="contingentBeneficiariesForm.get('info').hasError('required')" class="error_txt">Please fill up this field.</span>
+            </div>
         </div>
 
       <div class="form-footer">
         <button class="btn common-button btn-grey pull-left" (click)="goBack()">Go Back</button>
-        <button class="btn common-button btn-complete" type="submit" [disabled]="!contingentBeneficiariesForm.valid">Continue</button>
+        <button class="btn common-button btn-complete" type="submit" >Continue</button>
       </div>
     </form>
   </div>

@@ -10,52 +10,72 @@ import {Router} from '@angular/router';
   styleUrls: ['./disinherit.component.css']
 })
 export class DisinheritComponent implements OnInit {
+    /**Variable declaration*/
     disinheritForm: FormGroup;
     errorMessage: any;
     fullUserInfo: any;
+  /**Constructor call*/
   constructor( private authService: UserAuthService,
                private userService: UserService,
                private router: Router,
                private fb: FormBuilder, ) { this.createForm(); }
 
+  /**When the component initialises*/
   ngOnInit() {
       this.getUserData();
   }
 
+  /**Initialises the form*/
   createForm() {
       this.disinheritForm = this.fb.group({
           disinherit: ['', Validators.required],
           fullname: [''],
-          relationship: [''],
+          relationship: new FormControl(''),
           other_relationship: [''],
           gender: ['']
       });
   }
 
+  /**
+   *function to add/ upadte user data
+   * @param model
+   */
+  onSubmit(model: any) {
+    if (model.valid) {
+      let modelData = model.value;
+      modelData.step = 11;
+      modelData.user_id = this.authService.getUser()['id'];
+      console.log(modelData);
+      this.userService.editProfile(modelData).subscribe(
+        (response: any) => {
+          // go to dashboard section
+          this.router.navigate(['/dashboard']);
+        },
+        (error: any) => {
+          for (let prop in error.error.message) {
+            this.errorMessage = error.error.message[prop];
+            break;
+          }
+          setTimeout(() => {
+            this.errorMessage = '';
+          }, 3000);
+        }
+      );
+    } else {
+      alert('Please fill up the required fields');
+      this.markFormGroupTouched(model);
+    }
+  }
+
     /**
-     *function to add/ upadte user data
-     * @param model
+     * Marks all controls in a form group as touched
+     * @param formGroup
      */
-    onSubmit(model: any) {
-        let modelData = model.value;
-        modelData.step = 11;
-        modelData.user_id = this.authService.getUser()['id'];
-        console.log(modelData);
-        this.userService.editProfile(modelData).subscribe(
-            (response: any) => {
-                // go to dashboard section
-                this.router.navigate(['/dashboard']);
-            },
-            (error: any) => {
-                for (let prop in error.error.message) {
-                    this.errorMessage = error.error.message[prop];
-                    break;
-                }
-                setTimeout(() => {
-                    this.errorMessage = '';
-                }, 3000);
-            }
-        );
+    markFormGroupTouched (formGroup: FormGroup) {
+      (<any>Object).values(formGroup.controls).forEach(control => {
+        control.markAsTouched();
+        control.markAsDirty();
+      });
     }
 
     /**
@@ -65,11 +85,13 @@ export class DisinheritComponent implements OnInit {
         this.userService.getUserDetails(this.authService.getUser()['id']).subscribe(
             (response: any) => {
                 this.fullUserInfo = response.data[10].data;
-                this.disinheritForm.get('disinherit').setValue(this.fullUserInfo.disinherit);
-                this.disinheritForm.get('fullname').setValue(this.fullUserInfo.fullname);
-                this.disinheritForm.get('relationship').setValue(this.fullUserInfo.relationship);
-                this.disinheritForm.get('other_relationship').setValue(this.fullUserInfo.other_relationship);
-                this.disinheritForm.get('gender').setValue(this.fullUserInfo.gender);
+                console.log(this.fullUserInfo);
+                this.disinheritForm.get('disinherit').setValue(this.fullUserInfo.disinherit !== null && this.fullUserInfo.disinherit !== undefined ? this.fullUserInfo.disinherit : '');
+                this.disinheritForm.get('fullname').setValue(this.fullUserInfo.fullname !== null && this.fullUserInfo.fullname !== undefined ? this.fullUserInfo.fullname : '');
+                this.disinheritForm.get('relationship').setValue(this.fullUserInfo.relationship !== null && this.fullUserInfo.relationship !== undefined ? this.fullUserInfo.relationship : '');
+                this.disinheritForm.get('other_relationship').setValue(this.fullUserInfo.other_relationship !== null && this.fullUserInfo.other_relationship !== undefined ? this.fullUserInfo.other_relationship : '');
+                this.disinheritForm.get('gender').setValue(this.fullUserInfo.gender !== null && this.fullUserInfo.gender !== undefined ?  this.fullUserInfo.gender : '');
+                this.addRemoveOprions();
             },
             (error: any) => {
                 console.log(error.error);
@@ -82,7 +104,7 @@ export class DisinheritComponent implements OnInit {
     addRemoveOprions() {
         if (this.disinheritForm.value.disinherit === '1') {
                 // add validation to rest of the sections
-            this.disinheritForm.get(`fullname`).setValidators([Validators.required]);
+            this.disinheritForm.get(`fullname`).setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
             this.disinheritForm.get(`fullname`).updateValueAndValidity();
             this.disinheritForm.get(`relationship`).setValidators([Validators.required]);
             this.disinheritForm.get(`relationship`).updateValueAndValidity();

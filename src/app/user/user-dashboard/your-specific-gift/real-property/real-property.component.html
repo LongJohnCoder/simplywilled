@@ -4,7 +4,7 @@
       <li>
         <h2 class="singing_instruction3">Gift <span class="gift_list_number">{{giftCount}}</span></h2>
         <div class="gift_form_container">
-          <form [formGroup]="realPropertyForm" (ngSubmit)="saveRealProperty(realPropertyForm.value)">
+          <form [formGroup]="realPropertyForm">
             <h2 class="singing_instruction3" style="padding-top:0;">Tell Us About Gifts of Real Property</h2>
             <ul class="radio_ul3">
               <li><label class="radio_custom singing_instruction"><span class="custom_img3"><img src="../../../../../assets/images/home-pic.png" alt="Cash"></span></label></li>
@@ -24,13 +24,25 @@
                   <span class="human_status"> No</span> </label>
               </li>
             </ul>
+            <span class="error_txt" *ngIf="!realPropertyForm.get('primary_residence').valid && realPropertyForm.get('primary_residence').touched && realPropertyForm.get('primary_residence').hasError('required')">
+                Please fill up this field.
+            </span>
             <div class="gift_individual_container">
               <label class="legal_name_benifets">Street Address of the Property?</label>
-              <input type="text" class="legal_benifit_input capitalize_txt" formControlName="street_address">
+              <input type="text" class="legal_benifit_input capitalize_txt" formControlName="street_address" [ngClass]="{'error_input':!realPropertyForm.get('street_address').valid && realPropertyForm.get('street_address').touched}">
+              <span class="error_txt" *ngIf="!realPropertyForm.get('street_address').valid && realPropertyForm.get('street_address').touched && realPropertyForm.get('street_address').hasError('required')">
+                Street address is required.
+              </span>
               <label class="legal_name_benifets">City</label>
-              <input type="text" class="legal_benifit_input capitalize_txt" formControlName="city">
+              <input type="text" class="legal_benifit_input capitalize_txt" formControlName="city" [ngClass]="{'error_input':!realPropertyForm.get('city').valid && realPropertyForm.get('city').touched}">
+              <span class="error_txt" *ngIf="!realPropertyForm.get('city').valid && realPropertyForm.get('city').touched && realPropertyForm.get('city').hasError('required')">
+                City is required.
+              </span>
               <label class="legal_name_benifets">State</label>
-              <input type="text" class="legal_benifit_input capitalize_txt" formControlName="state">
+              <input type="text" class="legal_benifit_input capitalize_txt" formControlName="state" [ngClass]="{'error_input':!realPropertyForm.get('state').valid && realPropertyForm.get('state').touched}">
+              <span class="error_txt" *ngIf="!realPropertyForm.get('state').valid && realPropertyForm.get('state').touched && realPropertyForm.get('state').hasError('required')">
+                State is required.
+              </span>
             </div>
             <h2 class="beneficiary_predeceases blue_font">Is this a gift to an Individual(s) or Charity?</h2>
             <ul class="radio_ul7">
@@ -47,6 +59,9 @@
                   <span class="human_status"> Charity</span> </label>
               </li>
             </ul>
+            <span class="error_txt" *ngIf="!realPropertyForm.get('gift_type').valid && realPropertyForm.get('gift_type').touched && realPropertyForm.get('gift_type').hasError('required')">
+              This field is required.
+            </span>
             <div *ngIf="isIndividualRP">
               <div formArrayName="individualControls">
                 <div *ngFor="let item of realPropertyForm['controls'].individualControls['controls']; let i = index;"  [formGroupName]="i">
@@ -65,6 +80,9 @@
                         <span class="human_status"> To Multiple Beneficiary</span> </label>
                     </li>
                   </ul>
+                  <span class="error_txt" *ngIf="!realPropertyForm.get('individualControls.0.beneficiary').valid && realPropertyForm.get('individualControls.0.beneficiary').touched && realPropertyForm.get('individualControls.0.beneficiary').hasError('required')">
+                    This field is required.
+                  </span>
                 </div>
               </div>
             </div>
@@ -72,9 +90,15 @@
               <div formArrayName="charityControls">
                 <div *ngFor="let item of realPropertyForm['controls'].charityControls['controls']; let i = index;"  [formGroupName]="i">
                   <label class="legal_name_benifets">Organization name?</label>
-                  <input type="text" class="legal_benifit_input capitalize_txt" formControlName="organization_name">
+                  <input type="text" class="legal_benifit_input capitalize_txt" formControlName="organization_name" [ngClass]="{'error_input': !realPropertyForm.get('charityControls.0.organization_name').valid && realPropertyForm.get('charityControls.0.organization_name').touched}">
+                  <span class="error_txt" *ngIf="!realPropertyForm.get('charityControls.0.organization_name').valid && realPropertyForm.get('charityControls.0.organization_name').touched && realPropertyForm.get('charityControls.0.organization_name').hasError('required')">
+                    Organization name is required.
+                  </span>
                   <label class="legal_name_benifets">Organization address?</label>
-                  <input type="text" class="legal_benifit_input capitalize_txt" placeholder="Street Address, City, State, Zip Code" formControlName="organization_address">
+                  <input type="text" class="legal_benifit_input capitalize_txt" placeholder="Street Address, City, State, Zip Code" formControlName="organization_address" [ngClass]="{'error_input': !realPropertyForm.get('charityControls.0.organization_name').valid && realPropertyForm.get('charityControls.0.organization_name').touched}">
+                  <span class="error_txt" *ngIf="!realPropertyForm.get('charityControls.0.organization_address').valid && realPropertyForm.get('charityControls.0.organization_address').touched && realPropertyForm.get('charityControls.0.organization_address').hasError('required')">
+                    Organization address is required.
+                  </span>
                 </div>
               </div>
             </div>
@@ -86,8 +110,16 @@
                 <div *ngFor="let item of realPropertyForm['controls'].individualControls['controls']; let i = index;"  [formGroupName]="i">
                   <div formArrayName="singleBeneficiaryControls">
                     <div *ngFor="let newItem of item.get('singleBeneficiaryControls').controls; let j = index;"  [formGroupName]="j">
+
                       <label class="legal_name_benifets">Beneficiary's full legal name ?</label>
-                      <input type="text" class="legal_benifit_input capitalize_txt" formControlName="full_legal_name">
+                      <input type="text" class="legal_benifit_input capitalize_txt" formControlName="full_legal_name" [ngClass]="{'error_input': !realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.full_legal_name').valid && realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.full_legal_name').touched}">
+                      <span class="error_txt" *ngIf="!realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.full_legal_name').valid && realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.full_legal_name').touched && realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.full_legal_name').hasError('required')">
+                          Please provide a proper capitalized beneficiary legal name.
+                      </span>
+                      <span class="error_txt" *ngIf="!realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.full_legal_name').valid && realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.full_legal_name').touched && realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.full_legal_name').hasError('pattern')">
+                          Please provide a proper capitalized beneficiary legal name.
+                      </span>
+
                       <label class="legal_name_benifets">Beneficiary's relationship to you?</label>
                       <span class="drop_down" style="margin-bottom:20px;">
                         <select class="beneficiary_relationship_dropdown" (change)="toggleRelationship($event)" formControlName="relationship_single_b_parent">
@@ -146,6 +178,10 @@
                             <span class="human_status">To Someone Else</span> </label>
                         </li>
                       </ul>
+                      <span class="error_txt" *ngIf="!realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.property_distributed_single_beneficiary').valid && realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.property_distributed_single_beneficiary').touched && realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.property_distributed_single_beneficiary').hasError('required')">
+                          Please answer this question.
+                      </span>
+
                       <!--if selected to their issue start-->
                       <div *ngIf="toTheirIssue">
                         <div class="beneficiary_pass_another_select_txt">You still need another choice in the event no issue survives the beneficiary.</div>
@@ -163,13 +199,19 @@
                               <span class="human_status">To Someone Else</span> </label>
                           </li>
                         </ul>
+                        <span class="error_txt" *ngIf="!realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').valid && realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').touched && realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').hasError('required')">
+                          Please answer this question.
+                        </span>
                       </div>
                       <!--if selected to  their issue end-->
 
                       <!--if selected to someone else start-->
                       <div *ngIf="isSomeoneElse">
                         <label class="legal_name_benifets">Individual's name?</label>
-                        <input type="text" class="legal_benifit_input capitalize_txt" formControlName="issue_survival_full_name">
+                        <input type="text" class="legal_benifit_input capitalize_txt" formControlName="issue_survival_full_name" [ngClass]="{'error_input':!realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').valid && realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').touched}">
+                        <span class="error_txt" *ngIf="!realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').valid && realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').touched && realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').hasError('required')">
+                          Please answer this question.
+                        </span>
                         <label class="legal_name_benifets">Relationship?</label>
                         <span class="drop_down" style="margin-bottom:20px;">
                           <select class="beneficiary_relationship_dropdown" (change)="toggleRelationshipSomeOneElse($event)" formControlName="issue_survival_relationship">
@@ -232,7 +274,10 @@
                     </div>
                   </div>
                 </div>
-                
+                <span class="error_txt" *ngIf="setValidationFlag">
+                    Please answer this question.
+                </span>
+
               </div>
               <div class="addRowBtn">
                 <button type="button" class="btn btn-primary addRow" (click)="addLineItems()">+</button>
@@ -273,6 +318,10 @@
                           </label>
                         </li>
                       </ul>
+                      <span class="error_txt" *ngIf="!realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.property_distributed_multiple_beneficiary').valid && realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.property_distributed_multiple_beneficiary').touched && realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.property_distributed_multiple_beneficiary').hasError('required')">
+                          Please answer this question.
+                      </span>
+
                       <!--to their issue child start-->
                       <div *ngIf="toTheirIssueMB">
                         <div class="beneficiary_pass_another_select_txt">You still need another choice in the event no issue survives the beneficiary.</div>
@@ -290,12 +339,18 @@
                               <span class="human_status">To Someone Else</span> </label>
                           </li>
                         </ul>
+                        <span class="error_txt" *ngIf="!realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').valid && realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').touched && realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').hasError('required')">
+                          Please answer this question.
+                        </span>
                       </div>
                       <!--to their issue child end-->
                       <!--to someone else start-->
                       <div *ngIf="isSomeoneElseMB">
                         <label class="legal_name_benifets">Individual's name?</label>
-                        <input type="text" class="legal_benifit_input capitalize_txt" formControlName="individual_name">
+                        <input type="text" class="legal_benifit_input capitalize_txt" formControlName="individual_name" [ngClass] = "{'error_input':!realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').valid && realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').touched}">
+                        <span class="error_txt" *ngIf="!realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').valid && realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').touched && realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').hasError('required')">
+                          Please answer this question.
+                        </span>
                         <label class="legal_name_benifets">Relationship?</label>
                         <span class="drop_down" style="margin-bottom:20px;">
                           <select class="beneficiary_relationship_dropdown" (change)="toggleRelationshipSomeOneElseMB($event)" formControlName="relationship_mb">
@@ -367,10 +422,13 @@
                   <span class="human_status"> No</span> </label>
               </li>
             </ul>
+            <span class="error_txt" *ngIf="!realPropertyForm.get('free_clear_mortgage').valid && realPropertyForm.get('free_clear_mortgage').touched && realPropertyForm.get('free_clear_mortgage').hasError('required')">
+              This field is required.
+            </span>
             <ul class="back_next_btn_ul" style="margin-top:20px;">
               <li *ngIf="isEdit"><a href="javascript:void(0)" class="gift_remove_form" (click)="popUpDelete(formEditDataSet.id)">Remove</a></li>
               <li *ngIf="!isEdit"><a href="javascript:void(0)" class="gift_remove_form" (click)="popUp()">Remove</a></li>
-              <li><button class="saveBtn" type="submit" [disabled]="!realPropertyForm.valid">Save</button></li>
+              <li><button class="saveBtn" type="button" (click)="saveRealProperty(realPropertyForm.value)" >Save</button></li>
             </ul>
           </form>
         </div>
