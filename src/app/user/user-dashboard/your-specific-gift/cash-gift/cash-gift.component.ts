@@ -79,7 +79,7 @@ export class CashGiftComponent implements OnInit, OnDestroy {
     });
   }
   setFormData(): void {
-    if (this.editService.getData()) {
+    if (this.editService.getData() && this.editService.getData() !== null && this.editService.getData() !== undefined) {
       if (Object.keys(this.editService.getData()).length) {
         this.isEdit = true;
         this.formEditDataSet = this.editService.getData();

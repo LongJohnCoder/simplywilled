@@ -1,15 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {YourSpecificGiftService} from './services/your-specific-gift.service';
 import {MyGifts} from './models/myGifts';
 import {EditGiftService} from './services/edit-gift.service';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-your-specific-gift',
   templateUrl: './your-specific-gift.component.html',
   styleUrls: ['./your-specific-gift.component.css']
 })
-export class YourSpecificGiftComponent implements OnInit {
+export class YourSpecificGiftComponent implements OnInit, OnDestroy {
   access_token: string;
   myUserId: any;
   errFlag: boolean;
@@ -26,6 +27,8 @@ export class YourSpecificGiftComponent implements OnInit {
   specific_asset: boolean;
   deleteGiftDb: Observable<any>;
   loading = true;
+  fetchGiftDataDBSubscription: Subscription;
+  deleteGiftDbSubscription: Subscription;
   constructor(private ysgService: YourSpecificGiftService, private editService: EditGiftService) { }
   ngOnInit() {
     this.errFlag = false;
@@ -38,6 +41,7 @@ export class YourSpecificGiftComponent implements OnInit {
     this.real_property_module = false;
     this.business_interest = false;
     this.specific_asset = false;
+
     if (JSON.parse(localStorage.getItem('loggedInUser')).hasOwnProperty('token')) {
       this.access_token = JSON.parse(localStorage.getItem('loggedInUser')).token;
       this.myUserId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
@@ -52,7 +56,7 @@ export class YourSpecificGiftComponent implements OnInit {
   fetchGiftData(): void {
     if (this.access_token) {
       this.fetchGiftDataDB = this.ysgService.fetchData(this.access_token, this.myUserId);
-      this.fetchGiftDataDB.subscribe(data => {
+      this.fetchGiftDataDBSubscription = this.fetchGiftDataDB.subscribe(data => {
         if (data.status === 200) {
           if (data.data[6].data.isGift >= 1) {
             this.isAnyGift = true;
@@ -127,7 +131,7 @@ export class YourSpecificGiftComponent implements OnInit {
         const confirmation = confirm('Are You Sure?');
         if (confirmation) {
           this.deleteGiftDb = this.ysgService.deleteGift(this.access_token, id);
-          this.deleteGiftDb.subscribe(data => {
+          this.deleteGiftDbSubscription = this.deleteGiftDb.subscribe(data => {
             if (data.status) {
               this.fetchGiftData();
             } else {
@@ -205,5 +209,15 @@ export class YourSpecificGiftComponent implements OnInit {
     this.real_property_module = false;
     this.business_interest = false;
     this.specific_asset = false;
+  }
+
+  ngOnDestroy() {
+    if (this.fetchGiftDataDBSubscription !== undefined) {
+      this.fetchGiftDataDBSubscription.unsubscribe();
+    }
+    if(this.deleteGiftDbSubscription !== undefined) {
+      this.deleteGiftDbSubscription.unsubscribe();
+    }
+    this.editService.unsetData();
   }
 }

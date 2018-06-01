@@ -1,3 +1,15 @@
+<div class="pageLoader" *ngIf="loading">
+  <div class="loaderInner">
+    <img src="../../../../assets/images/owl-loading.gif" alt="Loading...">
+    <p class="loadingTxt">
+      Please Wait
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+  </div>
+</div>
+
 <div class="main-content tellusaboutyou" *ngIf="!loading">
   <h2>Guardians For Your Minor Children</h2>
   <form [formGroup] = "myForm" novalidate (ngSubmit)="onSubmit(myForm)">

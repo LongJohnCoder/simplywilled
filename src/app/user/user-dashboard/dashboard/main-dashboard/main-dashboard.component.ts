@@ -42,7 +42,7 @@ export class MainDashboardComponent implements OnInit, OnDestroy {
           },
           (error: any) => {
             console.log(error);
-          }, () => {}
+          }, () => {this.loading = false;}
       );
 
     this.step2 = false;
@@ -52,7 +52,7 @@ export class MainDashboardComponent implements OnInit, OnDestroy {
           }, (error: any) => {
               this.step2 = false;
           },
-      () => {this.loading = false;}
+      () => {}
      );
   }
 

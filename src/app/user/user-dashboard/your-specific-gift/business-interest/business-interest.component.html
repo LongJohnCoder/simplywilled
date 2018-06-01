@@ -96,7 +96,7 @@
               <!-- Single Beneficiary -->
               <div class="singleBeneficiary" *ngIf="flags.singleBeneficiaryFlag">
                   <label class="legal_name_benifets">Beneficiary's full legal name?</label>
-                  <input type="text" class="legal_benifit_input capitalize_txt" [ngClass]="{'error_input': !businessInterestForm.get('beneficiary_legal_name').valid && businessInterestForm.get('beneficiary_legal_name').touched && businessInterestForm.get('beneficiary_legal_name').hasError('required')}" formControlName="beneficiary_legal_name">
+                  <input type="text" class="legal_benifit_input capitalize_txt" [ngClass]="{'error_input': !businessInterestForm.get('beneficiary_legal_name').valid && businessInterestForm.get('beneficiary_legal_name').touched}" formControlName="beneficiary_legal_name">
                   <span class="error_txt" *ngIf="!businessInterestForm.get('beneficiary_legal_name').valid && businessInterestForm.get('beneficiary_legal_name').touched && businessInterestForm.get('beneficiary_legal_name').hasError('required')">
                     Please answer this question.
                   </span>

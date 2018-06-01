@@ -1,3 +1,15 @@
+<div class="pageLoader" *ngIf="loading">
+  <div class="loaderInner">
+    <img src="../../../../assets/images/owl-loading.gif" alt="Loading...">
+    <p class="loadingTxt">
+      Please Wait
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+  </div>
+</div>
+
 <div *ngIf="!loading" class="main-content tellusaboutyou" style="width: 860px">
     <h2>Your Family</h2>
     <form [formGroup] = "chidrenForm" (ngSubmit)="onSubmit()">

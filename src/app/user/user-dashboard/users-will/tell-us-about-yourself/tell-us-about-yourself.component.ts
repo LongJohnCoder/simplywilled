@@ -57,6 +57,7 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
                 this.userInfo.spouseYear = partnerDob !== '' ? partnerDob[0] : '';
                 this.userInfo.spouseMonth = partnerDob !== '' ?  partnerDob[1] : '';
                 this.userInfo.spouseDay = partnerDob !== '' ?  partnerDob[2] : '';
+                this.userInfo.partner_invitation = this.userInfo !== null && this.userInfo.partner_invitation !== null ? this.userInfo.partner_invitation : 0;
             }
         },
         (error: any) => {

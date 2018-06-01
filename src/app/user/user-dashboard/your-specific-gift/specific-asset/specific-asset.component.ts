@@ -15,7 +15,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
   /**Variable declaration*/
   @Input() giftCount: any;
   @ViewChild(YourSpecificGiftComponent) YourSpecificGiftComponent: YourSpecificGiftComponent;
-  businessInterestForm: FormGroup;
+  specificAssetForm: FormGroup;
   multipleBeneficiaries: FormArray;
   giftInfoSubscription: Subscription;
   beneficiarySubscription: Subscription;
@@ -71,7 +71,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
 
   /**Set the form after edit*/
   setFormData(): void {
-    if (this.editService.getData()) {
+    if (this.editService.getData() && this.editService.getData() !== null && this.editService.getData() !== undefined) {
       if (Object.keys(this.editService.getData()).length) {
         this.flags.editFlag = true;
         this.formEditDataSet = this.editService.getData();
@@ -101,7 +101,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
 
   /**Initialises the form*/
   createForm(editFlag = false, data = null) {
-    this.businessInterestForm = this._fb.group( {
+    this.specificAssetForm = this._fb.group( {
       'full_legal_name': new FormControl(data === null ? '' : data.full_legal_name, [Validators.required]),
       'gift_to': new FormControl(data === null ? '' : data.gift_to , [Validators.required]),
       'organization_name': new FormControl(data === null ? '' : data.organization_name),
@@ -131,7 +131,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
   /**Show all the multiple beneficiaries*/
   showDataMultipleBeneficiaries(data) {
     if (data.multiple_beneficiaries.length > 0 ) {
-      this.businessInterestForm.setControl('multiple_beneficiaries',
+      this.specificAssetForm.setControl('multiple_beneficiaries',
         this._fb.array((data.multiple_beneficiaries || []).map((x) => this._fb.group(x))));
     }
   }
@@ -144,25 +144,25 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
 
   /**Set dynamic validations*/
   addConditionalValidators() {
-    this.giftInfoSubscription = this.businessInterestForm.get('gift_to').valueChanges.subscribe(
+    this.giftInfoSubscription = this.specificAssetForm.get('gift_to').valueChanges.subscribe(
       (gift_to: string) => {
         this.setValidatorGift(gift_to);
       }
     );
 
-    this.beneficiarySubscription = this.businessInterestForm.get('beneficiary').valueChanges.subscribe(
+    this.beneficiarySubscription = this.specificAssetForm.get('beneficiary').valueChanges.subscribe(
       (beneficiary: string) => {
         this.setValidationBeneficiary(beneficiary);
       }
     );
 
-    this.passedBySubscription = this.businessInterestForm.get('passed_by').valueChanges.subscribe(
+    this.passedBySubscription = this.specificAssetForm.get('passed_by').valueChanges.subscribe(
       (passedBy: string) => {
         this.setValidationPassedBy(passedBy);
       }
     );
 
-    this.passedByChildSubscription = this.businessInterestForm.get('passed_by_child').valueChanges.subscribe(
+    this.passedByChildSubscription = this.specificAssetForm.get('passed_by_child').valueChanges.subscribe(
       (passedByChild: string) => {
         this.setValidationPassedByChild(passedByChild);
       }
@@ -173,8 +173,8 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
   setValidatorGift(gift_to) {
     switch (gift_to) {
       case 'IN':  console.log("IN");
-        this.businessInterestForm.get('beneficiary').setValidators([Validators.required]);
-        this.businessInterestForm.get('beneficiary').updateValueAndValidity();
+        this.specificAssetForm.get('beneficiary').setValidators([Validators.required]);
+        this.specificAssetForm.get('beneficiary').updateValueAndValidity();
         this.clearValidationFor([
           'organization_name',
           'organization_address',
@@ -183,13 +183,13 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
           'passed_by',
           'passed_by_child',
           'individual_name']);
-        this.clearValidationForFormArray((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
+        this.clearValidationForFormArray((this.specificAssetForm.get('multiple_beneficiaries') as FormArray).controls);
         break;
       case 'CH':  console.log("CH");
-        this.businessInterestForm.get('organization_name').setValidators([Validators.required]);
-        this.businessInterestForm.get('organization_address').setValidators([Validators.required]);
-        this.businessInterestForm.get('organization_name').updateValueAndValidity();
-        this.businessInterestForm.get('organization_address').updateValueAndValidity();
+        this.specificAssetForm.get('organization_name').setValidators([Validators.required]);
+        this.specificAssetForm.get('organization_address').setValidators([Validators.required]);
+        this.specificAssetForm.get('organization_name').updateValueAndValidity();
+        this.specificAssetForm.get('organization_address').updateValueAndValidity();
         this.clearValidationFor([
           'beneficiary',
           'multiple_beneficiaries',
@@ -197,7 +197,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
           'passed_by',
           'passed_by_child',
           'individual_name']);
-        this.clearValidationForFormArray((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
+        this.clearValidationForFormArray((this.specificAssetForm.get('multiple_beneficiaries') as FormArray).controls);
         break;
       case '':    console.log("empty");
         this.clearValidationFor([
@@ -209,7 +209,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
           'passed_by',
           'passed_by_child',
           'individual_name']);
-        this.clearValidationForFormArray((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
+        this.clearValidationForFormArray((this.specificAssetForm.get('multiple_beneficiaries') as FormArray).controls);
         break;
       default:   console.log("default");
         this.clearValidationFor([
@@ -221,7 +221,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
           'passed_by',
           'passed_by_child',
           'individual_name']);
-        this.clearValidationForFormArray((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
+        this.clearValidationForFormArray((this.specificAssetForm.get('multiple_beneficiaries') as FormArray).controls);
         break;
     }
   }
@@ -230,26 +230,26 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
   setValidationBeneficiary(beneficiary) {
     switch (beneficiary) {
       case '_si':  console.log('si');
-        this.businessInterestForm.get('beneficiary_legal_name').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
-        this.businessInterestForm.get('passed_by').setValidators([Validators.required]);
-        this.businessInterestForm.get('beneficiary_legal_name').updateValueAndValidity();
-        this.businessInterestForm.get('passed_by').updateValueAndValidity();
-        this.clearValidationForFormArray((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
-        //this.businessInterestForm.get('multiple_beneficiaries').clearValidators();
+        this.specificAssetForm.get('beneficiary_legal_name').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
+        this.specificAssetForm.get('passed_by').setValidators([Validators.required]);
+        this.specificAssetForm.get('beneficiary_legal_name').updateValueAndValidity();
+        this.specificAssetForm.get('passed_by').updateValueAndValidity();
+        this.clearValidationForFormArray((this.specificAssetForm.get('multiple_beneficiaries') as FormArray).controls);
+        //this.specificAssetForm.get('multiple_beneficiaries').clearValidators();
         break;
       case '_mu':   console.log('mu');
-        //console.log(this.businessInterestForm.get('multiple_beneficiaries'));
-        //this.businessInterestForm.get('multiple_beneficiaries').setValidators([Validators.required]);
-        this.setValidation((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
-        this.businessInterestForm.get('passed_by').setValidators([Validators.required]);
-        this.businessInterestForm.get('passed_by').updateValueAndValidity();
-        this.businessInterestForm.get('beneficiary_legal_name').clearValidators();
-        this.businessInterestForm.get('beneficiary_legal_name').updateValueAndValidity();
+        //console.log(this.specificAssetForm.get('multiple_beneficiaries'));
+        //this.specificAssetForm.get('multiple_beneficiaries').setValidators([Validators.required]);
+        this.setValidation((this.specificAssetForm.get('multiple_beneficiaries') as FormArray).controls);
+        this.specificAssetForm.get('passed_by').setValidators([Validators.required]);
+        this.specificAssetForm.get('passed_by').updateValueAndValidity();
+        this.specificAssetForm.get('beneficiary_legal_name').clearValidators();
+        this.specificAssetForm.get('beneficiary_legal_name').updateValueAndValidity();
         break;
       /*case '':     console.log('ben_empty');
-                    this.businessInterestForm.get('multiple_beneficiaries').clearValidators();
-                    this.businessInterestForm.get('beneficiary_legal_name').clearValidators();
-                    this.businessInterestForm.get('passed_by').clearValidators();
+                    this.specificAssetForm.get('multiple_beneficiaries').clearValidators();
+                    this.specificAssetForm.get('beneficiary_legal_name').clearValidators();
+                    this.specificAssetForm.get('passed_by').clearValidators();
                     break;*/
     }
   }
@@ -258,26 +258,26 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
   setValidationPassedBy(passedBy) {
     switch (passedBy) {
       case '_tti':   console.log('tth');
-        this.businessInterestForm.get('individual_name').clearValidators();
-        this.businessInterestForm.get('passed_by_child').setValidators([Validators.required]);
-        this.businessInterestForm.get('individual_name').updateValueAndValidity();
-        this.businessInterestForm.get('passed_by_child').updateValueAndValidity();
+        this.specificAssetForm.get('individual_name').clearValidators();
+        this.specificAssetForm.get('passed_by_child').setValidators([Validators.required]);
+        this.specificAssetForm.get('individual_name').updateValueAndValidity();
+        this.specificAssetForm.get('passed_by_child').updateValueAndValidity();
         break;
       case '_re':    console.log('re');
-        this.businessInterestForm.get('individual_name').clearValidators();
-        this.businessInterestForm.get('passed_by_child').clearValidators();
-        this.businessInterestForm.get('individual_name').updateValueAndValidity();
-        this.businessInterestForm.get('passed_by_child').updateValueAndValidity();
+        this.specificAssetForm.get('individual_name').clearValidators();
+        this.specificAssetForm.get('passed_by_child').clearValidators();
+        this.specificAssetForm.get('individual_name').updateValueAndValidity();
+        this.specificAssetForm.get('passed_by_child').updateValueAndValidity();
         break;
       case '_se':    console.log('Se');
-        this.businessInterestForm.get('individual_name').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
-        this.businessInterestForm.get('passed_by_child').clearValidators();
-        this.businessInterestForm.get('individual_name').updateValueAndValidity();
-        this.businessInterestForm.get('passed_by_child').updateValueAndValidity();
+        this.specificAssetForm.get('individual_name').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
+        this.specificAssetForm.get('passed_by_child').clearValidators();
+        this.specificAssetForm.get('individual_name').updateValueAndValidity();
+        this.specificAssetForm.get('passed_by_child').updateValueAndValidity();
         break;
       /* case '':       console.log('passed_by_empty');
-                      this.businessInterestForm.get('individual_name').clearValidators();
-                      this.businessInterestForm.get('passed_by_child').clearValidators();
+                      this.specificAssetForm.get('individual_name').clearValidators();
+                      this.specificAssetForm.get('passed_by_child').clearValidators();
                       break;*/
     }
   }
@@ -285,15 +285,15 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
   setValidationPassedByChild(passedByChild) {
     switch (passedByChild) {
       case '_re':   console.log('_rechi');
-        this.businessInterestForm.get('individual_name').clearValidators();
-        this.businessInterestForm.get('individual_name').updateValueAndValidity();
+        this.specificAssetForm.get('individual_name').clearValidators();
+        this.specificAssetForm.get('individual_name').updateValueAndValidity();
         break;
       case '_se':   console.log('_sechi');
-        this.businessInterestForm.get('individual_name').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
-        this.businessInterestForm.get('individual_name').updateValueAndValidity();
+        this.specificAssetForm.get('individual_name').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
+        this.specificAssetForm.get('individual_name').updateValueAndValidity();
         break;
       /*case '':      console.log('_remoty');
-                    this.businessInterestForm.get('individual_name').clearValidators();
+                    this.specificAssetForm.get('individual_name').clearValidators();
                     break;*/
     }
   }
@@ -332,27 +332,30 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
 
   /**Adds new row for the multiple beneficiary*/
   addNewRow() {
-    this.multipleBeneficiaries = this.businessInterestForm.get('multiple_beneficiaries') as FormArray;
+    this.multipleBeneficiaries = this.specificAssetForm.get('multiple_beneficiaries') as FormArray;
     this.multipleBeneficiaries.push(this.createMultipleBeneficiaryForm());
   }
 
   /**Remove beneficiary from index*/
   removeBeneficiary(index: number) {
-    this.multipleBeneficiaries = this.businessInterestForm.get('multiple_beneficiaries') as FormArray;
+    this.multipleBeneficiaries = this.specificAssetForm.get('multiple_beneficiaries') as FormArray;
     this.multipleBeneficiaries.removeAt(index);
   }
 
   /**Submit the form*/
   submit() {
-    if (this.businessInterestForm.valid) {
+    if (this.specificAssetForm.valid) {
       let user = this.parseUserId();
       let token = this.parseToken();
-      this.giftData.push(this.businessInterestForm.value);
+      let data = this.prepareData();
+      this.giftData.push(data);
       if (token) {
         let cashGiftDataSet = this.flags.editFlag ? {'id': this.giftId, 'step': 7, 'user_id': user, 'giftType': 4, 'giftData': this.giftData} : {'step': 7, 'user_id': user, 'giftType': 4, 'giftData': this.giftData};
         if (this.flags.editFlag) {
+          console.log('edit');
           this.editGiftData(token, cashGiftDataSet);
         } else {
+          console.log('add');
           this.createGiftData(token, cashGiftDataSet);
         }
       } else {
@@ -362,13 +365,35 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
       }
     } else {
       alert('Please fill up all the fields');
-      this.markFormGroupTouched(this.businessInterestForm);
+      this.markFormGroupTouched(this.specificAssetForm);
     }
+  }
+
+  /**Prepares the request*/
+  prepareData() {
+    let data = {
+      beneficiary: this.specificAssetForm.value.gift_to === 'IN' ? this.specificAssetForm.value.beneficiary : '',
+      full_legal_name: this.specificAssetForm.value.full_legal_name,
+      beneficiary_legal_name: this.specificAssetForm.value.gift_to === 'IN' && this.specificAssetForm.value.beneficiary === '_si' ? this.specificAssetForm.value.beneficiary_legal_name : '',
+      beneficiary_legal_relation: this.specificAssetForm.value.gift_to === 'IN' && this.specificAssetForm.value.beneficiary === '_si' ? this.specificAssetForm.value.beneficiary_legal_relation : '',
+      beneficiary_legal_relation_other: this.specificAssetForm.value.gift_to === 'IN' && this.specificAssetForm.value.beneficiary === '_si' ? this.specificAssetForm.value.beneficiary_legal_relation_other : '',
+      gender: this.specificAssetForm.value.gift_to === 'IN' && this.specificAssetForm.value.beneficiary === '_si' ? this.specificAssetForm.value.gender : 'Male',
+      gift_to: this.specificAssetForm.value.gift_to,
+      multiple_beneficiaries: this.specificAssetForm.value.gift_to === 'IN' && this.specificAssetForm.value.beneficiary === '_mu' ? this.specificAssetForm.value.multiple_beneficiaries : [],
+      organization_address: this.specificAssetForm.value.gift_to === 'CH' ? this.specificAssetForm.value.organization_address : '',
+      organization_name: this.specificAssetForm.value.gift_to === 'CH' ? this.specificAssetForm.value.organization_name : '',
+      passed_by: this.specificAssetForm.value.passed_by,
+      passed_by_child: this.specificAssetForm.value.passed_by_child,
+      individual_name: this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se') ? this.specificAssetForm.value.individual_name : '',
+      individual_relationship: this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se') ? this.specificAssetForm.value.individual_relationship : '',
+      individual_relationship_other: this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se') ? this.specificAssetForm.value.individual_relationship_other : '',
+    };
+    return data;
   }
 
   /**Calls update gift data api*/
   editGiftData(token: string, cashGiftDataSet) {
-    this.ysgService.saveCashGiftData(token, cashGiftDataSet).subscribe((data) => {
+    this.ysgService.updateGift(token, cashGiftDataSet).subscribe((data) => {
       if (data.status) {
         window.location.reload();
       } else {
@@ -409,7 +434,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
       control.markAsDirty();
     });
 
-    this.checkValidation((this.businessInterestForm.get('multiple_beneficiaries') as FormArray).controls);
+    this.checkValidation((this.specificAssetForm.get('multiple_beneficiaries') as FormArray).controls);
   }
 
   /**Checks validation for form arrays*/
@@ -427,8 +452,8 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
   /**Clears validation except certain fields*/
   clearValidationFor(formControlArray: Array<string> = []) {
     formControlArray.forEach(control => {
-      this.businessInterestForm.get(control).clearValidators();
-      this.businessInterestForm.get(control).updateValueAndValidity();
+      this.specificAssetForm.get(control).clearValidators();
+      this.specificAssetForm.get(control).updateValueAndValidity();
     });
   }
 

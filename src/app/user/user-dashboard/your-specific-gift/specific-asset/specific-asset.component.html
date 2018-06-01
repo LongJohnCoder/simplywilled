@@ -11,7 +11,7 @@
           </ul>
         </div>
         <div class="gift_form_container">
-          <form [formGroup] = "businessInterestForm">
+          <form [formGroup] = "specificAssetForm">
 
             <h2 class="singing_instruction3" style="padding-top:0;">Tell Us About Any Specific Assets You Wish To Gift</h2>
             <ul class="radio_ul3">
@@ -20,11 +20,11 @@
 
             <div class="form-group">
               <label class="legal_name_benifets">Description of asset being gifted</label>
-              <textarea class="form-control capitalize_txt" [ngClass]="{'error_input': businessInterestForm.get('full_legal_name').invalid && businessInterestForm.get('full_legal_name').touched}" formControlName="full_legal_name">
+              <textarea class="form-control capitalize_txt" [ngClass]="{'error_input': specificAssetForm.get('full_legal_name').invalid && specificAssetForm.get('full_legal_name').touched}" formControlName="full_legal_name">
               </textarea>
 
-              <!--<div class="alert alert-danger" *ngIf="businessInterestForm.invalid && businessInterestForm.touched">-->
-              <span class="error_txt" *ngIf="businessInterestForm.get('full_legal_name').invalid && businessInterestForm.get('full_legal_name').touched && businessInterestForm.get('full_legal_name').hasError('required')">
+              <!--<div class="alert alert-danger" *ngIf="specificAssetForm.invalid && specificAssetForm.touched">-->
+              <span class="error_txt" *ngIf="specificAssetForm.get('full_legal_name').invalid && specificAssetForm.get('full_legal_name').touched && specificAssetForm.get('full_legal_name').hasError('required')">
                   Please answer this question.
                 </span>
               <!--</div>-->
@@ -48,21 +48,21 @@
                   </label>
                 </li>
               </ul>
-              <span class="error_txt" *ngIf="businessInterestForm.get('gift_to').invalid && businessInterestForm.get('gift_to').touched && businessInterestForm.get('gift_to').hasError('required')">
+              <span class="error_txt" *ngIf="specificAssetForm.get('gift_to').invalid && specificAssetForm.get('gift_to').touched && specificAssetForm.get('gift_to').hasError('required')">
                   Please answer this question.
               </span>
             </div>
 
             <div class="gift_charity_container" *ngIf="flags.charityFlag">
               <label class="legal_name_benifets">Organization name?</label>
-              <input type="text" class="form-control capitalize_txt" [ngClass]="{'error_input': businessInterestForm.get('organization_name').invalid && businessInterestForm.get('organization_name').touched}" formControlName="organization_name">
-              <span class="error_txt" *ngIf="businessInterestForm.get('organization_name').invalid && businessInterestForm.get('organization_name').touched && businessInterestForm.get('organization_name').hasError('required')">
+              <input type="text" class="form-control capitalize_txt" [ngClass]="{'error_input': specificAssetForm.get('organization_name').invalid && specificAssetForm.get('organization_name').touched}" formControlName="organization_name">
+              <span class="error_txt" *ngIf="specificAssetForm.get('organization_name').invalid && specificAssetForm.get('organization_name').touched && specificAssetForm.get('organization_name').hasError('required')">
                     Please answer this question.
                 </span>
 
               <label class="legal_name_benifets">Organization address?</label>
-              <input type="text" class="form-control" [ngClass]="{'error_input': businessInterestForm.get('organization_address').invalid && businessInterestForm.get('organization_address').touched}" formControlName="organization_address" placeholder="Street Address, City, State, Zip Code">
-              <span class="error_txt" *ngIf="businessInterestForm.get('organization_address').invalid && businessInterestForm.get('organization_address').touched && businessInterestForm.get('organization_address').hasError('required')">
+              <input type="text" class="form-control" [ngClass]="{'error_input': specificAssetForm.get('organization_address').invalid && specificAssetForm.get('organization_address').touched}" formControlName="organization_address" placeholder="Street Address, City, State, Zip Code">
+              <span class="error_txt" *ngIf="specificAssetForm.get('organization_address').invalid && specificAssetForm.get('organization_address').touched && specificAssetForm.get('organization_address').hasError('required')">
                     Please answer this question.
                 </span>
             </div>
@@ -87,7 +87,7 @@
                     </label>
                   </li>
                 </ul>
-                <span class="error_txt" *ngIf="businessInterestForm.get('beneficiary').invalid && businessInterestForm.get('beneficiary').touched && businessInterestForm.get('beneficiary').hasError('required')">
+                <span class="error_txt" *ngIf="specificAssetForm.get('beneficiary').invalid && specificAssetForm.get('beneficiary').touched && specificAssetForm.get('beneficiary').hasError('required')">
                   Please answer this question.
                 </span>
               </div>
@@ -97,11 +97,11 @@
                 <!-- Single Beneficiary -->
                 <div class="singleBeneficiary" *ngIf="flags.singleBeneficiaryFlag">
                   <label class="legal_name_benifets">Beneficiary's full legal name?</label>
-                  <input type="text" class="form-control capitalize_txt" [ngClass]="{'error_input': businessInterestForm.get('beneficiary_legal_name').invalid && businessInterestForm.get('beneficiary_legal_name').touched}" formControlName="beneficiary_legal_name">
-                  <span class="error_txt" *ngIf="businessInterestForm.get('beneficiary_legal_name').invalid && businessInterestForm.get('beneficiary_legal_name').touched && businessInterestForm.get('beneficiary_legal_name').hasError('required')">
+                  <input type="text" class="form-control capitalize_txt" [ngClass]="{'error_input': specificAssetForm.get('beneficiary_legal_name').invalid && specificAssetForm.get('beneficiary_legal_name').touched}" formControlName="beneficiary_legal_name">
+                  <span class="error_txt" *ngIf="specificAssetForm.get('beneficiary_legal_name').invalid && specificAssetForm.get('beneficiary_legal_name').touched && specificAssetForm.get('beneficiary_legal_name').hasError('required')">
                       Please answer this question.
                     </span>
-                  <span class="error_txt" *ngIf="businessInterestForm.get('beneficiary_legal_name').invalid && businessInterestForm.get('beneficiary_legal_name').touched && businessInterestForm.get('beneficiary_legal_name').hasError('pattern')">
+                  <span class="error_txt" *ngIf="specificAssetForm.get('beneficiary_legal_name').invalid && specificAssetForm.get('beneficiary_legal_name').touched && specificAssetForm.get('beneficiary_legal_name').hasError('pattern')">
                       Please answer this question.
                     </span>
                   <label class="legal_name_benifets">Beneficiary's relationship to you?</label>
@@ -123,7 +123,7 @@
                             <option value="Other">Other</option>
                         </select>
                       </span>
-                  <input type="text" class="legal_benifit_input capitalize_txt" formControlName="beneficiary_legal_relation_other" placeholder="Type Here Relationship" *ngIf="businessInterestForm.get('beneficiary_legal_relation').value === 'Other'">
+                  <input type="text" class="legal_benifit_input capitalize_txt" formControlName="beneficiary_legal_relation_other" placeholder="Type Here Relationship" *ngIf="specificAssetForm.get('beneficiary_legal_relation').value === 'Other'">
                   <h2 class="full_legal_name2">Beneficiary's gender?</h2>
                   <ul class="radio_ul6">
                     <li>
@@ -152,7 +152,7 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <tr *ngFor="let item of businessInterestForm.get('multiple_beneficiaries').controls; let i = index;" [formGroupName] = "i">
+                      <tr *ngFor="let item of specificAssetForm.get('multiple_beneficiaries').controls; let i = index;" [formGroupName] = "i">
                         <td>
                           <input type="text" class="form-control capitalize_txt" formControlName="multiple_beneficiary_name">
                         </td>
@@ -178,7 +178,7 @@
                             <label>Beneficiary's relationship to you</label>
                         </div>
                     </div>
-                    <div class="row formRow" *ngFor="let item of businessInterestForm.get('multiple_beneficiaries').controls; let i = index;" [formGroupName] = "i">
+                    <div class="row formRow" *ngFor="let item of specificAssetForm.get('multiple_beneficiaries').controls; let i = index;" [formGroupName] = "i">
                       <div class="threeColField"><input type="text" value="" class="form-control" formControlName="multiple_beneficiary_name" placeholder="Beneficiary's full legal name"></div>
                       <div class="threeColField"><input type="text" value="" class="form-control" formControlName="multiple_beneficiary_relationship" placeholder="Beneficiary's relationship to you"></div>
                       <div class="threeColField" *ngIf="i > 0" (click)="removeBeneficiary(i)"><button type="button" class="btn btn btn-danger delRow"><i class="fa fa-trash"></i></button></div>
@@ -222,7 +222,7 @@
                         <span class="human_status">To Someone Else</span> </label>
                     </li>
                   </ul>
-                  <span class="error_txt" *ngIf="businessInterestForm.get('passed_by').invalid && businessInterestForm.get('passed_by').touched && businessInterestForm.get('passed_by').hasError('required')">
+                  <span class="error_txt" *ngIf="specificAssetForm.get('passed_by').invalid && specificAssetForm.get('passed_by').touched && specificAssetForm.get('passed_by').hasError('required')">
                     Please answer this question.
                   </span>
 
@@ -242,18 +242,18 @@
                           <span class="human_status">To Someone Else</span> </label>
                       </li>
                     </ul>
-                    <span class="error_txt" *ngIf="businessInterestForm.get('passed_by_child').invalid && businessInterestForm.get('passed_by_child').touched && businessInterestForm.get('passed_by_child').hasError('required')">
+                    <span class="error_txt" *ngIf="specificAssetForm.get('passed_by_child').invalid && specificAssetForm.get('passed_by_child').touched && specificAssetForm.get('passed_by_child').hasError('required')">
                       Please answer this question.
                     </span>
                   </div>
 
                   <div class="toSomeOneElse" *ngIf="(!flags.toTheirIssueFlag && flags.someoneElseFlag) || (flags.toTheirIssueFlag && flags.someoneElseChildFlag)">
                     <label class="legal_name_benifets">Individual's name?</label>
-                    <input type="text" class="form-control capitalize_txt" formControlName="individual_name"  [ngClass]="{'error_input': businessInterestForm.get('individual_name').invalid && businessInterestForm.get('individual_name').touched}" >
-                    <span class="error_txt" *ngIf="businessInterestForm.get('individual_name').invalid && businessInterestForm.get('individual_name').touched && businessInterestForm.get('individual_name').hasError('required')">
+                    <input type="text" class="form-control capitalize_txt" formControlName="individual_name"  [ngClass]="{'error_input': specificAssetForm.get('individual_name').invalid && specificAssetForm.get('individual_name').touched}" >
+                    <span class="error_txt" *ngIf="specificAssetForm.get('individual_name').invalid && specificAssetForm.get('individual_name').touched && specificAssetForm.get('individual_name').hasError('required')">
                       Please answer this question.
                     </span>
-                    <span class="error_txt" *ngIf="businessInterestForm.get('individual_name').invalid && businessInterestForm.get('individual_name').touched && businessInterestForm.get('individual_name').hasError('pattern')">
+                    <span class="error_txt" *ngIf="specificAssetForm.get('individual_name').invalid && specificAssetForm.get('individual_name').touched && specificAssetForm.get('individual_name').hasError('pattern')">
                       Please answer this question.
                     </span>
                     <label class="legal_name_benifets">Beneficiary's relationship to you?</label>
@@ -273,7 +273,7 @@
                       <option value="Friend">Friend</option>
                       <option value="Other">Other</option>
                     </select>
-                    <input type="text" class="legal_benifit_input capitalize_txt" formControlName="individual_relationship_other" placeholder="Type Here Relationship" *ngIf="businessInterestForm.get('individual_relationship').value === 'Other'">
+                    <input type="text" class="legal_benifit_input capitalize_txt" formControlName="individual_relationship_other" placeholder="Type Here Relationship" *ngIf="specificAssetForm.get('individual_relationship').value === 'Other'">
                   </div>
                 </div>
 

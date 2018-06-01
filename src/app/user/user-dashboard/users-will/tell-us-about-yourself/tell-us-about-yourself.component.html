@@ -1,3 +1,15 @@
+<div class="pageLoader" *ngIf="loading">
+  <div class="loaderInner">
+    <img src="../../../../assets/images/owl-loading.gif" alt="Loading...">
+    <p class="loadingTxt">
+      Please Wait
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+  </div>
+</div>
+
 <div *ngIf="!loading" class="main-content tellusaboutyou">
   <h2>About You</h2>
   <form #form="ngForm" (ngSubmit)="onSubmit(form)">
@@ -104,7 +116,7 @@
                         <p *ngIf="month.errors?.required || day.errors?.required || year.errors?.required">Please fill all fields</p>
       </span>
     </div>
-    
+
     <div class="form-group">
       <label>Marital Status: </label>
       <ul class="first_page_radio" id="customer_status">
@@ -170,9 +182,9 @@
       </ul>
     </div>
     <hr>
-    
+
     <h2 *ngIf=" marital_status.value == 'M' || marital_status.value == 'R'">About Your {{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}}</h2>
-    
+
     <div *ngIf=" marital_status.value == 'M' || marital_status.value == 'R'">
       <div class="form-group" [ngClass]="{'valid': partner_firstname.valid, 'invalid': partner_firstname.errors && (partner_firstname.dirty || partner_firstname.touched)}">
         <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} First Name: </label>
@@ -341,8 +353,54 @@
           </div>
         </div>
       </div>
+
+      <div class="form-group">
+        <label>Would you like to invite your {{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} to simplywilled.com? </label>
+        <ul class="radio_ul6">
+          <li>
+            <label class="radio_custom"
+                   [ngClass]="{'active': partner_invitation.value == 1}">
+              <input type="radio"
+                     name="partner_invitation"
+                     value=1
+                     [ngModel]="userInfo?.partner_invitation"
+                     #partner_invitation="ngModel">
+              <span class="human_status">Yes</span>
+            </label>
+            <div *ngIf="partner_invitation.value == 1"
+                 class="email-box"
+                 [ngClass] = "{'valid': partner_email.valid, 'invalid': partner_email.errors && (partner_email.dirty || partner_email.touched)}">
+              <input
+                type="email"
+                placeholder="Enter Email Address"
+                class="form-control"
+                name="partner_email"
+                required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                [ngModel]="userInfo?.partner_email"
+                #partner_email="ngModel">
+              <i class= 'fa fa-check' *ngIf="partner_email.valid"></i>
+              <i class= 'fa fa-times' *ngIf="partner_email.errors && (partner_email.dirty || partner_email.touched)">
+              </i>
+
+            </div>
+          </li>
+          <li>
+            <label class="radio_custom"
+                   [ngClass]="{'active': partner_invitation.value == 0}">
+              <input type="radio"
+                     name="partner_invitation"
+                     value=0
+                     [ngModel]="userInfo?.partner_invitation"
+                     #partner_invitation="ngModel">
+              <span class="human_status"> No</span>
+            </label>
+          </li>
+        </ul>
+
+      </div>
     </div>
-    
+
     <div class="form-group" [ngClass]="{'valid': phone.valid, 'invalid': phone.errors && (phone.dirty || phone.touched)}">
       <label>Phone Number: </label>
       <input type="text"
@@ -363,7 +421,7 @@
             <p *ngIf="phone.errors?.minlength">Please enter a correct phone number</p>
       </span>
     </div>
-    
+
     <div class="form-group" [ngClass]="{'valid': email.valid, 'invalid': email.errors && (email.dirty || email.touched)}">
       <label>Email Address: </label>
       <input type="email"
@@ -382,51 +440,7 @@
       </span>
     </div>
 
-    <div class="form-group">
-      <label>Would you like to invite your {{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} to simplywilled.com? </label>
-      <ul class="radio_ul6">
-          <li>
-              <label class="radio_custom"
-                     [ngClass]="{'active': partner_invitation.value == 1}">
-                  <input type="radio" 
-                    name="partner_invitation" 
-                    value=1
-                    [ngModel]="userInfo?.partner_invitation" 
-                    #partner_invitation="ngModel">
-                  <span class="human_status">Yes</span>
-              </label>
-              <div *ngIf="partner_invitation.value == 1"
-                   class="email-box" 
-                   [ngClass] = "{'valid': partner_email.valid, 'invalid': partner_email.errors && (partner_email.dirty || partner_email.touched)}">
-                  <input 
-                    type="email" 
-                    placeholder="Enter Email Address" 
-                    class="form-control"
-                    name="partner_email"
-                    required
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-                    [ngModel]="userInfo?.partner_email"
-                    #partner_email="ngModel">
-                  <i class= 'fa fa-check' *ngIf="partner_email.valid"></i>
-                  <i class= 'fa fa-times' *ngIf="partner_email.errors && (partner_email.dirty || partner_email.touched)">
-                  </i>
-                  
-              </div>
-          </li>
-          <li>
-              <label class="radio_custom"
-                     [ngClass]="{'active': partner_invitation.value == 0}">
-                     <input type="radio" 
-                     name="partner_invitation" 
-                     value=0
-                     [ngModel]="userInfo?.partner_invitation" 
-                     #partner_invitation="ngModel">
-                  <span class="human_status"> No</span>
-              </label>
-          </li>
-      </ul>
-      
-    </div>
+
 
     <div class="form-group" >
       <label>Home Address: </label>
@@ -548,8 +562,8 @@
         </div>
       </div>
 
-      
-        
+
+
 
 
       <div class="row" *ngIf="errors.errorFlag">
@@ -575,6 +589,10 @@
           <option value="Friend">Friend</option>
           <option value="Advertisement">Advertisement</option>
         </select>
+        <span class="error_txt"
+              *ngIf="referral.errors && (referral.dirty || referral.touched)">
+              <p *ngIf="referral.errors?.required">Please fill up this field.</p>
+        </span>
     </div>
 
     <div class="form-footer">

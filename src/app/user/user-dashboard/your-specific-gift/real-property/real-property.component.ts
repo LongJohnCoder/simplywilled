@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {RealPropertyService} from '../services/real-property.service';
 import {Observable} from 'rxjs/Observable';
@@ -14,7 +14,7 @@ import {Subscription} from 'rxjs/Subscription';
   templateUrl: './real-property.component.html',
   styleUrls: ['./real-property.component.css']
 })
-export class RealPropertyComponent implements OnInit {
+export class RealPropertyComponent implements OnInit, OnDestroy {
   /**Variable declaration*/
   @Input() giftCount: any;
   @ViewChild(YourSpecificGiftComponent) YourSpecificGiftComponent: YourSpecificGiftComponent;
@@ -79,7 +79,7 @@ export class RealPropertyComponent implements OnInit {
 
   /**Set the form after edit*/
   setFormData(): void {
-    if (this.editService.getData()) {
+    if (this.editService.getData() && this.editService.getData() !== null && this.editService.getData() !== undefined) {
       if (Object.keys(this.editService.getData()).length) {
         this.flags.editFlag = true;
         this.formEditDataSet = this.editService.getData();
@@ -112,7 +112,7 @@ export class RealPropertyComponent implements OnInit {
     this.realPropertyForm = this._fb.group( {
       'street_address': new FormControl(data === null ? '' : data.street_address, [Validators.required]),
       'city': new FormControl(data === null ? '' : data.city, [Validators.required]),
-      'state': new FormControl(data === null ? '' : data.city, [Validators.required]),
+      'state': new FormControl(data === null ? '' : data.state, [Validators.required]),
       'residence': new FormControl(data === null ? '0' : data.residence, [Validators.required]),
       'gift_to': new FormControl(data === null ? '' : data.gift_to , [Validators.required]),
       'organization_name': new FormControl(data === null ? '' : data.organization_name),
@@ -128,7 +128,7 @@ export class RealPropertyComponent implements OnInit {
       'individual_name': new FormControl(data === null ? '' : data.individual_name),
       'individual_relationship': new FormControl(data === null ? '' : (data.individual_relationship === null ? '' : data.individual_relationship)),
       'individual_relationship_other': new FormControl(data === null ? '' : (data.individual_relationship_other === null ? '' : data.individual_relationship_other)),
-      'free_mortgage': new FormControl(data === null ? '1' : (data.free_mortage === null ? '0' : data.free_mortage), [Validators.required]),
+      'free_mortgage': new FormControl(data === null ? '1' : (data.free_mortgage === null ? '0' : data.free_mortgage), [Validators.required]),
     });
   }
 
@@ -365,6 +365,7 @@ export class RealPropertyComponent implements OnInit {
           if (data.status === 200) {
             if (data.data[0].data !== null) {
               if (data.data[0].data.hasOwnProperty('userInfo')) {
+                console.log(data.data[0].data.userInfo);
                 this.realPropertyForm.patchValue({
                   'street_address': data.data[0].data.userInfo.address,
                   'city': data.data[0].data.userInfo.city,
@@ -411,7 +412,8 @@ export class RealPropertyComponent implements OnInit {
     if (this.realPropertyForm.valid) {
       let user = this.parseUserId();
       let token = this.parseToken();
-      this.giftData.push(this.realPropertyForm.value);
+      let data = this.prepareData();
+      this.giftData.push(data);
       if (token) {
         let cashGiftDataSet = this.flags.editFlag ? {'id': this.giftId, 'step': 7, 'user_id': user, 'giftType': 2, 'giftData': this.giftData} : {'step': 7, 'user_id': user, 'giftType': 2, 'giftData': this.giftData};
         if (this.flags.editFlag) {
@@ -430,9 +432,36 @@ export class RealPropertyComponent implements OnInit {
     }
   }
 
+  /**Prepares the request*/
+  prepareData() {
+    let data = {
+      street_address: this.realPropertyForm.value.street_address,
+      city: this.realPropertyForm.value.city,
+      state: this.realPropertyForm.value.state,
+      residence: this.realPropertyForm.value.residence,
+      beneficiary: this.realPropertyForm.value.gift_to === 'IN' ? this.realPropertyForm.value.beneficiary : '',
+      full_legal_name: this.realPropertyForm.value.full_legal_name,
+      beneficiary_legal_name: this.realPropertyForm.value.gift_to === 'IN' && this.realPropertyForm.value.beneficiary === '_si' ? this.realPropertyForm.value.beneficiary_legal_name : '',
+      beneficiary_legal_relation: this.realPropertyForm.value.gift_to === 'IN' && this.realPropertyForm.value.beneficiary === '_si' ? this.realPropertyForm.value.beneficiary_legal_relation : '',
+      beneficiary_legal_relation_other: this.realPropertyForm.value.gift_to === 'IN' && this.realPropertyForm.value.beneficiary === '_si' ? this.realPropertyForm.value.beneficiary_legal_relation_other : '',
+      gender: this.realPropertyForm.value.gift_to === 'IN' && this.realPropertyForm.value.beneficiary === '_si' ? this.realPropertyForm.value.gender : 'Male',
+      gift_to: this.realPropertyForm.value.gift_to,
+      multiple_beneficiaries: this.realPropertyForm.value.gift_to === 'IN' && this.realPropertyForm.value.beneficiary === '_mu' ? this.realPropertyForm.value.multiple_beneficiaries : [],
+      organization_address: this.realPropertyForm.value.gift_to === 'CH' ? this.realPropertyForm.value.organization_address : '',
+      organization_name: this.realPropertyForm.value.gift_to === 'CH' ? this.realPropertyForm.value.organization_name : '',
+      passed_by: this.realPropertyForm.value.passed_by,
+      passed_by_child: this.realPropertyForm.value.passed_by_child,
+      individual_name: this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se') ? this.realPropertyForm.value.individual_name : '',
+      individual_relationship: this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se') ? this.realPropertyForm.value.individual_relationship : '',
+      individual_relationship_other: this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se') ? this.realPropertyForm.value.individual_relationship_other : '',
+      free_mortgage: this.realPropertyForm.value.free_mortgage,
+    };
+    return data;
+  }
+
   /**Calls update gift data api*/
   editGiftData(token: string, cashGiftDataSet) {
-    this.ysgService.saveCashGiftData(token, cashGiftDataSet).subscribe((data) => {
+    this.ysgService.updateGift(token, cashGiftDataSet).subscribe((data) => {
       if (data.status) {
         window.location.reload();
       } else {
