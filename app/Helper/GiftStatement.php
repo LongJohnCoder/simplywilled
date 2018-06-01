@@ -22,7 +22,7 @@
 			
 			if(!array_key_exists('gift_to',$cashDescription)) {
 				$cashDescription['statement'] = '';
-				return json_encode([$cashDescription]);
+				return json_encode($cashDescription);
 			}
 			
 			$statement = '';	
@@ -119,7 +119,7 @@
 				$cashDescription['statement'] = '';
 			}
 
-			return json_encode([$cashDescription]);
+			return json_encode($cashDescription);
 		}
 
 		//With the residue of my estate : _re
@@ -136,7 +136,7 @@
 			if(!array_key_exists('gift_to',$businessDetails) ||
 				!array_key_exists('full_legal_name',$businessDetails)) {
 				$businessDetails['statement'] = '';
-				return json_encode([$businessDetails]);
+				return json_encode($businessDetails);
 			}
 
 			$statement = "I direct that all of my interest in that business entity known as ".ucwords(strtolower($businessDetails['full_legal_name'])).", including, but not be limited to, goodwill, accounts receivable, equipment, inventory, bank accounts and all other assets of the business of whatever manner, wherever located, and whenever acquired, shall be distributed to ";
@@ -326,7 +326,7 @@
 			}
 
 			$businessDetails['statement'] = $statement;
-			return json_encode([$businessDetails]);
+			return json_encode($businessDetails);
 		}
 
 
@@ -344,7 +344,7 @@
 			if(!array_key_exists('gift_to',$specificAssets) ||
 				!array_key_exists('full_legal_name',$specificAssets)) {
 				$specificAssets['statement'] = '';
-				return json_encode([$specificAssets]);
+				return json_encode($specificAssets);
 			}
 
 			$statement = $specificAssets['full_legal_name']." shall be distributed to ";
@@ -534,7 +534,7 @@
 			}
 
 			$specificAssets['statement'] = $statement;
-			return json_encode([$specificAssets]);
+			return json_encode($specificAssets);
 		}
 	}
 ?>
