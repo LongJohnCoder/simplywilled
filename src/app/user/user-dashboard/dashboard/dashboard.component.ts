@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from '../../user.service';
-import {Router} from '@angular/router';
+import {Router, NavigationEnd} from '@angular/router';
 import {UserAuthService} from '../../user-auth/user-auth.service';
 import {UserDashboardService} from '../user-dashboard.service';
 import {Subscription} from 'rxjs/Subscription';
@@ -18,13 +18,24 @@ export class DashboardComponent implements OnInit, OnDestroy {
     logoutSubscription: Subscription;
     step1DataSubscription: Subscription;
     getUserDetailsSubscription: Subscription;
+    showLeft: boolean = true;
 
     constructor(
       private userService: UserService,
       private router: Router,
       private userAuth: UserAuthService,
       private userDashboardService: UserDashboardService,
-    ) { }
+    ) {
+      router.events
+        .filter(event => event instanceof NavigationEnd)
+        .subscribe((event: NavigationEnd) => {
+          window.scroll(0, 0);
+          if(event.urlAfterRedirects == '/dashboard/packages'){
+            this.showLeft = false;
+          }
+
+        });
+    }
 
     ngOnInit() {
       this.loggedInUser = this.userAuth.getUser();
