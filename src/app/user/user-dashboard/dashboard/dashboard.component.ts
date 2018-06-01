@@ -1,18 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from '../../user.service';
 import {Router} from '@angular/router';
 import {UserAuthService} from '../../user-auth/user-auth.service';
 import {UserDashboardService} from '../user-dashboard.service';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
+    /**Variable  declaration*/
     loggedInUser: any;
     userDetails: any = {};
-    step1Data: any = {}
+    step1Data: any = {};
+    logoutSubscription: Subscription;
+    step1DataSubscription: Subscription;
+    getUserDetailsSubscription: Subscription;
 
     constructor(
       private userService: UserService,
@@ -24,15 +29,16 @@ export class DashboardComponent implements OnInit {
     ngOnInit() {
       this.loggedInUser = this.userAuth.getUser();
       this.getUserDetails();
-      this.userDashboardService.step1Data.subscribe(
+      this.step1DataSubscription = this.userDashboardService.step1Data.subscribe(
           (data: any) => {
               this.step1Data = data;
-          }
+          },
+        (error) =>  {console.log(error);}
       );
     }
 
     onLogOut() {
-      this.userService.logout().subscribe(
+      this.logoutSubscription = this.userService.logout().subscribe(
           (data: any) => {
               localStorage.removeItem('loggedInUser');
               this.router.navigate(['/']);
@@ -43,7 +49,7 @@ export class DashboardComponent implements OnInit {
       );
     }
     getUserDetails() {
-        this.userService.getUserDetails(this.loggedInUser.id).subscribe(
+        this.getUserDetailsSubscription = this.userService.getUserDetails(this.loggedInUser.id).subscribe(
             (response: any ) => {
                 this.userDetails = response.data;
                 this.userDashboardService.updateUserDetails(this.userDetails);
@@ -61,4 +67,15 @@ export class DashboardComponent implements OnInit {
         this.router.navigate([link]);
     }
 
+    ngOnDestroy() {
+      if (this.logoutSubscription !== undefined) {
+        this.logoutSubscription.unsubscribe();
+      }
+      if (this.step1DataSubscription !== undefined) {
+        this.step1DataSubscription.unsubscribe();
+      }
+      if (this.getUserDetailsSubscription !== undefined) {
+        this.getUserDetailsSubscription.unsubscribe();
+      }
+    }
 }

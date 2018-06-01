@@ -4,6 +4,7 @@ import {Validators, FormGroup, FormBuilder, FormControl, FormArray, Form} from '
 import {UserAuthService} from '../../user-auth/user-auth.service';
 import {UserService} from '../../user.service';
 import {Subscription} from 'rxjs/Subscription';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-your-estate-distributed',
@@ -31,7 +32,9 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
   constructor( private  authService: UserAuthService,
                private userService: UserService,
                private router: Router,
-               private fb: FormBuilder, ) {
+               private fb: FormBuilder,
+               private location: Location
+              ) {
       this.createForm(); }
 
   /**When the component initialises*/
@@ -655,5 +658,10 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
     if (this.getUserDetailsSubscription !== undefined) {
         this.getUserDetailsSubscription.unsubscribe();
     }
+  }
+
+  /**Previous page*/
+  goBack() {
+    this.location.back();
   }
 }

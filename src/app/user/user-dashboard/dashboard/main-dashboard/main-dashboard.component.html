@@ -1,5 +1,16 @@
+<div class="pageLoader" *ngIf="loading">
+  <div class="loaderInner">
+    <img src="../../../../assets/images/owl-loading.gif" alt="Loading...">
+    <p class="loadingTxt">
+      Please Wait
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+  </div>
+</div>
 
-<div class="main-content">
+<div class="main-content" *ngIf="!loading">
   <h2>{{step1Data?.data?.userInfo?.fullname}} Dashboard</h2>
   <p><strong>Instructions:</strong> Complete our simple interview process to <br> protect your assets and provide for your loved ones.</p>
   <ul class="single_ul">

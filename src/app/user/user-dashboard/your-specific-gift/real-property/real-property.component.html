@@ -251,7 +251,7 @@
                     </li>
                     <li>
                       <label class="radio_custom property_to_be_distributed " [ngClass]="{'active': flags.toTheirIssueFlag}">
-                        <input type="radio" formControlName="passed_by" value="_tth" #radiotth (click)="changeProperty(radiotth.value)">
+                        <input type="radio" formControlName="passed_by" value="_tti" #radiotth (click)="changeProperty(radiotth.value)">
                         <span class="custom_img"><img src="../../../../../assets/images/kids.png" alt="To their issue"></span>
                         <span class="human_status">To Their Issue</span> </label>
                     </li>
@@ -329,20 +329,20 @@
               <ul class="radio_ul4">
                 <li>
                   <label class="radio_custom zero_nine_page"  [ngClass]="{'active': flags.mortageYesFlag}">
-                    <input type="radio" class="form-control" formControlName="free_mortage" value='1' #mortageYes (click)="changeMortage(mortageYes.value)">
+                    <input type="radio" class="form-control" formControlName="free_mortgage" value='1' #mortageYes (click)="changeMortage(mortageYes.value)">
                     <span class="custom_img"><img src="../../../../../assets/images/yes.png" alt="Yes"></span>
                     <span class="human_status">Yes</span>
                   </label>
                 </li>
                 <li>
                   <label class="radio_custom zero_nine_page"  [ngClass]="{'active': flags.mortageNoFlag}">
-                    <input type="radio" class="form-control" #mortageNo formControlName="free_mortage" value='0' (click)="changeMortage(mortageNo.value)">
+                    <input type="radio" class="form-control" #mortageNo formControlName="free_mortgage" value='0' (click)="changeMortage(mortageNo.value)">
                     <span class="custom_img"><img src="../../../../../assets/images/no.png" alt="Np"></span>
                     <span class="human_status">No</span>
                   </label>
                 </li>
               </ul>
-              <span class="error_txt" *ngIf="realPropertyForm.get('free_mortage').invalid && realPropertyForm.get('free_mortage').touched && realPropertyForm.get('free_mortage').hasError('required')">
+              <span class="error_txt" *ngIf="realPropertyForm.get('free_mortgage').invalid && realPropertyForm.get('free_mortgage').touched && realPropertyForm.get('free_mortgage').hasError('required')">
                   Please answer this question.
               </span>
 

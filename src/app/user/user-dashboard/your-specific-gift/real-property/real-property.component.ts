@@ -93,7 +93,7 @@ export class RealPropertyComponent implements OnInit {
         this.flags.maleFlag = parsedDataSet.gender === 'Male';
         this.flags.femaleFlag = parsedDataSet.gender === 'Female';
         this.flags.survivingGiftBeneficiariesFlag = parsedDataSet.passed_by === '_sgb';
-        this.flags.toTheirIssueFlag = parsedDataSet.passed_by === '_tth';
+        this.flags.toTheirIssueFlag = parsedDataSet.passed_by === '_tti';
         this.flags.residueEstateFlag = parsedDataSet.passed_by === '_re';
         this.flags.someoneElseFlag = parsedDataSet.passed_by === '_se';
         this.flags.residueEstateChildFlag = parsedDataSet.passed_by_child === '_re';
@@ -128,7 +128,7 @@ export class RealPropertyComponent implements OnInit {
       'individual_name': new FormControl(data === null ? '' : data.individual_name),
       'individual_relationship': new FormControl(data === null ? '' : (data.individual_relationship === null ? '' : data.individual_relationship)),
       'individual_relationship_other': new FormControl(data === null ? '' : (data.individual_relationship_other === null ? '' : data.individual_relationship_other)),
-      'free_mortage': new FormControl(data === null ? '1' : (data.free_mortage === null ? '0' : data.free_mortage), [Validators.required]),
+      'free_mortgage': new FormControl(data === null ? '1' : (data.free_mortage === null ? '0' : data.free_mortage), [Validators.required]),
     });
   }
 
@@ -269,7 +269,7 @@ export class RealPropertyComponent implements OnInit {
   /**Set validators when passed by is selected*/
   setValidationPassedBy(passedBy) {
     switch (passedBy) {
-      case '_tth':   console.log('tth');
+      case '_tti':   console.log('tth');
         this.realPropertyForm.get('individual_name').clearValidators();
         this.realPropertyForm.get('passed_by_child').setValidators([Validators.required]);
         this.realPropertyForm.get('individual_name').updateValueAndValidity();
@@ -331,7 +331,7 @@ export class RealPropertyComponent implements OnInit {
   /**Function call when radio button when property is toggled*/
   changeProperty(value: string) {
     this.flags.survivingGiftBeneficiariesFlag = value === '_sgb';
-    this.flags.toTheirIssueFlag = value === '_tth';
+    this.flags.toTheirIssueFlag = value === '_tti';
     this.flags.residueEstateFlag = value === '_re';
     this.flags.someoneElseFlag = value === '_se';
   }

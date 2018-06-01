@@ -85,7 +85,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
         this.flags.maleFlag = parsedDataSet.gender === 'Male';
         this.flags.femaleFlag = parsedDataSet.gender === 'Female';
         this.flags.survivingGiftBeneficiariesFlag = parsedDataSet.passed_by === '_sgb';
-        this.flags.toTheirIssueFlag = parsedDataSet.passed_by === '_tth';
+        this.flags.toTheirIssueFlag = parsedDataSet.passed_by === '_tti';
         this.flags.residueEstateFlag = parsedDataSet.passed_by === '_re';
         this.flags.someoneElseFlag = parsedDataSet.passed_by === '_se';
         this.flags.residueEstateChildFlag = parsedDataSet.passed_by_child === '_re';
@@ -257,7 +257,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
   /**Set validators when passed by is selected*/
   setValidationPassedBy(passedBy) {
     switch (passedBy) {
-      case '_tth':   console.log('tth');
+      case '_tti':   console.log('tth');
         this.businessInterestForm.get('individual_name').clearValidators();
         this.businessInterestForm.get('passed_by_child').setValidators([Validators.required]);
         this.businessInterestForm.get('individual_name').updateValueAndValidity();
@@ -319,7 +319,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
   /**Function call when radio button when property is toggled*/
   changeProperty(value: string) {
     this.flags.survivingGiftBeneficiariesFlag = value === '_sgb';
-    this.flags.toTheirIssueFlag = value === '_tth';
+    this.flags.toTheirIssueFlag = value === '_tti';
     this.flags.residueEstateFlag = value === '_re';
     this.flags.someoneElseFlag = value === '_se';
   }
