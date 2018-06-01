@@ -3357,6 +3357,11 @@ input[disabled] {
   padding: 0px 0px 20px 0px;
 }
 
+input[type="text"].form-control{
+  height: 40px;
+  margin-bottom: 14px;
+  padding: 5px 10px;
+}
 
 .threeColField {
   width: calc(50% - 53px);
@@ -3371,7 +3376,7 @@ input[disabled] {
 .threeColField .form-control::-webkit-input-placeholder{
   color: #fff;
   font-size: 14px;
-} 
+}
 .threeColField .form-control::-moz-placeholder {
   color: #fff;
   font-size: 14px;
@@ -3424,7 +3429,12 @@ input[disabled] {
   height: 195px;
   margin: 0px 0 25px;
 }
-
+.yesNo{
+  padding: 34px 0;
+}
+select.form-control{
+  margin: 0;
+}
 
 /************responsive***************/
 @media only screen and (min-width: 1251px) and (max-width: 1350px) {
@@ -3523,7 +3533,7 @@ input[disabled] {
   .threeColField .form-control::-webkit-input-placeholder{
     color: #9fa4aa;
     font-size: 14px;
-  } 
+  }
   .threeColField .form-control::-moz-placeholder {
     color: #9fa4aa;
     font-size: 14px;
@@ -3562,7 +3572,7 @@ input[disabled] {
   .radio_ul7 li:first-child {
     margin-left: 10px;
   }
-  
+
 }
 
 @media only screen and (min-width: 768px) and (max-width: 960px) {
@@ -4490,7 +4500,7 @@ input[disabled] {
 
   .threeColField .form-control::-webkit-input-placeholder{
     font-size: 12px;
-  } 
+  }
   .threeColField .form-control::-moz-placeholder {
     font-size: 12px;
   }
@@ -4508,7 +4518,7 @@ input[disabled] {
 @media screen and (max-width:335px){
   .threeColField .form-control::-webkit-input-placeholder{
     font-size: 11px;
-  } 
+  }
   .threeColField .form-control::-moz-placeholder {
     font-size: 11px;
   }

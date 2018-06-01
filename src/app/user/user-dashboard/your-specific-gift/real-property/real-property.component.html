@@ -13,7 +13,7 @@
         <div class="gift_form_container">
           <form [formGroup] = "realPropertyForm">
 
-            <h2 class="singing_instruction3" style="padding-top:0;">Tell Us About Any Specific Assets You Wish To Gift</h2>
+            <h2 class="singing_instruction3" style="padding-top:0;">Tell Us About Your Gift of Real Property</h2>
             <ul class="radio_ul3">
               <li><label class="radio_custom singing_instruction"><span class="custom_img3"><img src="../../../../../assets/images/percent.png" alt="Cash"></span></label></li>
             </ul>
@@ -22,17 +22,17 @@
               <h3 class="registered_domestic2 blue_font">Is this property your primary residence ?</h3>
               <ul class="radio_ul4">
                 <li>
-                  <label class="radio_custom zero_nine_page"  [ngClass]="{'active': flags.residenceYesFlag}">
+                  <label class="radio_custom zero_nine_page yesNo"  [ngClass]="{'active': flags.residenceYesFlag}">
                     <input type="radio" class="form-control" formControlName="residence" value="1" #residenceYes (click)="changeResidence(residenceYes.value)">
                     <span class="custom_img"><img src="../../../../../assets/images/yes.png" alt="Yes"></span>
                     <span class="human_status">Yes</span>
                   </label>
                 </li>
                 <li>
-                  <label class="radio_custom zero_nine_page"  [ngClass]="{'active': flags.residenceNoFlag}">
+                  <label class="radio_custom zero_nine_page yesNo"  [ngClass]="{'active': flags.residenceNoFlag}">
                     <input type="radio" class="form-control" #residenceNo formControlName="residence" value="0" (click)="changeResidence(residenceNo.value)">
                     <span class="custom_img"><img src="../../../../../assets/images/no.png" alt="Np"></span>
-                    <span class="human_status">Charity</span>
+                    <span class="human_status">No</span>
                   </label>
                 </li>
               </ul>
@@ -44,7 +44,7 @@
 
             <div class="form-group">
               <label class="legal_name_benifets">No Street Address of the Property?</label>
-              <input class="form-control capitalize_txt" [ngClass]="{'error_input': realPropertyForm.get('street_address').invalid && realPropertyForm.get('street_address').touched}" formControlName="street_address">
+              <input type="text" class="form-control capitalize_txt" [ngClass]="{'error_input': realPropertyForm.get('street_address').invalid && realPropertyForm.get('street_address').touched}" formControlName="street_address">
 
               <!--<div class="alert alert-danger" *ngIf="realPropertyForm.invalid && realPropertyForm.touched">-->
               <span class="error_txt" *ngIf="realPropertyForm.get('street_address').invalid && realPropertyForm.get('street_address').touched && realPropertyForm.get('street_address').hasError('required')">
@@ -55,7 +55,7 @@
 
             <div class="form-group">
               <label class="legal_name_benifets">City</label>
-              <input class="form-control capitalize_txt" [ngClass]="{'error_input': realPropertyForm.get('city').invalid && realPropertyForm.get('city').touched}" formControlName="city">
+              <input type="text" class="form-control capitalize_txt" [ngClass]="{'error_input': realPropertyForm.get('city').invalid && realPropertyForm.get('city').touched}" formControlName="city">
 
               <!--<div class="alert alert-danger" *ngIf="realPropertyForm.invalid && realPropertyForm.touched">-->
               <span class="error_txt" *ngIf="realPropertyForm.get('city').invalid && realPropertyForm.get('city').touched && realPropertyForm.get('city').hasError('required')">
@@ -66,7 +66,7 @@
 
             <div class="form-group">
               <label class="legal_name_benifets">State</label>
-              <input class="form-control capitalize_txt" [ngClass]="{'error_input': realPropertyForm.get('state').invalid && realPropertyForm.get('state').touched}" formControlName="state">
+              <input type="text" class="form-control capitalize_txt" [ngClass]="{'error_input': realPropertyForm.get('state').invalid && realPropertyForm.get('state').touched}" formControlName="state">
 
               <!--<div class="alert alert-danger" *ngIf="realPropertyForm.invalid && realPropertyForm.touched">-->
               <span class="error_txt" *ngIf="realPropertyForm.get('state').invalid && realPropertyForm.get('state').touched && realPropertyForm.get('state').hasError('required')">
@@ -328,14 +328,14 @@
               <h3 class="registered_domestic2 blue_font">Should this property be distributed "free & clear" of any mortgage ?</h3>
               <ul class="radio_ul4">
                 <li>
-                  <label class="radio_custom zero_nine_page"  [ngClass]="{'active': flags.mortageYesFlag}">
+                  <label class="radio_custom zero_nine_page yesNo"  [ngClass]="{'active': flags.mortageYesFlag}">
                     <input type="radio" class="form-control" formControlName="free_mortgage" value='1' #mortageYes (click)="changeMortage(mortageYes.value)">
                     <span class="custom_img"><img src="../../../../../assets/images/yes.png" alt="Yes"></span>
                     <span class="human_status">Yes</span>
                   </label>
                 </li>
                 <li>
-                  <label class="radio_custom zero_nine_page"  [ngClass]="{'active': flags.mortageNoFlag}">
+                  <label class="radio_custom zero_nine_page yesNo"  [ngClass]="{'active': flags.mortageNoFlag}">
                     <input type="radio" class="form-control" #mortageNo formControlName="free_mortgage" value='0' (click)="changeMortage(mortageNo.value)">
                     <span class="custom_img"><img src="../../../../../assets/images/no.png" alt="Np"></span>
                     <span class="human_status">No</span>

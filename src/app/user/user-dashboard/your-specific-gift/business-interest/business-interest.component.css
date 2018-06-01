@@ -463,6 +463,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   width: 100%;
   padding: 0 10px;
+  font-size: 18px;
 }
 /*******end radio*********/
 
@@ -1609,14 +1610,12 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   display: inline-block;
   text-align: center;
+  margin-bottom: 25px;
 }
 .residue_ul_Radio2 li {
   width: 145px;
   display: inline-block;
   margin-left: 15px;
-}
-.residue_ul_Radio2 li:nth-child(4n+1) {
-  margin-left: 0px;
 }
 .relation_banefits_radio {
   padding: 10px 0px 5px 0px;
@@ -3388,7 +3387,7 @@ input[disabled] {
 .threeColField .form-control::-webkit-input-placeholder{
   color: #fff;
   font-size: 14px;
-} 
+}
 .threeColField .form-control::-moz-placeholder {
   color: #fff;
   font-size: 14px;
@@ -3428,13 +3427,11 @@ input[disabled] {
   float: right;
 }
 
-/************responsive***************/
-@media only screen and (min-width: 1251px) and (max-width: 1350px) {
-  .residue_ul_Radio2 li {
-    width: 130px;
-    margin-left: 10px;
-  }
+label.radio_custom.property_to_be_distributed span.custom_img img{
+  height: 49px;
 }
+
+/************responsive***************/
 @media only screen and (min-width: 961px) and (max-width: 1250px) {
   .left_Sec_page_ul li a {
     padding: 10px 0px 10px 10px;
@@ -3463,10 +3460,6 @@ input[disabled] {
   }
   .ask_owl_main:before, .ask_owl_main:after {
     width: 32%;
-  }
-  .residue_ul_Radio2 li {
-    width: 120px;
-    margin-left: 5px;
   }
   .single_right {
     width: 87%;
@@ -3525,7 +3518,7 @@ input[disabled] {
   .threeColField .form-control::-webkit-input-placeholder{
     color: #9fa4aa;
     font-size: 14px;
-  } 
+  }
   .threeColField .form-control::-moz-placeholder {
     color: #9fa4aa;
     font-size: 14px;
@@ -3559,7 +3552,7 @@ input[disabled] {
   .property_to_be_distributed{
     min-height: 166px;
   }
-  .radio_custom{
+  .radio_custom .human_status{
     font-family: 'OpenSans';
     font-size: 14px;
   }
@@ -3619,7 +3612,6 @@ input[disabled] {
     width: 90%;
   }
   .residue_ul_Radio2 li {
-    width: 100px;
     margin-left: 5px;
   }
   .relation_ship_text {
@@ -3969,15 +3961,6 @@ input[disabled] {
   .single_package_pera{
     padding-bottom:10px;
   }
-
-
-
-
-
-
-
-
-
 }
 @media only screen and (min-width: 100px) and (max-width: 600px) {
   .owl_tablet_right {
@@ -4327,9 +4310,7 @@ input[disabled] {
     width: 100%;
     margin-left: 0px;
   }
-  .residue_ul_Radio2 li:nth-child(4n+1) {
-    margin-left: 0px;
-  }
+
   .divide_remainder_text2 {
     font-size: 18px;
   }
@@ -4468,7 +4449,7 @@ input[disabled] {
 @media screen and (max-width:380px){
   .threeColField .form-control::-webkit-input-placeholder{
     font-size: 12px;
-  } 
+  }
   .threeColField .form-control::-moz-placeholder {
     font-size: 12px;
   }
@@ -4489,7 +4470,7 @@ input[disabled] {
 @media screen and (max-width:335px){
   .threeColField .form-control::-webkit-input-placeholder{
     font-size: 11px;
-  } 
+  }
   .threeColField .form-control::-moz-placeholder {
     font-size: 11px;
   }
