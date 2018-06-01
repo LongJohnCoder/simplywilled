@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {RealPropertyService} from '../services/real-property.service';
 import {Observable} from 'rxjs/Observable';
 import {SaveRealProperty} from '../models/saveRealProperty';
@@ -7,6 +7,7 @@ import {YourSpecificGiftService} from '../services/your-specific-gift.service';
 import {EditGiftService} from '../services/edit-gift.service';
 import {MyGifts} from '../models/myGifts';
 import {YourSpecificGiftComponent} from '../your-specific-gift.component';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-real-property',
@@ -17,531 +18,451 @@ export class RealPropertyComponent implements OnInit {
   /**Variable declaration*/
   @Input() giftCount: any;
   @ViewChild(YourSpecificGiftComponent) YourSpecificGiftComponent: YourSpecificGiftComponent;
-  isIndividualRP: boolean;
-  isCharityRP: boolean;
-  singleBeneficiaryRP: boolean;
-  multipleBeneficiaryRP: boolean;
-  otherRelationshipRp: boolean;
-  toTheirIssue: boolean;
-  isSomeoneElse: boolean;
-  otherRelationshipRpSomeOneElse: boolean;
-  toTheirIssueMB: boolean;
-  isSomeoneElseMB: boolean;
-  otherRelationshipRpSomeOneElseMB: boolean;
-  isSomeoneElseMBChild: boolean;
   realPropertyForm: FormGroup;
-  access_token: string;
-  myUserId: number;
-  userDataResponse: Observable<any>;
-  errFlag: boolean;
-  errString: string;
-  realPropertyDataSet: any;
-  saveRealPropertyDB: Observable<any>;
-  isEdit: boolean;
-  formEditDataSet: MyGifts;
-  parsedDataSet: any;
-  myArray: FormArray;
-  setValidationFlag = false;
-  /**Constructor call*/
-  constructor(private fb: FormBuilder, private rpService: RealPropertyService, private ysgService: YourSpecificGiftService, private editService: EditGiftService, private ysgComponent: YourSpecificGiftComponent) { this.createForm(); }
-  /**When the component initialises*/
-  ngOnInit() {
-    this.isIndividualRP = false;
-    this.isCharityRP = false;
-    this.singleBeneficiaryRP = false;
-    this.multipleBeneficiaryRP = false;
-    this.otherRelationshipRp = false;
-    this.toTheirIssue = false;
-    this.isSomeoneElse = false;
-    this.otherRelationshipRpSomeOneElse = false;
-    this.toTheirIssueMB = false;
-    this.isSomeoneElseMB = false;
-    this.otherRelationshipRpSomeOneElseMB = false;
-    this.isSomeoneElseMBChild = false;
-    this.access_token = null;
-    this.myUserId = 0;
-    this.errFlag = false;
-    this.errString = null;
-    this.isEdit = false;
+  multipleBeneficiaries: FormArray;
+  giftInfoSubscription: Subscription;
+  beneficiarySubscription: Subscription;
+  passedBySubscription: Subscription;
+  passedByChildSubscription: Subscription;
+  errors = {
+    errorFlag: false,
+    errorMsg: ''
+  };
+  flags = {
+    editFlag: false,
+    individualFlag: false,
+    charityFlag: false,
+    singleBeneficiaryFlag: false,
+    multipleBeneficiaryFlag: false,
+    maleFlag: true,
+    femaleFlag: false,
+    toTheirIssueFlag: false,
+    survivingGiftBeneficiariesFlag: false,
+    residueEstateFlag: false,
+    someoneElseFlag: false,
+    residueEstateChildFlag: false,
+    someoneElseChildFlag: false,
+    setValidationFlag: false,
+    residenceYesFlag: false,
+    residenceNoFlag: true,
+    mortageYesFlag: true,
+    mortageNoFlag: false
+  };
+  formEditDataSet: any;
+  giftData = [];
+  giftId = 0;
+
+  /**Calls the constructor*/
+  constructor (
+    private _fb: FormBuilder,
+    private ysgService: YourSpecificGiftService,
+    private editService: EditGiftService,
+    private ysgComponent: YourSpecificGiftComponent,
+    private rpService: RealPropertyService
+  ) { this.createForm(); }
+
+  /**Checks for authorization user id.*/
+  parseUserId() {
+    if (JSON.parse(localStorage.getItem('loggedInUser')).hasOwnProperty('user')) {
+      return JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    }
+    return null;
+  }
+
+  /**Checks for authorization user id.*/
+  parseToken() {
     if (JSON.parse(localStorage.getItem('loggedInUser')).hasOwnProperty('token')) {
-      this.access_token = JSON.parse(localStorage.getItem('loggedInUser')).token;
-      this.myUserId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
-    } else {
-      this.access_token = '';
+      return JSON.parse(localStorage.getItem('loggedInUser')).token;
     }
-    this.setFormData();
-    // console.log(this.isEdit);
-  }
-  toggleRelationship(event: any): void {
-    if (this.isIndividualRP && this.singleBeneficiaryRP) {
-      if (event.target.value === 'Other') {
-        this.otherRelationshipRp = true;
-      } else {
-        this.otherRelationshipRp = false;
-      }
-    }
+    return null;
   }
 
-  /**
-   * this function is used for creating the reactive form
-   * @returns {any}
-   */
-  createForm(): any {
-    this.realPropertyForm = this.fb.group({
-      'primary_residence': ['No', Validators.required],
-      'street_address': [null, Validators.required],
-      'city': [null, Validators.required],
-      'state': [null, Validators.required],
-      'free_clear_mortgage': ['Yes', Validators.required],
-      'gift_type': [null, Validators.required],
-      charityControls: this.fb.array([
-        this.fb.group({
-          'organization_name': [''],
-          'organization_address': ['']
-        })
-      ]),
-      individualControls: this.fb.array([
-        this.fb.group({
-          'beneficiary': [''],
-          singleBeneficiaryControls: this.fb.array([
-            this.fb.group({
-              'full_legal_name': [''],
-              'relationship_single_b_parent': [''],
-              'relationship_single_b_parent_other': [''],
-              'single_beneficiary_gender': ['Male'],
-              'property_distributed_single_beneficiary': [''],
-              'issue_survival': [''],
-              'issue_survival_full_name': [''],
-              'issue_survival_relationship': [''],
-              'issue_survival_other_relationship': ['']
-            })
-          ]),
-          multipleBeneficiaryControls: this.fb.array([
-            this.fb.group({
-              'itemRows': this.fb.array([this.initItemRows()]),
-              'property_distributed_multiple_beneficiary': [''],
-              'issue_survival_mb': [''],
-              'individual_name': [''],
-              'relationship_mb': [''],
-              'other_relationship_mb': ['']
-            })
-          ])
-        })
-      ])
-    });
-  }
-
-  /**
-   * this function sets the data while edit
-   */
+  /**Set the form after edit*/
   setFormData(): void {
     if (this.editService.getData()) {
       if (Object.keys(this.editService.getData()).length) {
-       this.isEdit = true;
-       // console.log(this.editService.getData());
-       this.formEditDataSet = this.editService.getData();
-       if (this.formEditDataSet.property_details !== null) {
-         this.parsedDataSet = this.formEditDataSet.property_details !== null ? JSON.parse(this.formEditDataSet.property_details)[0] : null;
-         // console.log(this.parsedDataSet);
-         this.realPropertyForm.controls['primary_residence'].setValue(this.parsedDataSet !== null ? this.parsedDataSet.primary_residence : '');
-         this.realPropertyForm.controls['street_address'].setValue(this.parsedDataSet !== null ? this.parsedDataSet.street_address : '');
-         this.realPropertyForm.controls['city'].setValue(this.parsedDataSet !== null ? this.parsedDataSet.city : '');
-         this.realPropertyForm.controls['state'].setValue(this.parsedDataSet !== null ? this.parsedDataSet.state : '');
-         this.realPropertyForm.controls['free_clear_mortgage'].setValue(this.parsedDataSet !== null ? this.parsedDataSet.free_clear_mortgage : '');
-         this.realPropertyForm.controls['gift_type'].setValue(this.parsedDataSet !== null ? this.parsedDataSet.gift_to : '');
-         if (this.parsedDataSet.gift_to === 'Individual') {
-           // Individual
-           this.isIndividualRP = true;
-           this.isCharityRP = false;
-           this.showSectionInOrCh('IN');
-           this.realPropertyForm.get('individualControls.0.beneficiary').setValue(this.parsedDataSet !== null ? this.parsedDataSet.beneficiary : '');
-           if (this.parsedDataSet.beneficiary === 'single_beneficiary') {
-             // single beneficiary
-             this.singleBeneficiaryRP = true;
-             this.multipleBeneficiaryRP = false;
-             this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.full_legal_name').setValue(this.parsedDataSet !== null ? this.parsedDataSet.singleBeneficiaryControls[0].full_legal_name : '');
-
-             this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.relationship_single_b_parent').setValue(this.parsedDataSet !== null ? this.parsedDataSet.singleBeneficiaryControls[0].relationship_single_b_parent : '');
-
-             // normal relationship other relationship
-             if (this.parsedDataSet.singleBeneficiaryControls[0].relationship_single_b_parent === 'Other') {
-               this.otherRelationshipRp = true;
-               this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.relationship_single_b_parent_other').setValue(this.parsedDataSet !== null ? this.parsedDataSet.singleBeneficiaryControls[0].relationship_single_b_parent_other : '');
-             } else {
-               this.otherRelationshipRp = false;
-             }
-             this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.single_beneficiary_gender').setValue(this.parsedDataSet !== null ? this.parsedDataSet.singleBeneficiaryControls[0].single_beneficiary_gender : '');
-             this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.property_distributed_single_beneficiary').setValue(this.parsedDataSet !== null ? this.parsedDataSet.singleBeneficiaryControls[0].property_distributed_single_beneficiary : '');
-             if (this.parsedDataSet !== null && this.parsedDataSet.singleBeneficiaryControls[0].property_distributed_single_beneficiary === 'to_their_issue') {
-               // to their issue
-               this.toTheirIssue = true;
-               this.isSomeoneElse = false;
-               this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').setValue(this.parsedDataSet !== null ? this.parsedDataSet.singleBeneficiaryControls[0].issue_survival : '');
-             } else if (this.parsedDataSet !== null && this.parsedDataSet.singleBeneficiaryControls[0].property_distributed_single_beneficiary === 'residue_of_estate') {
-               // residue of estate
-               this.toTheirIssue = false;
-               this.isSomeoneElse = false;
-             } else {
-               // to someone else
-               this.toTheirIssue = false;
-               this.isSomeoneElse = true;
-               this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').setValue(this.parsedDataSet !== null ? this.parsedDataSet.singleBeneficiaryControls[0].issue_survival_full_name : '');
-               this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_relationship').setValue(this.parsedDataSet !== null ? this.parsedDataSet.singleBeneficiaryControls[0].issue_survival_relationship : '');
-               if (this.parsedDataSet !== null && this.parsedDataSet.singleBeneficiaryControls[0].issue_survival_relationship === 'Other') {
-                 // other relationship
-                 this.otherRelationshipRpSomeOneElse = true;
-                 this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_other_relationship').setValue(this.parsedDataSet !== null ? this.parsedDataSet.singleBeneficiaryControls[0].issue_survival_other_relationship : '');
-               } else {
-                 this.otherRelationshipRpSomeOneElse = false;
-               }
-             }
-           } else {
-             // multiple beneficiary
-             this.singleBeneficiaryRP = false;
-             this.multipleBeneficiaryRP = true;
-             this.myArray = this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.itemRows') as FormArray;
-             this.clearFormArray(this.myArray);
-             for (let i = 0; i < this.parsedDataSet.multipleBeneficiaryControls[0].itemRows.length; i++) {
-               this.addLineItems(this.parsedDataSet.multipleBeneficiaryControls[0].itemRows[i]);
-             }
-             this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.property_distributed_multiple_beneficiary').setValue(this.parsedDataSet.multipleBeneficiaryControls[0].property_distributed_multiple_beneficiary);
-             // check condition
-             if (this.parsedDataSet.multipleBeneficiaryControls[0].property_distributed_multiple_beneficiary === 'to_the_surviving') {
-               // to the surviving
-               this.toTheirIssueMB = false;
-               this.isSomeoneElseMB = false;
-             } else if (this.parsedDataSet.multipleBeneficiaryControls[0].property_distributed_multiple_beneficiary === 'to_their_issue_mb') {
-               // to their issue
-               this.toTheirIssueMB = true;
-               this.isSomeoneElseMB = false;
-               this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').setValue(this.parsedDataSet.multipleBeneficiaryControls[0].issue_survival_mb);
-               // condition
-               if (this.parsedDataSet.multipleBeneficiaryControls[0].issue_survival_mb === 'residue_of_estate') {
-                 // residue of estate
-                 this.isSomeoneElseMB = false;
-               } else {
-                 // someone else
-                 this.isSomeoneElseMB = true;
-                 this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').setValue(this.parsedDataSet.multipleBeneficiaryControls[0].individual_name);
-                 this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').setValue(this.parsedDataSet.multipleBeneficiaryControls[0].relationship_mb);
-                 // condition for other
-                 if (this.parsedDataSet.multipleBeneficiaryControls[0].relationship_mb === 'Other') {
-                   this.otherRelationshipRpSomeOneElseMB = true;
-                   this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.other_relationship_mb').setValue(this.parsedDataSet.multipleBeneficiaryControls[0].other_relationship_mb);
-                 } else {
-                   this.otherRelationshipRpSomeOneElseMB = false;
-                 }
-               }
-             } else if (this.parsedDataSet.multipleBeneficiaryControls[0].property_distributed_multiple_beneficiary === 'residue_of_estate_mb') {
-               // residue of estate
-               this.toTheirIssueMB = false;
-               this.isSomeoneElseMB = false;
-             } else {
-               // to someone else
-               this.toTheirIssueMB = false;
-               this.isSomeoneElseMB = true;
-               this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').setValue(this.parsedDataSet.multipleBeneficiaryControls[0].individual_name);
-               this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').setValue(this.parsedDataSet.multipleBeneficiaryControls[0].relationship_mb);
-               // condition for other
-               if (this.parsedDataSet.multipleBeneficiaryControls[0].relationship_mb === 'Other') {
-                 this.otherRelationshipRpSomeOneElseMB = true;
-                 this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.other_relationship_mb').setValue(this.parsedDataSet.multipleBeneficiaryControls[0].other_relationship_mb);
-               } else {
-                 this.otherRelationshipRpSomeOneElseMB = false;
-               }
-             }
-           }
-         } else {
-           // charity
-           this.isIndividualRP = false;
-           this.isCharityRP = true;
-           this.realPropertyForm.get('charityControls.0.organization_name').setValue(this.parsedDataSet.organization_name);
-           this.realPropertyForm.get('charityControls.0.organization_address').setValue(this.parsedDataSet.organization_address);
-           this.showSectionInOrCh('CH');
-         }
-       }
+        this.flags.editFlag = true;
+        this.formEditDataSet = this.editService.getData();
+        let parsedDataSet = JSON.parse(this.formEditDataSet.asset_details)[0];
+        this.giftId = this.formEditDataSet.id;
+        this.createForm(this.flags.editFlag, parsedDataSet);
+        this.flags.individualFlag = parsedDataSet.gift_to === 'IN';
+        this.flags.charityFlag = parsedDataSet.gift_to === 'CH';
+        this.flags.singleBeneficiaryFlag = parsedDataSet.beneficiary === '_si';
+        this.flags.multipleBeneficiaryFlag = parsedDataSet.beneficiary === '_mu';
+        this.flags.maleFlag = parsedDataSet.gender === 'Male';
+        this.flags.femaleFlag = parsedDataSet.gender === 'Female';
+        this.flags.survivingGiftBeneficiariesFlag = parsedDataSet.passed_by === '_sgb';
+        this.flags.toTheirIssueFlag = parsedDataSet.passed_by === '_tth';
+        this.flags.residueEstateFlag = parsedDataSet.passed_by === '_re';
+        this.flags.someoneElseFlag = parsedDataSet.passed_by === '_se';
+        this.flags.residueEstateChildFlag = parsedDataSet.passed_by_child === '_re';
+        this.flags.someoneElseChildFlag = parsedDataSet.passed_by_child === '_se';
+        this.showDataMultipleBeneficiaries(parsedDataSet);
+        this.setValidatorGift(parsedDataSet === null ? '' : parsedDataSet.gift_to);
+        this.setValidationBeneficiary(parsedDataSet === null ? '' : parsedDataSet.beneficiary);
+        this.setValidationPassedBy(parsedDataSet === null ? '' : parsedDataSet.passed_by);
+        this.setValidationPassedByChild(parsedDataSet === null ? '' : parsedDataSet.passed_by_child);
       }
     }
   }
 
-  /**
-   * this function patch the value to address fields
-   * @param {boolean} identifier
-   */
-  getUsrData(identifier: boolean): void {
-    if (identifier) {
-      if (this.access_token && this.myUserId) {
-        this.userDataResponse = this.rpService.fetchUserData(this.access_token, this.myUserId);
-        this.userDataResponse.subscribe(data => {
-            if (data.status === 200) {
-              if (data.data[0].data !== null) {
-                if (data.data[0].data.hasOwnProperty('userInfo')) {
-                  this.realPropertyForm.patchValue({
-                    'street_address' : data.data[0].data.userInfo.address,
-                    'city' : data.data[0].data.userInfo.city,
-                    'state' : data.data[0].data.userInfo.state
-                  });
-                } else {
-                  this.errFlag = true;
-                  this.errString = 'Something went wrong could not be able to find User Info';
-                  console.log(this.errString);
-                }
+  /**Initialises the form*/
+  createForm(editFlag = false, data = null) {
+    this.realPropertyForm = this._fb.group( {
+      'street_address': new FormControl(data === null ? '' : data.street_address, [Validators.required]),
+      'city': new FormControl(data === null ? '' : data.city, [Validators.required]),
+      'state': new FormControl(data === null ? '' : data.city, [Validators.required]),
+      'residence': new FormControl(data === null ? '0' : data.residence, [Validators.required]),
+      'gift_to': new FormControl(data === null ? '' : data.gift_to , [Validators.required]),
+      'organization_name': new FormControl(data === null ? '' : data.organization_name),
+      'organization_address': new FormControl(data === null ? '' : data.organization_address),
+      'multiple_beneficiaries': this._fb.array([this.createMultipleBeneficiaryForm()]),
+      'beneficiary': new FormControl(data === null ? '' : data.beneficiary),
+      'beneficiary_legal_name': new FormControl(data === null ? '' : data.beneficiary_legal_name),
+      'beneficiary_legal_relation': new FormControl(data === null ? '' : (data.beneficiary_legal_relation === null ? '' : data.beneficiary_legal_relation)),
+      'beneficiary_legal_relation_other': new FormControl(data === null ? '' : (data.beneficiary_legal_relation_other === null ? '' : data.beneficiary_legal_relation_other)),
+      'gender': new FormControl(data === null ? 'Male' : data.gender),
+      'passed_by': new FormControl(data === null ? '' : data.passed_by),
+      'passed_by_child': new FormControl(data === null ? '' : data.passed_by_child),
+      'individual_name': new FormControl(data === null ? '' : data.individual_name),
+      'individual_relationship': new FormControl(data === null ? '' : (data.individual_relationship === null ? '' : data.individual_relationship)),
+      'individual_relationship_other': new FormControl(data === null ? '' : (data.individual_relationship_other === null ? '' : data.individual_relationship_other)),
+      'free_mortage': new FormControl(data === null ? '1' : (data.free_mortage === null ? '0' : data.free_mortage), [Validators.required]),
+    });
+  }
+
+  /**Initialises the multiple beneficiary forms*/
+  createMultipleBeneficiaryForm() {
+    return this._fb.group({
+      'multiple_beneficiary_name': new FormControl( '', [Validators.required]),
+      'multiple_beneficiary_relationship': new FormControl('', [Validators.required]),
+    });
+  }
+
+  /**Show all the multiple beneficiaries*/
+  showDataMultipleBeneficiaries(data) {
+    if (data.multiple_beneficiaries.length > 0 ) {
+      this.realPropertyForm.setControl('multiple_beneficiaries',
+        this._fb.array((data.multiple_beneficiaries || []).map((x) => this._fb.group(x))));
+    }
+  }
+
+  /**When component initialises*/
+  ngOnInit() {
+    this.setFormData();
+    this.addConditionalValidators();
+  }
+
+  /**Set dynamic validations*/
+  addConditionalValidators() {
+    this.giftInfoSubscription = this.realPropertyForm.get('gift_to').valueChanges.subscribe(
+      (gift_to: string) => {
+        this.setValidatorGift(gift_to);
+      }
+    );
+
+    this.beneficiarySubscription = this.realPropertyForm.get('beneficiary').valueChanges.subscribe(
+      (beneficiary: string) => {
+        this.setValidationBeneficiary(beneficiary);
+      }
+    );
+
+    this.passedBySubscription = this.realPropertyForm.get('passed_by').valueChanges.subscribe(
+      (passedBy: string) => {
+        this.setValidationPassedBy(passedBy);
+      }
+    );
+
+    this.passedByChildSubscription = this.realPropertyForm.get('passed_by_child').valueChanges.subscribe(
+      (passedByChild: string) => {
+        this.setValidationPassedByChild(passedByChild);
+      }
+    );
+  }
+
+  /**Set validators when gift to is selected*/
+  setValidatorGift(gift_to) {
+    switch (gift_to) {
+      case 'IN':  console.log("IN");
+        this.realPropertyForm.get('beneficiary').setValidators([Validators.required]);
+        this.realPropertyForm.get('beneficiary').updateValueAndValidity();
+        this.clearValidationFor([
+          'organization_name',
+          'organization_address',
+          'multiple_beneficiaries',
+          'beneficiary_legal_name',
+          'passed_by',
+          'passed_by_child',
+          'individual_name']);
+        this.clearValidationForFormArray((this.realPropertyForm.get('multiple_beneficiaries') as FormArray).controls);
+        break;
+      case 'CH':  console.log("CH");
+        this.realPropertyForm.get('organization_name').setValidators([Validators.required]);
+        this.realPropertyForm.get('organization_address').setValidators([Validators.required]);
+        this.realPropertyForm.get('organization_name').updateValueAndValidity();
+        this.realPropertyForm.get('organization_address').updateValueAndValidity();
+        this.clearValidationFor([
+          'beneficiary',
+          'multiple_beneficiaries',
+          'beneficiary_legal_name',
+          'passed_by',
+          'passed_by_child',
+          'individual_name']);
+        this.clearValidationForFormArray((this.realPropertyForm.get('multiple_beneficiaries') as FormArray).controls);
+        break;
+      case '':    console.log("empty");
+        this.clearValidationFor([
+          'organization_name',
+          'organization_address',
+          'beneficiary',
+          'multiple_beneficiaries',
+          'beneficiary_legal_name',
+          'passed_by',
+          'passed_by_child',
+          'individual_name']);
+        this.clearValidationForFormArray((this.realPropertyForm.get('multiple_beneficiaries') as FormArray).controls);
+        break;
+      default:   console.log("default");
+        this.clearValidationFor([
+          'organization_name',
+          'organization_address',
+          'beneficiary',
+          'multiple_beneficiaries',
+          'beneficiary_legal_name',
+          'passed_by',
+          'passed_by_child',
+          'individual_name']);
+        this.clearValidationForFormArray((this.realPropertyForm.get('multiple_beneficiaries') as FormArray).controls);
+        break;
+    }
+  }
+
+  /**Set validators when beneficiary is selected*/
+  setValidationBeneficiary(beneficiary) {
+    switch (beneficiary) {
+      case '_si':  console.log('si');
+        this.realPropertyForm.get('beneficiary_legal_name').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
+        this.realPropertyForm.get('passed_by').setValidators([Validators.required]);
+        this.realPropertyForm.get('beneficiary_legal_name').updateValueAndValidity();
+        this.realPropertyForm.get('passed_by').updateValueAndValidity();
+        this.clearValidationForFormArray((this.realPropertyForm.get('multiple_beneficiaries') as FormArray).controls);
+        //this.realPropertyForm.get('multiple_beneficiaries').clearValidators();
+        break;
+      case '_mu':   console.log('mu');
+        //console.log(this.realPropertyForm.get('multiple_beneficiaries'));
+        //this.realPropertyForm.get('multiple_beneficiaries').setValidators([Validators.required]);
+        this.setValidation((this.realPropertyForm.get('multiple_beneficiaries') as FormArray).controls);
+        this.realPropertyForm.get('passed_by').setValidators([Validators.required]);
+        this.realPropertyForm.get('passed_by').updateValueAndValidity();
+        this.realPropertyForm.get('beneficiary_legal_name').clearValidators();
+        this.realPropertyForm.get('beneficiary_legal_name').updateValueAndValidity();
+        break;
+      /*case '':     console.log('ben_empty');
+                    this.realPropertyForm.get('multiple_beneficiaries').clearValidators();
+                    this.realPropertyForm.get('beneficiary_legal_name').clearValidators();
+                    this.realPropertyForm.get('passed_by').clearValidators();
+                    break;*/
+    }
+  }
+
+  /**Set validators when passed by is selected*/
+  setValidationPassedBy(passedBy) {
+    switch (passedBy) {
+      case '_tth':   console.log('tth');
+        this.realPropertyForm.get('individual_name').clearValidators();
+        this.realPropertyForm.get('passed_by_child').setValidators([Validators.required]);
+        this.realPropertyForm.get('individual_name').updateValueAndValidity();
+        this.realPropertyForm.get('passed_by_child').updateValueAndValidity();
+        break;
+      case '_re':    console.log('re');
+        this.realPropertyForm.get('individual_name').clearValidators();
+        this.realPropertyForm.get('passed_by_child').clearValidators();
+        this.realPropertyForm.get('individual_name').updateValueAndValidity();
+        this.realPropertyForm.get('passed_by_child').updateValueAndValidity();
+        break;
+      case '_se':    console.log('Se');
+        this.realPropertyForm.get('individual_name').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
+        this.realPropertyForm.get('passed_by_child').clearValidators();
+        this.realPropertyForm.get('individual_name').updateValueAndValidity();
+        this.realPropertyForm.get('passed_by_child').updateValueAndValidity();
+        break;
+      /* case '':       console.log('passed_by_empty');
+                      this.realPropertyForm.get('individual_name').clearValidators();
+                      this.realPropertyForm.get('passed_by_child').clearValidators();
+                      break;*/
+    }
+  }
+  /**Set validators when passed by child is selected*/
+  setValidationPassedByChild(passedByChild) {
+    switch (passedByChild) {
+      case '_re':   console.log('_rechi');
+        this.realPropertyForm.get('individual_name').clearValidators();
+        this.realPropertyForm.get('individual_name').updateValueAndValidity();
+        break;
+      case '_se':   console.log('_sechi');
+        this.realPropertyForm.get('individual_name').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
+        this.realPropertyForm.get('individual_name').updateValueAndValidity();
+        break;
+      /*case '':      console.log('_remoty');
+                    this.realPropertyForm.get('individual_name').clearValidators();
+                    break;*/
+    }
+  }
+
+  /**Function call when radio button for individual/charity is toggled*/
+  giftIndividualOrCharity(value: string) {
+    this.flags.individualFlag = value === 'IN';
+    this.flags.charityFlag = value === 'CH';
+  }
+
+  /**Function call when radio button for single/multiple beneficiary is toggled*/
+  changeSingleOrMultipleBeneficiaries(value: string) {
+    this.flags.singleBeneficiaryFlag = value === '_si';
+    this.flags.multipleBeneficiaryFlag = value === '_mu';
+  }
+
+  /**Function call when radio button for single/multiple beneficiary is toggled*/
+  changeMaleOrFemale(value: string) {
+    this.flags.maleFlag = value === 'Male';
+    this.flags.femaleFlag = value === 'Female';
+  }
+
+  /**Function call when radio button when property is toggled*/
+  changeProperty(value: string) {
+    this.flags.survivingGiftBeneficiariesFlag = value === '_sgb';
+    this.flags.toTheirIssueFlag = value === '_tth';
+    this.flags.residueEstateFlag = value === '_re';
+    this.flags.someoneElseFlag = value === '_se';
+  }
+
+  /**Function call when radio button when property child is toggled*/
+  changePropertyChild (value: string) {
+    this.flags.residueEstateChildFlag = value === '_re';
+    this.flags.someoneElseChildFlag = value === '_se';
+  }
+
+  /**Adds new row for the multiple beneficiary*/
+  addNewRow() {
+    this.multipleBeneficiaries = this.realPropertyForm.get('multiple_beneficiaries') as FormArray;
+    this.multipleBeneficiaries.push(this.createMultipleBeneficiaryForm());
+  }
+
+  /**Remove beneficiary from index*/
+  removeBeneficiary(index: number) {
+    this.multipleBeneficiaries = this.realPropertyForm.get('multiple_beneficiaries') as FormArray;
+    this.multipleBeneficiaries.removeAt(index);
+  }
+
+  /**change residence radio button*/
+  changeResidence (value) {
+    this.flags.residenceYesFlag = value === '1';
+    this.flags.residenceNoFlag  = value === '0';
+    let user = this.parseUserId();
+    let token = this.parseToken();
+    if (this.flags.residenceYesFlag) {
+      this.rpService.fetchUserData(token, user).subscribe(data => {
+          if (data.status === 200) {
+            if (data.data[0].data !== null) {
+              if (data.data[0].data.hasOwnProperty('userInfo')) {
+                this.realPropertyForm.patchValue({
+                  'street_address': data.data[0].data.userInfo.address,
+                  'city': data.data[0].data.userInfo.city,
+                  'state': data.data[0].data.userInfo.state
+                });
               } else {
-                this.errFlag = true;
-                this.errString = 'Please fill the tell us about you form!';
-                console.log(this.errString);
+                this.errors.errorFlag = true;
+                this.errors.errorMsg = 'Something went wrong could not be able to find User Info';
+                console.log(this.errors.errorMsg);
               }
             } else {
-              this.errFlag = true;
-              this.errString = 'Something went wrong while fetching the information. Please try again later!';
-              console.log(this.errString);
+              this.errors.errorFlag = true;
+              this.errors.errorMsg = 'Please fill the tell us about you form!';
+              console.log(this.errors.errorMsg);
             }
-          },
-          error => {
-            this.errFlag = true;
-            this.errString = error.error.message;
-            console.log(this.errString);
-          },
-          () => {});
-      } else {
-        this.errFlag = true;
-        this.errString = 'Please login to continue!';
-        console.log(this.errString);
-      }
+          } else {
+            this.errors.errorFlag = true;
+            this.errors.errorMsg = 'Something went wrong while fetching the information. Please try again later!';
+            console.log(this.errors.errorMsg);
+          }
+        },
+        error => {
+          this.errors.errorFlag = true;
+          this.errors.errorMsg = error.error.message;
+          console.log(this.errors.errorMsg);
+        }, () => {});
     } else {
       this.realPropertyForm.patchValue({
-        'street_address' : '',
-        'city' : '',
-        'state' : ''
+        'street_address': '',
+        'city': '',
+        'state': ''
       });
     }
   }
-  /**
-   * this function decides wheather the gift for individual or charity
-   * @param {string} identifier
-   */
-  showSectionInOrCh(identifier: string): void {
-    if (identifier === 'IN') {
-      // Individual
-      this.isIndividualRP = true;
-      this.isCharityRP = false;
-      // remove validations for charity form
-      this.realPropertyForm.get('charityControls.0.organization_name').setValidators([]);
-      this.realPropertyForm.get('charityControls.0.organization_name').updateValueAndValidity();
-      this.realPropertyForm.get('charityControls.0.organization_address').setValidators([]);
-      this.realPropertyForm.get('charityControls.0.organization_address').updateValueAndValidity();
-      this.realPropertyForm.get('individualControls.0.beneficiary').setValidators([Validators.required]);
-      this.realPropertyForm.get('individualControls.0.beneficiary').updateValueAndValidity();
-      this.clearValidationForFormArray((this.realPropertyForm.get('charityControls') as FormArray).controls);
-    } else {
-      /// charity
-      this.isIndividualRP = false;
-      this.isCharityRP = true;
-      this.singleBeneficiaryRP = false;
-      this.multipleBeneficiaryRP = false;
-      this.otherRelationshipRp = false;
-      this.toTheirIssue = false;
-      this.isSomeoneElse = false;
-      this.toTheirIssueMB = false;
-      this.isSomeoneElseMB = false;
-      // set validations for charity form
-      this.realPropertyForm.get('charityControls.0.organization_name').setValidators([Validators.required]);
-      this.realPropertyForm.get('charityControls.0.organization_name').updateValueAndValidity();
-      this.realPropertyForm.get('charityControls.0.organization_address').setValidators([Validators.required]);
-      this.realPropertyForm.get('charityControls.0.organization_address').updateValueAndValidity();
-      this.realPropertyForm.get('individualControls.0.beneficiary').setValidators([]);
-      this.realPropertyForm.get('individualControls.0.beneficiary').updateValueAndValidity();
-      this.clearValidationForFormArray((this.realPropertyForm.get('individualControls') as FormArray).controls);
-      this.clearValidationForFormArray((this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls') as FormArray).controls);
-      this.clearValidationForFormArray((this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls') as FormArray).controls);
-      this.clearValidationForFormArray((this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.itemRows') as FormArray).controls);
-    }
+
+  /**change mortage radio button*/
+  changeMortage (value) {
+    this.flags.mortageYesFlag = value === '1';
+    this.flags.mortageNoFlag  = value === '0';
   }
 
-  /**
-   * select between single beneficiary or multiple beneficiary according to the identifier
-   * @param {string} identifier
-   */
-  beneficiaryToggle(identifier: string): void {
-    if (this.isIndividualRP) {
-      if (identifier === 'S') {
-        this.singleBeneficiaryRP = true;
-        this.multipleBeneficiaryRP = false;
-        // set validations single beneficiary
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.full_legal_name').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.full_legal_name').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.relationship_single_b_parent').setValidators([Validators.required]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.relationship_single_b_parent').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.single_beneficiary_gender').setValidators([Validators.required]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.single_beneficiary_gender').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.property_distributed_single_beneficiary').setValidators([Validators.required]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.property_distributed_single_beneficiary').updateValueAndValidity();
-        // remove multiple beneficiary validations
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.property_distributed_multiple_beneficiary').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.property_distributed_multiple_beneficiary').updateValueAndValidity();
-      } else {
-        this.singleBeneficiaryRP = false;
-        this.multipleBeneficiaryRP = true;
-        // remove validations single beneficiary
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.full_legal_name').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.full_legal_name').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.relationship_single_b_parent').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.relationship_single_b_parent').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.single_beneficiary_gender').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.single_beneficiary_gender').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.property_distributed_single_beneficiary').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.property_distributed_single_beneficiary').updateValueAndValidity();
-        // multiple beneficiary validations
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.property_distributed_multiple_beneficiary').setValidators([Validators.required]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.property_distributed_multiple_beneficiary').updateValueAndValidity();
-        this.setValidation((this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.itemRows') as FormArray).controls);
-      }
-    }
-  }
-
-  /**
-   * this function helps to show option according to property distribution
-   * @param identifier
-   */
-  propertyDistibutionToggle(identifier: any): void {
-    if (this.isIndividualRP && this.singleBeneficiaryRP) {
-      if (identifier === 'TTI') {
-        this.toTheirIssue = true;
-        this.isSomeoneElse = false;
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').setValidators([Validators.required]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_relationship').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_relationship').updateValueAndValidity();
-        if (this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').value === 'to_someone_else') {
-          this.isSomeoneElse = true;
-          this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').setValidators([Validators.required]);
-          this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').updateValueAndValidity();
-        }
-
-      } else if (identifier === 'RE') {
-        this.toTheirIssue = false;
-        this.isSomeoneElse = false;
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_relationship').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_relationship').updateValueAndValidity();
-      } else {
-        this.toTheirIssue = false;
-        this.isSomeoneElse = true;
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_relationship').setValidators([Validators.required]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_relationship').updateValueAndValidity();
-      }
-    }
-  }
-
-  /**
-   * this function helps to show child data in property distribution
-   * @param identifier
-   */
-  propertyDistibutionToggleChild(identifier: any): void {
-    if (this.isIndividualRP && this.singleBeneficiaryRP) {
-      if (identifier === 'TSE') {
-        this.isSomeoneElse = true;
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').updateValueAndValidity();
-      } else {
-        this.isSomeoneElse = false;
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').clearValidators();
-        this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_full_name').updateValueAndValidity();
-      }
-    }
-  }
-  /**
-   * this function toggles between relationship someone else in case of issue survival
-   * @param event
-   */
-  toggleRelationshipSomeOneElse(event: any): void {
-    if (this.isIndividualRP && this.singleBeneficiaryRP) {
-      if (event.target.value === 'Other') {
-        this.otherRelationshipRpSomeOneElse = true;
-        //this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_other_relationship').setValidators([Validators.required]);
-        //this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_other_relationship').updateValueAndValidity();
-      } else {
-        this.otherRelationshipRpSomeOneElse = false;
-        //this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_other_relationship').setValidators([]);
-        //this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls.0.issue_survival_other_relationship').updateValueAndValidity();
-      }
-    }
-  }
-
-  /**
-   * this function saves data in database
-   * @param fd
-   */
-  saveRealProperty(fd): void {
+  /**Submit the form*/
+  submit() {
     if (this.realPropertyForm.valid) {
-      if (this.access_token) {
-        if (fd.gift_type === 'Individual') {
-          // individual
-          fd.individualControls[0].gift_to = fd.gift_type;
-          fd.individualControls[0].primary_residence = fd.primary_residence;
-          fd.individualControls[0].street_address = fd.street_address;
-          fd.individualControls[0].city = fd.city;
-          fd.individualControls[0].state = fd.state;
-          fd.individualControls[0].primary_residence = fd.primary_residence;
-          fd.individualControls[0].free_clear_mortgage = fd.free_clear_mortgage;
-          if (this.isEdit) {
-            this.realPropertyDataSet = {'id': this.editService.getData().id, 'step': 7, 'user_id': this.myUserId, 'giftType': 2, 'giftData': fd.individualControls};
-          } else {
-            this.realPropertyDataSet = {'step': 7, 'user_id': this.myUserId, 'giftType': 2, 'giftData': fd.individualControls};
-          }
+      let user = this.parseUserId();
+      let token = this.parseToken();
+      this.giftData.push(this.realPropertyForm.value);
+      if (token) {
+        let cashGiftDataSet = this.flags.editFlag ? {'id': this.giftId, 'step': 7, 'user_id': user, 'giftType': 4, 'giftData': this.giftData} : {'step': 7, 'user_id': user, 'giftType': 4, 'giftData': this.giftData};
+        if (this.flags.editFlag) {
+          this.editGiftData(token, cashGiftDataSet);
         } else {
-          // charity
-          fd.charityControls[0].gift_to = fd.gift_type;
-          fd.charityControls[0].primary_residence = fd.primary_residence;
-          fd.charityControls[0].street_address = fd.street_address;
-          fd.charityControls[0].city = fd.city;
-          fd.charityControls[0].state = fd.state;
-          fd.charityControls[0].primary_residence = fd.primary_residence;
-          fd.charityControls[0].free_clear_mortgage = fd.free_clear_mortgage;
-          if (this.isEdit) {
-            this.realPropertyDataSet = {'id': this.editService.getData().id, 'step': 7, 'user_id': this.myUserId, 'giftType': 2 , 'giftData': fd.charityControls};
-          } else {
-            this.realPropertyDataSet = {'step': 7, 'user_id': this.myUserId, 'giftType': 2 , 'giftData': fd.charityControls};
-          }
+          this.createGiftData(token, cashGiftDataSet);
         }
-        if (this.isEdit) {
-          this.saveRealPropertyDB = this.ysgService.updateGift(this.access_token, this.realPropertyDataSet);
-        } else {
-          this.saveRealPropertyDB = this.ysgService.saveRealPropertyData(this.access_token, this.realPropertyDataSet);
-        }
-        this.saveRealPropertyDB.subscribe(data => {
-          if (data.status) {
-            window.location.reload();
-          } else {
-            this.errFlag = true;
-            this.errString = 'Something went wrong while updating data';
-            console.log(this.errString);
-          }
-        }, error => {
-          this.errFlag = true;
-          this.errString = error.error.message;
-          console.log(this.errString);
-        }, () => {});
       } else {
-        this.errFlag = true;
-        this.errString = 'Please login to continue';
-        console.log(this.errString);
+        this.errors.errorFlag = true;
+        this.errors.errorMsg = 'Please login again.';
+        console.log(this.errors.errorMsg);
       }
     } else {
-      alert('Please fill up the required fields');
+      alert('Please fill up all the fields');
       this.markFormGroupTouched(this.realPropertyForm);
     }
   }
 
+  /**Calls update gift data api*/
+  editGiftData(token: string, cashGiftDataSet) {
+    this.ysgService.saveCashGiftData(token, cashGiftDataSet).subscribe((data) => {
+      if (data.status) {
+        window.location.reload();
+      } else {
+        this.errors.errorFlag = true;
+        this.errors.errorMsg = 'Something went wrong while updating data';
+        console.log(this.errors.errorMsg);
+      }
+    }, (error) => {
+      this.errors.errorFlag = true;
+      this.errors.errorMsg = error.error.message;
+      console.log(this.errors.errorMsg);
+    });
+  }
+
+  /**Calls create gift data api*/
+  createGiftData(token: string, cashGiftDataSet) {
+    this.ysgService.saveCashGiftData(token, cashGiftDataSet).subscribe((data) => {
+      if (data.status) {
+        window.location.reload();
+      } else {
+        this.errors.errorFlag = true;
+        this.errors.errorMsg = 'Something went wrong while updating data';
+        console.log(this.errors.errorMsg);
+      }
+    }, (error) => {
+      this.errors.errorFlag = true;
+      this.errors.errorMsg = error.error.message;
+      console.log(this.errors.errorMsg);
+    });
+  }
   /**
    * Marks all controls in a form group as touched
    * @param formGroup
@@ -552,224 +473,82 @@ export class RealPropertyComponent implements OnInit {
       control.markAsDirty();
     });
 
-    this.checkValidation((this.realPropertyForm.get('individualControls') as FormArray).controls);
-    this.checkValidation((this.realPropertyForm.get('charityControls') as FormArray).controls);
-    this.checkValidation((this.realPropertyForm.get('individualControls.0.singleBeneficiaryControls') as FormArray).controls);
-    this.checkValidation((this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls') as FormArray).controls);
-    this.checkValidationFormArray((this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.itemRows') as FormArray).controls);
+    this.checkValidation((this.realPropertyForm.get('multiple_beneficiaries') as FormArray).controls);
   }
 
   /**Checks validation for form arrays*/
   checkValidation(formArray) {
+    console.log(formArray);
     for (let item of formArray) {
-      (<any>Object).values(item.controls).forEach(control => {
-        control.markAsTouched();
-        control.markAsDirty();
-      });
+      if (item.controls['multiple_beneficiary_name'].hasError('required') || item.controls['multiple_beneficiary_relationship'].hasError('required')) {
+        this.flags.setValidationFlag = true;
+        break;
+      }
+      this.flags.setValidationFlag = false;
     }
   }
 
-  checkValidationFormArray(formArray) {
-    for (let item of formArray) {
-      console.log(item.controls['full_legal_name_l_item'].hasError('required'));
-      if (item.controls['full_legal_name_l_item'].hasError('required') || item.controls['relationship_l_item'].hasError('required')) {
-        this.setValidationFlag = true;
-        break;
-      }
-      this.setValidationFlag = false;
-/*
-      item.controls['full_legal_name_l_item'].setValidators([Validators.required]);
-      item.controls['relationship_l_item'].setValidators([Validators.required]);
-      item.controls['full_legal_name_l_item'].updateValueAndValidity();
-      item.controls['relationship_l_item'].updateValueAndValidity();*/
-    }
+  /**Clears validation except certain fields*/
+  clearValidationFor(formControlArray: Array<string> = []) {
+    formControlArray.forEach(control => {
+      this.realPropertyForm.get(control).clearValidators();
+      this.realPropertyForm.get(control).updateValueAndValidity();
+    });
   }
 
   /**Clears validation for form arrays*/
   clearValidationForFormArray(formArray) {
     for (let item of formArray) {
-      (<any>Object).values(item.controls).forEach(control => {
-        control.clearValidators();
-        control.updateValueAndValidity();
-        /*if (control.controls) {
-          this.clearValidationForFormArray((control.controls as FormArray).controls);
-        }*/
-      });
-     /* item.controls['multiple_beneficiary_name'].clearValidators();
+      item.controls['multiple_beneficiary_name'].clearValidators();
       item.controls['multiple_beneficiary_relationship'].clearValidators();
       item.controls['multiple_beneficiary_name'].updateValueAndValidity();
-      item.controls['multiple_beneficiary_relationship'].updateValueAndValidity();*/
+      item.controls['multiple_beneficiary_relationship'].updateValueAndValidity();
     }
   }
 
   /**Set validation for form array*/
   setValidation(formArray) {
     for (let item of formArray) {
-      item.controls['full_legal_name_l_item'].setValidators([Validators.required]);
-      item.controls['relationship_l_item'].setValidators([Validators.required]);
-      item.controls['full_legal_name_l_item'].updateValueAndValidity();
-      item.controls['relationship_l_item'].updateValueAndValidity();
+      item.controls['multiple_beneficiary_name'].setValidators([Validators.required]);
+      item.controls['multiple_beneficiary_relationship'].setValidators([Validators.required]);
+      item.controls['multiple_beneficiary_name'].updateValueAndValidity();
+      item.controls['multiple_beneficiary_relationship'].updateValueAndValidity();
+    }
+  }
+  /**When component is destroyed*/
+  ngOnDestroy() {
+    this.unsubscriptions();
+  }
+
+  /**unsubscribe from subscriptions*/
+  unsubscriptions() {
+    if (this.giftInfoSubscription !== undefined) {
+      this.giftInfoSubscription.unsubscribe();
+    }
+    if (this.beneficiarySubscription !== undefined) {
+      this.beneficiarySubscription.unsubscribe();
+    }
+    if (this.passedBySubscription !== undefined) {
+      this.passedBySubscription.unsubscribe();
+    }
+    if (this.passedByChildSubscription !== undefined) {
+      this.passedByChildSubscription .unsubscribe();
     }
   }
 
-  /**
-   * this function add multiple beneficiary line items
-   */
-  addLineItems(i = null): void {
-    const control = <FormArray>this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.itemRows');
-    control.push(this.initItemRows(i));
-  }
-
-  /**
-   * this helper function add line item controls
-   * @returns {FormGroup}
-   */
-  initItemRows(i = null) {
-    return this.fb.group({
-      // list all your form controls here, which belongs to your form array
-      'full_legal_name_l_item': [i === null ? '' : i.full_legal_name_l_item],
-      'relationship_l_item': [i === null ? '' : i.relationship_l_item]
-    });
-  }
-
-  /**
-   * to get rid of that extra field while update
-   * @param {FormArray} formArray
-   */
-  clearFormArray(formArray: FormArray) {
-    while (formArray.length !== 0) {
-      formArray.removeAt(0);
-    }
-  }
-  /**
-   *this function removes the control
-   * @param {number} index
-   */
-  deleteRow(index: number) {
-    // control refers to your formarray
-    let control = <FormArray>this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.itemRows');
-    // remove the chosen row
-    control.removeAt(index);
-  }
-
-  /**
-   * for multiple beneficiary this function shows the controls
-   * @param {string} identifier
-   * @returns {any}
-   */
-  propertyDistributionToggleMB(identifier: string): any {
-    if (this.isIndividualRP && this.multipleBeneficiaryRP) {
-      if (identifier === 'TTI') {
-        this.toTheirIssueMB = true;
-        this.isSomeoneElseMB = false;
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').setValidators([Validators.required]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').updateValueAndValidity();
-        if (this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').value === 'to_someone_else') {
-          this.isSomeoneElseMB = true;
-          this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').setValidators([Validators.required]);
-          this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').updateValueAndValidity();
-        }
-      } else if (identifier === 'TSE') {
-        this.toTheirIssueMB = false;
-        this.isSomeoneElseMB = true;
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').setValidators([Validators.required]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').setValidators([Validators.required]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').updateValueAndValidity();
-      } else if (identifier === 'TTS') {
-        this.toTheirIssueMB = false;
-        this.isSomeoneElseMB = false;
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').updateValueAndValidity();
-      } else {
-        this.toTheirIssueMB = false;
-        this.isSomeoneElseMB = false;
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.issue_survival_mb').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').updateValueAndValidity();
-      }
-    }
-  }
-
-  /**
-   * this function toggles relationship in multiple beneficiary parent
-   * @param event
-   */
-  toggleRelationshipSomeOneElseMB(event: any): void {
-    if (this.isIndividualRP && this.multipleBeneficiaryRP) {
-      if (event.target.value === 'Other') {
-        this.otherRelationshipRpSomeOneElseMB = true;
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.other_relationship_mb').setValidators([Validators.required]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.other_relationship_mb').updateValueAndValidity();
-      } else {
-        this.otherRelationshipRpSomeOneElseMB = false;
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.other_relationship_mb').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.other_relationship_mb').updateValueAndValidity();
-      }
-    }
-  }
-  /**
-   * this function toggles relationship in multiple beneficiary child
-   * @param event
-   */
-  toggleRelationshipSomeOneElseMBChild(event: any): void {
-    if (this.isIndividualRP && this.multipleBeneficiaryRP) {
-      if (event.target.value === 'Other') {
-        this.otherRelationshipRpSomeOneElseMB = true;
-      } else {
-        this.otherRelationshipRpSomeOneElseMB = false;
-      }
-    }
-  }
-  propertyDistibutionToggleChildMB(identifier: any): void {
-    if (this.isIndividualRP && this.multipleBeneficiaryRP) {
-      if (identifier === 'TSE') {
-        // this.isSomeoneElseMBChild = true;
-        this.isSomeoneElseMB = true;
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').setValidators([Validators.required]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').setValidators([Validators.required]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').updateValueAndValidity();
-      } else {
-        // this.isSomeoneElseMBChild = false;
-        this.isSomeoneElseMB = false;
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.individual_name').updateValueAndValidity();
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').setValidators([]);
-        this.realPropertyForm.get('individualControls.0.multipleBeneficiaryControls.0.relationship_mb').updateValueAndValidity();
-      }
-    }
-  }
-  /**
-   * this function for get back to the main gift page
-   */
-  popUp(): void {
-    const confirm1 = confirm('Are you sure you want to delete this gift?');
-    if (confirm1) {
-      window.location.reload();
-    }
-  }
-
-  /**
-   * this function delete the gift from database
-   * @param {number} id
-   */
+  /**Deletes the gift*/
   popUpDelete(id: number): void {
     this.ysgComponent.deleteGift(id);
     this.ysgComponent.changeViewState();
     this.editService.unsetData();
+  }
+
+  /**
+   * this function for get back to the main gift page
+   */
+  popUp(): void {
+    if (confirm('Are you sure you want to delete this gift?')) {
+      window.location.reload();
+    }
   }
 }

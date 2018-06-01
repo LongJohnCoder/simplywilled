@@ -2315,9 +2315,7 @@ input[disabled] {
   cursor: not-allowed;
   background-color: #e3e3e3;
 }
-.error_input {
-  border: 1px solid #ff5959;
-}
+
 .error_txt {
   width: 100%;
   display: inline-block;
@@ -3416,7 +3414,7 @@ select.form-control{
 .threeColField .form-control::-webkit-input-placeholder{
   color: #fff;
   font-size: 14px;
-} 
+}
 .threeColField .form-control::-moz-placeholder {
   color: #fff;
   font-size: 14px;
@@ -3455,7 +3453,9 @@ select.form-control{
   line-height: 24px;
   float: right;
 }
-
+.error_input {
+  border: 1px solid #ff5959;
+}
 
 
 /************responsive***************/
@@ -3728,7 +3728,7 @@ select.form-control{
   .threeColField .form-control::-webkit-input-placeholder{
     color: #9fa4aa;
     font-size: 14px;
-  } 
+  }
   .threeColField .form-control::-moz-placeholder {
     color: #9fa4aa;
     font-size: 14px;
@@ -4489,7 +4489,7 @@ select.form-control{
 @media screen and (max-width:380px){
   .threeColField .form-control::-webkit-input-placeholder{
     font-size: 12px;
-  } 
+  }
   .threeColField .form-control::-moz-placeholder {
     font-size: 12px;
   }
@@ -4507,7 +4507,7 @@ select.form-control{
 @media screen and (max-width:335px){
   .threeColField .form-control::-webkit-input-placeholder{
     font-size: 11px;
-  } 
+  }
   .threeColField .form-control::-moz-placeholder {
     font-size: 11px;
   }
