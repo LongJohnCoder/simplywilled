@@ -138,7 +138,7 @@
 			//dd($data, $option);
 			if(!array_key_exists('gift_to',$data)) {
 				$data['statement'] = '';
-				return json_encode($data);
+				return json_encode([$data]);
 			}
 
 			$statement = '';
@@ -165,7 +165,7 @@
 												!array_key_exists('free_mortgage', $data)) {
 												
 												$data['statement'] = '';
-												return json_encode($data);
+												return json_encode([$data]);
 											}
 
 											$statement .= $data['residence'] == '1' 
@@ -178,7 +178,7 @@
 				
 				case 'specific asset' 	:  	if(!array_key_exists('full_legal_name',$data)) {
 												$data['statement'] = '';
-												return json_encode($data);
+												return json_encode([$data]);
 											}
 
 											$statement .= $data['full_legal_name']." shall be distributed to ";
@@ -187,7 +187,7 @@
 
 				case 'business interest':	if(!array_key_exists('full_legal_name',$data)) {
 												$data['statement'] = '';
-												return json_encode($data);
+												return json_encode([$data]);
 											}
 
 											$statement .= "I direct that all of my interest in that business entity known as ".ucwords(strtolower($data['full_legal_name'])). 
@@ -196,7 +196,7 @@
 											break;
 
 				default 				: 	$data['statement'] = '';
-											return json_encode($data);
+											return json_encode([$data]);
 			}
 
 			switch ($data['gift_to']) {
@@ -414,7 +414,7 @@
 			}
 
 			$data['statement'] = $statement;
-			return json_encode($data);
+			return json_encode([$data]);
 		
 		}
 	}
