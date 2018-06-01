@@ -4,6 +4,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {MainDashboardComponent} from './dashboard/main-dashboard/main-dashboard.component';
 import { NgModule } from '@angular/core';
 import {UserPaidGuard} from './user-paid.guard';
+import {UserUnPaidGuard} from './user-unpaid.guard';
 
 const routes: Routes = [
       {
@@ -90,6 +91,7 @@ const routes: Routes = [
             },
             {
               path: 'packages',
+                canActivate: [UserUnPaidGuard],
               loadChildren: './packages/packages.module#PackagesModule'
             },
             {

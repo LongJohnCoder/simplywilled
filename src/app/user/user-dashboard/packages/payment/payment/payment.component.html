@@ -1,94 +1,121 @@
+<div class="pageLoader" *ngIf="pageLoad">
+    <div class="loaderInner">
+        <img src="../../../../../../assets/images/owl-loading.gif" alt="Loading...">
+        <p class="loadingTxt">
+            Please Wait
+            <span></span>
+            <span></span>
+            <span></span>
+            <br>
+            {{respMsg}}
+        </p>
+    </div>
+</div>
+
+
 <div class="col-xs-12">
     <div class="main-content tellusaboutyou">
         <h2>Payment</h2>
-        <form>
+        <form #form="ngForm" *ngIf="!respType">
             <div class="form-group">
               <label>First Name:</label>
-              <input type="text"
+              <input type="text" name="firstName"
                       class="form-control"
+                     [(ngModel)]="data.firstName" ngModel #firstName="ngModel"
                       required
                       >
-              <!-- <span class="error_txt">
-                <p>Error txt</p>
-              </span> -->
+              <span class="error_txt" *ngIf="firstName.invalid && firstName.touched">
+                <p>First Name is required</p>
+              </span>
             </div>
-            <div class="form-group">
-              <label>Middle Name:</label>
-              <input type="text"
-                      class="form-control"
-                      >
-              <!-- <span class="error_txt">
-                <p>Error txt</p>
-              </span> -->
-            </div>
+            <!--<div class="form-group">-->
+              <!--<label>Middle Name:</label>-->
+              <!--<input type="text"-->
+                     <!--[(ngModel)]="data.middleName" ngModel #middleName="ngModel" name="middleName"-->
+                      <!--class="form-control"-->
+                      <!--&gt;-->
+              <!--&lt;!&ndash; <span class="error_txt">-->
+                <!--<p>Error txt</p>-->
+              <!--</span> &ndash;&gt;-->
+            <!--</div>-->
             <div class="form-group">
               <label>Last Name:</label>
               <input type="text"
                       class="form-control"
+                     [(ngModel)]="data.lastname" ngModel #lastname="ngModel" name="lastname"
                       required
                       >
-              <!-- <span class="error_txt">
-                <p>Error txt</p>
-              </span> -->
+              <span class="error_txt" *ngIf="lastname.invalid && lastname.touched">
+                <p>Last Name is required</p>
+              </span>
             </div>
-            <div class="form-group">
-              <label>Your Gender: </label>
-              <ul class="radio_ul6">
-                <li>
-                  <label class="radio_custom">
-                    <input type="radio"
-                            name="gender"
-                            value="M"
-                            required>
-                    <span class="human_status">Male</span>
-                  </label>
-                </li>
-                <li>
-                  <label class="radio_custom">
-                    <input type="radio"
-                            name="gender"
-                            value="F"
-                            required>
-                    <span class="human_status"> Female</span>
-                  </label>
-                </li>
-              </ul>
-            </div>
+            <!--<div class="form-group">-->
+              <!--<label>Your Gender: </label>-->
+              <!--<ul class="radio_ul6">-->
+                <!--<li>-->
+                  <!--<label class="radio_custom" [ngClass]="{'active': data.sex=='M'}">-->
+                    <!--<input type="radio"-->
+                            <!--name="sex"-->
+                           <!--[(ngModel)]="data.sex" ngModel #sex="ngModel" name="sex"-->
+                            <!--value="M"-->
+                            <!--required checked>-->
+                    <!--<span class="human_status">Male</span>-->
+                  <!--</label>-->
+                <!--</li>-->
+                <!--<li>-->
+                  <!--<label class="radio_custom" [ngClass]="{'active': data.sex=='F'}">-->
+                    <!--<input type="radio"-->
+                            <!--name="sex"-->
+                           <!--[(ngModel)]="data.sex" ngModel #sex="ngModel" name="sex"-->
+                            <!--value="F"-->
+                            <!--required>-->
+                    <!--<span class="human_status"> Female</span>-->
+                  <!--</label>-->
+                <!--</li>-->
+              <!--</ul>-->
+            <!--</div>-->
             <div class="form-group">
               <label>Phone Number:</label>
               <input type="tel"
                       class="form-control"
+                     [(ngModel)]="data.phone" ngModel #phone="ngModel" name="phone"
+                     pattern="^\d{10}$" placeholder="(xxx)-xxx-xxxx"
                       required
                       >
-              <!-- <span class="error_txt">
-                <p>Error txt</p>
-              </span> -->
+              <!--<span class="error_txt" *ngIf="phone.touched && phone.touched && phone.invalid">-->
+                <!--<p>Phone Number is required</p>-->
+              <!--</span>-->
+              <span class="error_txt" *ngIf="phone.invalid && phone.touched || phone.hasError('pattern')">
+                  <p>Please provide a valid phone number.</p>
+              </span>
             </div>
             <div class="form-group" >
-              <label>Billing Address: </label>  
+              <label>Billing Address: </label>
               <input type="text"
                       class="form-control"
                       placeholder="Address Line 1"
+                     [(ngModel)]="data.address1" ngModel #address1="ngModel" name="address1"
                       required
                       >
-              <!-- <span class="error_txt" >
+              <span class="error_txt" *ngIf="address1.invalid && address1.touched">
                 <p >Please enter address</p>
-              </span> -->
+              </span>
               <div class="row">
                 <div class="col-md-6">
                   <input type="text"
                           class="form-control"
                           placeholder="City"
+                         [(ngModel)]="data.city" ngModel #city="ngModel" name="city"
                           required
                          >
-                  <!-- <span class="error_txt">
+                  <span class="error_txt" *ngIf="city.invalid && city.touched">
                     <p >Please enter city</p>
-                  </span> -->
+                  </span>
                 </div>
-        
+
                 <div class="col-md-6">
                   <select class="form-control"
-                          name="state"
+                          [(ngModel)]="data.state" ngModel #state="ngModel" name="state"
                           required
                          >
                     <option value="">State</option>
@@ -144,26 +171,26 @@
                     <option value="Wisconsin">Wisconsin</option>
                     <option value="Wyoming">Wyoming</option>
                   </select>
-        
-                  <!-- <span class="error_txt">
+
+                  <span class="error_txt" *ngIf="state.invalid && state.touched">
                     <p>Please enter state</p>
-                  </span> -->
+                  </span>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <input type="text"
                           class="form-control"
+                         [(ngModel)]="data.zip" ngModel #zip="ngModel" name="zip"
                           placeholder="Zip Code"
-                          required
+                          required pattern="^\d{5}$"
                          >
-                  <!-- <span class="error_txt">
-                    <p>Please enter zip</p>
+                  <span class="error_txt" *ngIf="zip.invalid && zip.touched || zip.hasError('pattern')">
                     <p>Please enter a proper zip</p>
-                  </span> -->
+                  </span>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" class="form-control" value="United State" disabled>
+                  <input type="text" class="form-control" value="United State" required disabled>
                 </div>
               </div>
               <!-- <div class="row">
@@ -173,28 +200,66 @@
                   </div>
                 </div>
               </div> -->
-              
+
             </div>
             <div class="form-group" >
               <label>Card Details: </label>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <input type="text" class="form-control" placeholder="First Name"
+                               [(ngModel)]="data.cardFirstName" ngModel #cardFirstName="ngModel" name="cardFirstName"
+                               required>
+                        <span class="error_txt" *ngIf="cardFirstName.invalid && cardFirstName.touched">
+                            <p>Please enter first name</p>
+                          </span>
+                    </div>
+                    <div class="col-lg-6">
+                        <input type="text" class="form-control" placeholder="Last Name"
+                               [(ngModel)]="data.cardLastName" ngModel #cardLastName="ngModel" name="cardLastName"
+                               required>
+                        <span class="error_txt" *ngIf="cardLastName.invalid && cardLastName.touched">
+                            <p>Please enter last name</p>
+                        </span>
+                    </div>
+                </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="cardLogo"><span class={{cardtype}}></span></div>
-                  <input type="text" class="form-control cardNumber" placeholder="Card Number" required #cardNum (keyup)="GetCardType(cardNum)">
+                  <input type="text" class="form-control cardNumber" placeholder="Card Number"
+                         [(ngModel)]="data.cardNumber" ngModel #cardNumber="ngModel" name="cardNumber"
+                         pattern="^\d{16}$"
+                         required #cardNum (keyup)="GetCardType(cardNum)">
+                  <span class="error_txt" *ngIf="cardNumber.invalid && cardNumber.touched || cardNumber.hasError('pattern')">
+                    <p>Please enter proper card number</p>
+                  </span>
                 </div>
-              </div>
-              <div class="row">
+              <!--</div>-->
+              <!--<div class="row">-->
                   <div class="col-sm-6 col-lg-3">
-                      <input type="text" class="form-control" placeholder="Expiry Date" required>
+                      <input type="text" class="form-control"
+                             [(ngModel)]="data.expDate" ngModel #expDate="ngModel" name="expDate" pattern="^\d{6}$"
+                             placeholder="Expiry Date(MMYYYY)" required>
+                      <span class="error_txt" *ngIf="expDate.invalid && expDate.touched || expDate.hasError('pattern')">
+                        <p>Please enter expiry date</p>
+                      </span>
                   </div>
                   <div class="col-sm-6 col-lg-3">
-                      <input type="password" class="form-control" placeholder="CVV" required>
+                      <input type="password" class="form-control"
+                             [(ngModel)]="data.cvv" ngModel #cvv="ngModel" name="cvv" pattern="^\d{3}$"
+                             placeholder="CVV" required>
+                      <span class="error_txt" *ngIf="cvv.invalid && cvv.touched || cvv.hasError('pattern')">
+                        <p>Please enter cvv code</p>
+                      </span>
                   </div>
                 </div>
             </div>
             <div class="form-footer">
-                <button class="btn common-button btn-complete">Continue</button>
-              </div>
+                <button class="btn common-button btn-complete" [disabled]="!form.valid" (click)="checkout()">Continue</button>
+            </div>
         </form>
+
+        <div class="form-group" *ngIf="respType">
+            <label><h3 style="text-align: center;">{{respMsg}}</h3></label>
+        </div>
     </div>
 </div>

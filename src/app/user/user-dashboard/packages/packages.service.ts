@@ -26,8 +26,12 @@ export class PackagesService {
    * @param {string} user_id
    * @returns {Observable<Object>}
    */
-  purchasePackage(body: any): Observable<any>{
+  purchasePackage(body: any): Observable<any> {
       return this.http.post(environment.API_URL + 'user/purchase-package', body);
   }
+
+    purchasePackagePaypalDirect(body: any): Observable<any> {
+        return this.http.post(environment.API_URL + 'user/paypal-direct-payment', body);
+    }
 
 }

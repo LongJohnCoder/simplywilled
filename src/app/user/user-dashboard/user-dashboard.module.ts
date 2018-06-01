@@ -5,6 +5,7 @@ import { UserDashboardRoutingModule } from './user-dashboard-routing.module';
 import { MainDashboardComponent } from './dashboard/main-dashboard/main-dashboard.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {UserPaidGuard} from './user-paid.guard';
+import {UserUnPaidGuard} from './user-unpaid.guard';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import {UserPaidGuard} from './user-paid.guard';
   ],
   declarations: [DashboardComponent, MainDashboardComponent],
     providers: [
-        UserPaidGuard
+        UserPaidGuard, UserUnPaidGuard
     ]
 })
 export class UserDashboardModule { }

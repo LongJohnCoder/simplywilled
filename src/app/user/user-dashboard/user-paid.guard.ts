@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
+import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanDeactivate} from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import {UserAuthService} from '../user-auth/user-auth.service';
 
@@ -18,4 +18,6 @@ export class UserPaidGuard implements CanActivate {
           return false;
       }
   }
+
+
 }
