@@ -448,7 +448,7 @@ h1, h2, h3, h4, h5, h6 {
 	padding: 75px 0 0
 }
 #wrapper #page-wrapper{
-	
+
 }
 #wrapper #page-wrapper .panel-primary{
 	border-radius:7px;
@@ -1542,7 +1542,7 @@ color:#b5e5ff
 
 
 
-/* 
+/*
 
 .subscribe_text2 {
 	width:100%;
@@ -2926,7 +2926,6 @@ transform:rotate(360deg)
 }
 .single_will_book {
 	margin-top: -20px;
-	width: 60px
 }
 .book_price {
 	font-size: 30px;

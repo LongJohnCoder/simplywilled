@@ -14,7 +14,7 @@
         margin: 0 15px;
     }
     .about_sec4{
-		background-position: right 64% top; 
+		background-position: right 64% top;
 	}
 }
 
@@ -96,12 +96,10 @@
     }
     .single_will_book{
         margin-top: -20px;
-        width: 60px;
     }
     .book_price{
-        font-size: 30px;
+        font-size: 34px;
         line-height: 30px;
-        padding-top: 10px;
     }
     .get_start_pkg_btn{
         width:100%;
@@ -279,7 +277,7 @@
         bottom: 5px;
     }
     .about_sec4{
-		background-position: right 64% top -60px; 
+		background-position: right 64% top -60px;
 		background-size: auto 126%;
 	}
 }
@@ -479,7 +477,7 @@
     .estate_planning_right_main h1{
         font-size:20px;
     }
-   
+
     .team_name{
         font-size: 16px;
     }
@@ -759,7 +757,7 @@
         clear:left;
     }
     .packages_ul > li:nth-child(1), .packages_ul > li:nth-child(2){
-        margin-bottom:60px; 
+        margin-bottom:60px;
     }*/
     .save_text{
         font-size:30px;
@@ -842,7 +840,7 @@
     .our_history_pera{
         font-size:16px;
     }
-    
+
     .team_name{
         font-size: 16px;
     }
@@ -973,7 +971,7 @@
         top: 20%;
     }
     .about_sec4{
-		background-size: auto 125%; 
+		background-size: auto 125%;
 		position: relative;
     }
     .adminModal {

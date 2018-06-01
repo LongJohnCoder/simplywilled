@@ -192,7 +192,7 @@ span.bestValue img {
         width: 175px;
     }
     .packages_ul > li:first-child .book_main {
-        width: 155px;
+        width: 264px;
     }
 }
 @media screen and (max-width: 1199px) {
@@ -228,8 +228,18 @@ span.bestValue img {
 }
 
 @media screen and (max-width: 400px){
-    .applyCodeBtn{
-        font-size: 12px;
-        padding: 7px 0;
-    }
+  .applyCodeBtn{
+      font-size: 12px;
+      padding: 7px 0;
+  }
+  .book_price{
+    font-size: 30px;
+    padding-top: 30px;
+  }
+  .single_will_book img{
+    width: 100px;
+  }
+  .packages_ul > li:first-child .book_main {
+    width: 198px;
+  }
 }
