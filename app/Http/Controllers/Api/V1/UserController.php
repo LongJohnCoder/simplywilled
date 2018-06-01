@@ -1278,7 +1278,7 @@ class UserController extends Controller
         if(!$tuay) {
             return response()->json([
                 'status'  => false,
-                'message' => 'Please TellUsAboutYOu details first and then proceed to this section',
+                'message' => 'Please TellUsAboutYou details first and then proceed to this section',
                 'data'    => []
             ], 400);
         }
@@ -1353,16 +1353,31 @@ class UserController extends Controller
         $gift = Gifts::find($giftId);
         $giftType = $request->giftType; // giftType = 1,2,3,4,5,6
         $giftData = $request->giftData; // array of gift data
+
+
+        $tuay = TellUsAboutYou::where('user_id',\Auth::user()->id)->first();
+        if(!$tuay) {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Please TellUsAboutYou details first and then proceed to this section',
+                'data'    => []
+            ], 400);
+        }
+
         if ($gift) {
           $gift->type = $giftType;
           switch($giftType) {
-            case 1 :  $gift->cash_description = json_encode($giftData);
+            case 1 :  $saveGift->cash_description = GiftStatement::cashDescription($giftData[0],$tuay);
+                      ///$gift->cash_description = json_encode($giftData);
                       break;
-            case 2 :  $gift->property_details = json_encode($giftData);
+            case 2 :  $saveGift->property_details = GiftStatement::generateStatement($giftData[0],$tuay,'real property');
+                      //$gift->property_details = json_encode($giftData);
                       break;
-            case 3 :  $gift->business_details = json_encode($giftData);
+            case 3 :  $saveGift->business_details = GiftStatement::generateStatement($giftData[0],$tuay,'business interest');
+                      //$gift->business_details = json_encode($giftData);
                       break;
-            case 4 :  $gift->asset_details = json_encode($giftData);
+            case 4 :  $saveGift->asset_details = GiftStatement::generateStatement($giftData[0],$tuay,'specific asset');
+                      //$gift->asset_details = json_encode($giftData);
                       break;
             case 5 :  $gift->rest_deatils = json_encode($giftData);
                       break;
