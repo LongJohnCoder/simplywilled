@@ -17,7 +17,6 @@
     <div class="col-md-12 col-sm-12 col-xs-12 giftSec" *ngFor="let each_gift of giftResp; let i= index">
       <h2 class="singing_instruction3">Gift <span class="gift_list_number">{{i+1}}</span></h2>
       <div class="gift_text_content" id="gift_text_content_{{i+1}}">
-        {{each_gift.type}}
         <div class="gift_text">
           <app-my-gift-text [dataSet]="each_gift"></app-my-gift-text>
         </div>

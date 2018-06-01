@@ -52,7 +52,7 @@ export class ContingentBeneficiariesComponent implements OnInit, OnDestroy {
                },
             (error: any) => {
                 console.log(error.error);
-            }, () => {this.loading = false;}
+            }, () => {this.loading = false; }
         );
     }
 

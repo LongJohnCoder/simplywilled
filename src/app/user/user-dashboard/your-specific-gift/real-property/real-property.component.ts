@@ -83,7 +83,7 @@ export class RealPropertyComponent implements OnInit {
       if (Object.keys(this.editService.getData()).length) {
         this.flags.editFlag = true;
         this.formEditDataSet = this.editService.getData();
-        let parsedDataSet = JSON.parse(this.formEditDataSet.asset_details)[0];
+        let parsedDataSet = JSON.parse(this.formEditDataSet.property_details)[0];
         this.giftId = this.formEditDataSet.id;
         this.createForm(this.flags.editFlag, parsedDataSet);
         this.flags.individualFlag = parsedDataSet.gift_to === 'IN';
@@ -413,7 +413,7 @@ export class RealPropertyComponent implements OnInit {
       let token = this.parseToken();
       this.giftData.push(this.realPropertyForm.value);
       if (token) {
-        let cashGiftDataSet = this.flags.editFlag ? {'id': this.giftId, 'step': 7, 'user_id': user, 'giftType': 4, 'giftData': this.giftData} : {'step': 7, 'user_id': user, 'giftType': 4, 'giftData': this.giftData};
+        let cashGiftDataSet = this.flags.editFlag ? {'id': this.giftId, 'step': 7, 'user_id': user, 'giftType': 2, 'giftData': this.giftData} : {'step': 7, 'user_id': user, 'giftType': 2, 'giftData': this.giftData};
         if (this.flags.editFlag) {
           this.editGiftData(token, cashGiftDataSet);
         } else {
