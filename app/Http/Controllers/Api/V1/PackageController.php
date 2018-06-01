@@ -396,6 +396,11 @@ class PackageController extends Controller
 
     public function paypalDirectPayment(Request $request)
     {
+      // return response()->json([
+      //   'status' => true,
+      //   'message' => 'Payment has done successfully',
+      //   'data' => []
+      // ], 200);
       try {
         $pkgID         = $request->pkg_id;
         $userID        = $request->user_id;
@@ -420,38 +425,38 @@ class PackageController extends Controller
           ], 400);
         }
 
-        if (!$user->tellUsAboutYou) {
-          return response()->json([
-              'status' => false,
-              'error'  => 'Unable to get data of address',
-              'data'   => []
-          ], 400);
-        }
-        $totalAmount = $package->amount;
+        // if (!$user->tellUsAboutYou) {
+        //   return response()->json([
+        //       'status' => false,
+        //       'error'  => 'Unable to get data of address',
+        //       'data'   => []
+        //   ], 400);
+        // }
+        $totalAmount  = $package->amount;
         $couponAmount = 0;
         if ($coupon) {
           $couponAmount = ($package->amount * $coupon->percentage) / 100;
-          $totalAmount = $package->amount - $couponAmount;
+          $totalAmount  = $package->amount - $couponAmount;
         }
 
-        $SIGNATURE = config('paypal_direct.signature');
-        $USER = config('paypal_direct.user');
-        $PWD = config('paypal_direct.password');
-        $METHOD = config('paypal_direct.method');
-        $PAYMENTACTION = config('paypal_direct.paymentAction');
-        $IPADDRESS = $_SERVER['REMOTE_ADDR'];
-        $AMT = $totalAmount;
+        $SIGNATURE      = config('paypal_direct.signature');
+        $USER           = config('paypal_direct.user');
+        $PWD            = config('paypal_direct.password');
+        $METHOD         = config('paypal_direct.method');
+        $PAYMENTACTION  = config('paypal_direct.paymentAction');
+        $IPADDRESS      = $_SERVER['REMOTE_ADDR'];
+        $AMT            = $totalAmount;
         $CREDITCARDTYPE = $request->credit_card_type;
-        $ACCT = $request->card_no;
-        $EXPDATE = $request->exp_date;
-        $CVV2 = $request->cvv2;
-        $FIRSTNAME = $user->tellUsAboutYou->firstname;
-        $LASTNAME = $user->tellUsAboutYou->lastname;
-        $STREET = $user->tellUsAboutYou->address;
-        $CITY = $user->tellUsAboutYou->city;
-        $STATE = $user->tellUsAboutYou->state;
-        $ZIP = $user->tellUsAboutYou->zip;
-        $COUNTRYCODE = 'US';
+        $ACCT           = $request->card_no;
+        $EXPDATE        = $request->exp_date;
+        $CVV2           = $request->cvv2;
+        $FIRSTNAME      = $request->cardFirstName;
+        $LASTNAME       = $request->cardLastName;
+        $STREET         = $request->address1;
+        $CITY           = $request->city;
+        $STATE          = $request->state;
+        $ZIP            = $request->zip;
+        $COUNTRYCODE    = 'US';
 
         $pfHostAddr = config('paypal_direct.host');
 
@@ -466,6 +471,11 @@ class PackageController extends Controller
         $resp = curl_exec($ch);
         parse_str($resp, $arr);
 
+        $paypalMethod = [];
+        $paypalMethod['request'] = $request->all();
+        $paypalMethod['request']['country_code'] = 'US';
+        $paypalMethod['response'] = $arr;
+
         $userPackage = new UserPackage;
         $userPackage->user_id = $userID;
         $userPackage->package_id = $pkgID;
@@ -478,7 +488,7 @@ class PackageController extends Controller
         } else {
           $userPackage->payment_status = '0';
         }
-        $userPackage->payment_response = json_encode($arr);
+        $userPackage->payment_response = json_encode($paypalMethod);
         $userPackage->amount = $AMT;
         if ($coupon) {
           $userPackage->coupon_id = $couponID;
