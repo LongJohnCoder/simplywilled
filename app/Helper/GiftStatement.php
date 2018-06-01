@@ -22,7 +22,7 @@
 			
 			if(!array_key_exists('gift_to',$cashDescription)) {
 				$cashDescription['statement'] = '';
-				return json_encode($cashDescription);
+				return json_encode([$cashDescription]);
 			}
 			
 			$statement = '';	
@@ -119,7 +119,7 @@
 				$cashDescription['statement'] = '';
 			}
 
-			return json_encode($cashDescription);
+			return json_encode([$cashDescription]);
 		}
 
 		//With the residue of my estate : _re
