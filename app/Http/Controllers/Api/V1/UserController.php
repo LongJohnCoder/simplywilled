@@ -1365,18 +1365,19 @@ class UserController extends Controller
         }
 
         if ($gift) {
+
           $gift->type = $giftType;
           switch($giftType) {
-            case 1 :  $saveGift->cash_description = GiftStatement::cashDescription($giftData[0],$tuay);
+            case 1 :  $gift->cash_description = GiftStatement::cashDescription($giftData[0],$tuay);
                       ///$gift->cash_description = json_encode($giftData);
                       break;
-            case 2 :  $saveGift->property_details = GiftStatement::generateStatement($giftData[0],$tuay,'real property');
+            case 2 :  $gift->property_details = GiftStatement::generateStatement($giftData[0],$tuay,'real property');
                       //$gift->property_details = json_encode($giftData);
                       break;
-            case 3 :  $saveGift->business_details = GiftStatement::generateStatement($giftData[0],$tuay,'business interest');
+            case 3 :  $gift->business_details = GiftStatement::generateStatement($giftData[0],$tuay,'business interest');
                       //$gift->business_details = json_encode($giftData);
                       break;
-            case 4 :  $saveGift->asset_details = GiftStatement::generateStatement($giftData[0],$tuay,'specific asset');
+            case 4 :  $gift->asset_details = GiftStatement::generateStatement($giftData[0],$tuay,'specific asset');
                       //$gift->asset_details = json_encode($giftData);
                       break;
             case 5 :  $gift->rest_deatils = json_encode($giftData);
@@ -1410,9 +1411,10 @@ class UserController extends Controller
           ], 400);
         }
       } catch (Exception $e) {
+        
         return response()->json([
             'status'  => false,
-            'message' => 'Internal server error',
+            'message' => ' ERROR : '.$e->getMessage().' LINE : '.$e->getLine(),
             'data'    => []
         ], 500);
       }
