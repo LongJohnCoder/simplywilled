@@ -1306,7 +1306,8 @@ class UserController extends Controller
           case 3 :  $saveGift->business_details = GiftStatement::businessDetails($giftData[0],$tuay);
                     //$saveGift->business_details = json_encode($giftData);
                     break;
-          case 4 :  $saveGift->asset_details = json_encode($giftData);
+          case 4 :  $saveGift->asset_details = GiftStatement::specificAssets($giftData[0],$tuay);
+                    //$saveGift->asset_details = json_encode($giftData);
                     break;
           case 5 :  $saveGift->rest_deatils = json_encode($giftData);
                     break;

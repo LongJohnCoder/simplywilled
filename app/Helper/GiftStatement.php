@@ -142,160 +142,399 @@
 			$statement = "I direct that all of my interest in that business entity known as ".ucwords(strtolower($businessDetails['full_legal_name'])).", including, but not be limited to, goodwill, accounts receivable, equipment, inventory, bank accounts and all other assets of the business of whatever manner, wherever located, and whenever acquired, shall be distributed to ";
 
 
-			//.$propertyDetails['organization_name']." at ".$propertyDetails['organization_address'].". If said organization does not exist at the time of distribution, this asset shall be distributed with the residue of my estate."
+			switch ($businessDetails['gift_to']) {
+				
+				case 'CH': /*******************************************************
+							* BUSINESS DETAILS FOR SPECIFIC GIFTS :
+							* 
+							* FIELDS CONCERNED :
+							* organization_name : 'organisation name',
+							* organization_address : 'organisation address',
+							*
+							********************************************************/
 
-			if($businessDetails['gift_to'] == 'CH') 
-			{	
-				/*******************************************************
-				* CASH GIFT FOR CHARITY :
-				* 
-				* FIELDS CONCERNED :
-				* organization_name : 'organisation name',
-				* organization_address : 'organisation address',
-				*
-				********************************************************/
+							if(array_key_exists('organization_name',$businessDetails) && 
+								isset($businessDetails['organization_name']) && 
+								array_key_exists('organization_address',$businessDetails) &&
+								isset($businessDetails['organization_address'])) {
 
-				if(array_key_exists('organization_name',$businessDetails) && 
-					isset($businessDetails['organization_name']) && 
-					array_key_exists('organization_address',$businessDetails) &&
-					isset($businessDetails['organization_address'])) {
-
-					$statement .= $businessDetails['organization_name']." at ".$businessDetails['organization_address'].". If said organization does not exist at the time of distribution, this asset shall be distributed with the residue of my estate.";
-				}
-				$cashDescription['statement'] = $statement;
-			
-			} 
-			elseif($businessDetails['gift_to'] == 'IN') 
-			{
-
-				/*****************************************************
-				* CASH GIFT FOR CHARITY :
-				* 
-				* FIELDS CONCERNED :
-				* full_legal_name : 'full legal name of business',
-				* organization_name : 'organisation name',
-				* organization_address : 'organisation address',
-				*
-				******************************************************/
-
-				// if(!array_key_exists('beneficiary',$businessDetails) ||
-				// 	!array_key_exists('passed_by',$businessDetails) || 
-				// 	!array_key_exists('beneficiary_legal_relation', $businessDetails) ||
-				// 	!array_key_exists('individual_relationship', $businessDetails)) {
-				// }
-
-				if(array_key_exists('beneficiary', $businessDetails) && isset($businessDetails['beneficiary']) && 
-					array_key_exists('passed_by',$businessDetails) && isset($businessDetails['passed_by'])) 
-				{
-
-					if($businessDetails['beneficiary'] == "_si")
-					{
-						if(array_key_exists('beneficiary_legal_relation',$businessDetails) && isset($businessDetails['beneficiary_legal_relation']) &&
-						//array_key_exists('individual_relationship',$businessDetails) && isset($businessDetails['individual_relationship']) && 
-						array_key_exists('beneficiary_legal_name',$businessDetails) && isset($businessDetails['beneficiary_legal_name'])) {
-
-							//dd('came here');
-							if($businessDetails['beneficiary_legal_relation'] != '')
-							{
-								$statement .= " My ".$businessDetails['beneficiary_legal_relation'];
+								$statement .= $businessDetails['organization_name']." at ".$businessDetails['organization_address'].". If said organization does not exist at the time of distribution, this asset shall be distributed with the residue of my estate.";
 							}
-							$statement .= ", ".ucwords(strtolower($businessDetails['beneficiary_legal_name']));
-						}
-												
-					}
-					elseif($businessDetails['beneficiary'] == "_mu") 
-					{
-						if(array_key_exists('multiple_beneficiaries', $businessDetails) &&
-							isset($businessDetails['multiple_beneficiaries'])) {
-
-							$statement .= "the following persons in equal shares:";
-							$index = 0;
+							$cashDescription['statement'] = $statement;
+							break;
 							
-							$substatement = '';
-							foreach($businessDetails['multiple_beneficiaries'] as $key => $beneficiary)
-							{
-								if(array_key_exists('multiple_beneficiary_name', $beneficiary) &&
-									isset($beneficiary['multiple_beneficiary_name']) &&  
-									array_key_exists('multiple_beneficiary_relationship', $beneficiary) &&
-									isset($beneficiary['multiple_beneficiary_relationship'])) {
+				case 'IN':	/*****************************************************
+							* BUSINESS DETAILS FOR SPECIFIC GIFTS :
+							* 
+							* FIELDS CONCERNED :
+							* full_legal_name : 'full legal name of business',
+							* organization_name : 'organisation name',
+							* organization_address : 'organisation address',
+							* beneficiary : _si : (single beneficiary), _mu : (multiple beneficiary)
+							*
+							******************************************************/
 
-									$substatement .= $substatement != '' ? ' and' : '';
-									$substatement .= ' (My ' . ucwords(strtolower($beneficiary['multiple_beneficiary_relationship'])) . ', ' . 
-														ucwords(strtolower($beneficiary['multiple_beneficiary_name'])) . ')';
+							if(array_key_exists('beneficiary', $businessDetails) && isset($businessDetails['beneficiary']) && 
+								array_key_exists('passed_by',$businessDetails) && isset($businessDetails['passed_by'])) 
+							{
+
+								switch ($businessDetails['beneficiary']) {
+									case '_si': 	if(array_key_exists('beneficiary_legal_relation',$businessDetails) && 
+													isset($businessDetails['beneficiary_legal_relation']) &&
+													array_key_exists('beneficiary_legal_name',$businessDetails) && 
+													isset($businessDetails['beneficiary_legal_name'])) {
+
+														if($businessDetails['beneficiary_legal_relation'] != '')
+														{
+															$statement .= " My ".$businessDetails['beneficiary_legal_relation'];
+														}
+														$statement .= ", ".ucwords(strtolower($businessDetails['beneficiary_legal_name']));
+													}
+													break;
+									
+									case '_mu':		if(array_key_exists('multiple_beneficiaries', $businessDetails) &&
+														isset($businessDetails['multiple_beneficiaries'])) {
+
+														$statement .= "the following persons in equal shares:";
+														$index = 0;
+														
+														$substatement = '';
+														foreach($businessDetails['multiple_beneficiaries'] as $key => $beneficiary)
+														{
+															if(array_key_exists('multiple_beneficiary_name', $beneficiary) &&
+																isset($beneficiary['multiple_beneficiary_name']) &&  
+																array_key_exists('multiple_beneficiary_relationship', $beneficiary) &&
+																isset($beneficiary['multiple_beneficiary_relationship'])) {
+
+																$substatement .= $substatement != '' ? ' and' : '';
+																$substatement .= ' (My ' . ucwords(strtolower($beneficiary['multiple_beneficiary_relationship'])) . ', ' . 
+																					ucwords(strtolower($beneficiary['multiple_beneficiary_name'])) . ')';
+															}
+														}
+														$statement .= $substatement;
+													}
+													break;
+									
+									default:		break;
+								}
+
+								$statement .= ". If a distributee named in this provision does not survive me, the deceased distributee's share of this gift shall instead be distributed";
+
+								
+								/*****************************************************
+								* BUSINESS DETAILS FOR SPECIFIC GIFTS :
+								* 
+								* FIELDS CONCERNED :
+								* passed_by : ,
+								* organization_name : 'organisation name',
+								* organization_address : 'organisation address',
+								* beneficiary : _si : (single beneficiary), _mu : (multiple beneficiary)
+								*
+								******************************************************/
+
+								switch ($businessDetails['passed_by']) {
+									case "_sgb": 	$statement .= " equally among the surviving distributees of this gift.";
+													break;
+
+									case "_re" : 	$statement .= " with the residue of my Estate.";
+													break;
+									
+									case "_se" :	$statement .= " to";
+													if(strtolower($businessDetails['individual_relationship']) == 'other')
+													{
+														$statement .= " my " . ucwords(strtolower($businessDetails['individual_relationship_other'])).",";
+													} 
+													else 
+													{
+														$statement .= " my " . ucwords(strtolower($businessDetails['individual_relationship'])). ", ";
+													}
+													$statement .= ucwords(strtolower($businessDetails['individual_name'])).".";
+													break;
+
+									case "_tth":	$statement .= " to his or her then-living issue, ";
+									
+													if(trim(strtolower($tuay->state)) == "california")
+													{
+														$statement .= " by right of representation";
+													} 
+													else 
+													{
+														$statement .= " per stirpes";
+													}
+													
+													$statement .= "; however, if said distributee is not survived by issue, the interest (or the net sale proceeds of the interest) shall be distributed";
+													
+													if($businessDetails['passed_by_child'] == "_re")
+													{
+														$statement .= " in the manner hereinafter set forth for the distribution of the residue of my Estate.";
+													} 
+													
+													elseif($businessDetails['passed_by_child'] == "_se")
+													{
+														$statement .= " to";
+														if(strtolower($businessDetails['individual_relationship']) == 'other')
+														{
+															$statement .= " my " . $businessDetails['individual_relationship_other'].",";
+														} 
+														else 
+														{
+															$statement .= " my " . $businessDetails['individual_relationship']. ", ";
+														}
+														$statement .= " ".ucwords(strtolower($businessDetails['individual_name'])).".";
+													}
+													break;
+
+									case "_tti":	$statement .= " to his or her then-living issue, ";
+									
+													if(trim(strtolower($tuay->state)) == "california")
+													{
+														$statement .= " by right of representation";
+													} 
+													else 
+													{
+														$statement .= " per stirpes";
+													}
+													
+													$statement .= "; however, if said distributee is not survived by issue, the interest (or the net sale proceeds of the interest) shall be distributed";
+													
+													if($businessDetails['passed_by_child'] == "_re")
+													{
+														$statement .= " in the manner hereinafter set forth for the distribution of the residue of my Estate.";
+													} 
+													
+													elseif($businessDetails['passed_by_child'] == "_se")
+													{
+														$statement .= " to";
+														if(strtolower($businessDetails['individual_relationship']) == 'other')
+														{
+															$statement .= " my " . $businessDetails['individual_relationship_other'].",";
+														} 
+														else 
+														{
+															$statement .= " my " . $businessDetails['individual_relationship']. ", ";
+														}
+														$statement .= " ".ucwords(strtolower($businessDetails['individual_name'])).".";
+													}
+													break;
+									
+									default 	:	break;
 								}
 							}
-							$statement .= $substatement;
-						}
-					}
-
-					$statement .= ". If a distributee named in this provision does not survive me, the deceased distributee's share of this gift shall instead be distributed";
-
-					
-					if($businessDetails['passed_by'] == "_sgb")
-					{
-						$statement .= " equally among the surviving distributees of this gift.";
-					
-					}
-
-					elseif ($businessDetails['passed_by'] == "_re")
-					{
-						$statement .= " with the residue of my Estate.";
-					
-					}
-					
-					elseif($businessDetails['passed_by'] == "_se") 
-					{
-						$statement .= " to";
-						if(strtolower($businessDetails['individual_relationship']) == 'other')
-						{
-							$statement .= " my " . ucwords(strtolower($businessDetails['individual_relationship_other'])).",";
-						} 
-						else 
-						{
-							$statement .= " my " . ucwords(strtolower($businessDetails['individual_relationship'])). ", ";
-						}
-						$statement .= ucwords(strtolower($businessDetails['individual_name'])).".";
-					}
-					
-					elseif ($businessDetails['passed_by'] == "_tth" || $businessDetails['passed_by'] == "_tti") 
-					{
-						$statement .= " to his or her then-living issue, ";
-						
-						if(trim(strtolower($tuay->state)) == "california")
-						{
-							$statement .= " by right of representation";
-						} 
-						else 
-						{
-							$statement .= " per stirpes";
-						}
-						
-						$statement .= "; however, if said distributee is not survived by issue, the interest (or the net sale proceeds of the interest) shall be distributed";
-						
-						if($businessDetails['passed_by_child'] == "_re")
-						{
-							$statement .= " in the manner hereinafter set forth for the distribution of the residue of my Estate.";
-						} 
-						
-						elseif($businessDetails['passed_by_child'] == "_se")
-						{
-							$statement .= " to";
-							if(strtolower($businessDetails['individual_relationship']) == 'other')
-							{
-								$statement .= " my " . $businessDetails['individual_relationship_other'].",";
-							} 
-							else 
-							{
-								$statement .= " my " . $businessDetails['individual_relationship']. ", ";
-							}
-							$statement .= " ".ucwords(strtolower($businessDetails['individual_name'])).".";
-						}
-					}
-				}
+							break;
+				
+				default: break;
 			}
 
 			$businessDetails['statement'] = $statement;
 			return json_encode([$businessDetails]);
+		}
+
+
+		//With the residue of my estate : _re
+		//To their issue : _tti
+		//To someone else : _se
+		//To surviving gift beneficiaries : _sgb
+
+		/* *
+		* This function generates the gift statement for property detail gift and returns the object to the calling function
+		* @param cashDescription : propertyDetails object, userId : user id
+		* @return json object
+		*/
+		public static function specificAssets($specificAssets, $tuay) {
+			if(!array_key_exists('gift_to',$specificAssets) ||
+				!array_key_exists('full_legal_name',$specificAssets)) {
+				$specificAssets['statement'] = '';
+				return json_encode([$specificAssets]);
+			}
+
+			$statement = $specificAssets['full_legal_name']." shall be distributed to ";
+
+			switch ($specificAssets['gift_to']) {
+				
+				case 'CH': /*******************************************************
+							* BUSINESS DETAILS FOR SPECIFIC GIFTS :
+							* 
+							* FIELDS CONCERNED :
+							* organization_name : 'organisation name',
+							* organization_address : 'organisation address',
+							*
+							********************************************************/
+
+							if(array_key_exists('organization_name',$specificAssets) && 
+								isset($specificAssets['organization_name']) && 
+								array_key_exists('organization_address',$specificAssets) &&
+								isset($specificAssets['organization_address'])) {
+
+								$statement .= $specificAssets['organization_name']." at ".$specificAssets['organization_address'].". If said organization does not exist at the time of distribution, this asset shall be distributed with the residue of my estate.";
+							}
+							$cashDescription['statement'] = $statement;
+							break;
+							
+				case 'IN':	/*****************************************************
+							* BUSINESS DETAILS FOR SPECIFIC GIFTS :
+							* 
+							* FIELDS CONCERNED :
+							* full_legal_name : 'full legal name of business',
+							* organization_name : 'organisation name',
+							* organization_address : 'organisation address',
+							* beneficiary : _si : (single beneficiary), _mu : (multiple beneficiary)
+							*
+							******************************************************/
+
+							if(array_key_exists('beneficiary', $specificAssets) && isset($specificAssets['beneficiary']) && 
+								array_key_exists('passed_by',$specificAssets) && isset($specificAssets['passed_by'])) 
+							{
+
+								switch ($specificAssets['beneficiary']) {
+									case '_si': 	if(array_key_exists('beneficiary_legal_relation',$specificAssets) && 
+													isset($specificAssets['beneficiary_legal_relation']) &&
+													array_key_exists('beneficiary_legal_name',$specificAssets) && 
+													isset($specificAssets['beneficiary_legal_name'])) {
+
+														if($specificAssets['beneficiary_legal_relation'] != '')
+														{
+															$statement .= " My ".$specificAssets['beneficiary_legal_relation'];
+														}
+														$statement .= ", ".ucwords(strtolower($specificAssets['beneficiary_legal_name']));
+													}
+													break;
+									
+									case '_mu':		if(array_key_exists('multiple_beneficiaries', $specificAssets) &&
+														isset($specificAssets['multiple_beneficiaries'])) {
+
+														$statement .= "the following persons in equal shares:";
+														$index = 0;
+														
+														$substatement = '';
+														foreach($specificAssets['multiple_beneficiaries'] as $key => $beneficiary)
+														{
+															if(array_key_exists('multiple_beneficiary_name', $beneficiary) &&
+																isset($beneficiary['multiple_beneficiary_name']) &&  
+																array_key_exists('multiple_beneficiary_relationship', $beneficiary) &&
+																isset($beneficiary['multiple_beneficiary_relationship'])) {
+
+																$substatement .= $substatement != '' ? ' and' : '';
+																$substatement .= ' (My ' . ucwords(strtolower($beneficiary['multiple_beneficiary_relationship'])) . ', ' . 
+																					ucwords(strtolower($beneficiary['multiple_beneficiary_name'])) . ')';
+															}
+														}
+														$statement .= $substatement;
+													}
+													break;
+									
+									default:		break;
+								}
+
+								$statement .= ". If a distributee named in this provision does not survive me, the deceased distributee's share of this gift shall instead be distributed";
+
+								
+								/*****************************************************
+								* BUSINESS DETAILS FOR SPECIFIC GIFTS :
+								* 
+								* FIELDS CONCERNED :
+								* passed_by : ,
+								* organization_name : 'organisation name',
+								* organization_address : 'organisation address',
+								* beneficiary : _si : (single beneficiary), _mu : (multiple beneficiary)
+								*
+								******************************************************/
+
+								switch ($specificAssets['passed_by']) {
+									
+									case "_sgb": 	$statement .= " equally among the surviving distributees of this gift.";
+													break;
+
+									case "_re" : 	$statement .= " with the residue of my Estate.";
+													break;
+									
+									case "_se" :	$statement .= " to";
+													if(strtolower($specificAssets['individual_relationship']) == 'other')
+													{
+														$statement .= " my " . ucwords(strtolower($specificAssets['individual_relationship_other'])).",";
+													} 
+													else 
+													{
+														$statement .= " my " . ucwords(strtolower($specificAssets['individual_relationship'])). ", ";
+													}
+													$statement .= ucwords(strtolower($specificAssets['individual_name'])).".";
+													break;
+
+									case "_tth":	$statement .= " to his or her then-living issue, ";
+									
+													if(trim(strtolower($tuay->state)) == "california")
+													{
+														$statement .= " by right of representation";
+													} 
+													else 
+													{
+														$statement .= " per stirpes";
+													}
+													
+													$statement .= "; however, if said distributee is not survived by issue, the asset (or the net sale proceeds of the asset) shall be distributed";
+													
+													if($specificAssets['passed_by_child'] == "_re")
+													{
+														$statement .= " in the manner hereinafter set forth for the distribution of the residue of my Estate.";
+													} 
+													
+													elseif($specificAssets['passed_by_child'] == "_se")
+													{
+														$statement .= " to";
+														if(strtolower($specificAssets['individual_relationship']) == 'other')
+														{
+															$statement .= " my " . $specificAssets['individual_relationship_other'].",";
+														} 
+														else 
+														{
+															$statement .= " my " . $specificAssets['individual_relationship']. ", ";
+														}
+														$statement .= " ".ucwords(strtolower($specificAssets['individual_name'])).".";
+													}
+													break;
+
+									case "_tti":	$statement .= " to his or her then-living issue, ";
+									
+													if(trim(strtolower($tuay->state)) == "california")
+													{
+														$statement .= " by right of representation";
+													} 
+													else 
+													{
+														$statement .= " per stirpes";
+													}
+													
+													$statement .= "; however, if said distributee is not survived by issue, the asset (or the net sale proceeds of the asset) shall be distributed";
+													
+													if($specificAssets['passed_by_child'] == "_re")
+													{
+														$statement .= " in the manner hereinafter set forth for the distribution of the residue of my Estate.";
+													} 
+													
+													elseif($specificAssets['passed_by_child'] == "_se")
+													{
+														$statement .= " to";
+														if(strtolower($specificAssets['individual_relationship']) == 'other')
+														{
+															$statement .= " my " . $specificAssets['individual_relationship_other'].",";
+														} 
+														else 
+														{
+															$statement .= " my " . $specificAssets['individual_relationship']. ", ";
+														}
+														$statement .= " ".ucwords(strtolower($specificAssets['individual_name'])).".";
+													}
+													break;
+									
+									default 	:	break;
+								}
+							}
+							break;
+				
+				default: break;
+			}
+
+			$specificAssets['statement'] = $statement;
+			return json_encode([$specificAssets]);
 		}
 	}
 ?>
