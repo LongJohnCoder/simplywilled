@@ -31,7 +31,8 @@ export class PackagesComponent implements OnInit {
         'status': '',
         'key_benefits': '',
         'amount': 0.00,
-        'included': ''
+        'included': '',
+          'slug': ''
       };
       // this.currFirst = 0;
       // this.currLast = 00;
@@ -57,6 +58,7 @@ export class PackagesComponent implements OnInit {
             this.data.amount = resp.data[0].amount;
             this.data.key_benefits = JSON.parse(resp.data[0].key_benefits);
             this.data.included = JSON.parse(resp.data[0].included);
+            this.data.slug = resp.data[0].slug;
             // const price = this.data.amount.toString().split('.');
             // this.currFirst = price[0];
             // if (price.hasOwnProperty(1) !== true ) {
@@ -67,7 +69,7 @@ export class PackagesComponent implements OnInit {
             // }
 
 
-            console.log(this.data.id);
+            // console.log(resp.data[0].slug);
 
         }, (error: any) => {
             console.log(error.error);
