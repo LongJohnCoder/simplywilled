@@ -407,7 +407,7 @@ class PackageController extends Controller
         $pkgID         = $request->pkg_id;
         $userID        = $request->user_id;
         $couponID      = $request->coupon_id;
-        $package       = Packages::find($pkgID);
+        $package       = Packages::where('slug', $pkgID)->first();
         $user          = User::find($userID);
         $coupon        = Coupon::find($couponID);
 
@@ -497,7 +497,7 @@ class PackageController extends Controller
 
         $userPackage = new UserPackage;
         $userPackage->user_id = $userID;
-        $userPackage->package_id = $pkgID;
+        $userPackage->package_id = $package->id;
         $userPackage->started_on = date('Y-m-d H:i:s');
         $userPackage->renew_date = date('Y-m-d H:i:s');
         $userPackage->payment_method = 'Paypal';
@@ -519,7 +519,7 @@ class PackageController extends Controller
         $userPackage->save();
 
         if ($arr['ACK'] == 'Success') {
-          $user->package_id = $pkgID;
+          $user->package = $pkgID;
           $user->save();
           return response()->json([
             'status' => true,

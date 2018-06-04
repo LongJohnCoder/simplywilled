@@ -16,6 +16,10 @@ class AlterPackagesSlug extends Migration
         Schema::table('packages', function (Blueprint $table) {
           $table->string('slug')->unique();
         });
+        Schema::table('users', function (Blueprint $table) {
+          $table->dropColumn('package_id');
+          $table->string('package')->nullable();
+        });
     }
 
     /**
@@ -27,6 +31,10 @@ class AlterPackagesSlug extends Migration
     {
         Schema::table('packages', function (Blueprint $table) {
           $table->dropColumn('slug');
+        });
+        Schema::table('users', function (Blueprint $table) {
+          $table->dropColumn('package');
+          $table->integer('package_id')->nullable();
         });
     }
 }

@@ -678,7 +678,7 @@ Route::group(['prefix' => 'v1'], function() {
 
         Route::post('paypal-direct-payment', [
             'uses' => 'Api\V1\PackageController@paypalDirectPayment',
-            'as' => 'api.v1.paypalDirectPayment.get'
+            'as' => 'api.v1.paypalDirectPayment.post'
         ]);
     });
 });
