@@ -36,91 +36,93 @@ class PackageController extends Controller
     * @return \Illuminate\Http\JsonResponse
     */
     public function deletePackage($id) {
-    try {
+      try {
 
-      //rejecting delete request if package id is invalid
-      if(!is_numeric($id)) {
-       return response()->json([
-           'status'   => false,
-           'message'  => 'Invalid Package id!'
-       ], 400);
-      }
-      $id = (int)$id;
-      if(Packages::destroy($id)) {
-        return response()->json([
-            'status'   => true,
-            'message'  => 'Package Deleted Successfully!'
-        ], 200);
-      } else {
-        return response()->json([
-            'status'   => true,
-            'message'  => 'Invalid Package id!'
-        ], 400);
-      }
-    } catch (\Exception $e) {
-      return response()->json([
-          'status'       => false,
-          'message'      => $e->getMessage(),
-          'errorLineNo'  => $e->getLine()
-      ], 500);
-    }
-    }
-
-    /**
-    * Signs in a authenticated admin
-    *
-    * @param Request $request [name (text), amount(float), valid_till(valid datetime), description(text)]
-    * @return \Illuminate\Http\JsonResponse
-    */
-    public function createPackage(Request $request) {
-    try {
-
-      $timeNow = Carbon::now()->format('Y-m-d H:i:s');
-      $validator = Validator::make($request->all(), [
-          'name'        =>  'required',
-          'amount'      =>  'required|numeric|min:0',
-          // 'valid_till'  =>  'required|date|date_format:Y-m-d H:i:s|after:'.$timeNow,
-          'description' =>  'nullable'
-      ]);
-      if ($validator->fails()) {
+        //rejecting delete request if package id is invalid
+        if(!is_numeric($id)) {
+         return response()->json([
+             'status'   => false,
+             'message'  => 'Invalid Package id!'
+         ], 400);
+        }
+        $id = (int)$id;
+        if(Packages::destroy($id)) {
           return response()->json([
-              'status'  => false,
-              'message' => $validator->errors(),
-              'data'    => []
+              'status'   => true,
+              'message'  => 'Package Deleted Successfully!'
+          ], 200);
+        } else {
+          return response()->json([
+              'status'   => true,
+              'message'  => 'Invalid Package id!'
           ], 400);
-      }
-
-      $name       = $request->name;
-      $amount     = $request->amount;
-      // $validTill  = $request->valid_till;
-
-      $package = new Packages();
-      $package->name        = $name;
-      $package->amount      = $amount;
-      $package->valid_till  = $timeNow;
-      $package->description = $request->has('description') ? $request->description : '';
-      $package->status      = '1';
-      if($package->save()) {
+        }
+      } catch (\Exception $e) {
         return response()->json([
-            'status'   => true,
-            'message'  => 'New Package Created',
-            'data'     => ['package' => $package]
-        ], 200);
-      } else {
-        return response()->json([
-            'status'   => true,
-            'message'  => 'Database Conectivity Error',
-            'data'     => []
-        ], 200);
+            'status'       => false,
+            'message'      => $e->getMessage(),
+            'errorLineNo'  => $e->getLine()
+        ], 500);
       }
-    } catch(\Exception $e) {
-      return response()->json([
-          'status'       => false,
-          'message'      => $e->getMessage(),
-          'errorLineNo'  => $e->getLine(),
-          'data'         => []
-      ], 500);
     }
+
+      /**
+      * Signs in a authenticated admin
+      *
+      * @param Request $request [name (text), amount(float), valid_till(valid datetime), description(text)]
+      * @return \Illuminate\Http\JsonResponse
+      */
+    public function createPackage(Request $request) {
+      try {
+
+        $timeNow = Carbon::now()->format('Y-m-d H:i:s');
+        $validator = Validator::make($request->all(), [
+            'name'        =>  'required',
+            'amount'      =>  'required|numeric|min:0',
+            // 'valid_till'  =>  'required|date|date_format:Y-m-d H:i:s|after:'.$timeNow,
+            'description' =>  'nullable'
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status'  => false,
+                'message' => $validator->errors(),
+                'data'    => []
+            ], 400);
+        }
+
+        $name       = $request->name;
+        $amount     = $request->amount;
+        // $validTill  = $request->valid_till;
+
+        $package = new Packages();
+        $package->name        = $name;
+        $package->amount      = $amount;
+        $package->valid_till  = $timeNow;
+        $package->description = $request->has('description') ? $request->description : '';
+        $package->key_benefits = json_encode($request->key_benefits);
+        $package->included     = json_encode($request->included);
+        $package->status      = '1';
+        if($package->save()) {
+          return response()->json([
+              'status'   => true,
+              'message'  => 'New Package Created',
+              'data'     => ['package' => $package]
+          ], 200);
+        } else {
+          return response()->json([
+              'status'   => true,
+              'message'  => 'Database Conectivity Error',
+              'data'     => []
+          ], 200);
+        }
+      } catch(\Exception $e) {
+        return response()->json([
+            'status'       => false,
+            'message'      => $e->getMessage(),
+            'errorLineNo'  => $e->getLine(),
+            'data'         => []
+        ], 500);
+      }
     }
 
     /**
@@ -439,26 +441,43 @@ class PackageController extends Controller
           $totalAmount  = $package->amount - $couponAmount;
         }
 
-        $SIGNATURE      = config('paypal_direct.signature');
-        $USER           = config('paypal_direct.user');
-        $PWD            = config('paypal_direct.password');
-        $METHOD         = config('paypal_direct.method');
-        $PAYMENTACTION  = config('paypal_direct.paymentAction');
-        $IPADDRESS      = $_SERVER['REMOTE_ADDR'];
-        $AMT            = $totalAmount;
-        $CREDITCARDTYPE = $request->credit_card_type;
-        $ACCT           = $request->card_no;
-        $EXPDATE        = $request->exp_date;
-        $CVV2           = $request->cvv2;
-        $FIRSTNAME      = $request->cardFirstName;
-        $LASTNAME       = $request->cardLastName;
-        $STREET         = $request->address1;
-        $CITY           = $request->city;
-        $STATE          = $request->state;
-        $ZIP            = $request->zip;
+        // $SIGNATURE      = config('paypal_direct.signature');
+        // $USER           = config('paypal_direct.user');
+        // $PWD            = config('paypal_direct.password');
+        // $METHOD         = config('paypal_direct.method');
+        // $PAYMENTACTION  = config('paypal_direct.paymentAction');
+        // $IPADDRESS      = $_SERVER['REMOTE_ADDR'];
+        // $AMT            = $totalAmount;
+        // $CREDITCARDTYPE = $request->credit_card_type;
+        // $ACCT           = $request->card_no;
+        // $EXPDATE        = $request->exp_date;
+        // $CVV2           = $request->cvv2;
+        // $FIRSTNAME      = $request->cardFirstName;
+        // $LASTNAME       = $request->cardLastName;
+        // $STREET         = $request->address1;
+        // $CITY           = $request->city;
+        // $STATE          = $request->state;
+        // $ZIP            = $request->zip;
+        $SIGNATURE      = 'AUQPJbVFoszLBf5Fe7GY81IN2NA3AIWvLG5XqlG40oJrYlgn7uRTDjbN';
+        $USER           = 'subhadip.sahoo-facilitator_api1.tier5.in';
+        $PWD            = 'CAPHHFVM4LK6E4ZJ';
+        $METHOD         = 'DoDirectPayment';
+        $PAYMENTACTION  = 'Sale';
+        $IPADDRESS      = '223.31.41.147';
+        $AMT            = '199.50';
+        $CREDITCARDTYPE = 'Visa';
+        $ACCT           = '4254394646835191';
+        $EXPDATE        = '122027';
+        $CVV2           = '840';
+        $FIRSTNAME      = 'Subhadeep';
+        $LASTNAME       = 'Sahoo';
+        $STREET         = '3909 Witmer Road';
+        $CITY           = 'Niagara Falls';
+        $STATE          = 'NY';
+        $ZIP            = '14305';
         $COUNTRYCODE    = 'US';
 
-        $pfHostAddr = config('paypal_direct.host');
+        $pfHostAddr = 'https://api-3t.sandbox.paypal.com/nvp';
 
         $postData = 'VERSION=56.0&COUNTRYCODE='.$COUNTRYCODE.'&SIGNATURE='.$SIGNATURE.'&USER='.$USER.'&PWD='.$PWD.
                     '&METHOD='.$METHOD.'&PAYMENTACTION='.$PAYMENTACTION.'&IPADDRESS='.$IPADDRESS.'&AMT='.$AMT.'&CREDITCARDTYPE='.$CREDITCARDTYPE.'&ACCT='.$ACCT.'&EXPDATE='.$EXPDATE.'&CVV2='.$CVV2.'&FIRSTNAME='.$FIRSTNAME.'&LASTNAME='.$LASTNAME.'&STREET='.$STREET.'&CITY='.$CITY.'&STATE='.$STATE.'&ZIP='.$ZIP;
