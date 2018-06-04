@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
                 this.data.key_benefits = JSON.parse(resp.data[0].key_benefits);
                 this.data.included = JSON.parse(resp.data[0].included);
 
-                // console.log(this.data.id);
+                // console.log(this.data.key_benefits);
 
             }, (error: any) => {
                 console.log(error.error);

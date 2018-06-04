@@ -84,7 +84,7 @@
                               <!--class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i>-->
                         <!--View-->
                       <!--</button>-->
-                        <button type="button" (click)="openModal(edit, i)"
+                        <button type="button" (click)="openModal(add, i)"
                                 class="btn btn-info"><i class="fa fa-edit" aria-hidden="true"></i>
                             Edit
                         </button>
@@ -110,40 +110,38 @@
                 <div class="panel-body">
                     <div class="modal-header" style="margin-bottom:15px">
                         <h3 class="modal-title">
-                            Add Package
+                            {{editMode === true ?'Edit' : 'Add'}} Package
                             <!--<span class="badge" [ngClass]="[comData.status == '1' ? 'badge-success' : 'badge-danger']">{{comData.status == '1' ? 'Approved' : 'Unapproved'}}</span>-->
                         </h3>
                         <button type="button" class="close" (click)="modalRef.hide()">×</button>
                     </div>
                     <div *ngIf="!status">
-                        <form #addPackage="ngForm">
+                        <form [formGroup]="addPackage">
                             <fieldset>
-                                <div class="modal-body">
-                                    <label for="name">Name:</label>
-                                    <input id="name" class="form-control" type="text" [(ngModel)]="row.name" name="name" ngModel #name="ngModel" required>
-                                    <span *ngIf="name.invalid && name.touched" style="color:red;"> Package Name is reqired ! </span>
+                                <div class="modal-body form-group">
+                                    <label>Name:</label>
+                                    <input class="form-control" formControlName="name">
+                                    <span *ngIf="addPackage.controls['name'].errors" style="color:red;"> Package Name is required ! </span>
+
                                 </div>
-                                <div class="modal-body">
-                                    <label for="description">Description:</label>
-                                    <textarea id="description" class="form-control" [(ngModel)]="row.description" name="description" ngModel #description="ngModel" required></textarea>
-                                    <span *ngIf="description.invalid && description.touched" style="color:red;"> Description is reqired ! </span>
+                                <div class="modal-body form-group">
+                                    <label>Description:</label>
+                                    <textarea class="form-control" formControlName="description"></textarea>
+                                    <span *ngIf="addPackage.controls['description'].errors" style="color:red;"> Package Description is required ! </span>
                                 </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="twoCol">
-                                            <label for="amount">Amount:</label>
-                                            <input type="number" id="amount" class="form-control" pattern="^\d+(\.\d+)?$" [(ngModel)]="row.amount" name="amount" ngModel #amount="ngModel" required>
-                                            <span *ngIf="amount.invalid && amount.touched" style="color:red;"> Amount is required ! </span>
-                                        </div>
-                                        <div class="twoCol">
-                                            <label for="status">Status</label>
-                                            <select id="status" class="form-control" name="status" [(ngModel)]="row.status" #status="ngModel" required>
-                                                <option value="1">Active</option>
-                                                <option value="0">In Active</option>
-                                            </select>
-                                            <span *ngIf="status.invalid && status.touched" style="color:red;"> Select package status ! </span>
-                                        </div>
-                                    </div>
+                                <div class="modal-body form-group">
+                                    <label>Amount:</label>
+                                    <input type="number" class="form-control" pattern="^\d+(\.\d+)?$" formControlName="amount">
+                                    <span *ngIf="addPackage.controls['amount'].errors" style="color:red;"> Amount is required ! </span>
+
+                                </div>
+                                <div class="modal-body form-group">
+                                    <label>Status:</label>
+                                    <select class="form-control" formControlName="status">
+                                        <option value="1">Active</option>
+                                        <option value="0">In Active</option>
+                                    </select>
+                                    <span *ngIf="addPackage.controls['status'].errors" style="color:red;"> Status is required ! </span>
                                 </div>
                                 <div class="modal-body denefit">
                                     <div class="row formHeadingRow">
@@ -151,100 +149,222 @@
                                             <label>Key Benefits</label>
                                         </div>
                                     </div>
-                                    <div class="row formRow" >
-                                        <div class="threeColField"><input type="text" class="form-control" placeholder="Key Benefits"></div>
-                                        <div class="threeColField"><button type="button" class="btn btn btn-danger delRow"><i class="fa fa-trash"></i></button></div>
+                                    <div class="row formRow" formArrayName="key_benefits">
+                                        <div *ngFor="let item of addPackage.controls.key_benefits.controls; let i = index">
+                                            <div class="threeColField">
+                                                <input [formControlName]="i" class="form-control">
+                                                <span *ngIf="addPackage.get('key_benefits.'+i).invalid" style="color:red;"> Key Benefits is required ! </span>
+                                            </div>
+                                            <div class="threeColField">
+                                                <button type="button" class="btn btn btn-danger delRow" (click)="deleteKeyBen(i)"><i class="fa fa-trash"></i></button>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="addRowBtnRow">
                                         <div class="addRowBtn">
-                                            <button type="button" class="btn btn btn-primary addRow">+</button>
+                                            <button type="button" class="btn btn btn-primary addRow" (click)="addBen()">+</button>
                                         </div>
                                     </div>
                                     <div class="clear"></div>
                                 </div>
                                 <div class="modal-body denefit">
-                                    <div class="row formHeadingRow"> 
+                                    <div class="row formHeadingRow">
                                         <div class="threeColField">
                                             <label>What's Included</label>
                                         </div>
                                     </div>
-                                    <div class="row formRow" >
-                                        <div class="threeColField"><input type="text" class="form-control" placeholder="What's Included"></div>
-                                        <div class="threeColField"><button type="button" class="btn btn btn-danger delRow"><i class="fa fa-trash"></i></button></div>
+                                    <div class="row formRow" formArrayName="included">
+                                        <div *ngFor="let item of addPackage.controls.included.controls; let j = index">
+                                            <div class="threeColField">
+                                                <input [formControlName]="j" class="form-control">
+                                                <span *ngIf="addPackage.get('included.'+j).invalid" style="color:red;"> Includes is required ! </span>
+                                            </div>
+                                            <div class="threeColField">
+                                                <button type="button" class="btn btn btn-danger delRow" (click)="delIncludes(j)"><i class="fa fa-trash"></i></button>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="addRowBtnRow">
                                         <div class="addRowBtn">
-                                            <button type="button" class="btn btn btn-primary addRow">+</button>
+                                            <button type="button" class="btn btn btn-primary addRow" (click)="addIncludes()">+</button>
                                         </div>
                                     </div>
                                     <div class="clear"></div>
                                 </div>
                                 <div class="modal-body">
-                                    <button type="button" class="btn btn-primary" (click)="additem()" [disabled]="!addPackage.form.valid"> Add Package </button>
+                                    <button type="button" class="btn btn-primary" (click)="update()" [disabled]="addPackage.invalid"> {{editMode === true ? 'Update' : 'Add'}} Package</button>
                                 </div>
                             </fieldset>
                         </form>
-                    </div>
-                    <div class="modal-body" *ngIf="status">
-                        <h3 class="modal-title">
-                            {{respMsg}}
-                        </h3>
                     </div>
                 </div>
             </div>
         </ng-template>
 
-        <ng-template #edit>
-            <div class="adminModal">
-                <div class="panel-body">
-                    <div class="modal-header" style="margin-bottom:15px">
-                        <h3 class="modal-title">
-                            Edit Package
-                            <!--<span class="badge" [ngClass]="[comData.status == '1' ? 'badge-success' : 'badge-danger']">{{comData.status == '1' ? 'Approved' : 'Unapproved'}}</span>-->
-                        </h3>
-                        <button type="button" class="close" (click)="modalRef.hide()">×</button>
-                    </div>
-                    <div *ngIf="!status">
-                        <form #editPackage="ngForm">
-                            <fieldset>
-                                <div class="modal-body">
-                                    <label for="name">Name:</label>
-                                    <input id="name" class="form-control" type="text" [(ngModel)]="row.name" name="name" ngModel #name="ngModel" required>
-                                    <span *ngIf="name.invalid && name.touched" style="color:red;"> Package Name is reqired ! </span>
-                                    <input type="hidden" [(ngModel)]="row.id" name="id" ngModel #id="ngModel">
-                                </div>
-                                <div class="modal-body">
-                                    <label for="description">Description:</label>
-                                    <textarea id="description" class="form-control" [(ngModel)]="row.description" name="description" ngModel #description="ngModel" required></textarea>
-                                    <span *ngIf="description.invalid && description.touched" style="color:red;"> Description is reqired ! </span>
-                                </div>
-                                <div class="modal-body">
-                                    <label for="amount">Amount:</label>
-                                    <input type="number" id="amount" pattern="^\d+(\.\d+)?$" class="form-control" [(ngModel)]="row.amount" name="amount" ngModel #amount="ngModel" required>
-                                    <span *ngIf="amount.invalid && amount.touched" style="color:red;"> Amount is reqired ! </span>
-                                </div>
-                                <div class="modal-body">
-                                    <label for="status">Status</label>
-                                    <select id="status" class="form-control" name="status" [(ngModel)]="row.status" #status="ngModel" required>
-                                        <option value="1">Active</option>
-                                        <option value="0">In Active</option>
-                                    </select>
-                                    <span *ngIf="status.invalid && status.touched" style="color:red;"> Select package status ! </span>
-                                </div>
-                                <div class="modal-body">
-                                    <button type="button" class="btn btn-primary" (click)="update()" [disabled]="!editPackage.form.valid"> Update </button>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                    <div class="modal-body" *ngIf="status">
-                        <h3 class="modal-title">
-                            {{respMsg}}
-                        </h3>
-                    </div>
-                </div>
-            </div>
-        </ng-template>
+        <!--<ng-template #addd>-->
+            <!--<div class="adminModal">-->
+                <!--<div class="panel-body">-->
+                    <!--<div class="modal-header" style="margin-bottom:15px">-->
+                        <!--<h3 class="modal-title">-->
+                            <!--Add Package-->
+                            <!--&lt;!&ndash;<span class="badge" [ngClass]="[comData.status == '1' ? 'badge-success' : 'badge-danger']">{{comData.status == '1' ? 'Approved' : 'Unapproved'}}</span>&ndash;&gt;-->
+                        <!--</h3>-->
+                        <!--<button type="button" class="close" (click)="modalRef.hide()">×</button>-->
+                    <!--</div>-->
+                    <!--<div *ngIf="!status">-->
+                        <!--<form #addPackage="ngForm">-->
+                            <!--<fieldset>-->
+                                <!--<div class="modal-body">-->
+                                    <!--<label for="name">Name:</label>-->
+                                    <!--<input id="name" class="form-control" type="text" [(ngModel)]="row.name" name="name" ngModel #name="ngModel" required>-->
+                                    <!--<span *ngIf="name.invalid && name.touched" style="color:red;"> Package Name is reqired ! </span>-->
+                                <!--</div>-->
+                                <!--<div class="modal-body">-->
+                                    <!--<label for="description">Description:</label>-->
+                                    <!--<textarea id="description" class="form-control" [(ngModel)]="row.description" name="description" ngModel #description="ngModel" required></textarea>-->
+                                    <!--<span *ngIf="description.invalid && description.touched" style="color:red;"> Description is reqired ! </span>-->
+                                <!--</div>-->
+                                <!--<div class="modal-body">-->
+                                    <!--<div class="row">-->
+                                        <!--<div class="twoCol">-->
+                                            <!--<label for="amount">Amount:</label>-->
+                                            <!--<input type="number" id="amount" class="form-control" pattern="^\d+(\.\d+)?$" [(ngModel)]="row.amount" name="amount" ngModel #amount="ngModel" required>-->
+                                            <!--<span *ngIf="amount.invalid && amount.touched" style="color:red;"> Amount is required ! </span>-->
+                                        <!--</div>-->
+                                        <!--<div class="twoCol">-->
+                                            <!--<label for="status">Status</label>-->
+                                            <!--<select id="status" class="form-control" name="status" [(ngModel)]="row.status" #status="ngModel" required>-->
+                                                <!--<option value="1">Active</option>-->
+                                                <!--<option value="0">In Active</option>-->
+                                            <!--</select>-->
+                                            <!--<span *ngIf="status.invalid && status.touched" style="color:red;"> Select package status ! </span>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="modal-body denefit">-->
+                                    <!--<div class="row formHeadingRow">-->
+                                        <!--<div class="threeColField">-->
+                                            <!--<label>Key Benefits</label>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="row formRow" *ngFor="let key of keyBen; index as i">-->
+                                        <!--<div class="threeColField">-->
+                                            <!--<input type="text" class="form-control" placeholder="Key Benefits"-->
+                                                   <!--[(ngModel)]="keyBen[i]" name="keyBen[{{i}}]" #keyBen[i]="ngModel" ngModel value="{{key}}">-->
+                                            <!--&lt;!&ndash;<span *ngIf="keyBenifit.invalid && keyBenifit.touched" style="color:red;"> Add some Benefits ! </span>&ndash;&gt;-->
+                                        <!--</div>-->
+                                        <!--<div class="threeColField"><button type="button" class="btn btn btn-danger delRow" (click)="deleteKeyBen(i)"><i class="fa fa-trash"></i></button></div>-->
+                                    <!--</div>-->
+                                    <!--<div class="addRowBtnRow">-->
+                                        <!--<div class="addRowBtn">-->
+                                            <!--<button type="button" class="btn btn btn-primary addRow" (click)="addKeyBen()">+</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="clear"></div>-->
+                                <!--</div><div class="modal-body denefit">-->
+                                    <!--<div class="row formHeadingRow">-->
+                                        <!--<div class="threeColField">-->
+                                            <!--<label>Key Benefits</label>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="row formRow" *ngFor="let key of keyBen; index as i">-->
+                                        <!--<div class="threeColField">-->
+                                            <!--<input type="text" class="form-control" placeholder="Key Benefits"-->
+                                                   <!--[(ngModel)]="keyBen[i]" name="keyBen[{{i}}]" #keyBen[i]="ngModel" ngModel value="{{key}}">-->
+                                            <!--&lt;!&ndash;<span *ngIf="keyBenifit.invalid && keyBenifit.touched" style="color:red;"> Add some Benefits ! </span>&ndash;&gt;-->
+                                        <!--</div>-->
+                                        <!--<div class="threeColField"><button type="button" class="btn btn btn-danger delRow" (click)="deleteKeyBen(i)"><i class="fa fa-trash"></i></button></div>-->
+                                    <!--</div>-->
+                                    <!--<div class="addRowBtnRow">-->
+                                        <!--<div class="addRowBtn">-->
+                                            <!--<button type="button" class="btn btn btn-primary addRow" (click)="addKeyBen()">+</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="clear"></div>-->
+                                <!--</div>-->
+                                <!--<div class="modal-body denefit">-->
+                                    <!--<div class="row formHeadingRow">-->
+                                        <!--<div class="threeColField">-->
+                                            <!--<label>What's Included</label>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="row formRow" >-->
+                                        <!--<div class="threeColField"><input type="text" class="form-control" placeholder="What's Included"></div>-->
+                                        <!--<div class="threeColField"><button type="button" class="btn btn btn-danger delRow"><i class="fa fa-trash"></i></button></div>-->
+                                    <!--</div>-->
+                                    <!--<div class="addRowBtnRow">-->
+                                        <!--<div class="addRowBtn">-->
+                                            <!--<button type="button" class="btn btn btn-primary addRow">+</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="clear"></div>-->
+                                <!--</div>-->
+                                <!--<div class="modal-body">-->
+                                    <!--<button type="button" class="btn btn-primary" (click)="additem()" [disabled]="!addPackage.form.valid"> Add Package </button>-->
+                                <!--</div>-->
+                            <!--</fieldset>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                    <!--<div class="modal-body" *ngIf="status">-->
+                        <!--<h3 class="modal-title">-->
+                            <!--{{respMsg}}-->
+                        <!--</h3>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</ng-template>-->
+
+        <!--<ng-template #edit>-->
+            <!--<div class="adminModal">-->
+                <!--<div class="panel-body">-->
+                    <!--<div class="modal-header" style="margin-bottom:15px">-->
+                        <!--<h3 class="modal-title">-->
+                            <!--Edit Package-->
+                            <!--&lt;!&ndash;<span class="badge" [ngClass]="[comData.status == '1' ? 'badge-success' : 'badge-danger']">{{comData.status == '1' ? 'Approved' : 'Unapproved'}}</span>&ndash;&gt;-->
+                        <!--</h3>-->
+                        <!--<button type="button" class="close" (click)="modalRef.hide()">×</button>-->
+                    <!--</div>-->
+                    <!--<div *ngIf="!status">-->
+                        <!--<form #editPackage="ngForm">-->
+                            <!--<fieldset>-->
+                                <!--<div class="modal-body">-->
+                                    <!--<label for="name">Name:</label>-->
+                                    <!--<input id="name" class="form-control" type="text" [(ngModel)]="row.name" name="name" ngModel #name="ngModel" required>-->
+                                    <!--<span *ngIf="name.invalid && name.touched" style="color:red;"> Package Name is reqired ! </span>-->
+                                    <!--<input type="hidden" [(ngModel)]="row.id" name="id" ngModel #id="ngModel">-->
+                                <!--</div>-->
+                                <!--<div class="modal-body">-->
+                                    <!--<label for="description">Description:</label>-->
+                                    <!--<textarea id="description" class="form-control" [(ngModel)]="row.description" name="description" ngModel #description="ngModel" required></textarea>-->
+                                    <!--<span *ngIf="description.invalid && description.touched" style="color:red;"> Description is reqired ! </span>-->
+                                <!--</div>-->
+                                <!--<div class="modal-body">-->
+                                    <!--<label for="amount">Amount:</label>-->
+                                    <!--<input type="number" id="amount" pattern="^\d+(\.\d+)?$" class="form-control" [(ngModel)]="row.amount" name="amount" ngModel #amount="ngModel" required>-->
+                                    <!--<span *ngIf="amount.invalid && amount.touched" style="color:red;"> Amount is reqired ! </span>-->
+                                <!--</div>-->
+                                <!--<div class="modal-body">-->
+                                    <!--<label for="status">Status</label>-->
+                                    <!--<select id="status" class="form-control" name="status" [(ngModel)]="row.status" #status="ngModel" required>-->
+                                        <!--<option value="1">Active</option>-->
+                                        <!--<option value="0">In Active</option>-->
+                                    <!--</select>-->
+                                    <!--<span *ngIf="status.invalid && status.touched" style="color:red;"> Select package status ! </span>-->
+                                <!--</div>-->
+                                <!--<div class="modal-body">-->
+                                    <!--<button type="button" class="btn btn-primary" (click)="update()" [disabled]="!editPackage.form.valid"> Update </button>-->
+                                <!--</div>-->
+                            <!--</fieldset>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                    <!--<div class="modal-body" *ngIf="status">-->
+                        <!--<h3 class="modal-title">-->
+                            <!--{{respMsg}}-->
+                        <!--</h3>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</ng-template>-->
 
       <ng-template #deleteitem>
         <div class="adminModalSmall">

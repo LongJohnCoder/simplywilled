@@ -4,7 +4,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CKEditorModule } from 'ngx-ckeditor';
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -47,7 +47,8 @@ import {PackageService} from './packages/package.service';
     ModalModule.forRoot(),
     FormsModule, CKEditorModule,
     RouterModule,
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    ReactiveFormsModule
 
   ],
   declarations: [
