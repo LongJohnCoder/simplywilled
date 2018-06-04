@@ -449,11 +449,11 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
       multiple_beneficiaries: this.realPropertyForm.value.gift_to === 'IN' && this.realPropertyForm.value.beneficiary === '_mu' ? this.realPropertyForm.value.multiple_beneficiaries : [],
       organization_address: this.realPropertyForm.value.gift_to === 'CH' ? this.realPropertyForm.value.organization_address : '',
       organization_name: this.realPropertyForm.value.gift_to === 'CH' ? this.realPropertyForm.value.organization_name : '',
-      passed_by: this.realPropertyForm.value.passed_by,
-      passed_by_child: this.realPropertyForm.value.passed_by_child,
-      individual_name: this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se') ? this.realPropertyForm.value.individual_name : '',
-      individual_relationship: this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se') ? this.realPropertyForm.value.individual_relationship : '',
-      individual_relationship_other: this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se') ? this.realPropertyForm.value.individual_relationship_other : '',
+      passed_by: this.realPropertyForm.value.gift_to === 'IN' ? this.realPropertyForm.value.passed_by : '',
+      passed_by_child: this.realPropertyForm.value.gift_to === 'IN' ? this.realPropertyForm.value.passed_by_child : '',
+      individual_name: this.realPropertyForm.value.gift_to === 'IN' && (this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se')) ? this.realPropertyForm.value.individual_name : '',
+      individual_relationship: this.realPropertyForm.value.gift_to === 'IN' && (this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se')) ? this.realPropertyForm.value.individual_relationship : '',
+      individual_relationship_other: this.realPropertyForm.value.gift_to === 'IN' && (this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se')) ? this.realPropertyForm.value.individual_relationship_other : '',
       free_mortgage: this.realPropertyForm.value.free_mortgage,
     };
     return data;

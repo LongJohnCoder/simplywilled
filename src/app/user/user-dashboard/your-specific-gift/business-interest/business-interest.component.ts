@@ -384,11 +384,11 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
       multiple_beneficiaries: this.businessInterestForm.value.gift_to === 'IN' && this.businessInterestForm.value.beneficiary === '_mu' ? this.businessInterestForm.value.multiple_beneficiaries : [],
       organization_address: this.businessInterestForm.value.gift_to === 'CH' ? this.businessInterestForm.value.organization_address : '',
       organization_name: this.businessInterestForm.value.gift_to === 'CH' ? this.businessInterestForm.value.organization_name : '',
-      passed_by: this.businessInterestForm.value.passed_by,
-      passed_by_child: this.businessInterestForm.value.passed_by_child,
-      individual_name: this.businessInterestForm.value.passed_by === '_se' || (this.businessInterestForm.value.passed_by === '_tti' && this.businessInterestForm.value.passed_by_child === '_se') ? this.businessInterestForm.value.individual_name : '',
-      individual_relationship: this.businessInterestForm.value.passed_by === '_se' || (this.businessInterestForm.value.passed_by === '_tti' && this.businessInterestForm.value.passed_by_child === '_se') ? this.businessInterestForm.value.individual_relationship : '',
-      individual_relationship_other: this.businessInterestForm.value.passed_by === '_se' || (this.businessInterestForm.value.passed_by === '_tti' && this.businessInterestForm.value.passed_by_child === '_se') ? this.businessInterestForm.value.individual_relationship_other : '',
+      passed_by: this.businessInterestForm.value.gift_to === 'IN' ? this.businessInterestForm.value.passed_by : '',
+      passed_by_child: this.businessInterestForm.value.gift_to === 'IN' ? this.businessInterestForm.value.passed_by_child : '',
+      individual_name: this.businessInterestForm.value.gift_to === 'IN' && (this.businessInterestForm.value.passed_by === '_se' || (this.businessInterestForm.value.passed_by === '_tti' && this.businessInterestForm.value.passed_by_child === '_se')) ? this.businessInterestForm.value.individual_name : '',
+      individual_relationship: this.businessInterestForm.value.gift_to === 'IN' && (this.businessInterestForm.value.passed_by === '_se' || (this.businessInterestForm.value.passed_by === '_tti' && this.businessInterestForm.value.passed_by_child === '_se')) ? this.businessInterestForm.value.individual_relationship : '',
+      individual_relationship_other: this.businessInterestForm.value.gift_to === 'IN' && (this.businessInterestForm.value.passed_by === '_se' || (this.businessInterestForm.value.passed_by === '_tti' && this.businessInterestForm.value.passed_by_child === '_se')) ? this.businessInterestForm.value.individual_relationship_other : '',
     };
     return data;
   }

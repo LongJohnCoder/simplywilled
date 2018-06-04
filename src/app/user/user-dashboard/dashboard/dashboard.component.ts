@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         .filter(event => event instanceof NavigationEnd)
         .subscribe((event: NavigationEnd) => {
           window.scroll(0, 0);
-          if(event.urlAfterRedirects == '/dashboard/packages'){
+          if (event.urlAfterRedirects === '/dashboard/packages'){
             this.showLeft = false;
           }
 

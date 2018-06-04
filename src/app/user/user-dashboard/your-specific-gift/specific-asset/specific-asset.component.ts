@@ -382,11 +382,11 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
       multiple_beneficiaries: this.specificAssetForm.value.gift_to === 'IN' && this.specificAssetForm.value.beneficiary === '_mu' ? this.specificAssetForm.value.multiple_beneficiaries : [],
       organization_address: this.specificAssetForm.value.gift_to === 'CH' ? this.specificAssetForm.value.organization_address : '',
       organization_name: this.specificAssetForm.value.gift_to === 'CH' ? this.specificAssetForm.value.organization_name : '',
-      passed_by: this.specificAssetForm.value.passed_by,
-      passed_by_child: this.specificAssetForm.value.passed_by_child,
-      individual_name: this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se') ? this.specificAssetForm.value.individual_name : '',
-      individual_relationship: this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se') ? this.specificAssetForm.value.individual_relationship : '',
-      individual_relationship_other: this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se') ? this.specificAssetForm.value.individual_relationship_other : '',
+      passed_by: this.specificAssetForm.value.gift_to === 'IN' ? this.specificAssetForm.value.passed_by : '',
+      passed_by_child: this.specificAssetForm.value.gift_to === 'IN' ? this.specificAssetForm.value.passed_by_child : '',
+      individual_name: this.specificAssetForm.value.gift_to === 'IN' && (this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se')) ? this.specificAssetForm.value.individual_name : '',
+      individual_relationship: this.specificAssetForm.value.gift_to === 'IN' && (this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se')) ? this.specificAssetForm.value.individual_relationship : '',
+      individual_relationship_other: this.specificAssetForm.value.gift_to === 'IN' && (this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se')) ? this.specificAssetForm.value.individual_relationship_other : '',
     };
     return data;
   }
