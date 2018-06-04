@@ -6,6 +6,7 @@ import {UserService} from '../../user.service';
 import {LovedOnesInfo} from './models/lovedOnesInfo';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
+import {ProgressbarService} from '../shared/services/progressbar.service';
 @Component({
   selector: 'app-personal-representative-power',
   templateUrl: './personal-representative-power.component.html',
@@ -33,7 +34,7 @@ export class PersonalRepresentativePowerComponent implements OnInit, OnDestroy {
   savePersonalRepresentativeDBSubscription: Subscription;
 
   /**Constructor call*/
-  constructor(private prService: PersonalRepresentativePowerService, private usrService: UserService, private router: Router) { }
+  constructor(private prService: PersonalRepresentativePowerService, private usrService: UserService, private router: Router, private progressBarService: ProgressbarService) { this.progressBarService.changeWidth({width: 0}); }
 
   /**When component initialises*/
   ngOnInit() {

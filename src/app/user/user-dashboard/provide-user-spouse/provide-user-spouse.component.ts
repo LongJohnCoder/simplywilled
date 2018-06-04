@@ -4,6 +4,7 @@ import {Validators, FormGroup, FormBuilder, FormControl, FormArray} from '@angul
 import {UserAuthService} from '../../user-auth/user-auth.service';
 import {UserService} from '../../user.service';
 import {Subscription} from 'rxjs/Subscription';
+import {ProgressbarService} from '../shared/services/progressbar.service';
 
 @Component({
     selector: 'app-provide-user-spouse',
@@ -25,7 +26,9 @@ export class ProvideUserSpouseComponent implements OnInit, OnDestroy {
     constructor(private  authService: UserAuthService,
                 private userService: UserService,
                 private router: Router,
+                private progressBarService: ProgressbarService,
                 private fb: FormBuilder, ) {
+        this.progressBarService.changeWidth({width: 25});
         this.createForm();
     }
 

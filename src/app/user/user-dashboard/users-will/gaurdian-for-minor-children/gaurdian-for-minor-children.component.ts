@@ -4,6 +4,7 @@ import {UserService} from '../../../user.service';
 import {UserAuthService} from '../../../user-auth/user-auth.service';
 import {Validators, FormGroup, FormArray, FormBuilder, FormControl} from '@angular/forms';
 import * as States from '../../../shared/models/states.model' ;
+import {ProgressbarService} from '../../shared/services/progressbar.service';
 
 @Component({
   selector: 'app-gaurdian-for-minor-children',
@@ -22,6 +23,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
       private userService: UserService,
       private router: Router,
       private authService: UserAuthService,
+      private progressBarService: ProgressbarService,
       private fb: FormBuilder,
   ) {
       this.states = States.States;
@@ -151,6 +153,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
                   if (this.myForm.value.isBackUpGuardian === 'Yes') {
                       this.addValidationBackUpGaurdianToForm();
                   }
+                  this.progressBarService.changeWidth({width: 66.66});
               }
           },
           (error: any) => {

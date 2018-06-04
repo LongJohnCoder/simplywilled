@@ -4,6 +4,7 @@ import {UserService} from '../../user.service';
 import {FormBuilder, FormGroup, Validators, FormControl, FormArray} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
+import {ProgressbarService} from '../shared/services/progressbar.service';
 
 @Component({
     selector: 'app-personal-property-distributed',
@@ -27,6 +28,7 @@ export class PersonalPropertyDistributedComponent implements OnInit, OnDestroy {
     constructor(private  authService: UserAuthService,
                 private userService: UserService,
                 private router: Router,
+                private progressBarService: ProgressbarService,
                 private fb: FormBuilder, ) {
         this.createForm();
         this.getUserData();
@@ -56,6 +58,13 @@ export class PersonalPropertyDistributedComponent implements OnInit, OnDestroy {
             (response: any) => {
                 this.fullUserInfo = response.data[5].data;
                 this.maritalStatus = response.data[0].data.userInfo.marital_status;
+                switch (this.maritalStatus) {
+                  case 'M':
+                  case 'R': this.progressBarService.changeWidth({width: 37.5});
+                            break;
+                  default:  this.progressBarService.changeWidth({width: 25});
+                            break;
+                }
                 this.personalPropertyDistributedForm.controls['is_tangible_property_distribute'].setValue( this.fullUserInfo.is_tangible_property_distribute);
                 this.personalPropertyDistributedForm.controls['is_tangible_property_distribute'].setValidators([Validators.required]);
                 this.personalPropertyDistributedForm.controls['is_tangible_property_distribute'].updateValueAndValidity();

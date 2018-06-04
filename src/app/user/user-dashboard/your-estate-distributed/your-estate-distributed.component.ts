@@ -113,11 +113,13 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
                       multiBeneficiary: 'No',
                       someOtherWay: 'No'
                   });
-                  let estactInfo = JSON.parse(this.fullUserInfo.totalInfo);
-                  let toASingleBeneficiaryFGs = estactInfo.map(gr => this.fb.group(gr));
-                  let toASingleBeneficiaryFormArray = this.fb.array(toASingleBeneficiaryFGs);
-                  this.estateDistributedForm.setControl('toASingleBeneficiary', toASingleBeneficiaryFormArray);
-                  this.addValidationToASingleBeneficiaryForm();
+                  let estactInfo = this.fullUserInfo !== null && this.fullUserInfo.totalInfo !== null && this.fullUserInfo.totalInfo !== undefined ? JSON.parse(this.fullUserInfo.totalInfo) : {};
+                  if (estactInfo !== null && estactInfo !== undefined) {
+                    let toASingleBeneficiaryFGs = estactInfo.map(gr => this.fb.group(gr));
+                    let toASingleBeneficiaryFormArray = this.fb.array(toASingleBeneficiaryFGs);
+                    this.estateDistributedForm.setControl('toASingleBeneficiary', toASingleBeneficiaryFormArray);
+                    this.addValidationToASingleBeneficiaryForm();
+                  }
               } if (this.fullUserInfo.type === '2') {
                   // set value to the multiBeneficiary Form
                   this.estateDistributedForm.patchValue({
@@ -125,7 +127,7 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
                       multiBeneficiary: 'Yes',
                       someOtherWay: 'No',
                   });
-                  let estactInfo = JSON.parse(this.fullUserInfo.totalInfo);
+                  let estactInfo = this.fullUserInfo !== null && this.fullUserInfo.totalInfo !== null && this.fullUserInfo.totalInfo !== undefined ? JSON.parse(this.fullUserInfo.totalInfo) : {};
                   this.editFlag = false;
                   this.columnFormArray = this.estateDistributedForm.get('toMultipleBeneficiary.0.beneficiaryYes') as FormArray;
                   this.beneficiaryNoFormArray = this.estateDistributedForm.get('toMultipleBeneficiary.0.beneficiaryNo') as FormArray;
@@ -144,7 +146,7 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
                         multiBeneficiary: 'No',
                         someOtherWay: 'Yes'
                     });
-                    let estactInfo = JSON.parse(this.fullUserInfo.totalInfo);
+                    let estactInfo = this.fullUserInfo !== null && this.fullUserInfo.totalInfo !== null && this.fullUserInfo.totalInfo !== undefined ?  JSON.parse(this.fullUserInfo.totalInfo) : {};
                     let toSomeOtherWayFGs = estactInfo.map(gr => this.fb.group(gr));
                     let toSomeOtherWayFormArray = this.fb.array(toSomeOtherWayFGs);
                     this.estateDistributedForm.setControl('toSomeOtherWay', toSomeOtherWayFormArray);

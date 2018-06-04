@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MedicalEmergencyService} from './medical-emergency.service';
 import {MedicalEmergency} from './medicalEmergency';
 import {Router} from '@angular/router';
+import {ProgressbarService} from '../shared/services/progressbar.service';
 
 @Component({
   selector: 'app-plan-for-medical-emergency',
@@ -20,9 +21,10 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
   toggleWillBackupInform: boolean;
   constructor(
       private medicalEmergencyService: MedicalEmergencyService,
+      private progressBarService: ProgressbarService,
       private router: Router,
 
-  ) { }
+  ) { this.progressBarService.changeWidth({width: 0}); }
 
   ngOnInit() {
       this.toggleWillInform = false;

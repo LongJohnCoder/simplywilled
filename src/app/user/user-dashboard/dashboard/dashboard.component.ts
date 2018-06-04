@@ -4,6 +4,8 @@ import {Router, NavigationEnd} from '@angular/router';
 import {UserAuthService} from '../../user-auth/user-auth.service';
 import {UserDashboardService} from '../user-dashboard.service';
 import {Subscription} from 'rxjs/Subscription';
+import {ProgressbarService} from '../shared/services/progressbar.service';
+import {Progressbar} from '../shared/models/progressbar';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,14 +20,25 @@ export class DashboardComponent implements OnInit, OnDestroy {
     logoutSubscription: Subscription;
     step1DataSubscription: Subscription;
     getUserDetailsSubscription: Subscription;
-    showLeft: boolean = true;
+    showLeft = true;
+    progressBar: Progressbar;
+    progressBarSubscription: Subscription;
 
+    /**Constructor call*/
     constructor(
       private userService: UserService,
       private router: Router,
       private userAuth: UserAuthService,
       private userDashboardService: UserDashboardService,
+      private progressbarService: ProgressbarService
     ) {
+      this.progressbarService.changeWidth({width: 0});
+      this.progressBarSubscription = this.progressbarService.currentMessage.subscribe(
+        (progressBar) => {
+            this.progressBar = progressBar;
+            console.log(this.progressBar);
+        }
+      );
       router.events
         .filter(event => event instanceof NavigationEnd)
         .subscribe((event: NavigationEnd) => {
@@ -87,6 +100,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       }
       if (this.getUserDetailsSubscription !== undefined) {
         this.getUserDetailsSubscription.unsubscribe();
+      }
+      if (this.progressBarSubscription !== undefined) {
+        this.progressBarSubscription.unsubscribe();
       }
     }
 }

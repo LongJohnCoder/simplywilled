@@ -4,6 +4,7 @@ import {YourFinalArrangementsService} from './services/your-final-arrangements.s
 import {Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
+import {ProgressbarService} from '../shared/services/progressbar.service';
 
 @Component({
   selector: 'app-your-final-arrangements',
@@ -30,9 +31,11 @@ export class YourFinalArrangementsComponent implements OnInit, OnDestroy {
               private _fb: FormBuilder,
               private finalarrangementService: YourFinalArrangementsService,
               private router: Router,
+              private progressBarService: ProgressbarService,
               private location: Location
   ) {
     let token = this.parseToken();
+    this.progressBarService.changeWidth({width: 0});
     this.createForm();
     this.getData(token);
   }

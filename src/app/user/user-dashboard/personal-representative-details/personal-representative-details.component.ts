@@ -5,6 +5,7 @@ import {UserAuthService} from '../../user-auth/user-auth.service';
 import {UserService} from '../../user.service';
 import {Subscription} from 'rxjs/Subscription';
 import {mod} from 'ngx-bootstrap/chronos/utils';
+import {ProgressbarService} from '../shared/services/progressbar.service';
 
 @Component({
     selector: 'app-personal-representative-details',
@@ -30,8 +31,10 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
         private  authService: UserAuthService,
         private userService: UserService,
         private router: Router,
+        private progressBarService: ProgressbarService,
         private fb: FormBuilder,
     ) {
+      this.progressBarService.changeWidth({width: 12.5});
         //this.createForm();
       this.getUserData();
     }

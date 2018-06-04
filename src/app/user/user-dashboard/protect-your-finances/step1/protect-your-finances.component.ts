@@ -7,6 +7,7 @@ import { UserService } from '../../../user.service';
 import { Validators, FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
 import { PYFAttorneyPowers } from '../models/pyf-attorney-powers';
 import {Subscription} from 'rxjs/Subscription';
+import {ProgressbarService} from '../../shared/services/progressbar.service';
 
 @Component({
   selector: 'app-protect-your-finances',
@@ -36,6 +37,7 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private authService: UserAuthService,
     private userService: UserService,
+    private progressBarService: ProgressbarService,
     private router: Router
   ) {
     this.accessToken = this.parseToken();
@@ -87,7 +89,8 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
                 case 'Minnesota':
                 case 'New York': this.router.navigate(['/dashboard/protect-your-finances-details']);
                                  break;
-                default: break;
+                default:         this.progressBarService.changeWidth({width: 50});
+                                 break;
             }
         }, (error: any) => {
           console.log(error);

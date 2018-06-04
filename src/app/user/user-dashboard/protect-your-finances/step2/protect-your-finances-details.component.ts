@@ -5,6 +5,7 @@ import { UserAuthService } from '../../../user-auth/user-auth.service';
 import { UserService } from '../../../user.service';
 import { NgForm, Validators, FormGroup, FormBuilder, FormControl} from '@angular/forms';
 import {Subscription} from 'rxjs/Subscription';
+import {ProgressbarService} from '../../shared/services/progressbar.service';
 
 @Component({
   selector: 'app-protect-your-finances-details',
@@ -25,6 +26,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
   isInformSubscription: Subscription;
   isBackupAttorneySubscription: Subscription;
   isBackupInformSubscription: Subscription;
+  statesSubscription: Subscription;
   loading = true;
 
   constructor(
@@ -32,6 +34,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private authService: UserAuthService,
     private userService: UserService,
+    private progressBarService: ProgressbarService,
     private router: Router
   ) {
     this.accessToken = this.parseToken();
@@ -55,6 +58,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
   getPoaDetailsData(): void {
     this.mainSubscription = this.protectYourFinancesService.getPoaDetails(this.accessToken).subscribe(
       (response: any) => {
+        console.log(response);
         this.response = response.data;
         this.data.poaDetailsPowers  = response.data !== null ? JSON.parse(this.response.attorney_powers) : null;
         this.data.poaDetailsHolders = response.data !== null ? JSON.parse(this.response.attorney_holders) : null;
@@ -68,6 +72,24 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
         this.addConditionalValidators();
       }
     );
+
+    this.statesSubscription = this.protectYourFinancesService.getStates(this.accessToken).subscribe(
+      (data: any) => {
+        let stateName = data !== null && data.stateInfo !== null ? data.stateInfo.name : '';
+        switch (stateName) {
+          case 'Florida':
+          case 'Maryland':
+          case 'Minnesota':
+          case 'New York':  this.progressBarService.changeWidth({width: 0});
+                            this.router.navigate(['/dashboard/protect-your-finances-details']);
+                            break;
+          default:          this.progressBarService.changeWidth({width: 50});
+                            break;
+        }
+      }, (error: any) => {
+        console.log(error);
+      }, () => {}
+    );
   }
 
   /**
@@ -77,7 +99,6 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
    * returns void
    */
   createForm(data = null) {
-    console.log(data);
     this.poaDetailsForm = this.fb.group({
      /* is_backupattorney: new FormControl(isBackupattorney !== undefined && isBackupattorney !== null ? isBackupattorney : 0),
       is_inform           : new FormControl(formObj !== undefined && formObj !== null && formObj.is_inform !== undefined
@@ -326,6 +347,9 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
     }
     if (this.isBackupInformSubscription  !== undefined) {
       this.isBackupInformSubscription.unsubscribe();
+    }
+    if (this.statesSubscription !== undefined) {
+      this.statesSubscription.unsubscribe();
     }
   }
 }

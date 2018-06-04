@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { FormBuilder, FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import {UserDashboardService} from '../../user-dashboard.service';
 import {Subscription} from 'rxjs/Subscription';
+import {ProgressbarService} from '../../shared/services/progressbar.service';
 
 
 @Component({
@@ -45,6 +46,7 @@ export class TuaYourFamilyComponent implements OnInit, OnDestroy {
               private userService: UserService,
               private authService: UserAuthService,
               private dashboardService: UserDashboardService,
+              private progressBarService: ProgressbarService,
               private fb: FormBuilder) {
     this.createForm();
     this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '11', '12'];
@@ -97,6 +99,11 @@ export class TuaYourFamilyComponent implements OnInit, OnDestroy {
           this.userInfo.deceasedChildreNames = response.data[1].data.deceasedChildrenNames;
           this.userInfo.childrenInformation = response.data[1].data.childrenInformation;
           this.setData(this.editFlag, this.userInfo);
+          if (this.userInfo.totalChildren === undefined || this.userInfo.totalChildren === null || this.userInfo.totalChildren === 0) {
+            this.progressBarService.changeWidth({width: 50});
+          } else {
+            this.progressBarService.changeWidth({width: 33.33});
+          }
         }
       },
       (error: any) => {

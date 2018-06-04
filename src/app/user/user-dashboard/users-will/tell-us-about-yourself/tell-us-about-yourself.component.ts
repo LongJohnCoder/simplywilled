@@ -6,6 +6,8 @@ import {Router} from '@angular/router';
 import {UserAuthService} from '../../../user-auth/user-auth.service';
 import {UserDashboardService} from '../../user-dashboard.service';
 import {Subscription} from 'rxjs/Subscription';
+import {ProgressbarService} from '../../shared/services/progressbar.service';
+import {Progressbar} from '../../shared/models/progressbar';
 
 
 @Component({
@@ -37,7 +39,7 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
       private authService: UserAuthService,
       private dashboardService: UserDashboardService
   ) {
-      this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '11', '12'];
+      this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
 
   }
 
