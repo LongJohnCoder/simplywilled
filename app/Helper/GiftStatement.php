@@ -129,7 +129,7 @@
 
 		/* *
 		* This function generates the gift statement for specific gift and returns the object to the calling function
-		* @param cashDescription : propertyDetails object, userId : user id
+		* @param data : giftDetails object, userId : user id, option : real property, specific asset, business interest
 		* @return json object
 		*/
 
@@ -412,10 +412,8 @@
 				
 				default: break;
 			}
-
 			$data['statement'] = $statement;
 			return json_encode([$data]);
-		
 		}
 	}
 ?>

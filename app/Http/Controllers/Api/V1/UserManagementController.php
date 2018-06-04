@@ -431,54 +431,6 @@ class UserManagementController extends Controller
 
     public function createHealthFinance(Request $request){
         try {
-          // return $request->all();
-          // $validator = Validator::make($request->all(), [
-          //     'userId'          =>  'required|integer|exists:users,id',
-          //     'firstLegalName'   =>  'required|string|min:1',
-          //     'lastLegalName'   =>  'required|string|min:1',
-          //     'phone' => 'required',
-          //     'relation'        =>  'required',
-          //     'address'         =>  'required',
-          //     'city'            =>  'required',
-          //     'state'           =>  'required',
-          //     'zip'             =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
-          //     'country'         =>  'required',
-          //     'willInform'        =>  'required',
-          //     'isBackupAgent'   =>  'nullable|numeric|between:0,1|integer'
-          // ]);
-          // if (condition) {
-          //   # code...
-          // }
-          // if ($validator->fails()) {
-          //     return response()->json([
-          //         'status' => false,
-          //         'message' => $validator->errors(),
-          //         'data' => []
-          //     ], 400);
-          // }
-          //
-          // if($request->has('isBackupAgent') && ($request->isBackupAgent == 1)) {
-          //   $validator = Validator::make($request->all(), [
-          //       'backupFullLegalName' =>  'required|string|min:1',
-          //       'backupRelation'      =>  'required',
-          //       'backupAddress'       =>  'required',
-          //       'backupCity'          =>  'required',
-          //       'backupState'         =>  'required',
-          //       'backupZip'           =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
-          //       'backupCountry'       =>  'required',
-          //       'isInformBackup'      =>  'required|numeric|between:0,1|integer',
-          //       'emailOfBackupAgent'  =>  'required|email'
-          //   ]);
-          //
-          //   if($validator->fails()) {
-          //       return response()->json([
-          //           'status' => false,
-          //           'message' => $validator->errors(),
-          //           'data' => []
-          //       ], 400);
-          //   }
-          // }
-
 
           $validator = Validator::make($request->all(), [
               'userId' => 'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
@@ -766,39 +718,32 @@ class UserManagementController extends Controller
 
         //if step 1 is completed by the user
         //i.e fill up tellUsAboutYou Table
+        
         if($tellUsAboutYou) {
-
+            
             //if the user has single status : single,widowed,divorced
-            $relationshipStatus = $tellUsAboutYou->marital_status;
-            if($relationshipStatus == 'M' || $relationshipStatus == 'R') {
-                //if spouse info is not present then mark this step as incomplete
-                $spouse = User::where('parent_id',\Auth::user()->id)->first();
-                if(!$spouse) {
-                    $tellUsAboutYou->is_complete = '0';
-                    $tellUsAboutYou->save();
-
-                    return false;
-                }
-            }
 
             //if the number of children is more than 1
             //and no names are inserted for children then step is incomplete
             if($tellUsAboutYou->children > 0) {
+
+                
                 //if childrens info is not absent then this step is incomplete
                 if(!$childrens) {
                     $tellUsAboutYou->is_complete = '0';
                     $tellUsAboutYou->save();
-
                     return false;
                 }
 
-                //if children is present and no guardians are appointed for the minor children
-                //then the step is in complete
-                if(!$guardianInfo) {
-                    $tellUsAboutYou->is_complete = '0';
-                    $tellUsAboutYou->save();
-
-                    return false;
+                if($tellUsAboutYou->guardian_minor_children == 1) {
+                  
+                  //if children is present and no guardians are appointed for the minor children
+                  //then the step is in complete
+                  if(!$guardianInfo) {
+                      $tellUsAboutYou->is_complete = '0';
+                      $tellUsAboutYou->save();
+                      return false;
+                  }
                 }
             }
 
@@ -806,9 +751,129 @@ class UserManagementController extends Controller
             $tellUsAboutYou->save();
             return true;
         } else {
-
             return false;
         }
+    }
+
+    /*
+    * Function to decide the completion flag in provide your loved ones section
+    * if all the relative tables are populated it assumes that the provide your loved ones section is complete
+    * @return \Illuminate\Http\JsonResponse
+    * */
+    public function isProvideYourLovedOnesComplete() {
+      $user = \Auth::user();
+      $pylo = ProvideYourLovedOnes::where('user_id', $user->id)->first();
+      $pr   = PersonalRepresentatives::where('user_id', $user->id)->first();
+
+      $flag = false;
+      if($pr) {
+
+        if($pylo) {
+
+
+          if($pylo->specific_gifts == 0) {
+
+            $est = EstateDisrtibute::where('user_id', $user->id)->first();
+
+            if($est) {
+
+              $cnbf = ContingentBeneficiary::where('user_id', $user->id)->first();
+              
+              if($cnbf) {
+
+                if($cnbf->is_contingent_beneficiary == 1) {
+
+                  if($cnbf->distribution_type == 'to_my_heirs') {
+                    
+                    $flag = true;
+                  
+                  } elseif($cnbf->distribution_type == 'other' && strlen($cnbf->info) > 0 ) {
+
+                    $flag = true;
+                  } else {
+
+                    $flag = false;
+                  }
+
+                } elseif($cnbf->is_contingent_beneficiary == 0) {
+                  
+                  $flag = true;
+                }
+
+                $ds = Disinherit::where('user_id', $user->id)->first();
+                
+                if($ds->disinherit == 1 && strlen($ds->fullname) > 0 && strlen($ds->gender) > 0){
+                  
+                  if(strtolower($ds->relationship) == 'other' && strlen($ds->other_relationship) > 0) {
+                    
+                    $flag = true;
+                  
+                  } elseif(strlen($ds->relationship) > 0) {
+                    
+                    $flag = true;
+                  
+                  } else {
+                    
+                    $flag = false;
+                  
+                  }
+                } elseif($ds->disinherit == 0) {
+                  
+                  $flag = true;
+                
+                } else {
+                  
+                  $flag = false;
+                
+                }
+
+              } else {
+
+                $flag = false;
+              }
+
+            } else {
+
+              $flag = false;
+            }
+
+          } elseif($pylo->specific_gifts == 1) {
+
+            if( ($pylo->is_tangible_property_distribute == 4 && strlen(trim($pylo->tangible_property_distribute)) > 0) ||
+                ($pylo->is_tangible_property_distribute >= 1 && $pylo->is_tangible_property_distribute < 4) ) {
+
+              $gft = Gifts::where('user_id', $user->id)->first();
+
+              if($gft) {
+
+                $flag = true;
+              } else {
+
+                $flag = false;
+              }
+            }
+
+          }
+
+          $pylo->is_complete = $flag ? '1' : '0';
+          $pylo->save;
+          return $flag;
+
+        } else {
+
+          $flag = false;
+        }
+
+      } else {
+
+        $flag = false;
+      }
+      return $flag;
+    }
+
+    public function isProtectYourFinanceComplete() {
+      $user = \Auth::user();
+      $fpa  = FinancialPowerAttorney::where('user_id', $user->id)->first();
     }
 
     /*
@@ -838,8 +903,6 @@ class UserManagementController extends Controller
           $tellUsAboutYouSpouse = TellUsAboutYou::where('user_id',$spouse->id)->first();
         }
 
-
-        //dd( $this->fetchUserInformation($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
         //step : 1
         array_push($responseDataArray, $this->fetchUserInformation($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
 
@@ -1154,5 +1217,52 @@ class UserManagementController extends Controller
          'data' => $data
        ];
      }
+
+
+    /*
+     * function to get Tell Us About You progress API
+     * @params none
+     * @return json response
+    * */
+    public function fetchTuayProgress() {
+      
+      try {
+        return response()->json([
+          'status'      => false,
+            'message'     => 'Progress data fetched successfully',
+            'data'        => self::isTellUsAboutYouComplete()
+        ]);
+      } catch (\Exception $e) {
+          return response()->json([
+              'status'      => false,
+              'message'     => $e->getMessage(),
+              'errorLineNo' => $e->getLine(),
+              'data'        => null
+          ], 500);
+      }
+    }
+
+    /*
+     * function to get Tell Us About You progress API
+     * @params none
+     * @return json response
+    * */
+    public function fetchPyloProgress() {
+      
+      try {
+        return response()->json([
+            'status'      => false,
+            'message'     => 'Progress data fetched successfully',
+            'data'        => self::isProvideYourLovedOnesComplete()
+        ]);
+      } catch (\Exception $e) {
+          return response()->json([
+              'status'      => false,
+              'message'     => $e->getMessage(),
+              'errorLineNo' => $e->getLine(),
+              'data'        => null
+          ], 500);
+      }
+    }
 
 }

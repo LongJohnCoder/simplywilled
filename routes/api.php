@@ -513,6 +513,23 @@ Route::group(['prefix' => 'v1'], function() {
         Route::group(['middleware' => ['jwt.auth','user.auth']], function(){
 
             /**
+            * Route for fetching provide your loved ones progress bar data
+            */
+            Route::get('fetchPyloProgress', [
+              'uses' => 'Api\V1\UserManagementController@fetchPyloProgress',
+              'as' => 'api.v1.fetchPyloProgress.get'
+            ]);
+
+
+            /**
+            * Route for fetching tell us about you progress bar data
+            */
+            Route::get('fetchTuayProgress', [
+              'uses' => 'Api\V1\UserManagementController@fetchTuayProgress',
+              'as' => 'api.v1.fetchTuayAProgress.get'
+            ]);
+
+            /**
             * Route for getting states information for tellUsAboutYou first step for a user
             */
             Route::get('get-state-info', [
