@@ -81,7 +81,7 @@
                                     </td>
                                 </tr>
                             </table>
-                            <p style="text-align: center; padding: 18px 0 32px;"><a href="{{url('/')}}/register"><img src="{{url('/')}}/images/getStarted.png" alt=""></a></p>
+                            <p style="text-align: center; padding: 18px 0 32px;"><a href="{{url('/')}}/register"><img src="{{url('/')}}/images/getStartedNew.png" alt=""></a></p>
                             
                         </td>
                         <tr>
