@@ -257,6 +257,7 @@ class UserController extends Controller
         $registeredPartner  = $request->registered_partner;
         $legalMarried       = $request->legal_married;
         $referral           = $request->referral;
+        $referral_other     = $request->referral_other;
 
         //$spouseDob = $request->spouseDob;
         $validator = Validator::make($request->all(), [
@@ -271,7 +272,8 @@ class UserController extends Controller
             'marital_status'  =>  'required|string|in:S,M,R,D,W',
             'zip'             =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/', // (Zip code validation rules REGX (min value 5)),
             'email'           =>  'nullable|email',
-            'referral'        =>  'nullable|string'
+            'referral'        =>  'nullable|string',
+            'referral_other'  =>  'nullable|string'
         ]);
 
         if($validator->fails()) {
@@ -366,6 +368,7 @@ class UserController extends Controller
         $checkForExistUser->zip     = $zip;
         $checkForExistUser->user_id = $checkForExistUser->user_id ? $checkForExistUser->user_id : $userId;
         $checkForExistUser->referral= $referral;
+        $checkForExistUser->referral_other= $referral_other;
         
         if ($checkForExistUser->save()) {
 
