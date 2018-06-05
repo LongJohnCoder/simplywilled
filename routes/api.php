@@ -512,6 +512,40 @@ Route::group(['prefix' => 'v1'], function() {
         //user routes where authentication is needed
         Route::group(['middleware' => ['jwt.auth','user.auth']], function(){
 
+
+            /**
+            * Route for fetching total completion API bar data
+            */
+            Route::get('fetchTotalCompletion', [
+              'uses' => 'Api\V1\UserManagementController@fetchTotalCompletion',
+              'as' => 'api.v1.fetchTotalCompletion.get'
+            ]);
+
+            /**
+            * Route for fetching health care progress bar data
+            */
+            Route::get('fetchFinalArrangementsProgress', [
+              'uses' => 'Api\V1\UserManagementController@fetchFaProgress',
+              'as' => 'api.v1.fetchFaProgress.get'
+            ]);
+
+
+            /**
+            * Route for fetching health care progress bar data
+            */
+            Route::get('fetchHealthProgress', [
+              'uses' => 'Api\V1\UserManagementController@fetchHealthProgress',
+              'as' => 'api.v1.fetchHealthProgress.get'
+            ]);
+
+            /**
+            * Route for fetching provide your loved ones progress bar data
+            */
+            Route::get('fetchPyfProgress', [
+              'uses' => 'Api\V1\UserManagementController@fetchPyfProgress',
+              'as' => 'api.v1.fetchPyloProgress.get'
+            ]);
+
             /**
             * Route for fetching provide your loved ones progress bar data
             */

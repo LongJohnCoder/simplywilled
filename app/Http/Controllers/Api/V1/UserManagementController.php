@@ -61,6 +61,77 @@ class UserManagementController extends Controller
       }
     }
 
+    /*
+    * Function to decide the completion flag in protect your finance section
+    * if all the relative tables are populated it assumes that the protect-your-finance section is complete
+    * @return boolean
+    * */
+    public function isProtectYourFinanceComplete() {
+      $user = \Auth::user();
+      $fpa  = FinancialPowerAttorney::where('user_id', $user->id)->first();
+      $tuay = TellUsAboutYou::where('user_id',$user->id)->first();
+
+
+      if($tuay && $fpa) {
+        
+        if($tuay->state == 'Minnesota' || $tuay->state == 'Florida' || $tuay->state == 'Maryland' || $tuay->state == 'New York') {
+          
+          if($fpa->attorney_holders == null || $fpa->attorney_backup == null) {
+            
+            $fpa->is_complete = '0';
+            $fpa->save;
+            return false;
+          } else {
+            $fpa->is_complete = '1';
+            $fpa->save;
+            return true;
+          }
+        } elseif($fpa->attorney_powers != null && $fpa->attorney_holders != null && $fpa->attorney_backup != null) {
+            
+            $fpa->is_complete = '1';
+            $fpa->save;
+            return true;
+        } else {
+          
+          $fpa->is_complete = '0';
+          $fpa->save;
+          return false;
+        }
+      } else {
+        
+        if($fpa) {
+          
+          $fpa->is_complete = '0';
+          $fpa->save;
+          return false;
+        }
+        return false;
+      }
+    }
+
+    /*
+    * Function to decide the completion flag in Health Finance section
+    * if all the relative tables are populated it assumes that the health finance section is complete
+    * @return boolean
+    * */
+    public function isHealthFinanceComplete() {
+      $user = \Auth::user();
+      $hf = HealthFinance::where('userId', $user->id)->first();
+
+      if($hf)
+        return true;
+      
+      return false;
+    }
+
+    public function isFinalArrangementsComplete() {
+      $user = \Auth::user();
+      $fa =FinalArrangements::where('user_id', $user->id)->first();
+      if($fa)
+        return true;
+      
+      return false;
+    }
 
     /*
      * function to get provide-your-loved-ones-user data
@@ -871,10 +942,6 @@ class UserManagementController extends Controller
       return $flag;
     }
 
-    public function isProtectYourFinanceComplete() {
-      $user = \Auth::user();
-      $fpa  = FinancialPowerAttorney::where('user_id', $user->id)->first();
-    }
 
     /*
      * function to get user details
@@ -1243,7 +1310,7 @@ class UserManagementController extends Controller
     }
 
     /*
-     * function to get Tell Us About You progress API
+     * function to get Protect Your loved ones progress API
      * @params none
      * @return json response
     * */
@@ -1255,6 +1322,99 @@ class UserManagementController extends Controller
             'message'     => 'Progress data fetched successfully',
             'data'        => self::isProvideYourLovedOnesComplete()
         ]);
+      } catch (\Exception $e) {
+          return response()->json([
+              'status'      => false,
+              'message'     => $e->getMessage(),
+              'errorLineNo' => $e->getLine(),
+              'data'        => null
+          ], 500);
+      }
+    }
+
+    /*
+    * function to get Protect Your Finances progress API
+    * @params none
+    * @return json response
+    * */
+    public function fetchPyfProgress() {
+      
+      try {
+        return response()->json([
+            'status'      => false,
+            'message'     => 'Progress data fetched successfully',
+            'data'        => self::isProtectYourFinanceComplete()
+        ]);
+      } catch (\Exception $e) {
+          return response()->json([
+              'status'      => false,
+              'message'     => $e->getMessage(),
+              'errorLineNo' => $e->getLine(),
+              'data'        => null
+          ], 500);
+      }
+    }
+
+    /*
+    * function to get Health Finance progress API
+    * @params none
+    * @return json response
+    * */
+    public function fetchHealthProgress() {
+      try {
+        return response()->json([
+            'status'      => false,
+            'message'     => 'Progress data fetched successfully',
+            'data'        => self::isHealthFinanceComplete()
+        ],200);
+      } catch (\Exception $e) {
+          return response()->json([
+              'status'      => false,
+              'message'     => $e->getMessage(),
+              'errorLineNo' => $e->getLine(),
+              'data'        => null
+          ], 500);
+      }
+    }
+
+    /*
+    * function to get Final Arrangements progress API
+    * @params none
+    * @return json response
+    * */
+    public function fetchFaProgress() {
+      try {
+        return response()->json([
+            'status'      => false,
+            'message'     => 'Progress data fetched successfully',
+            'data'        => self::isFinalArrangementsComplete()
+        ],200);
+      } catch (\Exception $e) {
+          return response()->json([
+              'status'      => false,
+              'message'     => $e->getMessage(),
+              'errorLineNo' => $e->getLine(),
+              'data'        => null
+          ], 500);
+      }
+    }
+
+
+    public function fetchTotalCompletion() {
+      try {
+
+        return response()->json([
+          'status'  =>  true,
+          'message' =>  'Total progress fetched successfully',
+          'data'    =>  [
+            'tell-us-about-you'       =>  self::isTellUsAboutYouComplete(),
+            'provide-your-loved-ones' =>  self::isProvideYourLovedOnesComplete(),
+            'protect-your-finance'    =>  self::isProtectYourFinanceComplete(),
+            'health-finance'          =>  self::isHealthFinanceComplete(),
+            'final-arrangements'      =>  self::isFinalArrangementsComplete()
+          ]
+        ], 200);
+
       } catch (\Exception $e) {
           return response()->json([
               'status'      => false,
