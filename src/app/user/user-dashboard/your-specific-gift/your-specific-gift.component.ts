@@ -4,6 +4,8 @@ import {YourSpecificGiftService} from './services/your-specific-gift.service';
 import {MyGifts} from './models/myGifts';
 import {EditGiftService} from './services/edit-gift.service';
 import {Subscription} from 'rxjs/Subscription';
+import {UserService} from '../../user.service';
+import {ProgressbarService} from '../shared/services/progressbar.service';
 
 @Component({
   selector: 'app-your-specific-gift',
@@ -29,7 +31,9 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
   loading = true;
   fetchGiftDataDBSubscription: Subscription;
   deleteGiftDbSubscription: Subscription;
-  constructor(private ysgService: YourSpecificGiftService, private editService: EditGiftService) { }
+  getUserDetailSubscription: Subscription;
+
+  constructor(private ysgService: YourSpecificGiftService, private editService: EditGiftService, private userService: UserService, private progressBarService: ProgressbarService) { }
   ngOnInit() {
     this.errFlag = false;
     this.errString = null;
@@ -85,6 +89,22 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
       this.errString = 'Please login to continue';
       console.log(this.errString);
     }
+
+    this.getUserDetailSubscription = this.userService.getUserDetails(this.myUserId).subscribe(
+      (response: any) => {
+        let maritalStatus = response.data[0].data.userInfo.marital_status;
+        switch (maritalStatus ) {
+          case 'M':
+          case 'R': this.progressBarService.changeWidth({width: 60});
+                    break;
+          default:  this.progressBarService.changeWidth({width: 50});
+                    break;
+        }
+      },
+      (error: any) => {
+        console.log(error.error);
+      }, () => { }
+    );
   }
 
   /**
@@ -215,8 +235,11 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
     if (this.fetchGiftDataDBSubscription !== undefined) {
       this.fetchGiftDataDBSubscription.unsubscribe();
     }
-    if(this.deleteGiftDbSubscription !== undefined) {
+    if (this.deleteGiftDbSubscription !== undefined) {
       this.deleteGiftDbSubscription.unsubscribe();
+    }
+    if (this.getUserDetailSubscription !== undefined) {
+      this.getUserDetailSubscription.unsubscribe();
     }
     this.editService.unsetData();
   }

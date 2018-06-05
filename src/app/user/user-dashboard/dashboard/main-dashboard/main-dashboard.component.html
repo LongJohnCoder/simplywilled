@@ -24,10 +24,9 @@
           </div>
 
         </div>
-        <button class="btn common-button btn-complete"
-                *ngIf="!step1Data?.data?.userInfo?.is_complete">Complete</button>
-        <button class="btn common-button btn-complete"
-                *ngIf="step1Data?.data?.userInfo?.is_complete">In progress</button>
+        <button class="btn common-button btn-complete">{{progressBar.finalArrangements ? 'Complete' : 'In progress'}}</button>
+        <!--<button class="btn common-button btn-complete"
+                *ngIf="step1Data?.data?.userInfo?.is_complete">In progress</button>-->
       </a>
     </li>
     <li>
@@ -39,7 +38,7 @@
             <span class="inherit_properties">Tell Us who should inherit your property and select fiduciaries.</span>
           </div>
         </div>
-        <button class="btn common-button btn-complete">Complete</button>
+        <button class="btn common-button btn-complete">{{progressBar.provideYourLovedOnes ? 'Complete' : 'In progress'}}</button>
       </a>
     </li>
 
@@ -54,7 +53,7 @@
             <span class="inherit_properties">Appoint a financial power of attorney.</span>
           </div>
         </div>
-        <button class="btn common-button btn-complete">Complete</button>
+        <button class="btn common-button btn-complete">{{progressBar.protectYourFinance ? 'Complete' : 'In progress'}}</button>
       </a>
     </li>
     <li>
@@ -66,7 +65,8 @@
             <span class="inherit_properties">Name a Healthcare Power of Attorney and make end of life choices.</span>
           </div>
         </div>
-        <button class="btn common-button btn-complete">{{step2 === true ? 'Complete' : 'In progress'}}</button>
+        <!--<button class="btn common-button btn-complete">{{step2 === true ? 'Complete' : 'In progress'}}</button>-->
+        <button class="btn common-button btn-complete">{{progressBar.healthFinance ? 'Complete' : 'In progress'}}</button>
       </a>
     </li>
     <!-- <li>
@@ -129,7 +129,7 @@
             <span class="inherit_properties">Specify how you wish your remains to be handled,....</span>
           </div>
         </div>
-        <button class="btn common-button btn-complete">Complete</button>
+        <button class="btn common-button btn-complete">{{progressBar.finalArrangements ? 'Complete' : 'In progress'}}</button>
       </a>
     </li>
   </ul>

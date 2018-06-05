@@ -40,6 +40,7 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
     private progressBarService: ProgressbarService,
     private router: Router
   ) {
+    this.progressBarService.changeWidth({width: 0});
     this.accessToken = this.parseToken();
     this.getStates();
     this.getPoaData();
@@ -89,8 +90,7 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
                 case 'Minnesota':
                 case 'New York': this.router.navigate(['/dashboard/protect-your-finances-details']);
                                  break;
-                default:         this.progressBarService.changeWidth({width: 50});
-                                 break;
+                default:         break;
             }
         }, (error: any) => {
           console.log(error);

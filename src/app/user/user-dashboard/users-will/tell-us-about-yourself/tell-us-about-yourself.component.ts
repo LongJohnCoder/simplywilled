@@ -7,7 +7,6 @@ import {UserAuthService} from '../../../user-auth/user-auth.service';
 import {UserDashboardService} from '../../user-dashboard.service';
 import {Subscription} from 'rxjs/Subscription';
 import {ProgressbarService} from '../../shared/services/progressbar.service';
-import {Progressbar} from '../../shared/models/progressbar';
 
 
 @Component({
@@ -37,10 +36,11 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
       private userService: UserService,
       private router: Router,
       private authService: UserAuthService,
+      private progressbarService: ProgressbarService,
       private dashboardService: UserDashboardService
   ) {
       this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
-
+      this.progressbarService.changeWidth({width: 0});
   }
 
   /**When the component is initialised*/

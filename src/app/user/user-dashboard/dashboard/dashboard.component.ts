@@ -23,6 +23,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     showLeft = true;
     progressBar: Progressbar;
     progressBarSubscription: Subscription;
+    showProgressBar = true;
+    routerSubscription: Subscription;
 
     /**Constructor call*/
     constructor(
@@ -36,20 +38,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.progressBarSubscription = this.progressbarService.currentMessage.subscribe(
         (progressBar) => {
             this.progressBar = progressBar;
-            console.log(this.progressBar);
         }
       );
-      router.events
+      this.routerSubscription = router.events
         .filter(event => event instanceof NavigationEnd)
         .subscribe((event: NavigationEnd) => {
           window.scroll(0, 0);
-          if (event.urlAfterRedirects === '/dashboard/packages'){
+          if (event.urlAfterRedirects === '/dashboard/packages') {
             this.showLeft = false;
+            this.showProgressBar = false;
+          } else {
+            this.showProgressBar = true;
           }
-
         });
     }
 
+    /**When the component is initialised*/
     ngOnInit() {
       this.loggedInUser = this.userAuth.getUser();
       this.getUserDetails();
@@ -61,6 +65,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       );
     }
 
+    /**When the user logs out*/
     onLogOut() {
       this.logoutSubscription = this.userService.logout().subscribe(
           (data: any) => {
@@ -72,6 +77,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
           }
       );
     }
+    /**Get the user details*/
     getUserDetails() {
         this.getUserDetailsSubscription = this.userService.getUserDetails(this.loggedInUser.id).subscribe(
             (response: any ) => {
@@ -87,10 +93,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
             }
         );
     }
+    /**Navigate to user dashboard route*/
     userDasboardRoute(link: string) {
         this.router.navigate([link]);
     }
 
+    /**When the component is destroyed*/
     ngOnDestroy() {
       if (this.logoutSubscription !== undefined) {
         this.logoutSubscription.unsubscribe();
@@ -103,6 +111,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       }
       if (this.progressBarSubscription !== undefined) {
         this.progressBarSubscription.unsubscribe();
+      }
+      if (this.routerSubscription !== undefined) {
+        this.routerSubscription.unsubscribe();
       }
     }
 }

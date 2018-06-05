@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators, FormControl, FormArray} from '@angul
 import {UserAuthService} from '../../user-auth/user-auth.service';
 import {UserService} from '../../user.service';
 import {Router} from '@angular/router';
+import {ProgressbarService} from '../shared/services/progressbar.service';
 
 @Component({
   selector: 'app-disinherit',
@@ -18,7 +19,8 @@ export class DisinheritComponent implements OnInit {
   constructor( private authService: UserAuthService,
                private userService: UserService,
                private router: Router,
-               private fb: FormBuilder, ) { this.createForm(); }
+               private progressBarService: ProgressbarService,
+               private fb: FormBuilder, ) { this.progressBarService.changeWidth({width: 87.5}); this.createForm(); }
 
   /**When the component initialises*/
   ngOnInit() {
@@ -84,6 +86,7 @@ export class DisinheritComponent implements OnInit {
     getUserData() {
         this.userService.getUserDetails(this.authService.getUser()['id']).subscribe(
             (response: any) => {
+                this.setProgress(response);
                 this.fullUserInfo = response.data[10].data;
                 console.log(this.fullUserInfo);
                 this.disinheritForm.get('disinherit').setValue(this.fullUserInfo.disinherit !== null && this.fullUserInfo.disinherit !== undefined ? this.fullUserInfo.disinherit : '');
@@ -97,6 +100,26 @@ export class DisinheritComponent implements OnInit {
                 console.log(error.error);
             }
         );
+    }
+    /**Set progress bar width*/
+    setProgress(response) {
+      let isSpecificGift = response.data[7].data.isSpecificGift;
+      let maritalStatus = response.data[0].data.userInfo.marital_status;
+      switch (maritalStatus ) {
+        case 'M':
+        case 'R': if (isSpecificGift === 'Yes') {
+          this.progressBarService.changeWidth({width: 90});
+        } else {
+          this.progressBarService.changeWidth({width: 87.5});
+        }
+          break;
+        default:  if (isSpecificGift === 'Yes') {
+          this.progressBarService.changeWidth({width: 87.5});
+        } else {
+          this.progressBarService.changeWidth({width: 84.38});
+        }
+          break;
+      }
     }
     /**
      *Function to add remove form action depending on the disinherit values

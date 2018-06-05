@@ -4,6 +4,7 @@ import {UserAuthService} from '../../user-auth/user-auth.service';
 import {UserService} from '../../user.service';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
+import {ProgressbarService} from '../shared/services/progressbar.service';
 
 @Component({
   selector: 'app-contingent-beneficiaries',
@@ -22,7 +23,8 @@ export class ContingentBeneficiariesComponent implements OnInit, OnDestroy {
     constructor( private authService: UserAuthService,
                private userService: UserService,
                private router: Router,
-               private fb: FormBuilder, ) {  this.createForm(); }
+               private progressBarService: ProgressbarService,
+               private fb: FormBuilder, ) { this.createForm(); }
 
     /**
      *function to create the form
@@ -45,6 +47,7 @@ export class ContingentBeneficiariesComponent implements OnInit, OnDestroy {
     getUserdata() {
       this.getUserDetailsSubscription = this.userService.getUserDetails(this.authService.getUser()['id']).subscribe(
             (response: any) => {
+                this.setProgress(response);
                 this.fullUserInfo = response.data[8].data;
                 this.contingentBeneficiariesForm.get('isContingentBeneficiary').setValue(this.fullUserInfo.isContingentBeneficiary);
                 this.contingentBeneficiariesForm.get('distribution_type').setValue(this.fullUserInfo.distribution_type);
@@ -55,6 +58,26 @@ export class ContingentBeneficiariesComponent implements OnInit, OnDestroy {
             }, () => {this.loading = false; }
         );
     }
+  /**Set progress bar width*/
+  setProgress(response) {
+    let isSpecificGift = response.data[7].data.isSpecificGift;
+    let maritalStatus = response.data[0].data.userInfo.marital_status;
+    switch (maritalStatus ) {
+      case 'M':
+      case 'R': if (isSpecificGift === 'Yes') {
+        this.progressBarService.changeWidth({width: 80});
+      } else {
+        this.progressBarService.changeWidth({width: 75});
+      }
+        break;
+      default:  if (isSpecificGift === 'Yes') {
+        this.progressBarService.changeWidth({width: 75});
+      } else {
+        this.progressBarService.changeWidth({width: 68.75});
+      }
+        break;
+    }
+  }
 
     /**
      * Function to save/update user data

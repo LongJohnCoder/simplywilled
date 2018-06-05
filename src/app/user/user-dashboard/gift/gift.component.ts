@@ -5,6 +5,8 @@ import {GiftService} from './services/gift.service';
 import {GiftModel} from './models/giftModel';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
+import {ProgressbarService} from '../shared/services/progressbar.service';
+import {UserService} from '../../user.service';
 @Component({
   selector: 'app-gift',
   templateUrl: './gift.component.html',
@@ -24,9 +26,12 @@ export class GiftComponent implements OnInit, OnDestroy {
   loading = true;
   saveDataInDbSubscription: Subscription;
   fetchGiftDBSubscription: Subscription;
+  getUserDetailSubscription: Subscription;
 
   /**Constructor call*/
-  constructor(private fb: FormBuilder, private gftService: GiftService, private router: Router) {
+  constructor(private fb: FormBuilder, private gftService: GiftService, private router: Router, private progressBarService: ProgressbarService, private userService: UserService) {
+    console.log(this.progressBarService.getWidth());
+    this.progressBarService.changeWidth({width: 50});
     this.giftFormStepOne = fb.group({
       'gift_status' : [null, Validators.required]
     });
@@ -145,6 +150,23 @@ export class GiftComponent implements OnInit, OnDestroy {
       this.errString = 'Please login to continue';
       console.log(this.errString);
     }
+
+
+    this.getUserDetailSubscription = this.userService.getUserDetails(this.myUserId).subscribe(
+      (response: any) => {
+        let maritalStatus = response.data[0].data.userInfo.marital_status;
+        switch (maritalStatus ) {
+          case 'M':
+          case 'R': this.progressBarService.changeWidth({width: 50});
+            break;
+          default:  this.progressBarService.changeWidth({width: 37.5});
+            break;
+        }
+      },
+      (error: any) => {
+        console.log(error.error);
+      }, () => { }
+    );
   }
 
   /**When the component is destroyed*/
@@ -154,6 +176,9 @@ export class GiftComponent implements OnInit, OnDestroy {
     }
     if (this.fetchGiftDBSubscription !== undefined) {
       this.fetchGiftDBSubscription.unsubscribe();
+    }
+    if (this.getUserDetailSubscription !== undefined) {
+      this.getUserDetailSubscription.unsubscribe();
     }
   }
 }

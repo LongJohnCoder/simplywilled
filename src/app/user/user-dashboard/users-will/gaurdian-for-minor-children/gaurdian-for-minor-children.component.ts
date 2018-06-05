@@ -153,8 +153,8 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
                   if (this.myForm.value.isBackUpGuardian === 'Yes') {
                       this.addValidationBackUpGaurdianToForm();
                   }
-                  this.progressBarService.changeWidth({width: 66.66});
               }
+              this.progressBarService.changeWidth({width: 66.66});
           },
           (error: any) => {
               console.log(error.error);

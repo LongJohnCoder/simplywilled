@@ -5,6 +5,7 @@ import {UserAuthService} from '../../user-auth/user-auth.service';
 import {UserService} from '../../user.service';
 import {Subscription} from 'rxjs/Subscription';
 import {Location} from '@angular/common';
+import {ProgressbarService} from '../shared/services/progressbar.service';
 
 @Component({
   selector: 'app-your-estate-distributed',
@@ -33,8 +34,10 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
                private userService: UserService,
                private router: Router,
                private fb: FormBuilder,
+               private progressBarService: ProgressbarService,
                private location: Location
               ) {
+      this.progressBarService.changeWidth({width: 62.5});
       this.createForm(); }
 
   /**When the component initialises*/
@@ -98,12 +101,33 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
           ]),
       });
   }
+  /**Set progress bar width*/
+  setProgress(response) {
+    let isSpecificGift = response.data[7].data.isSpecificGift;
+    let maritalStatus = response.data[0].data.userInfo.marital_status;
+    switch (maritalStatus ) {
+      case 'M':
+      case 'R': if (isSpecificGift === 'Yes') {
+                  this.progressBarService.changeWidth({width: 70});
+                } else {
+                  this.progressBarService.changeWidth({width: 62.5});
+                }
+                break;
+      default:  if (isSpecificGift === 'Yes') {
+                  this.progressBarService.changeWidth({width: 62.5});
+                } else {
+                  this.progressBarService.changeWidth({width: 53.13});
+                }
+                break;
+    }
+  }
   /**
    *function get user data
    */
   getUserData() {
       this.userService.getUserDetails(this.authService.getUser()['id']).subscribe(
           (response: any) => {
+              this.setProgress(response);
               this.fullUserInfo = response.data[9].data;
               this.estateDistributedForm.controls['disrtibuteType'].setValue( this.fullUserInfo.type);
               if (this.fullUserInfo.type === '1') {
