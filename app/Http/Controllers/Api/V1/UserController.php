@@ -945,6 +945,7 @@ class UserController extends Controller
             'email_notification' => 'required|numeric|between:0,1|integer',
             'email'         => 'nullable|required_if:email_notification,1|email',
             'zip'          =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
+            'phone'         => 'required'
         ]);
         if ($validator->fails()) {
             $response = response()->json([
