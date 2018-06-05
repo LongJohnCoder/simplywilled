@@ -70,6 +70,7 @@ export class PackagesComponent implements OnInit {
 
 
             // console.log(resp.data[0].slug);
+            this.respType = true;
 
         }, (error: any) => {
             console.log(error.error);
