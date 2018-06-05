@@ -17,9 +17,9 @@
     <div class="row">
       <div class="col-md-12">
         <div class="text-right" style="margin-bottom:10px;">
-          <a routerLink="/admin-panel/add-faq" class="btn btn-success">
+          <button type="button" (click)="addCoupon(couponModal)" class="btn btn-success">
             <i class="fa fa-plus" aria-hidden="true"></i> Add Discount Coupon
-          </a>
+          </button>
         </div>
         <div class="panel panel-default blogsTab">
           <div class="panel-heading">
@@ -39,56 +39,57 @@
                     </th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                         colspan="1" aria-label="Title: activate to sort column ascending"
-                        style="width: 353px;">Name
+                        style="width: 353px;">Title
                     </th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                         colspan="1" aria-label="Slug: activate to sort column ascending"
-                        style="width: 336px;">Coupon
+                        style="width: 336px;">Description
                     </th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                         colspan="1" aria-label="Status: activate to sort column ascending"
-                        style="width: 62px;">Percentage
+                        style="width: 62px;">Token
                     </th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                         colspan="1" aria-label="Created Date: activate to sort column ascending"
-                        style="width: 52px;">Type
+                        style="width: 52px;">Expired On
                     </th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                         colspan="1" aria-label="Created Date: activate to sort column ascending"
-                        style="width: 52px;">Status
+                        style="width: 52px;">Max User
                     </th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                         colspan="1" aria-label="Created Date: activate to sort column ascending"
-                        style="width: 52px;">Created At
+                        style="width: 52px;">Amount
                     </th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                         colspan="1" aria-label="Actions: activate to sort column ascending"
-                        style="width: 157px;">Actions
+                        style="width: 157px;">Created At
                     </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                          colspan="1" aria-label="Actions: activate to sort column ascending"
+                          style="width: 157px;">Actions
+                      </th>
                   </tr>
                   </thead>
                   <tbody>
                   <tr *ngFor="let item of couponList; let i = index">
-                    <!--<td class="sorting_1">{{i + 1}}</td>-->
-                    <!--<td>{{item.question}}</td>-->
-                    <!--<td>{{item.answer | slice:0:30}}</td>-->
-                    <!--<td><span class="badge"-->
-                              <!--[ngClass]="[item.status == '1' ? 'badge-success' : 'badge-danger']">{{item.status == '1' ? 'Published' : 'Pending'}}</span>-->
-                    <!--</td>-->
-                    <!--<td>{{item.created_at}}</td>-->
-                    <!--<td class="text-center ">-->
-                      <!--<button type="button" (click)="openModal(viewBlog, i)"-->
-                              <!--class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i>-->
-                        <!--View-->
-                      <!--</button>-->
-                      <!--<a routerLink="/admin-panel/edit-faq/{{item.id}}" class="btn btn-info"><i-->
-                              <!--class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>-->
-                      <!--<a class="btn btn-danger deleteAdminOption"-->
-                         <!--(click)="openModal(deleteitem, i)">-->
-                        <!--<i class="fa fa-trash" aria-hidden="true"></i>-->
-                        <!--Delete-->
-                      <!--</a>-->
-                    <!--</td>-->
+                    <td class="sorting_1">{{i + 1}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.description | slice:0:30}}</td>
+                    <td>{{item.token}}</td>
+                      <td>{{item.expired_on}}</td>
+                      <td>{{item.max_user}}</td>
+                    <td>{{item.flag === '1' ? '$'+item.amount : item.amount+'%'}}</td>
+                    <td>{{item.created_at}}</td>
+                    <td class="text-center ">
+                      <a routerLink="/admin-panel/edit-faq/{{item.id}}" class="btn btn-info"><i
+                              class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                      <a class="btn btn-danger deleteAdminOption"
+                         (click)="openModal(deleteitem, i)">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        Delete
+                      </a>
+                    </td>
                   </tr>
                   </tbody>
                 </table>
@@ -101,48 +102,66 @@
       </div>
 
 
-      <!--<ng-template #viewBlog>-->
-        <!--<div class="panel-body">-->
-          <!--<div class="modal-header" style="margin-bottom:15px">-->
-            <!--<h3 class="modal-title">-->
-              <!--View Faq-->
-              <!--<span class="badge" [ngClass]="[faqData.status == '1' ? 'badge-success' : 'badge-danger']">{{faqData.status == '1' ? 'Published' : 'Pending'}}</span>-->
-            <!--</h3>-->
-            <!--<button type="button" class="close" (click)="modalRef.hide()">×</button>-->
-          <!--</div>-->
-          <!--<div class="modal-body">-->
-            <!--<h4>Question:</h4>-->
-            <!--<p>{{faqData.question}}</p>-->
-          <!--</div>-->
-          <!--<div class="modal-body">-->
-            <!--<h4>Answer:</h4>-->
-            <!--<p>{{faqData.answer}}</p>-->
-          <!--</div>-->
-          <!--<div class="modal-body">-->
-            <!--<h4>Categories:</h4>-->
-            <!--<p>{{categories}}</p>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</ng-template>-->
+      <ng-template #couponModal>
+        <div class="panel-body">
+          <div class="modal-header" style="margin-bottom:15px">
+            <h3 class="modal-title">
+              {{editMode ? 'Edit': 'Add'}} Coupon
+            </h3>
+            <button type="button" class="close" (click)="modalRef.hide()">×</button>
+          </div>
+          <form [formGroup]="couponForm">
+            <div class="modal-body">
+              <h4>Title:</h4>
+              <p>
+                <input class="form-control" formControlName="title">
+                <span *ngIf="couponForm.controls['title'].errors" style="color:red;"> Coupon title is required ! </span>
+              </p>
+            </div>
+            <div class="modal-body">
+              <h4>Description:</h4>
+              <p>
+                <textarea class="form-control" formControlName="description"></textarea>
+                <span *ngIf="couponForm.controls['description'].errors" style="color:red;"> Coupon description is required ! </span>
+              </p>
+            </div>
+            <div class="modal-body">
+              <h4>Type:</h4>
+              <p>
+                <select class="form-control" formControlName="flag">
+                  <option value="1">Active</option>
+                  <option value="0">In Active</option>
+                </select>
+                <span *ngIf="couponForm.controls['flag'].errors" style="color:red;"> Coupon type is required ! </span>
+              </p>
+            </div>
+            <div class="modal-body">
+              <h4>Amount:</h4>
+              <p>
+                <input type="number" class="form-control" formControlName="amount" pattern="^\d+(\.\d+)?$">
+                <span *ngIf="couponForm.controls['amount'].errors" style="color:red;"> Coupon amount is required ! </span>
+              </p>
+            </div>
+            <div class="modal-body">
+              <h4>Max User:</h4>
+              <p>
+                <input type="number" class="form-control" formControlName="max_user" pattern="^\d+(\.\d+)?$">
+                <span *ngIf="couponForm.controls['max_user'].errors" style="color:red;"> How many users can use that coupon is required ! </span>
+              </p>
+            </div>
+            <div class="modal-body">
+              <h4>Expired On:</h4>
+              <p>
 
-      <!--<ng-template #deleteitem>-->
-        <!--<div class="modal-header deleteitemHead">-->
-          <!--<h3 class="modal-title">-->
-            <!--{{delfaqStatusMsg}}-->
-          <!--</h3>-->
-        <!--</div>-->
-        <!--<div class="modal-body deleteBlogFoot">-->
-          <!--<div *ngIf="!delfaqStatus">-->
-            <!--<button type="button" class="btn btn-warning" (click)="onCancel()">-->
-              <!--Cancel-->
-            <!--</button>-->
-            <!--<button type="button" class="btn btn-danger" (click)="onitemDel()">-->
-              <!--Yes, Delete It!-->
-            <!--</button>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</ng-template>-->
-
+              </p>
+            </div>
+            <div class="modal-body">
+                <button type="button" class="btn btn-primary" (click)="update()" [disabled]="couponForm.invalid"> {{editMode ? 'Update' : 'Add'}} Coupon</button>
+            </div>
+          </form>
+            <!--{{couponForm.value | json}}-->
+        </div>
+      </ng-template>
 
       <footer><p>All right reserved. Developed By <a href="#">TNI</a></p></footer>
     </div>

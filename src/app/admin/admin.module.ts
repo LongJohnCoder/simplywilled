@@ -35,6 +35,7 @@ import { FaqFormComponent } from './faq/faq-form/faq-form.component';
 import { DiscountComponent } from './discount/discount.component';
 import {PackagesComponent} from './packages/packages.component';
 import {PackageService} from './packages/package.service';
+import {DiscountService} from './discount/discount.service';
 
 
 @NgModule({
@@ -77,6 +78,7 @@ import {PackageService} from './packages/package.service';
       BlogService,
       FaqService,
       PackageService,
+      DiscountService,
       ChangePasswordService,
       AdminLoginService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
