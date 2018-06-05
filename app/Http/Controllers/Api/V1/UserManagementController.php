@@ -1407,11 +1407,11 @@ class UserManagementController extends Controller
           'status'  =>  true,
           'message' =>  'Total progress fetched successfully',
           'data'    =>  [
-            'tell-us-about-you'       =>  self::isTellUsAboutYouComplete(),
-            'provide-your-loved-ones' =>  self::isProvideYourLovedOnesComplete(),
-            'protect-your-finance'    =>  self::isProtectYourFinanceComplete(),
-            'health-finance'          =>  self::isHealthFinanceComplete(),
-            'final-arrangements'      =>  self::isFinalArrangementsComplete()
+            'tell_us_about_you'       =>  self::isTellUsAboutYouComplete(),
+            'provide_your_loved_ones' =>  self::isProvideYourLovedOnesComplete(),
+            'protect_your_finance'    =>  self::isProtectYourFinanceComplete(),
+            'health_finance'          =>  self::isHealthFinanceComplete(),
+            'final_arrangements'      =>  self::isFinalArrangementsComplete()
           ]
         ], 200);
 
