@@ -29,7 +29,7 @@ export class UserAuthService {
 
   isPaid() {
       const data = this.getToken();
-      if ( data && (data.user.package_id !== null) ) {
+      if ( data && (data.user.package !== null && data.user.package !== '') ) {
           return true;
       } else {
           return false;

@@ -135,13 +135,17 @@ export class PaymentComponent implements OnInit {
         this.packageService.purchasePackagePaypalDirect(form).subscribe(
             (resp: any) => {
                 this.respMsg = resp.message;
-                this.userData['user'].package_id = this.pkgID;
+                this.userData['user'].package = this.pkgID;
                 localStorage.setItem('loggedInUser', JSON.stringify(this.userData));
                 setTimeout(function () {
+                    document.location.href = '/dashboard';
                 }, 3000);
-                this.router.navigate(['/dashboard']);
+                // this.router.navigate(['/dashboard']);
             }, (error: any) => {
                 this.respMsg = error.error.message;
+                setTimeout(function () {
+                    location.reload();
+                }, 4000);
             }
         );
         this.respType = true;
