@@ -49,10 +49,40 @@
                     </tr>
                     <tr>
                         <td style="padding:0 30px; background: #f2f2f2;">
-                            <h1 style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">Congratulations! Your beloved has taken the first big step toward protecting what matters the most!</h1>
-                            <p style="color: #373737; font-size: 20px; line-height: 30px;">
-                                You as a spouse of {{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}} is invited to join the platform <strong><a href="{{url('/')}}">Simplywilled.com</a></strong> to take care of your estate planning, financial management, will management and lots of other benefits!<br><br>
+                            <p style="color: #373737; font-size: 20px; line-height: 30px; padding-top: 32px; padding-bottom: 32px;">
+                                <strong style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">Dear {{ucwords(trim($spouseFirstName))}},</strong><br><br>
+                                {{ucwords(trim($firstName))}} recently joined the thousands of people who have used <a href="{{url('/')}}" target="_blank" style="font-weight: bold; color:#0a5dab;">SimplyWilled.com</a> to create their last will and testament and supporting estate plan documents.<br><br>
+                                {{ucwords(trim($firstName))}} asked that we send you this email to invite you to sign up for SimplyWilled.com to get your affairs in order.
                             </p>
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 20px;">
+                                <tr>
+                                    <td style="padding-right: 15px; width: 84px;" valign="top"><img src="{{url('/')}}/images/greenIcon.png" alt=""></td>
+                                    <td>
+                                        <h2 style="color: #2782be; font-size: 20px; padding-bottom: 7px;">PROTECT YOUR LOVED ONES</h2>
+                                        <p style="color: #373737; font-size: 14px;">Name guardians and list beneficiaries so those you love are in good hands.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 20px;">
+                                <tr>
+                                    <td style="padding-right: 15px; width: 84px;" valign="top"><img src="{{url('/')}}/images/greenIcon.png" alt=""></td>
+                                    <td>
+                                        <h2 style="color: #2782be; font-size: 20px; padding-bottom: 7px;">PROTECT YOUR ASSETS</h2>
+                                        <p style="color: #373737; font-size: 14px;">Ensure the assets you’ve worked hard for pass to the ones you love.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 20px;">
+                                <tr>
+                                    <td style="padding-right: 15px; width: 84px;" valign="top"><img src="{{url('/')}}/images/greenIcon.png" alt=""></td>
+                                    <td>
+                                        <h2 style="color: #2782be; font-size: 20px; padding-bottom: 7px;">SAVE TIME & MONEY</h2>
+                                        <p style="color: #373737; font-size: 14px;">It takes less than 15 minutes and you're done. Try it today and see how simple preparing your last will and testament online can be.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <p style="text-align: center; padding: 18px 0 32px;"><a href="{{url('/')}}/register"><img src="{{url('/')}}/images/getStarted.png" alt=""></a></p>
+                            
                         </td>
                         <tr>
                             <td style="background: #fff; padding: 45px 0;" align="center">
@@ -73,12 +103,6 @@
                                             </table>
                                         </td>
                                     </tr>
-                                    <tr>
-                                    <td style="padding:40px 30px; background: #f2f2f2; text-align: center;">
-                                        <br>
-                                        <a href="{{url('/')}}/register"><img src="{{url('/')}}/images/acceptBtn.png" alt="Check Now"></a>
-                                        <br>
-                                    </td>
                                     <tr>
                                         <td>
                                             <span style="font-size: 18px; color: #373737; float: left; padding-top: 13px; margin-left: 2px;">Follow Us: </span>

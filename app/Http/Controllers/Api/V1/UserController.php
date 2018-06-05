@@ -371,15 +371,17 @@ class UserController extends Controller
 
             if($invitationFlag) {
                 \Log::info('email getting send for spouse invitation');
+                $spouseFirstName = 
                 $arr = [
                     'firstName'         =>  $checkForExistUser->firstname,
                     'middleName'        =>  $checkForExistUser->middlename,
                     'lastName'          =>  $checkForExistUser->lastname,
                     'spouseFullName'    =>  $checkForExistUser->partner_fullname,
-                    'email'             =>  $checkForExistUser->partner_email
+                    'email'             =>  $checkForExistUser->partner_email,
+                    'spouseFirstName'   =>  $checkForExistUser->partner_firstname
                 ];
                 Mail::send('new_emails.spouse_invitation', $arr, function($mail) use($arr){
-                    $mail->from(config('settings.email'), 'Invitation to Simplywilled.com');
+                    $mail->from(config('settings.email'), 'Spouse Invitation to Simplywilled.com');
                     $mail->to($arr['email'], $arr['spouseFullName'])
                     ->subject('Your spouse invited you to Simplywilled.com');
                 });
