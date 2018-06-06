@@ -351,16 +351,28 @@ class UserController extends Controller
             $checkForExistUser->partner_gender      = $partnerGender; // M || F
             $checkForExistUser->partner_lastname    = $partnerLastName;
             $checkForExistUser->partner_middlename  = $partnerMiddleName;
-            $checkForExistUser->legal_married       = $legalMarried;
-            $checkForExistUser->registered_partner  = $registeredPartner;
+            $checkForExistUser->legal_married       = (string)$legalMarried;
+            $checkForExistUser->registered_partner  = (string)$registeredPartner;
             $checkForExistUser->partner_email       = $partnerEmail;
             $checkForExistUser->partner_dob         = $partnerDob;
             $checkForExistUser->partner_invitation  = $partnerInvitation;
 
             // update the user from user table
-            $this->updatePartner($userId, $partnerFirstName);
+            //$this->updatePartner($userId, $partnerFirstName);
+        } else {
+            
+            $checkForExistUser->partner_firstname   = null;
+            $checkForExistUser->partner_fullname    = null;
+            $checkForExistUser->partner_gender      = null; // M || F
+            $checkForExistUser->partner_lastname    = null;
+            $checkForExistUser->partner_middlename  = null;
+            $checkForExistUser->legal_married       = '0';
+            $checkForExistUser->registered_partner  = '0';
+            $checkForExistUser->partner_email       = null;
+            $checkForExistUser->partner_dob         = null;
+            $checkForExistUser->partner_invitation  = null;
         }
-        
+
         $checkForExistUser->phone   = $phoneNumber;
         $checkForExistUser->address = $address;
         $checkForExistUser->city    = $city;
