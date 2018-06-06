@@ -545,6 +545,7 @@ class UserManagementController extends Controller
           $healthFinance->country        = $request->country;
           $healthFinance->willInform     = $request->willInform;
           $healthFinance->anyBackupAgent = $request->anyBackupAgent;
+          $healthFinance->fullname       = $request->fullname;
           if ($request->willInform == 'true') {
             $healthFinanceEmail = $healthFinance->emailOfAgent;
             $email = trim($request->emailOfAgent);
@@ -564,6 +565,7 @@ class UserManagementController extends Controller
             $healthFinance->backupZip            = $request->backupZip;
             $healthFinance->backupCountry        = $request->backupCountry;
             $healthFinance->willInformBackup     = $request->willInformBackup;
+            $healthFinance->backupFullname       = $request->backupFullname;
             if ($request->willInformBackup == 'true') {
               $healthFinanceBackupEmail = $healthFinance->emailOfBackupAgent;
               $backUpEmail = trim($request->emailOfBackupAgent);
