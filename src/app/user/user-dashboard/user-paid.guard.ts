@@ -11,9 +11,13 @@ export class UserPaidGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     // return true;
+        console.log(this.authService.isPaid());
       if (this.authService.isPaid()) {
+          console.log(111);
           return true;
       } else {
+          console.log(222);
+
           this.router.navigate(['/dashboard/packages']);
           return false;
       }

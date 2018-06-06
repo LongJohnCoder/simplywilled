@@ -12,11 +12,14 @@ export class PackagesComponent implements OnInit {
   userId: string;
   token: string;
   data: any;
-  currFirst: number;
-  currLast: number;
   public modalRef: BsModalRef;
   respType: boolean;
   respMsg: string;
+  discountAmount: number;
+  totalAmount: number;
+  couponToken: string;
+  paymentData: any;
+  couponInfo: any;
   constructor(
       private packageService: PackagesService,
       private modalService: BsModalService,
@@ -32,15 +35,13 @@ export class PackagesComponent implements OnInit {
         'key_benefits': '',
         'amount': 0.00,
         'included': '',
-          'slug': ''
+        'slug': ''
       };
-      // this.currFirst = 0;
-      // this.currLast = 00;
+      this.couponInfo = null;
       this.whatIncl = false;
       this.userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
       this.token = JSON.parse(localStorage.getItem('loggedInUser')).token;
       this.getPackages();
-      this.respMsg = 'Please wait...';
       this.respType = false;
   }
 
@@ -59,17 +60,8 @@ export class PackagesComponent implements OnInit {
             this.data.key_benefits = JSON.parse(resp.data[0].key_benefits);
             this.data.included = JSON.parse(resp.data[0].included);
             this.data.slug = resp.data[0].slug;
-            // const price = this.data.amount.toString().split('.');
-            // this.currFirst = price[0];
-            // if (price.hasOwnProperty(1) !== true ) {
-            //
-            //     this.currLast = 00;
-            // } else {
-            //     this.currLast = price[1];
-            // }
-
-
-            // console.log(resp.data[0].slug);
+            this.discountAmount = 0.00;
+            this.totalAmount = this.data.amount - this.discountAmount;
             this.respType = true;
 
         }, (error: any) => {
@@ -82,19 +74,49 @@ export class PackagesComponent implements OnInit {
       this.modalRef = this.modalService.show(template);
   }
 
-  purchase(id: string) {
-      // this.openModal('loading');
-      const body = new FormData();
-      body.append('pkg_id', id);
-      body.append('user_id', this.userId);
-      body.append('token', this.token);
-    this.packageService.purchasePackage(body).subscribe(
+    checkCoupon() {
+        const couponReq = {
+          'token': this.couponToken,
+          'amount': this.data.amount
+        };
+        this.packageService.applyCoupon(couponReq).subscribe(
         (resp: any) => {
-            window.location.href = resp.approval_url;
+            this.respMsg = resp.message;
+            this.couponInfo = resp.data.coupon;
+            this.discountAmount = resp.data.savedAmount;
+            this.totalAmount = this.data.amount - this.discountAmount;
         }, (error: any) => {
-            this.respMsg = error.error.error;
-        }
-    );
-  }
+            this.respMsg = error.error.message;
+            this.couponInfo = null;
+            this.discountAmount = 0.00;
+            this.totalAmount = this.data.amount - this.discountAmount;
+        });
+    }
+
+    paymentPage() {
+        this.paymentData = {
+            'totalAmount': this.totalAmount,
+            'couponID': this.couponInfo === null ? null : this.couponInfo.id,
+            'discountAmount': this.discountAmount,
+            'package': this.data
+        };
+
+        console.log(this.paymentData);
+    }
+
+  // purchase(id: string) {
+  //     // this.openModal('loading');
+  //     const body = new FormData();
+  //     body.append('pkg_id', id);
+  //     body.append('user_id', this.userId);
+  //     body.append('token', this.token);
+  //   this.packageService.purchasePackage(body).subscribe(
+  //       (resp: any) => {
+  //           window.location.href = resp.approval_url;
+  //       }, (error: any) => {
+  //           this.respMsg = error.error.error;
+  //       }
+  //   );
+  // }
 
 }

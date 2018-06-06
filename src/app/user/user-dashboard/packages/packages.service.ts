@@ -34,4 +34,11 @@ export class PackagesService {
         return this.http.post(environment.API_URL + 'user/paypal-direct-payment', body);
     }
 
+    applyCoupon(body: any): Observable<any> {
+        return this.http.post(environment.API_URL + 'user/check-coupon', body);
+    }
+
+    checkPackage(body: any): Observable<any> {
+        return this.http.post(environment.API_URL + 'user/check-package', body);
+    }
 }

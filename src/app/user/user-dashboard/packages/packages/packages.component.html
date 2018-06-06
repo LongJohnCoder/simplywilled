@@ -20,27 +20,17 @@
           <div class="pkg_first_sec">
             <span class="single_pkg"><img src="../../../../assets/images/pkg1.png" alt="error img"></span>
             <h3 class="single_text_heading">{{data.name}}</h3>
+
             <h4 class="pkg_text"><!--Package--> Bundle for One</h4>
-            <p class="will_package_info">{{data.description}}</p>
           </div>
           <div class="book_sec_main">
             <div class="book_main">
               <span class="single_will_book"><img src="../../../../assets/images/single-pkg-book.png" alt="error img"></span>
               <h1 class="book_price">${{data.amount}}<sup></sup></h1>
             </div>
-            <!--<div class="promoCode">-->
-              <!--<form action="">-->
-                <!--<label>Discount Code:</label>-->
-                <!--<p>-->
-                  <!--<input type="text">-->
-                  <!--<button type="button" class="applyCodeBtn disable">Apply Code</button>-->
-                <!--</p>-->
-              <!--</form>-->
-            <!--</div>-->
             <div class="clear"></div>
 
             <p class="payPal"><span>Shop With Confidence Powered by</span> <a  routerLink="/dashboard/packages/payment/{{data.id}}"><img src="../../../../assets/images/paypal-btn.png" class="img-responsive"></a></p>
-            <!--<a href="javascript:void(0)" (click)="purchase(data.id); openModal(loading)" class="get_start_pkg_btn hide_btn"><i class="fa fa-chevron-right" aria-hidden="true"></i> Buy Now</a>-->
           </div>
 
           <div class="hide_show_main_pkg" [ngClass]="{'open': whatIncl}">
@@ -75,17 +65,20 @@
       <div class="packageName"><img src="../../../../../assets/images/tick-img.png" alt="">&nbsp; 1 Living Will</div>
       <div class="packageName"><img src="../../../../../assets/images/tick-img.png" alt="">&nbsp; 1 HIPAA Waiver</div>
       <div class="packageName"><img src="../../../../../assets/images/tick-img.png" alt="">&nbsp; 1 Set of Burial Instructions</div>
-      <div class="packageName realPrice">{{data.description}} <span>${{data.amount}}</span></div>
-      <div class="packageName discount">Savings <span>- ${{59}}</span></div>
-      <div class="packageName totalOrder">Order Total <span>${{data.amount - 59}}</span></div>
+      <div class="packageName realPrice">{{data.name}} Package<span>${{data.amount}}</span></div>
+      <div class="packageName discount">Savings <span>- ${{discountAmount}}</span></div>
+      <div class="packageName totalOrder">Order Total <span>${{totalAmount}}</span></div>
       <div class="packageName promoCode">
         <p>Have a promo code?</p>
         <div class="promo">
-          <input type="text" class="form-control">
-          <button type="submit" class="promoSubmit">Submit</button>
+          <input type="text" class="form-control" [(ngModel)]="couponToken">
+          <button type="submit" class="promoSubmit" (click)="checkCoupon()" [disabled]="!couponToken">Submit</button>
+        </div>
+        <div class="">
+          <span>{{respMsg}}</span>
         </div>
       </div>
-      <a routerLink="/dashboard/packages/payment/{{data.slug}}" class="get_start_pkg_btn">Agree and Checkout <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+      <button (click)="paymentPage()" class="get_start_pkg_btn">Agree and Checkout <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
     </div>
     <div class="guarantee">
       <img src="../../../../../assets/images/macfee.png" class="macfee" alt="">
