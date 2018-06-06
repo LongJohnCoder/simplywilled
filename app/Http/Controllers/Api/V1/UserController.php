@@ -702,7 +702,8 @@ class UserController extends Controller
           'city'              => 'required',
           'email_notification'      => 'required|numeric|between:0,1|integer',
           'email'             =>  "nullable|required_if:email_notification,1|email",
-          'is_backuprepresentative' => 'required|numeric|integer|between:0,1'
+          'is_backuprepresentative' => 'required|numeric|integer|between:0,1',
+          'phone'              => 'required'
       ]);
 
       // validation for the user data
