@@ -11,7 +11,7 @@ export class NotUserAuthGuard implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot,
               state: RouterStateSnapshot  ): Observable<boolean> | Promise<boolean> | boolean {
     if ( this.authService.isAuthenticated() ) {
-      this.router.navigate( [ '/terms-of-use' ] );
+      this.router.navigate( [ '/dashboard' ] );
       return false;
     } else {
       return true;
