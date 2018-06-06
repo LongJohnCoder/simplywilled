@@ -1,7 +1,10 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, TemplateRef} from '@angular/core';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import {DiscountService} from './discount.service';
+import * as $ from 'jquery';
+import 'datatables.net';
+import 'datatables.net-bs4';
 
 @Component({
   selector: 'app-discount',
@@ -17,12 +20,15 @@ export class DiscountComponent implements OnInit {
     editMode: boolean;
     respType: boolean;
     respMsg: string;
+    dataTable: any;
+
     constructor(
       private modalService: BsModalService,
       private fb: FormBuilder,
-      private discountService: DiscountService
+      private discountService: DiscountService,
+      private chRef: ChangeDetectorRef,
 
-  ) { }
+    ) { }
 
   ngOnInit() {
       this.respType = false;
@@ -36,6 +42,9 @@ export class DiscountComponent implements OnInit {
             (res: any) => {
                 this.couponList = res.data;
                 this.couponCount = res.data.length;
+                this.chRef.detectChanges();
+                const table: any = $('table');
+                this.dataTable = table.DataTable();
             }, (err: any) => {
                 console.log(err);
             }
