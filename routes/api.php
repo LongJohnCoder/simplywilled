@@ -514,6 +514,14 @@ Route::group(['prefix' => 'v1'], function() {
 
 
             /**
+            * Route for mailing a friend
+            */
+            Route::post('mail-a-friend', [
+              'uses' => 'Api\V1\UserManagementController@mailFriend',
+              'as' => 'api.v1.mailFriend.post'
+            ]);
+
+            /**
             * Route for fetching total completion API bar data
             */
             Route::get('fetchTotalCompletion', [

@@ -386,7 +386,6 @@ class UserController extends Controller
 
             if($invitationFlag) {
                 \Log::info('email getting send for spouse invitation');
-                $spouseFirstName = 
                 $arr = [
                     'firstName'         =>  $checkForExistUser->firstname,
                     'middleName'        =>  $checkForExistUser->middlename,

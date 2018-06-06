@@ -38,6 +38,70 @@ use App\StatesInfo;
 
 class UserManagementController extends Controller
 {
+    public function mailFriend(Request $request) {
+
+      try {
+
+        $validator = Validator::make($request->all(), [
+          'email'   =>  'required|email'
+        ]);
+        if($validator->fails()) {
+            return response()->json([
+                'status'  => false,
+                'message' => $validator->errors(),
+                'data'    => []
+            ], 400);
+        }
+
+        $user = \Auth::user();
+        //mail a friend
+        $email = $request->email;
+        $tuay = TellUsAboutYou::where('user_id', $user->id)->first();
+
+        if($tuay) {
+          \Log::info('email getting send for spouse invitation');
+          $arr = [
+              'firstName'         =>  $tuay->firstname,
+              'email'             =>  $email
+          ];
+          Mail::send('new_emails.friend_invitation', $arr, function($mail) use($arr){
+              $mail->from(config('settings.email'), 'Friend Invitation to Simplywilled.com');
+              $mail->to($arr['email'], 'Invitation to Simplywilled')
+              ->subject('Your friend invited you to Simplywilled.com');
+          });
+
+          if(Mail::failures()) {
+              \Log::info('email sending error for friend invitation');
+              return response()->json([
+                  'status'  => false,
+                  'message' => 'failed to send email to friend',
+                  'data'    => []
+              ], 400);
+          }
+
+          return response()->json([
+                  'status'  => false,
+                  'message' => 'email sent successfully to friend',
+                  'data'    => []
+              ], 200);
+
+        } else {
+          return response()->json([
+                  'status'  => false,
+                  'message' => 'Please fill tell us about you details first',
+                  'data'    => []
+              ], 400);
+        }
+        
+      } catch (\Exception $e) {
+        return response()->json([
+              'status'  => false,
+              'message' => 'ERROR : '.$e->getMessage().' LINE : '.$e->getLine(),
+              'data'    => []
+        ], 500);
+      }
+    }
+
     /*
      * function to get provide-your-loved-ones-user data
      * @param null
