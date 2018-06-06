@@ -64,7 +64,6 @@ export class MainDashboardComponent implements OnInit, OnDestroy {
       );
       this.getUserDetailsSubscription = this.userService.getUserDetails(user.id).subscribe(
           (response: any) => {
-            console.log(response);
             this.userDetails = response.data;
             this.step1Data = this.userDetails[0];
             this.userDashboardService.updateUserDetails(response.data);
