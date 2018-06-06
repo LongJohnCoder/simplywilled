@@ -23,6 +23,7 @@ use Validator;
 use App\Models\Packages;
 use App\Helper\DateTimeHelper;
 use App\Models\Coupon;
+use App\Models\UserPackage;
 use \Carbon\Carbon;
 
 class CouponsController extends Controller
@@ -221,6 +222,57 @@ class CouponsController extends Controller
              'message'      => $e->getMessage(),
              'errorLineNo'  => $e->getLine(),
              'data'         => []
+         ], 500);
+       }
+     }
+
+     /*
+      *  Function to check coupon by an admin
+      *  @params Request
+      *  @return \Illuminate\Http\JsonResponse
+      * */
+     public function checkCoupon(Request $request)
+     {
+       try {
+         $token = $request->token;
+         $amount = $request->amount;
+         $save = 0;
+         $coupon = Coupon::where('token', $token)->whereDate('expired_on', '>', date('Y-m-d H:i:s'))->first();
+         if ($coupon) {
+           $countUsageCoupon = UserPackage::where('coupon_id',$coupon->id)->where('payment_status', '!=', '0')->count();
+           if ($countUsageCoupon < $coupon->max_user) {
+             $save = $coupon->flag == '0' ? (($amount * $coupon->amount) / 100) : $coupon->amount;
+             if ($save < $amount) {
+               return response()->json([
+                 'status' => true,
+                 'message' => 'Coupon applied successfully',
+                 'data' => [
+                   'savedAmount' => $save
+                 ]
+               ], 200);
+             } else {
+               return response()->json([
+                 'status' => false,
+                 'message' => 'Coupon is not applicable with this product',
+               ], 400);
+             }
+           } else {
+             return response()->json([
+               'status' => false,
+               'message' => 'Coupon has been expired',
+             ], 400);
+           }
+         } else {
+           return response()->json([
+             'status' => false,
+             'message' => 'Coupon has been expired',
+           ], 400);
+         }
+       } catch (\Exception $e) {
+         return response()->json([
+           'status' => false,
+           'message' => $e->getMessage(),
+           'line' => 'Problem encountered on line number on: '. $e->getLine()
          ], 500);
        }
      }

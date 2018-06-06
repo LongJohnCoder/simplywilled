@@ -739,6 +739,10 @@ Route::group(['prefix' => 'v1'], function() {
             'uses' => 'Api\V1\PackageController@paypalDirectPayment',
             'as' => 'api.v1.paypalDirectPayment.post'
         ]);
+        Route::post('check-coupon', [
+            'uses' => 'Api\V1\CouponsController@checkCoupon',
+            'as' => 'api.v1.checkCoupon.post'
+        ]);
     });
 });
 
