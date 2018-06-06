@@ -1,13 +1,13 @@
 <div class="col-xs-12 packageContainer">
   <div class="main-content tellusaboutyou">
-    <h2>Select The Package That Is Right For You</h2>
+    <h2>Your personalized estate plan</h2>
     <ul class="packages_ul">
         <li>
           <div class="pkg_first_sec">
             <span class="single_pkg"><img src="../../../../assets/images/pkg1.png" alt="error img"></span>
             <h3 class="single_text_heading">{{data.name}}</h3>
             <h4 class="pkg_text">Package</h4>
-            <p class="will_package_info">{{data.description}}</p>
+            <!--<p class="will_package_info">{{data.description}}</p>-->
           </div>
           <div class="book_sec_main">
             <div class="book_main">
@@ -47,18 +47,36 @@
           </a>
         </li>
       </ul>
+    <p class="bottomSmallTxt">
+      Have questions? Get advice. Make changes as necessary. Satisfaction Guaranteed refund available for 60 days.
+    </p>
   </div>
 
   <div class="packagesRight">
     <div class="packagesRightPanel">
       <h2>Order Summary</h2>
-      <div class="packageName">{{data.description}} <span>${{data.amount}}</span></div>
-      <div class="packageName discount">Discount <span>- ${{59}}</span></div>
+      <div class="packageName"><img src="../../../../../assets/images/tick-img.png" alt="">&nbsp; 1 Last Will and Testament</div>
+      <div class="packageName"><img src="../../../../../assets/images/tick-img.png" alt="">&nbsp; 1 Healthcare Power of Attorney</div>
+      <div class="packageName"><img src="../../../../../assets/images/tick-img.png" alt="">&nbsp; 1 Financial Power of Attorney</div>
+      <div class="packageName"><img src="../../../../../assets/images/tick-img.png" alt="">&nbsp; 1 Living Will</div>
+      <div class="packageName"><img src="../../../../../assets/images/tick-img.png" alt="">&nbsp; 1 HIPAA Waiver</div>
+      <div class="packageName"><img src="../../../../../assets/images/tick-img.png" alt="">&nbsp; 1 Set of Burial Instructions</div>
+      <div class="packageName realPrice">{{data.description}} <span>${{data.amount}}</span></div>
+      <div class="packageName discount">Savings <span>- ${{59}}</span></div>
       <div class="packageName totalOrder">Order Total <span>${{data.amount - 59}}</span></div>
-      <a routerLink="/dashboard/packages/payment/{{data.slug}}" class="get_start_pkg_btn">Checkout <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+      <div class="packageName promoCode">
+        <p>Have a promo code?</p>
+        <div class="promo">
+          <input type="text" class="form-control">
+          <button type="submit" class="promoSubmit">Submit</button>
+        </div>
+      </div>
+      <a routerLink="/dashboard/packages/payment/{{data.slug}}" class="get_start_pkg_btn">Agree and Checkout <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
     </div>
     <div class="guarantee">
-      <img src="../../../../../assets/images/satisfaction.gif" alt="">
+      <img src="../../../../../assets/images/macfee.png" class="macfee" alt="">
+      <img src="../../../../../assets/images/satisfactionGold.gif" alt="" class="satisfactionImg">
+      <img src="../../../../../assets/images/nortonBlack.png" class="norton" alt="">
     </div>
   </div>
 
