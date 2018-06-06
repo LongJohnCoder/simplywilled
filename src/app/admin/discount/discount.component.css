@@ -1,34 +1,117 @@
-.blogsTab{
+.blogsTab {
     background: #fff;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-.panel-heading{
+.panel-heading {
     padding-bottom: 10px;
     border-bottom: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 10px;
     background: none;
 }
-.form-control{
-    padding: 5px;
-    height: 30px !important;
+.table-bordered {
+    margin: 10px 0;
+}
+.table-bordered .btn {
     font-size: 12px;
-    margin-right: 10px;
-}
-.table-bordered{
-    margin: 10px;
-}
-[type="search"].form-control{
-    margin-left: 5px;
-}
-.btn{
-    font-size: 12px;
-    padding: 5px;
     margin: 2px;
-    color:#fff !important;
+    color: #fff;
 }
 div#page-inner {
     padding: 0 15px;
+}
+select.form-control {
+    margin: 0;
+}
+.twoCol{
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+
+
+.denefit{
+    padding-left: 23px;
+    padding-bottom: 0;
+}
+.denefit .row{
+    margin-bottom: 10px;
+}
+.threeColField {
+    width: calc(100% - 86px);
+    float: left;
+    margin: 0 10px;
+}
+.threeColField:last-child {
+    width: 40px;
+}
+.formHeadingRow .threeColField:last-child {
+    width: 100%;
+}
+.delRow, .addRow {
+    height: 40px;
+    border: 0;
+    border-bottom: 3px solid #a92521;
+    background: #d9534f;
+    border-radius: 10px;
+    width: 40px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.addRowBtn{
+    float: right;
+}
+.addRow {
+    border-bottom: 3px solid #1c588a;
+    background: #337ab7;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 24px;
+    float: right;
+    margin-top: 11px;
+}
+.addRowBtnRow{
+    width: 100%;
+    float: left;
+}
+.threeColField .form-control::placeholder{
+    color: #fff;
+}
+.threeColField2 .form-control::placeholder{
+    color: #fff;
+}
+
+@media screen and (max-width:480px){
+    .form-group .threeColField label{
+        font-size: 14px;
+    }
+    .threeColField{
+        width: 100%;
+    }
+    .threeColField .form-control{
+        font-size: 14px;
+    }
+    .threeColField .form-control::placeholder{
+        color: #999;
+    }
+    .threeColField:last-child {
+        width: 40px;
+        float: none;
+        margin: 0 auto;
+    }
+    .formRow{
+        border-bottom:1px solid #e2e2e2;
+        padding: 10px 0 20px;
+    }
+    .addRowBtn {
+        float: none;
+        width: 40px;
+        margin: 0 auto;
+    }
+    .threeColField .form-control{
+        margin-bottom: 10px;
+    }
 }

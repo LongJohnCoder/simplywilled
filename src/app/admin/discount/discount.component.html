@@ -103,71 +103,73 @@
 
 
       <ng-template #couponModal>
-        <div class="panel-body">
-          <div class="modal-header" style="margin-bottom:15px">
-            <h3 class="modal-title">
-              {{editMode ? 'Edit': 'Add'}} Coupon
-            </h3>
-            <button type="button" class="close" (click)="modalRef.hide()">×</button>
-          </div>
-          <div *ngIf="!respType">
-            <form [formGroup]="couponForm">
-              <div class="modal-body">
-                <h4>Title:</h4>
-                <p>
-                  <input class="form-control" formControlName="title">
-                  <span *ngIf="couponForm.controls['title'].errors" style="color:red;"> Coupon title is required ! </span>
-                </p>
-              </div>
-              <div class="modal-body">
-                <h4>Description:</h4>
-                <p>
-                  <textarea class="form-control" formControlName="description"></textarea>
-                  <span *ngIf="couponForm.controls['description'].errors" style="color:red;"> Coupon description is required ! </span>
-                </p>
-              </div>
-              <div class="modal-body">
-                <h4>Type:</h4>
-                <p>
-                  <select class="form-control" formControlName="flag">
-                    <option value="1">Flat Discount</option>
-                    <option value="0">Percentage Discount</option>
-                  </select>
-                  <span *ngIf="couponForm.controls['flag'].errors" style="color:red;"> Coupon type is required ! </span>
-                </p>
-              </div>
-              <div class="modal-body">
-                <h4>Amount:</h4>
-                <p>
-                  <input type="number" class="form-control" formControlName="amount" pattern="^\d+(\.\d+)?$">
-                  <span *ngIf="couponForm.controls['amount'].errors" style="color:red;"> Coupon amount is required ! </span>
-                </p>
-              </div>
-              <div class="modal-body">
-                <h4>Max User:</h4>
-                <p>
-                  <input type="number" class="form-control" formControlName="max_user" pattern="^\d+(\.\d+)?$">
-                  <span *ngIf="couponForm.controls['max_user'].errors" style="color:red;"> How many users can use that coupon is required ! </span>
-                </p>
-              </div>
-              <div class="modal-body">
-                <h4>Expired On:</h4>
-                <p>
-                  <input type="text" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" class="form-control" name="expired_on" formControlName="expired_on">
-                  <span *ngIf="couponForm.get('expired_on').invalid" style="color:red;">
-                    <p *ngIf="couponForm.get('expired_on').hasError('required')">Expire date is required ! </p>
+        <div class="adminModal">
+          <div class="panel-body">
+            <div class="modal-header" style="margin-bottom:15px">
+              <h3 class="modal-title">
+                {{editMode ? 'Edit': 'Add'}} Coupon
+              </h3>
+              <button type="button" class="close" (click)="modalRef.hide()">×</button>
+            </div>
+            <div *ngIf="!respType">
+              <form [formGroup]="couponForm">
+                <div class="modal-body">
+                  <h4>Title:</h4>
+                  <p>
+                    <input class="form-control" formControlName="title">
+                    <span *ngIf="couponForm.controls['title'].errors" style="color:red;"> Coupon title is required ! </span>
+                  </p>
+                </div>
+                <div class="modal-body">
+                  <h4>Description:</h4>
+                  <p>
+                    <textarea class="form-control" formControlName="description"></textarea>
+                    <span *ngIf="couponForm.controls['description'].errors" style="color:red;"> Coupon description is required ! </span>
+                  </p>
+                </div>
+                <div class="modal-body">
+                  <h4>Expired On:</h4>
+                  <p>
+                    <input type="text" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" class="form-control" name="expired_on" formControlName="expired_on">
+                    <span *ngIf="couponForm.get('expired_on').invalid" style="color:red;">
+                  <p *ngIf="couponForm.get('expired_on').hasError('required')">Expire date is required ! </p>
                   </span>
-                </p>
-              </div>
+                  </p>
+                </div>
+                <div class="modal-body">
+                  <h4>Type:</h4>
+                  <p>
+                    <select class="form-control" formControlName="flag">
+                      <option value="1">Flat Discount</option>
+                      <option value="0">Percentage Discount</option>
+                    </select>
+                    <span *ngIf="couponForm.controls['flag'].errors" style="color:red;"> Coupon type is required ! </span>
+                  </p>
+                </div>
+                <div class="modal-body">
+                  <h4>Amount:</h4>
+                  <p>
+                    <input type="number" class="form-control" formControlName="amount" pattern="^\d+(\.\d+)?$">
+                    <span *ngIf="couponForm.controls['amount'].errors" style="color:red;"> Coupon amount is required ! </span>
+                  </p>
+                </div>
+                <div class="modal-body">
+                  <h4>Max User:</h4>
+                  <p>
+                    <input type="number" class="form-control" formControlName="max_user" pattern="^\d+(\.\d+)?$">
+                    <span *ngIf="couponForm.controls['max_user'].errors" style="color:red;"> How many users can use that coupon is required ! </span>
+                  </p>
+                </div>
+                <div class="modal-body">
+                  <button type="button" class="btn btn-primary" (click)="update()" [disabled]="couponForm.invalid"> {{editMode ? 'Update' : 'Add'}} Coupon</button>
+                </div>
+              </form>
+              <!--{{couponForm.value | json}}-->
+            </div>
+            <div *ngIf="respType">
               <div class="modal-body">
-                <button type="button" class="btn btn-primary" (click)="update()" [disabled]="couponForm.invalid"> {{editMode ? 'Update' : 'Add'}} Coupon</button>
+                <p>{{respMsg}}</p>
               </div>
-            </form>
-            <!--{{couponForm.value | json}}-->
-          </div>
-          <div *ngIf="respType">
-            <div class="modal-body">
-              <p>{{respMsg}}</p>
             </div>
           </div>
         </div>
@@ -175,20 +177,22 @@
 
 
       <ng-template #couponDelModal>
-        <div class="panel-body">
-          <div class="modal-header" style="margin-bottom:15px">
-            <h3 class="modal-title">
-              {{respMsg}}
-            </h3>
-            <button type="button" class="close" (click)="modalRef.hide()">×</button>
-          </div>
-          <div class="modal-body" *ngIf="!respType">
-            <button type="button" class="btn btn-warning" (click)="modalRef.hide()">
-              Cancel
-            </button>
-            <button type="button" class="btn btn-danger" (click)="onitemDel()">
-              Yes, Delete It!
-            </button>
+        <div class="adminModal">
+          <div class="panel-body">
+            <div class="modal-header" style="margin-bottom:15px">
+              <h3 class="modal-title">
+                {{respMsg}}
+              </h3>
+              <button type="button" class="close" (click)="modalRef.hide()">×</button>
+            </div>
+            <div class="modal-body" *ngIf="!respType">
+              <button type="button" class="btn btn-warning" (click)="modalRef.hide()">
+                Cancel
+              </button>
+              <button type="button" class="btn btn-danger" (click)="onitemDel()">
+                Yes, Delete It!
+              </button>
+            </div>
           </div>
         </div>
       </ng-template>
