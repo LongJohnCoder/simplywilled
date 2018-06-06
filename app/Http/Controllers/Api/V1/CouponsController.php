@@ -247,6 +247,7 @@ class CouponsController extends Controller
                  'status' => true,
                  'message' => 'Coupon applied successfully',
                  'data' => [
+                   'coupon' => $coupon,
                    'savedAmount' => $save
                  ]
                ], 200);
@@ -265,7 +266,7 @@ class CouponsController extends Controller
          } else {
            return response()->json([
              'status' => false,
-             'message' => 'Coupon has been expired',
+             'message' => 'Invalid coupon',
            ], 400);
          }
        } catch (\Exception $e) {

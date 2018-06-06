@@ -540,4 +540,38 @@ class PackageController extends Controller
         ], 500);
       }
     }
+
+    public function checkPackage(Request $request)
+    {
+      try {
+        $userID = $request->user_id;
+        $pkgID = $request->pkg_id;
+        $checkPackage = Packages::find($pkgID);
+        if (!$checkPackage) {
+          return response()->json([
+            'status' => false,
+            'message' => 'Unknown Package',
+          ], 400);
+        }
+        $checkUserPackage = User::where('id', $userID)->where('package', $pkgID)->first();
+        if ($checkUserPackage) {
+          return response()->json([
+            'status' => true,
+            'message' => 'Authenticated User',
+          ], 200);
+        } else {
+          return response()->json([
+            'status' => false,
+            'message' => 'Unauthenticated User',
+          ], 400);
+        }
+
+      } catch (\Exception $e) {
+        return response()->json([
+          'status' => false,
+          'message' => $e->getMessage(),
+          'line' => 'Problem encountered on line no. :'.$e->getLine()
+        ], 500);
+      }
+    }
 }

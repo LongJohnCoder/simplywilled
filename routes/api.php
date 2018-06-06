@@ -743,6 +743,10 @@ Route::group(['prefix' => 'v1'], function() {
             'uses' => 'Api\V1\CouponsController@checkCoupon',
             'as' => 'api.v1.checkCoupon.post'
         ]);
+        Route::post('check-package', [
+            'uses' => 'Api\V1\PackageController@checkPackage',
+            'as' => 'api.v1.checkPackage.post'
+        ]);
     });
 });
 
