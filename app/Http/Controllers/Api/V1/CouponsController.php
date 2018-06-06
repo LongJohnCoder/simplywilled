@@ -34,6 +34,7 @@ class CouponsController extends Controller
    * */
     public function viewCoupons() {
       try {
+        $timeNow = Carbon::now()->format('Y-m-d H:i:s');
         $coupons = Coupon::get();
         return response()->json([
             'status'   => true,
@@ -56,13 +57,24 @@ class CouponsController extends Controller
    * */
     public function createCoupon(Request $request) {
       try {
-
-        $timeNow = Carbon::now()->format('Y-m-d H:i:s');
+        // $request->expired_on = Carbon::createFromFormat('Y-m-d', $request->expired_on);
+        if (Carbon::now()->lte(Carbon::parse($request->expired_on))) {
+          $expOn = Carbon::parse($request->expired_on);
+        } else {
+          return response()->json([
+              'status'  => false,
+              'message' => 'Expire Date should be greater than current time',
+              'data'    => []
+          ], 400);
+        }
+        $timeNow = Carbon::now()->format('Y-m-d');
         $validator = Validator::make($request->all(), [
-            'title'       =>  'required',
-            'percentage'  =>  'required|numeric|min:0',
-            'expired_on'  =>  'required|date|date_format:Y-m-d H:i:s|after:'.$timeNow,
-            'description' =>  'nullable',
+            'title'       => 'required',
+            'max_user'    => 'required|numeric|min:0',
+            'flag'        => 'required|numeric|min:0',
+            // 'expired_on'  => 'required|after:'.$timeNow,
+            'description' => 'nullable',
+            'amount'      => 'required|numeric|min:0'
         ]);
         if ($validator->fails()) {
             return response()->json([
@@ -72,16 +84,13 @@ class CouponsController extends Controller
             ], 400);
         }
 
-        $title      = $request->title;
-        $percentage = $request->percentage;
-        $expiredOn  = $request->expired_on;
-
-        $coupon = new Coupon();
-        $coupon->title       = $title;
-        $coupon->percentage  = $percentage;
-        $coupon->expired_on  = $expiredOn;
-        $coupon->description = $request->has('description') ? $request->description : '';
-        $coupon->token       = str_random(60);
+        $coupon              = new Coupon();
+        $coupon->title       = $request->title;
+        $coupon->amount      = $request->amount;
+        $coupon->max_user    = $request->max_user;
+        $coupon->flag        = $request->flag;
+        $coupon->expired_on  = $expOn;
+        $coupon->description = $request->has('description') ? $request->description: '';
 
         if($coupon->save()) {
           return response()->json([
@@ -113,13 +122,13 @@ class CouponsController extends Controller
      * */
     public function deleteCoupon($id) {
       try {
-        //rejecting delete request if package id is invalid
-        if(!is_numeric($id)) {
-         return response()->json([
-             'status'   => false,
-             'message'  => 'Invalid Coupon id!'
-         ], 400);
-        }
+        // //rejecting delete request if package id is invalid
+        // if(!is_numeric($id)) {
+        //  return response()->json([
+        //      'status'   => false,
+        //      'message'  => 'Invalid Coupon id!'
+        //  ], 400);
+        // }
         $id = (int)$id;
         if(Coupon::destroy($id)) {
           return response()->json([
@@ -149,15 +158,23 @@ class CouponsController extends Controller
      * */
      public function editCoupon(Request $request) {
        try {
-
-
-         $timeNow = Carbon::now()->format('Y-m-d H:i:s');
+         if (Carbon::now()->lte(Carbon::parse($request->expired_on))) {
+           $expOn = Carbon::parse($request->expired_on);
+         } else {
+           return response()->json([
+               'status'  => false,
+               'message' => 'Expire Date should be greater than current time',
+               'data'    => []
+           ], 400);
+         }
+         $timeNow = Carbon::now()->format('Y-m-d');
          $validator = Validator::make($request->all(), [
-             'id'          =>  'required|exists:coupons,id,deleted_at,NULL',
-             'title'       =>  'required',
-             'percentage'  =>  'required|numeric|min:0',
-             'expired_on'  =>  'required|date|date_format:Y-m-d H:i:s|after:'.$timeNow,
-             'description' =>  'nullable',
+           'title'       => 'required',
+           'max_user'    => 'required|numeric|min:0',
+           'flag'        => 'required|numeric|min:0',
+           // 'expired_on'  => 'required|date|date_format:Y-m-d|after:'.$timeNow,
+           'description' => 'nullable',
+           'amount'      => 'required|numeric|min:0'
          ]);
          if ($validator->fails()) {
              return response()->json([
@@ -168,8 +185,6 @@ class CouponsController extends Controller
          }
 
          $id = (int)$request->id;
-         $percentage = (float)$request->percentage;
-         $expiredOn = $request->expired_on;
          $coupon = Coupon::find($id);
 
          if(!$coupon) {
@@ -180,12 +195,12 @@ class CouponsController extends Controller
            ], 400);
          }
 
-         $coupon->title       = $request->has('title') && $request->title != null  ? $request->title : $coupon->title;
-         $coupon->percentage  = $percentage == null ? $coupon->percentage : $percentage;
-         $coupon->expired_on  = $expiredOn == null ? $coupon->expired_on : $expiredOn;
-         $coupon->description = $request->has('description') && $request->description != null ? $request->description : '';
-         $coupon->status      = $request->has('status') && $request->status != null ? $request->status : $coupon->status;
-         $coupon->token       = $coupon->token;
+         $coupon->title       = $request->title;
+         $coupon->amount      = $request->amount;
+         $coupon->max_user    = $request->max_user;
+         $coupon->flag        = $request->flag;
+         $coupon->expired_on  = $expOn;
+         $coupon->description = $request->has('description') ? $request->description: '';
 
          if($coupon->save()) {
            return response()->json([
