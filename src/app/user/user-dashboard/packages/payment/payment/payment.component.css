@@ -46,7 +46,7 @@
     text-transform: capitalize;
 }
 .main-content p{
-    font-size: 18px;
+    font-size: 14px;
     margin: 0;
     line-height: 24px;
 }
@@ -90,7 +90,7 @@
 }
 .main-content.tellusaboutyou{
     padding: 30px 0 0;
-    width: 855px;
+    width: 800px;
 }
 .main-content.tellusaboutyou h2{
     padding: 0 30px;
@@ -211,9 +211,10 @@
   display: inline-block;
   background-color: #ff5959;
   color: #fff;
-  padding: 10px;
+  padding: 5px;
   margin: 10px 0;
   text-align: center;
+  border-radius: 5px;
 }
 .gifts-list .radio_custom {
     width: 120px;
@@ -371,7 +372,7 @@ select.form-control{
 .packagesRight{
   position: absolute;
   margin-right: -398px;
-  width: 370px;
+  width: 320px;
   right: 0;
   top: 0;
 }
@@ -390,16 +391,218 @@ select.form-control{
   margin-bottom: 23px;
   padding-top: 15px;
 }
+.packageLogo {
+  text-align: center;
+  margin-bottom: 32px;
+  background: linear-gradient(#cce895, #fff, #8bc1e2);;
+  margin: 0 -15px 20px;
+  padding: 30px 0;
+}
+.packageLogo img{
+  filter: drop-shadow(0 0 14px #fff);
+  width: 170px;
+}
+.packageName{
+  font-size: 14px;
+  color: #696969;
+  padding-bottom: 10px;
+}
+.packageName img{
+  width: 18px;
+}
+.packageName span{
+  float: right;
+  color: #46ac33;
+  font-family: 'OpenSans-bold';
+}
+.packageName.discount span{
+  color: #ffa700;
+}
+.packageName.realPrice{
+  margin-top: 10px;
+}
+.packageName.totalOrder{
+  border-top: 2px solid #d8d8d8;
+  padding-top: 7px;
+  margin-top: 10px;
+  font-family: 'OpenSans-bold';
+}
+.packageName.totalOrder span{
+  color: #2479B8;
+}
+.howItWorks{
+  margin-top: 15px;
+}
+.howItWorks h3 {
+  color: #2479B8;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.howItWorks ol{
+  padding: 0 0 0 74px;
+}
+.howItWorks ol li{
+  font-size: 14px;
+  color: #373737;
+  list-style: decimal;
+  margin-bottom: 10px;
+  position: relative;
+}
+.howItWorks ol li:before{
+  content: "";
+  position: absolute;
+  left: -72px;
+  top: 5px;
+  width: 45px;
+  height: 45px;
+}
+.howItWorks ol li:nth-child(1n):before {
+  background: url("../../../../../../assets/images/emergency2.png") no-repeat;
+  background-size: 45px 45px;
+  background-position-y: top;
+}
+.howItWorks ol li:nth-child(2n):before {
+  background: url("../../../../../../assets/images/save-m.png") no-repeat;
+  background-size: 45px 45px;
+  background-position-y: top;
+}
+.howItWorks ol li:nth-child(3n):before {
+  background: url("../../../../../../assets/images/save-m.png") no-repeat;
+  background-size: 45px 45px;
+  background-position-y: top;
+}
+.howItWorks ol li:nth-child(4n):before {
+  background: url("../../../../../../assets/images/law-hammer.png") no-repeat;
+  background-size: 45px 45px;
+  background-position-y: top;
+}
+.askCvv{
+  cursor: pointer;
+  color: #373737;
+  font-size: 12px;
+  text-decoration: underline;
+}
+.main-content.tellusaboutyou h3{
+  color: #2479B8;
+  font-size: 24px;
+  margin: 0;
+  text-transform: capitalize;
+  padding: 0 30px;
+  font-family: 'OpenSans-Bold';
+  margin: 25px 0 10px;
+}
+.main-content.tellusaboutyou .headingInfo{
+  padding: 0 30px;
+  font-size: 13px;
+}
+.main-content.tellusaboutyou .headingInfo span{
+  font-family: 'OpenSans-bold';
+}
+.main-content .payPaypal, .main-content .payCardHead{
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  padding: 14px 15px;
+  background: linear-gradient(#ffffff, #f1f1f1);
+  width: 48%;
+}
+.main-content .payPaypal{
+  text-align: center;
+  font-size: 18px;
+  color: #495057;
+  float: left;
+  margin-bottom: 10px;
+}
+.main-content .payPaypal img{
+  padding-left: 10px;
+}
+.main-content .payCardHead{
+  float: right;
+  padding-bottom: 8px;
+}
+.payCardHead p{
+  color: #495057;
+  line-height: 16px;
+  font-size: 16px;
+  font-family: 'OpenSans-Semibold';
+  float: right;
+  width: calc(100% - 62px);
+}
+.payCardHead p span{
+  font-size: 12px;
+  font-family: 'OpenSans';
+  display: block;
+  padding-top: 5px;
+}
+.cardIcon{
+  float: left;
+}
+.cardIcon img{
+  width: 52px;
+}
+.main-content .payCard{
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 0 30px 30px;
+}
+.main-content .payPaypal.active, .main-content .payCardHead.active{
+  background: linear-gradient(#70c9ff, #208ed2);
+  border: 1px solid #0075bd;
+}
+.main-content .payPaypal.active p, .main-content .payCardHead.active p{
+  color: #fff;
+}
 
 @media screen and (max-width:1199px){
     .main-content.tellusaboutyou{
         width: 720px;
     }
+  .packagesRight {
+    margin-right: -336px;
+    width: 285px;
+  }
+  .main-content.tellusaboutyou {
+    width: 660px;
+  }
+  .howItWorks ol li{
+    font-size: 13px;
+  }
+  .packagesRightPanel h2{
+    font-size: 30px;
+  }
 }
 
 @media screen and (max-width:991px){
     .main-content.tellusaboutyou{
         width: 100%;
     }
+  .packagesRight {
+    margin-right: -281px;
+    width: 270px;
+  }
+  .main-content .payPaypal, .main-content .payCardHead{
+    width: 100%;
+  }
 }
 
+@media screen and (max-width:768px){
+  .packagesRight {
+    width: 100%;
+    position: relative;
+    margin-top: 20px;
+  }
+  .howItWorks ol li {
+    font-size: 14px;
+    min-height: 45px;
+  }
+}
+
+@media screen and (max-width:430px){
+  .payCardHead p {
+    line-height: 19px;
+    font-size: 14px;
+  }
+  .payCardHead p span{
+    line-height: 15px;
+  }
+}

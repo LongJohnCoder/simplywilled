@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PackagesService} from '../../packages.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-payment',
@@ -11,19 +12,20 @@ export class PaymentComponent implements OnInit {
 
   cardtype: string;
   data: any;
-    userData: any;
+  userData: any;
   cardPinch: string;
   userId: string;
   pkgID: string;
   respType: boolean;
   respMsg: string;
-    pageLoad: boolean;
+  pageLoad: boolean;
+  public modalRef : BsModalRef;
 
   constructor(
       private route: ActivatedRoute,
       private router: Router,
       private packageService: PackagesService,
-
+      private modalService : BsModalService,
   ) { }
 
   ngOnInit() {
@@ -51,6 +53,10 @@ export class PaymentComponent implements OnInit {
       };
   }
 
+  public openModal(template :  TemplateRef<any>, index){
+    this.modalRef = this.modalService.show(template);
+  }
+
   GetCardType(number) {
     // visa
     if (number.value.match(new RegExp("^4")) != null){
@@ -60,10 +66,10 @@ export class PaymentComponent implements OnInit {
         // Visa Electron
         this.cardtype = "visa2";
           this.cardPinch = 'Visa';
-      } 
+      }
     }
     else if (number.value.match(new RegExp("^5[1-5]")) != null) {
-    // Mastercard 
+    // Mastercard
       this.cardtype = "master";
         this.cardPinch = 'MasterCard';
 
@@ -86,7 +92,7 @@ export class PaymentComponent implements OnInit {
         this.cardPinch = 'diners';
 
     }
-    else if (number.value.match(new RegExp("^30[0-5]")) != null){   
+    else if (number.value.match(new RegExp("^30[0-5]")) != null){
     // Diners - Carte Blanche
       this.cardtype = "diners2";
         this.cardPinch = 'diners2';
@@ -97,7 +103,7 @@ export class PaymentComponent implements OnInit {
       this.cardtype = "jcb";
         this.cardPinch = 'JCB';
 
-    }  
+    }
     else{
       if(number.value != ""){
         this.cardtype = "unknown";
