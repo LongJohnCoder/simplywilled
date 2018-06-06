@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         .filter(event => event instanceof NavigationEnd)
         .subscribe((event: NavigationEnd) => {
           window.scroll(0, 0);
-          if (event.urlAfterRedirects === '/dashboard/packages') {
+          if (event.urlAfterRedirects === '/dashboard/packages' || event.urlAfterRedirects === '/dashboard/packages/payment/single-will'){
             this.showLeft = false;
             this.showProgressBar = false;
           } else {

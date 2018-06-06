@@ -10,9 +10,8 @@
 .get_start_pkg_btn:hover {
     color: #fff;
 }
-.include_text:hover {
-    text-decoration: underline;
-    color: #979797;
+.include_text{
+  color: #333;
 }
 .main-content h2 {
     color: #2479B8;
@@ -21,7 +20,8 @@
     text-align: center;
 }
 .packages_ul {
-    margin-top: 100px;
+    margin-top: 80px;
+  margin-bottom: 30px;
 }
 .packages_ul > li {
     width: 90%;
@@ -30,7 +30,7 @@
     box-shadow: 0px 4px 7px rgba(0,0,0,.1);
 }
 .book_main {
-    width: 290px;
+    width: 350px;
 }
 span.bestValue {
     right: 15px;
@@ -46,13 +46,16 @@ span.bestValue img {
 .payPal span, .payPal a {
     float: none;
 }
-.packages_ul > li:first-child .book_main {
-    width: 264px;
+.pkg_first_sec{
+  padding-bottom: 60px;
+}
+.single_will_book{
+  margin-top: -60px;
 }
 .promoCode {
     float: left;
     width: 100%;
-    margin: 20px 0;
+    margin: 20px 0 0 0;
 }
 .promoCode label {
     text-align: left;
@@ -138,13 +141,23 @@ span.bestValue img {
 }
 .packagesRightPanel h2 {
   color: #2479B8;
-  font-size: 28px;
+  font-size: 36px;
   margin-bottom: 23px;
+  padding-top: 15px;
+}
+.bottomSmallTxt{
+  text-align: center;
+  margin-bottom: -8px;
+  font-size: 12px;
+  color: #999;
 }
 .packageName{
-  font-size: 16px;
+  font-size: 14px;
   color: #696969;
-  padding-bottom: 7px;
+  padding-bottom: 10px;
+}
+.packageName img{
+  width: 18px;
 }
 .packageName span{
   float: right;
@@ -153,6 +166,9 @@ span.bestValue img {
 }
 .packageName.discount span{
   color: #ffa700;
+}
+.packageName.realPrice{
+  margin-top: 10px;
 }
 .packageName.totalOrder{
   border-top: 2px solid #d8d8d8;
@@ -164,20 +180,73 @@ span.bestValue img {
 .packageName.totalOrder span{
   color: #2479B8;
 }
+.packageName.promoCode p{
+  color: #2479B8;
+  cursor: pointer;
+}
+.promoSubmit{
+  width: 36%;
+  float: right;
+  text-align: center;
+  background: linear-gradient(#4fb73a, #3da22d);
+  font-family: 'OpenSans';
+  font-size: 16px;
+  border-radius: 5px;
+  border: 0;
+  border-bottom: 3px solid #2a881d;
+  padding: 4px 0px;
+  color: #fff;
+  text-shadow: 2px 2px 0 rgba(0,0,0,.2);
+  cursor: pointer;
+}
 .packagesRightPanel .get_start_pkg_btn{
   padding: 8px 0px;
-  font-size: 20px;
+  font-size: 16px;
   margin-top: 32px;
   margin-bottom: 15px;
   cursor: pointer;
+  border: 0;
+  border-bottom: 3px solid #0a5cac;
+  background: #1376bb;
+}
+.packagesRightPanel .get_start_pkg_btn i {
+  font-size: 14px;
 }
 .guarantee{
   text-align: center;
   margin-top: 20px;
 }
+.guarantee img{
+  margin: 0 10px;
+}
+.guarantee img:first-child{
+  margin-left: 0;
+}
+.guarantee img:last-child{
+  margin-right: 0;
+}
+.satisfactionImg {
+  width: 100px;
+}
+.macfee{
+  width: 100px;
+  height: auto;
+  float: none;
+}
+.norton{
+  width: 100px;
+  height: auto;
+  float: none;
+}
 .payPal{
   margin-bottom: 20px;
   width: 344px;
+}
+.book_price{
+  color: #333;
+}
+.whats_included_text{
+  padding-left: 15px;
 }
 
 @media screen and (max-width: 1200px){
@@ -189,16 +258,22 @@ span.bestValue img {
         width: auto;
     }
     .book_main {
-        width: 175px;
-    }
-    .packages_ul > li:first-child .book_main {
-        width: 264px;
+        width: 330px;
     }
 }
 @media screen and (max-width: 1199px) {
   .packagesRight {
     margin-right: -336px;
     width: 316px;
+  }
+  .satisfactionImg {
+    width: 80px;
+  }
+  .macfee{
+    width: 70px;
+  }
+  .norton{
+    width: 70px;
   }
 }
 
@@ -225,6 +300,41 @@ span.bestValue img {
     position: relative;
     top: 25px;
   }
+  .satisfactionImg {
+    width: 80px;
+  }
+  .macfee{
+    width: 100px;
+  }
+  .norton{
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .single_will_book img{
+    width: 90px;
+  }
+  .book_main{
+    width: 216px;
+  }
+  .single_will_book {
+    margin-top: -30px;
+  }
+  .main-content{
+    padding: 15px;
+  }
+  .pkg_first_sec {
+    padding-bottom: 20px;
+  }
+  .book_price{
+    font-size: 32px;
+    padding-top: 14px;
+  }
+  .packagesRightPanel h2 {
+    font-size: 28px;
+    padding-top: 0;
+  }
 }
 
 @media screen and (max-width: 400px){
@@ -232,14 +342,13 @@ span.bestValue img {
       font-size: 12px;
       padding: 7px 0;
   }
-  .book_price{
-    font-size: 30px;
-    padding-top: 30px;
+  .satisfactionImg {
+    width: 60px;
   }
-  .single_will_book img{
-    width: 100px;
+  .macfee{
+    width: 80px;
   }
-  .packages_ul > li:first-child .book_main {
-    width: 198px;
+  .norton{
+    width: 80px;
   }
 }

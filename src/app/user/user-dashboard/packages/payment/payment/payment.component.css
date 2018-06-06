@@ -364,6 +364,33 @@ select.form-control{
     100% {opacity: 1;}
 }
 
+
+.packageContainer{
+  position: relative;
+}
+.packagesRight{
+  position: absolute;
+  margin-right: -398px;
+  width: 370px;
+  right: 0;
+  top: 0;
+}
+.packagesRightPanel{
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 1px 0 #ddd;
+  padding: 15px;
+  display: inline-block;
+  width: 100%;
+}
+.packagesRightPanel h2 {
+  color: #2479B8;
+  font-size: 36px;
+  margin-bottom: 23px;
+  padding-top: 15px;
+}
+
 @media screen and (max-width:1199px){
     .main-content.tellusaboutyou{
         width: 720px;
