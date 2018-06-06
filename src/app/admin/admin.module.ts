@@ -36,6 +36,8 @@ import { DiscountComponent } from './discount/discount.component';
 import {PackagesComponent} from './packages/packages.component';
 import {PackageService} from './packages/package.service';
 import {DiscountService} from './discount/discount.service';
+import {BsDatepickerModule} from 'ngx-bootstrap';
+import {NgxMaskModule} from 'ngx-mask';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import {DiscountService} from './discount/discount.service';
     FormsModule, CKEditorModule,
     RouterModule,
     AlertModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BsDatepickerModule.forRoot(),
+    NgxMaskModule.forRoot(),
 
   ],
   declarations: [
