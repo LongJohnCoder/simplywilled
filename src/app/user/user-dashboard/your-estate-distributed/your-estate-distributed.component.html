@@ -373,7 +373,7 @@
                             <span *ngIf="estateDistributedForm.get('toMultipleBeneficiary.0.minorParentsTrustee').hasError('required')" class="error_txt">Please fill up this field.</span>
                     </div>
                 </div>
-                <div class="form-group" *ngIf="estateDistributedForm.get('toMultipleBeneficiary.0.minorParentsTrustee').value == 'Yes'"><!-- based on the minorParentsTrustee it will show -->
+                <div class="form-group" *ngIf="estateDistributedForm.get('toMultipleBeneficiary.0.minorParentsTrustee').value == 'No'"><!-- based on the minorParentsTrustee it will show -->
                     <label> Who would you like to serve as trustee of the account?</label>
                     <input type="text" formControlName="whoServeAsTrusteeAccount" class="form-control">
                     <span *ngIf="!estateDistributedForm.get('toMultipleBeneficiary.0.whoServeAsTrusteeAccount').valid && estateDistributedForm.get('toMultipleBeneficiary.0.whoServeAsTrusteeAccount').touched" class="help-block">
@@ -396,7 +396,7 @@
             </div>
         </div><!-- some Other wat form Ends -->
       <div class="form-footer">
-        <button class="btn common-button btn-grey pull-left" routerLink="goBack()">Go Back</button>
+        <button class="btn common-button btn-grey pull-left" (click)="goBack()">Go Back</button>
         <button class="btn common-button btn-complete" type="submit" >Continue</button>
       </div>
     </form>

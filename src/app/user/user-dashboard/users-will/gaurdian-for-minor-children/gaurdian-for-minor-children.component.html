@@ -123,6 +123,24 @@
                 </div>
               </div>
             </div>
+
+            <div class="form-group ">
+              <label for="phone">Their Phone Number?</label>
+              <input id="phone" class="form-control" type="text" name="phone"
+                     mask="(000)-000-0000" placeholder="(xxx)-xxx-xxxx" formControlName="phone">
+
+              <div
+                *ngIf="myForm.get('guardian.0.phone').dirty && myForm.get('guardian.0.phone').touched"
+              >
+                <span class="error_txt" *ngIf="myForm.get('guardian.0.phone').hasError('required')">
+                        Phone is required.
+                   </span>
+                <span class="error_txt" *ngIf="myForm.get('guardian.0.phone').hasError('pattern')">
+                        Please provide a valid phone number.
+                </span>
+              </div>
+            </div>
+
             <div class="form-group">
               <label>Would you like to notify this person by email that you appointed them as guardian for minor children? </label>
               <ul class="radio_ul6">
@@ -261,6 +279,21 @@
                 <div class="col-md-6">
                   <input type="text" class="form-control" placeholder="Country" formControlName="country" [value]="'United States'" readonly>
                 </div>
+              </div>
+            </div>
+            <div class="form-group ">
+              <label for="phone">Their Phone Number?</label>
+              <input class="form-control" type="text" name="phone"
+                     mask="(000)-000-0000" placeholder="(xxx)-xxx-xxxx" formControlName="phone">
+              <div
+                *ngIf="myForm.get('backUpGuardian.0.phone').dirty && myForm.get('backUpGuardian.0.phone').touched"
+              >
+                <span class="error_txt" *ngIf="myForm.get('backUpGuardian.0.phone').hasError('required')">
+                        Phone is required.
+                   </span>
+                <span class="error_txt" *ngIf="myForm.get('backUpGuardian.0.phone').hasError('pattern')">
+                        Please provide a valid phone number.
+                </span>
               </div>
             </div>
             <div class="form-group">

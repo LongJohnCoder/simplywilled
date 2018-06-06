@@ -90,6 +90,7 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
                     relationship_with: new FormControl(guardian !== null && guardian.relationship_with !== null ?  guardian.relationship_with : '', [Validators.required]),
                     address: new FormControl(guardian !== null && guardian.address !== null ?  guardian.address : '', [Validators.required]),
                     country: new FormControl('United States', [Validators.required]),
+                    phone:  new FormControl(guardian !== null && guardian.phone !== null && guardian.phone !== undefined ?  guardian.phone : '', [Validators.required, Validators.pattern(/^\d{10}$/)]),
                     city: new FormControl(guardian !== null && guardian.city !== null ?  guardian.city : '', [Validators.required]),
                     state: new FormControl(guardian !== null && guardian.state !== null ?  guardian.state : '', [Validators.required]),
                     zip: new FormControl(guardian !== null && guardian.zip !== null ?  guardian.zip : '', [Validators.required, Validators.pattern(/^\d{5}$/)]),
@@ -106,6 +107,7 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
                   relationship_with: [backupGuardian !== null && backupGuardian.relationship_with !== null ?  backupGuardian.relationship_with : ''],
                   address: [backupGuardian !== null && backupGuardian.address !== null ?  backupGuardian.address : ''],
                   country: ['United States'],
+                  phone:  new FormControl(backupGuardian !== null && backupGuardian.phone !== null && backupGuardian.phone !== undefined ?  backupGuardian.phone : ''),
                   city: [backupGuardian !== null && backupGuardian.city !== null ?  backupGuardian.city : ''],
                   state: [backupGuardian !== null && backupGuardian.state !== null ?  backupGuardian.state : ''],
                   zip: [backupGuardian !== null && backupGuardian.zip !== null ?  backupGuardian.zip : ''],
@@ -225,6 +227,8 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.state`).updateValueAndValidity();
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.zip`).setValidators([Validators.required, Validators.pattern('^\\d{5}$')]);
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.zip`).updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.phone`).setValidators([Validators.required, Validators.pattern(/^\d{10}$/)]);
+        this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.phone`).updateValueAndValidity();
         // this.myForm.get(`guardian.0.email`).setValidators([Validators.email]);
         // this.myForm.get(`guardian.0.email`).updateValueAndValidity();
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.email_notification`).setValidators([Validators.required]);
@@ -248,6 +252,8 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.state`).updateValueAndValidity();
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.zip`).setValidators([]);
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.zip`).updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.phone`).clearValidators();
+        this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.phone`).updateValueAndValidity();
         // this.myForm.get(`backUpGuardian.0.email`).setValidators([]);
         // this.myForm.get(`backUpGuardian.0.email`).updateValueAndValidity();
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.email_notification`).setValidators([]);
@@ -270,6 +276,8 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
         this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.state`).updateValueAndValidity();
         this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.zip`).setValidators([Validators.required, Validators.pattern('^\\d{5}$')]);
         this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.zip`).updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.phone`).setValidators([Validators.required, Validators.pattern(/^\d{10}$/)]);
+        this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.phone`).updateValueAndValidity();
         // this.myForm.get(`guardian.0.email`).setValidators([Validators.email]);
         // this.myForm.get(`guardian.0.email`).updateValueAndValidity();
         this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.email_notification`).setValidators([Validators.required]);

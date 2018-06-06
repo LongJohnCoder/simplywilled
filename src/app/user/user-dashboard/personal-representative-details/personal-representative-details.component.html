@@ -140,6 +140,23 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="form-group ">
+                          <label for="phone">Their Phone Number?</label>
+                          <input id="phone" class="form-control" type="text" name="phone"
+                                 mask="(000)-000-0000" placeholder="(xxx)-xxx-xxxx" formControlName="phone">
+
+                          <div *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.phone').dirty && personalRepresentativeDetailsForm.get('personalRepresentative.0.phone').touched">
+                                <span class="error_txt" *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.phone').hasError('required')">
+                                    Phone is required.
+                                </span>
+                                <span class="error_txt" *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.phone').hasError('pattern')">
+                                    Please provide a valid phone number.
+                                </span>
+                          </div>
+                        </div>
+
+
                         <div class="form-group">
                             <label>Would you like to notify this person that you appointed them as your personal
                                 representative? </label>
@@ -322,6 +339,20 @@
                                         </span>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="form-group ">
+                              <label for="phone">Their Phone Number?</label>
+                              <input class="form-control" type="text" name="phone"
+                                     mask="(000)-000-0000" placeholder="(xxx)-xxx-xxxx" formControlName="phone">
+
+                              <div *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.phone').dirty && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.phone').touched">
+                                  <span class="error_txt" *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.phone').hasError('required')">
+                                      Phone is required.
+                                  </span>
+                                <span class="error_txt" *ngIf="personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.phone').hasError('pattern')">
+                                      Please provide a valid phone number.
+                                  </span>
+                              </div>
                             </div>
                             <div class="form-group">
                                 <label>Would you like to notify this person that you appointed them as your Personal

@@ -28,7 +28,30 @@
 
 
             <div class="form-group">
-              <label>What is their address? </label>
+              <label>Beneficiary's relationship to you?</label>
+
+              <select class="form-control" #selectRelationship (change)="relationshipChange('relationship',selectRelationship.value)" formControlName="relationship">
+                <option value="">Select Relationship</option>
+                <option value="Wife">Wife</option>
+                <option value="Husband">Husband</option>
+                <option value="Mother">Mother</option>
+                <option value="Father">Father</option>
+                <option value="Son">Son</option>
+                <option value="Daughter">Daughter</option>
+                <option value="Sister">Sister</option>
+                <option value="Brother">Brother</option>
+                <option value="Aunt">Aunt</option>
+                <option value="Uncle">Uncle</option>
+                <option value="Cousin">Cousin</option>
+                <option value="Friend">Friend</option>
+                <option value="Other">Other</option>
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+              <!--<label>What is their address? </label>
               <input
                       type="text"
                       class="form-control"
@@ -40,7 +63,71 @@
               <span class="error_txt"
                     *ngIf="poaDetailsForm.get('address').touched && poaDetailsForm.get('address').dirty && poaDetailsForm.get('address').hasError('required')">
                     Please enter first power attorney address
-              </span>
+              </span>-->
+              <label> What is their address? </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="address"
+                required
+                [ngClass]='{"error_input": poaDetailsForm.get("address").touched && poaDetailsForm.get("address").dirty && poaDetailsForm.get("address").hasError("required")}'
+                name ='address'
+              >
+              <div *ngIf="poaDetailsForm.get('address').dirty && poaDetailsForm.get('address').touched">
+                <span class="error_txt" *ngIf="poaDetailsForm.get('address').hasError('required')" >Address is required</span>
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="City"
+                    formControlName="city"
+                    required
+                    [ngClass]='{"error_input": poaDetailsForm.get("city").touched && poaDetailsForm.get("city").dirty && poaDetailsForm.get("city").hasError("required")}'
+                  >
+                  <div *ngIf="poaDetailsForm.get('city').dirty && poaDetailsForm.get('city').touched">
+                    <span class="error_txt" *ngIf="poaDetailsForm.get('city').hasError('required')" >City is required</span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <select class="form-control" formControlName="state" [ngClass]='{"error_input": poaDetailsForm.get("state").touched && poaDetailsForm.get("state").dirty && poaDetailsForm.get("state").invalid}'>
+                    <option value="">States</option>
+                    <option *ngFor="let state of states" [value]="state">{{state}}</option>
+                  </select>
+                  <div
+                    *ngIf="poaDetailsForm.get('state').dirty && poaDetailsForm.get('state').touched"
+                  >
+                    <span class="error_txt" *ngIf="poaDetailsForm.get('state').hasError('required')">State is required</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Zip Code"
+                    formControlName="zip"
+                    required
+                    [ngClass]='{"error_input": poaDetailsForm.get("zip").touched && poaDetailsForm.get("zip").dirty && poaDetailsForm.get("zip").hasError("required")}'
+                  >
+                  <div
+                    *ngIf="poaDetailsForm.get('zip').dirty && poaDetailsForm.get('zip').touched"
+                  >
+                    <span class="error_txt" *ngIf="poaDetailsForm.get('zip').hasError('required')">Zip is required</span>
+                    <span class="error_txt" *ngIf="poaDetailsForm.get('zip').hasError('pattern')">Please provide a proper zip</span>
+
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="Country" formControlName="country" [value]="'United States'" readonly>
+                </div>
+              </div>
             </div>
 
 
@@ -65,29 +152,6 @@
                     *ngIf="poaDetailsForm.get('phone').touched && poaDetailsForm.get('phone').dirty && poaDetailsForm.get('phone').hasError('minlength')">
                     Please provide a  first power attorney phone
                 </span>
-            </div>
-
-
-            <div class="form-group">
-                <label>Beneficiary's relationship to you?</label>
-                
-                    <select class="form-control" #selectRelationship (change)="relationshipChange('relationship',selectRelationship.value)" formControlName="relationship">
-                        <option value="">Select Relationship</option>
-                        <option value="Wife">Wife</option>
-                        <option value="Husband">Husband</option>
-                        <option value="Mother">Mother</option>
-                        <option value="Father">Father</option>
-                        <option value="Son">Son</option>
-                        <option value="Daughter">Daughter</option>
-                        <option value="Sister">Sister</option>
-                        <option value="Brother">Brother</option>
-                        <option value="Aunt">Aunt</option>
-                        <option value="Uncle">Uncle</option>
-                        <option value="Cousin">Cousin</option>
-                        <option value="Friend">Friend</option>
-                        <option value="Other">Other</option>
-                     </select>
-                
             </div>
 
             <div class="form-group" *ngIf="poaDetailsForm.get('relationship').value == 'Other'">
@@ -128,7 +192,7 @@
                   <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("is_inform").value === 0)}'>
                     <input type="radio" formControlName="is_inform" #isInformNo value=0 (click)="changeMe('is_inform', 0)">
                     <span class="human_status">No</span>
-                  </label> 
+                  </label>
                 </li>
               </ul>
             </div>
@@ -199,8 +263,30 @@
                 </span>
               </div>
 
-
               <div class="form-group">
+                <label>Beneficiary's relationship to you?</label>
+
+                <select class="form-control" #selectBackupRelationship (change)="relationshipChange('backup_relationship', selectBackupRelationship.value)" formControlName="backup_relationship">
+                  <option value="">Select Relationship</option>
+                  <option value="Wife">Wife</option>
+                  <option value="Husband">Husband</option>
+                  <option value="Mother">Mother</option>
+                  <option value="Father">Father</option>
+                  <option value="Son">Son</option>
+                  <option value="Daughter">Daughter</option>
+                  <option value="Sister">Sister</option>
+                  <option value="Brother">Brother</option>
+                  <option value="Aunt">Aunt</option>
+                  <option value="Uncle">Uncle</option>
+                  <option value="Cousin">Cousin</option>
+                  <option value="Friend">Friend</option>
+                  <option value="Other">Other</option>
+                </select>
+
+              </div>
+
+
+              <!--<div class="form-group">
                 <label>What is their address? </label>
                 <input
                         type="text"
@@ -214,6 +300,73 @@
                       *ngIf="poaDetailsForm.get('backup_address').touched && poaDetailsForm.get('backup_address').dirty && poaDetailsForm.get('backup_address').hasError('required')">
                     Please enter second power attorney address
                 </span>
+              </div>-->
+
+              <div class="form-group">
+                <label> What is their address? </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="backup_address"
+                  required
+                  [ngClass]='{"error_input": poaDetailsForm.get("backup_address").touched && poaDetailsForm.get("backup_address").dirty && poaDetailsForm.get("backup_address").hasError("required")}'
+                  name ='backup_address'
+                >
+                <div *ngIf="poaDetailsForm.get('backup_address').dirty && poaDetailsForm.get('backup_address').touched">
+                  <span class="error_txt" *ngIf="poaDetailsForm.get('backup_address').hasError('required')" >Address is required</span>
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-6">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="City"
+                      formControlName="backup_city"
+                      required
+                      [ngClass]='{"error_input": poaDetailsForm.get("backup_city").touched && poaDetailsForm.get("backup_city").dirty && poaDetailsForm.get("backup_city").hasError("required")}'
+                    >
+                    <div *ngIf="poaDetailsForm.get('backup_city').dirty && poaDetailsForm.get('backup_city').touched">
+                      <span class="error_txt" *ngIf="poaDetailsForm.get('backup_city').hasError('required')" >City is required</span>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <select class="form-control" formControlName="backup_state" [ngClass]='{"error_input": poaDetailsForm.get("backup_state").touched && poaDetailsForm.get("backup_state").dirty && poaDetailsForm.get("backup_state").invalid}'>
+                      <option value="">States</option>
+                      <option *ngFor="let state of states" [value]="state">{{state}}</option>
+                    </select>
+                    <div
+                      *ngIf="poaDetailsForm.get('backup_state').dirty && poaDetailsForm.get('backup_state').touched"
+                    >
+                      <span class="error_txt" *ngIf="poaDetailsForm.get('backup_state').hasError('required')">State is required</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Zip Code"
+                      formControlName="backup_zip"
+                      required
+                      [ngClass]='{"error_input": poaDetailsForm.get("backup_zip").touched && poaDetailsForm.get("backup_zip").dirty && poaDetailsForm.get("backup_zip").hasError("required")}'
+                    >
+                    <div
+                      *ngIf="poaDetailsForm.get('backup_zip').dirty && poaDetailsForm.get('backup_zip').touched"
+                    >
+                      <span class="error_txt" *ngIf="poaDetailsForm.get('backup_zip').hasError('required')">Zip is required</span>
+                      <span class="error_txt" *ngIf="poaDetailsForm.get('backup_zip').hasError('pattern')">Please provide a proper zip</span>
+
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Country" formControlName="backup_country" [value]="'United States'" readonly>
+                  </div>
+                </div>
               </div>
 
 
@@ -239,27 +392,6 @@
                 </span>
               </div>
 
-              <div class="form-group">
-                  <label>Beneficiary's relationship to you?</label>
-                  
-                      <select class="form-control" #selectBackupRelationship (change)="relationshipChange('backup_relationship', selectBackupRelationship.value)" formControlName="backup_relationship">
-                          <option value="">Select Relationship</option>
-                          <option value="Wife">Wife</option>
-                          <option value="Husband">Husband</option>
-                          <option value="Mother">Mother</option>
-                          <option value="Father">Father</option>
-                          <option value="Son">Son</option>
-                          <option value="Daughter">Daughter</option>
-                          <option value="Sister">Sister</option>
-                          <option value="Brother">Brother</option>
-                          <option value="Aunt">Aunt</option>
-                          <option value="Uncle">Uncle</option>
-                          <option value="Cousin">Cousin</option>
-                          <option value="Friend">Friend</option>
-                          <option value="Other">Other</option>
-                       </select>
-                 
-              </div>
 
               <div class="form-group" *ngIf="poaDetailsForm.get('backup_relationship').value == 'Other'">
                 <label>Mention your relationship </label>
@@ -295,7 +427,7 @@
 
                 <span class="error_txt"
                       *ngIf="poaDetailsForm.get('backup_email').touched && poaDetailsForm.get('backup_email').dirty && poaDetailsForm.get('backup_email').hasError('pattern')">
-                    Please enter valid email 
+                    Please enter valid email
                 </span>
                       <i class="fa fa-check"></i>
                     </div>
@@ -332,6 +464,7 @@
         </div>
 
         <div class="form-footer">
+          <button class="btn common-button btn-grey pull-left" (click)="goBack()">Go Back</button>
           <button class="btn common-button btn-complete">Continue</button>
         </div>
       </div>

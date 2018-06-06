@@ -28,6 +28,7 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
   editProfileSubscription: Subscription;
   getUserDetailsSubscription: Subscription;
   loading = true;
+  pageChange = false;
 
   /**Constructor call*/
   constructor( private  authService: UserAuthService,
@@ -109,14 +110,18 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
       case 'M':
       case 'R': if (isSpecificGift === 'Yes') {
                   this.progressBarService.changeWidth({width: 70});
+                  this.pageChange = true;
                 } else {
                   this.progressBarService.changeWidth({width: 62.5});
+                  this.pageChange = false;
                 }
                 break;
       default:  if (isSpecificGift === 'Yes') {
                   this.progressBarService.changeWidth({width: 62.5});
+                  this.pageChange = true;
                 } else {
                   this.progressBarService.changeWidth({width: 53.13});
+                  this.pageChange = false;
                 }
                 break;
     }
@@ -590,10 +595,10 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
    */
   addValidationToMinorParentsTrustee() {
       if (this.estateDistributedForm.get('toMultipleBeneficiary.0.minorParentsTrustee').value === 'Yes') {
-          this.estateDistributedForm.get(`toMultipleBeneficiary.0.whoServeAsTrusteeAccount`).setValidators([Validators.required]);
+          this.estateDistributedForm.get(`toMultipleBeneficiary.0.whoServeAsTrusteeAccount`).setValidators([]);
           this.estateDistributedForm.get(`toMultipleBeneficiary.0.whoServeAsTrusteeAccount`).updateValueAndValidity();
       } else {
-          this.estateDistributedForm.get(`toMultipleBeneficiary.0.whoServeAsTrusteeAccount`).setValidators([]);
+          this.estateDistributedForm.get(`toMultipleBeneficiary.0.whoServeAsTrusteeAccount`).setValidators([Validators.required]);
           this.estateDistributedForm.get(`toMultipleBeneficiary.0.whoServeAsTrusteeAccount`).updateValueAndValidity();
       }
   }
@@ -688,6 +693,10 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
 
   /**Previous page*/
   goBack() {
-    this.location.back();
+    if (this.pageChange) {
+      this.router.navigate(['/dashboard/your-specific-gifts']);
+    } else {
+      this.router.navigate(['/dashboard/tell-you-make-specific-gifts']);
+    }
   }
 }

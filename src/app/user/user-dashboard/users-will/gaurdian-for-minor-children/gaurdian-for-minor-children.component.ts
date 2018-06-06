@@ -48,6 +48,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
                       city: [''],
                       state: [''],
                       zip: [''],
+                      phone: [''],
                       email_notification: ['0'],
                       email: [''],
                       is_backup: ['']
@@ -64,6 +65,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
                       city: [''],
                       state: [''],
                       zip: [''],
+                      phone: [''],
                       email_notification: ['0'],
                       email: [''],
                       is_backup: ['']
@@ -135,6 +137,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
                   isGuardianMinorChildren: this.userInfo.isGuardianMinorChildren || 'No',
                   isBackUpGuardian: this.userInfo.isBackUpGuardian || 'No'
               });
+              console.log(this.userInfo.guardian);
               if (!!this.userInfo.guardian.length) {
                   // reactive form data sets for guardian
                   const guardianFGs = this.userInfo.guardian.map(gr => this.fb.group(gr));
@@ -222,6 +225,8 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
       this.myForm.get(`guardian.0.state`).updateValueAndValidity();
       this.myForm.get(`guardian.0.zip`).setValidators([Validators.required, Validators.pattern('^\\d{5}$')]);
       this.myForm.get(`guardian.0.zip`).updateValueAndValidity();
+      this.myForm.get(`guardian.0.phone`).setValidators([Validators.required, Validators.pattern(/^\d{10}$/)]);
+      this.myForm.get(`guardian.0.phone`).updateValueAndValidity();
       // this.myForm.get(`guardian.0.email`).setValidators([Validators.email]);
       // this.myForm.get(`guardian.0.email`).updateValueAndValidity();
       this.myForm.get(`guardian.0.email_notification`).setValidators([Validators.required]);
@@ -243,6 +248,8 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
       this.myForm.get(`backUpGuardian.0.state`).updateValueAndValidity();
       this.myForm.get(`backUpGuardian.0.zip`).setValidators([Validators.required, Validators.pattern('^\\d{5}$')]);
       this.myForm.get(`backUpGuardian.0.zip`).updateValueAndValidity();
+      this.myForm.get(`backUpGuardian.0.phone`).setValidators([Validators.required, Validators.pattern(/^\d{10}$/)]);
+      this.myForm.get(`backUpGuardian.0.phone`).updateValueAndValidity();
       // this.myForm.get(`backUpGuardian.0.email`).setValidators([Validators.email]);
       // this.myForm.get(`backUpGuardian.0.email`).updateValueAndValidity();
       this.myForm.get(`backUpGuardian.0.email_notification`).setValidators([Validators.required]);
@@ -262,6 +269,8 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
       this.myForm.get(`guardian.0.state`).updateValueAndValidity();
       this.myForm.get(`guardian.0.zip`).setValidators([]);
       this.myForm.get(`guardian.0.zip`).updateValueAndValidity();
+      this.myForm.get(`guardian.0.phone`).clearValidators();
+      this.myForm.get(`guardian.0.phone`).updateValueAndValidity();
       // this.myForm.get(`guardian.0.email`).setValidators([]);
       // this.myForm.get(`guardian.0.email`).updateValueAndValidity();
       this.myForm.get(`guardian.0.email_notification`).setValidators([]);
@@ -281,6 +290,8 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
         this.myForm.get(`backUpGuardian.0.state`).updateValueAndValidity();
         this.myForm.get(`backUpGuardian.0.zip`).setValidators([]);
         this.myForm.get(`backUpGuardian.0.zip`).updateValueAndValidity();
+        this.myForm.get(`backUpGuardian.0.phone`).clearValidators();
+        this.myForm.get(`backUpGuardian.0.phone`).updateValueAndValidity();
         // this.myForm.get(`backUpGuardian.0.email`).setValidators([]);
         // this.myForm.get(`backUpGuardian.0.email`).updateValueAndValidity();
         this.myForm.get(`backUpGuardian.0.email_notification`).setValidators([]);

@@ -1,8 +1,8 @@
-<div class="col-md-9 col-sm-12 rightPanel">
+<div class="col-md-9 col-sm-12 rightPanel" *ngIf="!loading">
     <div class="main-content tellusaboutyou">
         <h2>Name your first choice for healthcare agent</h2>
         <form #medicalEmergencyForm="ngForm">
-            <div class="form-group" [ngClass]="{'valid': firstLegalName.valid, 'invalid': firstLegalName.touched && firstLegalName.touched && !firstLegalName.valid}">
+           <!-- <div class="form-group" [ngClass]="{'valid': firstLegalName.valid, 'invalid': firstLegalName.touched && firstLegalName.touched && !firstLegalName.valid}">
                 <label for="firstLegalName">First Legal Name:</label>
                 <input id="firstLegalName" class="form-control" type="text" [(ngModel)]="medicalAgent.firstLegalName" name="firstLegalName" ngModel #firstLegalName="ngModel" required>
                 <i class="fa fa-check" *ngIf="firstLegalName.valid"></i>
@@ -20,6 +20,22 @@
 
               <span class="error_txt" *ngIf="lastLegalName.touched && lastLegalName.touched && lastLegalName.hasError('required')">
                   Please provide last name.
+              </span>
+            </div>-->
+
+            <div class="form-group" [ngClass]="{'valid': fulllegalName.valid, 'invalid': fulllegalName.touched && fulllegalName.touched && !fulllegalName.valid}">
+              <label for="fulllegalName">Full Legal Name:</label>
+              <input id="fulllegalName" class="form-control" type="text" required pattern="\w+\s{1}\w+" [(ngModel)]="medicalAgent.fulllegalName" name="fulllegalName" ngModel #fulllegalName="ngModel">
+              <i class="fa fa-check" *ngIf="fulllegalName.valid"></i>
+              <i class="fa fa-times" *ngIf="fulllegalName.touched && fulllegalName.touched && !fulllegalName.valid"></i>
+
+              <span class="error_txt" *ngIf="fulllegalName.touched && fulllegalName.invalid && fulllegalName.errors?.required">
+                Here1
+                    Please provide a proper capitalized full legal name.
+              </span>
+              <span class="error_txt" *ngIf="fulllegalName.touched && fulllegalName.invalid && fulllegalName.errors?.pattern">
+                Here2
+                    Please provide a proper capitalized full legal name.
               </span>
             </div>
 
@@ -248,7 +264,7 @@
                 <hr>
                 <h2>Name Your Backup Healthcare Agent</h2>
 
-                <div class="form-group" [ngClass]="{'valid': backupfirstLegalName.valid, 'invalid': backupfirstLegalName.touched && backupfirstLegalName.touched && !backupfirstLegalName.valid}">
+                <!--<div class="form-group" [ngClass]="{'valid': backupfirstLegalName.valid, 'invalid': backupfirstLegalName.touched && backupfirstLegalName.touched && !backupfirstLegalName.valid}">
                     <label for="backupfirstLegalName">First Legal Name:</label>
                     <input id="backupfirstLegalName" class="form-control" type="text" [(ngModel)]="medicalAgent.backupfirstLegalName" name="backupfirstLegalName" ngModel #backupfirstLegalName="ngModel" required>
                     <i class="fa fa-check" *ngIf="backupfirstLegalName.valid"></i>
@@ -267,9 +283,23 @@
                   <span class="error_txt" *ngIf="backuplastLegalName.touched && backuplastLegalName.touched && backuplastLegalName.hasError('required')">
                     Last name is required.
                   </span>
-                </div>
+                </div>-->
+              <div class="form-group" [ngClass]="{'valid': backupfulllegalName.valid, 'invalid': backupfulllegalName.touched && backupfulllegalName.touched && !backupfulllegalName.valid}">
+                <label for="backupfulllegalName">Full Legal Name:</label>
+                <input id="backupfulllegalName" class="form-control" type="text" required pattern="\w+\s{1}\w+" [(ngModel)]="medicalAgent.backupfulllegalName" name="backupfulllegalName" ngModel #backupfulllegalName="ngModel">
+                <i class="fa fa-check" *ngIf="backupfulllegalName.valid"></i>
+                <i class="fa fa-times" *ngIf="backupfulllegalName.touched && backupfulllegalName.touched && !backupfulllegalName.valid"></i>
 
-                <div class="form-group" [ngClass]="{'valid': backupRelation.valid, 'invalid': backupRelation.touched && backupRelation.touched && !backupRelation.valid}">
+                <span class="error_txt" *ngIf="backupfulllegalName.touched && backupfulllegalName.invalid && backupfulllegalName.errors?.required">
+                    Please provide a proper capitalized full legal name.
+                </span>
+                <span class="error_txt" *ngIf="backupfulllegalName.touched && backupfulllegalName.invalid && backupfulllegalName.errors?.pattern">
+                    Please provide a proper capitalized full legal name.
+                </span>
+              </div>
+
+
+              <div class="form-group" [ngClass]="{'valid': backupRelation.valid, 'invalid': backupRelation.touched && backupRelation.touched && !backupRelation.valid}">
                     <label for="backupRelation">Their Relationship To You:</label>
                     <select id="backupRelation" class="form-control" [(ngModel)]="medicalAgent.backupRelation" name="backupRelation" ngModel #backupRelation="ngModel" required>
                         <!--<option value="">Select Option</option>-->
@@ -469,6 +499,7 @@
                 </div>
             </div>
             <div class="form-footer">
+                <button class="btn common-button btn-grey pull-left" (click)="goBack()">Go Back</button>
                 <button type="submit" class="btn common-button btn-complete"
                         (click)="formSubmit()"
                         [disabled]="!medicalEmergencyForm.form.valid">Submit</button>

@@ -19,6 +19,7 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
   toggleWillInform: boolean;
   toggleBackupAgent: boolean;
   toggleWillBackupInform: boolean;
+  loading = true;
   constructor(
       private medicalEmergencyService: MedicalEmergencyService,
       private progressBarService: ProgressbarService,
@@ -37,8 +38,10 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
               userId: this.userId,
               firstLegalName: '',
               lastLegalName: '',
+              fulllegalName: '',
               backupfirstLegalName: '',
               backuplastLegalName: '',
+              backupfulllegalName: '',
               relation: '',
               address: '',
               city: '',
@@ -91,10 +94,12 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
       this.medicalEmergencyService.getmedicalEmergency(this.token, {user_id: this.userId}).subscribe(
           (response: any) => {
               if (response !== null && response.status) {
+                    console.log(response);
                     this.medicalAgent.id = response.data.healthFinance.id;
                     this.medicalAgent.userId = this.userId;
                     this.medicalAgent.firstLegalName = response.data.healthFinance.firstLegalName;
                     this.medicalAgent.lastLegalName = response.data.healthFinance.lastLegalName;
+                    this.medicalAgent.fulllegalName = response.data.healthFinance.fullname;
                     this.medicalAgent.backupfirstLegalName = response.data.healthFinance.backupfirstLegalName;
                     this.medicalAgent.backuplastLegalName = response.data.healthFinance.backuplastLegalName;
                     this.medicalAgent.relation = response.data.healthFinance.relation;
@@ -107,6 +112,7 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
                     this.medicalAgent.willInform = response.data.healthFinance.willInform;
                     this.medicalAgent.emailOfAgent = response.data.healthFinance.emailOfAgent;
                     this.medicalAgent.anyBackupAgent = response.data.healthFinance.anyBackupAgent;
+                    this.medicalAgent.backupfulllegalName = response.data.healthFinance.backupFullname;
                     this.medicalAgent.backupRelation = response.data.healthFinance.backupRelation;
                     this.medicalAgent.backupAddress = response.data.healthFinance.backupAddress;
                     this.medicalAgent.backupCity = response.data.healthFinance.backupCity;
@@ -148,7 +154,7 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
               //     isInformBackup: 0,
               //     emailOfBackupAgent: ''
               // };
-          }
+          }, () => {this.loading = false;}
       );
   }
 
@@ -166,14 +172,17 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
     }
 
     formSubmit() {
-        console.log(this.medicalAgent);
+        //console.log(this.medicalAgent.fulllegalName);
         // console.log(this.medicalAgent.emailOfAgent);
-        const formBody = new FormData();
+        let formBody = new FormData();
         formBody.append('userId', this.medicalAgent.userId);
         formBody.append('firstLegalName', this.medicalAgent.firstLegalName);
         formBody.append('lastLegalName', this.medicalAgent.lastLegalName);
+        formBody.append('fullname', this.medicalAgent.fulllegalName);
         formBody.append('backupfirstLegalName', this.medicalAgent.backupfirstLegalName);
         formBody.append('backuplastLegalName', this.medicalAgent.backuplastLegalName);
+        formBody.append('backupFullname', this.medicalAgent.backupfulllegalName);
+        formBody.append('lastLegalName', this.medicalAgent.lastLegalName);
         formBody.append('relation', this.medicalAgent.relation);
         formBody.append('address', this.medicalAgent.address);
         formBody.append('city', this.medicalAgent.city);
@@ -202,4 +211,8 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
         );
 
     }
+
+  goBack() {
+    this.router.navigate(['/dashboard']);
+  }
 }

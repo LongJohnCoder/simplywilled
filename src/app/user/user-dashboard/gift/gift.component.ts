@@ -27,10 +27,10 @@ export class GiftComponent implements OnInit, OnDestroy {
   saveDataInDbSubscription: Subscription;
   fetchGiftDBSubscription: Subscription;
   getUserDetailSubscription: Subscription;
+  pageChange = false;
 
   /**Constructor call*/
   constructor(private fb: FormBuilder, private gftService: GiftService, private router: Router, private progressBarService: ProgressbarService, private userService: UserService) {
-    console.log(this.progressBarService.getWidth());
     this.progressBarService.changeWidth({width: 50});
     this.giftFormStepOne = fb.group({
       'gift_status' : [null, Validators.required]
@@ -157,10 +157,12 @@ export class GiftComponent implements OnInit, OnDestroy {
         let maritalStatus = response.data[0].data.userInfo.marital_status;
         switch (maritalStatus ) {
           case 'M':
-          case 'R': this.progressBarService.changeWidth({width: 50});
-            break;
-          default:  this.progressBarService.changeWidth({width: 37.5});
-            break;
+          case 'R': this.pageChange = true;
+                    this.progressBarService.changeWidth({width: 50});
+                    break;
+          default:  this.pageChange = false;
+                    this.progressBarService.changeWidth({width: 37.5});
+                    break;
         }
       },
       (error: any) => {
@@ -179,6 +181,15 @@ export class GiftComponent implements OnInit, OnDestroy {
     }
     if (this.getUserDetailSubscription !== undefined) {
       this.getUserDetailSubscription.unsubscribe();
+    }
+  }
+
+  /**Go back*/
+  goBack() {
+    if (this.pageChange) {
+      this.router.navigate(['/dashboard/personal-property-distributed']);
+    } else {
+      this.router.navigate(['/dashboard/provide-user-spouse']);
     }
   }
 }

@@ -117,6 +117,207 @@
       </span>
     </div>
 
+
+    <div class="form-group" [ngClass]="{'valid': phone.valid, 'invalid': phone.errors && (phone.dirty || phone.touched)}">
+      <label>Phone Number: </label>
+      <input type="text"
+             class="form-control"
+             placeholder="(xxx)-xxx-xxxx"
+             name="phone"
+             minlength="10"
+             [ngModel]="userInfo?.phone"
+             required
+             #phone = "ngModel"
+             mask="(000)-000-0000"
+      >
+      <i class="fa fa-check" *ngIf="phone.valid"></i>
+      <i class="fa fa-times" *ngIf="phone.errors && (phone.dirty || phone.touched)"></i>
+      <span class="error_txt"
+            *ngIf="phone.errors && (phone.dirty || phone.touched)">
+            <p *ngIf="phone.errors?.required">Please enter phone number</p>
+            <p *ngIf="phone.errors?.minlength">Please enter a correct phone number</p>
+      </span>
+    </div>
+
+    <div class="form-group" [ngClass]="{'valid': email.valid, 'invalid': email.errors && (email.dirty || email.touched)}">
+      <label>Email Address: </label>
+      <input type="email"
+             class="form-control"
+             name="email"
+             [ngModel]="userInfo?.email"
+             required
+             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+             #email = 'ngModel'>
+      <i class="fa fa-check" *ngIf="email.valid"></i>
+      <i class="fa fa-times" *ngIf="email.errors && (email.dirty || email.touched)"></i>
+      <span class="error_txt"
+            *ngIf="email.errors && (email.dirty || email.touched)">
+            <p *ngIf="email.errors?.required">Email is required</p>
+            <p *ngIf="email.errors?.pattern">Email is not correct!</p>
+      </span>
+    </div>
+
+
+
+    <div class="form-group" >
+      <label>Home Address: </label>
+      <input type="text"
+             class="form-control"
+             placeholder="Address Line 1"
+             required
+             [ngModel]="userInfo?.address"
+             name="address"
+             #address='ngModel'>
+      <span class="error_txt"
+            *ngIf="address.errors && (address.dirty || address.touched)">
+                        <p *ngIf="address.errors?.required">Please enter address</p>
+      </span>
+      <div class="row">
+        <div class="col-md-6">
+          <input type="text"
+                 class="form-control"
+                 placeholder="City"
+                 required
+                 [ngModel]="userInfo?.city"
+                 name="city"
+                 #city='ngModel'>
+          <span class="error_txt"
+                *ngIf="city.errors && (city.dirty || city.touched)">
+                        <p *ngIf="city.errors?.required">Please enter city</p>
+          </span>
+        </div>
+
+        <div class="col-md-6">
+          <select class="form-control"
+                  name="state"
+                  required
+                  [ngModel]="userInfo !== undefined && userInfo !== null ? userInfo?.state : ''"
+                  #state='ngModel'>
+            <option value="">State</option>
+            <option value="Alabama">Alabama</option>
+            <option value="Alaska">Alaska</option>
+            <option value="Arizona">Arizona</option>
+            <option value="Arkansas">Arkansas</option>
+            <option value="California">California</option>
+            <option value="Colorado">Colorado</option>
+            <option value="Connecticut">Connecticut</option>
+            <option value="Delaware">Delaware</option>
+            <option value="District Of Columbia">District of Columbia</option>
+            <option value="Florida">Florida</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Hawaii">Hawaii</option>
+            <option value="Idaho">Idaho</option>
+            <option value="Illinois">Illinois</option>
+            <option value="Indiana">Indiana</option>
+            <option value="Iowa">Iowa</option>
+            <option value="Kansas">Kansas</option>
+            <option value="Kentucky">Kentucky</option>
+            <option value="Louisiana">Louisiana</option>
+            <option value="Maine">Maine</option>
+            <option value="Maryland">Maryland</option>
+            <option value="Massachusetts">Massachusetts</option>
+            <option value="Michigan">Michigan</option>
+            <option value="Minnesota">Minnesota</option>
+            <option value="Mississippi">Mississippi</option>
+            <option value="Missouri">Missouri</option>
+            <option value="Montana">Montana</option>
+            <option value="Nebraska">Nebraska</option>
+            <option value="Nevada">Nevada</option>
+            <option value="New Hampshire">New Hampshire</option>
+            <option value="New Jersey">New Jersey</option>
+            <option value="New Mexico">New Mexico</option>
+            <option value="New York">New York</option>
+            <option value="North Carolina">North Carolina</option>
+            <option value="North Dakota">North Dakota</option>
+            <option value="Ohio">Ohio</option>
+            <option value="Oklahoma">Oklahoma</option>
+            <option value="Oregon">Oregon</option>
+            <option value="Pennsylvania">Pennsylvania</option>
+            <option value="Rhode Island">Rhode Island</option>
+            <option value="South Carolina">South Carolina</option>
+            <option value="South Dakota">South Dakota</option>
+            <option value="Tennessee">Tennessee</option>
+            <option value="Texas">Texas</option>
+            <option value="Utah">Utah</option>
+            <option value="Vermont">Vermont</option>
+            <option value="Virginia">Virginia</option>
+            <option value="Washington">Washington</option>
+            <option value="West Virginia">West Virginia</option>
+            <option value="Wisconsin">Wisconsin</option>
+            <option value="Wyoming">Wyoming</option>
+          </select>
+
+          <span class="error_txt"
+                *ngIf="state.errors && (state.dirty || state.touched)">
+                        <p *ngIf="state.errors?.required">Please enter state</p>
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <input type="text"
+                 class="form-control"
+                 placeholder="Zip Code"
+                 required
+                 [ngModel]="userInfo?.zip"
+                 name="zip"
+                 pattern="^\d{5}$"
+                 #zip="ngModel">
+          <span class="error_txt"
+                *ngIf="zip.errors && (zip.dirty || zip.touched)">
+                        <p *ngIf="zip.errors?.required">Please enter zip</p>
+                        <p *ngIf="zip.errors?.pattern">Please enter a proper zip</p>
+          </span>
+        </div>
+        <div class="col-md-6">
+          <input type="text"
+                 class="form-control"
+                 [ngModel]="'United States'"
+                 name="country"
+                 #country='ngModel'
+                 disabled>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>How did you hear about us?</label>
+      <select class="form-control"
+              name="referral"
+              required
+              [ngModel]="userInfo !== undefined && userInfo !== null ? userInfo?.referral : ''"
+              #referral='ngModel'>
+        <option value="">Select</option>
+        <!--<option value="Google">Google</option>
+        <option value="Facebook">Facebook</option>
+        <option value="Friend">Friend</option>
+        <option value="Advertisement">Advertisement</option>-->
+        <option value="Google">Google Search</option>
+        <option value="Blog Post">Blog Post</option>
+        <option value="Social Media">Social Media</option>
+        <option value="Friend">Friend</option>
+        <option value="Colleague">Colleague</option>
+        <option value="Other">Other</option>
+      </select>
+      <span class="error_txt"
+            *ngIf="referral.errors && (referral.dirty || referral.touched)">
+              <p *ngIf="referral.errors?.required">Please fill up this field.</p>
+        </span>
+    </div>
+
+    <div class="form-group" *ngIf="referral.value === 'Other'">
+      <input class="form-control"
+             type="text"
+             name="referralOther"
+             required
+             [ngModel]="userInfo !== undefined && userInfo !== null && userInfo.referral_other !== undefined ? userInfo?.referral_other  : ''"
+             #referralOther='ngModel'>
+      <span class="error_txt"
+            *ngIf="referralOther.invalid && (referralOther.dirty || referralOther.touched)">
+              <p *ngIf="referralOther.errors?.required">Please fill up this field.</p>
+        </span>
+    </div>
+
     <div class="form-group">
       <label>Marital Status: </label>
       <ul class="first_page_radio" id="customer_status">
@@ -401,201 +602,16 @@
       </div>
     </div>
 
-    <div class="form-group" [ngClass]="{'valid': phone.valid, 'invalid': phone.errors && (phone.dirty || phone.touched)}">
-      <label>Phone Number: </label>
-      <input type="text"
-             class="form-control"
-             placeholder="(xxx)-xxx-xxxx"
-             name="phone"
-             minlength="10"
-             [ngModel]="userInfo?.phone"
-             required
-             #phone = "ngModel"
-             mask="(000)-000-0000"
-             >
-      <i class="fa fa-check" *ngIf="phone.valid"></i>
-      <i class="fa fa-times" *ngIf="phone.errors && (phone.dirty || phone.touched)"></i>
-      <span class="error_txt"
-            *ngIf="phone.errors && (phone.dirty || phone.touched)">
-            <p *ngIf="phone.errors?.required">Please enter phone number</p>
-            <p *ngIf="phone.errors?.minlength">Please enter a correct phone number</p>
-      </span>
-    </div>
-
-    <div class="form-group" [ngClass]="{'valid': email.valid, 'invalid': email.errors && (email.dirty || email.touched)}">
-      <label>Email Address: </label>
-      <input type="email"
-             class="form-control"
-             name="email"
-             [ngModel]="userInfo?.email"
-             required
-             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-             #email = 'ngModel'>
-      <i class="fa fa-check" *ngIf="email.valid"></i>
-      <i class="fa fa-times" *ngIf="email.errors && (email.dirty || email.touched)"></i>
-      <span class="error_txt"
-            *ngIf="email.errors && (email.dirty || email.touched)">
-            <p *ngIf="email.errors?.required">Email is required</p>
-            <p *ngIf="email.errors?.pattern">Email is not correct!</p>
-      </span>
-    </div>
-
-
-
-    <div class="form-group" >
-      <label>Home Address: </label>
-      <input type="text"
-             class="form-control"
-             placeholder="Address Line 1"
-             required
-             [ngModel]="userInfo?.address"
-             name="address"
-             #address='ngModel'>
-      <span class="error_txt"
-            *ngIf="address.errors && (address.dirty || address.touched)">
-                        <p *ngIf="address.errors?.required">Please enter address</p>
-      </span>
-      <div class="row">
-        <div class="col-md-6">
-          <input type="text"
-                 class="form-control"
-                 placeholder="City"
-                 required
-                 [ngModel]="userInfo?.city"
-                 name="city"
-                 #city='ngModel'>
-          <span class="error_txt"
-                *ngIf="city.errors && (city.dirty || city.touched)">
-                        <p *ngIf="city.errors?.required">Please enter city</p>
-          </span>
-        </div>
-
-        <div class="col-md-6">
-          <select class="form-control"
-                  name="state"
-                  required
-                  [ngModel]="userInfo !== undefined && userInfo !== null ? userInfo?.state : ''"
-                  #state='ngModel'>
-            <option value="">State</option>
-            <option value="Alabama">Alabama</option>
-            <option value="Alaska">Alaska</option>
-            <option value="Arizona">Arizona</option>
-            <option value="Arkansas">Arkansas</option>
-            <option value="California">California</option>
-            <option value="Colorado">Colorado</option>
-            <option value="Connecticut">Connecticut</option>
-            <option value="Delaware">Delaware</option>
-            <option value="District Of Columbia">District of Columbia</option>
-            <option value="Florida">Florida</option>
-            <option value="Georgia">Georgia</option>
-            <option value="Hawaii">Hawaii</option>
-            <option value="Idaho">Idaho</option>
-            <option value="Illinois">Illinois</option>
-            <option value="Indiana">Indiana</option>
-            <option value="Iowa">Iowa</option>
-            <option value="Kansas">Kansas</option>
-            <option value="Kentucky">Kentucky</option>
-            <option value="Louisiana">Louisiana</option>
-            <option value="Maine">Maine</option>
-            <option value="Maryland">Maryland</option>
-            <option value="Massachusetts">Massachusetts</option>
-            <option value="Michigan">Michigan</option>
-            <option value="Minnesota">Minnesota</option>
-            <option value="Mississippi">Mississippi</option>
-            <option value="Missouri">Missouri</option>
-            <option value="Montana">Montana</option>
-            <option value="Nebraska">Nebraska</option>
-            <option value="Nevada">Nevada</option>
-            <option value="New Hampshire">New Hampshire</option>
-            <option value="New Jersey">New Jersey</option>
-            <option value="New Mexico">New Mexico</option>
-            <option value="New York">New York</option>
-            <option value="North Carolina">North Carolina</option>
-            <option value="North Dakota">North Dakota</option>
-            <option value="Ohio">Ohio</option>
-            <option value="Oklahoma">Oklahoma</option>
-            <option value="Oregon">Oregon</option>
-            <option value="Pennsylvania">Pennsylvania</option>
-            <option value="Rhode Island">Rhode Island</option>
-            <option value="South Carolina">South Carolina</option>
-            <option value="South Dakota">South Dakota</option>
-            <option value="Tennessee">Tennessee</option>
-            <option value="Texas">Texas</option>
-            <option value="Utah">Utah</option>
-            <option value="Vermont">Vermont</option>
-            <option value="Virginia">Virginia</option>
-            <option value="Washington">Washington</option>
-            <option value="West Virginia">West Virginia</option>
-            <option value="Wisconsin">Wisconsin</option>
-            <option value="Wyoming">Wyoming</option>
-          </select>
-
-          <span class="error_txt"
-                *ngIf="state.errors && (state.dirty || state.touched)">
-                        <p *ngIf="state.errors?.required">Please enter state</p>
-          </span>
+    <div class="row" *ngIf="errors.errorFlag">
+      <div class="col-md-12">
+        <div class="error_txt">
+          {{errors.errorMessage}}
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <input type="text"
-                 class="form-control"
-                 placeholder="Zip Code"
-                 required
-                 [ngModel]="userInfo?.zip"
-                 name="zip"
-                 pattern="^\d{5}$"
-                 #zip="ngModel">
-          <span class="error_txt"
-                *ngIf="zip.errors && (zip.dirty || zip.touched)">
-                        <p *ngIf="zip.errors?.required">Please enter zip</p>
-                        <p *ngIf="zip.errors?.pattern">Please enter a proper zip</p>
-          </span>
-        </div>
-        <div class="col-md-6">
-          <input type="text"
-                 class="form-control"
-                 [ngModel]="'United States'"
-                 name="country"
-                 #country='ngModel'
-                 disabled>
-        </div>
-      </div>
-
-
-
-
-
-      <div class="row" *ngIf="errors.errorFlag">
-        <div class="col-md-12">
-          <div class="error_txt">
-              {{errors.errorMessage}}
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="form-group">
-        <label>How did you hear about us?</label>
-        <select class="form-control"
-          name="referral"
-          required
-          [ngModel]="userInfo !== undefined && userInfo !== null ? userInfo?.referral : ''"
-          #referral='ngModel'>
-          <option value="">Select</option>
-          <option value="Google">Google</option>
-          <option value="Facebook">Facebook</option>
-          <option value="Friend">Friend</option>
-          <option value="Advertisement">Advertisement</option>
-        </select>
-        <span class="error_txt"
-              *ngIf="referral.errors && (referral.dirty || referral.touched)">
-              <p *ngIf="referral.errors?.required">Please fill up this field.</p>
-        </span>
     </div>
 
     <div class="form-footer">
+      <button class="btn common-button btn-grey pull-left" [routerLink]="['/dashboard']">Go Back</button>
       <button class="btn common-button btn-complete">Continue</button>
     </div>
   </form>
