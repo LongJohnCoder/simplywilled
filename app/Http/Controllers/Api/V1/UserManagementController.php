@@ -80,7 +80,7 @@ class UserManagementController extends Controller
           }
 
           return response()->json([
-                  'status'  => false,
+                  'status'  => true,
                   'message' => 'email sent successfully to friend',
                   'data'    => []
               ], 200);
