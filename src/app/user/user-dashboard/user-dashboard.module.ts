@@ -7,6 +7,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {UserPaidGuard} from './user-paid.guard';
 import {UserUnPaidGuard} from './user-unpaid.guard';
 import {ProgressbarService} from './shared/services/progressbar.service';
+import {ReferFriendService} from './shared/services/referFriend.service';
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import {ProgressbarService} from './shared/services/progressbar.service';
   ],
   declarations: [DashboardComponent, MainDashboardComponent],
     providers: [
-        UserPaidGuard, UserUnPaidGuard, ProgressbarService
+        UserPaidGuard, UserUnPaidGuard, ProgressbarService, ReferFriendService
     ]
 })
 export class UserDashboardModule { }

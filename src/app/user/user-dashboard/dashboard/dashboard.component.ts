@@ -6,11 +6,16 @@ import {UserDashboardService} from '../user-dashboard.service';
 import {Subscription} from 'rxjs/Subscription';
 import {ProgressbarService} from '../shared/services/progressbar.service';
 import {Progressbar} from '../shared/models/progressbar';
+import {SlideInOutAnimation} from '../shared/animations/slideDown';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ValidateFn} from 'codelyzer/walkerFactory/walkerFn';
+import {ReferFriendService} from '../shared/services/referFriend.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  animations: [SlideInOutAnimation]
 })
 export class DashboardComponent implements OnInit, OnDestroy {
     /**Variable  declaration*/
@@ -26,6 +31,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
     showProgressBar = true;
     routerSubscription: Subscription;
     userName = '';
+    animationState = 'out';
+    referAFriendForm: FormGroup;
+    referAFriendSubscription: Subscription;
+    message = {
+      errorMessage: '',
+      successMessage: ''
+    };
+    loading = false;
 
     /**Constructor call*/
     constructor(
@@ -33,8 +46,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
       private router: Router,
       private userAuth: UserAuthService,
       private userDashboardService: UserDashboardService,
+      private _fb: FormBuilder,
+      private referAFriendService: ReferFriendService,
       private progressbarService: ProgressbarService
     ) {
+      this.createForm();
       this.progressbarService.changeWidth({width: 0});
       this.progressBarSubscription = this.progressbarService.currentMessage.subscribe(
         (progressBar) => {
@@ -45,13 +61,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
         .filter(event => event instanceof NavigationEnd)
         .subscribe((event: NavigationEnd) => {
           window.scroll(0, 0);
-          if (event.urlAfterRedirects === '/dashboard/packages' || event.urlAfterRedirects === '/dashboard/packages/payment/single-will'){
+          if (event.urlAfterRedirects === '/dashboard/packages' || event.urlAfterRedirects === '/dashboard/packages/payment/single-will') {
             this.showLeft = false;
             this.showProgressBar = false;
           } else {
             this.showProgressBar = true;
           }
         });
+    }
+
+    /**Initialises the form**/
+    createForm() {
+      this.referAFriendForm = this._fb.group({
+        'email': new FormControl('')
+      });
     }
 
     /**When the component is initialised*/
@@ -65,6 +88,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
           },
         (error) =>  {console.log(error);}
       );
+    }
+
+    /**Checks for authorization user id.*/
+    parseToken() {
+      if (JSON.parse(localStorage.getItem('loggedInUser')).hasOwnProperty('token')) {
+        return JSON.parse(localStorage.getItem('loggedInUser')).token;
+      }
+      return null;
     }
 
     /**When the user logs out*/
@@ -100,6 +131,48 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.router.navigate([link]);
     }
 
+    /**Slide down animation**/
+    toggleShowDiv() {
+        this.animationState = this.animationState === 'out' ? 'in' : 'out';
+        if (this.animationState === 'in') {
+          this.referAFriendForm.get('email').setValidators([Validators.required, Validators.pattern(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)]);
+          this.referAFriendForm.get('email').updateValueAndValidity();
+        } else {
+          this.referAFriendForm.get('email').clearValidators();
+          this.referAFriendForm.get('email').updateValueAndValidity();
+        }
+    }
+
+  /**Refer a friend**/
+    sendMail() {
+      this.loading = true;
+      let token = this.parseToken();
+      console.log(this.referAFriendForm.value);
+      this.referAFriendSubscription = this.referAFriendService.referAFriend(token, this.referAFriendForm.value).subscribe(
+        (response: any) => {
+          console.log(response);
+          if (response.status) {
+            this.message.errorMessage = '';
+            this.message.successMessage = response.message;
+          } else {
+            this.message.errorMessage = response.message;
+            this.message.successMessage = '';
+          }
+        }, (error) => {
+          console.log(error);
+          this.message.errorMessage = 'Oops, something went wrong';
+        }, () => {
+          this.loading = false;
+          this.referAFriendForm.reset();
+          setTimeout( () => {
+            this.message.errorMessage = '';
+            this.message.successMessage = '';
+            this.animationState = 'out';
+          }, 3000);
+        }
+      );
+    }
+
     /**When the component is destroyed*/
     ngOnDestroy() {
       if (this.logoutSubscription !== undefined) {
@@ -116,6 +189,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       }
       if (this.routerSubscription !== undefined) {
         this.routerSubscription.unsubscribe();
+      }
+      if (this.referAFriendSubscription !== undefined) {
+        this.referAFriendSubscription.unsubscribe();
       }
     }
 }

@@ -203,7 +203,7 @@ header{
     -webkit-box-shadow: 0 1px 1px 0 #ddd;
     -moz-box-shadow: 0 1px 1px 0 #ddd;
     width: 90%;
-    padding: 25px 30px 20px;
+    padding: 25px 14px 20px;
     text-align: center;
     margin: 50px 0 0;
     position: relative;
@@ -222,14 +222,50 @@ header{
     font-size: 24px;
     background: #fff;
     font-weight: bold;
-    height: 35px;
-    width: 35px;
+    height: 70px;
+    width: 70px;
     border-radius: 50%;
     border: 1px solid #ddd;
     line-height: 30px;
     transform: translate(-50%,-50%);
+    cursor: pointer;
 }
-
+.notification span.imp img{
+  max-width: 55%;
+  padding-top: 5px;
+}
+.email-box {
+  margin-top: 20px;
+  position: relative;
+}
+.email-box.valid .form-control{
+  border-color: #42A82D;
+  color: #42A82D;
+}
+.email-box.invalid .form-control{
+  border-color: #ff5959;
+  color: #ff5959;
+}
+.btn.common-button.complete{
+  background: #3fa62e;
+  border: 0;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 8px 10px 5px;
+  border-bottom: 4px solid #308f26;
+}
+.email-box.valid i {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #42A82D;
+  color: #fff;
+  height: 22px;
+  width: 22px;
+  text-align: center;
+  line-height: 22px;
+  border-radius: 50%;
+}
 .progress_main{
     margin: 0 0 30px;
     padding: 10px;
@@ -293,6 +329,17 @@ header{
 
 .packagesLeft{
   max-width: 65%;
+}
+.success_msg, .error_msg {
+  background-color: #40a52f;
+  display: block;
+  color: #fff;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-size: 14px;
+}
+.error_msg {
+  background-color: #ff5959;
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px){

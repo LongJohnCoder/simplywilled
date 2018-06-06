@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { BlogService } from "./user/blog/blog.service";
 import { NgxPaginationModule } from 'ngx-pagination';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ModalModule.forRoot(), FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthGuard,

@@ -62,8 +62,28 @@
                         </div>
                     </div>
                     <div class="notification">
-                        <span class="imp">i</span>
-                        <p>They’ll be notified via e-mail at the address you provided.</p>
+                        <span class="imp" (click)="toggleShowDiv()" ><img src="../../../../assets/images/owl.png"></span>
+                        <p [@slideInOut]="animationState === 'out'">They’ll be notified via e-mail at the address you provided.</p>
+                        <div [@slideInOut]="animationState">
+                            <form [formGroup] = "referAFriendForm">
+                              <div class="form-group">
+                              <div class="email-box" [ngClass]="{'valid':referAFriendForm.get('email').valid, 'invalid': !referAFriendForm.get('email').valid && referAFriendForm.get('email').touched}">
+                                <input type="email" placeholder="Enter Email Address" class="form-control"
+                                       formControlName="email">
+                               <!-- <i class= 'fa fa-check' *ngIf="referAFriendForm.get('email').valid"></i>
+                                <i class= 'fa fa-times' *ngIf="!referAFriendForm.get('email').valid && referAFriendForm.get('email').touched"></i>-->
+                              </div>
+
+                                <span class="success_msg" *ngIf="message.successMessage !== ''">
+                                  {{message.successMessage}}
+                                </span>
+                                <span class="error_msg" *ngIf="message.errorMessage !== ''">
+                                {{message.errorMessage}}
+                                </span>
+                              <button type="button" class="btn common-button complete" (click)="sendMail()" [disabled]="referAFriendForm.invalid || loading">Refer a friend</button>
+                              </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
