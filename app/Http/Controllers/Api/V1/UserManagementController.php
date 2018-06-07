@@ -43,7 +43,9 @@ class UserManagementController extends Controller
       try {
 
         $validator = Validator::make($request->all(), [
-          'email'   =>  'required|email'
+          'email'     =>  'required|email',
+          'firstname' =>  'required|string',
+          'lastname'  =>  'required|string'
         ]);
         if($validator->fails()) {
             return response()->json([
@@ -56,13 +58,19 @@ class UserManagementController extends Controller
         $user = \Auth::user();
         //mail a friend
         $email = $request->email;
+        $friendFirstname  = $request->firstname;
+        $friendLastname   = $request->lastname;
+
         $tuay = TellUsAboutYou::where('user_id', $user->id)->first();
 
         if($tuay) {
           \Log::info('email getting send for spouse invitation');
           $arr = [
               'firstName'         =>  $tuay->firstname,
-              'email'             =>  $email
+              'fullName'          =>  $tuay->fullname,
+              'email'             =>  $email,
+              'friendFirstname'   =>  $friendFirstname,
+              'friendLastname'    =>  $friendLastname
           ];
           Mail::send('new_emails.friend_invitation', $arr, function($mail) use($arr){
               $mail->from(config('settings.email'), 'Friend Invitation to Simplywilled.com');

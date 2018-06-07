@@ -91,6 +91,7 @@ class UserController extends Controller
             $validator = Validator::make($request->all(), [
                 'new_password' => 'required',
                 'confirm_password' => 'required',
+                'old_password'      => 'required'
             ]);
 
             $errorMessage = '';
@@ -103,27 +104,33 @@ class UserController extends Controller
                     'status' => false,
                     'message' => $errorMessage,
                 ];
-                $responseCode = 200;
+                $responseCode = 400;
             } else {
                 $user = User::find(Auth::user()->id);
 
-                if ($request->input('new_password') == $request->input('confirm_password')) {
-                    $user->password = $request->input('new_password');
-                    $user->save();
-
-                    $response = [
-                        'status' => true,
-                        'message' => 'Password modified successfully'
-                    ];
-                    $responseCode = 200;
-
+                if(!\Hash::check($request->get('old_password'), $user->password)) {
+                   $response = [
+                            'status' => false,
+                            'message' => 'Old password does not match with our records'
+                        ];
+                    $responseCode = 400; 
                 } else {
-                    $response = [
-                        'status' => false,
-                        'message' => 'New Password and confirm password should be same'
-                    ];
-                    $responseCode = 200;
+
+                    if(strcmp($request->get('confirm_password'), $request->get('new_password')) == 0) {
+                        $response = [
+                            'status' => false,
+                            'message' => 'New password cannot be same with your old password'
+                        ];
+                        $responseCode = 400;
+                    
+                    } else {
+
+                        $user->password = bcrypt($request->input('new_password'));
+                        $user->save();
+                        $responseCode = 200;
+                    }
                 }
+                
             }
         } catch (ModelNotFoundException $modelNotFoundException) {
             $response = [
