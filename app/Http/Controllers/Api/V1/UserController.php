@@ -31,6 +31,7 @@ use Log;
 use Mail;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Validator;
+use Illuminate\Support\Facades\Hash;
 
 use App\Helper\GiftStatement;
 
@@ -86,8 +87,10 @@ class UserController extends Controller
 
     public function changePassword(Request $request)
     {
-
+        $response = [];
+        $responseCode = 400;
         try {
+
             $validator = Validator::make($request->all(), [
                 'new_password' => 'required',
                 'confirm_password' => 'required',
@@ -105,18 +108,20 @@ class UserController extends Controller
                     'message' => $errorMessage,
                 ];
                 $responseCode = 400;
+            
             } else {
-                $user = User::find(Auth::user()->id);
-
+                
+                $user = \Auth::user();
                 if(!\Hash::check($request->get('old_password'), $user->password)) {
-                   $response = [
+                    $response = [
                             'status' => false,
                             'message' => 'Old password does not match with our records'
                         ];
                     $responseCode = 400; 
+                
                 } else {
 
-                    if(strcmp($request->get('confirm_password'), $request->get('new_password')) == 0) {
+                    if(strcmp($request->get('old_password'), $request->get('new_password')) == 0) {
                         $response = [
                             'status' => false,
                             'message' => 'New password cannot be same with your old password'
@@ -125,13 +130,29 @@ class UserController extends Controller
                     
                     } else {
 
-                        $user->password = bcrypt($request->input('new_password'));
-                        $user->save();
-                        $responseCode = 200;
+                        if(strcmp($request->get('new_password'), $request->get('confirm_password')) != 0) {
+                            $response = [
+                                'status' => false,
+                                'message' => 'New password and confirm password does not match'
+                            ];
+                            $responseCode = 400;
+                        } else {
+
+                            $user->password = $request->get('new_password');
+                            $user->save();
+                            $response = [
+                                'status' => true,
+                                'message' => 'Password changed successfully'
+                            ];
+                            $responseCode = 200;
+                        }
+                        
                     }
+
                 }
                 
             }
+
         } catch (ModelNotFoundException $modelNotFoundException) {
             $response = [
                 'status' => false,
@@ -721,7 +742,8 @@ class UserController extends Controller
           'email_notification'      => 'required|numeric|between:0,1|integer',
           'email'             =>  "nullable|required_if:email_notification,1|email",
           'is_backuprepresentative' => 'required|numeric|integer|between:0,1',
-          'phone'              => 'required'
+          'phone'              => 'required',
+          'relationship_other' => 'nullable'
       ]);
 
       // validation for the user data
@@ -964,7 +986,8 @@ class UserController extends Controller
             'email_notification' => 'required|numeric|between:0,1|integer',
             'email'         => 'nullable|required_if:email_notification,1|email',
             'zip'          =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
-            'phone'         => 'required'
+            'phone'         => 'required',
+            'relationship_other' => 'nullable'
         ]);
         if ($validator->fails()) {
             $response = response()->json([

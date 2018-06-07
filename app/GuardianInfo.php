@@ -22,7 +22,7 @@ class GuardianInfo extends Model
     protected $softDelete = true;
 
     protected $fillable = [
-       'user_id' , 'fullname' , 'relationship_with' , 'address' , 'country' , 'city' , 'state' , 'zip' , 'email_notification' ,'phone', 'email' , 'is_backup' , 'created_at' , 'updated_at'
+       'user_id' , 'fullname' , 'relationship_with' , 'address' , 'country' , 'city' , 'state' , 'zip' , 'email_notification' ,'phone', 'email' , 'is_backup' , 'created_at' , 'updated_at','relationship_other'
     ];
 
 }

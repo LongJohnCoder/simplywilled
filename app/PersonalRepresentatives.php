@@ -21,5 +21,5 @@ class PersonalRepresentatives extends Model
 
     protected $softDelete = true;
 
-    protected $fillable = ['user_id','fullname','relationship_with','address','country','city','state','zip','email_notification','email','is_backuprepresentative','phone'];
+    protected $fillable = ['user_id','fullname','relationship_with','address','country','city','state','zip','email_notification','email','is_backuprepresentative','phone', 'relationship_other'];
 }
