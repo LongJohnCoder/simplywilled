@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class UserService {
 
+  public currentToolTipType = new Subject<string>();
   constructor( private httpClient: HttpClient ) { }
 
   /** Function call for logging in*/
@@ -54,5 +56,10 @@ export class UserService {
     /** Function for change-password-form*/
     changePasswordSubmit(formBody): Observable<any> {
         return this.httpClient.post(environment.API_URL + 'user/change-password', formBody);
+    }
+
+    /** Function to set current Tool Tip Type */
+    changeCurrentToolTipType(value: string) {
+        this.currentToolTipType.next(value);
     }
 }

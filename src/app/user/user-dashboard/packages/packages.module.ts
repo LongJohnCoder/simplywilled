@@ -7,6 +7,7 @@ import { PaymentStatusComponent } from './payment-status/payment-status.componen
 import {FormsModule} from '@angular/forms';
 import { PaymentPageComponent } from './payment-page/payment-page.component';
 import {NgxMaskModule} from 'ngx-mask';
+import { PaidPackagesComponent } from './paid-packages/paid-packages/paid-packages.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import {NgxMaskModule} from 'ngx-mask';
     FormsModule,
     PackagesRoutingModule
   ],
-  declarations: [PackagesComponent, PaymentStatusComponent, PaymentPageComponent]
+  declarations: [PackagesComponent, PaymentStatusComponent, PaymentPageComponent, PaidPackagesComponent]
 })
 export class PackagesModule { }

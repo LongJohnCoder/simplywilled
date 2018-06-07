@@ -1,3 +1,4 @@
+import { GlobalTooltipComponent } from './../../global-tooltip/global-tooltip.component';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormArray, FormGroup, NgForm} from '@angular/forms';
 import * as moment from 'moment';
@@ -7,7 +8,6 @@ import {UserAuthService} from '../../../user-auth/user-auth.service';
 import {UserDashboardService} from '../../user-dashboard.service';
 import {Subscription} from 'rxjs/Subscription';
 import {ProgressbarService} from '../../shared/services/progressbar.service';
-
 
 @Component({
   selector: 'app-tell-us-about-yourself',
@@ -31,6 +31,8 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
   userSubscription: Subscription;
   editSubscription: Subscription;
   classId: number;
+  toolTipMessageList: any;
+  toolTipMessage: any;
 
   /**Constructor call*/
   constructor(
@@ -42,6 +44,44 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
   ) {
       this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
       this.progressbarService.changeWidth({width: 0});
+
+      this.toolTipMessageList = {
+      'name' : [{
+          'q' : 'What is my full legal name?',
+          // tslint:disable-next-line:max-line-length
+          'a' : 'Please remember to use your name as it appears on your driver’s license or government issued photo identification and provide accordingly. If you don\'t have a middle name leave it blank'
+        }],
+      'maritial_status' : [{
+            'q' : 'What if I am legally separated from my spouse?',
+            // tslint:disable-next-line:max-line-length
+            'a' : 'Your estate plan documents need to be as accurate as possible as of the date you sign them. If you are currently married, and not legally divorced, you should select Married. Once you are legally divorced, you should use SimplyWilled.com to update your marital status on your estate documents.',
+          }, {
+            'q' : 'What if I am engaged to be married?',
+            // tslint:disable-next-line:max-line-length
+            'a' : 'If you are engaged to be married at the time you are preparing your estate documents you should select Single. Once you are legally married, you should update your your marital status on your estate documents.'
+          }, {
+            'q' : 'What If I am in a domestic relationship?',
+            // tslint:disable-next-line:max-line-length
+            'a' : 'If you are in a domestic relationship registered or otherwise recognized under the laws of your state, you should select Domestic Relationship for your marital status.'
+          }],
+        'partner' : [{
+          'q' : 'What is your spouse’s full legal name?',
+          // tslint:disable-next-line:max-line-length
+          'a' : 'Please remember to use the full legal name of your spouse or partner as it appears on their driver’s license or government issued photo identification.'
+        }],
+        'address' : [{
+          'q' : 'Why Is my home address important?',
+          'a' : 'Remember, the home address you provide will determine which state’s laws are used to prepare your estate plan documents.',
+        }, {
+          'q' : 'What If I have more than one home address?',
+          // tslint:disable-next-line:max-line-length
+          'a' : `If you have more than one home, use the place that you consider your primary and permanent residence. If you have more than one home, and aren’t sure which address to use consider the following things
+          -What address is listed on your driver’s license?
+          -What address is listed on your voter registration card?
+          -What address is listed on your bank checking account?
+          -What address is listed on your federal tax return?`
+        }]
+      };
   }
 
   /**When the component is initialised*/
@@ -52,14 +92,15 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
             this.dashboardService.updateUserDetails(response.data);
             if ( response.data[0].data) {
                 this.userInfo = response.data[0].data.userInfo;
-                let dobData = this.userInfo.dob !== null ? this.userInfo.dob.split('-') : '';
-                let partnerDob = this.userInfo.partner_dob !== null ? this.userInfo.partner_dob.split('-') : '';
+                const dobData = this.userInfo.dob !== null ? this.userInfo.dob.split('-') : '';
+                const partnerDob = this.userInfo.partner_dob !== null ? this.userInfo.partner_dob.split('-') : '';
                 this.userInfo.year =  dobData !== '' ? dobData[0] : '';
                 this.userInfo.month = dobData !== '' ? dobData[1] : '';
                 this.userInfo.day = dobData !== '' ? dobData[2] : '';
                 this.userInfo.spouseYear = partnerDob !== '' ? partnerDob[0] : '';
                 this.userInfo.spouseMonth = partnerDob !== '' ?  partnerDob[1] : '';
                 this.userInfo.spouseDay = partnerDob !== '' ?  partnerDob[2] : '';
+                // tslint:disable-next-line:max-line-length
                 this.userInfo.partner_invitation = this.userInfo !== null && this.userInfo.partner_invitation !== null ? this.userInfo.partner_invitation : 0;
             }
         },
@@ -126,11 +167,18 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
     }
   }
 
-  tooltip(classNumber: number){
+  tooltip(classNumber: number) {
     this.classId = classNumber;
   }
 
-  closeToolTip(){
+  toolTipClicked(str: string) {
+    console.log(str);
+    this.userService.changeCurrentToolTipType(str);
+    // this.toolTipMessage = this.toolTipMessageList[str];
+    // console.log('tooltip message :', this.toolTipMessage);
+  }
+
+  closeToolTip() {
 
   }
 }

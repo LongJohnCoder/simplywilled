@@ -110,7 +110,12 @@ const routes: Routes = [
                 path: 'change-password',
                 canActivate: [ UserPaidGuard ],
                 loadChildren: '../user-dashboard/change-password/change-password.module#ChangePasswordModule'
-            }
+            },
+            {
+                path: 'packages-paid',
+                    canActivate: [UserPaidGuard],
+                loadChildren: './packages/packages.module#PackagesModule'
+            },
         ]
     },
 

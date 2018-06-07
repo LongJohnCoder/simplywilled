@@ -2740,11 +2740,12 @@ select.form-control{
   margin-bottom: 5px;
 }
 .tooltipContainer dt {
-  font-family: 'OpenSans-SemiBold';
-  font-size: 14px;
-  background: #459dd5;
-  color: #fff;
-  padding: 5px;
+    font-family: 'OpenSans-SemiBold';
+    font-size: 14px;
+    background: #459dd5;
+    color: #fff;
+    padding: 5px 35px 5px 5px;
+    position: relative;
 }
 .tooltipContainer dd {
   padding: 7px;
@@ -2753,13 +2754,17 @@ select.form-control{
   display: none;
 }
 .tooltipContainer dt span{
-  float: right;
-  line-height: 0;
-  width: 22px;
-  height: 22px;
-  text-align: center;
-  padding: 1px 0 0px;
-  border-radius: 12px;
+    float: right;
+    line-height: 0;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    padding: 1px 0 0px;
+    border-radius: 12px;
+    right: 5px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .tooltipContainer dl.open dd{
   display: block;
