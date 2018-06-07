@@ -425,6 +425,10 @@ header{
 .dashboardHeaderRight{
     float: right;
 }
+.accountBtnArea.active .myAccount i.otherIcon{
+  background: none;
+  padding: 0 0 0 5px;
+}
 
 @media screen and (min-width: 992px) and (max-width: 1199px){
     .sidebar h1 {
@@ -482,7 +486,7 @@ header{
   }
   .logo img{
     width: 55%;
-    }   
+    }
     .dashboardHeaderRight {
         width: 100%;
         margin-bottom: 15px;
