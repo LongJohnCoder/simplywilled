@@ -698,7 +698,20 @@ Route::group(['prefix' => 'v1'], function() {
                 'uses'=>'Api\V1\UserManagementController@getUserDetails',
                 'as' => 'api.v1.getUserDetails.get'
             ]);
-
+            /**
+             * Route for success paypal payment
+             */
+            Route::post('paypal-package-success', [
+                'uses' => 'Api\V1\PackageController@paypalPackageSuccess',
+                'as' => 'api.v1.paypalPackageSuccess.post'
+            ]);
+            /**
+             * Route for failed paypal payment
+             */
+            Route::post('paypal-package-failed', [
+                'uses' => 'Api\V1\PackageController@paypalPackageFailed',
+                'as' => 'api.v1.paypalPackageFailed.post'
+            ]);
             /*
              * Route for get packages
              * */
@@ -715,20 +728,7 @@ Route::group(['prefix' => 'v1'], function() {
             'uses' => 'Api\V1\PackageController@getPackages',
             'as'   => 'api.v1.getuserPackages.get'
         ]);
-        /**
-         * Route for success paypal payment
-         */
-        Route::get('paypal-package-success', [
-            'uses' => 'Api\V1\PackageController@paypalPackageSuccess',
-            'as' => 'api.v1.paypalPackageSuccess.get'
-        ]);
-        /**
-         * Route for failed paypal payment
-         */
-        Route::get('paypal-package-failed', [
-            'uses' => 'Api\V1\PackageController@paypalPackageFailed',
-            'as' => 'api.v1.paypalPackageFailed.get'
-        ]);
+
 
         Route::get('paypal-flow-button', [
             'uses' => 'Api\V1\PackageController@paypalFlowButton',

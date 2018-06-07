@@ -299,8 +299,8 @@ class PackageController extends Controller
             ->setInvoiceNumber(uniqid());
 
         $redirectUrls = Paypalpayment::redirectUrls();
-        $redirectUrls->setReturnUrl(url("/api/v1/user/paypal-package-success"))
-            ->setCancelUrl(url("/api/v1/user/paypal-package-failed"));
+        $redirectUrls->setReturnUrl(url("/dashboard/payment/success"))
+            ->setCancelUrl(url("/dashboard/payment/failure"));
 
         $payment = Paypalpayment::payment();
 
@@ -327,7 +327,7 @@ class PackageController extends Controller
         $userPackage->payment_method = 'Paypal';
         $userPackage->payment_token = $payment->toArray()['id'];
         $userPackage->payment_status = '1';
-        $userPackage->payment_response = json_encode(['request' => $request->all()]);
+        $userPackage->payment_response = json_encode(['request' => $request->all(), 'process_req' => $payment->toArray()]);
         $userPackage->amount = $total;
         if ($coupon) {
           $userPackage->coupon_id = $couponID;
@@ -340,7 +340,8 @@ class PackageController extends Controller
 
         return response()->json([
           'status' => true,
-          'approval_url' => $payment->getApprovalLink()
+          'approval_url' => $payment->getApprovalLink(),
+          'data' => $payment->toArray()
         ], 200);
       } catch (\Exception $e) {
         return response()->json([
@@ -353,29 +354,67 @@ class PackageController extends Controller
 
     }
 
-    public function paypalPackageSuccess()
+    public function paypalPackageSuccess(Request $request)
     {
       try {
-        $paymentID = $_GET['paymentId'];
+        $paymentID = $request->paymentId;
         $userPackage = UserPackage::where('payment_token', $paymentID)->first();
         if ($userPackage) {
-          $payment = Paypalpayment::getById($paymentID, Paypalpayment::apiContext());
-          $userPackage->payment_response = $payment;
+          try {
+            $payment = Paypalpayment::getById($paymentID, Paypalpayment::apiContext());
+          } catch (PPConnectionException $ex) {
+            return response()->json([
+              'status' => false,
+              'error' => $ex->getMessage()
+            ], 400);
+          }
+          // $arr = [];
+          $arr[] = json_decode($userPackage->payment_response, TRUE);
+          $arr['res'] = $payment;
+          $userPackage->payment_response = json_encode($arr);
           $userPackage->payment_status = '2';
           $userPackage->status = '1';
           $userPackage->save();
-          return redirect('/dashboard/packages/status/'.$paymentID);
+
+          $user = User::find($userPackage->user_id);
+          $customClaims = ['package' => $user->package];
+          $token = JWTAuth::fromUser($user, $customClaims);
+
+          return response()->json([
+            'status'=> true,
+            'message'=> 'Payment done',
+            'data'=> [
+              'jwtToken' => $token
+            ]
+          ], 200);
         } else {
-          return redirect('/dashboard/packages/status/'.$paymentID);
+          return response()->json([
+            'status'=> false,
+            'error'=> 'Database Error',
+          ], 400);
         }
       } catch (\Exception $e) {
-        return redirect('/dashboard/packages/status/'.$paymentID);
+        return response()->json([
+          'status'=> false,
+          'error'=> $e->getMessage(),
+        ], 500);
       }
     }
 
-    public function paypalPackageFailed()
+    public function paypalPackageFailed(Request $request)
     {
-      return redirect('/dashboard/packages/status/paymentID');
+      try {
+        $token = $request->token;
+        return response()->json([
+          'status'=> false,
+          'error'=> 'Payment failed',
+        ], 400);
+      } catch (\Exception $e) {
+        return response()->json([
+          'status'=> false,
+          'error'=> $e->getMessage(),
+        ], 500);
+      }
     }
 
     public function paypalFlowButton()
@@ -524,6 +563,12 @@ class PackageController extends Controller
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
 
         $resp = curl_exec($ch);
+        if (!$resp) {
+          return response()->json([
+            'status' => false,
+            'error' => 'To order, Please contact us.'
+          ], 500);
+        }
         parse_str($resp, $arr);
 
         $paypalMethod = [];
@@ -552,6 +597,7 @@ class PackageController extends Controller
         $userPackage->payment_token = $arr['CORRELATIONID'];
         if ($arr['ACK'] == 'Success') {
           $userPackage->payment_status = '2';
+          $userPackage->status = '1';
         }
         $userPackage->save();
 
