@@ -12,7 +12,7 @@
 </div>
 
 
-<div class="col-xs-12 packageContainer">
+<div class="col-xs-12 packageContainer" *ngIf="!paymentPageDisplay">
   <div class="main-content tellusaboutyou">
     <h2>Your personalized estate plan</h2>
     <ul class="packages_ul">
@@ -100,3 +100,5 @@
     </div>
   </ng-template>
 </div>
+
+<app-payment-page *ngIf="paymentPageDisplay" [paymentData]="paymentData"></app-payment-page>

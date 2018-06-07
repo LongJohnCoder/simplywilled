@@ -20,6 +20,7 @@ export class PackagesComponent implements OnInit {
   couponToken: string;
   paymentData: any;
   couponInfo: any;
+  paymentPageDisplay: boolean;
   constructor(
       private packageService: PackagesService,
       private modalService: BsModalService,
@@ -27,6 +28,7 @@ export class PackagesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+      this.paymentPageDisplay = false;
       this.data = {
         'id': '',
         'name': '',
@@ -98,8 +100,10 @@ export class PackagesComponent implements OnInit {
             'totalAmount': this.totalAmount,
             'couponID': this.couponInfo === null ? null : this.couponInfo.id,
             'discountAmount': this.discountAmount,
-            'package': this.data
+            'package': this.data,
+            'userID': this.userId
         };
+        this.paymentPageDisplay = true;
 
         console.log(this.paymentData);
     }

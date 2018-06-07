@@ -1,0 +1,608 @@
+.main-content .email-box{
+    display: inline-block;
+    border: 1px solid #ddd;
+    background: #F2F2F2;
+    height: 105px;
+    width: 350px;
+    padding: 20px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.main-content .valid.email-box{
+    border-color: #42A82D;
+    margin-bottom: 10px;
+}
+.main-content .valid.email-box i {
+    top: 40px;
+    right: 30px;
+}
+.main-content .invalid.email-box{
+    border-color: #ff5959;
+    margin-bottom: 10px;
+}
+.main-content .invalid.email-box i {
+    top: 40px;
+    right: 30px;
+}
+
+
+
+
+.main-content {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 1px 0 #ddd;
+    -webkit-box-shadow: 0 1px 1px 0 #ddd;
+    -moz-box-shadow: 0 1px 1px 0 #ddd;
+    display: inline-block;
+    width: 100%;
+    padding: 30px;
+}
+.main-content h2{
+    color: #2479B8;
+    font-size: 36px;
+    margin: 0;
+    text-transform: capitalize;
+}
+.main-content p{
+    font-size: 14px;
+    margin: 0;
+    line-height: 24px;
+}
+.main-content.loading-screen p{
+    margin: 20px 0;
+}
+.main-content .valid .form-control{
+    border-color: #42A82D;
+    color: #42A82D;
+}
+.main-content .valid i{
+    position: absolute;
+    top: 44px;
+    right: 44px;
+    background: #42A82D;
+    color: #fff;
+    height: 22px;
+    width: 22px;
+    text-align: center;
+    line-height: 22px;
+    border-radius: 50%;
+}
+.main-content .invalid .form-control{
+    border-color: #ff5959;
+    color: #ff5959;
+}
+.main-content .invalid i{
+    position: absolute;
+    top: 44px;
+    right: 44px;
+    background: #ff5959;
+    color: #fff;
+    height: 22px;
+    width: 22px;
+    text-align: center;
+    line-height: 22px;
+    border-radius: 50%;
+}
+.main-content.loading-screen p{
+    margin: 20px 0;
+}
+.main-content.tellusaboutyou{
+    padding: 30px 0 0;
+    width: 800px;
+}
+.main-content.tellusaboutyou h2{
+    padding: 0 30px;
+}
+.main-content .form-group{
+    padding: 0 30px;
+    margin: 25px 0;
+    position: relative;
+}
+.main-content .form-group label{
+    display: block;
+    font-weight: normal;
+    font-size: 18px;
+    text-align: left;
+}
+.main-content .form-group .radio_ul6 label{
+    float: left;
+}
+.main-content .form-control{
+    font-size: 16px;
+    height: 40px;
+    border-radius: 6px;
+    margin-top: 10px;
+    border: 1px solid #BFBFBF;
+    font-style: italic;
+}
+.main-content select.form-control{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.main-content .valid .form-control{
+    border-color: #42A82D;
+    color: #42A82D;
+}
+.main-content .valid i{
+    position: absolute;
+    top: 44px;
+    right: 44px;
+    background: #42A82D;
+    color: #fff;
+    height: 22px;
+    width: 22px;
+    text-align: center;
+    line-height: 22px;
+    border-radius: 50%;
+}
+.main-content .invalid .form-control{
+    border-color: #ff5959;
+    color: #ff5959;
+}
+.main-content .invalid i{
+    position: absolute;
+    top: 44px;
+    right: 44px;
+    background: #ff5959;
+    color: #fff;
+    height: 22px;
+    width: 22px;
+    text-align: center;
+    line-height: 22px;
+    border-radius: 50%;
+}
+.radio_ul6{
+    text-align: left;
+}
+.radio_ul6 li, .first_page_radio li{
+    width: auto;
+    margin-right: 5px;
+    margin-left: 0;
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+}
+.radio_custom{
+    height: 105px;
+    width: 105px;
+    position: relative;
+    border: 1px solid #BFBFBF;
+    font-family: 'OpenSans';
+    box-shadow:0 1px 1px 1px #ddd;
+    -webkit-box-shadow:0 1px 1px 1px #ddd;
+    -moz-box-shadow:0 1px 1px 1px #ddd;
+    min-height: 100%;
+}
+
+.percentage-estate .radio_custom{
+    height: 120px;
+    width: 120px;
+}
+.radio_custom .human_status{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    font-size: 16px;
+}
+.radio_custom.active {
+    border-color: #42A82D;
+    background: #42A82D;
+    color: #fff;
+}
+.radio_custom.marital_status{
+    height: 130px;
+    width: 130px;
+    cursor: pointer;
+}
+.radio_custom.marital_status.active{
+    background: none;
+}
+.radio_custom.marital_status.active .human_status2{
+    color: #42A82D;
+}
+.error_input {
+    border: 1px solid #ff5959;
+}
+.error_txt {
+    width: 100%;
+    display: inline-block;
+    background-color: #ff5959;
+    color: #fff;
+    padding: 5px;
+    margin: 10px 0;
+    text-align: center;
+    border-radius: 5px;
+}
+.gifts-list .radio_custom {
+    width: 120px;
+    height: 120px;
+}
+.gifts-list .radio_custom.active{
+    background: #fff;
+}
+.gifts-list .radio_custom.active .human_status3{
+    color: #42A82D;
+}
+.radio_custom .human_status{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    font-size: 16px;
+}
+.radio_ul6 li, .first_page_radio li{
+    width: auto;
+    margin-right: 5px;
+    margin-left: 0;
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+}
+.first_page_radio{
+    text-align: left;
+}
+.custom_img2 {
+    padding-bottom: 2px;
+    display:block;
+    padding-top: 10px;
+    text-align: center;
+}
+.human_status2{
+    font-family: 'OpenSans';
+    position: absolute;
+    transform: translate(-50%,0);
+    left: 50%;
+    top: auto;
+    bottom: 10px;
+    line-height: 20px;
+    text-align: center;
+}
+.radio_custom.marital_status.active .human_status2{
+    color: #42A82D;
+}
+.form-footer{
+    display: inline-block;
+    width: 100%;
+    background: #f4f3f2;
+    vertical-align: top;
+    padding: 40px 25px;
+    box-shadow: inset 0px 2px 10px 0 #e0e0e0;
+}
+.inprogress img{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+.btn-complete{
+    background: url('../../../../../assets/images/complete-green-btn.png') no-repeat center center !important;
+    background-size: 100% 100%;
+    padding: 10px 0 10px 30px;
+    width: 130px;
+    margin: 0;
+    float: right;
+}
+.inprogress .btn-complete{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+select.form-control{
+    margin: 0;
+}
+
+.cardNumber{
+    width: calc(100% - 70px);
+    float: right;
+}
+.cardLogo{
+    width: 52px;
+    height: 34px;
+    float: left;
+}
+.cardLogo span{
+    width: 52px;
+    height: 34px;
+    background: url('../../../../../assets/images/cards.png') no-repeat;
+    background-position: left 0 top 0;
+    background-size: auto 34px;
+    margin-top: 12px;
+    display: block;
+}
+.cardLogo span.null{
+    background-position-x: 0px;
+    animation-name: cardType;
+    animation-duration: 1s;
+}
+.cardLogo span.unknown{
+    background-position-x: -70px;
+    animation-name: cardType;
+    animation-duration: 1s;
+}
+.cardLogo span.amex{
+    background-position-x: -140px;
+    animation-name: cardType;
+    animation-duration: 1s;
+}
+.cardLogo span.visa{
+    background-position-x: -210px;
+    animation-name: cardType;
+    animation-duration: 1s;
+}
+.cardLogo span.visa2{
+    background-position-x: -280px;
+    animation-name: cardType;
+    animation-duration: 1s;
+}
+.cardLogo span.discover{
+    background-position-x: -350px;
+    animation-name: cardType;
+    animation-duration: 1s;
+}
+.cardLogo span.master{
+    background-position-x: -420px;
+    animation-name: cardType;
+    animation-duration: 1s;
+}
+.cardLogo span.diners{
+    background-position-x: -490px;
+    animation-name: cardType;
+    animation-duration: 1s;
+}
+.cardLogo span.diners2{
+    background-position-x: -560px;
+    animation-name: cardType;
+    animation-duration: 1s;
+}
+.cardLogo span.jcd{
+    background-position-x: -630px;
+    animation-name: cardType;
+    animation-duration: 1s;
+}
+
+@keyframes cardType{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+
+.packageContainer{
+    position: relative;
+}
+.packagesRight{
+    position: absolute;
+    margin-right: -398px;
+    width: 320px;
+    right: 0;
+    top: 0;
+}
+.packagesRightPanel{
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 1px 0 #ddd;
+    padding: 15px;
+    display: inline-block;
+    width: 100%;
+}
+.packagesRightPanel h2 {
+    color: #2479B8;
+    font-size: 36px;
+    margin-bottom: 23px;
+    padding-top: 15px;
+}
+.packageLogo {
+    text-align: center;
+    margin-bottom: 32px;
+    background: linear-gradient(#cce895, #fff, #8bc1e2);;
+    margin: 0 -15px 20px;
+    padding: 30px 0;
+}
+.packageLogo img{
+    filter: drop-shadow(0 0 14px #fff);
+    width: 170px;
+}
+.packageName{
+    font-size: 14px;
+    color: #696969;
+    padding-bottom: 10px;
+}
+.packageName img{
+    width: 18px;
+}
+.packageName span{
+    float: right;
+    color: #46ac33;
+    font-family: 'OpenSans-bold';
+}
+.packageName.discount span{
+    color: #ffa700;
+}
+.packageName.realPrice{
+    margin-top: 10px;
+}
+.packageName.totalOrder{
+    border-top: 2px solid #d8d8d8;
+    padding-top: 7px;
+    margin-top: 10px;
+    font-family: 'OpenSans-bold';
+}
+.packageName.totalOrder span{
+    color: #2479B8;
+}
+.howItWorks{
+    margin-top: 15px;
+}
+.howItWorks h3 {
+    color: #2479B8;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.howItWorks ol{
+    padding: 0 0 0 74px;
+}
+.howItWorks ol li{
+    font-size: 14px;
+    color: #373737;
+    list-style: decimal;
+    margin-bottom: 10px;
+    position: relative;
+}
+.howItWorks ol li:before{
+    content: "";
+    position: absolute;
+    left: -72px;
+    top: 5px;
+    width: 45px;
+    height: 45px;
+}
+.howItWorks ol li:nth-child(1n):before {
+    background: url("../../../../../assets/images/emergency2.png") no-repeat;
+    background-size: 45px 45px;
+    background-position-y: top;
+}
+.howItWorks ol li:nth-child(2n):before {
+    background: url("../../../../../assets/images/save-m.png") no-repeat;
+    background-size: 45px 45px;
+    background-position-y: top;
+}
+.howItWorks ol li:nth-child(3n):before {
+    background: url("../../../../../assets/images/save-m.png") no-repeat;
+    background-size: 45px 45px;
+    background-position-y: top;
+}
+.howItWorks ol li:nth-child(4n):before {
+    background: url("../../../../../assets/images/law-hammer.png") no-repeat;
+    background-size: 45px 45px;
+    background-position-y: top;
+}
+.askCvv{
+    cursor: pointer;
+    color: #373737;
+    font-size: 12px;
+    text-decoration: underline;
+}
+.main-content.tellusaboutyou h3{
+    color: #2479B8;
+    font-size: 24px;
+    margin: 0;
+    text-transform: capitalize;
+    padding: 0 30px;
+    font-family: 'OpenSans-Bold';
+    margin: 25px 0 10px;
+}
+.main-content.tellusaboutyou .headingInfo{
+    padding: 0 30px;
+    font-size: 13px;
+}
+.main-content.tellusaboutyou .headingInfo span{
+    font-family: 'OpenSans-bold';
+}
+.main-content .payPaypal, .main-content .payCardHead{
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    padding: 14px 15px;
+    background: linear-gradient(#ffffff, #f1f1f1);
+    width: 48%;
+}
+.main-content .payPaypal{
+    text-align: center;
+    font-size: 18px;
+    color: #495057;
+    float: left;
+    margin-bottom: 10px;
+}
+.main-content .payPaypal img{
+    padding-left: 10px;
+}
+.main-content .payCardHead{
+    float: right;
+    padding-bottom: 8px;
+}
+.payCardHead p{
+    color: #495057;
+    line-height: 16px;
+    font-size: 16px;
+    font-family: 'OpenSans-Semibold';
+    float: right;
+    width: calc(100% - 62px);
+}
+.payCardHead p span{
+    font-size: 12px;
+    font-family: 'OpenSans';
+    display: block;
+    padding-top: 5px;
+}
+.cardIcon{
+    float: left;
+}
+.cardIcon img{
+    width: 52px;
+}
+.main-content .payCard{
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 0 30px 30px;
+}
+.main-content .payPaypal.active, .main-content .payCardHead.active{
+    background: linear-gradient(#70c9ff, #208ed2);
+    border: 1px solid #0075bd;
+}
+.main-content .payPaypal.active p, .main-content .payCardHead.active p{
+    color: #fff;
+}
+
+@media screen and (max-width:1199px){
+    .main-content.tellusaboutyou{
+        width: 720px;
+    }
+    .packagesRight {
+        margin-right: -336px;
+        width: 285px;
+    }
+    .main-content.tellusaboutyou {
+        width: 660px;
+    }
+    .howItWorks ol li{
+        font-size: 13px;
+    }
+    .packagesRightPanel h2{
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width:991px){
+    .main-content.tellusaboutyou{
+        width: 100%;
+    }
+    .packagesRight {
+        margin-right: -281px;
+        width: 270px;
+    }
+    .main-content .payPaypal, .main-content .payCardHead{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:768px){
+    .packagesRight {
+        width: 100%;
+        position: relative;
+        margin-top: 20px;
+    }
+    .howItWorks ol li {
+        font-size: 14px;
+        min-height: 45px;
+    }
+}
+
+@media screen and (max-width:430px){
+    .payCardHead p {
+        line-height: 19px;
+        font-size: 14px;
+    }
+    .payCardHead p span{
+        line-height: 15px;
+    }
+}
