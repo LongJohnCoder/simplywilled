@@ -1,3 +1,15 @@
+<div class="pageLoader" *ngIf="loading">
+  <div class="loaderInner">
+    <img src="../../../../assets/images/owl-loading.gif" alt="Loading...">
+    <p class="loadingTxt">
+      Please Wait
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+  </div>
+</div>
+
 <div class='finances' *ngIf="!loading">
     <form [formGroup] = "poaDetailsForm" (ngSubmit)="send()">
       <div class="main-content tellusaboutyou" >
@@ -28,7 +40,7 @@
 
 
             <div class="form-group">
-              <label>Beneficiary's relationship to you?</label>
+              <label>Power of attorney's relationship to you?</label>
 
               <select class="form-control" #selectRelationship (change)="relationshipChange('relationship',selectRelationship.value)" formControlName="relationship">
                 <option value="">Select Relationship</option>
@@ -49,6 +61,15 @@
 
             </div>
 
+            <div class="form-group" *ngIf="poaDetailsForm.get('relationship').value == 'Other'">
+              <label>Mention your relationship </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="other_relationship"
+                required
+                name ='other_relationship'>
+            </div>
 
             <div class="form-group">
               <!--<label>What is their address? </label>
@@ -154,16 +175,6 @@
                 </span>
             </div>
 
-            <div class="form-group" *ngIf="poaDetailsForm.get('relationship').value == 'Other'">
-                <label>Mention your relationship </label>
-                <input
-                        type="text"
-                        class="form-control"
-                        formControlName="other_relationship"
-                        required
-                        name ='other_relationship'>
-            </div>
-
             <div class="form-group">
               <label>Would you like to inform this person that you appointed them as your Financial Power of Attorney?</label>
               <ul class="radio_ul6">
@@ -264,7 +275,7 @@
               </div>
 
               <div class="form-group">
-                <label>Beneficiary's relationship to you?</label>
+                <label>Power of attorney's relationship to you?</label>
 
                 <select class="form-control" #selectBackupRelationship (change)="relationshipChange('backup_relationship', selectBackupRelationship.value)" formControlName="backup_relationship">
                   <option value="">Select Relationship</option>
@@ -285,6 +296,15 @@
 
               </div>
 
+              <div class="form-group" *ngIf="poaDetailsForm.get('backup_relationship').value == 'Other'">
+                <label>Mention your relationship </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="backup_other_relationship"
+                  required
+                  name ='other_relationship'>
+              </div>
 
               <!--<div class="form-group">
                 <label>What is their address? </label>
@@ -390,17 +410,6 @@
                       *ngIf="poaDetailsForm.get('backup_phone').touched && poaDetailsForm.get('backup_phone').dirty && poaDetailsForm.get('backup_phone').hasError('minlength')">
                     Please provide a second power attorney phone
                 </span>
-              </div>
-
-
-              <div class="form-group" *ngIf="poaDetailsForm.get('backup_relationship').value == 'Other'">
-                <label>Mention your relationship </label>
-                <input
-                        type="text"
-                        class="form-control"
-                        formControlName="backup_other_relationship"
-                        required
-                        name ='other_relationship'>
               </div>
 
               <div class="form-group">

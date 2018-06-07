@@ -504,6 +504,7 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
     this.ysgComponent.deleteGift(id);
     this.ysgComponent.changeViewState();
     this.editService.unsetData();
+    window.location.reload();
   }
 
   /**

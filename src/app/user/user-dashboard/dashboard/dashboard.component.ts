@@ -73,7 +73,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     /**Initialises the form**/
     createForm() {
       this.referAFriendForm = this._fb.group({
-        'email': new FormControl('')
+        'firstname': new FormControl(''),
+        'lastname': new FormControl(''),
+        'email': new FormControl(''),
       });
     }
 
@@ -135,11 +137,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
     toggleShowDiv() {
         this.animationState = this.animationState === 'out' ? 'in' : 'out';
         if (this.animationState === 'in') {
+          this.referAFriendForm.get('firstname').setValidators([Validators.required]);
+          this.referAFriendForm.get('lastname').setValidators([Validators.required]);
           this.referAFriendForm.get('email').setValidators([Validators.required, Validators.pattern(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)]);
+          this.referAFriendForm.get('firstname').updateValueAndValidity();
+          this.referAFriendForm.get('lastname').updateValueAndValidity();
           this.referAFriendForm.get('email').updateValueAndValidity();
         } else {
+          this.referAFriendForm.get('firstname').clearValidators();
+          this.referAFriendForm.get('lastname').clearValidators();
           this.referAFriendForm.get('email').clearValidators();
           this.referAFriendForm.get('email').updateValueAndValidity();
+          this.referAFriendForm.get('firstname').updateValueAndValidity();
+          this.referAFriendForm.get('lastname').updateValueAndValidity();
         }
     }
 
@@ -153,7 +163,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
           console.log(response);
           if (response.status) {
             this.message.errorMessage = '';
-            this.message.successMessage = response.message;
+            this.message.successMessage = 'They’ll be notified via e-mail at the address you provided.';
           } else {
             this.message.errorMessage = response.message;
             this.message.successMessage = '';

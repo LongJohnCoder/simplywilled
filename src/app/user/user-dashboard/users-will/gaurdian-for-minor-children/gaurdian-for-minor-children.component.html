@@ -38,8 +38,7 @@
     <div *ngIf="myForm.value.isGuardianMinorChildren == 'Yes'">
       <h2>Name Your First Choice for Guardian</h2>
       <div formArrayName="guardian">
-        <div *ngFor="let item of myForm.controls.guardian.controls; let i=index">
-          <div [formGroupName]="i">
+        <div *ngFor="let item of myForm.controls.guardian.controls; let i=index" [formGroupName]="i">
             <div class="form-group ">
               <label>Full Legal Name: </label>
               <input type="text" value="" class="form-control" formControlName="fullname" >
@@ -52,7 +51,7 @@
             </div>
             <div class="form-group ">
               <label>Their Relationship To You: </label>
-              <select name="first_guardian_relationship" class="form-control" formControlName="relationship_with">
+              <select name="first_guardian_relationship" class="form-control" formControlName="relationship_with" #relationship_with (change)="changeRelationshipValidation(relationship_with.value)">
                 <option value="">Select Relationship</option>
                 <option value="Wife">Wife</option>
                 <option value="Husband">Husband</option>
@@ -74,6 +73,13 @@
                <span class="error_txt" *ngIf="myForm.get('guardian.0.relationship_with').hasError('required')">Please fill up this field</span>
 
              </div>
+            </div>
+            <div class="form-group " *ngIf="myForm.get('guardian.0.relationship_with').value === 'Other'">
+              <label>Mention your relationship: </label>
+              <input class="form-control" formControlName="relationship_other">
+              <span *ngIf="!myForm.get('guardian.0.relationship_other').valid && myForm.get('guardian.0.relationship_other').touched">
+                    <span *ngIf="myForm.get('guardian.0.relationship_other').hasError('required')" class="error_txt">Please fill up this field.</span>
+              </span>
             </div>
             <div class="form-group">
               <label>Their Address: </label>
@@ -172,7 +178,6 @@
                 </li>
               </ul>
             </div>
-          </div>
         </div>
       </div>
       <div class="form-group">
@@ -211,7 +216,7 @@
             </div>
             <div class="form-group ">
               <label>Their Relationship To You: </label>
-              <select name="first_guardian_relationship" class="form-control" formControlName="relationship_with">
+              <select name="first_guardian_relationship" class="form-control" formControlName="relationship_with" #backup_relationship (change)="changeBackupRelationshipValidation(backup_relationship.value)">
                 <option value="">Select Relationship</option>
                 <option value="Wife">Wife</option>
                 <option value="Husband">Husband</option>
@@ -232,6 +237,13 @@
                       >
                <span class="error_txt" *ngIf="myForm.get('backUpGuardian.0.relationship_with').hasError('required')" >Please fill up this field.</span>
              </div>
+            </div>
+            <div class="form-group " *ngIf="myForm.get('backUpGuardian.0.relationship_with').value === 'Other'">
+              <label>Mention your relationship: </label>
+              <input class="form-control" formControlName="relationship_other">
+              <span *ngIf="!myForm.get('backUpGuardian.0.relationship_other').valid && myForm.get('backUpGuardian.0.relationship_other').touched">
+                    <span *ngIf="myForm.get('backUpGuardian.0.relationship_other').hasError('required')" class="error_txt">Please fill up this field.</span>
+              </span>
             </div>
             <div class="form-group">
               <label>Their Address: </label>

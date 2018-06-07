@@ -43,6 +43,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
                       user_id: this.authService.getUser()['id'],
                       fullname: [''],
                       relationship_with: [''],
+                      relationship_other: [''],
                       address: [''],
                       country: new FormControl('United States'),
                       city: [''],
@@ -60,6 +61,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
                       user_id: this.authService.getUser()['id'],
                       fullname: [''],
                       relationship_with: [''],
+                      relationship_other: [''],
                       address: [''],
                       country: new FormControl('United States'),
                       city: [''],
@@ -137,17 +139,19 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
                   isGuardianMinorChildren: this.userInfo.isGuardianMinorChildren || 'No',
                   isBackUpGuardian: this.userInfo.isBackUpGuardian || 'No'
               });
-              console.log(this.userInfo.guardian);
               if (!!this.userInfo.guardian.length) {
                   // reactive form data sets for guardian
+                  this.userInfo.guardian[0].relationship_other = this.userInfo.guardian[0].relationship_with === 'Other' ? this.userInfo.guardian[0].relationship_other : '';
                   const guardianFGs = this.userInfo.guardian.map(gr => this.fb.group(gr));
                   const guardianFormArray = this.fb.array(guardianFGs);
                   this.myForm.setControl('guardian', guardianFormArray);
 
                   if ( this.userInfo.backupGuardian.length) {
+                      this.userInfo.backupGuardian[0].relationship_other = this.userInfo.backupGuardian[0].relationship_with === 'Other' ? this.userInfo.backupGuardian[0].relationship_other : '';
                       // reactive form data sets for backUpGuardian
                       const backUpGuardianFGs = this.userInfo.backupGuardian.map(gr => this.fb.group(gr));
                       const backUpGuardianFormArray = this.fb.array(backUpGuardianFGs);
+                      console.log(backUpGuardianFormArray);
                       this.myForm.setControl('backUpGuardian', backUpGuardianFormArray);
                   }
                   if (this.myForm.value.isGuardianMinorChildren === 'Yes') {
@@ -297,4 +301,26 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
         this.myForm.get(`backUpGuardian.0.email_notification`).setValidators([]);
         this.myForm.get(`backUpGuardian.0.email_notification`).updateValueAndValidity();
     }
+
+  /**Change validation on relationship change**/
+  changeRelationshipValidation(value) {
+    if (value === 'Other') {
+      this.myForm.get(`guardian.0.relationship_other`).setValidators([Validators.required]);
+      this.myForm.get(`guardian.0.relationship_other`).updateValueAndValidity();
+    } else {
+      this.myForm.get(`guardian.0.relationship_other`).clearValidators();
+      this.myForm.get(`guardian.0.relationship_other`).updateValueAndValidity();
+    }
+  }
+
+  /**Change validation on backup relationship change**/
+  changeBackupRelationshipValidation(value) {
+    if (value === 'Other') {
+      this.myForm.get(`backUpGuardian.0.relationship_other`).setValidators([Validators.required]);
+      this.myForm.get(`backUpGuardian.0.relationship_other`).updateValueAndValidity();
+    } else {
+      this.myForm.get(`backUpGuardian.0.relationship_other`).clearValidators();
+      this.myForm.get(`backUpGuardian.0.relationship_other`).updateValueAndValidity();
+    }
+  }
 }

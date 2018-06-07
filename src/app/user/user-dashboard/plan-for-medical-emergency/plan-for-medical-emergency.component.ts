@@ -43,6 +43,7 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
               backuplastLegalName: '',
               backupfulllegalName: '',
               relation: '',
+              relationOther: '',
               address: '',
               city: '',
               state: '',
@@ -52,6 +53,7 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
               emailOfAgent: '',
               anyBackupAgent: 'false',
               backupRelation: '',
+              backupRelationOther: '',
               backupAddress: '',
               backupCity: '',
               backupState: '',
@@ -103,6 +105,7 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
                     this.medicalAgent.backupfirstLegalName = response.data.healthFinance.backupfirstLegalName;
                     this.medicalAgent.backuplastLegalName = response.data.healthFinance.backuplastLegalName;
                     this.medicalAgent.relation = response.data.healthFinance.relation;
+                    this.medicalAgent.relationOther = response.data.healthFinance.relationOther;
                     this.medicalAgent.address = response.data.healthFinance.address;
                     this.medicalAgent.city = response.data.healthFinance.city;
                     this.medicalAgent.state = response.data.healthFinance.state;
@@ -114,6 +117,7 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
                     this.medicalAgent.anyBackupAgent = response.data.healthFinance.anyBackupAgent;
                     this.medicalAgent.backupfulllegalName = response.data.healthFinance.backupFullname;
                     this.medicalAgent.backupRelation = response.data.healthFinance.backupRelation;
+                    this.medicalAgent.backupRelationOther = response.data.healthFinance.backupRelationOther;
                     this.medicalAgent.backupAddress = response.data.healthFinance.backupAddress;
                     this.medicalAgent.backupCity = response.data.healthFinance.backupCity;
                     this.medicalAgent.backupState = response.data.healthFinance.backupState;
@@ -184,6 +188,7 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
         formBody.append('backupFullname', this.medicalAgent.backupfulllegalName);
         formBody.append('lastLegalName', this.medicalAgent.lastLegalName);
         formBody.append('relation', this.medicalAgent.relation);
+        formBody.append('relationOther', this.medicalAgent.relation === 'Other' ? this.medicalAgent.relationOther : '');
         formBody.append('address', this.medicalAgent.address);
         formBody.append('city', this.medicalAgent.city);
         formBody.append('state', this.medicalAgent.state);
@@ -194,6 +199,7 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
         formBody.append('emailOfAgent', this.medicalAgent.emailOfAgent);
         formBody.append('anyBackupAgent', this.toggleBackupAgent === true ? 'true' : 'false');
         formBody.append('backupRelation', this.medicalAgent.backupRelation);
+        formBody.append('backupRelationOther', this.medicalAgent.backupRelation === 'Other' ? this.medicalAgent.backupRelationOther : '');
         formBody.append('backupAddress', this.medicalAgent.backupAddress);
         formBody.append('backupCity', this.medicalAgent.backupCity);
         formBody.append('backupState', this.medicalAgent.backupState);

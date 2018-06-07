@@ -88,6 +88,7 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
                     user_id: new FormControl(this.authService.getUser()['id'], [Validators.required]),
                     fullname: new FormControl(  guardian !== null && guardian.fullname !== null ?  guardian.fullname : '', [Validators.required,  Validators.pattern(/\s+(?=\S{2})/)]),
                     relationship_with: new FormControl(guardian !== null && guardian.relationship_with !== null ?  guardian.relationship_with : '', [Validators.required]),
+                    relationship_other: new FormControl(guardian !== null && guardian.relationship_other !== null ?  (guardian.relationship_with === 'Other' ? guardian.relationship_other : '') : '', [Validators.required]),
                     address: new FormControl(guardian !== null && guardian.address !== null ?  guardian.address : '', [Validators.required]),
                     country: new FormControl('United States', [Validators.required]),
                     phone:  new FormControl(guardian !== null && guardian.phone !== null && guardian.phone !== undefined ?  guardian.phone : '', [Validators.required, Validators.pattern(/^\d{10}$/)]),
@@ -105,6 +106,7 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
                   user_id: this.authService.getUser()['id'],
                   fullname: [backupGuardian !== null && backupGuardian.fullname !== null ?  backupGuardian.fullname : ''],
                   relationship_with: [backupGuardian !== null && backupGuardian.relationship_with !== null ?  backupGuardian.relationship_with : ''],
+                  relationship_other: new FormControl(backupGuardian !== null && backupGuardian.relationship_other !== null ?  (backupGuardian.relationship_with === 'Other' ? guardian.relationship_other : '') : ''),
                   address: [backupGuardian !== null && backupGuardian.address !== null ?  backupGuardian.address : ''],
                   country: ['United States'],
                   phone:  new FormControl(backupGuardian !== null && backupGuardian.phone !== null && backupGuardian.phone !== undefined ?  backupGuardian.phone : ''),
@@ -233,6 +235,10 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
         // this.myForm.get(`guardian.0.email`).updateValueAndValidity();
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.email_notification`).setValidators([Validators.required]);
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.email_notification`).updateValueAndValidity();
+        if (this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.relationship_with`).value === 'Other') {
+          this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.relationship_other`).setValidators([Validators.required]);
+          this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.relationship_other`).updateValueAndValidity();
+        }
 
     }
 
@@ -244,6 +250,8 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.fullname`).updateValueAndValidity();
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.relationship_with`).setValidators([]);
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.relationship_with`).updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.relationship_other`).clearValidators();
+        this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.relationship_other`).updateValueAndValidity();
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.address`).setValidators([]);
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.address`).updateValueAndValidity();
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.city`).setValidators([]);
@@ -282,8 +290,33 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
         // this.myForm.get(`guardian.0.email`).updateValueAndValidity();
         this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.email_notification`).setValidators([Validators.required]);
         this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.email_notification`).updateValueAndValidity();
+        if (this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.relationship_with`).value === 'Other') {
+          this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.relationship_other`).setValidators([Validators.required]);
+          this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.relationship_other`).updateValueAndValidity();
+        }
     }
 
+    /**Change validation on relationship change**/
+    changeRelationshipValidation(value) {
+      if (value === 'Other') {
+        this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.relationship_other`).setValidators([Validators.required]);
+        this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.relationship_other`).updateValueAndValidity();
+      } else {
+        this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.relationship_other`).clearValidators();
+        this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.relationship_other`).updateValueAndValidity();
+      }
+    }
+
+    /**Change validation on backup relationship change**/
+    changeBackupRelationshipValidation(value) {
+      if (value === 'Other') {
+        this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.relationship_other`).setValidators([Validators.required]);
+        this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.relationship_other`).updateValueAndValidity();
+      } else {
+        this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.relationship_other`).clearValidators();
+        this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.relationship_other`).updateValueAndValidity();
+      }
+    }
     /**
      *check User Spouse status for Routing
      */

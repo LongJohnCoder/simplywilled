@@ -285,6 +285,7 @@ export class CashGiftComponent implements OnInit, OnDestroy {
     this.ysgComponent.deleteGift(id);
     this.ysgComponent.changeViewState();
     this.editService.unsetData();
+    window.location.reload();
   }
 
   /**When the component is destroyed*/

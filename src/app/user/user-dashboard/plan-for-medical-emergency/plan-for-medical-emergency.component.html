@@ -1,3 +1,15 @@
+<div class="pageLoader" *ngIf="loading">
+  <div class="loaderInner">
+    <img src="../../../../assets/images/owl-loading.gif" alt="Loading...">
+    <p class="loadingTxt">
+      Please Wait
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+  </div>
+</div>
+
 <div class="col-md-9 col-sm-12 rightPanel" *ngIf="!loading">
     <div class="main-content tellusaboutyou">
         <h2>Name your first choice for healthcare agent</h2>
@@ -51,6 +63,18 @@
                 <span class="error_txt" *ngIf="relation.touched && relation.touched && relation.hasError('required')">
                     Please fill up this field.
                 </span>
+            </div>
+
+
+            <div class="form-group" *ngIf="relation.value === 'Other'"  [ngClass]="{'valid': relationOther.valid, 'invalid': relationOther.touched && relationOther.touched && !relationOther.valid}">
+              <label for="relationOther">Mention your relationship:</label>
+              <input id="relationOther" class="form-control" [(ngModel)]="medicalAgent.relationOther" name="relationOther" ngModel #relationOther="ngModel" required>
+              <i class="fa fa-check" *ngIf="relationOther.valid"></i>
+              <i class="fa fa-times" *ngIf="relationOther.touched && relationOther.touched && !relationOther.valid"></i>
+
+              <span class="error_txt" *ngIf="relationOther.touched && relationOther.touched && relationOther.hasError('required')">
+                      Please fill up this field.
+              </span>
             </div>
 
             <div class="form-group">
@@ -299,7 +323,7 @@
               </div>
 
 
-              <div class="form-group" [ngClass]="{'valid': backupRelation.valid, 'invalid': backupRelation.touched && backupRelation.touched && !backupRelation.valid}">
+                <div class="form-group" [ngClass]="{'valid': backupRelation.valid, 'invalid': backupRelation.touched && backupRelation.touched && !backupRelation.valid}">
                     <label for="backupRelation">Their Relationship To You:</label>
                     <select id="backupRelation" class="form-control" [(ngModel)]="medicalAgent.backupRelation" name="backupRelation" ngModel #backupRelation="ngModel" required>
                         <!--<option value="">Select Option</option>-->
@@ -313,7 +337,19 @@
                     </span>
                 </div>
 
-                <div class="form-group">
+              <div class="form-group" *ngIf="backupRelation.value === 'Other'"  [ngClass]="{'valid': backupRelationOther.valid, 'invalid': backupRelationOther.touched && backupRelationOther.touched && !backupRelationOther.valid}">
+                <label for="backupRelationOther">Mention your relationship:</label>
+                <input id="backupRelationOther" class="form-control" [(ngModel)]="medicalAgent.backupRelationOther" name="backupRelationOther" ngModel #backupRelationOther="ngModel" required>
+                <i class="fa fa-check" *ngIf="backupRelationOther.valid"></i>
+                <i class="fa fa-times" *ngIf="backupRelationOther.touched && backupRelationOther.touched && !backupRelationOther.valid"></i>
+
+                <span class="error_txt" *ngIf="backupRelationOther.touched && backupRelationOther.touched && backupRelationOther.hasError('required')">
+                      Please fill up this field.
+                </span>
+              </div>
+
+
+              <div class="form-group">
                     <div class="" [ngClass]="{'valid': backupAddress.valid, 'invalid': backupAddress.touched && backupAddress.touched && !backupAddress.valid}">
                         <label>Their Address: </label>
                         <input id="backupAddress" class="form-control" type="text"

@@ -25,6 +25,7 @@ export class YourFinalArrangementsComponent implements OnInit, OnDestroy {
     errorFlag: false,
     errorMessage: ''
   };
+  loading = true;
 
   /**When constructor is called*/
   constructor (
@@ -64,7 +65,7 @@ export class YourFinalArrangementsComponent implements OnInit, OnDestroy {
           errorMessage: errors.message !== undefined && errors.message !== '' ? errors.message : errors.error.message
         };
         console.log(errors);
-      }
+      }, () => { this.loading = false; }
     );
   }
 

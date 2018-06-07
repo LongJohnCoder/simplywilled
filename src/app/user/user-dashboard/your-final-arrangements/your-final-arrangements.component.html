@@ -1,4 +1,16 @@
-<div class="col-xs-12 col-md-12">
+<div class="pageLoader" *ngIf="loading">
+  <div class="loaderInner">
+    <img src="../../../../assets/images/owl-loading.gif" alt="Loading...">
+    <p class="loadingTxt">
+      Please Wait
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+  </div>
+</div>
+
+<div class="col-xs-12 col-md-12" *ngIf="!loading">
   <div class="main-content tellusaboutyou">
     <h2>Select your final arrangements</h2>
     <form [formGroup] = "finalarrangementForm">
