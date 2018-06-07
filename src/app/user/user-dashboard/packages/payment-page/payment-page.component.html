@@ -44,48 +44,12 @@
         </div>
 
       </div>
-      <!--<div class="form-group">-->
-      <!--<label>Middle Name:</label>-->
-      <!--<input type="text"-->
-      <!--[(ngModel)]="data.middleName" ngModel #middleName="ngModel" name="middleName"-->
-      <!--class="form-control"-->
-      <!--&gt;-->
-      <!--&lt;!&ndash; <span class="error_txt">-->
-      <!--<p>Error txt</p>-->
-      <!--</span> &ndash;&gt;-->
-      <!--</div>-->
-
-      <!--<div class="form-group">-->
-      <!--<label>Your Gender: </label>-->
-      <!--<ul class="radio_ul6">-->
-      <!--<li>-->
-      <!--<label class="radio_custom" [ngClass]="{'active': data.sex=='M'}">-->
-      <!--<input type="radio"-->
-      <!--name="sex"-->
-      <!--[(ngModel)]="data.sex" ngModel #sex="ngModel" name="sex"-->
-      <!--value="M"-->
-      <!--required checked>-->
-      <!--<span class="human_status">Male</span>-->
-      <!--</label>-->
-      <!--</li>-->
-      <!--<li>-->
-      <!--<label class="radio_custom" [ngClass]="{'active': data.sex=='F'}">-->
-      <!--<input type="radio"-->
-      <!--name="sex"-->
-      <!--[(ngModel)]="data.sex" ngModel #sex="ngModel" name="sex"-->
-      <!--value="F"-->
-      <!--required>-->
-      <!--<span class="human_status"> Female</span>-->
-      <!--</label>-->
-      <!--</li>-->
-      <!--</ul>-->
-      <!--</div>-->
       <div class="form-group">
         <div class="row">
           <div class="col-md-6">
             <label>Email Address:</label>
             <input class="form-control" type="email"
-                   [(ngModel)]="data.email" ngModel #email="ngModel" name="email"
+                   [(ngModel)]="data.email" ngModel #email="ngModel" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
                     required>
             <span class="error_txt" *ngIf="email.invalid && email.touched || email.hasError('pattern')">
                   <p>Please provide a valid email id.</p>
@@ -99,9 +63,6 @@
                    pattern="^\d{10}$" placeholder="(xxx)-xxx-xxxx"
                    required
             >
-            <!--<span class="error_txt" *ngIf="phone.touched && phone.touched && phone.invalid">-->
-            <!--<p>Phone Number is required</p>-->
-            <!--</span>-->
             <span class="error_txt" *ngIf="phone.invalid && phone.touched || phone.hasError('pattern')">
                   <p>Please provide a valid phone number.</p>
               </span>

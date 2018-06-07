@@ -41,4 +41,8 @@ export class PackagesService {
     checkPackage(body: any): Observable<any> {
         return this.http.post(environment.API_URL + 'user/check-package', body);
     }
+
+    purchasePackagePaypalExpress(body: any): Observable<any> {
+        return this.http.post(environment.API_URL + 'user/', body);
+    }
 }

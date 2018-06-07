@@ -139,28 +139,39 @@ export class PaymentPageComponent implements OnInit {
         form.append('zip', this.data.zip);
         form.append('country', this.data.country);
 
-        this.packageService.purchasePackagePaypalDirect(form).subscribe(
-            (resp: any) => {
-              console.log(resp.message);
-                this.respMsg = resp.message;
-                const store = JSON.parse(localStorage.getItem('loggedInUser'));
-                store.token = resp.data.jwtToken;
-                localStorage.setItem('loggedInUser', JSON.stringify(store));
-                this.respType = true;
-                this.loader = false;
-                setTimeout(function () {
-                    document.location.href = '/dashboard';
-                }, 3000);
-                this.router.navigate(['/dashboard']);
-            }, (error: any) => {
-              console.log(error.error);
-                this.respMsg = error.error.message;
-                this.respType = true;
-                this.loader = false;
-                setTimeout(function () {
-                    location.reload();
-                }, 4000);
-            }
-        );
+        if (this.paymentMethod === 'paypal-payment') {
+            this.packageService.purchasePackagePaypalExpress(form).subscribe(
+                (resp: any) => {
+
+                }, (error: any) => {
+
+                });
+        } else {
+            this.packageService.purchasePackagePaypalDirect(form).subscribe(
+                (resp: any) => {
+                    console.log(resp.message);
+                    this.respMsg = resp.message;
+                    const store = JSON.parse(localStorage.getItem('loggedInUser'));
+                    store.token = resp.data.jwtToken;
+                    localStorage.setItem('loggedInUser', JSON.stringify(store));
+                    this.respType = true;
+                    this.loader = false;
+                    setTimeout(function () {
+                        document.location.href = '/dashboard';
+                    }, 3000);
+                    this.router.navigate(['/dashboard']);
+                }, (error: any) => {
+                    console.log(error.error);
+                    this.respMsg = error.error.message;
+                    this.respType = true;
+                    this.loader = false;
+                    setTimeout(function () {
+                        location.reload();
+                    }, 4000);
+                }
+            );
+        }
+
+
     }
 }
