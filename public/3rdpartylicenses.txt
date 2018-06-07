@@ -272,14 +272,6 @@ codelyzer@4.2.1
 MIT
 MIT
 
-@angular/http@5.2.9
-MIT
-MIT
-
-@angular/platform-browser@5.2.9
-MIT
-MIT
-
 jwt-decode@2.2.0
 MIT
 The MIT License (MIT)
@@ -303,6 +295,14 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+@angular/http@5.2.9
+MIT
+MIT
+
+@angular/platform-browser@5.2.9
+MIT
+MIT
 
 angular-font-awesome@3.1.2
 MIT
