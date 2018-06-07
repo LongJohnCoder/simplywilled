@@ -2302,35 +2302,47 @@ footer{
     font-size: 14px;
 }
 .FooterRight{
-    width: 326px;
+    width: 420px;
     float: right;
     text-align: center;
 }
 .FooterRight .footer-label{
-    display: inline-block;
-    font-size: 14px;
-    text-align: center;
-    color: #373737;
+  font-size: 14px;
+  text-align: left;
+  color: #373737;
+  padding: 10px 110px 10px 15px;
 }
 .FooterRight .footer-label .number{
-    font-size: 28px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    color: #373737;
-    display: block;
+  font-size: 18px;
+  font-family: OpenSans-bold;
+  letter-spacing: 2px;
+  color: #373737;
+  display: block;
 }
 .FooterRight .contactus{
-    margin-top: 80px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+  margin-top: 80px;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+  background: url("assets/images/helpLeady.png") no-repeat;
+  background-position: right top;
 }
-.FooterRight .contactus img{
-    float: left;
-}
+
 footer .social span{
     color: #373737;
     font-size: 14px;
+}
+footer .contactus span{
+  font-size: 13px;
+  display: block;
+}
+footer .contactus span img{
+  padding-left: 3px;
+}
+footer .contactus span.haveQst{
+  font-family: OpenSans-bold;
+  font-size: 14px;
 }
 footer .social ul{
     display: inline-block;

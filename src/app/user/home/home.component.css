@@ -31,7 +31,12 @@
 .hide_show_main_pkg.open{
     display: block;
 }
-
+.pkg_first_sec{
+  padding-bottom: 70px;
+}
+.single_will_book{
+  margin-top: -60px;
+}
 
 @media screen and (max-width:1200px){
     .get_start_pkg_btn{
@@ -45,3 +50,20 @@
     }
 }
 
+@media screen and (max-width:480px){
+  .single_will_book img{
+    width: 130px;
+  }
+  .book_main {
+    width: 100%;
+  }
+  .book_price{
+    font-size: 40px;
+  }
+  .single_will_book{
+    margin-top: -25px;
+  }
+  .pkg_first_sec{
+    padding-bottom: 30px;
+  }
+}
