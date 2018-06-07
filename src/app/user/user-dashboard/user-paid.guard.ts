@@ -14,7 +14,7 @@ export class UserPaidGuard implements CanActivate {
 
         const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
         const userPackage = jwt_decode(token).package;
-        // console.log(userPackage);
+        console.log(userPackage);
         if (userPackage === null || userPackage === undefined) {
             this.router.navigate(['/dashboard/packages']);
             return false;
