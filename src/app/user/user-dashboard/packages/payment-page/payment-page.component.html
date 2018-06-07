@@ -17,7 +17,7 @@
     <hr>
     <h3>Primary contact</h3>
     <p class="headingInfo"><span>Please note:</span> you can give someone else access to this order by adding them as an authorized contact in My Account.</p>
-    <form #form="ngForm">
+    <form #form="ngForm" autocomplete="off">
       <div class="form-group">
         <div class="row">
           <div class="col-md-6"><label>First Name:</label>
@@ -60,7 +60,7 @@
             <input type="tel"
                    class="form-control"
                    [(ngModel)]="data.phone" ngModel #phone="ngModel" name="phone"
-                   pattern="^\d{10}$" placeholder="(xxx)-xxx-xxxx"
+                   pattern="^\d{10}$" placeholder="(xxx)-xxx-xxxx" mask="(000)-000-0000"
                    required
             >
             <span class="error_txt" *ngIf="phone.invalid && phone.touched || phone.hasError('pattern')">
@@ -227,7 +227,7 @@
             <div class="col-lg-6">
               <div class="cardLogo"><span class={{cardtype}}></span></div>
               <input type="text" class="form-control cardNumber" placeholder="Card Number"
-                     [(ngModel)]="data.cardNumber" ngModel #cardNumber="ngModel" name="cardNumber"
+                     [(ngModel)]="data.cardNumber" ngModel #cardNumber="ngModel" name="cardNumber" mask="0000-0000-0000-0000"
                      pattern="^\d{16}$"
                      required #cardNum (keyup)="GetCardType(cardNum)">
               <span class="error_txt" *ngIf="cardNumber.invalid && cardNumber.touched || cardNumber.hasError('pattern')">
@@ -238,15 +238,15 @@
             <!--<div class="row">-->
             <div class="col-sm-6 col-lg-3">
               <input type="text" class="form-control"
-                     [(ngModel)]="data.expDate" ngModel #expDate="ngModel" name="expDate" pattern="^\d{6}$"
-                     placeholder="Expiry Date" required>
+                     [(ngModel)]="data.expDate" ngModel #expDate="ngModel" name="expDate" pattern="^\d{6}$" placeholder="MM/YYYY"
+                    mask="00/0000" autocomplete="off" required>
               <span class="error_txt" *ngIf="expDate.invalid && expDate.touched || expDate.hasError('pattern')">
                         <p>Please enter expiry date</p>
                       </span>
             </div>
             <div class="col-sm-6 col-lg-3">
               <input type="password" class="form-control"
-                     [(ngModel)]="data.cvv" ngModel #cvv="ngModel" name="cvv" pattern="^\d{3}$"
+                     [(ngModel)]="data.cvv" ngModel #cvv="ngModel" name="cvv" autocomplete="off" pattern="^\d{3}$"
                      placeholder="CVV" required>
               <span class="askCvv" (click)="openModal(askCvvModal)">What is this?</span>
               <span class="error_txt" *ngIf="cvv.invalid && cvv.touched || cvv.hasError('pattern')">

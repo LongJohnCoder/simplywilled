@@ -6,10 +6,13 @@ import { PackagesComponent } from './packages/packages.component';
 import { PaymentStatusComponent } from './payment-status/payment-status.component';
 import {FormsModule} from '@angular/forms';
 import { PaymentPageComponent } from './payment-page/payment-page.component';
+import {NgxMaskModule} from 'ngx-mask';
 
 @NgModule({
   imports: [
-    CommonModule, FormsModule,
+    CommonModule,
+    NgxMaskModule.forRoot(),
+    FormsModule,
     PackagesRoutingModule
   ],
   declarations: [PackagesComponent, PaymentStatusComponent, PaymentPageComponent]

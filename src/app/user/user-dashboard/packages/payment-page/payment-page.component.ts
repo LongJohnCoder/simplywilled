@@ -142,8 +142,10 @@ export class PaymentPageComponent implements OnInit {
         if (this.paymentMethod === 'paypal-payment') {
             this.packageService.purchasePackagePaypalExpress(form).subscribe(
                 (resp: any) => {
-
+                    console.log(resp.approval_url);
+                    window.location.href = resp.approval_url;
                 }, (error: any) => {
+                    console.log(error.error.error);
 
                 });
         } else {
@@ -162,7 +164,7 @@ export class PaymentPageComponent implements OnInit {
                     this.router.navigate(['/dashboard']);
                 }, (error: any) => {
                     console.log(error.error);
-                    this.respMsg = error.error.message;
+                    this.respMsg = error.error.error;
                     this.respType = true;
                     this.loader = false;
                     setTimeout(function () {
