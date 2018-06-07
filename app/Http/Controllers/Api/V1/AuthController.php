@@ -79,8 +79,9 @@ class AuthController extends Controller {
                 $user->save();
                 $user->assignRole('User');
                 $role = $user->getRole->roleInfo->name;
+                $customClaims = ['package' => $user->package];
 
-                if ($token = JWTAuth::attempt($request->only('email', 'password'))) {
+                if ($token = JWTAuth::attempt($request->only('email', 'password'), $customClaims)) {
                     $response = [
                       'status' => true,
                       'message' => "User signed in successfully.",
