@@ -30,6 +30,7 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
   loading = true;
   userSubscription: Subscription;
   editSubscription: Subscription;
+  classId: number;
 
   /**Constructor call*/
   constructor(
@@ -123,5 +124,13 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
     if (this.editSubscription !== undefined) {
       this.editSubscription.unsubscribe();
     }
+  }
+
+  tooltip(classNumber: number){
+    this.classId = classNumber;
+  }
+
+  closeToolTip(){
+
   }
 }

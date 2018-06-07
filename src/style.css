@@ -2691,6 +2691,99 @@ select.form-control{
   z-index: 100;
 }
 
+.customTooltip{
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin: 0 10px;
+}
+.toolTipBtn{
+  background: url("assets/images/t3.png") no-repeat;
+  width: 25px;
+  height: 25px;
+  background-size: 25px 25px;
+  margin-top: 6px;
+}
+.tooltipContainer{
+  display: none;
+  position: absolute;
+  width: 300px;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #42A82D;
+  border-radius: 7px;
+  z-index: 999;
+  top: 37px;
+  left: 0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.customTooltip.active .tooltipContainer{
+  display: block;
+}
+.tooltipContainer dl{
+  border: 1px solid #459dd5;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.tooltipContainer dt {
+  font-family: 'OpenSans-SemiBold';
+  font-size: 14px;
+  background: #459dd5;
+  color: #fff;
+  padding: 5px;
+}
+.tooltipContainer dd {
+  padding: 7px;
+  font-size: 14px;
+  margin: 0;
+  display: none;
+}
+.tooltipContainer dt span{
+  float: right;
+  line-height: 0;
+  width: 22px;
+  height: 22px;
+  text-align: center;
+  padding: 1px 0 0px;
+  border-radius: 12px;
+}
+.tooltipContainer dl.open dd{
+  display: block;
+}
+.tooltipContainer dl.open dt span i:before{
+  content: "\f147";
+}
+.tooltipContainer dt span.tooltipNav i{
+  position: unset !important;
+  background: none !important;
+  height: auto !important;
+  width: auto !important;
+  color: #fff !important;
+  font-size: 22px;
+  font-weight: normal;
+}
+.toolTipClose {
+  background: #42A82D;
+  width: 22px;
+  height: 22px;
+  border-radius: 5px 5px 0 0;
+  text-align: center;
+  font-size: 13px;
+  position: absolute;
+  right: 6px;
+  top: -22px;
+}
+.toolTipClose i{
+  position: unset !important;
+  background: none !important;
+  height: auto !important;
+  width: auto !important;
+  color: #fff !important;
+}
+
+
 @media screen and (max-width: 820px){
     #dataTable_wrapper .row:first-child .col-sm-12.col-md-6{
         width: 100%;
