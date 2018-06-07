@@ -18,6 +18,21 @@
 	}
 }
 
+@media screen and (max-width:1302px){
+  .FooterRight {
+    width: 391px;
+  }
+  footer .contactus span {
+    font-size: 12px;
+  }
+  .footerNavArea{
+    margin-left: 6%;
+  }
+  .footerTxtArea {
+    width: 32%;
+  }
+}
+
 @media screen and (max-width:1270px) and (min-width:1131px){
     .searchBar:hover + .headerContact, .searchBar:focus + .headerContact{
         opacity: 0;
@@ -984,18 +999,26 @@
     .FooterRight .contactus{
         margin-top: 40px;
     }
-    .FooterRight {
-        width: 250px;
-    }
+  .FooterRight {
+    width: 400px;
+    float: none;
+    clear: left;
+    margin: 0 auto;
+    transform: translateY(40px);
+  }
     .FooterRight .footer-label .number{
         font-size: 18px;
     }
     .contactus img{
         width: 35px;
     }
-    .footerNavArea{
-        width: 227px;
-    }
+  .footerNavArea {
+    width: 300px;
+    float: none;
+    margin: 0 auto;
+    padding: 10px 0;
+    clear: left;
+  }
     footer .social ul li {
         margin-left: 10px;
     }
@@ -1286,9 +1309,12 @@
     .FooterRight .contactus{
         margin-top: 40px;
     }
-    .FooterRight {
-        width: 100%;
-    }
+  .FooterRight {
+    float: none;
+    clear: left;
+    margin: 0 auto 0;
+  }
+
     .FooterRight .footer-label .number{
         font-size: 18px;
     }
@@ -1297,7 +1323,7 @@
         float: none;
         vertical-align: top;
         display: inline-block;
-        padding: 5px 5px 0 0;
+        padding: 0 0 0 5px;
     }
     .footerNavArea{
         width: 100%;
@@ -1645,6 +1671,19 @@
     }
 }
 
+@media only screen and (max-width: 429px){
+  .FooterRight{
+    width: 100%;
+  }
+  .FooterRight .contactus{
+    background: none;
+  }
+  .FooterRight .footer-label{
+    padding-right: 10px;
+    text-align: center;
+  }
+}
+
 @media only screen and (max-width: 420px){
     .sec7_ul {
         width: 120px;
@@ -1669,9 +1708,6 @@
 }
 
 @media only screen and (max-width: 352px){
-    .FooterRight .footer-label .number {
-        font-size: 22px;
-    }
     .contactus img{
         width: 38px;
     }
@@ -1686,4 +1722,8 @@
         text-align: center;
         margin-bottom: 10px;
     }
+  .FooterRight .contactus img{
+    width: 26px;
+    padding-top: 2px;
+  }
 }
