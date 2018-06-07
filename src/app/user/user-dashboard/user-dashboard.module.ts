@@ -8,6 +8,7 @@ import {UserPaidGuard} from './user-paid.guard';
 import {UserUnPaidGuard} from './user-unpaid.guard';
 import {ProgressbarService} from './shared/services/progressbar.service';
 import {ReferFriendService} from './shared/services/referFriend.service';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   imports: [

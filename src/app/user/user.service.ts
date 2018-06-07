@@ -50,4 +50,9 @@ export class UserService {
   resetPasswordSubmit(formBody): Observable<any> {
       return this.httpClient.post(environment.API_URL + 'reset-password', formBody);
   }
+
+    /** Function for change-password-form*/
+    changePasswordSubmit(formBody): Observable<any> {
+        return this.httpClient.post(environment.API_URL + 'user/change-password', formBody);
+    }
 }

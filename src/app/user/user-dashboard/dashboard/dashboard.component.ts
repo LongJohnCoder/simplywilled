@@ -39,6 +39,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       successMessage: ''
     };
     loading = false;
+    isMyAccountClickedVal: boolean;
 
     /**Constructor call*/
     constructor(
@@ -81,6 +82,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     /**When the component is initialised*/
     ngOnInit() {
+      this.isMyAccountClickedVal = false;
       this.loggedInUser = this.userAuth.getUser();
       this.getUserDetails();
       this.step1DataSubscription = this.userDashboardService.step1Data.subscribe(
@@ -98,6 +100,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
         return JSON.parse(localStorage.getItem('loggedInUser')).token;
       }
       return null;
+    }
+    onEditProfile() {
+      this.router.navigate(['/dashboard/will']);
+    }
+
+    onChangePassword() {
+      this.router.navigate(['/']);
     }
 
     /**When the user logs out*/
@@ -182,6 +191,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
         }
       );
     }
+
+      isMyAccountClicked(): void {
+        this.isMyAccountClickedVal = this.isMyAccountClickedVal === true ? false : true;
+        console.log('clicked value : ', this.isMyAccountClickedVal);
+      }
 
     /**When the component is destroyed*/
     ngOnDestroy() {

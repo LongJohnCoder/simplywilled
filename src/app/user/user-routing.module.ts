@@ -32,7 +32,9 @@ const routes: Routes = [
         { path: 'terms-of-use', pathMatch: 'full', component: TermsOfUseComponent },
         { path: 'terms-of-service', pathMatch: 'full', component: TermsOfServiceComponent },
         { path: 'privacy-policy', pathMatch: 'full', component: PrivacyPolicyComponent },
-        { path: 'contact-us', pathMatch: 'full', component: ContactUsComponent }
+        { path: 'contact-us', pathMatch: 'full', component: ContactUsComponent },
+        // tslint:disable-next-line:max-line-length
+        
    ]},
     {
       path: 'dashboard',

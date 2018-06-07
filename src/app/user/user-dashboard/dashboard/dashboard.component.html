@@ -1,6 +1,6 @@
 <header>
     <div class="container">
-        <div class="row">
+        <div class="customRow">
             <div class="col-md-6">
                 <div class="logo">
                     <a href="#">
@@ -8,8 +8,15 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-6 text-right">
-                <button class="btn common-button green-btn">My account <img src="../../../../assets/images/down-arrow.png" class="img-responsive"></button>
+            <div class="dashboardHeaderRight text-right">
+                <div class="accountBtnArea" [ngClass]="{'active' : isMyAccountClickedVal}" (click)="isMyAccountClicked()">
+                  <a href="javascript:void(0)" class="myAccount"><i class="fa fa-user"></i> <span>My Account</span></a>
+                  <span class="drop">
+                    <a [routerLink]="['/dashboard/will']" class="myAccount"><i class="fa fa-pencil"></i> <span>Edit Profile</span></a>
+                    <a [routerLink]="['/dashboard/change-password']" class="myAccount"><i class="fa fa-lock"></i> <span>Change Password</span></a>
+                    <a [routerLink]="['/dashboard/packages']" class="myAccount"><i class="fa fa-shopping-bag"></i> <span>Packages</span></a>
+                  </span>
+                </div>
                 <button class="btn common-button green-btn" (click)="onLogOut()">Logout</button>
             </div>
         </div>

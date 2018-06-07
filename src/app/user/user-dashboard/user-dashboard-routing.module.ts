@@ -105,6 +105,11 @@ const routes: Routes = [
                 canActivate: [ UserPaidGuard ],
                 // canActivateChild: [ UserPaidGuard ],
                 loadChildren: './your-final-arrangements/your-final-arrangements.module#YourFinalArrangementsModule'
+            },
+            {
+                path: 'change-password',
+                canActivate: [ UserPaidGuard ],
+                loadChildren: '../user-dashboard/change-password/change-password.module#ChangePasswordModule'
             }
         ]
     },
