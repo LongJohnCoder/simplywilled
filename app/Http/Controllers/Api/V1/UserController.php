@@ -92,8 +92,8 @@ class UserController extends Controller
         try {
 
             $validator = Validator::make($request->all(), [
-                'new_password' => 'required',
-                'confirm_password' => 'required',
+                'new_password' => 'required|min:6',
+                'confirm_password' => 'required|min:6',
                 'old_password'      => 'required'
             ]);
 
@@ -101,7 +101,7 @@ class UserController extends Controller
             if ($validator->fails()) {
                 $messages = $validator->messages();
                 foreach ($messages->all() as $message) {
-                    $errorMessage = $errorMessage . $message . " ";
+                    $errorMessage = $errorMessage . $message . " \n ";
                 }
                 $response = [
                     'status' => false,
