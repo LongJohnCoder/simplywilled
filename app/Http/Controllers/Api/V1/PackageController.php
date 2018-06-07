@@ -207,119 +207,150 @@ class PackageController extends Controller
 
     public function purchasePackage(Request $request)
     {
-      $pkgID         = $request->pkg_id;
-      $userID        = $request->user_id;
-      $couponID      = $request->coupon_id;
-      $package       = Packages::find($pkgID);
-      $user          = User::find($userID);
-      $coupon        = Coupon::find($couponID);
-      $itemsPrice    = 0;
-      $totalDiscount = 0;
-      $shippingCost  = 0.0;
-      $taxCost       = 0.0;
-      $items         = [];
-      if (!$package) {
-        return response()->json([
-            'status'       => false,
-            'error'      => 'Package not found',
-            'data'         => []
-        ], 400);
-      }
+      try {
+        $pkgID         = $request->pkg_id;
+        $userID        = $request->user_id;
+        $couponID      = $request->coupon_id;
+        $firstName     = $request->firstName;
+        $lastname      = $request->lastname;
+        $phone         = $request->phone;
+        $email         = $request->email;
+        $address1      = $request->address1;
+        $address2      = $request->address2;
+        $city          = $request->city;
+        $state         = $request->state;
+        $zip           = $request->zip;
+        $country       = $request->country;
+        $package       = Packages::find($pkgID);
+        $user          = User::find($userID);
+        $coupon        = Coupon::find($couponID);
+        $itemsPrice    = 0;
+        $totalDiscount = 0;
+        $shippingCost  = 0.0;
+        $taxCost       = 0.0;
+        $items         = [];
+        if (!$package) {
+          return response()->json([
+              'status'       => false,
+              'error'      => 'Package not found',
+              'data'         => []
+          ], 400);
+        }
 
-      if (!$user) {
-        return response()->json([
-            'status'       => false,
-            'error'      => 'User not found. Please log in again',
-            'data'         => []
-        ], 400);
-      }
+        if (!$user) {
+          return response()->json([
+              'status'       => false,
+              'error'      => 'User not found. Please log in again',
+              'data'         => []
+          ], 400);
+        }
 
-      $payer = Paypalpayment::payer();
-      $payer->setPaymentMethod("paypal");
+        $payer = Paypalpayment::payer();
+        $payer->setPaymentMethod("paypal");
 
-      $item1 = Paypalpayment::item();
-      $item1->setName($package->name)
-              ->setDescription($package->description)
-              ->setCurrency('USD')
-              ->setQuantity(1)
-              ->setTax(0.0)
-              ->setPrice($package->amount);
-      array_push($items, $item1);
-      $itemsPrice = $itemsPrice + $package->amount;
-
-      if ($coupon) {
-        $discountAmount = ($itemsPrice * $coupon->percentage) / 100;
-        $totalDiscount = $totalDiscount + $discountAmount;
-        $discount1 = Paypalpayment::item();
-        $discount1->setName($coupon->title)
-                ->setDescription($coupon->description)
+        $item1 = Paypalpayment::item();
+        $item1->setName($package->name)
+                ->setDescription($package->description)
                 ->setCurrency('USD')
                 ->setQuantity(1)
                 ->setTax(0.0)
-                ->setPrice(-$discountAmount);
-        array_push($items, $discount1);
+                ->setPrice($package->amount);
+        array_push($items, $item1);
+        $itemsPrice = $itemsPrice + $package->amount;
+
+        if ($coupon) {
+          if ($coupon->flag == '1') {
+            $discountAmount = $coupon->amount;
+          } else {
+            $discountAmount = ($itemsPrice * $coupon->amount) / 100;
+          }
+          $totalDiscount = $totalDiscount + $discountAmount;
+          $discount1 = Paypalpayment::item();
+          $discount1->setName($coupon->title)
+                  ->setDescription($coupon->description)
+                  ->setCurrency('USD')
+                  ->setQuantity(1)
+                  ->setTax(0.0)
+                  ->setPrice(-$totalDiscount);
+          array_push($items, $discount1);
+        }
+
+        $itemList = Paypalpayment::itemList();
+        $itemList->setItems($items);
+
+        $subTotal = $itemsPrice - $totalDiscount;
+        $total = $shippingCost + $taxCost + $subTotal;
+
+        $details = Paypalpayment::details();
+        $details->setShipping($shippingCost)
+                ->setTax($taxCost)
+                ->setSubtotal($subTotal);
+
+        $amount = Paypalpayment::amount();
+        $amount->setCurrency("USD")
+                ->setTotal($total)
+                // ->setTotal(65)
+                ->setDetails($details);
+
+        $transaction = Paypalpayment::transaction();
+        $transaction->setAmount($amount)
+            ->setItemList($itemList)
+            ->setDescription("Payment description")
+            ->setInvoiceNumber(uniqid());
+
+        $redirectUrls = Paypalpayment::redirectUrls();
+        $redirectUrls->setReturnUrl(url("/api/v1/user/paypal-package-success"))
+            ->setCancelUrl(url("/api/v1/user/paypal-package-failed"));
+
+        $payment = Paypalpayment::payment();
+
+        $payment->setIntent("sale")
+            ->setPayer($payer)
+            ->setRedirectUrls($redirectUrls)
+            ->setTransactions([$transaction]);
+
+        try {
+            $payment->create(Paypalpayment::apiContext());
+        } catch (PPConnectionException $ex) {
+            return response()->json([
+              'status' => false,
+              "error" => $ex->getMessage(),
+              'line' => 'Error encountered on line number. #'.$ex->getLine()
+            ], 400);
+        }
+        // return $payment->toArray()['id'];
+        $userPackage = new UserPackage;
+        $userPackage->user_id = $userID;
+        $userPackage->package_id = $pkgID;
+        $userPackage->started_on = date('Y-m-d H:i:s');
+        $userPackage->renew_date = date('Y-m-d H:i:s');
+        $userPackage->payment_method = 'Paypal';
+        $userPackage->payment_token = $payment->toArray()['id'];
+        $userPackage->payment_status = '1';
+        $userPackage->payment_response = json_encode(['request' => $request->all()]);
+        $userPackage->amount = $total;
+        if ($coupon) {
+          $userPackage->coupon_id = $couponID;
+          $userPackage->coupon_amount = $discountAmount;
+        } else {
+          $userPackage->coupon_id = 0;
+          $userPackage->coupon_amount = 0;
+        }
+        $userPackage->save();
+
+        return response()->json([
+          'status' => true,
+          'approval_url' => $payment->getApprovalLink()
+        ], 200);
+      } catch (\Exception $e) {
+        return response()->json([
+          'status' => false,
+          'error' => $e->getMessage(),
+          'line' => 'Error encountered on line no. #'.$e->getLine()
+        ], 400);
       }
 
-      $itemList = Paypalpayment::itemList();
-      $itemList->setItems($items);
 
-      $subTotal = $itemsPrice - $totalDiscount;
-      $total = $shippingCost + $taxCost + $subTotal;
-
-      $details = Paypalpayment::details();
-      $details->setShipping($shippingCost)
-              ->setTax($taxCost)
-              ->setSubtotal($subTotal);
-
-      $amount = Paypalpayment::amount();
-      $amount->setCurrency("USD")
-              ->setTotal($total)
-              // ->setTotal(65)
-              ->setDetails($details);
-
-      $transaction = Paypalpayment::transaction();
-      $transaction->setAmount($amount)
-          ->setItemList($itemList)
-          ->setDescription("Payment description")
-          ->setInvoiceNumber(uniqid());
-
-      $redirectUrls = Paypalpayment::redirectUrls();
-      $redirectUrls->setReturnUrl(url("/api/v1/user/paypal-package-success"))
-          ->setCancelUrl(url("/api/v1/user/paypal-package-failed"));
-
-      $payment = Paypalpayment::payment();
-
-      $payment->setIntent("sale")
-          ->setPayer($payer)
-          ->setRedirectUrls($redirectUrls)
-          ->setTransactions([$transaction]);
-
-      try {
-          $payment->create(Paypalpayment::apiContext());
-      } catch (PPConnectionException $ex) {
-          return response()->json(["error" => $ex->getMessage()], 400);
-      }
-      // return $payment->toArray()['id'];
-      $userPackage = new UserPackage;
-      $userPackage->user_id = $userID;
-      $userPackage->package_id = $pkgID;
-      $userPackage->started_on = date('Y-m-d H:i:s');
-      $userPackage->renew_date = date('Y-m-d H:i:s');
-      $userPackage->payment_method = 'Paypal';
-      $userPackage->payment_token = $payment->toArray()['id'];
-      $userPackage->payment_status = '1';
-      $userPackage->payment_response = null;
-      $userPackage->amount = $total;
-      if ($coupon) {
-        $userPackage->coupon_id = $couponID;
-        $userPackage->coupon_amount = $discountAmount;
-      } else {
-        $userPackage->coupon_id = 0;
-        $userPackage->coupon_amount = 0;
-      }
-      $userPackage->save();
-
-      return response()->json([$payment->toArray(), 'approval_url' => $payment->getApprovalLink()], 200);
     }
 
     public function paypalPackageSuccess()
@@ -506,12 +537,7 @@ class PackageController extends Controller
         $userPackage->started_on = date('Y-m-d H:i:s');
         $userPackage->renew_date = date('Y-m-d H:i:s');
         $userPackage->payment_method = 'Card';
-        $userPackage->payment_token = $arr['CORRELATIONID'];
-        if ($arr['ACK'] == 'Success') {
-          $userPackage->payment_status = '2';
-        } else {
-          $userPackage->payment_status = '0';
-        }
+        $userPackage->payment_status = '0';
         $userPackage->payment_response = json_encode($paypalMethod);
         $userPackage->amount = $AMT;
         if ($coupon) {
@@ -520,6 +546,12 @@ class PackageController extends Controller
         } else {
           $userPackage->coupon_id = 0;
           $userPackage->coupon_amount = 0;
+        }
+        $userPackage->save();
+
+        $userPackage->payment_token = $arr['CORRELATIONID'];
+        if ($arr['ACK'] == 'Success') {
+          $userPackage->payment_status = '2';
         }
         $userPackage->save();
 
@@ -537,14 +569,14 @@ class PackageController extends Controller
         } else {
           return response()->json([
             'status' => false,
-            'message' => $arr['L_LONGMESSAGE0'],
+            'error' => $arr['L_LONGMESSAGE0'],
             'data' => $arr
           ], 500);
         }
       } catch (\Exception $e) {
         return response()->json([
           'status' => false,
-          'message' => $e->getMessage()
+          'error' => $e->getMessage()
         ], 500);
       }
     }
