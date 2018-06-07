@@ -407,7 +407,7 @@ class PackageController extends Controller
         $pkgID         = $request->pkg_id;
         $userID        = $request->user_id;
         $couponID      = $request->coupon_id;
-        $package       = Packages::where('slug', $pkgID)->first();
+        $package       = Packages::find($pkgID);
         $user          = User::find($userID);
         $coupon        = Coupon::find($couponID);
 
@@ -437,8 +437,13 @@ class PackageController extends Controller
         $totalAmount  = $package->amount;
         $couponAmount = 0;
         if ($coupon) {
-          $couponAmount = ($package->amount * $coupon->percentage) / 100;
-          $totalAmount  = $package->amount - $couponAmount;
+          if ($coupon->flag == '1') {
+            $couponAmount = $coupon->amount;
+            $totalAmount  = $package->amount - $couponAmount;
+          } else {
+            $couponAmount = ($package->amount * $coupon->amount) / 100;
+            $totalAmount  = $package->amount - $couponAmount;
+          }
         }
 
         $SIGNATURE      = config('paypal_direct.signature');
@@ -454,7 +459,7 @@ class PackageController extends Controller
         $CVV2           = $request->cvv2;
         $FIRSTNAME      = $request->cardFirstName;
         $LASTNAME       = $request->cardLastName;
-        $STREET         = $request->address1;
+        $STREET         = $request->address1 . $request->has('address2') ? ', '.$request->address2 : '';
         $CITY           = $request->city;
         $STATE          = $request->state;
         $ZIP            = $request->zip;
@@ -500,7 +505,7 @@ class PackageController extends Controller
         $userPackage->package_id = $package->id;
         $userPackage->started_on = date('Y-m-d H:i:s');
         $userPackage->renew_date = date('Y-m-d H:i:s');
-        $userPackage->payment_method = 'Paypal';
+        $userPackage->payment_method = 'Card';
         $userPackage->payment_token = $arr['CORRELATIONID'];
         if ($arr['ACK'] == 'Success') {
           $userPackage->payment_status = '2';
@@ -521,6 +526,9 @@ class PackageController extends Controller
         if ($arr['ACK'] == 'Success') {
           $user->package = $pkgID;
           $user->save();
+          $customClaims = ['package' => $user->package];
+          $token = JWTAuth::fromUser($user, $customClaims);
+          $arr['jwtToken'] = $token;
           return response()->json([
             'status' => true,
             'message' => 'Payment has done successfully',

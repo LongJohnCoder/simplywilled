@@ -242,11 +242,18 @@ class AuthController extends Controller {
             /**
              * Authenticate user using JWTAuth
              */
-
+            $user = User::where('email', '=', $request->email)->first();
+            if (!$user) {
+              return response()->json([
+                'status' => false,
+                'error' => 'User not found'
+              ], 400);
+            }
+            $customClaims = ['package' => $user->package];
              /*
              *  Checking for a fact that admin cannot log in through user login
              */
-            if ($token = JWTAuth::attempt($request->only('email', 'password'))) {
+            if ($token = JWTAuth::attempt($request->only('email', 'password'), $customClaims)) {
 
                 $user = Auth::user();
 
@@ -278,7 +285,6 @@ class AuthController extends Controller {
                 $response = [
                     'status' => false,
                     'error' => "Invalid email or password.",
-                    'token' => $token
                 ];
                 $responseCode = 400;
             }
