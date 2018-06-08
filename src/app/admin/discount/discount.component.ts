@@ -64,7 +64,7 @@ export class DiscountComponent implements OnInit {
         this.couponForm = this.fb.group({
             title: new FormControl('', [Validators.required]),
             description: new FormControl('description', [Validators.required]),
-            token: new FormControl('', [Validators.required, Validators.minLength(6)]),
+            token: new FormControl('', [Validators.required]),
             amount: new FormControl(0.00, [Validators.required, Validators.pattern('^\\d+(\\.\\d+)?$')]),
             useType: new FormControl(1, [Validators.required]),
             usageType: new FormControl(1, [Validators.required]),
@@ -111,7 +111,7 @@ export class DiscountComponent implements OnInit {
         this.couponForm = this.fb.group({
             id: new FormControl(this.couponList[i].id, [Validators.required]),
             title: new FormControl(this.couponList[i].title, [Validators.required]),
-            token: new FormControl(this.couponList[i].token, [Validators.required, Validators.minLength(6)]),
+            token: new FormControl(this.couponList[i].token, [Validators.required]),
             description: new FormControl(this.couponList[i].description, [Validators.required]),
             amount: new FormControl(this.couponList[i].amount, [Validators.required, Validators.pattern('^\\d+(\\.\\d+)?$')]),
             useType: new FormControl(+this.couponList[i].max_user > 1 ? 2 : 1, [Validators.required]),
@@ -209,7 +209,7 @@ export class DiscountComponent implements OnInit {
     getValue(value: string): any {
         this.couponForm.controls['token'].setValue(value.toUpperCase());
         this.checkCodeMsg = '';
-        if (this.couponForm.value.token.length === 6) {
+        // if (this.couponForm.value.token.length === 6) {
             this.discountService.checkCoupon(this.couponForm.value.token).subscribe(
                 (res: any) => {
                     if (res.status === true) {
@@ -225,7 +225,7 @@ export class DiscountComponent implements OnInit {
                     console.log(error.error.error);
                 }
             );
-        }
+        // }
     }
     public viewUserModal(template:  TemplateRef<any>, i) {
         this.couponVal = this.couponList[i];

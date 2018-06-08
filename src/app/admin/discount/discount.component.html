@@ -57,6 +57,10 @@
                         colspan="1" aria-label="Created Date: activate to sort column ascending"
                         style="width: 52px;">Type
                     </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                          colspan="1" aria-label="Created Date: activate to sort column ascending"
+                          style="width: 52px;">Max User
+                      </th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                         colspan="1" aria-label="Created Date: activate to sort column ascending"
                         style="width: 52px;">Discount
@@ -78,7 +82,8 @@
                     <!--<td>{{item.description | slice:0:30}}</td>-->
                     <td>{{item.token}}</td>
                       <td>{{item.expired_on === '2200-12-31 00:00:00' ? 'No expire' : item.expired_on}}</td>
-                      <td>{{item.max_user === 9999999 ? 'Unlimited Use' : item.max_user > 1 ? item.max_user : 'Single Use'}}</td>
+                      <td>{{item.max_user === 1 ? 'Single Use' : 'Multi Time Use'}}</td>
+                      <td>{{item.max_user === 9999999 ? 'Unlimited Use' : item.max_user > 1 ? item.max_user : 1}}</td>
                     <td>{{item.flag === '1' ? '$'+item.amount : item.amount+'%'}}</td>
                     <td>{{item.created_at}}</td>
                     <td class="text-center ">
@@ -116,7 +121,7 @@
                         <button type="button" class="close" (click)="modalRef.hide()">×</button>
                     </div>
                     <div class="modal-body">
-                        <table>
+                        <table class="table-bordered table">
                             <thead>
                             <tr>
                                 <th>Sl No.</th>
@@ -158,8 +163,8 @@
                   <div class="modal-body">
                       <h4>Coupon Code:</h4>
                       <p>
-                          <input class="form-control" formControlName="token" mask="AAAAAA" (keyup)="getValue($event.target.value)">
-                          <span *ngIf="couponForm.controls['token'].errors" style="color:red;"> Coupon code must be six charecter ! </span>
+                          <input class="form-control" formControlName="token" (keyup)="getValue($event.target.value)">
+                          <span *ngIf="couponForm.controls['token'].errors" style="color:red;"> Coupon code is required ! </span>
                           <span *ngIf="errorTy" style="color:red;"> {{checkCodeMsg}} </span>
                           <span *ngIf="!errorTy" style="color:green;"> {{checkCodeMsg}} </span>
                       </p>
