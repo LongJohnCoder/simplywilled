@@ -420,6 +420,16 @@ Route::group(['prefix' => 'v1'], function() {
             'as'   => 'api.v1.commentsList.get'
         ]);
 
+        Route::get('get-coupon', [
+            'uses' => 'Api\V1\CouponsController@getCoupon',
+            'as'   => 'api.v1.getCoupon.get'
+        ]);
+
+        Route::get('check-coupon/{token}', [
+            'uses' => 'Api\V1\CouponsController@checkToken',
+            'as'   => 'api.v1.checkToken.get'
+        ]);
+
     });
 
     /**

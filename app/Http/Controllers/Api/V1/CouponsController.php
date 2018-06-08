@@ -25,6 +25,7 @@ use App\Helper\DateTimeHelper;
 use App\Models\Coupon;
 use App\Models\UserPackage;
 use \Carbon\Carbon;
+use App\Helper\Common;
 
 class CouponsController extends Controller
 {
@@ -85,6 +86,7 @@ class CouponsController extends Controller
         $validator = Validator::make($request->all(), [
             'title'       => 'required',
             'max_user'    => 'required|numeric|min:0',
+            'token'       => 'required',
             'useType'     => 'required|numeric',
             'usageType'   => 'required|numeric',
             'flag'        => 'required|numeric|min:0',
@@ -99,8 +101,18 @@ class CouponsController extends Controller
             ], 400);
         }
 
+        $checkToken = Coupon::where('token', $request->token)->first();
+        if ($checkToken) {
+          return response()->json([
+              'status'  => false,
+              'message' => 'Coupon Code is already used. Try another coupon code',
+              'data'    => []
+          ], 400);
+        }
+
         $coupon              = new Coupon();
         $coupon->title       = $request->title;
+        $coupon->token       = $request->token;
         $coupon->amount      = $request->amount;
         if ($request->useType == 1) {
           $coupon->max_user    = 1;
@@ -198,6 +210,7 @@ class CouponsController extends Controller
              'title'       => 'required',
              'max_user'    => 'required|numeric|min:0',
              'useType'     => 'required|numeric',
+             'token'       => 'required',
              'usageType'   => 'required|numeric',
              'flag'        => 'required|numeric|min:0',
              'description' => 'nullable',
@@ -209,6 +222,15 @@ class CouponsController extends Controller
                  'message' => $validator->errors(),
                  'data'    => []
              ], 400);
+         }
+
+         $checkToken = Coupon::where('token', $request->token)->first();
+         if ($checkToken) {
+           return response()->json([
+               'status'  => false,
+               'message' => 'Coupon Code is already used. Try another coupon code',
+               'data'    => []
+           ], 400);
          }
 
          $id = (int)$request->id;
@@ -224,6 +246,7 @@ class CouponsController extends Controller
 
          $coupon->title       = $request->title;
          $coupon->amount      = $request->amount;
+         $coupon->token      = $request->token;
          if ($request->useType == 1) {
            $coupon->max_user    = 1;
          } else if($request->usageType == 1) {
@@ -306,6 +329,65 @@ class CouponsController extends Controller
            'status' => false,
            'message' => $e->getMessage(),
            'line' => 'Problem encountered on line number on: '. $e->getLine()
+         ], 500);
+       }
+     }
+
+     public function getCoupon()
+     {
+       try {
+           $token = Common::getToken(6);
+           $checkToken = Coupon::where('token', $token)->first();
+           if ($checkToken) {
+             self::getCoupon();
+           } else {
+             return response()->json([
+               'status'=> true,
+               'couponCode' => $token
+             ], 200);
+           }
+       } catch (\Exception $e) {
+         return response()->json([
+           'status' => false,
+           'error' => $e->getMessage()
+         ], 500);
+       }
+     }
+
+     public function checkToken($token = '')
+     {
+       try {
+         $token = strtoupper($token);
+         if ($token == '') {
+           return response()->json([
+             'status' => false,
+             'error' => 'Coupon is not validate'
+           ], 400);
+         } else {
+           if (strlen($token) != 6) {
+             return response()->json([
+               'status' => false,
+               'error' => 'Coupon is not validate. Must be six charecter'
+             ], 400);
+           } else {
+             $checkToken = Coupon::where('token', $token)->first();
+             if ($checkToken) {
+               return response()->json([
+                 'status' => false,
+                 'message' => 'Coupon is already used'
+               ], 200);
+             } else {
+               return response()->json([
+                 'status' => true,
+                 'message' => 'Coupon is available'
+               ], 200);
+             }
+           }
+         }
+       } catch (\Exception $e) {
+         return response()->json([
+           'status' => false,
+           'error' => $e->getMessage()
          ], 500);
        }
      }

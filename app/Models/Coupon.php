@@ -9,22 +9,22 @@ class Coupon extends Model
 {
     protected $table = 'coupons';
 
-    public static function boot()
-    {
-        parent::boot();
-        static::creating(function($model) {
-           $token = Common::getToken(6);
-           $latestToken =
-               static::whereRaw("token = '$token'")
-                   ->latest('id')
-                   ->value('token');
-           if ($latestToken) {
-             self::boot();
-           } else {
-             $model->token = $token;
-           }
-       });
-    }
+    // public static function boot()
+    // {
+    //     parent::boot();
+    //     static::creating(function($model) {
+    //        $token = Common::getToken(6);
+    //        $latestToken =
+    //            static::whereRaw("token = '$token'")
+    //                ->latest('id')
+    //                ->value('token');
+    //        if ($latestToken) {
+    //          self::boot();
+    //        } else {
+    //          $model->token = $token;
+    //        }
+    //    });
+    // }
 
     public function userPackage() {
         return $this->hasMany('App\Models\UserPackage','coupon_id');
