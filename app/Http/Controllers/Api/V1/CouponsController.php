@@ -364,12 +364,6 @@ class CouponsController extends Controller
              'error' => 'Coupon is not validate'
            ], 400);
          } else {
-           if (strlen($token) != 6) {
-             return response()->json([
-               'status' => false,
-               'error' => 'Coupon is not validate. Must be six charecter'
-             ], 400);
-           } else {
              $checkToken = Coupon::where('token', $token)->first();
              if ($checkToken) {
                return response()->json([
@@ -382,7 +376,6 @@ class CouponsController extends Controller
                  'message' => 'Coupon is available'
                ], 200);
              }
-           }
          }
        } catch (\Exception $e) {
          return response()->json([
