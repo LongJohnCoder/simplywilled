@@ -1,6 +1,6 @@
 import { element } from 'protractor';
 import { Event } from '@angular/router';
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, HostListener, ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { UserService } from '../../user.service';
 
@@ -13,10 +13,22 @@ export class GlobalTooltipComponent implements OnInit {
 
   @Input() tooltipMessages: any;
   @Input() toolTipType: string;
+
+  @HostListener('document:click', ['$event'])
+  clickout(event) {
+    if(!this.eRef.nativeElement.contains(event.target)) {
+      this.isClicked = false;
+      console.log("clicked outside");
+    }
+  }
+
   isClicked = false;
   indexToSet = 0;
   subscription: Subscription;
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private eRef: ElementRef)
+    { }
 
 
   ngOnInit() {
@@ -32,42 +44,53 @@ export class GlobalTooltipComponent implements OnInit {
     );
   }
 
-  opoupPosition(event?: any){
+  // opoupPosition(event?: any){
 
-    let windowHeight: any = window.innerHeight;
-    let windowWidth: any = window.innerWidth;
-    let offsetTop: number = windowHeight - event.clientY;
-    let offsetLeft: number = windowWidth - event.clientX;
-    let toolTip: any = event.target.nextElementSibling;
+  //   let windowHeight: any = window.innerHeight;
+  //   let windowWidth: any = window.innerWidth;
+  //   let offsetTop: number = windowHeight - event.clientY;
+  //   let offsetLeft: number = windowWidth - event.clientX;
+  //   let toolTip: any = event.target.nextElementSibling;
     
 
-    if(offsetTop <= 160){
-      //console.log(offsetTop);
-      toolTip.style.top = 'auto';
-      toolTip.style.bottom = '30px';
-    }else{
-      toolTip.style.top = '30px';
-      toolTip.style.bottom = 'auto';
-    }
+  //   if(offsetTop <= 160){
+  //     //console.log(offsetTop);
+  //     toolTip.style.top = 'auto';
+  //     toolTip.style.bottom = '30px';
+  //   }else{
+  //     toolTip.style.top = '30px';
+  //     toolTip.style.bottom = 'auto';
+  //   }
 
-    if(offsetLeft <= 270){
-      toolTip.style.left = 'auto';
-      toolTip.style.right = '30px';
-    }else{
-      toolTip.style.left = '0';
-      toolTip.style.right = 'auto';
-    }
+  //   if(offsetLeft <= 270){
+  //     toolTip.style.left = 'auto';
+  //     toolTip.style.right = '30px';
+  //   }else{
+  //     toolTip.style.left = '0';
+  //     toolTip.style.right = 'auto';
+  //   }
 
-    if(windowWidth <= 450){
-      toolTip.style.left = '-150px';
-      toolTip.style.right = 'auto';
-    }
+  //   if(windowWidth <= 450){
+  //     toolTip.style.left = '-150px';
+  //     toolTip.style.right = 'auto';
+  //   }
 
 
-    console.log(event);
-  }
+  //   console.log(event);
+  // }
+  
 
   markActive(choice?: boolean ): void {
+    
+
+    // window.addEventListener('click', function(e){
+      
+    //   if(e.target.closest('.tooltipContainer') === null){
+    //     console.log(e.target.closest('.tooltipContainer'));
+    //     this.isClicked = false;
+    //   }
+    // });
+
     if (choice !== undefined) {
       this.isClicked = false;
     } else {

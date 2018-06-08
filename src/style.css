@@ -2791,6 +2791,7 @@ select.form-control{
   position: absolute;
   right: 6px;
   top: -22px;
+  display: none;
 }
 .toolTipClose i{
   position: unset !important;
@@ -2798,6 +2799,17 @@ select.form-control{
   height: auto !important;
   width: auto !important;
   color: #fff !important;
+}
+.toolTipPointer{
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    left: 1px;
+    top: -22px;
+    border-bottom: 9px solid #42A82D;
+    border-right: 11px solid rgba(0,0,0,0);
+    border-left: 11px solid rgba(0,0,0,0);
+    border-top: 0 ;
 }
 
 

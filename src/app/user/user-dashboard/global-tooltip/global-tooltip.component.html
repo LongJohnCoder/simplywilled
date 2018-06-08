@@ -1,7 +1,8 @@
 <div class="customTooltip" [ngClass]="{'active' : isClicked}" (click)="markActive()">
-  <div class="toolTipBtn" (click)="opoupPosition($event)"></div>
+  <div class="toolTipBtn"></div>
   <div class="tooltipContainer">
     <div class="toolTipClose" ><i class="fa fa-times"></i></div>
+    <div class="toolTipPointer"></div>
     <div class="dlcontainer" *ngFor="let msg of tooltipMessages; let i = index">
       <dl class="abc" (click)="openInfo($event, i)" [ngClass]="{'open': indexToSet == i}">
           <dt>{{msg.q}} <span class="tooltipNav"><i class="fa fa-plus-square-o"></i></span></dt>
