@@ -7,6 +7,8 @@ import { TuaYourFamilyComponent } from './tua-your-family/tua-your-family.compon
 import {NgxMaskModule} from 'ngx-mask';
 import {ReactiveFormsModule} from '@angular/forms';
 import { GaurdianForMinorChildrenComponent } from './gaurdian-for-minor-children/gaurdian-for-minor-children.component';
+import { GlobalTooltipComponent } from '../global-tooltip/global-tooltip.component';
+
 
 @NgModule({
   imports: [
@@ -16,6 +18,6 @@ import { GaurdianForMinorChildrenComponent } from './gaurdian-for-minor-children
       NgxMaskModule.forRoot(),
       ReactiveFormsModule
   ],
-  declarations: [TellUsAboutYourselfComponent, TuaYourFamilyComponent, GaurdianForMinorChildrenComponent]
+  declarations: [TellUsAboutYourselfComponent, TuaYourFamilyComponent, GaurdianForMinorChildrenComponent, GlobalTooltipComponent]
 })
 export class UsersWillModule { }

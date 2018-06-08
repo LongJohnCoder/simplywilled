@@ -15,28 +15,15 @@
   <form #form="ngForm" (ngSubmit)="onSubmit(form)">
     <div class="form-group" [ngClass]="{'valid': firstname.valid, 'invalid': firstname.errors && (firstname.dirty || firstname.touched)}">
       <label>First Name:
-        <div class="customTooltip" [ngClass]="{'active': classId === 1 }" (click)="tooltip(1)">
-          <div class="toolTipBtn"></div>
-          <div class="tooltipContainer">
-            <div class="toolTipClose" (click)="tooltip(0)"><i class="fa fa-times"></i></div>
-            <dl class="open">
-              <dt>What is my full legal name? <span class="tooltipNav"><i class="fa fa-plus-square-o"></i></span></dt>
-              <dd>Please remember to use your full legal name as it appears on your driver’s license or government issued photo identification.</dd>
-            </dl>
-            <dl>
-              <dt>What is my full legal name? <span class="tooltipNav"><i class="fa fa-plus-square-o"></i></span></dt>
-              <dd>Please remember to use your full legal name as it appears on your driver’s license or government issued photo identification.</dd>
-            </dl>
-          </div>
-        </div>
+        <app-global-tooltip (click)="toolTipClicked('name')" [tooltipMessages]='toolTipMessageList.name' toolTipType="name"></app-global-tooltip>
       </label>
       <input
-              type="text"
-              class="form-control"
-              [ngModel]="userInfo?.firstname"
-              required
-              name ='firstname'
-              #firstname="ngModel">
+        type="text"
+        class="form-control"
+        [ngModel]="userInfo?.firstname"
+        required
+        name ='firstname'
+        #firstname="ngModel">
       <i class="fa fa-check" *ngIf="firstname.valid"></i>
       <i class="fa fa-times" *ngIf="firstname.errors && (firstname.dirty || firstname.touched)"></i>
       <span class="error_txt"
@@ -175,7 +162,9 @@
 
 
     <div class="form-group" >
-      <label>Home Address: </label>
+      <label>Home Address: 
+          <app-global-tooltip (click)="toolTipClicked('address')" [tooltipMessages]='toolTipMessageList.address' toolTipType="address"></app-global-tooltip>
+      </label>
       <input type="text"
              class="form-control"
              placeholder="Address Line 1"
@@ -334,7 +323,10 @@
     </div>
 
     <div class="form-group">
-      <label>Marital Status: </label>
+      <label>Marital Status: 
+          <app-global-tooltip (click)="toolTipClicked('maritial_status')" [tooltipMessages]='toolTipMessageList.maritial_status' toolTipType="maritial_status"></app-global-tooltip>
+      </label>
+      
       <ul class="first_page_radio" id="customer_status">
         <li>
           <label class="radio_custom marital_status" [ngClass]="{'active': marital_status.value == 'S'}">
@@ -399,7 +391,9 @@
     </div>
     <hr>
 
-    <h2 *ngIf=" marital_status.value == 'M' || marital_status.value == 'R'">About Your {{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}}</h2>
+    <h2 *ngIf=" marital_status.value == 'M' || marital_status.value == 'R'">About Your {{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}}
+        <app-global-tooltip (click)="toolTipClicked('partner')" [tooltipMessages]='toolTipMessageList.partner' toolTipType="partner"></app-global-tooltip>
+    </h2>
 
     <div *ngIf=" marital_status.value == 'M' || marital_status.value == 'R'">
       <div class="form-group" [ngClass]="{'valid': partner_firstname.valid, 'invalid': partner_firstname.errors && (partner_firstname.dirty || partner_firstname.touched)}">

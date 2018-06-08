@@ -4,8 +4,6 @@ import {TellUsAboutYourselfComponent} from './tell-us-about-yourself/tell-us-abo
 import {TuaYourFamilyComponent} from './tua-your-family/tua-your-family.component';
 import {GaurdianForMinorChildrenComponent} from './gaurdian-for-minor-children/gaurdian-for-minor-children.component';
 
-
-
 const routes: Routes = [
     { path: '', component: TellUsAboutYourselfComponent},
     { path: '2', component: TuaYourFamilyComponent},
