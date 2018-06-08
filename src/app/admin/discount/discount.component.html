@@ -155,13 +155,15 @@
                     <span *ngIf="couponForm.controls['title'].errors" style="color:red;"> Coupon title is required ! </span>
                   </p>
                 </div>
-                <!--<div class="modal-body">-->
-                  <!--<h4>Description:</h4>-->
-                  <!--<p>-->
-                    <!--<textarea class="form-control" formControlName="description"></textarea>-->
-                    <!--<span *ngIf="couponForm.controls['description'].errors" style="color:red;"> Coupon description is required ! </span>-->
-                  <!--</p>-->
-                <!--</div>-->
+                  <div class="modal-body">
+                      <h4>Coupon Code:</h4>
+                      <p>
+                          <input class="form-control" formControlName="token" mask="AAAAAA" (keyup)="getValue($event.target.value)">
+                          <span *ngIf="couponForm.controls['token'].errors" style="color:red;"> Coupon code must be six charecter ! </span>
+                          <span *ngIf="errorTy" style="color:red;"> {{checkCodeMsg}} </span>
+                          <span *ngIf="!errorTy" style="color:green;"> {{checkCodeMsg}} </span>
+                      </p>
+                  </div>
                 <div class="modal-body">
                   <h4>Expired On:</h4>
                   <p>

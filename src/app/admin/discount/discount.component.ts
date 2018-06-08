@@ -23,6 +23,10 @@ export class DiscountComponent implements OnInit {
     dataTable: any;
     usageType: number;
     couponVal: any;
+    couponCode: string;
+    checkCodeMsg: string;
+    checkCodeType: boolean;
+    errorTy: boolean;
 
     constructor(
       private modalService: BsModalService,
@@ -37,6 +41,8 @@ export class DiscountComponent implements OnInit {
       this.couponCount = 0;
       this.editMode = false;
       this.getCoupons();
+      this.checkCodeType = false;
+      this.errorTy = false;
   }
 
     getCoupons() {
@@ -58,6 +64,7 @@ export class DiscountComponent implements OnInit {
         this.couponForm = this.fb.group({
             title: new FormControl('', [Validators.required]),
             description: new FormControl('description', [Validators.required]),
+            token: new FormControl('', [Validators.required, Validators.minLength(6)]),
             amount: new FormControl(0.00, [Validators.required, Validators.pattern('^\\d+(\\.\\d+)?$')]),
             useType: new FormControl(1, [Validators.required]),
             usageType: new FormControl(1, [Validators.required]),
@@ -84,16 +91,27 @@ export class DiscountComponent implements OnInit {
     }
 
     public addCoupon(template:  TemplateRef<any>) {
+        this.errorTy = false;
+        this.checkCodeType = false;
         this.genCouponForm();
         this.editMode = false;
         this.respType = false;
+        this.discountService.getNewCoupon().subscribe(
+            (res: any) => {
+                this.couponForm.controls['token'].setValue(res.couponCode);
+            }, (error: any) => {
+                console.log(error.error.error);
+            }
+        );
         this.modalRef = this.modalService.show(template);
     }
     editCoupon(template:  TemplateRef<any>, i) {
-
+        this.errorTy = false;
+        this.checkCodeType = false;
         this.couponForm = this.fb.group({
             id: new FormControl(this.couponList[i].id, [Validators.required]),
             title: new FormControl(this.couponList[i].title, [Validators.required]),
+            token: new FormControl(this.couponList[i].token, [Validators.required, Validators.minLength(6)]),
             description: new FormControl(this.couponList[i].description, [Validators.required]),
             amount: new FormControl(this.couponList[i].amount, [Validators.required, Validators.pattern('^\\d+(\\.\\d+)?$')]),
             useType: new FormControl(+this.couponList[i].max_user > 1 ? 2 : 1, [Validators.required]),
@@ -188,7 +206,27 @@ export class DiscountComponent implements OnInit {
             }
         );
     }
-
+    getValue(value: string): any {
+        this.couponForm.controls['token'].setValue(value.toUpperCase());
+        this.checkCodeMsg = '';
+        if (this.couponForm.value.token.length === 6) {
+            this.discountService.checkCoupon(this.couponForm.value.token).subscribe(
+                (res: any) => {
+                    if (res.status === true) {
+                        this.errorTy = false;
+                    } else {
+                        this.errorTy = true;
+                    }
+                    this.checkCodeType = true;
+                    this.checkCodeMsg = res.message;
+                }, (error: any) => {
+                    this.errorTy = true;
+                    this.checkCodeType = true;
+                    console.log(error.error.error);
+                }
+            );
+        }
+    }
     public viewUserModal(template:  TemplateRef<any>, i) {
         this.couponVal = this.couponList[i];
         this.modalRef = this.modalService.show(template);

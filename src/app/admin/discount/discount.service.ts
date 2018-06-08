@@ -27,4 +27,14 @@ export class DiscountService {
         return this.httpClient.delete(environment.API_URL + 'admin-panel/delete-coupon/' + id);
     }
 
+    getNewCoupon(): Observable<any> {
+        const url = `${environment.API_URL + 'admin-panel/get-coupon'}`;
+        return this.httpClient.get(url);
+    }
+
+    checkCoupon(code: string): Observable<any> {
+        const url = `${environment.API_URL + 'admin-panel/check-coupon/' + code}`;
+        return this.httpClient.get(url);
+    }
+
 }
