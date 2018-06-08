@@ -338,6 +338,10 @@ class PackageController extends Controller
         }
         $userPackage->save();
 
+        $user = User::find($userID);
+        $user->name = $request->firstName.' '.$request->lastname;
+        $user->save();
+
         return response()->json([
           'status' => true,
           'approval_url' => $payment->getApprovalLink(),
@@ -376,6 +380,9 @@ class PackageController extends Controller
           $userPackage->status = '1';
           $userPackage->save();
 
+          $user = User::find($userPackage->user_id);
+          $user->package = $userPackage->package_id;
+          $user->save();
           $user = User::find($userPackage->user_id);
           $customClaims = ['package' => $user->package];
           $token = JWTAuth::fromUser($user, $customClaims);
@@ -603,6 +610,7 @@ class PackageController extends Controller
 
         if ($arr['ACK'] == 'Success') {
           $user->package = $pkgID;
+          $user->name = $request->firstName.' '.$request->lastname;
           $user->save();
           $customClaims = ['package' => $user->package];
           $token = JWTAuth::fromUser($user, $customClaims);

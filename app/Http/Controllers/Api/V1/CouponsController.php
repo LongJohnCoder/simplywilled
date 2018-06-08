@@ -36,7 +36,16 @@ class CouponsController extends Controller
     public function viewCoupons() {
       try {
         $timeNow = Carbon::now()->format('Y-m-d H:i:s');
-        $coupons = Coupon::get();
+        $coupons = Coupon::with(array('userPackage'=> function($q) {
+            $q->where('payment_status', '2');
+            $q->select('id', 'payment_status', 'user_id', 'coupon_amount', 'coupon_id');
+            $q->with(['user' => function ($qu) {
+              $qu->select('id','name','email');
+              $qu->with(['tellUsAboutYou' => function($que) {
+                $que->select('id','user_id','firstname','lastname','fullname','phone','email');
+                }]);
+              }]);
+          }))->get();
         return response()->json([
             'status'   => true,
             'message'  => 'All coupons',
@@ -58,22 +67,27 @@ class CouponsController extends Controller
    * */
     public function createCoupon(Request $request) {
       try {
-        // $request->expired_on = Carbon::createFromFormat('Y-m-d', $request->expired_on);
-        if (Carbon::now()->lte(Carbon::parse($request->expired_on))) {
-          $expOn = Carbon::parse($request->expired_on);
-        } else {
-          return response()->json([
-              'status'  => false,
-              'message' => 'Expire Date should be greater than current time',
-              'data'    => []
-          ], 400);
-        }
         $timeNow = Carbon::now()->format('Y-m-d');
+        if ($request->expired_on != '') {
+          if (Carbon::now()->lte(Carbon::parse($request->expired_on))) {
+            $expOn = Carbon::parse($request->expired_on);
+          } else {
+            return response()->json([
+                'status'  => false,
+                'message' => 'Expire Date should be greater than current time',
+                'data'    => []
+            ], 400);
+          }
+        } else {
+          $expOn = '2200-12-31';
+        }
+
         $validator = Validator::make($request->all(), [
             'title'       => 'required',
             'max_user'    => 'required|numeric|min:0',
+            'useType'     => 'required|numeric',
+            'usageType'   => 'required|numeric',
             'flag'        => 'required|numeric|min:0',
-            // 'expired_on'  => 'required|after:'.$timeNow,
             'description' => 'nullable',
             'amount'      => 'required|numeric|min:0'
         ]);
@@ -88,7 +102,13 @@ class CouponsController extends Controller
         $coupon              = new Coupon();
         $coupon->title       = $request->title;
         $coupon->amount      = $request->amount;
-        $coupon->max_user    = $request->max_user;
+        if ($request->useType == 1) {
+          $coupon->max_user    = 1;
+        } else if($request->usageType == 1) {
+          $coupon->max_user    = 9999999;
+        } else {
+          $coupon->max_user = $request->max_user;
+        }
         $coupon->flag        = $request->flag;
         $coupon->expired_on  = $expOn;
         $coupon->description = $request->has('description') ? $request->description: '';
@@ -159,23 +179,29 @@ class CouponsController extends Controller
      * */
      public function editCoupon(Request $request) {
        try {
-         if (Carbon::now()->lte(Carbon::parse($request->expired_on))) {
-           $expOn = Carbon::parse($request->expired_on);
-         } else {
-           return response()->json([
-               'status'  => false,
-               'message' => 'Expire Date should be greater than current time',
-               'data'    => []
-           ], 400);
-         }
          $timeNow = Carbon::now()->format('Y-m-d');
+         if ($request->expired_on != '') {
+           if (Carbon::now()->lte(Carbon::parse($request->expired_on))) {
+             $expOn = Carbon::parse($request->expired_on);
+           } else {
+             return response()->json([
+                 'status'  => false,
+                 'message' => 'Expire Date should be greater than current time',
+                 'data'    => []
+             ], 400);
+           }
+         } else {
+           $expOn = '2200-12-31';
+         }
+
          $validator = Validator::make($request->all(), [
-           'title'       => 'required',
-           'max_user'    => 'required|numeric|min:0',
-           'flag'        => 'required|numeric|min:0',
-           // 'expired_on'  => 'required|date|date_format:Y-m-d|after:'.$timeNow,
-           'description' => 'nullable',
-           'amount'      => 'required|numeric|min:0'
+             'title'       => 'required',
+             'max_user'    => 'required|numeric|min:0',
+             'useType'     => 'required|numeric',
+             'usageType'   => 'required|numeric',
+             'flag'        => 'required|numeric|min:0',
+             'description' => 'nullable',
+             'amount'      => 'required|numeric|min:0'
          ]);
          if ($validator->fails()) {
              return response()->json([
@@ -198,7 +224,13 @@ class CouponsController extends Controller
 
          $coupon->title       = $request->title;
          $coupon->amount      = $request->amount;
-         $coupon->max_user    = $request->max_user;
+         if ($request->useType == 1) {
+           $coupon->max_user    = 1;
+         } else if($request->usageType == 1) {
+           $coupon->max_user    = 9999999;
+         } else {
+           $coupon->max_user = $request->max_user;
+         }
          $coupon->flag        = $request->flag;
          $coupon->expired_on  = $expOn;
          $coupon->description = $request->has('description') ? $request->description: '';

@@ -15,4 +15,7 @@ class UserPackage extends Model
   protected $table = 'userPackageMapping';
   protected $softDelete = true;
 
+  public function user() {
+      return $this->belongsTo('App\User');
+  }
 }

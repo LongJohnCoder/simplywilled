@@ -25,4 +25,8 @@ class Coupon extends Model
            }
        });
     }
+
+    public function userPackage() {
+        return $this->hasMany('App\Models\UserPackage','coupon_id');
+    }
 }
