@@ -6,11 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about-us.component.css']
 })
 export class AboutUsComponent implements OnInit {
-
+  showHideBio: boolean = false;
   constructor() { }
 
   ngOnInit() {
   }
-  
+
+  showBio(){
+    this.showHideBio = !this.showHideBio;
+  }
 
 }

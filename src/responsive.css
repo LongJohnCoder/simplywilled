@@ -642,7 +642,6 @@
         font-size:36px;
     }
     .about_team_ul li{
-        width: 50%;
         margin-bottom: 32px;
     }
 }
@@ -993,6 +992,13 @@
         width: 95%;
         margin: 0 2.5%;
     }
+  .about_team_ul{
+    width: 500px;
+  }
+  .about_team_ul li:last-child{
+    float: none;
+    margin: 0 auto;
+  }
 }
 
 @media only screen and (max-width: 680px){
@@ -1346,6 +1352,13 @@
     .trending_sub_left_ul > li:nth-child(3){
         width: auto;
     }
+  .about_team_ul{
+    width: 100%;
+  }
+  .about_team_ul li{
+    float: left;
+    width: 100%;
+  }
 }
 
 @media only screen and (min-width: 100px) and (max-width: 480px){

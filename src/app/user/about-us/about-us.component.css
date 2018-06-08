@@ -5,3 +5,159 @@ a:hover{
 .AboutUsBanner{
     float: left;
 }
+.ourFounder{
+  width: 186px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.5s ease 0s;
+}
+.ourFounder.showBio{
+  margin-left: 0;
+  transform: translateX(0);
+}
+.ourFounder li{
+  width: 186px;
+}
+.founderBio{
+  height: 0px;
+  overflow: hidden;
+  padding: 0;
+  width: 0;
+  float: left;
+  margin: 0 20px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  opacity: 0;
+}
+.founderBio.showBioBox{
+  transition: opacity 0.3s ease 0.5s;
+  opacity: 1;
+  border-color: #ccc;
+  height: auto;
+  padding: 15px;
+  width: calc(100% - 230px);
+}
+.founderBio h2{
+  color: #1376bb;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-family: 'OpenSans-Semibold';
+}
+.founderBio p{
+  color: #495057;
+  font-size: 16px;
+}
+.founderBio p + h2 {
+  margin-top: 28px;
+}
+.bioTable{
+  width: 100%;
+  float: left;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.bioTable li{
+  border: 1px solid #ccc;
+  border-bottom: 0;
+  width: 100%;
+  float: left;
+}
+.bioTable li:first-child{
+  border-radius: 5px 5px 0 0;
+}
+.bioTable li:last-child{
+  border-bottom: 1px solid #ccc;
+  border-radius:  0 0 5px 5px;
+}
+.bioTable li p{
+  color: #6fa700;
+  font-size: 16px;
+  font-family: 'OpenSans-bold';
+  width: 65%;
+  float: left;
+  margin-bottom: 0;
+  padding: 14px;
+  border-right: 1px solid #ccc;
+}
+.bioTable li p span{
+  color: #495057;
+  font-style: italic;
+  font-family: 'OpenSans';
+  display: block;
+}
+.bioTable li p:last-child{
+  font-family: 'OpenSans-Semibold';
+  color: #1376bb;
+  border-right: 0;
+  width: 35%;
+}
+
+.founderBio h2:first-child{
+  opacity: 0;
+}
+.founderBio.showBioBox h2:first-child{
+  transition: opacity 0.6s ease 1s;
+  opacity: 1;
+}
+.founderBio p.bioPara{
+   opacity: 0;
+ }
+.founderBio.showBioBox p.bioPara{
+  transition: opacity 0.8s ease 1.3s;
+  opacity: 1;
+}
+.founderBio h2.eduHead{
+  opacity: 0;
+}
+.founderBio.showBioBox h2.eduHead{
+  transition: opacity 0.6s ease 1.9s;
+  opacity: 1;
+}
+.bioTable li:nth-child(1n){
+  opacity: 0;
+}
+.bioTable li:nth-child(2n){
+  opacity: 0;
+}
+.bioTable li:nth-child(3n){
+  opacity: 0;
+}
+.bioTable li:nth-child(4n){
+  opacity: 0;
+}
+.founderBio.showBioBox .bioTable li:nth-child(1n){
+  transition: opacity 0.6s ease 2.2s;
+  opacity: 1;
+}
+.founderBio.showBioBox .bioTable li:nth-child(2n){
+  transition: opacity 0.6s ease 2.4s;
+  opacity: 1;
+}
+.founderBio.showBioBox .bioTable li:nth-child(3n){
+  transition: opacity 0.6s ease 2.6s;
+  opacity: 1;
+}
+.founderBio.showBioBox .bioTable li:nth-child(4n) {
+  transition: opacity 0.6s ease 2.8s;
+  opacity: 1;
+}
+
+@media screen and (max-width: 767px){
+  .founderBio.showBioBox{
+    width: 100%;
+    margin: 20px 0 0;
+  }
+  .ourFounder.showBio{
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media screen and (max-width: 480px){
+  .bioTable li p{
+    width: 56%;
+    font-size: 13px;
+  }
+}
+
+
+
