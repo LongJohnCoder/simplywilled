@@ -41,13 +41,13 @@
                         colspan="1" aria-label="Title: activate to sort column ascending"
                         style="width: 353px;">Title
                     </th>
-                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                        colspan="1" aria-label="Slug: activate to sort column ascending"
-                        style="width: 336px;">Description
-                    </th>
+                    <!--<th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"-->
+                        <!--colspan="1" aria-label="Slug: activate to sort column ascending"-->
+                        <!--style="width: 336px;">Description-->
+                    <!--</th>-->
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                         colspan="1" aria-label="Status: activate to sort column ascending"
-                        style="width: 62px;">Token
+                        style="width: 62px;">Coupon
                     </th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                         colspan="1" aria-label="Created Date: activate to sort column ascending"
@@ -55,7 +55,7 @@
                     </th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                         colspan="1" aria-label="Created Date: activate to sort column ascending"
-                        style="width: 52px;">Max User
+                        style="width: 52px;">Type
                     </th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                         colspan="1" aria-label="Created Date: activate to sort column ascending"
@@ -75,10 +75,10 @@
                   <tr *ngFor="let item of couponList; let i = index">
                     <td class="sorting_1">{{i + 1}}</td>
                     <td>{{item.title}}</td>
-                    <td>{{item.description | slice:0:30}}</td>
+                    <!--<td>{{item.description | slice:0:30}}</td>-->
                     <td>{{item.token}}</td>
-                      <td>{{item.expired_on}}</td>
-                      <td>{{item.max_user}}</td>
+                      <td>{{item.expired_on === '2200-12-31 00:00:00' ? 'No expire' : item.expired_on}}</td>
+                      <td>{{item.max_user === 9999999 ? 'Unlimited Use' : item.max_user > 1 ? item.max_user : 'Single Use'}}</td>
                     <td>{{item.flag === '1' ? '$'+item.amount : item.amount+'%'}}</td>
                     <td>{{item.created_at}}</td>
                     <td class="text-center ">
@@ -89,6 +89,11 @@
                         <i class="fa fa-trash" aria-hidden="true"></i>
                         Delete
                       </button>
+                        <button class="btn btn-warning deleteAdminOption"
+                                (click)="viewUserModal(viewUser, i)">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            Users {{item.user_package.length}}
+                        </button>
                     </td>
                   </tr>
                   </tbody>
@@ -101,6 +106,36 @@
         </div>
       </div>
 
+        <ng-template #viewUser>
+            <div class="adminModal">
+                <div class="panel-body">
+                    <div class="modal-header" style="margin-bottom:15px">
+                        <h3 class="modal-title">
+                            View User
+                        </h3>
+                        <button type="button" class="close" (click)="modalRef.hide()">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Sl No.</th>
+                                <th>Full Name</th>
+                                <th>Email ID</th>
+                            </tr>
+                            </thead>
+                            <tbody *ngIf="couponVal.user_package.length > 0">
+                            <tr *ngFor="let pack of couponVal.user_package; let j = index;">
+                                <td>{{j}}</td>
+                                <td>{{pack.user.name}}</td>
+                                <td>{{pack.user.email}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
 
       <ng-template #couponModal>
         <div class="adminModal">
@@ -120,13 +155,13 @@
                     <span *ngIf="couponForm.controls['title'].errors" style="color:red;"> Coupon title is required ! </span>
                   </p>
                 </div>
-                <div class="modal-body">
-                  <h4>Description:</h4>
-                  <p>
-                    <textarea class="form-control" formControlName="description"></textarea>
-                    <span *ngIf="couponForm.controls['description'].errors" style="color:red;"> Coupon description is required ! </span>
-                  </p>
-                </div>
+                <!--<div class="modal-body">-->
+                  <!--<h4>Description:</h4>-->
+                  <!--<p>-->
+                    <!--<textarea class="form-control" formControlName="description"></textarea>-->
+                    <!--<span *ngIf="couponForm.controls['description'].errors" style="color:red;"> Coupon description is required ! </span>-->
+                  <!--</p>-->
+                <!--</div>-->
                 <div class="modal-body">
                   <h4>Expired On:</h4>
                   <p>
@@ -137,7 +172,7 @@
                   </p>
                 </div>
                 <div class="modal-body">
-                  <h4>Type:</h4>
+                  <h4>Discount type:</h4>
                   <p>
                     <select class="form-control" formControlName="flag">
                       <option value="1">Flat Discount</option>
@@ -153,13 +188,37 @@
                     <span *ngIf="couponForm.controls['amount'].errors" style="color:red;"> Coupon amount is required ! </span>
                   </p>
                 </div>
-                <div class="modal-body">
-                  <h4>Max User:</h4>
-                  <p>
-                    <input type="number" class="form-control" formControlName="max_user" pattern="^\d+(\.\d+)?$">
-                    <span *ngIf="couponForm.controls['max_user'].errors" style="color:red;"> How many users can use that coupon is required ! </span>
-                  </p>
-                </div>
+                  <div class="modal-body">
+                      <h4>Type:</h4>
+                      <p>
+                          <select class="form-control" formControlName="useType" (change)="usageTypeValid()">
+                              <option [ngValue]="1">One Time Use</option>
+                              <option [ngValue]="2">Multi Use</option>
+                          </select>
+                          <span *ngIf="couponForm.controls['useType'].errors" style="color:red;"> Use type is required ! </span>
+                      </p>
+                  </div>
+                  <div *ngIf="couponForm.value.useType === 2">
+                      <div class="modal-body">
+                          <h4>Max User:</h4>
+                          <p>
+                              <select class="form-control" formControlName="usageType" #usageType (change)="maxUserValid(usageType.value)">
+                                  <option [ngValue]="1">Unlimited Time User</option>
+                                  <option  [ngValue]="2">Limited Time User</option>
+                              </select>
+                              <span *ngIf="couponForm.controls['usageType'].errors" style="color:red;"> Usage type is required ! </span>
+                          </p>
+                      </div>
+                      <div class="modal-body" *ngIf="couponForm.get('usageType').value === 2">
+                          <h4>Number of User:</h4>
+                          <p>
+                              <input type="number" class="form-control" formControlName="max_user" >
+                              <span *ngIf="couponForm.controls['max_user'].errors" style="color:red;"> Maximum user should be greater than 2 for multiple time use ! </span>
+                          </p>
+                      </div>
+
+                  </div>
+
                 <div class="modal-body">
                   <button type="button" class="btn btn-primary" (click)="update()" [disabled]="couponForm.invalid"> {{editMode ? 'Update' : 'Add'}} Coupon</button>
                 </div>

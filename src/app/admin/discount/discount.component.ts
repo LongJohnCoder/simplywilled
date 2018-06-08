@@ -21,6 +21,8 @@ export class DiscountComponent implements OnInit {
     respType: boolean;
     respMsg: string;
     dataTable: any;
+    usageType: number;
+    couponVal: any;
 
     constructor(
       private modalService: BsModalService,
@@ -51,15 +53,34 @@ export class DiscountComponent implements OnInit {
         );
     }
 
+
     genCouponForm() {
         this.couponForm = this.fb.group({
             title: new FormControl('', [Validators.required]),
-            description: new FormControl('', [Validators.required]),
+            description: new FormControl('description', [Validators.required]),
             amount: new FormControl(0.00, [Validators.required, Validators.pattern('^\\d+(\\.\\d+)?$')]),
-            max_user: new FormControl(0, [Validators.required, Validators.pattern('^\\d+(\\.\\d+)?$')]),
-            expired_on: new FormControl('', [Validators.required]),
+            useType: new FormControl(1, [Validators.required]),
+            usageType: new FormControl(1, [Validators.required]),
+            max_user: new FormControl(2),
+            expired_on: new FormControl(''),
             flag: new FormControl('0', [Validators.required]),
         });
+
+    }
+
+    maxUserValid() {
+        if (+this.couponForm.value.usageType === 2) {
+            this.couponForm.get('max_user').setValidators([Validators.required, Validators.min(2)]);
+            this.couponForm.get('max_user').updateValueAndValidity();
+        } else {
+            this.couponForm.get('max_user').clearValidators();
+            this.couponForm.get('max_user').updateValueAndValidity();
+        }
+    }
+
+    usageTypeValid() {
+        this.couponForm.controls['usageType'].setValue(1);
+        this.maxUserValid();
     }
 
     public addCoupon(template:  TemplateRef<any>) {
@@ -68,15 +89,17 @@ export class DiscountComponent implements OnInit {
         this.respType = false;
         this.modalRef = this.modalService.show(template);
     }
-
     editCoupon(template:  TemplateRef<any>, i) {
+
         this.couponForm = this.fb.group({
             id: new FormControl(this.couponList[i].id, [Validators.required]),
             title: new FormControl(this.couponList[i].title, [Validators.required]),
             description: new FormControl(this.couponList[i].description, [Validators.required]),
             amount: new FormControl(this.couponList[i].amount, [Validators.required, Validators.pattern('^\\d+(\\.\\d+)?$')]),
-            max_user: new FormControl(this.couponList[i].max_user, [Validators.required, Validators.pattern('^\\d+(\\.\\d+)?$')]),
-            expired_on: new FormControl(this.couponList[i].expired_on, [Validators.required]),
+            useType: new FormControl(+this.couponList[i].max_user > 1 ? 2 : 1, [Validators.required]),
+            usageType: new FormControl(+this.couponList[i].max_user === 9999999 ? 1 : 2, [Validators.required]),
+            max_user: new FormControl(+this.couponList[i].max_user, [Validators.min(1)]),
+            expired_on: new FormControl(this.couponList[i].expired_on),
             flag: new FormControl(this.couponList[i].flag, [Validators.required]),
         });
         this.respType = false;
@@ -84,13 +107,12 @@ export class DiscountComponent implements OnInit {
         this.modalRef = this.modalService.show(template);
     }
 
-    // Date.prototype.toJSON = function(){
-    //     return DateService.formatDate(this);
-    // };
+
     update() {
         this.respType = true;
         this.respMsg = 'Please wait...';
-        // console.log(this.couponForm.value.expired_on);
+        // this.couponForm.value.max_user = +this.couponForm.value.usageType === 1 ? 999999 : +this.couponForm.value.max_user;
+        // console.log(this.couponForm.value);
         if (this.editMode === false) {
             // Add Coupon
             this.discountService.addCoupon(this.couponForm.value).subscribe(
@@ -165,5 +187,11 @@ export class DiscountComponent implements OnInit {
                 }
             }
         );
+    }
+
+    public viewUserModal(template:  TemplateRef<any>, i) {
+        this.couponVal = this.couponList[i];
+        this.modalRef = this.modalService.show(template);
+
     }
 }
