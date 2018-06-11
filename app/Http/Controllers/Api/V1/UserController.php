@@ -32,6 +32,7 @@ use Mail;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Validator;
 use Illuminate\Support\Facades\Hash;
+use App\PetGuardian;
 
 use App\Helper\GiftStatement;
 
@@ -185,7 +186,7 @@ class UserController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'user_id'    =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
-                'step'       =>  'required|numeric|between:1,11|integer',
+                'step'       =>  'required|numeric|between:1,12|integer',
             ]);
             if ($validator->fails()) {
                 return response()->json([
@@ -232,6 +233,9 @@ class UserController extends Controller
                 }
                 if ($step == 11) {
                     return $this->updateDisinherit($request);
+                }
+                if ($step == 12) {
+                    return $this->updatePetGuardianInfo($request); //TO MODIFY
                 }
             } else {
                 return response()->json([
@@ -1239,6 +1243,272 @@ class UserController extends Controller
     }
 
     /*
+     * A single function to update guardian as well as backup guardian info
+     * @return \Illuminate\Http\JsonResponse
+     * */
+    private function updatePetGuardianInfoHelper($guardian = [] , $isPetGuardianMinorChildren = null, $isBackupGuardian, $emailType = null, $tellUsAboutYou) {
+        //validation for normal guardian
+        $validator = Validator::make($guardian, [
+            //'user_id'      =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|between:'.\Auth::user()->id.','.\Auth::user()->id,
+            'fullname'     =>  'required|string',
+            'relationship_with' => 'required|string|max:255',
+            'address'      =>  'required|string',
+            'country'      =>  'required|string',
+            'state'        =>  'required|string',
+            'city'         =>  'required|string',
+            'email_notification' => 'required|numeric|between:0,1|integer',
+            'email'         => 'nullable|required_if:email_notification,1|email',
+            'zip'          =>  'required|regex:/^[0-9]{5}(\-[0-9]{4})?$/',
+            'phone'         => 'required',
+            'relationship_other' => 'nullable'
+        ]);
+        if ($validator->fails()) {
+            $response = response()->json([
+                'status' => false,
+                'message' => $validator->errors(),
+                'data' => []
+            ], 400);
+            return [
+              'response'  =>  $response,
+              'status'    =>  400
+            ];
+        }
+
+        if(isset($guardian['is_backup']) && $isBackupGuardian != $guardian['is_backup']) {
+          $response = response()->json([
+              'status' => false,
+              'message' => ['is_backup' => ['is_backup value does not match with isBackupGuardian']],
+              'data' => []
+          ], 400);
+          return [
+            'response'  =>  $response,
+            'status'    =>  400
+          ];
+        }
+
+        $isPetGuardianMinorChildren  = $isPetGuardianMinorChildren == 'Yes' ? '1' : '0';
+
+        /*
+        * backup guardian checking
+        * if it is guardian minor children then is backup is 0
+        * if it is backup guardian then is backup is 1
+        **/
+        $guardian['is_backup'] = $isBackupGuardian == 0 ? '0' : '1';
+        $checkForExistUser = TellUsAboutYou::where('user_id', $guardian['user_id'])->first();
+
+        if ($checkForExistUser) {
+
+            $checkForExistUser->guardian_minor_children = '1';
+            $checkForExistUser->save();
+
+
+            $Guardian = PetGuardian::where('user_id',$guardian['user_id'])
+                                                            ->where('is_backup','0')
+                                                            ->first();
+            $oldGuardianEmail = $Guardian != null ? $Guardian->email : null;
+
+            $backupGuardian = petGuardian::where('user_id',$guardian['user_id'])
+                                                            ->where('is_backup','1')
+                                                            ->first();
+            $oldBackupGuardianEmail = $backupGuardian != null ? $backupGuardian->email : null;
+
+            //if user has not completed previous step in tellUsYou section then this step is not permited
+
+            PetGuardian::updateOrCreate(['user_id'=>$guardian['user_id'] , 'is_backup' => $guardian['is_backup']],$guardian);
+            //Sending an email if email notification is set
+            if($emailType != null && isset($guardian['email_notification']) && $guardian['email_notification'] == 1) {
+
+                //$this->sendEmail($guardian['user_id'], $guardian['fullname'], $guardian['email'], $emailType);
+                // if($isBackupGuardian == 0) {
+
+                //     $flag = true;
+                //     if(isset($guardian['email']) && strtolower(trim($guardian['email'])) == strtolower(trim($oldGuardianEmail)))
+                //     {
+                //         $flag = false;
+                //     }
+
+                //     if($flag) {
+                //         \Log::info('email getting send for pet guardian for minor children');
+                //         $arr = [
+                //             'firstName'     =>  $tellUsAboutYou->firstname,
+                //             'middleName'    =>  $tellUsAboutYou->middlename,
+                //             'lastName'      =>  $tellUsAboutYou->lastname,
+                //             'guardianName'  =>  $guardian['fullname']
+                //         ];
+                //         Mail::send('new_emails.guardian', $arr, function($mail) use($guardian){
+                //             $mail->from(config('settings.email'), 'Notice for Guardian Appointment');
+                //             $mail->to($guardian['email'], $guardian['fullname'])
+                //             ->subject('You are requested to be Guardian for Minor Children');
+                //         });
+                //         if(Mail::failures()) {
+                //             \Log::info('email sending error for guardian for minor children');
+                //         }
+                //     }
+
+                // } else {
+
+                //     $flag = true;
+                //     if(isset($guardian['email']) && strtolower(trim($guardian['email'])) == strtolower(trim($oldBackupGuardianEmail)))
+                //     {
+                //         $flag = false;
+                //     }
+
+                //     if($flag) {
+                //         \Log::info('email getting send for backup guardian for minor children');
+                //         $arr = [
+                //             'firstName'     =>  $tellUsAboutYou->firstname,
+                //             'middleName'    =>  $tellUsAboutYou->middlename,
+                //             'lastName'      =>  $tellUsAboutYou->lastname,
+                //             'backupGuardianName'  =>  $guardian['fullname']
+                //         ];
+                //         Mail::send('new_emails.guardian_backup', $arr, function($mail) use($guardian){
+                //             $mail->from(config('settings.email'), 'Notice for Backup Guardian Appointment');
+                //             $mail->to($guardian['email'], $guardian['fullname'])
+                //             ->subject('You are requested to be Backup Guardian for Minor Children');
+                //         });
+                //         if(Mail::failures()) {
+                //             \Log::info('email sending error for guardian for minor children');
+                //         }
+                //     }
+                // }
+            }
+            $response = self::generatePetGuardianInfoResponse($guardian['user_id']);
+            return [
+            'response'  =>  $response,
+            'status'    =>  200
+            ];
+        } else {
+          $response = response()->json([
+              'status'  => false,
+              'message' => 'User details not updated',
+              'data'    => []
+          ], 400);
+          return [
+            'response'  =>  $response,
+            'status'    =>  400
+          ];
+        }
+    }
+
+
+    public function updatePetGuardianInfo($request) {
+        try 
+        {
+            //validation for necessary flags
+            $validator = Validator::make($request->all(), [
+                'user_id'                   =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
+                'isPetGuardianMinorChildren'=>  'required|string|in:Yes,No',
+                'isBackUpGuardian'          =>  'required|string|in:Yes,No',
+                'guardian.*'                =>  'required|array',
+                'backUpGuardian.*'          =>  'nullable|array',
+                'guardian.*.user_id'        =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
+                'backUpGuardian.*.user_id'  =>  'nullable|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id
+            ]);
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => $validator->errors(),
+                    'data' => []
+               ], 400);
+            }
+
+            //check if guardian and backup guardian is present in array format
+            if($request->isBackUpGuardian == 'Yes' && !isset($request->backUpGuardian[0])) {
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'If you select isBackUpGuardian you have to provide backUPGuardian array!',
+                    'data'    => []
+                  ], 400);
+            }
+
+            if($request->isPetGuardianMinorChildren == 'Yes' && !isset($request->guardian[0])) {
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'If you select isPetGuardianMinorChildren you have to provide petGuardian array!',
+                    'data'    => []
+                  ], 400);
+            }
+
+            $userId = $request->user_id;
+            $tellUsAboutYou = TellUsAboutYou::where('user_id',$userId)->first();
+            if(!$tellUsAboutYou) {
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'Please fill Tell Us About You details first',
+                    'data'    => []
+                ], 400);   
+            }
+            
+            $isPetGuardianMinorChildren  = $request->isPetGuardianMinorChildren;// Yes, No
+            $isBackUpGuardian         = $request->isBackUpGuardian;//Yes, No
+            $isBackupGuardianCopy     = $isBackUpGuardian == 'Yes' ? '1' : '0';
+            $guardian                 = isset($request->guardian[0]) ? $request->guardian[0] : null;
+            $backUpGuardian           = isset($request->backUpGuardian[0]) ? $request->backUpGuardian[0] : null;
+
+            //if isGuardianMinorChildren is set that means it is a not a backup guardian
+            //for backup guardian isGuardianMinorChildren is always false
+            if($isPetGuardianMinorChildren == 'Yes') {
+                if(isset($guardian)) {
+                  $emailType  = 3;
+                  $response   = self::updatePetGuardianInfoHelper($guardian,$isPetGuardianMinorChildren,'0',$emailType, $tellUsAboutYou);
+                  if($response['status'] != 200) {
+                    return $response['response'];
+                  }
+                }
+            } else {
+                PetGuardian::where('user_id',$userId)->where('is_backup','0')->delete();
+            }
+            if($isBackUpGuardian == 'Yes') {
+                if(isset($backUpGuardian)) {
+                  $emailType  = 4;
+                  $response   = self::updatePetGuardianInfoHelper($backUpGuardian,'No',$isBackupGuardianCopy,$emailType, $tellUsAboutYou);
+                  if($response['status'] != 200) {
+                    return $response['response'];
+                  }
+                }
+            } else {
+                PetGuardian::where('user_id',$userId)->where('is_backup','1')->delete();
+            }
+
+            // if(PetGuardian::where('user_id',$userId)->first() == null) {
+            //     $tuau = TellUsAboutYou::where('user_id',$userId)->first();
+            //     if($tuau) {
+            //         $tuau->guardian_minor_children = '0';
+            //         $tuau->save();
+            //     }
+            // }
+
+            $response = isset($response['response']) ? $response['response'] : self::generatePetGuardianInfoResponse($userId);
+            return $response;
+        } catch (\Exception $e) {
+          return response()->json([
+                  'status' => false,
+                  'message' => 'Message : '.$e->getMessage().' Line : '.$e->getLine(),
+                  'data' => []
+          ], 500);
+        }
+    }
+
+    /*
+     * A single function to generate guardianInfo response
+     * @return \Illuminate\Http\JsonResponse
+     * */
+    private function generatePetGuardianInfoResponse($userId) {
+      $guardianInfo       = PetGuardian::where('user_id',$userId)->where('is_backup','0')->get();
+      $guardianInfoBackup = PetGuardian::where('user_id',$userId)->where('is_backup','1')->get();
+      return response()->json([
+          'status' => true,
+          'message' => 'User details updated final with GuardianInfo',
+          'data' => [
+            'isPetGuardianMinorChildren' =>  $guardianInfo->count() > 0 ? 'Yes' : 'No' ,
+            'petGuardian'                =>  $guardianInfo,
+            'isBackUpPetGuardian'        =>  $guardianInfoBackup->count() > 0 ? 'Yes' : 'No' ,
+            'backupPetGuardian'          =>  $guardianInfoBackup
+          ]
+      ], 200);
+    }
+
+    /*
      *function to update TangibleProperty distribute in the ProvideYourLovedOnes table
      *@return \Illuminate\Http\JsonResponse
      * */
@@ -1311,7 +1581,8 @@ class UserController extends Controller
             $validator = Validator::make($request->all(), [
             'user_id'   =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
             'giftType'  =>  'required|numeric|between:1,6|integer',
-            'giftData'  =>  'required'
+            'giftData'  =>  'required',
+            'gift_type' =>  'nullable|string|in:individual,charity',
         ]);
 
         if ($validator->fails()) {
@@ -1344,6 +1615,9 @@ class UserController extends Controller
           $saveGift = new Gifts();
           $saveGift->user_id = $userId;
         // }
+
+        $saveGift->gift_type = $request->has('gift_type') ? $request->get('gift_type') : $saveGift->gift_type;
+
         $saveGift->type = $giftType;
         switch($giftType) {
           case 1 :  $saveGift->cash_description = GiftStatement::cashDescription($giftData[0],$tuay);
@@ -1402,6 +1676,16 @@ class UserController extends Controller
         $giftType = $request->giftType; // giftType = 1,2,3,4,5,6
         $giftData = $request->giftData; // array of gift data
 
+        $validator = Validator::make($request->all(), [
+            'gift_type'             => 'nullable|string|in:individual,charity',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors(),
+                'data' => []
+            ], 400);
+        }
 
         $tuay = TellUsAboutYou::where('user_id',\Auth::user()->id)->first();
         if(!$tuay) {
@@ -1415,6 +1699,8 @@ class UserController extends Controller
         if ($gift) {
 
           $gift->type = $giftType;
+          $gift->gift_type = $request->has('gift_type') ? $request->get('gift_type') : $gift->gift_type;
+          
           switch($giftType) {
             case 1 :  $gift->cash_description = GiftStatement::cashDescription($giftData[0],$tuay);
                       ///$gift->cash_description = json_encode($giftData);
