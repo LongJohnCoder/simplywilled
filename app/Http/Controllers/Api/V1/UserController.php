@@ -431,7 +431,7 @@ class UserController extends Controller
                 ];
                 Mail::send('new_emails.spouse_invitation', $arr, function($mail) use($arr){
                     $mail->from(config('settings.email'), 'Spouse Invitation to Simplywilled.com');
-                    $mail->to($arr['email'], $arr['spouseFullName'])
+                    $mail->to(strtolower($arr['email']), $arr['spouseFullName'])
                     ->subject('Your spouse invited you to Simplywilled.com');
                 });
 
@@ -829,7 +829,7 @@ class UserController extends Controller
                 ];
                 Mail::send('new_emails.personal_representative_appoint', $arr, function($mail) use($personalRepresentative){
                     $mail->from(config('settings.email'), 'Notice for Executor');
-                    $mail->to($personalRepresentative['email'], $personalRepresentative['fullname'])
+                    $mail->to(strtolower($personalRepresentative['email']), $personalRepresentative['fullname'])
                     ->subject('You are requested to be an executor');
                 });
 
@@ -856,7 +856,7 @@ class UserController extends Controller
                 ];
                 Mail::send('new_emails.personal_representative_appoint_backup', $arr, function($mail) use($personalRepresentative){
                     $mail->from(config('settings.email'), 'Notice for Backup Executor');
-                    $mail->to($personalRepresentative['email'], $personalRepresentative['fullname'])
+                    $mail->to(strtolower($personalRepresentative['email']), $personalRepresentative['fullname'])
                     ->subject('You are requested to be an backup executor');
                 });
 
@@ -1071,7 +1071,7 @@ class UserController extends Controller
                         ];
                         Mail::send('new_emails.guardian', $arr, function($mail) use($guardian){
                             $mail->from(config('settings.email'), 'Notice for Guardian Appointment');
-                            $mail->to($guardian['email'], $guardian['fullname'])
+                            $mail->to(strtolower($guardian['email']), $guardian['fullname'])
                             ->subject('You are requested to be Guardian for Minor Children');
                         });
                         if(Mail::failures()) {
@@ -1097,7 +1097,7 @@ class UserController extends Controller
                         ];
                         Mail::send('new_emails.guardian_backup', $arr, function($mail) use($guardian){
                             $mail->from(config('settings.email'), 'Notice for Backup Guardian Appointment');
-                            $mail->to($guardian['email'], $guardian['fullname'])
+                            $mail->to(strtolower($guardian['email']), $guardian['fullname'])
                             ->subject('You are requested to be Backup Guardian for Minor Children');
                         });
                         if(Mail::failures()) {
@@ -1319,62 +1319,63 @@ class UserController extends Controller
 
             PetGuardian::updateOrCreate(['user_id'=>$petGuardian['user_id'] , 'is_backup' => $petGuardian['is_backup']],$petGuardian);
             //Sending an email if email notification is set
-            if($emailType != null && isset($petGuardian['email_notification']) && $petGuardian['email_notification'] == 1) {
+            // if($emailType != null && isset($petGuardian['email_notification']) && $petGuardian['email_notification'] == 1) {
 
-                //$this->sendEmail($guardian['user_id'], $guardian['fullname'], $guardian['email'], $emailType);
-                // if($isBackupGuardian == 0) {
+            //     $this->sendEmail($petGuardian['user_id'], $petGuardian['fullname'], $petGuardian['email'], $emailType);
+            //     if($isBackupPetGuardian == 0) {
 
-                //     $flag = true;
-                //     if(isset($guardian['email']) && strtolower(trim($guardian['email'])) == strtolower(trim($oldGuardianEmail)))
-                //     {
-                //         $flag = false;
-                //     }
+            //         $flag = true;
+            //         if(isset($petGuardian['email']) && strtolower(trim($petGuardian['email'])) == strtolower(trim($oldGuardianEmail)))
+            //         {
+            //             $flag = false;
+            //         }
 
-                //     if($flag) {
-                //         \Log::info('email getting send for pet guardian for minor children');
-                //         $arr = [
-                //             'firstName'     =>  $tellUsAboutYou->firstname,
-                //             'middleName'    =>  $tellUsAboutYou->middlename,
-                //             'lastName'      =>  $tellUsAboutYou->lastname,
-                //             'guardianName'  =>  $guardian['fullname']
-                //         ];
-                //         Mail::send('new_emails.guardian', $arr, function($mail) use($guardian){
-                //             $mail->from(config('settings.email'), 'Notice for Guardian Appointment');
-                //             $mail->to($guardian['email'], $guardian['fullname'])
-                //             ->subject('You are requested to be Guardian for Minor Children');
-                //         });
-                //         if(Mail::failures()) {
-                //             \Log::info('email sending error for guardian for minor children');
-                //         }
-                //     }
+            //         if($flag) {
+            //             //dd('here');
+            //             \Log::info('email getting send for pet caretaker');
+            //             $arr = [
+            //                 'firstName'     =>  $tellUsAboutYou->firstname,
+            //                 'middleName'    =>  $tellUsAboutYou->middlename,
+            //                 'lastName'      =>  $tellUsAboutYou->lastname,
+            //                 'guardianName'  =>  $petGuardian['fullname']
+            //             ];
+            //             Mail::send('new_emails.pet_caretaker', $arr, function($mail) use($petGuardian, $arr){
+            //                 $mail->from(config('settings.email'), 'Notice for Pet Caretaker Appointment');
+            //                 $mail->to(strtolower($petGuardian['email']), $petGuardian['fullname'])
+            //                 ->subject('You are requested to be Pet Caretaker');
+            //             });
+            //             if(Mail::failures()) {
+            //                 \Log::info('email sending error for pet care taker');
+            //             }
+            //         }
 
-                // } else {
+            //     } else {
 
-                //     $flag = true;
-                //     if(isset($guardian['email']) && strtolower(trim($guardian['email'])) == strtolower(trim($oldBackupGuardianEmail)))
-                //     {
-                //         $flag = false;
-                //     }
+            //         $flag = true;
+            //         if(isset($petGuardian['email']) && strtolower(trim($petGuardian['email'])) == strtolower(trim($oldBackupGuardianEmail)))
+            //         {
+            //             $flag = false;
+            //         }
 
-                //     if($flag) {
-                //         \Log::info('email getting send for backup guardian for minor children');
-                //         $arr = [
-                //             'firstName'     =>  $tellUsAboutYou->firstname,
-                //             'middleName'    =>  $tellUsAboutYou->middlename,
-                //             'lastName'      =>  $tellUsAboutYou->lastname,
-                //             'backupGuardianName'  =>  $guardian['fullname']
-                //         ];
-                //         Mail::send('new_emails.guardian_backup', $arr, function($mail) use($guardian){
-                //             $mail->from(config('settings.email'), 'Notice for Backup Guardian Appointment');
-                //             $mail->to($guardian['email'], $guardian['fullname'])
-                //             ->subject('You are requested to be Backup Guardian for Minor Children');
-                //         });
-                //         if(Mail::failures()) {
-                //             \Log::info('email sending error for guardian for minor children');
-                //         }
-                //     }
-                // }
-            }
+            //         if($flag) {
+            //             \Log::info('email getting send for backup pet caretaker');
+            //             $arr = [
+            //                 'firstName'     =>  $tellUsAboutYou->firstname,
+            //                 'middleName'    =>  $tellUsAboutYou->middlename,
+            //                 'lastName'      =>  $tellUsAboutYou->lastname,
+            //                 'backupGuardianName'  =>  $petGuardian['fullname']
+            //             ];
+            //             Mail::send('new_emails.pet_caretaker_backup', $arr, function($mail) use($petGuardian, $arr){
+            //                 $mail->from(config('settings.email'), 'Notice for Backup Pet Caretaker Appointment');
+            //                 $mail->to(strtolower($petGuardian['email']), $petGuardian['fullname'])
+            //                 ->subject('You are requested to be Backup Pet Caretaker');
+            //             });
+            //             if(Mail::failures()) {
+            //                 \Log::info('email sending error for backup pet caretaker');
+            //             }
+            //         }
+            //     }
+            // }
             $response = self::generatePetGuardianInfoResponse($petGuardian['user_id']);
             return [
             'response'  =>  $response,
@@ -1446,7 +1447,7 @@ class UserController extends Controller
             $isBackUpPetGuardian         = $request->isBackUpPetGuardian;//Yes, No
             $isBackupPetGuardianCopy     = $isBackUpPetGuardian == 'Yes' ? '1' : '0';
             $petGuardian                 = isset($request->petGuardian[0]) ? $request->petGuardian[0] : null;
-            $backUpPetGuardian              = isset($request->backUpPetGuardian[0]) ? $request->backUpPetGuardian[0] : null;
+            $backUpPetGuardian           = isset($request->backUpPetGuardian[0]) ? $request->backUpPetGuardian[0] : null;
 
             //if isGuardianMinorChildren is set that means it is a not a backup guardian
             //for backup guardian isGuardianMinorChildren is always false
@@ -1518,6 +1519,8 @@ class UserController extends Controller
         $validator = Validator::make($data, [
             'has_pet'   =>  'nullable|numeric|between:0,1|integer',
             'pet_names' =>  'nullable|required_if:has_pet,1',
+            'leaveMoney'=>  'nullable',
+            'petAmount' =>  'nullable'
         ]);
         if ($validator->fails()) {
             return response()->json([
@@ -1539,16 +1542,36 @@ class UserController extends Controller
         $has_pet = isset($data['has_pet']) && array_key_exists('has_pet', $data) 
                     ? $data['has_pet'] 
                     : $tuay->has_pet;
+
+        $pet_leave_money = null;
+        $pet_amount = null;
+        $pet_names = null;
         if($has_pet != 0) {
             $pet_names = isset($data['pet_names']) && array_key_exists('pet_names', $data)
                     ? json_encode($data['pet_names'])
                     : $tuay->pet_names;
+            
+            $pet_leave_money = array_key_exists('leaveMoney', $data) && isset($data['leaveMoney'])
+                        ? $data['leaveMoney'] : null;
+            
+            $pet_amount = array_key_exists('petAmount', $data) && isset($data['petAmount'])
+                        ? $data['petAmount'] : null;
+
+            if($pet_leave_money == 0) {
+                $pet_amount = null;
+            }
+            
         } else {
             $pet_names = null;
         }
+
+
         
         $tuay->has_pet = $has_pet;
         $tuay->pet_names = $pet_names;
+        $tuay->leaveMoney = $pet_leave_money;
+        $tuay->petAmount = $pet_amount;
+
         if($tuay->save()) {
             return response()->json([
                 'status' => true,

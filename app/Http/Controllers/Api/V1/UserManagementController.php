@@ -75,7 +75,7 @@ class UserManagementController extends Controller
           ];
           Mail::send('new_emails.friend_invitation', $arr, function($mail) use($arr){
               $mail->from(config('settings.email'), 'Friend Invitation to Simplywilled.com');
-              $mail->to($arr['email'], 'Invitation to Simplywilled')
+              $mail->to(strtolower($arr['email']), 'Invitation to Simplywilled')
               ->subject('Your friend invited you to Simplywilled.com');
           });
 
@@ -314,7 +314,7 @@ class UserManagementController extends Controller
                 ];
                 Mail::send('new_emails.power_of_attorney_backup', $arr, function($mail) use($arr){
                     $mail->from(config('settings.email'), 'Notice for Power Of Attorney 2nd choice');
-                    $mail->to($arr['email'], $arr['fullname']);
+                    $mail->to(strtolower($arr['email']), $arr['fullname']);
                     $mail->subject('You are requested to be Power of Attorney 2nd choice');
                 });
 
@@ -683,7 +683,7 @@ class UserManagementController extends Controller
                 ];
                 Mail::send('new_emails.health_care', $arr, function($mail) use($email, $arr){
                     $mail->from(config('settings.email'), 'Notice for Health Care Executive');
-                    $mail->to($email, $arr['executiveFirstName'].' '.$arr['executiveLastName']);
+                    $mail->to(strtolower($email), $arr['executiveFirstName'].' '.$arr['executiveLastName']);
                     $mail->subject('You are requested to be Health Care Executive');
                 });
                 if(Mail::failures()) {
@@ -711,7 +711,7 @@ class UserManagementController extends Controller
                 ];
                 Mail::send('new_emails.health_care_backup', $arr, function($mail) use($backUpEmail, $arr){
                     $mail->from(config('settings.email'), 'Notice for Health Care Executive');
-                    $mail->to($backUpEmail, $arr['executiveFirstName'].' '.$arr['executiveLastName']);
+                    $mail->to(strtolower($backUpEmail), $arr['executiveFirstName'].' '.$arr['executiveLastName']);
                     $mail->subject('You are requested to be Backup Health Care Executive');
                 });
                 if(Mail::failures()) {
