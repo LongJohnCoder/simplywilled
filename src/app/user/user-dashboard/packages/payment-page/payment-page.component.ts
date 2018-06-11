@@ -147,6 +147,10 @@ export class PaymentPageComponent implements OnInit {
                     // console.log(resp.approval_url);
                     window.location.href = resp.approval_url;
                 }, (error: any) => {
+                    this.thankYou = false;
+                    this.respMsg = error.error.error;
+                    this.respType = true;
+                    this.loader = false;
                     console.log(error.error.error);
 
                 });
