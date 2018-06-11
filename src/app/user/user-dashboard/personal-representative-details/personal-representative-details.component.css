@@ -481,8 +481,8 @@ footer ul li a{
     text-align: left;
 }
 .radio_custom{
-    height: 105px;
-    width: 105px;
+    height: 140px;
+    width: 140px;
     position: relative;
     border: 1px solid #BFBFBF;
     font-family: 'OpenSans';
@@ -545,18 +545,21 @@ footer ul li a{
     display: inline-block;
     border: 1px solid #ddd;
     background: #F2F2F2;
-    height: 105px;
+    height: 140px;
     width: 350px;
     padding: 20px;
     position: relative;
     margin-bottom: 20px;
+}
+.main-content .email-box .form-control{
+  margin-top: 30px;
 }
 .main-content .valid.email-box{
     border-color: #42A82D;
     margin-bottom: 10px;
 }
 .main-content .valid.email-box i {
-    top: 40px;
+    top: 58px;
     right: 30px;
 }
 .main-content .invalid.email-box{
@@ -564,7 +567,7 @@ footer ul li a{
   margin-bottom: 10px;
 }
 .main-content .invalid.email-box i {
-  top: 40px;
+  top: 58px;
   right: 30px;
 }
 .Instructions_ul_Radio{

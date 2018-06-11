@@ -504,6 +504,7 @@ select.form-control{
     padding: 14px 15px;
     background: linear-gradient(#ffffff, #f1f1f1);
     width: 48%;
+  outline: none;
 }
 .main-content .payPaypal{
     text-align: center;
@@ -518,6 +519,7 @@ select.form-control{
 .main-content .payCardHead{
     float: right;
     padding-bottom: 8px;
+  outline: none;
 }
 .payCardHead p{
     color: #495057;
@@ -543,7 +545,7 @@ select.form-control{
     border: 1px solid #e1e1e1;
     border-radius: 10px;
     padding: 15px;
-    margin: 0 30px 30px;
+    margin: 25px 30px 30px;
 }
 .main-content .payPaypal.active, .main-content .payCardHead.active{
     background: linear-gradient(#70c9ff, #208ed2);
@@ -551,6 +553,15 @@ select.form-control{
 }
 .main-content .payPaypal.active p, .main-content .payCardHead.active p{
     color: #fff;
+}
+.form-group.payCard{
+  position: relative;
+}
+.payByPaypal{
+  width: 48%;
+  height: 56px;
+  background: url("../../../../../assets/images/payByPaypal.png") no-repeat;
+  background-size: 100% auto;
 }
 
 .main-content.paymentSuccess {
@@ -625,6 +636,18 @@ select.form-control{
     .main-content.paymentSuccess{
         width: 100%;
     }
+}
+
+@media screen and (max-width:575px){
+  .payByPaypal{
+    width: 100%;
+    height: 130px;
+    margin: 20px auto;
+    background-image: url("../../../../../assets/images/payByPaypal-small.png");
+    background-size: 197px auto;
+    background-position: center;
+  }
+
 }
 
 @media screen and (max-width:430px){

@@ -189,6 +189,7 @@
       </div>
       <hr>
       <h3>Payment Options</h3>
+      <P class="headingInfo">Select any payment option.</P>
       <div class="form-group">
         <button class="payPaypal" (click)="paymentMethod = 'paypal-payment'" [ngClass]="{'active': paymentMethod === 'paypal-payment'}">
           Pay With <img src="../../../../../../assets/images/paypalLogo.png" alt="PayPal">
@@ -202,6 +203,11 @@
         </button>
         <div class="clear"></div>
       </div>
+      <hr *ngIf="paymentMethod === 'card-payment'">
+      <h3 *ngIf="paymentMethod === 'card-payment'">Payment Information</h3>
+      <p class="headingInfo" *ngIf="paymentMethod === 'card-payment'">
+        We accept all major credit cards.
+      </p>
       <div class="form-group payCard" *ngIf="paymentMethod === 'card-payment'">
         <div class="cardDetails">
           <label>Card Details: </label>
@@ -255,7 +261,9 @@
             </div>
           </div>
         </div>
+        <div class="payByPaypal">
 
+        </div>
       </div>
 
       <div class="form-footer">
@@ -284,6 +292,10 @@
         </li>
         <li>Execute your estate documents using our easy to follow instructions and your done.</li>
       </ol>
+    </div>
+    <div _ngcontent-c1="" class="guarantee">
+      <img _ngcontent-c1="" alt="" class="macfee" src="../../../../../assets/images/macfee.png">
+      <img _ngcontent-c1="" alt="" class="norton" src="../../../../../assets/images/nortonBlack.png">
     </div>
   </div>
 

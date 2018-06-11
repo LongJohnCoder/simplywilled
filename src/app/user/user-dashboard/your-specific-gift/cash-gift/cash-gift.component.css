@@ -437,12 +437,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 /*****radio button**********/
 .radio_custom {
-  width: 100%;
+  width: 140px;
+  height: 140px;
   display: inline-block;
-  border: 2px solid #dadada;
+  border: 1px solid #BFBFBF;
+  box-shadow: 0 1px 1px 1px #ddd;
   text-align: center;
-  font-family: 'OpenSans-Light';
-  font-size: 20px;
+  font-family: 'OpenSans';
+  font-size: 14px;
   color: rgba(0,0,0,.7);
   padding: 30px 0;
   cursor: pointer;
@@ -450,6 +452,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 .radio_custom.active {
   border-color: #4bb228;
+  background: #4bb228;
+  color: #fff;
 }
 .radio_custom input {
   display: none;
@@ -458,6 +462,9 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   display: inline-block;
   padding-bottom: 20px;
+}
+.custom_img img{
+  width: 50px;
 }
 .human_status {
   display: inline-block;
@@ -693,7 +700,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .singing_instruction {
-  width: 100%;
+  width: 140px;
+  height: 140px;
   display: inline-block;
   text-align: center;
   color: #4db228;
@@ -705,7 +713,6 @@ h1, h2, h3, h4, h5, h6 {
 .radio_ul3 {
   width: 100%;
   display: inline-block;
-  text-align: center;
   margin-bottom: 40px;
 }
 .radio_ul3 li {
@@ -715,6 +722,9 @@ h1, h2, h3, h4, h5, h6 {
 .custom_img3 {
   width: 100%;
   display: inline-block;
+}
+.custom_img3 img{
+  width: 50px;
 }
 .singing_instruction {
   padding: 35px 0px;
@@ -1084,12 +1094,11 @@ h1, h2, h3, h4, h5, h6 {
 .singing_instruction3 {
   width: 100%;
   display: inline-block;
-  text-align: center;
-  color: #4db228;
-  font-size: 40px;
-  font-weight:bold;
+  text-align: left;
+  color: #2479B8;
+  font-size: 34px;
   font-family: 'OpenSans';
-  padding: 30px 0px;
+  padding: 0 0 20px;
 }
 .registered_domestic2 {
   width: 100%;
@@ -2732,7 +2741,7 @@ input[disabled] {
 {
   width:100%;
   float:left;
-  margin:20px 0;
+  margin: 0 0 20px;
 }
 .gift_text_content
 {
@@ -3280,7 +3289,7 @@ input[disabled] {
   color: #246392;
   font-size: 30px;
   font-family: 'OpenSans';
-  text-align:center;
+  text-align: left;
 }
 
 .download_print_btn{

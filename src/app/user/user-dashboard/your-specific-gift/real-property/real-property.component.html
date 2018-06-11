@@ -24,15 +24,13 @@
                 <li>
                   <label class="radio_custom zero_nine_page yesNo"  [ngClass]="{'active': flags.residenceYesFlag}">
                     <input type="radio" class="form-control" formControlName="residence" value="1" #residenceYes (click)="changeResidence(residenceYes.value)">
-                    <span class="custom_img"><img src="../../../../../assets/images/yes.png" alt="Yes"></span>
-                    <span class="human_status">Yes</span>
+                    <span class="human_status"><br>Yes</span>
                   </label>
                 </li>
                 <li>
                   <label class="radio_custom zero_nine_page yesNo" [ngClass]="{'active': flags.residenceNoFlag}">
                     <input type="radio" class="form-control" #residenceNo formControlName="residence" value="0" (click)="changeResidence(residenceNo.value)">
-                    <span class="custom_img"><img src="../../../../../assets/images/no.png" alt="Np"></span>
-                    <span class="human_status">No</span>
+                    <span class="human_status"><br>No</span>
                   </label>
                 </li>
               </ul>

@@ -296,7 +296,7 @@ header{
 }
 .main-content h2{
     color: #2479B8;
-    font-size: 36px;
+    font-size: 33px;
     margin: 0;
     text-transform: capitalize;
 }
@@ -485,8 +485,8 @@ footer ul li a{
     text-align: left;
 }
 .radio_custom{
-    height: 112px;
-    width: 105px;
+    height: 140px;
+    width: 140px;
     position: relative;
     border: 1px solid #BFBFBF;
     font-family: 'OpenSans';
@@ -612,15 +612,15 @@ footer ul li a{
 .human_status3 {
     font-family: 'OpenSans';
     height: auto;
-    line-height: 14px;
-    font-size: 12px;
+    line-height: 18px;
+    font-size: 14px;
     display: block;
     text-align: center;
 }
 .custom_img5{
     display: block;
     text-align: center;
-    padding: 5px 0;
+    padding: 14px 0;
 }
 .gifts-list .radio_custom {
     width: 120px;

@@ -122,8 +122,8 @@ select.form-control{
     vertical-align: top;
 }
 .radio_custom{
-    height: 105px;
-    width: 105px;
+    height: 140px;
+    width: 140px;
     position: relative;
     border: 1px solid #BFBFBF;
     font-family: 'OpenSans';

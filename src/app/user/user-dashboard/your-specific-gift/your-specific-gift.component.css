@@ -453,7 +453,8 @@ h1, h2, h3, h4, h5, h6 {
 .radio_custom {
   width: 100%;
   display: inline-block;
-  border: 2px solid #dadada;
+  border: 1px solid #BFBFBF;
+  box-shadow: 0 1px 1px 1px #ddd;
   text-align: center;
   font-family: 'OpenSans-Light';
   font-size: 20px;
@@ -682,7 +683,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
   padding: 8px 0;
   display: inline-block;
-  border-radius: 5px; 
+  border-radius: 5px;
 }
 .back_next_btn_ul li:first-child a{
   border-bottom: 3px solid #a92521;
@@ -1086,10 +1087,9 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   text-align: center;
   color: #2479B8;
-  font-size: 36px;
-  font-weight:bold;
+  font-size: 28px;
   font-family: 'OpenSans';
-  padding: 30px 0px;
+  padding: 0 0 30px 0;
 }
 .registered_domestic2 {
   width: 100%;
@@ -1134,8 +1134,8 @@ h1, h2, h3, h4, h5, h6 {
 .human_status3 {
   display: inline-block;
   width: 100%;
-  font-family: 'OpenSans-Light';
-  font-size: 16px;
+  font-family: 'OpenSans';
+  font-size: 14px;
   color: rgba(0,0,0,.7);
   height: 47px;
 }
@@ -4266,7 +4266,7 @@ input[disabled] {
     margin-left: 0px;
     margin-bottom: 10px;
   }
-  
+
   .add_another_btn {
     margin: 25px 0px;
   }

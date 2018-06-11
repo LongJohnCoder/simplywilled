@@ -46,7 +46,7 @@
 }
 .main-content .invalid i{
   position: absolute;
-  top: 44px;
+  top: 46px;
   right: 44px;
   background: #ff5959;
   color: #fff;
@@ -125,9 +125,9 @@
   border-color: #ff5959;
   color: #ff5959;
 }
-.main-content .invalid i{
+.main-content .email-box.invalid i{
   position: absolute;
-  top: 46px;
+  top: 58px;
   right: 39px;
   background: #ff5959;
   color: #fff;
@@ -141,7 +141,7 @@
     text-align: left;
 }
 .radio_ul6 .valid i{
-    top: 39px;
+    top: 58px;
     right: 28px;
 }
 .main-content .smallField i{
@@ -157,8 +157,8 @@
     vertical-align: top;
 }
 .radio_custom{
-    height: 105px;
-    width: 105px;
+    height: 140px;
+    width: 140px;
     position: relative;
     border: 1px solid #BFBFBF;
     font-family: 'OpenSans';
@@ -205,10 +205,13 @@
     display: inline-block;
     border: 1px solid #ddd;
     background: #F2F2F2;
-    height: 105px;
+    height: 140px;
     width: 350px;
     padding: 20px;
     position: relative;
+}
+.main-content .email-box .form-control{
+  margin-top: 30px;
 }
 .main-content .valid .form-control {
     border-color: #42A82D;

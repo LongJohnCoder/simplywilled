@@ -16,7 +16,7 @@
             <ul class="radio_ul3">
               <li><label class="radio_custom singing_instruction"><span class="custom_img3"><img src="../../../../../assets/images/cash2.png" alt="Cash"></span></label></li>
             </ul>
-            <h3 class="registered_domestic2 blue_font">Is this a gift to an Individual or Charity?</h3>
+            <h3 class="registered_domestic2 blue_font">Please confirm this a gift to an Individual or a Charity?</h3>
             <div>
               <ul class="radio_ul4">
                 <li>
@@ -119,14 +119,14 @@
                     <li>
                       <label class="radio_custom gift_their_kids" [ngClass]="{'active': cashGiftForm.get('individualControls.0.passed_by').value === 'Yes'}">
                         <input type="radio" formControlName="passed_by" value="Yes">
-                        <span class="custom_img"><img src="../../../../../assets/images/yes.png" alt="Passed_by"></span>
-                        <span class="human_status">Yes</span> </label>
+                        <!--<span class="custom_img"><img src="../../../../../assets/images/yes.png" alt="Passed_by"></span>-->
+                        <span class="human_status"><br>Yes</span> </label>
                     </li>
                     <li>
                       <label class="radio_custom gift_their_kids" [ngClass]="{'active': cashGiftForm.get('individualControls.0.passed_by').value === 'No'}">
                         <input type="radio" formControlName="passed_by" value="No">
-                        <span class="custom_img"><img src="../../../../../assets/images/no.png" alt="Passed_by"></span>
-                        <span class="human_status"> No</span> </label>
+                        <!--<span class="custom_img"><img src="../../../../../assets/images/no.png" alt="Passed_by"></span>-->
+                        <span class="human_status"><br>No</span> </label>
                     </li>
                   </ul>
                     <span class="error_txt" *ngIf="!cashGiftForm.get('individualControls.0.passed_by').valid && cashGiftForm.get('individualControls.0.passed_by').touched && cashGiftForm.get('individualControls.0.passed_by').hasError('required')">
