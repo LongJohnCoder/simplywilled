@@ -71,7 +71,7 @@
       <div class="packageName promoCode">
         <p>Have a promo code?</p>
         <div class="promo">
-          <input type="text" class="form-control" [(ngModel)]="couponToken">
+          <input type="text" class="form-control" [(ngModel)]="couponToken" (keyup)="getValue($event.target.value)">
           <button type="submit" class="promoSubmit" (click)="checkCoupon()" [disabled]="!couponToken">Submit</button>
         </div>
         <div class="">

@@ -122,5 +122,7 @@ export class PackagesComponent implements OnInit {
   //       }
   //   );
   // }
-
+    getValue(value: string): any {
+        this.couponToken = this.couponToken.toUpperCase();
+    }
 }

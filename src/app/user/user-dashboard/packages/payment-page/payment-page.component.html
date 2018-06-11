@@ -190,10 +190,10 @@
       <hr>
       <h3>Payment Options</h3>
       <div class="form-group">
-        <button class="payPaypal" (click)="paymentMethod = 'paypal-payment'">
+        <button class="payPaypal" (click)="paymentMethod = 'paypal-payment'" [ngClass]="{'active': paymentMethod === 'paypal-payment'}">
           Pay With <img src="../../../../../../assets/images/paypalLogo.png" alt="PayPal">
         </button>
-        <button class="payCardHead" (click)="paymentMethod = 'card-payment'">
+        <button class="payCardHead" (click)="paymentMethod = 'card-payment'" [ngClass]="{'active': paymentMethod === 'card-payment'}">
           <div class="cardIcon"><img src="../../../../../../assets/images/cardsSmall.png" alt=""></div>
           <p>
             Pay With Credit Card
