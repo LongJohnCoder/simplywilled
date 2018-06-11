@@ -1246,9 +1246,9 @@ class UserController extends Controller
      * A single function to update guardian as well as backup guardian info
      * @return \Illuminate\Http\JsonResponse
      * */
-    private function updatePetGuardianInfoHelper($guardian = [] , $isPetGuardianMinorChildren = null, $isBackupGuardian, $emailType = null, $tellUsAboutYou) {
+    private function updatePetGuardianInfoHelper($petGuardian = [] , $isPetGuardian = null, $isBackupPetGuardian, $emailType = null, $tellUsAboutYou) {
         //validation for normal guardian
-        $validator = Validator::make($guardian, [
+        $validator = Validator::make($petGuardian, [
             //'user_id'      =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|between:'.\Auth::user()->id.','.\Auth::user()->id,
             'fullname'     =>  'required|string',
             'relationship_with' => 'required|string|max:255',
@@ -1274,10 +1274,10 @@ class UserController extends Controller
             ];
         }
 
-        if(isset($guardian['is_backup']) && $isBackupGuardian != $guardian['is_backup']) {
+        if(isset($petGuardian['is_backup']) && $isBackupPetGuardian != $petGuardian['is_backup']) {
           $response = response()->json([
               'status' => false,
-              'message' => ['is_backup' => ['is_backup value does not match with isBackupGuardian']],
+              'message' => ['is_backup' => ['is_backup value does not match with isBackupPetGuardian']],
               'data' => []
           ], 400);
           return [
@@ -1286,37 +1286,37 @@ class UserController extends Controller
           ];
         }
 
-        $isPetGuardianMinorChildren  = $isPetGuardianMinorChildren == 'Yes' ? '1' : '0';
+        $isPetGuardian  = $isPetGuardian == 'Yes' ? '1' : '0';
 
         /*
         * backup guardian checking
         * if it is guardian minor children then is backup is 0
         * if it is backup guardian then is backup is 1
         **/
-        $guardian['is_backup'] = $isBackupGuardian == 0 ? '0' : '1';
-        $checkForExistUser = TellUsAboutYou::where('user_id', $guardian['user_id'])->first();
+        $petGuardian['is_backup'] = $isBackupPetGuardian == 0 ? '0' : '1';
+        $checkForExistUser = TellUsAboutYou::where('user_id', $petGuardian['user_id'])->first();
 
         if ($checkForExistUser) {
 
-            $checkForExistUser->guardian_minor_children = '1';
-            $checkForExistUser->save();
+            // $checkForExistUser->guardian_minor_children = '1';
+            // $checkForExistUser->save();
 
 
-            $Guardian = PetGuardian::where('user_id',$guardian['user_id'])
+            $Guardian = PetGuardian::where('user_id',$petGuardian['user_id'])
                                                             ->where('is_backup','0')
                                                             ->first();
             $oldGuardianEmail = $Guardian != null ? $Guardian->email : null;
 
-            $backupGuardian = petGuardian::where('user_id',$guardian['user_id'])
+            $backupGuardian = PetGuardian::where('user_id',$petGuardian['user_id'])
                                                             ->where('is_backup','1')
                                                             ->first();
             $oldBackupGuardianEmail = $backupGuardian != null ? $backupGuardian->email : null;
 
             //if user has not completed previous step in tellUsYou section then this step is not permited
 
-            PetGuardian::updateOrCreate(['user_id'=>$guardian['user_id'] , 'is_backup' => $guardian['is_backup']],$guardian);
+            PetGuardian::updateOrCreate(['user_id'=>$petGuardian['user_id'] , 'is_backup' => $petGuardian['is_backup']],$petGuardian);
             //Sending an email if email notification is set
-            if($emailType != null && isset($guardian['email_notification']) && $guardian['email_notification'] == 1) {
+            if($emailType != null && isset($petGuardian['email_notification']) && $petGuardian['email_notification'] == 1) {
 
                 //$this->sendEmail($guardian['user_id'], $guardian['fullname'], $guardian['email'], $emailType);
                 // if($isBackupGuardian == 0) {
@@ -1372,7 +1372,7 @@ class UserController extends Controller
                 //     }
                 // }
             }
-            $response = self::generatePetGuardianInfoResponse($guardian['user_id']);
+            $response = self::generatePetGuardianInfoResponse($petGuardian['user_id']);
             return [
             'response'  =>  $response,
             'status'    =>  200
@@ -1397,11 +1397,11 @@ class UserController extends Controller
             //validation for necessary flags
             $validator = Validator::make($request->all(), [
                 'user_id'                   =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
-                'isPetGuardianMinorChildren'=>  'required|string|in:Yes,No',
-                'isBackUpGuardian'          =>  'required|string|in:Yes,No',
-                'guardian.*'                =>  'required|array',
-                'backUpGuardian.*'          =>  'nullable|array',
-                'guardian.*.user_id'        =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
+                'isPetGuardian'             =>  'required|string|in:Yes,No',
+                'isBackUpPetGuardian'       =>  'required|string|in:Yes,No',
+                'petGuardian.*'             =>  'required|array',
+                'backUpPetGuardian.*'       =>  'nullable|array',
+                'petGuardian.*.user_id'     =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
                 'backUpGuardian.*.user_id'  =>  'nullable|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id
             ]);
             if ($validator->fails()) {
@@ -1413,18 +1413,18 @@ class UserController extends Controller
             }
 
             //check if guardian and backup guardian is present in array format
-            if($request->isBackUpGuardian == 'Yes' && !isset($request->backUpGuardian[0])) {
+            if($request->isBackUpPetGuardian == 'Yes' && !isset($request->backUpPetGuardian[0])) {
                 return response()->json([
                     'status'  => false,
-                    'message' => 'If you select isBackUpGuardian you have to provide backUPGuardian array!',
+                    'message' => 'If you select isBackUpPetGuardian you have to provide backUpPetGuardian array!',
                     'data'    => []
                   ], 400);
             }
 
-            if($request->isPetGuardianMinorChildren == 'Yes' && !isset($request->guardian[0])) {
+            if($request->isPetGuardian == 'Yes' && !isset($request->petGuardian[0])) {
                 return response()->json([
                     'status'  => false,
-                    'message' => 'If you select isPetGuardianMinorChildren you have to provide petGuardian array!',
+                    'message' => 'If you select isPetGuardian you have to provide petGuardian array!',
                     'data'    => []
                   ], 400);
             }
@@ -1439,18 +1439,18 @@ class UserController extends Controller
                 ], 400);   
             }
             
-            $isPetGuardianMinorChildren  = $request->isPetGuardianMinorChildren;// Yes, No
-            $isBackUpGuardian         = $request->isBackUpGuardian;//Yes, No
-            $isBackupGuardianCopy     = $isBackUpGuardian == 'Yes' ? '1' : '0';
-            $guardian                 = isset($request->guardian[0]) ? $request->guardian[0] : null;
-            $backUpGuardian           = isset($request->backUpGuardian[0]) ? $request->backUpGuardian[0] : null;
+            $isPetGuardian               = $request->isPetGuardian;// Yes, No
+            $isBackUpPetGuardian         = $request->isBackUpPetGuardian;//Yes, No
+            $isBackupPetGuardianCopy     = $isBackUpPetGuardian == 'Yes' ? '1' : '0';
+            $petGuardian                 = isset($request->petGuardian[0]) ? $request->petGuardian[0] : null;
+            $backUpPetGuardian              = isset($request->backUpPetGuardian[0]) ? $request->backUpPetGuardian[0] : null;
 
             //if isGuardianMinorChildren is set that means it is a not a backup guardian
             //for backup guardian isGuardianMinorChildren is always false
-            if($isPetGuardianMinorChildren == 'Yes') {
-                if(isset($guardian)) {
+            if($isPetGuardian == 'Yes') {
+                if(isset($petGuardian)) {
                   $emailType  = 3;
-                  $response   = self::updatePetGuardianInfoHelper($guardian,$isPetGuardianMinorChildren,'0',$emailType, $tellUsAboutYou);
+                  $response   = self::updatePetGuardianInfoHelper($petGuardian,$isPetGuardian,'0',$emailType, $tellUsAboutYou);
                   if($response['status'] != 200) {
                     return $response['response'];
                   }
@@ -1458,10 +1458,10 @@ class UserController extends Controller
             } else {
                 PetGuardian::where('user_id',$userId)->where('is_backup','0')->delete();
             }
-            if($isBackUpGuardian == 'Yes') {
-                if(isset($backUpGuardian)) {
+            if($isBackUpPetGuardian == 'Yes') {
+                if(isset($backUpPetGuardian)) {
                   $emailType  = 4;
-                  $response   = self::updatePetGuardianInfoHelper($backUpGuardian,'No',$isBackupGuardianCopy,$emailType, $tellUsAboutYou);
+                  $response   = self::updatePetGuardianInfoHelper($backUpPetGuardian,'No',$isBackupPetGuardianCopy,$emailType, $tellUsAboutYou);
                   if($response['status'] != 200) {
                     return $response['response'];
                   }
@@ -1478,7 +1478,7 @@ class UserController extends Controller
             //     }
             // }
 
-            $response = isset($response['response']) ? $response['response'] : self::generatePetGuardianInfoResponse($userId);
+            $response = self::generatePetGuardianInfoResponse($userId);
             return $response;
         } catch (\Exception $e) {
           return response()->json([
@@ -1494,16 +1494,16 @@ class UserController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * */
     private function generatePetGuardianInfoResponse($userId) {
-      $guardianInfo       = PetGuardian::where('user_id',$userId)->where('is_backup','0')->get();
-      $guardianInfoBackup = PetGuardian::where('user_id',$userId)->where('is_backup','1')->get();
+      $petGuardianInfo       = PetGuardian::where('user_id',$userId)->where('is_backup','0')->get();
+      $petGuardianInfoBackup = PetGuardian::where('user_id',$userId)->where('is_backup','1')->get();
       return response()->json([
           'status' => true,
           'message' => 'User details updated final with GuardianInfo',
           'data' => [
-            'isPetGuardianMinorChildren' =>  $guardianInfo->count() > 0 ? 'Yes' : 'No' ,
-            'petGuardian'                =>  $guardianInfo,
-            'isBackUpPetGuardian'        =>  $guardianInfoBackup->count() > 0 ? 'Yes' : 'No' ,
-            'backupPetGuardian'          =>  $guardianInfoBackup
+            'isPetGuardian'              =>  $petGuardianInfo->count() > 0 ? 'Yes' : 'No' ,
+            'petGuardian'                =>  $petGuardianInfo,
+            'isBackUpPetGuardian'        =>  $petGuardianInfoBackup->count() > 0 ? 'Yes' : 'No' ,
+            'backupPetGuardian'          =>  $petGuardianInfoBackup
           ]
       ], 200);
     }

@@ -1181,10 +1181,10 @@ class UserManagementController extends Controller
       $backupGuardianInfo = PetGuardian::where('user_id',$user->id)->where('is_backup','1')->get();
       $guardianInfo       = PetGuardian::where('user_id',$user->id)->where('is_backup','!=','1')->get();
       $guardianInfoArray  = [
-        'isPetGuardianMinorChildren'  =>  $tellUsAboutYouUser != null && $tellUsAboutYouUser->guardian_minor_children == 1 ? 'Yes' : 'No',
-        'guardian'                    =>  $guardianInfo == null ? null : $guardianInfo,
-        'isBackUpGuardian'            =>  $backupGuardianInfo->count() == 0 ? 'No' : 'Yes',
-        'backupGuardian'              =>  $backupGuardianInfo
+        'isPetGuardian'               =>  $guardianInfo->count() > 0 ? 'Yes' : 'No',
+        'petGuardian'                    =>  $guardianInfo == null ? null : $guardianInfo,
+        'isBackUpPetGuardian'            =>  $backupGuardianInfo->count() == 0 ? 'No' : 'Yes',
+        'backupPetGuardian'              =>  $backupGuardianInfo
       ];
       return [
         'step'  =>  $stepValue,
