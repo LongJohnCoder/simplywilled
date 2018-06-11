@@ -35,6 +35,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use Validator;
 use App\Models\HealthFinance;
 use App\StatesInfo;
+use App\PetGuardian;
 
 class UserManagementController extends Controller
 {
@@ -1080,6 +1081,9 @@ class UserManagementController extends Controller
         //step:11
         array_push($responseDataArray, $this->fetchDisinheritInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
 
+        //step:12
+        array_push($responseDataArray, $this->fetchPetGuardianInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
+        
         return response()->json([
           'status'  =>  200,
           'message' =>  'Fetched user information successfully',
@@ -1160,6 +1164,27 @@ class UserManagementController extends Controller
         'guardian'                =>  $guardianInfo == null ? null : $guardianInfo,
         'isBackUpGuardian'        =>  $backupGuardianInfo->count() == 0 ? 'No' : 'Yes',
         'backupGuardian'          =>  $backupGuardianInfo
+      ];
+      return [
+        'step'  =>  $stepValue,
+        'data'  =>  $guardianInfoArray
+      ];
+    }
+
+    /*
+     * function to get pet guardian info related to an user and spouse
+     * @params user , spouse,  tellUsAboutYou instance for both user and spouse
+     * @return response array
+     * */
+    private function fetchPetGuardianInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse) {
+      $stepValue  = 12;
+      $backupGuardianInfo = PetGuardian::where('user_id',$user->id)->where('is_backup','1')->get();
+      $guardianInfo       = PetGuardian::where('user_id',$user->id)->where('is_backup','!=','1')->get();
+      $guardianInfoArray  = [
+        'isPetGuardianMinorChildren'  =>  $tellUsAboutYouUser != null && $tellUsAboutYouUser->guardian_minor_children == 1 ? 'Yes' : 'No',
+        'guardian'                    =>  $guardianInfo == null ? null : $guardianInfo,
+        'isBackUpGuardian'            =>  $backupGuardianInfo->count() == 0 ? 'No' : 'Yes',
+        'backupGuardian'              =>  $backupGuardianInfo
       ];
       return [
         'step'  =>  $stepValue,
