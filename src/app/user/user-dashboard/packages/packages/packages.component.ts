@@ -105,7 +105,7 @@ export class PackagesComponent implements OnInit {
         };
         this.paymentPageDisplay = true;
 
-        console.log(this.paymentData);
+        // console.log(this.paymentData);
     }
 
   // purchase(id: string) {

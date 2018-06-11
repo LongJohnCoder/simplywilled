@@ -27,11 +27,13 @@ export class PaypalSuccessComponent implements OnInit {
           this.packagesService.paypalSuccess({'paymentId': paymentID}).subscribe(
               (res: any) => {
                 this.jwtToken = res.data.jwtToken;
+                this.data = res.data.payment;
+                // console.log(this.data);
                 this.thankYou = true;
                 this.respType = true;
                 const storeContent = JSON.parse(localStorage.getItem('loggedInUser'));
                 storeContent.token = this.jwtToken;
-                // localStorage.setItem('loggedInUser', JSON.stringify(storeContent));
+                localStorage.setItem('loggedInUser', JSON.stringify(storeContent));
               }, (err: any) => {
                 this.respMsg = err.error.error;
                 this.respType = true;

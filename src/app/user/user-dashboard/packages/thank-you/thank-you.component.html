@@ -1,4 +1,33 @@
-<p>
-  thank-you works!
-</p>
-<div>{{countDown | async}}</div>
+<!--<div class="main-content paymentSuccess" >-->
+  <div class="icon icon--order-success svg">
+    <svg xmlns="http://www.w3.org/2000/svg" width="135px" height="160px">
+      <g fill="none" stroke="#8EC343" stroke-width="10">
+        <circle cx="70" cy="71" r="60" style="stroke-dasharray: 396px, 385px;stroke-dashoffset: 800px;"></circle>
+        <path d="M52,69.778l9.93,9.909l25.444-25.393" style="stroke-dasharray: 69px, 50px;stroke-dashoffset: 0px;"></path>
+      </g>
+    </svg>
+  </div>
+  <h2>Thank You!</h2>
+  <p class="payMessage">Your payment has been successfully completed</p>
+  <p>You will be redirected to the dashboard after <strong>{{countDown | async}}</strong> seconds.</p>
+  <p>Please <a [routerLink]="['/dashboard']">click here</a> to access dashboard.</p>
+  <p class="payDetailsHead"><strong>Please find the transaction details bellow:</strong></p>
+  <ul class="paymentDetails">
+    <li>
+      <p>Transaction ID</p>
+      <p>{{data.payment_token}}</p>
+    </li>
+    <li>
+      <p>Amount</p>
+      <p>${{data.amount}}</p>
+    </li>
+    <li>
+      <p>Payment Status</p>
+      <p class="green">{{data.payment_status === '2' ? 'Success' : 'Failed'}}</p>
+    </li>
+    <li>
+      <p>Payment Date</p>
+      <p>{{data.updated_at}}</p>
+    </li>
+  </ul>
+<!--</div>-->

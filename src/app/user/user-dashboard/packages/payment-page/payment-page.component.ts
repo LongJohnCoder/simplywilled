@@ -18,6 +18,7 @@ export class PaymentPageComponent implements OnInit {
     cardPinch: string;
     paymentMethod: string;
     loader: boolean;
+    thankYou: boolean;
     public modalRef: BsModalRef;
 
     constructor(
@@ -28,8 +29,9 @@ export class PaymentPageComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+      this.thankYou = false;
       this.loader = true;
-    console.log(this.paymentData);
+    // console.log(this.paymentData);
       this.cardtype = '';
       this.data = {
           'firstName': '',
@@ -142,7 +144,7 @@ export class PaymentPageComponent implements OnInit {
         if (this.paymentMethod === 'paypal-payment') {
             this.packageService.purchasePackagePaypalExpress(form).subscribe(
                 (resp: any) => {
-                    console.log(resp.approval_url);
+                    // console.log(resp.approval_url);
                     window.location.href = resp.approval_url;
                 }, (error: any) => {
                     console.log(error.error.error);
@@ -151,25 +153,28 @@ export class PaymentPageComponent implements OnInit {
         } else {
             this.packageService.purchasePackagePaypalDirect(form).subscribe(
                 (resp: any) => {
-                    console.log(resp.message);
-                    this.respMsg = resp.message;
+                    // console.log(resp.message);
+                    // this.respMsg = resp.message;
+                    this.data = resp.data.payment;
                     const store = JSON.parse(localStorage.getItem('loggedInUser'));
                     store.token = resp.data.jwtToken;
                     localStorage.setItem('loggedInUser', JSON.stringify(store));
+                    this.thankYou = true;
                     this.respType = true;
                     this.loader = false;
-                    setTimeout(function () {
-                        document.location.href = '/dashboard';
-                    }, 3000);
-                    this.router.navigate(['/dashboard']);
+                    // setTimeout(function () {
+                    //     document.location.href = '/dashboard';
+                    // }, 3000);
+                    // this.router.navigate(['/dashboard']);
                 }, (error: any) => {
                     console.log(error.error);
+                    this.thankYou = false;
                     this.respMsg = error.error.error;
                     this.respType = true;
                     this.loader = false;
-                    setTimeout(function () {
-                        location.reload();
-                    }, 4000);
+                    // setTimeout(function () {
+                    //     location.reload();
+                    // }, 4000);
                 }
             );
         }

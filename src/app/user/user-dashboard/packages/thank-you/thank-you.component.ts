@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {timer} from 'rxjs/observable/timer';
-import {map, take} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {Subscription} from 'rxjs/Subscription';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-thank-you',
@@ -11,17 +12,24 @@ export class ThankYouComponent implements OnInit {
   @Input() data: any;
     countDown;
     count = 20;
-  constructor() {
-      this.countDown = timer(0, 1000).pipe(
-          take(this.count),
-          map(() => --this.count)
+    timerSubscription: Subscription;
+  constructor(
+      private router: Router
+  ) {
+
+      this.countDown = Observable.interval(1000).map((tick) => --this.count).share();
+      this.timerSubscription = this.countDown.subscribe(
+          (time) => {
+              this.count = time;
+              if (this.count === 0) {
+                  this.router.navigate(['/dashboard/will']);
+              }
+          }
       );
-      setTimeout(function () {
-          console.log(123);
-      }, 20000);
   }
 
   ngOnInit() {
+      // console.log(this.data);
   }
 
 }

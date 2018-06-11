@@ -1,3 +1,14 @@
-<p>
-  paypal-failed works!
-</p>
+<div class="pageLoader" *ngIf="!respType">
+  <div class="loaderInner">
+    <img src="../../../../../../assets/images/owl-loading.gif" alt="Loading...">
+    <p class="loadingTxt">
+      Please Wait
+      <span></span>
+      <span></span>
+      <span></span>
+      Your transaction is being processed. Don't refresh or go back of this page.
+      <br>
+    </p>
+  </div>
+</div>
+<div *ngIf="respType"><h2>{{respMsg}}</h2></div>

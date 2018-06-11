@@ -2811,6 +2811,9 @@ select.form-control{
     border-left: 11px solid rgba(0,0,0,0);
     border-top: 0 ;
 }
+app-paypal-success, app-payment-page, app-packages{
+    width: 100%;
+}
 
 
 @media screen and (max-width: 820px){

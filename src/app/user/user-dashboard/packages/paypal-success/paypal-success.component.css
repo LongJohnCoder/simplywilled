@@ -1,0 +1,35 @@
+.main-content.paymentSuccess {
+    width: 500px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    float: right;
+    text-align: center;
+    color: #373737;
+    margin-right: -80px;
+}
+
+@media screen and (max-width: 1199px){
+    .main-content.paymentSuccess{
+        margin-right: -115px;
+    }
+}
+@media screen and (max-width: 991px){
+    .main-content.paymentSuccess{
+        margin-right: -172px;
+    }
+}
+@media screen and (max-width: 768px){
+    .main-content.paymentSuccess{
+        margin-right: 9px;
+    }
+}
+@media screen and (max-width: 550px){
+    .main-content.paymentSuccess{
+        margin-right: 0;
+    }
+    .main-content.paymentSuccess{
+        width: 100%;
+    }
+}

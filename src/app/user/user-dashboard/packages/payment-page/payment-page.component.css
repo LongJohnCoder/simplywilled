@@ -553,6 +553,18 @@ select.form-control{
     color: #fff;
 }
 
+.main-content.paymentSuccess {
+    width: 500px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    float: right;
+    text-align: center;
+    color: #373737;
+    margin-right: -80px;
+}
+
 @media screen and (max-width:1199px){
     .main-content.tellusaboutyou{
         width: 720px;
@@ -570,6 +582,9 @@ select.form-control{
     .packagesRightPanel h2{
         font-size: 30px;
     }
+    .main-content.paymentSuccess{
+        margin-right: -115px;
+    }
 }
 
 @media screen and (max-width:991px){
@@ -583,6 +598,9 @@ select.form-control{
     .main-content .payPaypal, .main-content .payCardHead{
         width: 100%;
     }
+    .main-content.paymentSuccess{
+        margin-right: -172px;
+    }
 }
 
 @media screen and (max-width:768px){
@@ -594,6 +612,18 @@ select.form-control{
     .howItWorks ol li {
         font-size: 14px;
         min-height: 45px;
+    }
+    .main-content.paymentSuccess{
+        margin-right: 9px;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .main-content.paymentSuccess{
+        margin-right: 0;
+    }
+    .main-content.paymentSuccess{
+        width: 100%;
     }
 }
 

@@ -6,6 +6,7 @@
       <span></span>
       <span></span>
       <span></span>
+      <br>
         Your transaction is being processed. Don't refresh or go back of this page.
       <br>
     </p>
@@ -15,5 +16,6 @@
 <div class="col-xs-12 container">
 </div>
 <div *ngIf="respType"><h2>{{respMsg}}</h2></div>
-
-<app-thank-you [data]="data" *ngIf="thankYou"></app-thank-you>
+<div class="main-content paymentSuccess" >
+  <app-thank-you [data]="data" *ngIf="thankYou"></app-thank-you>
+</div>

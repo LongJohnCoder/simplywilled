@@ -1,0 +1,137 @@
+@keyframes checkmark {
+    0% {stroke-dashoffset: 69px;}
+    100% { stroke-dashoffset: 0;}
+}
+
+@keyframes checkmark-circle {
+    0% {stroke-dashoffset: 396px;}
+    100% {stroke-dashoffset: 0px;}
+}
+.inlinesvg .svg svg {
+    display: inline;
+}
+.icon--order-success svg path {
+    -webkit-animation: checkmark 0.5s ease-in-out 0.7s backwards;
+    animation: checkmark 0.5s ease-in-out 0.7s backwards
+}
+
+.icon--order-success svg circle {
+    -webkit-animation: checkmark-circle 0.6s ease-in-out backwards;
+    animation: checkmark-circle 0.6s ease-in-out backwards;
+}
+
+.main-content.paymentSuccess {
+    width: 500px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    float: right;
+    text-align: center;
+    color: #373737;
+    margin-right: -80px;
+}
+svg {
+    margin: 0 auto;
+    width: 135px;
+    display: block;
+}
+.main-content.paymentSuccess h2 {
+    color: #2479b8;
+    margin-bottom: 25px;
+}
+
+.paymentDetails{
+    width: 100%;
+    float: left;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+.paymentDetails{
+    width: 100%;
+    float: left;
+}
+.paymentDetails li{
+    border: 1px solid #ccc;
+    border-bottom: 0;
+    width: 100%;
+    float: left;
+}
+.paymentDetails li:first-child {
+    border-radius: 5px 5px 0 0;
+}
+.paymentDetails li:last-child {
+    border-bottom: 1px solid #ccc;
+    border-radius: 0 0 5px 5px;
+}
+.paymentDetails li p{
+    color: #373737;
+    font-size: 14px;
+    width: 40%;
+    float: left;
+    margin-bottom: 0;
+    padding: 5px;
+    border-left: 1px solid #ccc;
+    text-align: left;
+}
+p.payMessage{
+    font-family: 'OpenSans-Bold';
+}
+p.payDetailsHead{
+    margin-bottom: 5px;
+    font-family: 'OpenSans-Bold';
+}
+.paymentDetails li p:first-child {
+    border-left: 0;
+}
+.paymentDetails li p:last-child {
+    font-family: 'OpenSans-Semibold';
+    color: #1376bb;
+    width: 60%;
+}
+p strong{
+    font-family: 'OpenSans-Bold';
+}
+.paymentDetails li p.green{
+    color: #32b623;
+    font-family: 'OpenSans-Bold';
+}
+.paymentDetails li p.red{
+    color: #f3463a;
+    font-family: 'OpenSans-Bold';
+}
+
+@media screen and (max-width: 1199px){
+    .main-content.paymentSuccess{
+        margin-right: -115px;
+    }
+}
+@media screen and (max-width: 991px){
+    .main-content.paymentSuccess{
+        margin-right: -172px;
+    }
+}
+@media screen and (max-width: 768px){
+    .main-content.paymentSuccess{
+        margin-right: 9px;
+    }
+}
+@media screen and (max-width: 550px){
+    .main-content.paymentSuccess{
+        margin-right: 0;
+    }
+    .main-content.paymentSuccess{
+        width: 100%;
+    }
+    .paymentDetails li p{
+        word-wrap: break-word;
+    }
+}
+@media screen and (max-width: 400px){
+    .paymentDetails li p{
+        font-size: 12px;
+    }
+    .paymentDetails li:last-child P{
+        height: 50PX;
+    }
+}
