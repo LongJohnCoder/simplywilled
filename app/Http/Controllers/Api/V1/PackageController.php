@@ -299,8 +299,8 @@ class PackageController extends Controller
             ->setInvoiceNumber(uniqid());
 
         $redirectUrls = Paypalpayment::redirectUrls();
-        $redirectUrls->setReturnUrl(url("/dashboard/payment/success"))
-            ->setCancelUrl(url("/dashboard/payment/failure"));
+        $redirectUrls->setReturnUrl(url("/dashboard/packages/paypal-success"))
+            ->setCancelUrl(url("/dashboard/packages/paypal-failed"));
 
         $payment = Paypalpayment::payment();
 
@@ -391,19 +391,20 @@ class PackageController extends Controller
             'status'=> true,
             'message'=> 'Payment done',
             'data'=> [
-              'jwtToken' => $token
+              'jwtToken' => $token,
+              'payment' => $userPackage
             ]
           ], 200);
         } else {
           return response()->json([
             'status'=> false,
-            'error'=> 'Database Error',
+            'error'=> 'Database Error. Please contact with site adminstrator',
           ], 400);
         }
       } catch (\Exception $e) {
         return response()->json([
           'status'=> false,
-          'error'=> $e->getMessage(),
+          'error'=> $e->getMessage().'  Please contact with site adminstrator',
         ], 500);
       }
     }
@@ -615,6 +616,7 @@ class PackageController extends Controller
           $customClaims = ['package' => $user->package];
           $token = JWTAuth::fromUser($user, $customClaims);
           $arr['jwtToken'] = $token;
+          $arr['payment']  = $userPackage;
           return response()->json([
             'status' => true,
             'message' => 'Payment has done successfully',
