@@ -224,7 +224,7 @@ class CouponsController extends Controller
              ], 400);
          }
 
-         $checkToken = Coupon::where('token', $request->token)->first();
+         $checkToken = Coupon::where('token', $request->token)->where('id', '!=', $request->id)->first();
          if ($checkToken) {
            return response()->json([
                'status'  => false,
