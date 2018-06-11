@@ -13,17 +13,10 @@ class AddIndividualCharityColumnToGifts extends Migration
      */
     public function up()
     {
-        if (Schema::hasColumn('gifts', 'gift_type'))
-        {
-            Schema::table('gifts', function (Blueprint $table) {
-                $table->dropColumn('gift_type');
-            });
-
-            Schema::table('gifts', function (Blueprint $table) {
-                $table->boolean('individual')->nullable();
-                $table->boolean('charity')->nullable();
-            });
-        }
+        Schema::table('gifts', function (Blueprint $table) {
+            $table->boolean('individual')->nullable();
+            $table->boolean('charity')->nullable();
+        });
     }
 
     /**
@@ -33,9 +26,16 @@ class AddIndividualCharityColumnToGifts extends Migration
      */
     public function down()
     {
-        Schema::table('gifts', function (Blueprint $table) {
-            $table->dropColumn('individual');
-            $table->dropColumn('charity');
-        });
+        if(Schema::hasColumn('gifts', 'individual')) {
+            Schema::table('gifts', function (Blueprint $table) {
+                $table->dropColumn('individual');
+            });
+        }
+
+        if(Schema::hasColumn('gifts', 'charity')) {
+            Schema::table('gifts', function (Blueprint $table) {
+                $table->dropColumn('charity');
+            });
+        }
     }
 }

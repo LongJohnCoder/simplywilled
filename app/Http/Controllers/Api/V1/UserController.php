@@ -1402,7 +1402,7 @@ class UserController extends Controller
                 'petGuardian.*'             =>  'required|array',
                 'backUpPetGuardian.*'       =>  'nullable|array',
                 'petGuardian.*.user_id'     =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
-                'backUpGuardian.*.user_id'  =>  'nullable|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id
+                'backUpPetGuardian.*.user_id'  =>  'nullable|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id
             ]);
             if ($validator->fails()) {
                 return response()->json([
@@ -1503,7 +1503,7 @@ class UserController extends Controller
             'isPetGuardian'              =>  $petGuardianInfo->count() > 0 ? 'Yes' : 'No' ,
             'petGuardian'                =>  $petGuardianInfo,
             'isBackUpPetGuardian'        =>  $petGuardianInfoBackup->count() > 0 ? 'Yes' : 'No' ,
-            'backupPetGuardian'          =>  $petGuardianInfoBackup
+            'backUpPetGuardian'          =>  $petGuardianInfoBackup
           ]
       ], 200);
     }
@@ -1764,11 +1764,10 @@ class UserController extends Controller
     public function updateSpecificGift($request)
     {
         $userId = $request->user_id;
+        //dd($request->data);
         $validator = Validator::make($request->all(), [
             'user_id'             => 'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
-            'data.isSpecificGift' => "required|string|in:Yes,No",
         ]);
-        $specificGift = $request->data['isSpecificGift']; // 0-> NO ,1->Yes
         if ($validator->fails()) {
             return response()->json([
                 'status' => false,
@@ -1776,9 +1775,35 @@ class UserController extends Controller
                 'data' => []
             ], 400);
         }
+        $data = $request->data;
+        $validator = Validator::make($data, [
+            'isSpecificGift' => "nullable|string|in:Yes,No",
+            'charity'        => "required|numeric|between:0,1|integer",
+            'individual'     => "required|numeric|between:0,1|integer",
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors(),
+                'data' => []
+            ], 400);
+        }
+
+        $specificGift   = isset($data['isSpecificGift']) && array_key_exists('isSpecificGift', $data)  
+                            ? $data['isSpecificGift'] 
+                            : null; // 0-> NO ,1->Yes
+        $individual     = isset($data['individual']) && array_key_exists('individual', $data)  
+                            ? $data['individual'] 
+                            : null;
+        $charity        = isset($data['charity']) && array_key_exists('charity', $data)  
+                            ? $data['charity']
+                            : null;
+        
         $checkForExistData = ProvideYourLovedOnes::where('user_id', $userId)->first();
         if ($checkForExistData) {
             $checkForExistData->specific_gifts = $specificGift == "Yes" ? '1' : '0';
+            $checkForExistData->individual  = $individual;
+            $checkForExistData->charity     = $charity;
             if ($checkForExistData->save()) {
                 return response()->json([
                     'status' => true,

@@ -1184,7 +1184,7 @@ class UserManagementController extends Controller
         'isPetGuardian'               =>  $guardianInfo->count() > 0 ? 'Yes' : 'No',
         'petGuardian'                    =>  $guardianInfo == null ? null : $guardianInfo,
         'isBackUpPetGuardian'            =>  $backupGuardianInfo->count() == 0 ? 'No' : 'Yes',
-        'backupPetGuardian'              =>  $backupGuardianInfo
+        'backUpPetGuardian'              =>  $backupGuardianInfo
       ];
       return [
         'step'  =>  $stepValue,
@@ -1300,7 +1300,9 @@ class UserManagementController extends Controller
          return [
            'step' => $stepValue,
            'data' => [
-             'isSpecificGift' => $gift->specific_gifts == 1 ? 'Yes' : 'No'
+             'isSpecificGift' =>  $gift->specific_gifts == 1 ? 'Yes' : 'No',
+             'charity'        =>  $gift->charity,
+             'individual'     =>  $gift->individual
            ]
          ];
        }
