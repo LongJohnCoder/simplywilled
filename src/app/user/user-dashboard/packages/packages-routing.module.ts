@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PackagesComponent } from './packages/packages.component';
-import {PaymentStatusComponent} from './payment-status/payment-status.component';
+import {PaypalSuccessComponent} from './paypal-success/paypal-success.component';
+import {PaypalFailedComponent} from './paypal-failed/paypal-failed.component';
 
 const routes: Routes = [
     { path: '', component: PackagesComponent},
-    { path: 'status/:id', component: PaymentStatusComponent},
-    { path: 'payment', loadChildren: './payment/payment.module#PaymentModule'}
+    { path: 'paypal-success', component: PaypalSuccessComponent},
+    { path: 'paypal-failed', component: PaypalFailedComponent}
 ];
 
 @NgModule({

@@ -45,4 +45,12 @@ export class PackagesService {
     purchasePackagePaypalExpress(body: any): Observable<any> {
         return this.http.post(environment.API_URL + 'user/purchase-package', body);
     }
+
+    paypalSuccess(body: any): Observable<any> {
+        return this.http.post(environment.API_URL + 'user/paypal-package-success', body);
+    }
+
+    paypalFailed(body: any): Observable<any> {
+        return this.http.post(environment.API_URL + 'user/paypal-package-failed', body);
+    }
 }
