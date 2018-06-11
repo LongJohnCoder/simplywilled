@@ -12,7 +12,9 @@
 
 <div class="col-md-9 col-sm-12 rightPanel" *ngIf="!loading">
     <div class="main-content tellusaboutyou">
-        <h2>Name your first choice for healthcare agent</h2>
+        <h2>Name your first choice for healthcare agent
+            <app-global-tooltip (click)="toolTipClicked('health_care')" [tooltipMessages]='toolTipMessageList.health_care' toolTipType="health_care"></app-global-tooltip>
+        </h2>
         <form #medicalEmergencyForm="ngForm">
            <!-- <div class="form-group" [ngClass]="{'valid': firstLegalName.valid, 'invalid': firstLegalName.touched && firstLegalName.touched && !firstLegalName.valid}">
                 <label for="firstLegalName">First Legal Name:</label>
@@ -253,7 +255,9 @@
 
 
             <div class="form-group">
-                <label>Would you like to appoint backup Healthcare Agent? </label>
+                <label>Would you like to appoint backup Healthcare Agent? 
+                    <app-global-tooltip (click)="toolTipClicked('health_care_backup')" [tooltipMessages]='toolTipMessageList.health_care_backup' toolTipType="health_care_backup"></app-global-tooltip>
+                </label>
                 <ul class="radio_ul6">
                     <li>
                         <label class="radio_custom" [ngClass]="{'active': toggleBackupAgent}">

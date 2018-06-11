@@ -32,8 +32,21 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
   fetchGiftDataDBSubscription: Subscription;
   deleteGiftDbSubscription: Subscription;
   getUserDetailSubscription: Subscription;
+  toolTipMessageList: any;
 
-  constructor(private ysgService: YourSpecificGiftService, private editService: EditGiftService, private userService: UserService, private progressBarService: ProgressbarService) { }
+  constructor(
+    private ysgService: YourSpecificGiftService,
+    private editService: EditGiftService,
+    private userService: UserService,
+    private progressBarService: ProgressbarService) {
+      this.toolTipMessageList = {
+        'gift_type' : [{
+            'q' : 'Gift Types',
+            // tslint:disable-next-line:max-line-length
+            'a' : 'Using SimplyWilled.com you can make specific gifts of cash, real estate, business interests and specific assets to individuals you choose. These gifts are “off the top” of your estate. Everything else that is left over after these gifts is called the residuary of the estate.'
+          }]
+      };
+    }
   ngOnInit() {
     this.errFlag = false;
     this.errString = null;
@@ -54,6 +67,14 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
     }
     this.fetchGiftData();
   }
+
+  toolTipClicked(str: string) {
+    console.log(str);
+    this.userService.changeCurrentToolTipType(str);
+    // this.toolTipMessage = this.toolTipMessageList[str];
+    // console.log('tooltip message :', this.toolTipMessage);
+  }
+
   /**
    * this function fetch pre generated gifts
    */

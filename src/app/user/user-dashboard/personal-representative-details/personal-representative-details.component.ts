@@ -1,3 +1,4 @@
+import { GlobalTooltipComponent } from './../global-tooltip/global-tooltip.component';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Validators, FormGroup, FormBuilder, FormControl, FormArray} from '@angular/forms';
@@ -26,6 +27,7 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
     guardian: any;
     backupGuardian: any;
     checkValidationSubscription: Subscription;
+    toolTipMessageList: any;
     /**Constructor call*/
     constructor(
         private  authService: UserAuthService,
@@ -37,11 +39,36 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
       this.progressBarService.changeWidth({width: 12.5});
         //this.createForm();
       this.getUserData();
+
+      this.toolTipMessageList = {
+        'personal_representative' : [{
+            'q' : 'What is a Personal Representative?',
+            // tslint:disable-next-line:max-line-length
+            'a' : 'Your Personal Representative, also know as an executor or settlor in some jurisdictions, is the individual you appoint to administer your estate. Their duties include, filing your Will with the court, marshaling your assets, paying creditors, making distributions to heirs and settling your estate.'
+          }, {
+            'q' : 'Who Should I Select As My Personal Representative?',
+            // tslint:disable-next-line:max-line-length
+            'a' : 'Your Personal Representative should be an individual over the age of 18, that your trust, such as a spouse or partner, a relative, or a close friend. Please remember, using SimplyWilled.com you can choose to send your Personal Representative an email notification that you have selected them as a fiduciary of your estate.'
+          }],
+          'backup_personal_representative' : [{
+            'q' : 'Do I need to appoint a backup Personal Representative?',
+            // tslint:disable-next-line:max-line-length
+            'a' : 'It\'s always a good idea to select a backup Personal Representative in the event that your first choice is unable or unwilling to act. Please remember, using SimplyWilled.com you can choose to send them an email notification that you have selected them as a fiduciary of your estate.'
+          }]
+        };
     }
 
     ngOnInit() {
 
     }
+
+    toolTipClicked(str: string) {
+      console.log(str);
+      this.userService.changeCurrentToolTipType(str);
+      // this.toolTipMessage = this.toolTipMessageList[str];
+      // console.log('tooltip message :', this.toolTipMessage);
+    }
+
     /**
      *This function is fetching user data
      */
@@ -158,7 +185,7 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
      * @param model
      */
     onSubmit(model: any) {
-      if (model.valid) {
+      // if (model.valid) {
         let modelData = model.value;
         modelData.step = 5 ;
         modelData.user_id = this.authService.getUser()['id'];
@@ -177,10 +204,11 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
             }, 3000);
           }
         );
-      } else {
-        alert('Please fill up the required fields');
-        this.markFormGroupTouched(model);
-      }
+      // } else {
+      //   alert('Please fill up the required fields');
+      //   console.log(this.personalRepresentativeDetailsForm.get('errors'));
+      //   this.markFormGroupTouched(model);
+      // }
     }
 
     /**Mark all form controls as touched*/

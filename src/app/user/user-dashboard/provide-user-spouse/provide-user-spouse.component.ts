@@ -21,6 +21,7 @@ export class ProvideUserSpouseComponent implements OnInit, OnDestroy {
     editprofileSubscription: Subscription;
     getUserDetailsSubscription: Subscription;
     loading = true;
+    toolTipMessageList: any;
 
     /**Constructor call*/
     constructor(private  authService: UserAuthService,
@@ -30,12 +31,30 @@ export class ProvideUserSpouseComponent implements OnInit, OnDestroy {
                 private fb: FormBuilder, ) {
         this.progressBarService.changeWidth({width: 25});
         this.createForm();
+        this.toolTipMessageList = {
+            'estate_to_spouse' : [{
+                'q' : 'What is the Residue of My Estate?',
+                // tslint:disable-next-line:max-line-length
+                'a' : 'The residue of the estate is what is left after payment of debts, funeral expenses, executors fees, taxes, legal and other expenses incurred in the administration of the estate, and after all gifts and bequests of specific assets or sums of cash have been distributed.'
+              }, {
+                'q' : 'How Should I Distribute The Residue of My Estate?',
+                // tslint:disable-next-line:max-line-length
+                'a' : 'SimplyWilled’s interview provides for disposition of specific gifts as well as the residue of your estate. If you are married, you may wish to leave the rest, or “residue,” of your estate to your spouse first, and then to a different beneficiary if your spouse is not living or elects to disclaim this bequest.'
+              }]
+            };
     }
 
     /**When component initialises*/
     ngOnInit() {
         this.getUserData();
        // this.checkMaritalStatus();
+    }
+
+    toolTipClicked(str: string) {
+        console.log(str);
+        this.userService.changeCurrentToolTipType(str);
+        // this.toolTipMessage = this.toolTipMessageList[str];
+        // console.log('tooltip message :', this.toolTipMessage);
     }
 
     /**

@@ -1,13 +1,15 @@
+import { GlobalTooltipModule } from './../global-tooltip/global-tooltip.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProvideUserSpouseRoutingModule } from './provide-user-spouse-routing.module';
 import { ProvideUserSpouseComponent } from './provide-user-spouse.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    ProvideUserSpouseRoutingModule, ReactiveFormsModule
+    ProvideUserSpouseRoutingModule, ReactiveFormsModule,
+    GlobalTooltipModule
   ],
   declarations: [ProvideUserSpouseComponent]
 })

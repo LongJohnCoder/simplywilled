@@ -23,6 +23,7 @@ export class PersonalPropertyDistributedComponent implements OnInit, OnDestroy {
     getUserDetailSubscription: Subscription;
     editProfileSubscription: Subscription;
     loading = true;
+    toolTipMessageList: any;
 
     /**Constructor call*/
     constructor(private  authService: UserAuthService,
@@ -30,6 +31,13 @@ export class PersonalPropertyDistributedComponent implements OnInit, OnDestroy {
                 private router: Router,
                 private progressBarService: ProgressbarService,
                 private fb: FormBuilder, ) {
+        this.toolTipMessageList = {
+            'tangible_property' : [{
+                'q' : 'What is a Tangible Property?',
+                // tslint:disable-next-line:max-line-length
+                'a' : 'Tangible personal property is personal property that can be touched. Examples of tangible personal property include automobiles, boats, motorcycles, jewelry, furniture, art, and sporting equipment. Cash and bank accounts are not tangible personal property.'
+                }]
+            };
         this.createForm();
         this.getUserData();
     }
@@ -38,6 +46,13 @@ export class PersonalPropertyDistributedComponent implements OnInit, OnDestroy {
     ngOnInit() {
         //this.showChildRadio = false;
         //this.showSpouseRadio = false;
+    }
+
+    toolTipClicked(str: string) {
+        console.log(str);
+        this.userService.changeCurrentToolTipType(str);
+        // this.toolTipMessage = this.toolTipMessageList[str];
+        // console.log('tooltip message :', this.toolTipMessage);
     }
 
     /**

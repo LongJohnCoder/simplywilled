@@ -29,6 +29,7 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
   getUserDetailsSubscription: Subscription;
   loading = true;
   pageChange = false;
+  toolTipMessageList: any;
 
   /**Constructor call*/
   constructor( private  authService: UserAuthService,
@@ -38,14 +39,35 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
                private progressBarService: ProgressbarService,
                private location: Location
               ) {
-      this.progressBarService.changeWidth({width: 62.5});
-      this.createForm(); }
+    this.toolTipMessageList = {
+        'beneficiary_qs' : [{
+            'q' : 'What is “Distribute To My Beneficiary’s Issue”?',
+            // tslint:disable-next-line:max-line-length
+            'a' : 'This choice will distribute the assets to your named beneficiaries children or grandchildren.'
+            }, {
+            'q' : 'What are my Heirs At Law?',
+            // tslint:disable-next-line:max-line-length
+            'a' : 'These are your intestate heirs otherwise known as your surviving next of kin. These will only be blood relations or individuals who have been legally adopted. Friends, stepchildren (who have not been legally adopted) or other close relations will not be included.'
+            }, {
+            'q' : 'What is Some Other Way?',
+            'a' : 'This choice allows you to specify some other way you would like your estate distributed.'
+        }]
+    };
+    this.progressBarService.changeWidth({width: 62.5});
+    this.createForm(); }
 
   /**When the component initialises*/
   ngOnInit() {
       this.getUserData();
       this.inputCheck = true;
       this.showErrorMessage = false;
+  }
+
+  toolTipClicked(str: string) {
+    console.log(str);
+    this.userService.changeCurrentToolTipType(str);
+    // this.toolTipMessage = this.toolTipMessageList[str];
+    // console.log('tooltip message :', this.toolTipMessage);
   }
 
   /**

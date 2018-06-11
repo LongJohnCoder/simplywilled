@@ -1,3 +1,4 @@
+import { GlobalTooltipModule } from './../../global-tooltip/global-tooltip.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProtectYourFinancesRoutingModule } from './protect-your-finances-routing.module';
@@ -11,6 +12,7 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
     ProtectYourFinancesRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    GlobalTooltipModule
   ],
   declarations: [ProtectYourFinancesComponent],
   providers: [

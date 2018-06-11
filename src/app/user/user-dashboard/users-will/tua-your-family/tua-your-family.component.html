@@ -49,8 +49,7 @@
                    formControlName="totalChildrenOther">
           <span class="error_txt" *ngIf="chidrenForm.get('totalChildrenOther').invalid && (chidrenForm.get('totalChildrenOther').dirty || chidrenForm.get('totalChildrenOther').touched)">
               <p *ngIf="chidrenForm.get('totalChildrenOther').hasError('required')">
-                Please provide their name(s), gender and date of birth
-              </p>
+                Please provide their name(s), gender and date of birth</p>
           </span>
           <span class="error_txt" *ngIf="maxChidren">
             Maximum length is 20.
@@ -58,7 +57,9 @@
         </div>
         <div *ngIf="showTable">
           <div class="form-group" *ngIf="chidrenForm.get('totalChildren').value !== '0'">
-            <label>Please provide their name(s), gender and date of birth</label>
+            <label>Please provide their name(s), gender and date of birth 
+                    <app-global-tooltip (click)="toolTipClicked('family')" [tooltipMessages]='toolTipMessageList.family' toolTipType="family"></app-global-tooltip>
+            </label>
           </div>
             <div formArrayName="childrenInfo" *ngFor="let item of childrenInfo.controls; let i = index;">
                 <div class="row form-group allChild" [formGroupName]="i">

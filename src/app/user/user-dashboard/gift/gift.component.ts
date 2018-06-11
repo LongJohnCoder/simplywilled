@@ -28,9 +28,29 @@ export class GiftComponent implements OnInit, OnDestroy {
   fetchGiftDBSubscription: Subscription;
   getUserDetailSubscription: Subscription;
   pageChange = false;
+  toolTipMessageList: any;
+
 
   /**Constructor call*/
-  constructor(private fb: FormBuilder, private gftService: GiftService, private router: Router, private progressBarService: ProgressbarService, private userService: UserService) {
+  constructor(
+    private fb: FormBuilder,
+    private gftService: GiftService,
+    private router: Router,
+    private progressBarService: ProgressbarService,
+    private userService: UserService) {
+
+      this.toolTipMessageList = {
+        'gift' : [{
+            'q' : 'What Is A Specific Gift?',
+            // tslint:disable-next-line:max-line-length
+            'a' : 'Specific Gifts are particular, itemized gifts that are distributed “off the top” of your estate. Examples could include particular items of personal property (“I leave my gold ring to my daughter”), real property (“I leave my house to my son”), a business interest (“my interest in XYZ LLC to my grandson Carter”), a specific amount of cash (“I leave the sum of $500 to my nephew Joe”), or a particular account (“I leave my bank account at Smith Bank to my cousin Joan”). Everything that is left over will be included in the residue of your estate.'
+          }, {
+            'q' : 'Should I make specific gifts?',
+            // tslint:disable-next-line:max-line-length
+            'a' : 'Using SimplyWilled.com you can make Specific Gifts of Cash, Real Estate, Business Interests, or Specific Assets. You can select if you would like to make these gifts to individual(s) or to Charities. If cash (“I leave the sum of $500 to my nephew Joe”), or a particular account (“I leave my bank account at Smith Bank to my cousin Joan”). Everything that is left over will be included in the residue of your estate.'
+        }]
+      };
+
     this.progressBarService.changeWidth({width: 50});
     this.giftFormStepOne = fb.group({
       'gift_status' : [null, Validators.required]
@@ -48,6 +68,13 @@ export class GiftComponent implements OnInit, OnDestroy {
       this.access_token = '';
     }
     this.fetchGiftData();
+  }
+
+  toolTipClicked(str: string) {
+    console.log(str);
+    this.userService.changeCurrentToolTipType(str);
+    // this.toolTipMessage = this.toolTipMessageList[str];
+    // console.log('tooltip message :', this.toolTipMessage);
   }
 
   /**Calls the api*/

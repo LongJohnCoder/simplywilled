@@ -1,3 +1,4 @@
+//import { GlobalTooltipComponent } from './../../global-tooltip/global-tooltip.component';
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService} from '../../../user.service';
@@ -18,6 +19,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
   userInfo: any;
   states: string[] = [];
   loading = true;
+  toolTipMessageList: any;
 
   constructor(
       private userService: UserService,
@@ -27,11 +29,48 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
       private fb: FormBuilder,
   ) {
       this.states = States.States;
+
+      this.toolTipMessageList = {
+        'guardian' : [{
+              'q' : 'What is a Guardian For Minor Children?',
+              // tslint:disable-next-line:max-line-length
+              'a' : 'A guardian for minor children is the person you choose to have legal custody of your minor children in the event that both o the child’s parents pass away.',
+            }, {
+              'q' : 'Why is appointing a guardian for minor children important?',
+              // tslint:disable-next-line:max-line-length
+              'a' : 'Appointing a guardian for minor children is important because it can avoid court delays and custody battles, and can help you to control who cares for your children upon your passing.'
+            }],
+            'first_guardian' : [{
+              'q' : 'Who should I select as guardian for minor children?',
+              // tslint:disable-next-line:max-line-length
+              'a' : 'Your first choice for guardian should be the person your would like to have legal custody of your children in the event that both of the child’s parents have passed away.',
+            }, {
+              'q' : 'Who should I select as the backup guardian?',
+              // tslint:disable-next-line:max-line-length
+              'a' : 'During the interview, you will also have the opportunity in the interview to choose a “backup” guardian in the event your first choice cannot serve in this fiduciary role. Also, you will have the opportunity to send the person you appoint an email notification through simplywilled.com that you have selected them as a fiduciary of your estate.'
+            }],
+            'backup_guardian' : [{
+              'q' : 'Do I need to appoint a backup guardian?',
+              // tslint:disable-next-line:max-line-length
+              'a' : 'Yes, you should have a backup guardian in the event that your first choice is unable or unwilling to serve in this role.',
+            }, {
+              'q' : 'Who should I select?',
+              // tslint:disable-next-line:max-line-length
+              'a' : 'Your second choice for guardian should be the person your would like to have legal custody of your children in the event that both of the child’s parents have passed away.'
+            }],
+        };
   }
 
   ngOnInit() {
     this.createForm();
     this.getUserData();
+  }
+
+  toolTipClicked(str: string) {
+    console.log(str);
+    this.userService.changeCurrentToolTipType(str);
+    // this.toolTipMessage = this.toolTipMessageList[str];
+    // console.log('tooltip message :', this.toolTipMessage);
   }
 
   createForm () {

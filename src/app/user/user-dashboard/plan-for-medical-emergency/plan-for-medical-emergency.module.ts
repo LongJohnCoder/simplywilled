@@ -1,3 +1,4 @@
+import { GlobalTooltipModule } from './../global-tooltip/global-tooltip.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {PlanForMedicalEmergencyRoutingModule} from './plan-for-medical-emergency-routing.module';
@@ -11,7 +12,8 @@ import {NgxMaskModule} from 'ngx-mask';
     PlanForMedicalEmergencyRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    GlobalTooltipModule
   ],
   declarations: [PlanForMedicalEmergencyComponent]
 })

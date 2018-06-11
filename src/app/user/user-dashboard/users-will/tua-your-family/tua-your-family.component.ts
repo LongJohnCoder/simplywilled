@@ -1,3 +1,4 @@
+//import { GlobalTooltipComponent } from './../../global-tooltip/global-tooltip.component';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../../user.service';
@@ -40,7 +41,7 @@ export class TuaYourFamilyComponent implements OnInit, OnDestroy {
     errorFlag: false,
     errorMessage: ''
   };
-
+  toolTipMessageList: any;
   /**Constructor call*/
   constructor(private router: Router,
               private userService: UserService,
@@ -52,6 +53,33 @@ export class TuaYourFamilyComponent implements OnInit, OnDestroy {
     this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '11', '12'];
     this.user = this.authService.getUser();
 
+    this.toolTipMessageList = {
+      'family' : [{
+            'q' : 'What is your child\'s full legal name?',
+            // tslint:disable-next-line:max-line-length
+            'a' : 'Please remember to provide the full legal name for each child as it appears on his or her birth certificate or government issued identification.',
+          }, {
+            'q' : 'I am pregnant should I list my unborn child now?',
+            // tslint:disable-next-line:max-line-length
+            'a' : 'Your Will needs to be accurate as of the date you sign it, so unborn children should not be included. Once you child is born, use SimplyWilled.com to update your documents to include the new addition to your family.'
+          }, {
+            'q' : 'What if I have stepchildren?',
+            // tslint:disable-next-line:max-line-length
+            'a' : 'This question is asking for information about your biological or legally adopted children. If you would like to provide for step-children that have not been legally adopted, there is an opportunity to provide for them in later sections of the interview.'
+          }, {
+            'q' : 'What if my spouse and I have separate children from previous relationships?',
+            // tslint:disable-next-line:max-line-length
+            'a' : 'If you and your spouse have children from separate relationships, list your children in your list of children and your spouse can list their children in the list of children in your spouse’s separate interview. Or, if you would like to provide for your spouse’s children from a prior relationship, there is an opportunity to provide for them in later sections of the interview.'
+          }]
+      };
+
+  }
+
+  toolTipClicked(str: string) {
+    console.log(str);
+    this.userService.changeCurrentToolTipType(str);
+    // this.toolTipMessage = this.toolTipMessageList[str];
+    // console.log('tooltip message :', this.toolTipMessage);
   }
 
   /**Creates the form*/

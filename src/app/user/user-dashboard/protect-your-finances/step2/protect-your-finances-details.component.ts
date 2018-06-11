@@ -31,6 +31,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
   loading = true;
   states: string[] = [];
   trackPage = false;
+  toolTipMessageList: any;
 
   constructor(
     private protectYourFinancesService: ProtectYourFinancesService,
@@ -42,11 +43,34 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
   ) {
     this.states = States.States;
     this.accessToken = this.parseToken();
+    this.toolTipMessageList = {
+      'f_poa' : [{
+          'q' : 'What is your financial power of attorney?',
+          // tslint:disable-next-line:max-line-length
+          'a' : 'Your financial power of attorney is the individual you appoint to make financial decisions for you.'
+        }, {
+          'q' : 'Who should I select as my Financial Power of Attorney?',
+          // tslint:disable-next-line:max-line-length
+          'a' : 'This should be an individual over the age of 18, that you trust, such as a spouse or partner, a relative or close friend. Please remember, using SimplyWilled.com you can choose to send this person an email notification that you have selected them as a fiduciary of your estate.'
+      }],
+      'f_poa_backup' : [{
+          'q' : 'Should I select a backup Financial Power of Attorney?',
+          // tslint:disable-next-line:max-line-length
+          'a' : 'It\'s always a good idea to select a backup financial power of attorney in the event that your first choice is unable or unwilling to act. Please remember, using SimplyWilled.com you can choose to send this person an email notification that you have selected them as a fiduciary of your estate.'
+      }]
+    };
   }
 
   /**When the component initialises*/
   ngOnInit() {
     this.getPoaDetailsData();
+  }
+
+  toolTipClicked(str: string) {
+    console.log(str);
+    this.userService.changeCurrentToolTipType(str);
+    // this.toolTipMessage = this.toolTipMessageList[str];
+    // console.log('tooltip message :', this.toolTipMessage);
   }
 
   /**Checks for authorization user id.*/

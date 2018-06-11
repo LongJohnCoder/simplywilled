@@ -18,13 +18,31 @@ export class ContingentBeneficiariesComponent implements OnInit, OnDestroy {
     getUserDetailsSubscription: Subscription;
     editSubscription: Subscription;
     loading = true;
+    toolTipMessageList: any;
 
     /**Constructor call*/
     constructor( private authService: UserAuthService,
                private userService: UserService,
                private router: Router,
                private progressBarService: ProgressbarService,
-               private fb: FormBuilder, ) { this.createForm(); }
+               private fb: FormBuilder, ) {
+                  this.createForm();
+                  this.toolTipMessageList = {
+                    'contingent_beneficiaries' : [{
+                        'q' : 'What are Contingent Beneficiaries?',
+                        // tslint:disable-next-line:max-line-length
+                        'a' : 'Contingent Beneficiaries are beneficiaries who will inherit under your will in the event that all of your primary beneficiaries have passed away.'
+                      }]
+                  };
+              }
+
+
+  toolTipClicked(str: string) {
+    console.log(str);
+    this.userService.changeCurrentToolTipType(str);
+    // this.toolTipMessage = this.toolTipMessageList[str];
+    // console.log('tooltip message :', this.toolTipMessage);
+  }
 
     /**
      *function to create the form

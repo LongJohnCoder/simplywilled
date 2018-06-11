@@ -9,14 +9,19 @@ import {UserUnPaidGuard} from './user-unpaid.guard';
 import {ProgressbarService} from './shared/services/progressbar.service';
 import {ReferFriendService} from './shared/services/referFriend.service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { GlobalTooltipModule } from './global-tooltip/global-tooltip.module';
+
 
 @NgModule({
   imports: [
     CommonModule,
     UserDashboardRoutingModule,
+    //PersonalRepresentativePowerModule,
     ReactiveFormsModule,
+    //GlobalTooltipModule
   ],
-  declarations: [DashboardComponent, MainDashboardComponent],
+  declarations: [DashboardComponent, MainDashboardComponent
+  ],
     providers: [
         UserPaidGuard, UserUnPaidGuard, ProgressbarService, ReferFriendService
     ]

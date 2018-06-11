@@ -13,7 +13,9 @@
 <div class='finances' *ngIf="!loading">
     <form [formGroup] = "poaDetailsForm" (ngSubmit)="send()">
       <div class="main-content tellusaboutyou" >
-        <h2>Power of attorney details</h2>
+        <h2>Power of attorney details
+          <app-global-tooltip (click)="toolTipClicked('f_poa')" [tooltipMessages]='toolTipMessageList.f_poa' toolTipType="f_poa"></app-global-tooltip>
+        </h2>
         <!-- <app-fianance [data]="poaDetailsForm.get('attorney_holders')"></app-fianance> -->
 
         <div>
@@ -233,21 +235,23 @@
 
 
           <div class="form-group valid">
-            <label>Do you need to provide a backup Financial Power of Attorney?</label>
-              <ul class="radio_ul6">
-                  <li>
-                    <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("is_backupattorney").value == 1)}'>
-                      <input type="radio" required="true" formControlName="is_backupattorney" value=1 (click)="changeMe('is_backupattorney', 1)">
-                      <span class="human_status">Yes</span>
-                    </label>
-                  </li>
-                  <li>
-                    <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("is_backupattorney").value == 0)}'>
-                      <input type="radio" required="true" formControlName="is_backupattorney" value=0 (click)="changeMe('is_backupattorney', 0)">
-                      <span class="human_status">No</span>
-                    </label>
-                  </li>
-              </ul>
+            <label>Do you need to provide a backup Financial Power of Attorney?
+              <app-global-tooltip (click)="toolTipClicked('f_poa_backup')" [tooltipMessages]='toolTipMessageList.f_poa_backup' toolTipType="f_poa_backup"></app-global-tooltip>
+            </label>
+            <ul class="radio_ul6">
+                <li>
+                  <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("is_backupattorney").value == 1)}'>
+                    <input type="radio" required="true" formControlName="is_backupattorney" value=1 (click)="changeMe('is_backupattorney', 1)">
+                    <span class="human_status">Yes</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("is_backupattorney").value == 0)}'>
+                    <input type="radio" required="true" formControlName="is_backupattorney" value=0 (click)="changeMe('is_backupattorney', 0)">
+                    <span class="human_status">No</span>
+                  </label>
+                </li>
+            </ul>
           </div>
 
         <div *ngIf='poaDetailsForm.get("is_backupattorney").value == 1'>

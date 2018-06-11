@@ -12,7 +12,9 @@
 
 <div class="" *ngIf="!loading">
   <div class="main-content tellusaboutyou">
-    <h2>Would You Like to Make a Gift to an Individual or Charity?</h2>
+    <h2>Would You Like to Make a Gift to an Individual or Charity?
+      <app-global-tooltip (click)="toolTipClicked('gift')" [tooltipMessages]='toolTipMessageList.gift' toolTipType="gift"></app-global-tooltip>
+    </h2>
     <form [formGroup]="giftFormStepOne" (ngSubmit)="makeSpecificGift(giftFormStepOne)">
       <div class="form-group">
         <ul class="radio_ul6">

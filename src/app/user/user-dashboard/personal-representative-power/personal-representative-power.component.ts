@@ -1,3 +1,4 @@
+import { GlobalTooltipComponent } from './../global-tooltip/global-tooltip.component';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {PersonalRepresentativePowerService} from './services/personal-representative-power.service';
@@ -32,9 +33,33 @@ export class PersonalRepresentativePowerComponent implements OnInit, OnDestroy {
   loading = true;
   userSubscription: Subscription;
   savePersonalRepresentativeDBSubscription: Subscription;
+  toolTipMessageList: any;
 
   /**Constructor call*/
-  constructor(private prService: PersonalRepresentativePowerService, private usrService: UserService, private router: Router, private progressBarService: ProgressbarService) { this.progressBarService.changeWidth({width: 0}); }
+  constructor(
+    private prService: PersonalRepresentativePowerService,
+    private usrService: UserService, private router: Router,
+    private progressBarService: ProgressbarService) {
+    this.progressBarService.changeWidth({width: 0});
+    this.toolTipMessageList = {
+      'personal_representative' : [{
+          'q' : 'What is a Personal Representative?',
+          // tslint:disable-next-line:max-line-length
+          'a' : 'Your Personal Representative, also know as an executor or settlor in some jurisdictions, is the individual you appoint to administer your estate. Their duties include, filing your Will with the court, marshaling your assets, paying creditors, making distributions to heirs and settling your estate.'
+        }, {
+          'q' : 'What are Special Powers?',
+          // tslint:disable-next-line:max-line-length
+          'a' : 'This question asks you to provide for any special powers, beyond the traditional general powers, that you would like your personal representative to have. For instance, the ability to operate a farm or run a business. In addition, if you wish, you can provide compensation for your personal representative for administering your estate.'
+        }]
+      };
+  }
+
+  toolTipClicked(str: string) {
+    console.log(str);
+    this.usrService.changeCurrentToolTipType(str);
+    // this.toolTipMessage = this.toolTipMessageList[str];
+    // console.log('tooltip message :', this.toolTipMessage);
+  }
 
   /**When component initialises*/
   ngOnInit() {

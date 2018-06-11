@@ -1,6 +1,6 @@
 import { element } from 'protractor';
 import { Event } from '@angular/router';
-import { Component, OnInit, Input, OnDestroy, HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, HostListener, ElementRef, NgModule } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { UserService } from '../../user.service';
 
@@ -9,26 +9,26 @@ import { UserService } from '../../user.service';
   templateUrl: './global-tooltip.component.html',
   styleUrls: ['./global-tooltip.component.css']
 })
+
 export class GlobalTooltipComponent implements OnInit {
+
+  isClicked = false;
+  indexToSet = 0;
+  subscription: Subscription;
 
   @Input() tooltipMessages: any;
   @Input() toolTipType: string;
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
-    if(!this.eRef.nativeElement.contains(event.target)) {
+    if (!this.eRef.nativeElement.contains(event.target)) {
       this.isClicked = false;
-      console.log("clicked outside");
     }
   }
 
-  isClicked = false;
-  indexToSet = 0;
-  subscription: Subscription;
   constructor(
     private userService: UserService,
-    private eRef: ElementRef)
-    { }
+    private eRef: ElementRef) { }
 
 
   ngOnInit() {
@@ -51,7 +51,7 @@ export class GlobalTooltipComponent implements OnInit {
   //   let offsetTop: number = windowHeight - event.clientY;
   //   let offsetLeft: number = windowWidth - event.clientX;
   //   let toolTip: any = event.target.nextElementSibling;
-    
+
 
   //   if(offsetTop <= 160){
   //     //console.log(offsetTop);
@@ -78,18 +78,8 @@ export class GlobalTooltipComponent implements OnInit {
 
   //   console.log(event);
   // }
-  
 
   markActive(choice?: boolean ): void {
-    
-
-    // window.addEventListener('click', function(e){
-      
-    //   if(e.target.closest('.tooltipContainer') === null){
-    //     console.log(e.target.closest('.tooltipContainer'));
-    //     this.isClicked = false;
-    //   }
-    // });
 
     if (choice !== undefined) {
       this.isClicked = false;

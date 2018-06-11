@@ -12,7 +12,9 @@
 
 <div class=""  *ngIf="!loading">
   <div class="main-content tellusaboutyou">
-    <h2>Your Financial Power of Attorney</h2>
+    <h2>Your Financial Power of Attorney
+      <app-global-tooltip (click)="toolTipClicked('poa1_qs')" [tooltipMessages]='toolTipMessageList.poa1_qs' toolTipType="poa1_qs"></app-global-tooltip>
+    </h2>
     <!-- <form (ngSubmit)="submit(myForm)" #myForm = "ngForm"> -->
     <form [formGroup] = "myForm" (ngSubmit)="send()">
       <div class="form-group">

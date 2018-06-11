@@ -51,7 +51,9 @@
         </label>
       </li>
     </ul>
-    <h2 class="gift_type blue_font">Please tell us what type of gift you would like to make?</h2>
+    <h2 class="gift_type blue_font">Please tell us what type of gift you would like to make?
+      <app-global-tooltip (click)="toolTipClicked('gift_type')" [tooltipMessages]='toolTipMessageList.gift_type' toolTipType="gift_type"></app-global-tooltip>
+    </h2>
     <ul class="radio_ul5">
       <li>
         <label class="radio_custom gift_type_radio" (click)="openModule('_ca')">

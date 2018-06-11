@@ -1,3 +1,4 @@
+import { GlobalTooltipModule } from './../global-tooltip/global-tooltip.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -11,7 +12,8 @@ import {GiftService} from './services/gift.service';
     CommonModule,
     GiftRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GlobalTooltipModule
   ],
   declarations: [GiftComponent],
   providers: [GiftService]

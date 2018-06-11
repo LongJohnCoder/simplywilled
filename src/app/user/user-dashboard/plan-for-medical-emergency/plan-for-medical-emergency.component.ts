@@ -1,3 +1,4 @@
+import { UserService } from './../../user.service';
 import { Component, OnInit } from '@angular/core';
 import {MedicalEmergencyService} from './medical-emergency.service';
 import {MedicalEmergency} from './medicalEmergency';
@@ -20,12 +21,28 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
   toggleBackupAgent: boolean;
   toggleWillBackupInform: boolean;
   loading = true;
+  toolTipMessageList: any;
+
   constructor(
       private medicalEmergencyService: MedicalEmergencyService,
       private progressBarService: ProgressbarService,
       private router: Router,
-
-  ) { this.progressBarService.changeWidth({width: 0}); }
+      private userService: UserService,
+  ) {
+        this.progressBarService.changeWidth({width: 0});
+        this.toolTipMessageList = {
+            'health_care' : [{
+                'q' : 'What is a Healthcare Agent?',
+                // tslint:disable-next-line:max-line-length
+                'a' : 'Your healthcare power of attorney is the individual you appoint to make medical decisions for you in the event that you are incapacitated. This should be an individual, over the age of 18 that you trust, such as a spouse, a relative or close friend.'
+              }],
+            'health_care_backup' : [{
+                'q' : 'Should I select a backup Healthcare Agent?',
+                // tslint:disable-next-line:max-line-length
+                'a' : 'It\'s always a good idea to select a backup healthcare power of attorney in the event that your first choice is unable or unwilling to act. Please remember, using SimplyWilled.com you can choose to send this person an email notification that you have selected them as a fiduciary of your estate.'
+            }]
+        };
+    }
 
   ngOnInit() {
       this.toggleWillInform = false;
@@ -90,6 +107,14 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
             ];
 
 
+  }
+
+
+  toolTipClicked(str: string) {
+    console.log(str);
+    this.userService.changeCurrentToolTipType(str);
+    // this.toolTipMessage = this.toolTipMessageList[str];
+    // console.log('tooltip message :', this.toolTipMessage);
   }
 
   getData() {

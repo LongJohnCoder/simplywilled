@@ -1,6 +1,8 @@
 <div class="" *ngIf="!loading">
   <div class="main-content tellusaboutyou">
-    <h2>Would You Like to name contigent beneficiaries?</h2>
+    <h2>Would You Like to name contigent beneficiaries?
+      <app-global-tooltip (click)="toolTipClicked('contingent_beneficiaries')" [tooltipMessages]='toolTipMessageList.contingent_beneficiaries' toolTipType="contingent_beneficiaries"></app-global-tooltip>
+    </h2>
     <form  [formGroup]="contingentBeneficiariesForm" novalidate
           (ngSubmit)="onSubmit(contingentBeneficiariesForm)">
       <div class="form-group">

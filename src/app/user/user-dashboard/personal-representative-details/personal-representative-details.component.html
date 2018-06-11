@@ -12,7 +12,11 @@
 
 <div class="" *ngIf="!loading">
     <div class="main-content tellusaboutyou">
-        <h2>Name your personal representative</h2>
+        <h2>Name your personal representative
+            
+                <app-global-tooltip (click)="toolTipClicked('personal_representative')" [tooltipMessages]='toolTipMessageList.personal_representative' toolTipType="personal_representative"></app-global-tooltip>
+           
+        </h2>
         <form [formGroup]="personalRepresentativeDetailsForm" (ngSubmit)="onSubmit(personalRepresentativeDetailsForm)">
             <div formArrayName="personalRepresentative">
                 <div *ngFor="let item of personalRepresentativeDetailsForm['controls'].personalRepresentative['controls']; let i=index">
@@ -220,7 +224,10 @@
             </div>
             <hr>
             <div *ngIf="personalRepresentativeDetailsForm.value.isBackupPersonalRepresentative == 'Yes'">
-                <h2>Name Your Backup Personal Representative</h2>
+                <h2>Name Your Backup Personal Representative
+                    <app-global-tooltip (click)="toolTipClicked('backup_personal_representative')" [tooltipMessages]='toolTipMessageList.backup_personal_representative' toolTipType="backup_personal_representative"></app-global-tooltip>
+                   
+                    </h2>
                 <div formArrayName="backupPersonalRepresentative">
                     <div *ngFor="let item of personalRepresentativeDetailsForm['controls'].backupPersonalRepresentative['controls']; let i=index">
                         <div [formGroupName]="i">

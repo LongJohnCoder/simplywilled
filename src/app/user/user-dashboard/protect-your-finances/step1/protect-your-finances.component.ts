@@ -31,6 +31,7 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
   mainSubscription: Subscription;
   postPOASubscription: Subscription;
   loading = true;
+  toolTipMessageList: any;
 
   constructor(
     private protectYourFinancesService: ProtectYourFinancesService,
@@ -44,10 +45,38 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
     this.accessToken = this.parseToken();
     this.getStates();
     this.getPoaData();
+
+    this.toolTipMessageList = {
+      'poa1_qs' : [{
+          'q' : 'What is a Financial Power of Attorney?',
+          // tslint:disable-next-line:max-line-length
+          'a' : 'Your financial power of attorney is the individual you appoint to make financial decisions for you. This should be an individual over the age of 18, that you trust, such as a spouse or partner, a relative or close friend. Please remember, using SimplyWilled.com you can choose to send this person an email notification that you have selected them as a fiduciary of your estate.'
+        }, {
+          'q' : 'What is a durable power of attorney?',
+          // tslint:disable-next-line:max-line-length
+          'a' : 'If a power of attorney is durable, it remains valid and in effect even if you become incapacitated and unable to make decisions for yourself. If a power of attorney document does not explicitly say that the power is durable, it ends if you become incapacitated.'
+        }, {
+          'q' : 'What is effective on incapacity mean?',
+          // tslint:disable-next-line:max-line-length
+          'a' : 'This means that your power of attorney document is only effective in the event that you are incapacitated, ie, physically or mentally unable to manage your own affairs.',
+        }, {
+          'q' : 'What is the power to make gifts?',
+          // tslint:disable-next-line:max-line-length
+          'a' : 'This permits your power of attorney to make gifts to themselves and others under the authority granted by your power of attorney document.',
+      }]
+    };
+
     //this.createForm();
   }
 
   ngOnInit() {
+  }
+
+  toolTipClicked(str: string) {
+    console.log(str);
+    this.userService.changeCurrentToolTipType(str);
+    // this.toolTipMessage = this.toolTipMessageList[str];
+    // console.log('tooltip message :', this.toolTipMessage);
   }
 
   /**Checks for authorization user id.*/

@@ -1,3 +1,4 @@
+import { GlobalTooltipModule } from './../global-tooltip/global-tooltip.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -9,7 +10,8 @@ import {ReactiveFormsModule} from '@angular/forms';
   imports: [
     CommonModule,
     ContingentBeneficiariesRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GlobalTooltipModule
   ],
   declarations: [ContingentBeneficiariesComponent]
 })

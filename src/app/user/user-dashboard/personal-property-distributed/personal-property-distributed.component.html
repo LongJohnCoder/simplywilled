@@ -12,7 +12,9 @@
 
 <div class="col-xs-12" *ngIf="!loading">
   <div class="main-content tellusaboutyou">
-    <h2>How Should Your Personal Property Be Distributed?</h2>
+    <h2>How Should Your Personal Property Be Distributed?
+      <app-global-tooltip (click)="toolTipClicked('tangible_property')" [tooltipMessages]='toolTipMessageList.tangible_property' toolTipType="tangible_property"></app-global-tooltip>
+    </h2>
     <form [formGroup]="personalPropertyDistributedForm" novalidate
           (ngSubmit)="onSubmit(personalPropertyDistributedForm)">
       <div class="form-group">

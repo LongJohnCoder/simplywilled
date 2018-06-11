@@ -1,3 +1,4 @@
+import { GlobalTooltipModule } from './../global-tooltip/global-tooltip.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -17,7 +18,8 @@ import {RealPropertyService} from './services/real-property.service';
     CommonModule,
     YourSpecificGiftRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GlobalTooltipModule
   ],
   declarations: [YourSpecificGiftComponent, MyGiftTextComponent, CashGiftComponent, BusinessInterestComponent, RealPropertyComponent, SpecificAssetComponent],
   providers: [YourSpecificGiftService, EditGiftService, RealPropertyService]

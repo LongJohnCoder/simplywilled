@@ -1,3 +1,4 @@
+import { GlobalTooltipModule } from './../global-tooltip/global-tooltip.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PersonalPropertyDistributedRoutingModule } from './personal-property-distributed-routing.module';
@@ -8,7 +9,8 @@ import {ReactiveFormsModule} from '@angular/forms';
   imports: [
     CommonModule,
     PersonalPropertyDistributedRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GlobalTooltipModule
   ],
   declarations: [PersonalPropertyDistributedComponent]
 })

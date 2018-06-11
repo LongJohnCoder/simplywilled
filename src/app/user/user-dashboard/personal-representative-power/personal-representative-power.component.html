@@ -12,7 +12,9 @@
 
 <div class="col-md-12 col-sm-12" *ngIf="!loading">
   <div class="main-content tellusaboutyou">
-    <h2>Your Personal Representative</h2>
+    <h2>Your Personal Representative
+        <app-global-tooltip (click)="toolTipClicked('personal_representative')" [tooltipMessages]='toolTipMessageList.personal_representative' toolTipType="personal_representative"></app-global-tooltip>
+    </h2>
     <form (ngSubmit)="savePersonalRepresentative(personalRepresentativeForm)" #personalRepresentativeForm = "ngForm">
       <div class="form-group">
         <label>Should your personal representative have the power to maintain a business interest?</label>
