@@ -186,7 +186,7 @@ class UserController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'user_id'    =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
-                'step'       =>  'required|numeric|between:1,12|integer',
+                'step'       =>  'required|numeric|between:1,13|integer',
             ]);
             if ($validator->fails()) {
                 return response()->json([
@@ -236,6 +236,9 @@ class UserController extends Controller
                 }
                 if ($step == 12) {
                     return $this->updatePetGuardianInfo($request); //TO MODIFY
+                }
+                if ($step == 13) {
+                    return $this->updatePetPrimaryInfo($request); //TO MODIFY
                 }
             } else {
                 return response()->json([
@@ -1506,6 +1509,59 @@ class UserController extends Controller
             'backUpPetGuardian'          =>  $petGuardianInfoBackup
           ]
       ], 200);
+    }
+
+    public function updatePetPrimaryInfo($request) {
+
+        $data = $request->data;
+        //dd($data);
+        $validator = Validator::make($data, [
+            'has_pet'   =>  'nullable|numeric|between:0,1|integer',
+            'pet_names' =>  'nullable|required_if:has_pet,1',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors(),
+                'data' => []
+            ], 400);
+        }
+
+        $tuay = TellUsAboutYou::where('user_id', \Auth::user()->id)->first();
+        if(!$tuay) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Please fill up tellUsAboutYou 1st section first',
+                'data' => []
+            ], 400);
+        }
+
+        $has_pet = isset($data['has_pet']) && array_key_exists('has_pet', $data) 
+                    ? $data['has_pet'] 
+                    : $tuay->has_pet;
+        if($has_pet != 0) {
+            $pet_names = isset($data['pet_names']) && array_key_exists('pet_names', $data)
+                    ? json_encode($data['pet_names'])
+                    : $tuay->pet_names;
+        } else {
+            $pet_names = null;
+        }
+        
+        $tuay->has_pet = $has_pet;
+        $tuay->pet_names = $pet_names;
+        if($tuay->save()) {
+            return response()->json([
+                'status' => true,
+                'message' => 'Pet details filled successfully',
+                'data' => $tuay
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Database connectivity error! Try again later',
+                'data' => []
+            ], 400);
+        }
     }
 
     /*

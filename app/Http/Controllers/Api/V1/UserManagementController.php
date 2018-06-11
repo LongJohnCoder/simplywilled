@@ -865,6 +865,7 @@ class UserManagementController extends Controller
         //checkinh tellUsAboutYouTable
         $tellUsAboutYou = TellUsAboutYou::where('user_id',\Auth::user()->id)->first();
 
+        $petGuardian  = PetGuardian::where('user_id', \Auth::user()->id)->first();
         //if step 1 is completed by the user
         //i.e fill up tellUsAboutYou Table
         
@@ -894,6 +895,12 @@ class UserManagementController extends Controller
                       return false;
                   }
                 }
+            }
+
+            if($tellUsAboutYou->has_pet != 0) {
+              if(!$petGuardian) {
+                return false;
+              }
             }
 
             $tellUsAboutYou->is_complete = '1';
