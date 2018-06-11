@@ -2,17 +2,17 @@ body{
     font-family: 'OpenSans';
     color: #373737;
   }
-  
+
   hr {
     border-top: 1px solid #ddd;
   }
-  
+
   header{
     background: url('../../../../../assets/images/header-bg.png');
     background-size: 100% 100%;
     min-height: 115px;
   }
-  
+
   .logo{
     position: absolute;
     top: 25px;
@@ -24,16 +24,16 @@ body{
     padding: 0;
     display: block;
   }
-  
+
   .logo a{
     display: inline-block;
   }
-  
+
   .loader1 img{
     margin: auto;
     width: 120px;
   }
-  
+
   .common-button{
     color: #fff;
     text-transform: capitalize;
@@ -47,35 +47,35 @@ body{
     top:0;
     transition: 0s;
   }
-  
+
   .common-button:hover{
     color: #fff !important;
     top: -1px;
   }
-  
+
   .common-button:focus{
     outline: none !important;
     box-shadow: none !important;
   }
-  
+
   .green-btn{
     background: url('../../../../../assets/images/btn-green.png') no-repeat center center !important;
     background-size: 100% 100%;
     padding: 10px 0 10px 30px;
     width: 164px;
   }
-  
+
   .green-btn img{
     margin-left: 5px;
     display: inline-block;
   }
-  
+
   .main-container{
     padding: 70px 0;
     background: #f3f3f2;
     border-bottom: 1px solid #ddd;
   }
-  
+
   .sidebar{
     border-radius: 10px;
     border: 1px solid #ddd;
@@ -105,7 +105,7 @@ body{
     display: block;
     font-weight: bold;
   }
-  
+
   .sidebar-body{
     background: #fff;
     border-radius: 10px;
@@ -215,7 +215,7 @@ body{
     line-height: 30px;
     transform: translate(-50%,-50%);
   }
-  
+
   .progress_main{
     margin: 0 0 30px;
     padding: 10px;
@@ -357,7 +357,7 @@ body{
     vertical-align: top;
     display: inline-block;
   }
-  
+
   .footer-label{
     display: inline-block;
   }
@@ -441,8 +441,8 @@ body{
     text-align: left;
   }
   .radio_custom{
-    height: 105px;
-    width: 105px;
+    height: 140px;
+    width: 140px;
     position: relative;
     border: 1px solid #BFBFBF;
     font-family: 'OpenSans';
@@ -799,7 +799,7 @@ body{
       width: 100%;
     }
   }
-  
+
   @media screen  and (max-width: 480px){
     .main-content .email-box {
       width: 100%;
@@ -808,4 +808,3 @@ body{
       width: 100%;
     }
   }
-  

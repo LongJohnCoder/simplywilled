@@ -437,12 +437,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 /*****radio button**********/
 .radio_custom {
-  width: 100%;
+  width: 140px;
+  height: 140px;
   display: inline-block;
-  border: 2px solid #dadada;
+  border: 1px solid #BFBFBF;
+  box-shadow: 0 1px 1px 1px #ddd;
   text-align: center;
   font-family: 'OpenSans';
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 18px;
   color: rgba(0,0,0,.7);
   padding: 30px 0;
   cursor: pointer;
@@ -450,6 +453,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 .radio_custom.active {
   border-color: #4bb228;
+  background: #4bb228;
+  color: #fff;
 }
 .radio_custom input {
   display: none;
@@ -458,6 +463,9 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   display: inline-block;
   padding-bottom: 20px;
+}
+.custom_img img{
+  width: 50px;
 }
 .human_status {
   display: inline-block;
@@ -731,6 +739,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .singing_instruction {
   padding: 35px 0px;
+}
+.singing_instruction img{
+  width: 50px;
 }
 .sign_document {
   width: 100%;
@@ -1100,11 +1111,10 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   display: inline-block;
   text-align: center;
-  color: #4db228;
-  font-size: 40px;
-  font-weight:bold;
+  color: #2479B8;
+  font-size: 30px;
   font-family: 'OpenSans';
-  padding: 30px 0px;
+  padding: 20px 0px;
 }
 .registered_domestic2 {
   width: 100%;
@@ -2723,7 +2733,7 @@ input[disabled] {
 {
   width:100%;
   float:left;
-  margin:20px 0;
+  margin:0 0 20px;
 }
 .gift_text_content
 {
@@ -3430,7 +3440,7 @@ input[type="text"].form-control{
   margin: 0px 0 25px;
 }
 .yesNo{
-  padding: 34px 0;
+  padding: 40px 0;
 }
 select.form-control{
   margin: 0;

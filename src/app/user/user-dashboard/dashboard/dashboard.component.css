@@ -358,7 +358,7 @@ header{
     position: absolute;
     width: 100%;
     left: 0;
-    top: 42px;
+    top: 43px;
     z-index: 99;
     background: linear-gradient(#5bbd45,#47aa36);
     border-bottom: 3px solid #308f26;
@@ -374,7 +374,7 @@ header{
     color: #fff;
     width: 100%;
 }
-.myAccount i{
+.myAccount i.leftIcon{
     padding: 13px;
     border-right: 1px solid #3d982e;
     float: left;
@@ -382,12 +382,18 @@ header{
     background: #44a834;
     border-radius: 10px 0 0 10px;
 }
+.myAccount i.fa-chevron-down{
+  padding-left: 5px;
+}
 .accountBtnArea.active .myAccount i{
     border-radius: 10px 0 0 0;
 }
 .accountBtnArea.active{
     border-bottom: 0;
     border-radius: 10px 10px 0 0;
+}
+.accountBtnArea.active  .myAccount i.fa-chevron-down:before{
+  content: "\f077";
 }
 .accountBtnArea.active span.drop .myAccount i{
     border-radius: 0;
@@ -773,6 +779,16 @@ header{
         margin: 14px auto 0;
         display: block;
     }
+  .dashboardHeaderRight {
+    width: 205px;
+    margin: 0 auto 15px;
+    padding: 0;
+    box-sizing: border-box;
+    float: none;
+  }
+  .accountBtnArea{
+    transform: none;
+  }
 }
 
 

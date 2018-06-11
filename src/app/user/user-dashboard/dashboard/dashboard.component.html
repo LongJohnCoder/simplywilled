@@ -10,11 +10,11 @@
             </div>
             <div class="dashboardHeaderRight text-right">
                 <div class="accountBtnArea" [ngClass]="{'active' : isMyAccountClickedVal}" (click)="isMyAccountClicked()">
-                  <a href="javascript:void(0)" class="myAccount"><i class="fa fa-user"></i> <span>My Account</span></a>
+                  <a href="javascript:void(0)" class="myAccount"><i class="fa fa-user leftIcon"></i> <span>My Account <i class="fa fa-chevron-down"></i></span> </a>
                   <span class="drop">
-                    <a [routerLink]="['/dashboard/will']" class="myAccount"><i class="fa fa-pencil"></i> <span>Edit Profile</span></a>
-                    <a [routerLink]="['/dashboard/change-password']" class="myAccount"><i class="fa fa-lock"></i> <span>Change Password</span></a>
-                    <a [routerLink]="['/dashboard/packages-paid']" class="myAccount"><i class="fa fa-shopping-bag"></i> <span>Packages</span></a>
+                    <a [routerLink]="['/dashboard/will']" class="myAccount"><i class="fa fa-pencil leftIcon"></i> <span>Edit Profile</span></a>
+                    <a [routerLink]="['/dashboard/change-password']" class="myAccount"><i class="fa fa-lock leftIcon"></i> <span>Change Password</span></a>
+                    <a [routerLink]="['/dashboard/packages-paid']" class="myAccount"><i class="fa fa-shopping-bag leftIcon"></i> <span>Packages</span></a>
                   </span>
                 </div>
                 <button class="btn common-button green-btn" (click)="onLogOut()">Logout</button>

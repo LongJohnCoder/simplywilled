@@ -2,7 +2,7 @@
     display: inline-block;
     border: 1px solid #ddd;
     background: #F2F2F2;
-    height: 105px;
+    height: 140px;
     width: 350px;
     padding: 20px;
     position: relative;
@@ -13,7 +13,7 @@
     margin-bottom: 10px;
 }
 .main-content .valid.email-box i {
-    top: 40px;
+    top: 58px;
     right: 30px;
 }
 .main-content .invalid.email-box{
@@ -21,10 +21,12 @@
   margin-bottom: 10px;
 }
 .main-content .invalid.email-box i {
-  top: 40px;
+  top: 58px;
   right: 30px;
 }
-
+.main-content .email-box .form-control{
+  margin-top: 30px;
+}
 
 
 
@@ -165,8 +167,8 @@
     vertical-align: top;
 }
 .radio_custom{
-    height: 105px;
-    width: 105px;
+    height: 140px;
+    width: 140px;
     position: relative;
     border: 1px solid #BFBFBF;
     font-family: 'OpenSans';
@@ -193,15 +195,15 @@
     color: #fff;
 }
 .radio_custom.marital_status{
-    height: 130px;
-    width: 130px;
+    height: 140px;
+    width: 140px;
     cursor: pointer;
 }
 .radio_custom.marital_status.active{
-    background: none;
+    color: #fff;
 }
 .radio_custom.marital_status.active .human_status2{
-    color: #42A82D;
+    color: #fff;
 }
 .error_input {
   border: 1px solid #ff5959;
@@ -242,25 +244,27 @@
 }
 .first_page_radio{
     text-align: left;
+  margin-top: 18px;
 }
 .custom_img2 {
     padding-bottom: 2px;
     display:block;
-    padding-top: 10px;
+    padding-top: 14px;
     text-align: center;
+}
+.custom_img2 img{
+  width: 50px;
 }
 .human_status2{
     font-family: 'OpenSans';
-    position: absolute;
-    transform: translate(-50%,0);
-    left: 50%;
-    top: auto;
-    bottom: 10px;
-    line-height: 20px;
+    line-height: 18px;
     text-align: center;
+    font-size: 14px;
+  display: block;
+  margin-top: 10px;
 }
 .radio_custom.marital_status.active .human_status2{
-    color: #42A82D;
+    color: #fff;
 }
 .form-footer{
     display: inline-block;

@@ -436,8 +436,8 @@ footer ul li a{
 .main-content .form-group label span{
     display: block;
     text-align: center;
-    font-size: 13px;
-    line-height: 14px;
+    font-size: 14px;
+    line-height: 18px;
 }
 .main-content .form-group label .human_status3{
     margin-top: 10px;
@@ -495,8 +495,8 @@ footer ul li a{
     text-align: left;
 }
 .radio_custom{
-    height: 105px;
-    width: 105px;
+    height: 140px;
+    width: 140px;
     position: relative;
     border: 1px solid #BFBFBF;
     font-family: 'OpenSans';
@@ -613,14 +613,11 @@ footer ul li a{
     line-height: 20px;
 }
 .gifts-list .radio_custom {
-    width: 120px;
-    height: 120px;
-}
-.gifts-list .radio_custom.active{
-    background: #fff;
+    width: 140px;
+    height: 140px;
 }
 .gifts-list .radio_custom.active .human_status3{
-    color: #42A82D;
+    color: #fff;
 }
 a.add-btn{
     float: right;
