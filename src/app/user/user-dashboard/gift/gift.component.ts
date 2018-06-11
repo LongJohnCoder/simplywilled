@@ -53,7 +53,8 @@ export class GiftComponent implements OnInit, OnDestroy {
 
     this.progressBarService.changeWidth({width: 50});
     this.giftFormStepOne = fb.group({
-      'gift_status' : [null, Validators.required]
+      'gift_status' : ['0', Validators.required],
+      'gift_status_charity': ['0', Validators.required]
     });
   }
 
@@ -163,11 +164,13 @@ export class GiftComponent implements OnInit, OnDestroy {
         if (this.giftStatus) {
           console.log(this.giftStatus);
           this.giftFormStepOne.setValue({
-            'gift_status' : this.giftStatus
+            'gift_status' : this.giftStatus,
+            'gift_status_charity': '0'
           });
         } else {
           this.giftFormStepOne.setValue({
-            'gift_status' : '0'
+            'gift_status' : '0',
+            'gift_status_charity': '0'
           });
         }
         this.loading = false;

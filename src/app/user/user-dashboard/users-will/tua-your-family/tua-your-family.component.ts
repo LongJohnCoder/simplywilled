@@ -128,9 +128,9 @@ export class TuaYourFamilyComponent implements OnInit, OnDestroy {
           this.userInfo.childrenInformation = response.data[1].data.childrenInformation;
           this.setData(this.editFlag, this.userInfo);
           if (this.userInfo.totalChildren === undefined || this.userInfo.totalChildren === null || this.userInfo.totalChildren === 0) {
-            this.progressBarService.changeWidth({width: 50});
+            this.progressBarService.changeWidth({width: 25});
           } else {
-            this.progressBarService.changeWidth({width: 33.33});
+            this.progressBarService.changeWidth({width: 20});
           }
         }
       },

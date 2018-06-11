@@ -18,7 +18,6 @@ export class GlobalTooltipComponent implements OnInit {
 
   @Input() tooltipMessages: any;
   @Input() toolTipType: string;
-
   @HostListener('document:click', ['$event'])
   clickout(event) {
     if (!this.eRef.nativeElement.contains(event.target)) {
@@ -32,11 +31,8 @@ export class GlobalTooltipComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log('in tooltip-component : ', this.tooltipMessages);
     this.subscription = this.userService.currentToolTipType.subscribe(
       (currentType: string) => {
-        console.log('currentType::', currentType);
-        console.log('toolTipType::', this.toolTipType);
         if (currentType !== this.toolTipType) {
           this.isClicked = false;
         }
@@ -80,7 +76,6 @@ export class GlobalTooltipComponent implements OnInit {
   // }
 
   markActive(choice?: boolean ): void {
-
     if (choice !== undefined) {
       this.isClicked = false;
     } else {

@@ -8,6 +8,9 @@ import { TuaYourFamilyComponent } from './tua-your-family/tua-your-family.compon
 import {NgxMaskModule} from 'ngx-mask';
 import {ReactiveFormsModule} from '@angular/forms';
 import { GaurdianForMinorChildrenComponent } from './gaurdian-for-minor-children/gaurdian-for-minor-children.component';
+import { GlobalTooltipComponent } from '../global-tooltip/global-tooltip.component';
+import { YourPetComponent } from './your-pet/your-pet.component';
+import { YourPetGuardiansComponent } from './your-pet-guardians/your-pet-guardians.component';
 
 
 
@@ -20,6 +23,12 @@ import { GaurdianForMinorChildrenComponent } from './gaurdian-for-minor-children
       ReactiveFormsModule,
       GlobalTooltipModule
   ],
-  declarations: [TellUsAboutYourselfComponent, TuaYourFamilyComponent, GaurdianForMinorChildrenComponent]
+  declarations: [
+    TellUsAboutYourselfComponent,
+    TuaYourFamilyComponent,
+    GaurdianForMinorChildrenComponent,
+    YourPetComponent,
+    YourPetGuardiansComponent
+  ]
 })
 export class UsersWillModule { }

@@ -1,18 +1,18 @@
-//import { GlobalTooltipComponent } from './../../global-tooltip/global-tooltip.component';
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService} from '../../../user.service';
 import {UserAuthService} from '../../../user-auth/user-auth.service';
 import {Validators, FormGroup, FormArray, FormBuilder, FormControl} from '@angular/forms';
 import * as States from '../../../shared/models/states.model' ;
 import {ProgressbarService} from '../../shared/services/progressbar.service';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-gaurdian-for-minor-children',
   templateUrl: './gaurdian-for-minor-children.component.html',
   styleUrls: ['./gaurdian-for-minor-children.component.css']
 })
-export class GaurdianForMinorChildrenComponent implements OnInit {
+export class GaurdianForMinorChildrenComponent implements OnInit, OnDestroy {
 
   public myForm: FormGroup; // our form model
   errorMessage: any = '';
@@ -20,6 +20,8 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
   states: string[] = [];
   loading = true;
   toolTipMessageList: any;
+  getUserDetailSubscription: Subscription;
+
 
   constructor(
       private userService: UserService,
@@ -130,7 +132,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
       }
       this.userService.editProfile(data).subscribe(
         (response: any) => {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard/will/4']);
         },
         (error: any) => {
           for(let prop in error.error.message) {
@@ -173,6 +175,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
       this.userService.getUserDetails(this.authService.getUser()['id']).subscribe(
           (response: any) => {
               this.userInfo = response.data[2].data;
+              let totalChildrenData = response.data[1].data;
               // set values to myForm
               this.myForm.patchValue({
                   isGuardianMinorChildren: this.userInfo.isGuardianMinorChildren || 'No',
@@ -200,7 +203,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
                       this.addValidationBackUpGaurdianToForm();
                   }
               }
-              this.progressBarService.changeWidth({width: 66.66});
+              this.progressBarService.changeWidth({width: 40});
           },
           (error: any) => {
               console.log(error.error);
@@ -360,6 +363,13 @@ export class GaurdianForMinorChildrenComponent implements OnInit {
     } else {
       this.myForm.get(`backUpGuardian.0.relationship_other`).clearValidators();
       this.myForm.get(`backUpGuardian.0.relationship_other`).updateValueAndValidity();
+    }
+  }
+
+  /**When the component is destroyed*/
+  ngOnDestroy() {
+    if (this.getUserDetailSubscription !== undefined) {
+      this.getUserDetailSubscription.unsubscribe();
     }
   }
 }

@@ -1,0 +1,124 @@
+<div class="pageLoader" *ngIf="loading">
+  <div class="loaderInner">
+    <img src="../../../../assets/images/owl-loading.gif" alt="Loading...">
+    <p class="loadingTxt">
+      Please Wait
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+  </div>
+</div>
+
+<div class="main-content tellusaboutyou" style="width: 860px" *ngIf="!loading">
+  <h2>Your Pets</h2>
+  <form [formGroup] = "petsForm">
+
+    <!-- Form-Group -->
+    <div class="form-group">
+      <label>Do you have any pets you would like to provide for in your will? </label>
+      <ul class="radio_ul6">
+        <li>
+          <label class="radio_custom" [ngClass]="{'active': petsForm.get('providePetsWill').value === 'Yes'}">
+            <input type="radio"
+                   value="Yes"
+                   formControlName="providePetsWill"
+                   #petsWillYes
+                   required
+                   (change)="checkPetsWill(petsWillYes.value)">
+            <span class="human_status">Yes</span>
+          </label>
+        </li>
+        <li>
+          <label class="radio_custom" [ngClass]="{'active': petsForm.get('providePetsWill').value === 'No'}">
+            <input type="radio"
+                   value="No"
+                   formControlName="providePetsWill"
+                   required
+                   #petsWillNo
+                   (change)="checkPetsWill(petsWillNo.value)">
+            <span class="human_status"> No</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+    <!-- Form Group -->
+
+    <div class="form-group" *ngIf="petsForm.get('providePetsWill').value === 'Yes'">
+      <label>Please provide the type of pet and the pet’s name in the box provided.</label>
+      <div formArrayName="petsName" *ngFor="let item of petsForm.get('petsName').controls; let i = index;">
+        <div class="row form-group allChild" [formGroupName]="i">
+          <div class="col-lg-10">
+            <input type="text" class="form-control" formControlName="petName" required placeholder="eg my dog, Bingo">
+          </div>
+          <div class="col-lg-2" *ngIf="i > 0">
+            <a class="btn btn-danger" (click)="removeNewPetName(i)"><i class="fa fa-trash"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <button class="btn btn-info" (click)="addNewPetName()">Add pet</button>
+      </div>
+      <div class="form-group">
+          <span class="error_txt" *ngIf="flags.setValidationFlag">
+            Please fill up all the fields.
+          </span>
+      </div>
+    </div>
+
+    <!-- Form-Group -->
+    <div class="form-group">
+      <label>Would you like to leave money to your pet caretaker to cover expenses associated with your pet?</label>
+      <ul class="radio_ul6">
+        <li>
+          <label class="radio_custom" [ngClass]="{'active': petsForm.get('leaveMoney').value === 'Yes'}">
+            <input type="radio"
+                   value="Yes"
+                   formControlName="leaveMoney"
+                   #leaveMoneyYes
+                   required
+                   (change)="leaveMoneyChange(leaveMoneyYes.value)">
+            <span class="human_status">Yes</span>
+          </label>
+        </li>
+        <li>
+          <label class="radio_custom" [ngClass]="{'active': petsForm.get('leaveMoney').value === 'No'}">
+            <input type="radio"
+                   value="No"
+                   formControlName="leaveMoney"
+                   required
+                   #leaveMoneyNo
+                   (change)="leaveMoneyChange(leaveMoneyNo.value)">
+            <span class="human_status"> No</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+    <!-- Form Group -->
+
+    <!-- Form-Group -->
+    <div class="form-group" *ngIf="petsForm.get('leaveMoney').value === 'Yes'">
+      <input type="text" class="form-control" name="amount" formControlName="amount" placeholder="$">
+      <span class="error_txt" *ngIf="petsForm.get('amount').touched && !petsForm.get('amount').valid && petsForm.get('amount').hasError('required')">
+        This field is required
+      </span>
+      <span class="error_txt" *ngIf="petsForm.get('amount').touched && !petsForm.get('amount').valid && petsForm.get('amount').hasError('pattern')">
+        Please provide a valid input
+      </span>
+    </div>
+    <!-- Form Group -->
+
+    <div class="form-group" *ngIf="errors.errorFlag">
+      <div class="col-md-12">
+                <span class="alert alert-danger">
+                    {{ errors.errorMessage }}
+                </span>
+      </div>
+    </div>
+    <div class="form-footer">
+      <button class="btn common-button btn-grey pull-left" (click)="goBack()">Go Back</button>
+      <button class="btn common-button btn-complete" (click) = "submit()">Continue</button>
+    </div>
+  </form>
+</div>
