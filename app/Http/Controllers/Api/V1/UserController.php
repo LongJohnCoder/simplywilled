@@ -1520,7 +1520,7 @@ class UserController extends Controller
             'has_pet'   =>  'nullable|numeric|between:0,1|integer',
             'pet_names' =>  'nullable|required_if:has_pet,1',
             'leaveMoney'=>  'nullable',
-            'petAmount' =>  'nullable'
+            'petAmount' =>  'nullable|numeric|min:0'
         ]);
         if ($validator->fails()) {
             return response()->json([

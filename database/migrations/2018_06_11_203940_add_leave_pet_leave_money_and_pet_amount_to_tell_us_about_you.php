@@ -15,7 +15,7 @@ class AddLeavePetLeaveMoneyAndPetAmountToTellUsAboutYou extends Migration
     {
         Schema::table('tellUsAboutYou', function (Blueprint $table) {
             $table->boolean('leaveMoney')->nullable()->comment('required for pets field');
-            $table->integer('petAmount')->nullable()->comment('required for pets amount for pets care');
+            $table->float('petAmount')->nullable()->comment('required for pets amount for pets care');
         });
     }
 
