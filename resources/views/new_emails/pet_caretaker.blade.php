@@ -49,7 +49,7 @@
                     </tr>
                     <tr>
                         <td style="padding:0 30px; background: #f2f2f2;">
-                            <h1 style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">{{$guardianName}} (1st Choice),</h1>
+                            <h1 style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">{{$petCaretaker}} (Pet Caretaker 1st Choice),</h1>
                             <p style="color: #373737; font-size: 20px; line-height: 30px;">
                                     <strong>{{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}}</strong> recently joined the thousands of people who have used <a href="{{url('/')}}" target="_blank" style="color: #0a5dab;">SimplyWilled.com</a> to create their will and selected you to serve as their pet caretaker on their demise. Being selected as a Pet Caretaker is an important role reserved for those we trust the most. This email is being sent to you so you can let <strong>{{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}}</strong> know whether you accept or decline this honor.  
                                 <br><br>

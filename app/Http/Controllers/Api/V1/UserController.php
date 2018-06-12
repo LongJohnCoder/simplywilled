@@ -1062,7 +1062,7 @@ class UserController extends Controller
                     }
 
                     if($flag) {
-                        \Log::info('email getting send for guardian for minor children');
+                        \Log::info('email getting send for guardian for minor children ++');
                         $arr = [
                             'firstName'     =>  $tellUsAboutYou->firstname,
                             'middleName'    =>  $tellUsAboutYou->middlename,
@@ -1088,7 +1088,7 @@ class UserController extends Controller
                     }
 
                     if($flag) {
-                        \Log::info('email getting send for backup guardian for minor children');
+                        \Log::info('email getting send for backup guardian for minor children +++');
                         $arr = [
                             'firstName'     =>  $tellUsAboutYou->firstname,
                             'middleName'    =>  $tellUsAboutYou->middlename,
@@ -1319,63 +1319,63 @@ class UserController extends Controller
 
             PetGuardian::updateOrCreate(['user_id'=>$petGuardian['user_id'] , 'is_backup' => $petGuardian['is_backup']],$petGuardian);
             //Sending an email if email notification is set
-            // if($emailType != null && isset($petGuardian['email_notification']) && $petGuardian['email_notification'] == 1) {
+            if($emailType != null && isset($petGuardian['email_notification']) && $petGuardian['email_notification'] == 1) {
 
-            //     $this->sendEmail($petGuardian['user_id'], $petGuardian['fullname'], $petGuardian['email'], $emailType);
-            //     if($isBackupPetGuardian == 0) {
+                $this->sendEmail($petGuardian['user_id'], $petGuardian['fullname'], $petGuardian['email'], $emailType);
+                if($isBackupPetGuardian == 0) {
 
-            //         $flag = true;
-            //         if(isset($petGuardian['email']) && strtolower(trim($petGuardian['email'])) == strtolower(trim($oldGuardianEmail)))
-            //         {
-            //             $flag = false;
-            //         }
+                    $flag = true;
+                    if(isset($petGuardian['email']) && strtolower(trim($petGuardian['email'])) == strtolower(trim($oldGuardianEmail)))
+                    {
+                        $flag = false;
+                    }
 
-            //         if($flag) {
-            //             //dd('here');
-            //             \Log::info('email getting send for pet caretaker');
-            //             $arr = [
-            //                 'firstName'     =>  $tellUsAboutYou->firstname,
-            //                 'middleName'    =>  $tellUsAboutYou->middlename,
-            //                 'lastName'      =>  $tellUsAboutYou->lastname,
-            //                 'guardianName'  =>  $petGuardian['fullname']
-            //             ];
-            //             Mail::send('new_emails.pet_caretaker', $arr, function($mail) use($petGuardian, $arr){
-            //                 $mail->from(config('settings.email'), 'Notice for Pet Caretaker Appointment');
-            //                 $mail->to(strtolower($petGuardian['email']), $petGuardian['fullname'])
-            //                 ->subject('You are requested to be Pet Caretaker');
-            //             });
-            //             if(Mail::failures()) {
-            //                 \Log::info('email sending error for pet care taker');
-            //             }
-            //         }
+                    if($flag) {
+                        //dd('here');
+                        \Log::info('email getting send for pet caretaker');
+                        $arr = [
+                            'firstName'     =>  $tellUsAboutYou->firstname,
+                            'middleName'    =>  $tellUsAboutYou->middlename,
+                            'lastName'      =>  $tellUsAboutYou->lastname,
+                            'petCaretaker'  =>  $petGuardian['fullname']
+                        ];
+                        Mail::send('new_emails.pet_caretaker', $arr, function($mail) use($petGuardian, $arr){
+                            $mail->from(config('settings.email'), 'Notice for Pet Caretaker Appointment');
+                            $mail->to(strtolower($petGuardian['email']), $petGuardian['fullname'])
+                            ->subject('You are requested to be Pet Caretaker');
+                        });
+                        if(Mail::failures()) {
+                            \Log::info('email sending error for pet care taker');
+                        }
+                    }
 
-            //     } else {
+                } else {
 
-            //         $flag = true;
-            //         if(isset($petGuardian['email']) && strtolower(trim($petGuardian['email'])) == strtolower(trim($oldBackupGuardianEmail)))
-            //         {
-            //             $flag = false;
-            //         }
+                    $flag = true;
+                    if(isset($petGuardian['email']) && strtolower(trim($petGuardian['email'])) == strtolower(trim($oldBackupGuardianEmail)))
+                    {
+                        $flag = false;
+                    }
 
-            //         if($flag) {
-            //             \Log::info('email getting send for backup pet caretaker');
-            //             $arr = [
-            //                 'firstName'     =>  $tellUsAboutYou->firstname,
-            //                 'middleName'    =>  $tellUsAboutYou->middlename,
-            //                 'lastName'      =>  $tellUsAboutYou->lastname,
-            //                 'backupGuardianName'  =>  $petGuardian['fullname']
-            //             ];
-            //             Mail::send('new_emails.pet_caretaker_backup', $arr, function($mail) use($petGuardian, $arr){
-            //                 $mail->from(config('settings.email'), 'Notice for Backup Pet Caretaker Appointment');
-            //                 $mail->to(strtolower($petGuardian['email']), $petGuardian['fullname'])
-            //                 ->subject('You are requested to be Backup Pet Caretaker');
-            //             });
-            //             if(Mail::failures()) {
-            //                 \Log::info('email sending error for backup pet caretaker');
-            //             }
-            //         }
-            //     }
-            // }
+                    if($flag) {
+                        \Log::info('email getting send for backup pet caretaker');
+                        $arr = [
+                            'firstName'     =>  $tellUsAboutYou->firstname,
+                            'middleName'    =>  $tellUsAboutYou->middlename,
+                            'lastName'      =>  $tellUsAboutYou->lastname,
+                            'backupPetCaretaker'  =>  $petGuardian['fullname']
+                        ];
+                        Mail::send('new_emails.pet_caretaker_backup', $arr, function($mail) use($petGuardian, $arr){
+                            $mail->from(config('settings.email'), 'Notice for Backup Pet Caretaker Appointment');
+                            $mail->to(strtolower($petGuardian['email']), $petGuardian['fullname'])
+                            ->subject('You are requested to be Backup Pet Caretaker');
+                        });
+                        if(Mail::failures()) {
+                            \Log::info('email sending error for backup pet caretaker');
+                        }
+                    }
+                }
+            }
             $response = self::generatePetGuardianInfoResponse($petGuardian['user_id']);
             return [
             'response'  =>  $response,
@@ -2120,167 +2120,167 @@ class UserController extends Controller
 
     public function sendEmail($userId, $fullname, $emailId, $emailType)
     {
-        try {
-            if ($userId && $fullname && $emailId && $emailType) {
-                $getUser = User::where('id', $userId)->first();
-                if (count($getUser)) {
-                    if ($emailType == 1) {
-                        // send email to personal representative
-                        $data = array();
-                        $data['title'] = $getUser->name . " Selected You As Personal Representative";
-                        $data['banner'] = asset('images/personal-representative-mail-banner.jpg');
-                        $data['name'] = $fullname;
-                        $data['short_description'] = "<p>" . $getUser->name . " recently joined the thousands of people who have used SimplyWilled.com to create their will and selected you to serve as their Personal Representative. Being selected as a Personal Representative is an important role reserved for those we trust the most. This email is being sent to you so you can let " . $getUser->name . " know whether you accept or decline this honor.</p>
-				<h3>What being selected as Primary Personal Representative means for you:</h3>
-				<p>As Personal Representative (also called executor is some states) you will be legally responsible for carrying the out the instructions contained in a " . $getUser->name . "'s will. While the responsibilities can vary, you will be primarily responsible for settling the estate, distributing property according to the terms of the will and hiring legal professionals to assist with the probate process.</p>
-				<h3><img src='" . asset('images/like-icon-mail.png') . "' alt='like'> Confirm you responsibility:</h3>
-				<p>Your duties as Personal Representative do not take effect until " . $getUser->name . " passes away. If you accept this honor and duty, please take a moment to speak with " . $getUser->name . " to have a conversation about the terms of their will, their wishes, and any special instructions. It is important that you confirm the location of their will so that you can access it when the time comes. Otherwise, please let " . $getUser->name . " know you are unable to accept this responsibility so they can choose someone else.</p>";
-                        $data['accept_url'] = url("/confirmed") . "?client-name=" . base64_encode($getUser->id);
-                        $data['declined_url'] = url("/declined") . "?client-name=" . base64_encode($getUser->id);
+    //     try {
+    //         if ($userId && $fullname && $emailId && $emailType) {
+    //             $getUser = User::where('id', $userId)->first();
+    //             if (count($getUser)) {
+    //                 if ($emailType == 1) {
+    //                     // send email to personal representative
+    //                     $data = array();
+    //                     $data['title'] = $getUser->name . " Selected You As Personal Representative";
+    //                     $data['banner'] = asset('images/personal-representative-mail-banner.jpg');
+    //                     $data['name'] = $fullname;
+    //                     $data['short_description'] = "<p>" . $getUser->name . " recently joined the thousands of people who have used SimplyWilled.com to create their will and selected you to serve as their Personal Representative. Being selected as a Personal Representative is an important role reserved for those we trust the most. This email is being sent to you so you can let " . $getUser->name . " know whether you accept or decline this honor.</p>
+				// <h3>What being selected as Primary Personal Representative means for you:</h3>
+				// <p>As Personal Representative (also called executor is some states) you will be legally responsible for carrying the out the instructions contained in a " . $getUser->name . "'s will. While the responsibilities can vary, you will be primarily responsible for settling the estate, distributing property according to the terms of the will and hiring legal professionals to assist with the probate process.</p>
+				// <h3><img src='" . asset('images/like-icon-mail.png') . "' alt='like'> Confirm you responsibility:</h3>
+				// <p>Your duties as Personal Representative do not take effect until " . $getUser->name . " passes away. If you accept this honor and duty, please take a moment to speak with " . $getUser->name . " to have a conversation about the terms of their will, their wishes, and any special instructions. It is important that you confirm the location of their will so that you can access it when the time comes. Otherwise, please let " . $getUser->name . " know you are unable to accept this responsibility so they can choose someone else.</p>";
+    //                     $data['accept_url'] = url("/confirmed") . "?client-name=" . base64_encode($getUser->id);
+    //                     $data['declined_url'] = url("/declined") . "?client-name=" . base64_encode($getUser->id);
 
-                        //send email to personal representative
-                        Mail::send('emails.notificationEmail', [
-                            'email' => 'info@simplywilled.com',
-                            'data' => $data
-                        ], function ($mail) use ($emailId) {
-                            /** @noinspection PhpUndefinedMethodInspection */
-                            $mail->from('info@simplywilled.com', 'simplywilled');
-                            /** @noinspection PhpUndefinedMethodInspection */
-                            $mail->to($emailId, "Personal Representative")
-                                ->subject('Selected You As Personal Representative');
-                        });
-                        \Log::info('Email Send to the Representative');
-                    }
-                    if ($emailType == 2) {
-                        // send email to backup personal representative
-                        $data = array();
-                        $data['title'] = $getUser->name . " Selected You As Backup Personal Representative";
-                        $data['banner'] = asset('images/personal-representative-mail-banner.jpg');
-                        $data['name'] = $fullname;
-                        $data['short_description'] = "<p>" . $getUser->name . " recently joined the thousands of people who have used SimplyWilled.com to create their will and selected you to serve as their Backup Personal Representative. Being selected as a Back Up Personal Representative is an important role reserved for those we trust the most. This email is being sent to you so you can let " . $getUser->name . " know whether you accept or decline this honor.</p>
-					<h3>What being selected as Backup Personal Representative means for you:</h3>
-					<p>As the Backup Personal Representative (also called executor is some states) you will be legally responsible for carrying the out the instructions contained in a " . $getUser->name . "'s will if their Primary Personal Representative is unwilling or unable to serve. While the responsibilities can vary, you will be primarily responsible for settling the estate, distributing property according to the terms of the will and hiring legal professionals to assist with the probate process in the event that " . $getUser->name . "'s first choice is unable to carry out this responsibility.</p>
-					<h3><img src='" . asset('images/like-icon-mail.png') . "' alt='like'> Confirm you responsibility:</h3>
-					<p>Your duties as Backup Personal Representative do not take effect until " . $getUser->name . " Primary Personal Representative is unable or unwilling to serve.  If you accept this honor and duty, please take a moment to speak with " . $getUser->name . " to have a conversation about the terms of their will, their wishes, and any special instructions. It is important that you confirm the location of their will so that you can access it when the time comes. Otherwise, please let " . $getUser->name . " know you are unable to accept this responsibility so they can choose someone else.</p>";
-                        $data['accept_url'] = url("/confirmed") . "?client-name=" . base64_encode($getUser->id);
-                        $data['declined_url'] = url("/declined") . "?client-name=" . base64_encode($getUser->id);
+    //                     //send email to personal representative
+    //                     Mail::send('emails.notificationEmail', [
+    //                         'email' => 'info@simplywilled.com',
+    //                         'data' => $data
+    //                     ], function ($mail) use ($emailId) {
+    //                         /** @noinspection PhpUndefinedMethodInspection */
+    //                         $mail->from('info@simplywilled.com', 'simplywilled');
+    //                         /** @noinspection PhpUndefinedMethodInspection */
+    //                         $mail->to($emailId, "Personal Representative")
+    //                             ->subject('Selected You As Personal Representative');
+    //                     });
+    //                     \Log::info('Email Send to the Representative');
+    //                 }
+    //                 if ($emailType == 2) {
+    //                     // send email to backup personal representative
+    //                     $data = array();
+    //                     $data['title'] = $getUser->name . " Selected You As Backup Personal Representative";
+    //                     $data['banner'] = asset('images/personal-representative-mail-banner.jpg');
+    //                     $data['name'] = $fullname;
+    //                     $data['short_description'] = "<p>" . $getUser->name . " recently joined the thousands of people who have used SimplyWilled.com to create their will and selected you to serve as their Backup Personal Representative. Being selected as a Back Up Personal Representative is an important role reserved for those we trust the most. This email is being sent to you so you can let " . $getUser->name . " know whether you accept or decline this honor.</p>
+				// 	<h3>What being selected as Backup Personal Representative means for you:</h3>
+				// 	<p>As the Backup Personal Representative (also called executor is some states) you will be legally responsible for carrying the out the instructions contained in a " . $getUser->name . "'s will if their Primary Personal Representative is unwilling or unable to serve. While the responsibilities can vary, you will be primarily responsible for settling the estate, distributing property according to the terms of the will and hiring legal professionals to assist with the probate process in the event that " . $getUser->name . "'s first choice is unable to carry out this responsibility.</p>
+				// 	<h3><img src='" . asset('images/like-icon-mail.png') . "' alt='like'> Confirm you responsibility:</h3>
+				// 	<p>Your duties as Backup Personal Representative do not take effect until " . $getUser->name . " Primary Personal Representative is unable or unwilling to serve.  If you accept this honor and duty, please take a moment to speak with " . $getUser->name . " to have a conversation about the terms of their will, their wishes, and any special instructions. It is important that you confirm the location of their will so that you can access it when the time comes. Otherwise, please let " . $getUser->name . " know you are unable to accept this responsibility so they can choose someone else.</p>";
+    //                     $data['accept_url'] = url("/confirmed") . "?client-name=" . base64_encode($getUser->id);
+    //                     $data['declined_url'] = url("/declined") . "?client-name=" . base64_encode($getUser->id);
 
-                    }
-                    if ($emailType == 3) {
-                        // send email to  Guardian For Minor Children
-                        $data = array();
-                        $data['title'] = $getUser->name . " Selected You As Guardian For Minor Children";
-                        $data['banner'] = asset('images/guardian-mail-banner.jpg');
-                        $data['name'] = $fullname;
-                        $data['short_description'] = "<p>" . $getUser->name . " recently joined the thousands of people who have used SimplyWilled.com to create their will and selected you to serve as their Guardian For Minor Children. Being selected as a Guardian For Minor Children is an important role reserved for those we trust the most. This email is being sent to you so you can let " . $getUser->name . " know whether you accept or decline this honor.</p>
-					<h3>What being selected as Guardian For Minor Children means for You:</h3>
-					<p>As Guardian For Minor Children you will be legally responsible for caring for " . $getUser->name . "'s children. You will have physical custody of their children and will be responsible for their well being.</p>
-					<h3><img src='" . asset('images/like-icon-mail.png') . "' alt='like'> Confirm you responsibility:</h3>
-					<p>Your duties as Guardian For Minor Children do not take effect until the person who nominated you passes away. If you accept this honor and duty, please take a moment to speak with the person who selected you to have a conversation about this important responsibility.  If you wish to decline this responsibility, please let them know you are unable to accept so they can choose someone else.</p>";
-                        $data['accept_url'] = url("/confirmed") . "?client-name=" . base64_encode($getUser->id);
-                        $data['declined_url'] = url("/declined") . "?client-name=" . base64_encode($getUser->id);
-                        //send email to personal representative
-                        Mail::send('emails.notificationEmail', [
-                            'email' => 'info@simplywilled.com',
-                            'data' => $data
-                        ], function ($mail) use ($emailId) {
-                            /** @noinspection PhpUndefinedMethodInspection */
-                            $mail->from('info@simplywilled.com', 'simplywilled');
-                            /** @noinspection PhpUndefinedMethodInspection */
-                            $mail->to($emailId, "Guardian For Minor Children")
-                                ->subject('Selected You As Guardian For Minor Children');
-                        });
-                        \Log::info('Email Send to the Guardian For Minor Children');
+    //                 }
+    //                 if ($emailType == 3) {
+    //                     // send email to  Guardian For Minor Children
+    //                     $data = array();
+    //                     $data['title'] = $getUser->name . " Selected You As Guardian For Minor Children";
+    //                     $data['banner'] = asset('images/guardian-mail-banner.jpg');
+    //                     $data['name'] = $fullname;
+    //                     $data['short_description'] = "<p>" . $getUser->name . " recently joined the thousands of people who have used SimplyWilled.com to create their will and selected you to serve as their Guardian For Minor Children. Being selected as a Guardian For Minor Children is an important role reserved for those we trust the most. This email is being sent to you so you can let " . $getUser->name . " know whether you accept or decline this honor.</p>
+				// 	<h3>What being selected as Guardian For Minor Children means for You:</h3>
+				// 	<p>As Guardian For Minor Children you will be legally responsible for caring for " . $getUser->name . "'s children. You will have physical custody of their children and will be responsible for their well being.</p>
+				// 	<h3><img src='" . asset('images/like-icon-mail.png') . "' alt='like'> Confirm you responsibility:</h3>
+				// 	<p>Your duties as Guardian For Minor Children do not take effect until the person who nominated you passes away. If you accept this honor and duty, please take a moment to speak with the person who selected you to have a conversation about this important responsibility.  If you wish to decline this responsibility, please let them know you are unable to accept so they can choose someone else.</p>";
+    //                     $data['accept_url'] = url("/confirmed") . "?client-name=" . base64_encode($getUser->id);
+    //                     $data['declined_url'] = url("/declined") . "?client-name=" . base64_encode($getUser->id);
+    //                     //send email to personal representative
+    //                     Mail::send('emails.notificationEmail', [
+    //                         'email' => 'info@simplywilled.com',
+    //                         'data' => $data
+    //                     ], function ($mail) use ($emailId) {
+    //                         /** @noinspection PhpUndefinedMethodInspection */
+    //                         $mail->from('info@simplywilled.com', 'simplywilled');
+    //                         /** @noinspection PhpUndefinedMethodInspection */
+    //                         $mail->to($emailId, "Guardian For Minor Children")
+    //                             ->subject('Selected You As Guardian For Minor Children');
+    //                     });
+    //                     \Log::info('Email Send to the Guardian For Minor Children');
 
-                    }
-                    if ($emailType == 4) {
-                        // send email to the backup Backup Guardian
-                        $data = array();
-                        $data['title'] = $getUser->name . " Selected You As Backup Guardian For Minor Children";
-                        $data['banner'] = asset('images/guardian-mail-banner.jpg');
-                        $data['name'] = $fullname;
-                        $data['short_description'] = "<p>" . $getUser->name . " recently joined the thousands of people who have used SimplyWilled.com to create their will and selected you to serve as their Backup Guardian For Minor Children. Being selected as a Backup Guardian For Minor Children is an important role reserved for those we trust the most. This email is being sent to you so you can let " . $getUser->name . " know whether you accept or decline this honor.</p>
-						<h3>What being selected as Backup Guardian For Minor Children means for You:</h3>
-						<p>As a Backup Guardian For Minor Children you will be legally responsible for caring for " . $getUser->name . "'s children in the event that their first choice for Guardian is unwilling or unable to serve. You will have physical custody of their children and will be responsible for their well being.</p>
-						<h3><img src='" . asset('images/like-icon-mail.png') . "' alt='like'> Confirm you responsibility:</h3>
-						<p>Your duties as Backup Guardian For Minor Children do not take effect unless " . $getUser->name . "'s Primary Guardian For Minor Children is unwilling or unable to serve. If you accept this honor and duty, please take a moment to speak with the person who selected you to have a conversation about this important responsibility.  If you wish to decline this responsibility, please let them know you are unable to accept so they can choose someone else.</p>";
-                        $data['accept_url'] = url("/confirmed") . "?client-name=" . base64_encode($getUser->id);
-                        $data['declined_url'] = url("/declined") . "?client-name=" . base64_encode($getUser->id);
+    //                 }
+    //                 if ($emailType == 4) {
+    //                     // send email to the backup Backup Guardian
+    //                     $data = array();
+    //                     $data['title'] = $getUser->name . " Selected You As Backup Guardian For Minor Children";
+    //                     $data['banner'] = asset('images/guardian-mail-banner.jpg');
+    //                     $data['name'] = $fullname;
+    //                     $data['short_description'] = "<p>" . $getUser->name . " recently joined the thousands of people who have used SimplyWilled.com to create their will and selected you to serve as their Backup Guardian For Minor Children. Being selected as a Backup Guardian For Minor Children is an important role reserved for those we trust the most. This email is being sent to you so you can let " . $getUser->name . " know whether you accept or decline this honor.</p>
+				// 		<h3>What being selected as Backup Guardian For Minor Children means for You:</h3>
+				// 		<p>As a Backup Guardian For Minor Children you will be legally responsible for caring for " . $getUser->name . "'s children in the event that their first choice for Guardian is unwilling or unable to serve. You will have physical custody of their children and will be responsible for their well being.</p>
+				// 		<h3><img src='" . asset('images/like-icon-mail.png') . "' alt='like'> Confirm you responsibility:</h3>
+				// 		<p>Your duties as Backup Guardian For Minor Children do not take effect unless " . $getUser->name . "'s Primary Guardian For Minor Children is unwilling or unable to serve. If you accept this honor and duty, please take a moment to speak with the person who selected you to have a conversation about this important responsibility.  If you wish to decline this responsibility, please let them know you are unable to accept so they can choose someone else.</p>";
+    //                     $data['accept_url'] = url("/confirmed") . "?client-name=" . base64_encode($getUser->id);
+    //                     $data['declined_url'] = url("/declined") . "?client-name=" . base64_encode($getUser->id);
 
-                        //send email to Backup Guardian
-                        Mail::send('emails.notificationEmail', [
-                            'email' => 'info@simplywilled.com',
-                            'data' => $data
-                        ], function ($mail) use ($emailId) {
-                            /** @noinspection PhpUndefinedMethodInspection */
-                            $mail->from('info@simplywilled.com', 'simplywilled');
-                            /** @noinspection PhpUndefinedMethodInspection */
-                            $mail->to($emailId, "Backup Guardian For Minor Children")
-                                ->subject('Selected You As Backup Guardian For Minor Children');
-                        });
-                    }
-                    if($emailType == 5){
-                         // Send email to the backup Attroney
-                        $data = array();
-                        $data['title'] = $getUser->name." Selected You As Backup Financial Power of Attorney";
-                        $data['banner'] = asset('images/financial-mail-banner.jpg');
-                        $data['name'] = $fullname;
-                        $data['short_description'] = "<p>".$getUser->name." recently joined the thousands of people who have used SimplyWilled.com to create their will and selected you to serve as their Backup Financial Power of Attorney. Being selected as a Backup Financial Power of Attorney is an important role reserved for those we trust the most. This email is being sent to you so you can let ".$getUser->name." know whether you accept or decline this honor.</p>
-					<h3>What being selected as Backup Financial Power of Attorney means for you:</h3>
-					<p>As the Backup Financial Power of Attorney  you will be legally responsible for making financial decision for ".$getUser->name."'s in the event that their Primary Financial Power of Attorney is unwilling or unable to serve. Serving as a Backup Financial Power of Attorney is a very important role and carries with is significant powers should you be called upon to serve. Among them commonly, people give their agent broad power to handle all of their finances.</p>
-					<h3><img src='".asset('images/like-icon-mail.png')."' alt='like'> Confirm you responsibility:</h3>
-					<p>Your duties as Backup Financially Power of Attorney do not take effect unless ".$getUser->name."'s Primary Financial Power of Attorney is unable or unwilling to serve.  If you accept this honor and duty, please take a moment to speak with ".$getUser->name." to have a conversation about the terms of their Financial Power of Attorney, and any special instructions they may have. It is important that you confirm the location of their estate documents so that you can access them if you are called upon to serve. Otherwise, please let ".$getUser->name." know you are unable to accept this responsibility so they can choose someone else.</p>";
-                        $data['accept_url'] = url("/confirmed")."?client-name=".base64_encode($getUser->id);
-                        $data['declined_url'] = url("/declined")."?client-name=".base64_encode($getUser->id);
+    //                     //send email to Backup Guardian
+    //                     Mail::send('emails.notificationEmail', [
+    //                         'email' => 'info@simplywilled.com',
+    //                         'data' => $data
+    //                     ], function ($mail) use ($emailId) {
+    //                         /** @noinspection PhpUndefinedMethodInspection */
+    //                         $mail->from('info@simplywilled.com', 'simplywilled');
+    //                         /** @noinspection PhpUndefinedMethodInspection */
+    //                         $mail->to($emailId, "Backup Guardian For Minor Children")
+    //                             ->subject('Selected You As Backup Guardian For Minor Children');
+    //                     });
+    //                 }
+    //                 if($emailType == 5){
+    //                      // Send email to the backup Attroney
+    //                     $data = array();
+    //                     $data['title'] = $getUser->name." Selected You As Backup Financial Power of Attorney";
+    //                     $data['banner'] = asset('images/financial-mail-banner.jpg');
+    //                     $data['name'] = $fullname;
+    //                     $data['short_description'] = "<p>".$getUser->name." recently joined the thousands of people who have used SimplyWilled.com to create their will and selected you to serve as their Backup Financial Power of Attorney. Being selected as a Backup Financial Power of Attorney is an important role reserved for those we trust the most. This email is being sent to you so you can let ".$getUser->name." know whether you accept or decline this honor.</p>
+				// 	<h3>What being selected as Backup Financial Power of Attorney means for you:</h3>
+				// 	<p>As the Backup Financial Power of Attorney  you will be legally responsible for making financial decision for ".$getUser->name."'s in the event that their Primary Financial Power of Attorney is unwilling or unable to serve. Serving as a Backup Financial Power of Attorney is a very important role and carries with is significant powers should you be called upon to serve. Among them commonly, people give their agent broad power to handle all of their finances.</p>
+				// 	<h3><img src='".asset('images/like-icon-mail.png')."' alt='like'> Confirm you responsibility:</h3>
+				// 	<p>Your duties as Backup Financially Power of Attorney do not take effect unless ".$getUser->name."'s Primary Financial Power of Attorney is unable or unwilling to serve.  If you accept this honor and duty, please take a moment to speak with ".$getUser->name." to have a conversation about the terms of their Financial Power of Attorney, and any special instructions they may have. It is important that you confirm the location of their estate documents so that you can access them if you are called upon to serve. Otherwise, please let ".$getUser->name." know you are unable to accept this responsibility so they can choose someone else.</p>";
+    //                     $data['accept_url'] = url("/confirmed")."?client-name=".base64_encode($getUser->id);
+    //                     $data['declined_url'] = url("/declined")."?client-name=".base64_encode($getUser->id);
 
-                        Mail::send('emails.notificationEmail', [
-                            'email' => 'info@simplywilled.com',
-                            'data' => $data
-                        ], function ($mail) use ($emailId) {
-                            /** @noinspection PhpUndefinedMethodInspection */
-                            $mail->from('info@simplywilled.com', 'simplywilled');
-                            /** @noinspection PhpUndefinedMethodInspection */
-                            $mail->to($emailId, "Backup Financial Power of Attorney")
-                                ->subject('Selected You As Backup Financial Power of Attorney');
-                        });
-                    }
-                    if($emailType == 6){
-                        // Send email to the Attroney
-                        $data = array();
-                        $data['title'] = $getUser->name." Selected You As Financial Power of Attorney";
-                        $data['banner'] = asset('images/financial-mail-banner.jpg');
-                        $data['name'] = $fullname;
-                        $data['short_description'] = "<p>".$getUser->name." recently joined the thousands of people who have used SimplyWilled.com to create their will and selected you to serve as their Primary Financial Power of Attorney. Being selected as a Primary Financial Power of Attorney is an important role reserved for those we trust the most. This email is being sent to you so you can let ".$getUser->name." know whether you accept or decline this honor.</p>
-				<h3>What being selected as Primary Financial Power of Attorney means for you:</h3>
-				<p>As the Primary Financial Power of Attorney  you will be legally responsible for making financial decision for ".$getUser->name."'s in the event that their incapacity. Serving as a Primary Financial Power of Attorney is a very important role and carries with is significant powers should you be called upon to serve. Among them commonly, people give their agent broad power to handle all of their finances.</p>
-				<h3><img src='".asset('images/like-icon-mail.png')."' alt='like'> Confirm you responsibility:</h3>
-				<p>Your duties as the Primary Financially Power of Attorney do not take effect unless ".$getUser->name." is incapacitated.  If you accept this honor and duty, please take a moment to speak with ".$getUser->name." to have a conversation about the terms of their Financial Power of Attorney, and any special instructions they may have. It is important that you confirm the location of their estate documents so that you can access them if you are called upon to serve. Otherwise, please let ".$getUser->name." know you are unable to accept this responsibility so they can choose someone else.</p>";
-                        $data['accept_url'] = url("/confirmed")."?client-name=".base64_encode($getUser->id);
-                        $data['declined_url'] = url("/declined")."?client-name=".base64_encode($getUser->id);
+    //                     Mail::send('emails.notificationEmail', [
+    //                         'email' => 'info@simplywilled.com',
+    //                         'data' => $data
+    //                     ], function ($mail) use ($emailId) {
+    //                         /** @noinspection PhpUndefinedMethodInspection */
+    //                         $mail->from('info@simplywilled.com', 'simplywilled');
+    //                         /** @noinspection PhpUndefinedMethodInspection */
+    //                         $mail->to($emailId, "Backup Financial Power of Attorney")
+    //                             ->subject('Selected You As Backup Financial Power of Attorney');
+    //                     });
+    //                 }
+    //                 if($emailType == 6){
+    //                     // Send email to the Attroney
+    //                     $data = array();
+    //                     $data['title'] = $getUser->name." Selected You As Financial Power of Attorney";
+    //                     $data['banner'] = asset('images/financial-mail-banner.jpg');
+    //                     $data['name'] = $fullname;
+    //                     $data['short_description'] = "<p>".$getUser->name." recently joined the thousands of people who have used SimplyWilled.com to create their will and selected you to serve as their Primary Financial Power of Attorney. Being selected as a Primary Financial Power of Attorney is an important role reserved for those we trust the most. This email is being sent to you so you can let ".$getUser->name." know whether you accept or decline this honor.</p>
+				// <h3>What being selected as Primary Financial Power of Attorney means for you:</h3>
+				// <p>As the Primary Financial Power of Attorney  you will be legally responsible for making financial decision for ".$getUser->name."'s in the event that their incapacity. Serving as a Primary Financial Power of Attorney is a very important role and carries with is significant powers should you be called upon to serve. Among them commonly, people give their agent broad power to handle all of their finances.</p>
+				// <h3><img src='".asset('images/like-icon-mail.png')."' alt='like'> Confirm you responsibility:</h3>
+				// <p>Your duties as the Primary Financially Power of Attorney do not take effect unless ".$getUser->name." is incapacitated.  If you accept this honor and duty, please take a moment to speak with ".$getUser->name." to have a conversation about the terms of their Financial Power of Attorney, and any special instructions they may have. It is important that you confirm the location of their estate documents so that you can access them if you are called upon to serve. Otherwise, please let ".$getUser->name." know you are unable to accept this responsibility so they can choose someone else.</p>";
+    //                     $data['accept_url'] = url("/confirmed")."?client-name=".base64_encode($getUser->id);
+    //                     $data['declined_url'] = url("/declined")."?client-name=".base64_encode($getUser->id);
 
-                        Mail::send('emails.notificationEmail', [
-                            'email' => 'info@simplywilled.com',
-                            'data' => $data
-                        ], function ($mail) use ($emailId) {
-                            /** @noinspection PhpUndefinedMethodInspection */
-                            $mail->from('info@simplywilled.com', 'simplywilled');
-                            /** @noinspection PhpUndefinedMethodInspection */
-                            $mail->to($emailId, "Financial Power of Attorney")
-                                ->subject('Selected You As Financial Power of Attorney');
-                        });
+    //                     Mail::send('emails.notificationEmail', [
+    //                         'email' => 'info@simplywilled.com',
+    //                         'data' => $data
+    //                     ], function ($mail) use ($emailId) {
+    //                         /** @noinspection PhpUndefinedMethodInspection */
+    //                         $mail->from('info@simplywilled.com', 'simplywilled');
+    //                         /** @noinspection PhpUndefinedMethodInspection */
+    //                         $mail->to($emailId, "Financial Power of Attorney")
+    //                             ->subject('Selected You As Financial Power of Attorney');
+    //                     });
 
-                    }
-                }
-            }
-        } catch (Exception $e) {
-            //error message
-            return response()->json([
-                'status' => false,
-                'message' => $e->getMessage(),
-                'errorLineNo' => $e->getLine(),
-                'data' => []
-            ], 500);
-        }
+    //                 }
+    //             }
+    //         }
+    //     } catch (Exception $e) {
+    //         //error message
+    //         return response()->json([
+    //             'status' => false,
+    //             'message' => $e->getMessage(),
+    //             'errorLineNo' => $e->getLine(),
+    //             'data' => []
+    //         ], 500);
+    //     }
 
     }
 
