@@ -1474,13 +1474,10 @@ class UserController extends Controller
                 PetGuardian::where('user_id',$userId)->where('is_backup','1')->delete();
             }
 
-            // if(PetGuardian::where('user_id',$userId)->first() == null) {
-            //     $tuau = TellUsAboutYou::where('user_id',$userId)->first();
-            //     if($tuau) {
-            //         $tuau->guardian_minor_children = '0';
-            //         $tuau->save();
-            //     }
-            // }
+            if(PetGuardian::where('user_id',$userId)->first() == null) {
+                $tellUsAboutYou->has_pet = 0;
+                $tellUsAboutYou->save();
+            }
 
             $response = self::generatePetGuardianInfoResponse($userId);
             return $response;
