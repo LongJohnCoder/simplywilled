@@ -21,6 +21,8 @@ export class GiftComponent implements OnInit, OnDestroy {
   errFlag: boolean;
   errString: string;
   giftStatus: string;
+  giftStatusIndividual: string;
+  giftStatusCharity: string;
   saveDataInDb: Observable<any>;
   dataset: GiftModel;
   loading = true;
@@ -82,11 +84,13 @@ export class GiftComponent implements OnInit, OnDestroy {
   makeSpecificGift(formData): void {
     if (formData.valid) {
       if (this.access_token) {
-        this.dataset = {'user_id': this.myUserId, 'step': 8, 'data': {'isSpecificGift': formData.value.gift_status === '1' ? 'Yes' : 'No'}};
+        // tslint:disable-next-line:max-line-length
+        this.dataset = {'user_id': this.myUserId, 'step': 8, 'data': {'isSpecificGift': formData.value.gift_status === '1' ? 'Yes' : 'No', 'individual': formData.value.gift_status === '1' ? '1' : '0', 'charity': formData.value.gift_status_charity === '1' ? '1' : '0'}};
         this.saveDataInDb = this.gftService.saveData(this.access_token, this.dataset);
         this.saveDataInDbSubscription = this.saveDataInDb.subscribe(data => {
           if (data.status) {
-            if (formData.value.gift_status === '1') {
+            console.log(data);
+            if (formData.value.gift_status === '1' || formData.value.gift_status_charity === '1') {
               this.router.navigate(['/dashboard/your-specific-gifts']);
             } else {
               this.router.navigate(['/dashboard/your-estate-distributed']);
@@ -135,6 +139,8 @@ export class GiftComponent implements OnInit, OnDestroy {
             if (data.data.hasOwnProperty(7)) {
                 if (data.data[7].data.hasOwnProperty('isSpecificGift')) {
                   this.giftStatus = data.data[7].data.isSpecificGift === 'No' ? '0' : '1';
+                  this.giftStatusIndividual = data.data[7].data.individual === 0 ? '0' : '1';
+                  this.giftStatusCharity = data.data[7].data.charity === 0 ? '0' : '1';
                 } else {
                   this.errFlag = true;
                   this.errString = 'This step has no data yet! Please fill up the form';
@@ -161,11 +167,10 @@ export class GiftComponent implements OnInit, OnDestroy {
         console.log(this.errString);
       }, () => {
         // set form value here
-        if (this.giftStatus) {
-          console.log(this.giftStatus);
+        if (this.giftStatusIndividual && this.giftStatusCharity) {
           this.giftFormStepOne.setValue({
-            'gift_status' : this.giftStatus,
-            'gift_status_charity': '0'
+            'gift_status' : this.giftStatusIndividual,
+            'gift_status_charity': this.giftStatusCharity
           });
         } else {
           this.giftFormStepOne.setValue({

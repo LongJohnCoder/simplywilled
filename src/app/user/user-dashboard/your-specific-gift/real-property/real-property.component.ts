@@ -24,12 +24,14 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
   beneficiarySubscription: Subscription;
   passedBySubscription: Subscription;
   passedByChildSubscription: Subscription;
+  fetchDataSubscription: Subscription;
   errors = {
     errorFlag: false,
     errorMsg: ''
   };
   flags = {
     editFlag: false,
+    showIndividualAndCharity: true,
     individualFlag: false,
     charityFlag: false,
     singleBeneficiaryFlag: false,
@@ -51,6 +53,7 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
   formEditDataSet: any;
   giftData = [];
   giftId = 0;
+  loading = true;
 
   /**Calls the constructor*/
   constructor (
@@ -59,7 +62,38 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
     private editService: EditGiftService,
     private ysgComponent: YourSpecificGiftComponent,
     private rpService: RealPropertyService
-  ) { this.createForm(); }
+  ) {
+    this.createForm();
+    let userId = this.parseUserId();
+    let token = this.parseToken();
+    this.fetchDataSubscription = this.ysgService.fetchData(token, userId)
+      .subscribe(
+        (response) => {
+          if (response.data[7] !== undefined && response.data[7] !== null && response.data[7].data !== null && response.data[7].data !== undefined) {
+            if (response.data[7].data.charity === 1 && response.data[7].data.individual === 1) {
+              this.flags.showIndividualAndCharity = true;
+            } else if (response.data[7].data.charity === 1 && response.data[7].data.individual === 0) {
+              this.flags.showIndividualAndCharity = false;
+              this.flags.charityFlag = true;
+              this.flags.individualFlag = false;
+              if (!this.flags.editFlag) {
+                this.clearValidationFor(['gift_to']);
+                this.setValidatorGift('CH');
+              }
+            } else if (response.data[7].data.charity === 0 && response.data[7].data.individual === 1) {
+              this.flags.showIndividualAndCharity = false;
+              this.flags.charityFlag = false;
+              this.flags.individualFlag = true;
+              if (!this.flags.editFlag) {
+                this.clearValidationFor(['gift_to']);
+                this.setValidatorGift('IN');
+              }
+            }
+          } else {
+            this.flags.showIndividualAndCharity = true;
+          }
+        }, (error) => { console.log(error); }, () => { this.loading = false; });
+  }
 
   /**Checks for authorization user id.*/
   parseUserId() {
@@ -415,7 +449,7 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
       let data = this.prepareData();
       this.giftData.push(data);
       if (token) {
-        let cashGiftDataSet = this.flags.editFlag ? {'id': this.giftId, 'step': 7, 'user_id': user, 'giftType': 2, 'giftData': this.giftData} : {'step': 7, 'user_id': user, 'giftType': 2, 'giftData': this.giftData};
+        let cashGiftDataSet = this.flags.editFlag ? {'id': this.giftId, 'step': 7, 'user_id': user, 'giftType': 2, 'individual': this.flags.individualFlag ? 1 : 0, 'charity': this.flags.charityFlag ? 1 : 0, 'giftData': this.giftData} : {'step': 7, 'user_id': user, 'giftType': 2, 'individual': this.flags.individualFlag ? 1 : 0, 'charity': this.flags.charityFlag ? 1 : 0, 'giftData': this.giftData};
         if (this.flags.editFlag) {
           this.editGiftData(token, cashGiftDataSet);
         } else {
@@ -439,7 +473,7 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
       city: this.realPropertyForm.value.city,
       state: this.realPropertyForm.value.state,
       residence: this.realPropertyForm.value.residence,
-      beneficiary: this.realPropertyForm.value.gift_to === 'IN' ? this.realPropertyForm.value.beneficiary : '',
+     /* beneficiary: this.realPropertyForm.value.gift_to === 'IN' ? this.realPropertyForm.value.beneficiary : '',
       full_legal_name: this.realPropertyForm.value.full_legal_name,
       beneficiary_legal_name: this.realPropertyForm.value.gift_to === 'IN' && this.realPropertyForm.value.beneficiary === '_si' ? this.realPropertyForm.value.beneficiary_legal_name : '',
       beneficiary_legal_relation: this.realPropertyForm.value.gift_to === 'IN' && this.realPropertyForm.value.beneficiary === '_si' ? this.realPropertyForm.value.beneficiary_legal_relation : '',
@@ -453,7 +487,22 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
       passed_by_child: this.realPropertyForm.value.gift_to === 'IN' ? this.realPropertyForm.value.passed_by_child : '',
       individual_name: this.realPropertyForm.value.gift_to === 'IN' && (this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se')) ? this.realPropertyForm.value.individual_name : '',
       individual_relationship: this.realPropertyForm.value.gift_to === 'IN' && (this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se')) ? this.realPropertyForm.value.individual_relationship : '',
-      individual_relationship_other: this.realPropertyForm.value.gift_to === 'IN' && (this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se')) ? this.realPropertyForm.value.individual_relationship_other : '',
+      individual_relationship_other: this.realPropertyForm.value.gift_to === 'IN' && (this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se')) ? this.realPropertyForm.value.individual_relationship_other : '',*/
+      beneficiary: this.realPropertyForm.value.gift_to === 'IN' ? this.realPropertyForm.value.beneficiary : (!this.flags.showIndividualAndCharity && this.flags.individualFlag ? this.realPropertyForm.value.beneficiary : ''),
+      full_legal_name: this.realPropertyForm.value.full_legal_name,
+      beneficiary_legal_name: this.realPropertyForm.value.gift_to === 'IN' && this.realPropertyForm.value.beneficiary === '_si' ? this.realPropertyForm.value.beneficiary_legal_name : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && this.realPropertyForm.value.beneficiary === '_si' ? this.realPropertyForm.value.beneficiary_legal_name : ''),
+      beneficiary_legal_relation: this.realPropertyForm.value.gift_to === 'IN' && this.realPropertyForm.value.beneficiary === '_si' ? this.realPropertyForm.value.beneficiary_legal_relation : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && this.realPropertyForm.value.beneficiary === '_si' ? this.realPropertyForm.value.beneficiary_legal_relation : ''),
+      beneficiary_legal_relation_other: this.realPropertyForm.value.gift_to === 'IN' && this.realPropertyForm.value.beneficiary === '_si' ? this.realPropertyForm.value.beneficiary_legal_relation_other : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && this.realPropertyForm.value.beneficiary === '_si' ? this.realPropertyForm.value.beneficiary_legal_relation_other : ''),
+      gender: this.realPropertyForm.value.gift_to === 'IN' && this.realPropertyForm.value.beneficiary === '_si' ? this.realPropertyForm.value.gender : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && this.realPropertyForm.value.beneficiary === '_si' ? this.realPropertyForm.value.gender : 'Male'),
+      gift_to: this.flags.showIndividualAndCharity ? this.realPropertyForm.value.gift_to : (!this.flags.showIndividualAndCharity && this.flags.charityFlag ? 'CH' : 'IN'),
+      multiple_beneficiaries: this.realPropertyForm.value.gift_to === 'IN' && this.realPropertyForm.value.beneficiary === '_mu' ? this.realPropertyForm.value.multiple_beneficiaries : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && this.realPropertyForm.value.beneficiary === '_mu' ? this.realPropertyForm.value.multiple_beneficiaries : []),
+      organization_address: this.realPropertyForm.value.gift_to === 'CH' ? this.realPropertyForm.value.organization_address : (!this.flags.showIndividualAndCharity && this.flags.charityFlag ? this.realPropertyForm.value.organization_address : ''),
+      organization_name: this.realPropertyForm.value.gift_to === 'CH' ? this.realPropertyForm.value.organization_name : (!this.flags.showIndividualAndCharity && this.flags.charityFlag ? this.realPropertyForm.value.organization_name : ''),
+      passed_by: this.realPropertyForm.value.gift_to === 'IN' ? this.realPropertyForm.value.passed_by : (!this.flags.showIndividualAndCharity && this.flags.individualFlag ? this.realPropertyForm.value.passed_by : ''),
+      passed_by_child: this.realPropertyForm.value.gift_to === 'IN' ? this.realPropertyForm.value.passed_by_child : (!this.flags.showIndividualAndCharity && this.flags.individualFlag ? this.realPropertyForm.value.passed_by_child : ''),
+      individual_name: this.realPropertyForm.value.gift_to === 'IN' && (this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se')) ? this.realPropertyForm.value.individual_name : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && (this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se')) ? this.realPropertyForm.value.individual_name : ''),
+      individual_relationship: this.realPropertyForm.value.gift_to === 'IN' && (this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se')) ? this.realPropertyForm.value.individual_relationship : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && (this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se')) ? this.realPropertyForm.value.individual_relationship  : ''),
+      individual_relationship_other: this.realPropertyForm.value.gift_to === 'IN' && (this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se')) ? this.realPropertyForm.value.individual_relationship_other : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && (this.realPropertyForm.value.passed_by === '_se' || (this.realPropertyForm.value.passed_by === '_tti' && this.realPropertyForm.value.passed_by_child === '_se')) ? this.realPropertyForm.value.individual_relationship_other : ''),
       free_mortgage: this.realPropertyForm.value.free_mortgage,
     };
     return data;
@@ -562,6 +611,9 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
     }
     if (this.passedByChildSubscription !== undefined) {
       this.passedByChildSubscription .unsubscribe();
+    }
+    if (this.fetchDataSubscription !== undefined) {
+      this.fetchDataSubscription.unsubscribe();
     }
   }
 

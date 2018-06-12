@@ -19,7 +19,6 @@ export class MyGiftTextComponent implements OnInit {
 
   /**parse statement*/
   parseStatement() {
-    console.log(this.dataSet);
     if (this.dataSet !== null) {
       switch (this.dataSet.type) {
         case '1': let cashDescription = JSON.parse(this.dataSet.cash_description)[0];

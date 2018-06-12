@@ -22,12 +22,14 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
   beneficiarySubscription: Subscription;
   passedBySubscription: Subscription;
   passedByChildSubscription: Subscription;
+  fetchDataSubscription: Subscription;
   errors = {
     errorFlag: false,
     errorMsg: ''
   };
   flags = {
     editFlag: false,
+    showIndividualAndCharity: true,
     individualFlag: false,
     charityFlag: false,
     singleBeneficiaryFlag: false,
@@ -45,6 +47,7 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
   formEditDataSet: any;
   giftData = [];
   giftId = 0;
+  loading = true;
 
   /**Calls the constructor*/
   constructor (
@@ -52,7 +55,38 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
     private ysgService: YourSpecificGiftService,
     private editService: EditGiftService,
     private ysgComponent: YourSpecificGiftComponent
-  ) { this.createForm(); }
+  ) {
+    this.createForm();
+    let userId = this.parseUserId();
+    let token = this.parseToken();
+    this.fetchDataSubscription = this.ysgService.fetchData(token, userId)
+      .subscribe(
+      (response) => {
+        if (response.data[7] !== undefined && response.data[7] !== null && response.data[7].data !== null && response.data[7].data !== undefined) {
+          if (response.data[7].data.charity === 1 && response.data[7].data.individual === 1) {
+              this.flags.showIndividualAndCharity = true;
+          } else if (response.data[7].data.charity === 1 && response.data[7].data.individual === 0) {
+              this.flags.showIndividualAndCharity = false;
+              this.flags.charityFlag = true;
+              this.flags.individualFlag = false;
+              if (!this.flags.editFlag) {
+                  this.clearValidationFor(['gift_to']);
+                  this.setValidatorsGiftTo('CH');
+              }
+          } else if (response.data[7].data.charity === 0 && response.data[7].data.individual === 1) {
+            this.flags.showIndividualAndCharity = false;
+            this.flags.charityFlag = false;
+            this.flags.individualFlag = true;
+            if (!this.flags.editFlag) {
+              this.clearValidationFor(['gift_to']);
+              this.setValidatorsGiftTo('IN');
+            }
+          }
+        } else {
+          this.flags.showIndividualAndCharity = true;
+        }
+    }, (error) => { console.log(error); }, () => { this.loading = false; });
+  }
 
   /**Checks for authorization user id.*/
   parseUserId() {
@@ -78,7 +112,6 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
         this.formEditDataSet = this.editService.getData();
         let parsedDataSet = JSON.parse(this.formEditDataSet.business_details)[0];
         this.giftId = this.formEditDataSet.id;
-        console.log(this.giftId);
         this.createForm(this.flags.editFlag, parsedDataSet);
         this.flags.individualFlag = parsedDataSet.gift_to === 'IN';
         this.flags.charityFlag = parsedDataSet.gift_to === 'CH';
@@ -99,6 +132,19 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
         this.setValidatorsPassedByChild(parsedDataSet === null ? '' : parsedDataSet.passed_by_child);
       }
     }
+
+  /*  console.log(this.flags.showIndividualAndCharity)
+    if (!this.flags.editFlag) {
+      if  (!this.flags.showIndividualAndCharity && this.flags.charityFlag && !this.flags.individualFlag) {
+        console.log('here');
+        this.clearValidationFor(['gift_to']);
+        this.setValidatorsGiftTo('CH');
+      } else if (!this.flags.showIndividualAndCharity && !this.flags.charityFlag && this.flags.individualFlag ) {
+        console.log('there');
+        this.clearValidationFor(['gift_to']);
+        this.setValidatorsGiftTo('IN');
+      }
+    }*/
   }
 
   /**Initialises the form*/
@@ -354,7 +400,7 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
       this.giftData.push(data);
       console.log(data);
       if (token) {
-        let cashGiftDataSet = this.flags.editFlag ? {'id': this.giftId, 'step': 7, 'user_id': user, 'giftType': 3, 'giftData': this.giftData} : {'step': 7, 'user_id': user, 'giftType': 3, 'giftData': this.giftData};
+        let cashGiftDataSet = this.flags.editFlag ? {'id': this.giftId, 'step': 7, 'user_id': user, 'giftType': 3, 'individual': this.flags.individualFlag ? 1 : 0, 'charity': this.flags.charityFlag ? 1 : 0, 'giftData': this.giftData} : {'step': 7, 'user_id': user, 'giftType': 3, 'individual': this.flags.individualFlag ? 1 : 0, 'charity': this.flags.charityFlag ? 1 : 0, 'giftData': this.giftData};
         if (this.flags.editFlag) {
           this.editGiftData(token, cashGiftDataSet);
         } else {
@@ -374,21 +420,21 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
   /**Prepares the request*/
   prepareData() {
     let data = {
-      beneficiary: this.businessInterestForm.value.gift_to === 'IN' ? this.businessInterestForm.value.beneficiary : '',
+      beneficiary: this.businessInterestForm.value.gift_to === 'IN' ? this.businessInterestForm.value.beneficiary : (!this.flags.showIndividualAndCharity && this.flags.individualFlag ? this.businessInterestForm.value.beneficiary : ''),
       full_legal_name: this.businessInterestForm.value.full_legal_name,
-      beneficiary_legal_name: this.businessInterestForm.value.gift_to === 'IN' && this.businessInterestForm.value.beneficiary === '_si' ? this.businessInterestForm.value.beneficiary_legal_name : '',
-      beneficiary_legal_relation: this.businessInterestForm.value.gift_to === 'IN' && this.businessInterestForm.value.beneficiary === '_si' ? this.businessInterestForm.value.beneficiary_legal_relation : '',
-      beneficiary_legal_relation_other: this.businessInterestForm.value.gift_to === 'IN' && this.businessInterestForm.value.beneficiary === '_si' ? this.businessInterestForm.value.beneficiary_legal_relation_other : '',
-      gender: this.businessInterestForm.value.gift_to === 'IN' && this.businessInterestForm.value.beneficiary === '_si' ? this.businessInterestForm.value.gender : 'Male',
-      gift_to: this.businessInterestForm.value.gift_to,
-      multiple_beneficiaries: this.businessInterestForm.value.gift_to === 'IN' && this.businessInterestForm.value.beneficiary === '_mu' ? this.businessInterestForm.value.multiple_beneficiaries : [],
-      organization_address: this.businessInterestForm.value.gift_to === 'CH' ? this.businessInterestForm.value.organization_address : '',
-      organization_name: this.businessInterestForm.value.gift_to === 'CH' ? this.businessInterestForm.value.organization_name : '',
-      passed_by: this.businessInterestForm.value.gift_to === 'IN' ? this.businessInterestForm.value.passed_by : '',
-      passed_by_child: this.businessInterestForm.value.gift_to === 'IN' ? this.businessInterestForm.value.passed_by_child : '',
-      individual_name: this.businessInterestForm.value.gift_to === 'IN' && (this.businessInterestForm.value.passed_by === '_se' || (this.businessInterestForm.value.passed_by === '_tti' && this.businessInterestForm.value.passed_by_child === '_se')) ? this.businessInterestForm.value.individual_name : '',
-      individual_relationship: this.businessInterestForm.value.gift_to === 'IN' && (this.businessInterestForm.value.passed_by === '_se' || (this.businessInterestForm.value.passed_by === '_tti' && this.businessInterestForm.value.passed_by_child === '_se')) ? this.businessInterestForm.value.individual_relationship : '',
-      individual_relationship_other: this.businessInterestForm.value.gift_to === 'IN' && (this.businessInterestForm.value.passed_by === '_se' || (this.businessInterestForm.value.passed_by === '_tti' && this.businessInterestForm.value.passed_by_child === '_se')) ? this.businessInterestForm.value.individual_relationship_other : '',
+      beneficiary_legal_name: this.businessInterestForm.value.gift_to === 'IN' && this.businessInterestForm.value.beneficiary === '_si' ? this.businessInterestForm.value.beneficiary_legal_name : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && this.businessInterestForm.value.beneficiary === '_si' ? this.businessInterestForm.value.beneficiary_legal_name : ''),
+      beneficiary_legal_relation: this.businessInterestForm.value.gift_to === 'IN' && this.businessInterestForm.value.beneficiary === '_si' ? this.businessInterestForm.value.beneficiary_legal_relation : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && this.businessInterestForm.value.beneficiary === '_si' ? this.businessInterestForm.value.beneficiary_legal_relation : ''),
+      beneficiary_legal_relation_other: this.businessInterestForm.value.gift_to === 'IN' && this.businessInterestForm.value.beneficiary === '_si' ? this.businessInterestForm.value.beneficiary_legal_relation_other : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && this.businessInterestForm.value.beneficiary === '_si' ? this.businessInterestForm.value.beneficiary_legal_relation_other : ''),
+      gender: this.businessInterestForm.value.gift_to === 'IN' && this.businessInterestForm.value.beneficiary === '_si' ? this.businessInterestForm.value.gender : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && this.businessInterestForm.value.beneficiary === '_si' ? this.businessInterestForm.value.gender : 'Male'),
+      gift_to: this.flags.showIndividualAndCharity ? this.businessInterestForm.value.gift_to : (!this.flags.showIndividualAndCharity && this.flags.charityFlag ? 'CH' : 'IN'),
+      multiple_beneficiaries: this.businessInterestForm.value.gift_to === 'IN' && this.businessInterestForm.value.beneficiary === '_mu' ? this.businessInterestForm.value.multiple_beneficiaries : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && this.businessInterestForm.value.beneficiary === '_mu' ? this.businessInterestForm.value.multiple_beneficiaries : []),
+      organization_address: this.businessInterestForm.value.gift_to === 'CH' ? this.businessInterestForm.value.organization_address : (!this.flags.showIndividualAndCharity && this.flags.charityFlag ? this.businessInterestForm.value.organization_address : ''),
+      organization_name: this.businessInterestForm.value.gift_to === 'CH' ? this.businessInterestForm.value.organization_name : (!this.flags.showIndividualAndCharity && this.flags.charityFlag ? this.businessInterestForm.value.organization_name : ''),
+      passed_by: this.businessInterestForm.value.gift_to === 'IN' ? this.businessInterestForm.value.passed_by : (!this.flags.showIndividualAndCharity && this.flags.individualFlag ? this.businessInterestForm.value.passed_by : ''),
+      passed_by_child: this.businessInterestForm.value.gift_to === 'IN' ? this.businessInterestForm.value.passed_by_child : (!this.flags.showIndividualAndCharity && this.flags.individualFlag ? this.businessInterestForm.value.passed_by_child : ''),
+      individual_name: this.businessInterestForm.value.gift_to === 'IN' && (this.businessInterestForm.value.passed_by === '_se' || (this.businessInterestForm.value.passed_by === '_tti' && this.businessInterestForm.value.passed_by_child === '_se')) ? this.businessInterestForm.value.individual_name : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && (this.businessInterestForm.value.passed_by === '_se' || (this.businessInterestForm.value.passed_by === '_tti' && this.businessInterestForm.value.passed_by_child === '_se')) ? this.businessInterestForm.value.individual_name : ''),
+      individual_relationship: this.businessInterestForm.value.gift_to === 'IN' && (this.businessInterestForm.value.passed_by === '_se' || (this.businessInterestForm.value.passed_by === '_tti' && this.businessInterestForm.value.passed_by_child === '_se')) ? this.businessInterestForm.value.individual_relationship : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && (this.businessInterestForm.value.passed_by === '_se' || (this.businessInterestForm.value.passed_by === '_tti' && this.businessInterestForm.value.passed_by_child === '_se')) ? this.businessInterestForm.value.individual_relationship  : ''),
+      individual_relationship_other: this.businessInterestForm.value.gift_to === 'IN' && (this.businessInterestForm.value.passed_by === '_se' || (this.businessInterestForm.value.passed_by === '_tti' && this.businessInterestForm.value.passed_by_child === '_se')) ? this.businessInterestForm.value.individual_relationship_other : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && (this.businessInterestForm.value.passed_by === '_se' || (this.businessInterestForm.value.passed_by === '_tti' && this.businessInterestForm.value.passed_by_child === '_se')) ? this.businessInterestForm.value.individual_relationship_other : ''),
     };
     return data;
   }
@@ -496,6 +542,9 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
     }
     if (this.passedByChildSubscription !== undefined) {
       this.passedByChildSubscription .unsubscribe();
+    }
+    if (this.fetchDataSubscription !== undefined) {
+      this.fetchDataSubscription.unsubscribe();
     }
   }
 

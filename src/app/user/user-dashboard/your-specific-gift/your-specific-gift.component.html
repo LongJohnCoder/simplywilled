@@ -15,16 +15,34 @@
 <div class="row" *ngIf="!onNewModule">
   <div class="main-content tellusaboutyou">
     <div class="col-md-12 col-sm-12 col-xs-12 giftSec" *ngFor="let each_gift of giftResp; let i= index">
-      <h2 class="singing_instruction3">Gift <span class="gift_list_number">{{i+1}}</span></h2>
-      <div class="gift_text_content" id="gift_text_content_{{i+1}}">
-        <div class="gift_text">
-          <app-my-gift-text [dataSet]="each_gift"></app-my-gift-text>
+      <!-- Individual Gifts -->
+      <div class="individualGifts" *ngIf="each_gift.individual === 1 && flags.individualFlag">
+        <h2 class="singing_instruction3">Gift <span class="gift_list_number">{{i+1}}</span></h2>
+        <div class="gift_text_content">
+          <div class="gift_text">
+            <app-my-gift-text [dataSet]="each_gift"></app-my-gift-text>
+          </div>
+          <ul class="back_next_btn_ul" style="margin:20px 0 10px;">
+            <li><a href="javascript:void(0)" class="gift_remove_form" (click)="deleteGift(each_gift.id)">Remove</a></li>
+            <li><a href="javascript:void(0)" class="gift_edit_form" (click)="editGift(each_gift)">Edit</a></li>
+          </ul>
         </div>
-        <ul class="back_next_btn_ul" style="margin:20px 0 10px;">
-          <li><a href="javascript:void(0)" class="gift_remove_form" (click)="deleteGift(each_gift.id)">Remove</a></li>
-          <li><a href="javascript:void(0)" class="gift_edit_form" (click)="editGift(each_gift)">Edit</a></li>
-        </ul>
       </div>
+      <!-- Individual Gifts -->
+      <!-- Charity Gifts -->
+      <div class="individualGifts" *ngIf="each_gift.charity === 1 && flags.charityFlag">
+        <h2 class="singing_instruction3">Gift <span class="gift_list_number">{{i+1}}</span></h2>
+        <div class="gift_text_content">
+          <div class="gift_text">
+            <app-my-gift-text [dataSet]="each_gift"></app-my-gift-text>
+          </div>
+          <ul class="back_next_btn_ul" style="margin:20px 0 10px;">
+            <li><a href="javascript:void(0)" class="gift_remove_form" (click)="deleteGift(each_gift.id)">Remove</a></li>
+            <li><a href="javascript:void(0)" class="gift_edit_form" (click)="editGift(each_gift)">Edit</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Charity Gifts -->
     </div>
     <span class="add_another_btn3" id="another_gift_add" style="">
       <a (click)="showAddGiftSection()" *ngIf="!showAddGift">+ Add Another Gift</a>

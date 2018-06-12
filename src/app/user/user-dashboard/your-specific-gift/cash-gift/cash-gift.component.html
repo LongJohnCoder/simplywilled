@@ -1,4 +1,16 @@
-<div class="main-content tellusaboutyou">
+<div class="pageLoader" *ngIf="loading">
+  <div class="loaderInner">
+    <img src="../../../../assets/images/owl-loading.gif" alt="Loading...">
+    <p class="loadingTxt">
+      Please Wait
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+  </div>
+</div>
+
+<div class="main-content tellusaboutyou" *ngIf="!loading">
   <div id="gift_list_container">
     <ul id="gift_list">
       <li>
@@ -16,8 +28,9 @@
             <ul class="radio_ul3">
               <li><label class="radio_custom singing_instruction"><span class="custom_img3"><img src="../../../../../assets/images/cash2.png" alt="Cash"></span></label></li>
             </ul>
+
             <h3 class="questions">Please confirm this a gift to an Individual or a Charity?</h3>
-            <div>
+            <div *ngIf="showIndividualAndCharity">
               <ul class="radio_ul4">
                 <li>
                   <label class="radio_custom zero_nine_page" (click)="showChild('IN')" [ngClass]="{'active': cashGiftForm.value.gift_to === 'IN'}">

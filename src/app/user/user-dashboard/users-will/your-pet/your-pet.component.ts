@@ -17,6 +17,7 @@ export class YourPetComponent implements OnInit, OnDestroy {
   petsForm: FormGroup;
   petNameArray: FormArray;
   valueChangeSubscription: Subscription;
+  valueChangeSubscriptionForLeaveMoney: Subscription;
   flags = {
     setValidationFlag: false,
   };
@@ -44,12 +45,11 @@ export class YourPetComponent implements OnInit, OnDestroy {
 
   /**Initialises the form*/
   createForm(userInfo = null) {
-    let petData = JSON.parse(userInfo.pet_names);
     this.petsForm = this._fb.group({
         'providePetsWill': new FormControl(userInfo !== null && userInfo !== undefined && userInfo.has_pet !== null && userInfo.has_pet !== undefined && userInfo.has_pet === 1 ? 'Yes' : 'No', [Validators.required]),
         'petsName': this._fb.array([this.initRows()]),
         'leaveMoney': new FormControl(userInfo !== null && userInfo !== undefined && userInfo.leaveMoney !== null && userInfo.leaveMoney !== undefined && userInfo.leaveMoney === 1 ? 'Yes' : 'No', [Validators.required]),
-        'amount': new FormControl(userInfo !== null && userInfo !== undefined && userInfo.petAmount !== null && userInfo.petAmount !== undefined ? userInfo.petAmount : '', [Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)])
+        'amount': new FormControl(userInfo !== null && userInfo !== undefined && userInfo.petAmount !== null && userInfo.petAmount !== undefined ? userInfo.petAmount : '')
     });
   }
 
@@ -135,6 +135,7 @@ export class YourPetComponent implements OnInit, OnDestroy {
     this.petsForm.get('leaveMoney').setValue(value);
   }
 
+  /**Add conditional validators*/
   addConditionalValidators() {
     this.valueChangeSubscription = this.petsForm.get('providePetsWill').valueChanges.subscribe(
       (value) => {
@@ -142,6 +143,18 @@ export class YourPetComponent implements OnInit, OnDestroy {
           case 'Yes': this.setValidation((this.petsForm.get('petsName') as FormArray).controls);
                       break;
           case 'No':  this.clearValidationForFormArray((this.petsForm.get('petsName') as FormArray).controls);
+                      break;
+        }
+      }
+    );
+    this.valueChangeSubscriptionForLeaveMoney = this.petsForm.get('leaveMoney').valueChanges.subscribe(
+      (value) => {
+        switch (value) {
+          case 'Yes': this.petsForm.get('amount').setValidators([Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]);
+                      this.petsForm.get('amount').updateValueAndValidity();
+                      break;
+          case 'No':  this.petsForm.get('amount').clearValidators();
+                      this.petsForm.get('amount').updateValueAndValidity();
                       break;
         }
       }
@@ -224,6 +237,9 @@ export class YourPetComponent implements OnInit, OnDestroy {
     }
     if (this.editProfileSubscription !== undefined) {
       this.editProfileSubscription.unsubscribe();
+    }
+    if (this.valueChangeSubscriptionForLeaveMoney !== undefined) {
+      this.valueChangeSubscriptionForLeaveMoney.unsubscribe();
     }
   }
 }

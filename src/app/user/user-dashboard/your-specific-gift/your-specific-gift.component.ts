@@ -20,7 +20,7 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
   fetchGiftDataDB: Observable<any>;
   isAnyGift: boolean;
   giftCount: number;
-  giftResp: MyGifts[];
+  giftResp: MyGifts[] = [];
   showAddGift: boolean;
   onNewModule: boolean;
   cash_module: boolean;
@@ -33,6 +33,10 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
   deleteGiftDbSubscription: Subscription;
   getUserDetailSubscription: Subscription;
   toolTipMessageList: any;
+  flags = {
+    charityFlag: false,
+    individualFlag: false
+  };
 
   constructor(
     private ysgService: YourSpecificGiftService,
@@ -83,10 +87,21 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
       this.fetchGiftDataDB = this.ysgService.fetchData(this.access_token, this.myUserId);
       this.fetchGiftDataDBSubscription = this.fetchGiftDataDB.subscribe(data => {
         if (data.status === 200) {
+          this.flags.charityFlag = (data !== null && data.data[7] !== null && data.data[7] !== undefined && data.data[7].data !== null && data.data[7].data !== undefined && data.data[7].data.charity !== null && data.data[7].data.charity === 1);
+          this.flags.individualFlag = (data !== null && data.data[7] !== null && data.data[7] !== undefined && data.data[7].data !== null && data.data[7].data !== undefined && data.data[7].data.individualFlag !== null && data.data[7].data.individual === 1);
           if (data.data[6].data.isGift >= 1) {
             this.isAnyGift = true;
             this.giftCount = data.data[6].data.isGift;
-            this.giftResp  = data.data[6].data.gift;
+            for (let i = 0; i < data.data[6].data.gift.length; i++) {
+              if (this.flags.charityFlag && data.data[6].data.gift[i].charity === 1) {
+                this.giftResp.push(data.data[6].data.gift[i]);
+              }
+              if (this.flags.individualFlag && data.data[6].data.gift[i].individual === 1) {
+                this.giftResp.push(data.data[6].data.gift[i]);
+              }
+            }
+          //  console.log(this.giftResp);
+            //this.giftResp  = data.data[6].data.gift;
           } else if (data.data[6].data.isGift === 0) {
               this.onNewModule = true;
               this.showAddGift = true;

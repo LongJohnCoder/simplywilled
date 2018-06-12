@@ -3,5 +3,7 @@ export class GiftModel {
   step: number;
   data: {
     isSpecificGift: string;
+    individual: string;
+    charity: string;
   };
 }

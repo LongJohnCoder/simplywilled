@@ -32,9 +32,64 @@ export class CashGiftComponent implements OnInit, OnDestroy {
   formEditDataSet: MyGifts;
   parsedDataSet: any;
   isEdit: boolean;
+  showIndividualAndCharity = true;
   saveCashGiftDBSubscription: Subscription;
+  fetchDataSubscription: Subscription;
+  loading = true;
+
   /**Constructor call*/
-  constructor(private fb: FormBuilder, private router: Router, private ysgService: YourSpecificGiftService, private editService: EditGiftService, private ysgComponent: YourSpecificGiftComponent) { this.createForm(); }
+  constructor(private fb: FormBuilder, private router: Router, private ysgService: YourSpecificGiftService, private editService: EditGiftService, private ysgComponent: YourSpecificGiftComponent)
+  {
+    this.createForm();
+    let userId = this.parseUserId();
+    let token = this.parseToken();
+    this.fetchDataSubscription = this.ysgService.fetchData(token, userId)
+      .subscribe(
+        (response) => {
+          if (response.data[7] !== undefined && response.data[7] !== null && response.data[7].data !== null && response.data[7].data !== undefined) {
+            if (response.data[7].data.charity === 1 && response.data[7].data.individual === 1) {
+              this.showIndividualAndCharity = true;
+            } else if (response.data[7].data.charity === 1 && response.data[7].data.individual === 0) {
+              this.showIndividualAndCharity = false;
+              this.isCharity = true;
+              this.isIndividual = false;
+              if (!this.isEdit) {
+                this.cashGiftForm.get('gift_to').clearValidators();
+                this.cashGiftForm.get('gift_to').updateValueAndValidity();
+                this.setCharityValidation();
+              }
+            } else if (response.data[7].data.charity === 0 && response.data[7].data.individual === 1) {
+              this.showIndividualAndCharity = false;
+              this.isCharity = false;
+              this.isIndividual = true;
+              if (!this.isEdit) {
+                this.cashGiftForm.get('gift_to').clearValidators();
+                this.cashGiftForm.get('gift_to').updateValueAndValidity();
+                this.setIndividualValidation();
+              }
+            }
+          } else {
+            this.showIndividualAndCharity = true;
+          }
+        }, (error) => { console.log(error); }, () => { this.loading = false; });
+  }
+
+  /**Checks for authorization user id.*/
+  parseUserId() {
+    if (JSON.parse(localStorage.getItem('loggedInUser')).hasOwnProperty('user')) {
+      return JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    }
+    return null;
+  }
+
+  /**Checks for authorization user id.*/
+  parseToken() {
+    if (JSON.parse(localStorage.getItem('loggedInUser')).hasOwnProperty('token')) {
+      return JSON.parse(localStorage.getItem('loggedInUser')).token;
+    }
+    return null;
+  }
+
  /**When the component is intialised*/
   ngOnInit() {
     this.isIndividual = false;
@@ -122,23 +177,29 @@ export class CashGiftComponent implements OnInit, OnDestroy {
   saveCashGift(fd): void {
     if (this.cashGiftForm.valid) {
       if (this.access_token) {
-        if (fd.gift_to === 'IN') {
+        if ((this.showIndividualAndCharity && fd.gift_to === 'IN') || (!this.showIndividualAndCharity && this.isIndividual)) {
           // individual
           fd.individualControls[0].gift_to = fd.gift_to;
           if (this.isEdit) {
-            this.cashGiftDataSet = {'id': this.editService.getData().id, 'step': 7, 'user_id': this.myUserId, 'giftType': 1, 'giftData': fd.individualControls};
+            fd.individualControls[0].gift_to = this.showIndividualAndCharity ? fd.individualControls[0].gift_to : 'IN';
+            this.cashGiftDataSet = {'id': this.editService.getData().id, 'step': 7, 'user_id': this.myUserId, 'individual': this.isIndividual ? 1 : 0, 'charity': this.isCharity ? 1 : 0,  'giftType': 1, 'giftData': fd.individualControls};
           } else {
-            this.cashGiftDataSet = {'step': 7, 'user_id': this.myUserId, 'giftType': 1, 'giftData': fd.individualControls};
+            fd.individualControls[0].gift_to = this.showIndividualAndCharity ? fd.individualControls[0].gift_to : 'IN';
+            this.cashGiftDataSet = {'step': 7, 'user_id': this.myUserId, 'individual': this.isIndividual ? 1 : 0, 'charity': this.isCharity ? 1 : 0,  'giftType': 1, 'giftData': fd.individualControls};
           }
-        } else {
+          console.log(this.cashGiftDataSet);
+        } else if ((this.showIndividualAndCharity && fd.gift_to === 'CH') || (!this.showIndividualAndCharity && this.isCharity)) {
           // charity
           fd.charityControls[0].gift_to = fd.gift_to;
           if (this.isEdit) {
-            this.cashGiftDataSet = {'id': this.editService.getData().id, 'step': 7, 'user_id': this.myUserId, 'giftType': 1 , 'giftData': fd.charityControls};
+            fd.charityControls[0].gift_to = this.showIndividualAndCharity ? fd.charityControls[0].gift_to : 'CH';
+            this.cashGiftDataSet = {'id': this.editService.getData().id, 'step': 7, 'user_id': this.myUserId, 'giftType': 1 , 'individual': this.isIndividual ? 1 : 0, 'charity': this.isCharity ? 1 : 0,  'giftData': fd.charityControls};
           } else {
-            this.cashGiftDataSet = {'step': 7, 'user_id': this.myUserId, 'giftType': 1 , 'giftData': fd.charityControls};
+            fd.charityControls[0].gift_to = this.showIndividualAndCharity ? fd.charityControls[0].gift_to : 'CH';
+            this.cashGiftDataSet = {'step': 7, 'user_id': this.myUserId, 'giftType': 1 , 'individual': this.isIndividual ? 1 : 0, 'charity': this.isCharity ? 1 : 0,  'giftData': fd.charityControls};
           }
         }
+        console.log(this.cashGiftForm);
         if (this.isEdit) {
           this.saveCashGiftDB = this.ysgService.updateGift(this.access_token, this.cashGiftDataSet);
         } else {

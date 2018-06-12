@@ -12,11 +12,11 @@
 
 <div class="" *ngIf="!loading">
   <div class="main-content tellusaboutyou">
-    <h2>Would You Like to Make a Gift to an Individual or Charity?
-      <app-global-tooltip (click)="toolTipClicked('gift')" [tooltipMessages]='toolTipMessageList.gift' toolTipType="gift"></app-global-tooltip>
-    </h2>
-    <form [formGroup]="giftFormStepOne" (ngSubmit)="makeSpecificGift(giftFormStepOne)">
-      <h2>Would you like to make specific gift to an individual?</h2>
+    <form [formGroup]="giftFormStepOne">
+      <h2>
+        Would you like to make specific gift to an individual?
+        <app-global-tooltip (click)="toolTipClicked('gift')" [tooltipMessages]='toolTipMessageList.gift' toolTipType="gift"></app-global-tooltip>
+      </h2>
       <div class="form-group">
         <ul class="radio_ul6">
           <li>
@@ -52,7 +52,7 @@
       </div>
       <div class="form-footer">
         <button class="btn common-button btn-grey pull-left" (click)="goBack()" >Go Back</button>
-        <button class="btn common-button btn-complete">Continue</button>
+        <button class="btn common-button btn-complete" (click)="makeSpecificGift(giftFormStepOne)">Continue</button>
       </div>
     </form>
   </div>

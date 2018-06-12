@@ -1,4 +1,16 @@
-<div class="main-content tellusaboutyou">
+<div class="pageLoader" *ngIf="loading">
+  <div class="loaderInner">
+    <img src="../../../../assets/images/owl-loading.gif" alt="Loading...">
+    <p class="loadingTxt">
+      Please Wait
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+  </div>
+</div>
+
+<div class="main-content tellusaboutyou"  *ngIf="!loading">
   <div id="gift_list_container">
     <ul id="gift_list">
       <li>
@@ -74,7 +86,7 @@
             </div>
 
 
-            <div class="form-group">
+            <div class="form-group" *ngIf="flags.showIndividualAndCharity">
               <label class="questions">Please confirm this a gift to an Individual or a Charity?</label>
               <ul class="radio_ul4">
                 <li>

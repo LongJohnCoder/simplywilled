@@ -21,12 +21,14 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
   beneficiarySubscription: Subscription;
   passedBySubscription: Subscription;
   passedByChildSubscription: Subscription;
+  fetchDataSubscription: Subscription;
   errors = {
     errorFlag: false,
     errorMsg: ''
   };
   flags = {
     editFlag: false,
+    showIndividualAndCharity: true,
     individualFlag: false,
     charityFlag: false,
     singleBeneficiaryFlag: false,
@@ -44,6 +46,8 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
   formEditDataSet: any;
   giftData = [];
   giftId = 0;
+  loading = true;
+
 
   /**Calls the constructor*/
   constructor (
@@ -51,7 +55,39 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
     private ysgService: YourSpecificGiftService,
     private editService: EditGiftService,
     private ysgComponent: YourSpecificGiftComponent
-  ) { this.createForm(); }
+  ) {
+    this.createForm();
+    let userId = this.parseUserId();
+    let token = this.parseToken();
+    this.fetchDataSubscription = this.ysgService.fetchData(token, userId)
+      .subscribe(
+        (response) => {
+          console.log(response);
+          if (response.data[7] !== undefined && response.data[7] !== null && response.data[7].data !== null && response.data[7].data !== undefined) {
+            if (response.data[7].data.charity === 1 && response.data[7].data.individual === 1) {
+              this.flags.showIndividualAndCharity = true;
+            } else if (response.data[7].data.charity === 1 && response.data[7].data.individual === 0) {
+              this.flags.showIndividualAndCharity = false;
+              this.flags.charityFlag = true;
+              this.flags.individualFlag = false;
+              if (!this.flags.editFlag) {
+                this.clearValidationFor(['gift_to']);
+                this.setValidatorGift('CH');
+              }
+            } else if (response.data[7].data.charity === 0 && response.data[7].data.individual === 1) {
+              this.flags.showIndividualAndCharity = false;
+              this.flags.charityFlag = false;
+              this.flags.individualFlag = true;
+              if (!this.flags.editFlag) {
+                this.clearValidationFor(['gift_to']);
+                this.setValidatorGift('IN');
+              }
+            }
+          } else {
+            this.flags.showIndividualAndCharity = true;
+          }
+      }, (error) => { console.log(error); }, () => { this.loading = false; });
+  }
 
   /**Checks for authorization user id.*/
   parseUserId() {
@@ -97,6 +133,18 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
         this.setValidationPassedByChild(parsedDataSet === null ? '' : parsedDataSet.passed_by_child);
       }
     }
+
+    /*if (!this.flags.editFlag) {
+      if  (!this.flags.showIndividualAndCharity && this.flags.charityFlag && !this.flags.individualFlag) {
+        console.log('here');
+        this.clearValidationFor(['gift_to']);
+        this.setValidatorGift('CH');
+      } else if (!this.flags.showIndividualAndCharity && !this.flags.charityFlag && this.flags.individualFlag ) {
+        console.log('there');
+        this.clearValidationFor(['gift_to']);
+        this.setValidatorGift('IN');
+      }
+    }*/
   }
 
   /**Initialises the form*/
@@ -350,7 +398,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
       let data = this.prepareData();
       this.giftData.push(data);
       if (token) {
-        let cashGiftDataSet = this.flags.editFlag ? {'id': this.giftId, 'step': 7, 'user_id': user, 'giftType': 4, 'giftData': this.giftData} : {'step': 7, 'user_id': user, 'giftType': 4, 'giftData': this.giftData};
+        let cashGiftDataSet = this.flags.editFlag ? {'id': this.giftId, 'step': 7, 'user_id': user, 'giftType': 4,  'individual': this.flags.individualFlag ? 1 : 0, 'charity': this.flags.charityFlag ? 1 : 0,  'giftData': this.giftData} : {'step': 7, 'user_id': user, 'giftType': 4,  'individual': this.flags.individualFlag ? 1 : 0, 'charity': this.flags.charityFlag ? 1 : 0, 'giftData': this.giftData};
         if (this.flags.editFlag) {
           console.log('edit');
           this.editGiftData(token, cashGiftDataSet);
@@ -372,7 +420,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
   /**Prepares the request*/
   prepareData() {
     let data = {
-      beneficiary: this.specificAssetForm.value.gift_to === 'IN' ? this.specificAssetForm.value.beneficiary : '',
+  /*    beneficiary: this.specificAssetForm.value.gift_to === 'IN' ? this.specificAssetForm.value.beneficiary : '',
       full_legal_name: this.specificAssetForm.value.full_legal_name,
       beneficiary_legal_name: this.specificAssetForm.value.gift_to === 'IN' && this.specificAssetForm.value.beneficiary === '_si' ? this.specificAssetForm.value.beneficiary_legal_name : '',
       beneficiary_legal_relation: this.specificAssetForm.value.gift_to === 'IN' && this.specificAssetForm.value.beneficiary === '_si' ? this.specificAssetForm.value.beneficiary_legal_relation : '',
@@ -386,7 +434,22 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
       passed_by_child: this.specificAssetForm.value.gift_to === 'IN' ? this.specificAssetForm.value.passed_by_child : '',
       individual_name: this.specificAssetForm.value.gift_to === 'IN' && (this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se')) ? this.specificAssetForm.value.individual_name : '',
       individual_relationship: this.specificAssetForm.value.gift_to === 'IN' && (this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se')) ? this.specificAssetForm.value.individual_relationship : '',
-      individual_relationship_other: this.specificAssetForm.value.gift_to === 'IN' && (this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se')) ? this.specificAssetForm.value.individual_relationship_other : '',
+      individual_relationship_other: this.specificAssetForm.value.gift_to === 'IN' && (this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se')) ? this.specificAssetForm.value.individual_relationship_other : '',*/
+      beneficiary: this.specificAssetForm.value.gift_to === 'IN' ? this.specificAssetForm.value.beneficiary : (!this.flags.showIndividualAndCharity && this.flags.individualFlag ? this.specificAssetForm.value.beneficiary : ''),
+      full_legal_name: this.specificAssetForm.value.full_legal_name,
+      beneficiary_legal_name: this.specificAssetForm.value.gift_to === 'IN' && this.specificAssetForm.value.beneficiary === '_si' ? this.specificAssetForm.value.beneficiary_legal_name : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && this.specificAssetForm.value.beneficiary === '_si' ? this.specificAssetForm.value.beneficiary_legal_name : ''),
+      beneficiary_legal_relation: this.specificAssetForm.value.gift_to === 'IN' && this.specificAssetForm.value.beneficiary === '_si' ? this.specificAssetForm.value.beneficiary_legal_relation : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && this.specificAssetForm.value.beneficiary === '_si' ? this.specificAssetForm.value.beneficiary_legal_relation : ''),
+      beneficiary_legal_relation_other: this.specificAssetForm.value.gift_to === 'IN' && this.specificAssetForm.value.beneficiary === '_si' ? this.specificAssetForm.value.beneficiary_legal_relation_other : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && this.specificAssetForm.value.beneficiary === '_si' ? this.specificAssetForm.value.beneficiary_legal_relation_other : ''),
+      gender: this.specificAssetForm.value.gift_to === 'IN' && this.specificAssetForm.value.beneficiary === '_si' ? this.specificAssetForm.value.gender : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && this.specificAssetForm.value.beneficiary === '_si' ? this.specificAssetForm.value.gender : 'Male'),
+      gift_to: this.flags.showIndividualAndCharity ? this.specificAssetForm.value.gift_to : (!this.flags.showIndividualAndCharity && this.flags.charityFlag ? 'CH' : 'IN'),
+      multiple_beneficiaries: this.specificAssetForm.value.gift_to === 'IN' && this.specificAssetForm.value.beneficiary === '_mu' ? this.specificAssetForm.value.multiple_beneficiaries : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && this.specificAssetForm.value.beneficiary === '_mu' ? this.specificAssetForm.value.multiple_beneficiaries : []),
+      organization_address: this.specificAssetForm.value.gift_to === 'CH' ? this.specificAssetForm.value.organization_address : (!this.flags.showIndividualAndCharity && this.flags.charityFlag ? this.specificAssetForm.value.organization_address : ''),
+      organization_name: this.specificAssetForm.value.gift_to === 'CH' ? this.specificAssetForm.value.organization_name : (!this.flags.showIndividualAndCharity && this.flags.charityFlag ? this.specificAssetForm.value.organization_name : ''),
+      passed_by: this.specificAssetForm.value.gift_to === 'IN' ? this.specificAssetForm.value.passed_by : (!this.flags.showIndividualAndCharity && this.flags.individualFlag ? this.specificAssetForm.value.passed_by : ''),
+      passed_by_child: this.specificAssetForm.value.gift_to === 'IN' ? this.specificAssetForm.value.passed_by_child : (!this.flags.showIndividualAndCharity && this.flags.individualFlag ? this.specificAssetForm.value.passed_by_child : ''),
+      individual_name: this.specificAssetForm.value.gift_to === 'IN' && (this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se')) ? this.specificAssetForm.value.individual_name : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && (this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se')) ? this.specificAssetForm.value.individual_name : ''),
+      individual_relationship: this.specificAssetForm.value.gift_to === 'IN' && (this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se')) ? this.specificAssetForm.value.individual_relationship : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && (this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se')) ? this.specificAssetForm.value.individual_relationship  : ''),
+      individual_relationship_other: this.specificAssetForm.value.gift_to === 'IN' && (this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se')) ? this.specificAssetForm.value.individual_relationship_other : (!this.flags.showIndividualAndCharity && this.flags.individualFlag && (this.specificAssetForm.value.passed_by === '_se' || (this.specificAssetForm.value.passed_by === '_tti' && this.specificAssetForm.value.passed_by_child === '_se')) ? this.specificAssetForm.value.individual_relationship_other : ''),
     };
     return data;
   }
@@ -494,6 +557,9 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
     }
     if (this.passedByChildSubscription !== undefined) {
       this.passedByChildSubscription .unsubscribe();
+    }
+    if (this.fetchDataSubscription !== undefined) {
+      this.fetchDataSubscription.unsubscribe();
     }
   }
 
