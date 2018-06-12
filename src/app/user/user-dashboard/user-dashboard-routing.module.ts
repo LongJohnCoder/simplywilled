@@ -116,6 +116,11 @@ const routes: Routes = [
                     canActivate: [UserPaidGuard],
                 loadChildren: './packages/packages.module#PackagesModule'
             },
+            // {
+            //     path: 'doc1',
+            //     canActivate: [UserPaidGuard],
+            //     loadChildren: './user-dashboard/doc/tuay-pdf/tuay-pdf.module#TuayPdfModule'
+            // }
         ]
     },
 

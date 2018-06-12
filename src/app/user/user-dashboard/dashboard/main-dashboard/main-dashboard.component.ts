@@ -84,6 +84,11 @@ export class MainDashboardComponent implements OnInit, OnDestroy {
      );
   }
 
+  toTuayPdf(e: any) {
+    e.stopPropagation();
+    console.log('comes here');
+  }
+
   /**Sets the progress count**/
   setProgress(progressBar: Object, count = 0) {
     if (this.progressBar.finalArrangements) {

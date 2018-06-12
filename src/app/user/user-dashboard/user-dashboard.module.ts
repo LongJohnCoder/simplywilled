@@ -10,6 +10,7 @@ import {ProgressbarService} from './shared/services/progressbar.service';
 import {ReferFriendService} from './shared/services/referFriend.service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { GlobalTooltipModule } from './global-tooltip/global-tooltip.module';
+import { TuayPdfComponent } from './doc/tuay-pdf/tuay-pdf.component';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { GlobalTooltipModule } from './global-tooltip/global-tooltip.module';
     ReactiveFormsModule,
     //GlobalTooltipModule
   ],
-  declarations: [DashboardComponent, MainDashboardComponent
+  declarations: [DashboardComponent, MainDashboardComponent, TuayPdfComponent
   ],
     providers: [
         UserPaidGuard, UserUnPaidGuard, ProgressbarService, ReferFriendService

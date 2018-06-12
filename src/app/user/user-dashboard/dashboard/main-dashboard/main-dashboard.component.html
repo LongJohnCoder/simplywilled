@@ -14,7 +14,7 @@
   <h2>{{step1Data?.data?.userInfo?.fullname}}'s Dashboard</h2>
   <p><strong>Instructions:</strong> Complete our simple interview process to <br> protect your assets and provide for your loved ones.</p>
   <ul class="single_ul">
-    <li>
+    <li><button (click)="toTuayPdf($event)" class="btn common-button btn-info">View PDF</button>
       <a routerLink="/dashboard/will">
         <div class="tell_us_about_left">
           <span class="woman_img"><img src="../../../../assets/images/female-green.png" alt="Tell Us About You"></span>
@@ -22,8 +22,8 @@
             <span class="tell_us_text">Tell Us About You</span>
             <span class="inherit_properties">Tell Us about you, appoint a guardian for your kids.</span>
           </div>
-
         </div>
+        
         <button class="btn common-button btn-complete">{{progressBar.tellUsAboutYou ? 'Complete' : 'In progress'}}</button>
         <!--<button class="btn common-button btn-complete"
                 *ngIf="step1Data?.data?.userInfo?.is_complete">In progress</button>-->
