@@ -10,7 +10,7 @@
   </div>
 </div>
 
-<div class="main-content tellusaboutyou" style="width: 860px" *ngIf="!loading">
+<div class="main-content tellusaboutyou" *ngIf="!loading">
   <h2>Your Pets</h2>
   <form [formGroup] = "petsForm">
 
@@ -45,21 +45,30 @@
     <!-- Form Group -->
 
     <div class="form-group" *ngIf="petsForm.get('providePetsWill').value === 'Yes'">
-      <label>Please provide the type of pet and the pet’s name in the box provided.</label>
-      <div formArrayName="petsName" *ngFor="let item of petsForm.get('petsName').controls; let i = index;">
-        <div class="row form-group allChild" [formGroupName]="i">
-          <div class="col-lg-10">
+      <div class="colFormHeading">
+        <label>Please provide the type of pet and the pet’s name in the box provided.</label>
+      </div>
+
+      <div class="formRow" formArrayName="petsName" *ngFor="let item of petsForm.get('petsName').controls; let i = index;">
+        <div class="allChild" [formGroupName]="i">
+          <div class="threeColField">
             <input type="text" class="form-control" formControlName="petName" required placeholder="eg my dog, Bingo">
           </div>
-          <div class="col-lg-2" *ngIf="i > 0">
-            <a class="btn btn-danger" (click)="removeNewPetName(i)"><i class="fa fa-trash"></i></a>
+          <div class="delBtnContainer" *ngIf="i > 0">
+            <!--<a class="btn btn-danger" ><i class="fa fa-trash"></i></a>-->
+            <button (click)="removeNewPetName(i)" type="button" class="btn btn btn-danger delRow"><i class="fa fa-trash"></i></button>
           </div>
         </div>
       </div>
-
-      <div class="form-group">
-          <button class="btn btn-info" (click)="addNewPetName()">Add pet</button>
+      <div class="formRow addRowBtn">
+        <button type="button" class="btn btn btn-primary addRow" (click)="addNewPetName()">+</button>
       </div>
+      <div class="clear"></div>
+
+      <!--<div class="form-group">
+          <button class="btn btn-info" (click)="addNewPetName()">Add pet</button>
+
+      </div>-->
       <div class="form-group">
           <span class="error_txt" *ngIf="flags.setValidationFlag">
             Please fill up all the fields.
