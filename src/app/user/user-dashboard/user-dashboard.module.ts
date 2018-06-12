@@ -21,7 +21,7 @@ import { TuayPdfComponent } from './doc/tuay-pdf/tuay-pdf.component';
     ReactiveFormsModule,
     //GlobalTooltipModule
   ],
-  declarations: [DashboardComponent, MainDashboardComponent, TuayPdfComponent
+  declarations: [DashboardComponent, MainDashboardComponent
   ],
     providers: [
         UserPaidGuard, UserUnPaidGuard, ProgressbarService, ReferFriendService

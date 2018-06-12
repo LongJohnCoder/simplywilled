@@ -5,8 +5,8 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-payment-page',
-  templateUrl: './payment-page.component.html?v=${new Date().getTime()',
-  styleUrls: ['./payment-page.component.css?v=${new Date().getTime()}']
+  templateUrl: './payment-page.component.html',
+  styleUrls: ['./payment-page.component.css']
 })
 export class PaymentPageComponent implements OnInit  {
 
