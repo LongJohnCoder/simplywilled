@@ -233,7 +233,7 @@
             <div class="col-lg-6">
               <div class="cardLogo"><span class={{cardtype}}></span></div>
               <input type="text" class="form-control cardNumber" placeholder="Card Number"
-                     [(ngModel)]="data.cardNumber" ngModel #cardNumber="ngModel" name="cardNumber" mask="0000-0000-0000-0000"
+                     [(ngModel)]="data.cardNumber" ngModel #cardNumber="ngModel" name="cardNumber" mask="0000 0000 0000 0000"
                      pattern="^\d{16}$"
                      required #cardNum (keyup)="GetCardType(cardNum)">
               <span class="error_txt" *ngIf="cardNumber.invalid && cardNumber.touched || cardNumber.hasError('pattern')">

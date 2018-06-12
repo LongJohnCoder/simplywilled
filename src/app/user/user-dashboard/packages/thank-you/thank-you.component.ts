@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 export class ThankYouComponent implements OnInit {
   @Input() data: any;
     countDown;
-    count = 20;
+    count = 10;
     timerSubscription: Subscription;
   constructor(
       private router: Router

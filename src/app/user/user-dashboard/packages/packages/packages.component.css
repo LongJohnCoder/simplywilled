@@ -249,6 +249,13 @@ span.bestValue img {
   padding-left: 15px;
 }
 
+.couponresp_valid{
+    color: green;
+}
+.couponresp_invalid{
+    color: red;
+}
+
 @media screen and (max-width: 1200px){
     .get_start_pkg_btn {
         margin: 25px 0 25px 50%;

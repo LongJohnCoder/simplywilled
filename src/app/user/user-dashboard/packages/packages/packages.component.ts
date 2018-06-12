@@ -21,6 +21,7 @@ export class PackagesComponent implements OnInit {
   paymentData: any;
   couponInfo: any;
   paymentPageDisplay: boolean;
+  couponRespType: boolean;
   constructor(
       private packageService: PackagesService,
       private modalService: BsModalService,
@@ -84,11 +85,13 @@ export class PackagesComponent implements OnInit {
         this.packageService.applyCoupon(couponReq).subscribe(
         (resp: any) => {
             this.respMsg = resp.message;
+            this.couponRespType = true;
             this.couponInfo = resp.data.coupon;
             this.discountAmount = resp.data.savedAmount;
             this.totalAmount = this.data.amount - this.discountAmount;
         }, (error: any) => {
             this.respMsg = error.error.message;
+            this.couponRespType = false;
             this.couponInfo = null;
             this.discountAmount = 0.00;
             this.totalAmount = this.data.amount - this.discountAmount;

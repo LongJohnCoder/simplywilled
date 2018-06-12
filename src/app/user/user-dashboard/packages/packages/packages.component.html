@@ -30,7 +30,7 @@
             </div>
             <div class="clear"></div>
 
-            <p class="payPal"><span>Shop With Confidence Powered by</span> <a  routerLink="/dashboard/packages/payment/{{data.id}}"><img src="../../../../assets/images/paypal-btn.png" class="img-responsive"></a></p>
+            <p class="payPal"><span>Shop With Confidence Powered by</span> <a><img src="../../../../assets/images/paypal-btn.png" class="img-responsive"></a></p>
           </div>
 
           <div class="hide_show_main_pkg" [ngClass]="{'open': whatIncl}">
@@ -75,7 +75,7 @@
           <button type="submit" class="promoSubmit" (click)="checkCoupon()" [disabled]="!couponToken">Submit</button>
         </div>
         <div class="">
-          <span>{{respMsg}}</span>
+          <span [ngStyle]="{'color': couponRespType ? 'green' : 'red'}">{{respMsg}}</span>
         </div>
       </div>
       <button (click)="paymentPage()" class="get_start_pkg_btn">Agree and Checkout <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
