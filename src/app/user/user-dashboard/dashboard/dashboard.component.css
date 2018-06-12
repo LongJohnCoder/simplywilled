@@ -203,11 +203,11 @@ header{
     -webkit-box-shadow: 0 1px 1px 0 #ddd;
     -moz-box-shadow: 0 1px 1px 0 #ddd;
     width: 90%;
-    padding: 25px 14px 20px;
+    padding: 25px 14px 10px;
     text-align: center;
     margin: 50px 0 0;
     position: relative;
-  background: #fff;
+  background: #f9f9f9;
 }
 .notification p{
     font-size: 18px;
@@ -245,12 +245,23 @@ header{
   padding-top: 5px;
 }
 .email-box {
-  margin-top: 20px;
+  margin-top: -8px;
   position: relative;
+}
+.notification h2{
+  font-size: 18px;
+  margin: 22px 0;
+  color: #2479B8;
+  font-family: 'OpenSans-Semibold';
+  cursor: pointer;
+}
+.email-box .form-control{
+  font-size: 14px;
 }
 .email-box.valid .form-control{
   border-color: #42A82D;
   color: #42A82D;
+  font-size: 14px;
 }
 .email-box.invalid .form-control{
   border-color: #ff5959;
@@ -262,7 +273,9 @@ header{
   cursor: pointer;
   border-radius: 5px;
   padding: 8px 10px 5px;
+  width: 100%;
   border-bottom: 4px solid #308f26;
+  margin-top: -6px;
 }
 .email-box.valid i {
   position: absolute;
@@ -630,12 +643,12 @@ header{
     border-color: #42A82D;
     color: #42A82D;
 }
-.main-content .valid 322i{
-    position: absolut322e;
-    top: 44px;322
-    right: 44px;322
-    background: #42A83222D;
-    color: #fff;322
+.main-content .valid i{
+    position: absolute;
+    top: 44px;
+    right: 44px;
+    background: #42A82D;
+    color: #fff;
     height: 22px;
     width: 22px;
     text-align: center;
@@ -706,9 +719,8 @@ header{
     left: 50%;
     top: 50%;
     font-size: 16px;
-}322
-.322_page_radio li{
- 322
+}
+.page_radio li{
     margin-right: 5px;
     margin-left: 0;
     display: inline-block;

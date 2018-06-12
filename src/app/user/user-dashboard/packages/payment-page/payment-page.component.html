@@ -339,9 +339,11 @@
   </ng-template>
 </div>
 
-<div class="col-xs-12" *ngIf="respType && !thankYou">
-    <!--<div class="main-content tellusaboutyou" >-->
-        <h2>{{respMsg}}</h2>
+<div class="main-content paymentSuccess failed" *ngIf="respType && !thankYou">
+    <!--<div class="main-content tellusaboutyou">-->
+  <div class="failedIconBox"><div class="failedIcon" [ngClass]="{'animate' : addAnimate }"><span></span><span></span></div></div>
+        <h2>Payment Failed!</h2>
+        <p>{{respMsg}}</p>
     <!--</div>-->
 </div>
 

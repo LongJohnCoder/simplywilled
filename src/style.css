@@ -2768,6 +2768,9 @@ select.form-control{
 }
 .tooltipContainer dl.open dd{
   display: block;
+  text-transform: none;
+  color: #373737;
+  line-height: 18px;
 }
 .tooltipContainer dl.open dt span i:before{
   content: "\f147";

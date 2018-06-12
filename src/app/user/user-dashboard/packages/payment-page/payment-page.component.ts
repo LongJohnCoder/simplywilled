@@ -5,11 +5,16 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-payment-page',
-  templateUrl: './payment-page.component.html',
-  styleUrls: ['./payment-page.component.css']
+  templateUrl: './payment-page.component.html?v=${new Date().getTime()',
+  styleUrls: ['./payment-page.component.css?v=${new Date().getTime()}']
 })
-export class PaymentPageComponent implements OnInit {
+export class PaymentPageComponent implements OnInit  {
 
+  // headers = new Headers({
+  //   'Cache-Control': 'no-cache',
+  //   'Pragma': 'no-cache',
+  //   'Expires': 'Sat, 01 Jan 2000 00:00:00 GMT'
+  // });
   @Input() paymentData: any;
     respType: boolean;
     respMsg: string;
@@ -19,6 +24,7 @@ export class PaymentPageComponent implements OnInit {
     paymentMethod: string;
     loader: boolean;
     thankYou: boolean;
+    addAnimate: boolean;
     public modalRef: BsModalRef;
 
     constructor(
@@ -51,7 +57,7 @@ export class PaymentPageComponent implements OnInit {
           'cvv': ''
       };
       this.loader = false;
-
+      this.addAnimate = false;
   }
 
     public openModal(template:  TemplateRef<any>, index){
@@ -181,8 +187,19 @@ export class PaymentPageComponent implements OnInit {
                     // setTimeout(function () {
                     //     location.reload();
                     // }, 4000);
+                    // setTimeout(function () {
+                    //   this.addAnimate = true;
+                    //  }, 2000);
+
                 }
             );
+        }
+        console.log(this.thankYou);
+        if(!this.thankYou){
+          const an = this;
+          setTimeout(function () {
+            an.addAnimate = true;
+           }, 3000);
         }
 
 

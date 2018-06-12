@@ -71,24 +71,24 @@
                     <div class="notification">
                         <span class="imp" (click)="toggleShowDiv()" ><img src="../../../../assets/images/owl.png"></span>
                         <!--<p [@fadeInOut]="fadeState">They’ll be notified via e-mail at the address you provided.</p>-->
-                      <p [ngClass]="{'show' : animationState === 'out'}">Refer A Friend</p>
+                      <h2 (click)="toggleShowDiv()">Refer A Friend</h2>
                         <div [@slideInOut]="animationState">
                             <form [formGroup] = "referAFriendForm">
                               <div class="form-group">
                                 <div class="email-box" [ngClass]="{'valid':referAFriendForm.get('firstname').valid, 'invalid': !referAFriendForm.get('firstname').valid && referAFriendForm.get('firstname').touched}">
-                                  <input type="text" placeholder="Enter First Name" class="form-control" formControlName="firstname">
+                                  <input type="text" placeholder="First Name" class="form-control" formControlName="firstname">
                                 </div>
                               </div>
 
                               <div class="form-group">
                                 <div class="email-box" [ngClass]="{'valid':referAFriendForm.get('lastname').valid, 'invalid': !referAFriendForm.get('lastname').valid && referAFriendForm.get('lastname').touched}">
-                                  <input type="text" placeholder="Enter Last Name" class="form-control" formControlName="lastname">
+                                  <input type="text" placeholder="Last Name" class="form-control" formControlName="lastname">
                                 </div>
                               </div>
 
                               <div class="form-group">
                                 <div class="email-box" [ngClass]="{'valid':referAFriendForm.get('email').valid, 'invalid': !referAFriendForm.get('email').valid && referAFriendForm.get('email').touched}">
-                                  <input type="email" placeholder="Enter Email Address" class="form-control" formControlName="email">
+                                  <input type="email" placeholder="Email Address" class="form-control" formControlName="email">
                                 </div>
                               </div>
 
@@ -98,7 +98,7 @@
                               <span class="error_msg" *ngIf="message.errorMessage !== ''">
                                 {{message.errorMessage}}
                                 </span>
-                              <button type="button" class="btn common-button complete" (click)="sendMail()" [disabled]="referAFriendForm.invalid || loading">Refer a friend</button>
+                              <button type="button" class="btn common-button complete" (click)="sendMail()" [disabled]="referAFriendForm.invalid || loading">Submit <i class="fa fa-chevron-right"></i></button>
 
                             </form>
                         </div>

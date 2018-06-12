@@ -576,6 +576,73 @@ select.form-control{
     margin-right: -80px;
 }
 
+.guarantee {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.failed h2{
+  font-size: 32px;
+  color: #ec5757;
+}
+.failed p{
+  font-size: 16px;
+  margin: 0;
+  line-height: 24px;
+  color: #373737;
+  padding-top: 25px;
+  font-family: 'OpenSans';
+}
+
+.failedIconBox{
+  width: 140px;
+  height: 140px;
+  margin: 20px auto 40px;
+}
+.failedIcon{
+  width: 0px;
+  height: 0px;
+  border: 8px solid #fff;
+  border-radius: 100px;
+  background: #ec5757;
+  position: relative;
+  margin-top: 0;
+  transition: all 0.5s ease 1s;
+  top: 78px;
+  left: 78px;
+}
+.failedIcon.animate{
+  width: 140px;
+  height: 140px;
+  border: 8px solid #ec5757;
+  background: #fff;
+  top: 0;
+  left: 0;
+}
+.failedIcon span{
+  position: absolute;
+  width: 90px;
+  height: 8px;
+  background: #ec5757;
+  top: 58px;
+  left: 18px;
+  transform: rotate(0deg);
+  opacity: 0;
+  transition: opacity 0.5s ease 1.5s, transform 0.4s ease 2s;
+}
+.failedIcon span:last-child{
+  transition: opacity 0.5s ease 1.5s, transform 1s ease 2s;
+}
+.failedIcon.animate span{
+  transform: rotate(45deg);
+  background: #ec5757;
+  opacity: 1;
+}
+.failedIcon.animate span:last-child{
+  transform: rotate(135deg);
+  background: #ec5757;
+}
+
 @media screen and (max-width:1199px){
     .main-content.tellusaboutyou{
         width: 720px;
