@@ -787,16 +787,19 @@ h1, h2, h3, h4, h5, h6 {
 .radio_ul4 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
   margin-bottom: 45px;
 }
 .radio_ul4 li {
-  width: 150px;
+  width: auto;
   display: inline-block;
-  margin-left: 30px;
+  margin-left: 10px;
 }
 .radio_ul4 li:first-child {
   margin-left: 0px;
+}
+.mf{
+  padding: 30px;
 }
 .family_radio {
   padding: 30px 0px 30px 0px;
@@ -1203,7 +1206,7 @@ h1, h2, h3, h4, h5, h6 {
 .full_legal_name2 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
   color: #393939;
   font-size: 20px;
   padding: 10px 0px 30px 0px;
@@ -1211,12 +1214,13 @@ h1, h2, h3, h4, h5, h6 {
 .radio_ul6 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
+  margin-bottom: 30px;
 }
 .radio_ul6 li {
-  width: 190px;
+  width: auto;
   display: inline-block;
-  margin-left: 30px;
+  margin-left: 10px;
 }
 .radio_ul6 li:first-child {
   margin-left: 0px;
@@ -1258,12 +1262,12 @@ h1, h2, h3, h4, h5, h6 {
 .radio_ul7 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
 }
 .radio_ul7 li {
-  width: 150px;
+  width: auto;
   display: inline-block;
-  margin-left: 30px;
+  margin-left: 10px;
 }
 .radio_ul7 li:first-child {
   margin-left: 0px;
@@ -4003,7 +4007,6 @@ input[disabled] {
   }
   .singing_instruction {
     font-size: 20px;
-    padding: 20px 0px;
   }
   .name_your_child {
     font-size: 18px;
@@ -4220,7 +4223,6 @@ input[disabled] {
   }
   .radio_ul4 li {
     width: 100%;
-    margin-left: 0px;
     margin-bottom: 10px;
   }
   .full_legal_name2 {
@@ -4420,7 +4422,9 @@ input[disabled] {
     width: 105px;
   }
 
-
+  .radio_ul4 li{
+    margin-left: 0;
+  }
 
 
 

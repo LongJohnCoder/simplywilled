@@ -31,7 +31,7 @@
             </div>
 
             <div class="form-group">
-              <h3 class="registered_domestic2 blue_font">Is this a gift to an Individual(s) or Charity?</h3>
+              <h3 class="questions">Is this a gift to an Individual(s) or Charity?</h3>
               <ul class="radio_ul4">
                 <li>
                   <label class="radio_custom zero_nine_page"  [ngClass]="{'active': flags.individualFlag}">
@@ -70,7 +70,7 @@
             <div class="gift_individual_container" *ngIf="flags.individualFlag">
 
               <div class="form-group">
-                <h3 class="registered_domestic2 blue_font">Who would you like to leave this gift to in your will?</h3>
+                <h3 class="questions">Who would you like to leave this gift to in your will?</h3>
                 <ul class="radio_ul4">
                   <li>
                     <label class="radio_custom zero_nine_page"  [ngClass]="{'active': flags.singleBeneficiaryFlag}">
@@ -124,19 +124,19 @@
                         </select>
                       </span>
                   <input type="text" class="legal_benifit_input capitalize_txt" formControlName="beneficiary_legal_relation_other" placeholder="Type Here Relationship" *ngIf="specificAssetForm.get('beneficiary_legal_relation').value === 'Other'">
-                  <h2 class="full_legal_name2">Beneficiary's gender?</h2>
+                  <h2 class="questions">Beneficiary's gender?</h2>
                   <ul class="radio_ul6">
                     <li>
                       <label class="radio_custom" [ngClass]="{'active': flags.maleFlag}">
                         <input type="radio" formControlName="gender" value="Male" #radioMale (click)="changeMaleOrFemale(radioMale.value)">
-                        <span class="custom_img"><img src="../../../../../assets/images/john.png" alt="Male"></span>
-                        <span class="human_status">Male</span> </label>
+                        <!--<span class="custom_img"><img src="../../../../../assets/images/john.png" alt="Male"></span>-->
+                        <span class="human_status mf">Male</span> </label>
                     </li>
                     <li>
                       <label class="radio_custom" [ngClass]="{'active': flags.femaleFlag}">
                         <input type="radio" formControlName="gender" #radioFemale value="Female" (click)="changeMaleOrFemale(radioFemale.value)">
-                        <span class="custom_img"><img src="../../../../../assets/images/leza.png" alt="Female"></span>
-                        <span class="human_status"> Female</span> </label>
+                        <!--<span class="custom_img"><img src="../../../../../assets/images/leza.png" alt="Female"></span>-->
+                        <span class="human_status mf"> Female</span> </label>
                     </li>
                   </ul>
                 </div>
@@ -195,7 +195,7 @@
                 </div>
 
                 <div class="distributeBusiness" *ngIf="flags.singleBeneficiaryFlag || flags.multipleBeneficiaryFlag">
-                  <h2 class="beneficiary_predeceases blue_font">How should your business interest be distributed if the beneficiary passes before you?</h2>
+                  <h2 class="questions">How should your business interest be distributed if the beneficiary passes before you?</h2>
                   <ul class="residue_ul_Radio2 singleBen">
                     <li *ngIf="flags.multipleBeneficiaryFlag">
                       <label class="radio_custom property_to_be_distributed " [ngClass]="{'active': flags.survivingGiftBeneficiariesFlag}">
@@ -227,7 +227,7 @@
                   </span>
 
                   <div class="totheirIssue" *ngIf="flags.toTheirIssueFlag">
-                    <h2 class="legal_name_benifets smallHeading">You still need another choice in the event no issue survives the beneficiary.</h2>
+                    <h2 class="questions">You still need another choice in the event no issue survives the beneficiary.</h2>
                     <ul class="radio_ul8">
                       <li>
                         <label class="radio_custom property_to_be_distributed" [ngClass]="{'active': flags.residueEstateChildFlag}">

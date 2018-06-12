@@ -726,7 +726,7 @@ h1, h2, h3, h4, h5, h6 {
 .radio_ul3 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
   margin-bottom: 40px;
 }
 .radio_ul3 li {
@@ -800,16 +800,22 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: 10px;
 }
 /**************end drop down******************/
+.yn {
+  padding: 18px 0 0;
+}
+.mf{
+  padding: 30px 0 0;
+}
 .radio_ul4 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
   margin-bottom: 45px;
 }
 .radio_ul4 li {
-  width: 150px;
+  width: auto;
   display: inline-block;
-  margin-left: 30px;
+  margin-left: 10px;
 }
 .radio_ul4 li:first-child {
   margin-left: 0px;
@@ -1110,11 +1116,11 @@ h1, h2, h3, h4, h5, h6 {
 .singing_instruction3 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
   color: #2479B8;
   font-size: 30px;
   font-family: 'OpenSans';
-  padding: 20px 0px;
+  padding: 0 0 20px;
 }
 .registered_domestic2 {
   width: 100%;
@@ -1219,20 +1225,21 @@ h1, h2, h3, h4, h5, h6 {
 .full_legal_name2 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
   color: #393939;
   font-size: 20px;
   padding: 10px 0px 30px 0px;
+  margin-top: 35px;
 }
 .radio_ul6 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
 }
 .radio_ul6 li {
-  width: 190px;
+  width: auto;
   display: inline-block;
-  margin-left: 30px;
+  margin-left: 10px;
 }
 .radio_ul6 li:first-child {
   margin-left: 0px;
@@ -1345,21 +1352,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 .property_to_be_distributed {
   padding: 15px 0px 10px 0px;
-  min-height: 189px;
+  min-height: 140px;
 }
 .radio_ul8 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
   margin-bottom: 40px;
+  margin-top: 14px;
 }
 .radio_ul8 li {
-  width: 150px;
+  width: auto;
   display: inline-block;
-  margin-left: 30px;
+  margin-left: 10px;
 }
 .radio_ul8 li:first-child {
   margin-left: 0px;
+}
+.toSomeOneElse{
+  margin-bottom: 40px;
 }
 .custom_img5 {
   width: 100%;
@@ -1605,16 +1616,15 @@ h1, h2, h3, h4, h5, h6 {
 .residue_ul_Radio2 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
+  margin-bottom: 40px;
 }
 .residue_ul_Radio2 li {
-  width: 145px;
+  width: auto;
   display: inline-block;
-  margin-left: 15px;
+  margin-left: 10px;
 }
-.residue_ul_Radio2 li:nth-child(4n+1) {
-  margin-left: 0px;
-}
+
 .relation_banefits_radio {
   padding: 10px 0px 5px 0px;
 }
@@ -3281,7 +3291,7 @@ input[disabled] {
   color: #246392;
   font-size: 30px;
   font-family: 'OpenSans';
-  text-align:center;
+  text-align: left;
 }
 
 .download_print_btn{
@@ -3447,12 +3457,6 @@ select.form-control{
 }
 
 /************responsive***************/
-@media only screen and (min-width: 1251px) and (max-width: 1350px) {
-  .residue_ul_Radio2 li {
-    width: 130px;
-    margin-left: 10px;
-  }
-}
 @media only screen and (min-width: 961px) and (max-width: 1250px) {
   .left_Sec_page_ul li a {
     padding: 10px 0px 10px 10px;
@@ -3481,10 +3485,6 @@ select.form-control{
   }
   .ask_owl_main:before, .ask_owl_main:after {
     width: 32%;
-  }
-  .residue_ul_Radio2 li {
-    width: 120px;
-    margin-left: 5px;
   }
   .single_right {
     width: 87%;
@@ -3637,10 +3637,6 @@ select.form-control{
   }
   .checkbox_pera {
     width: 90%;
-  }
-  .residue_ul_Radio2 li {
-    width: 100px;
-    margin-left: 5px;
   }
   .relation_ship_text {
     font-size: 13px;
@@ -3915,10 +3911,6 @@ select.form-control{
   .full_legal_name {
     padding: 20px 0px;
   }
-  .residue_ul_Radio2 li {
-    width: 120px;
-    margin-left: 10px;
-  }
   .distributed_ul {
     margin-bottom: 30px;
   }
@@ -4036,14 +4028,8 @@ select.form-control{
     width: 89%;
   }
   .residue_ul_Radio2 li {
-    width: 48%;
-    margin-left: 4%;
     float: left;
     margin-bottom: 10px;
-  }
-  .residue_ul_Radio2 li:nth-child(2n+1) {
-    margin-left: 0px;
-    clear: left;
   }
   .relation_ship_text {
     font-size: 13px;
@@ -4351,13 +4337,6 @@ select.form-control{
   }
   .checkbox_pera {
     width: 84%;
-  }
-  .residue_ul_Radio2 li {
-    width: 100%;
-    margin-left: 0px;
-  }
-  .residue_ul_Radio2 li:nth-child(4n+1) {
-    margin-left: 0px;
   }
   .divide_remainder_text2 {
     font-size: 18px;

@@ -59,7 +59,7 @@ header{
     text-transform: capitalize;
     height: auto;
     text-shadow: 1px 1px 1px #666;
-    margin-top: 38px;
+    margin-top: 5px;
     font-size: 16px;
     background: none;
     font-family: 'Lato-Regular';
@@ -207,13 +207,22 @@ header{
     text-align: center;
     margin: 50px 0 0;
     position: relative;
+  background: #fff;
 }
 .notification p{
     font-size: 18px;
-    color: #333;
+    color: #373737;
     margin: 0;
     line-height: 22px;
-    margin-top: 19px;
+    margin-top: 0;
+  opacity: 0;
+  font-size: 0;
+  transition: all 0.5s ease 0s;
+}
+.notification p.show{
+  opacity: 1;
+  font-size: 16px;
+  margin-top: 19px;
 }
 .notification span.imp{
     font-family: 'Lato-Regular';

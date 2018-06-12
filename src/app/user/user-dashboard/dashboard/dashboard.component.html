@@ -71,6 +71,7 @@
                     <div class="notification">
                         <span class="imp" (click)="toggleShowDiv()" ><img src="../../../../assets/images/owl.png"></span>
                         <!--<p [@fadeInOut]="fadeState">They’ll be notified via e-mail at the address you provided.</p>-->
+                      <p [ngClass]="{'show' : animationState === 'out'}">Refer A Friend</p>
                         <div [@slideInOut]="animationState">
                             <form [formGroup] = "referAFriendForm">
                               <div class="form-group">

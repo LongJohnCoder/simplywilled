@@ -437,19 +437,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 /*****radio button**********/
 .radio_custom {
-  width: 100%;
+  width: 140px;
   display: inline-block;
-  border: 2px solid #dadada;
+  border: 1px solid #bfbfbf;
   text-align: center;
-  font-family: 'OpenSans-Light';
-  font-size: 20px;
+  box-shadow: 0 1px 1px 1px #ddd;
+  font-family: 'OpenSans';
+  font-size: 14px;
   color: rgba(0,0,0,.7);
   padding: 30px 0;
+  height: 140px;
   cursor: pointer;
   float: left;
 }
 .radio_custom.active {
   border-color: #4bb228;
+  background: #4bb228;
+  color: #fff;
 }
 .radio_custom input {
   display: none;
@@ -459,11 +463,14 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   padding-bottom: 20px;
 }
+.custom_img img {
+  width: 50px;
+}
 .human_status {
   display: inline-block;
   width: 100%;
   padding: 0 10px;
-  font-size: 18px;
+  font-size: 14px;
 }
 /*******end radio*********/
 
@@ -705,24 +712,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .singing_instruction {
-  width: 100%;
+  width: 140px;
   display: inline-block;
   text-align: center;
   color: #4db228;
   font-size: 40px;
   padding: 30px 0px;
   font-family: 'OpenSans';
-  font-weight:bold;
+  font-weight: bold;
+  height: 140px;
 }
 .radio_ul3 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
   margin-bottom: 40px;
 }
 .radio_ul3 li {
-  width: 156px;
+  width: auto;
   display: inline-block;
+}
+.custom_img3 img{
+  width: 50px;
 }
 .custom_img3 {
   width: 100%;
@@ -788,16 +799,19 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: 10px;
 }
 /**************end drop down******************/
+.mf{
+  padding-top: 30px;
+}
 .radio_ul4 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
   margin-bottom: 45px;
 }
 .radio_ul4 li {
-  width: 150px;
+  width: auto;
   display: inline-block;
-  margin-left: 30px;
+  margin-left: 10px;
 }
 .radio_ul4 li:first-child {
   margin-left: 0px;
@@ -1098,12 +1112,11 @@ h1, h2, h3, h4, h5, h6 {
 .singing_instruction3 {
   width: 100%;
   display: inline-block;
-  text-align: center;
-  color: #4db228;
-  font-size: 40px;
-  font-weight:bold;
+  text-align: left;
+  color: #2479B8;
+  font-size: 30px;
   font-family: 'OpenSans';
-  padding: 30px 0px;
+  padding: 0 0 20px
 }
 .registered_domestic2 {
   width: 100%;
@@ -1208,7 +1221,7 @@ h1, h2, h3, h4, h5, h6 {
 .full_legal_name2 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
   color: #393939;
   font-size: 20px;
   padding: 10px 0px 30px 0px;
@@ -1216,12 +1229,12 @@ h1, h2, h3, h4, h5, h6 {
 .radio_ul6 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
 }
 .radio_ul6 li {
-  width: 190px;
+  width: auto;
   display: inline-block;
-  margin-left: 30px;
+  margin-left: 10px;
 }
 .radio_ul6 li:first-child {
   margin-left: 0px;
@@ -1349,18 +1362,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 .property_to_be_distributed {
   padding: 15px 0px 10px 0px;
-  min-height: 189px;
+  min-height: 140px;
 }
 .radio_ul8 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
   margin-bottom: 40px;
 }
 .radio_ul8 li {
-  width: 150px;
+  width: auto;
   display: inline-block;
-  margin-left: 30px;
+  margin-left: 10px;
 }
 .radio_ul8 li:first-child {
   margin-left: 0px;
@@ -1609,13 +1622,13 @@ h1, h2, h3, h4, h5, h6 {
 .residue_ul_Radio2 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
   margin-bottom: 25px;
 }
 .residue_ul_Radio2 li {
-  width: 145px;
+  width: auto;
   display: inline-block;
-  margin-left: 15px;
+  margin-left: 10px;
 }
 .relation_banefits_radio {
   padding: 10px 0px 5px 0px;
@@ -2735,7 +2748,7 @@ input[disabled] {
 {
   width:100%;
   float:left;
-  margin:20px 0;
+  margin:0 0 20px 0;
 }
 .gift_text_content
 {
@@ -3283,7 +3296,7 @@ input[disabled] {
   color: #246392;
   font-size: 30px;
   font-family: 'OpenSans';
-  text-align:center;
+  text-align: left;
 }
 
 .download_print_btn{
@@ -3370,7 +3383,7 @@ input[disabled] {
 }
 
 .totheirIssue h2 {
-  text-align: center;
+  text-align: left;
   margin: 32px 0 15px;
 }
 
@@ -3549,9 +3562,6 @@ label.radio_custom.property_to_be_distributed span.custom_img img{
     padding: 15px 0;
     border-bottom: 1px solid #dadada;
   }
-  .property_to_be_distributed{
-    min-height: 166px;
-  }
   .radio_custom .human_status{
     font-family: 'OpenSans';
     font-size: 14px;
@@ -3610,9 +3620,6 @@ label.radio_custom.property_to_be_distributed span.custom_img img{
   }
   .checkbox_pera {
     width: 90%;
-  }
-  .residue_ul_Radio2 li {
-    margin-left: 5px;
   }
   .relation_ship_text {
     font-size: 13px;
@@ -3887,10 +3894,6 @@ label.radio_custom.property_to_be_distributed span.custom_img img{
   .full_legal_name {
     padding: 20px 0px;
   }
-  .residue_ul_Radio2 li {
-    width: 120px;
-    margin-left: 10px;
-  }
   .distributed_ul {
     margin-bottom: 30px;
   }
@@ -3997,16 +4000,6 @@ label.radio_custom.property_to_be_distributed span.custom_img img{
   }
   .checkbox_pera {
     width: 89%;
-  }
-  .residue_ul_Radio2 li {
-    width: 48%;
-    margin-left: 4%;
-    float: left;
-    margin-bottom: 10px;
-  }
-  .residue_ul_Radio2 li:nth-child(2n+1) {
-    margin-left: 0px;
-    clear: left;
   }
   .relation_ship_text {
     font-size: 13px;
@@ -4306,11 +4299,6 @@ label.radio_custom.property_to_be_distributed span.custom_img img{
   .checkbox_pera {
     width: 84%;
   }
-  .residue_ul_Radio2 li {
-    width: 100%;
-    margin-left: 0px;
-  }
-
   .divide_remainder_text2 {
     font-size: 18px;
   }

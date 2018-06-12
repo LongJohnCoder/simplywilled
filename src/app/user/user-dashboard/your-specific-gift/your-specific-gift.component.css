@@ -1110,11 +1110,11 @@ h1, h2, h3, h4, h5, h6 {
 .radio_ul5 {
   width: 100%;
   display: inline-block;
-  text-align: center;
+  text-align: left;
   margin-bottom: 45px;
 }
 .radio_ul5 li {
-  width: 130px;
+  width: 140px;
   display: inline-block;
   margin-left: 10px;
 }

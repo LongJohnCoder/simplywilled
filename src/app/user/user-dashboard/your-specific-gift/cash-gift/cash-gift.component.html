@@ -16,7 +16,7 @@
             <ul class="radio_ul3">
               <li><label class="radio_custom singing_instruction"><span class="custom_img3"><img src="../../../../../assets/images/cash2.png" alt="Cash"></span></label></li>
             </ul>
-            <h3 class="registered_domestic2 blue_font">Please confirm this a gift to an Individual or a Charity?</h3>
+            <h3 class="questions">Please confirm this a gift to an Individual or a Charity?</h3>
             <div>
               <ul class="radio_ul4">
                 <li>
@@ -96,25 +96,25 @@
                     </span>
                   </div>
 
-                  <h2 class="full_legal_name2">Beneficiary's gender?</h2>
+                  <h2 class="questions">Beneficiary's gender?</h2>
                   <ul class="radio_ul6">
                     <li>
                       <label class="radio_custom" [ngClass]="{'active': cashGiftForm.get('individualControls.0.b_gender').value === 'Male'}">
                         <input type="radio" formControlName="b_gender" value="Male">
-                        <span class="custom_img"><img src="../../../../../assets/images/john.png" alt="Male"></span>
-                        <span class="human_status">Male</span> </label>
+                        <!--<span class="custom_img"><img src="../../../../../assets/images/john.png" alt="Male"></span>-->
+                        <span class="human_status mf">Male</span> </label>
                     </li>
                     <li>
                       <label class="radio_custom" [ngClass]="{'active': cashGiftForm.get('individualControls.0.b_gender').value === 'Female'}">
                         <input type="radio" formControlName="b_gender" value="Female">
-                        <span class="custom_img"><img src="../../../../../assets/images/leza.png" alt="Female"></span>
-                        <span class="human_status"> Female</span> </label>
+                        <!--<span class="custom_img"><img src="../../../../../assets/images/leza.png" alt="Female"></span>-->
+                        <span class="human_status mf"> Female</span> </label>
                     </li>
                     <span class="error_txt" *ngIf="!cashGiftForm.get('individualControls.0.b_gender').valid && cashGiftForm.get('individualControls.0.b_gender').touched && cashGiftForm.get('individualControls.0.b_gender').hasError('required')">
                         Gender is required.
                     </span>
                   </ul>
-                  <h2 class="beneficiary_predeceases blue_font">If your beneficiary passes before you, should this gift go to your beneficiary&#39;s issue?</h2>
+                  <h2 class="questions">If your beneficiary passes before you, should this gift go to your beneficiary&#39;s issue?</h2>
                   <ul class="radio_ul7">
                     <li>
                       <label class="radio_custom gift_their_kids" [ngClass]="{'active': cashGiftForm.get('individualControls.0.passed_by').value === 'Yes'}">
