@@ -1658,7 +1658,8 @@ class UserController extends Controller
             'user_id'   =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
             'giftType'  =>  'required|numeric|between:1,6|integer',
             'giftData'  =>  'required',
-            'gift_type' =>  'nullable|string|in:individual,charity',
+            'individual'=>  'required|numeric|integer|between:0,1',
+            'charity'   =>  'required|numeric|integer|between:0,1'
         ]);
 
         if ($validator->fails()) {
@@ -1682,6 +1683,9 @@ class UserController extends Controller
         $giftType = $request->giftType; // giftType = 1,2,3,4,5,6
         $giftData = $request->giftData; // array of gift data
 
+        $charity    = $request->charity;
+        $individual = $request->individual;
+
         //update existing gift
         // $saveGift = Gifts::where('user_id', $userId)->where('type',$giftType)->first();
 
@@ -1692,10 +1696,16 @@ class UserController extends Controller
           $saveGift->user_id = $userId;
         // }
 
-        $saveGift->gift_type = $request->has('gift_type') ? $request->get('gift_type') : $saveGift->gift_type;
+        //$saveGift->gift_type = $request->has('gift_type') ? $request->get('gift_type') : $saveGift->gift_type;
+
+        $saveGift->charity = $charity;
+
+        $saveGift->individual = $individual;
 
         $saveGift->type = $giftType;
+        
         switch($giftType) {
+
           case 1 :  $saveGift->cash_description = GiftStatement::cashDescription($giftData[0],$tuay);
                     //$saveGift->cash_description = json_encode($giftData);
                     break;
