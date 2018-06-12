@@ -333,6 +333,11 @@ class CouponsController extends Controller
        }
      }
 
+     /*
+      *  Function to get Coupon
+      *  @params
+      *  @return \Illuminate\Http\JsonResponse
+      * */
      public function getCoupon()
      {
        try {
@@ -354,6 +359,11 @@ class CouponsController extends Controller
        }
      }
 
+     /*
+      *  Function to check Coupon
+      *  @params token
+      *  @return \Illuminate\Http\JsonResponse
+      * */
      public function checkToken($token = '')
      {
        try {

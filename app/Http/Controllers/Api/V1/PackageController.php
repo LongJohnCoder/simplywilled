@@ -25,6 +25,7 @@ use \Carbon\Carbon;
 use Paypalpayment;
 use App\Models\Coupon;
 use App\Models\UserPackage;
+use App\TellUsAboutYou;
 
 class PackageController extends Controller
 {
@@ -205,6 +206,12 @@ class PackageController extends Controller
       }
     }
 
+    /**
+    * Purchase a package Express Checkout
+    *
+    * @param Request
+    * @return \Illuminate\Http\JsonResponse
+    */
     public function purchasePackage(Request $request)
     {
       try {
@@ -342,6 +349,22 @@ class PackageController extends Controller
         $user->name = $request->firstName.' '.$request->lastname;
         $user->save();
 
+        $tellUsAboutYou = TellUsAboutYou::where('user_id', $userID)->first();
+        if (!$tellUsAboutYou) {
+          $tellUsAboutYou = new TellUsAboutYou;
+        }
+        $tellUsAboutYou->user_id = $userID;
+        $tellUsAboutYou->firstname = $request->firstName;
+        $tellUsAboutYou->lastname = $request->lastname;
+        $tellUsAboutYou->fullname = $request->firstName.' '.$request->lastname;
+        $tellUsAboutYou->phone = $phone;
+        $tellUsAboutYou->address = $address1;
+        $tellUsAboutYou->city = $city;
+        $tellUsAboutYou->state = $state;
+        $tellUsAboutYou->zip = $zip;
+        $tellUsAboutYou->email = $email;
+        $tellUsAboutYou->save();
+
         return response()->json([
           'status' => true,
           'approval_url' => $payment->getApprovalLink(),
@@ -358,6 +381,12 @@ class PackageController extends Controller
 
     }
 
+    /**
+    * Purchase a package Express Checkout Success funtion
+    *
+    * @param Request
+    * @return \Illuminate\Http\JsonResponse
+    */
     public function paypalPackageSuccess(Request $request)
     {
       try {
@@ -409,6 +438,12 @@ class PackageController extends Controller
       }
     }
 
+    /**
+    * Purchase a package Express Checkout Failed funtion
+    *
+    * @param Request
+    * @return \Illuminate\Http\JsonResponse
+    */
     public function paypalPackageFailed(Request $request)
     {
       try {
@@ -425,6 +460,12 @@ class PackageController extends Controller
       }
     }
 
+    /**
+    * Purchase a package Paypal Flow funtion
+    *
+    * @param
+    * @return \Illuminate\Http\JsonResponse
+    */
     public function paypalFlowButton()
     {
       $amount = 199.00;
@@ -474,6 +515,12 @@ class PackageController extends Controller
       ], 200);
     }
 
+    /**
+    * Purchase a package Paypal payment direct method
+    *
+    * @param Request
+    * @return \Illuminate\Http\JsonResponse
+    */
     public function paypalDirectPayment(Request $request)
     {
       // return response()->json([
@@ -613,6 +660,23 @@ class PackageController extends Controller
           $user->package = $pkgID;
           $user->name = $request->firstName.' '.$request->lastname;
           $user->save();
+
+          $tellUsAboutYou = TellUsAboutYou::where('user_id', $userID)->first();
+          if (!$tellUsAboutYou) {
+            $tellUsAboutYou = new TellUsAboutYou;
+          }
+          $tellUsAboutYou->user_id = $userID;
+          $tellUsAboutYou->firstname = $request->firstName;
+          $tellUsAboutYou->lastname = $request->lastname;
+          $tellUsAboutYou->fullname = $request->firstName.' '.$request->lastname;
+          $tellUsAboutYou->phone = $request->phone;
+          $tellUsAboutYou->address = $request->address1;
+          $tellUsAboutYou->city = $request->city;
+          $tellUsAboutYou->state = $request->state;
+          $tellUsAboutYou->zip = $request->zip;
+          $tellUsAboutYou->email = $request->email;
+          $tellUsAboutYou->save();
+
           $customClaims = ['package' => $user->package];
           $token = JWTAuth::fromUser($user, $customClaims);
           $arr['jwtToken'] = $token;
@@ -637,6 +701,12 @@ class PackageController extends Controller
       }
     }
 
+    /**
+    * Check package
+    *
+    * @param Request
+    * @return \Illuminate\Http\JsonResponse
+    */
     public function checkPackage(Request $request)
     {
       try {
