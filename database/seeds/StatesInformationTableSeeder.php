@@ -27,9 +27,11 @@ class StatesInformationTableSeeder extends Seeder
 				'name'	=>	$eachState,
 				'code' 	=> 	$stateInfo['code'],
 				'act'	=>	$stateInfo['act'],
-				'type'	=>	in_array($eachState, $nonUniformStateArray) ? 'non-uniform' : 'uniform'
+				'type'	=>	in_array($eachState, $nonUniformStateArray) ? 'non-uniform' : 'uniform',
+				'executor_title' => $stateInfo['executor']
 			]);
 		}
+		StatesInfo::truncate();
 		StatesInfo::insert($insertArray);
     }
 }
