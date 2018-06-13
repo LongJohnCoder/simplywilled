@@ -5,6 +5,7 @@ import {MainDashboardComponent} from './dashboard/main-dashboard/main-dashboard.
 import { NgModule } from '@angular/core';
 import {UserPaidGuard} from './user-paid.guard';
 import {UserUnPaidGuard} from './user-unpaid.guard';
+import {SigningInstructionsDocComponent} from "./doc/signing-instructions-doc/signing-instructions-doc.component";
 
 const routes: Routes = [
       {
@@ -116,6 +117,11 @@ const routes: Routes = [
                     canActivate: [UserPaidGuard],
                 loadChildren: './packages/packages.module#PackagesModule'
             },
+          {
+            path: 'preview-documents',
+            canActivate: [UserPaidGuard],
+            component: SigningInstructionsDocComponent
+          }
             // {
             //     path: 'doc1',
             //     canActivate: [UserPaidGuard],

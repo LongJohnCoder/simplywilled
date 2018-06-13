@@ -11,6 +11,7 @@ import {ReferFriendService} from './shared/services/referFriend.service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { GlobalTooltipModule } from './global-tooltip/global-tooltip.module';
 import { TuayPdfComponent } from './doc/tuay-pdf/tuay-pdf.component';
+import { SigningInstructionsDocComponent } from './doc/signing-instructions-doc/signing-instructions-doc.component';
 
 
 @NgModule({
@@ -21,8 +22,7 @@ import { TuayPdfComponent } from './doc/tuay-pdf/tuay-pdf.component';
     ReactiveFormsModule,
     //GlobalTooltipModule
   ],
-  declarations: [DashboardComponent, MainDashboardComponent
-  ],
+  declarations: [DashboardComponent, MainDashboardComponent, TuayPdfComponent, SigningInstructionsDocComponent  ],
     providers: [
         UserPaidGuard, UserUnPaidGuard, ProgressbarService, ReferFriendService
     ]
