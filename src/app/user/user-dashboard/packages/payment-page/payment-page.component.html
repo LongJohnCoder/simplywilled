@@ -188,9 +188,9 @@
 
       </div>
       <hr>
-      <h3 *ngIf="(paymentData.package.amount - paymentData.discountAmount) !== 0">Payment Options</h3>
-      <P class="headingInfo" *ngIf="(paymentData.package.amount - paymentData.discountAmount) !== 0">Select any payment option.</P>
-      <div class="form-group" *ngIf="(paymentData.package.amount - paymentData.discountAmount) !== 0">
+      <h3>Payment Options</h3>
+      <P class="headingInfo">Select any payment option.</P>
+      <div class="form-group">
         <button class="payPaypal" (click)="paymentMethod = 'paypal-payment'" [ngClass]="{'active': paymentMethod === 'paypal-payment'}">
           Pay With <img src="../../../../../../assets/images/paypalLogo.png" alt="PayPal">
         </button>

@@ -99,16 +99,33 @@ export class PackagesComponent implements OnInit {
     }
 
     paymentPage() {
-        this.paymentData = {
-            'totalAmount': this.totalAmount,
-            'couponID': this.couponInfo === null ? null : this.couponInfo.id,
-            'discountAmount': this.discountAmount,
-            'package': this.data,
-            'userID': this.userId
-        };
-        this.paymentPageDisplay = true;
-
-        // console.log(this.paymentData);
+      if (this.totalAmount === 0) {
+          this.respType = false;
+          this.respMsg = 'We are processing to checkout, Please do not refresh the page or press back button';
+          this.packageService.freeCheckout({'user_id': this.userId, 'pkg_id': this.data.id, 'coupon_id': this.couponInfo.id}).subscribe(
+              (resp: any) => {
+                  this.respMsg = 'Checkout process done. You will be redirected to dashboard shortly.'
+                  const store = JSON.parse(localStorage.getItem('loggedInUser'));
+                  store.token = resp.data.jwtToken;
+                  localStorage.setItem('loggedInUser', JSON.stringify(store));
+                    setTimeout(function () {
+                        window.location.href = '/dashboard/will';
+                    }, 2000);
+              }, (err: any) => {
+                  this.respType = true;
+                  this.respMsg = 'Something went wrong!!! Please try again later';
+              }
+          );
+      } else {
+          this.paymentData = {
+              'totalAmount': this.totalAmount,
+              'couponID': this.couponInfo === null ? null : this.couponInfo.id,
+              'discountAmount': this.discountAmount,
+              'package': this.data,
+              'userID': this.userId
+          };
+          this.paymentPageDisplay = true;
+      }
     }
 
   // purchase(id: string) {

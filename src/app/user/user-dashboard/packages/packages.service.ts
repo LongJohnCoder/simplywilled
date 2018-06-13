@@ -53,4 +53,8 @@ export class PackagesService {
     paypalFailed(body: any): Observable<any> {
         return this.http.post(environment.API_URL + 'user/paypal-package-failed', body);
     }
+
+    freeCheckout(body: any): Observable<any> {
+        return this.http.post(environment.API_URL + 'user/free-checkout', body);
+    }
 }
