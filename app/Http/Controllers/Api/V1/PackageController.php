@@ -552,13 +552,6 @@ class PackageController extends Controller
           ], 400);
         }
 
-        // if (!$user->tellUsAboutYou) {
-        //   return response()->json([
-        //       'status' => false,
-        //       'error'  => 'Unable to get data of address',
-        //       'data'   => []
-        //   ], 400);
-        // }
         $totalAmount  = $package->amount;
         $couponAmount = 0;
         if ($coupon) {
@@ -571,72 +564,90 @@ class PackageController extends Controller
           }
         }
 
-        $SIGNATURE      = config('paypal_direct.signature');
-        $USER           = config('paypal_direct.user');
-        $PWD            = config('paypal_direct.password');
-        $METHOD         = config('paypal_direct.method');
-        $PAYMENTACTION  = config('paypal_direct.paymentAction');
-        $IPADDRESS      = $_SERVER['REMOTE_ADDR'];
-        $AMT            = $totalAmount;
-        $CREDITCARDTYPE = $request->credit_card_type;
-        $ACCT           = $request->card_no;
-        $EXPDATE        = $request->exp_date;
-        $CVV2           = $request->cvv2;
-        $FIRSTNAME      = $request->cardFirstName;
-        $LASTNAME       = $request->cardLastName;
-        $STREET         = $request->address1 . $request->has('address2') ? ', '.$request->address2 : '';
-        $CITY           = $request->city;
-        $STATE          = $request->state;
-        $ZIP            = $request->zip;
-        // $SIGNATURE      = 'A.XOJFbCOgWS3AGK6A0Equv15VTdABTLXw6hw.Dp-RbewQjPR2PN8l9i';
-        // $USER           = 'ace1_api1.tier5.in';
-        // $PWD            = 'CT3R2WD8GRSE8C2A';
-        // $METHOD         = 'DoDirectPayment';
-        // $PAYMENTACTION  = 'Sale';
-        // $IPADDRESS      = '223.31.41.147';
-        // $AMT            = '199.50';
-        // $CREDITCARDTYPE = 'Visa';
-        // $ACCT           = '4254394646835191';
-        // $EXPDATE        = '122027';
-        // $CVV2           = '840';
-        // $FIRSTNAME      = 'Subhadeep';
-        // $LASTNAME       = 'Sahoo';
-        // $STREET         = '3909 Witmer Road';
-        // $CITY           = 'Niagara Falls';
-        // $STATE          = 'NY';
-        // $ZIP            = '14305';
-        $COUNTRYCODE    = 'US';
+        if ($totalAmount == 0) {
+          $paypalMethod = [];
+          $AMT = $totalAmount;
+          $arr = [];
+          $arr['CORRELATIONID'] = null;
+          $arr['ACK'] = 'Success';
+          $paymentMethod = 'Free Coupon';
+        } elseif ($totalAmount > 0) {
+          $paymentMethod  = 'Card';
+          $SIGNATURE      = config('paypal_direct.signature');
+          $USER           = config('paypal_direct.user');
+          $PWD            = config('paypal_direct.password');
+          $METHOD         = config('paypal_direct.method');
+          $PAYMENTACTION  = config('paypal_direct.paymentAction');
+          $IPADDRESS      = $_SERVER['REMOTE_ADDR'];
+          $AMT            = $totalAmount;
+          $CREDITCARDTYPE = $request->credit_card_type;
+          $ACCT           = $request->card_no;
+          $EXPDATE        = $request->exp_date;
+          $CVV2           = $request->cvv2;
+          $FIRSTNAME      = $request->cardFirstName;
+          $LASTNAME       = $request->cardLastName;
+          $STREET         = $request->address1 . $request->has('address2') ? ', '.$request->address2 : '';
+          $CITY           = $request->city;
+          $STATE          = $request->state;
+          $ZIP            = $request->zip;
+          // $SIGNATURE      = 'A.XOJFbCOgWS3AGK6A0Equv15VTdABTLXw6hw.Dp-RbewQjPR2PN8l9i';
+          // $USER           = 'ace1_api1.tier5.in';
+          // $PWD            = 'CT3R2WD8GRSE8C2A';
+          // $METHOD         = 'DoDirectPayment';
+          // $PAYMENTACTION  = 'Sale';
+          // $IPADDRESS      = '223.31.41.147';
+          // $AMT            = '199.50';
+          // $CREDITCARDTYPE = 'Visa';
+          // $ACCT           = '4254394646835191';
+          // $EXPDATE        = '122027';
+          // $CVV2           = '840';
+          // $FIRSTNAME      = 'Subhadeep';
+          // $LASTNAME       = 'Sahoo';
+          // $STREET         = '3909 Witmer Road';
+          // $CITY           = 'Niagara Falls';
+          // $STATE          = 'NY';
+          // $ZIP            = '14305';
+          $COUNTRYCODE    = 'US';
 
-        $pfHostAddr = 'https://api-3t.sandbox.paypal.com/nvp';
+          $pfHostAddr = 'https://api-3t.sandbox.paypal.com/nvp';
 
-        $postData = 'VERSION=56.0&COUNTRYCODE='.$COUNTRYCODE.'&SIGNATURE='.$SIGNATURE.'&USER='.$USER.'&PWD='.$PWD.
-                    '&METHOD='.$METHOD.'&PAYMENTACTION='.$PAYMENTACTION.'&IPADDRESS='.$IPADDRESS.'&AMT='.$AMT.'&CREDITCARDTYPE='.$CREDITCARDTYPE.'&ACCT='.$ACCT.'&EXPDATE='.$EXPDATE.'&CVV2='.$CVV2.'&FIRSTNAME='.$FIRSTNAME.'&LASTNAME='.$LASTNAME.'&STREET='.$STREET.'&CITY='.$CITY.'&STATE='.$STATE.'&ZIP='.$ZIP;
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $pfHostAddr);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_POST, TRUE);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+          $postData = 'VERSION=56.0&COUNTRYCODE='.$COUNTRYCODE.'&SIGNATURE='.$SIGNATURE.'&USER='.$USER.'&PWD='.$PWD.
+                      '&METHOD='.$METHOD.'&PAYMENTACTION='.$PAYMENTACTION.'&IPADDRESS='.$IPADDRESS.'&AMT='.$AMT.'&CREDITCARDTYPE='.$CREDITCARDTYPE.'&ACCT='.$ACCT.'&EXPDATE='.$EXPDATE.'&CVV2='.$CVV2.'&FIRSTNAME='.$FIRSTNAME.'&LASTNAME='.$LASTNAME.'&STREET='.$STREET.'&CITY='.$CITY.'&STATE='.$STATE.'&ZIP='.$ZIP;
+          $ch = curl_init();
+          curl_setopt($ch, CURLOPT_URL, $pfHostAddr);
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+          curl_setopt($ch, CURLOPT_POST, TRUE);
+          curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
 
-        $resp = curl_exec($ch);
-        if (!$resp) {
+          $resp = curl_exec($ch);
+          if (!$resp) {
+            return response()->json([
+              'status' => false,
+              'error' => 'To order, Please contact us.'
+            ], 500);
+          }
+          parse_str($resp, $arr);
+
+          $paypalMethod = [];
+          $paypalMethod['request'] = $request->all();
+          $paypalMethod['request']['country_code'] = 'US';
+          $paypalMethod['response'] = $arr;
+        } else {
           return response()->json([
             'status' => false,
-            'error' => 'To order, Please contact us.'
-          ], 500);
+            'error' => 'This transaction could not processed',
+            'data' => []
+          ], 400);
         }
-        parse_str($resp, $arr);
 
-        $paypalMethod = [];
-        $paypalMethod['request'] = $request->all();
-        $paypalMethod['request']['country_code'] = 'US';
-        $paypalMethod['response'] = $arr;
+
 
         $userPackage = new UserPackage;
         $userPackage->user_id = $userID;
         $userPackage->package_id = $package->id;
         $userPackage->started_on = date('Y-m-d H:i:s');
         $userPackage->renew_date = date('Y-m-d H:i:s');
-        $userPackage->payment_method = 'Card';
+        $userPackage->payment_method = $paymentMethod;
         $userPackage->payment_status = '0';
         $userPackage->payment_response = json_encode($paypalMethod);
         $userPackage->amount = $AMT;
@@ -691,7 +702,7 @@ class PackageController extends Controller
             'status' => false,
             'error' => $arr['L_LONGMESSAGE0'],
             'data' => $arr
-          ], 500);
+          ], 400);
         }
       } catch (\Exception $e) {
         return response()->json([

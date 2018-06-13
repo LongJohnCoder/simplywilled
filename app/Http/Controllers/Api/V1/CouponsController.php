@@ -297,7 +297,7 @@ class CouponsController extends Controller
            $countUsageCoupon = UserPackage::where('coupon_id',$coupon->id)->where('payment_status', '!=', '0')->count();
            if ($countUsageCoupon < $coupon->max_user) {
              $save = $coupon->flag == '0' ? (($amount * $coupon->amount) / 100) : $coupon->amount;
-             if ($save < $amount) {
+             if ($save <= $amount) {
                return response()->json([
                  'status' => true,
                  'message' => 'Coupon applied successfully',
