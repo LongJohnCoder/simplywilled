@@ -1443,6 +1443,12 @@ class UserController extends Controller
                     'message' => 'Please fill Tell Us About You details first',
                     'data'    => []
                 ], 400);   
+            } elseif($tellUsAboutYou->has_pet == 0 || $tellUsAboutYou->has_pet == null) {
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'If you dont have a pet you cannot give pet\'s name',
+                    'data'    => []
+                ], 400);
             }
             
             $isPetGuardian               = $request->isPetGuardian;// Yes, No
@@ -1476,10 +1482,10 @@ class UserController extends Controller
                 PetGuardian::where('user_id',$userId)->where('is_backup','1')->delete();
             }
 
-            if(PetGuardian::where('user_id',$userId)->first() == null) {
-                $tellUsAboutYou->has_pet = 0;
-                $tellUsAboutYou->save();
-            }
+            // if(PetGuardian::where('user_id',$userId)->first() == null) {
+            //     $tellUsAboutYou->has_pet = 0;
+            //     $tellUsAboutYou->save();
+            // }
 
             $response = self::generatePetGuardianInfoResponse($userId);
             return $response;
