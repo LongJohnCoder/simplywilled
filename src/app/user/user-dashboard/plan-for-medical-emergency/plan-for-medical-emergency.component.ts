@@ -13,8 +13,8 @@ import {ProgressbarService} from '../shared/services/progressbar.service';
 export class PlanForMedicalEmergencyComponent implements OnInit {
   medicalAgent: any;
   userId: number;
-  errFlag: boolean;
-  errString: string;
+  errFlag = false;
+  errString = '';
   token: string;
   relations: any[];
   toggleWillInform: boolean;
@@ -129,11 +129,11 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
                     this.medicalAgent.fulllegalName = response.data.healthFinance.fullname;
                     this.medicalAgent.backupfirstLegalName = response.data.healthFinance.backupfirstLegalName;
                     this.medicalAgent.backuplastLegalName = response.data.healthFinance.backuplastLegalName;
-                    this.medicalAgent.relation = response.data.healthFinance.relation;
+                    this.medicalAgent.relation = response.data.healthFinance.relation !== null ? response.data.healthFinance.relation : '';
                     this.medicalAgent.relationOther = response.data.healthFinance.relationOther;
                     this.medicalAgent.address = response.data.healthFinance.address;
                     this.medicalAgent.city = response.data.healthFinance.city;
-                    this.medicalAgent.state = response.data.healthFinance.state;
+                    this.medicalAgent.state = response.data.healthFinance.state !== null ? response.data.healthFinance.state : '';
                     this.medicalAgent.zip = response.data.healthFinance.zip;
                     this.medicalAgent.phone = response.data.healthFinance.phone;
                     this.medicalAgent.country = response.data.healthFinance.country === null ? 'United States' : response.data.healthFinance.country;
@@ -141,11 +141,11 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
                     this.medicalAgent.emailOfAgent = response.data.healthFinance.emailOfAgent;
                     this.medicalAgent.anyBackupAgent = response.data.healthFinance.anyBackupAgent;
                     this.medicalAgent.backupfulllegalName = response.data.healthFinance.backupFullname;
-                    this.medicalAgent.backupRelation = response.data.healthFinance.backupRelation;
+                    this.medicalAgent.backupRelation = response.data.healthFinance.backupRelation !== null ? response.data.healthFinance.backupRelation : '';
                     this.medicalAgent.backupRelationOther = response.data.healthFinance.backupRelationOther;
                     this.medicalAgent.backupAddress = response.data.healthFinance.backupAddress;
                     this.medicalAgent.backupCity = response.data.healthFinance.backupCity;
-                    this.medicalAgent.backupState = response.data.healthFinance.backupState;
+                    this.medicalAgent.backupState = response.data.healthFinance.backupState !== null ? response.data.healthFinance.backupState : '';
                     this.medicalAgent.backupZip = response.data.healthFinance.backupZip;
                     this.medicalAgent.backupCountry = response.data.healthFinance.backupCountry === null ? 'United States' : response.data.healthFinance.backupCountry;
                     this.medicalAgent.willInformBackup = response.data.healthFinance.willInformBackup;
@@ -201,6 +201,7 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
     }
 
     formSubmit() {
+        this.loading = true;
         //console.log(this.medicalAgent.fulllegalName);
         // console.log(this.medicalAgent.emailOfAgent);
         let formBody = new FormData();
@@ -235,10 +236,21 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
         formBody.append('backupphone', this.medicalAgent.backupphone);
         this.medicalEmergencyService.updatemedicalEmergency(this.token, formBody).subscribe(
             (response: any) => {
-                this.router.navigate(['/dashboard']);
+                if (response.status) {
+                  this.router.navigate(['/dashboard']);
+                }
             }, (error: any) => {
-                console.log(error.error);
-            }
+                this.errFlag = true;
+                for (let prop in error.error.message) {
+                  this.errString = error.error.message[prop];
+                  break;
+                }
+                this.loading = false;
+                setTimeout(() => {
+                  this.errFlag = false;
+                  this.errString = '';
+                }, 3000);
+          }, () => { this.loading = false; }
         );
 
     }

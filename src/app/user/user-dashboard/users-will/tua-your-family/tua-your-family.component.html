@@ -57,7 +57,7 @@
         </div>
         <div *ngIf="showTable">
           <div class="form-group" *ngIf="chidrenForm.get('totalChildren').value !== '0'">
-            <label>Please provide their name(s), gender and date of birth 
+            <label>Please provide their name(s), gender and date of birth
                     <app-global-tooltip (click)="toolTipClicked('family')" [tooltipMessages]='toolTipMessageList.family' toolTipType="family"></app-global-tooltip>
             </label>
           </div>
@@ -146,11 +146,9 @@
             </div>
         </div>
         <div class="form-group" *ngIf="errors.errorFlag">
-            <div class="col-md-12">
-                <span class="alert alert-danger">
-                    {{ errors.errorMessage }}
-                </span>
-            </div>
+            <span class="error_txt">
+                {{ errors.errorMessage }}
+            </span>
         </div>
         <div class="form-footer">
             <button class="btn common-button btn-grey pull-left" (click)="goBack()">Go Back</button>

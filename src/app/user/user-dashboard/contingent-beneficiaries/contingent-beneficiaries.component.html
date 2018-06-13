@@ -1,3 +1,15 @@
+<div class="pageLoader" *ngIf="loading">
+  <div class="loaderInner">
+    <img src="../../../../assets/images/owl-loading.gif" alt="Loading...">
+    <p class="loadingTxt">
+      Please Wait
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+  </div>
+</div>
+
 <div class="" *ngIf="!loading">
   <div class="main-content tellusaboutyou">
     <h2>Would You Like to name contigent beneficiaries?
@@ -29,14 +41,14 @@
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [ngClass]="{'active' : contingentBeneficiariesForm.value.distribution_type == 'to_my_heirs'}">
-              <input type="radio" formControlName="distribution_type" value="to_my_heirs" (change)="addRemoveOptions()">
+              <input type="radio" formControlName="distribution_type" value="to_my_heirs" (change)="addRemoveOptionsDistributionType()">
                 <span class="custom_img5"><img src="../../../../assets/images/law.png" alt="Law"></span>
               <span class="human_status3">Distribute The Rest To My Heirs At Law</span>
             </label>
           </li>
           <li>
             <label class="radio_custom" [ngClass]="{'active' : contingentBeneficiariesForm.value.distribution_type == 'other'}">
-              <input type="radio" formControlName="distribution_type" value="other" (change)="addRemoveOptions()">
+              <input type="radio" formControlName="distribution_type" value="other" (change)="addRemoveOptionsDistributionType()">
                 <span class="custom_img5"><img src="../../../../assets/images/otherway-icon.png" alt="Otherway"></span>
                 <span class="human_status3">Some Other <br> Way</span>
             </label>
@@ -46,13 +58,19 @@
           <span *ngIf="contingentBeneficiariesForm.get('distribution_type').hasError('required')" class="error_txt">Please fill up this field.</span>
         </div>
       </div>
-        <div class="form-group" *ngIf="contingentBeneficiariesForm.value.distribution_type == 'other'">
+        <div class="form-group" *ngIf="contingentBeneficiariesForm.value.isContingentBeneficiary == '1' && contingentBeneficiariesForm.value.distribution_type == 'other'">
             <label> Otherwise, to be distributed to: </label>
             <textarea formControlName="info" cols="59" rows="6"></textarea>
             <div *ngIf="!contingentBeneficiariesForm.get('info').valid && contingentBeneficiariesForm.get('info').touched" class="help-block">
               <span *ngIf="contingentBeneficiariesForm.get('info').hasError('required')" class="error_txt">Please fill up this field.</span>
             </div>
         </div>
+
+      <div class="form-group" *ngIf="errorFlag">
+        <div class="error_txt">
+          {{errorMessage}}
+        </div>
+      </div>
 
       <div class="form-footer">
         <button class="btn common-button btn-grey pull-left" (click)="goBack()">Go Back</button>

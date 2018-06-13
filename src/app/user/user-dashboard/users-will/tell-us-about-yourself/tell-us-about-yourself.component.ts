@@ -88,7 +88,7 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.user = this.authService.getUser();
     this.userSubscription = this.userService.getUserDetails(this.user.id).subscribe(
-        (response: any) => {
+        (response: any) => { console.log(response);
             this.dashboardService.updateUserDetails(response.data);
             if ( response.data[0].data) {
                 this.userInfo = response.data[0].data.userInfo;
@@ -122,12 +122,13 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
   /**When the form submits*/
   onSubmit(form: NgForm) {
     if (form.valid) {
+      this.loading = true;
       let formData = form.value;
       formData.dob = formData.year + '-' + formData.month + '-' + formData.day ;
       formData.partner_dob = formData.spouseYear + '-' + formData.spouseMonth + '-' + formData.spouseDay ;
       formData.user_id = this.user.id ;
       formData.step = 1;
-      if ( formData.registered_partner !== 'D') {
+      if ( formData.marital_status !== 'R') {
         formData.registered_partner = '0' ;
         formData.legal_married = '0';
       }
@@ -141,7 +142,12 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
             this.errors.errorMessage = error.error.message[prop];
             break;
           }
-        }
+          this.loading = false;
+          setTimeout(() => {
+            this.errors.errorFlag = false;
+            this.errors.errorMessage = '';
+          }, 3000);
+        }, () => {this.loading = false; }
       );
     } else {
       alert('Please fill up all the fields');

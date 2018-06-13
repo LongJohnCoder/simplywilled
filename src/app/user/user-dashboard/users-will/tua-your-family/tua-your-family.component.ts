@@ -244,6 +244,7 @@ export class TuaYourFamilyComponent implements OnInit, OnDestroy {
   /**When the form is submitted*/
   onSubmit() {
     if (this.chidrenForm.valid) {
+      this.loading = true;
       if (this.chidrenForm.value.totalChildren === 'other') {
         this.chidrenForm.value.totalChildren = this.chidrenForm.value.totalChildrenOther;
       }
@@ -255,7 +256,7 @@ export class TuaYourFamilyComponent implements OnInit, OnDestroy {
         (data: any) => {
           console.log(data.data);
           if (!data.data.childrenData.length) {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/dashboard/will/4']);
           } else {
             this.router.navigate(['/dashboard/will/3']);
           }
@@ -266,7 +267,12 @@ export class TuaYourFamilyComponent implements OnInit, OnDestroy {
             this.errors.errorMessage = error.error.message[prop];
             break;
           }
-        }
+          this.loading = false;
+          setTimeout(() => {
+            this.errors.errorFlag = false;
+            this.errors.errorMessage = '';
+          }, 3000);
+        }, () => { this.loading = false; }
       );
     } else {
       alert('Please fill up all the fields');

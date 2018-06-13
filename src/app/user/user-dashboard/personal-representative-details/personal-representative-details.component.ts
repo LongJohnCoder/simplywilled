@@ -16,6 +16,7 @@ import {ProgressbarService} from '../shared/services/progressbar.service';
 export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy {
     /**Variable definition*/
     public personalRepresentativeDetailsForm: FormGroup;
+    errorFlag = false;
     errorMessage: any = '';
     fullUserInfo: any;
     states: string[] = [];
@@ -185,7 +186,8 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
      * @param model
      */
     onSubmit(model: any) {
-      // if (model.valid) {
+       if (model.valid) {
+        this.loading = true;
         let modelData = model.value;
         modelData.step = 5 ;
         modelData.user_id = this.authService.getUser()['id'];
@@ -195,20 +197,23 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
             this.checkUserSpouseStatus();
           },
           (error: any) => {
+            this.errorFlag = true;
             for (const prop in error.error.message) {
               this.errorMessage = error.error.message[prop];
               break;
             }
+            this.loading = false;
             setTimeout(() => {
+              this.errorFlag = false;
               this.errorMessage = '';
             }, 3000);
-          }
+          }, () => { this.loading = false; }
         );
-      // } else {
-      //   alert('Please fill up the required fields');
-      //   console.log(this.personalRepresentativeDetailsForm.get('errors'));
-      //   this.markFormGroupTouched(model);
-      // }
+      } else {
+        alert('Please fill up the required fields');
+        console.log(this.personalRepresentativeDetailsForm.get('errors'));
+        this.markFormGroupTouched(model);
+      }
     }
 
     /**Mark all form controls as touched*/
@@ -290,6 +295,8 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.zip`).updateValueAndValidity();
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.phone`).clearValidators();
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.phone`).updateValueAndValidity();
+        this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.email`).clearValidators();
+        this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.email`).updateValueAndValidity();
         // this.myForm.get(`backUpGuardian.0.email`).setValidators([]);
         // this.myForm.get(`backUpGuardian.0.email`).updateValueAndValidity();
         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.email_notification`).setValidators([]);

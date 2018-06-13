@@ -77,6 +77,7 @@ export class YourPetComponent implements OnInit, OnDestroy {
   /**Initialises form array row*/
   initRows() {
     return this._fb.group({
+      'petType': new FormControl(''),
       'petName': new FormControl('')
     });
   }
@@ -93,22 +94,28 @@ export class YourPetComponent implements OnInit, OnDestroy {
   /**On form submit*/
   submit() {
     if (this.petsForm.valid) {
+      this.loading = true;
       let data = this.modifyData()
       this.editProfileSubscription = this.userService.editProfile(data).subscribe(
         (response: any) => {
-          if (response.status) {
+          if (this.petsForm.value.providePetsWill === 'Yes' && response.status) {
             this._router.navigate(['/dashboard/will/5']);
+          } else {
+            this._router.navigate(['/dashboard']);
           }
         },
         (error: any) => {
+          this.errors.errorFlag = true;
           for (let prop in error.error.message) {
             this.errors.errorMessage = error.error.message[prop];
             break;
           }
+          this.loading = false;
           setTimeout(() => {
+            this.errors.errorFlag = false;
             this.errors.errorMessage = '';
           }, 3000);
-        }
+        }, () => { this.loading = false; }
       );
     } else {
       alert('Please fill up the required fields.');
@@ -176,7 +183,7 @@ export class YourPetComponent implements OnInit, OnDestroy {
   /**Checks validation for form arrays*/
   checkValidation(formArray) {
     for (let item of formArray) {
-      if (item.controls['petName'].hasError('required')) {
+      if (item.controls['petName'].hasError('required') || item.controls['petType'].hasError('required')) {
         this.flags.setValidationFlag = true;
         break;
       }
@@ -190,6 +197,8 @@ export class YourPetComponent implements OnInit, OnDestroy {
     for (let item of formArray) {
       item.controls['petName'].clearValidators();
       item.controls['petName'].updateValueAndValidity();
+      item.controls['petType'].clearValidators();
+      item.controls['petType'].updateValueAndValidity();
     }
   }
 
@@ -198,6 +207,8 @@ export class YourPetComponent implements OnInit, OnDestroy {
     for (let item of formArray) {
       item.controls['petName'].setValidators([Validators.required]);
       item.controls['petName'].updateValueAndValidity();
+      item.controls['petType'].setValidators([Validators.required]);
+      item.controls['petType'].updateValueAndValidity();
     }
   }
 

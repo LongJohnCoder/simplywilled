@@ -1,3 +1,15 @@
+<div class="pageLoader" *ngIf="loading">
+  <div class="loaderInner">
+    <img src="../../../../assets/images/owl-loading.gif" alt="Loading...">
+    <p class="loadingTxt">
+      Please Wait
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+  </div>
+</div>
+
 <div class="rightPanel" *ngIf="!loading">
   <div class="main-content tellusaboutyou">
     <h2>How should The Rest of Your Estate Distributed?</h2>
@@ -106,7 +118,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>What happens if your beneficiary passes before you? 
+                <label>What happens if your beneficiary passes before you?
                     <app-global-tooltip (click)="toolTipClicked('beneficiary_qs')" [tooltipMessages]='toolTipMessageList.beneficiary_qs' toolTipType="beneficiary_qs"></app-global-tooltip>
                 </label>
                 <ul class="radio_ul6 gifts-list">
@@ -397,6 +409,11 @@
                 <span *ngIf="estateDistributedForm.get('toSomeOtherWay.0.someOtherWayText').hasError('required')" class="error_txt">Please fill up this field.</span>
             </div>
         </div><!-- some Other wat form Ends -->
+        <div class="form-group" *ngIf="errorFlag">
+          <div class="error_txt">
+            {{errorMessage}}
+          </div>
+        </div>
       <div class="form-footer">
         <button class="btn common-button btn-grey pull-left" (click)="goBack()">Go Back</button>
         <button class="btn common-button btn-complete" type="submit" >Continue</button>

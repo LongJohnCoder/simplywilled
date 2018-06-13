@@ -13,8 +13,10 @@ import {ProgressbarService} from '../shared/services/progressbar.service';
 export class DisinheritComponent implements OnInit {
     /**Variable declaration*/
     disinheritForm: FormGroup;
+    errorFlag = false;
     errorMessage: any;
     fullUserInfo: any;
+    loading = true;
   /**Constructor call*/
   constructor( private authService: UserAuthService,
                private userService: UserService,
@@ -54,11 +56,13 @@ export class DisinheritComponent implements OnInit {
           this.router.navigate(['/dashboard']);
         },
         (error: any) => {
+          this.errorFlag = true;
           for (let prop in error.error.message) {
             this.errorMessage = error.error.message[prop];
             break;
           }
           setTimeout(() => {
+            this.errorFlag = false;
             this.errorMessage = '';
           }, 3000);
         }
@@ -98,7 +102,7 @@ export class DisinheritComponent implements OnInit {
             },
             (error: any) => {
                 console.log(error.error);
-            }
+            }, () => {this.loading = false;}
         );
     }
     /**Set progress bar width*/

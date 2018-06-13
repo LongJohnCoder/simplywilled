@@ -86,7 +86,7 @@
           <select class="form-control" placeholder="Month"
                   name="month"
                   required
-                  [ngModel]="userInfo !== undefined && userInfo !== null ? userInfo?.month : ''"
+                  [ngModel]="userInfo !== undefined && userInfo !== null && userInfo?.month !== null ? userInfo?.month : ''"
                   #month="ngModel">
             <option value="">MONTH</option>
             <option *ngFor="let month of months;let i = index" [value]="month">{{month}}</option>
@@ -96,7 +96,7 @@
           <select class="form-control" placeholder="Day"
                   name="day"
                   required
-                  [ngModel]="userInfo !== undefined && userInfo !== null ? userInfo?.day : ''"
+                  [ngModel]="userInfo !== undefined && userInfo !== null && userInfo?.day !== null ? userInfo?.day : ''"
                   #day="ngModel">
             <option value="">DAY</option>
             <option *ngFor="let day of days;let i = index" [value]="day">{{day}}</option>
@@ -106,7 +106,7 @@
           <select  class="form-control" placeholder="Year"
                    name="year"
                    requiredDAY
-                   [ngModel]="userInfo !== undefined && userInfo !== null ? userInfo?.year : ''"
+                   [ngModel]="userInfo !== undefined && userInfo !== null && userInfo?.year !== null ? userInfo?.year : ''"
                    #year="ngModel">
             <option value="">YEAR</option>
             <option *ngFor="let year of years;let i = index" [value]="year">{{year}}</option>
@@ -162,7 +162,7 @@
 
 
     <div class="form-group" >
-      <label>Home Address: 
+      <label>Home Address:
           <app-global-tooltip (click)="toolTipClicked('address')" [tooltipMessages]='toolTipMessageList.address' toolTipType="address"></app-global-tooltip>
       </label>
       <input type="text"
@@ -289,7 +289,7 @@
       <select class="form-control"
               name="referral"
               required
-              [ngModel]="userInfo !== undefined && userInfo !== null ? userInfo?.referral : ''"
+              [ngModel]="userInfo !== undefined && userInfo !== null && userInfo?.referral !== null ? userInfo?.referral : ''"
               #referral='ngModel'>
         <option value="">Select</option>
         <!--<option value="Google">Google</option>
@@ -323,10 +323,10 @@
     </div>
 
     <div class="form-group">
-      <label>Marital Status: 
+      <label>Marital Status:
           <app-global-tooltip (click)="toolTipClicked('maritial_status')" [tooltipMessages]='toolTipMessageList.maritial_status' toolTipType="maritial_status"></app-global-tooltip>
       </label>
-      
+
       <ul class="first_page_radio" id="customer_status">
         <li>
           <label class="radio_custom marital_status" [ngClass]="{'active': marital_status.value == 'S'}">
@@ -420,7 +420,7 @@
                #partner_middlename="ngModel">
       </div>
       <div class="form-group" [ngClass]="{'valid': partner_lastname.valid, 'invalid': partner_lastname.errors && (partner_lastname.dirty || partner_lastname.touched)}">
-        <label>Spouse Last Name: </label>
+        <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} Last Name: </label>
         <input type="text" class="form-control"
                name="partner_lastname"
                [ngModel]="userInfo?.partner_lastname"
@@ -471,7 +471,7 @@
             <select class="form-control" placeholder="Month"
                     name="spouseMonth"
                     required
-                    [ngModel]="userInfo !== undefined && userInfo !== null ? userInfo?.spouseMonth : ''"
+                    [ngModel]="userInfo !== undefined && userInfo !== null && userInfo?.spouseMonth !== null ? userInfo?.spouseMonth : ''"
                     #spouseMonth="ngModel">
               <option value="">MONTH</option>
               <option *ngFor="let month of months;let i = index" [value]="month">{{month}}</option>
@@ -481,7 +481,7 @@
             <select class="form-control" placeholder="Day"
                     name="spouseDay"
                     required
-                    [ngModel]="userInfo !== undefined && userInfo !== null ? userInfo?.spouseDay : ''"
+                    [ngModel]="userInfo !== undefined && userInfo !== null && userInfo?.spouseDay !== null ? userInfo?.spouseDay : ''"
                     #spouseDay="ngModel">
               <option value="">DAY</option>
               <option *ngFor="let day of days;let i = index" [value]="day">{{day}}</option>
@@ -491,7 +491,7 @@
             <select  class="form-control" placeholder="Year"
                      name="spouseYear"
                      required
-                     [ngModel]="userInfo !== undefined && userInfo !== null ? userInfo?.spouseYear : ''"
+                     [ngModel]="userInfo !== undefined && userInfo !== null && userInfo?.spouseYear !== null? userInfo?.spouseYear : ''"
                      #spouseYear="ngModel">
               <option value="">YEAR</option>
               <option *ngFor="let year of years;let i = index" [value]="year">{{year}}</option>
@@ -533,7 +533,7 @@
             </ul>
           </div>
         </div>
-        <div class="form-group">
+        <!--<div class="form-group">
           <label>Are you Legally Married?</label>
           <div class="">
             <ul class="radio_ul6">
@@ -561,7 +561,7 @@
               </li>
             </ul>
           </div>
-        </div>
+        </div>-->
       </div>
 
       <div class="form-group">
@@ -611,17 +611,15 @@
       </div>
     </div>
 
-    <div class="row" *ngIf="errors.errorFlag">
-      <div class="col-md-12">
+    <div class="form-group" *ngIf="errors.errorFlag">
         <div class="error_txt">
           {{errors.errorMessage}}
         </div>
-      </div>
     </div>
 
     <div class="form-footer">
       <button class="btn common-button btn-grey pull-left" [routerLink]="['/dashboard']">Go Back</button>
-      <button class="btn common-button btn-complete">Continue</button>
+      <button class="btn common-button btn-complete" [disabled]="loading" >Continue</button>
     </div>
   </form>
 </div>

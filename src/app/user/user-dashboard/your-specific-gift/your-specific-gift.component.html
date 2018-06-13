@@ -61,17 +61,20 @@
 <!--make decision which view to open-->
 <div id="gift_packages" *ngIf="showAddGift">
   <div class="main-content tellusaboutyou main-content-bottom">
-    <h2 class="singing_instruction3">Please Tell Us What Types Of Gifts You Would Like To Make?</h2>
-    <ul class="radio_ul3">
+    <h2 class="singing_instruction3">
+      Please Tell Us What Types Of Gifts You Would Like To Make?
+      <app-global-tooltip (click)="toolTipClicked('gift_type')" [tooltipMessages]='toolTipMessageList.gift_type' toolTipType="gift_type"></app-global-tooltip>
+    </h2>
+   <!-- <ul class="radio_ul3">
       <li>
         <label class="radio_custom singing_instruction">
           <span class="custom_img3"><img src="../../../../assets/images/other-ways.png" alt="Otherways"></span>
         </label>
       </li>
-    </ul>
-    <h2 class="questions">Please tell us what type of gift you would like to make?
+    </ul>-->
+    <!--<h2 class="questions">Please tell us what type of gift you would like to make?
       <app-global-tooltip (click)="toolTipClicked('gift_type')" [tooltipMessages]='toolTipMessageList.gift_type' toolTipType="gift_type"></app-global-tooltip>
-    </h2>
+    </h2>-->
     <ul class="radio_ul5">
       <li>
         <label class="radio_custom gift_type_radio" (click)="openModule('_ca')">
@@ -113,6 +116,11 @@
   <a routerLink="/dashboard/your-estate-distributed" class="btn common-button btn-complete">Next</a>
 </div>
 <!--make decision which view to open start-->
+  <div *ngIf="errFlag">
+    <span class="error_txt">
+        {{ errString }}
+    </span>
+  </div>
 
 <app-cash-gift *ngIf="cash_module" [giftCount]="giftCount+1"></app-cash-gift>
 <app-real-property *ngIf="real_property_module" [giftCount]="giftCount+1"></app-real-property>

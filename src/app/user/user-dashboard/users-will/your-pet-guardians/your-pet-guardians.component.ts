@@ -15,6 +15,7 @@ export class YourPetGuardiansComponent implements OnInit {
 
   public petGuardianForm: FormGroup; // our form model
   errorMessage: any = '';
+  errorFlag = false;
   userInfo: any;
   states: string[] = [];
   loading = true;
@@ -32,6 +33,7 @@ export class YourPetGuardiansComponent implements OnInit {
   ngOnInit() {
     this.createForm();
     this.getUserData();
+    this.addValidationGaurdianToForm();
   }
 
   createForm () {
@@ -79,6 +81,7 @@ export class YourPetGuardiansComponent implements OnInit {
 
   onSubmit(model: any) {
     if (model.valid) {
+      this.loading = true;
       let data = model.value;
       data.step = 12;
       data.user_id = this.authService.getUser()['id'];
@@ -97,14 +100,17 @@ export class YourPetGuardiansComponent implements OnInit {
           }
         },
         (error: any) => {
+          this.errorFlag = true;
           for(let prop in error.error.message) {
             this.errorMessage = error.error.message[prop];
             break;
           }
+          this.loading = false;
           setTimeout(() => {
+            this.errorFlag = false;
             this.errorMessage = '';
           }, 3000);
-        }
+        }, () => { this.loading = false; }
       );
     } else {
       alert('Please fill up the required fields');
@@ -141,7 +147,8 @@ export class YourPetGuardiansComponent implements OnInit {
         let totalChildrenData = response.data[1].data;
         // set values to petGuardianForm
         this.petGuardianForm.patchValue({
-          isPetGuardian: this.userInfo.isPetGuardian || 'No',
+          //isPetGuardian: this.userInfo.isPetGuardian || 'No',
+          isPetGuardian: 'Yes',
           isBackUpPetGuardian: this.userInfo.isBackUpPetGuardian || 'No'
         });
         if (!!this.userInfo.petGuardian.length) {
@@ -276,6 +283,8 @@ export class YourPetGuardiansComponent implements OnInit {
     this.petGuardianForm.get(`petGuardian.0.fullname`).updateValueAndValidity();
     this.petGuardianForm.get(`petGuardian.0.relationship_with`).setValidators([]);
     this.petGuardianForm.get(`petGuardian.0.relationship_with`).updateValueAndValidity();
+    this.petGuardianForm.get(`petGuardian.0.relationship_other`).clearValidators();
+    this.petGuardianForm.get(`petGuardian.0.relationship_other`).updateValueAndValidity();
     this.petGuardianForm.get(`petGuardian.0.address`).setValidators([]);
     this.petGuardianForm.get(`petGuardian.0.address`).updateValueAndValidity();
     this.petGuardianForm.get(`petGuardian.0.city`).setValidators([]);
@@ -286,6 +295,8 @@ export class YourPetGuardiansComponent implements OnInit {
     this.petGuardianForm.get(`petGuardian.0.zip`).updateValueAndValidity();
     this.petGuardianForm.get(`petGuardian.0.phone`).clearValidators();
     this.petGuardianForm.get(`petGuardian.0.phone`).updateValueAndValidity();
+    this.petGuardianForm.get(`petGuardian.0.email`).clearValidators();
+    this.petGuardianForm.get(`petGuardian.0.email`).updateValueAndValidity();
     // this.petGuardianForm.get(`petGuardian.0.email`).setValidators([]);
     // this.petGuardianForm.get(`petGuardian.0.email`).updateValueAndValidity();
     this.petGuardianForm.get(`petGuardian.0.email_notification`).setValidators([]);
@@ -297,6 +308,8 @@ export class YourPetGuardiansComponent implements OnInit {
     this.petGuardianForm.get(`backUpPetGuardian.0.fullname`).updateValueAndValidity();
     this.petGuardianForm.get(`backUpPetGuardian.0.relationship_with`).setValidators([]);
     this.petGuardianForm.get(`backUpPetGuardian.0.relationship_with`).updateValueAndValidity();
+    this.petGuardianForm.get(`backUpPetGuardian.0.relationship_other`).clearValidators();
+    this.petGuardianForm.get(`backUpPetGuardian.0.relationship_other`).updateValueAndValidity();
     this.petGuardianForm.get(`backUpPetGuardian.0.address`).setValidators([]);
     this.petGuardianForm.get(`backUpPetGuardian.0.address`).updateValueAndValidity();
     this.petGuardianForm.get(`backUpPetGuardian.0.city`).setValidators([]);
@@ -307,6 +320,8 @@ export class YourPetGuardiansComponent implements OnInit {
     this.petGuardianForm.get(`backUpPetGuardian.0.zip`).updateValueAndValidity();
     this.petGuardianForm.get(`backUpPetGuardian.0.phone`).clearValidators();
     this.petGuardianForm.get(`backUpPetGuardian.0.phone`).updateValueAndValidity();
+    this.petGuardianForm.get(`backUpPetGuardian.0.email`).clearValidators();
+    this.petGuardianForm.get(`backUpPetGuardian.0.email`).updateValueAndValidity();
     // this.petGuardianForm.get(`backUpPetGuardian.0.email`).setValidators([]);
     // this.petGuardianForm.get(`backUpPetGuardian.0.email`).updateValueAndValidity();
     this.petGuardianForm.get(`backUpPetGuardian.0.email_notification`).setValidators([]);

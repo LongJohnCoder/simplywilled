@@ -53,7 +53,8 @@
         <div *ngFor="let item of petsForm.get('petsName').controls; let i = index;">
           <div class="allChild" [formGroupName]="i">
             <div class="threeColField">
-              <input type="text" class="form-control" formControlName="petName" required placeholder="eg my dog, Bingo">
+              <input type="text" class="form-control" formControlName="petType" required placeholder="eg, dog">
+              <input type="text" class="form-control" formControlName="petName" required placeholder="eg, Bingo">
             </div>
             <div class="delBtnContainer" *ngIf="i > 0">
               <!--<a class="btn btn-danger" ><i class="fa fa-trash"></i></a>-->
@@ -79,7 +80,7 @@
     </div>
 
     <!-- Form-Group -->
-    <div class="form-group">
+    <div class="form-group" *ngIf="petsForm.get('providePetsWill').value === 'Yes'">
       <label>Would you like to leave money to your pet caretaker to cover expenses associated with your pet?</label>
       <ul class="radio_ul6">
         <li>
@@ -109,7 +110,7 @@
     <!-- Form Group -->
 
     <!-- Form-Group -->
-    <div class="form-group" *ngIf="petsForm.get('leaveMoney').value === 'Yes'">
+    <div class="form-group" *ngIf="petsForm.get('providePetsWill').value === 'Yes' && petsForm.get('leaveMoney').value === 'Yes'">
       <input type="text" class="form-control" name="amount" formControlName="amount" placeholder="$">
       <span class="error_txt" *ngIf="petsForm.get('amount').touched && !petsForm.get('amount').valid && petsForm.get('amount').hasError('required')">
         This field is required
@@ -121,12 +122,11 @@
     <!-- Form Group -->
 
     <div class="form-group" *ngIf="errors.errorFlag">
-      <div class="col-md-12">
-                <span class="alert alert-danger">
-                    {{ errors.errorMessage }}
-                </span>
+      <div class="error_txt">
+        {{errors.errorMessage}}
       </div>
     </div>
+
     <div class="form-footer">
       <button class="btn common-button btn-grey pull-left" (click)="goBack()">Go Back</button>
       <button class="btn common-button btn-complete" (click) = "submit()">Continue</button>

@@ -132,6 +132,10 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
         this.flags.someoneElseFlag = parsedDataSet.passed_by === '_se';
         this.flags.residueEstateChildFlag = parsedDataSet.passed_by_child === '_re';
         this.flags.someoneElseChildFlag = parsedDataSet.passed_by_child === '_se';
+        this.flags.residenceYesFlag = parsedDataSet.residence === '1';
+        this.flags.residenceNoFlag  = parsedDataSet.residence === '0';
+        this.flags.mortageYesFlag = parsedDataSet.free_mortgage === '1';
+        this.flags.mortageNoFlag  = parsedDataSet.free_mortgage === '0';
         this.showDataMultipleBeneficiaries(parsedDataSet);
         this.setValidatorGift(parsedDataSet === null ? '' : parsedDataSet.gift_to);
         this.setValidationBeneficiary(parsedDataSet === null ? '' : parsedDataSet.beneficiary);

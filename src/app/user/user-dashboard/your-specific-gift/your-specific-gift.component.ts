@@ -87,6 +87,7 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
       this.fetchGiftDataDB = this.ysgService.fetchData(this.access_token, this.myUserId);
       this.fetchGiftDataDBSubscription = this.fetchGiftDataDB.subscribe(data => {
         if (data.status === 200) {
+          this.giftResp = [];
           this.flags.charityFlag = (data !== null && data.data[7] !== null && data.data[7] !== undefined && data.data[7].data !== null && data.data[7].data !== undefined && data.data[7].data.charity !== null && data.data[7].data.charity === 1);
           this.flags.individualFlag = (data !== null && data.data[7] !== null && data.data[7] !== undefined && data.data[7].data !== null && data.data[7].data !== undefined && data.data[7].data.individualFlag !== null && data.data[7].data.individual === 1);
           if (data.data[6].data.isGift >= 1) {
@@ -99,6 +100,14 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
               if (this.flags.individualFlag && data.data[6].data.gift[i].individual === 1) {
                 this.giftResp.push(data.data[6].data.gift[i]);
               }
+            }
+            console.log(this.giftResp.length);
+            if (this.giftResp.length > 0) {
+              this.onNewModule = false;
+              this.showAddGift = false;
+            } else {
+              this.onNewModule = true;
+              this.showAddGift = true;
             }
           //  console.log(this.giftResp);
             //this.giftResp  = data.data[6].data.gift;

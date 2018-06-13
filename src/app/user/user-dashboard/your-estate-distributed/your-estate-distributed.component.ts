@@ -18,6 +18,7 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
   columnFormArray: FormArray;
   fullUserInfo: any;
   singleBeneficiary: boolean;
+  errorFlag = false;
   errorMessage: any;
   editFlag = false;
   beneficiaryNoFormArray: FormArray;
@@ -283,11 +284,13 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
             this.router.navigate(['/dashboard/contingent-beneficiaries']);
           },
           (error: any) => {
+            this.errorFlag = true;
             for (let prop in error.error.message) {
               this.errorMessage = error.error.message[prop];
               break;
             }
             setTimeout(() => {
+              this.errorFlag = false;
               this.errorMessage = '';
             }, 3000);
           }
@@ -311,6 +314,7 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
 
     this.checkValidation((this.estateDistributedForm.get('toASingleBeneficiary') as FormArray).controls);
     this.checkValidation((this.estateDistributedForm.get('toMultipleBeneficiary') as FormArray).controls);
+    this.checkValidation((this.estateDistributedForm.get('toSomeOtherWay') as FormArray).controls);
     this.checkValidationFormArray((this.estateDistributedForm.get('toMultipleBeneficiary.0.beneficiaryNo') as FormArray).controls, 0);
     this.checkValidationFormArray((this.estateDistributedForm.get('toMultipleBeneficiary.0.beneficiaryYes') as FormArray).controls, 1);
   }

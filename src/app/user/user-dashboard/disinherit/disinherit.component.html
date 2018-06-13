@@ -1,4 +1,16 @@
-<div class="rightPanel">
+<div class="pageLoader" *ngIf="loading">
+  <div class="loaderInner">
+    <img src="../../../../assets/images/owl-loading.gif" alt="Loading...">
+    <p class="loadingTxt">
+      Please Wait
+      <span></span>
+      <span></span>
+      <span></span>
+    </p>
+  </div>
+</div>
+
+<div class="rightPanel" *ngIf="!loading">
   <div class="main-content tellusaboutyou">
     <h2>Would you like to disinherit anyone?</h2>
     <form [formGroup]="disinheritForm" novalidate
@@ -80,6 +92,13 @@
         </div>
       </div>
       </div>
+
+      <div class="form-group" *ngIf="errorFlag">
+        <div class="error_txt">
+          {{errorMessage}}
+        </div>
+      </div>
+
       <div class="form-footer">
         <button class="btn common-button btn-grey pull-left"  routerLink="/dashboard/contingent-beneficiaries">Go Back</button>
         <button class="btn common-button btn-complete" type="submit" >Continue</button>

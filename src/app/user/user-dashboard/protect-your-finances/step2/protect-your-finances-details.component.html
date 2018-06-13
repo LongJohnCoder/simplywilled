@@ -25,8 +25,9 @@
                       type="text"
                       class="form-control"
                       formControlName="fullname"
+                      placeholder="Full legal name"
                       required
-                      [ngClass]='{"error_input": poaDetailsForm.get("fullname").touched && poaDetailsForm.get("fullname").dirty && (poaDetailsForm.get("fullname").hasError("required") || poaDetailsForm.get("fullname").hasError("pattern"))}'
+                      [ngClass]='{"error_input": poaDetailsForm.get("fullname").touched && poaDetailsForm.get("fullname").invalid}'
                       name ='fullname'>
 
               <span class="error_txt"
@@ -91,9 +92,10 @@
               <input
                 type="text"
                 class="form-control"
+                placeholder="Address Line 1"
                 formControlName="address"
                 required
-                [ngClass]='{"error_input": poaDetailsForm.get("address").touched && poaDetailsForm.get("address").dirty && poaDetailsForm.get("address").hasError("required")}'
+                [ngClass]='{"error_input": poaDetailsForm.get("address").touched && poaDetailsForm.get("address").invalid}'
                 name ='address'
               >
               <div *ngIf="poaDetailsForm.get('address').dirty && poaDetailsForm.get('address').touched">
@@ -109,7 +111,7 @@
                     placeholder="City"
                     formControlName="city"
                     required
-                    [ngClass]='{"error_input": poaDetailsForm.get("city").touched && poaDetailsForm.get("city").dirty && poaDetailsForm.get("city").hasError("required")}'
+                    [ngClass]='{"error_input": poaDetailsForm.get("city").touched && poaDetailsForm.get("city").invalid}'
                   >
                   <div *ngIf="poaDetailsForm.get('city').dirty && poaDetailsForm.get('city').touched">
                     <span class="error_txt" *ngIf="poaDetailsForm.get('city').hasError('required')" >City is required</span>
@@ -117,7 +119,7 @@
                 </div>
 
                 <div class="col-md-6">
-                  <select class="form-control" formControlName="state" [ngClass]='{"error_input": poaDetailsForm.get("state").touched && poaDetailsForm.get("state").dirty && poaDetailsForm.get("state").invalid}'>
+                  <select class="form-control" formControlName="state" [ngClass]='{"error_input": poaDetailsForm.get("state").touched && poaDetailsForm.get("state").invalid}'>
                     <option value="">States</option>
                     <option *ngFor="let state of states" [value]="state">{{state}}</option>
                   </select>
@@ -137,7 +139,7 @@
                     placeholder="Zip Code"
                     formControlName="zip"
                     required
-                    [ngClass]='{"error_input": poaDetailsForm.get("zip").touched && poaDetailsForm.get("zip").dirty && poaDetailsForm.get("zip").hasError("required")}'
+                    [ngClass]='{"error_input": poaDetailsForm.get("zip").touched && poaDetailsForm.get("zip").invalid}'
                   >
                   <div
                     *ngIf="poaDetailsForm.get('zip').dirty && poaDetailsForm.get('zip').touched"
@@ -160,7 +162,7 @@
                 type="text"
                 class="form-control"
                 formControlName="phone"
-                [ngClass]='{"error_input": poaDetailsForm.get("phone").touched && poaDetailsForm.get("phone").dirty && (poaDetailsForm.get("phone").hasError("required") || poaDetailsForm.get("phone").hasError("minlength"))}'
+                [ngClass]='{"error_input": poaDetailsForm.get("phone").touched && poaDetailsForm.get("phone").invalid}'
                 #phone
                 mask="(000)-000-0000"
                 placeholder="(xxx)-xxx-xxxx"
@@ -185,20 +187,21 @@
                     <input type="radio" formControlName="is_inform" #isInformYes value=1 (click)="changeMe('is_inform', 1)">
                     <span class="human_status">Yes</span>
                   </label>
-                  <div class="email-box valid" *ngIf='poaDetailsForm.get("is_inform").value === 1'>
+                  <div class="email-box" *ngIf="poaDetailsForm.get('is_inform').value === 1" [ngClass] = "{'valid': poaDetailsForm.get('email').valid, 'invalid': poaDetailsForm.get('email').invalid && poaDetailsForm.get('email').touched}">
                     <input type="email" placeholder="Enter Email Address" class="form-control"  required
                     name ='email'
                     formControlName = "email">
-                    <span class="error_txt"
+                   <!-- <span class="error_txt"
                     *ngIf="poaDetailsForm.get('email').touched && poaDetailsForm.get('email').dirty && poaDetailsForm.get('email').hasError('required')">
                     Please enter email
                 </span>
-
-              <span class="error_txt"
+-->
+              <!--<span class="error_txt"
                     *ngIf="poaDetailsForm.get('email').touched && poaDetailsForm.get('email').dirty && poaDetailsForm.get('email').hasError('pattern')">
                     Please enter valid email
-                </span>
-                    <i class="fa fa-check"></i>
+                </span>-->
+                    <i class="fa fa-check" *ngIf="poaDetailsForm.get('email').valid"></i>
+                    <i class="fa fa-times" *ngIf="poaDetailsForm.get('email').invalid && poaDetailsForm.get('email').touched"></i>
                   </div>
                 </li>
                 <li>
@@ -264,16 +267,18 @@
                         type="text"
                         class="form-control"
                         formControlName="backup_fullname"
+                        placeholder="Full legal name"
+                        [ngClass]='{"error_input": poaDetailsForm.get("backup_fullname").touched && poaDetailsForm.get("backup_fullname").invalid}'
                         required
                         name ='backup_fullname'>
 
                 <span class="error_txt"
-                      *ngIf="poaDetailsForm.get('backup_fullname').touched && poaDetailsForm.get('backup_fullname').dirty && poaDetailsForm.get('backup_fullname').hasError('required')">
+                      *ngIf="poaDetailsForm.get('backup_fullname').touched && poaDetailsForm.get('backup_fullname').hasError('required')">
                     Please enter a properly capitalized second power attorney name
                 </span>
 
                 <span class="error_txt"
-                      *ngIf="poaDetailsForm.get('backup_fullname').touched && poaDetailsForm.get('backup_fullname').dirty && poaDetailsForm.get('backup_fullname').hasError('pattern')">
+                      *ngIf="poaDetailsForm.get('backup_fullname').touched && poaDetailsForm.get('backup_fullname').hasError('pattern')">
                     Please enter a properly capitalized second power attorney name
                 </span>
               </div>
@@ -332,11 +337,12 @@
                   type="text"
                   class="form-control"
                   formControlName="backup_address"
+                  placeholder="Address Line 1"
                   required
-                  [ngClass]='{"error_input": poaDetailsForm.get("backup_address").touched && poaDetailsForm.get("backup_address").dirty && poaDetailsForm.get("backup_address").hasError("required")}'
+                  [ngClass]='{"error_input": poaDetailsForm.get("backup_address").touched && poaDetailsForm.get("backup_address").invalid}'
                   name ='backup_address'
                 >
-                <div *ngIf="poaDetailsForm.get('backup_address').dirty && poaDetailsForm.get('backup_address').touched">
+                <div *ngIf="poaDetailsForm.get('backup_address').touched">
                   <span class="error_txt" *ngIf="poaDetailsForm.get('backup_address').hasError('required')" >Address is required</span>
                 </div>
 
@@ -349,20 +355,20 @@
                       placeholder="City"
                       formControlName="backup_city"
                       required
-                      [ngClass]='{"error_input": poaDetailsForm.get("backup_city").touched && poaDetailsForm.get("backup_city").dirty && poaDetailsForm.get("backup_city").hasError("required")}'
+                      [ngClass]='{"error_input": poaDetailsForm.get("backup_city").touched && poaDetailsForm.get("backup_city").invalid}'
                     >
-                    <div *ngIf="poaDetailsForm.get('backup_city').dirty && poaDetailsForm.get('backup_city').touched">
+                    <div *ngIf="poaDetailsForm.get('backup_city').touched">
                       <span class="error_txt" *ngIf="poaDetailsForm.get('backup_city').hasError('required')" >City is required</span>
                     </div>
                   </div>
 
                   <div class="col-md-6">
-                    <select class="form-control" formControlName="backup_state" [ngClass]='{"error_input": poaDetailsForm.get("backup_state").touched && poaDetailsForm.get("backup_state").dirty && poaDetailsForm.get("backup_state").invalid}'>
+                    <select class="form-control" formControlName="backup_state" [ngClass]='{"error_input": poaDetailsForm.get("backup_state").touched && poaDetailsForm.get("backup_state").invalid}'>
                       <option value="">States</option>
                       <option *ngFor="let state of states" [value]="state">{{state}}</option>
                     </select>
                     <div
-                      *ngIf="poaDetailsForm.get('backup_state').dirty && poaDetailsForm.get('backup_state').touched"
+                      *ngIf="poaDetailsForm.get('backup_state').touched"
                     >
                       <span class="error_txt" *ngIf="poaDetailsForm.get('backup_state').hasError('required')">State is required</span>
                     </div>
@@ -377,10 +383,10 @@
                       placeholder="Zip Code"
                       formControlName="backup_zip"
                       required
-                      [ngClass]='{"error_input": poaDetailsForm.get("backup_zip").touched && poaDetailsForm.get("backup_zip").dirty && poaDetailsForm.get("backup_zip").hasError("required")}'
+                      [ngClass]='{"error_input": poaDetailsForm.get("backup_zip").touched && poaDetailsForm.get("backup_zip").invalid}'
                     >
                     <div
-                      *ngIf="poaDetailsForm.get('backup_zip').dirty && poaDetailsForm.get('backup_zip').touched"
+                      *ngIf="poaDetailsForm.get('backup_zip').touched"
                     >
                       <span class="error_txt" *ngIf="poaDetailsForm.get('backup_zip').hasError('required')">Zip is required</span>
                       <span class="error_txt" *ngIf="poaDetailsForm.get('backup_zip').hasError('pattern')">Please provide a proper zip</span>
@@ -402,16 +408,17 @@
                         formControlName="backup_phone"
                         mask="(000)-000-0000"
                         placeholder="(xxx)-xxx-xxxx"
+                        [ngClass]='{"error_input": poaDetailsForm.get("backup_phone").touched && poaDetailsForm.get("backup_phone").invalid}'
                         required
                         name ='phone'>
 
                 <span class="error_txt"
-                      *ngIf="poaDetailsForm.get('backup_phone').touched && poaDetailsForm.get('backup_phone').dirty && poaDetailsForm.get('backup_phone').hasError('required')">
+                      *ngIf="poaDetailsForm.get('backup_phone').touched && poaDetailsForm.get('backup_phone').hasError('required')">
                     Please enter second power attorney phone
                 </span>
 
                 <span class="error_txt"
-                      *ngIf="poaDetailsForm.get('backup_phone').touched && poaDetailsForm.get('backup_phone').dirty && poaDetailsForm.get('backup_phone').hasError('minlength')">
+                      *ngIf="poaDetailsForm.get('backup_phone').touched && poaDetailsForm.get('backup_phone').hasError('minlength')">
                     Please provide a second power attorney phone
                 </span>
               </div>
@@ -424,16 +431,16 @@
                       <input type="radio" formControlName="backup_is_inform" #isInformYes value=1 (click)="changeMe('backup_is_inform', 1)">
                       <span class="human_status">Yes</span>
                     </label>
-                    <div class="email-box valid" *ngIf='poaDetailsForm.get("backup_is_inform").value === 1'>
+                    <div class="email-box" *ngIf='poaDetailsForm.get("backup_is_inform").value === 1' [ngClass] = "{'valid': poaDetailsForm.get('backup_email').valid, 'invalid': poaDetailsForm.get('backup_email').invalid && poaDetailsForm.get('backup_email').touched}">
                       <input
                       type = "text"
                       class = "form-control"
                       required
-                      name ='email'
+                      name ='backup_email'
                       formControlName = "backup_email"
                       placeholder="Enter Email Address"
                       >
-                      <span class="error_txt"
+                     <!-- <span class="error_txt"
                       *ngIf="poaDetailsForm.get('backup_email').touched && poaDetailsForm.get('backup_email').dirty && poaDetailsForm.get('backup_email').hasError('required')">
                     Please enter email
                 </span>
@@ -441,8 +448,9 @@
                 <span class="error_txt"
                       *ngIf="poaDetailsForm.get('backup_email').touched && poaDetailsForm.get('backup_email').dirty && poaDetailsForm.get('backup_email').hasError('pattern')">
                     Please enter valid email
-                </span>
-                      <i class="fa fa-check"></i>
+                </span>-->
+                      <i class="fa fa-check" *ngIf="poaDetailsForm.get('backup_email').valid"></i>
+                      <i class="fa fa-times" *ngIf="poaDetailsForm.get('backup_email').invalid && poaDetailsForm.get('backup_email').touched"></i>
                     </div>
                   </li>
                   <li>
@@ -474,6 +482,12 @@
               </div> -->
 
             </div>
+        </div>
+
+        <div class="form-group" *ngIf="errors.errorFlag">
+          <div class="error_txt">
+            {{errors.errorMessage}}
+          </div>
         </div>
 
         <div class="form-footer">

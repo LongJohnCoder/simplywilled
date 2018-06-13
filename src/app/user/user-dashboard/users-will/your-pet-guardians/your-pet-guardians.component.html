@@ -13,7 +13,7 @@
 <div class="main-content tellusaboutyou" *ngIf="!loading">
   <h2>Pet Caretaker</h2>
   <form [formGroup] = "petGuardianForm">
-    <div class="form-group">
+    <!--<div class="form-group">
       <label>Do You Need To Appoint Caretaker For Your Pets? </label>
       <ul class="radio_ul6">
         <li>
@@ -34,6 +34,7 @@
         </li>
       </ul>
     </div>
+    <hr>-->
     <hr>
     <div *ngIf="petGuardianForm.value.isPetGuardian == 'Yes'">
       <h2>Name Your First Choice for Pet Caretaker</h2>
@@ -342,10 +343,8 @@
         </div>
       </div>
     </div>
-    <div class="form-group" *ngIf="errorMessage">
-      <div class="col-md-12">
-        <span class="alert alert-danger">{{errorMessage}}</span>
-      </div>
+    <div class="form-group" *ngIf="errorFlag">
+        <span class="error_txt">{{errorMessage}}</span>
     </div>
     <div class="form-footer">
       <button class="btn common-button btn-grey pull-left" (click)="goBack()">Go Back</button>

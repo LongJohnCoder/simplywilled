@@ -18,6 +18,7 @@ export class ContingentBeneficiariesComponent implements OnInit, OnDestroy {
     getUserDetailsSubscription: Subscription;
     editSubscription: Subscription;
     loading = true;
+    errorFlag = false;
     toolTipMessageList: any;
 
     /**Constructor call*/
@@ -103,9 +104,10 @@ export class ContingentBeneficiariesComponent implements OnInit, OnDestroy {
      */
   onSubmit(model: any) {
       if (model.valid) {
-        let modelData = model.value;
-        modelData.step = 9;
-        modelData.user_id = this.authService.getUser()['id'];
+        let modelData = this.prepareData(model);
+        //let modelData = model.value;
+        //modelData.step = 9;
+        //modelData.user_id = this.authService.getUser()['id'];
         this.editSubscription = this.userService.editProfile(modelData).subscribe(
           (response: any) => {
             // go to disinherit section
@@ -113,11 +115,13 @@ export class ContingentBeneficiariesComponent implements OnInit, OnDestroy {
 
           },
           (error: any) => {
+            this.errorFlag = true;
             for (let prop in error.error.message) {
               this.errorMessage = error.error.message[prop];
               break;
             }
             setTimeout(() => {
+              this.errorFlag = false;
               this.errorMessage = '';
             }, 3000);
           }
@@ -128,6 +132,16 @@ export class ContingentBeneficiariesComponent implements OnInit, OnDestroy {
       }
   }
 
+  prepareData(formData) {
+    let request = {
+      isContingentBeneficiary: formData.value.isContingentBeneficiary,
+      info: formData.value.isContingentBeneficiary !== '0' ? formData.value.info : null,
+      distribution_type: formData.value.isContingentBeneficiary !== '0' ? formData.value.distribution_type : null,
+      step: 9,
+      user_id: this.authService.getUser()['id']
+    };
+    return request;
+  }
   /**
    * Marks all controls in a form group as touched
    * @param formGroup
@@ -152,15 +166,19 @@ export class ContingentBeneficiariesComponent implements OnInit, OnDestroy {
     addRemoveOptions() {
         if (this.contingentBeneficiariesForm.value.isContingentBeneficiary === '1') {
             this.addValidationTodistributionType();
-        } if (this.contingentBeneficiariesForm.value.isContingentBeneficiary === '0') {
+        } else if (this.contingentBeneficiariesForm.value.isContingentBeneficiary === '0') {
             this.removeValidationTodistributionType();
-        } if (this.contingentBeneficiariesForm.value.distribution_type === 'other') {
-            this.contingentBeneficiariesForm.get(`info`).setValidators([Validators.required]);
-            this.contingentBeneficiariesForm.get(`info`).updateValueAndValidity();
-        } if (this.contingentBeneficiariesForm.value.distribution_type === 'to_my_heirs') {
-            this.contingentBeneficiariesForm.get(`info`).setValidators([]);
-            this.contingentBeneficiariesForm.get(`info`).updateValueAndValidity();
         }
+    }
+
+    addRemoveOptionsDistributionType() {
+      if (this.contingentBeneficiariesForm.value.distribution_type === 'other') {
+        this.contingentBeneficiariesForm.get(`info`).setValidators([Validators.required]);
+        this.contingentBeneficiariesForm.get(`info`).updateValueAndValidity();
+      } else if (this.contingentBeneficiariesForm.value.distribution_type === 'to_my_heirs') {
+        this.contingentBeneficiariesForm.get(`info`).setValidators([]);
+        this.contingentBeneficiariesForm.get(`info`).updateValueAndValidity();
+      }
     }
 
     /**

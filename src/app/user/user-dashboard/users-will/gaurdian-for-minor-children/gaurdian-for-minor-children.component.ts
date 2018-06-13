@@ -120,6 +120,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit, OnDestroy {
 
   onSubmit(model: any) {
     if (model.valid) {
+      this.loading = true;
       let data = model.value;
       data.step = 3 ;
       data.user_id = this.authService.getUser()['id'];
@@ -139,10 +140,11 @@ export class GaurdianForMinorChildrenComponent implements OnInit, OnDestroy {
             this.errorMessage = error.error.message[prop];
             break;
           }
+          this.loading = false;
           setTimeout(() => {
             this.errorMessage = '';
           }, 3000);
-        }
+        }, () => { this.loading = false; }
       );
     } else {
       alert('Please fill up the required fields');
@@ -307,6 +309,8 @@ export class GaurdianForMinorChildrenComponent implements OnInit, OnDestroy {
       this.myForm.get(`guardian.0.fullname`).updateValueAndValidity();
       this.myForm.get(`guardian.0.relationship_with`).setValidators([]);
       this.myForm.get(`guardian.0.relationship_with`).updateValueAndValidity();
+      this.myForm.get(`guardian.0.relationship_other`).clearValidators();
+      this.myForm.get(`guardian.0.relationship_other`).updateValueAndValidity();
       this.myForm.get(`guardian.0.address`).setValidators([]);
       this.myForm.get(`guardian.0.address`).updateValueAndValidity();
       this.myForm.get(`guardian.0.city`).setValidators([]);
@@ -317,6 +321,8 @@ export class GaurdianForMinorChildrenComponent implements OnInit, OnDestroy {
       this.myForm.get(`guardian.0.zip`).updateValueAndValidity();
       this.myForm.get(`guardian.0.phone`).clearValidators();
       this.myForm.get(`guardian.0.phone`).updateValueAndValidity();
+      this.myForm.get(`guardian.0.email`).clearValidators();
+      this.myForm.get(`guardian.0.email`).updateValueAndValidity();
       // this.myForm.get(`guardian.0.email`).setValidators([]);
       // this.myForm.get(`guardian.0.email`).updateValueAndValidity();
       this.myForm.get(`guardian.0.email_notification`).setValidators([]);
@@ -328,6 +334,8 @@ export class GaurdianForMinorChildrenComponent implements OnInit, OnDestroy {
         this.myForm.get(`backUpGuardian.0.fullname`).updateValueAndValidity();
         this.myForm.get(`backUpGuardian.0.relationship_with`).setValidators([]);
         this.myForm.get(`backUpGuardian.0.relationship_with`).updateValueAndValidity();
+        this.myForm.get(`backUpGuardian.0.relationship_other`).clearValidators();
+        this.myForm.get(`backUpGuardian.0.relationship_other`).updateValueAndValidity();
         this.myForm.get(`backUpGuardian.0.address`).setValidators([]);
         this.myForm.get(`backUpGuardian.0.address`).updateValueAndValidity();
         this.myForm.get(`backUpGuardian.0.city`).setValidators([]);
@@ -338,6 +346,8 @@ export class GaurdianForMinorChildrenComponent implements OnInit, OnDestroy {
         this.myForm.get(`backUpGuardian.0.zip`).updateValueAndValidity();
         this.myForm.get(`backUpGuardian.0.phone`).clearValidators();
         this.myForm.get(`backUpGuardian.0.phone`).updateValueAndValidity();
+        this.myForm.get(`backUpGuardian.0.email`).clearValidators();
+        this.myForm.get(`backUpGuardian.0.email`).updateValueAndValidity();
         // this.myForm.get(`backUpGuardian.0.email`).setValidators([]);
         // this.myForm.get(`backUpGuardian.0.email`).updateValueAndValidity();
         this.myForm.get(`backUpGuardian.0.email_notification`).setValidators([]);

@@ -32,7 +32,10 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
   states: string[] = [];
   trackPage = false;
   toolTipMessageList: any;
-
+  errors = {
+    errorFlag: false,
+    errorMessage: ''
+  };
   constructor(
     private protectYourFinancesService: ProtectYourFinancesService,
     private fb: FormBuilder,
@@ -129,6 +132,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
    * returns void
    */
   createForm(data = null) {
+    console.log(data);
     this.poaDetailsForm = this.fb.group({
      /* is_backupattorney: new FormControl(isBackupattorney !== undefined && isBackupattorney !== null ? isBackupattorney : 0),
       is_inform           : new FormControl(formObj !== undefined && formObj !== null && formObj.is_inform !== undefined
@@ -161,7 +165,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
                                 ? formObjBackup.relationship : ''),
       backup_other_relationship  : new FormControl(formObjBackup !== undefined && formObjBackup !== null && formObjBackup.other_relationship !== undefined
                                 ? formObjBackup.other_relationship : ''),*/
-      is_backupattorney   : new FormControl(data !== null && data.isBackupattorney  !== null ? data.isBackupattorney : 0),
+      is_backupattorney   : new FormControl(data !== null && data.isBackupattorney  !== null && !isNaN(data.isBackupattorney) ? data.isBackupattorney : 0),
       is_inform           : new FormControl(data !== null && data.poaDetailsHolders !== null ? (data.poaDetailsHolders.is_inform !== null ? data.poaDetailsHolders.is_inform : 0) : 0, [Validators.required]),
       email               : new FormControl(data !== null && data.poaDetailsHolders !== null ? (data.poaDetailsHolders.email !== null ? data.poaDetailsHolders.email : '') : '' ),
       phone               : new FormControl(data !== null && data.poaDetailsHolders !== null ? (data.poaDetailsHolders.phone !== null ? data.poaDetailsHolders.phone : '') : '' , [Validators.required, Validators.minLength(10)]),
@@ -191,7 +195,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
   /**Set dynamic validations*/
   addConditionalValidators() {
     this.isInformSubscription = this.poaDetailsForm.get('is_inform').valueChanges.subscribe(
-      (is_inform) => { console.log(is_inform);
+      (is_inform) => { console.log('isinform',is_inform);
         switch (is_inform) {
           case 0:   if (this.poaDetailsForm.get('is_backupattorney').value === 1) {
                       this.clearValidationFor([
@@ -216,11 +220,12 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
 
     this.isBackupAttorneySubscription = this.poaDetailsForm.get('is_backupattorney').valueChanges.subscribe(
       (is_backupattorney) => {
-        console.log(is_backupattorney);
+        console.log('isbackupatt',is_backupattorney);
         switch (is_backupattorney) {
           case 0:   this.clearValidationFor([
                        'backup_phone', 'backup_fullname', 'backup_address', 'backup_email', 'backup_city', 'backup_zip', 'backup_state'
                     ]);
+                    this.poaDetailsForm.get('backup_is_inform').setValue(0);
                     break;
           case 1:   this.poaDetailsForm.get('backup_phone').setValidators([Validators.required, Validators.minLength(10)]);
                     this.poaDetailsForm.get('backup_address').setValidators([Validators.required]);
@@ -244,7 +249,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
     );
 
     this.isBackupInformSubscription = this.poaDetailsForm.get('backup_is_inform').valueChanges.subscribe(
-      (backup_is_inform) => {
+      (backup_is_inform) => { console.log('backupisinform',backup_is_inform);
         switch (backup_is_inform) {
           case 0:  this.clearValidationFor([
                       'backup_email'
@@ -285,6 +290,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
   send() {
     console.log(this.poaDetailsForm.valid);
     if (this.poaDetailsForm.valid) {
+      this.loading = true;
       let request = this.createRequest();
       console.log(request);
       /*
@@ -298,9 +304,18 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
           if (data.status) {
             this.router.navigate(['/dashboard']);
           }
-        }, (error) => {
-          console.log(error);
-        }
+        }, (error: any) => {
+          this.errors.errorFlag = true;
+          for (let prop in error.error.message) {
+            this.errors.errorMessage = error.error.message[prop];
+            break;
+          }
+          this.loading = false;
+          setTimeout(() => {
+            this.errors.errorFlag = false;
+            this.errors.errorMessage = '';
+          }, 3000);
+        }, () => {this.loading = false; }
       );
     } else {
       alert('Please up the required fields.');
