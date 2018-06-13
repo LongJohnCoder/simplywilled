@@ -148,7 +148,7 @@
              name="email"
              [ngModel]="userInfo?.email"
              required
-             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+             pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$"
              #email = 'ngModel'>
       <i class="fa fa-check" *ngIf="email.valid"></i>
       <i class="fa fa-times" *ngIf="email.errors && (email.dirty || email.touched)"></i>
@@ -586,7 +586,7 @@
                 class="form-control"
                 name="partner_email"
                 required
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$"
                 [ngModel]="userInfo?.partner_email"
                 #partner_email="ngModel">
               <i class= 'fa fa-check' *ngIf="partner_email.valid"></i>

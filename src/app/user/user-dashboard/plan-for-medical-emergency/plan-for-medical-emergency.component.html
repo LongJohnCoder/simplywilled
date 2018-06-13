@@ -44,12 +44,10 @@
               <i class="fa fa-times" *ngIf="fulllegalName.touched && fulllegalName.touched && !fulllegalName.valid"></i>
 
               <span class="error_txt" *ngIf="fulllegalName.touched && fulllegalName.invalid && fulllegalName.errors?.required">
-                Here1
-                    Please provide a proper capitalized full legal name.
+                Please provide a proper capitalized full legal name.
               </span>
               <span class="error_txt" *ngIf="fulllegalName.touched && fulllegalName.invalid && fulllegalName.errors?.pattern">
-                Here2
-                    Please provide a proper capitalized full legal name.
+                Please provide a proper capitalized full legal name.
               </span>
             </div>
 
@@ -82,7 +80,7 @@
             <div class="form-group">
                 <div class="" [ngClass]="{'valid': address.valid, 'invalid': address.touched && address.touched && !address.valid}">
                     <label>Their Address: </label>
-                    <input id="address" class="form-control" type="text" [(ngModel)]="medicalAgent.address" name="address" ngModel #address="ngModel" required>
+                    <input id="address" placeholder="Address" class="form-control" type="text" [(ngModel)]="medicalAgent.address" name="address" ngModel #address="ngModel" required>
                     <i class="fa fa-check" *ngIf="address.valid"></i>
                     <i class="fa fa-times" *ngIf="address.touched && address.touched && !address.valid"></i>
 
@@ -93,7 +91,7 @@
 
                 <div class="row">
                     <div class="col-md-6 smallField" [ngClass]="{'valid': city.valid, 'invalid': city.touched && city.touched && !city.valid}">
-                        <input id="city" class="form-control" type="text" [(ngModel)]="medicalAgent.city" name="city" ngModel #city="ngModel" required>
+                        <input id="city" placeholder="City" class="form-control" type="text" [(ngModel)]="medicalAgent.city" name="city" ngModel #city="ngModel" required>
                         <i class="fa fa-check" *ngIf="city.valid"></i>
                         <i class="fa fa-times" *ngIf="city.touched && city.touched && !city.valid"></i>
 
@@ -169,7 +167,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 smallField" [ngClass]="{'valid': zip.valid,'invalid': zip.touched && zip.touched && !zip.valid}">
-                        <input id="zip" class="form-control" type="text"
+                        <input id="zip" class="form-control" type="text" placeholder="Zip"
                                [(ngModel)]="medicalAgent.zip" name="zip"
                                ngModel #zip="ngModel" pattern="^\d{5}$" required>
                         <i class="fa fa-check" *ngIf="zip.valid"></i>
@@ -226,7 +224,7 @@
                             <input type="email" name="emailOfAgent" class="form-control"
                                    [(ngModel)]="medicalAgent.emailOfAgent"
                                    #emailOfAgent="ngModel" ngModel
-                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                                   pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$" required>
                             <i class="fa fa-check" *ngIf="emailOfAgent.valid"></i>
                             <i class="fa fa-times" *ngIf="emailOfAgent.touched && emailOfAgent.touched && !emailOfAgent.valid"></i>
 
@@ -358,6 +356,7 @@
                         <label>Their Address: </label>
                         <input id="backupAddress" class="form-control" type="text"
                             [(ngModel)]="medicalAgent.backupAddress" name="backupAddress"
+                               placeholder="Address"
                             ngModel #backupAddress="ngModel" required>
                         <i class="fa fa-check" *ngIf="backupAddress.valid"></i>
                         <i class="fa fa-times" *ngIf="backupAddress.touched && backupAddress.touched && !backupAddress.valid"></i>
@@ -369,7 +368,7 @@
 
                     <div class="row">
                         <div class="col-md-6 smallField" [ngClass]="{'valid': backupCity.valid, 'invalid': backupCity.touched && backupCity.touched && !backupCity.valid}">
-                            <input id="backupCity" class="form-control" type="text"
+                            <input id="backupCity" class="form-control" type="text" placeholder="City"
                                    [(ngModel)]="medicalAgent.backupCity" name="backupCity"
                                    ngModel #backupCity="ngModel" required>
                             <i class="fa fa-check" *ngIf="backupCity.valid"></i>
@@ -448,7 +447,7 @@
                     <div class="row">
                         <div class="col-md-6 smallField" [ngClass]="{'valid': backupZip.valid, 'invalid': backupZip.touched && backupZip.touched && !backupZip.valid}">
                             <input id="backupZip" class="form-control" type="text"
-                                   [(ngModel)]="medicalAgent.backupZip" name="backupZip"
+                                   [(ngModel)]="medicalAgent.backupZip" name="backupZip" placeholder="Zip"
                                    ngModel #backupZip="ngModel" pattern="^\d{5}$" required>
                             <i class="fa fa-check" *ngIf="backupZip.valid"></i>
                             <i class="fa fa-times" *ngIf="backupZip.touched && backupZip.touched && !backupZip.valid"></i>
@@ -511,7 +510,7 @@
                                 <input type="email" name="emailOfBackupAgent" class="form-control"
                                        [(ngModel)]="medicalAgent.emailOfBackupAgent"
                                        #emailOfBackupAgent="ngModel" ngModel
-                                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                                       pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$" required>
                                 <i class="fa fa-check" *ngIf="emailOfBackupAgent.valid"></i>
                                 <i class="fa fa-times" *ngIf="emailOfBackupAgent.touched && emailOfBackupAgent.touched && !emailOfBackupAgent.valid"></i>
 

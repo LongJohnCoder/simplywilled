@@ -217,7 +217,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit, OnDestroy {
   changeNotification(control: string, value: string) {
     this.myForm.get(control).setValue(value);
     if (value === '1') {
-      this.myForm.get(`guardian.0.email`).setValidators([Validators.required, Validators.pattern(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)]);
+      this.myForm.get(`guardian.0.email`).setValidators([Validators.required, Validators.pattern(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/)]);
       this.myForm.get(`guardian.0.email`).updateValueAndValidity();
     } else {
       this.myForm.get(`guardian.0.email`).clearValidators();
@@ -228,7 +228,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit, OnDestroy {
   changeNotificationBackup(control: string, value: string) {
     this.myForm.get(control).setValue(value);
     if (value === '1') {
-      this.myForm.get(`backUpGuardian.0.email`).setValidators([Validators.required, Validators.pattern(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)]);
+      this.myForm.get(`backUpGuardian.0.email`).setValidators([Validators.required, Validators.pattern(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/)]);
       this.myForm.get(`backUpGuardian.0.email`).updateValueAndValidity();
     } else {
       this.myForm.get(`backUpGuardian.0.email`).clearValidators();

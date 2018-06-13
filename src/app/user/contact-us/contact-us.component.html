@@ -34,7 +34,7 @@
                 <input type="email" name="email"
                      [(ngModel)]="formData.email" ngModel #email="ngModel"
                      required placeholder="Your Email *" class="get_in_tuch_field"
-                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                     pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$">
                 <div *ngIf="email.invalid && email.touched">
                   <div *ngIf="email.errors?.required" class="alert alert-danger">Email is required</div>
                   <div *ngIf="email.errors?.pattern" class="alert alert-danger">This is not a email format</div>

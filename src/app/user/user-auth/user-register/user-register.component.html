@@ -23,7 +23,7 @@
           <input type="email" name="email" placeholder="Email Address" class="email_form"
                  ngModel
                  required
-                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                 pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$"
                  #email="ngModel">
           <span class="alert-danger"
                 *ngIf="email.errors && (email.dirty || email.touched)">

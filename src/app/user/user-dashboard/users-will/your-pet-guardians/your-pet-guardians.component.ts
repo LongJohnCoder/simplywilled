@@ -186,7 +186,7 @@ export class YourPetGuardiansComponent implements OnInit {
   changeNotification(control: string, value: string) {
     this.petGuardianForm.get(control).setValue(value);
     if (value === '1') {
-      this.petGuardianForm.get(`petGuardian.0.email`).setValidators([Validators.required, Validators.pattern(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)]);
+      this.petGuardianForm.get(`petGuardian.0.email`).setValidators([Validators.required, Validators.pattern(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/)]);
       this.petGuardianForm.get(`petGuardian.0.email`).updateValueAndValidity();
     } else {
       this.petGuardianForm.get(`petGuardian.0.email`).clearValidators();
@@ -197,7 +197,7 @@ export class YourPetGuardiansComponent implements OnInit {
   changeNotificationBackup(control: string, value: string) {
     this.petGuardianForm.get(control).setValue(value);
     if (value === '1') {
-      this.petGuardianForm.get(`backUpPetGuardian.0.email`).setValidators([Validators.required, Validators.pattern(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)]);
+      this.petGuardianForm.get(`backUpPetGuardian.0.email`).setValidators([Validators.required, Validators.pattern(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/)]);
       this.petGuardianForm.get(`backUpPetGuardian.0.email`).updateValueAndValidity();
     } else {
       this.petGuardianForm.get(`backUpPetGuardian.0.email`).clearValidators();

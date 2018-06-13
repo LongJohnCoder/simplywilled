@@ -203,7 +203,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
                       ]);
                     }
                    break;
-          case 1:  this.poaDetailsForm.get('email').setValidators([Validators.required, Validators.pattern(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)]);
+          case 1:  this.poaDetailsForm.get('email').setValidators([Validators.required, Validators.pattern(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/)]);
                    this.poaDetailsForm.get('email').updateValueAndValidity();
                    break;
           default: this.clearValidationFor([
@@ -250,7 +250,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
                       'backup_email'
                     ]);
                    break;
-          case 1:  this.poaDetailsForm.get('backup_email').setValidators([Validators.required, Validators.pattern(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)]);
+          case 1:  this.poaDetailsForm.get('backup_email').setValidators([Validators.required, Validators.pattern(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/)]);
                    this.poaDetailsForm.get('backup_email').updateValueAndValidity();
                    break;
           default: this.clearValidationFor([

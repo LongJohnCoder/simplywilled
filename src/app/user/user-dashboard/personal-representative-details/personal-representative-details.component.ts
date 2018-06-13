@@ -366,7 +366,7 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
     /**Change validation on  email notification change for backup*/
     changeValidation(value) {
        if (value === '1') {
-         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.email`).setValidators([Validators.required, Validators.pattern(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)]);
+         this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.email`).setValidators([Validators.required, Validators.pattern(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/)]);
          this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.email`).updateValueAndValidity();
        } else {
          this.personalRepresentativeDetailsForm.get(`backupPersonalRepresentative.0.email`).clearValidators();
@@ -377,7 +377,7 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
     /**Change validation on  email notification change for normal*/
     changeValidationEmail(value) {
       if (value === '1') {
-        this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.email`).setValidators([Validators.required, Validators.pattern(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/)]);
+        this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.email`).setValidators([Validators.required, Validators.pattern(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/)]);
         this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.email`).updateValueAndValidity();
       } else {
         this.personalRepresentativeDetailsForm.get(`personalRepresentative.0.email`).clearValidators();
