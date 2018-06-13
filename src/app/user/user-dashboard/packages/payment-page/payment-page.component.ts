@@ -148,7 +148,7 @@ export class PaymentPageComponent implements OnInit  {
         form.append('country', this.data.country);
 
         if (this.paymentMethod === 'paypal-payment') {
-            this.respMsg = 'You are being redirected to paypal website. Please do not refresh the the page or press back button';
+            this.respMsg = 'You are being redirected to paypal website. Please do not refresh the page or press back button';
             this.packageService.purchasePackagePaypalExpress(form).subscribe(
                 (resp: any) => {
                     // console.log(resp.approval_url);
@@ -162,7 +162,7 @@ export class PaymentPageComponent implements OnInit  {
 
                 });
         } else {
-            this.respMsg = 'Your transaction is being processed. Please do not refresh the the page or press back button';
+            this.respMsg = 'Your transaction is being processed. Please do not refresh the page or press back button';
                 this.packageService.purchasePackagePaypalDirect(form).subscribe(
                 (resp: any) => {
                     // console.log(resp.message);
