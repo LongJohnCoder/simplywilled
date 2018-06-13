@@ -762,6 +762,10 @@ Route::group(['prefix' => 'v1'], function() {
             'uses' => 'Api\V1\PackageController@checkPackage',
             'as' => 'api.v1.checkPackage.post'
         ]);
+        Route::post('free-checkout', [
+            'uses' => 'Api\V1\PackageController@freeCheckout',
+            'as' => 'api.v1.freeCheckout.post'
+        ]);
     });
 });
 

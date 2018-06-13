@@ -751,4 +751,70 @@ class PackageController extends Controller
         ], 500);
       }
     }
+
+    /**
+    * Free Checkout
+    *
+    * @param Request
+    * @return \Illuminate\Http\JsonResponse
+    */
+    public function freeCheckout(Request $request)
+    {
+      try {
+        $userID  = $request->user_id;
+        $pkgID   = $request->pkg_id;
+        $user    = User::find($userID);
+        $package = Packages::find($pkgID);
+
+        if (!$user) {
+          return response()->json([
+            'status' => false,
+            'error' => 'User not found'
+          ], 400);
+        }
+        if (!$package) {
+          return response()->json([
+            'status' => false,
+            'error' => 'Package not found'
+          ], 400);
+        }
+
+        if ($request->has('coupon_id')) {
+          $couponID = $request->coupon_id;
+          $coupon = Coupon::find($couponID);
+          if (!$coupon) {
+            return response()->json([
+              'status' => false,
+              'error' => 'Invalid Coupon'
+            ], 400);
+          }
+          $discountAmount = $coupon->flag == '1' ? $coupon->amount : ($package->amount * $coupon->amount) / 100;
+          if ($discountAmount == $package->amount) {
+            $user->package = $package->id;
+            $user->save();
+
+            $user         = User::find($userID);
+            $customClaims = ['package' => $user->package];
+            $token        = JWTAuth::fromUser($user, $customClaims);
+
+            return response()->json([
+              'status' => true,
+              'message' => 'Your full free checkout has been done',
+              'data' => ['jwtToken' => $token]
+            ], 200);
+          } else {
+            return response()->json([
+              'status' => false,
+              'error' => 'You are not eligible for full free checkout'
+            ], 400);
+          }
+        }
+      } catch (\Exception $e) {
+        return response()->json([
+          'status' => false,
+          'message' => $e->getMessage(),
+          'line' => 'Problem encountered on line no. :'.$e->getLine()
+        ], 500);
+      }
+    }
 }
