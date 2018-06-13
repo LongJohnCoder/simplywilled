@@ -523,6 +523,11 @@ Route::group(['prefix' => 'v1'], function() {
         Route::group(['middleware' => ['jwt.auth','user.auth']], function(){
 
 
+            Route::post('tell-us-about-you-pdf', [
+              'uses'  =>  'Api\V1\PdfController@tuayPdf',
+              'as'    =>  'tuayPdf'
+            ]);
+
             /**
             * Route for mailing a friend
             */

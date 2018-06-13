@@ -290,7 +290,7 @@ class UserController extends Controller
         $partnerDob         = $request->partner_dob;
 
         $registeredPartner  = $request->registered_partner;
-        $legalMarried       = $request->legal_married;
+        $legalMarried       = (string)$request->legal_married;
         $referral           = $request->referral;
         $referral_other     = $request->referral_other;
 
@@ -337,7 +337,7 @@ class UserController extends Controller
             if($maritalStatus == "R") {
               $validator = Validator::make($request->all(), [
                   'registered_partner'  =>  'required|numeric|integer|between:0,1',
-                  'legal_married'       =>  'required|numeric|integer|between:0,1'
+                  'legal_married'       =>  'nullable|numeric|integer|between:0,1'
                   //'spouseDob'       =>  'required | date_format:"Y-m-d"',
               ]);
               if ($validator->fails()) {
@@ -380,13 +380,13 @@ class UserController extends Controller
                 $invitationFlag = false;
             }
             
-
+            
             $checkForExistUser->partner_firstname   = $partnerFirstName;
             $checkForExistUser->partner_fullname    = $partnerFirstName . ' ' . $partnerMiddleName . ' ' . $partnerLastName;
             $checkForExistUser->partner_gender      = $partnerGender; // M || F
             $checkForExistUser->partner_lastname    = $partnerLastName;
             $checkForExistUser->partner_middlename  = $partnerMiddleName;
-            $checkForExistUser->legal_married       = (string)$legalMarried;
+            $checkForExistUser->legal_married       = strlen($legalMarried) > 0 ? $legalMarried : null;
             $checkForExistUser->registered_partner  = (string)$registeredPartner;
             $checkForExistUser->partner_email       = $partnerEmail;
             $checkForExistUser->partner_dob         = $partnerDob;
@@ -420,6 +420,7 @@ class UserController extends Controller
         if ($checkForExistUser->save()) {
 
             if($invitationFlag) {
+                $term = $checkForExistUser->marital_status == "M" ? 'spouse' : 'partner';
                 \Log::info('email getting send for spouse invitation');
                 $arr = [
                     'firstName'         =>  $checkForExistUser->firstname,
@@ -427,12 +428,13 @@ class UserController extends Controller
                     'lastName'          =>  $checkForExistUser->lastname,
                     'spouseFullName'    =>  $checkForExistUser->partner_fullname,
                     'email'             =>  $checkForExistUser->partner_email,
-                    'spouseFirstName'   =>  $checkForExistUser->partner_firstname
+                    'spouseFirstName'   =>  $checkForExistUser->partner_firstname,
+                    'term'              =>  $term
                 ];
-                Mail::send('new_emails.spouse_invitation', $arr, function($mail) use($arr){
-                    $mail->from(config('settings.email'), 'Spouse Invitation to Simplywilled.com');
+                Mail::send('new_emails.spouse_invitation', $arr, function($mail) use($arr) {
+                    $mail->from(config('settings.email'), ucwords($arr['term']).' Invitation to Simplywilled.com');
                     $mail->to(strtolower($arr['email']), $arr['spouseFullName'])
-                    ->subject('Your spouse invited you to Simplywilled.com');
+                    ->subject('Your '.ucwords($arr['term']).' invited you to Simplywilled.com');
                 });
 
                 if(Mail::failures()) {
@@ -1441,6 +1443,12 @@ class UserController extends Controller
                     'message' => 'Please fill Tell Us About You details first',
                     'data'    => []
                 ], 400);   
+            } elseif($tellUsAboutYou->has_pet == 0 || $tellUsAboutYou->has_pet == null) {
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'If you dont have a pet you cannot give pet\'s name',
+                    'data'    => []
+                ], 400);
             }
             
             $isPetGuardian               = $request->isPetGuardian;// Yes, No
@@ -1474,10 +1482,10 @@ class UserController extends Controller
                 PetGuardian::where('user_id',$userId)->where('is_backup','1')->delete();
             }
 
-            if(PetGuardian::where('user_id',$userId)->first() == null) {
-                $tellUsAboutYou->has_pet = 0;
-                $tellUsAboutYou->save();
-            }
+            // if(PetGuardian::where('user_id',$userId)->first() == null) {
+            //     $tellUsAboutYou->has_pet = 0;
+            //     $tellUsAboutYou->save();
+            // }
 
             $response = self::generatePetGuardianInfoResponse($userId);
             return $response;
