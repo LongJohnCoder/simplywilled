@@ -22,7 +22,7 @@ import { SigningInstructionsDocComponent } from './doc/signing-instructions-doc/
     ReactiveFormsModule,
     //GlobalTooltipModule
   ],
-  declarations: [DashboardComponent, MainDashboardComponent, TuayPdfComponent, SigningInstructionsDocComponent  ],
+  declarations: [DashboardComponent, MainDashboardComponent, SigningInstructionsDocComponent  ],
     providers: [
         UserPaidGuard, UserUnPaidGuard, ProgressbarService, ReferFriendService
     ]
