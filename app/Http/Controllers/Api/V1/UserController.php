@@ -33,6 +33,8 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use Validator;
 use Illuminate\Support\Facades\Hash;
 use App\PetGuardian;
+use App\Models\LoginHistory;
+use Carbon\Carbon;
 
 use App\Helper\GiftStatement;
 
@@ -48,6 +50,12 @@ class UserController extends Controller
     public function signOut()
     {
         try {
+            $loginHistory = LoginHistory::where('jwt_token', JWTAuth::getToken())->first();
+            if ($loginHistory) {
+              $loginHistory->logout_time = Carbon::now();
+              $loginHistory->save();
+            }
+
             /*
              * When user request for signing out, invalidate JWT token
              */
@@ -109,17 +117,17 @@ class UserController extends Controller
                     'message' => $errorMessage,
                 ];
                 $responseCode = 400;
-            
+
             } else {
-                
+
                 $user = \Auth::user();
                 if(!\Hash::check($request->get('old_password'), $user->password)) {
                     $response = [
                             'status' => false,
                             'message' => 'Old password does not match with our records'
                         ];
-                    $responseCode = 400; 
-                
+                    $responseCode = 400;
+
                 } else {
 
                     if(strcmp($request->get('old_password'), $request->get('new_password')) == 0) {
@@ -128,7 +136,7 @@ class UserController extends Controller
                             'message' => 'New password cannot be same with your old password'
                         ];
                         $responseCode = 400;
-                    
+
                     } else {
 
                         if(strcmp($request->get('new_password'), $request->get('confirm_password')) != 0) {
@@ -147,11 +155,11 @@ class UserController extends Controller
                             ];
                             $responseCode = 200;
                         }
-                        
+
                     }
 
                 }
-                
+
             }
 
         } catch (ModelNotFoundException $modelNotFoundException) {
@@ -379,8 +387,8 @@ class UserController extends Controller
             if(strtolower(trim($checkForExistUser->partner_email)) == $partnerEmail) {
                 $invitationFlag = false;
             }
-            
-            
+
+
             $checkForExistUser->partner_firstname   = $partnerFirstName;
             $checkForExistUser->partner_fullname    = $partnerFirstName . ' ' . $partnerMiddleName . ' ' . $partnerLastName;
             $checkForExistUser->partner_gender      = $partnerGender; // M || F
@@ -395,7 +403,7 @@ class UserController extends Controller
             // update the user from user table
             //$this->updatePartner($userId, $partnerFirstName);
         } else {
-            
+
             $checkForExistUser->partner_firstname   = null;
             $checkForExistUser->partner_fullname    = null;
             $checkForExistUser->partner_gender      = null; // M || F
@@ -416,7 +424,7 @@ class UserController extends Controller
         $checkForExistUser->user_id = $checkForExistUser->user_id ? $checkForExistUser->user_id : $userId;
         $checkForExistUser->referral= $referral;
         $checkForExistUser->referral_other= $referral_other;
-        
+
         if ($checkForExistUser->save()) {
 
             if($invitationFlag) {
@@ -837,9 +845,9 @@ class UserController extends Controller
 
                 if(Mail::failures()) {
                     \Log::info('email sending error for personal representative');
-                } 
+                }
             }
-            
+
         } else {
 
             $flag = true;
@@ -920,7 +928,7 @@ class UserController extends Controller
                 'status'  => false,
                 'message' => 'Please fill Tell Us About You details first',
                 'data'    => []
-            ], 400);   
+            ], 400);
         }
 
         $personalRepresentative         = $request->personalRepresentative;
@@ -1194,9 +1202,9 @@ class UserController extends Controller
                     'status'  => false,
                     'message' => 'Please fill Tell Us About You details first',
                     'data'    => []
-                ], 400);   
+                ], 400);
             }
-            
+
             $isGuardianMinorChildren  = $request->isGuardianMinorChildren;// Yes, No
             $isBackUpGuardian         = $request->isBackUpGuardian;//Yes, No
             $isBackupGuardianCopy     = $isBackUpGuardian == 'Yes' ? '1' : '0';
@@ -1398,7 +1406,7 @@ class UserController extends Controller
 
 
     public function updatePetGuardianInfo($request) {
-        try 
+        try
         {
             //validation for necessary flags
             $validator = Validator::make($request->all(), [
@@ -1442,7 +1450,7 @@ class UserController extends Controller
                     'status'  => false,
                     'message' => 'Please fill Tell Us About You details first',
                     'data'    => []
-                ], 400);   
+                ], 400);
             } elseif($tellUsAboutYou->has_pet == 0 || $tellUsAboutYou->has_pet == null) {
                 return response()->json([
                     'status'  => false,
@@ -1450,7 +1458,7 @@ class UserController extends Controller
                     'data'    => []
                 ], 400);
             }
-            
+
             $isPetGuardian               = $request->isPetGuardian;// Yes, No
             $isBackUpPetGuardian         = $request->isBackUpPetGuardian;//Yes, No
             $isBackupPetGuardianCopy     = $isBackUpPetGuardian == 'Yes' ? '1' : '0';
@@ -1544,8 +1552,8 @@ class UserController extends Controller
             ], 400);
         }
 
-        $has_pet = isset($data['has_pet']) && array_key_exists('has_pet', $data) 
-                    ? $data['has_pet'] 
+        $has_pet = isset($data['has_pet']) && array_key_exists('has_pet', $data)
+                    ? $data['has_pet']
                     : $tuay->has_pet;
 
         $pet_leave_money = null;
@@ -1555,23 +1563,23 @@ class UserController extends Controller
             $pet_names = isset($data['pet_names']) && array_key_exists('pet_names', $data)
                     ? json_encode($data['pet_names'])
                     : $tuay->pet_names;
-            
+
             $pet_leave_money = array_key_exists('leaveMoney', $data) && isset($data['leaveMoney'])
                         ? $data['leaveMoney'] : null;
-            
+
             $pet_amount = array_key_exists('petAmount', $data) && isset($data['petAmount'])
                         ? $data['petAmount'] : null;
 
             if($pet_leave_money == 0) {
                 $pet_amount = null;
             }
-            
+
         } else {
             $pet_names = null;
         }
 
 
-        
+
         $tuay->has_pet = $has_pet;
         $tuay->pet_names = $pet_names;
         $tuay->leaveMoney = $pet_leave_money;
@@ -1711,7 +1719,7 @@ class UserController extends Controller
         $saveGift->individual = $individual;
 
         $saveGift->type = $giftType;
-        
+
         switch($giftType) {
 
           case 1 :  $saveGift->cash_description = GiftStatement::cashDescription($giftData[0],$tuay);
@@ -1794,7 +1802,7 @@ class UserController extends Controller
 
           $gift->type = $giftType;
           $gift->gift_type = $request->has('gift_type') ? $request->get('gift_type') : $gift->gift_type;
-          
+
           switch($giftType) {
             case 1 :  $gift->cash_description = GiftStatement::cashDescription($giftData[0],$tuay);
                       ///$gift->cash_description = json_encode($giftData);
@@ -1839,7 +1847,7 @@ class UserController extends Controller
           ], 400);
         }
       } catch (Exception $e) {
-        
+
         return response()->json([
             'status'  => false,
             'message' => ' ERROR : '.$e->getMessage().' LINE : '.$e->getLine(),
@@ -1883,16 +1891,16 @@ class UserController extends Controller
             ], 400);
         }
 
-        $specificGift   = isset($data['isSpecificGift']) && array_key_exists('isSpecificGift', $data)  
-                            ? $data['isSpecificGift'] 
+        $specificGift   = isset($data['isSpecificGift']) && array_key_exists('isSpecificGift', $data)
+                            ? $data['isSpecificGift']
                             : null; // 0-> NO ,1->Yes
-        $individual     = isset($data['individual']) && array_key_exists('individual', $data)  
-                            ? $data['individual'] 
+        $individual     = isset($data['individual']) && array_key_exists('individual', $data)
+                            ? $data['individual']
                             : null;
-        $charity        = isset($data['charity']) && array_key_exists('charity', $data)  
+        $charity        = isset($data['charity']) && array_key_exists('charity', $data)
                             ? $data['charity']
                             : null;
-        
+
         $checkForExistData = ProvideYourLovedOnes::where('user_id', $userId)->first();
         if ($checkForExistData) {
             $checkForExistData->specific_gifts = $specificGift == "Yes" ? '1' : '0';

@@ -63,4 +63,8 @@ class User extends Authenticatable{
       return $this->hasOne('App\TellUsAboutYou');
     }
 
+    public function loginHistory()
+    {
+      return $this->hasMany('App\Models\LoginHistory');
+    }
 }

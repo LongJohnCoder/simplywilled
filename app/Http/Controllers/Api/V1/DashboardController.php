@@ -42,7 +42,12 @@ class DashboardController extends Controller
         $data['totalBlogs']       = Blogs::count();
         $data['totalComments']    = BlogComment::where('parent_comment_id',0)->count();
         $data['totalCategories']  = Categories::count();
-        $data['users']            = User::orderBy('created_at','DESC')->limit(config('default_values.dashboard_default_user_count'))->get();
+        $data['users']            = User::with(array('loginHistory' => function($q) {
+            $q->select('id', 'user_id', 'login_time', 'logout_time', 'ip_address');
+            $q->orderBy('id', 'DESC');
+            $q->first();
+          }))->where('id','!=', 1)
+          ->orderBy('created_at','DESC')->limit(config('default_values.dashboard_default_user_count'))->get();
         return response()->json([
            'status'       => true,
            'message'      => 'Successfully fetched dashboard!',

@@ -20,6 +20,8 @@ use Log;
 use Mail;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Validator;
+use App\Models\LoginHistory;
+use Carbon\Carbon;
 
 class AuthController extends Controller {
 
@@ -82,6 +84,14 @@ class AuthController extends Controller {
                 $customClaims = ['package' => $user->package];
 
                 if ($token = JWTAuth::attempt($request->only('email', 'password'), $customClaims)) {
+                    $loginHistory = new LoginHistory;
+                    $loginHistory->user_id = $user->id;
+                    $loginHistory->login_time = Carbon::now();
+                    $loginHistory->ip_address = $request->getClientIp();
+                    $loginHistory->device_type = $request->server('HTTP_USER_AGENT');
+                    $loginHistory->jwt_token = $token;
+                    $loginHistory->save();
+
                     $response = [
                       'status' => true,
                       'message' => "User signed in successfully.",
@@ -261,6 +271,14 @@ class AuthController extends Controller {
                 $role = $user->getRole->roleInfo->name;
 
                 if($role == 'User') {
+                  $loginHistory = new LoginHistory;
+                  $loginHistory->user_id = $user->id;
+                  $loginHistory->login_time = Carbon::now();
+                  $loginHistory->ip_address = $request->getClientIp();
+                  $loginHistory->device_type = $request->server('HTTP_USER_AGENT');
+                  $loginHistory->jwt_token = $token;
+                  $loginHistory->save();
+
                   $response = [
                       'status' => true,
                       'message' => "User signed in successfully.",
