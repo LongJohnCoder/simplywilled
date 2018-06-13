@@ -97,7 +97,7 @@ class AuthController extends Controller {
 
                     Mail::send('new_emails.registration_first',[], function($mail) use($user){
                             $mail->from(config('settings.email'), 'Simplywilled Registration Successful');
-                            $mail->to($user->email, $user->name)->subject('You Registered Successfully in Simplywilled!');
+                            $mail->to(strtolower($user->email), $user->name)->subject('You Registered Successfully in Simplywilled!');
                     });
 
                 } else {
