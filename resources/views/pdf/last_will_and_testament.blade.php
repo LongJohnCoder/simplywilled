@@ -6,61 +6,73 @@
 <body>
 	<div>
 		
-		LAST WILL AND TESTAMENT OF 
+		
 
-		@if($tellUsAboutYou != null && strlen(trim($tellUsAboutYou->fullname)) > 0)
-			<b>{{strtoupper($tellUsAboutYou->fullname)}}<b>
-		@else
-			_________________________________
-		@endif
+		<div class="pdf-container">
+			<label>LAST WILL AND TESTAMENT OF</label>
 
-		I, 
-		@if($tellUsAboutYou != null && strlen($tellUsAboutYou->fullname) > 0)
+			<div class="client-details">
+				<p>
+					@if($tellUsAboutYou != null && strlen(trim($tellUsAboutYou->fullname)) > 0)
+					<b>{{strtoupper($tellUsAboutYou->fullname)}}<b>
+						@else
+							_________________________________
+						@endif
 
-			{{strtoupper($tellUsAboutYou->fullname)}},
+						I, 
+						@if($tellUsAboutYou != null && strlen($tellUsAboutYou->fullname) > 0)
 
-		@else 
+							{{strtoupper($tellUsAboutYou->fullname)}},
 
-		(fullname) _______________________________
+						@else 
 
-		@endif
+						(fullname) _______________________________
 
-		residing at 
+						@endif
+
+						residing at 
+
+						@if($tellUsAboutYou != null && strlen($tellUsAboutYou->address) > 0)
+						{{strtoupper($tellUsAboutYou->address)}},
+
+						@else
+						(address) ____________________________________________________________,  
+
+						@endif
+
+						@if($tellUsAboutYou != null && strlen($tellUsAboutYou->city) > 0)
+						{{strtoupper($tellUsAboutYou->city)}}, 
+
+						@else
+						(city) ____________,
+
+						@endif
+
+						@if($tellUsAboutYou != null && strlen($tellUsAboutYou->state) > 0)
+						{{strtoupper($tellUsAboutYou->state)}},
+
+						@else 
+						(state) ______________,
+
+						@endif
+
+						@if($tellUsAboutYou != null && strlen($tellUsAboutYou->zip) > 0)
+						{{$tellUsAboutYou->zip}}, 
+
+						@else 
+						(zip) ________,
+
+						@endif
 
 
-		@if($tellUsAboutYou != null && strlen($tellUsAboutYou->address) > 0)
-		{{strtoupper($tellUsAboutYou->address)}},
 
-		@else
-		(address) ____________________________________________________________,  
+						being over the age of eighteen (18) years and of sound and disposing mind and memory, and not being under any duress, fraud, mistake, or undue influence, do make, publish, and declare this to be my Last Will and Testament, hereby revoking all prior Last Wills, Testaments, and Codicils.
+				</p>		
+			</div>
+		</div>
+		 
 
-		@endif
-
-		@if($tellUsAboutYou != null && strlen($tellUsAboutYou->city) > 0)
-		{{strtoupper($tellUsAboutYou->city)}}, 
-
-		@else
-		(city) ____________,
-
-		@endif
-
-		@if($tellUsAboutYou != null && strlen($tellUsAboutYou->state) > 0)
-		{{strtoupper($tellUsAboutYou->state)}},
-
-		@else 
-		(state) ______________,
-
-		@endif
-
-		@if($tellUsAboutYou != null && strlen($tellUsAboutYou->zip) > 0)
-		{{$tellUsAboutYou->zip}}, 
-
-		@else 
-		(zip) ________,
-
-		@endif
-
-		being over the age of eighteen (18) years and of sound and disposing mind and memory, and not being under any duress, fraud, mistake, or undue influence, do make, publish, and declare this to be my Last Will and Testament, hereby revoking all prior Last Wills, Testaments, and Codicils.
+		
 
 
 		ARTICLE I: INTRODUCTION
@@ -130,13 +142,13 @@
 
 			C. Children. I have no children. 
 
+		
+
 		@elseif($tellUsAboutYou->children == 1)
 
 			C. Children. I have one child now living. My child’s name is 
 			@foreach($children as $child)
-
 				<p>Only Child: {{strtoupper($child->fullname)}}, who was born on {{date('F d, Y', strtotime($child->dob))}}</p>
-
 			@endforeach
 
 		@elseif($tellUsAboutYou->children > 1)
@@ -144,19 +156,15 @@
 			C. Children. I have {{$tellUsAboutYou->children}} children now living; their names and dates of birth are:
 			
 			@foreach($children as $child)
-				<p>«CHILD'S NAME : {{strtoupper($child->fullname}}), born {{date('F d, Y', strtotime($child->dob))}}</p>
+				<p>CHILD'S NAME : {{strtoupper($child->fullname)}}, born {{date('F d, Y', strtotime($child->dob))}}</p>
 			@endforeach
-		
 		@endif
 
 		@if($tellUsAboutYou->deceased_children == '1')
-			
 			I have the following deceased children:
-
 			@foreach(explode($tellUsAboutYou->deceased_children) as $key => $each_deceased_children)
 				<p>NAME : {{strtoupper(trim($each_deceased_children))}}</p>
 			@endforeach
-
 		@endif
 
 		D. Afterborn Children. Unless specifically stated otherwise, any provision in this Will for “my children” shall be interpreted to include any child of mine born or adopted after the date of this Will.
@@ -172,38 +180,34 @@
 			{{ucwords($personalRepresentative->relationship_with)}}
 		@endif
 
-		{{ $personalRepresentative->fullname }} of {{ $personalRepresentative->address }}, {{ $personalRepresentative->city }}, {{ $personalRepresentative->state }} {{ $personalRepresentative->zip }}, as {{$executor_title}} of my Estate. 
+		{{ ucwords($personalRepresentative->fullname) }} of {{ $personalRepresentative->address }}, {{ ucwords($personalRepresentative->city) }}, {{ ucwords($personalRepresentative->state) }} {{ $personalRepresentative->zip }}, as {{ucwords($executor_title)}} of my Estate. 
 
 		@if($backupPersonalRepresentative)
 
-			If {{ $personalRepresentative->fullname }} fails to qualify or ceases to act, I nominate my 
+			If {{ ucwords($personalRepresentative->fullname) }} fails to qualify or ceases to act, I nominate my 
 
 			@if(strtolower(trim($backupPersonalRepresentative->relationship_with)) == 'other')
-
 				{{$backupPersonalRepresentative->relationship_other}}
-
 			@else
-
 				{{$backupPersonalRepresentative->relationship_with}}
-
 			@endif
 
-			{{ $backupPersonalRepresentative->fullname }} of {{ $backupPersonalRepresentative->address }}, {{ $backupPersonalRepresentative->city }}, {{ $backupPersonalRepresentative->state }} {{ $backupPersonalRepresentative->zip }}, as {{$executor_title}} of my Estate. 
+			{{ ucwords($backupPersonalRepresentative->fullname) }} of {{ $backupPersonalRepresentative->address }}, {{ ucwords($backupPersonalRepresentative->city) }}, {{ ucwords($backupPersonalRepresentative->state) }} {{ $backupPersonalRepresentative->zip }}, as {{ucwords($executor_title)}} of my Estate. 
 
 		@endif
 
-		B. No Bond Required. I direct that my {{$executor_title}} and any fiduciary nominated under this Article shall serve without bond. In the event bond is required, I hereby waive any requirement to furnish security on such bond.
+		B. No Bond Required. I direct that my {{ucwords($executor_title)}} and any fiduciary nominated under this Article shall serve without bond. In the event bond is required, I hereby waive any requirement to furnish security on such bond.
 
-		C. Final Disposition. I direct that my {{$executor_title}} nominated above shall also control the final disposition of my remains. In doing so, I request that my representative honor any separate memorandum or other written instruction I may leave concerning my wishes for my final disposition. All decisions made by my representative with respect to the final disposition of my remains shall be binding.
+		C. Final Disposition. I direct that my {{ucwords($executor_title)}} nominated above shall also control the final disposition of my remains. In doing so, I request that my representative honor any separate memorandum or other written instruction I may leave concerning my wishes for my final disposition. All decisions made by my representative with respect to the final disposition of my remains shall be binding.
 
 
 
 		@if($tellUsAboutYou->guardian_minor_children == '1')
 
-			D. Guardian/Conservator. I nominate my {{$guardian->relationship}}, {{$guardian->fullname}} of {{$guardian->address}}, {{$guardian->city}}, {{$guardian->state}} {{$guardian->zip}}, as Guardian of the person and Conservator of the estate of any minor child of mine.
+			D. Guardian/Conservator. I nominate my {{$guardian->relationship}}, {{strtoupper($guardian->fullname)}} of {{$guardian->address}}, {{ucwords($guardian->city)}}, {{ucwords($guardian->state)}} {{$guardian->zip}}, as Guardian of the person and Conservator of the estate of any minor child of mine.
 
 			@if($backupGuardian)
-				If said nominee fails to qualify or ceases to act, I nominate my {{$backupGuardian->relationship}}, {{$backupGuardian->fullanme}} of {{$backupGuardian->address}}, {{$backupGuardian->city}}, {{$backupGuardian->state}} {{$backupGuardian->zip}}, as the successor Guardian and/or Conservator for any minor child of mine.
+				If said nominee fails to qualify or ceases to act, I nominate my {{ucwords($backupGuardian->relationship)}}, {{strtoupper($backupGuardian->fullanme)}} of {{$backupGuardian->address}}, {{ucwords($backupGuardian->city)}}, {{ucwords($backupGuardian->state)}} {{$backupGuardian->zip}}, as the successor Guardian and/or Conservator for any minor child of mine.
 			@endif
 
 		@endif

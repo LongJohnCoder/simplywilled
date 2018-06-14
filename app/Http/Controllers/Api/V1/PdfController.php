@@ -129,7 +129,7 @@ class PdfController extends Controller
                 ],400);
             }
 
-            $destinationPath = 'pdf/step1/';
+            $destinationPath = 'pdf/step2/';
 
             $filename = 'pdf2-'.\Auth::user()->id . '.pdf';
             $data = [
@@ -143,11 +143,11 @@ class PdfController extends Controller
                 'provideYourLovedOnes' => $provideYourLovedOnes,
                 'state'          => $state->name
             ];
-            PDF::loadView('pdf.last_will_and_testament', $data)->save('pdf/step1/'.$filename);
+            PDF::loadView('pdf.last_will_and_testament', $data)->save($destinationPath.$filename);
             return response()->json([
                     'status'    =>  true,
                     'message'   =>  'Success',
-                    'data'      =>  ['link' => url('/').'/pdf/step1/'.$filename,
+                    'data'      =>  ['link' => url('/').$destinationPath.$filename,
                                     'filename' => $filename]
             ],200);
 
@@ -158,9 +158,7 @@ class PdfController extends Controller
                     'message'   =>  'Error : '.$e->getMessage().' Line : '.$e->getLine(),
                     'data'      =>  []
             ], 500);
-        
         }
-
     }
 
     public function finalDispositionPdf(Request $request) {
