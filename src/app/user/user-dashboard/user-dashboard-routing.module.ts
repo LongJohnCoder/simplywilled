@@ -5,7 +5,8 @@ import {MainDashboardComponent} from './dashboard/main-dashboard/main-dashboard.
 import { NgModule } from '@angular/core';
 import {UserPaidGuard} from './user-paid.guard';
 import {UserUnPaidGuard} from './user-unpaid.guard';
-import {SigningInstructionsDocComponent} from "./doc/signing-instructions-doc/signing-instructions-doc.component";
+import {SigningInstructionsDocComponent} from './doc/signing-instructions-doc/signing-instructions-doc.component';
+import {FinalDispositionDocComponent} from './doc/final-disposition-doc/final-disposition-doc.component';
 
 const routes: Routes = [
       {
@@ -121,6 +122,11 @@ const routes: Routes = [
             path: 'preview-documents',
             canActivate: [UserPaidGuard],
             component: SigningInstructionsDocComponent
+          },
+          {
+            path: 'preview-documents/1',
+            canActivate: [UserPaidGuard],
+            component: FinalDispositionDocComponent
           }
             // {
             //     path: 'doc1',

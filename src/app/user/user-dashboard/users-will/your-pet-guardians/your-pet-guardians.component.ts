@@ -169,9 +169,23 @@ export class YourPetGuardiansComponent implements OnInit {
           }
           if (this.petGuardianForm.value.isPetGuardian === 'Yes') {
             this.addValidationGaurdianToForm();
+            if (this.petGuardianForm.get(`petGuardian.0.email_notification`).value === '1') {
+              this.petGuardianForm.get(`petGuardian.0.email`).setValidators([Validators.required, Validators.pattern(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/)]);
+              this.petGuardianForm.get(`petGuardian.0.email`).updateValueAndValidity();
+            } else {
+              this.petGuardianForm.get(`petGuardian.0.email`).clearValidators();
+              this.petGuardianForm.get(`petGuardian.0.email`).updateValueAndValidity();
+            }
           }
           if (this.petGuardianForm.value.isBackUpPetGuardian === 'Yes') {
             this.addValidationBackUpGaurdianToForm();
+            if (this.petGuardianForm.get(`backUpPetGuardian.0.email_notification`).value === '1') {
+              this.petGuardianForm.get(`backUpPetGuardian.0.email`).setValidators([Validators.required, Validators.pattern(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/)]);
+              this.petGuardianForm.get(`backUpPetGuardian.0.email`).updateValueAndValidity();
+            } else {
+              this.petGuardianForm.get(`backUpPetGuardian.0.email`).clearValidators();
+              this.petGuardianForm.get(`backUpPetGuardian.0.email`).updateValueAndValidity();
+            }
           }
         }
 

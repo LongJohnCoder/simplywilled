@@ -12,6 +12,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { GlobalTooltipModule } from './global-tooltip/global-tooltip.module';
 import { TuayPdfComponent } from './doc/tuay-pdf/tuay-pdf.component';
 import { SigningInstructionsDocComponent } from './doc/signing-instructions-doc/signing-instructions-doc.component';
+import { FinalDispositionDocComponent } from './doc/final-disposition-doc/final-disposition-doc.component';
+import {FinalDispositionPdfService} from './doc/services/final-disposition-pdf.service';
 
 
 @NgModule({
@@ -22,9 +24,9 @@ import { SigningInstructionsDocComponent } from './doc/signing-instructions-doc/
     ReactiveFormsModule,
     //GlobalTooltipModule
   ],
-  declarations: [DashboardComponent, MainDashboardComponent, SigningInstructionsDocComponent  ],
+  declarations: [DashboardComponent, MainDashboardComponent, SigningInstructionsDocComponent, FinalDispositionDocComponent  ],
     providers: [
-        UserPaidGuard, UserUnPaidGuard, ProgressbarService, ReferFriendService
+        UserPaidGuard, UserUnPaidGuard, ProgressbarService, ReferFriendService, FinalDispositionPdfService
     ]
 })
 export class UserDashboardModule { }

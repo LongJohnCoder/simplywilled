@@ -1,17 +1,15 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import * as html2canvas from "html2canvas";
-import * as jsPdf from 'jspdf';
-import {UserService} from "../../../user.service";
-import {Subscription} from "rxjs/Subscription";
-import {UserAuthService} from "../../../user-auth/user-auth.service";
-//import 'jspdf-autotable' as JA from 'jspdf-autotable';
+import {UserAuthService} from '../../../user-auth/user-auth.service';
+import {Subscription} from 'rxjs/Subscription';
+import {FinalDispositionPdfService} from '../services/final-disposition-pdf.service';
 
 @Component({
-  selector: 'app-signing-instructions-doc',
-  templateUrl: './signing-instructions-doc.component.html',
-  styleUrls: ['./signing-instructions-doc.component.css']
+  selector: 'app-final-disposition-doc',
+  templateUrl: './final-disposition-doc.component.html',
+  styleUrls: ['./final-disposition-doc.component.css']
 })
-export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
+export class FinalDispositionDocComponent implements OnInit, OnDestroy {
+
   @ViewChild('docBox')
   docBox: any;
   thumbIndex: number;
@@ -19,7 +17,13 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
   docScrolled: number;
   loading = true;
   userDetails = {
-    firstname: ''
+    backupPersonalRepresentative: null,
+    filename: null,
+    finalArrangements: null,
+    link: null,
+    personalRepresentative: null,
+    state: null,
+    tellUsAboutYou: null
   };
   docThumbImg: Array<any> = [
     '../../../../../assets/images/doc1-thumb1.png',
@@ -28,25 +32,31 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
   loggedInUser: any;
 
   getUserDetailsSubscription: Subscription;
-  constructor(private userService: UserService, private userAuth: UserAuthService) {
-    this.loggedInUser = this.userAuth.getUser();
+  constructor(private finalDispositionService: FinalDispositionPdfService, private userAuth: UserAuthService) {
     this.getUserDetails();
   }
 
+
+  /**Checks for authorization user id.*/
+  parseToken() {
+    if (JSON.parse(localStorage.getItem('loggedInUser')).hasOwnProperty('token')) {
+      return JSON.parse(localStorage.getItem('loggedInUser')).token;
+    }
+    return null;
+  }
+
   ngOnInit() {
-    //this.x = 1;
     this.docScrolled = 0;
     this.thumbIndex = 0;
   }
 
-  scrollDoc(index:number){
+  scrollDoc(index: number) {
     this.scrollHeight = 991 * index;
     this.docBox.nativeElement.scrollTop = this.scrollHeight;
     this.thumbIndex = index;
-    //this.docBox.nativeElement.style.transition = 'top .8s cubic-bezier(0.77, 0, 0.175, 1)';
   }
 
-  getScroll(scrollVal:number){
+  getScroll(scrollVal: number){
     if(scrollVal >=  991){
       this.thumbIndex = scrollVal !== 0 ? Math.round(scrollVal/991) : 0;
     }else{
@@ -56,9 +66,22 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
 
   /**Get the user details*/
   getUserDetails() {
-    this.getUserDetailsSubscription = this.userService.getUserDetails(this.loggedInUser.id).subscribe(
+    let token = this.parseToken();
+    this.getUserDetailsSubscription = this.finalDispositionService.fetchData(token).subscribe(
       (response: any ) => {
-        this.userDetails.firstname = response.data[0] !== null && response.data[0].data != null && response.data[0].data.userInfo !== null && response.data[0].data.userInfo.firstname !== null ? response.data[0].data.userInfo.firstname : '_____________';
+        if (response.status) {
+          this.userDetails = {
+            backupPersonalRepresentative: response.data.backupPersonalRepresentative,
+            filename: response.data.filename,
+            finalArrangements: response.data.finalArrangements,
+            link: response.data.link,
+            personalRepresentative: response.data.personalRepresentative,
+            state: response.data.state,
+            tellUsAboutYou: response.data.tellUsAboutYou
+          };
+        }
+
+        console.log(this.userDetails);
       },
       (error: any) => {
         console.log(error);

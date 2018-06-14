@@ -200,9 +200,23 @@ export class GaurdianForMinorChildrenComponent implements OnInit, OnDestroy {
                   }
                   if (this.myForm.value.isGuardianMinorChildren === 'Yes') {
                       this.addValidationGaurdianToForm();
+                      if (this.myForm.get(`guardian.0.email_notification`).value === '1') {
+                        this.myForm.get(`guardian.0.email`).setValidators([Validators.required, Validators.pattern(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/)]);
+                        this.myForm.get(`guardian.0.email`).updateValueAndValidity();
+                      } else {
+                        this.myForm.get(`guardian.0.email`).clearValidators();
+                        this.myForm.get(`guardian.0.email`).updateValueAndValidity();
+                      }
                   }
                   if (this.myForm.value.isBackUpGuardian === 'Yes') {
                       this.addValidationBackUpGaurdianToForm();
+                      if (this.myForm.get(`backUpGuardian.0.email_notification`).value === '1') {
+                        this.myForm.get(`backUpGuardian.0.email`).setValidators([Validators.required, Validators.pattern(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/)]);
+                        this.myForm.get(`backUpGuardian.0.email`).updateValueAndValidity();
+                      } else {
+                        this.myForm.get(`backUpGuardian.0.email`).clearValidators();
+                        this.myForm.get(`backUpGuardian.0.email`).updateValueAndValidity();
+                      }
                   }
               }
               this.progressBarService.changeWidth({width: 40});
