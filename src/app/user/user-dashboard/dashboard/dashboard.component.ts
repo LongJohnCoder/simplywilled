@@ -10,6 +10,7 @@ import {SlideInOutAnimation} from '../shared/animations/slideDown';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ValidateFn} from 'codelyzer/walkerFactory/walkerFn';
 import {ReferFriendService} from '../shared/services/referFriend.service';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -218,5 +219,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       if (this.referAFriendSubscription !== undefined) {
         this.referAFriendSubscription.unsubscribe();
       }
+    }
+
+    sitemapOpen() {
+        window.open(environment.base_url + 'api/sitemap.xml', '_blank');
     }
 }
