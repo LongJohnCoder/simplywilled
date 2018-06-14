@@ -421,7 +421,8 @@ class PackageController extends Controller
             'message'=> 'Payment done',
             'data'=> [
               'jwtToken' => $token,
-              'payment' => $userPackage
+              'payment' => $userPackage,
+              'package_name' => $userPackage->package->name
             ]
           ], 200);
         } else {
@@ -692,6 +693,8 @@ class PackageController extends Controller
           $token = JWTAuth::fromUser($user, $customClaims);
           $arr['jwtToken'] = $token;
           $arr['payment']  = $userPackage;
+          $arr['package_name']  = $package->name;
+
           return response()->json([
             'status' => true,
             'message' => 'Payment has done successfully',
