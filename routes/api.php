@@ -523,9 +523,19 @@ Route::group(['prefix' => 'v1'], function() {
         Route::group(['middleware' => ['jwt.auth','user.auth']], function(){
 
 
-            Route::post('tell-us-about-you-pdf', [
-              'uses'  =>  'Api\V1\PdfController@tuayPdf',
-              'as'    =>  'tuayPdf'
+            Route::get('final-disposition-pdf', [
+              'uses'  =>  'Api\V1\PdfController@finalDispositionPdf',
+              'as'    =>  'finalDispositionPdf'
+            ]);
+
+            Route::get('final-signing-instructions-pdf', [
+              'uses'  =>  'Api\V1\PdfController@finalSigningInstructions',
+              'as'    =>  'finalSigningInstructions'
+            ]);
+
+            Route::get('will-template', [
+              'uses'  =>  'Api\V1\PdfController@willTemplate',
+              'as'    =>  'tuayPdf2'
             ]);
 
             /**
