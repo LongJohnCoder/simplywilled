@@ -6,13 +6,61 @@
 <body>
 	<div>
 		
-		LAST WILL AND TESTAMENT
+		LAST WILL AND TESTAMENT OF 
 
-		OF
+		@if($tellUsAboutYou != null && strlen(trim($tellUsAboutYou->fullname)) > 0)
+			<b>{{strtoupper($tellUsAboutYou->fullname)}}<b>
+		@else
+			_________________________________
+		@endif
 
-		{{$tellUsAboutYou->fullname}}
+		I, 
+		@if($tellUsAboutYou != null && strlen($tellUsAboutYou->fullname) > 0)
 
-		I, {{$tellUsAboutYou->fullname}}, residing at {{$tellUsAboutYou->address}}, {{$tellUsAboutYou->city}}, {{$tellUsAboutYou->state}}, {{$tellUsAboutYou->zip}}, being over the age of eighteen (18) years and of sound and disposing mind and memory, and not being under any duress, fraud, mistake, or undue influence, do make, publish, and declare this to be my Last Will and Testament, hereby revoking all prior Last Wills, Testaments, and Codicils.
+			{{strtoupper($tellUsAboutYou->fullname)}},
+
+		@else 
+
+		(fullname) _______________________________
+
+		@endif
+
+		residing at 
+
+
+		@if($tellUsAboutYou != null && strlen($tellUsAboutYou->address) > 0)
+		{{strtoupper($tellUsAboutYou->address)}},
+
+		@else
+		(address) ____________________________________________________________,  
+
+		@endif
+
+		@if($tellUsAboutYou != null && strlen($tellUsAboutYou->city) > 0)
+		{{strtoupper($tellUsAboutYou->city)}}, 
+
+		@else
+		(city) ____________,
+
+		@endif
+
+		@if($tellUsAboutYou != null && strlen($tellUsAboutYou->state) > 0)
+		{{strtoupper($tellUsAboutYou->state)}},
+
+		@else 
+		(state) ______________,
+
+		@endif
+
+		@if($tellUsAboutYou != null && strlen($tellUsAboutYou->zip) > 0)
+		{{$tellUsAboutYou->zip}}, 
+
+		@else 
+		(zip) ________,
+
+		@endif
+
+		being over the age of eighteen (18) years and of sound and disposing mind and memory, and not being under any duress, fraud, mistake, or undue influence, do make, publish, and declare this to be my Last Will and Testament, hereby revoking all prior Last Wills, Testaments, and Codicils.
 
 
 		ARTICLE I: INTRODUCTION
@@ -30,7 +78,7 @@
 		
 		@if($tellUsAboutYou->marital_status == "M")
 
-			B. Marital Status. I am legally married to {{$tellUsAboutYou->partner_fullname}} and all references to “my spouse” or to {{$tellUsAboutYou->partner_firstname}} shall be to
+			B. Marital Status. I am legally married to {{strtoupper($tellUsAboutYou->partner_fullname)}} and all references to “my spouse” or to {{strtoupper($tellUsAboutYou->partner_firstname)}} shall be to
 
 			@if($tellUsAboutYou->partner_gender == 'M') 
 				him.
@@ -45,13 +93,13 @@
 			B. Marital Status. I am in a long-term relationship (as a registered Domestic Couple under the laws of the 
 
 			@if($state == "District Of Columbia")
-				District of Columbia
+				District of Columbia) 
 			@elseif($state =="Massachusetts" || $state == "Virginia" || $state == "Kentucky" || $state == "Pennsylvania")  
-				CONTAINS Commonwealth of {{$state}}
+				CONTAINS Commonwealth of {{$state}}) 
 			@else
-				State of {{$state}}
+				State of {{$state}}) 
 
-			 	with {{$tellUsAboutYou->partner_fullname}} and all references to “my partner” or to {{$tellUsAboutYou->partner_firstname}} shall be to 
+			 	with {{strtoupper($tellUsAboutYou->partner_fullname)}} and all references to “my partner” or to {{strtoupper($tellUsAboutYou->partner_firstname)}} shall be to 
 
 			 	@if($tellUsAboutYou->partner_gender == 'M') 
 					him.
@@ -87,7 +135,7 @@
 			C. Children. I have one child now living. My child’s name is 
 			@foreach($children as $child)
 
-				<p>«CHILD'S NAME : {{$child->fullname}}, who was born on {{$child->dob}}</p>
+				<p>Only Child: {{strtoupper($child->fullname)}}, who was born on {{date('F d, Y', strtotime($child->dob))}}</p>
 
 			@endforeach
 
@@ -96,7 +144,7 @@
 			C. Children. I have {{$tellUsAboutYou->children}} children now living; their names and dates of birth are:
 			
 			@foreach($children as $child)
-				<p>«CHILD'S NAME : {{$child->fullname}}, born {{$child->dob}}</p>
+				<p>«CHILD'S NAME : {{strtoupper($child->fullname}}), born {{date('F d, Y', strtotime($child->dob))}}</p>
 			@endforeach
 		
 		@endif
@@ -106,7 +154,7 @@
 			I have the following deceased children:
 
 			@foreach(explode($tellUsAboutYou->deceased_children) as $key => $each_deceased_children)
-				<p>NAME : {{ucwords(strtolower(trim($each_deceased_children)))}}</p>
+				<p>NAME : {{strtoupper(trim($each_deceased_children))}}</p>
 			@endforeach
 
 		@endif
@@ -116,16 +164,12 @@
 		
 		ARTICLE II: FIDUCIARIES
 
-		A. {{$executor_title}}. I nominate my
+		A. {{ucwords($executor_title)}}. I nominate my
 
 		@if(strtolower(trim($personalRepresentative->relationship_with)) == 'other')
-
-			{{$personalRepresentative->relationship_other}}
-
+			{{ucwords($personalRepresentative->relationship_other)}}
 		@else
-
-			{{$personalRepresentative->relationship_with}}
-
+			{{ucwords($personalRepresentative->relationship_with)}}
 		@endif
 
 		{{ $personalRepresentative->fullname }} of {{ $personalRepresentative->address }}, {{ $personalRepresentative->city }}, {{ $personalRepresentative->state }} {{ $personalRepresentative->zip }}, as {{$executor_title}} of my Estate. 

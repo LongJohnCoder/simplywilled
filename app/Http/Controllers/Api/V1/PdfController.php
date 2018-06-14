@@ -183,7 +183,7 @@ class PdfController extends Controller
 
             $tellUsAboutYou = TellUsAboutYou::where('user_id', \Auth::user()->id)->first();
             $finalArrangements = FinalArrangements::where('user_id', \Auth::user()->id)->first();
-            $states = StatesInfo::get();
+            $state = StatesInfo::where('name', 'LIKE', $tellUsAboutYou->state)->first();
             $personalRepresentative = PersonalRepresentatives::where('user_id', \Auth::user()->id)->where('is_backuprepresentative','0')->first();
             $backupPersonalRepresentative = PersonalRepresentatives::where('user_id', \Auth::user()->id)->where('is_backuprepresentative','1')->first();
 
@@ -193,7 +193,7 @@ class PdfController extends Controller
                     'data'      =>  [
                                         'tellUsAboutYou' => $tellUsAboutYou,
                                         'finalArrangements' => $finalArrangements,
-                                        'states'    => $states,
+                                        'state'    => $state,
                                         'personalRepresentative' => $personalRepresentative,
                                         'backupPersonalRepresentative' => $backupPersonalRepresentative,
                                         'link' => null,
