@@ -3469,7 +3469,9 @@ select.form-control{
 .error_input {
   border: 1px solid #ff5959;
 }
-
+.radio_custom.singing_instruction.active{
+  cursor: default;
+}
 
 /************responsive***************/
 @media only screen and (min-width: 1251px) and (max-width: 1350px) {

@@ -2851,6 +2851,28 @@ app-paypal-success, app-payment-page, app-packages{
   margin-top: 32px !important;
 }
 
+.form-control[name="firstname"],
+.form-control[name="middlename"],
+.form-control[name="lastname"],
+.form-control[name="partner_firstname"],
+.form-control[name="partner_middlename"],
+.form-control[name="partner_lastname"],
+.form-control[formcontrolname="fullname"],
+.form-control[formcontrolname="petType"],
+.form-control[formcontrolname="petName"],
+.form-control[formcontrolname="multiple_beneficiary_name"],
+.form-control[formcontrolname="multiple_beneficiary_relationship"],
+.form-control[name="backup_fullname"],
+.form-control[formcontrolname="beneficiaryNoFullName"],
+.form-control[name="fulllegalName"],
+.form-control[name="backupfulllegalName"]
+{
+  text-transform: capitalize;
+}
+.form-control{
+  font-style: italic;
+}
+
 @media screen and (max-width: 820px){
     #dataTable_wrapper .row:first-child .col-sm-12.col-md-6{
         width: 100%;

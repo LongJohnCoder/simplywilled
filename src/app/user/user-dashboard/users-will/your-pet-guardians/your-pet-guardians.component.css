@@ -11,7 +11,7 @@
 }
 .main-content h2{
   color: #2479B8;
-  font-size: 36px;
+  font-size: 32px;
   margin: 0;
   text-transform: capitalize;
 }
@@ -289,7 +289,7 @@ select.form-control {
   border-color: #ff5959;
 }
 .main-content .invalid.email-box i {
-  top: 40px;
+  top: 54px;
   right: 30px;
 }
 .btn-grey{

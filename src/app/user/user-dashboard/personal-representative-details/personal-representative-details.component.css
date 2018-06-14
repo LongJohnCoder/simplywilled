@@ -295,7 +295,7 @@ header{
 }
 .main-content h2{
     color: #2479B8;
-    font-size: 36px;
+    font-size: 34px;
     margin: 0;
     text-transform: capitalize;
 }
@@ -439,6 +439,7 @@ footer ul li a{
     border-radius: 6px;
     margin-top: 10px;
     border: 1px solid #BFBFBF;
+  font-style: italic;
 }
 .main-content select.form-control{
     background: url('../../../../assets/images/bottom-caret.png') 98% no-repeat;
@@ -572,6 +573,7 @@ footer ul li a{
 }
 .Instructions_ul_Radio{
     text-align: left;
+    cursor: default;
 }
 .special_instrucion{
     min-height: 100%;

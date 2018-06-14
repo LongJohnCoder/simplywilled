@@ -581,6 +581,9 @@ footer ul li a{
     color: rgba(0,0,0,.7);
     font-size: 16px;
 }
+.two_child_radio.special_instrucion.active{
+  cursor: default;
+}
 .Instructions_ul_Radio li{
     height: 100%;
     width: auto;

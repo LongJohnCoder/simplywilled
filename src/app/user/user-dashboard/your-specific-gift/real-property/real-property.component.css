@@ -3456,6 +3456,10 @@ select.form-control{
   margin: 0;
 }
 
+.radio_custom.singing_instruction.active{
+  cursor: default;
+}
+
 /************responsive***************/
 @media only screen and (min-width: 961px) and (max-width: 1250px) {
   .left_Sec_page_ul li a {

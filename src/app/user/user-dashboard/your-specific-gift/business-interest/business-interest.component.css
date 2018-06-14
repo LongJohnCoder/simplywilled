@@ -3443,7 +3443,9 @@ input[disabled] {
 label.radio_custom.property_to_be_distributed span.custom_img img{
   height: 49px;
 }
-
+.radio_custom.singing_instruction.active{
+  cursor: default;
+}
 /************responsive***************/
 @media only screen and (min-width: 961px) and (max-width: 1250px) {
   .left_Sec_page_ul li a {

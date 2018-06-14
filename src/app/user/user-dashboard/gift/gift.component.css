@@ -254,7 +254,7 @@ header{
 }
 .main-content h2{
   color: #2479B8;
-  font-size: 36px;
+  font-size: 28px;
   margin: 0;
   text-transform: capitalize;
 }
@@ -441,8 +441,8 @@ footer ul li a{
   text-align: left;
 }
 .radio_custom{
-  height: 105px;
-  width: 105px;
+  height: 140px;
+  width: 140px;
   position: relative;
   border: 1px solid #BFBFBF;
   font-family: 'OpenSans';
@@ -451,16 +451,12 @@ footer ul li a{
   -moz-box-shadow:0 1px 1px 1px #ddd;
   min-height: 100%;
 }
-.percentage-estate .radio_custom{
-  height: 120px;
-  width: 120px;
-}
 .radio_custom .human_status{
   position: absolute;
   transform: translate(-50%,-50%);
   left: 50%;
   top: 50%;
-  font-size: 16px;
+  font-size: 14px;
 }
 .radio_ul6 li, .first_page_radio li{
   width: auto;
@@ -1093,12 +1089,7 @@ header{
   width: 100%;
   padding: 30px;
 }
-.main-content h2{
-  color: #2479B8;
-  font-size: 36px;
-  margin: 0;
-  text-transform: capitalize;
-}
+
 .main-content p{
   font-size: 18px;
   margin: 0;
@@ -1281,28 +1272,12 @@ footer ul li a{
 .radio_ul6{
   text-align: left;
 }
-.radio_custom{
-  height: 105px;
-  width: 105px;
-  position: relative;
-  border: 1px solid #BFBFBF;
-  font-family: 'OpenSans';
-  box-shadow:0 1px 1px 1px #ddd;
-  -webkit-box-shadow:0 1px 1px 1px #ddd;
-  -moz-box-shadow:0 1px 1px 1px #ddd;
-  min-height: 100%;
-}
+
 .percentage-estate .radio_custom{
   height: 120px;
   width: 120px;
 }
-.radio_custom .human_status{
-  position: absolute;
-  transform: translate(-50%,-50%);
-  left: 50%;
-  top: 50%;
-  font-size: 16px;
-}
+
 .radio_ul6 li, .first_page_radio li{
   width: auto;
   margin-right: 5px;

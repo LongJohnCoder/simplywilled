@@ -451,7 +451,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 /*****radio button**********/
 .radio_custom {
-  width: 100%;
+  width: 140px;
+  height: 140px;
   display: inline-block;
   border: 1px solid #BFBFBF;
   box-shadow: 0 1px 1px 1px #ddd;
@@ -1087,7 +1088,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   text-align: center;
   color: #2479B8;
-  font-size: 28px;
+  font-size: 26px;
   font-family: 'OpenSans';
   padding: 0 0 30px 0;
 }
@@ -1118,10 +1119,6 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   margin-left: 10px;
 }
-.radio_ul5 li:nth-child(4n+1) {
-  margin-left: 0px;
-  clear: left;
-}
 .gift_type_radio {
   padding: 10px 0px;
   min-height: 131px;
@@ -1130,6 +1127,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   display: inline-block;
   margin-bottom: 7px;
+  padding-top: 10px;
 }
 .human_status3 {
   display: inline-block;
@@ -3443,9 +3441,6 @@ input[disabled] {
   .single_right {
     width: 87%;
   }
-  .radio_ul5 li {
-    width: 120px;
-  }
   .Instructions_ul_Radio li {
     width: 160px;
     margin-left: 15px;
@@ -3587,14 +3582,8 @@ input[disabled] {
     width: 86%;
   }
   .radio_ul5 li {
-    width: 48%;
-    margin-left: 4%;
     float: left;
     margin-bottom: 10px;
-  }
-  .radio_ul5 li:nth-child(2n+1) {
-    margin-left: 0px;
-    clear: left;
   }
   .children_name {
     font-size: 14px;
@@ -3845,17 +3834,11 @@ input[disabled] {
     left: 10px;
   }
   .radio_ul5 li {
-    width: 48%;
-    margin-left: 4%;
     float: left;
     margin-bottom: 10px;
   }
-  .radio_ul5 li:nth-child(2n+1) {
-    margin-left: 0px;
-    clear: left;
-  }
   .singing_instruction3 {
-    font-size: 30px;
+    font-size: 26px;
   }
   .children_name {
     font-size: 14px;
@@ -4350,18 +4333,7 @@ input[disabled] {
     font-size: 18px;
     padding-bottom: 20px;
   }
-  .radio_ul5 li {
-    width: 100%;
-    margin-left: 0px;
-  }
-  .recipient_ul li {
-    width: 100%;
-    margin-left: 0px;
-    margin-bottom: 10px;
-  }
-  .recipient_ul li:last-child {
-    margin-bottom: 0px;
-  }
+
   .recipient_ul li a {
     width: 100%;
   }
