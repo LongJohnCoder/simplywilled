@@ -13,6 +13,10 @@ export class DashHomeComponent implements OnInit {
   catCount:number;
   commentCount:number;
   userCount:number;
+    packages: number;
+    faqs: number;
+    coupons: number;
+
   users:any[] = [];
 
   constructor(
@@ -28,6 +32,9 @@ export class DashHomeComponent implements OnInit {
         this.catCount = this.dashData.totalCategories;
         this.commentCount = this.dashData.totalComments;
         this.userCount = this.dashData.totalUsers;
+        this.packages = this.dashData.packages;
+        this.faqs = this.dashData.faqs;
+        this.coupons = this.dashData.coupons;
         this.users = this.dashData.users;
     }
     )
