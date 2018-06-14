@@ -28,6 +28,8 @@ use App\Helper\DateTimeHelper;
 use App\Blogs;
 use App\Models\BlogComment;
 use App\Categories;
+use App\Faqs;
+use App\Models\Coupon;
 
 class DashboardController extends Controller
 {
@@ -38,11 +40,14 @@ class DashboardController extends Controller
     */
     public function fetchDashboard() {
       try {
-        $data['totalUsers']       = User::count();
-        $data['totalBlogs']       = Blogs::count();
-        $data['totalComments']    = BlogComment::where('parent_comment_id',0)->count();
-        $data['totalCategories']  = Categories::count();
-        $data['users']            = User::with(array('loginHistory' => function($q) {
+        $data['totalUsers']      = User::where('id','!=',1)->count();
+        $data['totalBlogs']      = Blogs::count();
+        $data['totalComments']   = BlogComment::where('parent_comment_id',0)->count();
+        $data['totalCategories'] = Categories::count();
+        $data['packages']        = Packages::count();
+        $data['faqs']            = Faqs::count();
+        $data['coupons']         = Coupon::count();
+        $data['users']           = User::with(array('loginHistory' => function($q) {
             $q->select('id', 'user_id', 'login_time', 'logout_time', 'ip_address');
             $q->orderBy('id', 'DESC');
             // $q->first();
