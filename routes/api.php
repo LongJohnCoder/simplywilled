@@ -786,3 +786,8 @@ Route::get('sitemap.xml',[
     'uses'=>'Api\SitemapController@sitemap',
     'as' => 'api.sitemap'
 ]);
+
+Route::get('view-mail', [
+  'uses'=>'Api\V1\PackageController@viewMail',
+  'as' => 'api.viewMail'
+]);

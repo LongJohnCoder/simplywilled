@@ -416,6 +416,24 @@ class PackageController extends Controller
           $customClaims = ['package' => $user->package];
           $token = JWTAuth::fromUser($user, $customClaims);
 
+          try {
+            $mailData = [
+              'userName' => $user->name,
+              'transactionID' => $userPackage->token,
+              'pkgName' => $userPackage->package->name,
+              'amount' => $userPackage->amount,
+              'paymentStatus' => 'Success',
+              'paymentDate' => $userPackage->created_at,
+              'email' => $user->email
+            ];
+            Mail::send('emails.payment',$mailData, function($mail) use($mailData){
+                    $mail->from(config('settings.email'), 'Simplywilled Payment Confirmation');
+                    $mail->to(strtolower($mailData['email']), $mailData['userName'])->subject('You have purchased '.$mailData['pkgName'].'!');
+            });
+          } catch (\Exception $e) {
+            \Log::info('type: error,'.' res: '.$e->getMessage().', line:'.$getLine());
+          }
+
           return response()->json([
             'status'=> true,
             'message'=> 'Payment done',
@@ -695,6 +713,24 @@ class PackageController extends Controller
           $arr['payment']  = $userPackage;
           $arr['package_name']  = $package->name;
 
+          try {
+            $mailData = [
+              'userName' => $user->name,
+              'transactionID' => $arr['CORRELATIONID'],
+              'pkgName' => $package->name,
+              'amount' => $AMT,
+              'paymentStatus' => $arr['ACK'],
+              'paymentDate' => $userPackage->created_at,
+              'email' => $user->email
+            ];
+            Mail::send('emails.payment',$mailData, function($mail) use($mailData){
+                    $mail->from(config('settings.email'), 'Simplywilled Payment Confirmation');
+                    $mail->to(strtolower($mailData['email']), $mailData['userName'])->subject('You have purchased '.$mailData['pkgName'].'!');
+            });
+          } catch (\Exception $e) {
+            \Log::info('type: error,'.' res: '.$e->getMessage().', line:'.$getLine());
+          }
+
           return response()->json([
             'status' => true,
             'message' => 'Payment has done successfully',
@@ -819,5 +855,20 @@ class PackageController extends Controller
           'line' => 'Problem encountered on line no. :'.$e->getLine()
         ], 500);
       }
+    }
+
+    public function viewMail()
+    {
+      $mailData = [
+        'userName' => 'Test User',
+        'transactionID' => 'ABCDEFGHIJKLMNOP',
+        'pkgName' => 'Something Packgae',
+        'amount' => 199.00,
+        'paymentStatus' => 'Success',
+        'paymentDate' => '2018-05-05 05:05:05',
+        'email' => 'abc@gmail.com'
+      ];
+
+      return $view = \View::make('emails.payment', $mailData);
     }
 }
