@@ -15,6 +15,7 @@ export class PaypalSuccessComponent implements OnInit {
     jwtToken: string;
     data: any;
     thankYou: boolean;
+    package_name: string;
   constructor(
       private activatedRoute: ActivatedRoute,
       private packagesService: PackagesService
@@ -28,6 +29,7 @@ export class PaypalSuccessComponent implements OnInit {
               (res: any) => {
                 this.jwtToken = res.data.jwtToken;
                 this.data = res.data.payment;
+                this.package_name = res.data.package_name;
                 // console.log(this.data);
                 this.thankYou = true;
                 this.respType = true;

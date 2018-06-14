@@ -10,6 +10,8 @@ import {Router} from '@angular/router';
 })
 export class ThankYouComponent implements OnInit {
   @Input() data: any;
+  @Input() package_name: string;
+
     countDown;
     count = 10;
     timerSubscription: Subscription;

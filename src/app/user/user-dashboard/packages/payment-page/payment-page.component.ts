@@ -25,6 +25,7 @@ export class PaymentPageComponent implements OnInit  {
     loader: boolean;
     thankYou: boolean;
     addAnimate: boolean;
+    package_name: string;
     public modalRef: BsModalRef;
 
     constructor(
@@ -168,6 +169,7 @@ export class PaymentPageComponent implements OnInit  {
                     // console.log(resp.message);
                     // this.respMsg = resp.message;
                     this.data = resp.data.payment;
+                    this.package_name = resp.data.package_name;
                     const store = JSON.parse(localStorage.getItem('loggedInUser'));
                     store.token = resp.data.jwtToken;
                     localStorage.setItem('loggedInUser', JSON.stringify(store));

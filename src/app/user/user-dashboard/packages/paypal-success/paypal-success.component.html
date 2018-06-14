@@ -16,5 +16,5 @@
 </div>
 <div *ngIf="respType"><h2>{{respMsg}}</h2></div>
 <div class="main-content paymentSuccess" >
-  <app-thank-you [data]="data" *ngIf="thankYou"></app-thank-you>
+  <app-thank-you [data]="data" [package_name]="package_name" *ngIf="thankYou"></app-thank-you>
 </div>
