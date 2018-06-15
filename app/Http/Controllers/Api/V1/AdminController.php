@@ -225,4 +225,87 @@ class AdminController extends Controller {
         return response()->json($response, $responseCode);
     }
 
+    public function updateProfile(Request $request)
+    {
+      try {
+        $validator = Validator::make($request->all(), [
+            'id'  => 'required|exists:users,id',
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        $errorMessage = '';
+        if ($validator->fails()){
+            $messages = $validator->messages();
+            foreach ($messages->all() as $message)
+                {
+                  $errorMessage=$errorMessage.$message." ";
+                }
+            return response()->json([
+              'status' => false,
+              'error' => $errorMessage,
+            ], 400);
+        }
+
+        $user = User::where('email',$request->email)->where('id', '!=', $request->id)->first();
+        if($user) {
+          return response()->json([
+            'status' => false,
+            'error' => 'Email is already exists',
+          ], 400);
+        }
+
+        $updateUser = User::find($request->id);
+        $updateUser->name = $request->name;
+        $updateUser->email = $request->email;
+        if ($request->has('password')) {
+          $updateUser->password = $request->password;
+        }
+
+        if ($updateUser->save()) {
+          return response()->json([
+            'status' => true,
+            'message' => 'Profile updated successfully',
+          ], 200);
+        } else {
+          return response()->json([
+            'status' => false,
+            'error' => 'Profile not updated',
+          ], 400);
+        }
+      } catch (\Exception $e) {
+        return response()->json([
+          'status' => false,
+          'error' => $e->getMessage(),
+          'line' => $e->getLine(),
+        ], 500);
+      }
+    }
+
+    public function getProfile(Request $request)
+    {
+      try {
+        $user = User::find($request->id);
+        if ($user) {
+          return response()->json([
+            'status' => true,
+            'message' => 'Profile fetched',
+            'data' => [
+              'user' => $user
+            ]
+          ], 200);
+        } else {
+          return response()->json([
+            'status' => false,
+            'error' => 'Profile not found',
+          ], 400);
+        }
+      } catch (\Exception $e) {
+        return response()->json([
+          'status' => false,
+          'error' => $e->getMessage(),
+          'line' => $e->getLine(),
+        ], 500);
+      }
+    }
 }

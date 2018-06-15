@@ -435,6 +435,16 @@ Route::group(['prefix' => 'v1'], function() {
             'as'   => 'api.v1.usersList.get'
         ]);
 
+        Route::post('update-profile', [
+            'uses' => 'Api\V1\AdminController@updateProfile',
+            'as'   => 'api.v1.updateProfile.post'
+        ]);
+
+        Route::post('get-profile', [
+            'uses' => 'Api\V1\AdminController@getProfile',
+            'as'   => 'api.v1.getProfile.post'
+        ]);
+
     });
 
     /**
