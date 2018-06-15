@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { UserRegisterRoutingModule } from './user-register-routing.module';
 import { UserRegisterComponent } from './user-register.component';
 import { FormsModule } from '@angular/forms';
-import {EqualValidatorDirective} from './edual-validator.directive';
 
 @NgModule({
   imports: [
@@ -12,6 +11,6 @@ import {EqualValidatorDirective} from './edual-validator.directive';
     UserRegisterRoutingModule,
     FormsModule
   ],
-  declarations: [UserRegisterComponent, EqualValidatorDirective]
+  declarations: [UserRegisterComponent]
 })
 export class UserRegisterModule { }

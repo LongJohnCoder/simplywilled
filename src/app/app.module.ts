@@ -17,11 +17,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { BlogService } from "./user/blog/blog.service";
 import { NgxPaginationModule } from 'ngx-pagination';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {EqualValidatorDirective} from './user/user-auth/user-register/edual-validator.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-
+    EqualValidatorDirective
   ],
   imports: [
     BrowserModule,
