@@ -428,7 +428,7 @@ class UserController extends Controller
         if ($checkForExistUser->save()) {
 
             if($invitationFlag) {
-                $term = $checkForExistUser->marital_status == "M" ? 'spouse' : 'partner';
+                $term = $checkForExistUser->marital_status == "M" ? 'spouse' : 'domestic partner';
                 \Log::info('email getting send for spouse invitation');
                 $arr = [
                     'firstName'         =>  $checkForExistUser->firstname,
