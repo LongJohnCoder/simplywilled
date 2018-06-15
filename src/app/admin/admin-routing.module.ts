@@ -15,6 +15,7 @@ import {FaqsCategoriesFormComponent} from './faq/faqs-categories-form/faqs-categ
 import {FaqFormComponent} from './faq/faq-form/faq-form.component';
 import {DiscountComponent} from './discount/discount.component';
 import {PackagesComponent} from './packages/packages.component';
+import {UserListsComponent} from './users-management/user-lists/user-lists.component';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -36,6 +37,7 @@ const routes: Routes = [
     { path: 'edit-faq/:id', canActivate: [ AuthGuard ], pathMatch: 'full', component: FaqFormComponent},
     { path: 'discount-coupon', canActivate: [ AuthGuard ], pathMatch: 'full', component: DiscountComponent},
     { path: 'packages', canActivate: [ AuthGuard ], pathMatch: 'full', component: PackagesComponent},
+    { path: 'users-management', canActivate: [ AuthGuard ], pathMatch: 'full', component: UserListsComponent},
 
 ];
 

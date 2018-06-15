@@ -38,6 +38,8 @@ import {PackageService} from './packages/package.service';
 import {DiscountService} from './discount/discount.service';
 import {BsDatepickerModule} from 'ngx-bootstrap';
 import {NgxMaskModule} from 'ngx-mask';
+import {UserListsComponent} from './users-management/user-lists/user-lists.component';
+import {UsersService} from './users-management/users.service';
 
 
 @NgModule({
@@ -71,7 +73,8 @@ import {NgxMaskModule} from 'ngx-mask';
       FaqsCategoriesFormComponent,
       FaqFormComponent,
       DiscountComponent,
-      PackagesComponent
+      PackagesComponent,
+      UserListsComponent
   ],
   providers: [
     AuthGuard,
@@ -85,6 +88,7 @@ import {NgxMaskModule} from 'ngx-mask';
       DiscountService,
       ChangePasswordService,
       AdminLoginService,
+      UsersService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
 })
