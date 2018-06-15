@@ -1,0 +1,164 @@
+<app-header></app-header>
+<app-left-menu></app-left-menu>
+
+<div id="page-wrapper">
+  <div id="page-inner">
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="page-header">
+          Update Profile
+        </h1>
+      </div>
+    </div>
+    <!-- /. ROW  -->
+
+    <form #createBlog="ngForm">
+      <!--<div class="row">-->
+        <!--<div class="col-md-8">-->
+          <!--<div class="panel panel-default">-->
+            <!--<div class="panel-body">-->
+              <!--<fieldset>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="blogTitle">Blog Title:</label>-->
+                  <!--<input id="blogTitle" class="form-control" type="text" [(ngModel)]="blogData.title" name="title" ngModel #blogTitle="ngModel" required>-->
+                  <!--<span *ngIf="blogTitle.invalid && blogTitle.touched" style="color:red;"> Blog title is reqired ! </span>-->
+                  <!--<input type="hidden" [(ngModel)]="blogData.id" name="blogId" ngModel #blogId="ngModel">-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                  <!--<label for="text_editor">Body:</label>-->
+                  <!--<ck-editor id="text_editor" class="" skin="moono-lisa" language="en" [fullPage]="true" name="body" [(ngModel)]="blogData.body" #blogBody="ngModel" required></ck-editor>-->
+                  <!--&lt;!&ndash;<ck-editor name="editor1" [(ngModel)]="editorValue" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>&ndash;&gt;-->
+                  <!--<span *ngIf="blogBody.invalid && blogBody.touched" style="color:red;"> Blog body is reqired ! </span>-->
+
+                <!--</div>-->
+              <!--</fieldset>-->
+
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+          <!--<div class="panel panel-bordered panel-primary">-->
+            <!--<div class="panel-heading">-->
+              <!--<h3 class="panel-title"> Detail</h3>-->
+            <!--</div>-->
+            <!--<div class="panel-body">-->
+              <!--<div class="form-group">-->
+                <!--<label for="status">Status</label>-->
+                <!--<select id="status" class="form-control" name="status" [(ngModel)]="blogData.status" #blogStatus="ngModel" required>-->
+                  <!--<option value="1">Published</option>-->
+                  <!--<option value="0">Pending</option>-->
+                <!--</select>-->
+                <!--<span *ngIf="blogStatus.invalid && blogStatus.touched" style="color:red;"> Select blog status ! </span>-->
+
+              <!--</div>-->
+              <!--<div class="checkbox">-->
+                <!--<label for="featured">-->
+                  <!--<input id="featured" type="checkbox" name="blogFeatured" [(ngModel)]="blogData.featured" #blogFeatured="ngModel"> Featured-->
+                <!--</label>-->
+
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="panel panel-bordered panel-success">-->
+            <!--<div class="panel-heading">-->
+              <!--<h3 class="panel-title"> Category</h3>-->
+            <!--</div>-->
+            <!--<div class="panel-body">-->
+              <!--&lt;!&ndash;<div class="checkbox" *ngFor="let category of categoryData">&ndash;&gt;-->
+              <!--&lt;!&ndash;<label>&ndash;&gt;-->
+              <!--&lt;!&ndash;<input class="blogCh" type="checkbox" value="{{category.id}}" name="blogCategory[]"&ndash;&gt;-->
+              <!--&lt;!&ndash;[(ngModel)]="blogData.blog_category" #blogTcat1="ngModel"&ndash;&gt;-->
+              <!--&lt;!&ndash;(ngModelChange)="selectedValue(category.id, $event)"> {{category.name}}&ndash;&gt;-->
+              <!--&lt;!&ndash;</label>&ndash;&gt;-->
+              <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--<select multiple class="form-control" name="blogCategorys" [(ngModel)]="blogData.blog_category" #blogCategorys="ngModel">-->
+                <!--<option  *ngFor="let category of categoryData" [ngValue]="category.id">{{category.name}}</option>-->
+              <!--</select>-->
+              <!--&lt;!&ndash;<span *ngIf="blogCategorys.invalid && blogCategorys.touched" style="color:red;"> Select blog categories ! </span>&ndash;&gt;-->
+
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="panel panel-bordered panel-info">-->
+            <!--<div class="panel-heading">-->
+              <!--<h3 class="panel-title"> Image</h3> <h6>(Only .jpg .jpeg .png .gif format supported)</h6><h6>(Min image resolution 900x600 or higher)</h6>-->
+            <!--</div>-->
+            <!--<div class="panel-body">-->
+              <!--<div class="input-group">-->
+                <!--<div *ngIf="!editMode">-->
+                  <!--<input type="file"-->
+                         <!--class="form-control input-flat"-->
+                         <!--id="blogImage"-->
+                         <!--ngModel-->
+                         <!--#blogImage="ngModel"-->
+                         <!--name="blogImage"-->
+                         <!--required-->
+                         <!--accept="image/x-png,image/gif,image/jpeg"-->
+                         <!--(change)="handleImageUpload($event)">-->
+                  <!--<span *ngIf="blogImage.invalid && blogImage.touched" style="color:red;"> Select blog image ! </span>-->
+                <!--</div>-->
+                <!--<div *ngIf="editMode">-->
+                  <!--<input type="file"-->
+                         <!--class="form-control input-flat"-->
+                         <!--id="blogImage"-->
+                         <!--ngModel-->
+                         <!--accept="image/x-png,image/gif,image/jpeg"-->
+                         <!--#blogImage="ngModel"-->
+                         <!--name="blogImage"-->
+                         <!--(change)="handleImageUpload($event)">-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div *ngIf="blogData.image">-->
+                <!--<img src="{{blogData.image}}" alt="{{blogData.image}}">-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="panel panel-bordered panel-warning">-->
+            <!--<div class="panel-heading">-->
+              <!--<h3 class="panel-title"> SEO Content</h3>-->
+            <!--</div>-->
+            <!--<div class="panel-body">-->
+              <!--<div class="form-group">-->
+                <!--<label for="seo_title">SEO Title</label>-->
+                <!--<input id="seo_title" class="form-control" value="" type="text" name="blogSeoTitle" [(ngModel)]="blogData.seo_title"-->
+                       <!--#blogSeoTitle="ngModel">-->
+              <!--</div>-->
+              <!--<div class="form-group">-->
+                <!--<label>Meta Description</label>-->
+                <!--<textarea class="form-control" name="blogMeta" [(ngModel)]="blogData.meta_description" #blogMeta="ngModel"></textarea>-->
+              <!--</div>-->
+              <!--<div class="form-group">-->
+                <!--<label>Meta Keywords</label>-->
+                <!--<textarea class="form-control" name="blogMetaKey" [(ngModel)]="blogData.meta_keywords"-->
+                          <!--#blogMetaKey="ngModel"></textarea>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash;<button type="submit" class="btn btn-primary">Create Blog</button>&ndash;&gt;-->
+          <!--<button *ngIf="editMode" type="button" class="btn btn-primary" (click)="edit(); openModal(message)" [disabled]="!createBlog.form.valid"> {{editMode ? 'Edit' : 'Create'}} Blog </button>-->
+          <!--<button *ngIf="!editMode" type="button" class="btn btn-primary" (click)="add(); openModal(message)" [disabled]="!createBlog.form.valid"> {{editMode ? 'Edit' : 'Create'}} Blog </button>-->
+
+
+        <!--</div>-->
+      <!--</div>-->
+    </form>
+
+    <ng-template #message>
+      <div class="adminModalSmall">
+        <div class="modal-header deleteBlogHead">
+          <h3 class="modal-title">
+            <!--{{createBlogMessage}}-->
+          </h3>
+
+        </div>
+        <div class="modal-body deleteBlogFoot">
+          <button type="button" class="btn btn-warning" (click)="onCancel()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </ng-template>
+    <footer><p>All right reserved. Developed By <a href="#">TNI</a></p></footer>
+  </div>
+  <!-- /. PAGE INNER  -->

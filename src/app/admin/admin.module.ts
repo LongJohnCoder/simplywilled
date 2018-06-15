@@ -40,6 +40,8 @@ import {BsDatepickerModule} from 'ngx-bootstrap';
 import {NgxMaskModule} from 'ngx-mask';
 import {UserListsComponent} from './users-management/user-lists/user-lists.component';
 import {UsersService} from './users-management/users.service';
+import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
+import { ChangePasswordComponent } from './profile/change-password/change-password.component';
 
 
 @NgModule({
@@ -74,7 +76,9 @@ import {UsersService} from './users-management/users.service';
       FaqFormComponent,
       DiscountComponent,
       PackagesComponent,
-      UserListsComponent
+      UserListsComponent,
+      UpdateProfileComponent,
+      ChangePasswordComponent
   ],
   providers: [
     AuthGuard,

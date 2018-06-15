@@ -11,10 +11,9 @@
               <i class="fa fa-user"></i>
           </a>
           <ul class="dropdown-menu dropdown-user" *dropdownMenu>
-              <li><a ><i class="fa fa-user fa-fw"></i> Admin Profile</a>
-              </li>
-              <li><a ><i class="fa fa-gear fa-fw"></i> Settings</a>
-              </li>
+              <li><a routerLink="/admin-panel/admin-profile"><i class="fa fa-user fa-fw"></i> Admin Profile</a></li>
+              <li><a routerLink="/admin-panel/update-password"><i class="fa fa-user fa-fw"></i> Update Password</a></li>
+              <!--<li><a ><i class="fa fa-gear fa-fw"></i> Settings</a></li>-->
               <li class="divider"></li>
               <li>
               <a class="login" (click)="signOut()" ><i class="fa fa-sign-out fa-fw"></i>Logout</a>

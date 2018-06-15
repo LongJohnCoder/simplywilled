@@ -16,6 +16,8 @@ import {FaqFormComponent} from './faq/faq-form/faq-form.component';
 import {DiscountComponent} from './discount/discount.component';
 import {PackagesComponent} from './packages/packages.component';
 import {UserListsComponent} from './users-management/user-lists/user-lists.component';
+import {UpdateProfileComponent} from './profile/update-profile/update-profile.component';
+import {ChangePasswordComponent} from './profile/change-password/change-password.component';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -38,6 +40,8 @@ const routes: Routes = [
     { path: 'discount-coupon', canActivate: [ AuthGuard ], pathMatch: 'full', component: DiscountComponent},
     { path: 'packages', canActivate: [ AuthGuard ], pathMatch: 'full', component: PackagesComponent},
     { path: 'users-management', canActivate: [ AuthGuard ], pathMatch: 'full', component: UserListsComponent},
+    { path: 'admin-profile', canActivate: [ AuthGuard ], pathMatch: 'full', component: UpdateProfileComponent},
+    { path: 'update-password', canActivate: [ AuthGuard ], pathMatch: 'full', component: ChangePasswordComponent},
 
 ];
 
