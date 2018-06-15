@@ -105,10 +105,10 @@ class AuthController extends Controller {
                     ];
                     $responseCode = 200;
 
-                    // Mail::send('new_emails.registration_first',[], function($mail) use($user){
-                    //         $mail->from(config('settings.email'), 'Simplywilled Registration Successful');
-                    //         $mail->to(strtolower($user->email), $user->name)->subject('You Registered Successfully in Simplywilled!');
-                    // });
+                    Mail::send('new_emails.registration_first',[], function($mail) use($user){
+                            $mail->from(config('settings.email'), 'Simplywilled Registration Successful');
+                            $mail->to(strtolower($user->email), $user->name)->subject('You Registered Successfully in Simplywilled!');
+                    });
 
                 } else {
                     JWTAuth::invalidate($token);
