@@ -42,6 +42,8 @@ import {UserListsComponent} from './users-management/user-lists/user-lists.compo
 import {UsersService} from './users-management/users.service';
 import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
 import { ChangePasswordComponent } from './profile/change-password/change-password.component';
+import {EqualValidatorDirective} from './ecual-validator.directive';
+// import {EqualValidatorDirective} from '../user/user-dashboard/change-password/equal-validator.directive';
 
 
 @NgModule({
@@ -79,6 +81,7 @@ import { ChangePasswordComponent } from './profile/change-password/change-passwo
       UserListsComponent,
       UpdateProfileComponent,
       ChangePasswordComponent,
+      EqualValidatorDirective
   ],
   providers: [
     AuthGuard,
