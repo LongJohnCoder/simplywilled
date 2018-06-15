@@ -17,15 +17,17 @@
         
 <div class="row">
 <div class="col-md-4 col-sm-12 col-xs-12">
-    <div class="panel panel-primary text-center no-boder bg-color-green">
-        <div class="panel-body">
-            <i class="fa fa-users fa-5x"></i>
-            <h3>{{userCount}}</h3>
+    <a routerLink="/admin-panel/users-management" class="dashThumLink">
+        <div class="panel panel-primary text-center no-boder bg-color-green">
+            <div class="panel-body">
+                <i class="fa fa-users fa-5x"></i>
+                <h3>{{userCount}}</h3>
+            </div>
+            <div class="panel-footer back-footer-green">
+                Total Users
+            </div>
         </div>
-        <div class="panel-footer back-footer-green">
-            Total Users
-        </div>
-    </div>
+    </a>
 </div>
 <div class="col-md-4 col-sm-12 col-xs-12">
     <a routerLink="/admin-panel/blogs" class="dashThumLink">
@@ -41,6 +43,7 @@
     </a>
 </div>
 <div class="col-md-4 col-sm-12 col-xs-12">
+    <a routerLink="/admin-panel/blog-comments" class="dashThumLink">
     <div class="panel panel-primary text-center no-boder bg-color-red">
         <div class="panel-body">
             <i class="fa fa fa-comments fa-5x"></i>
@@ -50,8 +53,10 @@
             Comments
         </div>
     </div>
+    </a>
 </div>
 <div class="col-md-4 col-sm-12 col-xs-12">
+    <a routerLink="/admin-panel/packages" class="dashThumLink">
     <div class="panel panel-primary text-center no-boder bg-color-red">
         <div class="panel-body">
             <i class="fa fa-dropbox fa-5x"></i>
@@ -61,8 +66,10 @@
             Packages
         </div>
     </div>
+    </a>
 </div>
 <div class="col-md-4 col-sm-12 col-xs-12">
+    <a routerLink="/admin-panel/faqs" class="dashThumLink">
     <div class="panel panel-primary text-center no-boder bg-color-brown">
         <div class="panel-body">
             <i class="fa fa-question-circle fa-5x"></i>
@@ -72,8 +79,10 @@
             FAQ
         </div>
     </div>
+    </a>
 </div>
 <div class="col-md-4 col-sm-12 col-xs-12">
+    <a routerLink="/admin-panel/discount-coupon" class="dashThumLink">
     <div class="panel panel-primary text-center no-boder bg-color-green">
         <div class="panel-body">
             <i class="fa fa-tags fa-5x"></i>
@@ -83,6 +92,7 @@
             Discount Coupons
         </div>
     </div>
+    </a>
 </div>
 </div>
 
@@ -91,7 +101,10 @@
 
     <div class="panel panel-default dashTable">
         <div class="panel-heading">
-            Latest 5 Users
+            <div style="text-align: left; float: left;">Latest 5 Users</div>
+            <div style="text-align: right;">
+                <a routerLink="/admin-panel/users-management" class="btn btn-success"><i class="fa fa-users"></i>View all Users</a>
+            </div>
         </div> 
         <div class="panel-body">
             <div class="table-responsive">
