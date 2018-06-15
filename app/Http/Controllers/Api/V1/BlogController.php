@@ -167,7 +167,7 @@ class BlogController extends Controller
     {
         try {
 
-            $categories = Categories::orderBy('created_at','DESC')->with('blogs')->get();
+            $categories = Categories::orderBy('name','ASC')->with('blogs')->get();
             $categoriesDetails = [];
             foreach ($categories as $key => $value) {
                 $array['name'] =    $value->name;
