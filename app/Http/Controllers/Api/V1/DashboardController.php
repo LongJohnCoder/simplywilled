@@ -66,4 +66,27 @@ class DashboardController extends Controller
         ], 400);
       }
     }
+
+    public function usersList()
+    {
+      try {
+        $users = User::with(array('loginHistory' => function($q) {
+                    $q->select('id', 'user_id', 'login_time', 'logout_time', 'ip_address');
+                    $q->orderBy('id', 'DESC');
+                  }))->where('id','!=', 1)
+                  ->orderBy('created_at','DESC')->get();
+        return response()->json([
+           'status'       => true,
+           'message'      => 'Successfully fetched users data!',
+           'data'         => ['users' => $users]
+        ], 200);
+      } catch (\Exception $e) {
+        return response()->json([
+           'status'       => false,
+           'error'        => $e->getMessage(),
+           'line'         => $e->getLine()
+        ], 500);
+      }
+
+    }
 }

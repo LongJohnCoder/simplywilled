@@ -430,6 +430,11 @@ Route::group(['prefix' => 'v1'], function() {
             'as'   => 'api.v1.checkToken.get'
         ]);
 
+        Route::get('users-list', [
+            'uses' => 'Api\V1\DashboardController@usersList',
+            'as'   => 'api.v1.usersList.get'
+        ]);
+
     });
 
     /**
