@@ -7,6 +7,7 @@ import {UserPaidGuard} from './user-paid.guard';
 import {UserUnPaidGuard} from './user-unpaid.guard';
 import {SigningInstructionsDocComponent} from './doc/signing-instructions-doc/signing-instructions-doc.component';
 import {FinalDispositionDocComponent} from './doc/final-disposition-doc/final-disposition-doc.component';
+import {SubscribedPackageComponent} from './subscribed-package/subscribed-package.component';
 
 const routes: Routes = [
       {
@@ -114,9 +115,9 @@ const routes: Routes = [
                 loadChildren: '../user-dashboard/change-password/change-password.module#ChangePasswordModule'
             },
             {
-                path: 'packages-paid',
+                path: 'subscribed-package',
                     canActivate: [UserPaidGuard],
-                loadChildren: './packages/packages.module#PackagesModule'
+                component: SubscribedPackageComponent
             },
           {
             path: 'preview-documents',

@@ -14,6 +14,7 @@ import { TuayPdfComponent } from './doc/tuay-pdf/tuay-pdf.component';
 import { SigningInstructionsDocComponent } from './doc/signing-instructions-doc/signing-instructions-doc.component';
 import { FinalDispositionDocComponent } from './doc/final-disposition-doc/final-disposition-doc.component';
 import {FinalDispositionPdfService} from './doc/services/final-disposition-pdf.service';
+import { SubscribedPackageComponent } from './subscribed-package/subscribed-package.component';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import {FinalDispositionPdfService} from './doc/services/final-disposition-pdf.s
     ReactiveFormsModule,
     //GlobalTooltipModule
   ],
-  declarations: [DashboardComponent, MainDashboardComponent, SigningInstructionsDocComponent, FinalDispositionDocComponent  ],
+  declarations: [DashboardComponent, MainDashboardComponent, SigningInstructionsDocComponent, FinalDispositionDocComponent, SubscribedPackageComponent  ],
     providers: [
         UserPaidGuard, UserUnPaidGuard, ProgressbarService, ReferFriendService, FinalDispositionPdfService
     ]

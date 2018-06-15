@@ -4,6 +4,10 @@
     float: left;
     margin-top: -38px;
 }
+.slider h1 span {
+  font-size: 35px;
+  display: block;
+}
 .inner-banner .slider {
     position: relative;
 }
