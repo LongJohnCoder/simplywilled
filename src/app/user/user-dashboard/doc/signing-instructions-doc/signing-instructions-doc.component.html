@@ -11,9 +11,9 @@
 </div>
 
 <div class="main-content" *ngIf="!loading">
-  <div class="thumbContainer">
-    <ul>
-      <li *ngFor="let thumb of docThumbImg; let i = index" (click)="scrollDoc(i)" [ngClass]="{'active' : thumbIndex == i}"><p><img src="{{thumb}}" alt=""></p></li>
+  <div class="thumbContainer" #thumbContainer >
+    <ul [ngStyle]="{'width.px' : liCount}">
+      <li *ngFor="let thumb of docThumbImg; let i = index" (click)="scrollDoc(i)" [ngClass]="{'active' : thumbIndex === i}"><p><img src="{{thumb}}" alt=""></p></li>
       <!--<li (click)="scrollDoc(x)"><p><img src="../../../../../assets/images/doc1-thumb2.png" alt=""></p></li>-->
     </ul>
   </div>
@@ -154,6 +154,18 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="docBtnArea" [ngClass]="{'uncompleted' : count !== 5}">
+    <ul>
+      <li><a href=""><i class="fa fa-chevron-left"></i> Previous</a></li>
+      <li><a href="">Next <i class="fa fa-chevron-right"></i></a></li>
+    </ul>
+    <ul>
+      <li><a href=""><i class="fa fa-download"></i> Download</a></li>
+      <li><a href=""><i class="fa fa-envelope-o"></i> Email Me</a></li>
+      <li><a href=""><i class="fa fa-print"></i> Print</a></li>
+    </ul>
   </div>
 
 </div>
