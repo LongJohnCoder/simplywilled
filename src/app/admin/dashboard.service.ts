@@ -36,6 +36,14 @@ export class DashboardService {
         return this.httpClient.post(environment.API_URL + 'admin-panel/edit-blog', createBlogBody);
     }
 
+    getProfile(data: any): Observable<any> {
+        return this.httpClient.post(environment.API_URL + 'admin-panel/get-profile', data);
+    }
+
+    updateProfile(data: any): Observable<any> {
+        return this.httpClient.post(environment.API_URL + 'admin-panel/update-profile', data);
+    }
+
 }
 
 

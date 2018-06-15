@@ -23,7 +23,7 @@ const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'login' },
     { path: 'login', canActivate: [ NotAuthGuard ], loadChildren: './auth/admin-login/admin-login.module#AdminLoginModule' },
     { path: 'dashboard', canActivate: [ AuthGuard ], pathMatch: 'full', component: DashHomeComponent },
-    { path: 'change-password', canActivate: [ AuthGuard ], pathMatch: 'full', loadChildren: './auth/change-password/change-password.module#ChangePasswordModule'},
+    // { path: 'change-password', canActivate: [ AuthGuard ], pathMatch: 'full', loadChildren: './auth/change-password/change-password.module#ChangePasswordModule'},
     { path: 'blogs', canActivate: [ AuthGuard ], pathMatch: 'full', component: BlogsComponent},
     { path: 'add-blog', canActivate: [ AuthGuard ], pathMatch: 'full', component: AddBlogComponent},
     { path: 'edit-blog/:id', canActivate: [ AuthGuard ], pathMatch: 'full', component: AddBlogComponent},
@@ -41,7 +41,7 @@ const routes: Routes = [
     { path: 'packages', canActivate: [ AuthGuard ], pathMatch: 'full', component: PackagesComponent},
     { path: 'users-management', canActivate: [ AuthGuard ], pathMatch: 'full', component: UserListsComponent},
     { path: 'admin-profile', canActivate: [ AuthGuard ], pathMatch: 'full', component: UpdateProfileComponent},
-    { path: 'update-password', canActivate: [ AuthGuard ], pathMatch: 'full', component: ChangePasswordComponent},
+    // { path: 'update-password', canActivate: [ AuthGuard ], pathMatch: 'full', component: ChangePasswordComponent},
 
 ];
 
