@@ -35,18 +35,17 @@ use App\StatesInfo;
 use App\PetGuardian;
 use PDF;
 use Storage;
+use File;
 
 class PdfController extends Controller
 {
     
-    public function finalSigningInstructions(Request $request) {
+    public function finalSigningInstructions() {
 
     	try {
 
     		$completion = app(\App\Http\Controllers\Api\V1\UserManagementController::class)->fetchTotalCompletion();
-
     		$completion = json_decode($completion->content(), true);
-
     		foreach ($completion['data'] as $key => $value) {
                 //value is of boolean type
                 if(!$value)
@@ -56,9 +55,12 @@ class PdfController extends Controller
                         'data'      =>  []  
                     ],400);
             }
-            
-            $tuay = TellUsAboutYou::where('user_id', \Auth::user()->id)->first();
-            if(!$tuay) {
+            //$tellUsAboutYou = TellUsAboutYou::where('user_id', \Auth::user()->id)->first();
+
+            $totalData = $this->docInfo();
+            $totalData = json_decode($totalData->content(), true);
+            $tellUsAboutYou = $totalData['data']['tellUsAboutYou'];
+            if(!$tellUsAboutYou) {
                 return response()->json([
                     'status'    =>  false,
                     'message'   =>  'Please complete tell us TellUsAboutYou section',
@@ -66,32 +68,46 @@ class PdfController extends Controller
                 ],400);
             }
 
-            $destinationPath = 'pdf/step1/';
+            $id = \Auth::user()->id;
+    		$filename = 'finalSigningInstructions.pdf';
+            $data = ['firstname' => $tellUsAboutYou['firstname']];
 
-            
+            $path = 'documents/'.$id;
 
-    		$filename = 'pdf1-'.\Auth::user()->id . '.pdf';
-            $data = ['firstname' => $tuay->firstname];
-            PDF::loadView('pdf.final_signing_instructions', $data)->save('pdf/step1/'.$filename);
-            return response()->json([
-                    'status'    =>  true,
-                    'message'   =>  'Success',
-                    'data'      =>  ['link' => url('/').'/pdf/step1/'.$filename,
-                                    'filename' => $filename]
-            ],200);
+            if(!is_dir(public_path().$path)) {
+                //finding this user directory if directory is not present then create directory
+                File::makeDirectory(public_path().$path, $mode = 0777, true, true);
+                if(is_dir(public_path().$path)) {
+                    PDF::loadView('pdf.final_signing_instructions', $data)->save($path.$filename);
+                    return response()->json([
+                            'status'    =>  true,
+                            'message'   =>  'Success'
+                        ], 200);
+                } else {
+                    // use existing user directory
+                    return response()->json([
+                            'status'    =>  false,
+                            'message'   =>  'Folder is not created successfully, Please change permission'
+                        ], 400);
+                }
 
+            } else {
+                PDF::loadView('pdf.final_signing_instructions', $data)->save($path.'/'.$filename);
+                return response()->json([
+                            'status'    =>  true,
+                            'message'   =>  'Success'
+                        ], 200);
+            }
     	} catch(\Exception $e) {
-
     		return response()->json([
                     'status'    =>  false,
                     'message'   =>  'Error : '.$e->getMessage().' Line : '.$e->getLine(),
                     'data'      =>  []
             ], 500);
-    	
         }
     }
 
-    public function willTemplate(Request $request) {
+    public function willTemplate() {
 
         try {
 
@@ -108,28 +124,46 @@ class PdfController extends Controller
                         'data'      =>  []  
                     ],400);
             }
+            $id = \Auth::user()->id;
+            $path = 'documents/'.$id;
             
-            $tellUsAboutYou = TellUsAboutYou::where('user_id', \Auth::user()->id)->first();
-            $children = Children::where('user_id', \Auth::user()->id);
+            $totalData = $this->docInfo();
+            $totalData = json_decode($totalData->content(), true);
 
-            $state = StatesInfo::where('name', 'LIKE', $tellUsAboutYou->state)->first();
-            $executor_title = $state->executor_title;
-            $personalRepresentative = PersonalRepresentatives::where('user_id', \Auth::user()->id)->where('is_backuprepresentative','0')->first();
-            $backupPersonalRepresentative = PersonalRepresentatives::where('user_id', \Auth::user()->id)->where('is_backuprepresentative','1')->first();
-            $guardian = GuardianInfo::where('user_id', \Auth::user()->id)->where('is_backup','0')->first();
-            $backupGuardian = GuardianInfo::where('user_id', \Auth::user()->id)->where('is_backup','1')->first();
-            $provideYourLovedOnes = ProvideYourLovedOnes::where('user_id', \Auth::user()->id)->first();
+            
+            $tellUsAboutYou = $totalData['data']['tellUsAboutYou'];
+            $children = $totalData['data']['children'];
+            $state = $totalData['data']['state'];
+            $executor_title = $state['executor_title'];
+            $personalRepresentative = $totalData['data']['personalRepresentative'];
+            $backupPersonalRepresentative = $totalData['data']['backupPersonalRepresentative'];
 
+            $guardian = $totalData['data']['guardian'];
+            $backupGuardian = $totalData['data']['backupGuardian'];
+            $provideYourLovedOnes = $totalData['data']['provideYourLovedOnes'];
+            $estateDistribute = $totalData['data']['estateDistribute'];
 
-            if(!$tellUsAboutYou || !$personalRepresentative || !$provideYourLovedOnes) {
+            $toMultipleBeneficiary = json_decode($estateDistribute['to_multiple_beneficiary'], true);
+            $toMultipleBeneficiary = $toMultipleBeneficiary[0];
+            $toSingleBeneficiary = json_decode($estateDistribute['to_a_single_beneficiary'], true);
+            $toSingleBeneficiary = $toSingleBeneficiary[0];
+            $petGuardian = $totalData['data']['petGuardian'];
+            $backupPetGuardian = $totalData['data']['backupPetGuardian'];
+
+            $petNames = json_decode($tellUsAboutYou['pet_names'], true);
+            dd($petNames);
+            //dd($estateDistribute);
+            dd($toMultipleBeneficiary, $toSingleBeneficiary);
+
+            $provideYourLovedOnes = $totalData['data']['provideYourLovedOnes'];
+
+            if(!$tellUsAboutYou || !$personalRepresentative || !$provideYourLovedOnes || !$estateDistribute) {
                 return response()->json([
                     'status'    =>  false,
                     'message'   =>  'Please complete tell us previous sections section',
                     'data'      =>  []
-                ],400);
+                ], 400);
             }
-
-            $destinationPath = 'pdf/step2/';
 
             $filename = 'pdf2-'.\Auth::user()->id . '.pdf';
             $data = [
@@ -143,13 +177,35 @@ class PdfController extends Controller
                 'provideYourLovedOnes' => $provideYourLovedOnes,
                 'state'          => $state->name
             ];
-            PDF::loadView('pdf.last_will_and_testament', $data)->save($destinationPath.$filename);
+            
+            if(!is_dir(public_path().$path)) {
+                //finding this user directory if directory is not present then create directory
+                File::makeDirectory(public_path().$path, $mode = 0777, true, true);
+                if(is_dir(public_path().$path)) {
+                    PDF::loadView('pdf.last_will_and_testament', $data)->save($path.$filename);
+                    return response()->json([
+                            'status'    =>  true,
+                            'message'   =>  'Success'
+                        ], 200);
+                } else {
+                    // use existing user directory
+                    return response()->json([
+                            'status'    =>  false,
+                            'message'   =>  'Folder is not created successfully, Please change permission'
+                        ], 400);
+                }
+
+            } else {
+                PDF::loadView('pdf.last_will_and_testament', $data)->save($path.'/'.$filename);
+                return response()->json([
+                            'status'    =>  true,
+                            'message'   =>  'Success'
+                        ], 200);
+            }
             return response()->json([
                     'status'    =>  true,
-                    'message'   =>  'Success',
-                    'data'      =>  ['link' => url('/').$destinationPath.$filename,
-                                    'filename' => $filename]
-            ],200);
+                    'message'   =>  'Success'
+            ], 200);
 
         } catch(\Exception $e) {
 
@@ -161,29 +217,38 @@ class PdfController extends Controller
         }
     }
 
-    public function finalDispositionPdf(Request $request) {
+    public function docInfo() 
+    {
+        try 
+        {
+            // $completion = app(\App\Http\Controllers\Api\V1\UserManagementController::class)->fetchTotalCompletion();
 
-        try {
+            // $completion = json_decode($completion->content(), true);
 
-            $completion = app(\App\Http\Controllers\Api\V1\UserManagementController::class)->fetchTotalCompletion();
-
-            $completion = json_decode($completion->content(), true);
-
-            foreach ($completion['data'] as $key => $value) {
-                //value is of boolean type
-                if(!$value)
-                    return response()->json([
-                        'status'    =>  false,
-                        'message'   =>  'cannot generate pdf if all interview steps are not commplete',
-                        'data'      =>  []
-                    ],400);
-            }
-
-            $tellUsAboutYou = TellUsAboutYou::where('user_id', \Auth::user()->id)->first();
-            $finalArrangements = FinalArrangements::where('user_id', \Auth::user()->id)->first();
+            // foreach ($completion['data'] as $key => $value) {
+            //     //value is of boolean type
+            //     if(!$value)
+            //         return response()->json([
+            //             'status'    =>  false,
+            //             'message'   =>  'cannot generate pdf if all interview steps are not commplete',
+            //             'data'      =>  []
+            //         ],400);
+            // }
+            $id = \Auth::user()->id;
+            $tellUsAboutYou = TellUsAboutYou::where('user_id', $id)->first();
+            $finalArrangements = FinalArrangements::where('user_id', $id)->first();
             $state = StatesInfo::where('name', 'LIKE', $tellUsAboutYou->state)->first();
-            $personalRepresentative = PersonalRepresentatives::where('user_id', \Auth::user()->id)->where('is_backuprepresentative','0')->first();
-            $backupPersonalRepresentative = PersonalRepresentatives::where('user_id', \Auth::user()->id)->where('is_backuprepresentative','1')->first();
+            $personalRepresentative = PersonalRepresentatives::where('user_id', $id)->where('is_backuprepresentative','0')->first();
+            $backupPersonalRepresentative = PersonalRepresentatives::where('user_id', $id)->where('is_backuprepresentative','1')->first();
+            $healthFinance = HealthFinance::where('userId', $id)->first();
+            $children = Children::where('user_id', $id)->get();
+            $guardian = GuardianInfo::where('user_id', $id)->where('is_backup','0')->first();
+            $backupGuardian = GuardianInfo::where('user_id', $id)->where('is_backup','1')->first();
+            $provideYourLovedOnes = ProvideYourLovedOnes::where('user_id', $id)->first();
+            $estateDistribute = EstateDisrtibute::where('user_id', $id)->first();
+            $provideYourLovedOnes = ProvideYourLovedOnes::where('user_id', $id)->first();
+            $petGuardian = PetGuardian::where('user_id', $id)->where('is_backup','0')->first();
+            $backupPetGuardian = PetGuardian::where('user_id', $id)->where('is_backup','1')->first();
 
             return response()->json([
                     'status'    =>  true,
@@ -194,8 +259,15 @@ class PdfController extends Controller
                                         'state'    => $state,
                                         'personalRepresentative' => $personalRepresentative,
                                         'backupPersonalRepresentative' => $backupPersonalRepresentative,
-                                        'link' => null,
-                                        'filename' => null
+                                        'healthFinance' => $healthFinance,
+                                        'children' => $children,
+                                        'guardian' => $guardian,
+                                        'backupGuardian' => $backupGuardian,
+                                        'provideYourLovedOnes' => $provideYourLovedOnes,
+                                        'estateDistribute' => $estateDistribute,
+                                        'provideYourLovedOnes' => $provideYourLovedOnes,
+                                        'petGuardian'   => $petGuardian,
+                                        'backupPetGuardian' => $backupPetGuardian
                                     ]
             ],200);            
 

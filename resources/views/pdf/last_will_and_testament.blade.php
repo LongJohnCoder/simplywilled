@@ -1,3 +1,16 @@
+@php
+	$genderTxt = $tellUsAboutYou->gender == "M" ? "he" : "she";
+	$genderTxtCaps = $tellUsAboutYou->gender == "M" ? "He" : "She";
+
+	$gender2Txt = $tellUsAboutYou->gender == "M" ? "his" : "her";
+	$gender2TxtCaps = $tellUsAboutYou->gender == "M" ? "His" : "Her";
+
+	$partnerOrSpouse = $tellUsAboutYou->maritial_status == "M" ? "spouse" : "partner";
+
+	$stateTxt = $tellUsAboutYou->state == "California" ? "by right of representation" : "per stirpes";
+@endphp
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -271,76 +284,206 @@
 
 		«IF WILL ALLOCATE SHARES»
 
-		E. Residuary Estate. I direct that my {{$executor_title}} divide and distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)
+		@if(isset($estateDistribute))
+
+		@if($estateDistribute['distribution_type'] == 2)
+
+			@if(isset($toMultipleBeneficiary['isEstateIntoEqualShares']) && $toMultipleBeneficiary['isEstateIntoEqualShares'] == "Yes")
+
+				E. Residuary Estate. I direct that my {{$executor_title}} divide and distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)
+				
+				@if(isset($provideYourLovedOnes) && $provideYourLovedOnes->residue_to_partner_first == 1)
+					@if($tellUsAboutYou->marital_status == "M")
+						to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
+					@elseif($tellUsAboutYou->marital_status == "R")
+						to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
+					@endif
+				@endif
+
+				in equal shares; 
+
+				@if($toMultipleBeneficiary['isEstateIntoEqualShares'] == 'Yes')
+					@foreach($toMultipleBeneficiary['beneficiaryYes'][0] as $key => $eachBeneficiary)
+						<p>one share shall be distributed to my $eachBeneficiary['beneficiaryRelationship'] $eachBeneficiary['beneficiaryFullName']</p>
+					@endforeach
+					If any named residuary beneficiary shall not be living at my death, such beneficiary’s share shall be distributed
+
+					@if($toMultipleBeneficiary['deceasedBeneficiaryShareToKids'] == "Yes") 
+						to his or her then-living issue, {{$stateTxt}} provided, however, if such deceased beneficiary is not survived by issue, the deceased beneficiary’s share shall be added 
+					@endif
+					equally to the other shares.
+				@endif
+
+			@endif
+
+
+			@if(isset($toMultipleBeneficiary['isEstateIntoEqualShares']) && $toMultipleBeneficiary['isEstateIntoEqualShares'] == "No")
+
+				E. Residuary Estate. I direct that my {{$executor_title}} divide and distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)
+				
+				@if(isset($provideYourLovedOnes) && $provideYourLovedOnes->residue_to_partner_first == 1)
+					@if($tellUsAboutYou->marital_status == "M")
+						to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
+					@elseif($tellUsAboutYou->marital_status == "R")
+						to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
+					@endif
+				@endif
+
+				in equal shares;
+
+				@if($toMultipleBeneficiary['isEstateIntoEqualShares'] == 'Yes')
+					@foreach($toMultipleBeneficiary['beneficiaryYes'][0] as $key => $eachBeneficiary)
+						<p>$eachBeneficiary['beneficiaryNoPercentageToEstate'] one share shall be distributed to my $eachBeneficiary['beneficiaryNoRelationship'] $eachBeneficiary['beneficiaryNoFullName']</p>
+					@endforeach
+					If any named residuary beneficiary shall not be living at my death, such beneficiary’s share shall be distributed
+					@if($toMultipleBeneficiary['deceasedBeneficiaryShareToKids'] == "Yes")
+						to his or her then-living issue, {{$stateTxt}} provided, however, if such deceased beneficiary is not survived by issue, the deceased beneficiary’s share shall be added 
+					@endif
+					equally to the other shares.
+				@endif
+
+			@endif
+
+		{{-- Distribution type 1 is for single beneficicary --}}
+		@elseif($estateDistribute['distribution_type'] == 1)
+
+		E. Residuary Estate. I direct that my {{$executor_title}} distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)
+
+			@if(isset($provideYourLovedOnes) && $provideYourLovedOnes->residue_to_partner_first == 1)
+				@if($tellUsAboutYou->marital_status == "M")
+					to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
+				@elseif($tellUsAboutYou->marital_status == "R")
+					to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
+				@endif
+			@endif
+
+			@if(isset($toSingleBeneficiary))
+				@if(strtolower($toSingleBeneficiary['relationship']) == other)
+					to my {{$toSingleBeneficiary['otherRelationship']}}
+				@else
+					to my {{$toSingleBeneficiary['relationship']}}
+				@endif
+			@endif
+
+			{{$toSingleBeneficiary['fullName']}}. If {{$genderTxt}} is not living at the time of distribution,
+			
+			@if(isset($toSingleBeneficiary['ifPassesbeforeyou']))
+
+				{{-- Distribute to beneficicary's issue --}}
+				@if($toSingleBeneficiary['ifPassesbeforeyou'] == 1)
+				this gift shall be distributed to  {{$gender2Txt}} then-living issue, {{$stateTxt}} 
+
+				{{-- Distribute to rest of my heirs --}}
+				however, if {{$gender2Txt}} is not survived by issue, then to my heirs at law.
+				@elseif($toSingleBeneficiary['ifPassesbeforeyou'] == 2)
+				to my heirs at law.
+
+				{{-- Some other way --}}
+				@elseif($toSingleBeneficiary['ifPassesbeforeyou'] == 3)
+				in the following manner: 
+				<p>{{$toSingleBeneficiary['someotherway']}}</p>
+			@endif
+
+		{{-- Distribution type 3 is for heirs at law --}}
+		@elseif($estateDistribute['distribution_type'] == 3)
+
+			E. Residuary Estate. I direct that my {{$executor_title}} distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)
+			@if(isset($provideYourLovedOnes) && $provideYourLovedOnes->residue_to_partner_first == 1)
+				to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then 
+			@endif
+			to my to my heirs at law.
+
+		@elseif($estateDistribute['distribution_type'] == 4)
+
+			E. Residuary Estate. I direct that my {{$executor_title}} distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)
+			@if(isset($provideYourLovedOnes) && $provideYourLovedOnes->residue_to_partner_first == 1)
+				to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then 
+			@endif
+			in the following manner: {{$toSingleBeneficiary['someotherway']}}
+		@endif
+
+
+
+
 		
-		@if($tellUsAboutYou->marital_status == "M")
-			to my spouse, and if my spouse predeceases me, then
-		@elseif($tellUsAboutYou->marital_status == "R")
-			to my partner, and if my partner predeceases me, then
-		@endif 
-		in equal shares; «REPEAT Will Allocate Bene Info:a, b and c»one share shall be distributed to my« Will Allocate Relationship» «END IF»« Will Allocate Benes»«END REPEAT». If any named residuary beneficiary shall not be living at my death, such beneficiary’s share shall be distributed«IF Will Allocate Issue?» to his or her then-living issue, «IF State = "California"»by right of representation«ELSE»per stirpes«END IF»; provided, however, if such deceased beneficiary is not survived by issue, the deceased beneficiary’s share shall be added«END IF» equally to the other shares«END IF».
+		@if($tellUsAboutYou['has_pet'] == 1)
 
-		«ELSE IF WILL ALLOCATE PERCENT»
+			F. Pet Care Directive. It is my desire that upon my death, my pets now living, and any other pets I may then own, shall be provided for with the same standard of care, maintenance, and comfort as I provided my pets during my lifetime. My pets now living are:
 
-		E. Residuary Estate. I direct that my «ExecutorTitle» divide and distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)«IF to Spouse/Partner First?»«IF Domestic?» to my partner, and if my partner predeceases me, then «ELSE IF Spouse» to my spouse, and if my spouse predeceases me, then«END IF»«END IF»« in the following manner:
+			@foreach($petNames as $key => $pet)
+				<p>My {{$pet['petType']}} {{$pet['petName']}}</p> 
+			@endforeach
 
-		«REPEAT Will Allocate Bene Info »
+			I nominate my 
 
-		« Will Allocate Percent»% shall be distributed to my« Will Allocate Relationship»« Will Allocate Benes»
+			@if(strtolower($petGuardian['relationship_with']) == "other")
+				@if(strlen(trim($petGuardian['relationship_other'])) > 0)
+					{{$petGuardian['relationship_other']}}, 
+				@endif
+			@else
+				{{$petGuardian['relationship_with']}}, 
+			@endif
 
-		«END REPEAT»
+			 {{$petGuardian['fullname']}} of {{$petGuardian['address']}}, {{$petGuardian['city']}}, {{$petGuardian['state']}}, {{$petGuardian['zip']}}, to serve as the Pet Caretaker
+			for my pets, to accept possession of them and to care for them. 
 
-		If any named residuary beneficiary shall not be living at my death, such beneficiary’s share shall be distributed«IF Will Allocate Issue?» to his or her then-living issue, «IF State = "California"»by right of representation«ELSE»per stirpes«END IF»; provided, however, if such deceased beneficiary is not survived by issue, the deceased beneficiary’s share shall be added«END IF» equally to the other shares«END IF».
+			@if($backupPetGuardian != null)
+				If {{$petGuardian['fullname']}} is unavailable or unwilling to serve as my Pet Caretaker, I nominate my 
 
-		«ELSE IF SINGLE BENE»
+				@if(strtolower($backupPetGuardian['relationship_with']) == "other")
+					@if(strlen(trim($backupPetGuardian['relationship_other'])) > 0)
+						{{$backupPetGuardian['relationship_other']}}, 
+					@endif
+				@else
+					{{$backupPetGuardian['relationship_with']}}, 
+				@endif
 
-		E. Residuary Estate. I direct that my «ExecutorTitle» distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)«IF to Spouse/Partner First?»«IF Domestic?» to my partner, and if my partner predeceases me, then «ELSE IF Spouse?» to my spouse, and if my spouse predeceases me, then«END IF»«END IF»«IF Residue to Single Bene?» to my «Res Bene Relation», «Res Bene». If «Res Bene's Gender:he/she» is not living at the time of distribution, «IF Res Issue?»this gift shall be
+				{{$backupPetGuardian['fullname']}} of {{$backupPetGuardian['address']}}, {{$backupPetGuardian['city']}}, {{$backupPetGuardian['state']}}, {{$backupPetGuardian['zip']}}, as alternate Pet Caretaker for my pets.
+			@endif
 
-		distributed to «Res Bene's Gender:his/her» then-living issue, «IF State = "California"»by right of representation«ELSE»per stirpes«END IF»; however, if «Res Bene's Gender:he/she» is not survived by issue, then to my heirs at law.«ELSE IF Heirs?» to my heirs at law.«ELSE IF Some Other Way?» in the following manner:
+			@if($tellUsAboutYou['leaveMoney'] == 1)
+				I give and bequeath to my Pet Caretaker who takes possession of my pets the sum of $tellUsAboutYou['petAmount'] Dollars ({{'$'.$tellUsAboutYou['petAmount']}}) on the condition that my Pet Caretaker agrees to provide a suitable home for my pets, to keep them well fed and clean, and to provide them with appropriate medical care.
+			@endif
 
-		«Some Other Way Text»
+		
 
-		«ELSE IF HEIRS»
-
-		E. Residuary Estate. I direct that my «ExecutorTitle» distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)«IF to Spouse/Partner First?»«IF Domestic?» to my partner, and if my partner predeceases me, then «ELSE IF Spouse?» to my spouse, and if my spouse predeceases me, then«END IF»«END IF» to my to my heirs at law.
-
-		«ELSE IF SOME OTHER WAY»
-
-		E. Residuary Estate. I direct that my «ExecutorTitle» distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)«IF to Spouse/Partner First?»«IF Domestic?» to my partner, and if my partner predeceases me, then «ELSE IF Spouse?» to my spouse, and if my spouse predeceases me, then«END IF»«END IF» in the following manner:
-
-		«Some Other Way Text»
-
-		«END IF»
 
 		«IF Pets?»
+			F.	Pet Care Directive.  It is my desire that upon my death, my pets now living, and any other pets I may then own, shall be provided for with the same standard of care, maintenance, and comfort as I provided my pets during my lifetime.  My pets now living are: 
 
-		F. Pet Care Directive. It is my desire that upon my death, my pets now living, and any other pets I may then own, shall be provided for with the same standard of care, maintenance, and comfort as I provided my pets during my lifetime. My pets now living are:
+			«REPEAT Pet Info:a, b and c»
+			My «Pet Type», «Pet Name»
+			«END REPEAT»
 
-		«REPEAT Pet Info:a, b and c»
+			I nominate my «PetCare1 Relationship»,« PetCare1» of «PetCare1 Address», «PetCare1 City», «PetCare1 State» «PetCare1 Zip», to serve as the Pet Caretaker for my pets, to accept possession of them and to care for them.  «IF Successor»If «PetCare1» is unavailable or unwilling to serve as my Pet Caretaker, I nominate my «PetCare2 Relationship»,« PetCare2» of «PetCare2 Address», «PetCare2 City», «PetCare2 State» «PetCare2 Zip», as alternate Pet Caretaker for my pets.«END IF»  If said «IF Successor»Pet Caretakers are«ELSE IF !Successor»Pet Caretaker is«ELSE IF» unavailable or unwilling to accept and care for my pets, I direct that my «ExecutorTitle» use his or her best discretion to select an appropriate caregiver to accept and care for my pets.  
 
-		My «Pet Type», «Pet Name»
 
-		«END REPEAT»
+			«IF Sum-Pet?»
+				I give and bequeath to my Pet Caretaker who takes possession of my pets the sum of «Sum-Pet» Dollars («Sum-Pet:$9,999») on the condition that my Pet Caretaker agrees to provide a suitable home for my pets, to keep them well fed and clean, and to provide them with appropriate medical care. «END IF» 
+			«END IF»
 
-		I nominate my «PetCare1 Relationship»,« PetCare1» of «PetCare1 Address», «PetCare1 City», «PetCare1 State» «PetCare1 Zip», to serve as the Pet Caretaker for my pets, to accept possession of them and to care for them. «IF Successor»If «PetCare1» is unavailable or unwilling to serve as my Pet Caretaker, I nominate my «PetCare2 Relationship»,« PetCare2» of «PetCare2 Address», «PetCare2 City», «PetCare2 State» «PetCare2 Zip», as alternate Pet Caretaker for my pets.«END IF» If said «IF Successor»Pet Caretakers are«ELSE IF !Successor»Pet Caretaker is«ELSE IF» unavailable or unwilling to accept and care for my pets, I direct that my «ExecutorTitle» use his or her best discretion to select an appropriate caregiver to accept and care for my pets.
+			«IF Sum UTMA?»
+				«IF (!Pets? AND Sum UTMA?)»
+				F.
+				«ELSE IF (Pets? AND Sum UTMA?)»
+				G.
+				«END IF»	
 
-		«IF Sum-Pet?»I give and bequeath to my Pet Caretaker who takes possession of my pets the sum of «Sum-Pet» Dollars («Sum-Pet:$9,999») on the condition that my Pet Caretaker agrees to provide a suitable home for my pets, to keep them well fed and clean, and to provide them with appropriate medical care. «END IF»
+				Distributions to Minor Beneficiaries.  If any beneficiary provided for herein has not yet attained the age of majority under the applicable Transfer to Minors Act or Gift to Minors Act, the distribution shall be held for said beneficiary in a custodial account under the provisions of the applicable Transfer to Minors Act or Gift to Minors Act with 
 
-		«END IF»
+				«IF UTMA Parent?»
+				the parent of such beneficiary 
+				«ELSE»
+				«UTMA Custodian» 
+				«END IF»
+				as the custodian until the beneficiary reaches the age of «Age:18/21/25», and no earlier, unless required by applicable law.
+			«END IF»
 
-		«IF Sum UTMA?»
+			«IF Will Contingent Beneficiaries?»
+			«IF (!Pets? AND !Sum UTMA? AND Will Contingent Beneficiaries?)»F.«ELSE IF (!Pets? AND Sum UTMA? AND Will Contingent Beneficiaries?)»G.«ELSE IF (Pets? AND !Sum UTMA? AND Will Contingent Beneficiaries?)»G.ELSE IF (Pets? AND Sum UTMA? AND Will Contingent Beneficiaries?)»H.«END IF»	Contingent Disposition of My Estate.  If I have no living beneficiaries or issue prior to the distribution of the entirety of my estate, I give the undistributed portion of my estate to my heirs at law, their distributions to be determined according to the laws of the «IF State = "District of Columbia"»District of Columbia«ELSE IF "Massachusetts Virginia Kentucky Pennsylvania" CONTAINS State»Commonwealth of «State»«ELSE»State of «State»«END IF» in effect at the date of execution of this Will«END IF»«.»
 
-		«IF (!Pets? AND Sum UTMA?)»F.«ELSE IF (Pets? AND Sum UTMA?)»G.«END IF» Distributions to Minor Beneficiaries. If any beneficiary provided for herein has not yet attained the age of majority under the applicable Transfer to Minors Act or Gift to Minors Act, the distribution shall be held for said beneficiary in a custodial account under the provisions of the applicable Transfer to Minors Act or Gift to Minors Act with «IF UTMA Parent?»the parent of such beneficiary «ELSE»«UTMA Custodian» «END IF»as the custodian until the beneficiary reaches the age of «Age:18/21/25», and no earlier, unless required by applicable law.
-
-		«END IF»
-
-		«IF Will Contingent Beneficiaries?»
-
-		«IF (!Pets? AND !Sum UTMA? AND Will Contingent Beneficiaries?)»F.«ELSE IF (!Pets? AND Sum UTMA? AND Will Contingent Beneficiaries?)»G.«ELSE IF (Pets? AND !Sum UTMA? AND Will Contingent Beneficiaries?)»G.ELSE IF (Pets? AND Sum UTMA? AND Will Contingent Beneficiaries?)»H.«END IF» Contingent Disposition of My Estate. If I have no living beneficiaries or issue prior to the distribution of the entirety of my estate, I give the undistributed portion of my estate to my heirs at law, their distributions to be determined according to the laws of the «IF State = "District of Columbia"»District of Columbia«ELSE IF "Massachusetts Virginia Kentucky Pennsylvania" CONTAINS State»Commonwealth of «State»«ELSE»State of «State»«END IF» in effect at the date of execution of this Will«END IF»«.»
-
-		«IF Will Disinherit?»
-
-		«IF (!Pets? AND !Sum UTMA? AND !Will Contingent Beneficiaries? AND Will Disinherit?)»F.«ELSE IF (!Pets? AND !Sum UTMA? AND Will Contingent Beneficiaries? AND Will Disinherit?)»G.«ELSE IF (!Pets? AND Sum UTMA? AND !Will Contingent Beneficiaries? AND Will Disinherit?)»G.«ELSE IF (Pets? AND !Sum UTMA? AND !Will Contingent Beneficiaries? AND Will Disinherit?)»G.«IF (!Pets? AND Sum UTMA? AND Will Contingent Beneficiaries? AND Will Disinherit?)»H.«IF (Pets? AND !Sum UTMA? AND Will Contingent Beneficiaries? AND Will Disinherit?)»H.«IF (Pets? AND Sum UTMA? AND !Will Contingent Beneficiaries? AND Will Disinherit?)»H.«ELSE IF (Pets? AND Sum UTMA? AND Will Contingent Beneficiaries? AND Will Disinherit?)»I.«END IF» Disinheritance. I specifically make no provision for the following persons or their issue (if any) upon my death with the intent to disinherit: «Will Disinherited Heirs» «END IF»
+			«IF Will Disinherit?»
+			«IF (!Pets? AND !Sum UTMA? AND !Will Contingent Beneficiaries? AND Will Disinherit?)»F.«ELSE IF (!Pets? AND !Sum UTMA? AND Will Contingent Beneficiaries? AND Will Disinherit?)»G.«ELSE IF (!Pets? AND Sum UTMA? AND !Will Contingent Beneficiaries? AND Will Disinherit?)»G.«ELSE IF (Pets? AND !Sum UTMA? AND !Will Contingent Beneficiaries? AND Will Disinherit?)»G.«IF (!Pets? AND Sum UTMA? AND Will Contingent Beneficiaries? AND Will Disinherit?)»H.«IF (Pets? AND !Sum UTMA? AND Will Contingent Beneficiaries? AND Will Disinherit?)»H.«IF (Pets? AND Sum UTMA? AND !Will Contingent Beneficiaries? AND Will Disinherit?)»H.«ELSE IF (Pets? AND Sum UTMA? AND Will Contingent Beneficiaries? AND Will Disinherit?)»I.«END IF»	Disinheritance. I specifically make no provision for the following persons or their issue (if any) upon my death with the intent to disinherit:  «Will Disinherited Heirs»  «END IF»
 
 		«END IF»
 		--}}
@@ -714,9 +857,6 @@
 		OF
 
 		{{$tellUsAboutYou->firstname}}
-
-
-		
 
 	</div>
 </body>

@@ -627,7 +627,7 @@ class UserManagementController extends Controller
           } else {
             $healthFinance->emailOfAgent = null;
           }
-
+          
           if ($request->anyBackupAgent == 'true') {
             $healthFinance->backupfirstLegalName = $request->backupfirstLegalName;
             $healthFinance->backuplastLegalName  = $request->backuplastLegalName;
