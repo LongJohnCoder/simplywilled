@@ -796,12 +796,13 @@ class UserManagementController extends Controller
      * */
      public function updateFinalAgrangement(Request $request){
       try {
-        //dd($request->all());
+        
           $validator = Validator::make($request->all(), [
              'user_id'    =>  'required|exists:users,id,deleted_at,NULL',
-             'type'       =>  'required|numeric|between:0,1|integer',
+             'type'       =>  'required|numeric|between:0,2|integer',
              'ashes'      =>  'nullable|string|max:255',
-             'arrangements' =>  'nullable|string|max:255'
+             'arrangements' =>  'nullable|string|max:255',
+             'some_other_way' => 'nullable|required_if:type,2'
           ]);
           if($validator->fails()) {
               return response()->json([
@@ -815,6 +816,7 @@ class UserManagementController extends Controller
           $type = (string)$request->type; // 0--> buried 1--> Cremated
           $ashes = $request->ashes;
           $arrangements = $request->arrangements;
+          $someOtherWay = $request->some_other_way;
 
           $checkExistData = FinalArrangements::where('user_id',$userId)->first();
           if(!$checkExistData) {
@@ -825,6 +827,12 @@ class UserManagementController extends Controller
           $checkExistData->type = $type;
           $checkExistData->ashes = $ashes;
           $checkExistData->arrangements = $arrangements;
+
+          if ($type == 2) {
+            $checkExistData->some_other_way = $someOtherWay;
+          } else {
+            $checkExistData->some_other_way = null;
+          }
 
           if($checkExistData->save()){
               return response()->json([
