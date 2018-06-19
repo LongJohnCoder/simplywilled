@@ -37,6 +37,10 @@
 .single_will_book{
   margin-top: -60px;
 }
+.save_text span{
+    color: #1276bb;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+}
 
 @media screen and (max-width:1200px){
     .get_start_pkg_btn{
