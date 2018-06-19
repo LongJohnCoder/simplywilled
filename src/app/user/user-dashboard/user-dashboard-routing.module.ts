@@ -93,6 +93,11 @@ const routes: Routes = [
               loadChildren: './disinherit/disinherit.module#DisinheritModule'
             },
             {
+              path: 'documents',
+              canActivate: [UserPaidGuard],
+              loadChildren: './doc/doc.module#DocModule'
+            },
+            {
               path: 'packages',
                 canActivate: [UserUnPaidGuard],
               loadChildren: './packages/packages.module#PackagesModule'
@@ -124,11 +129,6 @@ const routes: Routes = [
             canActivate: [UserPaidGuard],
             component: SigningInstructionsDocComponent
           },*/
-          {
-            path: 'documents',
-            canActivate: [UserPaidGuard],
-            loadChildren: './doc/doc.module#DocModule'
-          }
           /*{
             path: 'preview-documents/1',
             canActivate: [UserPaidGuard],

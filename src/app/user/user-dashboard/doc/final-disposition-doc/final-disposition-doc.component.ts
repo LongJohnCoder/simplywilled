@@ -2,6 +2,9 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {UserAuthService} from '../../../user-auth/user-auth.service';
 import {Subscription} from 'rxjs/Subscription';
 import {FinalDispositionPdfService} from '../services/final-disposition-pdf.service';
+import {GlobalPdfService} from '../services/global-pdf.service';
+import {Location} from '@angular/common';
+import {ProgressbarService} from '../../shared/services/progressbar.service';
 
 @Component({
   selector: 'app-final-disposition-doc',
@@ -30,9 +33,24 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
     '../../../../../assets/images/doc1-thumb2.png'
   ];
   loggedInUser: any;
-
+  progressSubscription: Subscription;
   getUserDetailsSubscription: Subscription;
-  constructor(private finalDispositionService: FinalDispositionPdfService, private userAuth: UserAuthService) {
+  progressBar = {
+    finalArrangements: false,
+    healthFinance: false,
+    protectYourFinance: false,
+    provideYourLovedOnes: false,
+    tellUsAboutYou: false
+  };
+  count: number;
+
+  /**Constructor call*/
+  constructor(
+    private finalDispositionService: FinalDispositionPdfService,
+    private globalPDFService: GlobalPdfService,
+    private progressbarService: ProgressbarService,
+    private location: Location
+  ) {
     this.getUserDetails();
   }
 
@@ -56,10 +74,10 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
     this.thumbIndex = index;
   }
 
-  getScroll(scrollVal: number){
-    if(scrollVal >=  991){
-      this.thumbIndex = scrollVal !== 0 ? Math.round(scrollVal/991) : 0;
-    }else{
+  getScroll(scrollVal: number) {
+    if (scrollVal >=  991) {
+      this.thumbIndex = scrollVal !== 0 ? Math.round(scrollVal / 991) : 0;
+    } else {
       this.thumbIndex = 0;
     }
   }
@@ -67,7 +85,7 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
   /**Get the user details*/
   getUserDetails() {
     let token = this.parseToken();
-    this.getUserDetailsSubscription = this.finalDispositionService.fetchData(token).subscribe(
+    this.getUserDetailsSubscription = this.globalPDFService.fetchData(token).subscribe(
       (response: any ) => {
         if (response.status) {
           this.userDetails = {
@@ -87,8 +105,50 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
         console.log(error);
       }, () => { this.loading = false; }
     );
+
+    this.progressSubscription = this.progressbarService.fetchTotalCompletion(token).subscribe(
+      (progress: any) => {
+        if (progress.status !== undefined) {
+          this.progressBar = {
+            finalArrangements: progress.data !== null && progress.data.final_arrangements !== undefined && progress.data.final_arrangements,
+            healthFinance: progress.data !== null && progress.data.health_finance !== undefined && progress.data.health_finance,
+            protectYourFinance: progress.data !== null && progress.data.protect_your_finance !== undefined && progress.data.protect_your_finance,
+            provideYourLovedOnes: progress.data !== null && progress.data.provide_your_loved_ones !== undefined && progress.data.provide_your_loved_ones,
+            tellUsAboutYou: progress.data !== null && progress.data.tell_us_about_you !== undefined && progress.data.tell_us_about_you
+          };
+          this.count = this.setProgress(this.progressBar, 0);
+        } else {
+          console.log('Oops, something went wrong with the progress bar.');
+        }
+      },
+      (error) => { console.log(error); },
+      () => {}
+    );
   }
 
+  /**Sets the progress count**/
+  setProgress(progressBar: Object, count = 0) {
+    if (this.progressBar.finalArrangements) {
+      count++;
+    }
+    if (this.progressBar.healthFinance) {
+      count++;
+    }
+    if (this.progressBar.protectYourFinance) {
+      count++;
+    }
+    if (this.progressBar.provideYourLovedOnes) {
+      count++;
+    }
+    if (this.progressBar.tellUsAboutYou) {
+      count++;
+    }
+    return count;
+  }
+
+  goBack() {
+    this.location.back();
+  }
 
   // pdfDownload() {
   //
@@ -117,6 +177,9 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.getUserDetailsSubscription !== undefined) {
       this.getUserDetailsSubscription.unsubscribe();
+    }
+    if (this.progressSubscription !== undefined) {
+      this.progressSubscription.unsubscribe();
     }
   }
 

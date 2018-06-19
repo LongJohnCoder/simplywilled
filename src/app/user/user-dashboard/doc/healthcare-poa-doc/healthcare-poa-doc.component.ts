@@ -1,9 +1,10 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-/*import {GlobalPdfService} from '../services/global-pdf.service';*/
+import {GlobalPdfService} from '../services/global-pdf.service';
 import {Subscription} from "rxjs/Subscription";
 import {UserService} from "../../../user.service";
 import {ProgressbarService} from "../../shared/services/progressbar.service";
 import {UserAuthService} from "../../../user-auth/user-auth.service";
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-healthcare-poa-doc',
@@ -49,25 +50,45 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     co: false,
   };
   pdfData: any;
-  /*globalPDFSubscription: Subscription;*/
+  globalPDFSubscription: Subscription;
 
   /**Constructor call*/
   constructor(
-    /*private globalPDFService: GlobalPdfService,*/
-    private userService: UserService, private userAuth: UserAuthService,private progressbarService: ProgressbarService,
+    private globalPDFService: GlobalPdfService,
+    private userService: UserService,
+    private userAuth: UserAuthService,
+    private progressbarService: ProgressbarService,
+    private location: Location
   ) {
     this.loggedInUser = this.userAuth.getUser();
     this.getUserDetails();
     let token = this.parseToken();
-    /*this.globalPDFSubscription = this.globalPDFService.fetchData(token).subscribe(
+    this.globalPDFSubscription = this.globalPDFService.fetchData(token).subscribe(
       (response: any) => {
         if (response.status) {
           this.pdfData = response.data;
           console.log(this.pdfData);
         }
       }
-    );*/
-
+    );
+    this.progressSubscription = this.progressbarService.fetchTotalCompletion(token).subscribe(
+      (progress: any) => {
+        if (progress.status !== undefined) {
+          this.progressBar = {
+            finalArrangements: progress.data !== null && progress.data.final_arrangements !== undefined && progress.data.final_arrangements,
+            healthFinance: progress.data !== null && progress.data.health_finance !== undefined && progress.data.health_finance,
+            protectYourFinance: progress.data !== null && progress.data.protect_your_finance !== undefined && progress.data.protect_your_finance,
+            provideYourLovedOnes: progress.data !== null && progress.data.provide_your_loved_ones !== undefined && progress.data.provide_your_loved_ones,
+            tellUsAboutYou: progress.data !== null && progress.data.tell_us_about_you !== undefined && progress.data.tell_us_about_you
+          };
+          this.count = this.setProgress(this.progressBar, 0);
+        } else {
+          console.log('Oops, something went wrong with the progress bar.');
+        }
+      },
+      (error) => { console.log(error); },
+      () => {}
+    );
   }
   /**Sets the progress count**/
   setProgress(progressBar: Object, count = 0) {
@@ -91,11 +112,11 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   /**When the component initialises*/
   ngOnInit() {
     this.states = {
-      ak: false,
+      ak: true,
       al: false,
       ar: false,
       ca: false,
-      co: true,
+      co: false,
     };
     this.docScrolled = 0;
     this.thumbIndex = 0;
@@ -118,7 +139,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     }*/
   }
 
-  scrollDoc(index:number){
+  scrollDoc(index: number) {
     this.scrollHeight = 991 * index;
     this.docBox.nativeElement.scrollTop = this.scrollHeight;
     this.thumbIndex = index;
@@ -126,13 +147,13 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     //this.docBox.nativeElement.style.transition = 'top .8s cubic-bezier(0.77, 0, 0.175, 1)';
   }
 
-  getScroll(scrollVal:number){
-    if(scrollVal >=  991){
-      this.thumbIndex = scrollVal !== 0 ? Math.round(scrollVal/991) : 0;
-    }else{
+  getScroll(scrollVal: number) {
+    if (scrollVal >=  991) {
+      this.thumbIndex = scrollVal !== 0 ? Math.round(scrollVal / 991) : 0;
+    } else {
       this.thumbIndex = 0;
     }
-    if(this.thumbIndex >= 4){
+    if (this.thumbIndex >= 4) {
       this.thumbContainer.nativeElement.scrollLeft = this.thumbIndex * 31;
     }
 
@@ -148,6 +169,11 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
         console.log(error);
       }, () => { this.loading = false; }
     );
+  }
+
+  /**Go to the previous page*/
+  goBack() {
+    this.location.back();
   }
 
 }

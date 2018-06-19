@@ -5,6 +5,7 @@ import {UserService} from "../../../user.service";
 import {Subscription} from "rxjs/Subscription";
 import {UserAuthService} from "../../../user-auth/user-auth.service";
 import {ProgressbarService} from "../../shared/services/progressbar.service";
+import {Location} from '@angular/common';
 //import 'jspdf-autotable' as JA from 'jspdf-autotable';
 
 @Component({
@@ -37,10 +38,15 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
     provideYourLovedOnes: false,
     tellUsAboutYou: false
   };
-  loggedInUser:any;
+  loggedInUser: any;
   getUserDetailsSubscription: Subscription;
   count: number;
-  constructor(private userService: UserService, private userAuth: UserAuthService,private progressbarService: ProgressbarService,) {
+  constructor(
+      private userService: UserService,
+      private userAuth: UserAuthService,
+      private progressbarService: ProgressbarService,
+      private location: Location
+    ) {
     this.loggedInUser = this.userAuth.getUser();
     this.getUserDetails();
     let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
@@ -90,7 +96,7 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
     this.liCount = this.docThumbImg.length * 114;
   }
 
-  scrollDoc(index:number){
+  scrollDoc(index: number ) {
     this.scrollHeight = 991 * index;
     this.docBox.nativeElement.scrollTop = this.scrollHeight;
     this.thumbIndex = index;
@@ -98,13 +104,13 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
     //this.docBox.nativeElement.style.transition = 'top .8s cubic-bezier(0.77, 0, 0.175, 1)';
   }
 
-  getScroll(scrollVal:number){
-    if(scrollVal >=  991){
-      this.thumbIndex = scrollVal !== 0 ? Math.round(scrollVal/991) : 0;
-    }else{
+  getScroll(scrollVal: number) {
+    if (scrollVal >=  991) {
+      this.thumbIndex = scrollVal !== 0 ? Math.round(scrollVal / 991) : 0;
+    } else {
       this.thumbIndex = 0;
     }
-    if(this.thumbIndex >= 4){
+    if (this.thumbIndex >= 4) {
       this.thumbContainer.nativeElement.scrollLeft = this.thumbIndex * 31;
     }
 
@@ -120,6 +126,11 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
         console.log(error);
       }, () => { this.loading = false; }
     );
+  }
+
+  /**Go back to the previous route*/
+  goBack() {
+    this.location.back();
   }
 
 

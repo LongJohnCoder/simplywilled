@@ -1,15 +1,16 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Subscription} from "rxjs/Subscription";
 import {UserService} from "../../../user.service";
 import {ProgressbarService} from "../../shared/services/progressbar.service";
 import {UserAuthService} from "../../../user-auth/user-auth.service";
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-financial-poa-doc',
   templateUrl: './financial-poa-doc.component.html',
   styleUrls: ['./financial-poa-doc.component.css']
 })
-export class FinancialPoaDocComponent implements OnInit {
+export class FinancialPoaDocComponent implements OnInit, OnDestroy {
 
   @ViewChild('docBox')
   docBox: any;
@@ -35,10 +36,15 @@ export class FinancialPoaDocComponent implements OnInit {
     provideYourLovedOnes: false,
     tellUsAboutYou: false
   };
-  loggedInUser:any;
+  loggedInUser: any;
   getUserDetailsSubscription: Subscription;
   count: number;
-  constructor(private userService: UserService, private userAuth: UserAuthService,private progressbarService: ProgressbarService) {
+  constructor(
+    private userService: UserService,
+    private userAuth: UserAuthService,
+    private progressbarService: ProgressbarService,
+    private location: Location
+  ) {
     this.loggedInUser = this.userAuth.getUser();
     this.getUserDetails();
     let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
@@ -88,7 +94,7 @@ export class FinancialPoaDocComponent implements OnInit {
     this.liCount = this.docThumbImg.length * 114;
   }
 
-  scrollDoc(index:number){
+  scrollDoc(index: number) {
     this.scrollHeight = 991 * index;
     this.docBox.nativeElement.scrollTop = this.scrollHeight;
     this.thumbIndex = index;
@@ -96,13 +102,13 @@ export class FinancialPoaDocComponent implements OnInit {
     //this.docBox.nativeElement.style.transition = 'top .8s cubic-bezier(0.77, 0, 0.175, 1)';
   }
 
-  getScroll(scrollVal:number){
-    if(scrollVal >=  991){
+  getScroll(scrollVal: number) {
+    if (scrollVal >=  991) {
       this.thumbIndex = scrollVal !== 0 ? Math.round(scrollVal/991) : 0;
-    }else{
+    } else {
       this.thumbIndex = 0;
     }
-    if(this.thumbIndex >= 4){
+    if (this.thumbIndex >= 4) {
       this.thumbContainer.nativeElement.scrollLeft = this.thumbIndex * 31;
     }
 
@@ -120,6 +126,10 @@ export class FinancialPoaDocComponent implements OnInit {
     );
   }
 
+  /**Go to the previous page*/
+  goBack() {
+    this.location.back();
+  }
 
   // pdfDownload() {
   //

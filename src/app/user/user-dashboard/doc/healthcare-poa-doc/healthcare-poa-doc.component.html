@@ -20,7 +20,12 @@
   <div class="docViewBox">
     <div class="docView" #docBox (scroll)="getScroll(docBox.scrollTop)">
       <div class="docContainer">
-        <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+        <app-ak [data]="pdfData" *ngIf="states.ak"></app-ak>
+        <app-al [data]="pdfData" *ngIf="states.al"></app-al>
+        <app-ar [data]="pdfData" *ngIf="states.ar"></app-ar>
+        <app-ca [data]="pdfData" *ngIf="states.ca"></app-ca>
+        <app-co [data]="pdfData" *ngIf="states.co"></app-co>
+        <!--<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
           <div id="doc" class="docPageInner"
                style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
             <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; font-family: Garamond;">SIGNING
@@ -82,8 +87,8 @@
               You, your two witnesses, and the notary public should all be present and witness the following:
             </p>
           </div>
-        </div>
-        <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+        </div>-->
+        <!--<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
           <div class="docPageInner"
                style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
             <ul style="margin: 20px 0 20px 20px">
@@ -151,15 +156,15 @@
               Thank you for using SimplyWilled.com
             </p>
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
   </div>
 
   <div class="docBtnArea" [ngClass]="{'uncompleted' : count !== 5}">
     <ul>
-      <li><a href=""><i class="fa fa-chevron-left"></i> Previous</a></li>
-      <li><a href="">Next <i class="fa fa-chevron-right"></i></a></li>
+      <li><a (click)="goBack()"><i class="fa fa-chevron-left"></i> Previous</a></li>
+      <li><a [routerLink]="['/dashboard/documents/final-disposition']">Next <i class="fa fa-chevron-right"></i></a></li>
     </ul>
     <ul>
       <li><a href=""><i class="fa fa-download"></i> Download</a></li>
