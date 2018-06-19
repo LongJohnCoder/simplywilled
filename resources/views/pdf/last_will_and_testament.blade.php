@@ -384,7 +384,7 @@
 					F. Pet Care Directive. It is my desire that upon my death, my pets now living, and any other pets I may then own, shall be provided for with the same standard of care, maintenance, and comfort as I provided my pets during my lifetime. My pets now living are:
 
 					@foreach($petNames as $key => $pet)
-						<p>My {{ucwords(strtolower($pet['petType']}})) {{ucwords(strtolower($pet['petName']))}}</p> 
+						<p>My {{ucwords(strtolower($pet['petType']))}} {{ucwords(strtolower($pet['petName']))}}</p> 
 					@endforeach
 
 					I nominate my 
@@ -397,11 +397,11 @@
 						{{ucwords(strtolower($petGuardian['relationship_with']))}}, 
 					@endif
 
-					 {{$petGuardian['fullname']}} of {{$petGuardian['address']}}, {{$petGuardian['city']}}, {{$petGuardian['state']}}, {{$petGuardian['zip']}}, to serve as the Pet Caretaker
+					 {{ucwords(strtolower($petGuardian['fullname']))}} of {{$petGuardian['address']}}, {{ucwords(strtolower($petGuardian['city']))}}, {{ucwords(strtolower($petGuardian['state']))}}, {{$petGuardian['zip']}}, to serve as the Pet Caretaker
 					for my pets, to accept possession of them and to care for them. 
 
 					@if($backupPetGuardian != null)
-						If {{$petGuardian['fullname']}} is unavailable or unwilling to serve as my Pet Caretaker, I nominate my 
+						If {{ucwords(strtolower($petGuardian['fullname']))}} is unavailable or unwilling to serve as my Pet Caretaker, I nominate my 
 						@if(strtolower($backupPetGuardian['relationship_with']) == "other")
 							@if(strlen(trim($backupPetGuardian['relationship_other'])) > 0)
 								{{$backupPetGuardian['relationship_other']}}, 
@@ -410,7 +410,7 @@
 							{{$backupPetGuardian['relationship_with']}}, 
 						@endif
 
-						{{$backupPetGuardian['fullname']}} of {{$backupPetGuardian['address']}}, {{$backupPetGuardian['city']}}, {{$backupPetGuardian['state']}}, {{$backupPetGuardian['zip']}}, as alternate Pet Caretaker for my pets.
+						{{ucwords(strtolower($backupPetGuardian['fullname']))}} of {{$backupPetGuardian['address']}}, {{ucwords(strtolower($backupPetGuardian['city']))}}, {{ucwords(strtolower($backupPetGuardian['state']))}}, {{$backupPetGuardian['zip']}}, as alternate Pet Caretaker for my pets.
 					@endif
 
 					@if($tellUsAboutYou['leaveMoney'] == 1)
@@ -419,6 +419,7 @@
 				</p>
 				@endif
 
+				
 				@php
 					$point = '';
 					if($toMultipleBeneficiary['minorBeneficiaryShareToBeHeldInTrust'] == 'Yes')
@@ -439,11 +440,6 @@
 						the parent of such beneficiary
 					@else
 						{{$toMultipleBeneficiary['whoServeAsTrusteeAccount']}}
-					@endif
-					as the custodian until the beneficiary reaches the age of {{$toMultipleBeneficiary['whatAgeMinorShareDistributed']}}, and no earlier, unless required by applicable law.
-				</p>
-				@endif
-
 				@php
 					$point = '';
 					if(isset($contingentBeneficiary) && $contingentBeneficiary['is_contingent_beneficiary'] == 1) {
@@ -513,6 +509,10 @@
 						@endif
 						{{$disinherit['fullname']}}
 					</p>
+				@endif
+					@endif
+					as the custodian until the beneficiary reaches the age of {{$toMultipleBeneficiary['whatAgeMinorShareDistributed']}}, and no earlier, unless required by applicable law.
+				</p>
 				@endif
 
 
