@@ -119,16 +119,21 @@ const routes: Routes = [
                     canActivate: [UserPaidGuard],
                 component: SubscribedPackageComponent
             },
-          {
+         /* {
             path: 'preview-documents',
             canActivate: [UserPaidGuard],
             component: SigningInstructionsDocComponent
-          },
+          },*/
           {
+            path: 'documents',
+            canActivate: [UserPaidGuard],
+            loadChildren: './doc/doc.module#DocModule'
+          }
+          /*{
             path: 'preview-documents/1',
             canActivate: [UserPaidGuard],
-            component: FinalDispositionDocComponent
-          }
+            component: CoComponent
+          }*/
             // {
             //     path: 'doc1',
             //     canActivate: [UserPaidGuard],

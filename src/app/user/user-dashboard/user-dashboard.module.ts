@@ -8,13 +8,9 @@ import {UserPaidGuard} from './user-paid.guard';
 import {UserUnPaidGuard} from './user-unpaid.guard';
 import {ProgressbarService} from './shared/services/progressbar.service';
 import {ReferFriendService} from './shared/services/referFriend.service';
-import { ChangePasswordComponent } from './change-password/change-password.component';
-import { GlobalTooltipModule } from './global-tooltip/global-tooltip.module';
-import { TuayPdfComponent } from './doc/tuay-pdf/tuay-pdf.component';
-import { SigningInstructionsDocComponent } from './doc/signing-instructions-doc/signing-instructions-doc.component';
-import { FinalDispositionDocComponent } from './doc/final-disposition-doc/final-disposition-doc.component';
 import {FinalDispositionPdfService} from './doc/services/final-disposition-pdf.service';
 import { SubscribedPackageComponent } from './subscribed-package/subscribed-package.component';
+import {GlobalPdfService} from './doc/services/global-pdf.service';
 
 
 @NgModule({
@@ -25,9 +21,9 @@ import { SubscribedPackageComponent } from './subscribed-package/subscribed-pack
     ReactiveFormsModule,
     //GlobalTooltipModule
   ],
-  declarations: [DashboardComponent, MainDashboardComponent, SigningInstructionsDocComponent, FinalDispositionDocComponent, SubscribedPackageComponent  ],
+  declarations: [DashboardComponent, MainDashboardComponent, SubscribedPackageComponent  ],
     providers: [
-        UserPaidGuard, UserUnPaidGuard, ProgressbarService, ReferFriendService, FinalDispositionPdfService
+        UserPaidGuard, UserUnPaidGuard, ProgressbarService, ReferFriendService, FinalDispositionPdfService, GlobalPdfService
     ]
 })
 export class UserDashboardModule { }

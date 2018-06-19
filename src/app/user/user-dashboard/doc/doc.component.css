@@ -1,0 +1,167 @@
+.main-content {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 1px 0 #ddd;
+  display: inline-block;
+  width: 855px;
+  padding: 30px;
+}
+.docViewBox{
+  height: 600px;
+  position: relative;
+}
+.docViewBox:before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+  pointer-events: none;
+  border-radius: 7px;
+}
+.docView{
+  height: 600px;
+  overflow-y: scroll;
+  border-radius: 7px;
+  scroll-behaviour: smooth;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0);
+  box-shadow: inset 0 0 5px rgba(0,0,0,0);
+  border-radius: 5px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.3);
+  border-radius: 5px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.5);
+}
+
+.thumbContainer{
+  margin-bottom: 0;
+}
+.thumbContainer ul{
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  counter-reset: index;
+}
+.thumbContainer ul li{
+  width: 100px;
+  height: 80px;
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  margin: 0 7px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+.thumbContainer ul li:before{
+  counter-increment: index;
+  content: counter(index);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: rgba(255,255,255,0);
+  background: rgba(36, 121, 184, 0);
+  transition: all 0.5s ease 0s;
+  font-size: 30px;
+  padding-top: 15px;
+  font-family: 'OpenSans-Semibold';
+}
+.thumbContainer ul li:hover:before{
+  color: rgba(255,255,255,1);
+  background: rgba(36, 121, 184, 0.7);
+}
+.thumbContainer ul li p{
+  width: 98px;
+  height: 78px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.thumbContainer ul li.active{
+  border: 1px solid #2479b8;
+  box-shadow: 0 0 5px #2479b8;
+  position: relative;
+}
+.thumbContainer ul li.active:after{
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 12px solid #2479b8;
+  border-right: 10px solid rgba(0,0,0,0);
+  border-left: 10px solid rgba(0,0,0,0);
+  position: absolute;
+  bottom: -13px;
+  right: calc(50% - 10px);
+}
+
+.docContainer{
+  width: 700px;
+  margin: 0 auto;
+}
+.docPage{
+  width: 700px !important;
+  height: 991px!important;
+  background: #f2f2f2;
+  margin: 20px 0;
+  box-sizing: border-box;
+  padding: 40px;
+  transition: all 0.5s ease 0s;
+}
+.docPageInner{
+  border: none !important;
+  padding: 15px !important;
+  width: 620px !important;
+  height: 911px!important;
+  box-sizing: border-box;
+}
+.docPage h1{
+  font-size: 26px!important;
+  text-align: center;
+  margin: 35px 0 30px!important;
+  font-weight: bold;
+}
+.docPage h2{
+  font-size: 18px!important;
+  margin: 20px 0 10px!important;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.docPage p{
+  font-size: 16px!important;
+  margin: 0 0 14px!important;
+  line-height: initial;
+}
+.docPage p.para2{
+  padding: 0 30px;
+}
+.docPage ul li{
+  font-size: 16px !important;
+}
+
+@media screen and (max-width: 1199px){
+  .main-content{
+    width: 720px;
+  }
+}
+
+@media screen and (max-width: 991px){
+  .main-content{
+    width: 480px;
+  }
+}
