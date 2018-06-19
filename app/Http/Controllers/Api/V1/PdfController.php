@@ -72,7 +72,7 @@ class PdfController extends Controller
     		$filename = 'finalSigningInstructions.pdf';
             $data = ['firstname' => $tellUsAboutYou['firstname']];
 
-            $path = 'documents/'.$id;
+            $path = 'documents/'.$id.'/';
 
             if(!is_dir(public_path().$path)) {
                 //finding this user directory if directory is not present then create directory
@@ -92,7 +92,7 @@ class PdfController extends Controller
                 }
 
             } else {
-                PDF::loadView('pdf.final_signing_instructions', $data)->save($path.'/'.$filename);
+                PDF::loadView('pdf.final_signing_instructions', $data)->save($path.$filename);
                 return response()->json([
                             'status'    =>  true,
                             'message'   =>  'Success'
@@ -112,9 +112,7 @@ class PdfController extends Controller
         try {
 
             $completion = app(\App\Http\Controllers\Api\V1\UserManagementController::class)->fetchTotalCompletion();
-
             $completion = json_decode($completion->content(), true);
-
             foreach ($completion['data'] as $key => $value) {
                 //value is of boolean type
                 if(!$value)
@@ -125,22 +123,23 @@ class PdfController extends Controller
                     ],400);
             }
             $id = \Auth::user()->id;
-            $path = 'documents/'.$id;
+            $path = 'documents/'.$id.'/';
             
             $totalData = $this->docInfo();
             $totalData = json_decode($totalData->content(), true);
 
-            
+            //dd($totalData);
             $tellUsAboutYou = $totalData['data']['tellUsAboutYou'];
             $children = $totalData['data']['children'];
             $state = $totalData['data']['state'];
-            $executor_title = $state['executor_title'];
             $personalRepresentative = $totalData['data']['personalRepresentative'];
             $backupPersonalRepresentative = $totalData['data']['backupPersonalRepresentative'];
 
             $guardian = $totalData['data']['guardian'];
             $backupGuardian = $totalData['data']['backupGuardian'];
+
             $provideYourLovedOnes = $totalData['data']['provideYourLovedOnes'];
+
             $estateDistribute = $totalData['data']['estateDistribute'];
 
             $toMultipleBeneficiary = json_decode($estateDistribute['to_multiple_beneficiary'], true);
@@ -149,33 +148,63 @@ class PdfController extends Controller
             $toSingleBeneficiary = $toSingleBeneficiary[0];
             $petGuardian = $totalData['data']['petGuardian'];
             $backupPetGuardian = $totalData['data']['backupPetGuardian'];
-
             $petNames = json_decode($tellUsAboutYou['pet_names'], true);
-            dd($petNames);
-            //dd($estateDistribute);
-            dd($toMultipleBeneficiary, $toSingleBeneficiary);
+            $gifts = $totalData['data']['gifts'];
+            $contingentBeneficiary = $totalData['data']['contingentBeneficiary'];
+            $disinherit  = $totalData['data']['disinherit'];
 
-            $provideYourLovedOnes = $totalData['data']['provideYourLovedOnes'];
+            $giftsArr = [];
+            foreach ($gifts as $key => $gift) {
+                switch($gift['type']) {
+                    case 1 : array_push($giftsArr, json_decode($gift['cash_description'], true));
+                             break;
 
-            if(!$tellUsAboutYou || !$personalRepresentative || !$provideYourLovedOnes || !$estateDistribute) {
-                return response()->json([
-                    'status'    =>  false,
-                    'message'   =>  'Please complete tell us previous sections section',
-                    'data'      =>  []
-                ], 400);
+                    case 2 : array_push($giftsArr, json_decode($gift['property_details'], true));
+                             break;
+
+                    case 3 : array_push($giftsArr, json_decode($gift['business_details'], true));
+                             break;
+
+                    case 4 : array_push($giftsArr, json_decode($gift['asset_details'], true));
+                             break;
+                    default: break;
+                }
             }
+            $gifts = $giftsArr;
+            //dd($petNames);
+            //dd($estateDistribute);
+            //dd($toMultipleBeneficiary, $toSingleBeneficiary);
 
-            $filename = 'pdf2-'.\Auth::user()->id . '.pdf';
+            // if(!$tellUsAboutYou || !$personalRepresentative || !$provideYourLovedOnes || !$estateDistribute) {
+            //     return response()->json([
+            //         'status'    =>  false,
+            //         'message'   =>  'Please complete tell us previous sections section',
+            //         'data'      =>  []
+            //     ], 400);
+            // }
+            //dd($gifts);
+            //dd($estateDistribute);
+            $filename = 'will-template.pdf';
+            
             $data = [
                 'tellUsAboutYou' => $tellUsAboutYou,
                 'children'       => $children,
-                'executor_title' => $executor_title,
+                'executor_title' => $state['executor_title'],
                 'personalRepresentative' => $personalRepresentative,
                 'backupPersonalRepresentative' => $backupPersonalRepresentative,
                 'guardian'       => $guardian,
                 'backupGuardian' => $backupGuardian,
                 'provideYourLovedOnes' => $provideYourLovedOnes,
-                'state'          => $state->name
+                'state'          => $state['name'],
+                'petNames'       => $petNames,
+                'petGuardian'    => $petGuardian,
+                'backupPetGuardian' => $backupPetGuardian,
+                'toSingleBeneficiary' => $toSingleBeneficiary,
+                'toMultipleBeneficiary' => $toMultipleBeneficiary,
+                'estateDistribute'  => $estateDistribute,
+                'gifts' => $gifts,
+                'contingentBeneficiary' => $contingentBeneficiary,
+                'disinherit'    => $disinherit
             ];
             
             if(!is_dir(public_path().$path)) {
@@ -196,7 +225,7 @@ class PdfController extends Controller
                 }
 
             } else {
-                PDF::loadView('pdf.last_will_and_testament', $data)->save($path.'/'.$filename);
+                PDF::loadView('pdf.last_will_and_testament', $data)->save($path.$filename);
                 return response()->json([
                             'status'    =>  true,
                             'message'   =>  'Success'
@@ -244,11 +273,13 @@ class PdfController extends Controller
             $children = Children::where('user_id', $id)->get();
             $guardian = GuardianInfo::where('user_id', $id)->where('is_backup','0')->first();
             $backupGuardian = GuardianInfo::where('user_id', $id)->where('is_backup','1')->first();
-            $provideYourLovedOnes = ProvideYourLovedOnes::where('user_id', $id)->first();
             $estateDistribute = EstateDisrtibute::where('user_id', $id)->first();
             $provideYourLovedOnes = ProvideYourLovedOnes::where('user_id', $id)->first();
             $petGuardian = PetGuardian::where('user_id', $id)->where('is_backup','0')->first();
             $backupPetGuardian = PetGuardian::where('user_id', $id)->where('is_backup','1')->first();
+            $gifts = Gifts::where('user_id', $id)->get();
+            $contingentBeneficiary = ContingentBeneficiary::where('user_id', $id)->first();
+            $disinherit = Disinherit::where('user_id', $id)->first();
 
             return response()->json([
                     'status'    =>  true,
@@ -265,11 +296,13 @@ class PdfController extends Controller
                                         'backupGuardian' => $backupGuardian,
                                         'provideYourLovedOnes' => $provideYourLovedOnes,
                                         'estateDistribute' => $estateDistribute,
-                                        'provideYourLovedOnes' => $provideYourLovedOnes,
                                         'petGuardian'   => $petGuardian,
-                                        'backupPetGuardian' => $backupPetGuardian
+                                        'backupPetGuardian' => $backupPetGuardian,
+                                        'gifts' => $gifts,
+                                        'contingentBeneficiary' => $contingentBeneficiary,
+                                        'disinherit'    => $disinherit
                                     ]
-            ],200);            
+            ] ,200);            
 
         } catch (\Exception $e) {
 
