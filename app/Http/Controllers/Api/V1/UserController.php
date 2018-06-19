@@ -1923,7 +1923,7 @@ class UserController extends Controller
             ], 400);
         }
 
-        $notThisTime = $request->not_this_time;
+        $notThisTime = $data['not_this_time'];
         $checkForExistData = ProvideYourLovedOnes::where('user_id', $userId)->first();
 
         if($notThisTime != null && $notThisTime == 1) {
