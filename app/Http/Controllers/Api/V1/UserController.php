@@ -1913,6 +1913,7 @@ class UserController extends Controller
             'isSpecificGift' => "nullable|string|in:Yes,No",
             'charity'        => "required|numeric|between:0,1|integer",
             'individual'     => "required|numeric|between:0,1|integer",
+            'not_this_time'  => "nullable|numeric|integer|between:0,1"
         ]);
         if ($validator->fails()) {
             return response()->json([
@@ -1922,21 +1923,32 @@ class UserController extends Controller
             ], 400);
         }
 
-        $specificGift   = isset($data['isSpecificGift']) && array_key_exists('isSpecificGift', $data)
+        $notThisTime = $request->not_this_time;
+        $checkForExistData = ProvideYourLovedOnes::where('user_id', $userId)->first();
+
+        if($notThisTime != null && $notThisTime == 1) {
+            $specificGift = '0';
+            $individual = 0;
+            $charity = 0;
+        } else {
+            $specificGift   = isset($data['isSpecificGift']) && array_key_exists('isSpecificGift', $data)
                             ? $data['isSpecificGift']
                             : null; // 0-> NO ,1->Yes
-        $individual     = isset($data['individual']) && array_key_exists('individual', $data)
-                            ? $data['individual']
-                            : null;
-        $charity        = isset($data['charity']) && array_key_exists('charity', $data)
-                            ? $data['charity']
-                            : null;
+            $individual     = isset($data['individual']) && array_key_exists('individual', $data)
+                                ? $data['individual']
+                                : null;
+            $charity        = isset($data['charity']) && array_key_exists('charity', $data)
+                                ? $data['charity']
+                                : null;
+            $notThisTime    = null;
+        }
 
-        $checkForExistData = ProvideYourLovedOnes::where('user_id', $userId)->first();
+
         if ($checkForExistData) {
             $checkForExistData->specific_gifts = $specificGift == "Yes" ? '1' : '0';
             $checkForExistData->individual  = $individual;
             $checkForExistData->charity     = $charity;
+            $checkForExistData->not_this_time = $notThisTime;
             if ($checkForExistData->save()) {
                 return response()->json([
                     'status' => true,
