@@ -1686,7 +1686,8 @@ class UserController extends Controller
             'giftType'  =>  'required|numeric|between:1,6|integer',
             'giftData'  =>  'required',
             'individual'=>  'required|numeric|integer|between:0,1',
-            'charity'   =>  'required|numeric|integer|between:0,1'
+            'charity'   =>  'required|numeric|integer|between:0,1',
+            'not_this_time' => 'nullable|numeric|integer|between:0,1'
         ]);
 
         if ($validator->fails()) {
@@ -1709,9 +1710,22 @@ class UserController extends Controller
         $userId   = $request->user_id;
         $giftType = $request->giftType; // giftType = 1,2,3,4,5,6
         $giftData = $request->giftData; // array of gift data
+        $notThisTime  =$request->not_this_time;
 
         $charity    = $request->charity;
         $individual = $request->individual;
+
+
+        if($notThisTime != null) {
+            $provideYourLovedOnes = ProvideYourLovedOnes::where('user_id', $userId)->first();
+            $provideYourLovedOnes->not_this_time = $notThisTime;
+            $provideYourLovedOnes->specific_gifts = '0';
+            $provideYourLovedOnes->save();
+        } else {
+            $provideYourLovedOnes = ProvideYourLovedOnes::where('user_id', $userId)->first();
+            $provideYourLovedOnes->not_this_time = null;
+            $provideYourLovedOnes->save();
+        }
 
         //update existing gift
         // $saveGift = Gifts::where('user_id', $userId)->where('type',$giftType)->first();
@@ -1808,6 +1822,12 @@ class UserController extends Controller
                 'data'    => []
             ], 400);
         }
+
+        $provideYourLovedOnes = ProvideYourLovedOnes::where('user_id', $userId)->first();
+        if($provideYourLovedOnes) {
+            $provideYourLovedOnes->not_this_time = null;
+            $provideYourLovedOnes->save();
+        }        
 
         if ($gift) {
 
