@@ -1309,7 +1309,8 @@ class UserManagementController extends Controller
            'data' => [
              'isSpecificGift' =>  $gift->specific_gifts == 1 ? 'Yes' : 'No',
              'charity'        =>  $gift->charity,
-             'individual'     =>  $gift->individual
+             'individual'     =>  $gift->individual,
+             'not_this_time'  =>  $gift->not_this_time
            ]
          ];
        }
