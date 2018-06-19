@@ -1290,6 +1290,7 @@ class UserManagementController extends Controller
        $stepValue   = 7;
        $gifts       = Gifts::where('user_id',$user->id)->get();
        $giftsArray  = [];
+       $provideYourLovedOnes = ProvideYourLovedOnes::where('user_id',$user->id)->first();
        foreach ($gifts as $key => $eachGift) {
           array_push($giftsArray, $eachGift);
        }
@@ -1297,7 +1298,8 @@ class UserManagementController extends Controller
          'step' =>  $stepValue,
          'data' => [
            'isGift' => count($gifts),
-           'gift'   => $giftsArray
+           'gift'   => $giftsArray,
+           'not_this_time' => $provideYourLovedOnes->not_this_time
          ]
        ];
        return $responseArray;
