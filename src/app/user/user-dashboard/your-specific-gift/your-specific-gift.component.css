@@ -1119,6 +1119,16 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   margin-left: 10px;
 }
+.radio_ul5 li:last-child .human_status3{
+  padding-top: 20px;
+}
+.radio_ul5 li.active {
+  border: 1px solid #42b12a;
+  background: #42a82d;
+}
+.radio_ul5 li.active .human_status3{
+  color: #fff;
+}
 .gift_type_radio {
   padding: 10px 0px;
   min-height: 131px;
@@ -3379,7 +3389,7 @@ input[disabled] {
   width: 130px;
   margin: 0;
   float: right;
-  color:#fff;
+  color:#fff !important;
   text-shadow: 1px 1px 1px #666;
 }
 

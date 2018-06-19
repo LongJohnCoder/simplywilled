@@ -36,15 +36,15 @@
               </span>:
             </p>
 
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
-              1. I wish to be
+            <!--<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+
               <span  *ngIf="userDetails.finalArrangements.type === '1'">cremated</span>
               <span  *ngIf="userDetails.finalArrangements.type === '0'">buried</span>.
-            </p>
+            </p>-->
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
               <span  *ngIf="userDetails.finalArrangements.type === '1'">
 
-                2. I would like my ashes <span *ngIf="userDetails.finalArrangements.ashes !== null && userDetails.finalArrangements.ashes !== undefined"> {{userDetails.finalArrangements.ashes}}.</span>
+                1. I wish to be cremated. I would like my ashes to be managed and disposed of in the following manner: <span *ngIf="userDetails.finalArrangements.ashes !== null && userDetails.finalArrangements.ashes !== undefined"> {{userDetails.finalArrangements.ashes}}.</span>
 
                 <span *ngIf="userDetails.finalArrangements.ashes === null && userDetails.finalArrangements.ashes === undefined">: __________________________________________________
 
@@ -54,9 +54,9 @@
 
                 </span>
               </span>
-              <span  *ngIf="userDetails.finalArrangements.type !== '1'">
+              <span  *ngIf="userDetails.finalArrangements.type === '0'">
 
-                2. I would like my remains interred<span *ngIf="userDetails.finalArrangements.ashes !== null && userDetails.finalArrangements.ashes !== undefined"> {{userDetails.finalArrangements.ashes}}.</span>
+                1. I wish to be buried. I would like my remains interred <span *ngIf="userDetails.finalArrangements.ashes !== null && userDetails.finalArrangements.ashes !== undefined"> {{userDetails.finalArrangements.ashes}}.</span>
 
                 <span *ngIf="userDetails.finalArrangements.ashes === null && userDetails.finalArrangements.ashes === undefined">: ___________________________________________
 
@@ -66,9 +66,21 @@
 
                 </span>
               </span>
+              <span  *ngIf="userDetails.finalArrangements.type === '2'">
+
+                1. I wish for my representative to control and dispose of my remains in the following manner: <span *ngIf="userDetails.finalArrangements.some_other_way !== null && userDetails.finalArrangements.some_other_way !== undefined"> {{userDetails.finalArrangements.some_other_way}}.</span>
+
+                <span *ngIf="userDetails.finalArrangements.some_other_way === null && userDetails.finalArrangements.some_other_way === undefined">: ___________________________________________
+
+                ______________________________________________________________________
+
+                ______________________________________________________________________
+
+                </span>
+              </span>
             </p>
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
-                3. I have made “pre-need” arrangements at <span *ngIf="userDetails.finalArrangements.arrangements !== null && userDetails.finalArrangements.arrangements !== undefined"> {{userDetails.finalArrangements.arrangements}}.</span>
+              2. I have made pre-arrangements at <span *ngIf="userDetails.finalArrangements.arrangements !== null && userDetails.finalArrangements.arrangements !== undefined"> {{userDetails.finalArrangements.arrangements}}.</span>
 
                 <span *ngIf="userDetails.finalArrangements.arrangements === null && userDetails.finalArrangements.arrangements === undefined">: ______________________________________
 
@@ -80,81 +92,124 @@
             </p>
 
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+                  3. I wish for my representative to honor the following instructions with regard to my funeral or other ceremony for the final disposition of my remains: ______________________________________
+
+              ______________________________________________________________________
+
+              ______________________________________________________________________
+
+            </p>
+
+            <!--<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
                 <span *ngIf="userDetails.tellUsAboutYou.state !== 'New Jersey'">
 
-                  4. My <span *ngIf="userDetails.tellUsAboutYou.state !== 'Michigan'"> funeral </span> representative shall be:
+                  4. My &lt;!&ndash;<span *ngIf="userDetails.tellUsAboutYou.state !== 'Michigan'"> &ndash;&gt;funeral &lt;!&ndash;</span> &ndash;&gt;representative shall be:______________________________________
 
-                  <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;"> {{userDetails.personalRepresentative.fullname}} </p>
+                  ______________________________________
+                  &lt;!&ndash;<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;"> {{userDetails.personalRepresentative.fullname}} </p>&ndash;&gt;
+                  <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;"> (Name) </p>
 
+                  ______________________________________
                   <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;" *ngIf="userDetails.personalRepresentative.address !== null && userDetails.personalRepresentative.address !== undefined">
                     {{userDetails.personalRepresentative.address}}
                   </p>
                 </span>
-            </p>
-
-
-              <!--<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
-              Congratulations <span style="text-transform: uppercase;">{{userDetails.firstname}}</span> Your custom estate documents are ready. Now it is time to sign your
-              documents. Please be sure to follow these instructions carefully.
-            </p>
-            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
-              BEFORE YOU BEGIN, HERE ARE A FEW THINGS YOU WILL NEED:
-            </h2>
-            <p class="para2" style="font-size: 15px; margin: 0 20px 15px; font-family: Garamond;">
-              First, you will need a Blue Ink Pen.
-              We recommend using a blue ink pens for everyone signing because it is easier to tell that the signatures are
-              originals and not photocopies.
-            </p>
-            <p class="para2" style="font-size: 15px; margin: 0 20px 15px; font-family: Garamond;">
-              Second, you will need two witnesses, to witness your signature on the documents.
-              Your witnesses must be over the age of 18, and cannot be a beneficiary of your estate, or a fiduciary of your
-              estate. Estate fiduciaries include your Personal Representative, Executor, Financial Power of Attorney,
-              Healthcare Power of Attorney, and Guardian for Minor Children.
-            </p>
-            <p class="para2" style="font-size: 15px; margin: 0 20px 15px; font-family: Garamond;">
-              Third, you will need a notary public to notarize your signature.
-              You can find a notary public at a local bank or grocery store or UPS location.
-              Remember to bring your government issued photo ID for the notary public to verify your identity, and if
-              necessary, the identities of your witnesses.
-            </p>
-            <p class="para2" style="font-size: 15px; margin: 0 20px 15px; font-family: Garamond;">
-              Once you have these items, you are ready to review your documents.
-            </p>
-            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
-              STEP ONE: REVIEW YOUR LAST WILL AND TESTAMENT:
-            </h2>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
-              Read and review your Last Will and Testament carefully. Do not sign your Last Will and Testament until you have
-              read all of its provisions. Only sign your Last Will and Testament if you are in full agreement with all of its
-              provisions.
-            </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
-              If you need to make changes to your Last Will and Testament, please return to the SimplyWilled.com interview to
-              make any necessary changes. Once you have made your changes, please print out the new version of your Last Will
-              and Testament and review it to confirm that the changes have been made to your satisfaction.
-            </p>
-            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
-              STEP TWO: SIGN YOUR LAST WILL AND TESTAMENT:
-            </h2>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
-              Please be sure to have two witnesses and a notary public present when you sign your Last Will and Testament.
-              Both of your witnesses and the notary must all be present when you sign your Last Will and Testament. Your
-              witnesses must see you sign, and additionally your witnesses must see each other sign. This should all be done
-              in the presence of the notary public.
-            </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
-              Don,t forget, your witnesses should be adults, over the age of 18, who are not beneficiaries or fiduciaries of
-              your estate.
-            </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
-              You, your two witnesses, and the notary public should all be present and witness the following:
             </p>-->
+            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+
+                <span>
+                   3. My funeral representative shall be:
+                </span>
+
+                <span>
+
+                ________________________________________________
+
+                (Name)
+
+                </span>
+
+                <span>
+
+                ________________________________________________
+
+                (Address)
+
+                </span>
+
+                <span>
+
+                ________________________________________________
+
+                (Telephone)
+
+                </span>
+            </p>
+
+
+
+            <!--<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            Congratulations <span style="text-transform: uppercase;">{{userDetails.firstname}}</span> Your custom estate documents are ready. Now it is time to sign your
+            documents. Please be sure to follow these instructions carefully.
+          </p>
+          <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
+            BEFORE YOU BEGIN, HERE ARE A FEW THINGS YOU WILL NEED:
+          </h2>
+          <p class="para2" style="font-size: 15px; margin: 0 20px 15px; font-family: Garamond;">
+            First, you will need a Blue Ink Pen.
+            We recommend using a blue ink pens for everyone signing because it is easier to tell that the signatures are
+            originals and not photocopies.
+          </p>
+          <p class="para2" style="font-size: 15px; margin: 0 20px 15px; font-family: Garamond;">
+            Second, you will need two witnesses, to witness your signature on the documents.
+            Your witnesses must be over the age of 18, and cannot be a beneficiary of your estate, or a fiduciary of your
+            estate. Estate fiduciaries include your Personal Representative, Executor, Financial Power of Attorney,
+            Healthcare Power of Attorney, and Guardian for Minor Children.
+          </p>
+          <p class="para2" style="font-size: 15px; margin: 0 20px 15px; font-family: Garamond;">
+            Third, you will need a notary public to notarize your signature.
+            You can find a notary public at a local bank or grocery store or UPS location.
+            Remember to bring your government issued photo ID for the notary public to verify your identity, and if
+            necessary, the identities of your witnesses.
+          </p>
+          <p class="para2" style="font-size: 15px; margin: 0 20px 15px; font-family: Garamond;">
+            Once you have these items, you are ready to review your documents.
+          </p>
+          <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
+            STEP ONE: REVIEW YOUR LAST WILL AND TESTAMENT:
+          </h2>
+          <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            Read and review your Last Will and Testament carefully. Do not sign your Last Will and Testament until you have
+            read all of its provisions. Only sign your Last Will and Testament if you are in full agreement with all of its
+            provisions.
+          </p>
+          <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            If you need to make changes to your Last Will and Testament, please return to the SimplyWilled.com interview to
+            make any necessary changes. Once you have made your changes, please print out the new version of your Last Will
+            and Testament and review it to confirm that the changes have been made to your satisfaction.
+          </p>
+          <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
+            STEP TWO: SIGN YOUR LAST WILL AND TESTAMENT:
+          </h2>
+          <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            Please be sure to have two witnesses and a notary public present when you sign your Last Will and Testament.
+            Both of your witnesses and the notary must all be present when you sign your Last Will and Testament. Your
+            witnesses must see you sign, and additionally your witnesses must see each other sign. This should all be done
+            in the presence of the notary public.
+          </p>
+          <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            Don,t forget, your witnesses should be adults, over the age of 18, who are not beneficiaries or fiduciaries of
+            your estate.
+          </p>
+          <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            You, your two witnesses, and the notary public should all be present and witness the following:
+          </p>-->
           </div>
         </div>
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
           <div class="docPageInner"
                style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <!--<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
 
                 <span *ngIf="userDetails.tellUsAboutYou.state !== 'New Jersey'">
                    {{userDetails.personalRepresentative.city}},   {{userDetails.personalRepresentative.state}}   {{userDetails.personalRepresentative.zip}}
@@ -175,24 +230,17 @@
                 (Telephone)
 
                 </span>
-            </p>
+            </p>-->
 
-              «IF Successor?»
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;" *ngIf="userDetails.personalRepresentative !== null && userDetails.personalRepresentative !== undefined">
+              <!--«IF Successor?»-->
+            <!--<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;" *ngIf="userDetails.personalRepresentative !== null && userDetails.personalRepresentative !== undefined">-->
+            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
 
-              5. If my «IF State = "Michigan"»funeral «END IF»representative dies, becomes incapacitated, resigns, refuses to act, ceases to be qualified, or cannot be located within the time necessary to control the final disposition of my remains, I hereby appoint the following individual to serve as my successor «IF State = "Michigan"»funeral «END IF»representative:
+              If my funeral representative dies, becomes incapacitated, resigns, refuses to act, ceases to be qualified, or cannot be located within the time necessary to control the final disposition of my remains, I hereby appoint the following individual to serve as my successor funeral representative:
 
-              «IF Rx 1 Agent1?»
+              ________________________________________________
 
-              «Executor2»
-
-              «IF ANSWERED(Rx Agent #2 Address)»
-
-              « Executor2 Address»
-
-              «Executor2 City», «Executor2 State» «Executor2 Zip»
-
-              «ELSE»
+              (Name)
 
               ________________________________________________
 
@@ -201,16 +249,15 @@
               ________________________________________________
 
               (Telephone)
-
-              «END IF»
-
-              «END IF»
+            </p>
+            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+              5. This authorization becomes effective upon my death. I hereby revoke any prior final disposition authorizations or instructions that I may have signed before the date that this document is signed. I hereby agree that any funeral director, crematory authority, or cemetery authority that receives a copy of this document may act under it. Any modification or revocation of this document is not effective as to a funeral director, crematory authority, or cemetery authority until the funeral director, crematory authority, or cemetery authority receives actual notice of the modification or revocation. No funeral director, crematory authority, or cemetery authority may be liable because of reliance on a copy of this document.
             </p>
 
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+           <!-- <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
               This authorization becomes effective upon my death. I hereby revoke any prior final disposition authorizations and/or instructions that I may have signed before the date that this document is signed. I hereby agree that any funeral director, crematory authority, or cemetery authority that receives a copy of this document may act under it. Any modification or revocation of this document is not effective as to a funeral director, crematory authority, or cemetery authority until the funeral director, crematory authority, or cemetery authority receives actual notice of the modification or revocation. No funeral director, crematory authority, or cemetery authority may be liable because of reliance on a copy of this document.
 
-            </p>
+            </p>-->
             <!--<ul style="margin: 20px 0 20px 20px">
               <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
                 Initial and date each page of your Last Will and Testament on the bottom right corner on the blank provided.
@@ -288,9 +335,9 @@
                 The funeral representative and any successor funeral representative, by accepting appointment under this document, assume the powers and duties specified for a funeral representative under §700.3206(1), MCL and acknowledge that he/she is not a prohibited person pursuant to §700.3206(2)(c), MCL.
               </span>
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <!--<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
               [SIGNATURE PAGES FOLLOW]
-            </p>
+            </p>-->
             <!--<ul style="margin: 20px 0 20px 20px">
               <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
                 Initial and date each page of your Last Will and Testament on the bottom right corner on the blank provided.
@@ -480,55 +527,55 @@
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
               «IF State = "Wisconsin" OR State = "Michigan"»
               <span *ngIf="userDetails.tellUsAboutYou.city === 'Wisconsin' || userDetails.tellUsAboutYou.city === 'Michigan'">
-               <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; font-family: Garamond;">AGENT ACCEPTANCE AND ACKNOWLEDGMENT</h1>
+                 <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; font-family: Garamond;">AGENT ACCEPTANCE AND ACKNOWLEDGMENT</h1>
 
-                  I hereby accept appointment as <span *ngIf="userDetails.tellUsAboutYou.city === 'Michigan'"> funeral </span>representative for the control of final disposition of the declarant’s remains.
+                    I hereby accept appointment as <span *ngIf="userDetails.tellUsAboutYou.city === 'Michigan'"> funeral </span>representative for the control of final disposition of the declarant’s remains.
 
-                  Signature: ___________________________________ Dated: _______________________
+                    Signature: ___________________________________ Dated: _______________________
 
-                  {{userDetails.personalRepresentative !== null ? userDetails.personalRepresentative?.fullname : ''}}
+                    <!--{{userDetails.personalRepresentative !== null ? userDetails.personalRepresentative?.fullname : ''}}-->
 
+
+                    STATE OF ________________ )
+
+                    ) ss.
+
+                    COUNTY OF ________________ )
+
+                    Subscribed, sworn and acknowledged before me by ______________________________________ <!--{{userDetails.personalRepresentative.fullname !== null ? userDetails.personalRepresentative.fullname : ''}}-->, who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
+
+                    ______________________________________ (Seal, if any)
+
+                    NOTARY PUBLIC
+
+                    My commission expires: _________________
+
+
+                <!--<span *ngIf="userDetails.backupPersonalRepresentative !== null">
+                    «IF Successor?»-->
+
+                    I hereby accept appointment as successor <span *ngIf="userDetails.tellUsAboutYou.city === 'Michigan'"> funeral </span>representative for the control of final disposition of the declarant’s remains.
+
+                    Signature: ___________________________________ Dated: _______________________
+
+                    <!--{{userDetails.backupPersonalRepresentative !== null ? userDetails.backupPersonalRepresentative.fullname : ''}}-->
+
+                <!--</span>-->
+
+                STATE OF ________________ )
+
+                ) ss.
+
+                COUNTY OF ________________ )
+
+                Subscribed, sworn and acknowledged before me by ___________________________________ <!--{{userDetails.backupPersonalRepresentative !== null ? userDetails.backupPersonalRepresentative.fullname : ''}}-->, who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
+
+                ______________________________________ (Seal, if any)
+
+                NOTARY PUBLIC
+
+                My commission expires: _________________
               </span>
-
-                  STATE OF ________________ )
-
-                  ) ss.
-
-                  COUNTY OF ________________ )
-
-                  Subscribed, sworn and acknowledged before me by {{userDetails.personalRepresentative.fullname !== null ? userDetails.personalRepresentative.fullname : ''}}, who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
-
-                  ______________________________________ (Seal, if any)
-
-                  NOTARY PUBLIC
-
-                  My commission expires: _________________
-
-
-              <span *ngIf="userDetails.backupPersonalRepresentative !== null">
-                  «IF Successor?»
-
-                  I hereby accept appointment as successor <span *ngIf="userDetails.tellUsAboutYou.city === 'Michigan'"> funeral </span>representative for the control of final disposition of the declarant’s remains.
-
-                  Signature: ___________________________________ Dated: _______________________
-
-                  {{userDetails.backupPersonalRepresentative !== null ? userDetails.backupPersonalRepresentative.fullname : ''}}
-
-              </span>
-
-              STATE OF ________________ )
-
-              ) ss.
-
-              COUNTY OF ________________ )
-
-              Subscribed, sworn and acknowledged before me by {{userDetails.backupPersonalRepresentative !== null ? userDetails.backupPersonalRepresentative.fullname : ''}}, who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
-
-              ______________________________________ (Seal, if any)
-
-              NOTARY PUBLIC
-
-              My commission expires: _________________
             </p>
             <!--<ul style="margin: 20px 0 20px 20px">
               <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">

@@ -85,7 +85,7 @@ export class GiftComponent implements OnInit, OnDestroy {
     if (formData.valid) {
       if (this.access_token) {
         // tslint:disable-next-line:max-line-length
-        this.dataset = {'user_id': this.myUserId, 'step': 8, 'data': {'isSpecificGift': formData.value.gift_status === '1' ? 'Yes' : 'No', 'individual': formData.value.gift_status === '1' ? '1' : '0', 'charity': formData.value.gift_status_charity === '1' ? '1' : '0'}};
+        this.dataset = {'user_id': this.myUserId, 'step': 7, 'data': {'isSpecificGift': formData.value.gift_status === '1' ? 'Yes' : 'No', 'individual': formData.value.gift_status === '1' ? '1' : '0', 'charity': formData.value.gift_status_charity === '1' ? '1' : '0'}};
         this.saveDataInDb = this.gftService.saveData(this.access_token, this.dataset);
         this.saveDataInDbSubscription = this.saveDataInDb.subscribe(data => {
           if (data.status) {

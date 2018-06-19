@@ -278,7 +278,7 @@ header{
   -webkit-box-shadow: 0 1px 1px 0 #ddd;
   -moz-box-shadow: 0 1px 1px 0 #ddd;
   display: inline-block;
-  width: 100%;
+  width: 840px;
   padding: 30px;
 }
 .main-content h2{
@@ -711,6 +711,13 @@ footer .social ul li a i{
 .footer-bottom img{
   display: inline-block;
 }
+
+@media screen and (max-width:1199px){
+  .main-content{
+    width: 705px;
+  }
+}
+
 @media screen and (min-width: 992px) and (max-width: 1199px){
   .sidebar h1 {
     font-size: 27px;
@@ -751,6 +758,14 @@ footer .social ul li a i{
     margin: 0 0 20px;
   }
 }
+
+@media screen and (max-width:991px){
+  .main-content{
+    width: calc(100% + 30px);
+    margin: 0 -15px;
+  }
+}
+
 @media screen and (min-width: 768px) and (max-width: 991px){
   .sidebar h1 {
     font-size: 28px;

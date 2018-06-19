@@ -30,6 +30,13 @@
               <input type="radio" name="type" value = 1 formControlName="type" #typeCremate (click)="changeWish(typeCremate.value)">
             </label>
           </li>
+          <li>
+            <label class="two_child_radio special_instrucion" [ngClass]="{'active': flags.someOtherWay}">
+              <span class="two_child_img"><img src="../../../../assets/images/other-ways.png" alt="some-other-ways"></span>
+              <span class="two_child_text">Some Other Way</span>
+              <input type="radio" name="type" value = 2 formControlName="type" #typeSomeOtherWay (click)="changeWish(typeSomeOtherWay.value)">
+            </label>
+          </li>
         </ul>
       </div>
       <div *ngIf="flags.burial">
@@ -51,6 +58,13 @@
         <div class="form-group">
           <label>I have made the following final arrangements: <span class="leavetxt">(If you are not sure, leave this box blank)</span></label>
           <input type="text" class="form-control" formControlName="creamation_arrangements">
+        </div>
+      </div>
+
+      <div *ngIf="flags.someOtherWay">
+        <div class="form-group" >
+          <label>Otherwise :<span class="leavetxt">(If you are not sure, leave this box blank)</span></label>
+          <textarea class="form-control" formControlName="some_other_way"></textarea>
         </div>
       </div>
 

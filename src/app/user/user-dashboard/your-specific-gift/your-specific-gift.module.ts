@@ -12,6 +12,7 @@ import { RealPropertyComponent } from './real-property/real-property.component';
 import { SpecificAssetComponent } from './specific-asset/specific-asset.component';
 import {EditGiftService} from './services/edit-gift.service';
 import {RealPropertyService} from './services/real-property.service';
+import {GiftService} from '../gift/services/gift.service';
 
 @NgModule({
   imports: [
@@ -22,6 +23,6 @@ import {RealPropertyService} from './services/real-property.service';
     GlobalTooltipModule
   ],
   declarations: [YourSpecificGiftComponent, MyGiftTextComponent, CashGiftComponent, BusinessInterestComponent, RealPropertyComponent, SpecificAssetComponent],
-  providers: [YourSpecificGiftService, EditGiftService, RealPropertyService]
+  providers: [YourSpecificGiftService, EditGiftService, RealPropertyService, GiftService]
 })
 export class YourSpecificGiftModule { }

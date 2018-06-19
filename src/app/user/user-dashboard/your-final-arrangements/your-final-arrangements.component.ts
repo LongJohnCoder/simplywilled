@@ -19,7 +19,8 @@ export class YourFinalArrangementsComponent implements OnInit, OnDestroy {
   finalarrangementsubmitdataSubscription: Subscription;
   flags = {
     burial: true,
-    cremation: false
+    cremation: false,
+    someOtherWay: false,
   };
   errors = {
     errorFlag: false,
@@ -49,6 +50,7 @@ export class YourFinalArrangementsComponent implements OnInit, OnDestroy {
           'creamation_arrangements'  : new FormControl(''),
           'burial'  : new FormControl(''),
           'burial_arrangements'  : new FormControl(''),
+          'some_other_way': new FormControl('')
       });
   }
 
@@ -77,6 +79,7 @@ export class YourFinalArrangementsComponent implements OnInit, OnDestroy {
       'creamation_arrangements' : response !== null && parseInt(response.type, 10) === 1 ? response.arrangements : '',
       'burial' : response !== null && parseInt(response.type, 10) === 0 ? response.ashes : '',
       'burial_arrangements' : response !== null && parseInt(response.type, 10) === 0 ? response.arrangements : '',
+      'some_other_way' : response !== null && parseInt(response.type, 10) === 2 ? response.some_other_way : '',
     });
     this.changeWish(response !== null ? response.type : null);
   }
@@ -98,6 +101,7 @@ export class YourFinalArrangementsComponent implements OnInit, OnDestroy {
     this.flags = {
       burial: parseInt(value, 10) === 0,
       cremation: parseInt(value, 10) === 1,
+      someOtherWay: parseInt(value, 10) === 2,
     };
   }
 
@@ -129,6 +133,7 @@ export class YourFinalArrangementsComponent implements OnInit, OnDestroy {
       type: this.finalarrangementForm.value.type,
       arrangements: parseInt(this.finalarrangementForm.value.type,  10) === 1 ? this.finalarrangementForm.value.creamation_arrangements : (parseInt(this.finalarrangementForm.value.type,  10) === 0 ? this.finalarrangementForm.value.burial_arrangements : null),
       ashes: parseInt(this.finalarrangementForm.value.type,  10) === 1 ? this.finalarrangementForm.value.ashes : (parseInt(this.finalarrangementForm.value.type,  10) === 0 ? this.finalarrangementForm.value.burial : null),
+      some_other_way: parseInt(this.finalarrangementForm.value.type,  10) === 2 ? this.finalarrangementForm.value.some_other_way : (parseInt(this.finalarrangementForm.value.type,  10) === 0 ? this.finalarrangementForm.value.burial : null),
     };
     return data;
   }

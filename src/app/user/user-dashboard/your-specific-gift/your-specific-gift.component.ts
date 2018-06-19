@@ -6,6 +6,8 @@ import {EditGiftService} from './services/edit-gift.service';
 import {Subscription} from 'rxjs/Subscription';
 import {UserService} from '../../user.service';
 import {ProgressbarService} from '../shared/services/progressbar.service';
+import {GiftService} from '../gift/services/gift.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-your-specific-gift',
@@ -37,11 +39,15 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
     charityFlag: false,
     individualFlag: false
   };
+  notThisTimeFlag = false;
+  saveDataInDbSubscription: Subscription;
 
   constructor(
     private ysgService: YourSpecificGiftService,
     private editService: EditGiftService,
     private userService: UserService,
+    private gftService: GiftService,
+    private router: Router,
     private progressBarService: ProgressbarService) {
       this.toolTipMessageList = {
         'gift_type' : [{
@@ -87,13 +93,15 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
       this.fetchGiftDataDB = this.ysgService.fetchData(this.access_token, this.myUserId);
       this.fetchGiftDataDBSubscription = this.fetchGiftDataDB.subscribe(data => {
         if (data.status === 200) {
-          this.giftResp = [];
-          this.flags.charityFlag = (data !== null && data.data[7] !== null && data.data[7] !== undefined && data.data[7].data !== null && data.data[7].data !== undefined && data.data[7].data.charity !== null && data.data[7].data.charity === 1);
-          this.flags.individualFlag = (data !== null && data.data[7] !== null && data.data[7] !== undefined && data.data[7].data !== null && data.data[7].data !== undefined && data.data[7].data.individualFlag !== null && data.data[7].data.individual === 1);
+          console.log(data.data[7].data.not_this_time);
+          this.notThisTimeFlag = (data !== null && data.data[7] !== null && data.data[7] !== undefined && data.data[7].data !== null && data.data[7].data !== undefined && data.data[7].data.not_this_time !== null && data.data[7].data.not_this_time === 1);
+      //    this.giftResp = [];
+         // this.flags.charityFlag = (data !== null && data.data[7] !== null && data.data[7] !== undefined && data.data[7].data !== null && data.data[7].data !== undefined && data.data[7].data.charity !== null && data.data[7].data.charity === 1);
+         // this.flags.individualFlag = (data !== null && data.data[7] !== null && data.data[7] !== undefined && data.data[7].data !== null && data.data[7].data !== undefined && data.data[7].data.individualFlag !== null && data.data[7].data.individual === 1);
           if (data.data[6].data.isGift >= 1) {
             this.isAnyGift = true;
             this.giftCount = data.data[6].data.isGift;
-            for (let i = 0; i < data.data[6].data.gift.length; i++) {
+            /*for (let i = 0; i < data.data[6].data.gift.length; i++) {
               if (this.flags.charityFlag && data.data[6].data.gift[i].charity === 1) {
                 this.giftResp.push(data.data[6].data.gift[i]);
               }
@@ -108,12 +116,13 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
             } else {
               this.onNewModule = true;
               this.showAddGift = true;
-            }
+            }*/
           //  console.log(this.giftResp);
-            //this.giftResp  = data.data[6].data.gift;
+            this.giftResp = data.data[6].data.gift;
           } else if (data.data[6].data.isGift === 0) {
               this.onNewModule = true;
               this.showAddGift = true;
+              this.giftCount = 0;
           } else {
             this.isAnyGift = false;
             this.giftCount = 0;
@@ -164,6 +173,7 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
    * @param {string} module_name
    */
   openModule(module_name: string): void {
+    this.notThisTimeFlag = false;
     this.showAddGift = false;
     this.onNewModule = true;
     switch (module_name) {
@@ -184,6 +194,10 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
         this.errString = 'Something went wrong. Please try again later';
         console.log(this.errString);
     }
+  }
+
+  notThisTime() {
+    this.notThisTimeFlag = true;
   }
 
   /**
@@ -276,6 +290,25 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
     this.specific_asset = false;
   }
 
+  /**Continue to next*/
+  submit() {
+    let dataset = {'user_id': this.myUserId, 'step': 8, 'data': {'isSpecificGift': 'Yes', 'individual': '1' , 'charity': '1', 'not_this_time': this.notThisTimeFlag ? 1 : 0}};
+    this.saveDataInDbSubscription = this.gftService.saveData(this.access_token, dataset).subscribe(data => {
+      console.log(data);
+      if (data.status) {
+        this.router.navigate(['/dashboard/your-estate-distributed']);
+      } else {
+        this.errFlag = true;
+        this.errString = 'Error while updating data';
+        console.log(this.errString);
+      }
+    }, err => {
+      this.errFlag = true;
+      this.errString = err.error.message;
+      console.log(this.errString);
+    }, () => { });
+  }
+
   ngOnDestroy() {
     if (this.fetchGiftDataDBSubscription !== undefined) {
       this.fetchGiftDataDBSubscription.unsubscribe();
@@ -285,6 +318,9 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
     }
     if (this.getUserDetailSubscription !== undefined) {
       this.getUserDetailSubscription.unsubscribe();
+    }
+    if (this.saveDataInDbSubscription !== undefined) {
+      this.saveDataInDbSubscription.unsubscribe();
     }
     this.editService.unsetData();
   }

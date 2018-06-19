@@ -24,6 +24,7 @@ export class PersonalPropertyDistributedComponent implements OnInit, OnDestroy {
     editProfileSubscription: Subscription;
     loading = true;
     toolTipMessageList: any;
+    errorFlag = false;
 
     /**Constructor call*/
     constructor(private  authService: UserAuthService,
@@ -83,6 +84,11 @@ export class PersonalPropertyDistributedComponent implements OnInit, OnDestroy {
                 this.personalPropertyDistributedForm.controls['is_tangible_property_distribute'].setValue( this.fullUserInfo.is_tangible_property_distribute);
                 this.personalPropertyDistributedForm.controls['is_tangible_property_distribute'].setValidators([Validators.required]);
                 this.personalPropertyDistributedForm.controls['is_tangible_property_distribute'].updateValueAndValidity();
+                if (this.fullUserInfo.is_tangible_property_distribute === '4') {
+                  this.addValidationTotangiblePropertyDistribute();
+                } else {
+                  this.removeValidationTotangiblePropertyDistribute();
+                }
                 this.personalPropertyDistributedForm.controls['tangible_property_distribute'].setValue( this.fullUserInfo.tangible_property_distribute);
                 if (response.data[0].data.userInfo.marital_status === 'M' || response.data[0].data.userInfo.marital_status === 'R') {
                     this.showSpouseRadio = true;
@@ -137,14 +143,16 @@ export class PersonalPropertyDistributedComponent implements OnInit, OnDestroy {
         this.editProfileSubscription = this.userService.editProfile(modelData).subscribe(
           (response: any) => {
             // go to gift section
-            this.router.navigate(['/dashboard/tell-you-make-specific-gifts']);
+            this.router.navigate(['/dashboard/your-specific-gifts']);
           },
           (error: any) => {
+            this.errorFlag = true;
             for (let prop in error.error.message) {
               this.errorMessage = error.error.message[prop];
               break;
             }
             setTimeout(() => {
+              this.errorFlag = false;
               this.errorMessage = '';
             }, 3000);
           }

@@ -16,7 +16,7 @@
   <div class="main-content tellusaboutyou">
     <div class="col-md-12 col-sm-12 col-xs-12 giftSec" *ngFor="let each_gift of giftResp; let i= index">
       <!-- Individual Gifts -->
-      <div class="individualGifts" *ngIf="each_gift.individual === 1 && flags.individualFlag">
+      <!--<div class="individualGifts" *ngIf="each_gift.individual === 1 && flags.individualFlag">
         <h2 class="singing_instruction3">Gift <span class="gift_list_number">{{i+1}}</span></h2>
         <div class="gift_text_content">
           <div class="gift_text">
@@ -27,10 +27,10 @@
             <li><a href="javascript:void(0)" class="gift_edit_form" (click)="editGift(each_gift)">Edit</a></li>
           </ul>
         </div>
-      </div>
+      </div>-->
       <!-- Individual Gifts -->
       <!-- Charity Gifts -->
-      <div class="individualGifts" *ngIf="each_gift.charity === 1 && flags.charityFlag">
+      <div class="individualGifts">
         <h2 class="singing_instruction3">Gift <span class="gift_list_number">{{i+1}}</span></h2>
         <div class="gift_text_content">
           <div class="gift_text">
@@ -104,6 +104,13 @@
           <span class="human_status3">Specific Asset</span>
         </label>
       </li>
+      <li *ngIf="giftCount === 0" [ngClass]="{'active': notThisTimeFlag}">
+        <label class="radio_custom gift_type_radio" (click)="notThisTime()" >
+          <!--<input type="radio" name="gift_type" value="Specific Asset">-->
+          <span class="custom_img4"><img src="../../../../assets/images/no.png" alt="Not this time"></span>
+          <span class="human_status3">Not this time</span>
+        </label>
+      </li>
     </ul>
   </div>
 </div>
@@ -113,7 +120,7 @@
 </ul> -->
 <div class="form-footer" *ngIf="showAddGift">
   <a routerLink="/dashboard/tell-you-make-specific-gifts" class="btn common-button btn-grey pull-left">Go Back</a>
-  <a routerLink="/dashboard/your-estate-distributed" class="btn common-button btn-complete">Next</a>
+  <a (click)="submit()" class="btn common-button btn-complete">Next</a>
 </div>
 <!--make decision which view to open start-->
   <div *ngIf="errFlag">

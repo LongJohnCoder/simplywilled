@@ -56,12 +56,12 @@ const routes: Routes = [
                 // canActivateChild: [ UserPaidGuard ],
                 loadChildren: './personal-property-distributed/personal-property-distributed.module#PersonalPropertyDistributedModule'
             },
-            {
+            /*{
                 path: 'tell-you-make-specific-gifts',
                 canActivate: [ UserPaidGuard ],
                 // canActivateChild: [ UserPaidGuard ],
                 loadChildren: './gift/gift.module#GiftModule'
-            },
+            },*/
             {
                 path: 'your-specific-gifts',
                 canActivate: [ UserPaidGuard ],
