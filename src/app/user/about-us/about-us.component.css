@@ -142,6 +142,36 @@ a:hover{
   opacity: 1;
 }
 
+.ourFounderSec{
+    background: #1376bb;
+    padding: 70px 0;
+}
+.ourFounderSec .core_value_text{
+    color:#fff;
+}
+.ourFounderSec .team_descreption, 
+.ourFounderSec .founderBio,
+.ourFounderSec .bioTable li p span,
+.ourFounderSec .bioTable li p,
+.ourFounderSec .bioTable li p:last-child,
+.ourFounderSec .founderBio.showBioBox p.bioPara,
+.ourFounderSec .founderBio.showBioBox h2.eduHead,
+.ourFounderSec .founderBio.showBioBox h2:first-child,
+.ourFounderSec .team_name
+{
+    color:#fff;
+}
+.ourFounderSec .team_pic img{
+    border-color: #0f527f;
+}
+
+.our-team-v2.about_sec3 {
+    background: #f3f3f2;
+    padding-bottom: 80px;
+}
+.about_sec4{
+    background-color: #F2F2F2;
+}
 @media screen and (max-width: 767px){
   .founderBio.showBioBox{
     width: 100%;

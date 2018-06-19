@@ -7,19 +7,89 @@
   </div>
 </div>
 <div class="body_container">
+    <div class="about_sec3 ourFounderSec" id='ourTeam'>
+        <div class="wrapper">
+            <h1 class="core_value_text">Our Founder</h1>
+            <ul class="about_team_ul ourFounder" (click)="showBio()" [ngClass]="{'showBio' : showHideBio}">
+                <li>
+                    <span class="team_pic"><img src="../../../../assets/images/peter.png" alt="peter"></span>
+                    <h3 class="team_name">Peter Antonoplos</h3>
+                    <h4 class="team_descreption">CEO & Founder</h4>
+                </li>
+            </ul>
+            <div class="founderBio" [ngClass]="{'showBioBox' : showHideBio}">
+              <h2>BIO:</h2>
+              <p class="bioPara">
+                Our founder, Peter Antonoplos, is a nationally recognized estate planning and litigation attorney based in
+                Washington, D.C. For nearly two decades, Peter has represented clients in complex estate planning, probate and
+                trust administration, estate litigation, and real estate matters. In addition to his other successful business
+                ventures, he is founder and managing partner of a boutique law firm where he practices law with his wife,
+                routinely advising individuals, families, companies, hedge funds, national banks, charitable foundations, and
+                both foreign and domestic government entities on a variety of civil legal matters. He is an avid chess player,
+                a tech enthusiast, and the proud father of two children and a dog.
+              <br><br>
+                With a Juris Doctor, a Master of Laws in Taxation, and a Master of Business Administration, Peter has a unique
+                ability to distill any complex legal issue into a simple solution. After years of planning and litigating
+                estates for thousands of clients, Peter understands and appreciates the importance of making estate planning
+                accessible, easy, and affordable for all Americans. He is pleased to offer you SimplyWilled.com, to give you
+                the tools to provide for your legacy and your loved ones with simplicity and peace of mind.
+              </p>
+              <h2 class="eduHead">EDUCATION:</h2>
+              <ul class="bioTable">
+                  <li>
+                      <p>Yale School of Management <span>Master of Business Administration </span></p>
+                      <p>New Haven, CT</p>
+                  </li>
+                  <li>
+                      <p>Georgetown University Law Center <span>Master of Laws in Taxation </span></p>
+                      <p>Washington, DC</p>
+                  </li>
+                  <li>
+                      <p>Catholic University, Columbus School of Law <span>Juris Doctor </span></p>
+                      <p>Washington, DC</p>
+                  </li>
+                  <li>
+                      <p>Denison University <span>Bachelor of Arts, History </span></p>
+                      <p>Granville, OH</p>
+                  </li>
+              </ul>
+            </div>
+        </div>
+    </div>
+    <div class="about_sec3 our-team-v2">
+        <div class="wrapper">
+            <h1 class="core_value_text">Our Team</h1>
+            <ul class="about_team_ul">
+                <li>
+                    <span class="team_pic"><img src="../../../../assets/images/valeria-edward.png" alt="imran khan"></span>
+                    <h3 class="team_name">Valerie Edwards</h3>
+                    <h4 class="team_descreption">General Counsel</h4>
+                </li>
+                <li>
+                    <span class="team_pic"><img src="../../../../assets/images/kandel.png" alt="Kendal"></span>
+                    <h3 class="team_name">Kendal Wilkinson</h3>
+                    <h4 class="team_descreption">Customer Relations</h4>
+                </li>
+                <li>
+                    <span class="team_pic"><img src="../../../../assets/images/mark-atalla.png" alt="Mark Atalla"></span>
+                    <h3 class="team_name">Mark Atalla</h3>
+                    <h4 class="team_descreption">Brand Development</h4>
+                </li>
+            </ul>
+        </div>
+    </div>
   <div class="about_sec1">
     <div class="wrapper">
       <h1 class="core_value_text">Core Values</h1>
       <div class="about_first_left_sec">
-        <a href="#" class="have_q_btn2">Sustainability. <br>Community. <br>Diversity. </a>
+        <a href="#" class="have_q_btn2">Simple. <br>Affordable. <br>Enforceable. </a>
       </div>
       <ul class="about_first_right_ul">
         <li>
           <span class="estate_planning_img"><img src="../../../../assets/images/estate-planing-img.png" alt="error img"></span>
           <div class="estate_planning_right_main">
-            <h1>Estate planning should be Simple.</h1>
-            <p>Through cutting edge technology, innovation and excellence, we strive to deliver the best online estate
-              planning for our customers that is simple to do, simple to understand, simple to execute.</p>
+            <h1>Estate planning should be simple.</h1>
+            <p>Through cutting edge technology, innovation, and excellence, we strive to deliver the best online estate planning for our customers that is simple to do, simple to understand, and simple to execute.</p>
           </div>
         </li>
         <li>
@@ -64,77 +134,7 @@
         for the customer to use.</p>
     </div>
   </div>
-  <div class="about_sec3" id='ourTeam'>
-    <div class="wrapper">
-      <h1 class="core_value_text">Our Founder</h1>
-      <ul class="about_team_ul ourFounder" (click)="showBio()" [ngClass]="{'showBio' : showHideBio}">
-        <li>
-          <span class="team_pic"><img src="../../../../assets/images/peter.png" alt="peter"></span>
-          <h3 class="team_name">Peter Antonoplos</h3>
-          <h4 class="team_descreption">CEO & Founder</h4>
-        </li>
-      </ul>
-      <div class="founderBio" [ngClass]="{'showBioBox' : showHideBio}">
-        <h2>BIO:</h2>
-        <p class="bioPara">
-          Our founder, Peter Antonoplos, is a nationally recognized estate planning and litigation attorney based in
-          Washington, D.C. For nearly two decades, Peter has represented clients in complex estate planning, probate and
-          trust administration, estate litigation, and real estate matters. In addition to his other successful business
-          ventures, he is founder and managing partner of a boutique law firm where he practices law with his wife,
-          routinely advising individuals, families, companies, hedge funds, national banks, charitable foundations, and
-          both foreign and domestic government entities on a variety of civil legal matters. He is an avid chess player,
-          a tech enthusiast, and the proud father of two children and a dog.
-<br><br>
-          With a Juris Doctor, a Master of Laws in Taxation, and a Master of Business Administration, Peter has a unique
-          ability to distill any complex legal issue into a simple solution. After years of planning and litigating
-          estates for thousands of clients, Peter understands and appreciates the importance of making estate planning
-          accessible, easy, and affordable for all Americans. He is pleased to offer you SimplyWilled.com, to give you
-          the tools to provide for your legacy and your loved ones with simplicity and peace of mind.
-        </p>
-        <h2 class="eduHead">EDUCATION:</h2>
-        <ul class="bioTable">
-          <li>
-            <p>Yale School of Management <span>Master of Business Administration </span></p>
-            <p>New Haven, CT</p>
-          </li>
-          <li>
-            <p>Georgetown University Law Center <span>Master of Laws in Taxation </span></p>
-            <p>Washington, DC</p>
-          </li>
-          <li>
-            <p>Catholic University, Columbus School of Law <span>Juris Doctor </span></p>
-            <p>Washington, DC</p>
-          </li>
-          <li>
-            <p>Denison University <span>Bachelor of Arts, History </span></p>
-            <p>Granville, OH</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="about_sec3">
-    <div class="wrapper">
-      <h1 class="core_value_text">Our Team</h1>
-      <ul class="about_team_ul">
-        <li>
-          <span class="team_pic"><img src="../../../../assets/images/valeria-edward.png" alt="imran khan"></span>
-          <h3 class="team_name">Valerie Edwards</h3>
-          <h4 class="team_descreption">General Counsel</h4>
-        </li>
-        <li>
-          <span class="team_pic"><img src="../../../../assets/images/kandel.png" alt="Kendal"></span>
-          <h3 class="team_name">Kendal Wilkinson</h3>
-          <h4 class="team_descreption">Customer Relations</h4>
-        </li>
-        <li>
-          <span class="team_pic"><img src="../../../../assets/images/mark-atalla.png" alt="Mark Atalla"></span>
-          <h3 class="team_name">Mark Atalla</h3>
-          <h4 class="team_descreption">Brand Development</h4>
-        </li>
-      </ul>
-    </div>
-  </div>
+
   <div class="about_sec4">
     <div class="wrapper">
       <h1 class="about_state_planning_text">Estate Planning Made Simple & Affordable.</h1>
