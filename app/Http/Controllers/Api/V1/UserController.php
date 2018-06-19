@@ -1641,6 +1641,17 @@ class UserController extends Controller
                                                                     : $residueToPartnerFirst;
 
             if ($checkForExistData->save()) {
+
+                $provideYourLovedOnes = ProvideYourLovedOnes::where('user_id',$userId)->first();
+                if(!$provideYourLovedOnes) {
+                    $provideYourLovedOnes = new ProvideYourLovedOnes();
+                }
+
+                $provideYourLovedOnes->specific_gifts = '1';
+                $provideYourLovedOnes->individual  = 1;
+                $provideYourLovedOnes->charity     = 1;
+                $provideYourLovedOnes->save();
+
                 return response()->json([
                     'status' => true,
                     'message' => 'User details updated',
