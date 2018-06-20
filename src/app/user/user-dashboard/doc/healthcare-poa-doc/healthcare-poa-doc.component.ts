@@ -48,6 +48,9 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     ar: false,
     ca: false,
     co: false,
+    ct: false,
+    dc: false,
+    fl: false
   };
   pdfData: any;
   globalPDFSubscription: Subscription;
@@ -112,11 +115,14 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   /**When the component initialises*/
   ngOnInit() {
     this.states = {
-      ak: true,
+      ak: false,
       al: false,
       ar: false,
       ca: false,
       co: false,
+      ct: false,
+      dc: false,
+      fl: true
     };
     this.docScrolled = 0;
     this.thumbIndex = 0;
