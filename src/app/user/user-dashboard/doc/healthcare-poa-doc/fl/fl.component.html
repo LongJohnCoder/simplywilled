@@ -172,8 +172,8 @@
       <p align="justify" style="margin-bottom: 0in; line-height: 100%">
       
       </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span ><span  style="font-size: 12pt">«</span></span><span  style="font-size: 12pt">END
-      IF</span><span ><span  style="font-size: 12pt">»</span></span></span></span></span></p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span ><span  style="font-size: 12pt"></span></span><span  style="font-size: 12pt">END
+      IF</span><span ><span  style="font-size: 12pt"></span></span></span></span></span></p>
       <p align="center" style="margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
       <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt"><b>INSTRUCTIONS
       FOR HEALTH CARE</b></span></span></span></p>
@@ -315,13 +315,12 @@
             </b></span></span></span>
           </p>
             <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-            
             </p>
 
             <p align="justify" style="margin-bottom: 0in; line-height: 100%">Executed on this ________ day of __________, ____________, in _______________________ County in Florida.</p>
             <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-            
             </p>
+
             <p align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
             <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">_______________________________________</span></span></span></p>
             <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
@@ -342,18 +341,18 @@
             
             <span style="font-family: 'Times New Roman', serif"><b></b></span></p>
             <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-            <span ><span style="font-family: 'Times New Roman', serif"><span size="1" style="font-size: 8pt"><span ><span  style="font-size: 12pt">«</span></span>
+            <span ><span style="font-family: 'Times New Roman', serif"><span size="1" style="font-size: 8pt"><span ><span  style="font-size: 12pt"></span></span>
             <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address.length > 0" style="font-size: 12pt">{{userDetails.tellUsAboutYou.address}}</span>
-            <span ><span  style="font-size: 12pt">»</span></span></span></span></span></p>
+            <span ><span  style="font-size: 12pt"></span></span></span></span></span></p>
 
             <!-- <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-            <span ><span style="font-family: 'Times New Roman', serif"><span size="1" style="font-size: 8pt"><span ><span  style="font-size: 12pt">«</span></span><span  style="font-size: 12pt">Address2</span><span ><span  style="font-size: 12pt">»</span></span></span></span></span></p> -->
+            <span ><span style="font-family: 'Times New Roman', serif"><span size="1" style="font-size: 8pt"><span ><span  style="font-size: 12pt"></span></span><span  style="font-size: 12pt">Address2</span><span ><span  style="font-size: 12pt"></span></span></span></span></span></p> -->
 
             
             
             <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
             <span ><span style="font-family: 'Times New Roman', serif"><span size="1" style="font-size: 8pt"><span ></span><span  style="font-size: 12pt">City</span>
-            <span  style="font-size: 12pt">State:FL</span><span ><span  style="font-size: 12pt">»</span></span></span></span></span></p>
+            <span  style="font-size: 12pt">State:FL</span><span ><span  style="font-size: 12pt"></span></span></span></span></span></p>
             <p align="justify" style="margin-bottom: 0in; line-height: 100%">
             
             </p>
@@ -366,7 +365,7 @@
             <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">We,
             the witnesses hereunder, certify that each of us is 18 years of age
             or older and each personally witnessed </span></span>
-            <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">«</span></span>
+            <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt"></span></span>
             
             <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0" style="font:font-family;"><b>{{userDetails.tellUsAboutYou.fullname}}</b></span>
             <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null && (userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname.length == 0)" style="font:font-family;"><b>________________________</b></span>
@@ -381,21 +380,17 @@
             or direct the signing of this Designation; that we are acquainted
             with the principal and believe </span></span>
             
-            <span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">Gender
-            of Settlor:him/her</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">»
+            <span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">{{genderTxt}}</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">
             to be of sound mind; that neither of us is a person who signed the
             above Designation on behalf of the principal; that we are not named
             as surrogate or alternate surrogate by this Designation; that we are
             not related to the principal by blood or marriage nor are we entitled
-            to any portion of «</span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">Gender
-            of Settlor:his/her</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">»
+            to any portion of </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">{{genderTxt}}</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">
             estate according to the laws of intestate succession of this state or
             under any will or codicil of the principal; that we are not directly
-            financially responsible for «</span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">Gender
-            of Settlor:his/her</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">»
+            financially responsible for </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">{{genderTxt}}</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">
             medical care; and that we are not agents of any health care facility
-            in which «</span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">Gender
-            of Settlor:he/she</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">»
+            in which </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">{{genderTxt}}</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">
             may be a patient at the time of signing this Designation.</span></span></p>
             <p align="justify" style="margin-bottom: 0in; line-height: 100%">
             
@@ -476,8 +471,8 @@
           
           </p>
           <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">I,
-          «</span><span ><span  style="font-size: 12pt">CLIENT'S
-          NAME</span></span><span  style="font-size: 12pt">», the
+          </span><span ><span  style="font-size: 12pt">CLIENT'S
+          NAME</span></span><span  style="font-size: 12pt">, the
           principal, declare to the officer taking my acknowledgment of this
           instrument, and to the subscribing witnesses, that I signed and
           executed this instrument as my Designation of Health Care Surrogate.</span></span></span></p>
@@ -573,7 +568,7 @@
           
           </p>
           <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">Acknowledged
-          and subscribed before me by «<span >CLIENT'S NAME</span>»,
+          and subscribed before me by <span >CLIENT'S NAME</span>,
           the principal, who is personally known to me or who has produced
           satisfactory photo identification, to wit:
           ________________________________, and sworn to and subscribed before
@@ -723,9 +718,7 @@
           <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0"><a name="_GoBack"></a>
           <span style="font-family: 'Times New Roman', serif">		</span>
           
-          <span style="font-family: 'Times New Roman', serif"><b>«</b></span>
-          
-          <h1>CLIENT FULL NAME</h1>
+          <span style="font-family: 'Times New Roman', serif"><b></b></span>
 
           <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0" style="font:font-family;"><b>{{userDetails.tellUsAboutYou.fullname}}</b></span>
           <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null && (userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname.length == 0)" style="font:font-family;"><b>________________________</b></span>
@@ -754,7 +747,7 @@
             <span style="font-family: 'Times New Roman', serif">{{genderTxt}}</span>
           </span>
           
-          <span style="font-family: 'Times New Roman', serif">»
+          <span style="font-family: 'Times New Roman', serif">
           to be of sound mind; that neither of us is a person who signed the
           above directive on behalf of the declarant; that we are not named as
           </span>
@@ -763,21 +756,21 @@
             <span style="font-family: 'Times New Roman', serif">{{genderTxt}}</span>
           </span>
           
-          <span style="font-family: 'Times New Roman', serif">»
+          <span style="font-family: 'Times New Roman', serif">
           surrogate or alternate surrogate by any Designation of Health Care
           Surrogate; that we are not related to the declarant by blood or
           marriage nor are we entitled to any portion of </span>
           
           <span ><span style="font-family: 'Times New Roman', serif">{{genderTxt}}</span></span>
           
-          <span style="font-family: 'Times New Roman', serif">»
+          <span style="font-family: 'Times New Roman', serif">
           estate according to the laws of intestate succession of this state or
           under any will or codicil of the declarant; that we are not directly
           financially responsible for </span><span >
           
           <span style="font-family: 'Times New Roman', serif">{{genderTxt}}</span>
           
-          </span><span style="font-family: 'Times New Roman', serif">»
+          </span><span style="font-family: 'Times New Roman', serif">
           medical care; and that we are not agents of any health care facility
           in which </span><span>
             
@@ -906,12 +899,12 @@
           <span style="font-family: 'Times New Roman', serif">We, </span><span style="font-family: 'Times New Roman', serif"><u>					</u></span><span style="font-family: 'Times New Roman', serif">
           and </span><span style="font-family: 'Times New Roman', serif"><u>					</u></span><span style="font-family: 'Times New Roman', serif">,
           the witnesses, have been sworn by the officer signing below, and
-          declare to that officer on our oaths that </span><span style="font-family: 'Times New Roman', serif">«</span>
+          declare to that officer on our oaths that </span><span style="font-family: 'Times New Roman', serif"></span>
           
           <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname}}</span>
           <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">___________________________</span>         
           
-          <span style="font-family: 'Times New Roman', serif">»,</span><span style="font-family: 'Times New Roman', serif">
+          <span style="font-family: 'Times New Roman', serif">,</span><span style="font-family: 'Times New Roman', serif">
           the declarant, signed this Declaration in our presence, and that we
           each signed the instrument as a witness in the presence of the
           declarant and of each other.</span><span style="font-family: 'Times New Roman', serif">&nbsp;</span></p>
@@ -975,14 +968,14 @@
           
           </p>
           <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">Acknowledged
-          and subscribed before me by </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">«</span></span></span>
+          and subscribed before me by </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"></span></span></span>
           
           <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname}}</span>
           <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">___________________________</span>         
           
           
           
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">»</span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">,
+          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">,
           the principal, who is personally known to me or who has produced
           satisfactory photo identification, to wit:
           ________________________________, and sworn to and subscribed before
