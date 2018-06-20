@@ -15,6 +15,10 @@ import {FinalDispositionDocComponent} from './final-disposition-doc/final-dispos
 import { CtComponent } from './healthcare-poa-doc/ct/ct.component';
 import { DcComponent } from './healthcare-poa-doc/dc/dc.component';
 import { FlComponent } from './healthcare-poa-doc/fl/fl.component';
+import { InComponent } from './healthcare-poa-doc/in/in.component';
+import { IaComponent } from './healthcare-poa-doc/ia/ia.component';
+import { KsComponent } from './healthcare-poa-doc/ks/ks.component';
+import { KyComponent } from './healthcare-poa-doc/ky/ky.component';
 
 @NgModule({
   imports: [
@@ -36,6 +40,10 @@ import { FlComponent } from './healthcare-poa-doc/fl/fl.component';
     CtComponent,
     DcComponent,
     FlComponent,
+    InComponent,
+    IaComponent,
+    KsComponent,
+    KyComponent,
   ]
 })
 export class DocModule { }

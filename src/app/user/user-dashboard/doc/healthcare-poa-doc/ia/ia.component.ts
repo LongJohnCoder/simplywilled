@@ -1,11 +1,11 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-dc',
-  templateUrl: './dc.component.html',
-  styleUrls: ['./dc.component.css']
+  selector: 'app-ia',
+  templateUrl: './ia.component.html',
+  styleUrls: ['./ia.component.css']
 })
-export class DcComponent implements OnInit, OnChanges {
+export class IaComponent implements OnInit, OnChanges {
 
   /**Variable declaration*/
   @Input() data: any;

@@ -1,11 +1,11 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-dc',
-  templateUrl: './dc.component.html',
-  styleUrls: ['./dc.component.css']
+  selector: 'app-ky',
+  templateUrl: './ky.component.html',
+  styleUrls: ['./ky.component.css']
 })
-export class DcComponent implements OnInit, OnChanges {
+export class KyComponent implements OnInit, OnChanges {
 
   /**Variable declaration*/
   @Input() data: any;
@@ -50,4 +50,5 @@ export class DcComponent implements OnInit, OnChanges {
       console.log(this.userDetails);
     }
   }
+
 }
