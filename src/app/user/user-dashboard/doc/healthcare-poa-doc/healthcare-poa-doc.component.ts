@@ -115,14 +115,14 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   /**When the component initialises*/
   ngOnInit() {
     this.states = {
-      ak: false,
+      ak: true,
       al: false,
       ar: false,
       ca: false,
       co: false,
       ct: false,
       dc: false,
-      fl: true
+      fl: false
     };
     this.docScrolled = 0;
     this.thumbIndex = 0;
