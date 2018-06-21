@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {GlobalPdfService} from '../services/global-pdf.service';
-import {Subscription} from "rxjs/Subscription";
-import {UserService} from "../../../user.service";
-import {ProgressbarService} from "../../shared/services/progressbar.service";
-import {UserAuthService} from "../../../user-auth/user-auth.service";
+import {Subscription} from 'rxjs/Subscription';
+import {UserService} from '../../../user.service';
+import {ProgressbarService} from '../../shared/services/progressbar.service';
+import {UserAuthService} from '../../../user-auth/user-auth.service';
 import {Location} from '@angular/common';
 
 @Component({
@@ -38,7 +38,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     provideYourLovedOnes: false,
     tellUsAboutYou: false
   };
-  loggedInUser:any;
+  loggedInUser: any;
   getUserDetailsSubscription: Subscription;
   count: number;
 
@@ -59,7 +59,16 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     me: false,
     hi: false,
     id: false,
-    il: false
+    il: false,
+    tn: false,
+    wy: false,
+    wv: false,
+    wi: false,
+    wa: false,
+    vt: false,
+    va: false,
+    ut: false,
+    tx: false
   };
   pdfData: any;
   globalPDFSubscription: Subscription;
@@ -140,7 +149,16 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
       me: false,
       hi: false,
       id: false,
-      il: true,
+      il: false,
+      tn: false,
+      wy: false,
+      wv: false,
+      wi: false,
+      wa: false,
+      vt: false,
+      va: false,
+      ut: false,
+      tx: true
     };
     this.docScrolled = 0;
     this.thumbIndex = 0;

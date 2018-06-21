@@ -19,6 +19,7 @@
   </div>
   <div class="docViewBox">
     <div class="docView" #docBox (scroll)="getScroll(docBox.scrollTop)">
+     
       <div class="docContainer">
         <app-ak [data]="pdfData" *ngIf="states.ak"></app-ak>
         <app-al [data]="pdfData" *ngIf="states.al"></app-al>
@@ -37,6 +38,16 @@
         <app-hi [data]="pdfData" *ngIf="states.hi"></app-hi>
         <app-id [data]="pdfData" *ngIf="states.id"></app-id>
         <app-il [data]="pdfData" *ngIf="states.il"></app-il>
+        <app-tn [data]="pdfData" *ngIf="states.tn"></app-tn>
+        <app-wy [data]="pdfData" *ngIf="states.wy"></app-wy>
+        <app-wv [data]="pdfData" *ngIf="states.wv"></app-wv>
+        <app-wi [data]="pdfData" *ngIf="states.wi"></app-wi>
+        <app-wa [data]="pdfData" *ngIf="states.wa"></app-wa>
+
+        <app-vt [data]="pdfData" *ngIf="states.vt"></app-vt>
+        <app-va [data]="pdfData" *ngIf="states.va"></app-va>
+        <app-ut [data]="pdfData" *ngIf="states.ut"></app-ut>
+        <app-tx [data]="pdfData" *ngIf="states.tx"></app-tx>
         <!--<app-dc [data]="pdfData" *ngIf="states.co"></app-dc>-->
         <!--<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
           <div id="doc" class="docPageInner"

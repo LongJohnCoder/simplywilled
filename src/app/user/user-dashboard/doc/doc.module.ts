@@ -24,6 +24,15 @@ import { MeComponent } from './healthcare-poa-doc/me/me.component';
 import { HiComponent } from './healthcare-poa-doc/hi/hi.component';
 import { IdComponent } from './healthcare-poa-doc/id/id.component';
 import { IlComponent } from './healthcare-poa-doc/il/il.component';
+import { TnComponent } from './healthcare-poa-doc/tn/tn.component';
+import { WyComponent } from './healthcare-poa-doc/wy/wy.component';
+import { WvComponent } from './healthcare-poa-doc/wv/wv.component';
+import { WiComponent } from './healthcare-poa-doc/wi/wi.component';
+import { WaComponent } from './healthcare-poa-doc/wa/wa.component';
+import { VtComponent } from './healthcare-poa-doc/vt/vt.component';
+import { VaComponent } from './healthcare-poa-doc/va/va.component';
+import { UtComponent } from './healthcare-poa-doc/ut/ut.component';
+import { TxComponent } from './healthcare-poa-doc/tx/tx.component';
 
 @NgModule({
   imports: [
@@ -54,6 +63,15 @@ import { IlComponent } from './healthcare-poa-doc/il/il.component';
     HiComponent,
     IdComponent,
     IlComponent,
+    TnComponent,
+    WyComponent,
+    WvComponent,
+    WiComponent,
+    WaComponent,
+    VtComponent,
+    VaComponent,
+    UtComponent,
+    TxComponent,
   ]
 })
 export class DocModule { }

@@ -1,0 +1,827 @@
+<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+      <p style="line-height: 100%; text-align: center;"><span  style="font-size: 13pt"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span  style="font-size: 16pt"><b>W</b></span></span></span><span  style="font-size: 16pt"><b>ASHINGTON
+        ADVANCE DIRECTIVE</b></span></span></p>
+        <p style="margin-bottom: 0.13in; line-height: 100%"><br/>
+        <br/>
+
+        </p>
+        <p style="margin-bottom: 0.13in; line-height: 100%; text-align: center;"><span  style="font-size: 13pt"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span  style="font-size: 14pt"><b>PART
+        I:  D</b></span></span></span><span  style="font-size: 14pt"><b>URABLE
+        </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span  style="font-size: 14pt"><b>P</b></span></span></span><span  style="font-size: 14pt"><b>OWER
+        OF </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span  style="font-size: 14pt"><b>A</b></span></span></span><span  style="font-size: 14pt"><b>TTORNEY</b></span><span  style="font-size: 14pt">
+        </span><span  style="font-size: 14pt"><b>FOR </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span  style="font-size: 14pt"><b>H</b></span></span></span><span  style="font-size: 14pt"><b>EALTH
+        </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span  style="font-size: 14pt"><b>C</b></span></span></span><span  style="font-size: 14pt"><b>ARE</b></span></span></p><br>
+        <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">I
+        understand that my wishes as expressed in my living will may not
+        cover all possible aspects of my care if I become incapacitated or
+        that it may not be at hand or accepted by my health care providers.
+        Consequently, there may be a need for someone to accept or refuse
+        medical intervention on my behalf, in consultation with my physician.</span></span></p>
+        <p  style="margin-bottom: 0.09in; line-height: 100%"><br/>
+        <br/>
+
+        </p>
+        <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+        Therefore, <span >I, </span>
+        
+        <span>
+            <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+            <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">________________________________</b>
+        </span>
+        
+        <span>, of </span>
+        
+        <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.address !== null" style="font-family:'Times New Roman, serif'" >{{userDetails.tellUsAboutYou.address}}</span>
+            <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_________________________________________________________________
+              ___________________________________________________________________________________________
+            _________________________________________________________________________________</span>
+        <span>, </span>
+        
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.city}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(city)_____________</span>
+        
+        <span>, </span>
+        
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.state}}</span>&nbsp;
+        <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="font-family:'Times New Roman, serif'">(state)_____________________</span>
+        
+        
+        <span >, as principal, designate and appoint my </span>
+        
+        <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther}}</span>
+        <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation}}</span>
+        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">______________</span>
+        
+        <span >, </span>
+        
+        <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.fullname.length > 0" style="font-family:'Times New Roman, serif'">{{userDetails.healthFinance.fullname}}</span>
+        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" style="font-family:'Times New Roman, serif'">_____________________________</span>
+        
+        <span>, of </span>
+        
+        <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.address !== null">{{userDetails.healthFinance.address}}, </span>
+        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">_________________________________________________________________
+          _______________________________________________________________________________, 
+        </span>
+
+        <span >, </span>
+        
+        <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.city !== null">{{userDetails.healthFinance.city}}, </span>
+        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(city)__________________, </span> 
+        
+        <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.state !== null">{{userDetails.healthFinance.state}}, </span>
+        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(state)__________________, </span>
+
+        <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.zip !== null">{{userDetails.healthFinance.zip}}, </span>
+        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(zip)__________________, </span>
+        
+        <span> (Tel: </span>
+        
+        <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.phone !== null">{{userDetails.healthFinance.phone}}</span>
+        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">__________________</span>
+        
+        <span >),
+        as my attorney-in-fact for health care decisions to the same extent
+        that I could make such decisions for myself if I were capable of
+        doing so, as recognized by RCW 11.125.010.</span><span >&nbsp;</span></p>
+        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p  style="margin-bottom: 0in; line-height: 100%">
+          <span>
+            <span size="2" style="font-size: 9pt">
+              <span ><span  style="font-size: 12pt"></span></span>
+              
+              </span>
+            </span>
+          </p>
+
+        
+        <div *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent == 'true'">
+            <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">If
+                my primary attorneys-in-fact is unable, unavailable, or unwilling to
+                serve, then I designate </span><span ><span  style="font-size: 12pt">my
+                </span></span>
+                
+                <span>
+                  <span style="font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation == 'Other'">{{userDetails.healthFinance.backupRelationOther}}</span>
+                  <span style="font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation != 'Other'">{{userDetails.healthFinance.backupRelation}}</span>
+                  <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">______________</span>
+                </span>
+                
+                <span><span  style="font-size: 12pt">, </span></span>
+                
+                <span>
+                    <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupFullname.length > 0" style="font-size: 12pt">{{userDetails.healthFinance.backupFullname}}</span>
+                    <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" style="font-size: 12pt">_____________________________</span>
+                </span>
+                  
+                  <span> 
+                    <span  style="font-size: 12pt">, of </span>
+                  </span>
+                  
+                  <span>
+                      <span style="font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupAddress !== null">{{userDetails.healthFinance.backupAddress}}, </span>
+                      <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">_________________________________________________________________
+                        _______________________________________________________________________________, 
+                      </span>
+                  </span>
+                  
+                  <span  style="font-size: 12pt"></span>
+                  <span>
+                      <span style="font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupCity !== null">{{userDetails.healthFinance.backupCity}}, </span>
+                      <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(city)__________________, </span>
+                  </span>
+                  
+                  <span  style="font-size: 12pt">, </span>
+                  
+                  <span>
+                      <span style="font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupState !== null">{{userDetails.healthFinance.backupState}}, </span>
+                      <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(state)__________________, </span>
+                  </span>
+                  
+                  <span>
+                      <span style="font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupZip !== null">{{userDetails.healthFinance.backupZip}}, </span>
+                      <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(zip)__________________, </span>
+                  </span>
+                  
+                  <span>
+                    <span  style="font-size: 12pt">
+                      (Tel: </span></span>
+                      <span>
+                        <span  style="font-size: 12pt">Rx Agent #2 Telephone</span>
+                      </span>
+                      
+                      <span><span style="font-size: 12pt">),
+                </span></span>
+                
+                
+                <span  style="font-size: 12pt">as my alternate
+                attorney-in-fact for health care decisions as authorized in this
+                document.</span><span  style="font-size: 12pt">&nbsp;</span></span></p>
+                <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+                <br/>
+        
+                </p>
+        </div>
+
+        <p  style="margin-bottom: 0in; line-height: 100%"><span ><span size="2" style="font-size: 9pt"><span ><span  style="font-size: 12pt"></span></span><span  style="font-size: 12pt">END
+        IF</span><span ><span  style="font-size: 12pt"></span></span></span></span></p>
+        <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">1.&nbsp;&nbsp;&nbsp;&nbsp;</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">This
+        Power of Attorney shall take effect upon my incapacity to make my own
+        health care decisions, as determined by my treating physician and one
+        other physician, and shall continue as long as the incapacity lasts
+        or until I revoke it, whichever happens first.</span></span></p>
+        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+        2.&nbsp;&nbsp;&nbsp;&nbsp;My attorney-in-fact shall have all the powers necessary to make
+        decisions about my health care on my behalf.  These powers shall
+        include, but not be limited to, the power to obtain medical records
+        protected by applicable federal and state regulations (including
+        HIPAA), the power to have me admitted to a health care facility, and
+        the power to order the withholding or withdrawal of life-sustaining
+        treatment and artificially provided nutrition and hydration as
+        directed by my Living Will, if any. The existence of this Durable
+        Power of Attorney for Health Care shall have no effect upon the
+        validity of any other Power of Attorney for other purposes that I
+        have executed or may execute in the future. 
+        </p>
+        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p class="western" style="margin-bottom: 0in; line-height: 100%">3.&nbsp;&nbsp;&nbsp;&nbsp;
+        My attorney-in-fact’s powers shall survive my death to the extent
+        that my attorney-in-fact shall have all the powers necessary to
+        direct the donation of my organs and the final disposition of my
+        remains. 
+        </p>
+        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">4.&nbsp;&nbsp;&nbsp;&nbsp;</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">In
+        the event that a proceeding is initiated to appoint a guardian of my
+        person under RCW 11.88, I nominate the person designated as my first
+        choice (on page 1) to serve as my guardian. My second choice (on page
+        1) will serve as my guardian if the first person is unable or
+        unwilling.</span></span></p>
+    </div>
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      Advance Directive of <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+      Page 1 of 7
+    </div>
+
+    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      Advance Directive of  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
+      Page 1 of 7
+    </div>
+  </div>
+  
+  
+  <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+      <p class="western" style="margin-bottom: 0in; line-height: 100%">5.
+      When making health care decisions for me, my attorney-in-fact should
+      think about what action would be consistent with past conversations
+      we have had, my treatment preferences as expressed in this or any
+      other clear expression of my desires, my religious and other beliefs
+      and values, and how I have handled medical and other important issues
+      in the past. If what I would decide is still unclear, then my
+      attorney-in-fact should make decisions for me that my
+      attorney-in-fact believes are in my best interest, considering the
+      benefits, burdens, and risks of my current circumstances and
+      treatment options.</p>
+      <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+      </p>
+      <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">6.</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">I
+      make the following additional instructions regarding my care:</span></span></p>
+      <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+      <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">________________________________________________________________________</span></span></p>
+      <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+      <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">________________________________________________________________________</span></span></p>
+      <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
+      <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">________________________________________________________________________</span></span></p>
+      <p align="left" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
+      <span size="1" style="font-size: 7pt"><span size="2" style="font-size: 10pt"><i>(Add
+      additional sheets if needed.)</i></span></span></p>
+      <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+      </p>
+      <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">7.</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">I
+      revoke any prior Advance Health Care Directive and any prior Durable
+      Power of Attorney for Health Care. The existence of this Durable
+      Power of Attorney for Health Care shall have no effect upon the
+      validity of any other Power of Attorney for other purposes that I
+      have executed or may execute in the future.</span></span></p>
+      <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+      </p>
+      <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">7.</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">Persons
+      dealing with my attorney-in-fact may rely fully on a photocopy of
+      this document as though the photocopy was an original.</span><span  style="font-size: 12pt">&nbsp;</span></span></p>
+      <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+      </p>
+      <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+      </p>
+      <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+      </p>
+      <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span  style="font-size: 12pt"><b>By
+      signing this document, I indicate that I understand the purpose and
+      effect of this Durable Power of Attorney for Health Care. I am
+      competent to execute this document.</b></span></span></p>
+      <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+      </p>
+      <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+      </p>
+      <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">Date:
+      </span><span  style="font-size: 12pt"><u>_________________</u></span><span  style="font-size: 12pt">	</span></span></p>
+      <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+      </p>
+      <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+      </p>
+      <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">Signature:
+      </span><span  style="font-size: 12pt"><u>_________________________________</u></span></span></p>
+      <p class="western"  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+
+
+      <span >
+          <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+          <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">________________________________</b>
+      </span>
+
+      </p>
+    </div>
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      Advance Directive of <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+      Page 2 of 7
+    </div>
+
+    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      Advance Directive of  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
+      Page 2 of 7
+    </div>
+  </div>
+  
+  
+  <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+      <p align="center" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
+        <span  style="font-size: 13pt"><span  style="font-size: 14pt"><b>PART
+        II: DECLARATION</b></span></span></p>
+        <p  style="margin-top: 0.19in; margin-bottom: 0in; line-height: 100%">
+        <span ><span size="2" style="font-size: 9pt"><span ><span  style="font-size: 12pt">DIRECTIVE
+        made this </span></span><span ><span  style="font-size: 12pt"><u>________</u></span></span><span ><span  style="font-size: 12pt">
+        day of </span></span><span ><span  style="font-size: 12pt"><u>_______________________</u></span></span><span ><span  style="font-size: 12pt">,
+        </span></span><span ><span  style="font-size: 12pt"><u>____________</u></span></span><span ><span  style="font-size: 12pt">.</span></span></span></span></p>
+        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p class="western"  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+        I,
+        
+        <span>
+            <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+            <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
+        </span>,
+        of 
+        
+        <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.address !== null" style="font-family:'Times New Roman, serif'" >{{userDetails.tellUsAboutYou.address}}, </span>
+        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_________________________________________________________________
+          ___________________________________________________________________________________________
+        _________________________________________________________________________________, </span> 
+        
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.city}} ,</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(city)_____________ ,</span>
+        
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.state}}</span>&nbsp;
+        <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="font-family:'Times New Roman, serif'">(state)_____________________</span>&nbsp;
+        
+        <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.zip !== null">{{userDetails.healthFinance.zip}}, </span>
+        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(zip)__________________, </span>
+
+        having the capacity to make health care decisions, willfully, and
+        voluntarily make known my desire that my dying shall not be
+        artificially prolonged under the circumstances set forth below, and
+        do here by declare that:</p>
+        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">(a)</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">If
+        at any time I should be diagnosed in writing to be in a terminal
+        condition by the attending physician, or in a permanent unconscious
+        condition by two physicians, and where the application of
+        life-sustaining treatment would serve only to artificially prolong
+        the process of my dying, I direct that such treatment be withheld or
+        withdrawn, and that I be permitted to die naturally. I understand by
+        using this form that a terminal condition means an incurable and
+        irreversible condition caused by injury, disease, or illness, that
+        would within reasonable medical judgment cause death within a
+        reasonable period of time in accordance with accepted medical
+        standards, and where the application of life-sustaining treatment
+        would serve only to prolong the process of dying. I further
+        understand in using this form that a permanent unconscious condition
+        means an incurable and irreversible condition in which I am medically
+        assessed within reasonable medical judgment as having no reasonable
+        probability of recovery from an irreversible coma or a persistent
+        vegetative state.</span></span></p>
+        <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+        </p>
+        <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">(b)</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">In
+        the absence of my ability to give directions regarding the use of
+        such life-sustaining treatment, it is my intention that this
+        directive shall be honored by my family and physician(s) as the final
+        expression of my legal right to refuse medical or surgical treatment
+        and I accept the consequences of such refusal. If another person is
+        appointed to make these decisions for me, whether through a durable
+        power of attorney or otherwise, I request that the person be guided
+        by this directive and any other clear expressions of my desires.</span></span></p>
+        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 200%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">(c)</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">If
+        I am diagnosed to be in a terminal condition or in a permanent
+        unconscious condition: (</span><span  style="font-size: 12pt"><i>INITIAL
+        one</i></span><span  style="font-size: 12pt">)</span></span></p>
+        <p  style="margin-left: 1.13in; text-indent: -0.38in; margin-bottom: 0in; line-height: 200%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">_______</span>	<span  style="font-size: 12pt">I
+        DO want to have artificially provided nutrition and hydration.</span></span></p>
+        <p  style="margin-left: 1.13in; text-indent: -0.38in; margin-bottom: 0in; line-height: 200%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">_______</span>	<span  style="font-size: 12pt">I
+        DO NOT want to have artificially provided nutrition and hydration.</span></span></p>
+        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0.17in; line-height: 100%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">(d)</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">If
+        I have been diagnosed as pregnant and that diagnosis is known to my
+        physician, this directive shall have no force or effect during the
+        course of my pregnancy.</span></span></p>
+    </div>
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      Advance Directive of <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+      Page 3 of 7
+    </div>
+
+    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      Advance Directive of  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
+      Page 3 of 7
+    </div>
+  </div>
+  
+  
+  <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+      <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">(e)</span><span  style="font-size: 12pt">	I</span><span  style="font-size: 12pt">
+        understand that before I sign this directive, I can add to or delete
+        from or otherwise change the wording of this directive and that I may
+        add to or delete from this directive at any time and that any changes
+        shall be consistent with Washington state law or federal
+        constitutional law to be legally valid.</span></span></p>
+        <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+        </p>
+        <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">(f)</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">It
+        is my wish that every part of this directive be fully implemented. If
+        for any reason any part is held invalid it is my wish that the
+        remainder of my directive be implemented.</span></span></p>
+        <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0.09in; line-height: 100%">
+        <br/>
+        <br/>
+
+        </p>
+        <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0.09in; line-height: 150%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">(g)</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">I
+        make the following additional instructions regarding my care:</span></span></p>
+        <p  style="margin-left: 0.75in; margin-bottom: 0.09in; line-height: 150%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">__________________________________________________________________</span></span></p>
+        <p  style="margin-left: 0.75in; margin-bottom: 0.09in; line-height: 150%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">__________________________________________________________________</span></span></p>
+        <p  style="margin-left: 0.75in; margin-bottom: 0in; line-height: 150%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">__________________________________________________________________</span></span></p>
+        <p  style="margin-left: 0.75in; margin-bottom: 0.09in; line-height: 150%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">__________________________________________________________________</span></span></p>
+        <p  style="margin-left: 0.75in; margin-bottom: 0.09in; line-height: 150%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">__________________________________________________________________</span></span></p>
+        <p  style="margin-left: 0.75in; margin-bottom: 0in; line-height: 150%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">__________________________________________________________________</span></span></p>
+        <p  style="margin-left: 0.75in; margin-bottom: 0.09in; line-height: 150%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">__________________________________________________________________</span></span></p>
+        <p  style="margin-left: 0.75in; margin-bottom: 0.09in; line-height: 150%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">__________________________________________________________________</span></span></p>
+        <p  style="margin-left: 0.75in; margin-bottom: 0in; line-height: 150%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">__________________________________________________________________</span></span></p>
+        <p align="left" style="margin-left: 0.75in; margin-bottom: 0in; line-height: 100%">
+        <span size="1" style="font-size: 7pt"><span  style="font-size: 12pt"><i>(Add
+        additional sheets if needed.)</i></span></span></p>
+    </div>
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      Advance Directive of <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+      Page 4 of 7
+    </div>
+
+    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      Advance Directive of  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
+      Page 4 of 7
+    </div>
+  </div>
+  
+  
+  <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+      <p align="center" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 14pt"><b>PART
+        III: ORGAN DONATION</b></span></span></p>
+        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+        Initial the line next to the statement below that best reflects your
+        wishes. You do not have to initial any of the statements. If you do
+        not initial any of the statements, your attorney-in-fact, other
+        agent, or your family, may have the authority to make a gift of all
+        or part of your body. 
+        </p>
+        <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+        </p>
+        <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+        _____ I do not want to make an organ or tissue donation and I do not
+        want my 
+        </p>
+        <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+          attorney-in-fact, other agent, or family to do so. 
+        </p>
+        <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+        </p>
+        <p class="western"  style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+        _____ I have already signed a written agreement or donor card
+        regarding organ 
+        </p>
+        <p class="western"  style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+        and tissue donation with the following individual or institution: 
+        </p>
+        <p class="western"  style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+        </p>
+        <p class="western"  style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+        Name of individual/institution:_____________________ 
+        </p>
+        <p class="western"  style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+        </p>
+        <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+        _____ Pursuant to Washington State law, I hereby give, effective on
+        my death 
+        </p>
+        <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+        </p>
+        <p class="western"  style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+        <i>(INITIAL one): </i>
+        </p>
+        <p class="western"  style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+        </p>
+        <p class="western"  style="margin-left: 1.5in; margin-bottom: 0in; line-height: 200%">
+        _____ Any needed organ or parts. 
+        </p>
+        <p class="western"  style="margin-left: 1.5in; margin-bottom: 0in; line-height: 200%">
+        _____ The following part or organs listed below:</p>
+        <p  style="margin-left: 2in; margin-bottom: 0in; line-height: 200%">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 12pt"><u>																																</u></span></span></p>
+        <p class="western" style="margin-left: 2.5in; margin-bottom: 0in; line-height: 100%">
+        For the following purposes:</p>
+        <p class="western" style="margin-left: 2.5in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+        </p>
+        <p class="western" style="margin-left: 2.5in; margin-bottom: 0in; line-height: 100%">
+        (<i>INITIAL one</i>)</p>
+        <p class="western" style="margin-left: 2.5in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+        </p>
+        <p class="western" style="margin-left: 2.5in; margin-bottom: 0in; line-height: 200%">
+        _____ Any legally authorized purpose. 
+        </p>
+        <p class="western" style="margin-left: 2.5in; margin-bottom: 0in; line-height: 200%">
+        _____ Transplant or therapeutic purposes only. 
+        </p>
+
+    </div>
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      Advance Directive of <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+      Page 5 of 7
+    </div>
+
+    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      Advance Directive of  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
+      Page 5 of 7
+    </div>
+  </div>
+  
+  
+  <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+      <p align="center" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
+        <span size="2" style="font-size: 9pt"><span  style="font-size: 14pt"><b>PART
+        IV:  EXECUTION</b></span></span></p>
+        <p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+        I understand the full import of this directive and I am emotionally
+        and mentally capable to make the health care decisions contained in
+        this directive. I also understand that I can change or revoke all or
+        part of this directive at any time</p>
+        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span  style="font-size: 12pt">DATE:
+        </span><span  style="font-size: 12pt"><u>_________________</u></span><span  style="font-size: 12pt">	</span></span></p>
+        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span  style="font-size: 12pt"><u>___________________________________</u></span></span></p>
+        <p class="western"  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+        <b></b>
+
+        <span >
+            <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+            <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
+        </span>
+        
+        </p>
+        
+        <p  style="margin-bottom: 0in; line-height: 100%">
+          <span >
+            <span size="2" style="font-size: 9pt">
+              <span ><span  style="font-size: 12pt"></span></span>
+
+              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.address !== null" style="font-family:'Times New Roman, serif'" >{{userDetails.tellUsAboutYou.address}}</span>
+              <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_________________________________________________________________
+                ___________________________________________________________________________________________
+              _________________________________________________________________________________</span>
+              
+              <span ><span  style="font-size: 12pt"></span></span></span></span></p>
+        <p  style="margin-bottom: 0in; line-height: 100%"></p>
+
+        <p  style="margin-bottom: 0in; line-height: 100%"><span ><span size="2" style="font-size: 9pt"><span >
+          
+          <span  style="font-size: 12pt"></span></span>
+          
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.city}}</span>&nbsp;
+          <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="font-family:'Times New Roman, serif'">(city)_____________________</span>
+        
+          
+          <span ><span  style="font-size: 12pt"><b>,
+        </b></span></span>
+        
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.state}}</span>&nbsp;
+        <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="font-family:'Times New Roman, serif'">(state)_____________________</span>
+        
+        <span ><span  style="font-size: 12pt"></span></span>
+        
+        <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.zip !== null">{{userDetails.healthFinance.zip}}, </span>
+        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(zip)__________________, </span>
+        
+        <span ><span  style="font-size: 12pt"><b></b></span></span></span></span></p>
+        <p  style="margin-left: 2.44in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+        </p>
+        <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+        </p>
+        <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
+        <b>WITNESS STATEMENTS</b></p>
+        <p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+        The declarer, who signed the above Directive, is personally known to
+        me and I believe him or her to be capable of making health care
+        decisions. I agree that I am not related to the declarer by blood or
+        marriage, the declarer has stated I am not mentioned in the
+        declarer’s will, and I will not be entitled to any portion of the
+        estate of the declarer upon declarer’s decease under any existing
+        will of the declarer at the time of the execution of the above
+        Directive. In addition, I am not the attending physician, an employee
+        of the attending physician or a health care facility in which the
+        declarer is a patient, or any person who has a claim against any
+        portion of the estate of the declarer upon the declarer’s decease
+        at the time of the execution of the above Directive.  I further
+        attest that I am disinterested with regard to any anatomical gift
+        made by declarer.</p>
+        <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+        </p>
+        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+        </p>
+              <p class="western" style="margin-bottom: 0in; line-height: 100%"><span ><b>WITNESS
+        1</b></span><span >: </span><span ><u>____________________</u></span><span style="padding-left: 50px;">	Dated:
+        </span><span ><u>______________________</u></span></p>
+        <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
+        <span style="padding-left: 50px;">[signature]</span></p>
+        <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
+        <span ><u>____________________________</u></span><span >		</span><span style="padding-left: 122px;"><u>______________________</u></span></p>
+        <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+        <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
+        <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:25px 0 0 350px;">
+        <span >							</span><span ><u>______________________</u></span></p>
+        <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
+        <span style="padding-left: 40px;">								[city, state, zip]</span></p>
+        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p class="western" style="margin-bottom: 0in; line-height: 100%"><span ><b>WITNESS
+        2</b></span><span >: </span><span ><u>____________________</u></span><span style="padding-left: 50px;">	Dated:
+        </span><span ><u>______________________</u></span></p>
+        <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
+        <span style="padding-left: 50px;">[signature]</span></p>
+        <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
+        <span ><u>____________________________</u></span><span >		</span><span style="padding-left: 122px;"><u>______________________</u></span></p>
+        <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+        <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
+        <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:25px 0 0 350px;">
+        <span >							</span><span ><u>______________________</u></span></p>
+        <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
+        <span style="padding-left: 40px;">								[city, state, zip]</span></p>
+    </div>
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      Advance Directive of <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+      Page 6 of 7
+    </div>
+
+    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      Advance Directive of  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
+      Page 6 of 7
+    </div>
+  </div>
+  
+  
+  <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+      <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%; background: #ffffff">
+        <span ><b>NOTARY ACKNOWLEDGEMENT </b></span>
+        </p>
+        <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%; background: #ffffff">
+        <span ><b>(preferred but not required)</b></span></p>
+        <p class="western" style="margin-bottom: 0in; line-height: 100%; background: #ffffff">
+        <br/>
+
+        </p>
+        <p class="western" style="margin-bottom: 0in; line-height: 100%; background: #ffffff">
+        <span >State of Washington</span></p>
+        <p class="western" style="margin-bottom: 0in; line-height: 100%; background: #ffffff">
+        <br/>
+
+        </p>
+        <p class="western" style="margin-bottom: 0in; line-height: 100%; background: #ffffff">
+        <span >County of </span><span ><u>_____________________________</u></span></p>
+        <p class="western"  style="text-indent: 0.25in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+        <br/>
+
+        </p>
+        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p class="western"  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0"><a name="_GoBack"></a>
+        On this day personally appeared before me, <b></b>
+        
+        <span>
+            <span style="font-family:'Times New Roman, serif'">
+                <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+                <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
+            </span>
+        </span>
+        
+        <b>,</b><span ><b> </b></span>to
+        me known to be the individual described in and who executed the
+        within and foregoing instrument and acknowledged that he/she signed
+        the same as his/her free and voluntary act and deed for the uses and
+        purposes therein mentioned. 
+        </p>
+        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p class="western" style="margin-bottom: 0in; line-height: 100%">Given
+        under my hand and official seal this _____ day of _______________ in
+        the year ______. 
+        </p>
+        <p class="western" style="margin-left: 1.5in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+        </p>
+        <p class="western" style="margin-left: 1.5in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+        </p>
+        <p class="western" style="margin-left: 1.5in; margin-bottom: 0in; line-height: 100%">
+        __________________________________________ 
+        </p>
+        <p class="western" style="margin-left: 1.5in; margin-bottom: 0in; line-height: 100%">
+        Notary Public in and for the State of Washington 
+        </p>
+        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+        </p>
+        <p class="western" style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+        </p>
+        <p class="western" style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+        My appointment expires: ______________</p>
+    </div>
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      Advance Directive of <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+      Page 7 of 7
+    </div>
+
+    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      Advance Directive of  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
+      Page 7 of 7
+    </div>
+  </div>
