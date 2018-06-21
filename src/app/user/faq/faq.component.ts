@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { FaqService } from './faq.service';
 import { Router,ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -17,9 +16,9 @@ export class FaqComponent implements OnInit {
     counter       : number; // a common counter used to index the categories
     innerCounter  : number; // a common counter used to index the faq data per categories
     innerCounterSm: number; // a common counter used to index the faq data per categories -- for mobile
-    
+    searchParam: string;
     searchFaqQstn : string = '';
-    
+    filtrRes: any[];
     constructor(
         private faqService: FaqService,
         private router: Router,
@@ -28,7 +27,7 @@ export class FaqComponent implements OnInit {
 
     ngOnInit() {
         this.searchFaqQstn = this._route.snapshot.queryParamMap['params'].query;
-        console.log(this.searchFaqQstn);
+        // console.log(this.searchFaqQstn);
         this.getFaqCategories();
     }
 
@@ -38,21 +37,22 @@ export class FaqComponent implements OnInit {
     * */
     getFaqCategories() {
         this._route.params.subscribe( params => {
-            console.log('params',params);
+            // console.log('params',params);
           });
         this.faqService.getFaqCategories(this.searchFaqQstn).subscribe(
             (data: any) => {
                 this.faqData      = data.data;
                 this.faqDetails   = this.getQuestions(this.faqData,0);
-                console.log('faq data',this.faqData);
+                // console.log('faq data',this.faqData);
             }
         );
+        // console.log(this.faqDetails.values());
     }
 
     //we have all the necessary question sfrom 1 api
     //so we can loop over the questions in angular
     onSubmit( formFaqQa: NgForm ) {
-        console.log('submiting form ',formFaqQa.value.search);
+        // console.log('submiting form ',formFaqQa.value.search);
         this.searchFaqQstn = formFaqQa.value.search.split(' ').join('+');
         this.router.navigate(['/faq'], {
             queryParams: {
@@ -115,5 +115,18 @@ export class FaqComponent implements OnInit {
         this.innerCounter       = this.innerCounter === index ? null : index;
         this.innerCounterSm     = this.innerCounterSm === index ? null : index;
         // console.log('faqDetailsData: ',faqDetailsData, 'index : ',index,'innerCounter : ',this.innerCounter);
+    }
+
+    searchFaq(e) {
+        const questionArray = [];
+        let p = this.searchParam.toLowerCase();
+        this.faqData.forEach(function (element) {
+            element.faq.forEach(function (ele) {
+                if (ele.question.toLowerCase().indexOf(p) >= 0) {
+                    questionArray.push(ele);
+                }
+            });
+        });
+        this.faqDetails = questionArray;
     }
 }

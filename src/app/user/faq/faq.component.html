@@ -15,8 +15,10 @@
     	<div class="about_sec1">
         	<div class="wrapper text-center">
             	<form id="faqSearch" #form="ngForm" (ngSubmit)="onSubmit(form)">
-                        <input type="text" placeholder="Write your question here" name="search" ngModel #search=ngModel class="form-control">
-                        <button class="btn-green" type='submit' ><img src="../../../../assets/images/arrow-right.png" > Ask the Owl!</button>    
+                        <input type="text" placeholder="Write your question here" name="search" ngModel #search=ngModel class="form-control"
+                               [(ngModel)]="searchParam" (keyup)="searchFaq($event)"
+                        >
+                        <!--<button class="btn-green" type='submit' ><img src="../../../../assets/images/arrow-right.png" > Ask the Owl!</button>    -->
                 </form>
                     
                 <div class="accordion">
@@ -79,7 +81,7 @@
             <div class="estate-planning">
                 <div class="wrapper text-center">
                     <h2>estate planning made simple & affordable.</h2>
-                    <p>Get started now and keep your loved ones safe!</p>
+                    <h4>Get started now and keep your loved ones safe!</h4>
                     <button class="btn-green" type="button" routerLink="/register"><img src="../../../../assets/images/arrow-right.png"> get started</button>
                 </div>
             </div>
