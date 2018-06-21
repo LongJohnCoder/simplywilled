@@ -54,7 +54,12 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     ia: false,
     in: false,
     ks: false,
-    ky: false
+    ky: false,
+    la: false,
+    me: false,
+    hi: false,
+    id: false,
+    il: false
   };
   pdfData: any;
   globalPDFSubscription: Subscription;
@@ -127,10 +132,15 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
       ct: false,
       dc: false,
       fl: false,
-      ia: true,
+      ia: false,
       in: false,
       ks: false,
-      ky: false
+      ky: false,
+      la: false,
+      me: false,
+      hi: false,
+      id: false,
+      il: true,
     };
     this.docScrolled = 0;
     this.thumbIndex = 0;
