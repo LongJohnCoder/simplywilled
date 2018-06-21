@@ -32,7 +32,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="main-content">
+                    <div class="main-content" *ngIf="faqDetails.length > 0">
                         <div class="each-statement" *ngFor="let eachFaq of faqDetails; let i = index" [ngClass] = "{active: innerCounter == i}">
                             <div (click)="showOrHideAnswers(eachFaq,i)" class="statement">
                                 <span class="plus">
@@ -46,6 +46,9 @@
                             <p>{{eachFaq.answer}}</p>
                         </div>
                     </div>
+                    <div class="main-content" *ngIf="faqDetails.length === 0">
+                        <div class="each-statement"> <div class="statement"><span>Not found</span></div></div>
+                    </div>
                 </div>
 
                 <div class="accordion accordion-mobile">
@@ -55,8 +58,8 @@
                             <li *ngFor="let faq of faqData; let i = index" 
                                 (click)="getQuestions(faqData,i)" 
                                 [ngClass] = "{active: counter == i}">
-                                    <span class="faqName">{{ faq.name }}</span>
-                                    <div class="open-accordion">
+                                    <span class="faqName">{{ faq.name }} </span>
+                                    <div class="open-accordion" *ngIf="faqDetails.length > 0">
                                         <div class="each-statement"  *ngFor="let eachFaq of faqDetails; let j = index" 
                                         [ngClass] = "{active: j == innerCounterSm}"
                                         (click)="showOrHideAnswers(eachFaq,j)">
@@ -71,6 +74,11 @@
                                             </div>
                                             <p>{{eachFaq.answer}}</p>
                                         </div>    
+                                    </div>
+                                    <div class="open-accordion" *ngIf="faqDetails.length === 0">
+                                        <div class="each-statement">
+                                            <div class="statement"><span>Not Found</span></div>
+                                        </div>
                                     </div>
                             </li>
                         </ul>

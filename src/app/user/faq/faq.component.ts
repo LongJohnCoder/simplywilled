@@ -99,6 +99,7 @@ export class FaqComponent implements OnInit {
     *   Get questions from the data object
     * */
     getQuestions(faqEachData : any[], count : number) : any {
+        this.searchParam    = null;
         this.counter        = count;
         this.innerCounter   = null;
         this.faqDetails     = faqEachData[count] !== undefined && faqEachData[count]['faq'] !== undefined ? faqEachData[count]['faq'] : [];
