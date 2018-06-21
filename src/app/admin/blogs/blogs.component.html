@@ -111,8 +111,9 @@
                                                 Delete
                                             </a>
                                             <button type="button" (click)="openModal(viewcomment, i)"
-                                               class="btn btn-warning"><i class="fa fa-commenting"
-                                                                          aria-hidden="true"></i> Comments {{blog.comments.length}}</button>
+                                               class="btn btn-warning"><i class="fa fa-commenting" aria-hidden="true"></i> Comments {{blog.comments.length}}</button>
+                                            <button type="button" (click)="onUpdateStatus(blog); showModal(message)" class="btn btn-success" *ngIf="blog.status === '0'"><i class="fa fa-eye" aria-hidden="true"></i> Publish</button>
+                                            <button type="button" (click)="onUpdateStatus(blog); showModal(message)" class="btn btn-info" *ngIf="blog.status === '1'"><i class="fa fa-ban" aria-hidden="true"></i> Conceal</button>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -211,7 +212,21 @@
                 </div>
             </ng-template>
 
-
+            <ng-template #message>
+                <div class="adminModalSmall">
+                    <div class="modal-header deleteBlogHead">
+                        <h3 class="modal-title">
+                            {{createBlogMessage}}
+                        </h3>
+                    </div>
+                    <div class="modal-body deleteBlogFoot">
+                        <button type="button" class="btn btn-warning" (click)="onCancel()">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </ng-template>
+            
             <footer><p>All right reserved. Developed By <a href="#">TNI</a></p></footer>
         </div>
         <!-- /. PAGE INNER  -->

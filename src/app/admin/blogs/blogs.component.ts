@@ -21,6 +21,8 @@ export class BlogsComponent implements OnInit {
   delBlogStatusMsg:string = "Are You Sure?";
   dataTable: any;
   comments: any[] = [];
+  responseStatus : false;
+  createBlogMessage : string;
 
   constructor(
     private dashService : DashboardService,
@@ -54,6 +56,10 @@ export class BlogsComponent implements OnInit {
   this.comments = this.blogList[index].comments;
  }
  
+    public showModal(template :  TemplateRef<any>, index){
+        this.modalRef = this.modalService.show(template);
+    }
+ 
  onCancel(){
   this.modalRef.hide();
   this.delBlogId = null;
@@ -81,8 +87,25 @@ export class BlogsComponent implements OnInit {
     }
   );
  }
-
-
+ 
+ onUpdateStatus(blog : object) {
+    this.createBlogMessage = 'Processing...';
+    let status = (blog.status === '1')? 0 : (blog.status === '0' ? '1' : '0');
+    let blogObject = {'id' : parseInt(blog.id, 10), 'status' : status};
+    this.dashService.updateBlogStatus(blogObject).subscribe(
+        (data:any)=> {
+            this.responseStatus = data.status;
+            if(this.responseStatus){
+                let blogModalRef = this;
+                blogModalRef.createBlogMessage = data.message;
+                setTimeout(() => {
+                    blogModalRef.modalRef.hide();
+                    this.blogList = data.data.blogDetails;
+                }, 2000);
+            }
+        }
+    );
+ }
 
 
 

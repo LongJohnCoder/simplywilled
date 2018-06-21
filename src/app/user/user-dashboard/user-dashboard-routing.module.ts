@@ -121,7 +121,7 @@ const routes: Routes = [
             },
             {
                 path: 'subscribed-package',
-                    canActivate: [UserPaidGuard],
+                canActivate: [UserPaidGuard],
                 component: SubscribedPackageComponent
             },
          /* {
