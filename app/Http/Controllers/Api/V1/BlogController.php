@@ -1276,5 +1276,102 @@ class BlogController extends Controller
                 ], 500);
             }
         }
+        
+        /*
+         * Function name : updateBlogStatus
+         * Param : request object
+         * Return : \Illuminate\Http\JsonResponse
+         */
+        
+        public function updateBlogStatus(Request $request){
+            try {
+                $validator = Validator::make($request->all(), [
+                    'id'          =>  'required|integer|exists:blogs,id,deleted_at,NULL',
+                    'status'      =>  'required|numeric|integer|between:0,1',
+                ]);
+                if ($validator->fails()) {
+                    return response()->json([
+                        'status'  => false,
+                        'message' => $validator->errors(),
+                        'data'    => []
+                    ], 400);
+                }
+                $blogId = $request->id;
+                $blogId = (int)$blogId;
+                $blogAuthorId = Auth::user()->id;
+                $blogStatus = $request->status;
+                if ($blogId) {
+                    $getBlogInfo = Blogs::find($blogId);
+                    if ($getBlogInfo) {
+                        //try to update the blog
+                        $getBlogInfo->author_id = $blogAuthorId;
+                        $getBlogInfo->status = (string)$blogStatus;
+
+                        if ($getBlogInfo->save()) {
+                            return response()->json([
+                                'status' => true,
+                                'message' => 'Blog status updated successfully',
+                                'data' => ['blogDetails' => $this->blogData()]
+                            ], 200);
+                        } else {
+                            return response()->json([
+                                'status' => false,
+                                'message' => 'Blog not updated !',
+                                'data' => []
+                            ], 400);
+                        }
+                    } else {
+                        return response()->json([
+                            'status' => false,
+                            'message' => 'Blog not found for update ',
+                            'data' => []
+                        ], 400);
+                    }
+                } else {
+                    return response()->json([
+                        'status' => false,
+                        'message' => 'blogId field has incorrect value',
+                        'data' => []
+                    ], 400);
+                }
+            } catch (Exception $e) {
+                return response()->json([
+                    'status' => false,
+                    'message' => $e->getMessage(),
+                    'errorLineNo' => $e->getLine(),
+                    'data' => []
+                ], 500);
+            }
+        }
+        
+        public function blogData()
+        {
+            $blogs = Blogs::with('blogCategory')->orderBy('created_at','DESC')->get();
+            $blogArr = [];
+            if ($blogs) {
+                foreach ($blogs as $key => $value) {
+                    $blogArr[$key]['author_id'] = $value->author_id;
+                    $blogArr[$key]['body'] = $value->body;
+                    $blogArr[$key]['created_at'] = $value->created_at->toDateTimeString();
+                    $blogArr[$key]['featured'] = $value->featured;
+                    $blogArr[$key]['id'] = $value->id;
+                    $blogArr[$key]['image'] = url('/blogImage').'/'.$value->image;
+                    $blogArr[$key]['meta_description'] = $value->meta_description;
+                    $blogArr[$key]['meta_keywords'] = $value->meta_keywords;
+                    $blogArr[$key]['seo_title'] = $value->seo_title;
+                    $blogArr[$key]['slug'] = $value->slug;
+                    $blogArr[$key]['status'] = $value->status;
+                    $blogArr[$key]['title'] = $value->title;
+                    $blogArr[$key]['total_views'] = $value->total_views;
+                    $categories = [];
+                    foreach ($value->blogCategory as $ckey => $cvalue) {
+                      $categories[$ckey] = $cvalue->category->name;
+                    }
+                    $blogArr[$key]['blog_category'] = $categories;
+                    $blogArr[$key]['comments'] = $value->getComments;
+                }
+            }
+            return $blogArr;
+        }
 
 }

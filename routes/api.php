@@ -185,6 +185,14 @@ Route::group(['prefix' => 'v1'], function() {
             'uses' => 'Api\V1\BlogController@editBlog',
             'as'   => 'api.v1.EditBlog.post'
         ]);
+        
+        /*
+         * Route for update blog status
+         * */
+        Route::post('update-blog-status', [
+            'uses' => 'Api\V1\BlogController@updateBlogStatus',
+            'as'   => 'api.v1.UpdateBlogStatus.post'
+        ]);
 
         /*
          * Route for Edit Blog
