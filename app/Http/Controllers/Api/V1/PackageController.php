@@ -631,7 +631,7 @@ class PackageController extends Controller
           $pfHostAddr = 'https://api-3t.sandbox.paypal.com/nvp';
 
           $postData = 'VERSION=56.0&COUNTRYCODE='.$COUNTRYCODE.'&SIGNATURE='.$SIGNATURE.'&USER='.$USER.'&PWD='.$PWD.
-                      '&METHOD='.$METHOD.'&PAYMENTACTION='.$PAYMENTACTION.'&IPADDRESS='.$IPADDRESS.'&AMT='.$AMT.'&ACCT='.$ACCT.'&EXPDATE='.$EXPDATE.'&CVV2='.$CVV2.'&FIRSTNAME='.$FIRSTNAME.'&LASTNAME='.$LASTNAME.'&STREET='.$STREET.'&CITY='.$CITY.'&STATE='.$STATE.'&ZIP='.$ZIP;
+                      '&METHOD='.$METHOD.'&PAYMENTACTION='.$PAYMENTACTION.'&IPADDRESS='.$IPADDRESS.'&AMT='.$AMT.'&CREDITCARDTYPE='.$CREDITCARDTYPE.'&ACCT='.$ACCT.'&EXPDATE='.$EXPDATE.'&CVV2='.$CVV2.'&FIRSTNAME='.$FIRSTNAME.'&LASTNAME='.$LASTNAME.'&STREET='.$STREET.'&CITY='.$CITY.'&STATE='.$STATE.'&ZIP='.$ZIP;
           $ch = curl_init();
           curl_setopt($ch, CURLOPT_URL, $pfHostAddr);
           curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -728,7 +728,7 @@ class PackageController extends Controller
                     $mail->to(strtolower($mailData['email']), $mailData['userName'])->subject('You have purchased '.$mailData['pkgName'].'!');
             });
           } catch (\Exception $e) {
-            \Log::info('type: error,'.' res: '.$e->getMessage().', line:'.$getLine());
+            \Log::info('type: error,'.' res: '.$e->getMessage().', line:'.$e->getLine());
           }
 
           return response()->json([
