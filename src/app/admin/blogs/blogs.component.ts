@@ -88,7 +88,7 @@ export class BlogsComponent implements OnInit {
   );
  }
  
- onUpdateStatus(blog : object) {
+ onUpdateStatus(blog : any) {
     this.createBlogMessage = 'Processing...';
     let status = (blog.status === '1')? 0 : (blog.status === '0' ? '1' : '0');
     let blogObject = {'id' : parseInt(blog.id, 10), 'status' : status};
