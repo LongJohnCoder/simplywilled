@@ -26,6 +26,8 @@ export class PaymentPageComponent implements OnInit  {
     thankYou: boolean;
     addAnimate: boolean;
     package_name: string;
+    cardLength: number;
+    cvvLength: number;
     public modalRef: BsModalRef;
 
     constructor(
@@ -94,18 +96,18 @@ export class PaymentPageComponent implements OnInit  {
             this.cardPinch = 'Discover';
 
         }
-        else if (number.value.match(new RegExp("^36")) != null){
-            // Diners
-            this.cardtype = "diners";
-            this.cardPinch = 'diners';
-
-        }
-        else if (number.value.match(new RegExp("^30[0-5]")) != null){
-            // Diners - Carte Blanche
-            this.cardtype = "diners2";
-            this.cardPinch = 'diners2';
-
-        }
+        // else if (number.value.match(new RegExp("^3(?:0[0-5]|[68][0-9])[0-9]{11}$")) != null){
+        //     // Diners
+        //     this.cardtype = "diners";
+        //     this.cardPinch = 'diners';
+        //
+        // }
+        // else if (number.value.match(new RegExp("^389[0-9]{11}$")) != null){
+        //     // Diners - Carte Blanche
+        //     this.cardtype = "diners2";
+        //     this.cardPinch = 'diners2';
+        //
+        // }
         else if (number.value.match(new RegExp("^35(2[89]|[3-8][0-9])")) != null){
             // JCB
             this.cardtype = "jcb";

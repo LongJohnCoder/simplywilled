@@ -234,9 +234,9 @@
               <div class="cardLogo"><span class={{cardtype}}></span></div>
               <input type="text" class="form-control cardNumber" placeholder="Card Number"
                      [(ngModel)]="data.cardNumber" ngModel #cardNumber="ngModel" name="cardNumber" mask="0000 0000 0000 0000"
-                     pattern="^\d{16}$"
+
                      required #cardNum (keyup)="GetCardType(cardNum)">
-              <span class="error_txt" *ngIf="cardNumber.invalid && cardNumber.touched || cardNumber.hasError('pattern')">
+              <span class="error_txt" *ngIf="cardNumber.invalid && cardNumber.touched">
                     <p>Please enter proper card number</p>
                   </span>
             </div>
@@ -252,10 +252,10 @@
             </div>
             <div class="col-sm-6 col-lg-3">
               <input type="password" class="form-control"
-                     [(ngModel)]="data.cvv" ngModel #cvv="ngModel" name="cvv" autocomplete="off" pattern="^\d{3}$"
+                     [(ngModel)]="data.cvv" ngModel #cvv="ngModel" name="cvv" autocomplete="off" mask="0000"
                      placeholder="CVV" required>
               <span class="askCvv" (click)="openModal(askCvvModal)">What is this?</span>
-              <span class="error_txt" *ngIf="cvv.invalid && cvv.touched || cvv.hasError('pattern')">
+              <span class="error_txt" *ngIf="cvv.invalid && cvv.touched">
                         <p>Please enter cvv code</p>
                       </span>
             </div>
