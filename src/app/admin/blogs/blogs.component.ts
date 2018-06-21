@@ -11,7 +11,6 @@ import 'datatables.net-bs4';
   styleUrls: ['./blogs.component.css']
 })
 export class BlogsComponent implements OnInit {
-
   blogList:any[] = [];
   blogCount:number = 0;
   public modalRef : BsModalRef;
@@ -46,6 +45,7 @@ export class BlogsComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('blog list :', );
     this.populateBlogs();
   }
 
@@ -100,8 +100,9 @@ export class BlogsComponent implements OnInit {
                 blogModalRef.createBlogMessage = data.message;
                 setTimeout(() => {
                     blogModalRef.modalRef.hide();
-                    this.blogList = data.data.blogDetails;
+                    setTimeout(() => {}, 2000);
                 }, 2000);
+                window.location.reload();
             }
         }
     );
