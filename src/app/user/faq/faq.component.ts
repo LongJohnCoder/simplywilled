@@ -89,7 +89,7 @@ export class FaqComponent implements OnInit {
     takeMeThere() {
         for(let i in this.faqDetails) {
             if(this.faqDetails[i].question.toLowerCase().trim() === this.searchFaqQstn.toLowerCase().trim()) {
-                this.innerCounter =  parseInt(i);
+                this.innerCounter = parseInt(i);
                 break;
             }
         }
@@ -98,7 +98,7 @@ export class FaqComponent implements OnInit {
     /* *
     *   Get questions from the data object
     * */
-    getQuestions(faqEachData : any[], count : number) : any {
+    getQuestions(faqEachData: any[], count: number): any {
         this.searchParam    = null;
         this.counter        = count;
         this.innerCounter   = null;
@@ -110,24 +110,27 @@ export class FaqComponent implements OnInit {
     *   Hide or show the answer for a question from a single
     *   question based on their related states
     * */
-    showOrHideAnswers(faqDetailsData : any, index : number) {
-        console.log(index);
-        
+    showOrHideAnswers(faqDetailsData: any, index: number) {
+        // console.log(index);
         this.innerCounter       = this.innerCounter === index ? null : index;
         this.innerCounterSm     = this.innerCounterSm === index ? null : index;
         // console.log('faqDetailsData: ',faqDetailsData, 'index : ',index,'innerCounter : ',this.innerCounter);
     }
 
     searchFaq(e) {
-        const questionArray = [];
-        let p = this.searchParam.toLowerCase();
-        this.faqData.forEach(function (element) {
-            element.faq.forEach(function (ele) {
-                if (ele.question.toLowerCase().indexOf(p) >= 0) {
-                    questionArray.push(ele);
-                }
+        if (this.searchParam === '') {
+            this.faqDetails = this.getQuestions(this.faqData, this.counter);
+        } else {
+            const questionArray = [];
+            let p = this.searchParam.toLowerCase();
+            this.faqData.forEach(function (element) {
+                element.faq.forEach(function (ele) {
+                    if (ele.question.toLowerCase().indexOf(p) >= 0) {
+                        questionArray.push(ele);
+                    }
+                });
             });
-        });
-        this.faqDetails = questionArray;
+            this.faqDetails = questionArray;
+        }
     }
 }
