@@ -1,0 +1,628 @@
+<!-- Page 1-->
+<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+  <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+    <p  style="margin-bottom: 0.13in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 13pt"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>N</b></span></span></span><span size="4" style="font-size: 16pt"><b>EBRASKA
+      </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>P</b></span></span></span><span size="4" style="font-size: 16pt"><b>OWER
+      OF </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>A</b></span></span></span><span size="4" style="font-size: 16pt"><b>TTORNEY</b></span></span></span></p>
+    <p  style="margin-bottom: 0.13in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 13pt"><span size="4" style="font-size: 16pt"><b>FOR
+      </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>H</b></span></span></span><span size="4" style="font-size: 16pt"><b>EALTH
+      </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>C</b></span></span></span><span size="4" style="font-size: 16pt"><b>ARE</b></span></span></span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">I
+      appoint my <!--«</span></span><span ><span style="font-family:'Times New Roman, serif'">Rx
+      Agent #1 Relationship</span></span><span ><span style="font-family:'Times New Roman, serif'">»,
+      «</span></span><span ><span style="font-family:'Times New Roman, serif'">Rx
+      Agent #1</span></span><span ><span style="font-family:'Times New Roman, serif'">»,
+      of «</span></span><span ><span style="font-family:'Times New Roman, serif'">Rx
+      Agent #1 Address</span></span><span ><span style="font-family:'Times New Roman, serif'">»
+      </span></span><span style="font-family:'Times New Roman, serif'">» in «</span><span ><span style="font-family:'Times New Roman, serif'">Rx
+      Agent #1 City</span></span><span style="font-family:'Times New Roman, serif'">»,
+      «</span><span ><span style="font-family:'Times New Roman, serif'">Rx
+      Agent #1 State</span></span><span style="font-family:'Times New Roman, serif'">» «</span><span ><span style="font-family:'Times New Roman, serif'">
+      Rx Agent #1 Zip</span></span><span style="font-family:'Times New Roman, serif'">»
+      </span><span ><span style="font-family:'Times New Roman, serif'">(Tel:
+      «</span></span><span ><span style="font-family:'Times New Roman, serif'">Rx
+      Agent #1 Telephone</span></span><span ><span style="font-family:'Times New Roman, serif'">»),-->
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation !== 'Other'"> {{userDetails.healthFinance.relation !== null && userDetails.healthFinance.relation !== undefined ? userDetails.healthFinance.relation : '_______________________'}} ,</span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation === 'Other'"> {{userDetails.healthFinance.relationOther !== null && userDetails.healthFinance.relationOther !== undefined ? userDetails.healthFinance.relationOther : '_______________________'}} ,</span>
+      <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.fullname !== null && userDetails.healthFinance.fullname !== undefined ? userDetails.healthFinance.fullname : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span> of
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address !== null && userDetails.healthFinance.address !== undefined ? userDetails.healthFinance.address : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span> in
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.city !== null && userDetails.healthFinance.city !== undefined ? userDetails.healthFinance.city : '_______________________'}} ,</span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.state !== null && userDetails.healthFinance.state !== undefined ? userDetails.healthFinance.state : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.zip !== null && userDetails.healthFinance.zip !== undefined ? userDetails.healthFinance.zip : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>
+      (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.phone !== null && userDetails.healthFinance.phone !== undefined ? userDetails.healthFinance.phone : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> ),
+      as my attorney-in-fact for health care.<!--«</span></span><span style="font-family:'Times New Roman, serif'">IF
+      Rx Alternate Agents1?</span><span ><span style="font-family:'Times New Roman, serif'">»</span></span><span ><span style="font-family:'Times New Roman, serif'">
+       </span></span><span style="font-family:'Times New Roman, serif'">-->
+      <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'true'">
+      If said agent is
+      unable, unwilling or unavailable to act, or if I revoke this
+      appointment or authority to act, then I designate </span><span ><span ><span style="font-family:'Times New Roman, serif'">my
+      </span></span></span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation !== 'Other'"> {{userDetails.healthFinance.backupRelation !== null && userDetails.healthFinance.backupRelation !== undefined ? userDetails.healthFinance.backupRelation : '_______________________'}} ,</span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation === 'Other'"> {{userDetails.healthFinance.backupRelationOther !== null && userDetails.healthFinance.backupRelationOther !== undefined ? userDetails.healthFinance.backupRelationOther : '_______________________'}} ,</span>
+      <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupFullname !== null && userDetails.healthFinance.backupFullname !== undefined ? userDetails.healthFinance.backupFullname : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> of
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupAddress !== null && userDetails.healthFinance.backupAddress !== undefined ? userDetails.healthFinance.backupAddress : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> in
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupCity !== null && userDetails.healthFinance.backupCity !== undefined ? userDetails.healthFinance.backupCity : '_______________________'}} ,</span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupState !== null && userDetails.healthFinance.backupState !== undefined ? userDetails.healthFinance.backupState : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupZip !== null && userDetails.healthFinance.backupZip !== undefined ? userDetails.healthFinance.backupZip : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>
+      (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupphone !== null && userDetails.healthFinance.backupphone !== undefined ? userDetails.healthFinance.backupphone : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> ),
+      <!--<span ><span style="font-family:'Times New Roman, serif'">«</span></span><span ><span style="font-family:'Times New Roman, serif'">Rx
+      Agent #2 Relationship</span></span><span ><span style="font-family:'Times New Roman, serif'">»,
+      «</span></span><span ><span style="font-family:'Times New Roman, serif'">Rx
+      Agent #2</span></span><span ><span style="font-family:'Times New Roman, serif'">»,
+      of «</span></span><span ><span style="font-family:'Times New Roman, serif'">Rx
+      Agent #2 Address</span></span><span ><span style="font-family:'Times New Roman, serif'">»
+      </span></span><span style="font-family:'Times New Roman, serif'">in «</span><span ><span style="font-family:'Times New Roman, serif'">Rx
+      Agent #2 City</span></span><span style="font-family:'Times New Roman, serif'">»,
+      «</span><span ><span style="font-family:'Times New Roman, serif'">Rx
+      Agent #2 State</span></span><span style="font-family:'Times New Roman, serif'">» «</span><span ><span style="font-family:'Times New Roman, serif'">
+      Rx Agent #2 Zip</span></span><span style="font-family:'Times New Roman, serif'">»</span><span ><span style="font-family:'Times New Roman, serif'">
+      (Tel: «</span></span><span ><span style="font-family:'Times New Roman, serif'">Rx
+      Agent #2 Telephone</span></span><span ><span style="font-family:'Times New Roman, serif'">»),
+      as my successor attorney-in-fact for health care.«</span></span><span style="font-family:'Times New Roman, serif'">END
+      IF</span><span ><span style="font-family:'Times New Roman, serif'">»</span></span><span ><span ><span style="font-family:'Times New Roman, serif'">
+       </span></span>--></span><span style="font-family:'Times New Roman, serif'">I authorize
+      my attorney in fact appointed by this document to make health care
+      decisions for me when I am determined to be incapable of making my
+      own health care decisions. I have read the warning which accompanies
+      this document and understand the consequences of executing a power of
+      attorney for health care.</span></span>
+    </p>
+    <p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="text-indent: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
+      direct that my attorney in fact comply with the following
+      instructions and/or limitations (optional):</span></span></span></p>
+    <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
+    <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
+    <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
+    <p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="text-indent: 0.38in; margin-bottom: 0.03in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
+      direct that my attorney in fact comply with the following
+      instructions on life-sustaining treatment:  </span><span size="3" style="font-size: 12pt"><b>(optional;
+      if desired, INITIAL one of the below choices)</b></span></span></span></p>
+    <p  style="text-indent: 0.38in; margin-bottom: 0.03in; line-height: 100%">
+      <br/>
+      <br/>
+
+    </p>
+    <p  style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0.09in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________</span><span size="3" style="font-size: 12pt">&nbsp;
+      </span><span size="3" style="font-size: 12pt">I authorize my
+      attorney-in-fact to consent to the withholding or withdrawing of
+      life-sustaining procedures</span></span></span></p>
+    <p  style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0.09in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________</span><span size="3" style="font-size: 12pt">&nbsp;
+      </span><span size="3" style="font-size: 12pt">I want my life to be
+      prolonged to the greatest extent possible without regard to my
+      condition, the chances I have for recovery or the cost of the
+      procedures.</span></span></span></p>
+    <p  style="text-indent: 0.38in; margin-bottom: 0.03in; line-height: 100%">
+      <br/>
+      <br/>
+
+    </p>
+    <p  style="text-indent: 0.38in; margin-bottom: 0.03in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
+      direct that my attorney in fact comply with the following
+      instructions on artificially administered nutrition and hydration:
+      </span><span size="3" style="font-size: 12pt"><b>(optional; if
+      desired, INITIAL one of the below choices)</b></span></span></span></p>
+    <p  style="text-indent: 0.38in; margin-bottom: 0.03in; line-height: 100%">
+      <br/>
+      <br/>
+
+    </p>
+    <p  style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0.09in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________</span><span size="3" style="font-size: 12pt">&nbsp;
+      </span><span size="3" style="font-size: 12pt">I authorize my
+      attorney-in-fact to consent to the withholding or withdrawing of
+      artificially administered nutrition or hydration</span></span></span></p>
+    <p style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________</span><span size="3" style="font-size: 12pt">&nbsp;
+      </span><span size="3" style="font-size: 12pt">I want artificial
+      nutrition and hydration provided to me in order to prolong my life.</span></span></span></p>
+    <p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">My
+      attorney in fact has the full and immediate power and authority to do
+      all of the following:</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
+  </div>
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Health Care Directive and Living Will Declaration of <br> {{userDetails.tellUsAboutYou.fullname}} <br> </span>
+    Page 1 of 6
+  </div>
+</div>
+<!-- Page 1-->
+
+
+<!-- Page 2-->
+<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+  <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+    <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(a)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Request,
+      review, and receive, to the extent I could do so individually, any
+      information, verbal or written, regarding my physical or mental
+      health, including, but not limited to, my individually identifiable
+      health information or other medical records. This release authority
+      applies to any information governed by the Health Insurance
+      Portability and Accountability Act of 1996 (HIPAA), 42 U.S.C. 1320d
+      and 45 CFR 160-164. I hereby authorize any physician, health care
+      professional, dentist, health plan, hospital, clinic, laboratory,
+      pharmacy, or other covered health care provider, any insurance
+      company, and the Medical Information Bureau, Inc. or other health
+      care clearinghouse that has provided treatment or services to me, or
+      that has paid for or is seeking payment from me for such services, to
+      give, disclose, and release to my attorney in fact, without
+      restriction, all of my individually identifiable health information
+      and medical records regarding any past, present, or future medical or
+      mental health condition. This authority given my attorney in fact
+      shall supersede any other agreement which I may have made with my
+      health care providers to restrict access to or disclosure of my
+      individually identifiable health information. This authority given my
+      attorney in fact shall be effective immediately, has no expiration
+      date and shall expire only in the event that I revoke the authority
+      in writing and deliver it to my health care provider.</span></span></span></p>
+    <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+      <br/>
+
+    </p>
+    <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(b)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Execute
+      on my behalf any releases or other documents that may be required in
+      order to obtain this information; and</span></span></span></p>
+    <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+      <br/>
+
+    </p>
+    <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(c)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Consent
+      to the disclosure of this information.</span></span></span></p>
+  </div>
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Health Care Directive and Living Will Declaration of <br> {{userDetails.tellUsAboutYou.fullname}} <br> </span>
+    Page 2 of 6
+  </div>
+</div>
+<!-- Page 2-->
+
+<!-- Page 3-->
+<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+  <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+    <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>SIGNATURE
+      AND ACKNOWLEDGEMENT</b></span></span></span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>I
+      HAVE READ THIS POWER OF ATTORNEY FOR HEALTH CARE. I UNDERSTAND THAT
+      IT ALLOWS ANOTHER PERSON TO MAKE LIFE AND DEATH DECISIONS FOR ME IF I
+      AM INCAPABLE OF MAKING SUCH DECISIONS. I ALSO UNDERSTAND THAT I CAN
+      REVOKE THIS POWER OF ATTORNEY FOR HEALTH CARE AT ANY TIME BY
+      NOTIFYING MY ATTORNEY IN FACT, MY PHYSICIAN, OR THE FACILITY IN WHICH
+      I AM A PATIENT OR RESIDENT. I ALSO UNDERSTAND THAT I CAN REQUIRE IN
+      THIS POWER OF ATTORNEY FOR HEALTH CARE THAT THE FACT OF MY INCAPACITY
+      IN THE FUTURE BE CONFIRMED BY A SECOND PHYSICIAN.</b></span></span></span></p>
+    <p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><u>______________________________________________</u></span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Dated:</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><u>______________________</u></span></span></span></p>
+    <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+      <span ><span style="font-family:'Times New Roman, serif'"><b>(signature)
+      </b></span></span><span style="font-family:'Times New Roman, serif'"><b>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
+      <!--«</b></span><span ><span style="font-family:'Times New Roman, serif'"><b>CLIENT
+      FIRST NAME</b></span></span><span style="font-family:'Times New Roman, serif'"><b>»
+      «</b></span><span ><span style="font-family:'Times New Roman, serif'"><b>CLIENT
+      MIDDLE NAME</b></span></span><span style="font-family:'Times New Roman, serif'"><b>»
+      «</b></span><span ><span style="font-family:'Times New Roman, serif'"><b>CLIENT
+      LAST NAME</b></span></span><span style="font-family:'Times New Roman, serif'"><b>»--></b></span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">STATE
+      OF NEBRASKA	</span></span><span ><span size="3" style="font-size: 12pt">	</span></span><span ><span size="3" style="font-size: 12pt">)</span></span></span></span></span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">				</span><span size="3" style="font-size: 12pt">)
+      ss.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">COUNTY
+      ________________</span></span><span ><span size="3" style="font-size: 12pt">	</span></span><span ><span size="3" style="font-size: 12pt">)</span></span></span></span></span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+      <span style="font-family:'Times New Roman, serif'">On this _____ day of </span><span style="font-family:'Times New Roman, serif'"><u>				</u></span><span style="font-family:'Times New Roman, serif'">,
+    </span><span style="font-family:'Times New Roman, serif'"><u>		</u></span><span style="font-family:'Times New Roman, serif'">,
+    before me, a notary public, personally came </span><span style="font-family:'Times New Roman, serif'"><!--«</span><span ><span style="font-family:'Times New Roman, serif'">CLIENT
+    FIRST NAME</span></span><span style="font-family:'Times New Roman, serif'">»
+    «</span><span ><span style="font-family:'Times New Roman, serif'">CLIENT
+    MIDDLE NAME</span></span><span style="font-family:'Times New Roman, serif'">»
+    «</span><span ><span style="font-family:'Times New Roman, serif'">CLIENT
+    LAST NAME</span></span><span style="font-family:'Times New Roman, serif'">»-->
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
+    </span><span style="font-family:'Times New Roman, serif'">,
+    personally to me known to be the identical person whose name is
+    affixed to the above power of attorney for health care as principal,
+    and I declare that «</span><span ><span style="font-family:'Times New Roman, serif'"><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she' ): 'he' }}</span></span></span><span style="font-family:'Times New Roman, serif'">»
+    appears in sound mind and not under duress or undue influence, that
+    </span><span ><span style="font-family:'Times New Roman, serif'"><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she' ): 'he' }}</span></span></span><span style="font-family:'Times New Roman, serif'">
+    acknowledges the execution of the same to be </span><span ><span style="font-family:'Times New Roman, serif'">
+      <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'his' : 'her' ): 'his' }}</span>
+    </span></span><span style="font-family:'Times New Roman, serif'">
+    voluntary act and deed, and that I am not the attorney in fact or
+    successor attorney in fact designated by this power of attorney for
+    health care.</span></p>
+    <p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Witness
+      my hand and notarial seal.  </span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">______________________________________
+       NOTARY PUBLIC</span></span></span></p>
+  </div>
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Health Care Directive and Living Will Declaration of <br> {{userDetails.tellUsAboutYou.fullname}} <br> </span>
+    Page 3 of 6
+  </div>
+</div>
+<!-- Page 3-->
+
+<!-- Page 4-->
+<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+  <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+    <p  style="margin-bottom: 0.13in; line-height: 100%; text-align:center;">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt"><b>DECLARATION
+      OF WITNESSES</b></span></span></span></p>
+    <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+      <span style="font-family:'Times New Roman, serif'">We declare that the principal,
+      </span><span style="font-family:'Times New Roman, serif'"><!--«</span><span ><span style="font-family:'Times New Roman, serif'">CLIENT
+      FIRST NAME</span></span><span style="font-family:'Times New Roman, serif'">»
+      «</span><span ><span style="font-family:'Times New Roman, serif'">CLIENT
+      MIDDLE NAME</span></span><span style="font-family:'Times New Roman, serif'">»
+      «</span><span ><span style="font-family:'Times New Roman, serif'">CLIENT
+      LAST NAME</span></span><span style="font-family:'Times New Roman, serif'">»-->
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
+      ,</span><span style="font-family:'Times New Roman, serif'">
+      is personally known to us, that the principal signed or acknowledged
+      «</span><span ><span style="font-family:'Times New Roman, serif'">Gender
+      of Client:his/her</span></span><span style="font-family:'Times New Roman, serif'">»
+      signature on this power of attorney for health care in our presence,
+      that the principal appears to be of sound mind and not under duress
+      or undue influence, and that neither of us nor the principal’s
+      attending physician is the person appointed as attorney in fact by
+      this document.</span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Witnessed
+      by:</span></span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+      <br/>
+
+    </p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt"><b>WITNESS
+      1</b></span></span></span><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">:
+      ________________________________	Dated: ___________________</span></span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">[signature]</span></span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+      <br/>
+
+    </p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[name
+      printed]</span></span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+      <br/>
+
+    </p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[street
+      address]</span></span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+      <br/>
+
+    </p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[city,
+      state]</span></span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+      <br/>
+
+    </p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt"><b>WITNESS
+      2: </b></span></span></span><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">________________________________	Dated:
+      ___________________</span></span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">[signature]</span></span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+      <br/>
+
+    </p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[name
+      printed]</span></span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+      <br/>
+
+    </p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[street
+      address]</span></span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+      <br/>
+
+    </p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[city,
+      state]</span></span></span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 11pt">	</span><span size="2" style="font-size: 11pt">____________________________________</span></span></span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="2" style="font-size: 11pt">	</span><span size="2" style="font-size: 11pt">[city,
+      state]</span></span></span></p>
+  </div>
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Health Care Directive and Living Will Declaration of <br> {{userDetails.tellUsAboutYou.fullname}} <br> </span>
+    Page 4 of 6
+  </div>
+</div>
+<!-- Page 4-->
+
+
+<!-- Page 5-->
+<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+  <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+    <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;">
+      <span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 13pt"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="4" style="font-size: 14pt"><b>N</b></span></span></span><span size="4" style="font-size: 14pt"><b>EBRASKA
+      LIVING WILL </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="4" style="font-size: 14pt"><b>D</b></span></span></span><span size="4" style="font-size: 14pt"><b>ECLARATION</b></span></span></span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
+      I should lapse into a persistent vegetative state or have an
+      incurable and irreversible condition that, without the administration
+      of life-sustaining treatment, will, in the opinion of my attending
+      physician, cause my death within a relatively short time and I am no
+      longer able to make decisions regarding my medical treatment, I
+      direct my attending physician, pursuant to the Rights of the
+      Terminally Ill Act, to withhold or withdraw life-sustaining treatment
+      that is not necessary for my comfort or to alleviate pain.</span></span></span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
+      I am in the condition(s) described above I direct the followingt:
+      </span><span size="3" style="font-size: 12pt">(</span><span size="3" style="font-size: 12pt"><b>INITIAL</b></span><span size="3" style="font-size: 12pt">
+      all options that apply)</span></span></span></p>
+    <p  style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0.06in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
+      DO NOT want cardiopulmonary resuscitation (CPR).</span></span></span></p>
+    <p  style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0.06in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
+      DO NOT want mechanical respiration.</span></span></span></p>
+    <p  style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0.06in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
+      DO NOT want tube feeding.</span></span></span></p>
+    <p  style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0.06in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
+      DO NOT want tube hydration.</span></span></span></p>
+    <p  style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0.06in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
+      DO NOT want antibiotics.</span></span></span></p>
+    <p  style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
+      </span><span size="3" style="font-size: 12pt">DO</span><span size="3" style="font-size: 12pt"><b>
+      </b></span><span size="3" style="font-size: 12pt">want maximum pain
+      relief, even if it may hasten my death.</span></span></span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Other
+      directions (if any):</span></span></span></p>
+    <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
+    <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
+    <p  style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
+      <br/>
+      <br/>
+
+    </p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Signed
+      this </span></span><span ><span size="3" style="font-size: 12pt"><u>		</u></span></span><span ><span size="3" style="font-size: 12pt">
+      day of  </span></span><span ><span size="3" style="font-size: 12pt"><u>				</u></span></span><span ><span size="3" style="font-size: 12pt">,
+      </span></span><span ><span size="3" style="font-size: 12pt"><u>		</u></span></span><span ><span size="3" style="font-size: 12pt">.</span></span></span></span></span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></span></p>
+    <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+      <span style="font-family:'Times New Roman, serif'"><b>
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+          <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
+        <!--«</b></span><span ><span style="font-family:'Times New Roman, serif'"><b>CLIENT
+      FIRST NAME</b></span></span><span style="font-family:'Times New Roman, serif'"><b>»
+      «</b></span><span ><span style="font-family:'Times New Roman, serif'"><b>CLIENT
+      MIDDLE NAME</b></span></span><span style="font-family:'Times New Roman, serif'"><b>»
+      «</b></span><span ><span style="font-family:'Times New Roman, serif'"><b>CLIENT
+      LAST NAME</b></span></span><span style="font-family:'Times New Roman, serif'"><b>»--></b></span></p>
+    <p  style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+      <span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"></span></span><span ><span size="3" style="font-size: 12pt">
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? userDetails.tellUsAboutYou.address : '_______________________'}}</span>
+        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
+      </span></span><span ><span size="3" style="font-size: 12pt">,
+      </span></span></span></span></span>
+    </p>
+    <!--<p  style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+      <span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">«</span></span><span size="3" style="font-size: 12pt">IF
+      ANSWERED( Address2 )</span><span ><span size="3" style="font-size: 12pt">»«</span></span><span ><span size="3" style="font-size: 12pt">Address2</span></span><span ><span size="3" style="font-size: 12pt">»«</span></span><span size="3" style="font-size: 12pt">END
+      IF</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></span></span></p>-->
+    <p  style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+      <span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"></span></span><span ><span size="3" style="font-size: 12pt">
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}}</span>
+        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
+      </span></span><span ><span size="3" style="font-size: 12pt">,
+      </span></span><span ><span size="3" style="font-size: 12pt">
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
+        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
+      </span></span><span ><span size="3" style="font-size: 12pt">.</span></span></span></span></span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">STATE
+      OF NEBRASKA	</span></span><span ><span size="3" style="font-size: 12pt">	</span></span><span ><span size="3" style="font-size: 12pt">)</span></span></span></span></span></p>
+    <p  style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">		</span><span size="3" style="font-size: 12pt">)
+      ss.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">COUNTY
+      OF ________________</span></span><span ><span size="3" style="font-size: 12pt">	</span></span><span ><span size="3" style="font-size: 12pt">)</span></span></span></span></span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+      <span style="font-family:'Times New Roman, serif'">The declarant </span><span style="font-family:'Times New Roman, serif'"><!--«</span><span ><span style="font-family:'Times New Roman, serif'">CLIENT
+      FIRST NAME</span></span><span style="font-family:'Times New Roman, serif'">»
+      «</span><span ><span style="font-family:'Times New Roman, serif'">CLIENT
+      MIDDLE NAME</span></span><span style="font-family:'Times New Roman, serif'">»
+      «</span><span ><span style="font-family:'Times New Roman, serif'">CLIENT
+      LAST NAME</span></span><span style="font-family:'Times New Roman, serif'">»-->
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+      <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
+    </span></p>
+    <p style="margin-bottom: 0in; line-height: 100%"> <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">voluntarily
+        signed this writing in my presence.</span></span></span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">______________________________________</span></span></span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">NOTARY
+      PUBLIC</span></span></span></p>
+  </div>
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Health Care Directive and Living Will Declaration of <br> {{userDetails.tellUsAboutYou.fullname}} <br> </span>
+    Page 5 of 6
+  </div>
+</div>
+<!-- Page 5-->
+
+<!-- Page 6-->
+<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+  <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+    <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>WITNESSES</b></span></span></span></p>
+    <p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0"><a name="_GoBack"></a>
+      <span style="font-family:'Times New Roman, serif'">The declarant </span><span style="font-family:'Times New Roman, serif'"><!--«</span><span ><span style="font-family:'Times New Roman, serif'">CLIENT
+        FIRST NAME</span></span><span style="font-family:'Times New Roman, serif'">»
+        «</span><span ><span style="font-family:'Times New Roman, serif'">CLIENT
+        MIDDLE NAME</span></span><span style="font-family:'Times New Roman, serif'">»
+        «</span><span ><span style="font-family:'Times New Roman, serif'">CLIENT
+        LAST NAME</span></span><span style="font-family:'Times New Roman, serif'">»-->
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
+      </span><span style="font-family:'Times New Roman, serif'">
+        voluntarily signed this writing in my presence.</span></p>
+    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><b>WITNESS
+      1</b></span></span><span ><span style="font-family:'Times New Roman, serif'">:
+      ________________________________	Dated: ___________________</span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">[signature]</span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+      <br/>
+
+    </p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[name
+        printed]</span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+      <br/>
+
+    </p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[street
+        address]</span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+      <br/>
+
+    </p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[city,
+      state]</span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+      <br/>
+
+    </p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+      <br/>
+
+    </p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><b>WITNESS
+      2: </b></span></span><span ><span style="font-family:'Times New Roman, serif'">________________________________	Dated:
+      ___________________</span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">[signature]</span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+      <br/>
+
+    </p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[name
+      printed]</span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+      <br/>
+
+    </p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[street
+      address]</span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+      <br/>
+
+    </p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+    <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[city,
+      state]</span></span></p>
+  </div>
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Health Care Directive and Living Will Declaration of <br> {{userDetails.tellUsAboutYou.fullname}} <br> </span>
+    Page 6 of 6
+  </div>
+</div>
+<!-- Page 6-->

@@ -19,7 +19,7 @@
   </div>
   <div class="docViewBox">
     <div class="docView" #docBox (scroll)="getScroll(docBox.scrollTop)">
-     
+
       <div class="docContainer">
         <app-ak [data]="pdfData" *ngIf="states.ak"></app-ak>
         <app-al [data]="pdfData" *ngIf="states.al"></app-al>
@@ -43,7 +43,6 @@
         <app-wv [data]="pdfData" *ngIf="states.wv"></app-wv>
         <app-wi [data]="pdfData" *ngIf="states.wi"></app-wi>
         <app-wa [data]="pdfData" *ngIf="states.wa"></app-wa>
-
         <app-vt [data]="pdfData" *ngIf="states.vt"></app-vt>
         <app-va [data]="pdfData" *ngIf="states.va"></app-va>
         <app-ut [data]="pdfData" *ngIf="states.ut"></app-ut>
@@ -55,6 +54,18 @@
         <app-nm [data]="pdfData" *ngIf="states.nm"></app-nm>
         <app-nj [data]="pdfData" *ngIf="states.nj"></app-nj>
         <app-nh [data]="pdfData" *ngIf="states.nh"></app-nh>
+        <app-ny [data]="pdfData" *ngIf="states.ny"></app-ny>
+        <app-nc [data]="pdfData" *ngIf="states.nc"></app-nc>
+        <app-nd [data]="pdfData" *ngIf="states.nd"></app-nd>
+        <app-oh [data]="pdfData" *ngIf="states.oh"></app-oh>
+        <app-ok [data]="pdfData" *ngIf="states.ok"></app-ok>
+        <app-or [data]="pdfData" *ngIf="states.or"></app-or>
+        <app-pa [data]="pdfData" *ngIf="states.pa"></app-pa>
+        <app-ri [data]="pdfData" *ngIf="states.ri"></app-ri>
+        <app-sc [data]="pdfData" *ngIf="states.sc"></app-sc>
+        <app-sd [data]="pdfData" *ngIf="states.sd"></app-sd>
+        <app-nv [data]="pdfData" *ngIf="states.nv"></app-nv>
+        <app-ne [data]="pdfData" *ngIf="states.ne"></app-ne>
         <!--<app-dc [data]="pdfData" *ngIf="states.co"></app-dc>-->
         <!--<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
           <div id="doc" class="docPageInner"

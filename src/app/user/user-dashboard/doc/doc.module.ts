@@ -40,6 +40,18 @@ import { MnComponent } from './healthcare-poa-doc/mn/mn.component';
 import { NmComponent } from './healthcare-poa-doc/nm/nm.component';
 import { NjComponent } from './healthcare-poa-doc/nj/nj.component';
 import { NhComponent } from './healthcare-poa-doc/nh/nh.component';
+import { NyComponent } from './healthcare-poa-doc/ny/ny.component';
+import { NcComponent } from './healthcare-poa-doc/nc/nc.component';
+import { NdComponent } from './healthcare-poa-doc/nd/nd.component';
+import { OhComponent } from './healthcare-poa-doc/oh/oh.component';
+import { OkComponent } from './healthcare-poa-doc/ok/ok.component';
+import { OrComponent } from './healthcare-poa-doc/or/or.component';
+import { PaComponent } from './healthcare-poa-doc/pa/pa.component';
+import { RiComponent } from './healthcare-poa-doc/ri/ri.component';
+import { ScComponent } from './healthcare-poa-doc/sc/sc.component';
+import { SdComponent } from './healthcare-poa-doc/sd/sd.component';
+import { NvComponent } from './healthcare-poa-doc/nv/nv.component';
+import { NeComponent } from './healthcare-poa-doc/ne/ne.component';
 
 @NgModule({
   imports: [
@@ -86,6 +98,18 @@ import { NhComponent } from './healthcare-poa-doc/nh/nh.component';
     NmComponent,
     NjComponent,
     NhComponent,
+    NyComponent,
+    NcComponent,
+    NdComponent,
+    OhComponent,
+    OkComponent,
+    OrComponent,
+    PaComponent,
+    RiComponent,
+    ScComponent,
+    SdComponent,
+    NvComponent,
+    NeComponent,
   ]
 })
 export class DocModule { }
