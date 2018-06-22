@@ -43,6 +43,8 @@ import {UsersService} from './users-management/users.service';
 import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
 import { ChangePasswordComponent } from './profile/change-password/change-password.component';
 import {EqualValidatorDirective} from './ecual-validator.directive';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 // import {EqualValidatorDirective} from '../user/user-dashboard/change-password/equal-validator.directive';
 
 
@@ -60,7 +62,7 @@ import {EqualValidatorDirective} from './ecual-validator.directive';
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
     NgxMaskModule.forRoot(),
-
+      NgxPaginationModule
   ],
   declarations: [
     AdminComponent,

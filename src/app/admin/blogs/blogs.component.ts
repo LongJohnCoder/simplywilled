@@ -14,7 +14,7 @@ export class BlogsComponent implements OnInit {
   blogList:any[] = [];
   blogCount:number = 0;
   public modalRef : BsModalRef;
-  blogData:any[] = [];
+  blogData:any;
   delBlogId:number;
   delBlogStatus: false;
   delBlogStatusMsg:string = "Are You Sure?";
@@ -22,7 +22,10 @@ export class BlogsComponent implements OnInit {
   comments: any[] = [];
   responseStatus : false;
   createBlogMessage : string;
-
+    searchBox: string = null;
+    pageSize = 10;
+    p = 1;
+    total = 0;
   constructor(
     private dashService : DashboardService,
     private modalService : BsModalService,
@@ -30,23 +33,24 @@ export class BlogsComponent implements OnInit {
 
   ) { }
 
-  populateBlogs(){
-    this.dashService.blogList().subscribe(
-      (data:any)=> {
-          console.log(data.data);
-        this.blogList = data.data.BlogDetails;
-        this.blogCount = this.blogList.length;
+  populateBlogs(page: number, search: string) {
+      console.log(page);
+    this.dashService.getBlogs({'page': page, 'search': search}).subscribe(
+      (data: any) => {
+          this.blogList = data.data.BlogDetails;
+          this.blogCount = data.data.blogCount;
+          this.total = data.data.totalBlogs;
+          this.p = page;
         // console.log('bloglist',this.blogList);
-          this.chRef.detectChanges();
-          const table: any = $('table');
-          this.dataTable = table.DataTable();
+        //   this.chRef.detectChanges();
+        //   const table: any = $('table');
+        //   this.dataTable = table.DataTable();
       }
     );
   }
 
   ngOnInit() {
-    console.log('blog list :', );
-    this.populateBlogs();
+    this.populateBlogs(1, null);
   }
 
  public openModal(template :  TemplateRef<any>, index){
@@ -56,8 +60,13 @@ export class BlogsComponent implements OnInit {
   this.comments = this.blogList[index].comments;
  }
  
-    public showModal(template :  TemplateRef<any>, index){
+    public showModal(template:  TemplateRef<any>, index){
         this.modalRef = this.modalService.show(template);
+        this.blogData = this.blogList[index];
+        // console.log(this.blogData);
+        this.responseStatus = false;
+        this.createBlogMessage = 'Are you sure?';
+
     }
  
  onCancel(){
@@ -80,18 +89,19 @@ export class BlogsComponent implements OnInit {
                 // this.delBlogId = null;
             }, 500);
         }, 2000);
-        window.location.reload();
-
+        // window.location.reload();
+        this.populateBlogs(this.p, this.searchBox);
           // this.populateBlogs();
       }
     }
   );
  }
  
- onUpdateStatus(blog : any) {
+ onUpdateStatus() {
+      // console.log(this.blogData);
     this.createBlogMessage = 'Processing...';
-    let status = (blog.status === '1')? 0 : (blog.status === '0' ? '1' : '0');
-    let blogObject = {'id' : parseInt(blog.id, 10), 'status' : status};
+    let status = (this.blogData.status === '1')? 0 : (this.blogData.status === '0' ? '1' : '0');
+    let blogObject = {'id' : parseInt(this.blogData.id, 10), 'status' : status};
     this.dashService.updateBlogStatus(blogObject).subscribe(
         (data:any)=> {
             this.responseStatus = data.status;
@@ -101,8 +111,9 @@ export class BlogsComponent implements OnInit {
                 setTimeout(() => {
                     blogModalRef.modalRef.hide();
                     setTimeout(() => {}, 2000);
-                }, 2000);
-                window.location.reload();
+                }, 1000);
+                this.populateBlogs(this.p, this.searchBox);
+                // window.location.reload();
             }
         }
     );

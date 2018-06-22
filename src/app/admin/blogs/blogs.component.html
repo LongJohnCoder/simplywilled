@@ -24,7 +24,7 @@
                 </div>
                 <div class="panel panel-default blogsTab">
                     <div class="panel-heading">
-                        Total Blog{{blogCount <= 1 ? '' : 's'}} - {{blogCount}}
+                        Total Blog{{total <= 1 ? '' : 's'}} - {{total}}
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
@@ -52,7 +52,11 @@
                                         <!--</div>-->
                                     <!--</div>-->
                                 <!--</div>-->
-                                
+                                <div class="pull-right">
+                                    <span>Search: </span><input type="text" [(ngModel)]="searchBox" (keyup)="populateBlogs(1, searchBox)" class="form-control">
+
+                                </div>
+
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer"
                                        id="dataTable" aria-describedby="dataTable_info">
                                     <thead>
@@ -89,8 +93,11 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr *ngFor="let blog of blogList; let i = index">
-                                        <td class="sorting_1">{{i + 1}}</td>
+                                    <tr *ngFor="let blog of blogList | paginate: { id: 'server',
+                                                      itemsPerPage: pageSize,
+                                                      currentPage: p,
+                                                      totalItems: blogCount }; index as i">
+                                        <td class="sorting_1">{{blog.id}}</td>
                                         <td>{{blog.title}}</td>
                                         <td>{{blog.slug}}</td>
                                         <td><span class="badge"
@@ -112,13 +119,13 @@
                                             </a>
                                             <button type="button" (click)="openModal(viewcomment, i)"
                                                class="btn btn-warning"><i class="fa fa-commenting" aria-hidden="true"></i> Comments {{blog.comments.length}}</button>
-                                            <button type="button" (click)="onUpdateStatus(blog); showModal(message)" class="btn btn-success" *ngIf="blog.status === '0'"><i class="fa fa-eye" aria-hidden="true"></i> Publish</button>
-                                            <button type="button" (click)="onUpdateStatus(blog); showModal(message)" class="btn btn-info" *ngIf="blog.status === '1'"><i class="fa fa-ban" aria-hidden="true"></i> Conceal</button>
+                                            <button type="button" (click)="showModal(message, i)" class="btn btn-success" *ngIf="blog.status === '0'"><i class="fa fa-eye" aria-hidden="true"></i> Publish</button>
+                                            <button type="button" (click)="showModal(message, i)" class="btn btn-info" *ngIf="blog.status === '1'"><i class="fa fa-ban" aria-hidden="true"></i> Conceal</button>
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
-
+                                <pagination-controls (pageChange)="populateBlogs($event, null)" id="server"></pagination-controls>
                                 <!--<div class="row"><div class="col-sm-6"><div class="dataTables_info" id="dataTable_info" role="alert" aria-live="polite" aria-relevant="all">Showing 1 to 10 of 70 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate"><ul class="pagination"><li class="paginate_button previous disabled" aria-controls="dataTable" tabindex="0" id="dataTable_previous"><a href="#">Previous</a></li><li class="paginate_button active" aria-controls="dataTable" tabindex="0"><a href="#">1</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">2</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">3</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">4</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">5</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">6</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">7</a></li><li class="paginate_button next" aria-controls="dataTable" tabindex="0" id="dataTable_next"><a href="#">Next</a></li></ul></div></div></div></div>-->
                             </div>
                         </div>
@@ -220,9 +227,14 @@
                         </h3>
                     </div>
                     <div class="modal-body deleteBlogFoot">
-                        <button type="button" class="btn btn-warning" (click)="onCancel()">
-                            Cancel
-                        </button>
+                        <div *ngIf="!responseStatus">
+                            <button type="button" class="btn btn-warning" (click)="onCancel()">
+                                Cancel
+                            </button>
+                            <button type="button" class="btn btn-danger" (click)="onUpdateStatus()">
+                                Yes, Update It!
+                            </button>
+                        </div>
                     </div>
                 </div>
             </ng-template>

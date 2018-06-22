@@ -47,6 +47,10 @@ export class DashboardService {
         return this.httpClient.post(environment.API_URL + 'admin-panel/update-blog-status', id);
     }
 
+    getBlogs(body: any): Observable<any> {
+        return this.httpClient.post(environment.API_URL + 'admin-panel/get-blogs', body);
+    }
+
 }
 
 
