@@ -15,3 +15,105 @@ a:hover{
 .clicking_left span{
     font-size: 13px;
 }
+.protect_loved_right2{
+  width: 100%;
+  float: left;
+}
+.confirm_left span {
+  color: #373737;
+  font-size: 24px;
+}
+h1.login_text {
+  padding-bottom: 0;
+}
+ul.protect_loved_ul2 {
+  border-top: 1px solid #c7c7c7;
+  padding-top: 30px;
+  margin-top: 30px;
+}
+.protect_loved_right2 h2{
+  margin-bottom: 0;
+}
+.confirm_left.responsive{
+  display: none;
+}
+.confirmed_form_top{
+  padding: 20px;
+}
+.clicking_left a{
+  cursor: pointer;
+  text-decoration: underline;
+}
+.already_account{
+  padding-top: 5px;
+  color: #373737;
+}
+
+@media only screen and (max-width: 767px) {
+  .confirm_right {
+    width: auto;
+    float: left;
+    max-width: 90%;
+    margin-left: 5%;
+  }
+  .confirm_left{
+    text-align: center;
+    padding: 0 5%;
+    margin-bottom: 40px;
+  }
+  ul.protect_loved_ul2{
+    border: 0;
+  }
+  h1.login_text {
+    font-size: 42px;
+  }
+  .confirm_left span{
+    font-size: 22px;
+  }
+  .confirm_left .protect_loved_right2 span{
+    font-size: 18px;
+  }
+  .protect_loved_right2 h2{
+    padding-bottom: 5px;
+  }
+  .confirmd_main{
+    position: relative;
+  }
+  .confirm_left.responsive{
+    display: block;
+  }
+  .protect_loved_ul2.desktop{
+    display: none;
+  }
+  .form_heading {
+    font-size: 36px;
+  }
+  ul.protect_loved_ul2{
+    padding-top: 20px;
+    margin-top: 0;
+  }
+  .confirm_left.responsive{
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .confirm_left{
+    padding: 0;
+  }
+  .confirm_right {
+    max-width: 100%;
+    margin-left: 0;
+  }
+  .form_heading {
+    font-size: 24px;
+  }
+  .form_pera{
+    font-size: 14px;
+  }
+  .protect_loved_right2 h2 {
+    font-size: 20px;
+  }
+}
+
+
