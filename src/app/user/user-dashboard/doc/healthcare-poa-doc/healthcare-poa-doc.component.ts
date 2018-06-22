@@ -73,7 +73,9 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     ma: false,
     mi: false,
     mn: false,
-    nm: true
+    nm: false,
+    nj: false,
+    nh: false
   };
   pdfData: any;
   globalPDFSubscription: Subscription;
@@ -168,7 +170,9 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
       ma: false,
       mi: false,
       mn: false,
-      nm: true
+      nm: false,
+      nj: false,
+      nh: true
     };
     this.docScrolled = 0;
     this.thumbIndex = 0;

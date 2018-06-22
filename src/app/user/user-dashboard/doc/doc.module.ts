@@ -38,6 +38,8 @@ import { MaComponent } from './healthcare-poa-doc/ma/ma.component';
 import { MiComponent } from './healthcare-poa-doc/mi/mi.component';
 import { MnComponent } from './healthcare-poa-doc/mn/mn.component';
 import { NmComponent } from './healthcare-poa-doc/nm/nm.component';
+import { NjComponent } from './healthcare-poa-doc/nj/nj.component';
+import { NhComponent } from './healthcare-poa-doc/nh/nh.component';
 
 @NgModule({
   imports: [
@@ -82,6 +84,8 @@ import { NmComponent } from './healthcare-poa-doc/nm/nm.component';
     MiComponent,
     MnComponent,
     NmComponent,
+    NjComponent,
+    NhComponent,
   ]
 })
 export class DocModule { }
