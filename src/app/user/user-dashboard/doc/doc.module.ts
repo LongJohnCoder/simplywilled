@@ -33,6 +33,11 @@ import { VtComponent } from './healthcare-poa-doc/vt/vt.component';
 import { VaComponent } from './healthcare-poa-doc/va/va.component';
 import { UtComponent } from './healthcare-poa-doc/ut/ut.component';
 import { TxComponent } from './healthcare-poa-doc/tx/tx.component';
+import { MdComponent } from './healthcare-poa-doc/md/md.component';
+import { MaComponent } from './healthcare-poa-doc/ma/ma.component';
+import { MiComponent } from './healthcare-poa-doc/mi/mi.component';
+import { MnComponent } from './healthcare-poa-doc/mn/mn.component';
+import { NmComponent } from './healthcare-poa-doc/nm/nm.component';
 
 @NgModule({
   imports: [
@@ -72,6 +77,11 @@ import { TxComponent } from './healthcare-poa-doc/tx/tx.component';
     VaComponent,
     UtComponent,
     TxComponent,
+    MdComponent,
+    MaComponent,
+    MiComponent,
+    MnComponent,
+    NmComponent,
   ]
 })
 export class DocModule { }

@@ -68,7 +68,12 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     vt: false,
     va: false,
     ut: false,
-    tx: false
+    tx: false,
+    md: false,
+    ma: false,
+    mi: false,
+    mn: false,
+    nm: true
   };
   pdfData: any;
   globalPDFSubscription: Subscription;
@@ -158,13 +163,17 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
       vt: false,
       va: false,
       ut: false,
-      tx: true
+      tx: false,
+      md: false,
+      ma: false,
+      mi: false,
+      mn: false,
+      nm: true
     };
     this.docScrolled = 0;
     this.thumbIndex = 0;
     this.liCount = this.docThumbImg.length * 114;
   }
-
 
   /**Checks for authorization user id.*/
   parseToken() {
