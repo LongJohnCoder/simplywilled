@@ -122,6 +122,69 @@ class BlogController extends Controller
         }
     }
 
+    public function getBlogs(Request $request)
+    {
+      try {
+        $page = $request->page;
+        if ($request->search == NULL) {
+          $totalBlogs = Blogs::count();
+          $blogCount = $totalBlogs;
+          $blogs = Blogs::with('blogCategory')->offset(($page-1)*10)->limit(10)->orderBy('created_at','DESC')->get();
+        } else {
+          $totalBlogs = Blogs::count();
+          $blogCount = $totalBlogs;
+          $blogs = Blogs::where('title','like', '%'.$request->search.'%')
+            ->orWhere('slug','like','%'.$request->search.'%')
+            ->with('blogCategory')->offset(($page-1)*10)->limit(10)->orderBy('created_at','DESC')->get();
+            $blogCount = $blogs->count();
+        }
+
+        $blogArr = [];
+        if ($blogs) {
+          foreach ($blogs as $key => $value) {
+            $blogArr[$key]['author_id'] = $value->author_id;
+            $blogArr[$key]['body'] = $value->body;
+            $blogArr[$key]['created_at'] = $value->created_at->toDateTimeString();
+            $blogArr[$key]['featured'] = $value->featured;
+            $blogArr[$key]['id'] = $value->id;
+            $blogArr[$key]['image'] = url('/blogImage').'/'.$value->image;
+            $blogArr[$key]['meta_description'] = $value->meta_description;
+            $blogArr[$key]['meta_keywords'] = $value->meta_keywords;
+            $blogArr[$key]['seo_title'] = $value->seo_title;
+            $blogArr[$key]['slug'] = $value->slug;
+            $blogArr[$key]['status'] = $value->status;
+            $blogArr[$key]['title'] = $value->title;
+            $blogArr[$key]['total_views'] = $value->total_views;
+            $categories = [];
+            foreach ($value->blogCategory as $ckey => $cvalue) {
+              $categories[$ckey] = $cvalue->category->name;
+            }
+            $blogArr[$key]['blog_category'] = $categories;
+            $blogArr[$key]['comments'] = $value->getComments;
+          }
+            return response()->json([
+                'status' => true,
+                'message' => 'Blog List',
+                'data' => ['BlogDetails' => $blogArr, 'blogCount' => $blogCount, 'totalBlogs' => $totalBlogs]
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Blog not added',
+                'data' => []
+            ], 400);
+        }
+
+      } catch (\Exception $e) {
+        return response()->json([
+            'status' => false,
+            'message' => $e->getMessage(),
+            'data' => []
+        ], 500);
+      }
+
+    }
+
     /*
      * function to fetch list of blogs for user
      *
@@ -1276,13 +1339,13 @@ class BlogController extends Controller
                 ], 500);
             }
         }
-        
+
         /*
          * Function name : updateBlogStatus
          * Param : request object
          * Return : \Illuminate\Http\JsonResponse
          */
-        
+
         public function updateBlogStatus(Request $request){
             try {
                 $validator = Validator::make($request->all(), [
@@ -1343,7 +1406,7 @@ class BlogController extends Controller
                 ], 500);
             }
         }
-        
+
         public function blogData()
         {
             $blogs = Blogs::with('blogCategory')->orderBy('created_at','DESC')->get();

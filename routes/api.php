@@ -207,6 +207,14 @@ Route::group(['prefix' => 'v1'], function() {
         ]);
 
         /*
+         * Route for Edit Blog
+         * */
+        Route::post('get-blogs', [
+            'uses' => 'Api\V1\BlogController@getBlogs',
+            'as'   => 'api.v1.getBlogs.post'
+        ]);
+
+        /*
          * Route for view Blog
          * */
         Route::get('view-blog/{blogId}', [
