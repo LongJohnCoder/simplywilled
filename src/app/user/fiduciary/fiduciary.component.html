@@ -10,7 +10,7 @@
         <span *ngIf="!isAccepted">You have declined to be responsible for carrying out {{userName | titlecase}}'s wishes.</span>
 
 
-        <ul class="protect_loved_ul2">
+        <ul class="protect_loved_ul2 desktop" *ngIf="isAccepted">
           <li>
             <div class="protect_loved_right2">
               <h2>Have you made your last will?</h2>
@@ -23,7 +23,21 @@
               <span>Email:</span><span style="color: #44a834"> info@simplywilled.com</span>
             </div>
           </li>
+        </ul>
 
+        <ul class="protect_loved_ul2 desktop" *ngIf="!isAccepted">
+          <li>
+            <div class="protect_loved_right2">
+              <h2>Have you made your last will?</h2>
+              <span>Try SimplyWilled.com today and make sure your family and property are protected.</span>
+            </div>
+          </li>
+          <li>
+            <div class="protect_loved_right2">
+              <h2>Have a question?</h2>
+              <span>Email:</span><span style="color: #44a834"> info@simplywilled.com</span>
+            </div>
+          </li>
         </ul>
 
       </div>
@@ -87,16 +101,49 @@
             </div>
             <div class="get_start_main">
               <div class="clicking_left">
-                <span style="font-size: 13px">By clicking the button, I agree to the Terms of Service</span>
-                <!--<a routerLink="/sign-in" class="already_account">Login</a>-->
+                <span style="font-size: 13px">By clicking the button, I agree to the <a routerlink="/terms-of-service">Terms of Service</a></span>
+                <a *ngIf="isAccepted" routerLink="/sign-in" class="already_account"> <i class="fa fa-angle-right"></i> Already have an account?</a>
                 <!--<a routerLink="/forget-password" class="already_account">Forgot your password?</a>-->
               </div>
               <!--<a class="login_btn"><i class="fa fa-chevron-right" aria-hidden="true"></i> Login</a>-->
-              <button value="Continue" [disabled]="form.invalid" class="login_btn"> <i class="fa fa-chevron-right" aria-hidden="true"></i>Get Started</button>
+              <button value="Continue" [disabled]="form.invalid" class="login_btn"> <i class="fa fa-chevron-right" aria-hidden="true"></i> Get Started</button>
             </div>
           </form>
         </div>
       </div>
+
+      <div class="confirm_left responsive">
+        <ul class="protect_loved_ul2" *ngIf="isAccepted">
+          <li>
+            <div class="protect_loved_right2">
+              <h2>Have you made your last will?</h2>
+              <span>Try SimplyWilled.com today and make sure your wishes are known.</span>
+            </div>
+          </li>
+          <li>
+            <div class="protect_loved_right2">
+              <h2>Have a question?</h2>
+              <span>Email:</span><span style="color: #44a834"> info@simplywilled.com</span>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="protect_loved_ul2" *ngIf="!isAccepted">
+          <li>
+            <div class="protect_loved_right2">
+              <h2>Have you made your last will?</h2>
+              <span>Try SimplyWilled.com today and make sure your family and property are protected.</span>
+            </div>
+          </li>
+          <li>
+            <div class="protect_loved_right2">
+              <h2>Have a question?</h2>
+              <span>Email:</span><span style="color: #44a834"> info@simplywilled.com</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </div>
   <div class="about_sec4">
