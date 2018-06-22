@@ -166,8 +166,18 @@ a:hover{
 }
 
 .our-team-v2.about_sec3 {
-    background: #f3f3f2;
+    background: #1376bb;
     padding-bottom: 80px;
+}
+.our-team-v2.about_sec3 h1{
+    padding-top: 0;
+    color: #fff;
+}
+.our-team-v2.about_sec3 ul li h3, .our-team-v2.about_sec3 ul li h4{
+    color: #fff;
+}
+.our-team-v2.about_sec3 .team_pic img{
+    border-color: #0f527f;
 }
 .about_sec4{
     background-color: #F2F2F2;
