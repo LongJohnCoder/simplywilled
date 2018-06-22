@@ -41,9 +41,13 @@ Route::group(['prefix' => 'v1'], function() {
         'uses' => 'Api\V1\AuthController@resetPassword',
         'as' => 'api.v1.resetPassword.post'
     ]);
-	Route::post('validate-email',[
+	  Route::post('validate-email',[
         'uses' => 'Api\V1\AuthController@validationEmail',
         'as'   => 'api.v1.validationEmail.post'
+    ]);
+    Route::post('fiduciary-user',[
+        'uses' => 'Api\V1\AuthController@fiduciaryOfUser',
+        'as'   => 'api.v1.fiduciaryOfUser.post'
     ]);
 
     /**
@@ -185,7 +189,7 @@ Route::group(['prefix' => 'v1'], function() {
             'uses' => 'Api\V1\BlogController@editBlog',
             'as'   => 'api.v1.EditBlog.post'
         ]);
-        
+
         /*
          * Route for update blog status
          * */

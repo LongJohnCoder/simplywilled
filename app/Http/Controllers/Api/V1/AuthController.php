@@ -525,4 +525,38 @@ class AuthController extends Controller {
             return response()->json($response, $responseCode);
         }
     }
+
+    /**
+     * Get details of fiduciaryOfUser
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function fiduciaryOfUser(Request $request)
+    {
+      try {
+        $userID = Crypt::decryptString($request->token);
+        $user = User::find($userID);
+        if ($user) {
+          return response()->json([
+            'status' => true,
+            'data' => [
+              'userName' => $user->name
+            ]
+          ], 200);
+        } else {
+          return response()->json([
+            'status' => false,
+            'error' => 'User not found'
+          ], 400);
+        }
+      } catch (\Exception $e) {
+        return response()->json([
+          'status' => false,
+          'error' => $e->getMessage(),
+          'line' => $e->getLine()
+        ], 500);
+      }
+    }
+
+
 }

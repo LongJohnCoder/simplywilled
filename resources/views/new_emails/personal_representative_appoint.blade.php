@@ -15,7 +15,7 @@
             padding: 0;
             background: #e2e2e2;
         }
-        
+
         @media screen and (max-width:599px){
             table[class="container"]{
                 width: 480px !important;
@@ -51,24 +51,22 @@
                         <td style="padding:0 30px; background: #f2f2f2;">
                             <h1 style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">{{$executorName}} (1st Choice),</h1>
                             <p style="color: #373737; font-size: 20px; line-height: 30px;">
-                                {{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}} recently joined the thousands of people who have used <a href="{{url('/')}}" target="_blank" style="color: #0a5dab;">SimplyWilled.com</a> to create their will and selected you to serve as their Personal Representative. Being selected as a Personal Representative is an important role reserved for those we trust the most. This email is being sent to you so you can let <strong>{{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}}</strong> know whether you accept or decline this honor.  
+                                {{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}} recently joined the thousands of people who have used <a href="{{url('/')}}" target="_blank" style="color: #0a5dab;">SimplyWilled.com</a> to create their will and selected you to serve as their Personal Representative. Being selected as a Personal Representative is an important role reserved for those we trust the most. This email is being sent to you so you can let <strong>{{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}}</strong> know whether you accept or decline this honor.
                                 <br><br>
                                 <strong style="font-size: 22px;">What being selected as Primary Personal Representative means for you:</strong>
                                 <br><br>
-                                As Personal Representative (also called executor is some states) you will be legally responsible for carrying the out the instructions contained in a <strong>{{$firstName}}’s</strong> will. While the responsibilities can vary, you will be primarily responsible for settling the estate, distributing property according to the terms of the will and hiring legal professionals to assist with the probate process.  
+                                As Personal Representative (also called executor is some states) you will be legally responsible for carrying the out the instructions contained in a <strong>{{$firstName}}’s</strong> will. While the responsibilities can vary, you will be primarily responsible for settling the estate, distributing property according to the terms of the will and hiring legal professionals to assist with the probate process.
                                 <br><br>
                                 <strong style="font-size: 22px;">Confirm you responsibility:</strong>
                                 <br><br>
-                                Your duties as Personal Representative do not take effect until <strong>{{$firstName}}</strong> passes away. If you accept this honor and duty, please take a moment to speak with <strong>{{$firstName}}</strong> to have a conversation about the terms of their will, their wishes, and any special instructions. It is important that you confirm the location of their will so that you can access it when the time comes. Otherwise, please let <strong>{{$firstName}}</strong> know you are unable to accept this responsibility so they can choose someone else.  
+                                Your duties as Personal Representative do not take effect until <strong>{{$firstName}}</strong> passes away. If you accept this honor and duty, please take a moment to speak with <strong>{{$firstName}}</strong> to have a conversation about the terms of their will, their wishes, and any special instructions. It is important that you confirm the location of their will so that you can access it when the time comes. Otherwise, please let <strong>{{$firstName}}</strong> know you are unable to accept this responsibility so they can choose someone else.
                             </p>
                         </td>
                         <tr>
                             <td style="padding:40px 30px; background: #f2f2f2; text-align: center;">
-                                {{--
-                                <a href="#"><img src="{{url('/')}}/images/acceptBtn.png" alt="accept"></a>
+                                <a href="{{url('/')}}/fiduciary/accept/{{isset($token) ? $token : 'null'}}"><img src="{{url('/')}}/images/acceptBtn.png" alt="accept"></a>
                                 <br><br>
-                                <a href="#"><img src="{{url('/')}}/images/declineBtn.png" alt="No Thank You, I Respectfully Decline"></a>
-                                --}}
+                                <a href="{{url('/')}}/fiduciary/reject/{{isset($token) ? $token : 'null'}}"><img src="{{url('/')}}/images/declineBtn.png" alt="No Thank You, I Respectfully Decline"></a>
                             </td>
                         </tr>
                         <tr>
@@ -86,7 +84,7 @@
                                                         <br>
                                                         <span style="font-size: 18px; color: #373737;">Mon-Friday 10 A.M - 6 P.M.</span>
                                                     </td>
-                                                </tr> 
+                                                </tr>
                                             </table>
                                         </td>
                                     </tr>
@@ -120,6 +118,6 @@
             </td>
         </tr>
     </table>
-    
+
 </body>
 </html>

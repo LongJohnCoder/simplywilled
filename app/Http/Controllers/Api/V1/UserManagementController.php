@@ -101,7 +101,7 @@ class UserManagementController extends Controller
                   'data'    => []
               ], 400);
         }
-        
+
       } catch (\Exception $e) {
         return response()->json([
               'status'  => false,
@@ -146,11 +146,11 @@ class UserManagementController extends Controller
 
 
       if($tuay && $fpa) {
-        
+
         if($tuay->state == 'Minnesota' || $tuay->state == 'Florida' || $tuay->state == 'Maryland' || $tuay->state == 'New York') {
-          
+
           if($fpa->attorney_holders == null || $fpa->attorney_backup == null) {
-            
+
             $fpa->is_complete = '0';
             $fpa->save;
             return false;
@@ -160,20 +160,20 @@ class UserManagementController extends Controller
             return true;
           }
         } elseif($fpa->attorney_powers != null && $fpa->attorney_holders != null && $fpa->attorney_backup != null) {
-            
+
             $fpa->is_complete = '1';
             $fpa->save;
             return true;
         } else {
-          
+
           $fpa->is_complete = '0';
           $fpa->save;
           return false;
         }
       } else {
-        
+
         if($fpa) {
-          
+
           $fpa->is_complete = '0';
           $fpa->save;
           return false;
@@ -193,7 +193,7 @@ class UserManagementController extends Controller
 
       if($hf)
         return true;
-      
+
       return false;
     }
 
@@ -202,7 +202,7 @@ class UserManagementController extends Controller
       $fa =FinalArrangements::where('user_id', $user->id)->first();
       if($fa)
         return true;
-      
+
       return false;
     }
 
@@ -254,7 +254,7 @@ class UserManagementController extends Controller
             $holderEmail = isset($previousHoldersArr['email']) ? $previousHoldersArr['email'] : null;
 
             $previousBackupArr  = json_decode($financialPowerAttorney->attorney_backup, true);
-            $backupEmail = isset($previousBackupArr['email']) ? $previousBackupArr['email'] : null;            
+            $backupEmail = isset($previousBackupArr['email']) ? $previousBackupArr['email'] : null;
           }
 
           $financialPowerAttorney->attorney_powers    = $attorneyPowers == null ? $financialPowerAttorney->attorney_powers : $attorneyPowers;
@@ -280,7 +280,9 @@ class UserManagementController extends Controller
                     'middleName'  => $tellUsAboutYou->middlename,
                     'lastName'    => $tellUsAboutYou->lastname,
                     'fullname'    => isset($attorneyHoldersArr['fullname']) ? $attorneyHoldersArr['fullname'] : '',
-                    'email'       => $attorneyHoldersArr['email']
+                    'email'       => $attorneyHoldersArr['email'],
+                    'token'         =>  Crypt::encryptString($userId)
+
                 ];
                 Mail::send('new_emails.power_of_attorney', $arr, function($mail) use($arr){
                     $mail->from(config('settings.email'), 'Notice for Power Of Attorney');
@@ -310,7 +312,9 @@ class UserManagementController extends Controller
                     'middleName'  => $tellUsAboutYou->middlename,
                     'lastName'    => $tellUsAboutYou->lastname,
                     'fullname'    => isset($attorneyBackupArr['fullname']) ? $attorneyBackupArr['fullname'] : '',
-                    'email'       => $attorneyBackupArr['email']
+                    'email'       => $attorneyBackupArr['email'],
+                    'token'         =>  Crypt::encryptString($userId)
+                    
                 ];
                 Mail::send('new_emails.power_of_attorney_backup', $arr, function($mail) use($arr){
                     $mail->from(config('settings.email'), 'Notice for Power Of Attorney 2nd choice');
@@ -579,7 +583,7 @@ class UserManagementController extends Controller
           $validator = Validator::make($request->all(), [
               'userId' => 'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
           ]);
-        
+
           if($validator->fails()) {
               return response()->json([
                   'status' => false,
@@ -627,7 +631,7 @@ class UserManagementController extends Controller
           } else {
             $healthFinance->emailOfAgent = null;
           }
-          
+
           if ($request->anyBackupAgent == 'true') {
             $healthFinance->backupfirstLegalName = $request->backupfirstLegalName;
             $healthFinance->backuplastLegalName  = $request->backuplastLegalName;
@@ -679,7 +683,9 @@ class UserManagementController extends Controller
                     'middleName' => $tellUsAboutYou->middlename,
                     'lastName'   => $tellUsAboutYou->lastname,
                     'executiveFirstName' => $request->firstLegalName,
-                    'executiveLastName'  => $request->lastLegalName
+                    'executiveLastName'  => $request->lastLegalName,
+                    'token'      =>  Crypt::encryptString($request->userId)
+
                 ];
                 Mail::send('new_emails.health_care', $arr, function($mail) use($email, $arr){
                     $mail->from(config('settings.email'), 'Notice for Health Care Executive');
@@ -690,7 +696,7 @@ class UserManagementController extends Controller
                     \Log::info('email sending error for health care power of attorney');
                 }
               }
-              
+
             }
 
             if(isset($backUpEmail) && $backUpEmail != null) {
@@ -707,7 +713,8 @@ class UserManagementController extends Controller
                     'middleName' => $tellUsAboutYou->middlename,
                     'lastName'   => $tellUsAboutYou->lastname,
                     'executiveFirstName' => $request->backupfirstLegalName,
-                    'executiveLastName'  => $request->backuplastLegalName
+                    'executiveLastName'  => $request->backuplastLegalName,
+                    'token'      =>  Crypt::encryptString($request->userId)
                 ];
                 Mail::send('new_emails.health_care_backup', $arr, function($mail) use($backUpEmail, $arr){
                     $mail->from(config('settings.email'), 'Notice for Health Care Executive');
@@ -742,7 +749,7 @@ class UserManagementController extends Controller
     }
 
     /**
-    * @param 
+    * @param
     * @return \Illuminate\Http\JsonResponse
     */
     public function fetchHealthFinance()
@@ -796,7 +803,7 @@ class UserManagementController extends Controller
      * */
      public function updateFinalAgrangement(Request $request){
       try {
-        
+
           $validator = Validator::make($request->all(), [
              'user_id'    =>  'required|exists:users,id,deleted_at,NULL',
              'type'       =>  'required|numeric|between:0,2|integer',
@@ -876,16 +883,16 @@ class UserManagementController extends Controller
         $petGuardian  = PetGuardian::where('user_id', \Auth::user()->id)->first();
         //if step 1 is completed by the user
         //i.e fill up tellUsAboutYou Table
-        
+
         if($tellUsAboutYou) {
-            
+
             //if the user has single status : single,widowed,divorced
 
             //if the number of children is more than 1
             //and no names are inserted for children then step is incomplete
             if($tellUsAboutYou->children > 0) {
 
-                
+
                 //if childrens info is not absent then this step is incomplete
                 if(!$childrens) {
                     $tellUsAboutYou->is_complete = '0';
@@ -894,7 +901,7 @@ class UserManagementController extends Controller
                 }
 
                 if($tellUsAboutYou->guardian_minor_children == 1) {
-                  
+
                   //if children is present and no guardians are appointed for the minor children
                   //then the step is in complete
                   if(!$guardianInfo) {
@@ -942,15 +949,15 @@ class UserManagementController extends Controller
             if($est) {
 
               $cnbf = ContingentBeneficiary::where('user_id', $user->id)->first();
-              
+
               if($cnbf) {
 
                 if($cnbf->is_contingent_beneficiary == 1) {
 
                   if($cnbf->distribution_type == 'to_my_heirs') {
-                    
+
                     $flag = true;
-                  
+
                   } elseif($cnbf->distribution_type == 'other' && strlen($cnbf->info) > 0 ) {
 
                     $flag = true;
@@ -960,35 +967,35 @@ class UserManagementController extends Controller
                   }
 
                 } elseif($cnbf->is_contingent_beneficiary == 0) {
-                  
+
                   $flag = true;
                 }
 
                 $ds = Disinherit::where('user_id', $user->id)->first();
-                
+
                 if($ds->disinherit == 1 && strlen($ds->fullname) > 0 && strlen($ds->gender) > 0){
-                  
+
                   if(strtolower($ds->relationship) == 'other' && strlen($ds->other_relationship) > 0) {
-                    
+
                     $flag = true;
-                  
+
                   } elseif(strlen($ds->relationship) > 0) {
-                    
+
                     $flag = true;
-                  
+
                   } else {
-                    
+
                     $flag = false;
-                  
+
                   }
                 } elseif($ds->disinherit == 0) {
-                  
+
                   $flag = true;
-                
+
                 } else {
-                  
+
                   $flag = false;
-                
+
                 }
 
               } else {
@@ -1098,7 +1105,7 @@ class UserManagementController extends Controller
 
         //step:12
         array_push($responseDataArray, $this->fetchPetGuardianInfo($user, $spouse, $tellUsAboutYouUser, $tellUsAboutYouSpouse));
-        
+
         return response()->json([
           'status'  =>  200,
           'message' =>  'Fetched user information successfully',
@@ -1299,7 +1306,7 @@ class UserManagementController extends Controller
          'data' => [
            'isGift' => count($gifts),
            'gift'   => $giftsArray,
-           'not_this_time' => $provideYourLovedOnes->not_this_time
+           'not_this_time' => isset($provideYourLovedOnes->not_this_time) ? $provideYourLovedOnes->not_this_time : []
          ]
        ];
        return $responseArray;
@@ -1414,7 +1421,7 @@ class UserManagementController extends Controller
      * @return json response
     * */
     public function fetchTuayProgress() {
-      
+
       try {
         return response()->json([
           'status'      => false,
@@ -1437,7 +1444,7 @@ class UserManagementController extends Controller
      * @return json response
     * */
     public function fetchPyloProgress() {
-      
+
       try {
         return response()->json([
             'status'      => false,
@@ -1460,7 +1467,7 @@ class UserManagementController extends Controller
     * @return json response
     * */
     public function fetchPyfProgress() {
-      
+
       try {
         return response()->json([
             'status'      => false,

@@ -815,7 +815,7 @@ class UserController extends Controller
         $oldBackupEmail = $perBackupRepresentative != null ? $perBackupRepresentative->email : null;
 
       //if user has not completed previous step in tellUsYou section then this step is not permited
-      PersonalRepresentatives::updateOrCreate(['user_id' => $personalRepresentative['user_id'], 'is_backuprepresentative' => (string)$isBackupRepresentative], $personalRepresentative);
+      $personRepre = PersonalRepresentatives::updateOrCreate(['user_id' => $personalRepresentative['user_id'], 'is_backuprepresentative' => (string)$isBackupRepresentative], $personalRepresentative);
 
 
       if(isset($personalRepresentative['email_notification']) && $personalRepresentative['email_notification'] ==1) {
@@ -835,7 +835,9 @@ class UserController extends Controller
                     'firstName'     =>  $tellUsAboutYou->firstname,
                     'middleName'    =>  $tellUsAboutYou->middlename,
                     'lastName'      =>  $tellUsAboutYou->lastname,
-                    'executorName'  =>  $personalRepresentative['fullname']
+                    'executorName'  =>  $personalRepresentative['fullname'],
+                    // 'type'          =>  'personalRepresentative',
+                    'token'         =>  Crypt::encryptString($personalRepresentative['user_id'])
                 ];
                 Mail::send('new_emails.personal_representative_appoint', $arr, function($mail) use($personalRepresentative){
                     $mail->from(config('settings.email'), 'Notice for Executor');
@@ -862,7 +864,9 @@ class UserController extends Controller
                     'firstName'     =>  $tellUsAboutYou->firstname,
                     'middleName'    =>  $tellUsAboutYou->middlename,
                     'lastName'      =>  $tellUsAboutYou->lastname,
-                    'executorName'  =>  $personalRepresentative['fullname']
+                    'executorName'  =>  $personalRepresentative['fullname'],
+                    // 'type'          =>  'personalRepresentative',
+                    'token'         =>  Crypt::encryptString($personalRepresentative['user_id'])
                 ];
                 Mail::send('new_emails.personal_representative_appoint_backup', $arr, function($mail) use($personalRepresentative){
                     $mail->from(config('settings.email'), 'Notice for Backup Executor');
@@ -1077,7 +1081,9 @@ class UserController extends Controller
                             'firstName'     =>  $tellUsAboutYou->firstname,
                             'middleName'    =>  $tellUsAboutYou->middlename,
                             'lastName'      =>  $tellUsAboutYou->lastname,
-                            'guardianName'  =>  $guardian['fullname']
+                            'guardianName'  =>  $guardian['fullname'],
+                            'token'         =>  Crypt::encryptString($guardian['user_id'])
+
                         ];
                         Mail::send('new_emails.guardian', $arr, function($mail) use($guardian){
                             $mail->from(config('settings.email'), 'Notice for Guardian Appointment');
@@ -1103,7 +1109,8 @@ class UserController extends Controller
                             'firstName'     =>  $tellUsAboutYou->firstname,
                             'middleName'    =>  $tellUsAboutYou->middlename,
                             'lastName'      =>  $tellUsAboutYou->lastname,
-                            'backupGuardianName'  =>  $guardian['fullname']
+                            'backupGuardianName'  =>  $guardian['fullname'],
+                            'token'         =>  Crypt::encryptString($guardian['user_id'])
                         ];
                         Mail::send('new_emails.guardian_backup', $arr, function($mail) use($guardian){
                             $mail->from(config('settings.email'), 'Notice for Backup Guardian Appointment');
@@ -1347,7 +1354,9 @@ class UserController extends Controller
                             'firstName'     =>  $tellUsAboutYou->firstname,
                             'middleName'    =>  $tellUsAboutYou->middlename,
                             'lastName'      =>  $tellUsAboutYou->lastname,
-                            'petCaretaker'  =>  $petGuardian['fullname']
+                            'petCaretaker'  =>  $petGuardian['fullname'],
+                            'token'         =>  Crypt::encryptString($petGuardian['user_id'])
+
                         ];
                         Mail::send('new_emails.pet_caretaker', $arr, function($mail) use($petGuardian, $arr){
                             $mail->from(config('settings.email'), 'Notice for Pet Caretaker Appointment');
@@ -1373,7 +1382,9 @@ class UserController extends Controller
                             'firstName'     =>  $tellUsAboutYou->firstname,
                             'middleName'    =>  $tellUsAboutYou->middlename,
                             'lastName'      =>  $tellUsAboutYou->lastname,
-                            'backupPetCaretaker'  =>  $petGuardian['fullname']
+                            'backupPetCaretaker'  =>  $petGuardian['fullname'],
+                            'token'         =>  Crypt::encryptString($petGuardian['user_id'])
+                            
                         ];
                         Mail::send('new_emails.pet_caretaker_backup', $arr, function($mail) use($petGuardian, $arr){
                             $mail->from(config('settings.email'), 'Notice for Backup Pet Caretaker Appointment');
@@ -1827,7 +1838,7 @@ class UserController extends Controller
         if($provideYourLovedOnes) {
             $provideYourLovedOnes->not_this_time = null;
             $provideYourLovedOnes->save();
-        }        
+        }
 
         if ($gift) {
 
