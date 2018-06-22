@@ -31,6 +31,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import {MedicalEmergencyService} from './user-dashboard/plan-for-medical-emergency/medical-emergency.service';
 import { ProtectYourFinancesService } from './user-dashboard/protect-your-finances/services/protect-your-finances.service';
 import {PackagesService} from './user-dashboard/packages/packages.service';
+import { FiduciaryComponent } from './fiduciary/fiduciary.component';
 
 @NgModule({
   imports: [
@@ -59,6 +60,7 @@ import {PackagesService} from './user-dashboard/packages/packages.service';
     BlogComponent,
     BlogdetailsComponent,
     BlogCategoryComponent,
+    FiduciaryComponent,
   ],
   providers: [
     ProtectYourFinancesService,

@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { BlogComponent } from './blog/blog.component';
 import { BlogdetailsComponent } from './blog/blogdetails/blogdetails.component';
 import {BlogCategoryComponent} from './blog/blog-category/blog-category.component';
+import {FiduciaryComponent} from './fiduciary/fiduciary.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
         { path: 'terms-of-service', pathMatch: 'full', component: TermsOfServiceComponent },
         { path: 'privacy-policy', pathMatch: 'full', component: PrivacyPolicyComponent },
         { path: 'contact-us', pathMatch: 'full', component: ContactUsComponent },
+        { path: 'fiduciary/:type/:token', pathMatch: 'full', component: FiduciaryComponent },
         // tslint:disable-next-line:max-line-length
         
    ]},

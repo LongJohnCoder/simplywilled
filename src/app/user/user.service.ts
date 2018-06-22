@@ -62,4 +62,8 @@ export class UserService {
     changeCurrentToolTipType(value: string) {
         this.currentToolTipType.next(value);
     }
+
+    fiduciaryOfUser(body: any): Observable<any> {
+        return this.httpClient.post( environment.API_URL + 'fiduciary-user', body );
+    }
 }

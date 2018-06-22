@@ -1,0 +1,17 @@
+a:hover{
+    color: #fff;
+}
+.login_btn{
+    cursor: pointer;
+}
+.login_btn:hover{
+    color: #fff;
+    background: linear-gradient(#53ba3c, #3fa62e);
+}
+.already_account:hover{
+    color:#373737;
+    text-decoration: underline;
+}
+.clicking_left span{
+    font-size: 13px;
+}
