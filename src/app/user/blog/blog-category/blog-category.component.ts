@@ -21,17 +21,18 @@ export class BlogCategoryComponent implements OnInit {
     p: number;
     constructor(private blogService: BlogService, private router: Router, private route: ActivatedRoute ) {
 
-        // router.events.subscribe( (event: Event) => {
-        //     if (event instanceof NavigationEnd) {
-        //         const slug = this.route.snapshot.paramMap.get('slug');
-        //         this.blogService.getBlogDetailsFromCategory(slug).subscribe(
-        //             (data: any) => {
-        //                 this.blogList = data.data.blog;
-        //                 this.imageLink = data.data.imageLink;
-        //             }
-        //         );
-        //     }
-        // });
+        router.events.subscribe( (event: Event) => {
+            if (event instanceof NavigationEnd) {
+                const slug = this.route.snapshot.paramMap.get('slug');
+                this.blogService.getBlogDetailsFromCategory(slug, 1).subscribe(
+                    (data: any) => {
+                        this.blogList = data.data.blog;
+                        this.imageLink = data.data.imageLink;
+                        this.totalBlog = data.data.totalBlog;
+                    }
+                );
+            }
+        });
 
     }
 
@@ -53,6 +54,7 @@ export class BlogCategoryComponent implements OnInit {
             (data: any) => {
                 this.blogList = data.data.blog;
                 this.imageLink = data.data.imageLink;
+                this.totalBlog = data.data.totalBlog;
             }
         );
     }
