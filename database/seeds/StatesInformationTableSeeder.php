@@ -23,13 +23,14 @@ class StatesInformationTableSeeder extends Seeder
 		$noTypeStateArray = array("Florida","Maryland","Minnesota","New York");
 
 		$states = StatesInformationHelper::getStatesInfo();
+		$statesAbbreviation = StatesInformationHelper::getStatesAbbreviation();
 		$insertArray = [];
 		foreach ($states as $eachState => $stateInfo) {
 			$type = "none";
-			if(in_array($eachState, $noTypeStateArray)) {
+			if (in_array($eachState, $noTypeStateArray)) {
 				$type = "none";
 			} 
-			elseif(in_array($eachState, $uniformStateArray)) {
+			elseif (in_array($eachState, $uniformStateArray)) {
 				$type = "uniform";
 			}
 			else {
@@ -40,6 +41,7 @@ class StatesInformationTableSeeder extends Seeder
 				'code' 	=> 	$stateInfo['code'],
 				'act'	=>	$stateInfo['act'],
 				'type'	=>	$type,
+				'abr'   =>  $statesAbbreviation[$eachState],
 				'executor_title' => $stateInfo['executor']
 			]);
 		}

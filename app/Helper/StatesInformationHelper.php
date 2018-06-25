@@ -1,6 +1,6 @@
 <?php
 /**
- * Functional Scope: Helper class for datetime
+ * Functional Scope=> Helper class for datetime
  */
 namespace App\Helper;
 use \Carbon\Carbon;
@@ -48,7 +48,7 @@ class StatesInformationHelper {
 							"act" => "Delaware Durable Personal Powers of Attorney Act",
 							"executor" => "Personal Representative"
 							],
-				"District Of Columbia" => [
+				"District of Columbia" => [
 							"code" => "D.C. Code § 21-2101, et seq",
 							"act" => "District of Columbia Uniform Power of Attorney Act",
 							"executor" => "Personal Representative"
@@ -154,7 +154,7 @@ class StatesInformationHelper {
 							"executor" => "Executor"
 							],
 				"New Hampshire" => [
-							"code" => "N.H. Rev. Stat. Ann. § 564-E:101, et seq. (Effective January 1, 2018)",
+							"code" => "N.H. Rev. Stat. Ann. § 564-E=>101, et seq. (Effective January 1, 2018)",
 							"act" => "New Hampshire Uniform Power of Attorney Act",
 							"executor" => "Executor"
 							],
@@ -264,6 +264,67 @@ class StatesInformationHelper {
 							"executor" => "Personal Representative"
 							],
 				];
+	}
+
+	public static function getStatesAbbreviation() {
+		return
+			[ 
+				"Alaska" => "AK", 
+				"Alabama" => "AL", 
+				"Arkansas" => "AR", 
+				"American Samoa" => "AS", 
+				"Arizona" => "AZ", 
+				"California" => "CA", 
+				"Colorado" => "CO", 
+				"Connecticut" => "CT", 
+				"District of Columbia" => "DC", 
+				"Delaware" => "DE", 
+				"Florida" => "FL", 
+				"Georgia" => "GA", 
+				"Guam" => "GU", 
+				"Hawaii" => "HI", 
+				"Iowa" => "IA", 
+				"Idaho" => "ID", 
+				"Illinois" => "IL", 
+				"Indiana" => "IN", 
+				"Kansas" => "KS", 
+				"Kentucky" => "KY", 
+				"Louisiana" => "LA", 
+				"Massachusetts" => "MA", 
+				"Maryland" => "MD", 
+				"Maine" => "ME", 
+				"Michigan" => "MI", 
+				"Minnesota" => "MN", 
+				"Missouri" => "MO", 
+				"Mississippi" => "MS", 
+				"Montana" => "MT", 
+				"North Carolina" => "NC", 
+				"North Dakota" => "ND", 
+				"Nebraska" => "NE", 
+				"New Hampshire" => "NH", 
+				"New Jersey" => "NJ", 
+				"New Mexico" => "NM", 
+				"Nevada" => "NV", 
+				"New York" => "NY", 
+				"Ohio" => "OH", 
+				"Oklahoma" => "OK", 
+				"Oregon" => "OR", 
+				"Pennsylvania" => "PA", 
+				"Puerto Rico" => "PR", 
+				"Rhode Island" => "RI", 
+				"South Carolina" => "SC", 
+				"South Dakota" => "SD", 
+				"Tennessee" => "TN", 
+				"Texas" => "TX", 
+				"Utah" => "UT", 
+				"Virginia" => "VA", 
+				"Virgin Islands" => "VI", 
+				"Vermont" => "VT", 
+				"Washington" => "WA", 
+				"Wisconsin" => "WI", 
+				"West Virginia" => "WV", 
+				"Wyoming" => "WY"
+			];
 	}
 }
 ?>

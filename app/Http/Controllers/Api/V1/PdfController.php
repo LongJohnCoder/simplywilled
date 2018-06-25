@@ -39,7 +39,14 @@ use File;
 
 class PdfController extends Controller
 {
+    function __construct() {
+        $this->middleware(function ($request, $next) {
+            define("PATH", "documents/".\Auth::user()->id.'/'); 
+            return $next($request);
+        });  
+    }
     
+
     public function finalSigningInstructions() {
 
     	try {
@@ -72,13 +79,11 @@ class PdfController extends Controller
     		$filename = 'finalSigningInstructions.pdf';
             $data = ['firstname' => $tellUsAboutYou['firstname']];
 
-            $path = 'documents/'.$id.'/';
-
-            if(!is_dir(public_path().$path)) {
+            if(!is_dir(public_path().PATH)) {
                 //finding this user directory if directory is not present then create directory
-                File::makeDirectory(public_path().$path, $mode = 0777, true, true);
-                if(is_dir(public_path().$path)) {
-                    PDF::loadView('pdf.final_signing_instructions', $data)->save($path.$filename);
+                File::makeDirectory(public_path().PATH, $mode = 0777, true, true);
+                if(is_dir(public_path().PATH)) {
+                    PDF::loadView('pdf.final_signing_instructions', $data)->save(PATH.$filename);
                     return response()->json([
                             'status'    =>  true,
                             'message'   =>  'Success'
@@ -92,7 +97,7 @@ class PdfController extends Controller
                 }
 
             } else {
-                PDF::loadView('pdf.final_signing_instructions', $data)->save($path.$filename);
+                PDF::loadView('pdf.final_signing_instructions', $data)->save(PATH.$filename);
                 return response()->json([
                             'status'    =>  true,
                             'message'   =>  'Success'
@@ -123,7 +128,6 @@ class PdfController extends Controller
                     ],400);
             }
             $id = \Auth::user()->id;
-            $path = 'documents/'.$id.'/';
             
             $totalData = $this->docInfo();
             $totalData = json_decode($totalData->content(), true);
@@ -207,11 +211,11 @@ class PdfController extends Controller
                 'disinherit'    => $disinherit
             ];
             
-            if(!is_dir(public_path().$path)) {
+            if(!is_dir(public_path().PATH)) {
                 //finding this user directory if directory is not present then create directory
-                File::makeDirectory(public_path().$path, $mode = 0777, true, true);
-                if(is_dir(public_path().$path)) {
-                    PDF::loadView('pdf.last_will_and_testament', $data)->save($path.$filename);
+                File::makeDirectory(public_path().PATH, $mode = 0777, true, true);
+                if(is_dir(public_path().PATH)) {
+                    PDF::loadView('pdf.last_will_and_testament', $data)->save(PATH.$filename);
                     return response()->json([
                             'status'    =>  true,
                             'message'   =>  'Success'
@@ -225,7 +229,7 @@ class PdfController extends Controller
                 }
 
             } else {
-                PDF::loadView('pdf.last_will_and_testament', $data)->save($path.$filename);
+                PDF::loadView('pdf.last_will_and_testament', $data)->save(PATH.$filename);
                 return response()->json([
                             'status'    =>  true,
                             'message'   =>  'Success'
@@ -246,23 +250,71 @@ class PdfController extends Controller
         }
     }
 
+    public function statesDoc() {
+
+        try {
+            $totalData = $this->docInfo();
+            $totalData = json_decode($totalData->content(), true);
+
+            $tellUsAboutYou = $totalData['data']['tellUsAboutYou'];
+            $healthFinance = $totalData['data']['healthFinance'];
+            $state = $totalData['data']['state'];
+
+            $id = \Auth::user()->id;
+            $filename = 'healthCarePOA.pdf';
+            $data = [
+                'tellUsAboutYou'    => $tellUsAboutYou,
+                'healthFinance'     => $healthFinance,
+                'state'             => $state
+            ];
+
+            /*dd($data);*/
+
+            if(!is_dir(public_path().PATH)) {
+                
+                //finding this user directory if directory is not present then create directory
+                File::makeDirectory(public_path().PATH, $mode = 0777, true, true);
+                if (is_dir (public_path().PATH ) ) {
+                    @PDF::loadView('pdf.states.'.$state['abr'], $data)->save(PATH.$filename);
+                    return response()->json([
+                            'status'    =>  true,
+                            'message'   =>  'Success'
+                        ], 200);
+                } else {
+                    // use existing user directory
+                    return response()->json([
+                            'status'    =>  false,
+                            'message'   =>  'Folder is not created successfully, Please change permission'
+                        ], 400);
+                }
+            } else {
+                
+                @PDF::loadView('pdf.states.'.$state['abr'], $data)->save(PATH.$filename);
+                return response()->json([
+                            'status'    =>  true,
+                            'message'   =>  'Success'
+                        ], 200);
+            }
+            return response()->json([
+                    'status'    =>  true,
+                    'message'   =>  'Success'
+            ], 200);
+
+        } catch(\Exception $e) {
+
+            return response()->json([
+                    'status'    =>  false,
+                    'message'   =>  'Error : '.$e,
+                    'data'      =>  []
+            ], 500);
+        }
+    }
+
     public function docInfo() 
     {
         try 
         {
-            // $completion = app(\App\Http\Controllers\Api\V1\UserManagementController::class)->fetchTotalCompletion();
-
-            // $completion = json_decode($completion->content(), true);
-
-            // foreach ($completion['data'] as $key => $value) {
-            //     //value is of boolean type
-            //     if(!$value)
-            //         return response()->json([
-            //             'status'    =>  false,
-            //             'message'   =>  'cannot generate pdf if all interview steps are not commplete',
-            //             'data'      =>  []
-            //         ],400);
-            // }
+            
             $id = \Auth::user()->id;
             $tellUsAboutYou = TellUsAboutYou::where('user_id', $id)->first();
             $finalArrangements = FinalArrangements::where('user_id', $id)->first();
