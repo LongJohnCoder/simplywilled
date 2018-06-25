@@ -10,8 +10,8 @@ export class BlogService {
         private httpClient: HttpClient
     ) { }
 
-    blogList(): Observable <any> {
-        return this.httpClient.get(environment.API_URL + 'user/blog-list');
+    blogList(page: number): Observable <any> {
+        return this.httpClient.get(environment.API_URL + 'user/blog-list?page=' + page);
     }
 
     getBlogDetails(slug: string): Observable <any> {

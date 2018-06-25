@@ -17,7 +17,7 @@ export class BlogComponent implements OnInit {
     recentBlogPost: any[] = [];
     subscriberEmailForm: any;
     subscriberEmail: FormControl;
-    
+    totalBlog: number;
     p: number;
    constructor(private blogService: BlogService) {
         
@@ -25,6 +25,7 @@ export class BlogComponent implements OnInit {
 
   ngOnInit() {
       this.p = 1;
+      this.totalBlog = 0;
       this.populateBlog();
       this.populateBlogCategory();
       this.populatePopularBlogPosts();
@@ -35,10 +36,11 @@ export class BlogComponent implements OnInit {
 
 
     populateBlog() {
-        this.blogService.blogList().subscribe(
+        this.blogService.blogList(this.p).subscribe(
             (data: any) => {
                  this.blogList = data.data.BlogDetails;
                  this.imageLink = data.data.imageLink;
+                 this.totalBlog = data.data.totalBlogs;
             }
         );
     }
@@ -55,10 +57,12 @@ export class BlogComponent implements OnInit {
         this.blogService.getPopularBlogPosts().subscribe(
             (data: any) => {
                 const list: string[] = [];
-                data.data.forEach(function (value) {
-                    list.push(value.blog);
-                });
-                 this.popularBlogPost = list;
+                if (data.data !== null) {
+                    data.data.forEach(function (value) {
+                        list.push(value.blog);
+                    });
+                    this.popularBlogPost = list;
+                }
             }
         );
     }
@@ -66,10 +70,12 @@ export class BlogComponent implements OnInit {
         this.blogService.getRecentBlogPosts().subscribe(
             (data: any) => {
                 const list: string[] = [];
-                data.data.forEach(function (value) {
-                    list.push(value.blog);
-                });
-                this.recentBlogPost = list;
+                if (data.data !== null) {
+                    data.data.forEach(function (value) {
+                        list.push(value.blog);
+                    });
+                    this.recentBlogPost = list;
+                }
             }
         );
     }
@@ -101,5 +107,8 @@ export class BlogComponent implements OnInit {
         }
     }
 
-
+    changePage(page: number) {
+       this.p = page;
+       this.populateBlog();
+    }
 }
