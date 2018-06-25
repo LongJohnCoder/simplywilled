@@ -158,6 +158,7 @@ class BlogController extends Controller
           foreach ($blogs as $key => $value) {
             $blogArr[$key]['author_id'] = $value->author_id;
             $blogArr[$key]['body'] = $value->body;
+            $blogArr[$key]['excerpt'] = $value->excerpt;
             $blogArr[$key]['created_at'] = $value->created_at->toDateTimeString();
             $blogArr[$key]['featured'] = $value->featured;
             $blogArr[$key]['id'] = $value->id;
@@ -346,6 +347,7 @@ class BlogController extends Controller
                   $blogDetails->author_id = $blogs->author_id;
                   $blogDetails->body = $blogs->body;
                   $blogDetails->featured = $blogs->featured;
+                  $blogDetails->excerpt = $blogs->excerpt;
                   $blogDetails->meta_description = $blogs->meta_description;
                   $blogDetails->meta_keywords = $blogs->meta_keywords;
                   $blogDetails->seo_title = $blogs->seo_title;
@@ -396,6 +398,7 @@ class BlogController extends Controller
                 'blogTitle'       =>  'required|string|max:255',
                 'blogBody'        =>  'required',
                 'blogStatus'      =>  'required|numeric|integer|between:0,1',
+                'excerpt'         =>  'required',
                 'blogImage'       =>  'required'
             ]);
             if ($validator->fails()) {
@@ -468,6 +471,7 @@ class BlogController extends Controller
             $saveBlog->image = $imageName;
             $saveBlog->author_id = $blogAuthorId;
             $saveBlog->meta_description = $blogMetaDesc;
+            $saveBlog->excerpt = $request->excerpt;
             $saveBlog->meta_keywords = $blogMetaKeyword;
             $saveBlog->status = (string)$blogStatus;
             $saveBlog->featured = (string)$blogFeatured;
@@ -524,6 +528,7 @@ class BlogController extends Controller
                 'blogId'          =>  'required|integer|exists:blogs,id,deleted_at,NULL',
                 'blogStatus'      =>  'required|numeric|integer|between:0,1',
                 'blogFeatured'    =>  'numeric|integer|between:0,1',
+                'excerpt'         =>  'required',
                 'blogCategorys.*' =>  'nullable|exists:categories,id,deleted_at,NULL',
                 // 'blogImage'       =>  'nullable|dimensions:min_width=900,min_height=600'
             ]);
@@ -606,6 +611,7 @@ class BlogController extends Controller
                     }
                     $getBlogInfo->author_id = $blogAuthorId;
                     $getBlogInfo->meta_description = $blogMetaDesc;
+                    $getBlogInfo->excerpt = $request->excerpt;
                     $getBlogInfo->meta_keywords = $blogMetaKeyword;
                     $getBlogInfo->status = (string)$blogStatus;
                     $getBlogInfo->featured = (string)$blogFeatured;
