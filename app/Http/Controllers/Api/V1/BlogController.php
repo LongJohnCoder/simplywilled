@@ -44,6 +44,9 @@ class BlogController extends Controller
         $blog      = null;
         $imageLink = url('/blogImage').'/';
         if(strlen(trim($query)) > 0) {
+            $totalBlog = Blogs::where('status','1')->whereHas('category', function($q) use($query){
+                $q->where('slug','LIKE','%'.$query.'%');
+            })->count();
             $blog = Blogs::with('getComments')->where('status','1')->offset(($page-1)*10)->limit(10)
                               ->whereHas('category', function($q) use($query){
                                   $q->where('slug','LIKE','%'.$query.'%');
@@ -52,7 +55,7 @@ class BlogController extends Controller
         return response()->json([
             'status'    => true,
             'message'   => 'Selected Blogs',
-            'data'      => compact('blog','imageLink')
+            'data'      => compact('blog','imageLink', 'totalBlog')
         ], 200);
       } catch (\Exception $e) {
         return response()->json([
