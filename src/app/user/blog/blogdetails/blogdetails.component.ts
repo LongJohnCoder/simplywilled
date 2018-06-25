@@ -2,6 +2,7 @@ import {Component, OnInit, NgModule} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {BlogService} from '../blog.service';
 import {FormControl, Validators, FormGroup} from '@angular/forms';
+import {environment} from '../../../../environments/environment';
 
 @Component({
     selector: 'app-blogdetails',
@@ -18,6 +19,8 @@ export class BlogdetailsComponent implements OnInit {
     imageLink: string;
     BlogId:any;
     createBlogCommentMessage:string;
+    baseURL = environment.base_url;
+
     constructor(private router: Router,
                 private route: ActivatedRoute,
                 private BlogService: BlogService) {

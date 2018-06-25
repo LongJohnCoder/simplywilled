@@ -89,6 +89,12 @@
     border-bottom: 0;
 }
 
+.trending_right_ul > li > a {
+    color: #9d9d9d;
+    display: inline-block;
+    font-size: 19px;
+}
+
 @media screen and (max-width:540px){
     .commentImg{
         width: 60px;

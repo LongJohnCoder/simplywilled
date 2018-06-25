@@ -31,13 +31,13 @@
               </li>
             </ul>
             <ul class="trending_right_ul">
-              <li><a href="#">Share:</a></li>
-              <li><a href="#" title="Twitter"><img src="../../../../assets/images/twitter-icon.png"></a></li>
-              <li><a href="#" title="Facebook"><img src="../../../../assets/images/facebook-icon.png"></a></li>
-              <li><a href="#" title="Google-plus"><img src="../../../../assets/images/gplus-icon.png"></a></li>
-              <li><a href="#" title="Vimeo"><img src="../../../../assets/images/vimeo-icon.png"></a></li>
-              <li><a href="#" title="Skype"><img src="../../../../assets/images/skype-icon.png"></a></li>
-              <li><a href="#" title="Linkedin"><img src="../../../../assets/images/linkedin-icon.png"></a></li>
+              <li><a href="javascript:void(0)">Share:</a></li>
+              <li><a href="https://twitter.com/share?url={{baseURL}}blogdetails/{{blog.slug}}" target="_blank" title="Twitter"><img src="../../../../assets/images/twitter-icon.png"></a></li>
+              <li><a href="http://www.facebook.com/sharer.php?u={{baseURL}}blogdetails/{{blog.slug}}" target="_blank" title="Facebook"><img src="../../../../assets/images/facebook-icon.png"></a></li>
+              <li><a href="https://plus.google.com/share?url={{baseURL}}blogdetails/{{blog.slug}}" target="_blank" title="Google-plus"><img src="../../../../assets/images/gplus-icon.png"></a></li>
+              <li><a href="http://pinterest.com/pin/create/button/?url={{baseURL}}blogdetails/{{blog.slug}}" target="_blank" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i>
+              </a></li>
+              <li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{baseURL}}blogdetails/{{blog.slug}}" target="_blank" title="Linkedin"><img src="../../../../assets/images/linkedin-icon.png"></a></li>
             </ul>
             <p class="legal_requirement" innerHTML="{{ blog.body | slice:0:650 }}"></p>
             <a class="btn-green" routerLink="/blogdetails/{{blog.slug}}" ><img src="../../../../assets/images/arrow-right.png"> Read More</a>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BlogService } from './blog.service';
 import * as moment from 'moment';
 import {FormControl, Validators, FormGroup} from '@angular/forms';
+import {environment} from '../../../environments/environment';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class BlogComponent implements OnInit {
     subscriberEmail: FormControl;
     totalBlog: number;
     p: number;
+    baseURL = environment.base_url;
    constructor(private blogService: BlogService) {
         
    }

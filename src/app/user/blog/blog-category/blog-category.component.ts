@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {BlogService} from '../blog.service';
 import {ActivatedRoute, Router, Event, NavigationEnd} from '@angular/router';
 import {FormControl, Validators, FormGroup} from '@angular/forms';
+import {environment} from '../../../../environments/environment';
 
 @Component({
     selector: 'app-blog-category',
@@ -19,6 +20,8 @@ export class BlogCategoryComponent implements OnInit {
     BlogService: BlogService;
     totalBlog: number;
     p: number;
+    baseURL = environment.base_url;
+
     constructor(private blogService: BlogService, private router: Router, private route: ActivatedRoute ) {
 
         router.events.subscribe( (event: Event) => {

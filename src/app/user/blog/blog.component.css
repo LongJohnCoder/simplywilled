@@ -58,6 +58,12 @@
     cursor: pointer;
 }
 
+.trending_right_ul > li > a {
+    color: #9d9d9d;
+    display: inline-block;
+    font-size: 19px;
+}
+
 @media screen and (max-width:1310px){
     .trending_right_ul{
         width: 100%;
