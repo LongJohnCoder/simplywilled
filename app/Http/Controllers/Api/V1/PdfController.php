@@ -253,6 +253,20 @@ class PdfController extends Controller
     public function statesDoc() {
 
         try {
+
+
+            $completion = app(\App\Http\Controllers\Api\V1\UserManagementController::class)->fetchTotalCompletion();
+            $completion = json_decode($completion->content(), true);
+            foreach ($completion['data'] as $key => $value) {
+                //value is of boolean type
+                if(!$value)
+                    return response()->json([
+                        'status'    =>  false,
+                        'message'   =>  'cannot generate pdf if all interview steps are not commplete',
+                        'data'      =>  []  
+                    ],400);
+            }
+
             $totalData = $this->docInfo();
             $totalData = json_decode($totalData->content(), true);
 
@@ -262,10 +276,29 @@ class PdfController extends Controller
 
             $id = \Auth::user()->id;
             $filename = 'healthCarePOA.pdf';
+
+            
+            if($tellUsAboutYou['gender'] == 'M') {
+                $genderTxt  = 'him';
+                $genderTxt2 = 'himself';
+                $genderTxt3 = 'he';
+                $genderTxt4 = 'his';
+            } else {
+                $genderTxt  = 'her';
+                $genderTxt2 = 'herself';
+                $genderTxt3 = 'she';
+                $genderTxt4 = 'her';
+            }
+
+            //dd($genderTxt3);
             $data = [
                 'tellUsAboutYou'    => $tellUsAboutYou,
                 'healthFinance'     => $healthFinance,
-                'state'             => $state
+                'state'             => $state,
+                'genderTxt'         => $genderTxt,
+                'genderTxt2'        => $genderTxt2,
+                'genderTxt3'        => $genderTxt3,
+                'genderTxt4'        => $genderTxt4
             ];
 
             /*dd($data);*/
@@ -305,7 +338,7 @@ class PdfController extends Controller
 
             return response()->json([
                     'status'    =>  false,
-                    'message'   =>  'Error : '.$e,
+                    'message'   =>  'Error : '.$e->getMessage() .' Line : '. $e->getLine(),
                     'data'      =>  []
             ], 500);
         }
