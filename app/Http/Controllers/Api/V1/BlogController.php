@@ -38,19 +38,29 @@ class BlogController extends Controller
      * @param query : slug
      * */
     public function getBLogDetails(Request $request) {
-        $query  = $request->has('query') ? $request->get('query') : null;
-        $blog   = null;
-        $imageLink  = url('/blogImage').'/';
+      try {
+        $query     = $request->has('query') ? $request->get('query'): null;
+        $page      = $request->has('page') ? $request->get('page'): 1;
+        $blog      = null;
+        $imageLink = url('/blogImage').'/';
         if(strlen(trim($query)) > 0) {
-            $blog = Blogs::with('getComments')->where('status','1')->whereHas('category', function($q) use($query){
-                $q->where('slug','LIKE','%'.$query.'%');
-            })->get();
+            $blog = Blogs::with('getComments')->where('status','1')->offset(($page-1)*10)->limit(10)
+                              ->whereHas('category', function($q) use($query){
+                                  $q->where('slug','LIKE','%'.$query.'%');
+                              })->get();
         }
         return response()->json([
             'status'    => true,
             'message'   => 'Selected Blogs',
             'data'      => compact('blog','imageLink')
         ], 200);
+      } catch (\Exception $e) {
+        return response()->json([
+            'status'    => false,
+            'message'   => $e->getMessage(),
+            'line'      => $e->getLine()
+        ], 500);
+      }
     }
 
 
