@@ -35,6 +35,7 @@ export class AddBlogComponent implements OnInit {
         featured: false,
         total_views: '',
         blog_category: '',
+        excerpt: ''
     };
 
     constructor(
@@ -78,6 +79,7 @@ export class AddBlogComponent implements OnInit {
         createBlogBody.append('blogFeatured', this.blogFeatured);
         createBlogBody.append('blogMetaKeyword', this.blogData.meta_keywords);
         createBlogBody.append('blogCategorys', this.blogData.blog_category);
+        createBlogBody.append('excerpt', this.blogData.excerpt);
         for (let i = 0; i < this.blogData.blog_category.length; i++) {
             createBlogBody.append('blogCategorys[' + i + ']', this.blogData.blog_category[i]);
         }
@@ -113,6 +115,7 @@ export class AddBlogComponent implements OnInit {
         createBlogBody.append('blogMetaDescription', this.blogData.meta_description);
         createBlogBody.append('blogStatus', this.blogData.status);
         createBlogBody.append('blogFeatured', this.blogFeatured);
+        createBlogBody.append('excerpt', this.blogData.excerpt);
         createBlogBody.append('blogMetaKeyword', this.blogData.meta_keywords);
         for (let i = 0; i < this.blogData.blog_category.length; i++) {
             createBlogBody.append('blogCategorys[' + i + ']', this.blogData.blog_category[i]);
@@ -178,12 +181,14 @@ export class AddBlogComponent implements OnInit {
                 this.blogData.slug = data.data.blogDetails.slug;
                 this.blogData.seo_title = data.data.blogDetails.seo_title === 'null' ? '' : data.data.blogDetails.seo_title;
                 this.blogData.body = data.data.blogDetails.body;
+                this.blogData.excerpt = data.data.blogDetails.excerpt;
                 this.blogData.image = data.data.blogDetails.image;
                 this.blogData.meta_description = data.data.blogDetails.meta_description === 'null' ? '' : data.data.blogDetails.meta_description;
                 this.blogData.meta_keywords = data.data.blogDetails.meta_keywords === 'null' ? '' : data.data.blogDetails.meta_keywords;
                 this.blogData.status = String(data.data.blogDetails.status);
                 this.blogData.featured = data.data.blogDetails.featured == '0' ? false : true;
                 this.blogData.total_views = data.data.blogDetails.total_views;
+                this.blogData.excerpt = data.data.blogDetails.excerpt;
                 this.blogData.blog_category = data.data.blogDetails.blog_category;
                 // for (let i = 0; i < data.data.blogDetails.blog_category.length; i++) {
                 //     console.log(data.data.blogDetails.blog_category[i].category_id);

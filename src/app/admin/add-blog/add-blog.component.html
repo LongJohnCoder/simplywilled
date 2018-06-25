@@ -25,15 +25,20 @@
                                 <div class="form-group">
                                     <label for="blogTitle">Blog Title:</label>
                                     <input id="blogTitle" class="form-control" type="text" [(ngModel)]="blogData.title" name="title" ngModel #blogTitle="ngModel" required>
-                                    <span *ngIf="blogTitle.invalid && blogTitle.touched" style="color:red;"> Blog title is reqired ! </span>
+                                    <span *ngIf="blogTitle.invalid && blogTitle.touched" style="color:red;"> Blog title is required ! </span>
                                     <input type="hidden" [(ngModel)]="blogData.id" name="blogId" ngModel #blogId="ngModel">
                                 </div>
                                 <div class="form-group">
                                     <label for="text_editor">Body:</label>
                                     <ck-editor id="text_editor" class="" skin="moono-lisa" language="en" [fullPage]="true" name="body" [(ngModel)]="blogData.body" #blogBody="ngModel" required></ck-editor>
                                     <!--<ck-editor name="editor1" [(ngModel)]="editorValue" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>-->
-                                    <span *ngIf="blogBody.invalid && blogBody.touched" style="color:red;"> Blog body is reqired ! </span>
+                                    <span *ngIf="blogBody.invalid && blogBody.touched" style="color:red;"> Blog body is required ! </span>
 
+                                </div>
+                                <div class="form-group">
+                                    <label for="excerpt">Excerpt:</label>
+                                    <textarea name="excerpt" class="form-control" [(ngModel)]="blogData.excerpt" ngModel #excerpt="ngModel" id="excerpt" required></textarea>
+                                    <span *ngIf="excerpt.invalid && excerpt.touched" style="color:red;"> Blog excerpt is required ! </span>
                                 </div>
                             </fieldset>
 

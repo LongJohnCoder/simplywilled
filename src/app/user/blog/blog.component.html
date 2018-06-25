@@ -39,7 +39,8 @@
               </a></li>
               <li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{baseURL}}blogdetails/{{blog.slug}}" target="_blank" title="Linkedin"><img src="../../../../assets/images/linkedin-icon.png"></a></li>
             </ul>
-            <p class="legal_requirement" innerHTML="{{ blog.body | slice:0:650 }}"></p>
+              <p class="legal_requirement" *ngIf="blog.excerpt !== null">{{blog.excerpt}}</p>
+            <p class="legal_requirement" *ngIf="blog.excerpt === null" innerHTML="{{ blog.body | slice:0:650 }}"></p>
             <a class="btn-green" routerLink="/blogdetails/{{blog.slug}}" ><img src="../../../../assets/images/arrow-right.png"> Read More</a>
           </li>
         </ul>

@@ -71,6 +71,10 @@
                                             style="width: 353px;">Title
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Title: activate to sort column ascending"
+                                            style="width: 353px;">Excerpt
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                             colspan="1" aria-label="Slug: activate to sort column ascending"
                                             style="width: 336px;">Slug
                                         </th>
@@ -99,6 +103,7 @@
                                                       totalItems: blogCount }; index as i">
                                         <td class="sorting_1">{{blog.id}}</td>
                                         <td>{{blog.title}}</td>
+                                        <td>{{blog.excerpt}}</td>
                                         <td>{{blog.slug}}</td>
                                         <td><span class="badge"
                                                   [ngClass]="[blog.status == '1' ? 'badge-success' : 'badge-danger']">{{blog.status == '1' ? 'Published' : 'Pending'}}</span>
@@ -174,6 +179,10 @@
                         <h4>Body:</h4>
                         <p [innerHTML]="blogData.body"></p>
                     </div>
+                      <div class="modal-body">
+                          <h4>Excerpt:</h4>
+                          <p>{{blogData.excerpt}}</p>
+                      </div>
                     <div class="modal-body">
                         <h4>Image:</h4>
                         <div *ngIf="blogData.image">
