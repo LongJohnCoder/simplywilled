@@ -275,7 +275,8 @@ class PdfController extends Controller
                 //finding this user directory if directory is not present then create directory
                 File::makeDirectory(public_path().PATH, $mode = 0777, true, true);
                 if (is_dir (public_path().PATH ) ) {
-                    @PDF::loadView('pdf.states.'.$state['abr'], $data)->save(PATH.$filename);
+                    $customPaper = array(0,0,360,360);
+                    @PDF::loadView('pdf.states.'.$state['abr'], $data)->setPaper($customPaper)->save(PATH.$filename);
                     return response()->json([
                             'status'    =>  true,
                             'message'   =>  'Success'
@@ -288,8 +289,8 @@ class PdfController extends Controller
                         ], 400);
                 }
             } else {
-                
-                @PDF::loadView('pdf.states.'.$state['abr'], $data)->save(PATH.$filename);
+                $customPaper = array(0,0,360,360);
+                @PDF::loadView('pdf.states.'.$state['abr'], $data)->setPaper($customPaper)->save(PATH.$filename);
                 return response()->json([
                             'status'    =>  true,
                             'message'   =>  'Success'
