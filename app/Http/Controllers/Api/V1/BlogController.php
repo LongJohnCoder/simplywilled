@@ -28,6 +28,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Models\BlogComment;
 use App\RoleUser;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Input;
 
 class BlogController extends Controller
 {
@@ -192,24 +193,31 @@ class BlogController extends Controller
     public function blogListUser()
     {
         try {
+          if (Input::has('page'))
+          {
+            $page = Input::get('page');
+          } else {
+            $page = 1;
+          }
             //$blogs = Blogs::where('status','1')->with('blogCategory')->orderBy('created_at','DESC')->get();
             // $blogs = Categories::with(['blogMapping.blog' => function($q) {
             //     $q->where('status','1');
             // }])->orderBy('created_at','DESC')->get();
+            $totalBlogs = Blogs::where('status','1')->count();
 
-            $blogs      = Blogs::where('status','1')->with('getComments')->orderBy('created_at','DESC')->get();
+            $blogs      = Blogs::where('status','1')->offset(($page-1)*10)->limit(10)
+                              ->with('getComments')->orderBy('created_at','DESC')->get();
             $imageLink  = url('/blogImage').'/';
             if ($blogs) {
                 return response()->json([
                     'status' => true,
                     'message' => 'Blog List Fetched successfully',
-                    'data' => ['BlogDetails' => $blogs,'imageLink' => $imageLink]
+                    'data' => ['BlogDetails' => $blogs,'imageLink' => $imageLink, 'totalBlogs' => $totalBlogs]
                 ], 200);
             } else {
                 return response()->json([
                     'status'  => false,
                     'message' => 'Blog not added',
-                    'data'    => ['BlogDetails' => $blogs]
                 ], 400);
             }
         } catch (\Exception $e) {
