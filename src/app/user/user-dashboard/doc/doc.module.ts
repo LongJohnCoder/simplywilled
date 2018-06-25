@@ -52,6 +52,10 @@ import { ScComponent } from './healthcare-poa-doc/sc/sc.component';
 import { SdComponent } from './healthcare-poa-doc/sd/sd.component';
 import { NvComponent } from './healthcare-poa-doc/nv/nv.component';
 import { NeComponent } from './healthcare-poa-doc/ne/ne.component';
+import { MoComponent } from './healthcare-poa-doc/mo/mo.component';
+import { MsComponent } from './healthcare-poa-doc/ms/ms.component';
+import { MtComponent } from './healthcare-poa-doc/mt/mt.component';
+import { GaComponent } from './healthcare-poa-doc/ga/ga.component';
 
 @NgModule({
   imports: [
@@ -110,6 +114,10 @@ import { NeComponent } from './healthcare-poa-doc/ne/ne.component';
     SdComponent,
     NvComponent,
     NeComponent,
+    MoComponent,
+    MsComponent,
+    MtComponent,
+    GaComponent,
   ]
 })
 export class DocModule { }
