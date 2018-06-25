@@ -3,8 +3,8 @@
     <div class="trending_main">
       <div class="trending_left">
         <ul class="trending_ul">
-          <li *ngIf="!blogList.length">No posts found !</li>
-          <li *ngFor="let blog of blogList | paginate: { itemsPerPage: 10, currentPage: p }">
+          <li *ngIf="totalBlog === 0">No posts found !</li>
+          <li *ngFor="let blog of blogList | paginate: { itemsPerPage: 10, currentPage: p, totalItems: totalBlog }">
             <a routerLink="/blogdetails/{{blog.slug}}" class="trending_img"><img src="{{imageLink}}{{blog.image}}" alt="{{blog.image}}"></a>
             <h1 class="news_heading">{{blog.title}}</h1>
             <ul class="trending_sub_left_ul">
@@ -33,10 +33,7 @@
           </li>
         </ul>
         <pagination-controls class="older_post_text"
-                             (pageChange)="p=$event"
-                             maxSize="9"
-                             directionLinks="true"
-                             autoHide="true"
+                             (pageChange)="changePage($event)"
                              previousLabel="NEWER POSTS"
                              nextLabel="OLDER POSTS"
                              screenReaderPaginationLabel="OLDER POSTS"

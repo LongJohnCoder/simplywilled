@@ -22,8 +22,8 @@ export class BlogService {
         return this.httpClient.get(environment.API_URL + 'user/blog-category-list');
     }
 
-    getBlogDetailsFromCategory(slug: string): Observable <any> {
-        return this.httpClient.get(environment.API_URL + 'user/get-blog-details/?query=' + slug );
+    getBlogDetailsFromCategory(slug: string, page: number): Observable <any> {
+        return this.httpClient.get(environment.API_URL + 'user/get-blog-details?query=' + slug + '&page=' + page);
     }
 
     getPopularBlogPosts(): Observable <any> {

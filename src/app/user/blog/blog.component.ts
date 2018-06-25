@@ -25,7 +25,7 @@ export class BlogComponent implements OnInit {
 
   ngOnInit() {
       this.p = 1;
-      this.totalBlog = 0;
+      this.totalBlog = null;
       this.populateBlog();
       this.populateBlogCategory();
       this.populatePopularBlogPosts();

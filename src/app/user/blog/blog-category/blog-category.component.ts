@@ -16,26 +16,28 @@ export class BlogCategoryComponent implements OnInit {
     recentBlogPost: any[] = [];
     subscriberEmailForm: any;
     subscriberEmail: FormControl;
-    BlogService: BlogService
+    BlogService: BlogService;
+    totalBlog: number;
     p: number;
     constructor(private blogService: BlogService, private router: Router, private route: ActivatedRoute ) {
 
-        router.events.subscribe( (event: Event) => {
-            if (event instanceof NavigationEnd) {
-                const slug = this.route.snapshot.paramMap.get('slug');
-                this.blogService.getBlogDetailsFromCategory(slug).subscribe(
-                    (data: any) => {
-                        this.blogList = data.data.blog;
-                        this.imageLink = data.data.imageLink;
-                    }
-                );
-            }
-        });
+        // router.events.subscribe( (event: Event) => {
+        //     if (event instanceof NavigationEnd) {
+        //         const slug = this.route.snapshot.paramMap.get('slug');
+        //         this.blogService.getBlogDetailsFromCategory(slug).subscribe(
+        //             (data: any) => {
+        //                 this.blogList = data.data.blog;
+        //                 this.imageLink = data.data.imageLink;
+        //             }
+        //         );
+        //     }
+        // });
 
     }
 
     ngOnInit() {
         this.p = 1;
+        this.totalBlog = null;
         this.getBlogDetailsFromCategory();
         this.populateBlogCategory();
         this.populatePopularBlogPosts();
@@ -47,7 +49,7 @@ export class BlogCategoryComponent implements OnInit {
 
     getBlogDetailsFromCategory() {
         const slug = this.route.snapshot.paramMap.get('slug');
-        this.blogService.getBlogDetailsFromCategory(slug).subscribe(
+        this.blogService.getBlogDetailsFromCategory(slug, this.p).subscribe(
             (data: any) => {
                 this.blogList = data.data.blog;
                 this.imageLink = data.data.imageLink;
@@ -67,10 +69,12 @@ export class BlogCategoryComponent implements OnInit {
         this.blogService.getPopularBlogPosts().subscribe(
             (data: any) => {
                 const list: string[] = [];
-                data.data.forEach(function (value) {
-                    list.push(value.blog);
-                });
-                this.popularBlogPost = list;
+                if (data.data !== null) {
+                    data.data.forEach(function (value) {
+                        list.push(value.blog);
+                    });
+                    this.popularBlogPost = list;
+                }
             }
         );
     }
@@ -79,10 +83,12 @@ export class BlogCategoryComponent implements OnInit {
         this.blogService.getRecentBlogPosts().subscribe(
             ( data: any ) => {
                 const list: string[] = [];
-                data.data.forEach(function (value) {
-                    list.push(value.blog);
-                });
-                this.recentBlogPost = list;
+                if (data.data !== null) {
+                    data.data.forEach(function (value) {
+                        list.push(value.blog);
+                    });
+                    this.recentBlogPost = list;
+                }
             }
         );
     }
@@ -112,5 +118,9 @@ export class BlogCategoryComponent implements OnInit {
                 }
             );
         }
+    }
+    changePage(page: number) {
+        this.p = page;
+        this.getBlogDetailsFromCategory();
     }
 }
