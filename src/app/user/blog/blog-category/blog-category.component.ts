@@ -32,11 +32,11 @@ export class BlogCategoryComponent implements OnInit {
                         this.blogList = data.data.blog;
                         this.imageLink = data.data.imageLink;
                         this.totalBlog = data.data.totalBlog;
+                        this.loader = false;
                     }
                 );
             }
         });
-        this.loader = false;
     }
 
     ngOnInit() {
@@ -59,10 +59,10 @@ export class BlogCategoryComponent implements OnInit {
                 this.blogList = data.data.blog;
                 this.imageLink = data.data.imageLink;
                 this.totalBlog = data.data.totalBlog;
+                this.loader = false;
+                window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
             }
         );
-        this.loader = false;
-        window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
     }
 
     populateBlogCategory(){

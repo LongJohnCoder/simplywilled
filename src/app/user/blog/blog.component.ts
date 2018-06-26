@@ -45,10 +45,10 @@ export class BlogComponent implements OnInit {
                  this.blogList = data.data.BlogDetails;
                  this.imageLink = data.data.imageLink;
                  this.totalBlog = data.data.totalBlogs;
+                 this.loader = false;
+                 window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
             }
         );
-        this.loader = false;
-        window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
     }
 
     populateBlogCategory() {
