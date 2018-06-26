@@ -461,6 +461,10 @@ header{
   margin-top: 38px;
 }
 
+.sslLogo{
+  padding-top: 5px;
+}
+
 @media screen and (min-width: 992px) and (max-width: 1199px){
     .sidebar h1 {
         font-size: 22px;

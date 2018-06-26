@@ -1,33 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-body{
-    margin: 0;
-    padding: 0;
-    font-family: Garamond;
-}
-/* width */
-::-webkit-scrollbar {
-width: 14px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-background: #0f69bb;
-
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-background: #99cc33; 
-border-radius: 5px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-background: #57ab2a; 
-}
 
 .docContainer{
     width: 700px;

@@ -43,7 +43,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   count: number;
 
   states = {
-    ak: false,
+    ak: true,
     al: false,
     ar: false,
     ca: false,
