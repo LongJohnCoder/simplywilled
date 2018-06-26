@@ -60,6 +60,7 @@ export class BlogCategoryComponent implements OnInit {
                 this.totalBlog = data.data.totalBlog;
             }
         );
+        window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
     }
 
     populateBlogCategory(){

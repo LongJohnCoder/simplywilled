@@ -44,8 +44,8 @@ export class FullLayoutComponent implements OnInit {
     }
   };
 
-  goToTop(){
-    window.scroll(0, 0);
+  goToTop() {
+      window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
   }
 
   /**

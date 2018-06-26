@@ -45,6 +45,7 @@ export class BlogComponent implements OnInit {
                  this.totalBlog = data.data.totalBlogs;
             }
         );
+        window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
     }
 
     populateBlogCategory() {
