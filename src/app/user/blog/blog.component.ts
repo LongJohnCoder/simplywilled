@@ -20,6 +20,7 @@ export class BlogComponent implements OnInit {
     subscriberEmail: FormControl;
     totalBlog: number;
     p: number;
+    loader: boolean;
     baseURL = environment.base_url;
    constructor(private blogService: BlogService) {
         
@@ -38,6 +39,7 @@ export class BlogComponent implements OnInit {
 
 
     populateBlog() {
+        this.loader = true;
         this.blogService.blogList(this.p).subscribe(
             (data: any) => {
                  this.blogList = data.data.BlogDetails;
@@ -45,6 +47,7 @@ export class BlogComponent implements OnInit {
                  this.totalBlog = data.data.totalBlogs;
             }
         );
+        this.loader = false;
         window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
     }
 

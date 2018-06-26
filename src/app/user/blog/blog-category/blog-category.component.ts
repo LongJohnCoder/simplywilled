@@ -21,9 +21,9 @@ export class BlogCategoryComponent implements OnInit {
     totalBlog: number;
     p: number;
     baseURL = environment.base_url;
-
+    loader: boolean;
     constructor(private blogService: BlogService, private router: Router, private route: ActivatedRoute ) {
-
+        this.loader = true;
         router.events.subscribe( (event: Event) => {
             if (event instanceof NavigationEnd) {
                 const slug = this.route.snapshot.paramMap.get('slug');
@@ -36,7 +36,7 @@ export class BlogCategoryComponent implements OnInit {
                 );
             }
         });
-
+        this.loader = false;
     }
 
     ngOnInit() {
@@ -52,6 +52,7 @@ export class BlogCategoryComponent implements OnInit {
 
 
     getBlogDetailsFromCategory() {
+        this.loader = true;
         const slug = this.route.snapshot.paramMap.get('slug');
         this.blogService.getBlogDetailsFromCategory(slug, this.p).subscribe(
             (data: any) => {
@@ -60,6 +61,7 @@ export class BlogCategoryComponent implements OnInit {
                 this.totalBlog = data.data.totalBlog;
             }
         );
+        this.loader = false;
         window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
     }
 
