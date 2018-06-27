@@ -278,16 +278,16 @@ class PdfController extends Controller
             $filename = 'healthCarePOA.pdf';
 
             
-            if($tellUsAboutYou['gender'] == 'M') {
-                $genderTxt  = 'him';
-                $genderTxt2 = 'himself';
-                $genderTxt3 = 'he';
-                $genderTxt4 = 'his';
-            } else {
+            if($tellUsAboutYou['gender'] == 'F') {
                 $genderTxt  = 'her';
                 $genderTxt2 = 'herself';
                 $genderTxt3 = 'she';
                 $genderTxt4 = 'her';
+            } else {
+                $genderTxt  = 'him';
+                $genderTxt2 = 'himself';
+                $genderTxt3 = 'he';
+                $genderTxt4 = 'his';
             }
 
             //dd($genderTxt3);
@@ -308,8 +308,7 @@ class PdfController extends Controller
                 //finding this user directory if directory is not present then create directory
                 File::makeDirectory(public_path().PATH, $mode = 0777, true, true);
                 if (is_dir (public_path().PATH ) ) {
-                    $customPaper = array(0,0,360,360);
-                    @PDF::loadView('pdf.states.'.$state['abr'], $data)->setPaper($customPaper)->save(PATH.$filename);
+                    PDF::loadView('pdf.states.'.$state['abr'], $data)->save(PATH.$filename);
                     return response()->json([
                             'status'    =>  true,
                             'message'   =>  'Success'
@@ -322,8 +321,7 @@ class PdfController extends Controller
                         ], 400);
                 }
             } else {
-                $customPaper = array(0,0,360,360);
-                @PDF::loadView('pdf.states.'.$state['abr'], $data)->setPaper($customPaper)->save(PATH.$filename);
+                PDF::loadView('pdf.states.'.$state['abr'], $data)->save(PATH.$filename);
                 return response()->json([
                             'status'    =>  true,
                             'message'   =>  'Success'

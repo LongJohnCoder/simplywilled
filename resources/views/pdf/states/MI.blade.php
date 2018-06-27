@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Health Care Power of Attorney</title>
 </head>
 <body>
 <div>
@@ -202,10 +202,10 @@
           <span color="#000000">I designate my </span>
 
            	@if(strtolower($healthFinance['relation']) == 'other')
-				<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
-			@else
-				<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}}, </span>
-			@endif
+      				<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
+      			@else
+      				<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}}, </span>
+      			@endif
           
           <span color="#000000">, </span>
           
@@ -264,7 +264,7 @@
               
               <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}}, </span>
               
-              (Tel: <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupphone']}}</span>
+              (Tel: <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupphone']}}</span>)
               
               
               as my successor patient advocate to make health care decisions for me as
