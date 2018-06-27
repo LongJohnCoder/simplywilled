@@ -761,9 +761,14 @@
         <p class="western"  style="margin-bottom: 0in; line-height: 100%">
         Signature: 	<u>_____________________________________</u></p>
         <p class="western"  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0"><a name="_GoBack"></a>
-        <b>		</b><span ><b>CLIENT FIRST NAME</b></span><b>
-        </b><span ><b>CLIENT MIDDLE NAME</b></span><b>
-        </b><span ><b>CLIENT LAST NAME</b></span><b></b></p>
+        <b>		</b>
+        
+        <span>
+            <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+            <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
+        </span>
+        
+      </p>
     </div>
     <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">

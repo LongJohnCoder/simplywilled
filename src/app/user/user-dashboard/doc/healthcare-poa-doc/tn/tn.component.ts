@@ -27,6 +27,9 @@ export class TnComponent implements OnInit, OnChanges {
   loading = true;
 
   genderTxt = '';
+  genderTxt2 = '';
+  genderTxt3 = '';
+  genderTxt4 = '';
   settlorGenderTxt = '';
 
 
@@ -56,8 +59,14 @@ export class TnComponent implements OnInit, OnChanges {
 
       if (this.userDetails !== undefined && this.userDetails.tellUsAboutYou !== null && this.userDetails.tellUsAboutYou.gender !== null) {
         this.genderTxt = this.userDetails.tellUsAboutYou.gender === 'M' ? 'him' : 'her';
+        this.genderTxt2 = this.userDetails.tellUsAboutYou.gender === 'M' ? 'himself' : 'herself';
+        this.genderTxt3 = this.userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she';
+        this.genderTxt4 = this.userDetails.tellUsAboutYou.gender === 'M' ? 'his' : 'her';
       } else {
-        this.genderTxt = '_____';
+        this.genderTxt = 'him/her';
+        this.genderTxt2 = 'himself/herself';
+        this.genderTxt3 = 'he/she';
+        this.genderTxt4 = 'his/her';
       }
 
       this.loading = false;

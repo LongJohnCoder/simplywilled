@@ -147,18 +147,19 @@
 
       </p>
       
-      
-      <p  style="margin-bottom: 0.09in; line-height: 100%">
-        <span style="font-family:'Times New Roman, serif'">
-          <b>ALTERNATE AGENT:&nbsp; </b>
-        </span>
-        <span style="font-family:'Times New Roman, serif'">If the
-      person named above is unable or unwilling to make health care
-      decisions for me, I appoint as alternate agent:
-        </span>
-      </p>
-      
-      <p  style="margin-left: 0.38in; text-indent: 0.13in; margin-bottom: 0in; line-height: 100%">
+      <!-- if alternate agents-->
+      <div *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent == 'true'">
+        <p  style="margin-bottom: 0.09in; line-height: 100%">
+          <span style="font-family:'Times New Roman, serif'">
+            <b>ALTERNATE AGENT:&nbsp; </b>
+          </span>
+          <span style="font-family:'Times New Roman, serif'">If the
+        person named above is unable or unwilling to make health care
+        decisions for me, I appoint as alternate agent:
+          </span>
+        </p>
+
+        <p  style="margin-left: 0.38in; text-indent: 0.13in; margin-bottom: 0in; line-height: 100%">
           <span color="#000000">
             <span style="font-family:'Times New Roman, serif'">Name: 		</span>
           </span>
@@ -172,8 +173,8 @@
             <span style="font-family:'Times New Roman, serif'">	</span>
           </span>
         </p>
-  
-        <p  style="margin-left: 0.38in; text-indent: 0.13in; margin-bottom: 0in; line-height: 100%">
+
+        <p style="margin-left: 0.38in; text-indent: 0.13in; margin-bottom: 0in; line-height: 100%">
           <span color="#000000"><span style="font-family:'Times New Roman, serif'">Relation :</span></span>
           
           <span color="#0433ff">
@@ -189,8 +190,8 @@
           </span>
           <span color="#000000"><span style="font-family:'Times New Roman, serif'">	</span></span>
         </p>
-  
-        <p  style="margin-left: 0.38in; text-indent: 0.13in; margin-bottom: 0in; line-height: 100%">
+
+        <p style="margin-left: 0.38in; text-indent: 0.13in; margin-bottom: 0in; line-height: 100%">
           <span color="#000000"><span style="font-family:'Times New Roman, serif'">Phone :</span></span>
           
           <span color="#0433ff">
@@ -198,8 +199,8 @@
             <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">__________________</span>
           </span>
         </p>
-  
-        <p  style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+
+        <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
           <span color="#000000"><span style="font-family:'Times New Roman, serif'">Address :</span></span>
           
           <span color="#0433ff">
@@ -211,7 +212,7 @@
           
           <span color="#000000"><span style="font-family:'Times New Roman, serif'"></span></span>
         </p>
-  
+
         <p style="margin-bottom: 0in; line-height: 100%">
           <span color="#000000"><span style="font-family:'Times New Roman, serif'">			</span></span>
           
@@ -236,8 +237,7 @@
           <span style="font-family:'Times New Roman, serif'"></span>
         </p>
         <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-  
-      
+      </div>
       
       <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
@@ -424,12 +424,17 @@
       </p>
       <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><u>							</u></span></p>
       <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'"><b>«</b></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif'"><b>CLIENT
-      FIRST NAME</b></span></span><span style="font-family:'Times New Roman, serif'"><b>»
-      «</b></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif'"><b>CLIENT
-      MIDDLE NAME</b></span></span><span style="font-family:'Times New Roman, serif'"><b>»
-      «</b></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif'"><b>CLIENT
-      LAST NAME</b></span></span><span style="font-family:'Times New Roman, serif'"><b>»</b></span><span color="#000000"><span style="font-family:'Times New Roman, serif'">,</span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif'">
+
+      <span style="font-family:'Times New Roman, serif'"></span>
+      <span color="#0000ff">
+        <span style="font-family:'Times New Roman, serif'">
+            <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+            <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">________________________________</b>
+        </span>
+      </span>
+      
+      
+      <span color="#000000"><span style="font-family:'Times New Roman, serif'">,</span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif'">
       </span></span>
       </p>
       <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Declarant</span></p>
@@ -521,18 +526,27 @@
         </p>
         <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'">I am a Notary Public in and for
-        the State and County named above. </span><span style="font-family:'Times New Roman, serif'"><b>«</b></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif'"><b>CLIENT
-        FIRST NAME</b></span></span><span style="font-family:'Times New Roman, serif'"><b>»
-        «</b></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif'"><b>CLIENT
-        MIDDLE NAME</b></span></span><span style="font-family:'Times New Roman, serif'"><b>»
-        «</b></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif'"><b>CLIENT
-        LAST NAME</b></span></span><span style="font-family:'Times New Roman, serif'"><b>»</b></span><span style="font-family:'Times New Roman, serif'">,
+        the State and County named above. </span>
+        
+        <span color="#0000ff">
+          <span style="font-family:'Times New Roman, serif'">
+              <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+              <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
+          </span>
+        </span>
+        
+        <span style="font-family:'Times New Roman, serif'">,
         the person who signed this instrument, is personally known to me (or
         proved to me on the basis of satisfactory evidence) to be the person
         who signed as the “Declarant”. The Declarant personally appeared
         before me and signed above or acknowledged the signature above as
-        «</span><span color="#0433ff"><span style="font-family:'Times New Roman, serif'">Gender
-        of Client:his/her</span></span><span style="font-family:'Times New Roman, serif'">»
+        </span>
+        
+        <span color="#0433ff">
+            <span style="font-family:'Times New Roman, serif'" *ngIf="genderTxt4 !== null">{{genderTxt4}}</span>
+            <span style="font-family:'Times New Roman, serif'" *ngIf="genderTxt4 === null">his/her</span>
+        </span>
+        <span style="font-family:'Times New Roman, serif'">
         own. I declare under penalty of perjury that the Declarant appears to
         be of sound mind and under no duress, fraud, or undue influence.</span></p>
         <p  style="margin-bottom: 0in; line-height: 100%"><br/>

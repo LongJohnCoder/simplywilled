@@ -24,6 +24,11 @@ export class NeComponent implements OnInit, OnChanges  {
     tellUsAboutYou: null
   };
   loading = true;
+  genderTxt = null;
+  settlorGenderTxt = '';
+  genderTxt2 = null;
+  genderTxt3 = null;
+  genderTxt4 = null;
 
   constructor() { }
 
@@ -48,6 +53,18 @@ export class NeComponent implements OnInit, OnChanges  {
       };
       this.loading = false;
       console.log(this.userDetails);
+
+      if (this.userDetails !== undefined && this.userDetails.tellUsAboutYou !== null && this.userDetails.tellUsAboutYou.gender !== null) {
+        this.genderTxt = this.userDetails.tellUsAboutYou.gender === 'M' ? 'him' : 'her';
+        this.genderTxt2 = this.userDetails.tellUsAboutYou.gender === 'M' ? 'himself' : 'herself';
+        this.genderTxt3 = this.userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she';
+        this.genderTxt4 = this.userDetails.tellUsAboutYou.gender === 'M' ? 'his' : 'her';
+      } else {
+        this.genderTxt = 'him/her';
+        this.genderTxt2 = 'himself/herself';
+        this.genderTxt3 = 'he/she';
+        this.genderTxt4 = 'his/her';
+      }
     }
   }
 

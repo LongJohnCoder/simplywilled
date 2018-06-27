@@ -724,8 +724,12 @@
         <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">We
         declare that the principal appears to be of sound mind and free from
         duress at the time the durable power of attorney for health care is
-        signed and that the principal affirms that </span><span ><span size="3" style="font-size: 12pt">Gender
-        of Client:he/she</span></span><span size="3" style="font-size: 12pt">
+        signed and that the principal affirms that </span><span>
+          
+            <span size="3" *ngIf="genderTxt3 !== null" style="font-size: 12pt">{{genderTxt3}}</span>
+            <span size="3" *ngIf="genderTxt3 === null" style="font-size: 12pt">he/she</span>
+      
+        </span><span size="3" style="font-size: 12pt">
         is aware of the nature of the directive and is signing it freely and
         voluntarily.</span></span></span></p>
         <p  style="margin-bottom: 0in; line-height: 100%"><br/>
@@ -1063,8 +1067,15 @@
         <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">We
         declare that the principal appears to be of sound mind and free from
         duress at the time the durable power of attorney for health care is
-        signed and that the principal affirms that </span><span ><span size="3" style="font-size: 12pt">Gender
-        of Client:he/she</span></span><span size="3" style="font-size: 12pt">
+        signed and that the principal affirms that </span>
+        
+        <span>
+          
+        <span size="3" *ngIf="genderTxt3 !== null" style="font-size: 12pt">{{genderTxt3}}</span>
+        <span size="3" *ngIf="genderTxt3 === null" style="font-size: 12pt">he/she</span>
+        
+        </span>
+        <span size="3" style="font-size: 12pt">
         is aware of the nature of the directive and is signing it freely and
         voluntarily.</span></span></span></p>
         <p  style="margin-bottom: 0in; line-height: 100%"><br/>

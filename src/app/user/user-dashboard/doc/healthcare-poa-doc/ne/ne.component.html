@@ -315,8 +315,12 @@
         <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
       ,</span><span style="font-family:'Times New Roman, serif'">
       is personally known to us, that the principal signed or acknowledged
-      «</span><span ><span style="font-family:'Times New Roman, serif'">Gender
-      of Client:his/her</span></span><span style="font-family:'Times New Roman, serif'">»
+      </span>
+      <span>
+        <span size="3" *ngIf="genderTxt3 !== null" style="font-size: 12pt">{{genderTxt4}}</span>
+        <span size="3" *ngIf="genderTxt3 === null" style="font-size: 12pt">his/her</span>
+      </span>
+      <span style="font-family:'Times New Roman, serif'">»
       signature on this power of attorney for health care in our presence,
       that the principal appears to be of sound mind and not under duress
       or undue influence, and that neither of us nor the principal’s

@@ -152,69 +152,73 @@
     </p>
    <!-- <p  style="margin-bottom: 0in; line-height: 100%"><span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">«</span></span><span size="3" style="font-size: 12pt">IF
       Rx Alternate Agents?</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></span></p>-->
-    <p  style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'true'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>ALTERNATE
-        AGENT</b></span><span size="3" style="font-size: 12pt">.</span><span size="3" style="font-size: 12pt">&nbsp;
-        </span><span size="3" style="font-size: 12pt">If said agent is not
-        available or becomes ineligible to act, or if I revoke this
-        appointment or authority to act, then I designate </span><span ><span size="3" style="font-size: 12pt">my
-        </span></span>
-        <span size="3" style="text-transform: capitalize;font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation !== 'Other'"> {{userDetails.healthFinance.backupRelation !== null && userDetails.healthFinance.backupRelation !== undefined ? userDetails.healthFinance.backupRelation : '_______________________'}} ,</span>
-        <span size="3" style="text-transform: capitalize;font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation === 'Other'"> {{userDetails.healthFinance.backupRelationOther !== null && userDetails.healthFinance.backupRelationOther !== undefined ? userDetails.healthFinance.backupRelationOther : '_______________________'}} ,</span>
-        <span size="3" *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
-        <span size="3" style="text-transform: capitalize;font-size: 12pt;font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupFullname !== null && userDetails.healthFinance.backupFullname !== undefined ? userDetails.healthFinance.backupFullname : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> of
-        <span size="3" style="text-transform: capitalize;font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupAddress !== null && userDetails.healthFinance.backupAddress !== undefined ? userDetails.healthFinance.backupAddress : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> in
-        <span size="3" style="text-transform: capitalize;font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupCity !== null && userDetails.healthFinance.backupCity !== undefined ? userDetails.healthFinance.backupCity : '_______________________'}} ,</span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
-        <span size="3" style="text-transform: capitalize;font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupState !== null && userDetails.healthFinance.backupState !== undefined ? userDetails.healthFinance.backupState : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
-        <span size="3" style="text-transform: capitalize;font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupZip !== null && userDetails.healthFinance.backupZip !== undefined ? userDetails.healthFinance.backupZip : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>
-      <span style="text-transform: capitalize;font-size: 12pt"> (Tel: <span size="3" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupphone !== null && userDetails.healthFinance.backupphone !== undefined ? userDetails.healthFinance.backupphone : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> ),</span>
-        <!--<span ><span size="3" style="font-size: 12pt">Rx
-        Agent #2 Relationship</span></span><span ><span size="3" style="font-size: 12pt">»,
-        «</span></span><span ><span size="3" style="font-size: 12pt">Rx
-        Agent #2</span></span><span ><span size="3" style="font-size: 12pt">»,
-        of «</span></span><span ><span size="3" style="font-size: 12pt">Rx
-        Agent #2 Address</span></span><span ><span size="3" style="font-size: 12pt">»
-        </span></span><span size="3" style="font-size: 12pt">in «</span><span ><span size="3" style="font-size: 12pt">Rx
-        Agent #2 City</span></span><span size="3" style="font-size: 12pt">»,
-        «</span><span ><span size="3" style="font-size: 12pt">Rx
-        Agent #2 State</span></span><span size="3" style="font-size: 12pt">»
-        «</span><span ><span size="3" style="font-size: 12pt">
-        Rx Agent #2 Zip</span></span><span size="3" style="font-size: 12pt">»</span><span ><span size="3" style="font-size: 12pt">
-        (Tel: «</span></span><span ><span size="3" style="font-size: 12pt">Rx
-        Agent #2 Telephone</span></span><span ><span size="3" style="font-size: 12pt">»),
-        </span></span>--><span size="3" style="font-size: 12pt">as my alternate
-        agent to make health care decisions for me.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></p>
-          <!--  <p  style="margin-bottom: 0in; line-height: 100%"><span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">«</span></span><span size="3" style="font-size: 12pt">END
-        IF</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></span></p>-->
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(2)	</span><span size="3" style="font-size: 12pt"><b>AUTHORITY</b></span><span size="3" style="font-size: 12pt">.</span><span size="3" style="font-size: 12pt">&nbsp;
-      </span><span size="3" style="font-size: 12pt">My agent is authorized
-      to make all healthcare decisions for me, including decisions to
-      provide, withhold, or withdraw artificial nutrition and hydration,
-      and all other forms of health care to keep me alive, </span><span size="3" style="font-size: 12pt"><u>except</u></span><span size="3" style="font-size: 12pt"><b>
-      </b></span><span size="3" style="font-size: 12pt">as I state here:</span></span></p>
-    <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
-      <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></p>
-    <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
-      <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></p>
-    <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
-      <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></p>
-    <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-      <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></p>
-    <p align="left" style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">
-      <span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(Add
-      additional sheets if needed.)</i></span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p  style="margin-bottom: 0in; line-height: 0.15in"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(3)	</span><span size="3" style="font-size: 12pt"><b>WHEN
-        AGENT’S AUTHORITY BECOMES EFFECTIVE: </b></span><span size="3" style="font-size: 12pt">My
-        agent’s authority becomes effective when my primary physician
-        determines that I am unable to make my own health-care decisions
-        unless I mark the following box. If I mark this box </span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">□</span></span></span><span size="3" style="font-size: 12pt">,
-        my agent’s authority to make health-care decisions for me takes
-        effect immediately.</span></span></p>
+    
+    <div *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent == 'true'">
+        <p  style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'true'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>ALTERNATE
+            AGENT</b></span><span size="3" style="font-size: 12pt">.</span><span size="3" style="font-size: 12pt">&nbsp;
+            </span><span size="3" style="font-size: 12pt">If said agent is not
+            available or becomes ineligible to act, or if I revoke this
+            appointment or authority to act, then I designate </span><span ><span size="3" style="font-size: 12pt">my
+            </span></span>
+            <span size="3" style="text-transform: capitalize;font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation !== 'Other'"> {{userDetails.healthFinance.backupRelation !== null && userDetails.healthFinance.backupRelation !== undefined ? userDetails.healthFinance.backupRelation : '_______________________'}} ,</span>
+            <span size="3" style="text-transform: capitalize;font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation === 'Other'"> {{userDetails.healthFinance.backupRelationOther !== null && userDetails.healthFinance.backupRelationOther !== undefined ? userDetails.healthFinance.backupRelationOther : '_______________________'}} ,</span>
+            <span size="3" *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
+            <span size="3" style="text-transform: capitalize;font-size: 12pt;font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupFullname !== null && userDetails.healthFinance.backupFullname !== undefined ? userDetails.healthFinance.backupFullname : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> of
+            <span size="3" style="text-transform: capitalize;font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupAddress !== null && userDetails.healthFinance.backupAddress !== undefined ? userDetails.healthFinance.backupAddress : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> in
+            <span size="3" style="text-transform: capitalize;font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupCity !== null && userDetails.healthFinance.backupCity !== undefined ? userDetails.healthFinance.backupCity : '_______________________'}} ,</span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
+            <span size="3" style="text-transform: capitalize;font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupState !== null && userDetails.healthFinance.backupState !== undefined ? userDetails.healthFinance.backupState : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
+            <span size="3" style="text-transform: capitalize;font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupZip !== null && userDetails.healthFinance.backupZip !== undefined ? userDetails.healthFinance.backupZip : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>
+          <span style="text-transform: capitalize;font-size: 12pt"> (Tel: <span size="3" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupphone !== null && userDetails.healthFinance.backupphone !== undefined ? userDetails.healthFinance.backupphone : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> ),</span>
+            <!--<span ><span size="3" style="font-size: 12pt">Rx
+            Agent #2 Relationship</span></span><span ><span size="3" style="font-size: 12pt">»,
+            «</span></span><span ><span size="3" style="font-size: 12pt">Rx
+            Agent #2</span></span><span ><span size="3" style="font-size: 12pt">»,
+            of «</span></span><span ><span size="3" style="font-size: 12pt">Rx
+            Agent #2 Address</span></span><span ><span size="3" style="font-size: 12pt">»
+            </span></span><span size="3" style="font-size: 12pt">in «</span><span ><span size="3" style="font-size: 12pt">Rx
+            Agent #2 City</span></span><span size="3" style="font-size: 12pt">»,
+            «</span><span ><span size="3" style="font-size: 12pt">Rx
+            Agent #2 State</span></span><span size="3" style="font-size: 12pt">»
+            «</span><span ><span size="3" style="font-size: 12pt">
+            Rx Agent #2 Zip</span></span><span size="3" style="font-size: 12pt">»</span><span ><span size="3" style="font-size: 12pt">
+            (Tel: «</span></span><span ><span size="3" style="font-size: 12pt">Rx
+            Agent #2 Telephone</span></span><span ><span size="3" style="font-size: 12pt">»),
+            </span></span>--><span size="3" style="font-size: 12pt">as my alternate
+            agent to make health care decisions for me.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></p>
+              <!--  <p  style="margin-bottom: 0in; line-height: 100%"><span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">«</span></span><span size="3" style="font-size: 12pt">END
+            IF</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></span></p>-->
+        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+    
+        </p>
+        <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(2)	</span><span size="3" style="font-size: 12pt"><b>AUTHORITY</b></span><span size="3" style="font-size: 12pt">.</span><span size="3" style="font-size: 12pt">&nbsp;
+          </span><span size="3" style="font-size: 12pt">My agent is authorized
+          to make all healthcare decisions for me, including decisions to
+          provide, withhold, or withdraw artificial nutrition and hydration,
+          and all other forms of health care to keep me alive, </span><span size="3" style="font-size: 12pt"><u>except</u></span><span size="3" style="font-size: 12pt"><b>
+          </b></span><span size="3" style="font-size: 12pt">as I state here:</span></span></p>
+        <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+          <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></p>
+        <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+          <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></p>
+        <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+          <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></p>
+        <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
+          <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></p>
+        <p align="left" style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">
+          <span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(Add
+          additional sheets if needed.)</i></span></span></p>
+        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+    
+        </p>
+        <p  style="margin-bottom: 0in; line-height: 0.15in"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(3)	</span><span size="3" style="font-size: 12pt"><b>WHEN
+            AGENT’S AUTHORITY BECOMES EFFECTIVE: </b></span><span size="3" style="font-size: 12pt">My
+            agent’s authority becomes effective when my primary physician
+            determines that I am unable to make my own health-care decisions
+            unless I mark the following box. If I mark this box </span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">□</span></span></span><span size="3" style="font-size: 12pt">,
+            my agent’s authority to make health-care decisions for me takes
+            effect immediately.</span></span></p>
+    </div>
+    
     <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
