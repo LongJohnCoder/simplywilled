@@ -1,7 +1,7 @@
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
     <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
       <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;">
-        
+
         <span size="4" style="font-size: 14pt">
           <span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>N</b></span></span></span><span size="4" style="font-size: 16pt"><b>EW
         </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>J</b></span></span></span><span size="4" style="font-size: 16pt"><b>ERSEY</b></span></span></p>
@@ -47,7 +47,7 @@
 
         </p>
 
-        
+
         <ol type="A">
         <li>
           <p  style="margin-bottom: 0in; line-height: 100%">
@@ -60,59 +60,59 @@
                   <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
                   <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
               </span>
-          
+
               <span style="font-family:'Times New Roman, serif'">, hereby designate
               and appoint my </span>
-          
-              <span> 
+
+              <span>
                   <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther}}</span>
                   <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation}}</span>
                   <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">______________</span>
               </span>
-          
+
               <span>
                   <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.fullname.length > 0" style="font-family:'Times New Roman, serif'">{{userDetails.healthFinance.fullname}}</span>
                   <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" style="font-family:'Times New Roman, serif'">(fullname)_____________________________</span>
               </span>
-          
+
             <span style="font-family:'Times New Roman, serif'">, of </span>
-          
+
             <span>
                 <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.address !== null">{{userDetails.healthFinance.address}}, </span>
                 <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(address)_________________________________________________________________
-                  _______________________________________________________________________________, 
+                  _______________________________________________________________________________,
                 </span>
             </span>
-          
+
             <span style="font-family:'Times New Roman, serif'"> in </span>
-          
+
             <span>
                 <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.city !== null">{{userDetails.healthFinance.city}}, </span>
                 <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(city)__________________, </span>
             </span>
-          
+
             <span style="font-family:'Times New Roman, serif'">, </span>
-          
+
             <span>
                 <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.state !== null">{{userDetails.healthFinance.state}}, </span>
                 <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(state)__________________, </span>
             </span>
-          
+
             <span style="font-family:'Times New Roman, serif'"> </span>
-          
+
             <span>
                 <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.zip !== null">{{userDetails.healthFinance.zip}}, </span>
                 <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(zip)__________________, </span>
             </span>
-          
+
             <span style="font-family:'Times New Roman, serif'"> (Tel: </span>
             <span>
                 <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.phone !== null">{{userDetails.healthFinance.phone}}</span>
                 <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">__________________</span>
             </span>
-          
+
             <span style="font-family:'Times New Roman, serif'">), </span>
-          
+
               <span style="font-family:'Times New Roman, serif'">as my health care
               representative to make any and all health care decisions for me,
               including decisions to accept or to refuse any treatment, service or
@@ -123,8 +123,8 @@
               otherwise known to him or her. In the event my wishes are not clear,
               my representative is authorized to make decisions in my best
               interest, based on what is known of my wishes.</span>
-          
-          
+
+
             </span>
           </span>
           </p>
@@ -137,11 +137,11 @@
 
         </p>
 
-       
+
         <div *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent == 'true'">
-        
+
                 <p style="margin-bottom: 0in; line-height: 100%">
-                  
+
                   <span size="2" style="font-size: 9pt">
                     <span size="3" style="font-size: 12pt">If said representative is not available or becomes ineligible to act, or
                       if I revoke this appointment or authority to act as my
@@ -151,53 +151,53 @@
                         <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation != 'Other'">{{userDetails.healthFinance.backupRelation}}</span>
                         <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">______________</span>
                     </span>
-                  
+
                     <span size="3" style="font-size: 12pt">, </span>
-                  
+
                     <span>
                         <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupFullname.length > 0" style="font-family:'Times New Roman, serif'">{{userDetails.healthFinance.backupFullname}}</span>
                         <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" style="font-family:'Times New Roman, serif'">_____________________________</span>
                     </span>
-                  
+
                     <span size="3" style="font-size: 12pt">, of </span>
-                    
+
                     <span>
                         <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupAddress !== null">{{userDetails.healthFinance.backupAddress}}, </span>
                         <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(address)_________________________________________________________________
-                          _______________________________________________________________________________, 
+                          _______________________________________________________________________________,
                         </span>
                     </span>
-                  
+
                     <span size="3" style="font-size: 12pt"> in </span>
-                  
+
                     <span>
                         <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupCity !== null">{{userDetails.healthFinance.backupCity}}, </span>
                         <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(city)__________________, </span>
                     </span>
-                  
+
                     <span size="3" style="font-size: 12pt">, </span>
                     <span>
                         <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupState !== null">{{userDetails.healthFinance.backupState}}, </span>
                         <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(state)__________________, </span>
                     </span>
-                  
+
                     <span size="3" style="font-size: 12pt"> </span>
-                    
+
                     <span>
                         <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupZip !== null">{{userDetails.healthFinance.backupZip}}, </span>
                         <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(zip)__________________, </span>
                     </span>
-                    
+
                     <span size="3" style="font-size: 12pt">(Tel: «</span>
-                    
+
                     <span>
                         <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupphone !== null">{{userDetails.healthFinance.backupphone}}</span>
                         <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(phone)__________________</span>
                     </span>
-                    
+
                     <span size="3" style="font-size: 12pt">), as my alternate representative to make health care decisions for me
                       as authorized in this document.</span>
-                      
+
                     <span size="3" style="font-size: 12pt">&nbsp;</span>
                 </span></p>
 
@@ -213,9 +213,9 @@
         care, and any necessary confirming determinations.  Unless I revoke
         it, this proxy shall remain in effect indefinitely.  I revoke any
         prior advance health care directive and any prior health care proxy.&nbsp;</p>
-    </div> 
+    </div>
 
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 1 of 9
@@ -226,8 +226,8 @@
       Page 1 of 9
     </div>
 </div>
-  
-  
+
+
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
     <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
       <ol type="A" start="2">
@@ -316,7 +316,7 @@
         and shall expire only in the event that I revoke the authority in
         writing and deliver it to my health care provider;</span></span></p>
     </div>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 2 of 9
@@ -327,16 +327,16 @@
       Page 2 of 9
     </div>
 </div>
-  
-  
+
+
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
     <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
       <p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
         <span size="2" style="font-size: 9pt">
           <span size="3" style="font-size: 12pt">2.</span>
-          
+
           <span size="3" style="font-size: 12pt">	</span>
-          
+
           <span size="3" style="font-size: 12pt">Execute
         on my behalf any releases or other documents that may be required in
         order to obtain this information; and</span></span></p>
@@ -382,29 +382,29 @@
 
         </p>
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
-        1. name 	___________________________________ 
+        1. name 	___________________________________
         </p>
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
-        address 	_________________________________ 
+        address 	_________________________________
         </p>
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
-        city 		________________________ state _______ 
+        city 		________________________ state _______
         </p>
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
-        telephone 	__________________________ 
+        telephone 	__________________________
         </p>
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
         <br/>
 
         </p>
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
-        2. name 	___________________________________ 
+        2. name 	___________________________________
         </p>
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
-        address		 _________________________________ 
+        address		 _________________________________
         </p>
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
-        city		 ________________________ state _______ 
+        city		 ________________________ state _______
         </p>
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
         telephone 	__________________________</p>
@@ -444,14 +444,14 @@
         <span face="Calibri, serif">
           <span style="font-family:'Times New Roman, serif'">I,</span>
           <span style="font-family:'Times New Roman, serif'"></span>
-          
+
           <span>
-        
+
             <span style="font-family:'Times New Roman, serif'">
                 <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
                 <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
             </span>
-        
+
             <span style="font-family:'Times New Roman, serif'">hereby declare and
             make known to my family, physician, and others, my instructions and
             wishes for my future health care. I direct that all health care
@@ -470,10 +470,10 @@
         </p>
           </li>
           </ol>
-        
+
 
     </div>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 3 of 9
@@ -484,8 +484,8 @@
       Page 3 of 9
     </div>
 </div>
-  
-  
+
+
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
     <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><u><b>Statement
@@ -595,7 +595,7 @@
       </li>
       </ol>
   </div>
-  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 4 of 9
@@ -606,13 +606,13 @@
       Page 4 of 9
     </div>
 </div>
-  
-  
+
+
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
     <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
       <p class="western"  style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
         <i><b>In the space provided, write in the bracketed phrase with which
-        you agree:</b></i> 
+        you agree:</b></i>
         </p>
         <p class="western"  style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
         <br/>
@@ -626,17 +626,17 @@
 
         </p>
         <p class="western"  style="margin-left: 1.5in; margin-bottom: 0in; line-height: 100%">
-        ______ (i) I will die within a few days,  
+        ______ (i) I will die within a few days,
         </p>
         <p class="western"  style="margin-left: 1.5in; margin-bottom: 0in; line-height: 100%">
-        ______ (ii) I will die within a few weeks, OR 
+        ______ (ii) I will die within a few weeks, OR
         </p>
         <p class="western"  style="margin-left: 1.5in; margin-bottom: 0in; line-height: 100%">
         ______ (iii) I have a life expectancy of approximately 6 months or
-        less 
+        less
         </p>
         <p class="western"  style="margin-left: 1.5in; margin-bottom: 0in; line-height: 100%">
-        ______ (iv) I have a life expectancy of approximately 1 year or less 
+        ______ (iv) I have a life expectancy of approximately 1 year or less
         </p>
         <p class="western"  style="margin-left: 0.75in; margin-bottom: 0in; line-height: 100%">
         <br/>
@@ -715,7 +715,7 @@
         </span></span>
         </p>
     </div>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 5 of 9
@@ -726,8 +726,8 @@
       Page 5 of 9
     </div>
 </div>
-  
-  
+
+
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
     <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
       <p  style="margin-left: 1.25in; margin-bottom: 0in; line-height: 100%">
@@ -845,7 +845,7 @@
         (ii) be provided to preserve my life, unless medically inappropriate
         or futile</span></span></p>
     </div>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 6 of 9
@@ -856,8 +856,8 @@
       Page 6 of 9
     </div>
 </div>
-          
-          
+
+
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
     <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
       <p class="western"  style="margin-left: 0.25in; margin-bottom: 0in; line-height: 100%">
@@ -910,7 +910,7 @@
         legal standard for the declaration of death. However, individuals who
         cannot accept this standard because of their personal religious
         beliefs may request that it not be applied in determining their
-        death.) 
+        death.)
         </p>
         <p class="western"  style="margin-bottom: 0in; line-height: 100%">
         <br/>
@@ -944,7 +944,7 @@
         provide instructions for any limitations or special uses.) </i>
         </p>
     </div>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 7 of 9
@@ -955,8 +955,8 @@
       Page 7 of 9
     </div>
 </div>
-  
-  
+
+
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
     <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
       <p class="western"  style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
@@ -1052,7 +1052,7 @@
 
         </p>
         <p class="western"  style="margin-bottom: 0in; line-height: 100%">
-        Signed this _____________ day of ______________, ______. 
+        Signed this _____________ day of ______________, ______.
         </p>
         <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
@@ -1079,38 +1079,34 @@
           </span>
         </span>
         </p>
-        <p  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+        <!--<p  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
         <span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">«</span></span>
-        
-        <!--
+
 
           <span size="3" style="font-size: 12pt">IF
         ANSWERED( Address2 )</span><span ><span size="3" style="font-size: 12pt">»«</span></span><span ><span size="3" style="font-size: 12pt">Address2</span></span><span ><span size="3" style="font-size: 12pt">»«</span></span><span size="3" style="font-size: 12pt">END
-        IF</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></span></p> 
+        IF</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></span></p> -->
 
-
-        -->
-         
-
+      
         <p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
         <span><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">«</span></span>
-        
+
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.city}}</span>
         <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(city)_____________</span>
-        
-        
+
+
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.state}}</span>&nbsp;
         <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="font-family:'Times New Roman, serif'">(state)_____________________</span>
-        
+
         <span ><span size="3" style="font-size: 12pt">»</span></span><span ><span size="3" style="font-size: 12pt">&nbsp;
         </span></span><span ><span size="3" style="font-size: 12pt">«</span></span>
-        
+
         <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.zip !== null">{{userDetails.tellUsAboutYou.zip}}, </span>
         <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(zip)__________________, </span>
-        
+
         <span ><span size="3" style="font-size: 12pt">»</span></span></span></span></p>
     </div>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 8 of 9
@@ -1121,8 +1117,8 @@
       Page 8 of 9
     </div>
   </div>
-  
-  
+
+
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
     <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
       <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>WITNESS
@@ -1132,30 +1128,30 @@
         </p>
         <p class="western"  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
         <span >I declare that </span><b>«</b>
-        
+
         <span>
             <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
             <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
         </span>
-        
+
         <span>, signed the
         foregoing document in my presence, or asked another to sign this
-        document on</span> 
-        
-        <span *ngIf="genderTxt4 !== null">{{genderTxt4}}</span> 
+        document on</span>
+
+        <span *ngIf="genderTxt4 !== null">{{genderTxt4}}</span>
         <span *ngIf="genderTxt4 === null">he/she</span>
-        
+
         <span >behalf, and that </span>
-        
-        <span *ngIf="genderTxt3 !== null">{{genderTxt3}}</span> 
+
+        <span *ngIf="genderTxt3 !== null">{{genderTxt3}}</span>
         <span *ngIf="genderTxt3 === null">he/she</span>
 
         <span> is personally known
         to me, and that </span>
-        
-        <span *ngIf="genderTxt3 !== null">{{genderTxt3}}</span> 
-        <span *ngIf="genderTxt3 === null">he/she</span> 
-        
+
+        <span *ngIf="genderTxt3 !== null">{{genderTxt3}}</span>
+        <span *ngIf="genderTxt3 === null">he/she</span>
+
         <span >appears to be of sound
         mind and free of duress or undue influence. I am 18 years of age or
         older, and am not designated by this or any other document as the
@@ -1243,7 +1239,7 @@
         <p class="western"  style="margin-bottom: 0.06in; line-height: 100%">
         <span >	[city, state]</span></p>
     </div>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 9 of 9
