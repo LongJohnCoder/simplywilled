@@ -578,8 +578,10 @@
     <p  style="margin-bottom: 0.09in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>WITNESS
       STATEMENT</b></span></span></span></p>
     <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt">I
-      declare, on the basis of information and belief, that «</span><span ><span size="2" style="font-size: 10pt">CLIENT'S
-      NAME</span></span><span size="2" style="font-size: 10pt">», the
+      declare, on the basis of information and belief, that </span><span ><span size="2" style="font-size: 10pt">
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
+      </span></span><span size="2" style="font-size: 10pt">, the
       person who signed or acknowledged this document (the principal), is
       personally known to me, that </span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"></span></span><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">
       <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she' ): 'he' }}</span>
@@ -1168,7 +1170,7 @@
       ancestor, descendant of the parents of the declarant, or spouse of
       any of them; nor directly financially responsible for the declarant’s
       medical care; nor entitled to any portion of the declarant’s estate
-      upon </span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt">«</span></span></span><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt">
+      upon </span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt"></span></span></span><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt">
        <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'him' : 'her' ): 'him' }}</span>
       </span></span></span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt"></span></span></span><span style="font-family:'Times New Roman, serif'">
       decease, whether under any will or as an heir by intestate
