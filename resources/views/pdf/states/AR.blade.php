@@ -65,11 +65,11 @@
                 <p class="western" style="margin-bottom: 0in; line-height: 100%"><input type="checkbox"> Other Medications not Necessary for Alleviation of Pain.
                 </p>
             </div>
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Declaration and Durable Power of Attorney of
-                <br> {{$tellUsAboutYou['fullname']}}
+                <br> {{ucwords($tellUsAboutYou['fullname'])}}
                 <br> Page 1 of 7
-            </div>
+            </div> -->
         </div>
         <!-- Page 1 End -->
 
@@ -145,11 +145,11 @@
                 <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; text-align:center;">
                     <b>[signature page follows]</b></p>
             </div>
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Declaration and Durable Power of Attorney of
-                <br> {{$tellUsAboutYou['fullname']}}
+                <br> {{ucwords($tellUsAboutYou['fullname'])}}
                 <br> Page 2 of 7
-            </div>
+            </div> -->
         </div>
         <!-- Page 2 End -->
 
@@ -170,18 +170,18 @@
                     Signature: <u>_______________________________________</u></p>
                 <p class="western" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
                     <b></b>
-                    <span><b>{{$tellUsAboutYou['fullname']}}</b></span>
+                    <span><b>{{ucwords($tellUsAboutYou['fullname'])}}</b></span>
                     <b></b>
                     <!-- <span><b>{{$tellUsAboutYou['middlename']}}</b></span>
                     <b></b>
                     <span><b>{{$tellUsAboutYou['lastname']}}</b></span><b></b> -->
                 </p>
                 <p class="western" style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-                    <span>{{$tellUsAboutYou['address']}}</span></p>
+                    <span>{{ucwords($tellUsAboutYou['address'])}}</span></p>
                 <!-- <p class="western" style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
                     «<span>IF ANSWERED( Address2 )</span>»«<span>Address2</span>»«<span>END IF</span>»</p> -->
                 <p class="western" style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-                    <span>{{$tellUsAboutYou['city']}}</span>, <span>{{$tellUsAboutYou['state']}}</span></p>
+                    <span>{{ucwords($tellUsAboutYou['city'])}}</span>, <span>{{ucwords($tellUsAboutYou['state'])}}</span></p>
                 <!-- <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
                     <br/>
 
@@ -201,7 +201,7 @@
                     <span size="4" style="font-size: 14pt"><b>STATEMENT OF WITNESSES</b></span></p>
                 <p class="western" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
                     I declare that
-                    <span>{{$tellUsAboutYou['fullname']}}</span>
+                    <span>{{ucwords($tellUsAboutYou['fullname'])}}</span>
                     <!-- <span>{{$tellUsAboutYou['middlename']}}</span> -->
                     <!-- <span>{{$tellUsAboutYou['lastname']}}</span> -->
                     <span style="letter-spacing: 0.1pt">,</span> the declarant, appeared to execute the Declaration willingly and free from duress. <span style="letter-spacing: 0.1pt"></span>
@@ -258,14 +258,14 @@
                 <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
                     <span style="padding-left: 40px;">								[city, state, zip]</span></p>
             </div>
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Declaration and Durable Power of Attorney of
                 <br> {{ucwords($tellUsAboutYou['fullname'])}}
                 <br> Page 3 of 7
-            </div>
+            </div> -->
         </div>
         <!-- Page 3 End-->
-        <!-- <?php echo "<pre>"; print_r($healthFinance); ?> -->
+
         <!-- Page 4 -->
         <div>
             <div>
@@ -333,11 +333,11 @@
                     (f) To authorize, or refuse to authorize, any medication or procedure intended to relieve pain, even though such use may lead to physical damage, addiction, or hasten the moment of, but not intentionally cause, my death;
                 </p>
             </div>
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Declaration and Durable Power of Attorney of
                 <br> {{ucwords($tellUsAboutYou['fullname'])}}
                 <br> Page 4 of 7
-            </div>
+            </div> -->
         </div>
         <!-- Page 4 End-->
 
@@ -397,11 +397,11 @@
                 <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
                     <span size="2" style="font-size: 10pt"><i>(Use additional sheets if needed.)</i></span></p>
             </div>
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Declaration and Durable Power of Attorney of
                 <br> {{ucwords($tellUsAboutYou['fullname'])}}
                 <br> Page 5 of 7
-            </div>
+            </div> -->
         </div>
         <!-- Page 5 End-->
 
@@ -486,11 +486,11 @@
                 <p class="western" style="margin-bottom: 0in; line-height: 100%; text-align:center;">
                     <span size="4" style="font-size: 14pt"><b>[Witness Statement and Signatures Follow]</b></span></p>
             </div>
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Declaration and Durable Power of Attorney of
                 <br> {{ucwords($tellUsAboutYou['fullname'])}}
                 <br> Page 6 of 7
-            </div>
+            </div> -->
         </div>
         <!-- Page 6 End-->
 
@@ -545,11 +545,11 @@
                 <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
                     <span style="padding-left: 40px;">								[city, state, zip]</span></p>
             </div>
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Declaration and Durable Power of Attorney of
                 <br> {{ucwords($tellUsAboutYou['fullname'])}}
                 <br> Page 7 of 7
-            </div>
+            </div> -->
         </div>
         <!-- Page 7 End-->
     </div>
