@@ -25,13 +25,13 @@
         <div class="gift_form_container">
           <form [formGroup] = "realPropertyForm">
 
-            <h2 class="singing_instruction3" style="padding-top:0;">Tell Us About Your Gift of Real Property</h2>
-            <ul class="radio_ul3">
-              <li><label class="radio_custom singing_instruction active"><span class="custom_img3"><img src="../../../../../assets/images/percent.png" alt="Cash"></span></label></li>
-            </ul>
+            <h2 class="singing_instruction3" style="padding-top:0;">Tell Us About Your Gift Of Real Property</h2>
+            <!--<ul class="radio_ul3">-->
+              <!--<li><label class="radio_custom singing_instruction active"><span class="custom_img3"><img src="../../../../../assets/images/percent.png" alt="Cash"></span></label></li>-->
+            <!--</ul>-->
 
             <div class="form-group">
-              <h3 class="questions">Is this property your primary residence ?</h3>
+              <h3 class="questions">Is this Real Property your primary residence?</h3>
               <ul class="radio_ul4">
                 <li>
                   <label class="radio_custom zero_nine_page yesNo"  [ngClass]="{'active': flags.residenceYesFlag}">
@@ -76,8 +76,61 @@
 
             <div class="form-group">
               <label class="legal_name_benifets">State</label>
-              <input type="text" class="form-control capitalize_txt" [ngClass]="{'error_input': realPropertyForm.get('state').invalid && realPropertyForm.get('state').touched}" formControlName="state">
-
+              <!--<input type="text" class="form-control capitalize_txt" [ngClass]="{'error_input': realPropertyForm.get('state').invalid && realPropertyForm.get('state').touched}" formControlName="state">-->
+              <select class="form-control capitalize_txt" [ngClass]="{'error_input': realPropertyForm.get('state').invalid && realPropertyForm.get('state').touched}" formControlName="state">
+                <option value="">State</option>
+                <option value="Alabama">Alabama</option>
+                <option value="Alaska">Alaska</option>
+                <option value="Arizona">Arizona</option>
+                <option value="Arkansas">Arkansas</option>
+                <option value="California">California</option>
+                <option value="Colorado">Colorado</option>
+                <option value="Connecticut">Connecticut</option>
+                <option value="Delaware">Delaware</option>
+                <option value="District Of Columbia">District of Columbia</option>
+                <option value="Florida">Florida</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Hawaii">Hawaii</option>
+                <option value="Idaho">Idaho</option>
+                <option value="Illinois">Illinois</option>
+                <option value="Indiana">Indiana</option>
+                <option value="Iowa">Iowa</option>
+                <option value="Kansas">Kansas</option>
+                <option value="Kentucky">Kentucky</option>
+                <option value="Louisiana">Louisiana</option>
+                <option value="Maine">Maine</option>
+                <option value="Maryland">Maryland</option>
+                <option value="Massachusetts">Massachusetts</option>
+                <option value="Michigan">Michigan</option>
+                <option value="Minnesota">Minnesota</option>
+                <option value="Mississippi">Mississippi</option>
+                <option value="Missouri">Missouri</option>
+                <option value="Montana">Montana</option>
+                <option value="Nebraska">Nebraska</option>
+                <option value="Nevada">Nevada</option>
+                <option value="New Hampshire">New Hampshire</option>
+                <option value="New Jersey">New Jersey</option>
+                <option value="New Mexico">New Mexico</option>
+                <option value="New York">New York</option>
+                <option value="North Carolina">North Carolina</option>
+                <option value="North Dakota">North Dakota</option>
+                <option value="Ohio">Ohio</option>
+                <option value="Oklahoma">Oklahoma</option>
+                <option value="Oregon">Oregon</option>
+                <option value="Pennsylvania">Pennsylvania</option>
+                <option value="Rhode Island">Rhode Island</option>
+                <option value="South Carolina">South Carolina</option>
+                <option value="South Dakota">South Dakota</option>
+                <option value="Tennessee">Tennessee</option>
+                <option value="Texas">Texas</option>
+                <option value="Utah">Utah</option>
+                <option value="Vermont">Vermont</option>
+                <option value="Virginia">Virginia</option>
+                <option value="Washington">Washington</option>
+                <option value="West Virginia">West Virginia</option>
+                <option value="Wisconsin">Wisconsin</option>
+                <option value="Wyoming">Wyoming</option>
+              </select>
               <!--<div class="alert alert-danger" *ngIf="realPropertyForm.invalid && realPropertyForm.touched">-->
               <span class="error_txt" *ngIf="realPropertyForm.get('state').invalid && realPropertyForm.get('state').touched && realPropertyForm.get('state').hasError('required')">
                   Please answer this question.
@@ -85,9 +138,20 @@
               <!--</div>-->
             </div>
 
+            <div class="form-group">
+              <label class="legal_name_benifets">Zip</label>
+              <input type="text" class="form-control capitalize_txt" [ngClass]="{'error_input': realPropertyForm.get('zip').invalid && realPropertyForm.get('zip').touched}" formControlName="zip">
+
+              <!--<div class="alert alert-danger" *ngIf="realPropertyForm.invalid && realPropertyForm.touched">-->
+              <span class="error_txt" *ngIf="realPropertyForm.get('zip').invalid && realPropertyForm.get('zip').touched && realPropertyForm.get('zip').hasError('required') || realPropertyForm.get('zip').hasError('pattern')">
+                  Please answer this question.
+                </span>
+              <!--</div>-->
+            </div>
+
 
             <div class="form-group" *ngIf="flags.showIndividualAndCharity">
-              <label class="questions">Please confirm this a gift to an Individual or a Charity?</label>
+              <label class="questions">Please confirm if this is a gift to an individual(s) or a charity:</label>
               <ul class="radio_ul4">
                 <li>
                   <label class="radio_custom zero_nine_page"  [ngClass]="{'active': flags.individualFlag}">

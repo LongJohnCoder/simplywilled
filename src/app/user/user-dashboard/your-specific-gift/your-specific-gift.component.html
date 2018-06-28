@@ -62,7 +62,7 @@
 <div id="gift_packages" *ngIf="showAddGift">
   <div class="main-content tellusaboutyou main-content-bottom">
     <h2 class="singing_instruction3">
-      Please Tell Us What Types Of Gifts You Would Like To Make?
+      Types Of Gifts
       <app-global-tooltip (click)="toolTipClicked('gift_type')" [tooltipMessages]='toolTipMessageList.gift_type' toolTipType="gift_type"></app-global-tooltip>
     </h2>
    <!-- <ul class="radio_ul3">
@@ -75,6 +75,11 @@
     <!--<h2 class="questions">Please tell us what type of gift you would like to make?
       <app-global-tooltip (click)="toolTipClicked('gift_type')" [tooltipMessages]='toolTipMessageList.gift_type' toolTipType="gift_type"></app-global-tooltip>
     </h2>-->
+    <!--<div class="form-group">-->
+      <label>
+        What types of Gifts would you like to make?
+      </label>
+    <!--</div>-->
     <ul class="radio_ul5">
       <li>
         <label class="radio_custom gift_type_radio" (click)="openModule('_ca')">
@@ -108,7 +113,7 @@
         <label class="radio_custom gift_type_radio" (click)="notThisTime()" >
           <!--<input type="radio" name="gift_type" value="Specific Asset">-->
           <span class="custom_img4"><img src="../../../../assets/images/no.png" alt="Not this time"></span>
-          <span class="human_status3">Not this time</span>
+          <span class="human_status3">None</span>
         </label>
       </li>
     </ul>

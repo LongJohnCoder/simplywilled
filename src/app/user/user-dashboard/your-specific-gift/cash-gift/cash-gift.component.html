@@ -25,10 +25,10 @@
         <div class="gift_form_container">
           <form [formGroup]="cashGiftForm" (ngSubmit)="saveCashGift(cashGiftForm.value)">
             <h2 class="singing_instruction3" style="padding-top:0;">Tell Us About Gifts of Cash</h2>
-            <ul class="radio_ul3">
-              <li><label class="radio_custom singing_instruction active"><span class="custom_img3"><img
-                src="../../../../../assets/images/cash2.png" alt="Cash"></span></label></li>
-            </ul>
+            <!--<ul class="radio_ul3">-->
+              <!--<li><label class="radio_custom singing_instruction active"><span class="custom_img3"><img-->
+                <!--src="../../../../../assets/images/cash2.png" alt="Cash"></span></label></li>-->
+            <!--</ul>-->
 
             <h3 class="questions" *ngIf="showIndividualAndCharity">Please confirm this a gift to an Individual or a Charity?</h3>
             <div *ngIf="showIndividualAndCharity">
@@ -61,7 +61,7 @@
                 <div *ngFor="let item of cashGiftForm['controls'].individualControls['controls']; let i = index;"
                      [formGroupName]="i">
                   <div class="form-group">
-                    <label class="legal_name_benifets">Beneficiary's full legal name?</label>
+                    <label class="legal_name_benifets">Beneficiary’s Full Legal Name:</label>
                     <input type="text" class="legal_benifit_input capitalize_txt" formControlName="full_legal_name"
                            [ngClass]="{'error_input': !cashGiftForm.get('individualControls.0.full_legal_name').valid && cashGiftForm.get('individualControls.0.full_legal_name').touched}">
 
@@ -78,7 +78,7 @@
                     </div>
                   </div>
 
-                  <label class="legal_name_benifets">Beneficiary's relationship to you?</label>
+                  <label class="legal_name_benifets">Beneficiary’s relationship to you: </label>
                   <span class="drop_down">
                       <select class="beneficiary_relationship_dropdown" (change)="handleChange($event.target.value)"
                               formControlName="relationship">
@@ -125,7 +125,7 @@
                     </span>
                   </div>
 
-                  <h2 class="questions">Beneficiary's gender?</h2>
+                  <h2 class="questions">Beneficiary’s gender: </h2>
                   <ul class="radio_ul6">
                     <li>
                       <label class="radio_custom"
@@ -146,8 +146,7 @@
                         Gender is required.
                     </span>
                   </ul>
-                  <h2 class="questions">If your beneficiary passes before you, should this gift go to your beneficiary&#39;s
-                    issue?</h2>
+                  <h2 class="questions">If your Beneficiary passes before you, should this gift go to your Beneficiary’s issue?</h2>
                   <ul class="radio_ul7">
                     <li>
                       <label class="radio_custom gift_their_kids"
@@ -175,14 +174,14 @@
               <div formArrayName="charityControls">
                 <div *ngFor="let item of cashGiftForm['controls'].charityControls['controls']; let j = index"
                      [formGroupName]="j">
-                  <label class="legal_name_benifets">Organization name?</label>
+                  <label class="legal_name_benifets">Organization’s Name:</label>
                   <input type="text" class="legal_benifit_input capitalize_txt" formControlName="organization_name"
                          [ngClass]="{'error_input': !cashGiftForm.get('charityControls.0.organization_name').valid && cashGiftForm.get('charityControls.0.organization_name').touched}">
                   <span class="error_txt"
                         *ngIf="!cashGiftForm.get('charityControls.0.organization_name').valid && cashGiftForm.get('charityControls.0.organization_name').touched && cashGiftForm.get('charityControls.0.organization_name').hasError('required')">
                       Please fill up this field.
                   </span>
-                  <label class="legal_name_benifets">Organization address?</label>
+                  <label class="legal_name_benifets">Organization’s Address:</label>
                   <input type="text" class="legal_benifit_input" formControlName="organization_address"
                          placeholder="Street Address, City, State, Zip Code"
                          [ngClass]="{'error_input':!cashGiftForm.get('charityControls.0.organization_address').valid && cashGiftForm.get('charityControls.0.organization_address').touched}">

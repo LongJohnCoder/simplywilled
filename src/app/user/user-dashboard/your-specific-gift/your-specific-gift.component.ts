@@ -50,11 +50,38 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
     private router: Router,
     private progressBarService: ProgressbarService) {
       this.toolTipMessageList = {
-        'gift_type' : [{
-            'q' : 'Gift Types',
-            // tslint:disable-next-line:max-line-length
-            'a' : 'Using SimplyWilled.com you can make specific gifts of cash, real estate, business interests and specific assets to individuals you choose. These gifts are “off the top” of your estate. Everything else that is left over after these gifts is called the residuary of the estate.'
-          }]
+        'gift_type' : [
+            {
+              'q' : 'Gift types',
+              // tslint:disable-next-line:max-line-length
+              'a' : 'You can make Specific Gifts of Cash, Real Estate, Business Interests and Specific Assets to the individual(s) or charities of your choosing'
+            },
+            {
+                'q' : 'What Is a Specific Gift?',
+                // tslint:disable-next-line:max-line-length
+                'a' : 'A Specific Gift is a particular itemized gift “off the top” of our estate. For example, “I leave $5,000 to my son, James”, or “I leave my gold ring to my daughter Emily”, or “I leave my car to XYZ Charity”. Everything else in your estate will be distributed according to your residuary which is covered later in the interview process'
+            },
+            {
+              'q': 'Should I make Specific Gifts?',
+              'a': 'If you have specific asset or item that you want to go to a particular individual(s) or charity, then you should give it as a Specific Gift. For example, “I leave my XYZ Company to my son, Donald” or “I leave my watch to my grandson, Dwayne”'
+            },
+            {
+                'q': 'What is a Gift of Cash?',
+                'a': 'A Gift of Cash is a give of a specific amount of money to an individual(s) or charities of your choosing'
+            },
+            {
+                'q': 'What is a Gift of Real Property?',
+                'a': 'You can give your personal residence or other real property that you own, to the individual(s) or charities of your choosing.'
+            },
+            {
+                'q': 'What is a Gift of Business Interest?',
+                'a': 'You can give a business that you own, to the individual(s) or charities of your choosing'
+            },
+            {
+                'q': 'What is a Gift of A Specific Asset?',
+                'a': 'You can give Specific Assets, i.e. your car, boat, jewelry, or any personal property you own to the individual(s) or charity of your choosing.'
+            }
+        ]
       };
     }
   ngOnInit() {

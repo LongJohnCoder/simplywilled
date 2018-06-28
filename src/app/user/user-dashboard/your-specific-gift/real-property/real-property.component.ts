@@ -151,6 +151,7 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
       'street_address': new FormControl(data === null ? '' : data.street_address, [Validators.required]),
       'city': new FormControl(data === null ? '' : data.city, [Validators.required]),
       'state': new FormControl(data === null ? '' : data.state, [Validators.required]),
+      'zip': new FormControl(data === null ? '' : data.zip, [Validators.required, Validators.pattern("^[0-9]*$")]),
       'residence': new FormControl(data === null ? '0' : data.residence, [Validators.required]),
       'gift_to': new FormControl(data === null ? '' : data.gift_to , [Validators.required]),
       'organization_name': new FormControl(data === null ? '' : data.organization_name),
@@ -407,7 +408,8 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
                 this.realPropertyForm.patchValue({
                   'street_address': data.data[0].data.userInfo.address,
                   'city': data.data[0].data.userInfo.city,
-                  'state': data.data[0].data.userInfo.state
+                    'state': data.data[0].data.userInfo.state,
+                    'zip': data.data[0].data.userInfo.zip
                 });
               } else {
                 this.errors.errorFlag = true;
@@ -434,7 +436,8 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
       this.realPropertyForm.patchValue({
         'street_address': '',
         'city': '',
-        'state': ''
+          'state': '',
+          'zip': ''
       });
     }
   }
@@ -475,7 +478,8 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
     let data = {
       street_address: this.realPropertyForm.value.street_address,
       city: this.realPropertyForm.value.city,
-      state: this.realPropertyForm.value.state,
+        state: this.realPropertyForm.value.state,
+        zip: this.realPropertyForm.value.zip,
       residence: this.realPropertyForm.value.residence,
      /* beneficiary: this.realPropertyForm.value.gift_to === 'IN' ? this.realPropertyForm.value.beneficiary : '',
       full_legal_name: this.realPropertyForm.value.full_legal_name,

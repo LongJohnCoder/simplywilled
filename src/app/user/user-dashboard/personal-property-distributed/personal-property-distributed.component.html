@@ -12,12 +12,17 @@
 
 <div class="col-xs-12" *ngIf="!loading">
   <div class="main-content tellusaboutyou">
-    <h2>How Should Your Personal Property Be Distributed?
+    <h2>Personal Property
       <app-global-tooltip (click)="toolTipClicked('tangible_property')" [tooltipMessages]='toolTipMessageList.tangible_property' toolTipType="tangible_property"></app-global-tooltip>
     </h2>
     <form [formGroup]="personalPropertyDistributedForm" novalidate
           (ngSubmit)="onSubmit(personalPropertyDistributedForm)">
       <div class="form-group">
+        <div class="">
+          <label>
+            How should your Personal Property be distributed?
+          </label>
+        </div>
         <ul class="Instructions_ul_Radio" style="margin-bottom:0">
           <li *ngIf="showChildRadio">
             <label class="two_child_radio special_instrucion" [ngClass]="{'active' : personalPropertyDistributedForm.value.is_tangible_property_distribute == '1'}" >

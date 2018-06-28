@@ -16,13 +16,13 @@
     <form [formGroup]="provideYourSpouseForm" novalidate
           (ngSubmit)="onSubmit(provideYourSpouseForm)">
       <div class="form-group">
-        <ul class="Instructions_ul_Radio" style="margin-bottom:0">
-          <li>
-            <label class="two_child_radio special_instrucion active">
-              <span class="two_child_img"><img src="../../../../assets/images/couple-p.png" alt="couple-p"></span>
-            </label>
-          </li>
-        </ul>
+        <!--<ul class="Instructions_ul_Radio" style="margin-bottom:0">-->
+          <!--<li>-->
+            <!--<label class="two_child_radio special_instrucion active">-->
+              <!--<span class="two_child_img"><img src="../../../../assets/images/couple-p.png" alt="couple-p"></span>-->
+            <!--</label>-->
+          <!--</li>-->
+        <!--</ul>-->
           <div class="">
               <label>Would you like to distribute the residue of your estate to your {{pageText}} first? 
                 <app-global-tooltip (click)="toolTipClicked('estate_to_spouse')" [tooltipMessages]='toolTipMessageList.estate_to_spouse' toolTipType="estate_to_spouse"></app-global-tooltip>
