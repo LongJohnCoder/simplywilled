@@ -1,3 +1,7 @@
+p{
+  font-family: "Times New Roman";
+  line-height: normal !important;
+}
 .docPage{
   width: 700px !important;
   height: 991px!important;
