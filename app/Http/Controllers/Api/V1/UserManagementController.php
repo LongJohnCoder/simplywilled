@@ -314,12 +314,12 @@ class UserManagementController extends Controller
                     'fullname'    => isset($attorneyBackupArr['fullname']) ? $attorneyBackupArr['fullname'] : '',
                     'email'       => $attorneyBackupArr['email'],
                     'token'         =>  Crypt::encryptString($userId)
-                    
+
                 ];
                 Mail::send('new_emails.power_of_attorney_backup', $arr, function($mail) use($arr){
                     $mail->from(config('settings.email'), 'Notice for Power Of Attorney 2nd choice');
                     $mail->to(strtolower($arr['email']), $arr['fullname']);
-                    $mail->subject('You are requested to be Power of Attorney 2nd choice');
+                    $mail->subject('SimplyWilled.com – You have been appointed as a Backup Financial Power of Attorney');
                 });
 
                 if(Mail::failures()) {
@@ -682,6 +682,7 @@ class UserManagementController extends Controller
                     'firstName'  => $tellUsAboutYou->firstname,
                     'middleName' => $tellUsAboutYou->middlename,
                     'lastName'   => $tellUsAboutYou->lastname,
+                    'executiveFullName' => $request->fullname,
                     'executiveFirstName' => $request->firstLegalName,
                     'executiveLastName'  => $request->lastLegalName,
                     'token'      =>  Crypt::encryptString($request->userId)
@@ -712,6 +713,7 @@ class UserManagementController extends Controller
                     'firstName'  => $tellUsAboutYou->firstname,
                     'middleName' => $tellUsAboutYou->middlename,
                     'lastName'   => $tellUsAboutYou->lastname,
+                    'executiveFullName' => $request->backupFullname,
                     'executiveFirstName' => $request->backupfirstLegalName,
                     'executiveLastName'  => $request->backuplastLegalName,
                     'token'      =>  Crypt::encryptString($request->userId)
@@ -719,7 +721,7 @@ class UserManagementController extends Controller
                 Mail::send('new_emails.health_care_backup', $arr, function($mail) use($backUpEmail, $arr){
                     $mail->from(config('settings.email'), 'Notice for Health Care Executive');
                     $mail->to(strtolower($backUpEmail), $arr['executiveFirstName'].' '.$arr['executiveLastName']);
-                    $mail->subject('You are requested to be Backup Health Care Executive');
+                    $mail->subject('SimplyWilled.com – You have been appointed as a Backup Health Care Agent');
                 });
                 if(Mail::failures()) {
                     \Log::info('email sending error for health care power of attorney');

@@ -48,9 +48,19 @@
                         </td>
                     </tr>
                     <tr>
+                      @php
+                      if(strpos($executorName,' ') >= 0)
+                      {
+                        $pieces = explode(" ", $executorName);
+                        $name = $pieces[0]; // piece1
+                      }else {
+                        $name = $executorName;
+                      }
+                      @endphp
                         <td style="padding:0 30px; background: #f2f2f2;">
-                            <h1 style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;"> {{$executorName}} (2st Choice),</h1>
+                            <h1 style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;"> Hello {{$name}},</h1>
                             <p style="color: #373737; font-size: 20px; line-height: 30px;">
+                                    You have been appointed as Backup Personal Representative.<br><br>
                                     <strong>{{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}}</strong> recently joined the thousands of people who have used <a href="{{url('/')}}" target="_blank" style="color: #0a5dab;">SimplyWilled.com</a> to create their will and selected you to serve as their Backup Personal Representative. Being selected as a Back Up Personal Representative is an important role reserved for those we trust the most. This email is being sent to you so you can let <strong>{{ucwords(strtolower($firstName))}}</strong> know whether you accept or decline this honor.
                                 <br><br>
                                 <strong style="font-size: 22px;">What being selected as Backup Personal Representative means for you:</strong>
