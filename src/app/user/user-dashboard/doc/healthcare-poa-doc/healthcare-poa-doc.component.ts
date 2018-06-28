@@ -43,7 +43,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   count: number;
 
   states = {
-    ak: true,
+    ak: false,
     al: false,
     ar: false,
     ca: false,
@@ -165,7 +165,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
       co: false,
       ct: false,
       dc: false,
-      fl: false,
+      fl: true,
       ia: false,
       in: false,
       ks: false,
@@ -208,7 +208,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
       mt: false,
       ga: false,
       az: false,
-      de: true
+      de: false
     };
     this.docScrolled = 0;
     this.thumbIndex = 0;

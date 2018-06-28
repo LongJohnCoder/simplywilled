@@ -1,29 +1,7 @@
-<!--<div class="pageLoader" *ngIf="loading">
-  <div class="loaderInner">
-    <img src="../../../../assets/images/owl-loading.gif" alt="Loading...">
-    <p class="loadingTxt">
-      Please Wait
-      <span></span>
-      <span></span>
-      <span></span>
-    </p>
-  </div>
-</div>-->
 
-<div class="main-content">
-  <div class="thumbContainer">
-    <!-- <ul>
-       <li *ngFor="let thumb of docThumbImg; let i = index" (click)="scrollDoc(i)" [ngClass]="{'active' : thumbIndex == i}"><p><img src="{{thumb}}" alt=""></p></li>
-       &lt;!&ndash;<li (click)="scrollDoc(x)"><p><img src="../../../../../assets/images/doc1-thumb2.png" alt=""></p></li>&ndash;&gt;
-     </ul>-->
-  </div>
-  <div class="docViewBox">
-    <!--<div class="docView" #docBox (scroll)="getScroll(docBox.scrollTop)">-->
-    <div class="docView" #docBox>
-      <div class="docContainer">
         <!-- Page 1 -->
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-          <div id="doc" class="docPageInner" style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+            <div class="docPageInner" style="box-sizing: border-box; height: 890px;">
             <p align="center" style="margin-bottom: 0.03in; line-height: 0.28in; page-break-before: auto; page-break-after: auto">
               <span  style="font-size: 17pt"><b>ADVANCE HEALTH CARE
                 DIRECTIVE</b></span></p>
@@ -108,12 +86,24 @@
               have the right to revoke this advance health care directive or
               replace this form at any time.</span></p>
           </div>
+
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+          Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+            Page 1 of 8
+          </div>
+
+          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+              Advanced Health Care Directive of <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
+            Page 1 of 8
+          </div>
+
         </div>
         <!-- !Page 1 -->
 
         <!-- Page 2 -->
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-          <div class="docPageInner" style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+          <div class="docPageInner" style="box-sizing: border-box; height: 890px;">
             <p align="center" style="margin-bottom: 0.09in; line-height: 0.28in"><span  style="font-size: 17pt"><b>CALIFORNIA
               ADVANCE HEALTH CARE DIRECTIVE</b></span></p>
             <p style="text-indent: 0.38in; margin-bottom: 0in; line-height: 115%">
@@ -201,11 +191,24 @@
 
             </p>
           </div>
+
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+          Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+            Page 2 of 8
+          </div>
+
+          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+              Advanced Health Care Directive of <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
+            Page 2 of 8
+          </div>
+
         </div>
         <!-- !Page 2 -->
 
         <!-- Page 3 -->
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+            <div class="docPageInner" style="box-sizing: border-box; height: 890px;">
             <p style="margin-bottom: 0in; line-height: 115%">1.5.<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AGENT’S
               POSTDEATH AUTHORITY</b>. If I have executed, either concurrently with
               the execution of this Directive or at any time in the future, written
@@ -267,13 +270,25 @@
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >(c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consent
                 to the disclosure of this information;</span></span></span></span></span></p>
           </div>
+
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+          Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+            Page 3 of 8
+          </div>
+
+          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+              Advanced Health Care Directive of <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
+            Page 3 of 8
+          </div>
+
         </div>
         <!-- !Page 3 -->
 
 
         <!-- Page 4 -->
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-          <div class="docPageInner" style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+          <div class="docPageInner" style="box-sizing: border-box; height: 890px;">
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >(d)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Appoint
                 a “Patient Advocate” for me who shall have the same right to ask
@@ -352,12 +367,24 @@
               that treatment for alleviation of pain or discomfort be provided at
               all times, even if it hastens my death:</p>
           </div>
+
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+          Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+            Page 4 of 8
+          </div>
+
+          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+              Advanced Health Care Directive of <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
+            Page 4 of 8
+          </div>
+
         </div>
         <!-- !Page 4 -->
 
         <!-- Page 5 -->
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-          <div class="docPageInner" style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+          <div class="docPageInner" style="box-sizing: border-box; height: 890px;">
 
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >________________________________________________________________________</span></span></span></span></span></p>
@@ -430,12 +457,24 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >___________________________________________________________________________</span></span></span></span></span></p>
           </div>
+
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+          Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+            Page 5 of 8
+          </div>
+
+          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+              Advanced Health Care Directive of <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
+            Page 5 of 8
+          </div>
+
         </div>
         <!-- !Page 5 -->
 
         <!-- Page 6 -->
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-          <div class="docPageInner" style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+          <div class="docPageInner" style="box-sizing: border-box; height: 890px;">
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >(name
               of physician)</span></span></span></span></span></p>
@@ -498,12 +537,24 @@
 
             </p>
           </div>
+
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+          Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+            Page 6 of 8
+          </div>
+
+          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+              Advanced Health Care Directive of <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
+            Page 6 of 8
+          </div>
+
         </div>
         <!-- !Page 6 -->
 
         <!-- Page 7 -->
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-          <div class="docPageInner" style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+          <div class="docPageInner" style="box-sizing: border-box; height: 890px;">
 
             <p align="center" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 115%; page-break-before: always">
               <b>STATEMENT OF WITNESSES</b></p>
@@ -602,13 +653,25 @@
 
             </p>
           </div>
+
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+          Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+            Page 7 of 8
+          </div>
+
+          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+              Advanced Health Care Directive of <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
+            Page 7 of 8
+          </div>
+
         </div>
         <!-- !Page 7 -->
 
 
         <!-- Page 8 -->
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-          <div class="docPageInner" style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+          <div class="docPageInner" style="box-sizing: border-box; height: 890px;">
 
             <p align="center" style="margin-bottom: 0.13in; line-height: 115%; page-break-before: always">
               <b>STATEMENT OF PATIENT ADVOCATE OR OMBUDSMAN</b></p>
@@ -673,13 +736,20 @@
 
             </p>
           </div>
+
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+          Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+            Page 8 of 8
+          </div>
+
+          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+              Advanced Health Care Directive of <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
+            Page 8 of 8
+          </div>
+
         </div>
         <!-- !Page 8 -->
-
-      </div>
-    </div>
-  </div>
-<!--</div>-->
 
 
 

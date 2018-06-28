@@ -44,7 +44,7 @@
             </span>
             <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.address !== null && userDetails.healthFinance.address.length > 0" style="font-size: 12pt">
               {{userDetails.healthFinance.address}} </span>
-            <span *ngIf="userDetails === undefined || userDetails.healthFinance === null || userDetails.healthFinance.address === null || userDetails.healthFinance.address.length == 0"  style="font-size: 12pt">
+            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"  style="font-size: 12pt">
               __________________________</span>
           </span>
           
@@ -70,14 +70,15 @@
               
               <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.phone !== null && userDetails.healthFinance.phone.length > 0" style="font-size: 12pt">
                 {{userDetails.healthFinance.phone}}</span>
-                <span *ngIf="userDetails === undefined || userDetails.healthFinance === null || userDetails.healthFinance.phone === null || userDetails.healthFinance.phone.length == 0"  style="font-size: 12pt">
+                <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"  style="font-size: 12pt">
                   __________________________</span>
             </span>
           </span>
         </span>
       
 
-      
+      <div *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent == 'true'">
+
       
       <p align="justify" style="margin-top: 0.13in; margin-bottom: 0.09in; line-height: 100%">
         <span style="font-family: 'Times New Roman', serif">
@@ -104,7 +105,7 @@
             </span>
             
             <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupFullname !== null && userDetails.healthFinance.backupFullname.length > 0"  style="font-size: 12pt">{{userDetails.healthFinance.backupFullname}}</span>
-            <span *ngIf="userDetails === undefined || userDetails.healthFinance === null || userDetails.healthFinance.backupFullname === null || userDetails.healthFinance.backupFullname.length == 0"  style="font-size: 12pt">__________________________</span>
+            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"  style="font-size: 12pt">__________________________</span>
           </span>
         </span>
       </span>
@@ -122,7 +123,7 @@
               </span>
               
               <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupAddress !== null && userDetails.healthFinance.backupAddress.length > 0" style="font-size: 12pt">{{userDetails.healthFinance.backupAddress}}</span>
-              <span *ngIf="userDetails === undefined || userDetails.healthFinance === null || userDetails.healthFinance.backupAddress === null || userDetails.healthFinance.backupAddress.length == 0" style="font-size: 12pt">_____________________________________________</span>  
+              <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" style="font-size: 12pt">_____________________________________________</span>  
           </span>
         </span>
       </span>
@@ -133,17 +134,17 @@
       </span>
       <span>
         <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupCity !== null && userDetails.healthFinance.backupCity.length > 0" style="font-size: 12pt">{{userDetails.healthFinance.backupCity}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.healthFinance === null || userDetails.healthFinance.backupCity === null || userDetails.healthFinance.backupCity.length == 0" style="font-size: 12pt">____________</span>
+        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" style="font-size: 12pt">____________</span>
       </span>
       
       <span>
         <span style="font-family: 'Times New Roman', serif" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupState !== null && userDetails.healthFinance.backupState.length > 0">{{userDetails.healthFinance.backupState}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.healthFinance === null || userDetails.healthFinance.backupState === null || userDetails.healthFinance.backupState.length == 0" style="font-size: 12pt">_______________</span>
+        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" style="font-size: 12pt">_______________</span>
       </span>
         
       <span>
         <span style="font-family: 'Times New Roman', serif" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupZip !== null && userDetails.healthFinance.backupZip.length > 0">{{userDetails.healthFinance.backupZip}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.healthFinance === null || userDetails.healthFinance.backupZip === null || userDetails.healthFinance.backupZip.length == 0">_______________</span>
+        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">_______________</span>
       </span>
     </p>
       
@@ -162,7 +163,7 @@
             
             <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupphone !== null && userDetails.healthFinance.backupphone.length > 0" style="font-size: 12pt">
               {{userDetails.healthFinance.backupphone}}</span>
-            <span *ngIf="userDetails === undefined || userDetails.healthFinance === null || userDetails.healthFinance.backupphone === null || userDetails.healthFinance.backupphone.length == 0"  style="font-size: 12pt">
+            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"  style="font-size: 12pt">
               __________________________</span>
       
             </span>
@@ -172,8 +173,9 @@
       <p align="justify" style="margin-bottom: 0in; line-height: 100%">
       
       </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span ><span  style="font-size: 12pt"></span></span><span  style="font-size: 12pt">END
-      IF</span><span ><span  style="font-size: 12pt"></span></span></span></span></span></p>
+      
+      </div>
+
       <p align="center" style="margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
       <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt"><b>INSTRUCTIONS
       FOR HEALTH CARE</b></span></span></span></p>
@@ -332,7 +334,7 @@
                     {{userDetails.tellUsAboutYou.fullname}}
                 </b>
               </span>
-              <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null || userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname.length == 0" style="font-family: 'Times New Roman', serif">
+              <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="font-family: 'Times New Roman', serif">
                   ______________________________________
                 </span>
             </span>
@@ -484,7 +486,7 @@
           
           <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
               <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0" style="font:font-family;"><b>{{userDetails.tellUsAboutYou.fullname}}</b></span>
-              <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null" style="font:font-family;"><b>________________________</b></span>
+              <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="font:font-family;"><b>________________________</b></span>
           </p>
           
           <p align="justify" style="margin-bottom: 0in; line-height: 100%">
@@ -736,7 +738,7 @@
           personally witnessed </span>
           
           <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname}}</span>
-          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">___________________________</span>         
+          <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">___________________________</span>         
           
           <span style="font-family: 'Times New Roman', serif"></span><span style="letter-spacing: 0.1pt"><span style="font-family: 'Times New Roman', serif">,
           the declarant, </span></span><span style="font-family: 'Times New Roman', serif">sign
@@ -870,7 +872,7 @@
           <span style="font-family: 'Times New Roman', serif">I, </span><span style="font-family: 'Times New Roman', serif"></span>
           
           <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname}}</span>
-          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">___________________________</span>
+          <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">___________________________</span>
           
           <span style="font-family: 'Times New Roman', serif"></span>
           
@@ -884,7 +886,7 @@
           <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">______________________________________</span></span></span></p>
           <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
               <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname}}</span>
-              <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">___________________________</span>             
+              <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">___________________________</span>             
           </p>
           <p align="justify" style="margin-bottom: 0in; line-height: 100%">
           
@@ -902,7 +904,7 @@
           declare to that officer on our oaths that </span><span style="font-family: 'Times New Roman', serif"></span>
           
           <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname}}</span>
-          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">___________________________</span>         
+          <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">___________________________</span>         
           
           <span style="font-family: 'Times New Roman', serif">,</span><span style="font-family: 'Times New Roman', serif">
           the declarant, signed this Declaration in our presence, and that we
@@ -971,7 +973,7 @@
           and subscribed before me by </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"></span></span></span>
           
           <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname}}</span>
-          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">___________________________</span>         
+          <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">___________________________</span>         
           
           
           
