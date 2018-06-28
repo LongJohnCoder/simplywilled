@@ -211,7 +211,7 @@
       hereby appoint my
         @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
             <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
-        @elseif (isset($tellUsAboutYou) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
+        @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
             <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
         @else
             <span>(relation)______________</span>
