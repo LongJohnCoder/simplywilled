@@ -273,6 +273,7 @@ class PdfController extends Controller
             $tellUsAboutYou = $totalData['data']['tellUsAboutYou'];
             $healthFinance = $totalData['data']['healthFinance'];
             $state = $totalData['data']['state'];
+            $finalArrangements = $totalData['data']['finalArrangements'];
 
             $id = \Auth::user()->id;
             $filename = 'healthCarePOA.pdf';
@@ -298,7 +299,8 @@ class PdfController extends Controller
                 'genderTxt'         => $genderTxt,
                 'genderTxt2'        => $genderTxt2,
                 'genderTxt3'        => $genderTxt3,
-                'genderTxt4'        => $genderTxt4
+                'genderTxt4'        => $genderTxt4,
+                'finalArrangements' => $finalArrangements
             ];
 
             /*dd($data);*/
