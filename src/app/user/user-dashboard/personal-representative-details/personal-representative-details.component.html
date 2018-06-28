@@ -12,7 +12,7 @@
 
 <div class="" *ngIf="!loading">
     <div class="main-content tellusaboutyou">
-        <h2>Name your personal representative
+        <h2>Name your Personal Representative
 
                 <app-global-tooltip (click)="toolTipClicked('personal_representative')" [tooltipMessages]='toolTipMessageList.personal_representative' toolTipType="personal_representative"></app-global-tooltip>
 
@@ -23,7 +23,7 @@
               <!--<div *ngFor="let item of personalRepresentativeDetailsForm.get('personalRepresentative'); let i=index">-->
                     <div [formGroupName]="i">
                         <div class="form-group">
-                            <label>Full Legal Name: </label>
+                            <label>Personal Representative's Full Legal Name: </label>
                             <input type="text" class="form-control" placeholder="Full legal name"
                                    formControlName="fullname">
                             <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').dirty && personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').touched">
@@ -32,7 +32,7 @@
                             </span>
                         </div>
                         <div class="form-group ">
-                            <label>Their Relationship To You: </label>
+                            <label>Personal Representative's relationship to you: </label>
                             <select class="form-control" formControlName="relationship_with" #relationship_with (change)="changeRelationshipValidation(relationship_with.value)">
                                 <option value="">Select Relationship</option>
                                 <option value="Wife">Wife</option>
@@ -61,7 +61,7 @@
                             </span>
                       </div>
                         <div class="form-group">
-                            <label>Their Address: </label>
+                            <label>Personal Representative's Address: </label>
                             <input type="text" class="form-control" placeholder="Address Line 1"
                                    formControlName="address">
                             <span *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.address').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.address').touched">
@@ -153,7 +153,7 @@
                         </div>
 
                         <div class="form-group ">
-                          <label for="phone">Their Phone Number?</label>
+                          <label for="phone"> Personal Representative's Phone Number: </label>
                           <input id="phone" class="form-control" type="text" name="phone"
                                  mask="(000)-000-0000" placeholder="(xxx)-xxx-xxxx" formControlName="phone">
 
@@ -169,8 +169,7 @@
 
 
                         <div class="form-group">
-                            <label>Would you like to notify this person that you appointed them as your personal
-                                representative? </label>
+                            <label>Would you like to notify this person by email that you appointed them as a Personal Representative? </label>
                             <ul class="radio_ul6">
                                 <li>
                                     <label class="radio_custom"
@@ -202,7 +201,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>Would you like to name a backup Personal Representative? </label>
+                <label>Would you like to appoint a Backup Personal Representative? </label>
                 <ul class="radio_ul6">
                     <li>
                         <label class="radio_custom"
@@ -232,7 +231,7 @@
                     <div *ngFor="let item of personalRepresentativeDetailsForm['controls'].backupPersonalRepresentative['controls']; let i=index">
                         <div [formGroupName]="i">
                             <div class="form-group ">
-                                <label>Full Legal Name: </label>
+                                <label>Backup Personal Representative's Full Legal Name: </label>
                                 <input type="text" class="form-control" placeholder="Full legal name"
                                        formControlName="fullname">
                                 <span *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.fullname').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.fullname').touched">
@@ -241,7 +240,7 @@
                                 </span>
                             </div>
                             <div class="form-group ">
-                                <label>Their Relationship To You: </label>
+                                <label>Backup Personal Representative's relationship to you: </label>
                                 <select class="form-control" formControlName="relationship_with" #backup_relation (change)="changeBackupRelationshipValidation(backup_relation.value)">
                                     <option value="">Select Relationship</option>
                                     <option value="Wife">Wife</option>
@@ -270,7 +269,7 @@
                             </span>
                           </div>
                             <div class="form-group">
-                                <label>Their Address: </label>
+                                <label>Personal Representative's Address: </label>
                                 <input type="text" class="form-control" placeholder="Address Line 1"
                                        formControlName="address">
                                 <span *ngIf="!personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.address').valid && personalRepresentativeDetailsForm.get('backupPersonalRepresentative.0.address').touched">
@@ -362,7 +361,7 @@
                                 </div>
                             </div>
                             <div class="form-group ">
-                              <label for="phone">Their Phone Number?</label>
+                              <label for="phone">Personal Representative's Phone Number: </label>
                               <input class="form-control" type="text" name="phone"
                                      mask="(000)-000-0000" placeholder="(xxx)-xxx-xxxx" formControlName="phone">
 
@@ -376,8 +375,7 @@
                               </div>
                             </div>
                             <div class="form-group">
-                                <label>Would you like to notify this person that you appointed them as your Personal
-                                    Representative? </label>
+                                <label>Would you like to notify this person by email that you appointed them as a Backup Personal Representative? </label>
                                 <ul class="radio_ul6">
                                     <li>
                                         <label class="radio_custom"

@@ -17,7 +17,7 @@
     </h2>
     <form (ngSubmit)="savePersonalRepresentative(personalRepresentativeForm)" #personalRepresentativeForm = "ngForm">
       <div class="form-group">
-        <label>Should your personal representative have the power to maintain a business interest?</label>
+        <label>Should your Personal Representative have the power to maintain a business interest?</label>
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [class.active]="businessInterestClassFlag" (click)="changeState('BI', true)">
@@ -34,7 +34,7 @@
         </ul>
       </div>
       <div class="form-group">
-        <label>Should your personal representative have the power to maintain a farm or a ranch?</label>
+        <label>Should your Personal Representative have the power to maintain a farm or a ranch?</label>
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [class.active]="farmRanchFlag" (click)="changeState('FR', true)">
