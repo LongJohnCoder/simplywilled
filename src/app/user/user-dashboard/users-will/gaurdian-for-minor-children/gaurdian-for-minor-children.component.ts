@@ -49,7 +49,7 @@ export class GaurdianForMinorChildrenComponent implements OnInit, OnDestroy {
             }, {
               'q' : 'Who should I select as the backup guardian?',
               // tslint:disable-next-line:max-line-length
-              'a' : 'During the interview, you will also have the opportunity in the interview to choose a “backup” guardian in the event your first choice cannot serve in this fiduciary role. Also, you will have the opportunity to send the person you appoint an email notification through simplywilled.com that you have selected them as a fiduciary of your estate.'
+              'a' : 'During the interview, you will also have the opportunity in the interview to choose a “backup” guardian in the event your first choice cannot serve in this fiduciary role. Also, you will have the opportunity to send the person you appoint an email notification through SimplyWilled.com that you have selected them as a fiduciary of your estate.'
             }],
             'backup_guardian' : [{
               'q' : 'Do I need to appoint a backup guardian?',

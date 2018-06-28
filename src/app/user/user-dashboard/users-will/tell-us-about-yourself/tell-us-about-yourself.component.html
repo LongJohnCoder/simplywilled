@@ -397,7 +397,7 @@
 
     <div *ngIf=" marital_status.value == 'M' || marital_status.value == 'R'">
       <div class="form-group" [ngClass]="{'valid': partner_firstname.valid, 'invalid': partner_firstname.errors && (partner_firstname.dirty || partner_firstname.touched)}">
-        <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} First Name: </label>
+        <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}}'s First Name: </label>
         <input
                 type="text"
                 class="form-control"
@@ -413,14 +413,14 @@
         </span>
       </div>
       <div class="form-group">
-        <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} Middle Name: </label>
+        <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}}'s Middle Name: </label>
         <input type="text" class="form-control"
                name="partner_middlename"
                [ngModel]="userInfo?.partner_middlename"
                #partner_middlename="ngModel">
       </div>
       <div class="form-group" [ngClass]="{'valid': partner_lastname.valid, 'invalid': partner_lastname.errors && (partner_lastname.dirty || partner_lastname.touched)}">
-        <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} Last Name: </label>
+        <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}}'s Last Name: </label>
         <input type="text" class="form-control"
                name="partner_lastname"
                [ngModel]="userInfo?.partner_lastname"
@@ -434,7 +434,7 @@
       </span>
       </div>
       <div class="form-group">
-        <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} Gender: </label>
+        <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}}'s Gender: </label>
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [ngClass]="{'active': partner_gender.value == 'M'}">
@@ -465,7 +465,7 @@
         </span>
       </div>
       <div class="form-group">
-        <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} Date of Birth: </label>
+        <label>{{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}}'s Date of Birth: </label>
         <div class="row">
           <div class="col-md-4">
             <select class="form-control" placeholder="Month"
@@ -565,7 +565,7 @@
       </div>
 
       <div class="form-group">
-        <label>Would you like to invite your {{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} to simplywilled.com? </label>
+        <label>Would you like to invite your {{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}} to SimplyWilled.com? </label>
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom"

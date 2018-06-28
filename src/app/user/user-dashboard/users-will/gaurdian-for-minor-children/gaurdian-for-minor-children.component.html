@@ -14,7 +14,7 @@
   <h2>Guardians For Your Minor Children</h2>
   <form [formGroup] = "myForm" novalidate (ngSubmit)="onSubmit(myForm)">
     <div class="form-group">
-      <label>Do You Need To Appoint Guardians For Minor Children?
+      <label>Would you like to appoint a Guardian for your minor children?
           <app-global-tooltip (click)="toolTipClicked('guardian')" [tooltipMessages]='toolTipMessageList.guardian' toolTipType="guardian"></app-global-tooltip>
       </label>
       <ul class="radio_ul6">
@@ -38,13 +38,13 @@
     </div>
     <hr>
     <div *ngIf="myForm.value.isGuardianMinorChildren == 'Yes'">
-      <h2>Name Your First Choice for Guardian
+      <h2>Name Your Children’s’ Guardian
           <app-global-tooltip (click)="toolTipClicked('first_guardian')" [tooltipMessages]='toolTipMessageList.first_guardian' toolTipType="first_guardian"></app-global-tooltip>
       </h2>
       <div formArrayName="guardian">
         <div *ngFor="let item of myForm.controls.guardian.controls; let i=index" [formGroupName]="i">
             <div class="form-group ">
-              <label>Full Legal Name: </label>
+              <label>Guardian’s Full Legal Name: </label>
               <input type="text" value="" class="form-control" formControlName="fullname" >
               <div
                       *ngIf="myForm.get('guardian.0.fullname').dirty && myForm.get('guardian.0.fullname').touched"
@@ -86,7 +86,7 @@
               </span>
             </div>
             <div class="form-group">
-              <label>Their Address: </label>
+              <label>Guardian’s Address: </label>
               <input type="text" class="form-control"  placeholder="Address Line 1" formControlName="address">
               <div
                       *ngIf="myForm.get('guardian.0.address').dirty && myForm.get('guardian.0.address').touched"
@@ -135,7 +135,7 @@
             </div>
 
             <div class="form-group ">
-              <label for="phone">Their Phone Number?</label>
+              <label for="phone">Guardian’s Phone Number:</label>
               <input id="phone" class="form-control" type="text" name="phone"
                      mask="(000)-000-0000" placeholder="(xxx)-xxx-xxxx" formControlName="phone">
 
@@ -152,7 +152,7 @@
             </div>
 
             <div class="form-group">
-              <label>Would you like to notify this person by email that you appointed them as guardian for minor children? </label>
+              <label>Would you like to notify this person by email that you appointed them as a Guardian for your minor children? </label>
               <ul class="radio_ul6">
                 <li>
                   <label class="radio_custom" [ngClass]="{'active': myForm.get('guardian.0.email_notification').value == '1'}">
@@ -185,7 +185,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label>Would you like to appoint backup guardians for minor children?
+        <label>Would you like to appoint a Backup Guardians for your minor children?
             <app-global-tooltip (click)="toolTipClicked('backup_guardian')" [tooltipMessages]='toolTipMessageList.backup_guardian' toolTipType="backup_guardian"></app-global-tooltip>
         </label>
         <ul class="radio_ul6">
@@ -209,7 +209,7 @@
         <div formArrayName="backUpGuardian">
           <div *ngFor="let item of myForm.controls.backUpGuardian.controls; let j=index" [formGroupName]="j">
             <div class="form-group ">
-              <label>Full Legal Name: </label>
+              <label>Backup Guardian’s Full Legal Name: </label>
               <input type="text" value="" class="form-control" formControlName="fullname" >
               <div
                       *ngIf="myForm.get('backUpGuardian.0.fullname').dirty && myForm.get('backUpGuardian.0.fullname').touched"
@@ -252,7 +252,7 @@
               </span>
             </div>
             <div class="form-group">
-              <label>Their Address: </label>
+              <label>Backup Guardian’s Address: </label>
               <input type="text" class="form-control"  placeholder="Address Line 1" formControlName="address">
               <div
                       *ngIf="myForm.get('backUpGuardian.0.address').dirty && myForm.get('backUpGuardian.0.address').touched"
@@ -300,7 +300,7 @@
               </div>
             </div>
             <div class="form-group ">
-              <label for="phone">Their Phone Number?</label>
+              <label for="phone">Backup Guardian’s Phone Number:</label>
               <input class="form-control" type="text" name="phone"
                      mask="(000)-000-0000" placeholder="(xxx)-xxx-xxxx" formControlName="phone">
               <div
@@ -315,7 +315,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label>Would you like to notify this person by email that you appointed them as guardian for minor children? </label>
+              <label>Would you like to notify this person by email that you appointed them as a Backup Guardian for your minor children? </label>
               <ul class="radio_ul6">
                 <li>
                   <label class="radio_custom" [ngClass]="{'active': myForm.get('backUpGuardian.0.email_notification').value == '1'}">
