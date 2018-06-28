@@ -871,7 +871,7 @@ class UserController extends Controller
                 Mail::send('new_emails.personal_representative_appoint_backup', $arr, function($mail) use($personalRepresentative){
                     $mail->from(config('settings.email'), 'Notice for Backup Executor');
                     $mail->to(strtolower($personalRepresentative['email']), $personalRepresentative['fullname'])
-                    ->subject('SimplyWilled.com – You have been appointed as a Backup Personal Representative.');
+                    ->subject('You are requested to be an backup executor');
                 });
 
                 if(Mail::failures()) {
@@ -1115,7 +1115,7 @@ class UserController extends Controller
                         Mail::send('new_emails.guardian_backup', $arr, function($mail) use($guardian){
                             $mail->from(config('settings.email'), 'Notice for Backup Guardian Appointment');
                             $mail->to(strtolower($guardian['email']), $guardian['fullname'])
-                            ->subject('SimplyWilled.com – You have been appointed as a Backup Guardian');
+                            ->subject('You are requested to be Backup Guardian for Minor Children');
                         });
                         if(Mail::failures()) {
                             \Log::info('email sending error for guardian for minor children');
@@ -1389,7 +1389,7 @@ class UserController extends Controller
                         Mail::send('new_emails.pet_caretaker_backup', $arr, function($mail) use($petGuardian, $arr){
                             $mail->from(config('settings.email'), 'Notice for Backup Pet Caretaker Appointment');
                             $mail->to(strtolower($petGuardian['email']), $petGuardian['fullname'])
-                            ->subject('SimplyWilled.com – You have been appointed as a Backup Pet Caretaker');
+                            ->subject('You are requested to be Backup Pet Caretaker');
                         });
                         if(Mail::failures()) {
                             \Log::info('email sending error for backup pet caretaker');
@@ -1813,9 +1813,10 @@ class UserController extends Controller
         $gift = Gifts::find($giftId);
         $giftType = $request->giftType; // giftType = 1,2,3,4,5,6
         $giftData = $request->giftData; // array of gift data
-
+        $userId = $request->user_id; // user_id
         $validator = Validator::make($request->all(), [
             'gift_type'             => 'nullable|string|in:individual,charity',
+            'user_id'               => 'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
         ]);
         if ($validator->fails()) {
             return response()->json([
@@ -1843,7 +1844,7 @@ class UserController extends Controller
         if ($gift) {
 
           $gift->type = $giftType;
-          $gift->gift_type = $request->has('gift_type') ? $request->get('gift_type') : $gift->gift_type;
+          // $gift->gift_type = $request->has('gift_type') ? $request->get('gift_type') : $gift->gift_type;
 
           switch($giftType) {
             case 1 :  $gift->cash_description = GiftStatement::cashDescription($giftData[0],$tuay);
