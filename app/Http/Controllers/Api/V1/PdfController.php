@@ -42,7 +42,7 @@ class PdfController extends Controller
     function __construct() {
         $this->middleware(function ($request, $next) {
             define("ID", \Auth::user()->id);
-            define("PATH", "/documents/".\Auth::user()->id.'/'); 
+            define("PATH", "documents/".\Auth::user()->id.'/'); 
             return $next($request);
         });  
     }
@@ -78,10 +78,10 @@ class PdfController extends Controller
     		$filename = 'finalSigningInstructions.pdf';
             $data = ['firstname' => $tellUsAboutYou['firstname']];
 
-            if(!is_dir(public_path().PATH)) {
+            if(!is_dir(public_path().'/'.PATH)) {
                 //finding this user directory if directory is not present then create directory
-                File::makeDirectory(public_path().PATH, $mode = 0777, true, true);
-                if(is_dir(public_path().PATH)) {
+                File::makeDirectory(public_path().'/'.PATH, $mode = 0777, true, true);
+                if(is_dir(public_path().'/'.PATH)) {
                     PDF::loadView('pdf.final_signing_instructions', $data)->save(PATH.$filename);
                     return response()->json([
                             'status'    =>  true,
@@ -197,10 +197,10 @@ class PdfController extends Controller
                 'disinherit'    => $disinherit
             ];
             
-            if(!is_dir(public_path().PATH)) {
+            if(!is_dir(public_path().'/'.PATH)) {
                 //finding this user directory if directory is not present then create directory
-                File::makeDirectory(public_path().PATH, $mode = 0777, true, true);
-                if(is_dir(public_path().PATH)) {
+                File::makeDirectory(public_path().'/'.PATH, $mode = 0777, true, true);
+                if(is_dir(public_path().'/'.PATH)) {
                     PDF::loadView('pdf.last_will_and_testament', $data)->save(PATH.$filename);
                     return response()->json([
                             'status'    =>  true,
@@ -289,10 +289,10 @@ class PdfController extends Controller
 
             /*dd($data);*/
 
-            if(!is_dir(public_path().PATH)) {   
+            if(!is_dir(public_path().'/'.PATH)) {   
                 //finding this user directory if directory is not present then create directory
-                File::makeDirectory(public_path().PATH, $mode = 0777, true, true);
-                if (is_dir (public_path().PATH ) ) {
+                File::makeDirectory(public_path().'/'.PATH, $mode = 0777, true, true);
+                if (is_dir (public_path().'/'.PATH ) ) {
                     @PDF::loadView('pdf.states.'.$state['abr'], $data)->save(PATH.$filename);
                     return response()->json([
                             'status'    =>  true,
@@ -329,6 +329,111 @@ class PdfController extends Controller
 
     public function financesDoc() {
 
+        try {
+
+            $completion = app(\App\Http\Controllers\Api\V1\UserManagementController::class)->fetchTotalCompletion();
+            $completion = json_decode($completion->content(), true);
+            foreach ($completion['data'] as $key => $value) {
+                //value is of boolean type
+                if(!$value)
+                    return response()->json([
+                        'status'    =>  false,
+                        'message'   =>  'cannot generate pdf if all interview steps are not commplete',
+                        'data'      =>  []  
+                    ],400);
+            }
+
+            $totalData = $this->docInfo();
+            $totalData = json_decode($totalData->content(), true);
+            $tellUsAboutYou = $totalData['data']['tellUsAboutYou'];
+            $healthFinance = $totalData['data']['healthFinance'];
+            $state = $totalData['data']['state'];
+            $finalArrangements = $totalData['data']['finalArrangements'];
+            $estateDistribute = $totalData['data']['estateDistribute'];
+            $provideYourLovedOnes = $totalData['data']['provideYourLovedOnes'];
+
+            $filename = 'financialPOA.pdf';
+            if ($tellUsAboutYou['gender'] == 'F') {
+                $genderTxt  = 'her';
+                $genderTxt2 = 'herself';
+                $genderTxt3 = 'she';
+                $genderTxt4 = 'her';
+            } else {
+                $genderTxt  = 'him';
+                $genderTxt2 = 'himself';
+                $genderTxt3 = 'he';
+                $genderTxt4 = 'his';
+            }
+
+            //dd($genderTxt3);
+            $data = [
+                'tellUsAboutYou'    => $tellUsAboutYou,
+                'healthFinance'     => $healthFinance,
+                'state'             => $state,
+                'genderTxt'         => $genderTxt,
+                'genderTxt2'        => $genderTxt2,
+                'genderTxt3'        => $genderTxt3,
+                'genderTxt4'        => $genderTxt4,
+                'finalArrangements' => $finalArrangements,
+                'estateDistribute'  => $estateDistribute,
+                'provideYourLovedOnes' => $provideYourLovedOnes
+            ];
+
+            $viewName = '';
+            if($state['type'] == 'uniform') {
+                $viewName = 'uniform';
+            } elseif($state['type'] == 'non-uniform') {
+                $viewName = 'non-uniform';
+            } else {
+                switch ($state['abr']) {
+                    
+                    case 'FL': $viewName = 'FL'; 
+                                break;
+                    
+                    case 'MD': $viewName = 'MD';
+                                break;
+
+                    case 'MN': $viewName = 'MN';
+                                break;
+
+                    case 'NY': $viewName = 'NY';
+                                break;
+
+                    default:    break;
+                }
+            }
+
+            if(!is_dir(public_path().'/'.PATH)) {   
+                //finding this user directory if directory is not present then create directory
+                File::makeDirectory(public_path().'/'.PATH, $mode = 0777, true, true);
+                if (is_dir (public_path().'/'.PATH ) ) {
+                    @PDF::loadView('pdf.finances.'.$viewName, $data)->save(PATH.$filename);
+                    return response()->json([
+                            'status'    =>  true,
+                            'message'   =>  'Success'
+                        ], 200);
+                } else {
+                    // use existing user directory
+                    return response()->json([
+                            'status'    =>  false,
+                            'message'   =>  'Folder is not created successfully, Please change permission'
+                        ], 400);
+                }
+            } else {
+                @PDF::loadView('pdf.finances.'.$viewName, $data)->save(PATH.$filename);
+                return response()->json([
+                            'status'    =>  true,
+                            'message'   =>  'Success'
+                        ], 200);
+            }
+            return response()->json([
+                    'status'    =>  true,
+                    'message'   =>  'Success'
+            ], 200);
+
+        } catch(\Exception $e) {
+
+        }
     }
 
     public function docInfo() 
