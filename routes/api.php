@@ -563,6 +563,11 @@ Route::group(['prefix' => 'v1'], function() {
             //   'as'    =>  'finalDispositionPdf'
             // ]);
 
+            Route::get('finances-doc', [
+              'uses'  =>  'Api\V1\PdfController@financesDoc',
+              'as'    =>  'financesDoc'
+            ]);
+
             Route::get('states-doc', [
               'uses'  =>  'Api\V1\PdfController@statesDoc',
               'as'    =>  'statesDoc'

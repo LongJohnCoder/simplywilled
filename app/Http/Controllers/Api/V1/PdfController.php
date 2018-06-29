@@ -351,6 +351,8 @@ class PdfController extends Controller
             $finalArrangements = $totalData['data']['finalArrangements'];
             $estateDistribute = $totalData['data']['estateDistribute'];
             $provideYourLovedOnes = $totalData['data']['provideYourLovedOnes'];
+            $financialPowerOfAttorney = $totalData['data']['financialPowerOfAttorney'];
+            $attorneyPowers = json_decode($financialPowerOfAttorney['attorney_powers'], true);
 
             $filename = 'financialPOA.pdf';
             if ($tellUsAboutYou['gender'] == 'F') {
@@ -376,7 +378,9 @@ class PdfController extends Controller
                 'genderTxt4'        => $genderTxt4,
                 'finalArrangements' => $finalArrangements,
                 'estateDistribute'  => $estateDistribute,
-                'provideYourLovedOnes' => $provideYourLovedOnes
+                'provideYourLovedOnes' => $provideYourLovedOnes,
+                'financialPowerOfAttorney' => $financialPowerOfAttorney,
+                'attorneyPowers'    => $attorneyPowers
             ];
 
             $viewName = '';
@@ -402,6 +406,8 @@ class PdfController extends Controller
                     default:    break;
                 }
             }
+
+            dd($data);
 
             if(!is_dir(public_path().'/'.PATH)) {   
                 //finding this user directory if directory is not present then create directory
@@ -456,6 +462,7 @@ class PdfController extends Controller
             $gifts = Gifts::where('user_id', ID)->get();
             $contingentBeneficiary = ContingentBeneficiary::where('user_id', ID)->first();
             $disinherit = Disinherit::where('user_id', ID)->first();
+            $financialPowerOfAttorney = FinancialPowerAttorney::where('user_id', ID)->first(); 
 
             return response()->json([
                     'status'    =>  true,
@@ -476,7 +483,8 @@ class PdfController extends Controller
                                         'backupPetGuardian' => $backupPetGuardian,
                                         'gifts' => $gifts,
                                         'contingentBeneficiary' => $contingentBeneficiary,
-                                        'disinherit'    => $disinherit
+                                        'disinherit'    => $disinherit,
+                                        'financialPowerOfAttorney' => $financialPowerOfAttorney
                                     ]
             ] ,200);            
 
