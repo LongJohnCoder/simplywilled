@@ -41,7 +41,8 @@ class PdfController extends Controller
 {
     function __construct() {
         $this->middleware(function ($request, $next) {
-            define("PATH", "documents/".\Auth::user()->id.'/'); 
+            define("ID", \Auth::user()->id);
+            define("PATH", "/documents/".\Auth::user()->id.'/'); 
             return $next($request);
         });  
     }
@@ -62,7 +63,6 @@ class PdfController extends Controller
                         'data'      =>  []  
                     ],400);
             }
-            //$tellUsAboutYou = TellUsAboutYou::where('user_id', \Auth::user()->id)->first();
 
             $totalData = $this->docInfo();
             $totalData = json_decode($totalData->content(), true);
@@ -75,7 +75,6 @@ class PdfController extends Controller
                 ],400);
             }
 
-            $id = \Auth::user()->id;
     		$filename = 'finalSigningInstructions.pdf';
             $data = ['firstname' => $tellUsAboutYou['firstname']];
 
@@ -127,7 +126,6 @@ class PdfController extends Controller
                         'data'      =>  []  
                     ],400);
             }
-            $id = \Auth::user()->id;
             
             $totalData = $this->docInfo();
             $totalData = json_decode($totalData->content(), true);
@@ -175,19 +173,7 @@ class PdfController extends Controller
                 }
             }
             $gifts = $giftsArr;
-            //dd($petNames);
-            //dd($estateDistribute);
-            //dd($toMultipleBeneficiary, $toSingleBeneficiary);
-
-            // if(!$tellUsAboutYou || !$personalRepresentative || !$provideYourLovedOnes || !$estateDistribute) {
-            //     return response()->json([
-            //         'status'    =>  false,
-            //         'message'   =>  'Please complete tell us previous sections section',
-            //         'data'      =>  []
-            //     ], 400);
-            // }
-            //dd($gifts);
-            //dd($estateDistribute);
+           
             $filename = 'will-template.pdf';
             
             $data = [
@@ -253,8 +239,7 @@ class PdfController extends Controller
     public function statesDoc() {
 
         try {
-
-
+            
             $completion = app(\App\Http\Controllers\Api\V1\UserManagementController::class)->fetchTotalCompletion();
             $completion = json_decode($completion->content(), true);
             foreach ($completion['data'] as $key => $value) {
@@ -275,7 +260,6 @@ class PdfController extends Controller
             $state = $totalData['data']['state'];
             $finalArrangements = $totalData['data']['finalArrangements'];
 
-            $id = \Auth::user()->id;
             $filename = 'healthCarePOA.pdf';
 
             
@@ -305,8 +289,7 @@ class PdfController extends Controller
 
             /*dd($data);*/
 
-            if(!is_dir(public_path().PATH)) {
-                
+            if(!is_dir(public_path().PATH)) {   
                 //finding this user directory if directory is not present then create directory
                 File::makeDirectory(public_path().PATH, $mode = 0777, true, true);
                 if (is_dir (public_path().PATH ) ) {
@@ -344,28 +327,30 @@ class PdfController extends Controller
         }
     }
 
+    public function financesDoc() {
+
+    }
+
     public function docInfo() 
     {
         try 
         {
-            
-            $id = \Auth::user()->id;
-            $tellUsAboutYou = TellUsAboutYou::where('user_id', $id)->first();
-            $finalArrangements = FinalArrangements::where('user_id', $id)->first();
+            $tellUsAboutYou = TellUsAboutYou::where('user_id', ID)->first();
+            $finalArrangements = FinalArrangements::where('user_id', ID)->first();
             $state = StatesInfo::where('name', 'LIKE', $tellUsAboutYou->state)->first();
-            $personalRepresentative = PersonalRepresentatives::where('user_id', $id)->where('is_backuprepresentative','0')->first();
-            $backupPersonalRepresentative = PersonalRepresentatives::where('user_id', $id)->where('is_backuprepresentative','1')->first();
-            $healthFinance = HealthFinance::where('userId', $id)->first();
-            $children = Children::where('user_id', $id)->get();
-            $guardian = GuardianInfo::where('user_id', $id)->where('is_backup','0')->first();
-            $backupGuardian = GuardianInfo::where('user_id', $id)->where('is_backup','1')->first();
-            $estateDistribute = EstateDisrtibute::where('user_id', $id)->first();
-            $provideYourLovedOnes = ProvideYourLovedOnes::where('user_id', $id)->first();
-            $petGuardian = PetGuardian::where('user_id', $id)->where('is_backup','0')->first();
-            $backupPetGuardian = PetGuardian::where('user_id', $id)->where('is_backup','1')->first();
-            $gifts = Gifts::where('user_id', $id)->get();
-            $contingentBeneficiary = ContingentBeneficiary::where('user_id', $id)->first();
-            $disinherit = Disinherit::where('user_id', $id)->first();
+            $personalRepresentative = PersonalRepresentatives::where('user_id', ID)->where('is_backuprepresentative','0')->first();
+            $backupPersonalRepresentative = PersonalRepresentatives::where('user_id', ID)->where('is_backuprepresentative','1')->first();
+            $healthFinance = HealthFinance::where('userId', ID)->first();
+            $children = Children::where('user_id', ID)->get();
+            $guardian = GuardianInfo::where('user_id', ID)->where('is_backup','0')->first();
+            $backupGuardian = GuardianInfo::where('user_id', ID)->where('is_backup','1')->first();
+            $estateDistribute = EstateDisrtibute::where('user_id', ID)->first();
+            $provideYourLovedOnes = ProvideYourLovedOnes::where('user_id', ID)->first();
+            $petGuardian = PetGuardian::where('user_id', ID)->where('is_backup','0')->first();
+            $backupPetGuardian = PetGuardian::where('user_id', ID)->where('is_backup','1')->first();
+            $gifts = Gifts::where('user_id', ID)->get();
+            $contingentBeneficiary = ContingentBeneficiary::where('user_id', ID)->first();
+            $disinherit = Disinherit::where('user_id', ID)->first();
 
             return response()->json([
                     'status'    =>  true,
