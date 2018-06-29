@@ -2,6 +2,15 @@
 <html>
 <head>
   <title>Health care power of attorney</title>
+  <style type="text/css">
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    p span{
+      line-height: 120%;
+    }
+  </style>
 </head>
 <body>
 
@@ -15,7 +24,8 @@
             </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>C</b></span></span></span><span size="4" style="font-size: 16pt"><b>ARE
             </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>P</b></span></span></span><span size="4" style="font-size: 16pt"><b>ROXY</b></span></span></span></p>
           <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 14pt"><b>Instructions</b></span></span></p>
-          <div id="TextSection" dir="ltr" gutter="48" style="column-count: 2">
+          <div id="TextSection">
+          <div style="width: 48%; float: left;">
             <p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
               <br>
 
@@ -103,18 +113,13 @@
                 recognize people or speak and there is no hope that my condition
                 will improve, I do/don’t want the following types of
                 treatments:...</i></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+            
+                </div>
 
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
-            </p>
+                <div style="width: 48%; float: right; margin-top: 50px;">
                 <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><i>I
                 have discussed with my agent my wishes about____________ and I want
                 my agent to make all decisions about these measures. </i></span></span>
@@ -223,7 +228,14 @@
               cannot sign as a witness.</span></span><span face="Clearface, serif">
               </span>
             </p>
+            </div>
           </div>
+
+
+
+
+
+
         </div>
         {{--
         <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
@@ -501,11 +513,11 @@
         <span style="font-family:'Times New Roman, serif'"><span face="Clearface, serif">(</span><span face="Clearface, serif"><b>CHECK
         BOX</b></span><span face="Clearface, serif"> to indicate choice)</span></span></p>
           <p style="margin-left: 1.5in; margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
-            <span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="6" style="font-size: 24pt">□</span></span></span><span ><span style="font-family:'Times New Roman, serif'"><span face="ZapfDingbatsITC, serif"> </span></span><span face="Clearface, serif">Any
+            <span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span style="display: inline-block; width: 10px; height: 10px; border: 1px solid #000;"></span></span></span><span ><span style="font-family:'Times New Roman, serif'"><span face="ZapfDingbatsITC, serif"> </span></span><span face="Clearface, serif">Any
         needed organs and/or tissues</span></span></p>
           <p style="margin-left: 1.5in; margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
         <span style="font-family:'Times New Roman, serif'"><span face="Clearface, serif"><br/>
-      </span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="6" style="font-size: 24pt">□</span></span></span><span ><span face="ZapfDingbatsITC, serif"> </span></span><span face="Clearface, serif">The
+      </span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="6" style="display: inline-block; width: 10px; height: 10px; border: 1px solid #000;"></span></span></span><span ><span face="ZapfDingbatsITC, serif"> </span></span><span face="Clearface, serif">The
         following organs and/or tissue:</span></span></p>
           <p style="margin-left: 1.5in; text-indent: 0.5in; margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
         <span style="font-family:'Times New Roman, serif'"><span face="Clearface, serif">_________________________________
@@ -515,7 +527,7 @@
         <span style="font-family:'Times New Roman, serif'"><span face="Clearface, serif">_________________________________
         </span></span></p>
           <p style="margin-left: 2in; text-indent: -0.5in; margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
-            <span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="6" style="font-size: 24pt">□</span></span></span><span style="font-family:'Times New Roman, serif'"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="6" style="font-size: 24pt"> </span></span></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="3" style="font-size: 12pt">Subject
+            <span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="6" style="display: inline-block; width: 10px; height: 10px; border: 1px solid #000;"></span></span></span><span style="font-family:'Times New Roman, serif'"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="6" style="font-size: 24pt"> </span></span></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="3" style="font-size: 12pt">Subject
         to the following </span></span></span><span face="Clearface, serif">limitations:
         </span></span>
           </p>
@@ -559,7 +571,7 @@
 
           </p>
           <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
-        <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(a)</span><span size="3" style="font-size: 12pt"> </span><span size="3" style="font-size: 12pt">Request,
+        <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(a)</span><span size="3" style="font-size: 12pt"> </span><span size="3" style="font-size: 12pt; line-height: 22px;">Request,
         review, and receive, to the extent I could do so individually, any
         information, verbal or written, regarding my physical or mental
         health, including, but not limited to, my individually identifiable
