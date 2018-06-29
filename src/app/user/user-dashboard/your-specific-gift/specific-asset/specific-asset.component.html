@@ -25,13 +25,13 @@
         <div class="gift_form_container">
           <form [formGroup] = "specificAssetForm">
 
-            <h2 class="singing_instruction3" style="padding-top:0;">Tell Us About Any Specific Assets You Wish To Gift</h2>
-            <ul class="radio_ul3">
-              <li><label class="radio_custom singing_instruction active"><span class="custom_img3"><img src="../../../../../assets/images/percent.png" alt="Cash"></span></label></li>
-            </ul>
+            <h2 class="singing_instruction3" style="padding-top:0;">Tell Us About Specific Assets You Wish To Gift</h2>
+            <!--<ul class="radio_ul3">-->
+              <!--<li><label class="radio_custom singing_instruction active"><span class="custom_img3"><img src="../../../../../assets/images/percent.png" alt="Cash"></span></label></li>-->
+            <!--</ul>-->
 
             <div class="form-group">
-              <label class="legal_name_benifets">Description of asset being gifted</label>
+              <label class="legal_name_benifets">Description of asset being gifted:</label>
               <textarea class="form-control capitalize_txt" [ngClass]="{'error_input': specificAssetForm.get('full_legal_name').invalid && specificAssetForm.get('full_legal_name').touched}" formControlName="full_legal_name">
               </textarea>
 
@@ -88,7 +88,7 @@
                     <label class="radio_custom zero_nine_page"  [ngClass]="{'active': flags.singleBeneficiaryFlag}">
                       <input type="radio" class="cash_individual_charity" formControlName="beneficiary" value="_si" #radioSingle (click)="changeSingleOrMultipleBeneficiaries(radioSingle.value)" >
                       <span class="custom_img"><img src="../../../../../assets/images/single2.png" alt="single_beneficiary"></span>
-                      <span class="human_status">To A Single Beneficiary</span>
+                      <span class="human_status">To a Single Beneficiary</span>
                     </label>
                   </li>
                   <li>
@@ -108,7 +108,7 @@
               <div class="form-group">
                 <!-- Single Beneficiary -->
                 <div class="singleBeneficiary" *ngIf="flags.singleBeneficiaryFlag">
-                  <label class="legal_name_benifets">Beneficiary's full legal name?</label>
+                  <label class="legal_name_benifets">Beneficiary’s Full Legal Name:</label>
                   <input type="text" class="form-control capitalize_txt" [ngClass]="{'error_input': specificAssetForm.get('beneficiary_legal_name').invalid && specificAssetForm.get('beneficiary_legal_name').touched}" formControlName="beneficiary_legal_name">
                   <span class="error_txt" *ngIf="specificAssetForm.get('beneficiary_legal_name').invalid && specificAssetForm.get('beneficiary_legal_name').touched && specificAssetForm.get('beneficiary_legal_name').hasError('required')">
                       Please answer this question.
@@ -116,7 +116,7 @@
                   <span class="error_txt" *ngIf="specificAssetForm.get('beneficiary_legal_name').invalid && specificAssetForm.get('beneficiary_legal_name').touched && specificAssetForm.get('beneficiary_legal_name').hasError('pattern')">
                       Please answer this question.
                     </span>
-                  <label class="legal_name_benifets">Beneficiary's relationship to you?</label>
+                  <label class="legal_name_benifets">Beneficiary’s relationship to you:</label>
                   <span class="" style="margin-bottom:20px;">
                         <select class="form-control" formControlName="beneficiary_legal_relation" >
                             <option value="">Select Relationship</option>
@@ -136,7 +136,7 @@
                         </select>
                       </span>
                   <input type="text" class="legal_benifit_input capitalize_txt" formControlName="beneficiary_legal_relation_other" placeholder="Type Here Relationship" *ngIf="specificAssetForm.get('beneficiary_legal_relation').value === 'Other'">
-                  <h2 class="questions">Beneficiary's gender?</h2>
+                  <h2 class="questions">Beneficiary’s Gender:</h2>
                   <ul class="radio_ul6">
                     <li>
                       <label class="radio_custom" [ngClass]="{'active': flags.maleFlag}">
@@ -184,10 +184,10 @@
                   <div class="form-group">
                     <div class="row colFormHeading">
                         <div class="threeColField">
-                            <label>Beneficiary's full legal name</label>
+                            <label>Beneficiary’s Full Legal Name:</label>
                         </div>
                         <div class="threeColField">
-                            <label>Beneficiary's relationship to you</label>
+                            <label>Beneficiary’s Relationship to you:</label>
                         </div>
                     </div>
                     <div class="row formRow" *ngFor="let item of specificAssetForm.get('multiple_beneficiaries').controls; let i = index;" [formGroupName] = "i">
@@ -207,7 +207,7 @@
                 </div>
 
                 <div class="distributeBusiness" *ngIf="flags.singleBeneficiaryFlag || flags.multipleBeneficiaryFlag">
-                  <h2 class="questions">How should your business interest be distributed if the beneficiary passes before you?</h2>
+                  <h2 class="questions">How should your specific assets be distributed if the Beneficiary passes before you?</h2>
                   <ul class="residue_ul_Radio2 singleBen">
                     <li *ngIf="flags.multipleBeneficiaryFlag">
                       <label class="radio_custom property_to_be_distributed " [ngClass]="{'active': flags.survivingGiftBeneficiariesFlag}">
@@ -225,7 +225,7 @@
                       <label class="radio_custom property_to_be_distributed" [ngClass]="{'active': flags.residueEstateFlag}">
                         <input type="radio" formControlName="passed_by" value="_re" #radiore (click)="changeProperty(radiore.value)">
                         <span class="custom_img"><img src="../../../../../assets/images/my-estate.png" alt="With The Residue of My Estate"></span>
-                        <span class="human_status">With The Residue of My Estate</span> </label>
+                        <span class="human_status">With the Residue of My Estate</span> </label>
                     </li>
                     <li>
                       <label class="radio_custom property_to_be_distributed" [ngClass]="{'active': flags.someoneElseFlag}">
@@ -260,7 +260,7 @@
                   </div>
 
                   <div class="toSomeOneElse" *ngIf="(!flags.toTheirIssueFlag && flags.someoneElseFlag) || (flags.toTheirIssueFlag && flags.someoneElseChildFlag)">
-                    <label class="legal_name_benifets">Individual's name?</label>
+                    <label class="legal_name_benifets">Individual’s Full Legal Name:</label>
                     <input type="text" class="form-control capitalize_txt" formControlName="individual_name"  [ngClass]="{'error_input': specificAssetForm.get('individual_name').invalid && specificAssetForm.get('individual_name').touched}" >
                     <span class="error_txt" *ngIf="specificAssetForm.get('individual_name').invalid && specificAssetForm.get('individual_name').touched && specificAssetForm.get('individual_name').hasError('required')">
                       Please answer this question.
@@ -268,7 +268,7 @@
                     <span class="error_txt" *ngIf="specificAssetForm.get('individual_name').invalid && specificAssetForm.get('individual_name').touched && specificAssetForm.get('individual_name').hasError('pattern')">
                       Please answer this question.
                     </span>
-                    <label class="legal_name_benifets">Beneficiary's relationship to you?</label>
+                    <label class="legal_name_benifets">Individual’s relationship to you:</label>
                     <select class="form-control" formControlName="individual_relationship">
                       <option value="">Select Relationship</option>
                       <option value="Wife">Wife</option>

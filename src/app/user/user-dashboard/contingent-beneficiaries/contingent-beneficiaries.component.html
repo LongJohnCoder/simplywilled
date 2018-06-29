@@ -12,12 +12,13 @@
 
 <div class="" *ngIf="!loading">
   <div class="main-content tellusaboutyou">
-    <h2>Would You Like to name contigent beneficiaries?
+    <h2>Contingent Beneficiaries
       <app-global-tooltip (click)="toolTipClicked('contingent_beneficiaries')" [tooltipMessages]='toolTipMessageList.contingent_beneficiaries' toolTipType="contingent_beneficiaries"></app-global-tooltip>
     </h2>
     <form  [formGroup]="contingentBeneficiariesForm" novalidate
           (ngSubmit)="onSubmit(contingentBeneficiariesForm)">
       <div class="form-group">
+        <label>Would you like to name Contingent Beneficiaries?</label>
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [ngClass]="{'active' : contingentBeneficiariesForm.value.isContingentBeneficiary == '1'}">
@@ -38,12 +39,13 @@
       </div>
 
       <div class="form-group" *ngIf="contingentBeneficiariesForm.value.isContingentBeneficiary == '1'">
+        <label>Please select who you would like your contingent beneficiaries to be.</label>
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [ngClass]="{'active' : contingentBeneficiariesForm.value.distribution_type == 'to_my_heirs'}">
               <input type="radio" formControlName="distribution_type" value="to_my_heirs" (change)="addRemoveOptionsDistributionType()">
                 <span class="custom_img5"><img src="../../../../assets/images/law.png" alt="Law"></span>
-              <span class="human_status3">Distribute The Rest To My Heirs At Law</span>
+              <span class="human_status3">My Heir at Law</span>
             </label>
           </li>
           <li>

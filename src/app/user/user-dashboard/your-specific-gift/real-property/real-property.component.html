@@ -174,13 +174,13 @@
             </div>
 
             <div class="gift_charity_container" *ngIf="flags.charityFlag">
-              <label class="legal_name_benifets">Organization name?</label>
+              <label class="legal_name_benifets">Organization’s Name:</label>
               <input type="text" class="form-control capitalize_txt" [ngClass]="{'error_input': realPropertyForm.get('organization_name').invalid && realPropertyForm.get('organization_name').touched}" formControlName="organization_name">
               <span class="error_txt" *ngIf="realPropertyForm.get('organization_name').invalid && realPropertyForm.get('organization_name').touched && realPropertyForm.get('organization_name').hasError('required')">
                     Please answer this question.
                 </span>
 
-              <label class="legal_name_benifets">Organization address?</label>
+              <label class="legal_name_benifets">Organization’s Address:</label>
               <input type="text" class="form-control" [ngClass]="{'error_input': realPropertyForm.get('organization_address').invalid && realPropertyForm.get('organization_address').touched}" formControlName="organization_address" placeholder="Street Address, City, State, Zip Code">
               <span class="error_txt" *ngIf="realPropertyForm.get('organization_address').invalid && realPropertyForm.get('organization_address').touched && realPropertyForm.get('organization_address').hasError('required')">
                     Please answer this question.
@@ -196,7 +196,7 @@
                     <label class="radio_custom zero_nine_page"  [ngClass]="{'active': flags.singleBeneficiaryFlag}">
                       <input type="radio" class="cash_individual_charity" formControlName="beneficiary" value="_si" #radioSingle (click)="changeSingleOrMultipleBeneficiaries(radioSingle.value)" >
                       <span class="custom_img"><img src="../../../../../assets/images/single2.png" alt="single_beneficiary"></span>
-                      <span class="human_status">To A Single Beneficiary</span>
+                      <span class="human_status">To a Single Beneficiary</span>
                     </label>
                   </li>
                   <li>
@@ -216,7 +216,7 @@
               <div class="form-group">
                 <!-- Single Beneficiary -->
                 <div class="singleBeneficiary" *ngIf="flags.singleBeneficiaryFlag">
-                  <label class="legal_name_benifets">Beneficiary's full legal name?</label>
+                  <label class="legal_name_benifets">Beneficiary’s Full Legal Name:</label>
                   <input type="text" class="form-control capitalize_txt" [ngClass]="{'error_input': realPropertyForm.get('beneficiary_legal_name').invalid && realPropertyForm.get('beneficiary_legal_name').touched}" formControlName="beneficiary_legal_name">
                   <span class="error_txt" *ngIf="realPropertyForm.get('beneficiary_legal_name').invalid && realPropertyForm.get('beneficiary_legal_name').touched && realPropertyForm.get('beneficiary_legal_name').hasError('required')">
                       Please answer this question.
@@ -224,7 +224,7 @@
                   <span class="error_txt" *ngIf="realPropertyForm.get('beneficiary_legal_name').invalid && realPropertyForm.get('beneficiary_legal_name').touched && realPropertyForm.get('beneficiary_legal_name').hasError('pattern')">
                       Please answer this question.
                     </span>
-                  <label class="legal_name_benifets">Beneficiary's relationship to you?</label>
+                  <label class="legal_name_benifets">Beneficiary’s relationship to you:</label>
                   <span class="" style="margin-bottom:20px;">
                         <select class="form-control" formControlName="beneficiary_legal_relation" >
                             <option value="">Select Relationship</option>
@@ -244,7 +244,7 @@
                         </select>
                       </span>
                   <input type="text" class="legal_benifit_input capitalize_txt" formControlName="beneficiary_legal_relation_other" placeholder="Type Here Relationship" *ngIf="realPropertyForm.get('beneficiary_legal_relation').value === 'Other'">
-                  <h2 class="questions">Beneficiary's gender?</h2>
+                  <h2 class="questions">Beneficiary’s Gender:</h2>
                   <ul class="radio_ul6">
                     <li>
                       <label class="radio_custom" [ngClass]="{'active': flags.maleFlag}">
@@ -292,10 +292,10 @@
                   <div class="form-group">
                     <div class="row colFormHeading">
                       <div class="threeColField">
-                        <label>Beneficiary's full legal name</label>
+                        <label>Beneficiary’s Full Legal Name:</label>
                       </div>
                       <div class="threeColField">
-                        <label>Beneficiary's relationship to you</label>
+                        <label>Beneficiary's relationship to you:</label>
                       </div>
                     </div>
                     <div class="row formRow" *ngFor="let item of realPropertyForm.get('multiple_beneficiaries').controls; let i = index;" [formGroupName] = "i">
@@ -315,7 +315,7 @@
                 </div>
 
                 <div class="distributeBusiness" *ngIf="flags.singleBeneficiaryFlag || flags.multipleBeneficiaryFlag">
-                  <h2 class="questions">How should your real estate be distributed if the beneficiary passes before you?</h2>
+                  <h2 class="questions">If your Beneficiary passes before you, should this gift go to your Beneficiary’s issue?</h2>
                   <ul class="residue_ul_Radio2 singleBen">
                     <li *ngIf="flags.multipleBeneficiaryFlag">
                       <label class="radio_custom property_to_be_distributed " [ngClass]="{'active': flags.survivingGiftBeneficiariesFlag}">

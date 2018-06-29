@@ -12,10 +12,16 @@
 
 <div class="rightPanel" *ngIf="!loading">
   <div class="main-content tellusaboutyou">
-    <h2>How should The Rest of Your Estate Distributed?</h2>
-    <form [formGroup]="estateDistributedForm" novalidate (ngSubmit)="onSubmit(estateDistributedForm)">
-      <div class="form-group">
-        <ul class="radio_ul6 gifts-list">
+    <h2>The Residuary</h2>
+
+      <form [formGroup]="estateDistributedForm" novalidate (ngSubmit)="onSubmit(estateDistributedForm)">
+
+       <div class="form-group">
+         <label style="padding: 0px;">How should the rest of your estate be distributed?
+             <app-global-tooltip (click)="toolTipClicked('beneficiary_qs')" [tooltipMessages]='toolTipMessageList.beneficiary_qs' toolTipType="beneficiary_qs"></app-global-tooltip>
+         </label>
+
+           <ul class="radio_ul6 gifts-list">
           <li>
             <label class="radio_custom property_to_be_distributed" [ngClass]="{'active': estateDistributedForm.value.disrtibuteType == '1'}">
               <input type="radio" formControlName="disrtibuteType" value="1" (change)="addRemoveValidation()">

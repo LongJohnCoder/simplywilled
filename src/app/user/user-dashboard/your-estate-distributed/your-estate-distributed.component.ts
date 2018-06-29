@@ -42,16 +42,13 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
               ) {
     this.toolTipMessageList = {
         'beneficiary_qs' : [{
-            'q' : 'What is “Distribute To My Beneficiary’s Issue”?',
+            'q' : 'What is the Residue of My Estate?',
             // tslint:disable-next-line:max-line-length
-            'a' : 'This choice will distribute the assets to your named beneficiaries children or grandchildren.'
-            }, {
-            'q' : 'What are my Heirs At Law?',
+            'a' : 'The residue of the estate is what is left after payment of debts, funeral expenses, executors fees, taxes, legal and other expenses incurred in the administration of the estate, and after all gifts and bequests of specific assets or sums of cash have been distributed.'
+        }, {
+            'q' : 'How Should I Distribute The Residue of My Estate?',
             // tslint:disable-next-line:max-line-length
-            'a' : 'These are your intestate heirs otherwise known as your surviving next of kin. These will only be blood relations or individuals who have been legally adopted. Friends, stepchildren (who have not been legally adopted) or other close relations will not be included.'
-            }, {
-            'q' : 'What is Some Other Way?',
-            'a' : 'This choice allows you to specify some other way you would like your estate distributed.'
+            'a' : 'SimplyWilled’s interview provides for disposition of specific gifts as well as the residue of your estate. If you are married, you may wish to leave the rest, or “residue,” of your estate to your spouse first, and then to a different beneficiary if your spouse is not living or elects to disclaim this bequest.'
         }]
     };
     this.progressBarService.changeWidth({width: 62.5});
@@ -698,12 +695,12 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
           percentage += parseFloat(checkValue[i].beneficiaryNoPercentageToEstate);
       }
       // console.log(percentage);
-      if ( percentage > 100 ) {
-          this.showErrorMessage = true;
-          this.inputCheck = false;
-      } else {
+      if ( percentage === 100 ) {
           this.showErrorMessage = false;
           this.inputCheck = true;
+      } else {
+          this.showErrorMessage = true;
+          this.inputCheck = false;
       }
   }
 
