@@ -51,19 +51,27 @@
                         <td style="padding:0 30px; background: #f2f2f2;">
                             <h1 style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">Congratulations! You've taken the first big step toward protecting what matters most!</h1>
                             <p style="color: #373737; font-size: 20px; line-height: 30px;">
-                                You’re on a roll, let’s keep going! Here’s what to expect next! someone else. <br><br>
-                                <strong style="color: #0a5dab;">First</strong>, Select The Package That Is Right For You.
+                                You’re on a roll, let’s keep going! Here’s what to expect next!<br><br>
+                                <strong style="color: #0a5dab;">First</strong>, complete your registration.
                                 <br><br>
                                 <strong style="color: #0a5dab;">Next</strong>, complete the <strong>Tell Us About You</strong> section of the interview. <br>
-                                    This lets SimplyWilled system learn about you so we can personalize your estate plan package for you.  <br><br>
+                                Once this section is complete, we will be able to personalize your estate plan package. Also, complete the rest of our Estate Planning Interview present in your dashboard.<br><br>
 
-                                    <strong style="color: #0a5dab;">Finally</strong>, head to your SimplyWilled dashboard and complete our <strong>Estate Planning Interview.</strong>
-                                    Once your done, simply download and print  your documents.  <br><br>
-                                    <strong style="color: #0a5dab;">It’s that simple!</strong><br><br>
+                                    <strong style="color: #0a5dab;">Finally</strong>, Download and Print your documents. With our simple instructions to sign your will, it will take you only a few minutes! <br><br>
+                                    <strong style="color: #0a5dab;">Simple. Affordable. Enforceable!</strong><br><br>
+                                    <strong style="color: #0a5dab;">If you have any question, feel free to contact us!</strong><br><br>
+                                    <strong style="color: #0a5dab;">Sign the email with “Sincerely, SimplyWilled’s team”</strong><br><br>
+
                                     <strong><a href="{{url('/')}}">SimplyWilled.com</a></strong><br>
                                     Online Estate Planning Made Simple <br><br>
                             </p>
                         </td>
+                        <tr>
+                            <!-- <td style="padding:40px 30px; background: #f2f2f2; text-align: center;">
+                                <a href="{{url('/')}}/fiduciary/accept/{{isset($token) ? $token : 'null'}}"><img src="{{url('/')}}/images/acceptBtn.png" alt="accept"></a>
+                                <br><br>
+                            </td> -->
+                        </tr>
                         <tr>
                             <td style="background: #fff; padding: 45px 0;" align="center">
                                 <table cellpadding="0" cellspacing="0" border="0" width="300">
