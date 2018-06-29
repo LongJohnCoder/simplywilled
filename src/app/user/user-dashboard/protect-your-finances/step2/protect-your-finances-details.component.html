@@ -13,14 +13,14 @@
 <div class='finances' *ngIf="!loading">
     <form [formGroup] = "poaDetailsForm" (ngSubmit)="send()">
       <div class="main-content tellusaboutyou" >
-        <h2>Power of attorney details
+        <h2>Name Your Financial Power Of Attorney
           <app-global-tooltip (click)="toolTipClicked('f_poa')" [tooltipMessages]='toolTipMessageList.f_poa' toolTipType="f_poa"></app-global-tooltip>
         </h2>
         <!-- <app-fianance [data]="poaDetailsForm.get('attorney_holders')"></app-fianance> -->
 
         <div>
             <div class="form-group">
-              <label>What is their full legal name? </label>
+              <label>Power of Attorney's Full Legal Name:</label>
               <input
                       type="text"
                       class="form-control"
@@ -43,7 +43,7 @@
 
 
             <div class="form-group">
-              <label>Power of attorney's relationship to you?</label>
+              <label> Power of Attorney's relationship to you:</label>
 
               <select class="form-control" #selectRelationship (change)="relationshipChange('relationship',selectRelationship.value)" formControlName="relationship">
                 <option value="">Select Relationship</option>
@@ -65,7 +65,7 @@
             </div>
 
             <div class="form-group" *ngIf="poaDetailsForm.get('relationship').value == 'Other'">
-              <label>Mention your relationship </label>
+              <label>Mention your relationship</label>
               <input
                 type="text"
                 class="form-control"
@@ -88,7 +88,7 @@
                     *ngIf="poaDetailsForm.get('address').touched && poaDetailsForm.get('address').dirty && poaDetailsForm.get('address').hasError('required')">
                     Please enter first power attorney address
               </span>-->
-              <label> What is their address? </label>
+              <label>Power of Attorney's Address:</label>
               <input
                 type="text"
                 class="form-control"
@@ -157,7 +157,7 @@
 
 
             <div class="form-group">
-              <label>What is phone number? </label>
+              <label>Power of Attorney's Phone Number:</label>
               <input
                 type="text"
                 class="form-control"
@@ -238,7 +238,7 @@
 
 
           <div class="form-group valid">
-            <label>Do you need to provide a backup Financial Power of Attorney?
+            <label>Would you like to appoint a Backup Financial Power of Attorney?
               <app-global-tooltip (click)="toolTipClicked('f_poa_backup')" [tooltipMessages]='toolTipMessageList.f_poa_backup' toolTipType="f_poa_backup"></app-global-tooltip>
             </label>
             <ul class="radio_ul6">
@@ -258,11 +258,11 @@
           </div>
 
         <div *ngIf='poaDetailsForm.get("is_backupattorney").value == 1'>
-          <h2>Backup Power of attorney details</h2>
+          <h2>Name Your Backup Financial Power Of Attorney</h2>
           <!-- <app-fianance></app-fianance> -->
           <div>
               <div class="form-group">
-                <label>What is their full legal name? </label>
+                <label>Backup Financial Power of Attorney's Full Legal Name:</label>
                 <input
                         type="text"
                         class="form-control"
@@ -284,7 +284,7 @@
               </div>
 
               <div class="form-group">
-                <label>Power of attorney's relationship to you?</label>
+                <label>Backup Financial Power of Attorney's relationship to you:</label>
 
                 <select class="form-control" #selectBackupRelationship (change)="relationshipChange('backup_relationship', selectBackupRelationship.value)" formControlName="backup_relationship">
                   <option value="">Select Relationship</option>
@@ -332,7 +332,7 @@
               </div>-->
 
               <div class="form-group">
-                <label> What is their address? </label>
+                <label>Backup Financial Power of Attorney's Address:</label>
                 <input
                   type="text"
                   class="form-control"
@@ -401,7 +401,7 @@
 
 
               <div class="form-group">
-                <label>What is phone number? </label>
+                <label>Backup Financial Power of Attorney's Phone Number:</label>
                 <input
                         type="text"
                         class="form-control"
@@ -424,7 +424,7 @@
               </div>
 
               <div class="form-group">
-                <label>Would you like to inform this person that you appointed them as your Financial Power of Attorney?</label>
+                <label>Would you like to inform this person that you appointed them as your Backup Financial Power of Attorney?</label>
                 <ul class="radio_ul6">
                   <li>
                     <label class="radio_custom" [ngClass]='{active: (poaDetailsForm.get("backup_is_inform").value === 1)}' style="float: left;">

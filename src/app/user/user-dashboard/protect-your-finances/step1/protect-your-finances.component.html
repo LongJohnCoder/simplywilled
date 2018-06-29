@@ -18,7 +18,7 @@
     <!-- <form (ngSubmit)="submit(myForm)" #myForm = "ngForm"> -->
     <form [formGroup] = "myForm" (ngSubmit)="send()">
       <div class="form-group">
-        <label>Would you like this power of Attorney to be durable?</label>
+        <label>Would you like this Financial Power of Attorney to be durable?</label>
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [ngClass]='{active: (myForm.get("isDurable").value === 1)}'>
@@ -36,7 +36,7 @@
       </div>
 
       <div class="form-group" *ngIf="myForm.get('isDurable').value == 1">
-        <label>Should your power of attorney only be effective upon your incapacity?</label>
+        <label>Should your Financial Power of Attorney only be effective upon your incapacity?</label>
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [ngClass]='{active: (myForm.get("isIncapacity").value === 1)}'>
@@ -54,7 +54,7 @@
       </div>
 
       <div class="form-group">
-        <label>Would you like to authorize your power of attorney to make gifts?</label>
+        <label>Would you like your Financial Power of Attorney to be authorized to make gifts?</label>
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [ngClass]='{active: (myForm.get("isAuthorizeToMakeGift").value === 1)}'>

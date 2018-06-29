@@ -12,7 +12,7 @@
 
 <div class="col-md-9 col-sm-12 rightPanel" *ngIf="!loading">
     <div class="main-content tellusaboutyou">
-        <h2>Name your first choice for healthcare agent
+        <h2>Name Your Healthcare Agent
             <app-global-tooltip (click)="toolTipClicked('health_care')" [tooltipMessages]='toolTipMessageList.health_care' toolTipType="health_care"></app-global-tooltip>
         </h2>
         <form #medicalEmergencyForm="ngForm">
@@ -38,7 +38,7 @@
             </div>-->
 
             <div class="form-group" [ngClass]="{'valid': fulllegalName.valid, 'invalid': fulllegalName.touched && fulllegalName.touched && !fulllegalName.valid}">
-              <label for="fulllegalName">Full Legal Name:</label>
+              <label for="fulllegalName">Healthcare Agent's Full Legal Name:</label>
               <input id="fulllegalName" class="form-control" type="text" placeholder="Full legal name" required pattern="\w+\s{1}\w+" [(ngModel)]="medicalAgent.fulllegalName" name="fulllegalName" ngModel #fulllegalName="ngModel">
               <i class="fa fa-check" *ngIf="fulllegalName.valid"></i>
               <i class="fa fa-times" *ngIf="fulllegalName.touched && fulllegalName.touched && !fulllegalName.valid"></i>
@@ -52,7 +52,7 @@
             </div>
 
             <div class="form-group" [ngClass]="{'valid': relation.valid, 'invalid': relation.touched && relation.touched && !relation.valid}">
-                <label for="relation">Their Relationship To You:</label>
+                <label for="relation">Healthcare Agent's relationship to you:</label>
                 <select id="relation" class="form-control" [(ngModel)]="medicalAgent.relation" name="relation" ngModel #relation="ngModel" required>
                     <option value="">Select Relationship</option>
                     <option *ngFor="let relation of relations" value="{{relation}}">{{relation}}</option>
@@ -79,7 +79,7 @@
 
             <div class="form-group">
                 <div class="" [ngClass]="{'valid': address.valid, 'invalid': address.touched && address.touched && !address.valid}">
-                    <label>Their Address: </label>
+                    <label>Healthcare Agent's Address:</label>
                     <input id="address" class="form-control" type="text" placeholder="Address Line 1" [(ngModel)]="medicalAgent.address" name="address" ngModel #address="ngModel" required>
                     <i class="fa fa-check" *ngIf="address.valid"></i>
                     <i class="fa fa-times" *ngIf="address.touched && address.touched && !address.valid"></i>
@@ -188,7 +188,7 @@
             </div>
 
             <div class="form-group" [ngClass]="{'valid': phone.valid, 'invalid': phone.touched && phone.touched && !phone.valid}">
-                <label for="phone">Their Phone Number?</label>
+                <label for="phone">Healthcare Agent's Phone Number:</label>
                 <input id="phone" class="form-control" type="text"
                        [(ngModel)]="medicalAgent.phone" name="phone" ngModel
                        mask="(000)-000-0000" pattern="^\d{10}$" placeholder="(xxx)-xxx-xxxx"
@@ -206,7 +206,7 @@
 
 
             <div class="form-group">
-                <label>Would you like to inform this person that you appointed them as your Healthcare Agent? </label>
+                <label>Would you like to inform this person that you appointed them as your Healthcare Agent?</label>
 
                 <ul class="radio_ul6">
                     <li>
@@ -253,7 +253,7 @@
 
 
             <div class="form-group">
-                <label>Would you like to appoint backup Healthcare Agent?
+                <label>Would you like to appoint a Backup Healthcare Agent?
                     <app-global-tooltip (click)="toolTipClicked('health_care_backup')" [tooltipMessages]='toolTipMessageList.health_care_backup' toolTipType="health_care_backup"></app-global-tooltip>
                 </label>
                 <ul class="radio_ul6">
@@ -311,7 +311,7 @@
                   </span>
                 </div>-->
               <div class="form-group" [ngClass]="{'valid': backupfulllegalName.valid, 'invalid': backupfulllegalName.touched && backupfulllegalName.touched && !backupfulllegalName.valid}">
-                <label for="backupfulllegalName">Full Legal Name:</label>
+                <label for="backupfulllegalName">Backup Healthcare Agent's Full Legal Name:</label>
                 <input id="backupfulllegalName" class="form-control" type="text" placeholder="Full legal name" required pattern="\w+\s{1}\w+" [(ngModel)]="medicalAgent.backupfulllegalName" name="backupfulllegalName" ngModel #backupfulllegalName="ngModel">
                 <i class="fa fa-check" *ngIf="backupfulllegalName.valid"></i>
                 <i class="fa fa-times" *ngIf="backupfulllegalName.touched && backupfulllegalName.touched && !backupfulllegalName.valid"></i>
@@ -326,7 +326,7 @@
 
 
                 <div class="form-group" [ngClass]="{'valid': backupRelation.valid, 'invalid': backupRelation.touched && backupRelation.touched && !backupRelation.valid}">
-                    <label for="backupRelation">Their Relationship To You:</label>
+                    <label for="backupRelation">Backup Healthcare Agent's relationship to you:</label>
                     <select id="backupRelation" class="form-control" [(ngModel)]="medicalAgent.backupRelation" name="backupRelation" ngModel #backupRelation="ngModel" required>
                         <option value="">Select Relationship</option>
                         <option *ngFor="let relation of relations" value="{{relation}}">{{relation}}</option>
@@ -353,7 +353,7 @@
 
               <div class="form-group">
                     <div class="" [ngClass]="{'valid': backupAddress.valid, 'invalid': backupAddress.touched && backupAddress.touched && !backupAddress.valid}">
-                        <label>Their Address: </label>
+                        <label>Backup Healthcare Agent's Address:</label>
                         <input id="backupAddress" class="form-control" type="text"
                             [(ngModel)]="medicalAgent.backupAddress" name="backupAddress" placeholder="Address Line 1"
                             ngModel #backupAddress="ngModel" required>
@@ -475,7 +475,7 @@
                 </div>
 
                 <div class="form-group" [ngClass]="{'valid': backupphone.valid, 'invalid': backupphone.touched && backupphone.touched && !backupphone.valid}">
-                    <label for="backupphone">Their Phone Number?</label>
+                    <label for="backupphone">Backup Healthcare Agent's Phone Number:</label>
                     <input id="backupphone" class="form-control" type="text"
                            [(ngModel)]="medicalAgent.backupphone" name="backupphone" ngModel
                            mask="(000)-000-0000" pattern="^\d{10}$" placeholder="(xxx)-xxx-xxxx"
@@ -492,7 +492,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Would you like to inform this person that you appointed them as your Healthcare Agent? </label>
+                    <label>Would you like to inform this person that you appointed them as your Backup Healthcare Agent?</label>
 
                     <ul class="radio_ul6">
                         <li>

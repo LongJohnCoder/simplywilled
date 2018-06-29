@@ -12,28 +12,30 @@
 
 <div class="col-xs-12 col-md-12" *ngIf="!loading">
   <div class="main-content tellusaboutyou">
-    <h2>Select your final arrangements</h2>
+    <h2>Select your final arrangements
+      <app-global-tooltip (click)="toolTipClicked('final_arrangement')" [tooltipMessages]='toolTipMessageList.final_arrangement' toolTipType="final_arrangement"></app-global-tooltip>
+    </h2>
     <form [formGroup] = "finalarrangementForm">
       <div class="form-group">
         <ul class="Instructions_ul_Radio" style="margin-bottom:0">
           <li>
             <label class="two_child_radio special_instrucion" [ngClass]="{'active': flags.burial}">
               <span class="two_child_img"><img src="../../../../assets/images/Ground-Burial-2-01.png" alt="Ground-Burial"></span>
-              <span class="two_child_text">I wish to be <br> buried</span>
+              <span class="two_child_text">I Wish to Be <br>Buried</span>
               <input type="radio" name="type" value = 0 formControlName="type" #typeBury (click)="changeWish(typeBury.value)">
             </label>
           </li>
           <li>
             <label class="two_child_radio special_instrucion" [ngClass]="{'active': flags.cremation}">
               <span class="two_child_img"><img src="../../../../assets/images/save-money.png" alt="save-money"></span>
-              <span class="two_child_text">I wish to be <br>Cremated</span>
+              <span class="two_child_text">I Wish to Be <br>Cremated</span>
               <input type="radio" name="type" value = 1 formControlName="type" #typeCremate (click)="changeWish(typeCremate.value)">
             </label>
           </li>
           <li>
             <label class="two_child_radio special_instrucion" [ngClass]="{'active': flags.someOtherWay}">
-              <span class="two_child_img"><img src="../../../../assets/images/other-ways.png" alt="some-other-ways"></span>
-              <span class="two_child_text">Some Other Way</span>
+              <span class="two_child_img"><img src="../../../../assets/images/hippa.png" alt="some-other-ways"></span>
+              <span class="two_child_text">Some Other <br>Way</span>
               <input type="radio" name="type" value = 2 formControlName="type" #typeSomeOtherWay (click)="changeWish(typeSomeOtherWay.value)">
             </label>
           </li>
@@ -41,30 +43,30 @@
       </div>
       <div *ngIf="flags.burial">
         <div class="form-group">
-          <label>I would like my remains interred as follows: <span class="leavetxt">(If you are not sure, leave this box blank)</span></label>
-          <input type="text" class="form-control" formControlName="burial">
+          <label>I would like my remains interred as follows: <span class="leavetxt"></span></label>
+          <input type="text" class="form-control" formControlName="burial" placeholder="If you are not sure, leave this box blank">
         </div>
         <div class="form-group">
-          <label>I have made the following final arrangements: <span class="leavetxt">(If you are not sure, leave this box blank)</span></label>
-          <input type="text" class="form-control" formControlName="burial_arrangements">
+          <label>I have made the following final arrangements: <span class="leavetxt"></span></label>
+          <input type="text" class="form-control" formControlName="burial_arrangements" placeholder="If you are not sure, leave this box blank">
         </div>
       </div>
 
       <div *ngIf="flags.cremation">
         <div class="form-group" >
-          <label>How would you like your ashes handled? <span class="leavetxt">(If you are not sure, leave this box blank)</span></label>
-          <input type="text" class="form-control" formControlName="ashes">
+          <label>How would you like your ashes handled? <span class="leavetxt"></span></label>
+          <input type="text" class="form-control" formControlName="ashes" placeholder="If you are not sure, leave this box blank">
         </div>
         <div class="form-group">
-          <label>I have made the following final arrangements: <span class="leavetxt">(If you are not sure, leave this box blank)</span></label>
-          <input type="text" class="form-control" formControlName="creamation_arrangements">
+          <label>I have made the following final arrangements: <span class="leavetxt"></span></label>
+          <input type="text" class="form-control" formControlName="creamation_arrangements" placeholder="If you are not sure, leave this box blank">
         </div>
       </div>
 
       <div *ngIf="flags.someOtherWay">
         <div class="form-group" >
-          <label>Otherwise :<span class="leavetxt">(If you are not sure, leave this box blank)</span></label>
-          <textarea class="form-control" formControlName="some_other_way"></textarea>
+          <label>Otherwise :<span class="leavetxt"></span></label>
+          <textarea class="form-control" formControlName="some_other_way" placeholder="If you are not sure, leave this box blank"></textarea>
         </div>
       </div>
 

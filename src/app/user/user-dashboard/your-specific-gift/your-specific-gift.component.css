@@ -4424,6 +4424,11 @@ input[disabled] {
   }
 }
 
+.questions_gift {
+  margin-left: 14px;
+  margin-bottom: 6px;
+}
+
 @media screen and (max-width:380px){
   .back_next_btn_ul li a{
     width: 87px;

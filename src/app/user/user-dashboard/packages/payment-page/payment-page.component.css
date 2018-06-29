@@ -642,6 +642,15 @@ select.form-control{
   transform: rotate(135deg);
   background: #ec5757;
 }
+.contact_class {
+    color: #2479B8;
+    font-size: 24px;
+    margin: 0;
+    text-transform: capitalize;
+    padding: 0 30px;
+    margin: 25px 0 10px;
+    font-family: 'OpenSans';
+}
 
 @media screen and (max-width:1199px){
     .main-content.tellusaboutyou{

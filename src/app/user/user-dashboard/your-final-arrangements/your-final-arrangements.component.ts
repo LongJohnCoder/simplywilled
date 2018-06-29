@@ -5,6 +5,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {ProgressbarService} from '../shared/services/progressbar.service';
+import {UserService} from '../../user.service';
 
 @Component({
   selector: 'app-your-final-arrangements',
@@ -27,6 +28,7 @@ export class YourFinalArrangementsComponent implements OnInit, OnDestroy {
     errorMessage: ''
   };
   loading = true;
+  toolTipMessageList: any;
 
   /**When constructor is called*/
   constructor (
@@ -34,12 +36,28 @@ export class YourFinalArrangementsComponent implements OnInit, OnDestroy {
               private finalarrangementService: YourFinalArrangementsService,
               private router: Router,
               private progressBarService: ProgressbarService,
-              private location: Location
+              private location: Location,
+              private userService: UserService
   ) {
     let token = this.parseToken();
     this.progressBarService.changeWidth({width: 0});
     this.createForm();
     this.getData(token);
+    this.toolTipMessageList = {
+        'final_arrangement' : [{
+            'q' : 'What does selecting buried means?',
+            'a' : 'If you select buried, this will instruct your Personal Representative that you wish your remains to be buried. You can then provide instructions on how you would like your remains interred and any finals arrangements that you have made.'
+        }, {
+            'q' : 'What does selecting cremated means?',
+            'a' : 'If you select cremated, this will instruct your Personal Representative that you wish your remains to be cremated. You can then provide instructions on how you would like your remains handled and any final arrangements that you have made.'
+        }, {
+            'q' : 'What if I want something else done with my remains?',
+            'a' : 'If you would like something other than to be buried or cremated, please select the “Some Other Way” option. Please provide your instructions in the provided space so your Personal Representative will be informed.'
+        }, {
+            'q' : 'What if I am not sure?',
+            'a' : 'If you are not sure whether you want to be buried or cremated please select the “Some Other Way” option. Please write “Undecided” in the provided space so your Personal Representative will be informed'
+        }]
+    };
   }
 
   /**Initialise the form*/
@@ -82,6 +100,13 @@ export class YourFinalArrangementsComponent implements OnInit, OnDestroy {
       'some_other_way' : response !== null && parseInt(response.type, 10) === 2 ? response.some_other_way : '',
     });
     this.changeWish(response !== null ? response.type : null);
+  }
+
+  toolTipClicked(str: string) {
+      console.log(str);
+      this.userService.changeCurrentToolTipType(str);
+      // this.toolTipMessage = this.toolTipMessageList[str];
+      // console.log('tooltip message :', this.toolTipMessage);
   }
 
 

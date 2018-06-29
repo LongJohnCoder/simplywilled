@@ -4,12 +4,14 @@ import { YourFinalAgreementsRoutingModule } from './your-final-arrangements-rout
 import { YourFinalArrangementsComponent } from './your-final-arrangements.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {YourFinalArrangementsService} from './services/your-final-arrangements.service';
+import {GlobalTooltipModule} from '../global-tooltip/global-tooltip.module';
 
 @NgModule({
   imports: [
     CommonModule,
     YourFinalAgreementsRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GlobalTooltipModule
   ],
   declarations: [YourFinalArrangementsComponent],
   providers: [YourFinalArrangementsService]

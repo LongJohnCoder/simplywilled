@@ -15,7 +15,7 @@
   <div class="main-content tellusaboutyou" >
     <h2>Complete your order</h2>
     <hr>
-    <h3>Primary contact</h3>
+    <span class="contact_class">Primary contact</span>
     <p class="headingInfo"><span>Please note:</span> you can give someone else access to this order by adding them as an authorized contact in My Account.</p>
     <form #form="ngForm" autocomplete="off">
       <div class="form-group">
@@ -188,7 +188,7 @@
 
       </div>
       <hr>
-      <h3>Payment Options</h3>
+      <span class="contact_class">Payment Options</span>
       <P class="headingInfo">Select any payment option.</P>
       <div class="form-group">
         <button class="payPaypal" (click)="paymentMethod = 'paypal-payment'" [ngClass]="{'active': paymentMethod === 'paypal-payment'}">
@@ -290,7 +290,7 @@
         <li>We take your answers and create personalized state specific documents for you.</li>
         <li>Download your documents, review them, and make changes if necessary.
         </li>
-        <li>Execute your estate documents using our easy to follow instructions and your done.</li>
+        <li>Execute your estate documents using our easy to follow instructions and you are done.</li>
       </ol>
     </div>
     <div _ngcontent-c1="" class="guarantee">
