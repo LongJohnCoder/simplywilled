@@ -170,47 +170,45 @@ p strong{
         Thank you for choosing <a href="{{url('/')}}">SimplyWilled.com</a> to make your estate plan. Below are confirmation details for your transaction.
       </div>
       <div class="">
-        <!--<div class="main-content paymentSuccess" >-->
-        <div class="icon icon--order-success svg">
-          <svg xmlns="http://www.w3.org/2000/svg" width="135px" height="160px">
-            <g fill="none" stroke="#8EC343" stroke-width="10">
-              <circle cx="70" cy="71" r="60" style="stroke-dasharray: 396px, 385px;stroke-dashoffset: 800px;"></circle>
-              <path d="M52,69.778l9.93,9.909l25.444-25.393" style="stroke-dasharray: 69px, 50px;stroke-dashoffset: 0px;"></path>
-            </g>
-          </svg>
-        </div>
-        <h2>Thank You!</h2>
-        <p class="payMessage">Your payment has been successfully completed</p>
-        <p class="payDetailsHead"><strong>Please find the transaction details bellow:</strong></p>
-        <ul class="paymentDetails">
-          <li>
-            <p>Transaction ID</p>
-            <p>{{$transactionID}}</p>
-          </li>
-          <li>
-            <p>Package</p>
-            <p>{{$pkgName}}</p>
-          </li>
-          <li>
-            <p>Amount</p>
-            <p>${{$amount}}</p>
-          </li>
-          <li>
-            <p>Payment Status</p>
-            <p class="green">{{$paymentStatus}}</p>
-          </li>
-          <li>
-            <p>Payment Date</p>
-            <p>{{$paymentDate}}</p>
-          </li>
-        </ul>
-      <!--</div>-->
+        <p style="text-align: center;padding: 15px 0;"><img src="{{url('/')}}/images/successImg.png" alt=""></p>
+        <h2 style="color: #2479b8; margin-bottom: 25px; font-family: arial; font-weight: normal; font-size: 28px; text-align: center;">Thank You!</h2>
+        <p style="font-family: arial; font-size:16px; color: #373737; text-align: center;">Your payment has been successfully completed</p>
+        <p style="font-family: arial; font-size:16px; color: #373737; text-align: center;">You will be redirected to the dashboard after <strong>{{countDown | async}}</strong> seconds.</p>
+        <p style="font-family: arial; font-size:16px; color: #373737; text-align: center;">Please <a href="">click here</a> to access dashboard.</p>
+        <p style="font-family: arial; font-size:16px; color: #373737; text-align: center;"><strong>Please find the transaction details bellow:</strong></p>
+        <table cellpadding="0" cellspacing="0" border="0" align="center" style="border: 1px solid #ccc; width: 100%; border-radius: 10px; font-family: arial; font-size:14px; color: #373737;">
+        <tr>
+        <td width="50%" style="padding: 10px; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc;">Transaction ID</td>
+        <td width="50%" style="padding: 10px; color: #2479b8; font-weight: bold; border-bottom: 1px solid #ccc;">{{$transactionID}}</td>
+        </tr>
+        <tr>
+        <td width="50%" style="padding: 10px; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc;">Package</td>
+        <td width="50%" style="padding: 10px; color: #2479b8; font-weight: bold; border-bottom: 1px solid #ccc;">{{$pkgName}}</td>
+        </tr>
+        <tr>
+        <td width="50%" style="padding: 10px; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc;">Amount</td>
+        <td width="50%" style="padding: 10px; color: #2479b8; font-weight: bold; border-bottom: 1px solid #ccc;">${{$amount}}</td>
+        </tr>
+        <tr>
+        <td width="50%" style="padding: 10px; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc;">Payment Status</td>
+        <td width="50%" style="padding: 10px; color: #2479b8; font-weight: bold; color: #32b623; border-bottom: 1px solid #ccc;">{{$paymentStatus}}</td>
+        </tr>
+        <tr>
+        <td width="50%" style="padding: 10px; border-right: 1px solid #ccc;">Payment Date</td>
+        <td width="50%" style="padding: 10px; color: #2479b8; font-weight: bold;">{{$paymentDate}}</td>
+        </tr>
+        </table>
       </div>
       <div class="row">
-        <a href="{{url('/sign-in')}}">Sign In</a>
+        <a href="{{url('/')}}/sign-in"><img src="{{url('/')}}/images/loginToAccount.jpg" alt="accept"></a>
       </div>
       <div class="row">
-        Share links
+        <ul>
+            <li><a href="https://www.facebook.com/SimplyWilled"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://twitter.com/simplywilled"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/simplywilled.com"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://www.instagram.com/simplywilled"><i class="fa fa-instagram"></i></a></li>
+          </ul>
       </div>
     </div>
   </body>

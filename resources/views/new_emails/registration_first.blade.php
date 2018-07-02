@@ -67,10 +67,10 @@
                             </p>
                         </td>
                         <tr>
-                            <!-- <td style="padding:40px 30px; background: #f2f2f2; text-align: center;">
-                                <a href="{{url('/')}}/fiduciary/accept/{{isset($token) ? $token : 'null'}}"><img src="{{url('/')}}/images/acceptBtn.png" alt="accept"></a>
+                            <td style="padding:40px 30px; background: #f2f2f2; text-align: center;">
+                                <a href="{{url('/')}}/sign-in"><img src="{{url('/')}}/images/loginToAccount.jpg" alt="accept"></a>
                                 <br><br>
-                            </td> -->
+                            </td>
                         </tr>
                         <tr>
                             <td style="background: #fff; padding: 45px 0;" align="center">
