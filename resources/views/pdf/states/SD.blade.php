@@ -60,20 +60,20 @@
 <div class="docContainer" id="doc">
 
     <!-- Page 1-->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
-            <p  style="margin-bottom: 0in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 13pt"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>S</b></span></span></span><span size="4" style="font-size: 16pt"><b>OUTH
+    <div class="docPage" style="margin: 0; box-sizing: border-box; padding: 40px;">
+        <div class="docPageInner" style="box-sizing: border-box; height: 800px;">
+            <p  style="margin-bottom: 0in; line-height: 22px; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 13pt"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>S</b></span></span></span><span size="4" style="font-size: 16pt"><b>OUTH
     </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>D</b></span></span></span><span size="4" style="font-size: 16pt"><b>AKOTA</b></span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 13pt"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>D</b></span></span></span><span size="4" style="font-size: 16pt"><b>URABLE
+            <p  style="margin-bottom: 0in; line-height: 22px; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 13pt"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>D</b></span></span></span><span size="4" style="font-size: 16pt"><b>URABLE
     </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>P</b></span></span></span><span size="4" style="font-size: 16pt"><b>OWER
     OF </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>A</b></span></span></span><span size="4" style="font-size: 16pt"><b>TTORNEY</b></span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 13pt"><span size="4" style="font-size: 16pt"><b>FOR
+            <p  style="margin-bottom: 0in; line-height: 22px; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 13pt"><span size="4" style="font-size: 16pt"><b>FOR
     </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>H</b></span></span></span><span size="4" style="font-size: 16pt"><b>EALTH
     </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>C</b></span></span></span><span size="4" style="font-size: 16pt"><b>ARE</b></span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+            <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">I,
+            <p style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'">I,
       </span></span><span style="font-family:'Times New Roman, serif'">
           @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
@@ -222,16 +222,16 @@
       </p>
       @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == false)
         <div>
-            <p style="margin-bottom: 0in; line-height: 100%">
+            <p style="margin-bottom: 0in; ">
                 <span ><span style="font-family:'Times New Roman, serif'">
                 The following persons as my alternate attorney in fact to make health
                 care decisions for me as authorized by this document, in the order
                 listed below:</span></span>
             </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+            <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            <p  style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
+            <p  style="margin-left: 1in; margin-bottom: 0in; ">
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"><u>Alternate
                 Agent 1</u></span></span></span></span></p>
             <p  style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
@@ -244,11 +244,11 @@
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Address:	</span></span><span ><span size="3" style="font-size: 12pt"><u>_________________________________</u></span></span></span></span></p>
             <p  style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Telephone:	</span></span><span ><span size="3" style="font-size: 12pt"><u>_________________________________</u></span></span></span></span></p>
-            <p  style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
+            <p  style="margin-left: 1in; margin-bottom: 0in; ">
                 <br/>
 
             </p>
-            <p  style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
+            <p  style="margin-left: 1in; margin-bottom: 0in; ">
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"><u>Alternate
                 Agent 1</u></span></span></span></span></p>
             <p  style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
@@ -261,24 +261,24 @@
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Address:	</span></span><span ><span size="3" style="font-size: 12pt"><u>_________________________________</u></span></span></span></span></p>
             <p  style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Telephone:	</span></span><span ><span size="3" style="font-size: 12pt"><u>_________________________________</u></span></span></span></span></p>
-            <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
+            <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
                 <br/>
 
             </p>
         </div>
       @endif
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+            <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">This
+            <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">This
       durable power of attorney for health care is effective only during
       any period in which my physician has determined in good faith that I
       do not have decisional capacity.  </span></span></span>
             </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+            <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">I
+            <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">I
       have discussed my wishes with my agent, and authorize my agent to
       make all and any health care decisions for me </span><span face="Times, serif">which
       I could make individually if I had decisional capacity (except for
@@ -296,7 +296,7 @@
       that would be in my best interests. </span>
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Power of Attorney for Health Care and Living Will of {{$tellUsAboutYou['fullname']}}<br>
                 Page 1 of 7
@@ -306,41 +306,31 @@
                 Durable Power of Attorney for Health Care and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 1 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- Page 1-->
 
 
     <!-- Page 2-->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
-            <p  style="margin-bottom: 0in; line-height: 100%"><span face="Times, serif">I
+    <div class="docPage" style="margin: 0; box-sizing: border-box; padding: 40px;">
+        <div class="docPageInner" style="box-sizing: border-box; height: 800px;">
+            <p  style="margin-bottom: 0in; "><span face="Times, serif">I
       give the following instructions to help guide my agent (or any
       successor agent): </span><span face="Times, serif"><i>(You may write
       additional instructions or limitations below.)</i></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 150%"><span face="Times, serif">____________________________________________________________________________</span></p>
-            <p  style="margin-bottom: 0in; line-height: 150%"><span face="Times, serif">____________________________________________________________________________</span></p>
-            <p  style="margin-bottom: 0in; line-height: 150%"><span face="Times, serif">____________________________________________________________________________</span></p>
-            <p  style="margin-bottom: 0in; line-height: 150%"><span face="Times, serif">____________________________________________________________________________</span></p>
-            <p  style="margin-bottom: 0in; line-height: 150%"><span face="Times, serif">____________________________________________________________________________</span></p>
-            <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><i>(Attach
+            
+            <p  style="margin-bottom: 0in; line-height: 120%"><span face="Times, serif">____________________________________________________________________________</span></p>
+            <p  style="margin-bottom: 0in; line-height: 120%"><span face="Times, serif">____________________________________________________________________________</span></p>
+            <p  style="margin-bottom: 0in; line-height: 120%"><span face="Times, serif">____________________________________________________________________________</span></p>
+            <p  style="margin-bottom: 0in; line-height: 120%"><span face="Times, serif">____________________________________________________________________________</span></p>
+            <p  style="margin-bottom: 0in; line-height: 120%"><span face="Times, serif">____________________________________________________________________________</span></p>
+            <p style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><i>(Attach
       additional pages if needed).</i></span></span></span></p>
-            <p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Subject
+            <p style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Subject
       to any limitations in this document, my attorney in fact has the
       power and authority to do all of the following:</span></span></span></p>
-            <p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0.09in; line-height: 100%">
+            
+            <p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0.09in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(a)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Request,
       review, and receive any information, verbal or written, regarding my
       physical or mental health, including, but not limited to, all of my
@@ -363,23 +353,23 @@
       authority given my attorney in fact shall be immediate, has no
       expiration date and shall expire only in the event that I revoke the
       authority in writing and deliver it to my health care provider.</span></span></span></p>
-            <p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0.09in; line-height: 100%">
+            <p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0.09in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(b)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Execute
       on my behalf any releases or other documents that may be required in
       order to obtain this information;</span></span></span></p>
-            <p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0.09in; line-height: 100%">
+            <p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0.09in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(c)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Consent
       to the further disclosure of this information if necessary;</span></span></span></p>
-            <p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0.09in; line-height: 100%">
+            <p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0.09in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(d)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Execute
       documents titled or purporting to be a “Refusal to Permit
       Treatment” and “Leaving Hospital Against Medical Advice.”</span></span></span></p>
-            <p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+            <p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(e)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Execute
       any necessary waiver or release from liability required by a hospital
       or physician.</span></span></span></p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Power of Attorney for Health Care and Living Will of {{$tellUsAboutYou['fullname']}}<br>
                 Page 2 of 7
@@ -389,50 +379,40 @@
                 Durable Power of Attorney for Health Care and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 2 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- Page 2-->
 
 
     <!-- Page 3-->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="margin:0; box-sizing: border-box; padding: 0px;">
         <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
-            <p  style="margin-bottom: 0in; line-height: 100%; text-align: center;">
+            <p  style="margin-bottom: 0in;  text-align: center;">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>NOTICE
       TO PERSON MAKING A DURABLE POWER OF ATTORNEY</b></span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>FOR
+            <p  style="margin-bottom: 0in;  text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>FOR
       HEALTH CARE</b></span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%; text-align: center;"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">This
+            
+            <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">This
       is an important legal document. Prepare this durable power of
       attorney for health care carefully. If you use this form, read it
       completely. You may want to seek professional help to make sure the
       form does what you intend and is completed without mistakes.</span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
+            
+            <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
       have the right to revoke this document in whole or in part at any
       time you have not been determined to be incapable. A revocation is
       effective when it is communicated to your attending physician or
       other health care provider.</span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+            <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>SIGNATURE
+            
+            <p  style="margin-bottom: 0in;  text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>SIGNATURE
       AND ACKNOWLEDGEMENT</b></span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+            
+        
+            <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
                 <span style="font-family:'Times New Roman, serif'">I, </span><span style="font-family:'Times New Roman, serif'">
                     @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
                         <b>{{$tellUsAboutYou['fullname']}}</b>
@@ -440,23 +420,19 @@
                         <b>(fullname)________________________________</b>
                     @endif,
                 </span><span style="font-family:'Times New Roman, serif'">the
-                  principal, sign my name to this instrument on this </span><span style="font-family:'Times New Roman, serif'"><u>____________</u></span><span style="font-family:'Times New Roman, serif'">
-                  day of </span><span style="font-family:'Times New Roman, serif'"><u>__________________</u></span><span style="font-family:'Times New Roman, serif'">,
-                  </span><span style="font-family:'Times New Roman, serif'"><u>_____________</u></span><span style="font-family:'Times New Roman, serif'">,
+                  principal, sign my name to this instrument on this </span><span style="font-family:'Times New Roman, serif'">____________</span><span style="font-family:'Times New Roman, serif'">
+                  day of </span><span style="font-family:'Times New Roman, serif'">__________________</span><span style="font-family:'Times New Roman, serif'">,
+                  </span><span style="font-family:'Times New Roman, serif'">_____________</span><span style="font-family:'Times New Roman, serif'">,
                   and do hereby declare that I sign it willingly (or willingly direct
                   another to sign for me), that I execute it as my free and voluntary
                   act for the purposes therein expressed, and that I am eighteen years
                   of age or older, of sound mind, and under no constraint or undue
                   influence.</span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+            
+           
+            <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></span></p>
-            <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+            <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
           <span style="font-family:'Times New Roman, serif'"><b>
               @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
                   <span>{{$tellUsAboutYou['fullname']}}</span>
@@ -465,33 +441,25 @@
               @endif
           </b>
           </span></p>
-            <p style="margin-bottom: 0in; line-height: 100%"><br/>
+            <p style="margin-bottom: 0in; "><br/>
 
             </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><b>NOTARY
+            
+            <p  style="margin-bottom: 0in;  text-align: center;"><span style="font-family:'Times New Roman, serif'"><b>NOTARY
       ACKNOWLEDGEMENT (OPTIONAL)</b></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+            <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">STATE
+            <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">STATE
       OF SOUTH DAKOTA</span></span><span ><span size="3" style="font-size: 12pt">	</span></span><span ><span size="3" style="font-size: 12pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span></span></span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">					</span><span size="3" style="font-size: 12pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
+            <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">					</span><span size="3" style="font-size: 12pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
       ss.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span color="#008f00"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">COUNTY
+            <p  style="margin-bottom: 0in; "><span color="#008f00"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">COUNTY
       OF ________________</span></span><span ><span size="3" style="font-size: 12pt">	</span></span><span ><span size="3" style="font-size: 12pt">)</span></span></span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+            <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+            <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">Subscribed, sworn to and
       acknowledged before me by </span><span style="font-family:'Times New Roman, serif'">
             @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
@@ -500,22 +468,21 @@
                 <span>(fullname)________________________________</span>
             @endif
             </span><span style="font-family:'Times New Roman, serif'">,
-      the principal, this </span><span style="font-family:'Times New Roman, serif'"><u>_______</u></span><span style="font-family:'Times New Roman, serif'">
-      day of </span><span style="font-family:'Times New Roman, serif'"><u>___________________</u></span><span style="font-family:'Times New Roman, serif'">,
-      </span><span style="font-family:'Times New Roman, serif'"><u>________________________</u></span><span style="font-family:'Times New Roman, serif'">.</span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">______________________________________</span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">NOTARY
+      the principal, this </span><span style="font-family:'Times New Roman, serif'">_______</span><span style="font-family:'Times New Roman, serif'">
+      day of </span><span style="font-family:'Times New Roman, serif'">___________________</span><span style="font-family:'Times New Roman, serif'">,
+      </span><span style="font-family:'Times New Roman, serif'">________________________</span><span style="font-family:'Times New Roman, serif'">.</span></p>
+            
+            
+            <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">______________________________________</span></span></span></p>
+            <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">NOTARY
       PUBLIC</span></span></span></p>
-            <p style="margin-top: 0.06in; margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">My
+      <p  style="margin-bottom: 0in; "><br/>
+
+            </p>
+            <p style="margin-top: 0.06in; margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">My
       commission expires: _________________</span></span></span></p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+       <!--  @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Power of Attorney for Health Care and Living Will of {{$tellUsAboutYou['fullname']}}<br>
                 Page 3 of 7
@@ -525,17 +492,17 @@
                 Durable Power of Attorney for Health Care and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 3 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- Page 3-->
 
 
     <!-- Page 4-->
     <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
-            <p  style="margin-bottom: 0.13in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt"><b>STATEMENT
+        <div class="docPageInner" style="box-sizing: border-box; height: 700px;">
+            <p  style="margin-bottom: 0.13in;  text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt"><b>STATEMENT
       OF WITNESSES (REQUIRED)</b></span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
+            <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       declare that the person who signed or acknowledged this Durable Power
       of Attorney for Health Care is personally known to me, that </span><span ><span size="3" style="font-size: 12pt">{{--<span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she' ): 'he' }}</span>--}}
         <span>{{isset($tellUsAboutYou) && array_key_exists('gender',$tellUsAboutYou) && !is_null($tellUsAboutYou['gender']) && $tellUsAboutYou['gender'] == 'M' ? 'he' : (isset($tellUsAboutYou) && array_key_exists('gender',$tellUsAboutYou) && !is_null($tellUsAboutYou['gender']) && $tellUsAboutYou['gender'] == 'F' ? 'she' : 'he/she')}}</span>
@@ -546,49 +513,47 @@
       </span></span><span size="3" style="font-size: 12pt">
       appears to be of sound mind and under no duress, fraud, or undue
       influence.</span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+            <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+            <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+            <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            <p class="western" style="margin-bottom: 0in; line-height: 100%"><span ><b>WITNESS
-      1</b></span><span >: </span><span ><u>____________________</u></span><span style="padding-left: 50px;">	Dated:
-      </span><span ><u>______________________</u></span></p>
-            <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
+            <p class="western" style="margin-bottom: 0in; "><span ><b>WITNESS
+      1</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
+      </span><span >______________________</span></p>
+            <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; ">
                 <span style="padding-left: 50px;">[signature]</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
-                <span ><u>____________________________</u></span><span >		</span><span style="padding-left: 122px;"><u>______________________</u></span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+            <p class="western" align="justify" style="margin-bottom: 0.06in;  padding-top: 15px;">
+                <span >____________________________</span><span >		</span><span style="padding-left: 122px;">______________________</span></p>
+            <p class="western" align="justify" style="margin-bottom: 0.06in; ">
                 <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:25px 0 0 350px;">
-                <span >							</span><span ><u>______________________</u></span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
+            <p class="western" align="justify" style="margin-bottom: 0.06in;  padding:25px 0 0 350px;">
+                <span >							</span><span >______________________</span></p>
+            <p class="western" align="justify" style="margin-bottom: 0.06in;  padding-left: 350px;">
                 <span style="padding-left: 40px;">								[city, state, zip]</span></p>
-            <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+            <p class="western" style="margin-bottom: 0in; "><br/>
 
             </p>
-            <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p class="western" style="margin-bottom: 0in; line-height: 100%"><span ><b>WITNESS
-      2</b></span><span >: </span><span ><u>____________________</u></span><span style="padding-left: 50px;">	Dated:
-      </span><span ><u>______________________</u></span></p>
-            <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
+           
+            <p class="western" style="margin-bottom: 0in; "><span ><b>WITNESS
+      2</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
+      </span><span >______________________</span></p>
+            <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; ">
                 <span style="padding-left: 50px;">[signature]</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
-                <span ><u>____________________________</u></span><span >		</span><span style="padding-left: 122px;"><u>______________________</u></span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+            <p class="western" align="justify" style="margin-bottom: 0.06in;  padding-top: 15px;">
+                <span >____________________________</span><span >		</span><span style="padding-left: 122px;">______________________</span></p>
+            <p class="western" align="justify" style="margin-bottom: 0.06in; ">
                 <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:25px 0 0 350px;">
-                <span >							</span><span ><u>______________________</u></span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
+            <p class="western" align="justify" style="margin-bottom: 0.06in;  padding:25px 0 0 350px;">
+                <span >							</span><span >______________________</span></p>
+            <p class="western" align="justify" style="margin-bottom: 0.06in;  padding-left: 350px;">
                 <span style="padding-left: 40px;">								[city, state, zip]</span></p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Power of Attorney for Health Care and Living Will of {{$tellUsAboutYou['fullname']}}<br>
                 Page 4 of 7
@@ -598,32 +563,32 @@
                 Durable Power of Attorney for Health Care and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 4 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- Page 4-->
 
 
     <!-- Page 5-->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="margin: 0; box-sizing: border-box; padding: 0;">
         <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
-            <p  style="margin-bottom: 0in; line-height: 100%; text-align: center;">
+            <p  style="margin-bottom: 0in;  text-align: center;">
       <span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 13pt"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>S</b></span></span></span><span size="4" style="font-size: 16pt"><b>OUTH
       </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>D</b></span></span></span><span size="4" style="font-size: 16pt"><b>AKOTA</b></span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 13pt"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>L</b></span></span></span><span size="4" style="font-size: 16pt"><b>IVING
+            <p  style="margin-bottom: 0in;  text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 13pt"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>L</b></span></span></span><span size="4" style="font-size: 16pt"><b>IVING
       </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>W</b></span></span></span><span size="4" style="font-size: 16pt"><b>ILL
       </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="4" style="font-size: 16pt"><b>D</b></span></span></span><span size="4" style="font-size: 16pt"><b>ECLARATION</b></span></span></span></p>
-            <p  style="margin-top: 0.19in; margin-bottom: 0.06in; line-height: 100%">
+            <p  style="margin-top: 0.19in; margin-bottom: 0.06in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">This
       is an important legal document. A living will directs the medical
       treatment you are to receive in the event you are in a terminal
       condition and are unable to participate in your own medical
       decisions. This living will may state what kind of treatment you want
       or do not want to receive.</span></span></span></p>
-            <p  style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Prepare
+            <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Prepare
       this living will carefully. If you use this form, read it completely.
       You may want to seek professional help to make sure the form does
       what you intend and is completed without mistakes.</span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">This
+            <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">This
       living will remains valid and in effect until and unless you revoke
       it. Review this living will periodically to make sure it continues to
       reflect your wishes. You may amend or revoke this living will at any
@@ -633,15 +598,13 @@
       optional. If you choose to use this form, please note that the form
       provides signature lines for you, the two witnesses whom you have
       selected, and a notary public.</span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+            <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt"><b>TO
+            <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt"><b>TO
       MY FAMILY, PHYSICIANS, AND ALL THOSE CONCERNED WITH MY CARE:</b></span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+            
+            <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
                 <span style="font-family:'Times New Roman, serif'">I, </span><span style="font-family:'Times New Roman, serif'"><b>
             @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
                 <span>{{$tellUsAboutYou['fullname']}}</span>
@@ -652,52 +615,43 @@
       direct you to follow my wishes for care if I am in a terminal
       condition, my death is imminent, and I am unable to communicate my
       decisions about my medical care.</span></p>
-            <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-                <br/>
-
-            </p>
-            <p  style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>LIFE-SUSTAINING
+            
+            <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>LIFE-SUSTAINING
     TREATMENT.</b></span><span size="3" style="font-size: 12pt"> With
     respect to any life-sustaining treatment, I direct the following:</span></span></span></p>
-            <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-                <br/>
-
-            </p>
-            <p align="left" style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(</i></span><span size="3" style="font-size: 12pt"><i><u>Initial
+            
+            <p align="left" style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(</i></span><span size="3" style="font-size: 12pt"><i><u>Initial
     only one</u></i></span><span size="3" style="font-size: 12pt"><i> of
     the following options. If you do not agree with either of the
     following options, space is provided below for you to write your own
     instructions.)</i></span></span></span></p>
-            <p align="left" style="margin-bottom: 0.09in; line-height: 100%"><br/>
-                <br/>
-
-            </p>
-            <p  style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.09in; line-height: 100%">
+            
+            <p  style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.09in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">__________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">If
       my death is imminent or I am permanently unconscious, I choose not to
       prolong my life. If life sustaining treatment has been started, stop
       it, but keep me comfortable and control my pain.</span></span></span></p>
-            <p  style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.09in; line-height: 100%">
+            <p  style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.09in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">__________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Even
       if my death is imminent or I am permanently unconscious, I choose to
       prolong my life.</span></span></span></p>
-            <p  style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.09in; line-height: 100%">
+            <p  style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.09in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">__________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
       choose neither of the above options, and here are my instructions
       should I become terminally ill and my death is imminent:</span></span></span></p>
-            <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+            <p  style="margin-left: 0.38in; margin-bottom: 0.09in; ">
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
-            <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+            <p  style="margin-left: 0.38in; margin-bottom: 0.09in; ">
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
-            <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+            <p  style="margin-left: 0.38in; margin-bottom: 0.09in; ">
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
-            <p  style="margin-bottom: 0.13in; line-height: 100%; text-align: center;">
+            <p  style="margin-bottom: 0.13in;  text-align: center;">
       <span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(Add
       additional sheets if necessary.)</i></span><span size="3" style="font-size: 12pt">
       </span></span></span>
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Power of Attorney for Health Care and Living Will of {{$tellUsAboutYou['fullname']}}<br>
                 Page 5 of 7
@@ -707,138 +661,111 @@
                 Durable Power of Attorney for Health Care and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 5 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- Page 5-->
 
 
     <!-- Page 6-->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="margin: 0; box-sizing: border-box; padding: 0;">
         <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
-            <p align="left" style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">With
+            <p align="left" style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">With
       respect to artificial nutrition and hydration, I direct the
       following:</span><span size="3" style="font-size: 12pt"><i>
       (Artificial nutrition and hydration</i></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">:</span></span></span><span size="3" style="font-size: 12pt"><i>
       food and water provided by means of a tube inserted into the stomach
       or intestine or needle into a vein.)</i></span></span></span></p>
-            <p  style="margin-bottom: 0.03in; line-height: 100%"><br/>
-                <br/>
-
-            </p>
-            <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i><b>(Initial
+            <p  style="margin-bottom: 0.03in; "> </p>
+            <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i><b>(Initial
       only </b></i></span><span size="3" style="font-size: 12pt"><i><u><b>one</b></u></i></span><span size="3" style="font-size: 12pt"><b>)</b></span></span></span></p>
-            <p  style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.09in; line-height: 100%">
+            <p  style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.09in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">__________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">If
       my death is imminent or I am permanently unconscious, I do not want
       artificial nutrition and hydration. If it has been started, stop it.</span></span></span></p>
-            <p  style="margin-left: 0.75in; text-indent: -0.75in; margin-bottom: 0.09in; line-height: 100%">
-                <br/>
-                <br/>
-
-            </p>
-            <p  style="margin-left: 1in; text-indent: -1in; margin-bottom: 0in; line-height: 100%">
+            
+            <p  style="margin-left: 1in; text-indent: -1in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">__________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Even
       if my death is imminent or I am permanently unconscious, I want
       artificial nutrition and hydration.</span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>ORGAN
+            
+            <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>ORGAN
       DONATION.</b></span><span size="3" style="font-size: 12pt">  With
       respect to organ donation, I direct the following:</span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
+            
+            <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
       do not have to initial any of the statements. If you do not initial
       any of the statements, your attorney for health care, proxy, or other
       agent, or your family, may have the authority to make a gift of all
       or part of your body under South Dakota law.</span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><i><b>(Initial
+            
+            <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><i><b>(Initial
       the line next to the statement below that best reflects your wishes.)</b></i></span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-left: 1in; text-indent: -0.96in; margin-bottom: 0in; line-height: 100%">
+            
+            <p  style="margin-left: 1in; text-indent: -0.96in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">__________	I
       do not want to make an organ or tissue donation and I do not want my
       attorney for health care, proxy, or other agent or family to do so. </span></span></span>
             </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-left: 1in; text-indent: -1in; margin-bottom: 0in; line-height: 100%">
+            
+            <p  style="margin-left: 1in; text-indent: -1in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">__________	I
       have already signed a written agreement or donor card regarding organ
       and tissue donation with the following individual or institution: </span></span></span>
             </p>
-            <p  style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-                <br/>
-
-            </p>
-            <p  style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+            
+            <p  style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Name
       of individual/institution: </span><span size="3" style="font-size: 12pt"><u>						</u></span><span size="3" style="font-size: 12pt">
       </span></span></span>
             </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">__________	Pursuant
+            
+            <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">__________	Pursuant
       to South Dakota law, I hereby give, effective on my death: </span></span></span>
             </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+           
+            <p  style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_____
       Any needed organ or parts. </span></span></span>
             </p>
-            <p  style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+            <p  style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; ">
                 <br/>
 
             </p>
-            <p  style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+            <p  style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_____
       The following part or organs listed below: </span></span></span>
             </p>
             <p  style="margin-left: 2in; margin-bottom: 0in; line-height: 150%">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________
       ______________________________________________________</span></span></span></p>
-            <p  style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+            <p  style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; ">
                 <br/>
 
             </p>
-            <p  style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+            <p  style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">For
       the following purpose:  </span><span size="3" style="font-size: 12pt"><b>(</b></span><span size="3" style="font-size: 12pt"><i><b>initial
       </b></i></span><span size="3" style="font-size: 12pt"><i><u><b>one</b></u></i></span><span size="3" style="font-size: 12pt"><b>)</b></span><span size="3" style="font-size: 12pt">:
       </span></span></span>
             </p>
-            <p  style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+            <p  style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; ">
                 <br/>
 
             </p>
-            <p  style="margin-left: 1.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+            <p  style="margin-left: 1.5in; text-indent: 0.5in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_____
       Any legally authorized purpose. </span></span></span>
             </p>
-            <p  style="margin-left: 1.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+            <p  style="margin-left: 1.5in; text-indent: 0.5in; margin-bottom: 0in; ">
                 <br/>
 
             </p>
-            <p  style="margin-left: 1.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+            <p  style="margin-left: 1.5in; text-indent: 0.5in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_____
       Transplant or therapeutic purposes only. </span></span></span>
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Power of Attorney for Health Care and Living Will of {{$tellUsAboutYou['fullname']}}<br>
                 Page 6 of 7
@@ -848,31 +775,27 @@
                 Durable Power of Attorney for Health Care and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 6 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- Page 6--><!-- Page 1-->
 
 
     <!-- Page 7-->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding:0;">
         <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
-            <p  style="margin-bottom: 0in; line-height: 100%; text-align: center;">
+            <p  style="margin-bottom: 0in;  text-align: center;">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>SIGNATURE
       AND ACKNOWLEDGEMENT</b></span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+            <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0.06in; line-height: 100%"><span color="#008f00"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Date
+        
+            <p  style="margin-bottom: 0.06in; "><span color="#008f00"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Date
       Signed:</span></span><span ><span size="3" style="font-size: 12pt">&nbsp;
-      </span></span><span ><span size="3" style="font-size: 12pt"><u>____________________</u></span></span><span ><span size="3" style="font-size: 12pt">	</span></span></span></span></span></p>
-            <p  style="margin-bottom: 0.02in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0.06in; line-height: 100%"><span color="#008f00"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"><u>______________________________________________</u></span></span></span></span></span></p>
-            <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+      </span></span><span ><span size="3" style="font-size: 12pt">____________________</span></span><span ><span size="3" style="font-size: 12pt">	</span></span></span></span></span></p>
+            
+            <p  style="margin-bottom: 0.06in; "><span color="#008f00"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">______________________________________________</span></span></span></span></span></p>
+            <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0; margin-top: 0;">
       <span style="font-family:'Times New Roman, serif'"><b>
       @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
           <span>{{$tellUsAboutYou['fullname']}}</span>
@@ -880,7 +803,7 @@
           <span>(fullname)________________________________</span>
       @endif
       </b></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"></span><span color="#0432ff"><span style="font-family:'Times New Roman, serif'">
+            <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"></span><span color="#0432ff"><span style="font-family:'Times New Roman, serif'">
             @if(isset($tellUsAboutYou) && array_key_exists('address',$tellUsAboutYou) && !is_null($tellUsAboutYou['address']))
                 <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}}</span>
             @else
@@ -890,7 +813,7 @@
                 </span>
             @endif
         </span></span><span style="font-family:'Times New Roman, serif'"></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"></span><span color="#0432ff"><span style="font-family:'Times New Roman, serif'">
+            <p  style="margin-bottom: 0in; margin-top: 0;"><span style="font-family:'Times New Roman, serif'"></span><span color="#0432ff"><span style="font-family:'Times New Roman, serif'">
             @if(isset($tellUsAboutYou) && array_key_exists('city',$tellUsAboutYou) && !is_null($tellUsAboutYou['city']))
                 <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
             @else
@@ -913,100 +836,81 @@
                     <span style="text-transform: capitalize">(zip)_____________</span>
                   @endif
             </span></span><span style="font-family:'Times New Roman, serif'"></span></p>
-                <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"></span><span color="#0432ff"><span style="font-family:'Times New Roman, serif'">
+                <p  style="margin-bottom: 0in;  margin-top: 0;"><span style="font-family:'Times New Roman, serif'"></span><span color="#0432ff"><span style="font-family:'Times New Roman, serif'">
                 @if(isset($tellUsAboutYou) && array_key_exists('phone',$tellUsAboutYou) && !is_null($tellUsAboutYou['phone']))
                     <span style="text-transform: capitalize">{{$tellUsAboutYou['phone']}}</span>
                 @else
                     <span style="text-transform: capitalize">(phone)_____________</span>
                 @endif
 
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>WITNESS
+           
+            <p  style="margin-bottom: 0in;  text-align: center; line-height: 18px;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 12pt"><b>WITNESS
       STATEMENTS</b></span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">The
+            
+            <p  style="margin-bottom: 0in; line-height: 18px;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">The
       declarant voluntarily signed this document in my presence.</span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+            
+            <p class="western" style="margin-bottom: 0in; line-height: 10px;"><span ><b>WITNESS
+      1</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
+      </span><span >______________________</span></p>
+            <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in;  margin-top: 0;line-height: 18px;">
+                <span style="padding-left: 50px;">[signature]</span></p>
+            <p class="western" align="justify" style="margin-bottom: 0in;  padding-top: 15px;line-height: 10px;">
+                <span >____________________________</span><span >		</span><span style="padding-left: 122px;">______________________</span></p>
+            <p class="western" align="justify" style="margin-bottom: 0in;  margin-top: 0;line-height: 18px;">
+                <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
+            <p class="western" align="justify" style="margin-bottom: 0in;  padding:15px 0 0 350px;line-height: 10px;">
+                <span >							</span><span >______________________</span></p>
+            <p class="western" align="justify" style="margin-bottom: 0in;  padding-left: 350px; margin-top: 0;line-height: 18px;">
+                <span style="padding-left: 40px;">								[city, state, zip]</span></p>
+            <p class="western" style="margin-bottom: 0in; "><br/>
 
             </p>
-            <p  style="margin-left: 0.75in; margin-bottom: 0in; line-height: 100%">
+            
+            <p class="western" style="margin-bottom: 0in; line-height: 10px;"><span ><b>WITNESS
+      2</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
+      </span><span >______________________</span></p>
+            <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in;  margin-top: 0;">
+                <span style="padding-left: 50px;">[signature]</span></p>
+            <p class="western" align="justify" style="margin-bottom: 0in;  padding-top: 15px;line-height: 10px;">
+                <span >____________________________</span><span >		</span><span style="padding-left: 122px;">______________________</span></p>
+            <p class="western" align="justify" style="margin-bottom: 0in;  margin-top: 0;">
+                <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
+            <p class="western" align="justify" style="margin-bottom: 0in;  padding:15px 0 0 350px;line-height: 10px;">
+                <span >							</span><span >______________________</span></p>
+            <p class="western" align="justify" style="margin-bottom: 0in;  padding-left: 350px; margin-top: 0;">
+                <span style="padding-left: 40px;">								[city, state, zip]</span></p>
+            <p  style="margin-bottom: 0in; "><a name="_GoBack"></a>
                 <br/>
 
             </p>
-
-            <p class="western" style="margin-bottom: 0in; line-height: 100%"><span ><b>WITNESS
-      1</b></span><span >: </span><span ><u>____________________</u></span><span style="padding-left: 50px;">	Dated:
-      </span><span ><u>______________________</u></span></p>
-            <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
-                <span style="padding-left: 50px;">[signature]</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
-                <span ><u>____________________________</u></span><span >		</span><span style="padding-left: 122px;"><u>______________________</u></span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-                <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:15px 0 0 350px;">
-                <span >							</span><span ><u>______________________</u></span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
-                <span style="padding-left: 40px;">								[city, state, zip]</span></p>
-            <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p class="western" style="margin-bottom: 0in; line-height: 100%"><span ><b>WITNESS
-      2</b></span><span >: </span><span ><u>____________________</u></span><span style="padding-left: 50px;">	Dated:
-      </span><span ><u>______________________</u></span></p>
-            <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
-                <span style="padding-left: 50px;">[signature]</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
-                <span ><u>____________________________</u></span><span >		</span><span style="padding-left: 122px;"><u>______________________</u></span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-                <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:15px 0 0 350px;">
-                <span >							</span><span ><u>______________________</u></span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
-                <span style="padding-left: 40px;">								[city, state, zip]</span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><a name="_GoBack"></a>
-                <br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><b>NOTARY
+            <p  style="margin-bottom: 0in;  text-align: center;"><span style="font-family:'Times New Roman, serif'"><b>NOTARY
       ACKNOWLEDGEMENT (OPTIONAL)</b></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="2" style="font-size: 10pt">STATE
+            
+            <p  style="margin-bottom: 0in; line-height: 14px;"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="2" style="font-size: 10pt">STATE
       OF SOUTH DAKOTA</span></span><span ><span size="2" style="font-size: 10pt">	</span></span><span ><span size="2" style="font-size: 10pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span></span></span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt">					</span><span size="2" style="font-size: 10pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
+            <p  style="margin-bottom: 0in; line-height: 14px; margin-top: 0;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt">					</span><span size="2" style="font-size: 10pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
       ss.</span><span size="2" style="font-size: 10pt">&nbsp;</span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span color="#008f00"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="2" style="font-size: 10pt">COUNTY
+            <p  style="margin-bottom: 0in; line-height: 14px;margin-top: 0;"><span color="#008f00"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="2" style="font-size: 10pt">COUNTY
       OF ________________</span></span><span ><span size="2" style="font-size: 10pt">	</span></span><span ><span size="2" style="font-size: 10pt">)</span></span></span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt">Subscribed,
+            
+            <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt">Subscribed,
       sworn to and acknowledged before me by «</span><span ><span size="2" style="font-size: 10pt">CLIENT'S
       NAME</span></span><span size="2" style="font-size: 10pt">», the
-      principal, this </span><span size="2" style="font-size: 10pt"><u>_____</u></span><span size="2" style="font-size: 10pt">
-      day of </span><span size="2" style="font-size: 10pt"><u>________________</u></span><span size="2" style="font-size: 10pt">,
-      </span><span size="2" style="font-size: 10pt"><u>________________________</u></span><span size="2" style="font-size: 10pt">.</span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-            </p>
-            <p  style="margin-left: 3in; margin-bottom: 0in; line-height: 100%">
+      principal, this </span><span size="2" style="font-size: 10pt">_____</span><span size="2" style="font-size: 10pt">
+      day of </span><span size="2" style="font-size: 10pt">________________</span><span size="2" style="font-size: 10pt">,
+      </span><span size="2" style="font-size: 10pt">________________________</span><span size="2" style="font-size: 10pt">.</span></span></span></p>
+            
+            <p  style="margin-left: 3in; margin-bottom: 0in; ">
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt">	</span><span size="2" style="font-size: 10pt">______________________________________</span></span></span></p>
-            <p  style="margin-left: 3in; margin-bottom: 0in; line-height: 100%">
+            <p  style="margin-left: 3in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt">	</span><span size="2" style="font-size: 10pt">NOTARY
       PUBLIC</span></span></span></p>
-            <p style="margin-left: 3in; margin-top: 0.06in; margin-bottom: 0in; line-height: 100%">
+            <p style="margin-left: 3in; margin-top: 0.06in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt">My
       commission expires: _________________</span></span></span></p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Power of Attorney for Health Care and Living Will of {{$tellUsAboutYou['fullname']}}<br>
                 Page 7 of 7
@@ -1016,7 +920,7 @@
                 Durable Power of Attorney for Health Care and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 7 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- Page 7-->
 
