@@ -225,10 +225,11 @@ class BlogController extends Controller
                             ->orWhere('meta_description', 'LIKE', '%'.Input::get('q').'%');
             }
 
+            $totalBlogs = $blogs->count();
+            
             $blogs      = $blogs->offset(($page-1)*10)->limit(10)
                               ->with('getComments')->orderBy('created_at','DESC');
             $blogs = $blogs->get();
-            $totalBlogs = $blogs->count();
 
             $imageLink  = url('/blogImage').'/';
             if ($blogs) {
