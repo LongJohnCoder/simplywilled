@@ -1,9 +1,10 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {Subscription} from "rxjs/Subscription";
-import {UserService} from "../../../user.service";
-import {ProgressbarService} from "../../shared/services/progressbar.service";
-import {UserAuthService} from "../../../user-auth/user-auth.service";
+import {Subscription} from 'rxjs/Subscription';
+import {UserService} from '../../../user.service';
+import {ProgressbarService} from '../../shared/services/progressbar.service';
+import {UserAuthService} from '../../../user-auth/user-auth.service';
 import {Location} from '@angular/common';
+import {GlobalPdfService} from '../services/global-pdf.service';
 
 @Component({
   selector: 'app-financial-poa-doc',
@@ -39,7 +40,18 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   loggedInUser: any;
   getUserDetailsSubscription: Subscription;
   count: number;
+  states = {
+    fl: false,
+    md: false,
+    mn: false,
+    ny: false,
+    nu: false
+  };
+  pdfData: any;
+  globalPDFSubscription: Subscription;
+
   constructor(
+    private globalPDFService: GlobalPdfService,
     private userService: UserService,
     private userAuth: UserAuthService,
     private progressbarService: ProgressbarService,
@@ -48,6 +60,14 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     this.loggedInUser = this.userAuth.getUser();
     this.getUserDetails();
     let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+    this.globalPDFSubscription = this.globalPDFService.fetchData(token).subscribe(
+      (response: any) => {
+        if (response.status) {
+          this.pdfData = response.data;
+          console.log(this.pdfData);
+        }
+      }
+    );
     this.progressSubscription = this.progressbarService.fetchTotalCompletion(token).subscribe(
       (progress: any) => {
         if (progress.status !== undefined) {
@@ -92,6 +112,13 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     this.docScrolled = 0;
     this.thumbIndex = 0;
     this.liCount = this.docThumbImg.length * 114;
+    this.states = {
+      fl: false,
+      md: false,
+      mn: false,
+      ny: false,
+      nu: true
+    };
   }
 
   scrollDoc(index: number) {
@@ -158,6 +185,12 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.getUserDetailsSubscription !== undefined) {
       this.getUserDetailsSubscription.unsubscribe();
+    }
+    if (this.globalPDFSubscription !== undefined) {
+      this.globalPDFSubscription.unsubscribe();
+    }
+    if (this.progressSubscription !== undefined) {
+      this.progressSubscription.unsubscribe();
     }
   }
 }

@@ -41,7 +41,7 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
     private progressBarService: ProgressbarService,
     private router: Router
   ) {
-    this.progressBarService.changeWidth({width: 0});
+    this.progressBarService.changeWidth({width: 50});
     this.accessToken = this.parseToken();
     this.getStates();
     this.getPoaData();
@@ -117,7 +117,7 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
                 case 'Florida':
                 case 'Maryland':
                 case 'Minnesota':
-                case 'New York': this.router.navigate(['/dashboard/protect-your-finances-details']);
+                case 'New York': this.router.navigate(['/dashboard']);
                                  break;
                 default:         break;
             }
@@ -185,7 +185,7 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
       this.postPOASubscription = this.protectYourFinancesService.postPoaDetails(this.accessToken, request).subscribe(
         (data) => {
           if (data.status) {
-            this.router.navigate(['/dashboard/protect-your-finances-details']);
+            this.router.navigate(['/dashboard']);
           } else {
             console.log(data.message);
           }
@@ -215,7 +215,7 @@ export class ProtectYourFinancesComponent implements OnInit, OnDestroy {
     if (this.stateInfoSubscription) {
       this.stateInfoSubscription.unsubscribe();
     }
-    if(this.postPOASubscription !== undefined) {
+    if (this.postPOASubscription !== undefined) {
       this.postPOASubscription.unsubscribe();
     }
   }

@@ -44,6 +44,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
     private progressBarService: ProgressbarService,
     private router: Router
   ) {
+    this.progressBarService.changeWidth({width: 0});
     this.states = States.States;
     this.accessToken = this.parseToken();
     this.toolTipMessageList = {
@@ -111,11 +112,11 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
           case 'Florida':
           case 'Maryland':
           case 'Minnesota':
-          case 'New York':  this.progressBarService.changeWidth({width: 0});
-                            this.router.navigate(['/dashboard/protect-your-finances-details']);
+          case 'New York':  //this.progressBarService.changeWidth({width: 0});
+                            //this.router.navigate(['/dashboard/protect-your-finances-details']);
                             this.trackPage = true;
                             break;
-          default:          this.progressBarService.changeWidth({width: 50});
+          default:          //this.progressBarService.changeWidth({width: 0});
                             this.trackPage = false;
                             break;
         }
@@ -195,7 +196,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
   /**Set dynamic validations*/
   addConditionalValidators() {
     this.isInformSubscription = this.poaDetailsForm.get('is_inform').valueChanges.subscribe(
-      (is_inform) => { console.log('isinform',is_inform);
+      (is_inform) => { console.log('isinform', is_inform);
         switch (is_inform) {
           case 0:   if (this.poaDetailsForm.get('is_backupattorney').value === 1) {
                       this.clearValidationFor([
@@ -220,7 +221,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
 
     this.isBackupAttorneySubscription = this.poaDetailsForm.get('is_backupattorney').valueChanges.subscribe(
       (is_backupattorney) => {
-        console.log('isbackupatt',is_backupattorney);
+        console.log('isbackupatt', is_backupattorney);
         switch (is_backupattorney) {
           case 0:   this.clearValidationFor([
                        'backup_phone', 'backup_fullname', 'backup_address', 'backup_email', 'backup_city', 'backup_zip', 'backup_state'
@@ -249,7 +250,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
     );
 
     this.isBackupInformSubscription = this.poaDetailsForm.get('backup_is_inform').valueChanges.subscribe(
-      (backup_is_inform) => { console.log('backupisinform',backup_is_inform);
+      (backup_is_inform) => { console.log('backupisinform', backup_is_inform);
         switch (backup_is_inform) {
           case 0:  this.clearValidationFor([
                       'backup_email'
@@ -288,7 +289,7 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
    * sends the data to the server
    */
   send() {
-    console.log(this.poaDetailsForm.valid);
+    console.log(this.trackPage);
     if (this.poaDetailsForm.valid) {
       this.loading = true;
       let request = this.createRequest();
@@ -302,7 +303,11 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
       this.protectYourFinancesService.postPoaDetails(this.accessToken, request).subscribe(
         (data) => {
           if (data.status) {
-            this.router.navigate(['/dashboard']);
+            if (this.trackPage) {
+              this.router.navigate(['/dashboard']);
+            } else {
+              this.router.navigate(['/dashboard/protect-your-finances']);
+            }
           }
         }, (error: any) => {
           this.errors.errorFlag = true;
@@ -433,10 +438,11 @@ export class ProtectYourFinancesDetailsComponent implements OnInit, OnDestroy {
   }
   /**Return back to previous step*/
   goBack() {
-    if (this.trackPage) {
+    this.router.navigate(['/dashboard']);
+   /* if (this.trackPage) {
       this.router.navigate(['/dashboard']);
     } else {
       this.router.navigate(['/dashboard/protect-your-finances']);
-    }
+    }*/
   }
 }

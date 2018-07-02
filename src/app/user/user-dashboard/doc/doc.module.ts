@@ -58,6 +58,12 @@ import { MtComponent } from './healthcare-poa-doc/mt/mt.component';
 import { GaComponent } from './healthcare-poa-doc/ga/ga.component';
 import { DeComponent } from './healthcare-poa-doc/de/de.component';
 import { AzComponent } from './healthcare-poa-doc/az/az.component';
+import { FlPoaComponent } from './financial-poa-doc/fl-poa/fl-poa.component';
+import { MdPoaComponent } from './financial-poa-doc/md-poa/md-poa.component';
+import { MnPoaComponent } from './financial-poa-doc/mn-poa/mn-poa.component';
+import { NyPoaComponent } from './financial-poa-doc/ny-poa/ny-poa.component';
+import { UniformPoaComponent } from './financial-poa-doc/uniform-poa/uniform-poa.component';
+import { NonuniformPoaComponent } from './financial-poa-doc/nonuniform-poa/nonuniform-poa.component';
 
 @NgModule({
   imports: [
@@ -122,6 +128,12 @@ import { AzComponent } from './healthcare-poa-doc/az/az.component';
     GaComponent,
     DeComponent,
     AzComponent,
+    FlPoaComponent,
+    MdPoaComponent,
+    MnPoaComponent,
+    NyPoaComponent,
+    UniformPoaComponent,
+    NonuniformPoaComponent,
   ]
 })
 export class DocModule { }
