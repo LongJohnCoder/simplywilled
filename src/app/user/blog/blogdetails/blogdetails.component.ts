@@ -20,6 +20,7 @@ export class BlogdetailsComponent implements OnInit {
     BlogId:any;
     createBlogCommentMessage:string;
     baseURL = environment.base_url;
+    loaderrrr: boolean;
 
     constructor(private router: Router,
                 private route: ActivatedRoute,
@@ -27,6 +28,7 @@ export class BlogdetailsComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.loaderrrr = true;
         this.getBlogDetails();
         this.createFormControls();
         this.createForm();
@@ -39,8 +41,9 @@ export class BlogdetailsComponent implements OnInit {
                 this.blogDetails = data.data.blog;
                 this.imageLink = data.data.imageLink;
                 this.BlogId = data.data.blog.id;
+                this.loaderrrr = false;
             }
-        )
+        );
     }
 
     createFormControls() {

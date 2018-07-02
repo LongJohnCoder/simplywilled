@@ -64,6 +64,10 @@
     font-size: 19px;
 }
 
+.trending_main > h1 {
+    color: #0a4e90;
+}
+
 @media screen and (max-width:1310px){
     .trending_right_ul{
         width: 100%;

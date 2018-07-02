@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { BlogService } from './blog.service';
 import * as moment from 'moment';
 import {FormControl, Validators, FormGroup} from '@angular/forms';
 import {environment} from '../../../environments/environment';
+import {ActivatedRoute, Route} from '@angular/router';
 
 
 @Component({
@@ -22,13 +23,19 @@ export class BlogComponent implements OnInit {
     p: number;
     loader: boolean;
     baseURL = environment.base_url;
-   constructor(private blogService: BlogService) {
-        
+    queryString: string;
+
+   constructor(
+       private blogService: BlogService,
+       private route: ActivatedRoute
+       ) {
+
    }
 
   ngOnInit() {
       this.p = 1;
       this.totalBlog = null;
+      this.queryString = this.route.snapshot.queryParamMap.get('q');
       this.populateBlog();
       this.populateBlogCategory();
       this.populatePopularBlogPosts();
@@ -40,7 +47,7 @@ export class BlogComponent implements OnInit {
 
     populateBlog() {
         this.loader = true;
-        this.blogService.blogList(this.p).subscribe(
+        this.blogService.blogList(this.p, this.queryString).subscribe(
             (data: any) => {
                  this.blogList = data.data.BlogDetails;
                  this.imageLink = data.data.imageLink;
@@ -52,7 +59,7 @@ export class BlogComponent implements OnInit {
     }
 
     populateBlogCategory() {
-      this.blogService.getBlogCategoryList().subscribe(
+      this.blogService.getBlogCategoryList({'q': this.queryString}).subscribe(
           (data: any) => {
               this.blogCategoryList = data.data.categories;
           }

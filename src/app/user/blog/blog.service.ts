@@ -10,16 +10,24 @@ export class BlogService {
         private httpClient: HttpClient
     ) { }
 
-    blogList(page: number): Observable <any> {
-        return this.httpClient.get(environment.API_URL + 'user/blog-list?page=' + page);
+    blogList(page: number, searchParam: string): Observable <any> {
+        let params = 'page=' + page;
+        if (searchParam !== null && searchParam !== undefined && searchParam !== '') {
+            params += '&q=' + searchParam;
+        }
+        return this.httpClient.get(environment.API_URL + 'user/blog-list?' + params);
     }
 
     getBlogDetails(slug: string): Observable <any> {
         return this.httpClient.get(environment.API_URL + 'user/view-blog/?query=' + slug );
     }
 
-    getBlogCategoryList(): Observable <any> {
-        return this.httpClient.get(environment.API_URL + 'user/blog-category-list');
+    getBlogCategoryList(body: any): Observable <any> {
+        let params = '?';
+        if (body.q !== null && body.q !== undefined && body.q !== '') {
+            params += 'q=' + body.q;
+        }
+        return this.httpClient.get(environment.API_URL + 'user/blog-category-list' + params);
     }
 
     getBlogDetailsFromCategory(slug: string, page: number): Observable <any> {

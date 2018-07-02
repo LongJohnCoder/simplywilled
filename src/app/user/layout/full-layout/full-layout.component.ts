@@ -15,6 +15,8 @@ export class FullLayoutComponent implements OnInit {
   goUp:boolean = false;
   public pageLoad : boolean = true;
   baseURL = environment.base_url;
+  blogSearch: string;
+  blogSearchQuery: boolean;
 
   constructor( private authService: UserAuthService, private router: Router) { 
     router.events
@@ -33,7 +35,9 @@ export class FullLayoutComponent implements OnInit {
     this.isLogIn = this.authService.isAuthenticated();
     this.menutogle = false;
     window.addEventListener('scroll', this.scroll, true);
-    console.log('Ready');
+    // console.log('Ready');
+      console.log(this.blogSearch);
+      this.blogSearchQuery = false;
   }
 
   scroll = (): void => {
@@ -76,5 +80,19 @@ export class FullLayoutComponent implements OnInit {
       window.open(this.baseURL + 'api/sitemap.xml', '_blank');
   }
 
+    /**
+     * Function for blog search
+     */
+  blogSearchSubmit() {
+    if (this.blogSearch !== undefined && this.blogSearch !== null) {
+        this.blogSearchQuery = true;
+        // this.router.navigate(['/blog?q=' + this.blogSearch]);
+        window.location.href = 'blog?q=' + this.blogSearch;
+    }
+  }
+
+    blogLink() {
+        window.location.href = 'blog';
+    }
 
 }

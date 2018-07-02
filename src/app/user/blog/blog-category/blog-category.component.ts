@@ -65,8 +65,8 @@ export class BlogCategoryComponent implements OnInit {
         );
     }
 
-    populateBlogCategory(){
-        this.blogService.getBlogCategoryList().subscribe(
+    populateBlogCategory() {
+        this.blogService.getBlogCategoryList({}).subscribe(
             (data: any) => {
                 this.blogCategoryList = data.data.categories;
             }
