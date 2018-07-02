@@ -217,10 +217,19 @@ class BlogController extends Controller
             // $blogs = Categories::with(['blogMapping.blog' => function($q) {
             //     $q->where('status','1');
             // }])->orderBy('created_at','DESC')->get();
-            $totalBlogs = Blogs::where('status','1')->count();
+            $blogs      = Blogs::where('status','1');
+            if (Input::has('q')) {
+              $blogs = $blogs->where('title', 'LIKE', '%'.Input::get('q').'%')
+                            ->orWhere('excerpt', 'LIKE', '%'.Input::get('q').'%')
+                            ->orWhere('body', 'LIKE', '%'.Input::get('q').'%')
+                            ->orWhere('meta_description', 'LIKE', '%'.Input::get('q').'%');
+            }
 
-            $blogs      = Blogs::where('status','1')->offset(($page-1)*10)->limit(10)
-                              ->with('getComments')->orderBy('created_at','DESC')->get();
+            $blogs      = $blogs->offset(($page-1)*10)->limit(10)
+                              ->with('getComments')->orderBy('created_at','DESC');
+            $blogs = $blogs->get();
+            $totalBlogs = $blogs->count();
+
             $imageLink  = url('/blogImage').'/';
             if ($blogs) {
                 return response()->json([
