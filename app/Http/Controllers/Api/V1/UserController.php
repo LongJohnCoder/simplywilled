@@ -842,7 +842,7 @@ class UserController extends Controller
                 Mail::send('new_emails.personal_representative_appoint', $arr, function($mail) use($personalRepresentative){
                     $mail->from(config('settings.email'), 'Notice for Executor');
                     $mail->to(strtolower($personalRepresentative['email']), $personalRepresentative['fullname'])
-                    ->subject('You are requested to be an executor');
+                    ->subject('SimplyWilled.com – You have been appointed as a Personal Representative');
                 });
 
                 if(Mail::failures()) {
@@ -871,7 +871,7 @@ class UserController extends Controller
                 Mail::send('new_emails.personal_representative_appoint_backup', $arr, function($mail) use($personalRepresentative){
                     $mail->from(config('settings.email'), 'Notice for Backup Executor');
                     $mail->to(strtolower($personalRepresentative['email']), $personalRepresentative['fullname'])
-                    ->subject('You are requested to be an backup executor');
+                    ->subject('SimplyWilled.com – You have been appointed as a Backup Personal Representative');
                 });
 
                 if(Mail::failures()) {
@@ -1088,7 +1088,7 @@ class UserController extends Controller
                         Mail::send('new_emails.guardian', $arr, function($mail) use($guardian){
                             $mail->from(config('settings.email'), 'Notice for Guardian Appointment');
                             $mail->to(strtolower($guardian['email']), $guardian['fullname'])
-                            ->subject('You are requested to be Guardian for Minor Children');
+                            ->subject('SimplyWilled.com – You have been appointed as a Guardian for Minor Children');
                         });
                         if(Mail::failures()) {
                             \Log::info('email sending error for guardian for minor children');
@@ -1115,7 +1115,7 @@ class UserController extends Controller
                         Mail::send('new_emails.guardian_backup', $arr, function($mail) use($guardian){
                             $mail->from(config('settings.email'), 'Notice for Backup Guardian Appointment');
                             $mail->to(strtolower($guardian['email']), $guardian['fullname'])
-                            ->subject('You are requested to be Backup Guardian for Minor Children');
+                            ->subject('SimplyWilled.com – You have been appointed as a Backup Guardian for Minor Children');
                         });
                         if(Mail::failures()) {
                             \Log::info('email sending error for guardian for minor children');
@@ -1361,7 +1361,7 @@ class UserController extends Controller
                         Mail::send('new_emails.pet_caretaker', $arr, function($mail) use($petGuardian, $arr){
                             $mail->from(config('settings.email'), 'Notice for Pet Caretaker Appointment');
                             $mail->to(strtolower($petGuardian['email']), $petGuardian['fullname'])
-                            ->subject('You are requested to be Pet Caretaker');
+                            ->subject('SimplyWilled.com – You have been appointed as a Pet Caretaker');
                         });
                         if(Mail::failures()) {
                             \Log::info('email sending error for pet care taker');
@@ -1389,7 +1389,7 @@ class UserController extends Controller
                         Mail::send('new_emails.pet_caretaker_backup', $arr, function($mail) use($petGuardian, $arr){
                             $mail->from(config('settings.email'), 'Notice for Backup Pet Caretaker Appointment');
                             $mail->to(strtolower($petGuardian['email']), $petGuardian['fullname'])
-                            ->subject('You are requested to be Backup Pet Caretaker');
+                            ->subject('SimplyWilled.com – You have been appointed as a Backup Pet Caretaker');
                         });
                         if(Mail::failures()) {
                             \Log::info('email sending error for backup pet caretaker');

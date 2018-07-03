@@ -59,7 +59,7 @@
 
                                     <strong style="color: #0a5dab;">Finally</strong>, Download and Print your documents. With our simple instructions to sign your will, it will take you only a few minutes! <br><br>
                                     <strong style="color: #0a5dab;">Simple. Affordable. Enforceable</strong><br><br>
-                                    <strong style="color: #0a5dab;">If you have any question, feel free to contact us!</strong><br><br>
+                                    <!-- <strong style="color: #0a5dab;">If you have any question, feel free to contact us!</strong><br><br> -->
                                     <strong style="color: #0a5dab;">Sign the email with “Sincerely, SimplyWilled’s team”</strong><br><br>
                             </p>
                         </td>

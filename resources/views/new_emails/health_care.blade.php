@@ -48,9 +48,19 @@
                         </td>
                     </tr>
                     <tr>
+                      @php
+                      if(strpos($executiveFullName,' ') >= 0)
+                      {
+                        $pieces = explode(" ", $executiveFullName);
+                        $name = $pieces[0]; // piece1
+                      }else {
+                        $name = $executiveFullName;
+                      }
+                      @endphp
                         <td style="padding:0 30px; background: #f2f2f2;">
-                            <h1 style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">Health Care Power of Attorney ({{ucwords(strtolower($executiveFullName))}} 1st Choice), </h1>
-                            <p style="color: #373737; font-size: 20px; line-height: 30px;">
+                          <h1 style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">Hi {{ucwords($name)}}, </h1>
+                          <p style="color: #373737; font-size: 20px; line-height: 30px;">
+                            You have been appointed as Health Care Agent.<br><br>
                                     <strong>{{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}}</strong> recently joined the thousands of people who have used <a href="{{url('/')}}" target="_blank" style="color: #0a5dab;">SimplyWilled.com</a> to create their will and selected you to serve as their Primary Healthcare Power of Attorney. Being selected as a Primary Healthcare Power of Attorney is an important role reserved for those we trust the most. This email is being sent to you so you can let <strong>{{ucwords(strtolower($firstName))}}</strong> know whether you accept or decline this honor.
                                 <br><br>
                                 <strong style="font-size: 22px;">What being selected as Primary Healthcare Power of Attorney means for You:</strong>
