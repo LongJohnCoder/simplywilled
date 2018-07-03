@@ -558,10 +558,10 @@ Route::group(['prefix' => 'v1'], function() {
         Route::group(['middleware' => ['jwt.auth','user.auth']], function(){
 
 
-            // Route::get('final-disposition-pdf', [
-            //   'uses'  =>  'Api\V1\PdfController@finalDispositionPdf',
-            //   'as'    =>  'finalDispositionPdf'
-            // ]);
+            Route::get('final-disposition-pdf', [
+              'uses'  =>  'Api\V1\PdfController@finalDisposition',
+              'as'    =>  'finalDisposition'
+            ]);
 
             Route::get('finances-doc', [
               'uses'  =>  'Api\V1\PdfController@financesDoc',
