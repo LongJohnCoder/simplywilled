@@ -10,26 +10,28 @@ export class ForgetPasswordComponent implements OnInit {
   email: string;
   responseType: boolean;
   responseMsg: string;
+    showLoader: boolean;
   constructor(
       private userService: UserService
   ) { }
 
   ngOnInit() {
+      this.showLoader = false;
   }
 
   resetPassSubmit() {
+      this.showLoader = true;
       this.userService.forgetPassword({email: this.email}).subscribe(
           (response: any) => {
-              if (response.status === 'true' ) {
                   this.responseType = true;
                   this.responseMsg = response.message;
-              } else {
-                  this.responseType = false;
-                  this.responseMsg = response.message;
-              }
+              this.showLoader = false;
+
           }, (error: any) => {
             this.responseType = false;
             this.responseMsg = error.error.message;
+              this.showLoader = false;
+
           }
       );
   }

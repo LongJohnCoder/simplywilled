@@ -14,7 +14,9 @@ export class ResetPasswordComponent implements OnInit {
   confirmPassword: string;
   respType: boolean;
   respMsg: string;
-  constructor(
+    showLoader: boolean;
+
+    constructor(
       private route: ActivatedRoute,
       private userService: UserService,
       private router: Router,
@@ -22,11 +24,13 @@ export class ResetPasswordComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+      this.showLoader  = false;
       this.email = this.route.snapshot.paramMap.get('email');
       this.token = this.route.snapshot.paramMap.get('token');
   }
 
     resetSubmit() {
+        this.showLoader = true;
       const data = {
           email: this.email, token: this.token,
           password: this.password, confirm_password: this.confirmPassword
@@ -35,6 +39,8 @@ export class ResetPasswordComponent implements OnInit {
             (response: any) => {
                 this.respType = true;
                 this.respMsg = response.message;
+                this.showLoader = false;
+
                 setTimeout(() => {
                     this.router.navigate(['/sign-in']);
                 }, 2000);
@@ -42,6 +48,8 @@ export class ResetPasswordComponent implements OnInit {
             }, (error: any) => {
                 this.respType = false;
                 this.respMsg = error.error.message;
+                this.showLoader = false;
+
             }
         );
     }
