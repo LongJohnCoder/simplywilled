@@ -201,7 +201,7 @@ p strong{
       <div style="text-align: center;padding: 15px 0;">
         <a href="{{url('/')}}/sign-in"><img src="{{url('/')}}/images/loginToAccount.jpg" alt="accept"></a>
       </div>
-      
+
       <!-- Contact & Follow Buttons -->
       <div style="text-align: center;padding: 15px 0;">
         <div style="text-align: right;">
