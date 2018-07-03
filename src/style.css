@@ -2727,6 +2727,11 @@ select.form-control{
   z-index: 100;
 }
 
+.guarantee .macfee, .guarantee .norton{
+    width: 100px;
+    height: auto;
+}
+
 .customTooltip{
   position: relative;
   display: inline-block;

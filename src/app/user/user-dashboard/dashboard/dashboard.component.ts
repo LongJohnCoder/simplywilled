@@ -221,6 +221,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       }
     }
 
+    /**Sitemap Open*/
     sitemapOpen() {
         window.open(environment.base_url + 'api/sitemap.xml', '_blank');
     }
