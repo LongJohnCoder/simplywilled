@@ -175,7 +175,7 @@ p strong{
         <p style="font-family: arial; font-size:16px; color: #373737; text-align: center;">Your payment has been successfully completed</p>
         <p style="font-family: arial; font-size:16px; color: #373737; text-align: center;">Please <a href="{{url('/')}}">click here</a> to access dashboard.</p>
         <p style="font-family: arial; font-size:16px; color: #373737; text-align: center;"><strong>Please find the transaction details bellow:</strong></p>
-        <table cellpadding="0" cellspacing="0" border="0" align="center" style="border: 1px solid #ccc; width: 100%; border-radius: 10px; font-family: arial; font-size:14px; color: #373737;">
+        <table cellpadding="0" cellspacing="0" border="0" align="center" style="border: 1px solid #ccc; width: 100%; border-radius: 10px; font-family: arial; font-size:14px; color: #373737; max-width: 400px;">
         <tr>
         <td width="50%" style="padding: 10px; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc;">Transaction ID</td>
         <td width="50%" style="padding: 10px; color: #2479b8; font-weight: bold; border-bottom: 1px solid #ccc;">{{$transactionID}}</td>
@@ -203,15 +203,15 @@ p strong{
       </div>
 
       <!-- Contact & Follow Buttons -->
-      <div style="text-align: center;padding: 15px 0;">
-        <div style="text-align: right;">
+      <div style="text-align: center;padding: 30px 0;">
+        <div style="text-align: center;">
             <img src="{{url('/')}}/images/callus.jpg" style="height: 155px; margin-top: -40px;" alt="">
         </div>
-        <ul style="list-style-type: none; margin-top: -8px;">
-            <li style="float: right; padding: 5px; "><a href="https://www.facebook.com/SimplyWilled"><img src="{{url('/')}}/images/fd-icon.png"></a></li>
-            <li style="float: right; padding: 5px;"><a href="https://twitter.com/simplywilled"><img src="{{url('/')}}/images/ttr-icon.png"></a></li>
-            <li style="float: right; padding: 5px;"><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{url('/')}}/images/in-icon.png"></a></li>
-            <li style="float: right; padding: 5px;"><a href="https://www.instagram.com/simplywilled"><img src="{{url('/')}}/images/gram-icon.png"></a></li>
+        <ul style="list-style-type: none; text-align:center;">
+            <li style="display: inline-block; padding: 5px; "><a href="https://www.facebook.com/SimplyWilled"><img src="{{url('/')}}/images/fd-icon.png"></a></li>
+            <li style="display: inline-block; padding: 5px;"><a href="https://twitter.com/simplywilled"><img src="{{url('/')}}/images/ttr-icon.png"></a></li>
+            <li style="display: inline-block; padding: 5px;"><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{url('/')}}/images/in-icon.png"></a></li>
+            <li style="display: inline-block; padding: 5px;"><a href="https://www.instagram.com/simplywilled"><img src="{{url('/')}}/images/gram-icon.png"></a></li>
           </ul>
       </div>
     </div>
