@@ -175,7 +175,7 @@ p strong{
         <p style="font-family: arial; font-size:16px; color: #373737; text-align: center;">Your payment has been successfully completed</p>
         <p style="font-family: arial; font-size:16px; color: #373737; text-align: center;">Please <a href="{{url('/')}}">click here</a> to access dashboard.</p>
         <p style="font-family: arial; font-size:16px; color: #373737; text-align: center;"><strong>Please find the transaction details bellow:</strong></p>
-        <table cellpadding="0" cellspacing="0" border="0" align="center" style="border: 1px solid #ccc; width: 100%; border-radius: 10px; font-family: arial; font-size:14px; color: #373737; max-width: 400px;">
+        <table cellpadding="0" cellspacing="0" border="0" align="center" style="border: 1px solid #ccc; width: 100%; border-radius: 10px; font-family: arial; font-size:14px; color: #373737; max-width: 515px;">
         <tr>
         <td width="50%" style="padding: 10px; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc;">Transaction ID</td>
         <td width="50%" style="padding: 10px; color: #2479b8; font-weight: bold; border-bottom: 1px solid #ccc;">{{$transactionID}}</td>
@@ -199,7 +199,7 @@ p strong{
         </table>
       </div>
       <div style="text-align: center;padding: 15px 0;">
-        <a href="{{url('/')}}/sign-in"><img src="{{url('/')}}/images/loginToAccount.jpg" alt="accept"></a>
+        <a href="{{url('/')}}/sign-in"><img src="{{url('/')}}/images/loginAccount.png" alt="accept"></a>
       </div>
 
       <!-- Contact & Follow Buttons -->
