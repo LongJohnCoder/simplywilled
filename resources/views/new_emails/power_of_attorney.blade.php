@@ -117,6 +117,17 @@
             </td>
         </tr>
     </table>
-
+    <!-- Contact & Follow Buttons -->
+    <div style="text-align: center;padding: 15px 0;">
+      <div style="text-align: right;">
+          <img src="{{url('/')}}/images/callus.jpg" style="height: 155px; margin-top: -40px;" alt="">
+      </div>
+      <ul style="list-style-type: none; margin-top: -8px;">
+          <li style="float: right; padding: 5px; "><a href="https://www.facebook.com/SimplyWilled"><img src="{{url('/')}}/images/fd-icon.png"></a></li>
+          <li style="float: right; padding: 5px;"><a href="https://twitter.com/simplywilled"><img src="{{url('/')}}/images/ttr-icon.png"></a></li>
+          <li style="float: right; padding: 5px;"><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{url('/')}}/images/in-icon.png"></a></li>
+          <li style="float: right; padding: 5px;"><a href="https://www.instagram.com/simplywilled"><img src="{{url('/')}}/images/gram-icon.png"></a></li>
+        </ul>
+    </div>
 </body>
 </html>
