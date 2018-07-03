@@ -37,7 +37,7 @@
       </div>
       <div  *ngIf="disinheritForm.value.disinherit == '1'">
       <div class="form-group">
-        <label>Disinherited individual’s Full Legal Name:</label>
+        <label>Disinherited Individual’s Full Legal Name:</label>
         <input type="text" formControlName="fullname" class="form-control">
           <div *ngIf="!disinheritForm.get('fullname').valid && disinheritForm.get('fullname').touched">
               <span *ngIf="disinheritForm.get('fullname').hasError('required')" class="error_txt">Please provide a proper capitalized full legal name</span>
@@ -45,7 +45,7 @@
           </div>
       </div>
       <div class="form-group">
-        <label>Disinherited individual’s relationship to you:</label>
+        <label>Disinherited Individual’s relationship to you:</label>
         <select formControlName="relationship"  class="form-control" (change)="addRemoveOprions()">
           <option value="">Select Relationship</option>
           <option value="Wife">Wife</option>
@@ -73,7 +73,7 @@
               </div>
           </div>
       <div class="form-group">
-        <label>Disinherited individual’s Gender:</label>
+        <label>Disinherited Individual’s Gender:</label>
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [ngClass]="{'active': disinheritForm.value.gender == 'M'}">

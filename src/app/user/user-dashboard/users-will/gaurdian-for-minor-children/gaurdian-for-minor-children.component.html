@@ -38,7 +38,7 @@
     </div>
     <hr>
     <div *ngIf="myForm.value.isGuardianMinorChildren == 'Yes'">
-      <h2>Name Your Children’s’ Guardian
+      <h2>Name Your Children’s Guardian
           <app-global-tooltip (click)="toolTipClicked('first_guardian')" [tooltipMessages]='toolTipMessageList.first_guardian' toolTipType="first_guardian"></app-global-tooltip>
       </h2>
       <div formArrayName="guardian">
@@ -54,7 +54,7 @@
             </div>
             </div>
             <div class="form-group ">
-              <label>Their Relationship To You: </label>
+              <label>Guardian’s relationship to you: </label>
               <select name="first_guardian_relationship" class="form-control" formControlName="relationship_with" #relationship_with (change)="changeRelationshipValidation(relationship_with.value)">
                 <option value="">Select Relationship</option>
                 <option value="Wife">Wife</option>
@@ -185,7 +185,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label>Would you like to appoint a Backup Guardians for your minor children?
+        <label>Would you like to appoint a Backup Guardian for your minor children?
             <app-global-tooltip (click)="toolTipClicked('backup_guardian')" [tooltipMessages]='toolTipMessageList.backup_guardian' toolTipType="backup_guardian"></app-global-tooltip>
         </label>
         <ul class="radio_ul6">
@@ -221,7 +221,7 @@
               </div>
             </div>
             <div class="form-group ">
-              <label>Their Relationship To You: </label>
+              <label>Backup Guardian’s relationship to you: </label>
               <select name="first_guardian_relationship" class="form-control" formControlName="relationship_with" #backup_relationship (change)="changeBackupRelationshipValidation(backup_relationship.value)">
                 <option value="">Select Relationship</option>
                 <option value="Wife">Wife</option>

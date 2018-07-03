@@ -53,7 +53,7 @@
     <li><a routerLink="/dashboard/your-estate-distributed" class="gift_edit_form" *ngIf="!showAddGift">Next</a></li>
   </ul> -->
   <div class="form-footer" *ngIf="!showAddGift">
-    <a routerLink="/dashboard/tell-you-make-specific-gifts" class="btn common-button btn-grey pull-left">Go Back</a>
+    <a routerLink="/dashboard/personal-property-distributed" class="btn common-button btn-grey pull-left">Go Back</a>
     <a routerLink="/dashboard/your-estate-distributed" class="btn common-button btn-complete">Next</a>
   </div>
 </div>
@@ -61,7 +61,7 @@
 <!--make decision which view to open-->
 <div id="gift_packages" *ngIf="showAddGift">
   <div class="main-content tellusaboutyou main-content-bottom">
-    <h2 class="singing_instruction3">
+    <h2 class="singing_instruction3" style="text-align: left; padding: 0 0 30px 9px;">
       Types Of Gifts
       <app-global-tooltip (click)="toolTipClicked('gift_type')" [tooltipMessages]='toolTipMessageList.gift_type' toolTipType="gift_type"></app-global-tooltip>
     </h2>
@@ -124,7 +124,7 @@
   <li><a routerLink="/dashboard/your-estate-distributed">Next</a></li>
 </ul> -->
 <div class="form-footer" *ngIf="showAddGift">
-  <a routerLink="/dashboard/tell-you-make-specific-gifts" class="btn common-button btn-grey pull-left">Go Back</a>
+  <a routerLink="/dashboard/personal-property-distributed" class="btn common-button btn-grey pull-left">Go Backk</a>
   <a (click)="submit()" class="btn common-button btn-complete">Next</a>
 </div>
 <!--make decision which view to open start-->

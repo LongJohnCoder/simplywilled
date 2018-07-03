@@ -31,7 +31,7 @@
             <!--</ul>-->
 
             <div class="form-group">
-              <h3 class="questions">Is this Real Property your primary residence?</h3>
+              <h3 class="questions" style="margin-top: 14px !important;">Is this Real Property your primary residence?</h3>
               <ul class="radio_ul4">
                 <li>
                   <label class="radio_custom zero_nine_page yesNo"  [ngClass]="{'active': flags.residenceYesFlag}">
@@ -139,7 +139,7 @@
             </div>
 
             <div class="form-group">
-              <label class="legal_name_benifets">Zip</label>
+              <label class="legal_name_benifets">Zip Code </label>
               <input type="text" class="form-control capitalize_txt" [ngClass]="{'error_input': realPropertyForm.get('zip').invalid && realPropertyForm.get('zip').touched}" formControlName="zip">
 
               <!--<div class="alert alert-danger" *ngIf="realPropertyForm.invalid && realPropertyForm.touched">-->

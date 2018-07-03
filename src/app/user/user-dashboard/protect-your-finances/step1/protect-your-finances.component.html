@@ -72,7 +72,7 @@
       </div>
 
       <div class="form-group" *ngIf="myForm.get('isAuthorizeToMakeGift').value == 1">
-        <label>Would you like your agent to be authorized to make gifts to themselves and persons the agent has a legal obligation to support?</label>
+        <label>Would you like your Financial Power of Attorney to be authorized to make gifts to themselves and persons they have legal obligations to support?</label>
         <ul class="radio_ul6">
           <li>
             <label class="radio_custom" [ngClass]='{active: (myForm.get("isAuthorizeToOperategift").value === 1)}'>
@@ -92,7 +92,7 @@
       <div *ngIf="stateInfo === 'non-uniform'">
         <!-- options falling under non-uniform group of states-->
         <div class="form-group">
-            <label>Would you like to authorize your power of attorney to trade options and commodities on your behalf?</label>
+            <label>Would you like to authorize your Financial Power of Attorney to trade options and commodities on your behalf?</label>
             <ul class="radio_ul6">
               <li>
                 <label class="radio_custom" [ngClass]='{active: (myForm.get("isAuthorizeTotrade").value === 1)}'>
@@ -128,7 +128,7 @@
           </div>
 
           <div class="form-group">
-            <label>For Federal Employees Only: Would you like to authorize your power of attorney to have access to your TSP, CSRS, or FERS accounts.</label>
+            <label>For Federal Employees Only: Would you like to authorize your Financial Power of Attorney to have access to your TSP, CSRS or FERS accounts?</label>
             <ul class="radio_ul6">
               <li>
                 <label class="radio_custom" [ngClass]='{active: (myForm.get("isAuthorizeToAccessOthers").value === 1)}'>

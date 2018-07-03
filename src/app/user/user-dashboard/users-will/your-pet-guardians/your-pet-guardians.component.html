@@ -51,7 +51,7 @@
             </div>
           </div>
           <div class="form-group ">
-            <label>Their Relationship To You: </label>
+            <label>Pet Caretaker’s relationship to you: </label>
             <select name="first_guardian_relationship" class="form-control" formControlName="relationship_with" #relationship_with (change)="changeRelationshipValidation(relationship_with.value)">
               <option value="">Select Relationship</option>
               <option value="Wife">Wife</option>
@@ -216,7 +216,7 @@
               </div>
             </div>
             <div class="form-group ">
-              <label>Their Relationship To You: </label>
+              <label>Backup Pet Caretaker’s relationship to you: </label>
               <select name="first_guardian_relationship" class="form-control" formControlName="relationship_with" #backup_relationship (change)="changeBackupRelationshipValidation(backup_relationship.value)">
                 <option value="">Select Relationship</option>
                 <option value="Wife">Wife</option>
