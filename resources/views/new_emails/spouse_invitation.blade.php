@@ -15,7 +15,7 @@
             padding: 0;
             background: #e2e2e2;
         }
-        
+
         @media screen and (max-width:599px){
             table[class="container"]{
                 width: 480px !important;
@@ -82,9 +82,24 @@
                                 </tr>
                             </table>
                             <p style="text-align: center; padding: 18px 0 32px;"><a href="{{url('/')}}/register"><img src="{{url('/')}}/images/getStartedNew.png" alt=""></a></p>
-                            
+
                         </td>
                         <tr>
+                          <td>
+                            <!-- Contact & Follow Buttons -->
+                            <div style="text-align: center;padding: 30px 0;">
+                              <div style="text-align: center;">
+                                  <img src="{{url('/')}}/images/callus.jpg" style="height: 155px; margin-top: -40px;" alt="">
+                              </div>
+                              <ul style="list-style-type: none; text-align:center;">
+                                  <li style="display: inline-block; padding: 5px; "><a href="https://www.facebook.com/SimplyWilled"><img src="{{url('/')}}/images/fd-icon.png"></a></li>
+                                  <li style="display: inline-block; padding: 5px;"><a href="https://twitter.com/simplywilled"><img src="{{url('/')}}/images/ttr-icon.png"></a></li>
+                                  <li style="display: inline-block; padding: 5px;"><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{url('/')}}/images/in-icon.png"></a></li>
+                                  <li style="display: inline-block; padding: 5px;"><a href="https://www.instagram.com/simplywilled"><img src="{{url('/')}}/images/gram-icon.png"></a></li>
+                                </ul>
+                            </div></td>
+                        </tr>
+                        <!-- <tr>
                             <td style="background: #fff; padding: 45px 0;" align="center">
                                 <table cellpadding="0" cellspacing="0" border="0" width="300">
                                     <tr>
@@ -99,7 +114,7 @@
                                                         <br>
                                                         <span style="font-size: 18px; color: #373737;">Mon-Friday 10 A.M - 6 P.M.</span>
                                                     </td>
-                                                </tr> 
+                                                </tr>
                                             </table>
                                         </td>
                                     </tr>
@@ -122,7 +137,7 @@
                                     </tr>
                                 </table>
                             </td>
-                        </tr>
+                        </tr> -->
                         <tr>
                             <td style="padding: 30px 20px; background: #095cab; font-size: 14px; color: #6dadeb; text-align: center;">
                                 Copyright © 2017-2018 Keep It Simple, LLC. All Rights Reserved.
@@ -133,6 +148,5 @@
             </td>
         </tr>
     </table>
-    
 </body>
 </html>

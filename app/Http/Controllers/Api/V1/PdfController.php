@@ -327,6 +327,86 @@ class PdfController extends Controller
         }
     }
 
+    public function finalDisposition() {
+
+        try {
+
+            $completion = app(\App\Http\Controllers\Api\V1\UserManagementController::class)->fetchTotalCompletion();
+            $completion = json_decode($completion->content(), true);
+            foreach ($completion['data'] as $key => $value) {
+                //value is of boolean type
+                if(!$value)
+                    return response()->json([
+                        'status'    =>  false,
+                        'message'   =>  'cannot generate pdf if all interview steps are not commplete',
+                        'data'      =>  []  
+                    ],400);
+            }
+
+            $totalData = $this->docInfo();
+            $totalData = json_decode($totalData->content(), true);
+            
+            $tellUsAboutYou = $totalData['data']['tellUsAboutYou'];
+            $state = $totalData['data']['state'];
+            $personalRepresentative = $totalData['data']['personalRepresentative'];
+            $finalArrangements = $totalData['data']['finalArrangements'];
+
+            $filename = 'finanalDisposition.pdf';
+            if ($tellUsAboutYou['gender'] == 'F') {
+                $genderTxt  = 'her';
+                $genderTxt2 = 'herself';
+                $genderTxt3 = 'she';
+                $genderTxt4 = 'her';
+            } else {
+                $genderTxt  = 'him';
+                $genderTxt2 = 'himself';
+                $genderTxt3 = 'he';
+                $genderTxt4 = 'his';
+            }
+
+            $data = [
+                'tellUsAboutYou'    => $tellUsAboutYou,
+                'state'             => $state,
+                'genderTxt'         => $genderTxt,
+                'genderTxt2'        => $genderTxt2,
+                'genderTxt3'        => $genderTxt3,
+                'genderTxt4'        => $genderTxt4,
+                'finalArrangements' => $finalArrangements,
+                'personalRepresentative' => $personalRepresentative
+            ];
+
+            if(!is_dir(public_path().'/'.PATH)) {   
+                //finding this user directory if directory is not present then create directory
+                File::makeDirectory(public_path().'/'.PATH, $mode = 0777, true, true);
+                if (is_dir (public_path().'/'.PATH ) ) {
+                    @PDF::loadView('pdf.finalDisposition', $data)->save(PATH.$filename);
+                    return response()->json([
+                            'status'    =>  true,
+                            'message'   =>  'Success'
+                        ], 200);
+                } else {
+                    // use existing user directory
+                    return response()->json([
+                            'status'    =>  false,
+                            'message'   =>  'Folder is not created successfully, Please change permission'
+                        ], 400);
+                }
+            } else {
+                @PDF::loadView('pdf.finalDisposition', $data)->save(PATH.$filename);
+                return response()->json([
+                            'status'    =>  true,
+                            'message'   =>  'Success'
+                        ], 200);
+            }
+
+        } catch (\Exception $e) {
+            return response()->json([
+                    'status'    =>  true,
+                    'message'   =>  'Error : '. $e->getMessage().' Line : '.$e->getLine()
+            ], 500);
+        }
+    }
+
     public function financesDoc() {
 
         try {
@@ -353,6 +433,30 @@ class PdfController extends Controller
             $provideYourLovedOnes = $totalData['data']['provideYourLovedOnes'];
             $financialPowerOfAttorney = $totalData['data']['financialPowerOfAttorney'];
             $attorneyPowers = json_decode($financialPowerOfAttorney['attorney_powers'], true);
+            $attorneyHolders = json_decode($financialPowerOfAttorney['attorney_holders'], true);
+            $attorneyBackup = json_decode($financialPowerOfAttorney['attorney_backup'], true);
+            $gifts = $totalData['data']['gifts'];
+            $contingentBeneficiary = $totalData['data']['contingentBeneficiary'];
+            $disinherit  = $totalData['data']['disinherit'];
+
+            $giftsArr = [];
+            foreach ($gifts as $key => $gift) {
+                switch($gift['type']) {
+                    case 1 : array_push($giftsArr, json_decode($gift['cash_description'], true));
+                             break;
+
+                    case 2 : array_push($giftsArr, json_decode($gift['property_details'], true));
+                             break;
+
+                    case 3 : array_push($giftsArr, json_decode($gift['business_details'], true));
+                             break;
+
+                    case 4 : array_push($giftsArr, json_decode($gift['asset_details'], true));
+                             break;
+                    default: break;
+                }
+            }
+            $gifts = $giftsArr;
 
             $filename = 'financialPOA.pdf';
             if ($tellUsAboutYou['gender'] == 'F') {
@@ -380,9 +484,12 @@ class PdfController extends Controller
                 'estateDistribute'  => $estateDistribute,
                 'provideYourLovedOnes' => $provideYourLovedOnes,
                 'financialPowerOfAttorney' => $financialPowerOfAttorney,
-                'attorneyPowers'    => $attorneyPowers
+                'attorneyPowers'    => $attorneyPowers,
+                'attorneyBackup'    => $attorneyBackup,
+                'attorneyHolders'   => $attorneyHolders,
+                'gifts'             => $gifts
             ];
-
+            //dd($data);
             $viewName = '';
             if($state['type'] == 'uniform') {
                 $viewName = 'uniform';
@@ -406,8 +513,6 @@ class PdfController extends Controller
                     default:    break;
                 }
             }
-
-            dd($data);
 
             if(!is_dir(public_path().'/'.PATH)) {   
                 //finding this user directory if directory is not present then create directory
@@ -438,7 +543,11 @@ class PdfController extends Controller
             ], 200);
 
         } catch(\Exception $e) {
-
+            return response()->json([
+                    'status'    =>  false,
+                    'message'   =>  'Error : '.$e->getMessage().' Line : '.$e->getLine(),
+                    'data'      =>  []
+            ], 500);
         }
     }
 

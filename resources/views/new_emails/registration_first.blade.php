@@ -58,12 +58,9 @@
                                 Once this section is complete, we will be able to personalize your estate plan package. Also, complete the rest of our Estate Planning Interview present in your dashboard.<br><br>
 
                                     <strong style="color: #0a5dab;">Finally</strong>, Download and Print your documents. With our simple instructions to sign your will, it will take you only a few minutes! <br><br>
-                                    <strong style="color: #0a5dab;">Simple. Affordable. Enforceable!</strong><br><br>
-                                    <strong style="color: #0a5dab;">If you have any question, feel free to contact us!</strong><br><br>
+                                    <strong style="color: #0a5dab;">Simple. Affordable. Enforceable</strong><br><br>
+                                    <!-- <strong style="color: #0a5dab;">If you have any question, feel free to contact us!</strong><br><br> -->
                                     <strong style="color: #0a5dab;">Sign the email with “Sincerely, SimplyWilled’s team”</strong><br><br>
-
-                                    <strong><a href="{{url('/')}}">SimplyWilled.com</a></strong><br>
-                                    Online Estate Planning Made Simple <br><br>
                             </p>
                         </td>
                         <tr>
@@ -72,7 +69,7 @@
                                 <br><br>
                             </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td style="background: #fff; padding: 45px 0;" align="center">
                                 <table cellpadding="0" cellspacing="0" border="0" width="300">
                                     <tr>
@@ -110,6 +107,21 @@
                                     </tr>
                                 </table>
                             </td>
+                        </tr> -->
+                        <tr>
+                          <td>
+                            <!-- Contact & Follow Buttons -->
+                            <div style="text-align: center;padding: 30px 0;">
+                              <div style="text-align: center;">
+                                  <img src="{{url('/')}}/images/callus.jpg" style="height: 155px; margin-top: -40px;" alt="">
+                              </div>
+                              <ul style="list-style-type: none; text-align:center;">
+                                  <li style="display: inline-block; padding: 5px; "><a href="https://www.facebook.com/SimplyWilled"><img src="{{url('/')}}/images/fd-icon.png"></a></li>
+                                  <li style="display: inline-block; padding: 5px;"><a href="https://twitter.com/simplywilled"><img src="{{url('/')}}/images/ttr-icon.png"></a></li>
+                                  <li style="display: inline-block; padding: 5px;"><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{url('/')}}/images/in-icon.png"></a></li>
+                                  <li style="display: inline-block; padding: 5px;"><a href="https://www.instagram.com/simplywilled"><img src="{{url('/')}}/images/gram-icon.png"></a></li>
+                                </ul>
+                            </div></td>
                         </tr>
                         <tr>
                             <td style="padding: 30px 20px; background: #095cab; font-size: 14px; color: #6dadeb; text-align: center;">
@@ -121,6 +133,7 @@
             </td>
         </tr>
     </table>
+
 
 </body>
 </html>

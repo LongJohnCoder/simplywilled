@@ -60,7 +60,7 @@
                         <td style="padding:0 30px; background: #f2f2f2;">
                             <h1 style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">Hello {{$name}}, </h1>
                             <p style="color: #373737; font-size: 20px; line-height: 30px;">
-                                    You have been appointed as Backup Guardian.<br><br>
+                                    You have been appointed as Backup Guardian for Minor Children.<br><br>
                                     <strong>{{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}}</strong> recently joined the thousands of people who have used <a href="{{url('/')}}" target="_blank" style="color: #0a5dab;">SimplyWilled.com</a> to create their will and selected you to serve as their Backup Guardian For Minor Children. Being selected as a Backup Guardian For Minor Children is an important role reserved for those we trust the most. This email is being sent to you so you can let <strong>{{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}}</strong> know whether you accept or decline this honor.
                                 <br><br>
                                 <strong style="font-size: 22px;">What being selected as Backup Guardian For Minor Children means for You:</strong>
@@ -79,7 +79,7 @@
                               <a href="{{url('/')}}/fiduciary/reject/{{isset($token) ? $token : 'null'}}"><img src="{{url('/')}}/images/declineBtn.png" alt="No Thank You, I Respectfully Decline"></a>
                             </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td style="background: #fff; padding: 45px 0;" align="center">
                                 <table cellpadding="0" cellspacing="0" border="0" width="300">
                                     <tr>
@@ -117,6 +117,21 @@
                                     </tr>
                                 </table>
                             </td>
+                        </tr> -->
+                        <tr>
+                          <td>
+                            <!-- Contact & Follow Buttons -->
+                            <div style="text-align: center;padding: 30px 0;">
+                              <div style="text-align: center;">
+                                  <img src="{{url('/')}}/images/callus.jpg" style="height: 155px; margin-top: -40px;" alt="">
+                              </div>
+                              <ul style="list-style-type: none; text-align:center;">
+                                  <li style="display: inline-block; padding: 5px; "><a href="https://www.facebook.com/SimplyWilled"><img src="{{url('/')}}/images/fd-icon.png"></a></li>
+                                  <li style="display: inline-block; padding: 5px;"><a href="https://twitter.com/simplywilled"><img src="{{url('/')}}/images/ttr-icon.png"></a></li>
+                                  <li style="display: inline-block; padding: 5px;"><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{url('/')}}/images/in-icon.png"></a></li>
+                                  <li style="display: inline-block; padding: 5px;"><a href="https://www.instagram.com/simplywilled"><img src="{{url('/')}}/images/gram-icon.png"></a></li>
+                                </ul>
+                            </div></td>
                         </tr>
                         <tr>
                             <td style="padding: 30px 20px; background: #095cab; font-size: 14px; color: #6dadeb; text-align: center;">
