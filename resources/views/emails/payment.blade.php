@@ -198,9 +198,9 @@ p strong{
         </tr>
         </table>
       </div>
-      <div style="text-align: center;padding: 15px 0;">
+      <!-- <div style="text-align: center;padding: 15px 0;">
         <a href="{{url('/')}}/sign-in"><img src="{{url('/')}}/images/loginAccount.png" alt="accept"></a>
-      </div>
+      </div> -->
 
       <!-- Contact & Follow Buttons -->
       <div style="text-align: center;padding: 30px 0;">
