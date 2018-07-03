@@ -58,12 +58,9 @@
                                 Once this section is complete, we will be able to personalize your estate plan package. Also, complete the rest of our Estate Planning Interview present in your dashboard.<br><br>
 
                                     <strong style="color: #0a5dab;">Finally</strong>, Download and Print your documents. With our simple instructions to sign your will, it will take you only a few minutes! <br><br>
-                                    <strong style="color: #0a5dab;">Simple. Affordable. Enforceable!</strong><br><br>
+                                    <strong style="color: #0a5dab;">Simple. Affordable. Enforceable</strong><br><br>
                                     <strong style="color: #0a5dab;">If you have any question, feel free to contact us!</strong><br><br>
                                     <strong style="color: #0a5dab;">Sign the email with “Sincerely, SimplyWilled’s team”</strong><br><br>
-
-                                    <strong><a href="{{url('/')}}">SimplyWilled.com</a></strong><br>
-                                    Online Estate Planning Made Simple <br><br>
                             </p>
                         </td>
                         <tr>
@@ -122,5 +119,17 @@
         </tr>
     </table>
 
+    <!-- Contact & Follow Buttons -->
+    <div style="text-align: center;padding: 15px 0;">
+      <div style="text-align: right;">
+          <img src="{{url('/')}}/images/callus.jpg" style="height: 155px; margin-top: -40px;" alt="">
+      </div>
+      <ul style="list-style-type: none; margin-top: -8px;">
+          <li style="float: right; padding: 5px; "><a href="https://www.facebook.com/SimplyWilled"><img src="{{url('/')}}/images/fd-icon.png"></a></li>
+          <li style="float: right; padding: 5px;"><a href="https://twitter.com/simplywilled"><img src="{{url('/')}}/images/ttr-icon.png"></a></li>
+          <li style="float: right; padding: 5px;"><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{url('/')}}/images/in-icon.png"></a></li>
+          <li style="float: right; padding: 5px;"><a href="https://www.instagram.com/simplywilled"><img src="{{url('/')}}/images/gram-icon.png"></a></li>
+        </ul>
+    </div>
 </body>
 </html>
