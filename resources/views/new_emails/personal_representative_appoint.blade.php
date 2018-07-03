@@ -69,7 +69,7 @@
                                 <a href="{{url('/')}}/fiduciary/reject/{{isset($token) ? $token : 'null'}}"><img src="{{url('/')}}/images/declineBtn.png" alt="No Thank You, I Respectfully Decline"></a>
                             </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td style="background: #fff; padding: 45px 0;" align="center">
                                 <table cellpadding="0" cellspacing="0" border="0" width="300">
                                     <tr>
@@ -107,7 +107,7 @@
                                     </tr>
                                 </table>
                             </td>
-                        </tr>
+                        </tr> -->
                         <tr>
                           <td>
                             <!-- Contact & Follow Buttons -->
