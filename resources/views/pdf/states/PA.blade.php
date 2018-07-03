@@ -350,7 +350,7 @@
 
 
     <!-- Page 4-->
-    <div class="docPage" style="margin:0; box-sizing: border-box; padding: 0px;">
+    <div class="docPage" style="margin:0; box-sizing: border-box; padding: 0px; page-break-after: always;">
         <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">The
       remainder of this document will take effect when and only when I lack
@@ -544,7 +544,7 @@
     <!-- Page 4-->
 
     <!-- Page 5-->
-    <div class="docPage" style="margin: 0; box-sizing: border-box; padding:0px;">
+    <div class="docPage" style="margin: 0; box-sizing: border-box; padding:0px;page-break-after: always;">
         <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
             <p  style="margin-bottom: 0in; ; text-align:center;">
       <span face="Times New Roman, serif"><b>GUIDANCE FOR HEALTH CARE AGENT
@@ -817,9 +817,9 @@
 
             </p>
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">Having
-      carefully read this document, I have signed it this </span><span size="3" style="font-size: 12pt"><u>___________</u></span><span size="3" style="font-size: 12pt">
-      day of </span><span size="3" style="font-size: 12pt"><u>_____________________</u></span><span size="3" style="font-size: 12pt">,
-      </span><span size="3" style="font-size: 12pt"><u>____________</u></span><span size="3" style="font-size: 12pt">,
+      carefully read this document, I have signed it this </span><span size="3" style="font-size: 12pt">___________</span><span size="3" style="font-size: 12pt">
+      day of </span><span size="3" style="font-size: 12pt">_____________________</span><span size="3" style="font-size: 12pt">,
+      </span><span size="3" style="font-size: 12pt">____________</span><span size="3" style="font-size: 12pt">,
       revoking all previous health care powers of attorney and health care
       treatment instructions.</span></span></span></p>
             
@@ -844,31 +844,31 @@
       creditors, nor employed by any of your health care providers.)</span></span></span></span></span></p>
            
             <p class="western" style="margin-bottom: 0in; "><span ><b>WITNESS
-      1</b></span><span >: </span><span ><u>____________________</u></span><span style="padding-left: 50px;">	Dated:
-      </span><span ><u>______________________</u></span></p>
+      1</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
+      </span><span >______________________</span></p>
             <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; ">
                 <span style="padding-left: 50px;">[signature]</span></p>
             <p class="western" align="justify" style="margin-bottom: 0.06in; ; padding-top: 15px;">
-                <span ><u>____________________________</u></span><span >		</span><span style="padding-left: 122px;"><u>______________________</u></span></p>
+                <span >____________________________</span><span >		</span><span style="padding-left: 122px;">______________________</span></p>
             <p class="western" align="justify" style="margin-bottom: 0.06in; ">
                 <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
             <p class="western" align="justify" style="margin-bottom: 0.06in; ; padding:25px 0 0 350px;">
-                <span >							</span><span ><u>______________________</u></span></p>
+                <span >							</span><span >______________________</span></p>
             <p class="western" align="justify" style="margin-bottom: 0.06in; ; padding-left: 350px;">
                 <span style="padding-left: 40px;">								[city, state, zip]</span></p>
             
             
             <p class="western" style="margin-bottom: 0in; "><span ><b>WITNESS
-      2</b></span><span >: </span><span ><u>____________________</u></span><span style="padding-left: 50px;">	Dated:
-      </span><span ><u>______________________</u></span></p>
+      2</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
+      </span><span >______________________</span></p>
             <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; ">
                 <span style="padding-left: 50px;">[signature]</span></p>
             <p class="western" align="justify" style="margin-bottom: 0.06in; ; padding-top: 15px;">
-                <span ><u>____________________________</u></span><span >		</span><span style="padding-left: 122px;"><u>______________________</u></span></p>
+                <span >____________________________</span><span >		</span><span style="padding-left: 122px;">______________________</span></p>
             <p class="western" align="justify" style="margin-bottom: 0.06in; ">
                 <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
             <p class="western" align="justify" style="margin-bottom: 0.06in; ; padding:25px 0 0 350px;">
-                <span >							</span><span ><u>______________________</u></span></p>
+                <span >							</span><span >______________________</span></p>
             <p class="western" align="justify" style="margin-bottom: 0.06in; ; padding-left: 350px;">
                 <span style="padding-left: 40px;">								[city, state, zip]</span></p>
             
