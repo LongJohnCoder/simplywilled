@@ -31,7 +31,7 @@
           <li (click)="onLogout()"><a href="javascript:void(0)" *ngIf="isLogIn">Logout</a></li>
         </ul>
         <div class="searchBar">
-          <input type="text" [(ngModel)]="blogSearch" placeholder="Search">
+          <input type="text" [(ngModel)]="blogSearch" (keydown)="onKeydown($event)" placeholder="Search">
           <button type="button" (click)="blogSearchSubmit()"><i class="fa fa-search"></i></button>
         </div>
         <div class="headerContact">

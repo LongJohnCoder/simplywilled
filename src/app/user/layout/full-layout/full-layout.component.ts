@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserAuthService} from '../../user-auth/user-auth.service';
-import { Router, NavigationEnd } from '@angular/router';
+import {Router, NavigationEnd, ActivatedRoute} from '@angular/router';
 import {environment} from '../../../../environments/environment';
 
 @Component({
@@ -18,7 +18,9 @@ export class FullLayoutComponent implements OnInit {
   blogSearch: string;
   blogSearchQuery: boolean;
 
-  constructor( private authService: UserAuthService, private router: Router) { 
+  constructor( private authService: UserAuthService, private router: Router,
+               private route: ActivatedRoute
+               ) {
     router.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
@@ -27,7 +29,7 @@ export class FullLayoutComponent implements OnInit {
           let h:any = document.getElementById('ourTeam').offsetTop;
           window.scroll(0, h);
         }
-        
+        this.blogSearch = this.route.snapshot.queryParamMap.get('q');
       });
   }
 
@@ -36,7 +38,6 @@ export class FullLayoutComponent implements OnInit {
     this.menutogle = false;
     window.addEventListener('scroll', this.scroll, true);
     // console.log('Ready');
-      console.log(this.blogSearch);
       this.blogSearchQuery = false;
   }
 
@@ -95,4 +96,13 @@ export class FullLayoutComponent implements OnInit {
         window.location.href = 'blog';
     }
 
+    /**
+     * Function for submitting blog search using enter key
+     * @param event
+     */
+    onKeydown(event) {
+        if (event.key === "Enter") {
+            this.blogSearchSubmit();
+        }
+    }
 }
