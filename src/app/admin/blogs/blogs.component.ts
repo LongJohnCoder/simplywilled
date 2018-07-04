@@ -26,7 +26,7 @@ export class BlogsComponent implements OnInit {
     pageSize = 10;
     p = 1;
     total = 0;
-    orderBy = {};
+    orderBy = {id: undefined, title: undefined, excerpt: undefined, slug: undefined, status: undefined, total_views: undefined, created_at: undefined};
 
   constructor(
     private dashService : DashboardService,
@@ -127,8 +127,9 @@ export class BlogsComponent implements OnInit {
      */
     orderTable(col: string) {
         const orderType = this.orderBy[col];
-        this.orderBy = {};
+        this.orderBy = {id: undefined, title: undefined, excerpt: undefined, slug: undefined, status: undefined, total_views: undefined, created_at: undefined};
         this.orderBy[col] = orderType === 'asc' ? 'desc' : 'asc';
+        console.log(this.orderBy);
         this.populateBlogs(this.p, this.searchBox, this.orderBy);
     }
 

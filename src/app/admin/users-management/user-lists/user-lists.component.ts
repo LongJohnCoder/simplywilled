@@ -15,7 +15,7 @@ export class UserListsComponent implements OnInit {
     pageSize = 10;
     p = 1;
     total = 0;
-    orderBy = {};
+    orderBy = {id: undefined, name: undefined, email: undefined, created_at: undefined};
 
     constructor(
       private userService: UsersService
@@ -46,7 +46,7 @@ export class UserListsComponent implements OnInit {
      */
     orderTable(col: string) {
         const orderType = this.orderBy[col];
-        this.orderBy = {};
+        this.orderBy = {id: undefined, name: undefined, email: undefined, created_at: undefined};
         this.orderBy[col] = orderType === 'asc' ? 'desc' : 'asc';
         this.populateUsers(this.p, this.searchBox, this.orderBy);
     }
