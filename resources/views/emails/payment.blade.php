@@ -55,7 +55,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td>
+                      <td style="padding:10px 30px; background: #f2f2f2;">
                         <p style="text-align: center;padding: 15px 0;"><img src="{{url('/')}}/images/successImg.png" alt=""></p>
                         <h2 style="color: #2479b8; margin-bottom: 25px; font-family: arial; font-weight: normal; font-size: 28px; text-align: center;">Thank You!</h2>
                         <p style="font-family: arial; font-size:16px; color: #373737; text-align: center;">Your payment has been successfully completed</p>
