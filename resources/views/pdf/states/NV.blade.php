@@ -3,7 +3,7 @@
 <head>
 	<title>Health Care Power of Attorney</title>
 	<style>
-		*{
+		/**{
 			margin: 0;
 			padding: 0;
 		}
@@ -11,44 +11,8 @@
 			margin: 0;
 			padding: 0;
 			font-family: Garamond;
-		}
-/* width */
-::-webkit-scrollbar {
-    width: 14px;
-}
+		}*/
 
-/* Track */
-::-webkit-scrollbar-track {
-   background: #0f69bb;
-	
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #99cc33; 
-    border-radius: 5px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #57ab2a; 
-}
-
-		.docContainer{
-			width: 700px;
-			margin: 0 auto;
-		}
-		.docPage{
-			width: 700px !important;
-			height: 991px!important;
-			background: #fff;
-			box-shadow: 0 0 7px rgba(0,0,0,0.3);
-			margin: 20px 0;
-			box-sizing: border-box;
-			padding: 40px;
-		}
-		
-		
 		
 		
 	</style>
@@ -56,7 +20,7 @@
 <body>
 
 <div>
-	<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+	<div class="docPage" style="margin:0; box-sizing: border-box; padding: 0px;">
 			<div class="docPageInner" style="box-sizing: border-box; height: 875px;">
 				<p  style="margin-bottom: 0in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 14pt"><b>NEVADA
 					DURABLE POWER OF ATTORNEY </b></span></span>
@@ -81,10 +45,7 @@
 					document. It creates a Durable Power of Attorney for Healthcare.
 					Before executing this document, you should know these important
 					facts:</span></p>
-					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
-					<br/>
-
-					</p>
+					
 					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
 					<span style="font-family:'Times New Roman, serif'">1.   </span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	This
 					document gives the person you designate as your Agent the power to
@@ -98,29 +59,20 @@
 					<span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	condition.
 					You may state in this document any types of treatment or placements
 					that you do not desire.</span></span></p>
-					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
-					<br/>
-
-					</p>
+					
 					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
 					<span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">2.	The
 					person you designate in this document has a duty to act consistent
 					with your desires as stated in this document or otherwise made known
 					or, if your desires are unknown, to act in your best interests.</span></span></p>
-					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
-					<br/>
-
-					</p>
+					
 					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
 					<span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">3.
 						Except as you otherwise specify in this document, the Power of the
 					person you designate to make health care decisions for you may
 					include the power to consent to your doctor not giving treatment or
 					stopping treatment which would keep you alive.</span></span></p>
-					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
-					<br/>
-
-					</p>
+					
 					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
 					<span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">4.
 						Unless you specify a shorter period in this document, this Power
@@ -128,10 +80,7 @@
 					if you are unable to make health care decisions for yourself, this
 					power will continue to exist until the time when you become able to
 					make health care decisions for yourself.</span></span></p>
-					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
-					<br/>
-
-					</p>
+					
 					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
 					<span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">5.
 						Notwithstanding this document, you have the right to make medical
@@ -140,46 +89,31 @@
 					addition, no treatment may be given to you over your objection, and
 					health care necessary to keep you alive may not be stopped if you
 					object.</span></span></p>
-					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
-					<br/>
-
-					</p>
+					
 					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
 					<span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">6.
 						You have the right to revoke the appointment of the person
 					designated in this document to make health care decisions for you by
 					notifying that person of the revocation orally or in writing.</span></span></p>
-					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
-					<br/>
-
-					</p>
+					
 					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
 					<span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">7.	You
 					have the right to revoke the authority granted to the person
 					designated in this document to make health care decisions for you by
 					notifying the medical physician, hospital, or other provider of
 					health care orally or in writing.</span></span></p>
-					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
-					<br/>
-
-					</p>
+					
 					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
 					<span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">8.
 						The person designated in this document to make health care decisions
 					for you has the right to examine your medical records and to consent
 					to their disclosure unless you limit this right in this document.</span></span></p>
-					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
-					<br/>
-
-					</p>
+					
 					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
 					<span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">9.
 						This document revokes any prior Durable Power of Attorney for
 					Healthcare.</span></span></p>
-					<p  style="margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
-					<br/>
-
-					</p>
+					
 					<p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in;  padding: 0.01in 0.06in; line-height: 100%">
 					<span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">10.
 						If there is anything in this document that you do not understand,
@@ -190,8 +124,8 @@
 		</div>
 		
 		
-		<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-			<div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+		<div class="docPage" style="margin: 0; box-sizing: border-box; padding: 0px;">
+			<div class="docPageInner" style="box-sizing: border-box; height: 875px; page-break-after: always;">
 				<p  style="margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%">
 				<span style="font-family:'Times New Roman, serif'"><b>1.	DESIGNATION OF HEALTH CARE
 				AGENT.</b></span></p>
@@ -444,7 +378,7 @@
 		</div>
 		
 		
-		<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+		<div class="docPage" style="margin: 0; box-sizing: border-box; padding: 0px;">
 			<div class="docPageInner" style="box-sizing: border-box; height: 875px;">
 				<p  style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><b>5.	DURATION.</b></span></p>
 				<p  style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">
@@ -454,16 +388,10 @@
 				health care decisions for myself when this power of attorney expires,
 				the authority I have granted my agent will continue to exist until
 				the time when I become able to make health care decisions for myself.</span></p>
-				<p  style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">
-				<br/>
-
-				</p>
+				
 				<p style="margin-left: 0.25in; margin-bottom: 0in; line-height: 100%">
 				<span style="font-family:'Times New Roman, serif'">(IF APPLICABLE)</span></p>
-				<p style="margin-left: 0.25in; margin-bottom: 0in; line-height: 100%">
-				<br/>
-
-				</p>
+				
 				<p style="margin-left: 0.25in; margin-bottom: 0in; line-height: 100%">
 				<span style="font-family:'Times New Roman, serif'">I wish to have this Power of
 				Attorney end on the following date: ___________________</span></p>
@@ -471,9 +399,7 @@
 				<br/>
 
 				</p>
-				<p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
+			
 				<p  style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><b>6.	STATEMENT
 				OF DESIRES.</b></span></p>
 				<p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">(With
@@ -525,15 +451,15 @@
 				<p align="right" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">_________</span></p>
 				<p align="right" style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Initials</span></p>
 			</div>
-			<div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+			<!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
 			  ADurable Power of Attorney for Health Care Decisions of <br> «CLIENT FULL NAME» <br>
 			  Page 3 of 7
-			</div>
+			</div> -->
 		</div>
 		
 		
-		<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-			<div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+		<div class="docPage" style="margin: 0; box-sizing: border-box; padding: 0px;">
+			<div class="docPageInner" style="box-sizing: border-box; height: 875px; page-break-after: always;">
 				<p  style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
 				<span style="font-family:'Times New Roman, serif'">(e)	I do not</span><span style="font-family:'Times New Roman, serif'"><b>
 				</b></span><span style="font-family:'Times New Roman, serif'">desire treatment to be
@@ -544,8 +470,6 @@
 				<p align="right" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">_________</span></p>
 				<p align="right" style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Initials</span></p>
 				<p align="right" style="margin-bottom: 0.06in; line-height: 100%"><br/>
-				<br/>
-
 				</p>
 				<p style="margin-left: 0.25in; margin-bottom: 0in; line-height: 100%">
 				<span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt"><b>(If
@@ -576,9 +500,7 @@
 				<br/>
 
 				</p>
-				<p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
+				
 				<p style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><b>7.	DESIGNATION
 				OF ALTERNATE AGENTS.</b></span></p>
 				<p  style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">(You
@@ -590,7 +512,6 @@
 				his or her designation as your agent is automatically revoked by law
 				if your marriage is dissolved.)</span></p>
 				<p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-				<br/>
 
 				</p>
 
@@ -703,34 +624,34 @@
 		</div>
 		
 		
-		<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-			<div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+		<div class="docPage" style="margin: 0; box-sizing: border-box; padding: 0px;">
+			<div class="docPageInner" style="box-sizing: border-box; height: 875px; page-break-after: always;">
 				@if($healthFinance['anyBackupAgent'] != 'true')
 				<ol type="A">
 				<li>
-				<p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">First
+				<p style="margin-bottom: 0in; line-height: 100%; margin-top: 0;"><span style="font-family:'Times New Roman, serif'">First
 					Alternative Agent</span></p>
 				</li>
 				</ol>
-				<p style="margin-left: 0.25in; margin-bottom: 0in; line-height: 100%">
+				<p style="margin-left: 0.25in; margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 				<br/>
 
 				</p>
-				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Name:
+				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%; margin-top: 0;"><span style="font-family:'Times New Roman, serif'">Name:
 				__________________________________________________________________</span></p>
 				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
-				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Address:
+				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%; margin-top: 0;"><span style="font-family:'Times New Roman, serif'">Address:
 				________________________________________________________________</span></p>
 				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
-				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">	________________________________________________________________</span></p>
+				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%; margin-top: 0;"><span style="font-family:'Times New Roman, serif'">	________________________________________________________________</span></p>
 				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
-				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Telephone
+				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%; margin-top: 0;"><span style="font-family:'Times New Roman, serif'">Telephone
 				Number: _______________________________________________________</span></p>
 				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%"><br/>
 
@@ -738,37 +659,34 @@
 				<ol type="A" start="2">
 					<li>
 				
-				<p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Second
+				<p style="margin-bottom: 0in; line-height: 100%; margin-top: 0;"><span style="font-family:'Times New Roman, serif'">Second
 					Alternative Agent</span></p>
 				</li>
 				</ol>
 				
-				<p style="margin-left: 0.25in; margin-bottom: 0in; line-height: 100%">
-				<br/>
-
-				</p>
 				
-				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Name:
+				
+				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%; margin-top: 0;"><span style="font-family:'Times New Roman, serif'">Name:
 				__________________________________________________________________</span></p>
 				
 				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
 				
-				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Address:
+				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%; margin-top: 0;"><span style="font-family:'Times New Roman, serif'">Address:
 				________________________________________________________________</span></p>
 				
 				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
 				
-				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">	_________________________________________________________________</span></p>
+				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%; margin-top: 0;"><span style="font-family:'Times New Roman, serif'">	_________________________________________________________________</span></p>
 				
 				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
 				
-				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 					<span style="font-family:'Times New Roman, serif'">Telephone
 				Number: _______________________________________________________</span></p>
 				
@@ -783,9 +701,7 @@
 				<p  style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">
 				<span style="font-family:'Times New Roman, serif'">I revoke any prior durable power
 				of attorney for health care.&nbsp;</span></p>
-				<p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
+				
 				<p  style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><b>9.	WAIVER
 				OF CONFLICT OF INTEREST.</b></span></p>
 				<p  style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">
@@ -794,9 +710,7 @@
 				interest in carrying out the provisions of this Durable Power of
 				Attorney for Health Care that said spouse or child may have by reason
 				of the fact that he or she may be a beneficiary of my estate.</span></p>
-				<p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
+				
 				<p  style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><b>10.	CHALLENGES.</b></span></p>
 				<p  style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">
 				<span style="font-family:'Times New Roman, serif'">If the legality of any provision
@@ -807,9 +721,7 @@
 				my estate. This Durable Power of Attorney for Health Care must be
 				construed and interpreted in accordance with the laws of the State of
 				Nevada.</span></p>
-				<p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
+				
 				<p  style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><b>11.	NOMINATION
 				OF GUARDIAN.</b></span></p>
 				<p  style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">
@@ -821,8 +733,8 @@
 		</div>
 		
 		
-		<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-			<div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+		<div class="docPage" style="margin: 0; box-sizing: border-box; padding: 0px;">
+			<div class="docPageInner" style="box-sizing: border-box; height: 875px; page-break-after: always;">
 				<p  style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><b>12.	RELEASE
 				OF INFORMATION.</b></span></p>
 				<p  style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">
@@ -850,12 +762,7 @@
 				<p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
-				<p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
-				<p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
+				
 				<p  style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
 				<span style="font-family:'Times New Roman, serif'">_______________________________________</span></p>
 				<p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
@@ -869,12 +776,7 @@
 				<p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
-				<p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
-				<p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
+				
 				<p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><b>(THIS
 				POWER OF ATTORNEY WILL NOT BE VALID FOR MAKING HEALTH CARE DECISIONS
 				UNLESS IT IS EITHER (1) SIGNED BY AT LEAST TWO QUALIFIED WITNESSES
@@ -884,11 +786,8 @@
 				<p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
-				<p  style="margin-bottom: 0in; line-height: 100%"> 
-				</p>
-				<p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
+				
+				
 				<p  style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">STATE
 				OF NEVADA		)</span></span></p>
 				<p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">					)
@@ -932,13 +831,11 @@
 		</div>
 		
 		
-		<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+		<div class="docPage" style="margin: 0px 0; box-sizing: border-box; padding: 0px;">
 			<div class="docPageInner" style="box-sizing: border-box; height: 875px;">
 				<p  style="margin-bottom: 0in; line-height: 100%; text-align:center;">
 				<span style="font-family:'Times New Roman, serif'"><b>STATEMENT OF WITNESSES</b></span></p>
-				<p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
+				
 				<p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
 				<span style="font-family:'Times New Roman, serif'">I declare under penalty of
 				perjury that </span><span style="font-family:'Times New Roman, serif'"></span>
@@ -946,7 +843,7 @@
 					<span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['fullname']}}</span>
 				</span>
 
-				<span style="font-family:'Times New Roman, serif'"><span style="letter-spacing: 0.1pt">»,
+				<span style="font-family:'Times New Roman, serif'"><span style="letter-spacing: 0.1pt">,
 				</span></span><span style="font-family:'Times New Roman, serif'">the principal, is
 				personally known to me, that the principal signed or acknowledged
 				this durable power of attorney in my presence, that the principal
@@ -955,9 +852,7 @@
 				document, and that I am not a provider of health care, an employee of
 				a provider of health care, the operator of a community care facility,
 				nor an employee of an operator of a health care facility.</span></p>
-				<p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
+				
 				<p style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><b>WITNESS
 				1</b></span></span></span><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">:
 				________________________________	Dated: ___________________</span></span></span></p>
@@ -972,7 +867,6 @@
 				<p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">	[city,
 				state]</span></span></span></p>
 				<p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-				<br/>
 
 				</p>
 				<p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><b>WITNESS
@@ -990,16 +884,13 @@
 				state]</span></span></span></p>
 				<p  style="margin-top: 0.13in; margin-bottom: 0.09in; line-height: 100%">
 				<br/>
-				<br/>
 
 				</p>
 				<p  style="margin-top: 0.13in; margin-bottom: 0.09in; line-height: 100%; text-align:center;">
 				 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><i><b>(AT
 				LEAST ONE OF THE ABOVE WITNESSES MUST ALSO SIGN THE FOLLOWING
 				DECLARATION.)</b></i></span></span></p>
-				<p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
+				
 				<p  style="margin-bottom: 0in; line-height: 100%"><a name="_GoBack"></a>
 				<span style="font-family:'Times New Roman, serif'">I declare under penalty of
 				perjury that I am not related to the principal by blood, marriage, or
@@ -1011,13 +902,9 @@
 				</span>
 
 				<span style="font-family:'Times New Roman, serif'"> death under a will now existing or by operation of law.</span></p>
-				<p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
 				
-				<p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
+				
+				
 				
 				<p style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><b>WITNESS
 				</b></span></span></span><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">:

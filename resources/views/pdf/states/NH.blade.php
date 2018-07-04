@@ -8,18 +8,18 @@
 	
 	<div>
     <div>
-      <p  style="margin-bottom: 0.06in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><b>INFORMATION
+      <p  style="margin-bottom: 0.06in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><b>INFORMATION
       CONCERNING THE</b></span></p>
-      <p  style="margin-bottom: 0.06in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><b>DURABLE
+      <p  style="margin-bottom: 0.06in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><b>DURABLE
       POWER OF ATTORNEY FOR HEALTH CARE</b></span></p>
-      <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+      <p  style="margin-bottom: 0.06in; "><br/>
       <br/>
 
       </p>
-      <p  style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">THIS
+      <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">THIS
       IS AN IMPORTANT LEGAL DOCUMENT. BEFORE SIGNING THIS DOCUMENT, YOU
       SHOULD KNOW THESE IMPORTANT FACTS:</span></span></span></p>
-      <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Except
+      <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Except
       if you say otherwise in the directive, this directive gives the
       person you name as your health care agent the power to make any and
       all health care decisions for you when you lack the capacity to make
@@ -40,7 +40,7 @@
       that treatment is deemed likely to terminate the pregnancy, unless
       the treatment will be physically harmful to you or prolong severe
       pain which cannot be alleviated by medication.</span></span></span></p>
-      <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
+      <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
       may state in this directive any treatment you do not want, or any
       treatment you want to be sure you receive. Your health care agent’s
       power will begin when your doctor certifies that you lack the
@@ -53,21 +53,21 @@
       health care agent or any person who is not eligible to be your health
       care agent. You may attach additional pages to the document if you
       need more space to complete your statement.</span></span></span></p>
-      <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
+      <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
       you want to give your health care agent power to withhold or withdraw
       medically administered nutrition and hydration, you must say so in
       your directive. Otherwise, your health care agent will not be able to
       direct that. Under no conditions will your health care agent be able
       to direct the withholding of food and drink that you are able to eat
       and drink normally.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
-      <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Your
+      <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Your
       agent shall be directed by your written instructions in this document
       when making decisions on your behalf, and as further guided by your
       medical condition or prognosis. Unless you state otherwise in the
       directive, your agent will have the same power to make decisions
       about your health care as you would have made, if those decisions by
       your health care agent are made consistent with state law.</span></span></span></p>
-      <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">It
+      <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">It
       is important that you discuss this directive with your doctor or
       other health care providers before you sign it, to make sure that you
       understand the nature and range of decisions which could be made for
@@ -96,8 +96,8 @@
   
   
   <div>
-    <div>
-      <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">The
+    <div style="page-break-after: always;">
+      <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">The
         person you choose as your health care agent should be someone you
         know and trust, and he or she must be at least 18 years old. If you
         choose your health or residential care provider (such as your doctor,
@@ -107,13 +107,13 @@
         your health care agent or as your health or residential care
         provider, because the law does not allow a person to do both at the
         same time.</span></span></span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
+        <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
         should consider choosing an alternate health care agent, in case your
         health care agent is unwilling, unable, unavailable or not eligible
         to act as your health care agent. Any alternate health care agent you
         choose will then have the same authority to make health care
         decisions for you.</span></span></span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
+        <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
         should tell the person you choose that you want him or her to be your
         health care agent. You should talk about this directive with your
         health care agent and your doctor or advanced registered nurse
@@ -121,7 +121,7 @@
         directive itself the people and institutions who will have signed
         copies. Your health care agent will not be liable for health care
         decisions made in good faith on your behalf.</span></span></span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Even
+        <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Even
         after you have signed this directive, you have the right to make
         health care decisions for yourself as long as you are able to do so,
         and treatment cannot be given to you or stopped over your clear
@@ -129,14 +129,14 @@
         health care agent by telling him or her, or by telling your health
         care provider, orally or in writing, that you no longer want that
         person to be your health care agent.</span></span></span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">YOU
+        <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">YOU
         HAVE THE RIGHT TO EXCLUDE OR STRIKE REFERENCES TO ARNP'S IN YOUR
         ADVANCE DIRECTIVE AND IF YOU DO SO, YOUR ADVANCE DIRECTIVE SHALL
         STILL BE VALID AND ENFORCEABLE.</span></span></span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Once
+        <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Once
         this directive is executed it cannot be changed or modified. If you
         want to make changes, you must make an entirely new directive.</span></span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">THIS
+        <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">THIS
         POWER OF ATTORNEY WILL NOT BE VALID UNLESS IT IS SIGNED IN THE
         PRESENCE OF A NOTARY PUBLIC OR JUSTICE OF THE PEACE OR TWO (2) OR
         MORE QUALIFIED WITNESSES, WHO MUST BOTH BE PRESENT WHEN YOU SIGN AND
@@ -146,23 +146,23 @@
         
         <ul style="margin-left: 30px;">
         <li>
-        <p  style="margin-bottom: 0.03in; line-height: 100%">
+        <p  style="margin-bottom: 0.03in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">The
         person you have designated as your health care agent;</span></span></span></p>
         </li>
         <li>
-        <p  style="margin-bottom: 0.03in; line-height: 100%">
+        <p  style="margin-bottom: 0.03in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Your
         spouse or heir at law; or,</span></span></span></p>
         </li>
         <li>
-        <p  style="margin-bottom: 0.06in; line-height: 100%">
+        <p  style="margin-bottom: 0.06in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Your
         attending physician or ARNP, or person acting under the direction or
         control of the attending physician or ARNP;</span></span></span></p>
         </li>
         </ul>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">ONLY
+        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">ONLY
         ONE OF THE TWO WITNESSES MAY BE YOUR HEALTH OR RESIDENTIAL CARE
         PROVIDER OR ONE OF YOUR PROVIDER’S EMPLOYEES.</span></span></span></p>
     </div>
@@ -183,23 +183,22 @@
   
   
   <div>
-    <div>
+    <div style="page-break-after: always;">
       <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="4" style="font-size: 16pt"><b>NEW
         HAMPSHIRE</b></span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="4" style="font-size: 16pt"><b>ADVANCE
+        <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="4" style="font-size: 16pt"><b>ADVANCE
         DIRECTIVE</b></span></span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
+        <p  style="margin-bottom: 0.06in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt">NOTE:
+        <p  style="margin-bottom: 0.06in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt">NOTE:
         This form has two sections</span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt">You
+        <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt">You
         may complete both sections, or only one section</span></span></span></p>
-        <p  style="margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%; text-align:center;">
+        <p  style="margin-top: 0.13in; margin-bottom: 0.13in;  text-align:center;">
         <span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 14pt"><b>1.
         DURABLE POWER OF ATTORNEY FOR HEALTH CARE</b></span></span></p>
-        <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+        <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
         <span ><span style="font-family:'Times New Roman, serif'">I, </span></span><span style="font-family:'Times New Roman, serif'"></span>
         
         <span>
@@ -257,13 +256,13 @@
         law.  This durable power of attorney for health care shall take
         effect in the event I lack the capacity to make my own health care
         decisions.</span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p  style="margin-bottom: 0in; "><br/>
 
         </p>
 
         <!-- if alternate health care agent-->
         @if($healthFinance['anyBackupAgent'] == 'true')
-              <p style="margin-bottom: 0in; line-height: 100%">
+              <p style="margin-bottom: 0in; ">
                 <span style="font-family:'Times New Roman, serif'">
                   <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">In
               the event the person I appoint above is unable, unwilling or
@@ -336,12 +335,8 @@
               <span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
         @endif
         
-        <p  style="margin-top: 0.06in; margin-bottom: 0.13in; line-height: 100%">
-        <br/>
-        <br/>
-
-        </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">When
+        
+        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">When
         making health care decisions for me, my agent should think about what
         action would be consistent with past conversations we have had, my
         treatment preferences as expressed in this advance directive, my
@@ -351,16 +346,16 @@
         decisions for me that my health care agent believes are in my best
         interest, considering the benefits, burdens, and risks of my current
         circumstances and treatment options.</span></p>
-        <p  style="margin-top: 0.06in; margin-bottom: 0.13in; line-height: 100%">
+        <p  style="margin-top: 0.06in; margin-bottom: 0.13in; ">
         <br/>
         <br/>
 
         </p>
-        <p  style="margin-top: 0.06in; margin-bottom: 0.13in; line-height: 100%; text-align:center;">
+        <p  style="margin-top: 0.06in; margin-bottom: 0.13in;  text-align:center;">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt"><b>STATEMENT
         OF DESIRES, SPECIAL PROVISIONS, AND LIMITATIONS REGARDING HEALTH CARE
         DECISIONS.</b></span></span></span></p>
-        <p  style="margin-bottom: 0.13in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>For
+        <p  style="margin-bottom: 0.13in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>For
         your convenience in expressing your wishes, some general statements
         concerning the withholding or removal of life-sustaining treatment
         are set forth below. (Life-sustaining treatment is defined as
@@ -390,46 +385,39 @@
   
   
   <div>
-    <div>
-      <p  style="margin-bottom: 0.09in; line-height: 100%; page-break-before: always">
+    <div style="page-break-after: always;">
+      <p  style="margin-bottom: 0.09in;">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">A.</span><span size="3" style="font-size: 12pt"><b>	</b></span><span size="3" style="font-size: 12pt"><b>LIFE-SUSTAINING
         TREATMENT</b></span><span size="3" style="font-size: 12pt">.</span></span></span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">1.
+        <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">1.
         If I am near death and lack the capacity to make health care
         decisions, I authorize my agent to direct that:</span></span></span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(Initial
+        <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(Initial
         beside your choice of (a) or (b).)</i></span></span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(a)
+        <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(a)
         life-sustaining treatment not be started, or if started, be
         discontinued.</span></span></span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><br/>
-        <br/>
-
-        </p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">OR</span></span></span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(b)
+     
+        <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">OR</span></span></span></p>
+        <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(b)
         life-sustaining treatment continue to be given to me.</span></span></span></p>
-        <p  style="margin-bottom: 0.03in; line-height: 100%"><br/>
-        <br/>
-
+        <p  style="margin-bottom: 0.03in; "><br/>
         </p>
-        <p  style="margin-bottom: 0.03in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">2.
+        <p  style="margin-bottom: 0.03in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">2.
         Whether near death or not, if I become permanently unconscious and
         life-sustaining treatment has no reasonable hope of benefit, I
         authorize my agent to direct that:</span></span></span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(Initial
+        <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(Initial
         beside your choice of (a) or (b).)</i></span></span></span></p>
-        <p style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(a)
+        <p style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(a)
         life-sustaining treatment not be started, or if started, be
         discontinued.</span></span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">-or-</span></span></span></p>
-        <p  style="margin-bottom: 0.13in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(b)
+        <p  style="margin-bottom: 0.06in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">-or-</span></span></span></p>
+        <p  style="margin-bottom: 0.13in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(b)
         life-sustaining treatment continue to be given to me.</span></span></span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><br/>
-        <br/>
-
+        <p  style="margin-bottom: 0.09in; "><br/>
         </p>
-        <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">B.
+        <p style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">B.
         </span><span style="font-family:'Times New Roman, serif'"><b>MEDICALLY ADMINISTERED
         NUTRITION AND HYDRATION.</b></span><span style="font-family:'Times New Roman, serif'">
         1. I realize that situations could arise in which the only way to
@@ -438,42 +426,34 @@
         instructions I have given in this document, I authorize my agent to
         direct that: </span>
         </p>
-        <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><i>(INITIAL
+        <p style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><i>(INITIAL
         beside your choice of (a) or (b).) </i></span>
         </p>
-        <p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p style="margin-left: 1in; text-indent: -1in; margin-bottom: 0in; line-height: 100%">
+        
+        <p style="margin-left: 1in; text-indent: -1in; margin-bottom: 0in; ">
         ________<span style="font-family:'Times New Roman, serif'">	(a) medically
         administered nutrition and hydration not be started or, if started,
         be discontinued. </span>
         </p>
-        <p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">OR
+        
+        <p style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">OR
         </span>
         </p>
-        <p style="margin-left: 1in; text-indent: -1in; margin-bottom: 0in; line-height: 100%">
-        <br/>
-
-        </p>
-        <p style="margin-left: 1in; text-indent: -1in; margin-bottom: 0in; line-height: 100%">
+        
+        <p style="margin-left: 1in; text-indent: -1in; margin-bottom: 0in; ">
         ________	<span style="font-family:'Times New Roman, serif'">(b) even if all other
         forms of life-sustaining treatment have been withdrawn, medically
         administered nutrition and hydration continue to be given to me.</span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><br/>
-        <br/>
+        <p  style="margin-bottom: 0.09in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">B.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>OBJECTION
+        <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">B.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>OBJECTION
         TO TREATMENT</b></span><span size="3" style="font-size: 12pt">.</span></span></span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
+        <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
         understand that as long as I have the capacity to do so, I may
         consent or object to any treatment; however, if I lack the capacity
         to make healthcare decisions, and I am objecting to treatment anyway:</span></span></span></p>
-        <p  style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.09in; line-height: 100%">
+        <p  style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.09in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Even
         if I am incapacitated and I object to treatment, treatment may be
         given to me against my objection, if my Agent so authorizes such
@@ -495,8 +475,8 @@
   
   
   <div>
-    <div>
-      <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">C.
+    <div style="page-break-after: always;">
+      <p style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">C.
         </span><span style="font-family:'Times New Roman, serif'"><b>ADDITIONAL
         INSTRUCTIONS. </b></span><span style="font-family:'Times New Roman, serif'">Here you
         may include any specific desires or limitations you deem appropriate,
@@ -510,21 +490,20 @@
         ____________________________________________________________
         ____________________________________________________________
         __________________________________________________</span></p>
-        <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">(attach
+        <p style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">(attach
         additional pages as necessary)</span></p>
-        <p  style="margin-left: 0.56in; margin-bottom: 0.09in; line-height: 100%">
-        <br/>
+        <p  style="margin-left: 0.56in; margin-bottom: 0.09in; ">
         <br/>
 
         </p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">D.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>ADMINISTRATIVE
+        <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">D.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>ADMINISTRATIVE
         POWERS OF MY AGENT</b></span><span size="3" style="font-size: 12pt">.
         </span><span size="3" style="font-size: 12pt"><i>(INITIAL to
         authorize).</i></span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
+        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
         authorize my agent to request, review, and receive any information,
         verbal or</span></span></span></p>
-        <p  style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.06in; line-height: 100%">
+        <p  style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.06in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 6pt"><span size="3" style="font-size: 12pt">(INITIAL)
         </span></span></span><span size="3" style="font-size: 12pt">written,
         regarding my physical or mental health, including, but not limited
@@ -548,26 +527,26 @@
         expiration date and shall expire only in the event that I revoke the
         authority in writing and deliver it to my health care provider. </span></span></span>
         </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">E.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>ANATOMICAL
+        <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">E.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>ANATOMICAL
         GIFT</b></span><span size="3" style="font-size: 12pt">.</span></span></span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">In
+        <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">In
         accordance with New Hampshire statutes RSA 291:1, I hereby:</span></span></span></p>
-        <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+        <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(a)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">_________
         I authorize my Agent to make donations of any needed organ and/or
         tissues;</span></span></span></p>
-        <p  style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 100%; text-align:center;">
+        <p  style="margin-left: 0.38in; margin-bottom: 0.03in;  text-align:center;">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">-or-</span></span></span></p>
-        <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+        <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(b)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">_________
         I do not authorize my Agent to make such donations and I do not wish
         to be an organ donor;</span></span></span></p>
-        <p  style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 100%; text-align:center;">
+        <p  style="margin-left: 0.38in; margin-bottom: 0.03in;  text-align:center;">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">-or-</span></span></span></p>
-        <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0.09in; line-height: 100%">
+        <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0.09in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(c)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">__________
         I wish to make no decision about organ and/or tissue donation at this
         time.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
@@ -589,58 +568,45 @@
   
   
   <div>
-    <div>
-      <p  style="margin-bottom: 0.09in; line-height: 100%; text-align:center;">
+    <div style="page-break-after: always;">
+      <p  style="margin-bottom: 0.09in;  text-align:center;">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>SIGNATURE
         AND ACKNOWLEDGEMENT</b></span></span></span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
+        <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
         hereby acknowledge that I have been provided with a disclosure
         statement explaining the effect of this directive. I have read and
         understood the information contained in the disclosure statement.</span></span></span></p>
-        <p style="margin-bottom: 0.09in; line-height: 100%"><br/>
-        <br/>
-
-        </p>
-        <p style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">The
+        
+        <p style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">The
         original of this document will be kept at
         _________________________________________ and the following persons
         and institutions will have signed copies:</span></span></span></p>
-        <p  style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">
-        <br/>
-
-        </p>
-        <p  style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">
+        
+        <p  style="text-indent: 0.38in; margin-bottom: 0in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Agent:
         </span><span ><span size="3" style="font-size: 12pt">Rx
         Agent #1</span></span><span size="3" style="font-size: 12pt"></span></span></span></p>
-        <p  style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">
-        <br/>
-
-        </p>
-        <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+        
+        <p  style="margin-left: 0.38in; margin-bottom: 0.09in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Primary
         Care Physician:</span><span size="3" style="font-size: 12pt">	 
         </span><span size="3" style="font-size: 12pt">_______________________________________________</span></span></span></p>
-        <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+        <p  style="margin-left: 0.38in; margin-bottom: 0.09in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Other:</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">__________________________________________________________________</span></span></span></p>
-        <p  style="margin-left: 0.38in; margin-bottom: 0.19in; line-height: 100%">
+        <p  style="margin-left: 0.38in; margin-bottom: 0.19in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">__________________________________________________________________</span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+        
+        <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Signed
+        this </span></span><span ><span size="3" style="font-size: 12pt">________</span></span><span ><span size="3" style="font-size: 12pt">
+        day of </span></span><span ><span size="3" style="font-size: 12pt">_______________________</span></span><span ><span size="3" style="font-size: 12pt">,
+        </span></span><span ><span size="3" style="font-size: 12pt">___________________</span></span><span ><span size="3" style="font-size: 12pt">.</span></span></span></span></span></p>
+        
+        <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Signed
-        this </span></span><span ><span size="3" style="font-size: 12pt"><u>		</u></span></span><span ><span size="3" style="font-size: 12pt">
-        day of </span></span><span ><span size="3" style="font-size: 12pt"><u>				</u></span></span><span ><span size="3" style="font-size: 12pt">,
-        </span></span><span ><span size="3" style="font-size: 12pt"><u>	</u></span></span><span ><span size="3" style="font-size: 12pt">.</span></span></span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p  style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+        <p  style="text-indent: 0.5in; margin-bottom: 0in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></span></p>
-        <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+        <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
         
         <span>
           <span style="font-family:'Times New Roman, serif'">
@@ -649,40 +615,32 @@
         </span>
       
         </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><i>(If
+       
+        <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><i>(If
         you are physically unable to sign, this directive may be signed by
         someone else writing your name, in your presence and at your express
         direction)</i></span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><i><b>THIS
+        <p  style="margin-bottom: 0.09in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><i><b>THIS
         POWER OF ATTORNEY DIRECTIVE MUST BE SIGNED BY TWO WITNESSES </b></i></span><span size="3" style="font-size: 12pt"><i><b>OR</b></i></span><span size="3" style="font-size: 12pt"><i><b>
         A NOTARY PUBLIC OR A JUSTICE OF THE PEACE</b></i></span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>NOTARY
+        
+        
+        <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>NOTARY
         PUBLIC</b></span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">STATE
+       
+        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">STATE
         OF NEW HAMPSHIRE</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">)</span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">					)
+        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">					)
         ss.</span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">COUNTY
+        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">COUNTY
         OF </span><span size="3" style="font-size: 12pt"><u>____________</u></span><span size="3" style="font-size: 12pt">	)</span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+        <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'">The foregoing durable power of
         attorney for health care was acknowledged before me this </span><span style="font-family:'Times New Roman, serif'"><u>__________</u></span><span style="font-family:'Times New Roman, serif'">
         day of </span><span style="font-family:'Times New Roman, serif'"><u>________________________________</u></span><span style="font-family:'Times New Roman, serif'">,
@@ -696,14 +654,13 @@
         
         <span style="font-family:'Times New Roman, serif'">
         (“the Principal”).</span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
+        <p  style="margin-bottom: 0.06in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_________________________________</span></span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Notary
+        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_________________________________</span></span></span></p>
+        <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Notary
         Public / Justice of the Peace</span></span></span></p>
-        <p style="margin-top: 0.06in; margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">My
+        <p style="margin-top: 0.06in; margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">My
         commission expires: _________________</span></span></span></p>
     </div>
     {{--
@@ -722,14 +679,12 @@
   
   
   <div>
-    <div>
-      <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;">
+    <div style="page-break-after: always;">
+      <p  style="margin-bottom: 0in;  text-align:center;">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>WITNESS
         ACKNOWLEDGEMENTS</b></span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">We
+        
+        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">We
         declare that the principal appears to be of sound mind and free from
         duress at the time the durable power of attorney for health care is
         signed and that the principal affirms that </span>
@@ -740,66 +695,54 @@
         <span size="3" style="font-size: 12pt">
         is aware of the nature of the directive and is signing it freely and
         voluntarily.</span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><b>WITNESS
+        <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><b>WITNESS
         1</b></span></span><span ><span style="font-family:'Times New Roman, serif'">:
         ________________________________	Dated: ___________________</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">[signature]</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
+        <p  style="margin-bottom: 0.06in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'">[signature]</span></span></p>
+        <p  style="margin-bottom: 0.06in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[name
+        <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+        <p  style="margin-bottom: 0.06in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'">	[name
         printed]</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
+        <p  style="margin-bottom: 0.06in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[street
+        <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+        <p  style="margin-bottom: 0.06in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'">	[street
         address]</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
+        <p  style="margin-bottom: 0.06in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[city,
+        <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+        <p  style="margin-bottom: 0.06in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'">	[city,
         state]</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
+        <p  style="margin-bottom: 0.06in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
-
-        </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><b>WITNESS
+        
+        <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><b>WITNESS
         2: </b></span></span><span ><span style="font-family:'Times New Roman, serif'">________________________________	Dated:
         ___________________</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">[signature]</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
-
+        <p  style="margin-bottom: 0.06in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'">[signature]</span></span></p>
+        <p  style="margin-bottom: 0.06in; "><br/>
         </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[name
+        <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+        <p  style="margin-bottom: 0.06in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'">	[name
         printed]</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
+        <p  style="margin-bottom: 0.06in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[street
+        <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+        <p  style="margin-bottom: 0.06in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'">	[street
         address]</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
-
+        <p  style="margin-bottom: 0.06in; "><br/>
         </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[city,
+        <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+        <p  style="margin-bottom: 0.06in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'">	[city,
         state]</span></span></p>
     </div>
 
@@ -819,15 +762,15 @@
   
   
   <div>
-    <div>
-      <p  style="margin-bottom: 0.19in; line-height: 100%; text-align:center;">
+    <div style="page-break-after: always;">
+      <p  style="margin-bottom: 0.19in;  text-align:center;">
         <span style="font-family:'Times New Roman, serif'"><b>II.</b><b>&nbsp; </b><b>DECLARATION
         (LIVING WILL)</b></span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Declaration
-        made this </span></span><span ><span size="3" style="font-size: 12pt"><u>_________</u></span></span><span ><span size="3" style="font-size: 12pt">
-        day of </span></span><span ><span size="3" style="font-size: 12pt"><u>________________________________</u></span></span><span ><span size="3" style="font-size: 12pt">,
-        </span></span><span ><span size="3" style="font-size: 12pt"><u>_________________</u></span></span><span ><span size="3" style="font-size: 12pt">.</span></span></span></span></span></p>
-        <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+        <p  style="margin-bottom: 0.09in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Declaration
+        made this </span></span><span ><span size="3" style="font-size: 12pt">_________</span></span><span ><span size="3" style="font-size: 12pt">
+        day of </span></span><span ><span size="3" style="font-size: 12pt">______________________________</span></span><span ><span size="3" style="font-size: 12pt">,
+        </span></span><span ><span size="3" style="font-size: 12pt">________________</span></span><span ><span size="3" style="font-size: 12pt">.</span></span></span></span></span></p>
+        <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'">I, </span><span style="font-family:'Times New Roman, serif'"></span>
         
         <span>
@@ -840,7 +783,7 @@
         being of sound mind, willfully and voluntarily make known my desire
         that my dying shall not be artificially prolonged under the
         circumstances set forth below, do hereby declare:</span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
+        <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
         at any time I should have an incurable injury, disease, or illness
         and I am certified to be near death or in a permanently unconscious
         condition by two physicians or a physician and an ARNP, and two
@@ -856,14 +799,12 @@
         that situations could arise in which the only way to allow me to die
         would be to discontinue medically administered nutrition and
         hydration.</span></span></span></p>
-        <p  style="margin-bottom: 0.03in; line-height: 100%"><br/>
-        <br/>
-
+        <p  style="margin-bottom: 0.03in; "><br/>
         </p>
-        <p  style="margin-bottom: 0.03in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">In
+        <p  style="margin-bottom: 0.03in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">In
         carrying out any instruction I have given under this section, I
         authorize that</span></span></span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%">
+        <p  style="margin-bottom: 0.09in; ">
           <span style="font-family:'Times New Roman, serif'">
             <span size="1" style="font-size: 7pt">
               <span size="3" style="font-size: 12pt">
@@ -874,22 +815,22 @@
         </p>
         <ol type="a">
         <li>
-        <p  style="margin-bottom: 0.06in; line-height: 100%">
+        <p  style="margin-bottom: 0.06in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_________
         medically administered nutrition and hydration not be started or, if
         started, be discontinued.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
         </li>
         </ol>
         
-        <li>
-        <p  style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
+        <li style="list-style: none;">
+        <p  style="margin-left: 0.38in; margin-bottom: 0.06in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">OR</span></span></span></p>
         <ol type="a" start="2"></ol>
         </li>
         
         <ol>
           <li>
-              <p  style="margin-bottom: 0.09in; line-height: 100%">
+              <p  style="margin-bottom: 0.09in; ">
                   <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_________
                   even if all other forms of life-sustaining treatment have been
                   withdrawn, medically administered nutrition and hydration continue
@@ -898,34 +839,30 @@
         </ol>
         
         
-        <p style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p style="margin-bottom: 0in; "><br/>
 
         </p>
         
-        <p style="margin-bottom: 0in; line-height: 100%">
+        <p style="margin-bottom: 0in; ">
           <span style="font-family:'Times New Roman, serif'">Other directions: </span>
         </p>
         
-        <p style="margin-bottom: 0in; line-height: 100%">
+        <p style="margin-bottom: 0in; ">
           <span style="font-family:'Times New Roman, serif'">____________________________________________________________
         ____________________________________________________________
         ____________________________________________________________
         ____________________________________________________________
         __________________________________________________</span></p>
         
-        <p style="margin-bottom: 0in; line-height: 100%">
+        <p style="margin-bottom: 0in; ">
           <span style="font-family:'Times New Roman, serif'">(attach additional pages as necessary)</span>
         </p>
         
-        <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
+        <p  style="margin-bottom: 0.09in; "><br/>
         </p>
 
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><br/>
-        <br/>
-        </p>
-
-        <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">In
+        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">In
         the absence of my ability to give directions regarding the use of
         such life-sustaining procedures, it is my intention that this
         declaration shall be honored by my family and health care providers
@@ -948,32 +885,29 @@
   
   
   <div>
-    <div>
-      <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;">
+    <div style="page-break-after: always;">
+      <p  style="margin-bottom: 0in;  text-align:center;">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>SIGNATURE
         AND ACKNOWLEDGEMENT</b></span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
+        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
         understand the full import of this declaration, and I am emotionally
         and mentally competent to make this declaration.</span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Signed
-        this </span></span><span ><span size="3" style="font-size: 12pt"><u>___________</u></span></span><span ><span size="3" style="font-size: 12pt">
-        day of </span></span><span ><span size="3" style="font-size: 12pt"><u>_____________________________</u></span></span><span ><span size="3" style="font-size: 12pt">,
-        </span></span><span ><span size="3" style="font-size: 12pt"><u>____________________</u></span></span><span ><span size="3" style="font-size: 12pt">.</span></span></span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Signed
+        this </span></span><span ><span size="3" style="font-size: 12pt">___________</span></span><span ><span size="3" style="font-size: 12pt">
+        day of </span></span><span ><span size="3" style="font-size: 12pt">____________________________</span></span><span ><span size="3" style="font-size: 12pt">,
+        </span></span><span ><span size="3" style="font-size: 12pt">___________________</span></span><span ><span size="3" style="font-size: 12pt">.</span></span></span></span></span></p>
+        <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p  style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+        <p  style="text-indent: 0.5in; margin-bottom: 0in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></span></p>
-        <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+        <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
           <span style="font-family:'Times New Roman, serif'"></span>
         
           <span>
@@ -984,53 +918,38 @@
         </p>
 
 
-        <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;"> <span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(If
+        <p  style="margin-bottom: 0in;  text-align:center;"> <span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(If
         you are physically unable to sign, this directive may be signed by
         someone else writing your name, in your presence and at your express
         direction)</i></span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><br/>
-        <br/>
-
-        </p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><br/>
-        <br/>
-
-        </p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><br/>
-        <br/>
-
-        </p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%; text-align:center;"><a name="_GoBack"></a>
+        
+        <p  style="margin-bottom: 0.09in;  text-align:center;"><a name="_GoBack"></a>
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>THIS
         LIVING WILL DECLARATION MUST BE SIGNED BY TWO WITNESSES </b></span><span size="3" style="font-size: 12pt"><b>OR</b></span><span size="3" style="font-size: 12pt"><b>
         A NOTARY PUBLIC OR A JUSTICE OF THE PEACE</b></span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
-        </p>
-        <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>NOTARY
+        <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>NOTARY
         PUBLIC</b></span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">STATE
+        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">STATE
         OF NEW HAMPSHIRE</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">)</span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">					)
+        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">					)
         ss.</span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">COUNTY
+        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">COUNTY
         OF </span><span size="3" style="font-size: 12pt"><u>			</u></span><span size="3" style="font-size: 12pt">	)</span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
-        </p>
-        <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+        <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'">The foregoing durable power of
         attorney for health care was acknowledged before me this </span><span style="font-family:'Times New Roman, serif'"><u>	</u></span><span style="font-family:'Times New Roman, serif'">
         day of </span><span style="font-family:'Times New Roman, serif'"><u>					</u></span><span style="font-family:'Times New Roman, serif'">,
@@ -1043,14 +962,13 @@
         
         <span style="font-family:'Times New Roman, serif'">(“the
         Principal”).</span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
+        <p  style="margin-bottom: 0.06in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_________________________________</span></span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Notary
+        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_________________________________</span></span></span></p>
+        <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Notary
         Public / Justice of the Peace</span></span></span></p>
-        <p style="margin-top: 0.06in; margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">My
+        <p style="margin-top: 0.06in; margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">My
         commission expires: _________________</span></span></span></p>
     </div>
     {{--
@@ -1070,13 +988,11 @@
   
   <div>
     <div>
-      <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;">
+      <p  style="margin-bottom: 0in;  text-align:center;">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>WITNESS
         ACKNOWLEDGEMENTS</b></span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">We
+        
+        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">We
         declare that the principal appears to be of sound mind and free from
         duress at the time the durable power of attorney for health care is
         signed and that the principal affirms that </span>
@@ -1087,66 +1003,56 @@
         <span size="3" style="font-size: 12pt">
         is aware of the nature of the directive and is signing it freely and
         voluntarily.</span></span></span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><b>WITNESS
+        <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><b>WITNESS
         1</b></span></span><span ><span style="font-family:'Times New Roman, serif'">:
         ________________________________	Dated: ___________________</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">[signature]</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
+        <p  style="margin-bottom: 0.06in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'">[signature]</span></span></p>
+        <p  style="margin-bottom: 0.06in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[name
+        <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+        <p  style="margin-bottom: 0.06in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'">	[name
         printed]</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
+        <p  style="margin-bottom: 0.06in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[street
+        <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+        <p  style="margin-bottom: 0.06in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'">	[street
         address]</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
+        <p  style="margin-bottom: 0.06in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[city,
+        <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+        <p  style="margin-bottom: 0.06in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'">	[city,
         state]</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
+        <p  style="margin-bottom: 0.06in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
-
-        </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><b>WITNESS
+        
+        <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><b>WITNESS
         2: </b></span></span><span ><span style="font-family:'Times New Roman, serif'">________________________________	Dated:
         ___________________</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">[signature]</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
+        <p  style="margin-bottom: 0.06in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'">[signature]</span></span></p>
+        <p  style="margin-bottom: 0.06in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[name
+        <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+        <p  style="margin-bottom: 0.06in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'">	[name
         printed]</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
+        <p  style="margin-bottom: 0.06in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[street
+        <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+        <p  style="margin-bottom: 0.06in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'">	[street
         address]</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
+        <p  style="margin-bottom: 0.06in; "><br/>
 
         </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'">	[city,
+        <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'">____________________________________</span></span></p>
+        <p  style="margin-bottom: 0.06in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'">	[city,
         state]</span></span></p>
     </div>
 
