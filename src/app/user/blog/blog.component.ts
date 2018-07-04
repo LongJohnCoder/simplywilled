@@ -124,4 +124,11 @@ export class BlogComponent implements OnInit {
        this.p = page;
        this.populateBlog();
     }
+
+    /**
+     * Clear blog search and reload blog
+     */
+    clearBlogSearch() {
+        window.location.href = 'blog';
+    }
 }

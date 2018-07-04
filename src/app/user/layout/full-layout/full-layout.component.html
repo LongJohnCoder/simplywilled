@@ -25,7 +25,7 @@
           <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
           <li><a routerLink="/about-us" routerLinkActive="active">About Us</a></li>
           <li><a routerLink="/faq" routerLinkActive="active">FAQ</a></li>
-          <li><a routerLink="/blog" (click)="blogLink()" routerLinkActive="active">Blog</a></li>
+          <li><a routerLink="/blog" routerLinkActive="active">Blog</a></li>
           <li><a routerLink="/sign-in" *ngIf="!isLogIn" routerLinkActive="active">Login</a></li>
           <li><a routerLink="/dashboard" *ngIf="isLogIn" routerLinkActive="active">Dashboard</a></li>
           <li (click)="onLogout()"><a href="javascript:void(0)" *ngIf="isLogIn">Logout</a></li>

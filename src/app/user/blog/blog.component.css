@@ -67,6 +67,19 @@
 .trending_main > h1 {
     color: #0a4e90;
 }
+.clearBtn{
+    background: linear-gradient(#53ba3c, #3fa62e);
+    border: 1px solid #40a52f;
+    font-family: 'OpenSans';
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+    color: #fff;
+    cursor: pointer;
+    vertical-align: bottom;
+}
 
 @media screen and (max-width:1310px){
     .trending_right_ul{

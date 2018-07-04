@@ -22,7 +22,14 @@
 <div class="body_container">
   <div class="wrapper">
     <div class="trending_main">
-        <h1 *ngIf="queryString !== null && queryString !== undefined && queryString !== ''">Search for "<i>{{queryString}}</i>"</h1>
+        <span  *ngIf="queryString !== null && queryString !== undefined && queryString !== ''">
+            <h1 class="searchHeading">
+                Search for "<i>{{queryString}}</i>"
+                <button type="button" class="clearBtn" (click)="clearBlogSearch()">Clear</button>
+            </h1>
+
+        </span>
+
       <div class="trending_left">
         <ul class="trending_ul">
           <li *ngIf="totalBlog === 0">No posts found !</li>

@@ -18,7 +18,7 @@ export class ThankYouComponent implements OnInit {
   constructor(
       private router: Router
   ) {
-
+      window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
       this.countDown = Observable.interval(1000).map((tick) => --this.count).share();
       this.timerSubscription = this.countDown.subscribe(
           (time) => {
