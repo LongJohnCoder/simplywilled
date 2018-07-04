@@ -558,6 +558,32 @@ Route::group(['prefix' => 'v1'], function() {
         Route::group(['middleware' => ['jwt.auth','user.auth']], function(){
 
 
+            Route::get('final-disposition-email', [
+              'uses'  =>  'Api\V1\PdfController@finalDispositionEmail',
+              'as'    =>  'finalDispositionEmail'
+            ]);
+
+            Route::get('fpoa-email', [
+              'uses'  =>  'Api\V1\PdfController@financesDocEmail',
+              'as'    =>  'financesDocEmail'
+            ]);
+
+
+            Route::get('statesDoc-email', [
+              'uses'  =>  'Api\V1\PdfController@statesDocEmail',
+              'as'    =>  'statesDocEmail'
+            ]);
+
+            Route::get('will-template-email', [
+              'uses'  =>  'Api\V1\PdfController@willTemplateEmail',
+              'as'    =>  'willTemplateEmail'
+            ]);
+
+            Route::get('final-signing-instructions-email', [
+              'uses'  =>  'Api\V1\PdfController@finalSigningInstructionsEmail',
+              'as'    =>  'finalSigningInstructionsEmail'
+            ]);
+
             Route::get('final-disposition-pdf', [
               'uses'  =>  'Api\V1\PdfController@finalDisposition',
               'as'    =>  'finalDisposition'

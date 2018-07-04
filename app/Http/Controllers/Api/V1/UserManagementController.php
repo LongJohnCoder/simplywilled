@@ -73,12 +73,14 @@ class UserManagementController extends Controller
               'friendFirstname'   =>  $friendFirstname,
               'friendLastname'    =>  $friendLastname
           ];
+
           Mail::send('new_emails.friend_invitation', $arr, function($mail) use($arr){
               $mail->from(config('settings.email'), 'Friend Invitation to Simplywilled.com');
               $mail->to(strtolower($arr['email']), 'Invitation to Simplywilled')
               ->subject('Your friend invited you to Simplywilled.com');
           });
 
+          
           if(Mail::failures()) {
               \Log::info('email sending error for friend invitation');
               return response()->json([

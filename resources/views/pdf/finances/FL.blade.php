@@ -40,7 +40,7 @@
 	That I, </font>
 	<font color="#0000ff">
 		<font face="Times, serif">
-			<b>CLIENT FIRST NAME</b>
+			<b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>
 		</font>
 	</font>
 
