@@ -284,6 +284,21 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   //   });
   // }
 
+  emailMe(e: any) {
+    e.preventDefault();
+    console.log('came here');
+    this.loading = true;
+    this.getUserDetailsSubscription = this.globalPDFService.willTemplateEmail().subscribe(
+      (response: any ) => {
+        console.log(response.data);
+        alert('email send successfully');
+      },
+      (error: any) => {
+        console.log(error);
+      }, () => { this.loading = false; }
+    );
+  }
+
   /**When the component is destroyed*/
   ngOnDestroy() {
     if (this.getUserDetailsSubscription !== undefined) {

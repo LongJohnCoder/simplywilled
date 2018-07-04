@@ -50,7 +50,8 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
       private userService: UserService,
       private userAuth: UserAuthService,
       private progressbarService: ProgressbarService,
-      private location: Location
+      private location: Location,
+      private globalPdfService: GlobalPdfService
     ) {
     this.loggedInUser = this.userAuth.getUser();
     this.getUserDetails();
@@ -154,6 +155,20 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
     this.location.back();
   }
 
+  emailMe(e: any) {
+    e.preventDefault();
+    console.log('came here');
+    this.loading = true;
+    this.getUserDetailsSubscription = this.globalPdfService.finalSigningsInstructionsEmail().subscribe(
+      (response: any ) => {
+        console.log(response.data);
+        alert('email send successfully');
+      },
+      (error: any) => {
+        console.log(error);
+      }, () => { this.loading = false; }
+    );
+  }
 
   // pdfDownload() {
   //

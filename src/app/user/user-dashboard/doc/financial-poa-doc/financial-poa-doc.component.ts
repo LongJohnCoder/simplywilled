@@ -5,6 +5,7 @@ import {ProgressbarService} from '../../shared/services/progressbar.service';
 import {UserAuthService} from '../../../user-auth/user-auth.service';
 import {Location} from '@angular/common';
 import {GlobalPdfService} from '../services/global-pdf.service';
+// import { INTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS } from '@angular/platform-browser-dynamic';
 
 @Component({
   selector: 'app-financial-poa-doc',
@@ -65,6 +66,27 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
       (response: any) => {
         if (response.status) {
           this.pdfData = response.data;
+
+          if ( this.pdfData.state !== undefined && this.pdfData.state.abr !== null) {
+            const st = this.pdfData.state;
+            if (st['type'] !== undefined) {
+
+              if ( st['type'] === 'none') {
+                const abr = this.pdfData.state.abr;
+                if (this.states[abr.toLowerCase()] !== undefined) {
+                  this.states[abr.toLowerCase()] = true;
+                }
+              } else if (st['type'] === 'uniform') {
+                this.states['uni'] = true;
+              } else if (st['type'] === 'non-uniform') {
+                this.states['nu'] = true;
+              }
+
+            }
+
+            
+          }
+
           console.log(this.pdfData);
         }
       }
@@ -113,14 +135,14 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     this.docScrolled = 0;
     this.thumbIndex = 0;
     this.liCount = this.docThumbImg.length * 114;
-    this.states = {
-      fl: false,
-      md: false,
-      mn: false,
-      ny: false,
-      nu: false,
-      uni: true
-    };
+    // this.states = {
+    //   fl: false,
+    //   md: false,
+    //   mn: false,
+    //   ny: false,
+    //   nu: false,
+    //   uni: true
+    // };
   }
 
   scrollDoc(index: number) {
@@ -158,6 +180,21 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   /**Go to the previous page*/
   goBack() {
     this.location.back();
+  }
+
+  emailMe(e: any) {
+    e.preventDefault();
+    console.log('came here');
+    this.loading = true;
+    this.getUserDetailsSubscription = this.globalPDFService.fpoaEmail().subscribe(
+      (response: any ) => {
+        console.log(response.data);
+        alert('email send successfully');
+      },
+      (error: any) => {
+        console.log(error);
+      }, () => { this.loading = false; }
+    );
   }
 
   // pdfDownload() {

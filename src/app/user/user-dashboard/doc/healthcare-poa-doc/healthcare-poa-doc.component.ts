@@ -113,7 +113,13 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
       (response: any) => {
         if (response.status) {
           this.pdfData = response.data;
-          console.log(this.pdfData);
+
+          if ( this.pdfData.state !== undefined && this.pdfData.state.abr !== null) {
+            const abr = this.pdfData.state.abr;
+            if (this.states[abr.toLowerCase()] !== undefined) {
+              this.states[abr.toLowerCase()] = true;
+            }
+          }
         }
       }
     );
@@ -123,7 +129,9 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
           this.progressBar = {
             finalArrangements: progress.data !== null && progress.data.final_arrangements !== undefined && progress.data.final_arrangements,
             healthFinance: progress.data !== null && progress.data.health_finance !== undefined && progress.data.health_finance,
+            // tslint:disable-next-line:max-line-length
             protectYourFinance: progress.data !== null && progress.data.protect_your_finance !== undefined && progress.data.protect_your_finance,
+            // tslint:disable-next-line:max-line-length
             provideYourLovedOnes: progress.data !== null && progress.data.provide_your_loved_ones !== undefined && progress.data.provide_your_loved_ones,
             tellUsAboutYou: progress.data !== null && progress.data.tell_us_about_you !== undefined && progress.data.tell_us_about_you
           };
@@ -157,59 +165,59 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   }
   /**When the component initialises*/
   ngOnInit() {
-    this.states = {
-      ak: false,
-      al: false,
-      ar: false,
-      ca: false,
-      co: false,
-      ct: false,
-      dc: false,
-      fl: false,
-      ia: false,
-      in: false,
-      ks: false,
-      ky: false,
-      la: false,
-      me: false,
-      hi: false,
-      id: false,
-      il: false,
-      tn: false,
-      wy: false,
-      wv: false,
-      wi: false,
-      wa: false,
-      vt: false,
-      va: false,
-      ut: false,
-      tx: false,
-      md: false,
-      ma: false,
-      mi: false,
-      mn: false,
-      nm: false,
-      nj: true,
-      nh: false,
-      ny: false,
-      nc: false,
-      nd: false,
-      oh: false,
-      ok: false,
-      or: false,
-      pa: false,
-      ri: false,
-      sc: false,
-      sd: false,
-      nv: false,
-      ne: false,
-      ms: false,
-      mo: false,
-      mt: false,
-      ga: false,
-      az: false,
-      de: false
-    };
+    // this.states = {
+    //   ak: false,
+    //   al: false,
+    //   ar: false,
+    //   ca: false,
+    //   co: false,
+    //   ct: false,
+    //   dc: false,
+    //   fl: false,
+    //   ia: false,
+    //   in: false,
+    //   ks: false,
+    //   ky: false,
+    //   la: false,
+    //   me: false,
+    //   hi: false,
+    //   id: false,
+    //   il: false,
+    //   tn: false,
+    //   wy: false,
+    //   wv: false,
+    //   wi: false,
+    //   wa: false,
+    //   vt: false,
+    //   va: false,
+    //   ut: false,
+    //   tx: false,
+    //   md: false,
+    //   ma: false,
+    //   mi: false,
+    //   mn: false,
+    //   nm: false,
+    //   nj: true,
+    //   nh: false,
+    //   ny: false,
+    //   nc: false,
+    //   nd: false,
+    //   oh: false,
+    //   ok: false,
+    //   or: false,
+    //   pa: false,
+    //   ri: false,
+    //   sc: false,
+    //   sd: false,
+    //   nv: false,
+    //   ne: false,
+    //   ms: false,
+    //   mo: false,
+    //   mt: false,
+    //   ga: false,
+    //   az: false,
+    //   de: false
+    // };
     this.docScrolled = 0;
     this.thumbIndex = 0;
     this.liCount = this.docThumbImg.length * 114;
@@ -234,8 +242,8 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     this.scrollHeight = 991 * index;
     this.docBox.nativeElement.scrollTop = this.scrollHeight;
     this.thumbIndex = index;
-    //this.thumbContainer.nativeElement.scrollLeft(100);
-    //this.docBox.nativeElement.style.transition = 'top .8s cubic-bezier(0.77, 0, 0.175, 1)';
+    // this.thumbContainer.nativeElement.scrollLeft(100);
+    // this.docBox.nativeElement.style.transition = 'top .8s cubic-bezier(0.77, 0, 0.175, 1)';
   }
 
   getScroll(scrollVal: number) {
@@ -254,6 +262,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   getUserDetails() {
     this.getUserDetailsSubscription = this.userService.getUserDetails(this.loggedInUser.id).subscribe(
       (response: any ) => {
+        // tslint:disable-next-line:max-line-length
         this.userDetails.firstname = response.data[0] !== null && response.data[0].data != null && response.data[0].data.userInfo !== null && response.data[0].data.userInfo.firstname !== null ? response.data[0].data.userInfo.firstname : '_____________';
       },
       (error: any) => {
@@ -265,6 +274,21 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   /**Go to the previous page*/
   goBack() {
     this.location.back();
+  }
+
+  emailMe(e: any) {
+    e.preventDefault();
+    console.log('came here');
+    this.loading = true;
+    this.getUserDetailsSubscription = this.globalPDFService.hcpoaEmail().subscribe(
+      (response: any ) => {
+        console.log(response.data);
+        alert('email send successfully');
+      },
+      (error: any) => {
+        console.log(error);
+      }, () => { this.loading = false; }
+    );
   }
 
 }

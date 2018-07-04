@@ -171,6 +171,21 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
     this.location.back();
   }
 
+  emailMe(e: any) {
+    e.preventDefault();
+    console.log('came here');
+    this.loading = true;
+    this.getUserDetailsSubscription = this.globalPDFService.finalDispositionEmail().subscribe(
+      (response: any ) => {
+        console.log(response.data);
+        alert('email send successfully');
+      },
+      (error: any) => {
+        console.log(error);
+      }, () => { this.loading = false; }
+    );
+  }
+
   // pdfDownload() {
   //
   //   var doc = new jsPDF({

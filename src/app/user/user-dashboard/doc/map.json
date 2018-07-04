@@ -1,0 +1,7 @@
+{
+    "finalSigningInstructions" : "api/v1/user/final-signing-instructions-pdf",
+    "lastWill" : "api/v1/user/will-template",
+    "hcpoa" : "api/v1/user/states-doc",
+    "fpoa"  : "api/v1/user/finances-doc",
+    "finalDisposition" : "api/v1/user/final-disposition-pdf"
+}
