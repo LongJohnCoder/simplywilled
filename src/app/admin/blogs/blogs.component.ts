@@ -26,6 +26,8 @@ export class BlogsComponent implements OnInit {
     pageSize = 10;
     p = 1;
     total = 0;
+    orderBy = {};
+
   constructor(
     private dashService : DashboardService,
     private modalService : BsModalService,
@@ -33,9 +35,9 @@ export class BlogsComponent implements OnInit {
 
   ) { }
 
-  populateBlogs(page: number, search: string) {
-      console.log(page);
-    this.dashService.getBlogs({'page': page, 'search': search}).subscribe(
+  populateBlogs(page: number, search: string, orderBy: any) {
+      // console.log(page);
+    this.dashService.getBlogs({'page': page, 'search': search, 'orderBy': orderBy, 'pageSize': this.pageSize}).subscribe(
       (data: any) => {
           this.blogList = data.data.BlogDetails;
           this.blogCount = data.data.blogCount;
@@ -50,7 +52,8 @@ export class BlogsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.populateBlogs(1, null);
+      this.orderBy['created_at'] = 'desc';
+    this.populateBlogs(this.p, this.searchBox, this.orderBy);
   }
 
  public openModal(template :  TemplateRef<any>, index){
@@ -90,7 +93,7 @@ export class BlogsComponent implements OnInit {
             }, 500);
         }, 2000);
         // window.location.reload();
-        this.populateBlogs(this.p, this.searchBox);
+        this.populateBlogs(this.p, this.searchBox, this.orderBy);
           // this.populateBlogs();
       }
     }
@@ -112,13 +115,29 @@ export class BlogsComponent implements OnInit {
                     blogModalRef.modalRef.hide();
                     setTimeout(() => {}, 2000);
                 }, 1000);
-                this.populateBlogs(this.p, this.searchBox);
+                this.populateBlogs(this.p, this.searchBox, this.orderBy);
                 // window.location.reload();
             }
         }
     );
  }
 
+    /**
+     * Table order by
+     */
+    orderTable(col: string) {
+        const orderType = this.orderBy[col];
+        this.orderBy = {};
+        this.orderBy[col] = orderType === 'asc' ? 'desc' : 'asc';
+        this.populateBlogs(this.p, this.searchBox, this.orderBy);
+    }
+
+    /**
+     * Page Size change
+     */
+    pageSizeChange() {
+        this.populateBlogs(this.p, this.searchBox, this.orderBy);
+    }
 
 
 }
