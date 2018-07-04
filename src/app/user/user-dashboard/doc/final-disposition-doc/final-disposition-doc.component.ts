@@ -5,6 +5,8 @@ import {FinalDispositionPdfService} from '../services/final-disposition-pdf.serv
 import {GlobalPdfService} from '../services/global-pdf.service';
 import {Location} from '@angular/common';
 import {ProgressbarService} from '../../shared/services/progressbar.service';
+import { saveAs } from 'file-saver/FileSaver';
+
 
 @Component({
   selector: 'app-final-disposition-doc',
@@ -42,6 +44,8 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
     provideYourLovedOnes: false,
     tellUsAboutYou: false
   };
+  signingInstructionSubscription: Subscription;
+  downloadSubscription: Subscription;
   count: number;
 
   /**Constructor call*/
@@ -146,6 +150,23 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
     return count;
   }
 
+  /**Downloads the pdf*/
+  downloadPdf() {
+    let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+    let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    this.signingInstructionSubscription = this.globalPDFService.finalDisposition(token).subscribe(
+      (response: any) => {
+        if (response.status) {
+          this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'finanalDisposition.pdf').subscribe(
+            value => {
+              saveAs(value, 'finanalDisposition.pdf');
+            }
+          );
+        }
+      }, (error) => { console.log(error); }
+    );
+  }
+
   goBack() {
     this.location.back();
   }
@@ -180,6 +201,12 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
     }
     if (this.progressSubscription !== undefined) {
       this.progressSubscription.unsubscribe();
+    }
+    if (this.signingInstructionSubscription !== undefined) {
+      this.signingInstructionSubscription.unsubscribe();
+    }
+    if (this.downloadSubscription !== undefined) {
+      this.downloadSubscription.unsubscribe();
     }
   }
 

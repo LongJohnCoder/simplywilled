@@ -6,7 +6,9 @@ import {Subscription} from "rxjs/Subscription";
 import {UserAuthService} from "../../../user-auth/user-auth.service";
 import {ProgressbarService} from "../../shared/services/progressbar.service";
 import {Location} from '@angular/common';
+import {GlobalPdfService} from '../services/global-pdf.service';
 //import 'jspdf-autotable' as JA from 'jspdf-autotable';
+import { saveAs } from 'file-saver/FileSaver';
 
 @Component({
   selector: 'app-signing-instructions-doc',
@@ -40,8 +42,11 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
   };
   loggedInUser: any;
   getUserDetailsSubscription: Subscription;
+  signingInstructionSubscription: Subscription;
+  downloadSubscription: Subscription;
   count: number;
   constructor(
+      private globalPDFService: GlobalPdfService,
       private userService: UserService,
       private userAuth: UserAuthService,
       private progressbarService: ProgressbarService,
@@ -128,6 +133,22 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
     );
   }
 
+  /**Downloads the pdf*/
+  downloadPdf() {
+    let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+    let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    this.signingInstructionSubscription = this.globalPDFService.signingInstructions(token).subscribe(
+      (response: any) => {
+        if (response.status) {
+          this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'finalSigningInstructions.pdf').subscribe(
+            value => {
+              saveAs(value, 'finalSigningInstructions.pdf');
+            }
+          );
+        }
+      }, (error) => { console.log(error); }
+    );
+  }
   /**Go back to the previous route*/
   goBack() {
     this.location.back();
@@ -161,6 +182,12 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.getUserDetailsSubscription !== undefined) {
       this.getUserDetailsSubscription.unsubscribe();
+    }
+    if (this.signingInstructionSubscription !== undefined) {
+      this.signingInstructionSubscription.unsubscribe();
+    }
+    if (this.downloadSubscription !== undefined) {
+      this.downloadSubscription.unsubscribe();
     }
   }
 

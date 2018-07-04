@@ -6,6 +6,7 @@ import {UserAuthService} from "../../../user-auth/user-auth.service";
 import {ProgressbarService} from "../../shared/services/progressbar.service";
 import {Location} from '@angular/common';
 import {GlobalPdfService} from '../services/global-pdf.service';
+import { saveAs } from 'file-saver/FileSaver';
 
 @Component({
   selector: 'app-last-will-and-testament',
@@ -71,7 +72,8 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     _sb: null,
     _mb: null
   };
-
+  signingInstructionSubscription: Subscription;
+  downloadSubscription: Subscription;
 
   constructor(
       private globalPDFService: GlobalPdfService,
@@ -237,6 +239,23 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     );
   }
 
+  /**Downloads the pdf*/
+  downloadPdf() {
+    let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+    let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    this.signingInstructionSubscription = this.globalPDFService.willTemplate(token).subscribe(
+      (response: any) => {
+        if (response.status) {
+          this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'will-template.pdf').subscribe(
+            value => {
+              saveAs(value, 'will-template.pdf');
+            }
+          );
+        }
+      }, (error) => { console.log(error); }
+    );
+  }
+
   /**Go back to previous route*/
   goBack() {
     this.location.back();
@@ -272,6 +291,12 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     }
     if (this.globalPDFSubscription !== undefined) {
       this.globalPDFSubscription.unsubscribe();
+    }
+    if (this.signingInstructionSubscription !== undefined) {
+      this.signingInstructionSubscription.unsubscribe();
+    }
+    if (this.downloadSubscription !== undefined) {
+      this.downloadSubscription.unsubscribe();
     }
   }
 
