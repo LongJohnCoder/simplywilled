@@ -61,7 +61,7 @@
                                         <option value='500'>500</option>
                                     </select>
                                     <span>Search: </span>
-                                    <input type="text" [(ngModel)]="searchBox" (keyup)="populateBlogs(1, searchBox)" class="form-control">
+                                    <input type="text" [(ngModel)]="searchBox" (keyup)="populateBlogs(1, searchBox, orderBy)" class="form-control">
                                 </div>
 
                                 <table class="table table-striped table-bordered table-hover dataTable no-footer"

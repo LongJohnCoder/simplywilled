@@ -15,4 +15,8 @@ export class UsersService {
         return this.http.get(url);
     }
 
+    userPagination(body: any): Observable<any> {
+        return this.http.post(environment.API_URL + 'admin-panel/users-list-Pagination', body);
+    }
+
 }

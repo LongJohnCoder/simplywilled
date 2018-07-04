@@ -1,8 +1,5 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {UsersService} from '../users.service';
-import * as $ from 'jquery';
-import 'datatables.net';
-import 'datatables.net-bs4';
 
 @Component({
   selector: 'app-user-lists',
@@ -14,24 +11,51 @@ export class UserListsComponent implements OnInit {
   userCount: number;
   userList: any[];
   dataTable: any;
+    searchBox: string = null;
+    pageSize = 10;
+    p = 1;
+    total = 0;
+    orderBy = {};
 
     constructor(
-      private userService: UsersService,
-      private chRef: ChangeDetectorRef
+      private userService: UsersService
   ) { }
 
   ngOnInit() {
-    this.userService.users().subscribe(
-        (res: any) => {
-          this.userList = res.data.users;
-          this.userCount = res.data.users.length;
-            this.chRef.detectChanges();
-            const table: any = $('table');
-            this.dataTable = table.DataTable();
-        }, (err: any) => {
-          console.log(err.error.error);
-        }
-    );
+      this.orderBy['created_at'] = 'desc';
+      this.populateUsers(this.p, this.searchBox, this.orderBy);
   }
+
+    populateUsers(page: number, search: string, orderBy: any) {
+        // console.log(page);
+        this.userService.userPagination({'page': page, 'search': search, 'orderBy': orderBy, 'pageSize': this.pageSize}).subscribe(
+            (res: any) => {
+                this.userList = res.data.users;
+                this.userCount = res.data.userCount;
+                this.total = res.data.totalUsers;
+                this.p = page;
+            }, (err: any) => {
+                console.log(err.error.error);
+            }
+        );
+    }
+
+
+    /**
+     * Table order by
+     */
+    orderTable(col: string) {
+        const orderType = this.orderBy[col];
+        this.orderBy = {};
+        this.orderBy[col] = orderType === 'asc' ? 'desc' : 'asc';
+        this.populateUsers(this.p, this.searchBox, this.orderBy);
+    }
+
+    /**
+     * Page Size change
+     */
+    pageSizeChange() {
+        this.populateUsers(this.p, this.searchBox, this.orderBy);
+    }
 
 }

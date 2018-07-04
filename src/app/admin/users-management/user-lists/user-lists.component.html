@@ -24,11 +24,22 @@
         </div>
         <div class="panel panel-default blogsTab">
           <div class="panel-heading">
-            Total Users - {{userCount}}
+            Total Users - {{total}}
           </div>
           <div class="panel-body">
             <div class="table-responsive">
               <div id="dataTable_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                <div class="pull-right" style="padding-left: 10px;">
+                  <select [(ngModel)]="pageSize" (change)="pageSizeChange($event.target.value)">
+                    <option value='10'>10</option>
+                    <option value='25'>25</option>
+                    <option value='50'>50</option>
+                    <option value='100'>100</option>
+                    <option value='500'>500</option>
+                  </select>
+                  <span>Search: </span>
+                  <input type="text" [(ngModel)]="searchBox" (keyup)="populateUsers(1, searchBox, orderBy)" class="form-control">
+                </div>
                 <table class="table table-striped table-bordered table-hover dataTable no-footer"
                        id="dataTable" aria-describedby="dataTable_info">
                   <thead>
@@ -37,18 +48,30 @@
                         colspan="1" aria-sort="ascending"
                         aria-label="S No.: activate to sort column ascending" style="width: 22px;">S
                       No.
+                      <i [ngClass]="{'fa-sort-amount-asc': orderBy.id !== 'desc','fa-sort-amount-desc ': orderBy.id === 'desc'}" [ngStyle]="{'opacity': orderBy.id === undefined ? 0.3 : 0.9}" class="fa" aria-hidden="true" (click)="orderTable('id')"></i>
+
                     </th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                         colspan="1" aria-label="Title: activate to sort column ascending"
                         style="width: 353px;">Name
+                      <i [ngClass]="{'fa-sort-amount-asc': orderBy.name !== 'desc','fa-sort-amount-desc ': orderBy.name === 'desc'}"
+                         [ngStyle]="{'opacity': orderBy.name === undefined ? 0.3 : 0.9}" class="fa" aria-hidden="true"
+                         (click)="orderTable('name')"></i>
+
                     </th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                         colspan="1" aria-label="Slug: activate to sort column ascending"
                         style="width: 336px;">Email
+                      <i [ngClass]="{'fa-sort-amount-asc': orderBy.email !== 'desc','fa-sort-amount-desc ': orderBy.email === 'desc'}"
+                         [ngStyle]="{'opacity': orderBy.email === undefined ? 0.3 : 0.9}" class="fa" aria-hidden="true"
+                         (click)="orderTable('email')"></i>
                     </th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                         colspan="1" aria-label="Created Date: activate to sort column ascending"
                         style="width: 52px;">Joining
+                      <i [ngClass]="{'fa-sort-amount-asc': orderBy.created_at !== 'desc','fa-sort-amount-desc ': orderBy.created_at === 'desc'}"
+                         [ngStyle]="{'opacity': orderBy.created_at === undefined ? 0.3 : 0.9}" class="fa" aria-hidden="true"
+                         (click)="orderTable('created_at')"></i>
                     </th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                         colspan="1" aria-label="Created Date: activate to sort column ascending"
@@ -61,8 +84,11 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr *ngFor="let item of userList; let i = index">
-                    <td class="sorting_1">{{i + 1}}</td>
+                  <tr *ngFor="let item of userList | paginate: { id: 'server',
+                                                      itemsPerPage: pageSize,
+                                                      currentPage: p,
+                                                      totalItems: userCount }">
+                    <td class="sorting_1">{{item.id}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.email}} ...</td>
                     <td>{{item.created_at}}</td>
@@ -85,6 +111,7 @@
                   </tr>
                   </tbody>
                 </table>
+                <pagination-controls (pageChange)="populateUsers($event, searchBox, orderBy)" id="server"></pagination-controls>
 
                 <!--<div class="row"><div class="col-sm-6"><div class="dataTables_info" id="dataTable_info" role="alert" aria-live="polite" aria-relevant="all">Showing 1 to 10 of 70 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate"><ul class="pagination"><li class="paginate_button previous disabled" aria-controls="dataTable" tabindex="0" id="dataTable_previous"><a href="#">Previous</a></li><li class="paginate_button active" aria-controls="dataTable" tabindex="0"><a href="#">1</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">2</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">3</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">4</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">5</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">6</a></li><li class="paginate_button " aria-controls="dataTable" tabindex="0"><a href="#">7</a></li><li class="paginate_button next" aria-controls="dataTable" tabindex="0" id="dataTable_next"><a href="#">Next</a></li></ul></div></div></div></div>-->
               </div>
