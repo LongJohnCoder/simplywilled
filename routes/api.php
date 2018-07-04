@@ -455,6 +455,11 @@ Route::group(['prefix' => 'v1'], function() {
             'as'   => 'api.v1.usersList.get'
         ]);
 
+        Route::post('users-list-Pagination', [
+            'uses' => 'Api\V1\DashboardController@usersListPagination',
+            'as'   => 'api.v1.usersListPagination.post'
+        ]);
+
         Route::post('update-profile', [
             'uses' => 'Api\V1\AdminController@updateProfile',
             'as'   => 'api.v1.updateProfile.post'

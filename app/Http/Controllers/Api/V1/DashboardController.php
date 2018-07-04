@@ -89,4 +89,51 @@ class DashboardController extends Controller
       }
 
     }
+
+    public function usersListPagination(Request $request)
+    {
+      try {
+        $page = $request->page;
+        $pageSize = $request->pageSize;
+
+
+        $users = User::with(array('loginHistory' => function($q) {
+                    $q->select('id', 'user_id', 'login_time', 'logout_time', 'ip_address');
+                    $q->orderBy('id', 'DESC');
+                  }))->where('id','!=', 1);
+
+        $totalUsers = $users->count();
+
+        if ($request->search != NULL) {
+          $users = $users->where('name','like', '%'.$request->search.'%')
+            ->orWhere('email','like','%'.$request->search.'%');
+        }
+
+        if (empty($request->orderBy)) {
+          $users = $users->orderBy('created_at','DESC');
+        } else {
+          foreach ($request->orderBy as $okey => $ovalue) {
+            if ($ovalue != 'asc' || $ovalue != 'desc') {
+                $users = $users->orderBy($okey, $ovalue);
+            }
+          }
+        }
+
+        $userCount = $users->count();
+        $users = $users->offset(($page-1)*$pageSize)->limit($pageSize);
+
+        $users = $users->get();
+        return response()->json([
+           'status'       => true,
+           'message'      => 'Successfully fetched users data!',
+           'data'         => ['users' => $users, 'userCount' => $userCount, 'totalUsers' => $totalUsers]
+        ], 200);
+      } catch (\Exception $e) {
+        return response()->json([
+           'status'       => false,
+           'error'        => $e->getMessage(),
+           'line'         => $e->getLine()
+        ], 500);
+      }
+    }
 }

@@ -157,9 +157,6 @@ class BlogController extends Controller
             if ($ovalue != 'asc' || $ovalue != 'desc') {
                 $blogs = $blogs->orderBy($okey, $ovalue);
             }
-            // else {
-            //   $blogs = $blogs->orderBy('created_at','DESC');
-            // }
           }
         }
 
