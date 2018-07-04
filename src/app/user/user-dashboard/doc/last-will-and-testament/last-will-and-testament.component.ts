@@ -1,12 +1,11 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import * as html2canvas from "html2canvas";
-//import * as jsPdf from 'jspdf';
 import {UserService} from "../../../user.service";
 import {Subscription} from "rxjs/Subscription";
 import {UserAuthService} from "../../../user-auth/user-auth.service";
 import {ProgressbarService} from "../../shared/services/progressbar.service";
 import {Location} from '@angular/common';
-//import 'jspdf-autotable' as JA from 'jspdf-autotable';
+import {GlobalPdfService} from '../services/global-pdf.service';
 
 @Component({
   selector: 'app-last-will-and-testament',
@@ -23,9 +22,10 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   scrollHeight: number;
   docScrolled: number;
   loading = true;
-  userDetails = {
+  firstname: any;
+  /*userDetails = {
     firstname: ''
-  };
+  };*/
   docThumbImg: Array<any> = [
     '../../../../../assets/images/doc1-thumb1.png',
     '../../../../../assets/images/doc1-thumb2.png'
@@ -41,7 +41,40 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   loggedInUser: any;
   getUserDetailsSubscription: Subscription;
   count: number;
+  userDetails  = {
+    backupGuardian : null,
+    backupPersonalRepresentative : null,
+    backupPetGuardian : null,
+    children : null,
+    contingentBeneficiary : null,
+    disinherit : null,
+    estateDistribute : null,
+    finalArrangements : null,
+    financialPowerOfAttorney : null,
+    gifts : null,
+    guardian : null,
+    healthFinance : null,
+    personalRepresentative : null,
+    petGuardian : null,
+    provideYourLovedOnes : null,
+    state : null,
+    tellUsAboutYou: null
+  };
+  globalPDFSubscription: Subscription;
+  giftStatements = {
+    firstpage: [],
+    otherpages: [],
+    pageLength: []
+  };
+  petNames = [];
+  estateDistribute = {
+    _sb: null,
+    _mb: null
+  };
+
+
   constructor(
+      private globalPDFService: GlobalPdfService,
       private userService: UserService,
       private userAuth: UserAuthService,
       private progressbarService: ProgressbarService,
@@ -67,6 +100,82 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
       },
       (error) => { console.log(error); },
       () => {}
+    );
+    this.globalPDFSubscription = this.globalPDFService.fetchData(token).subscribe(
+      (response: any) => {console.log(response);
+        if (response.status) {
+          this.userDetails = {
+            backupGuardian : response.data.backupGuardian,
+            backupPersonalRepresentative : response.data.backupPersonalRepresentative,
+            backupPetGuardian : response.data.backupPetGuardian,
+            children : response.data.children,
+            contingentBeneficiary : response.data.contingentBeneficiary,
+            disinherit : response.data.disinherit,
+            estateDistribute : response.data.estateDistribute,
+            finalArrangements : response.data.finalArrangements,
+            financialPowerOfAttorney : response.data.financialPowerOfAttorney,
+            gifts : response.data.gifts,
+            guardian : response.data.guardian,
+            healthFinance : response.data.healthFinance,
+            personalRepresentative : response.data.personalRepresentative,
+            petGuardian : response.data.petGuardian,
+            provideYourLovedOnes : response.data.provideYourLovedOnes,
+            state : response.data.state,
+            tellUsAboutYou: response.data.tellUsAboutYou
+          };
+          if (response.data.gifts.length > 0) {
+            let statement = '';
+             for (let i = 0; i < response.data.gifts.length; i++) {
+               if ( i < 2 ) {
+                 switch (response.data.gifts[i].type) {
+                   case '1': statement = response.data.gifts[i].cash_description !== null ? JSON.parse(response.data.gifts[i].cash_description)[0].statement : '';
+                     this.giftStatements.firstpage.push(statement);
+                     break;
+                   case '2': statement = response.data.gifts[i].property_details !== null ? JSON.parse(response.data.gifts[i].property_details)[0].statement : '';
+                     this.giftStatements.firstpage.push(statement);
+                     break;
+                   case '3': statement = response.data.gifts[i].business_details !== null ? JSON.parse(response.data.gifts[i].business_details)[0].statement : '';
+                     this.giftStatements.firstpage.push(statement);
+                     break;
+                   case '4': statement = response.data.gifts[i].asset_details !== null ? JSON.parse(response.data.gifts[i].asset_details)[0].statement : '';
+                     this.giftStatements.firstpage.push(statement);
+                     break;
+                 }
+               } else {
+                 switch (response.data.gifts[i].type) {
+                   case '1': statement = response.data.gifts[i].cash_description !== null ? JSON.parse(response.data.gifts[i].cash_description)[0].statement : '';
+                     this.giftStatements.otherpages.push(statement);
+                     break;
+                   case '2': statement = response.data.gifts[i].property_details !== null ? JSON.parse(response.data.gifts[i].property_details)[0].statement : '';
+                     this.giftStatements.otherpages.push(statement);
+                     break;
+                   case '3': statement = response.data.gifts[i].business_details !== null ? JSON.parse(response.data.gifts[i].business_details)[0].statement : '';
+                     this.giftStatements.otherpages.push(statement);
+                     break;
+                   case '4': statement = response.data.gifts[i].asset_details !== null ? JSON.parse(response.data.gifts[i].asset_details)[0].statement : '';
+                     this.giftStatements.otherpages.push(statement);
+                     break;
+                 }
+               }
+             }
+             for (let i = 0; i < Math.ceil(this.giftStatements.otherpages.length / 5); i++) {
+               this.giftStatements.pageLength.push(i);
+             }
+             console.log(this.giftStatements);
+             //this.giftStatements.pageLength = Math.ceil(this.giftStatements.otherpages.length / 5);
+          }
+          if (response.data.tellUsAboutYou.pet_names !== null) {
+            this.petNames = JSON.parse(response.data.tellUsAboutYou.pet_names);
+          }
+          if (response.data.estateDistribute !== null) {
+            this.estateDistribute = {
+              _sb: response.data.estateDistribute.to_a_single_beneficiary !== null && response.data.estateDistribute.to_a_single_beneficiary !== undefined ? JSON.parse(response.data.estateDistribute.to_a_single_beneficiary)[0] : null,
+              _mb: response.data.estateDistribute.to_multiple_beneficiary !== null && response.data.estateDistribute.to_multiple_beneficiary !== undefined ? JSON.parse(response.data.estateDistribute.to_multiple_beneficiary)[0] : null,
+            } ;
+          }
+          console.log(this.estateDistribute);
+        }
+      }
     );
   }
 
@@ -120,7 +229,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   getUserDetails() {
     this.getUserDetailsSubscription = this.userService.getUserDetails(this.loggedInUser.id).subscribe(
       (response: any ) => {
-        this.userDetails.firstname = response.data[0] !== null && response.data[0].data != null && response.data[0].data.userInfo !== null && response.data[0].data.userInfo.firstname !== null ? response.data[0].data.userInfo.firstname : '_____________';
+        this.firstname = response.data[0] !== null && response.data[0].data != null && response.data[0].data.userInfo !== null && response.data[0].data.userInfo.firstname !== null ? response.data[0].data.userInfo.firstname : '_____________';
       },
       (error: any) => {
         console.log(error);
@@ -160,6 +269,9 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.getUserDetailsSubscription !== undefined) {
       this.getUserDetailsSubscription.unsubscribe();
+    }
+    if (this.globalPDFSubscription !== undefined) {
+      this.globalPDFSubscription.unsubscribe();
     }
   }
 

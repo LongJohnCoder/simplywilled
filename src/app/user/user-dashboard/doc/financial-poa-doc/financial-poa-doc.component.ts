@@ -45,7 +45,8 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     md: false,
     mn: false,
     ny: false,
-    nu: false
+    nu: false,
+    uni: false
   };
   pdfData: any;
   globalPDFSubscription: Subscription;
@@ -117,7 +118,8 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
       md: false,
       mn: false,
       ny: false,
-      nu: true
+      nu: false,
+      uni: true
     };
   }
 

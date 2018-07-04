@@ -2,7 +2,7 @@
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div id="doc" class="docPageInner"
        style="box-sizing: border-box; height: 890px;">
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+    <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <span color="#000000">«</span><span color="#008f00">IF Uniform?</span><span color="#000000">»</span></p>
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <br/>
@@ -14,63 +14,74 @@
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <br/>
 
-    </p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+    </p>-->
+    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'District of Columbia'">
       <b>THIS POWER OF ATTORNEY AUTHORIZES THE PERSON NAMED BELOW AS MY
         ATTORNEY-IN-FACT TO DO ONE OR MORE OF THE FOLLOWING: TO SELL, LEASE,
         GRANT, ENCUMBER, RELEASE, OR OTHERWISE CONVEY ANY INTEREST IN MY REAL
         PROPERTY AND TO EXECUTE DEEDS AND ALL OTHER INSTRUMENTS ON MY BEHALF,
         UNLESS THIS POWER OF ATTORNEY IS OTHERWISE LIMITED HEREIN TO SPECIFIC
         REAL PROPERTY.</b></p>
-    <p class="western" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
+    <!--<p class="western" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
       <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>
     <p class="western" style="margin-bottom: 0.06in; line-height: 100%"><br/>
       <br/>
 
-    </p>
-    <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000"><span size="4" style="font-size: 13pt">«</span></span><span color="#008f00"><span size="4" style="font-size: 13pt">IF
-      Durable </span></span><span color="#000000"><span size="4" style="font-size: 13pt">»</span></span></p>
-    <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
-      <span size="4" style="font-size: 14pt"><b>«</b></span><span color="#0433ff"><span size="4" style="font-size: 14pt"><b>STATE</b></span></span><span size="4" style="font-size: 14pt"><b>»
-    </b></span>
-    </p>
-    <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
-      <span size="4" style="font-size: 14pt"><b>DURABLE GENERAL POWER OF
-        ATTORNEY</b></span></p>
-    <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
-      <span size="4" style="font-size: 14pt"><b>FOR MANAGEMENT OF FINANCIAL
-        AFFAIRS AND PROPERTY</b></span></p>
-    <p class="western" align="center" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
+    </p>-->
+    <!--<p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
+      <span color="#000000"><span size="4" style="font-size: 13pt"></span></span><span color="#008f00"><span size="4" style="font-size: 13pt">IF
+      Durable </span></span><span color="#000000"><span size="4" style="font-size: 13pt"></span></span></p>-->
+    <div *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
+      <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
+        <span size="4" style="font-size: 14pt"><b></b></span><span color="#0433ff"><span size="4" style="font-size: 14pt"><b>
+            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
+            <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+        </b></span></span><span size="4" style="font-size: 14pt"><b>
+      </b></span>
+      </p>
+      <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
+        <span size="4" style="font-size: 14pt"><b>DURABLE GENERAL POWER OF
+          ATTORNEY</b></span></p>
+      <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
+        <span size="4" style="font-size: 14pt"><b>FOR MANAGEMENT OF FINANCIAL
+          AFFAIRS AND PROPERTY</b></span></p>
+    </div>
+    <!--<p class="western" align="center" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
       <span color="#000000"><span size="4" style="font-size: 13pt">«</span></span><span color="#008f00"><span size="4" style="font-size: 13pt">Else</span></span><span color="#000000"><span size="4" style="font-size: 13pt">»</span></span></p>
     <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
       <span color="#000000"><span size="4" style="font-size: 13pt">«</span></span><span color="#008f00"><span size="4" style="font-size: 13pt">IF
-      !Durable </span></span><span color="#000000"><span size="4" style="font-size: 13pt">»</span></span></p>
-    <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
-      <span size="4" style="font-size: 14pt"><b>«</b></span><span color="#0433ff"><span size="4" style="font-size: 14pt"><b>STATE</b></span></span><span size="4" style="font-size: 14pt"><b>»
-    </b></span>
-    </p>
-    <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
-      <span size="4" style="font-size: 14pt"><b>POWER OF ATTORNEY</b></span></p>
-    <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000"><span size="4" style="font-size: 14pt">«</span></span><span color="#008f00"><span size="4" style="font-size: 14pt">IF
-      State = &quot;Wisconsin&quot;</span></span><span color="#000000"><span size="4" style="font-size: 14pt">»</span></span></p>
-    <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
-      <span size="4" style="font-size: 14pt"><b>FOR FINANCES AND PROPERTY</b></span></p>
-    <p class="western" align="center" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
+      !Durable </span></span><span color="#000000"><span size="4" style="font-size: 13pt">»</span></span></p>-->
+    <div *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 0">
+      <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
+        <span size="4" style="font-size: 14pt"><b></b></span><span color="#0433ff"><span size="4" style="font-size: 14pt"><b>
+            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
+            <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+        </b></span></span><span size="4" style="font-size: 14pt"><b>
+      </b></span>
+      </p>
+      <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
+        <span size="4" style="font-size: 14pt"><b>POWER OF ATTORNEY</b></span></p>
+     <!-- <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
+        <span color="#000000"><span size="4" style="font-size: 14pt">«</span></span><span color="#008f00"><span size="4" style="font-size: 14pt">IF
+        State = &quot;Wisconsin&quot;</span></span><span color="#000000"><span size="4" style="font-size: 14pt">»</span></span></p>-->
+      <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Wisconsin'">
+        <span size="4" style="font-size: 14pt"><b>FOR FINANCES AND PROPERTY</b></span></p>
+      <!--<p class="western" align="center" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
+        <span color="#000000"><span size="4" style="font-size: 13pt">«</span></span><span color="#008f00"><span size="4" style="font-size: 13pt">END
+        IF</span></span><span color="#000000"><span size="4" style="font-size: 13pt">»</span></span></p>-->
+    </div>
+    <!--<p class="western" align="center" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
       <span color="#000000"><span size="4" style="font-size: 13pt">«</span></span><span color="#008f00"><span size="4" style="font-size: 13pt">END
-      IF</span></span><span color="#000000"><span size="4" style="font-size: 13pt">»</span></span></p>
-    <p class="western" align="center" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000"><span size="4" style="font-size: 13pt">«</span></span><span color="#008f00"><span size="4" style="font-size: 13pt">END
-      IF</span></span><span color="#000000"><span size="4" style="font-size: 13pt">»</span></span></p>
+      IF</span></span><span color="#000000"><span size="4" style="font-size: 13pt">»</span></span></p>-->
     <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
       <br/>
       <br/>
 
     </p>
-    <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Maine'">
+    <!--<p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
       <span color="#000000">«</span><span color="#008f00">IF State =
-      &quot;Maine&quot;</span><span color="#000000">»</span></p>
+      &quot;Maine&quot;</span><span color="#000000">»</span></p>-->
     <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
       <b>Notice to the Principal</b>: As the “Principal” you are using
       this power of attorney to grant power to another person (called the
@@ -85,6 +96,125 @@
       attorney at any time as long as you are not incapacitated. If there
       is anything about this power of attorney that you do not understand,
       you should ask a lawyer to explain it to you.</p>
+    </div>
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== 'Maine'">
+      <p class="western" align="center" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
+        <b>Important Information</b></p>
+      <p class="western" align="justify" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
+        <b>THIS IS AN IMPORTANT LEGAL DOCUMENT. BY SIGNING THE </b>
+        <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
+      <span color="#000000"><b></b></span><span color="#008f00"><b>
+      </b></span><span color="#000000"><b></b></span><b>DURABLE
+      </b><span color="#000000"><b></b></span></span><span color="#008f00"><b>
+      </b></span><span color="#000000"><b></b></span><b>POWER OF
+        ATTORNEY, YOU ARE AUTHORIZING ANOTHER PERSON TO ACT FOR YOU, THE
+        PRINCIPAL.  BEFORE YOU SIGN THIS </b>
+        <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
+      <span color="#000000"><b></b></span><span color="#008f00"><b>
+      </b></span><span color="#000000"><b></b></span><b>DURABLE
+      </b><span color="#000000"><b></b></span></span><span color="#008f00"><b>
+      </b></span><span color="#000000"><b></b></span><b>POWER OF
+        ATTORNEY, YOU SHOULD KNOW THESE IMPORTANT FACTS:</b></p>
+      <ol>
+        <li>
+          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <span face="Calibri, serif"><span face="Times New Roman, serif">This
+          power of attorney grants broad authority to another person (your
+          agent) to make decisions concerning your property for you (the
+          principal). Your agent will be able to make decisions and act with
+          respect to your property (including your money) whether or not you
+          are able to act for yourself. The meaning of authority over subjects
+          listed on this form is explained in the </span>
+          <span color="#0433ff" *ngIf="userDetails !== undefined && userDetails.state !== null"><span face="Times New Roman, serif">
+            {{userDetails.state.act !== null && userDetails.state.act !== undefined && userDetails.state.act !== '' ? userDetails.state.act : '____________'}}
+          </span></span><span face="Times New Roman, serif">, in </span><span color="#0433ff" *ngIf="userDetails !== undefined && userDetails.state !== null"><span face="Times New Roman, serif">
+            {{userDetails.state.code !== null && userDetails.state.code !== undefined && userDetails.state.code !== '' ? userDetails.state.code : '____________'}}
+          </span></span><span face="Times New Roman, serif">.</span></span></p>
+        </li>
+      </ol>
+      <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+      </p>
+      <ol start="2">
+        <li>
+          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <span face="Calibri, serif"><span face="Times New Roman, serif">This
+          power of attorney does not authorize the agent to make health care
+          decisions for you.</span></span></p>
+        </li>
+      </ol>
+      <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+      </p>
+      <ol start="3">
+        <li>
+          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <span face="Calibri, serif"><span face="Times New Roman, serif">Your
+          agent (attorney-in-fact) has no duty to act unless you and your
+          agent agree otherwise in writing.</span></span></p>
+        </li>
+      </ol>
+      <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+      </p>
+      <ol start="4">
+        <li>
+          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <span face="Calibri, serif"><span face="Times New Roman, serif">This
+          document does not give your agent the power to accept or receive any
+          of your property, in trust or otherwise, as a gift, unless you
+          specifically authorize the agent to accept or receive a gift.</span></span></p>
+        </li>
+      </ol>
+      <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+      </p>
+      <ol start="5">
+        <li>
+          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <span face="Calibri, serif"><span face="Times New Roman, serif">You
+          should select someone you trust to serve as your agent. Unless you
+          specify otherwise, generally the agent's authority will continue
+          until you die or revoke the power of attorney or the agent resigns
+          or is unable to act for you.</span></span></p>
+        </li>
+      </ol>
+      <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+      </p>
+      <ol start="6">
+        <li>
+          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <span face="Calibri, serif"><span face="Times New Roman, serif">Your
+          agent is entitled to reasonable compensation unless you state
+          otherwise in the Special Instructions.</span></span></p>
+        </li>
+      </ol>
+      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+      </p>
+    </div>
+  </div>
+</div>
+<!-- !Page 1 -->
+
+<div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Maine'">
+<!-- Page 2 -->
+<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+  <div class="docPageInner"
+       style="box-sizing: border-box; height: 890px;">
+
+  <!--  <p class="western" align="center" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
+      <span color="#000000">«</span><span color="#008f00">ELSE</span><span color="#000000">»</span></p>
+    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+    </p>-->
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <b>Notice to the Agent</b>: As the “Agent” you are given power
       under this power of attorney to make decisions about the property
@@ -115,273 +245,177 @@
       lawyer to explain it to you.</p>
   </div>
 </div>
-<!-- !Page 1 -->
-
-<!-- Page 2 -->
-<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-  <div class="docPageInner"
-       style="box-sizing: border-box; height: 890px;">
-
-    <p class="western" align="center" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000">«</span><span color="#008f00">ELSE</span><span color="#000000">»</span></p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p class="western" align="center" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
-      <b>Important Information</b></p>
-    <p class="western" align="justify" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
-      <b>THIS IS AN IMPORTANT LEGAL DOCUMENT. BY SIGNING THE </b><span color="#000000"><b>«</b></span><span color="#008f00"><b>IF
-      DURABLE</b></span><span color="#000000"><b>»</b></span><b>DURABLE
-    </b><span color="#000000"><b>«</b></span><span color="#008f00"><b>END
-      IF</b></span><span color="#000000"><b>»</b></span><b>POWER OF
-      ATTORNEY, YOU ARE AUTHORIZING ANOTHER PERSON TO ACT FOR YOU, THE
-      PRINCIPAL.  BEFORE YOU SIGN THIS </b><span color="#000000"><b>«</b></span><span color="#008f00"><b>IF
-      DURABLE</b></span><span color="#000000"><b>»</b></span><b>DURABLE
-    </b><span color="#000000"><b>«</b></span><span color="#008f00"><b>END
-      IF</b></span><span color="#000000"><b>»</b></span><b>POWER OF
-      ATTORNEY, YOU SHOULD KNOW THESE IMPORTANT FACTS:</b></p>
-    <ol>
-      <li>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-        <span face="Calibri, serif"><span face="Times New Roman, serif">This
-          power of attorney grants broad authority to another person (your
-          agent) to make decisions concerning your property for you (the
-          principal). Your agent will be able to make decisions and act with
-          respect to your property (including your money) whether or not you
-          are able to act for yourself. The meaning of authority over subjects
-          listed on this form is explained in the «</span><span color="#0433ff"><span face="Times New Roman, serif">UPOAA
-          Act</span></span><span face="Times New Roman, serif">», in «</span><span color="#0433ff"><span face="Times New Roman, serif">UPOAA
-          Code</span></span><span face="Times New Roman, serif">».</span></span></p>
-      </li>
-    </ol>
-    <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <ol start="2">
-      <li>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-        <span face="Calibri, serif"><span face="Times New Roman, serif">This
-          power of attorney does not authorize the agent to make health care
-          decisions for you.</span></span></p>
-      </li>
-    </ol>
-    <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <ol start="3">
-      <li>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-        <span face="Calibri, serif"><span face="Times New Roman, serif">Your
-          agent (attorney-in-fact) has no duty to act unless you and your
-          agent agree otherwise in writing.</span></span></p>
-      </li>
-    </ol>
-    <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <ol start="4">
-      <li>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-        <span face="Calibri, serif"><span face="Times New Roman, serif">This
-          document does not give your agent the power to accept or receive any
-          of your property, in trust or otherwise, as a gift, unless you
-          specifically authorize the agent to accept or receive a gift.</span></span></p>
-      </li>
-    </ol>
-    <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <ol start="5">
-      <li>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-        <span face="Calibri, serif"><span face="Times New Roman, serif">You
-          should select someone you trust to serve as your agent. Unless you
-          specify otherwise, generally the agent's authority will continue
-          until you die or revoke the power of attorney or the agent resigns
-          or is unable to act for you.</span></span></p>
-      </li>
-    </ol>
-    <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <ol start="6">
-      <li>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-        <span face="Calibri, serif"><span face="Times New Roman, serif">Your
-          agent is entitled to reasonable compensation unless you state
-          otherwise in the Special Instructions.</span></span></p>
-      </li>
-    </ol>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-  </div>
-</div>
 <!-- !Page 2 -->
+</div>
 
+<div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== 'Maine'">
 <!-- Page 3 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
        style="box-sizing: border-box; height: 890px;">
 
-    <ol start="7">
-      <li>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-        <span face="Calibri, serif"><span face="Times New Roman, serif">This
-          form provides for designation of one agent.  If your agent is unable
-          or unwilling to act for you, your power of attorney will end unless
-          you have named a successor agent. </span></span>
-      </p>
-      </li>
-    </ol>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <ol start="8">
-      <li>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-        <span face="Calibri, serif"><span face="Times New Roman, serif">This
-          power of attorney becomes effective immediately unless you state
-          otherwise in the Special Instructions.</span></span></p>
-      </li>
-    </ol>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <ol start="9">
-      <li>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-        <span face="Calibri, serif"><span face="Times New Roman, serif">You
-          can amend or change this </span><span color="#000000"><span face="Times New Roman, serif">«</span></span><span color="#008f00"><span face="Times New Roman, serif">IF
-          DURABLE</span></span><span color="#000000"><span face="Times New Roman, serif">»</span></span><span face="Times New Roman, serif">durable</span><span color="#000000"><span face="Times New Roman, serif">«</span></span><span color="#008f00"><span face="Times New Roman, serif">END
-          IF</span></span><span color="#000000"><span face="Times New Roman, serif">»</span></span><span face="Times New Roman, serif">
-          Power of Attorney only by executing a new Power of Attorney or by
-          executing an amendment through the same formalities as an original. </span></span>
-      </p>
-      </li>
-    </ol>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <ol start="10">
-      <li>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-        <span face="Calibri, serif"><span face="Times New Roman, serif">You
-          have the right to revoke or terminate this Power of Attorney at any
-          time, so long as you are competent.  </span><span face="Times New Roman, serif">This
-          power of attorney may be revoked by you at any time. You can revoke
-          it in writing, by telling your agent, or by tearing it up or
-          crossing it out or any other act that shows you want it revoked.
-          Tell your agent that you are revoking the power of attorney. You
-          should also tell your bank and other financial institutions.</span></span></p>
-      </li>
-    </ol>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <ol start="11">
-      <li>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-        <span face="Calibri, serif"><span face="Times New Roman, serif">Pay
-          careful attention to the signing instructions within the document.
-          Be certain to sign, date, and acknowledge this power of attorney
-          before a notary public and the required number of witnesses.  The
-          document may also require your agent’s signature, or your initials
-          to confirm your election in certain provisions.</span></span></p>
-      </li>
-    </ol>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <ol start="12">
-      <li>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-        <span face="Calibri, serif"><span face="Times New Roman, serif">If
-          you elect to grant powers over real property, this Power of Attorney
-          may require recordation in the land records where the property is
-          situate.</span></span></p>
-      </li>
-    </ol>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <span color="#000000">«</span><span color="#008f00">IF DURABLE AND
-      State = ! “Texas”</span><span color="#000000">»</span></p>
-    <ol start="13">
-      <li>
+      <ol start="7">
+        <li>
         <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-          <span face="Calibri, serif"><span face="Times New Roman, serif">The
-            powers you give your agent will continue to exist for your entire
-            lifetime, unless you state that the Durable Power of Attorney will
-            last for a shorter period of time or unless you otherwise terminate
-            the Power of Attorney. The powers you give to your agent in this
-            Durable Power of Attorney will continue to exist even if you can no
-            longer make your own decisions respecting the management of your
-            property. </span></span>
+          <span face="Calibri, serif"><span face="Times New Roman, serif">This
+            form provides for designation of one agent.  If your agent is unable
+            or unwilling to act for you, your power of attorney will end unless
+            you have named a successor agent. </span></span>
         </p>
-      </li>
-    </ol>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <span color="#000000">«</span><span color="#008f00">ELSE</span><span color="#000000">
-    </span><span color="#008f00">IF DURABLE AND State = “Texas”</span><span color="#000000">»</span></p>
-    <ol start="13">
-      <li>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-        <span face="Calibri, serif"><span color="#000000"><span face="Times New Roman, serif">You
-          should select someone you trust to serve as your agent (attorney in
-          fact). Unless you specify otherwise, generally the agent's (attorney
-          in fact's) authority will continue until:</span></span></span></p>
-      </li>
-    </ol>
-    <ul>
-      <li>
-      <p style="margin-bottom: 0in; line-height: 100%"><span color="#000000">you
-        die or revoke the power of attorney;</span></p>
-      </li>
-      <li>
-      <p style="margin-bottom: 0in; line-height: 100%"><span color="#000000">your
-        agent (attorney in fact) resigns or is unable to act for you; or</span></p>
-      </li>
-      <li>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-        <span color="#000000">a guardian is appointed for your estate.</span></p>
-      </li>
-    </ul>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>
-    <p align="justify" style="margin-left: 0.5in; margin-top: 0.08in; margin-bottom: 0in; line-height: 100%">
-      <br/>
+        </li>
+      </ol>
+      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <br/>
 
-    </p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <b>You should read this </b><span color="#000000"><b>«</b></span><span color="#008f00">IF
-      Durable</span><span color="#000000"><b>»</b></span><b>durable </b><span color="#000000"><b>«</b></span><span color="#008f00">END
-      IF</span><span color="#000000"><b>»</b></span><b>Power of Attorney
-      carefully. When effective, this </b><span color="#000000"><b>«</b></span><span color="#008f00">IF
-      Durable</span><span color="#000000"><b>»</b></span><b>Durable </b><span color="#000000"><b>«</b></span><span color="#008f00">END
-      IF</span><span color="#000000"><b>»</b></span><b>Power of Attorney
-      will give your agent the right to deal with property that you now
-      have or might acquire in the future. </b><b>If you have questions
-      about this document or the authority you are granting to your agent,
-      or if you do not understand this Power of Attorney or any provision
-      of it, you should seek legal advice before signing this form.</b></p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <span color="#000000"><b>«</b></span><span color="#008f00">END IF</span><span color="#000000"><b>»
-    </b></span>
-    </p>
+      </p>
+      <ol start="8">
+        <li>
+        <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <span face="Calibri, serif"><span face="Times New Roman, serif">This
+            power of attorney becomes effective immediately unless you state
+            otherwise in the Special Instructions.</span></span></p>
+        </li>
+      </ol>
+      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+      </p>
+      <ol start="9">
+        <li>
+        <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <span face="Calibri, serif"><span face="Times New Roman, serif">You
+            can amend or change this </span>
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
+            <span color="#000000"><span face="Times New Roman, serif"></span></span><span color="#008f00"><span face="Times New Roman, serif">
+            </span></span><span color="#000000"><span face="Times New Roman, serif"></span></span><span face="Times New Roman, serif">durable</span></span>
+            <span color="#000000"><span face="Times New Roman, serif"></span></span><span color="#008f00"><span face="Times New Roman, serif">
+            </span></span><span color="#000000"><span face="Times New Roman, serif"></span></span><span face="Times New Roman, serif">
+            Power of Attorney only by executing a new Power of Attorney or by
+            executing an amendment through the same formalities as an original. </span></span>
+        </p>
+        </li>
+      </ol>
+      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+      </p>
+      <ol start="10">
+        <li>
+        <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <span face="Calibri, serif"><span face="Times New Roman, serif">You
+            have the right to revoke or terminate this Power of Attorney at any
+            time, so long as you are competent.  </span><span face="Times New Roman, serif">This
+            power of attorney may be revoked by you at any time. You can revoke
+            it in writing, by telling your agent, or by tearing it up or
+            crossing it out or any other act that shows you want it revoked.
+            Tell your agent that you are revoking the power of attorney. You
+            should also tell your bank and other financial institutions.</span></span></p>
+        </li>
+      </ol>
+      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+      </p>
+      <ol start="11">
+        <li>
+        <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <span face="Calibri, serif"><span face="Times New Roman, serif">Pay
+            careful attention to the signing instructions within the document.
+            Be certain to sign, date, and acknowledge this power of attorney
+            before a notary public and the required number of witnesses.  The
+            document may also require your agent’s signature, or your initials
+            to confirm your election in certain provisions.</span></span></p>
+        </li>
+      </ol>
+      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+      </p>
+      <ol start="12">
+        <li>
+        <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <span face="Calibri, serif"><span face="Times New Roman, serif">If
+            you elect to grant powers over real property, this Power of Attorney
+            may require recordation in the land records where the property is
+            situate.</span></span></p>
+        </li>
+      </ol>
+      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+      </p>
+      <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <span color="#000000">«</span><span color="#008f00">IF DURABLE AND
+        State = ! “Texas”</span><span color="#000000">»</span></p>-->
+      <ol start="13" *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1 && userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== 'Texas'">
+        <li>
+          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+            <span face="Calibri, serif"><span face="Times New Roman, serif">The
+              powers you give your agent will continue to exist for your entire
+              lifetime, unless you state that the Durable Power of Attorney will
+              last for a shorter period of time or unless you otherwise terminate
+              the Power of Attorney. The powers you give to your agent in this
+              Durable Power of Attorney will continue to exist even if you can no
+              longer make your own decisions respecting the management of your
+              property. </span></span>
+          </p>
+        </li>
+      </ol>
+      <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <span color="#000000">«</span><span color="#008f00">ELSE</span><span color="#000000">
+      </span><span color="#008f00">IF DURABLE AND State = “Texas”</span><span color="#000000">»</span></p>-->
+       <div *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1 && userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Texas'">
+          <ol start="13">
+            <li>
+            <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+              <span face="Calibri, serif"><span color="#000000"><span face="Times New Roman, serif">You
+                should select someone you trust to serve as your agent (attorney in
+                fact). Unless you specify otherwise, generally the agent's (attorney
+                in fact's) authority will continue until:</span></span></span></p>
+            </li>
+          </ol>
+          <ul>
+            <li>
+            <p style="margin-bottom: 0in; line-height: 100%"><span color="#000000">you
+              die or revoke the power of attorney;</span></p>
+            </li>
+            <li>
+            <p style="margin-bottom: 0in; line-height: 100%"><span color="#000000">your
+              agent (attorney in fact) resigns or is unable to act for you; or</span></p>
+            </li>
+            <li>
+            <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+              <span color="#000000">a guardian is appointed for your estate.</span></p>
+            </li>
+          </ul>
+       </div>
+      <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>-->
+      <p align="justify" style="margin-left: 0.5in; margin-top: 0.08in; margin-bottom: 0in; line-height: 100%">
+        <br/>
+
+      </p>
+      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <b>You should read this </b>
+        <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
+        <span color="#000000"><b></b></span><span color="#008f00">
+        </span><span color="#000000"><b></b></span><b>durable </b><span color="#000000"><b></b></span></span>
+        <span color="#008f00"></span><span color="#000000"><b></b></span><b>Power of Attorney
+        carefully. When effective, this </b><span color="#000000"><b></b></span>
+        <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
+        <span color="#008f00">
+        </span><span color="#000000"><b></b></span><b>Durable </b><span color="#000000"><b></b></span></span><span color="#008f00">
+        </span><span color="#000000"><b></b></span><b>Power of Attorney
+        will give your agent the right to deal with property that you now
+        have or might acquire in the future. </b><b>If you have questions
+        about this document or the authority you are granting to your agent,
+        or if you do not understand this Power of Attorney or any provision
+        of it, you should seek legal advice before signing this form.</b></p>
+    </div>
+      <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <span color="#000000"><b>«</b></span><span color="#008f00">END IF</span><span color="#000000"><b>»
+      </b></span>
+      </p>-->
   </div>
 </div>
 <!-- !Page 3 -->
@@ -398,68 +432,99 @@
 
     </p>
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      I, «<span color="#0433ff">CLIENT'S NAME</span>», <span color="#000000">«</span><span color="#008f00">IF
-      State = “Illinois”</span><span color="#000000">» </span>hereby
+      I,
+      <span color="#0433ff">
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+      </span>,
+      <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== 'Illinois'"><span color="#000000"></span><span color="#008f00">
+      </span><span color="#000000"> </span>hereby
       revoke all prior powers of attorney for property executed by me
-      and<span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»
-    </span>appoint my <span color="#000000">«</span><span color="#0433ff">PofA
-      Agent #1 Relationship</span><span color="#000000">», </span>«<span color="#0433ff">PofA
-      Agent #1 Name</span>», as my agent, to <span color="#000000">have
+      and<span color="#000000"></span></span>
+      <span color="#008f00"></span><span color="#000000">
+      </span>appoint my <span color="#000000"></span><span color="#0433ff">
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null && financialPOA.attorney_holders.relationship !== 'Other'"> {{financialPOA.attorney_holders.relationship !== null && financialPOA.attorney_holders.relationship !== undefined ? financialPOA.attorney_holders.relationship : '_______________________'}} </span>
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null && financialPOA.attorney_holders.relationship === 'Other'"> {{financialPOA.attorney_holders.other_relationship !== null && financialPOA.attorney_holders.other_relationship !== undefined ? financialPOA.attorney_holders.other_relationship : '_______________________'}} </span>
+        <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
+      </span><span color="#000000">, </span><span color="#0433ff">
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.fullname !== null && financialPOA.attorney_holders.fullname !== undefined ? financialPOA.attorney_holders.fullname : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
+      </span>, as my agent, to <span color="#000000">have
       all of the powers hereinafter set forth and as permitted under the
-      laws of </span>«<span color="#0433ff">State</span>».  The contact
+      laws of </span><span color="#0433ff">
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+      </span>.  The contact
       information for my agent is as follows:</p>
     <p class="western" align="justify" style="margin-top: 0.06in; margin-bottom: 0in; line-height: 100%">
-      Name of Primary Agent: «<span color="#0433ff">PofA Agent #1 Name</span>»</p>
+      Name of Primary Agent: <span color="#0433ff">
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.fullname !== null && financialPOA.attorney_holders.fullname !== undefined ? financialPOA.attorney_holders.fullname : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
+      </span></p>
     <p class="western" style="margin-bottom: 0in; line-height: 100%">Primary
-      Agent’s Address:«<span color="#008f00">IF ANSWERED( PofA Agent #1
-        Address )</span>»«<span color="#0000ff">  PofA Agent #1 Address</span>»,
-      «<span color="#0000ff">PofA Agent #1 City</span>», <span color="#0000ff">PofA
-        Agent #1 State</span>»
-      «<span color="#008f00">ELSE</span>»___________________________________________«<span color="#008f00">END
-        IF</span>»&nbsp;</p>
+      Agent’s Address: <span color="#008f00"></span><span color="#0000ff">
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.address !== null && financialPOA.attorney_holders.address !== undefined ? financialPOA.attorney_holders.address : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
+      </span>,
+      <span color="#0000ff">
+         <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.city !== null && financialPOA.attorney_holders.city !== undefined ? financialPOA.attorney_holders.city : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
+      </span>, <span color="#0000ff">
+         <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.state !== null && financialPOA.attorney_holders.state !== undefined ? financialPOA.attorney_holders.state : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
+      </span>
+      <span color="#008f00"></span><span color="#008f00"></span>&nbsp;</p>
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      Primary Agent’s Telephone Number:«<span color="#008f00">IF
-      ANSWERED( PofA Agent #1 Telephone )</span>«<span color="#0433ff">
-      PofA Agent #1 Telephone</span>»«<span color="#008f00">ELSE</span>»__________________«<span color="#008f00">END
-      IF</span>»&nbsp;</p>
+      Primary Agent’s Telephone Number: <span color="#008f00"></span><span color="#0433ff">
+        <span *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.phone !== null && financialPOA.attorney_holders.phone !== undefined ? financialPOA.attorney_holders.phone : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
+      </span><span color="#008f00"></span><span color="#008f00"></span>&nbsp;</p>
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <br/>
 
     </p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+   <!-- <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <span color="#000000">«</span><span color="#008f00">IF PofA
-      Alternate Agents1?</span><span color="#000000">»</span></p>
-    <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
-      <span size="4" style="font-size: 14pt"><b>DESIGNATION OF SUCCESSOR
-        AGENT</b></span></p>
-    <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
-      <br/>
+      Alternate Agents1?</span><span color="#000000">»</span></p>-->
+    <div *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null">
+      <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
+        <span size="4" style="font-size: 14pt"><b>DESIGNATION OF SUCCESSOR
+          AGENT</b></span></p>
+      <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
+        <br/>
 
-    </p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      If and until my primary agent is unable or unwilling to act for me, I
-      name my <span color="#000000">«</span><span color="#0433ff">PofA
-      Agent #2 Relationship</span><span color="#000000">», </span>«<span color="#0433ff">PofA
-      Agent #2 Name</span>», as my agent, to <span color="#000000">have
-      all of the powers hereinafter set forth and as permitted under the
-      laws of </span>«<span color="#0433ff">State</span>».  The contact
-      information for my agent is as follows:</p>
-    <p class="western" align="justify" style="margin-top: 0.06in; margin-bottom: 0in; line-height: 100%">
-      Name of Successor Agent: «<span color="#0433ff">PofA Agent #2</span>»</p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%">Primary
-      Agent’s Address:«<span color="#008f00">IF ANSWERED( PofA Agent #2
-        Address )</span>»«<span color="#0433ff"> </span><span color="#0000ff">PofA
-        Agent #2 Address</span>», «<span color="#0000ff">PofA Agent #2
-        City</span>», <span color="#0000ff">PofA Agent #2 State</span>»
-      «<span color="#008f00">ELSE</span>»___________________________________________«<span color="#008f00">END
-        IF</span>»&nbsp;</p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      Primary Agent’s Telephone Number:«<span color="#008f00">IF
-      ANSWERED( PofA Agent #2 Telephone )</span>«<span color="#0433ff">
-      PofA Agent #2 Telephone</span>»«<span color="#008f00">ELSE</span>»__________________«<span color="#008f00">END
-      IF</span>»&nbsp;</p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>
+      </p>
+      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+        If and until my primary agent is unable or unwilling to act for me, I
+        name my
+        <span color="#000000"></span><span color="#0433ff">
+            <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null && financialPOA.attorney_backup.relationship !== 'Other'"> {{financialPOA.attorney_backup.relationship !== null && financialPOA.attorney_backup.relationship !== undefined ? financialPOA.attorney_backup.relationship : '_______________________'}} </span>
+            <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null && financialPOA.attorney_backup.relationship === 'Other'"> {{financialPOA.attorney_backup.other_relationship !== null && financialPOA.attorney_backup.other_relationship !== undefined ? financialPOA.attorney_backup.other_relationship : '_______________________'}} </span>
+            <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
+        </span><span color="#000000">, </span><span color="#0433ff">
+           <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.fullname !== null && financialPOA.attorney_backup.fullname !== undefined ? financialPOA.attorney_backup.fullname : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
+        </span>, as my agent, to <span color="#000000">have
+        all of the powers hereinafter set forth and as permitted under the
+        laws of </span><span color="#0433ff">
+            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
+            <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+        </span>.  The contact
+        information for my agent is as follows:</p>
+      <p class="western" align="justify" style="margin-top: 0.06in; margin-bottom: 0in; line-height: 100%">
+        Name of Successor Agent: <span color="#0433ff">
+         <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.fullname !== null && financialPOA.attorney_backup.fullname !== undefined ? financialPOA.attorney_backup.fullname : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
+      </span></p>
+      <p class="western" style="margin-bottom: 0in; line-height: 100%">Primary
+        Agent’s Address: <span color="#008f00"></span><span color="#0433ff"> </span><span color="#0000ff">
+            <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.address !== null && financialPOA.attorney_backup.address !== undefined ? financialPOA.attorney_backup.address : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
+        </span>, <span color="#0000ff">
+            <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.city !== null && financialPOA.attorney_backup.city !== undefined ? financialPOA.attorney_backup.city : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
+        </span>, <span color="#0000ff">
+            <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.state !== null && financialPOA.attorney_backup.state !== undefined ? financialPOA.attorney_backup.state : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
+        </span>
+        <span color="#008f00"></span><span color="#008f00">
+        </span>&nbsp;</p>
+      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+        Primary Agent’s Telephone Number:<span color="#008f00"></span><span color="#0433ff">
+        <span *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.phone !== null && financialPOA.attorney_backup.phone !== undefined ? financialPOA.attorney_backup.phone : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
+      </span><span color="#008f00"></span><span color="#008f00"></span>&nbsp;</p>
+    </div>
+    <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+      <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>-->
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <br/>
 
@@ -473,15 +538,24 @@
     </p>
     <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
       I grant my agent and any successor agent general authority to act for
-      me, with the powers and duties as more fully defined in the «<span color="#0433ff">UPOAA
-      Act</span>, «<span color="#0433ff">UPOAA Code</span>», <span color="#000000">«</span><span color="#008f00">IF
-      STATE = “Wisconsin”</span><span color="#000000">»attached hereto
+      me, with the powers and duties as more fully defined in the <!--«<span color="#0433ff">UPOAA
+      Act</span>, «<span color="#0433ff">UPOAA Code</span>»-->
+      <span *ngIf="userDetails !== undefined && userDetails.state !== null">
+        {{userDetails.state.act !== null && userDetails.state.act !== undefined && userDetails.state.act !== '' ? userDetails.state.act : '____________'}}
+      </span>,
+      <span *ngIf="userDetails !== undefined && userDetails.state !== null">
+        {{userDetails.state.code !== null && userDetails.state.code !== undefined && userDetails.state.code !== '' ? userDetails.state.code : '____________'}}
+      </span>
+      , <span color="#000000"></span>
+      <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Wisconsin'">
+      <span color="#008f00"></span><span color="#000000">attached hereto
       and incorporated herein as </span><span color="#000000"><u>Appendix
-      A</u></span><span color="#000000">,«</span><span color="#008f00">ELSE
-      IF State = &quot;New Jersey&quot;</span><span color="#000000">»
+        A</u></span><span color="#000000">,</span></span>
+      <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== 'New Jersey'">
+      <span color="#008f00"></span><span color="#000000">
       including the authority to conduct banking transactions as
       specifically set forth in section 2 of P.L. 1991, c.95 C.46:2B-11,
-      «</span><span color="#008f00">END IF</span><span color="#000000">»</span>with
+      </span></span><span color="#008f00"></span><span color="#000000"></span>with
       respect to the following subjects:</p>
     <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
       <b>(INITIAL each subject, below, you want to include in the agent's
@@ -492,9 +566,10 @@
 
     </p>
     <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000">«</span><span color="#008f00">IF State =
-      &quot;Illinois&quot;</span><span color="#000000">»</span><span color="#008f00">
-    </span><span color="#000000"><span style="background: #ffffff">(NOTE:
+      <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Illinois'">
+      <span color="#000000"></span><span color="#008f00">
+      </span><span color="#000000"></span><span color="#008f00">
+      </span><span color="#000000"><span style="background: #ffffff">(NOTE:
       You </span></span><span color="#000000"><u><span style="background: #ffffff">must</span></u></span><span color="#000000"><span style="background: #ffffff">
       strike out any one or more of the following categories of powers you
       </span></span><span color="#000000"><u><span style="background: #ffffff">do
@@ -503,8 +578,8 @@
       to strike the title of any category will cause the powers described
       in that category to be granted to the agent.</span></b></span><span color="#000000"><span style="background: #ffffff">
       To strike out a category you must draw a line through the title of
-      that category.)&nbsp;</span></span><span color="#000000">«</span><span color="#008f00">END
-      IF</span><span color="#000000">»</span></p>
+         that category.)&nbsp;</span></span><span color="#000000"></span></span><span color="#008f00">
+      </span><span color="#000000"></span></p>
     <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
       <br/>
       <br/>
@@ -517,7 +592,7 @@
 <!-- Page 5 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
 
 
     <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
@@ -555,32 +630,37 @@
     </p>
     <p class="western" align="center" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
       <span size="4" style="font-size: 14pt"><b>GRANT OF SPECIFIC AUTHORITY</b></span></p>
-    <p class="western" style="margin-bottom: 0.06in; line-height: 100%"><span color="#000000">«</span><span color="#008f00">IF
-      State = &quot;Illinois&quot;</span><span color="#000000">»</span></p>
-    <p class="western" align="justify" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
+    <!--<p class="western" style="margin-bottom: 0.06in; line-height: 100%"><span color="#000000">«</span><span color="#008f00">IF
+      State = &quot;Illinois&quot;</span><span color="#000000">»</span></p>-->
+    <p class="western" align="justify" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Illinois'">
       <span color="#000000"><span style="background: #ffffff">(NOTE: You
-</span></span><span color="#000000"><u><span style="background: #ffffff">must</span></u></span><span color="#000000"><span style="background: #ffffff">
-strike out any one or more of the following categories of powers you
-</span></span><span color="#000000"><u><span style="background: #ffffff">do
-not</span></u></span><span color="#000000"><span style="background: #ffffff">
-want your agent to have. </span></span><span color="#000000"><b><span style="background: #ffffff">Failure
-to strike the title of any category will cause the powers described
-in that category to be granted to the agent.</span></b></span><span color="#000000"><span style="background: #ffffff">
-To strike out a category you must draw a line through the title of
-that category.)&nbsp;</span></span></p>
-    <p class="western" style="margin-bottom: 0.06in; line-height: 100%"><span color="#000000">«</span><span color="#008f00">ELSE
-      IF State = ! “Illinois”</span><span color="#000000">»</span></p>
-    <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-      Subject to the laws of «<span color="#0433ff">State</span>», my
-      agent MAY NOT do any of the following specific acts for me UNLESS I
-      have INITIALED the specific authority listed below:</p>
-    <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-      <b>(CAUTION: Granting any of the following will give your agent the
-        authority to take actions that could significantly reduce your
-        property or change how your property is distributed at your death.
-        INITIAL ONLY the specific authority you WANT to give your agent.)</b></p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>
+      </span></span><span color="#000000"><u><span style="background: #ffffff">must</span></u></span><span color="#000000"><span style="background: #ffffff">
+      strike out any one or more of the following categories of powers you
+      </span></span><span color="#000000"><u><span style="background: #ffffff">do
+      not</span></u></span><span color="#000000"><span style="background: #ffffff">
+      want your agent to have. </span></span><span color="#000000"><b><span style="background: #ffffff">Failure
+      to strike the title of any category will cause the powers described
+      in that category to be granted to the agent.</span></b></span><span color="#000000"><span style="background: #ffffff">
+      To strike out a category you must draw a line through the title of
+      that category.)&nbsp;</span></span></p>
+   <!-- <p class="western" style="margin-bottom: 0.06in; line-height: 100%"><span color="#000000">«</span><span color="#008f00">ELSE
+      IF State = ! “Illinois”</span><span color="#000000">»</span></p>-->
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== 'Illinois'">
+      <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+        Subject to the laws of <span color="#0433ff">
+              <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
+              <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+        </span>, my
+        agent MAY NOT do any of the following specific acts for me UNLESS I
+        have INITIALED the specific authority listed below:</p>
+      <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+        <b>(CAUTION: Granting any of the following will give your agent the
+          authority to take actions that could significantly reduce your
+          property or change how your property is distributed at your death.
+          INITIAL ONLY the specific authority you WANT to give your agent.)</b></p>
+    </div>
+    <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+      <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>-->
     <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
       <br/>
       <br/>
@@ -589,8 +669,11 @@ that category.)&nbsp;</span></span></p>
     <p class="western" style="margin-bottom: 0.06in; line-height: 100%">(
       _____ )	Amend, revoke, or terminate an inter vivos trust</p>
     <p class="western" style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.06in; line-height: 100%">
-      ( _____ )	Make a gift, subject to the limitations of the «<span color="#0433ff">UPOAA
-      Act</span>» and any special instructions in this power of attorney</p>
+      ( _____ )	Make a gift, subject to the limitations of the <span color="#0433ff">
+      <span color="#0433ff" *ngIf="userDetails !== undefined && userDetails.state !== null">
+        {{userDetails.state.act !== null && userDetails.state.act !== undefined && userDetails.state.act !== '' ? userDetails.state.act : '____________'}}
+      </span>
+    </span> and any special instructions in this power of attorney</p>
     <p class="western" style="margin-bottom: 0.06in; line-height: 100%">(
       _____ )	Create or change rights of survivorship</p>
     <p class="western" style="margin-bottom: 0.06in; line-height: 100%">(
@@ -625,27 +708,32 @@ that category.)&nbsp;</span></span></p>
 <!-- Page 6 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
 
 
     <p class="western" align="center" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
       <span size="4" style="font-size: 14pt"><b>LIMITATION ON AGENT'S
         AUTHORITY</b></span></p>
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      «<span color="#008f00">IF Gifts?</span>»I direct that there shall
+      <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isAuthorizeToMakeGift === 1">
+      <span color="#008f00"></span>I direct that there shall
       be no limitation to my agent’s authority except for those
       limitations stated expressly herein, or by law, and hereby authorize
-      my agent to use my property as my agent sees fit<span color="#000000">«</span><span color="#008f00">IF
-      PofA Gifts to Agent</span><span color="#000000">»</span>, to make
-      gifts to benefit the agent or any person to whom the agent owes an
-      obligation of support.<span color="#000000">«</span><span color="#008f00">ELSE</span><span color="#000000">»</span>.<span color="#000000">«</span><span color="#008f00">END
-      IF</span><span color="#000000">»</span> Whether my agent is my
+      my agent to use my property as my agent sees fit
+      <span  *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isAuthorizeToOperategift === 1">
+      , to make gifts to benefit the agent or any person to whom the agent owes an
+        obligation of support.</span><span color="#000000"></span></span>
+      <span color="#008f00"></span>
+      <span  *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isAuthorizeToOperategift === 0">
+        <span color="#000000"></span>.<span color="#000000"></span></span><span color="#008f00">
+      </span><span color="#000000"></span> Whether my agent is my
       ancestor, spouse, or descendant shall pose no limitation to my
-      agent’s authority hereunder«<span color="#008f00">ELSE</span>»I
+      agent’s authority hereunder
+      <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isAuthorizeToMakeGift === 0">
+      <span color="#008f00"></span>I
       direct that my agent MAY NOT use my property to benefit the agent or
       a person to whom the agent owes an obligation of support UNLESS I
-      have included that authority in the Special Instructions below«<span color="#008f00">END
-      IF</span>»«.»</p>
+      have included that authority in the Special Instructions below <span color="#008f00"></span>.</span></p>
     <p class="western" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
       <br/>
       <br/>
@@ -654,72 +742,80 @@ that category.)&nbsp;</span></span></p>
     <p class="western" align="center" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
       <span size="4" style="font-size: 14pt"><b>SPECIAL INSTRUCTIONS</b></span></p>
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      I give my «<span color="#008f00">IF PofA Alternate
-      Agents1?</span>»agents«<span color="#008f00">ELSE</span>»agent«<span color="#008f00">END
-      IF</span>» the powers specified in this Power with the understanding
+      I give my <span *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null">
+      agents</span>
+      <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null">
+      agent</span> the powers specified in this Power with the understanding
       that they will be used for my benefit and on my behalf and will be
       exercised only in a fiduciary capacity.</p>
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <br/>
 
     </p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+   <!-- <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <span color="#000000">«</span><span color="#008f00">IF PofA
       Springing?</span><span color="#000000">»  </span>
-    </p>
-    <ol>
-      <li>
-      <p align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-        <span face="Calibri, serif"><span face="Times New Roman, serif">The
-          above authority granted to my «</span><span color="#008f00"><span face="Times New Roman, serif">IF
-          !PofA Alternate Agents1? </span></span><span face="Times New Roman, serif">»
-          agents</span><span face="Times New Roman, serif">«</span><span color="#008f00"><span face="Times New Roman, serif">ELSE</span></span><span face="Times New Roman, serif">»agent</span><span face="Times New Roman, serif">
-          «</span><span color="#008f00"><span face="Times New Roman, serif">END
-          IF</span></span><span face="Times New Roman, serif">» shall take
-          effect </span><span color="#191919"><span face="Times New Roman, serif">on
-          my disability or incapacity, as </span></span><span face="Times New Roman, serif">determined
-          ONLY upon the occasion of the signing of a written statement EITHER:</span></span></p>
-      </li>
-    </ol>
-    <p class="western" align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
-      <br/>
-      <br/>
+    </p>-->
+    <div *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isIncapacity === 1">
+      <ol>
+        <li>
+        <p align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+          <span face="Calibri, serif"><span face="Times New Roman, serif">The
+            above authority granted to my </span>
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null">
+            <span color="#008f00"><span face="Times New Roman, serif">
+            </span></span><span face="Times New Roman, serif">
+            agents</span><span face="Times New Roman, serif"></span></span><span color="#008f00">
+            <span face="Times New Roman, serif"></span></span>
+            <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null">
+            <span face="Times New Roman, serif">agent</span><span face="Times New Roman, serif">
+            </span></span><span color="#008f00"><span face="Times New Roman, serif">
+            </span></span><span face="Times New Roman, serif"> shall take
+            effect </span><span color="#191919"><span face="Times New Roman, serif">on
+            my disability or incapacity, as </span></span><span face="Times New Roman, serif">determined
+            ONLY upon the occasion of the signing of a written statement EITHER:</span></span></p>
+        </li>
+      </ol>
+      <p class="western" align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
+        <br/>
+        <br/>
 
-    </p>
-    <p class="western" align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
-      (INSTRUCTIONS: COMPLETE OR OMIT SECTION (I) <b>OR</b> SECTION (II)
-      BELOW BUT NEVER COMPLETE BOTH SECTIONS (I) AND (II) BELOW. IF YOU DO
-      NOT COMPLETE EITHER SECTION (I) OR SECTION (II) BELOW, IT SHALL BE
-      PRESUMED THAT YOU WANT THE PROVISIONS OF SECTION (I) BELOW TO APPLY)</p>
-    <ol type="I">
-      <li>
-      <p align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-        <span face="Calibri, serif"><span face="Times New Roman, serif">By a
-          physician or physicians named herein by me at this point:</span></span></p>
-      </li>
-    </ol>
-    <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
-      Dr. ______________________________________________________________</p>
-    <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
-      _________________________________________________________________</p>
-    <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0in; line-height: 100%">
-      _________________________________________________________________</p>
-    <p class="western" align="center" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
-      <span size="2" style="font-size: 10pt">(handwrite the full name(s)
-        and address(es) of the certifying physician(s) chosen by you)</span></p>
-    <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
-      or if no physician or physicians are named hereinabove, or if the
-      physician or physicians named hereinabove are unable to act, by my
-      regular physician, or by a physician who has treated me within one
-      year preceding the date of such signing, or by a licensed
-      psychologist or psychiatrist, certifying that I am suffering from
-      diminished capacity that would preclude me from conducting my affairs
-      in a competent manner;</p>
-    <p class="western" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
-      <br/>
-      <br/>
+      </p>
+      <p class="western" align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
+        (INSTRUCTIONS: COMPLETE OR OMIT SECTION (I) <b>OR</b> SECTION (II)
+        BELOW BUT NEVER COMPLETE BOTH SECTIONS (I) AND (II) BELOW. IF YOU DO
+        NOT COMPLETE EITHER SECTION (I) OR SECTION (II) BELOW, IT SHALL BE
+        PRESUMED THAT YOU WANT THE PROVISIONS OF SECTION (I) BELOW TO APPLY)</p>
+      <ol type="I">
+        <li>
+        <p align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+          <span face="Calibri, serif"><span face="Times New Roman, serif">By a
+            physician or physicians named herein by me at this point:</span></span></p>
+        </li>
+      </ol>
+      <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
+        Dr. ______________________________________________________________</p>
+      <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
+        _________________________________________________________________</p>
+      <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0in; line-height: 100%">
+        _________________________________________________________________</p>
+      <p class="western" align="center" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
+        <span size="2" style="font-size: 10pt">(handwrite the full name(s)
+          and address(es) of the certifying physician(s) chosen by you)</span></p>
+      <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
+        or if no physician or physicians are named hereinabove, or if the
+        physician or physicians named hereinabove are unable to act, by my
+        regular physician, or by a physician who has treated me within one
+        year preceding the date of such signing, or by a licensed
+        psychologist or psychiatrist, certifying that I am suffering from
+        diminished capacity that would preclude me from conducting my affairs
+        in a competent manner;</p>
+      <p class="western" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
+        <br/>
+        <br/>
 
-    </p>
+      </p>
+    </div>
   </div>
 </div>
 <!-- !Page 6 -->
@@ -727,55 +823,58 @@ that category.)&nbsp;</span></span></p>
 <!-- Page 7 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
+    <div *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isIncapacity === 1">
+      <p class="western" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
+        <b>--OR--</b></p>
+      <p class="western" align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
+        <br/>
+        <br/>
 
-    <p class="western" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
-      <b>--OR--</b></p>
-    <p class="western" align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
-      <br/>
-      <br/>
+      </p>
+      <p class="western" align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
+        (II)	By a person or persons named herein by me at this point:</p>
+      <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
+        __________________________________________________________________</p>
+      <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0in; line-height: 100%">
+        __________________________________________________________________</p>
+      <p class="western" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
+        <span size="2" style="font-size: 10pt">(handwrite the full name(s)
+          and address(es) of the certifying person(s) chosen by you)</span></p>
+      <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
+        <br/>
+        <br/>
 
-    </p>
-    <p class="western" align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
-      (II)	By a person or persons named herein by me at this point:</p>
-    <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
-      __________________________________________________________________</p>
-    <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0in; line-height: 100%">
-      __________________________________________________________________</p>
-    <p class="western" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
-      <span size="2" style="font-size: 10pt">(handwrite the full name(s)
-        and address(es) of the certifying person(s) chosen by you)</span></p>
-    <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
-      <br/>
-      <br/>
+      </p>
+      <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
+        CERTIFYING that the following specified event has occurred:</p>
+      <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
+        __________________________________________________________________</p>
+      <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0in; line-height: 100%">
+        __________________________________________________________________</p>
+      <p class="western" align="center" style="margin-left: 0.66in; margin-bottom: 0.06in; line-height: 100%">
+        <span size="2" style="font-size: 10pt">(handwrite the specified event
+          the certification of which will cause this power of attorney to take
+          effect)</span></p>
+      <p class="western" align="center" style="margin-left: 0.66in; margin-bottom: 0.06in; line-height: 100%">
+        <br/>
+        <br/>
 
-    </p>
-    <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
-      CERTIFYING that the following specified event has occurred:</p>
-    <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
-      __________________________________________________________________</p>
-    <p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0in; line-height: 100%">
-      __________________________________________________________________</p>
-    <p class="western" align="center" style="margin-left: 0.66in; margin-bottom: 0.06in; line-height: 100%">
-      <span size="2" style="font-size: 10pt">(handwrite the specified event
-        the certification of which will cause this power of attorney to take
-        effect)</span></p>
-    <p class="western" align="center" style="margin-left: 0.66in; margin-bottom: 0.06in; line-height: 100%">
-      <br/>
-      <br/>
+      </p>
+      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <br/>
 
-    </p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      «<span color="#008f00">ELSE</span>»</p>
-    <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-      1. 	This Power is effective immediately upon execution.
-    </p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>
+      </p>
+    </div>
+    <div *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isIncapacity === 0">
+    <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+      «<span color="#008f00">ELSE</span>»</p>-->
+      <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+        1. 	This Power is effective immediately upon execution.
+      </p>
+    </div>
+    <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+      <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>-->
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <br/>
 
@@ -816,7 +915,7 @@ that category.)&nbsp;</span></span></p>
 <!-- Page 8 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
 
     <p class="western" align="justify" style="margin-left: 0.5in; margin-bottom: 0.06in; line-height: 100%">
       3.	My agent(s) shall not be entitled to compensation for services in
@@ -929,7 +1028,7 @@ that category.)&nbsp;</span></span></p>
 <!-- Page 9 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
 
 
     <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
@@ -970,17 +1069,19 @@ that category.)&nbsp;</span></span></p>
     <p class="western" align="center" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
       <b>EFFECT OF INCAPACITY OR DISABILITY OF PRINCIPAL</b></p>
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <span color="#000000">«</span><span color="#008f00">IF DURABLE</span><span color="#000000">»</span><b>THIS
+      <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
+      <span color="#000000"></span><span color="#008f00"></span><span color="#000000"></span><b>THIS
       POWER OF ATTORNEY IS A “DURABLE” POWER OF ATTORNEY </b><b>AND, TO
       THE MAXIMUM EXTENT PERMITTED BY LAW, SHALL NOT BE AFFECTED BY MY
       DISABILITY, INCAPACITY OR INCOMPETENCY, OR IN THE EVENT OF LATER
       UNCERTAINTY AS TO WHETHER I AM DEAD OR ALIVE, OR BY LAPSE OF TIME</b><span color="#000000"><b>,</b></span><span color="#000000">
-    </span><b>UNLESS OR UNTIL OTHERWISE ORDERED BY A COURT OF COMPETENT
-      JURISDICTION.</b><span color="#000000">«</span><span color="#008f00">ELSE
-      IF ! DURABLE</span><span color="#000000">»</span><b>THIS POWER OF
+      </span><b>UNLESS OR UNTIL OTHERWISE ORDERED BY A COURT OF COMPETENT
+        JURISDICTION.</b><span color="#000000"></span></span>
+      <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 0">
+      <span color="#008f00"></span><span color="#000000"></span><b>THIS POWER OF
       ATTORNEY SHALL TERMINATE UPON MY DISABILITY OR INCAPACITY, OR UPON MY
       EARLIER REVOCATION OR TERMINATION OF THIS POWER.</b><span color="#000000">
-      «</span><span color="#008f00">END IF</span><span color="#000000">» </span>
+      </span></span><span color="#008f00"></span><span color="#000000"></span>
     </p>
     <p class="western" align="center" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
       <br/>
@@ -992,15 +1093,17 @@ that category.)&nbsp;</span></span></p>
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       Any person, including my agent, may rely upon the validity of this
       power of attorney or a copy of it unless that person knows it has
-      terminated or is invalid.<span color="#000000">«</span><span color="#008f00">IF
-      STATE = “South Carolina”</span><span color="#000000">»  </span>No
+      terminated or is invalid.
+      <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'South Carolina'">
+      <span color="#000000"></span><span color="#008f00">
+      </span><span color="#000000">  </span>No
       person who may act in reliance upon the representation of my agent
       for the scope of authority granted to the agent shall incur any
       liability to me or to my estate as a result of permitting the agent
       to exercise this authority, nor is any person who deals with my agent
       responsible to determine or ensure the proper application of funds or
-      property.<span color="#000000"> «</span><span color="#008f00">END
-      IF</span><span color="#000000">»</span></p>
+      property.<span color="#000000"> </span></span><span color="#008f00">
+      </span><span color="#000000"></span></p>
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <br/>
 
@@ -1009,16 +1112,18 @@ that category.)&nbsp;</span></span></p>
       <br/>
 
     </p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+  <!--  <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <span color="#000000">«</span><span color="#008f00">IF STATE =
-      “Illinois”</span><span color="#000000">»</span></p>
-    <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
-      <b>NOTICE TO AGENT</b></p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="background: #ffffff">The
-      Notice to Agent is incorporated by reference and included as part of
-      this form.&nbsp;</span></span></p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>
+      “Illinois”</span><span color="#000000">»</span></p>-->
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Illinois'">
+      <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
+        <b>NOTICE TO AGENT</b></p>
+      <p class="western" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="background: #ffffff">The
+        Notice to Agent is incorporated by reference and included as part of
+        this form.&nbsp;</span></span></p>
+    </div>
+   <!-- <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+      <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>-->
     <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
@@ -1032,7 +1137,7 @@ that category.)&nbsp;</span></span></p>
 <!-- Page 10 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
 
 
     <p class="western" align="center" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%; page-break-before: always">
@@ -1054,139 +1159,165 @@ that category.)&nbsp;</span></span></p>
       DATE: </b></span><u>			</u>
     </p>
     <p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span color="#000000"><b>«</b></span><b>«</b><span color="#0000ff"><b>CLIENT
+      <span color="#000000"><b><!--«</b></span><b>«</b><span color="#0000ff"><b>CLIENT
       FIRST NAME</b></span><b>» «</b><span color="#0000ff"><b>CLIENT
       MIDDLE NAME</b></span><b>» «</b><span color="#0000ff"><b>CLIENT
-      LAST NAME</b></span><b>»</b><span color="#000000"><b>		</b></span></p>
+      LAST NAME</b></span><b>»</b><span color="#000000"><b>		-->
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+      </b></span></p>
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <span color="#000000">«</span><span color="#0433ff">Address1</span><span color="#000000">»</span></p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+      <span color="#000000"></span><span color="#0433ff">
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? userDetails.tellUsAboutYou.address : '_______________________'}}</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+    </span><span color="#000000"></span></p>
+   <!-- <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <span color="#000000">«</span><span color="#008f00">IF ANSWERED(
       Address2 )</span><span color="#000000">»</span></p>
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <span color="#000000">«</span><span color="#0433ff">Address2</span><span color="#000000">»</span></p>
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>
+      <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>-->
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <span color="#000000">«</span><span color="#0433ff">City</span><span color="#000000">»,
-      «</span><span color="#0433ff">State</span><span color="#000000">»
-      «</span><span color="#0433ff">ZIP</span><span color="#000000">»</span></p>
+      <span color="#000000"></span><span color="#0433ff">
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}}</span>
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+      </span><span color="#000000">,
+      </span><span color="#0433ff">
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+      </span><span color="#000000">
+      </span><span color="#0433ff">
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.zip !== null && userDetails.tellUsAboutYou.zip !== undefined ? userDetails.tellUsAboutYou.zip : '_______________________'}}</span>
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+      </span><span color="#000000"></span></p>
     <p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
-      <span color="#000000">«</span><span color="#0433ff">Client
-      Telephone</span><span color="#000000">»</span></p>
+      <span color="#000000"></span><span color="#0433ff">
+           <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.phone !== null && userDetails.tellUsAboutYou.phone !== undefined ? userDetails.tellUsAboutYou.phone : '_______________________'}}</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+      </span><span color="#000000"></span></p>
     <p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
       <br/>
       <br/>
 
     </p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+   <!-- <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <span color="#000000">«</span><span color="#008f00"> IF State =  !
       “Illinois”</span><span color="#000000">» </span>
-    </p>
-    <p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
-      <br/>
-      <br/>
+    </p>-->
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== 'Illinois'">
+      <p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
+        <br/>
+        <br/>
 
-    </p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><u>					</u></span><span color="#000000">		</span><span color="#000000"><u>					</u></span><span color="#000000">	</span></p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>(WITNESS
-      1)</b></span><span color="#000000">						</span><span color="#000000"><b>(WITNESS
-      2)</b></span></p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">NAME:</span><span color="#000000">						</span><span color="#000000">NAME:</span></p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">ADDRESS:</span><span color="#000000">						</span><span color="#000000">ADDRESS:</span></p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">CITY/STATE:</span><span color="#000000">						</span><span color="#000000">CITY/STATE:</span></p>
-    <p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
-      <br/>
-      <br/>
+      </p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><u>					</u></span><span color="#000000">		</span><span color="#000000"><u>					</u></span><span color="#000000">	</span></p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>(WITNESS
+        1)</b></span><span color="#000000">						</span><span color="#000000"><b>(WITNESS
+        2)</b></span></p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">NAME:</span><span color="#000000">						</span><span color="#000000">NAME:</span></p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">ADDRESS:</span><span color="#000000">						</span><span color="#000000">ADDRESS:</span></p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">CITY/STATE:</span><span color="#000000">						</span><span color="#000000">CITY/STATE:</span></p>
+      <p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
+        <br/>
+        <br/>
 
-    </p>
-    <p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
-      <br/>
-      <br/>
+      </p>
+      <p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
+        <br/>
+        <br/>
 
-    </p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">STATE
-      OF &nbsp;________________</span><span color="#000000">		</span><span color="#000000">)</span></p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">						</span><span color="#000000">)
-      ss. </span>
-    </p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">COUNTY
-      OF ________________</span><span color="#000000">		</span><span color="#000000">)</span></p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+      </p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">STATE
+        OF &nbsp;________________</span><span color="#000000">		</span><span color="#000000">)</span></p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">						</span><span color="#000000">)
+        ss. </span>
+      </p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">COUNTY
+        OF ________________</span><span color="#000000">		</span><span color="#000000">)</span></p>
+      <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-    </p>
-    <p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span color="#000000">Subscribed, sworn and acknowledged before me by
-      </span><b>«</b><span color="#0000ff"><b>CLIENT FIRST NAME</b></span><b>»
-      «</b><span color="#0000ff"><b>CLIENT MIDDLE NAME</b></span><b>»
-      «</b><span color="#0000ff"><b>CLIENT LAST NAME</b></span><b>»</b><span color="#000000">,
-      the principal, and _________________________________________, as
-      witness, and _____________________________________, as witness, who
-      personally appeared on this &nbsp;_________ day of
-      &nbsp;________________________________, _______, and who are
-      personally known to me or who have produced satisfactory photo
-      identification, and whose names are signed to the foregoing
-      instrument. </span>
-    </p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+      </p>
+      <p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+        <span color="#000000">Subscribed, sworn and acknowledged before me by
+        </span><b><!--«</b><span color="#0000ff"><b>CLIENT FIRST NAME</b></span><b>»
+        «</b><span color="#0000ff"><b>CLIENT MIDDLE NAME</b></span><b>»
+        «</b><span color="#0000ff"><b>CLIENT LAST NAME</b></span><b>»-->
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+        </b><span color="#000000">,
+        the principal, and _________________________________________, as
+        witness, and _____________________________________, as witness, who
+        personally appeared on this &nbsp;_________ day of
+        &nbsp;________________________________, _______, and who are
+        personally known to me or who have produced satisfactory photo
+        identification, and whose names are signed to the foregoing
+        instrument. </span>
+      </p>
+      <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-    </p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">______________________________________
-    </span><b>(Seal, if any)</b></p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">NOTARY
-      PUBLIC</span></p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
+      </p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">______________________________________
+      </span><b>(Seal, if any)</b></p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">NOTARY
+        PUBLIC</span></p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-    </p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
+      </p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-    </p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">My
-      commission expires: _________________</span></p>
-    <p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
-      <br/>
-      <br/>
+      </p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">My
+        commission expires: _________________</span></p>
+      <p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
+        <br/>
+        <br/>
 
-    </p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+      </p>
+      <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-    </p>
+      </p>
+    </div>
   </div>
 </div>
 <!-- !Page 10 -->
 
+<div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Illinois'">
 <!-- Page 11 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
 
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
+    <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
       <span color="#000000">«</span><span color="#008f00"> ELSE IF State =
       “Illinois”</span><span color="#000000">» </span>
-    </p>
+    </p>-->
     <p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Courier New, serif"><span size="2" style="font-size: 10pt"><span color="#000000"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"><span style="background: #ffffff">The
-undersigned witness certifies that </span></span></span></span></span></span><span size="2" style="font-size: 11pt"><b>«</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
+      undersigned witness certifies that </span></span></span></span></span></span><span size="2" style="font-size: 11pt"><b><!--«</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
       FIRST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»
       «</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
       MIDDLE NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»
       «</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
-      LAST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»</b></span><span face="Courier New, serif"><span size="2" style="font-size: 10pt"><span color="#000000"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"><span style="background: #ffffff">,
-known to me to be the same person whose name is subscribed as
-principal to the foregoing power of attorney, appeared before me and
-the notary public and acknowledged signing and delivering the
-instrument as the free and voluntary act of the principal, for the
-uses and purposes therein set forth. I believe him or her to be of
-sound mind and memory. The undersigned witness also certifies that
-the witness is not: (a) the attending physician or mental health
-service provider or a relative of the physician or provider; (b) an
-owner, operator, or relative of an owner or operator of a health care
-facility in which the principal is a patient or resident; (c) a
-parent, sibling, descendant, or any spouse of such parent, sibling,
-or descendant of either the principal or any agent or successor agent
-under the foregoing power of attorney, whether such relationship is
-by blood, marriage, or adoption; or (d) an agent or successor agent
-under the foregoing power of attorney.&nbsp;</span></span></span></span></span></span></p>
+      LAST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»-->
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+      </b></span><span face="Courier New, serif"><span size="2" style="font-size: 10pt"><span color="#000000"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"><span style="background: #ffffff">,
+      known to me to be the same person whose name is subscribed as
+      principal to the foregoing power of attorney, appeared before me and
+      the notary public and acknowledged signing and delivering the
+      instrument as the free and voluntary act of the principal, for the
+      uses and purposes therein set forth. I believe him or her to be of
+      sound mind and memory. The undersigned witness also certifies that
+      the witness is not: (a) the attending physician or mental health
+      service provider or a relative of the physician or provider; (b) an
+      owner, operator, or relative of an owner or operator of a health care
+      facility in which the principal is a patient or resident; (c) a
+      parent, sibling, descendant, or any spouse of such parent, sibling,
+      or descendant of either the principal or any agent or successor agent
+      under the foregoing power of attorney, whether such relationship is
+      by blood, marriage, or adoption; or (d) an agent or successor agent
+      under the foregoing power of attorney.&nbsp;</span></span></span></span></span></span></p>
     <p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
       <br/>
@@ -1202,27 +1333,30 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
     </p>
     <p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Courier New, serif"><span size="2" style="font-size: 10pt"><span color="#000000"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"><span style="background: #ffffff">The
-undersigned witness certifies that </span></span></span></span></span></span><span size="2" style="font-size: 11pt"><b>«</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
-      FIRST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»
+      undersigned witness certifies that </span></span></span></span></span></span><span size="2" style="font-size: 11pt"><b><!--«</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
+      FIRST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>--><!--»
       «</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
       MIDDLE NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»
       «</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
-      LAST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»</b></span><span face="Courier New, serif"><span size="2" style="font-size: 10pt"><span color="#000000"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"><span style="background: #ffffff">,
-known to me to be the same person whose name is subscribed as
-principal to the foregoing power of attorney, appeared before me and
-the notary public and acknowledged signing and delivering the
-instrument as the free and voluntary act of the principal, for the
-uses and purposes therein set forth. I believe him or her to be of
-sound mind and memory. The undersigned witness also certifies that
-the witness is not: (a) the attending physician or mental health
-service provider or a relative of the physician or provider; (b) an
-owner, operator, or relative of an owner or operator of a health care
-facility in which the principal is a patient or resident; (c) a
-parent, sibling, descendant, or any spouse of such parent, sibling,
-or descendant of either the principal or any agent or successor agent
-under the foregoing power of attorney, whether such relationship is
-by blood, marriage, or adoption; or (d) an agent or successor agent
-under the foregoing power of attorney.&nbsp;</span></span></span></span></span></span></p>
+      LAST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»-->
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+      </b></span><span face="Courier New, serif"><span size="2" style="font-size: 10pt"><span color="#000000"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"><span style="background: #ffffff">,
+      known to me to be the same person whose name is subscribed as
+      principal to the foregoing power of attorney, appeared before me and
+      the notary public and acknowledged signing and delivering the
+      instrument as the free and voluntary act of the principal, for the
+      uses and purposes therein set forth. I believe him or her to be of
+      sound mind and memory. The undersigned witness also certifies that
+      the witness is not: (a) the attending physician or mental health
+      service provider or a relative of the physician or provider; (b) an
+      owner, operator, or relative of an owner or operator of a health care
+      facility in which the principal is a patient or resident; (c) a
+      parent, sibling, descendant, or any spouse of such parent, sibling,
+      or descendant of either the principal or any agent or successor agent
+      under the foregoing power of attorney, whether such relationship is
+      by blood, marriage, or adoption; or (d) an agent or successor agent
+      under the foregoing power of attorney.&nbsp;</span></span></span></span></span></span></p>
     <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
@@ -1246,12 +1380,15 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
     </p>
     <p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span color="#000000"><span size="2" style="font-size: 11pt">Subscribed,
-        sworn and acknowledged before me by </span></span><span size="2" style="font-size: 11pt"><b>«</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
+        sworn and acknowledged before me by </span></span><span size="2" style="font-size: 11pt"><b><!--«</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
       FIRST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»
       «</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
       MIDDLE NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»
       «</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
-      LAST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»</b></span><span color="#000000"><span size="2" style="font-size: 11pt">,
+      LAST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»-->
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+      </b></span><span color="#000000"><span size="2" style="font-size: 11pt">,
       the principal, and _________________________________________, as
       witness, and _____________________________________, as witness, who
       personally appeared on this &nbsp;_________ day of
@@ -1267,18 +1404,20 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
       if any)</b></span></p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span size="2" style="font-size: 11pt">NOTARY
       PUBLIC					My commission expires: _________________</span></span></p>
-    <p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
+    <!--<p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
       <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»
     </span>
-    </p>
+    </p>-->
   </div>
 </div>
 <!-- !Page 11 -->
+</div>
+
 
 <!-- Page 12 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
 
 
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
@@ -1317,10 +1456,13 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
     </p>
     <p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       I, _____________________________________________ (Name of Agent),
-      certify under penalty of perjury that <b>«</b><span color="#0000ff"><b>CLIENT
+      certify under penalty of perjury that <b><!--«</b><span color="#0000ff"><b>CLIENT
       FIRST NAME</b></span><b>» «</b><span color="#0000ff"><b>CLIENT
       MIDDLE NAME</b></span><b>» «</b><span color="#0000ff"><b>CLIENT
-      LAST NAME</b></span><b>»</b> granted me authority as an agent or
+      LAST NAME</b></span><b>»-->
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+      </b> granted me authority as an agent or
       successor agent in a power of attorney dated
       ________________________.
     </p>
@@ -1449,17 +1591,17 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
 </div>
 <!-- !Page 12 -->
 
-
+<div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Illinois'">
 <!-- Page 13 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
 
 
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
+    <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
       <span color="#000000">«</span><span color="#008f00">ELSE IF Uniform?
       AND State = “Illinois”</span><span color="#000000">» </span>
-    </p>
+    </p>-->
     <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%; background: #ffffff">
       <span color="#000000"><span size="4" style="font-size: 14pt"><b>NOTICE
         TO THE INDIVIDUAL SIGNING THE ILLINOIS</b></span></span></p>
@@ -1542,7 +1684,7 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
 <!-- Page 14 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
 
     <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
       <span size="4" style="font-size: 14pt"><b>NOTICE TO AGENT</b></span></p>
@@ -1626,12 +1768,14 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
       <span size="4" style="font-size: 14pt">You must disclose your
         identity as an agent whenever you act for the principal by writing or
         printing the name of the principal and signing your own name &quot;as
-        Agent&quot; in the following manner:   </span><span size="4" style="font-size: 14pt"><b>&quot;</b></span><span size="4" style="font-size: 14pt"><b>«</b></span><span color="#0000ff"><span size="4" style="font-size: 14pt"><b>CLIENT
+        Agent&quot; in the following manner:   </span><span size="4" style="font-size: 14pt"><b>&quot;</b></span><span size="4" style="font-size: 14pt"><b><!--«</b></span><span color="#0000ff"><span size="4" style="font-size: 14pt"><b>CLIENT
       FIRST NAME</b></span></span><span size="4" style="font-size: 14pt"><b>»
       «</b></span><span color="#0000ff"><span size="4" style="font-size: 14pt"><b>CLIENT
       MIDDLE NAME</b></span></span><span size="4" style="font-size: 14pt"><b>»
       «</b></span><span color="#0000ff"><span size="4" style="font-size: 14pt"><b>CLIENT
-      LAST NAME</b></span></span><span size="4" style="font-size: 14pt"><b>»
+      LAST NAME</b></span></span><span size="4" style="font-size: 14pt"><b>»-->
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     </b></span><span size="4" style="font-size: 14pt"><b>by (Your Name)
       as Agent&quot;</b></span></p>
     <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
@@ -1646,13 +1790,14 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
   </div>
 </div>
 <!-- !Page 14 -->
-
+</div>
 
 <!-- Page 15 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Illinois'">
     <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
       <span size="4" style="font-size: 14pt">If you violate your duties as
         agent or act outside the authority granted to you, you may be liable
@@ -1670,10 +1815,12 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
       <br/>
 
     </p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+    </div>
+    <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <span color="#000000">«</span><span color="#008f00">ELSE IF State =
       ! “Illinois”</span><span color="#000000">» </span>
-    </p>
+    </p>-->
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== 'Illinois'">
     <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
       <b>IMPORTANT INFORMATION FOR AGENT</b></p>
     <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
@@ -1698,8 +1845,11 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
       principal by writing or printing the name of the principal and
       signing your own name as “Agent” in the following manner:</p>
     <p class="western" align="center" style="margin-left: 0.38in; margin-bottom: 0.13in; line-height: 100%">
-      <span color="#0433ff"><u><b>«CLIENT FIRST NAME» «CLIENT MIDDLE
-        NAME» «CLIENT LAST NAME» </b></u></span><u><b>by (Your Signature)
+      <span color="#0433ff"><u><b><!--«CLIENT FIRST NAME» «CLIENT MIDDLE
+        NAME» «CLIENT LAST NAME» -->
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+      </b></u></span><u><b>by (Your Signature)
       as Agent</b></u></p>
     <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
       Unless the Special Instructions in this power of attorney state
@@ -1726,15 +1876,16 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
       expectations, to act in the principal’s best interest.</p>
     <p class="western" align="center" style="margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%">
       <i>Termination of Agent's Authority</i></p>
+    </div>
   </div>
 </div>
 <!-- !Page 15 -->
 
-
+<div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== 'Illinois'">
 <!-- Page 16 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
     <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
     You must stop acting on behalf of the principal if you learn of any
     event that terminates this power of attorney or your authority under
@@ -1758,30 +1909,39 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
     <p class="western" align="center" style="margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%">
       <i>Liability of Agent</i></p>
     <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-      The meaning of the authority granted to you is defined in the «<span color="#0433ff">UPOAA
-      Act</span>», «<span color="#0433ff">UPOAA Code</span>»«<span color="#0433ff">.</span>»
-      If you violate the «<span color="#0433ff">UPOAA Act</span>» or act
+      The meaning of the authority granted to you is defined in the
+      <span *ngIf="userDetails !== undefined && userDetails.state !== null">
+        {{userDetails.state.act !== null && userDetails.state.act !== undefined && userDetails.state.act !== '' ? userDetails.state.act : '____________'}}
+      </span>,
+      <span *ngIf="userDetails !== undefined && userDetails.state !== null">
+        {{userDetails.state.code !== null && userDetails.state.code !== undefined && userDetails.state.code !== '' ? userDetails.state.code : '____________'}}
+      </span> <span color="#0433ff">.</span>
+      If you violate the
+      <span *ngIf="userDetails !== undefined && userDetails.state !== null">
+        {{userDetails.state.act !== null && userDetails.state.act !== undefined && userDetails.state.act !== '' ? userDetails.state.act : '____________'}}
+      </span> or act
       outside the authority granted, you may be liable for any damages
       caused by your violation.</p>
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <b>If there is anything about this document or your duties that you
         do not understand, you should seek legal advice.</b></p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+   <!-- <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>
     <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-    </p>
+    </p>-->
   </div>
 </div>
 <!-- !Page 16 -->
+</div>
 
-
+<div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Delaware'">
 <!-- Page 17 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
-    <p><span color="#000000">«</span><span color="#008f00">IF STATE =
-    “Delaware”</span><span color="#000000">»</span></p>
+       style="box-sizing: border-box; height: 890px;">
+    <!--<p><span color="#000000">«</span><span color="#008f00">IF STATE =
+    “Delaware”</span><span color="#000000">»</span></p>-->
     <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
       <span color="#000000"><b>NOTICE</b></span></p>
     <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
@@ -1789,9 +1949,11 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
 
     </p>
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <span color="#000000">As the person signing this «</span><span color="#008f00">IF
-      Durable</span><span color="#000000">»durable «</span><span color="#008f00">END
-      IF</span><span color="#000000">»power of attorney you are the
+      <span color="#000000">As the person signing this </span>
+      <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
+      <span color="#008f00">
+      </span><span color="#000000"> durable </span></span><span color="#008f00">
+      </span><span color="#000000"> power of attorney you are the
       Principal.  The purpose of this power of attorney is to give the
       person you designate (your &quot;Agent'') broad powers to handle your
       property, which may include powers to sell, dispose of, or encumber
@@ -1835,9 +1997,11 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
 
     </p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">The
-      powers and duties of an Agent under a «</span><span color="#008f00">IF
-      Durable</span><span color="#000000">»durable «</span><span color="#008f00">END
-      IF</span><span color="#000000">»power of attorney are explained more
+      powers and duties of an Agent under a </span>
+      <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
+      <span color="#008f00">
+      </span><span color="#000000"> durable </span></span><span color="#008f00">
+      </span><span color="#000000">»power of attorney are explained more
       fully in Delaware Code, Title 12, Chapter 49A, § 49A-114 and §§
       49A-201 through 49A-217.</span></p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
@@ -1877,7 +2041,7 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
 <!-- Page 18 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
 
     <p align="center" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
     <span color="#000000"><b>AGENT'S CERTIFICATION </b></span>
@@ -1889,9 +2053,11 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
     </p>
     <p style="margin-bottom: 0in; line-height: 100%"><span color="#000000">I,
     </span><span color="#000000"><u>				</u></span><span color="#000000">,
-      have read the attached «</span><span color="#008f00">IF
-      Durable</span><span color="#000000">»durable «</span><span color="#008f00">END
-      IF</span><span color="#000000">»personal power of attorney and I am
+      have read the attached </span>
+      <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
+      <span color="#008f00">
+      </span><span color="#000000"> durable </span></span><span color="#008f00">
+      </span><span color="#000000">»personal power of attorney and I am
       the person identified as the Agent for the Principal.  To the best of
       my knowledge this power has not been revoked. I hereby acknowledge
       that, when I act as Agent, I shall:</span></p>
@@ -1925,8 +2091,10 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
     </p>
     <p style="margin-bottom: 0in; line-height: 100%"><span color="#000000">In
       addition, in the absence of a specific provision to the contrary in
-      the «</span><span color="#008f00">IF Durable</span><span color="#000000">»durable
-      «</span><span color="#008f00">END IF</span><span color="#000000">»personal
+      the </span>
+      <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
+      <span color="#008f00"></span><span color="#000000"> durable
+      </span></span><span color="#008f00"></span><span color="#000000"> personal
       power of attorney, when I act as Agent, I shall:</span></p>
     <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
@@ -1962,15 +2130,16 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
   </div>
 </div>
 <!-- !Page 18 -->
+</div>
 
-
+<div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Michigan'">
 <!-- Page 19 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
+       style="box-sizing: border-box; height: 890px;">
+    <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
       <span color="#000000">«</span><span color="#008f00">IF STATE =
-      “Michigan”</span><span color="#000000">»</span></p>
+      “Michigan”</span><span color="#000000">»</span></p>-->
     <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
       <span color="#000000"><b>AGENT ACKNOWLEDGEMENT</b></span></p>
     <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
@@ -1978,22 +2147,30 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
     </p>
     <p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span color="#000000">I, ____________________, have been appointed as
-        attorney-in-fact for </span><u><b>«</b></u><span color="#0000ff"><u><b>CLIENT
+        attorney-in-fact for </span><u><b><!--«</b></u><span color="#0000ff"><u><b>CLIENT
       FIRST NAME</b></u></span><u><b>» «</b></u><span color="#0000ff"><u><b>CLIENT
       MIDDLE NAME</b></u></span><u><b>» «</b></u><span color="#0000ff"><u><b>CLIENT
-      LAST NAME</b></u></span><u><b>»</b></u><span color="#000000"><u>,</u></span><span color="#000000">
-      the principal, under a «</span><span color="#008f00">IF
-      Durable</span><span color="#000000">»durable «</span><span color="#008f00">END
-      IF</span><span color="#000000">»power of attorney dated __________.
+      LAST NAME</b></u></span><u><b>»-->
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+      </b></u><span color="#000000"><u>,</u></span><span color="#000000">
+      the principal, under a </span>
+      <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
+      <span color="#008f00">
+      </span><span color="#000000"> durable </span></span><span color="#008f00">
+      </span><span color="#000000">»power of attorney dated __________.
       By signing this document, I acknowledge that if and when I act as
       attorney-in-fact, all of the following apply:</span></p>
     <p align="justify" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; background: #ffffff">
-      <span color="#000000">(a) Except as provided in the «</span><span color="#008f00">IF
-      Durable</span><span color="#000000">»durable «</span><span color="#008f00">END
-      IF</span><span color="#000000">»power of attorney, I must act in
+      <span color="#000000">(a) Except as provided in the </span>
+      <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
+      <span color="#008f00"></span><span color="#000000"> durable </span></span><span color="#008f00">
+      </span><span color="#000000">»power of attorney, I must act in
       accordance with the standards of care applicable to fiduciaries
-      acting under «</span><span color="#008f00">IF Durable</span><span color="#000000">»durable
-      «</span><span color="#008f00">END IF</span><span color="#000000">»powers
+      acting under </span>
+      <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
+      <span color="#008f00"></span><span color="#000000"> durable
+      </span></span><span color="#008f00"></span><span color="#000000"> powers
       of attorney.</span></p>
     <p align="justify" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; background: #ffffff">
       <span color="#000000">(b) I must take reasonable steps to follow the
@@ -2006,14 +2183,17 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
         that guardian or conservator, or pursuant to judicial order.</span></p>
     <p align="justify" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; background: #ffffff">
       <span color="#000000">(d) I cannot make a gift from the principal's
-        property, unless provided for in the «</span><span color="#008f00">IF
-      Durable</span><span color="#000000">»durable «</span><span color="#008f00">END
-      IF</span><span color="#000000">»power of attorney or by judicial
+        property, unless provided for in the </span>
+      <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
+        <span color="#008f00">
+        </span><span color="#000000"> durable </span></span><span color="#008f00">
+      </span><span color="#000000"> power of attorney or by judicial
       order.</span></p>
     <p align="justify" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; background: #ffffff">
-      <span color="#000000">(e) Unless provided in the «</span><span color="#008f00">IF
-      Durable</span><span color="#000000">»durable «</span><span color="#008f00">END
-      IF</span><span color="#000000">»power of attorney or by judicial
+      <span color="#000000">(e) Unless provided in the </span>
+      <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
+        <span color="#008f00"></span><span color="#000000"> durable </span></span><span color="#008f00">
+      </span><span color="#000000"> power of attorney or by judicial
       order, I, while acting as attorney-in-fact, shall not create an
       account or other asset in joint tenancy between the principal and me.</span></p>
     <p align="justify" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; background: #ffffff">
@@ -2023,9 +2203,11 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
     <p align="justify" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; background: #ffffff">
       <span color="#000000">(g) I may be liable for any damage or loss to
         the principal, and may be subject to any other available remedy, for
-        breach of fiduciary duty owed to the principal. In the «</span><span color="#008f00">IF
-      Durable</span><span color="#000000">»durable «</span><span color="#008f00">END
-      IF</span><span color="#000000">»power of attorney, the principal may
+        breach of fiduciary duty owed to the principal. In the </span>
+      <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
+      <span color="#008f00">
+      </span><span color="#000000"> durable </span></span><span color="#008f00">
+      </span><span color="#000000">»power of attorney, the principal may
       exonerate me of any liability to the principal for breach of
       fiduciary duty except for actions committed by me in bad faith or
       with reckless indifference. An exoneration clause is not enforceable
@@ -2042,87 +2224,92 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
     <p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; background: #ffffff">
       <span color="#000000">Signature: _______________________ Date:
         ______________________</span></p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+ <!--   <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>-->
 
-    </p>
+    <!--</p>-->
   </div>
 </div>
 <!-- !Page 19 -->
+</div>
 
+<div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && (userDetails.tellUsAboutYou.city === 'Pennsylvania' || userDetails.tellUsAboutYou.city === 'New Hampshire')">
 <!-- Page 20 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
        style="box-sizing: border-box; height: 890px;">
 
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'New Hampshire'">
+  <!--  <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
       <span color="#000000">«</span><span color="#008f00">IF State = “New
-      Hampshire”</span><span color="#000000">»</span></p>
+      Hampshire”</span><span color="#000000">»</span></p>-->
+      <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+      </p>
+      <p align="center" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>AGENT'S
+        ACKNOWLEDGEMENT </b></span>
+      </p>
+      <p align="center" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>(Pursuant
+        to N.H. Rev. </b></span><b>Stat. Ann. </b><b>§ </b><b>564-E:113)</b></p>
+      <p align="center" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+      </p>
+      <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+      </p>
+      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+        I,________________________, have read the attached power of attorney
+        and am the person identified as the agent for the principal. I hereby
+        acknowledge that when I act as agent, I am given power under the
+        power of attorney to make decisions about money, property, or both
+        belonging to the principal, and to spend the principal’s money,
+        property, or both on the principal’s behalf, in accordance with the
+        terms of the power of attorney. When acting as agent, I have duties
+        (called “fiduciary duties”) to act in the principal’s best
+        interest, to act in good faith, and to act only within the scope of
+        authority granted in the power of attorney, as well as other duties
+        imposed by law to the extent not provided otherwise in the power of
+        attorney. As an agent, I am not entitled to use the money or property
+        for my own benefit or to make gifts to myself or others unless the
+        power of attorney specifically gives me the authority to do so.  As
+        an agent, my authority under the power of attorney will end when the
+        principal dies and I will not have authority to manage or dispose of
+        any property or administer the estate of the principal.  If I violate
+        a fiduciary duty under the power of attorney, I may be liable for
+        damages and may be subject to criminal prosecution.  If there is
+        anything about the power of attorney, or my duties under it, that I
+        do not understand, I understand that I should seek professional
+        advice.</p>
+      <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+      </p>
+      <p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>I
+        hereby acknowledge and certify the foregoing by my signature below.</b></span></p>
+      <p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+      </p>
+      <p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><u>			</u></span><span color="#000000">    	_________</span></p>
+      <p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>Agent					Date</b></span></p>
+      <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+      </p>
+    </div>
+   <!-- <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+      <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>-->
     <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
-    <p align="center" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>AGENT'S
-      ACKNOWLEDGEMENT </b></span>
-    </p>
-    <p align="center" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>(Pursuant
-      to N.H. Rev. </b></span><b>Stat. Ann. </b><b>§ </b><b>564-E:113)</b></p>
-    <p align="center" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      I,________________________, have read the attached power of attorney
-      and am the person identified as the agent for the principal. I hereby
-      acknowledge that when I act as agent, I am given power under the
-      power of attorney to make decisions about money, property, or both
-      belonging to the principal, and to spend the principal’s money,
-      property, or both on the principal’s behalf, in accordance with the
-      terms of the power of attorney. When acting as agent, I have duties
-      (called “fiduciary duties”) to act in the principal’s best
-      interest, to act in good faith, and to act only within the scope of
-      authority granted in the power of attorney, as well as other duties
-      imposed by law to the extent not provided otherwise in the power of
-      attorney. As an agent, I am not entitled to use the money or property
-      for my own benefit or to make gifts to myself or others unless the
-      power of attorney specifically gives me the authority to do so.  As
-      an agent, my authority under the power of attorney will end when the
-      principal dies and I will not have authority to manage or dispose of
-      any property or administer the estate of the principal.  If I violate
-      a fiduciary duty under the power of attorney, I may be liable for
-      damages and may be subject to criminal prosecution.  If there is
-      anything about the power of attorney, or my duties under it, that I
-      do not understand, I understand that I should seek professional
-      advice.</p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>I
-      hereby acknowledge and certify the foregoing by my signature below.</b></span></p>
-    <p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><u>			</u></span><span color="#000000">    	_________</span></p>
-    <p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>Agent					Date</b></span></p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>
     <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
     <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Pennsylvania'">
+   <!-- <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       <span color="#000000">«</span><span color="#008f00">IF State =
-      “Pennsylvania”</span><span color="#000000">»</span></p>
+      “Pennsylvania”</span><span color="#000000">»</span></p>-->
     <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
@@ -2155,10 +2342,13 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
     <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
+    </div>
   </div>
 </div>
 <!-- !Page 20 -->
+</div>
 
+<div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Wisconsin'">
 <!-- Page 21 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
@@ -2166,9 +2356,9 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
 
 
 
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
+    <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
       <span color="#000000">«</span><span color="#008f00">IF STATE =
-      “Wisconsin”</span><span color="#000000">»</span></p>
+      “Wisconsin”</span><span color="#000000">»</span></p>-->
     <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
       <span size="5" style="font-size: 20pt"><u><b>APPENDIX A</b></u></span></p>
     <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
@@ -2506,7 +2696,7 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
 <!-- Page 24 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
 
     <p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
       <span color="#000000"><b>(9)</b></span><span color="#000000"> Receive
@@ -2608,7 +2798,7 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
 <!-- Page 25 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
 
     <p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
       <span color="#000000"><b>(8)</b></span><span color="#000000"> Put
@@ -2735,7 +2925,7 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
 <!-- Page 26 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
 
 
     <p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
@@ -2839,7 +3029,7 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
 <!-- Page 27 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
     <p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
       <span color="#000000"><b>(8)</b></span><span color="#000000"> Pay a
       judgment, award, or order against the principal or a settlement made
@@ -2954,7 +3144,7 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
 <!-- Page 28 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
 
 
     <p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
@@ -3073,7 +3263,7 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
 <!-- Page 29 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
-       style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
+       style="box-sizing: border-box; height: 890px;">
 
 
 
@@ -3189,3 +3379,4 @@ under the foregoing power of attorney.&nbsp;</span></span></span></span></span><
   </div>
 </div>
 <!-- !Page 29 -->
+</div>

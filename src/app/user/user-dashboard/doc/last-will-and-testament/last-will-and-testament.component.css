@@ -111,7 +111,7 @@
   bottom: -13px;
   right: calc(50% - 10px);
 }
-
+/*
 .docContainer{
   width: 700px;
   margin: 0 auto;
@@ -154,7 +154,26 @@
 }
 .docPage ul li{
   font-size: 16px !important;
+}*/
+
+.docContainer{
+  width: 700px;
+  margin: 0 auto;
 }
+.docPage{
+  width: 700px !important;
+  height: 991px!important;
+  background: #fff;
+  box-shadow: 0 0 7px rgba(0,0,0,0.3);
+  margin: 20px 0;
+  box-sizing: border-box;
+  padding: 40px;
+}
+
+p { margin-bottom: 0.1in; border: none; padding: 0in; direction: ltr; color: #00000a; line-height: 120%; text-align: left; orphans: 2; widows: 2 }
+p.western { font-family: "Times New Roman", serif }
+p.cjk { font-family: "Times New Roman" }
+p.ctl { font-family: "Times New Roman" }
 
 .docBtnArea{
   display: inline-block;
