@@ -898,7 +898,7 @@
 
             </p>
             <div *ngIf="giftStatements.firstpage.length > 0">
-              <p class="western" align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%" *ngFor="let statement of giftStatements.firstpage; let i = index">
+              <p class="western" align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%" *ngFor="let statement of giftStatements.firstpage; let i = index" style="padding-bottom: 10px;">
                     <span style="font-family:'EB Garamond, serif'" >({{i+1}})
                       {{statement}}
                     </span>
@@ -974,7 +974,7 @@
               <span style="font-family:'EB Garamond, serif'">«</span><span ><span style="font-family:'EB Garamond, serif'">IF
                 SP-RP?</span></span><span style="font-family:'EB Garamond, serif'">»</span></p>-->
             <div *ngFor="let statement of giftStatements.otherpages | slice: (5*i) : ((5*i) + 5) ; let j = index">
-              <p class="western" align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%" >
+              <p class="western" align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%; padding-bottom: 10px;" >
                 <span style="font-family:'EB Garamond, serif'">({{5*i + j + 3}})
                   {{statement}}
                 </span>
@@ -2900,7 +2900,7 @@
             <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
               <span size="2" style="font-size: 10pt">STATE OF  ________________		)</span></p>
             <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-              <span size="2" style="font-size: 10pt">					) ss. </span>
+              <span size="2" style="font-size: 10pt; padding-left: 180px;">					) ss. </span>
             </p>
             <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
               <span size="2" style="font-size: 10pt">COUNTY OF ________________		)</span></p>
@@ -3098,7 +3098,7 @@
             <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
               <span size="2" style="font-size: 10pt">STATE OF  ________________	)</span></p>
             <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-              <span size="2" style="font-size: 10pt">				) ss. </span>
+              <span size="2" style="font-size: 10pt; padding-left: 180px;">				) ss. </span>
             </p>
             <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
               <span size="2" style="font-size: 10pt">COUNTY OF ________________	)</span></p>
