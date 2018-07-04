@@ -140,18 +140,33 @@ class BlogController extends Controller
     {
       try {
         $page = $request->page;
-        if ($request->search == NULL) {
-          $totalBlogs = Blogs::count();
-          $blogCount = $totalBlogs;
-          $blogs = Blogs::with('blogCategory')->offset(($page-1)*10)->limit(10)->orderBy('created_at','DESC')->get();
-        } else {
-          $totalBlogs = Blogs::count();
-          $blogCount = $totalBlogs;
-          $blogs = Blogs::where('title','like', '%'.$request->search.'%')
-            ->orWhere('slug','like','%'.$request->search.'%')
-            ->with('blogCategory')->offset(($page-1)*10)->limit(10)->orderBy('created_at','DESC')->get();
-            $blogCount = $blogs->count();
+        $pageSize = $request->pageSize;
+        $blogs = Blogs::with('blogCategory');
+        $totalBlogs = $blogs->count();
+        // $blogCount = $totalBlogs;
+
+        if ($request->search != NULL) {
+          $blogs = $blogs->where('title','like', '%'.$request->search.'%')
+            ->orWhere('slug','like','%'.$request->search.'%');
         }
+
+        if (empty($request->orderBy)) {
+          $blogs = $blogs->orderBy('created_at','DESC');
+        } else {
+          foreach ($request->orderBy as $okey => $ovalue) {
+            if ($ovalue != 'asc' || $ovalue != 'desc') {
+                $blogs = $blogs->orderBy($okey, $ovalue);
+            }
+            // else {
+            //   $blogs = $blogs->orderBy('created_at','DESC');
+            // }
+          }
+        }
+
+        $blogCount = $blogs->count();
+        $blogs = $blogs->offset(($page-1)*$pageSize)->limit($pageSize);
+        // return $blogs = $blogs->toSql();
+        $blogs = $blogs->get();
 
         $blogArr = [];
         if ($blogs) {
@@ -226,7 +241,7 @@ class BlogController extends Controller
             }
 
             $totalBlogs = $blogs->count();
-            
+
             $blogs      = $blogs->offset(($page-1)*10)->limit(10)
                               ->with('getComments')->orderBy('created_at','DESC');
             $blogs = $blogs->get();
