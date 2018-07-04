@@ -46,6 +46,7 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
   };
   signingInstructionSubscription: Subscription;
   downloadSubscription: Subscription;
+  printSubscription: Subscription;
   count: number;
 
   /**Constructor call*/
@@ -167,6 +168,37 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
     );
   }
 
+  /**Downloads the pdf*/
+  printPDF() {
+    let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+    let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    this.printSubscription = this.globalPDFService.signingInstructions(token).subscribe(
+      (response: any) => {
+        if (response.status) {
+          let src = this.globalPDFService.printFile(userId, 'finanalDisposition.pdf');
+          console.log(src);
+          let newwindow = window.open('', 'blank');
+          let obj = newwindow.document.createElement('iframe');
+          obj.style.height = '100%';
+          obj.style.width = '100%';
+          //obj.style.visibility = 'hidden';
+          obj.src = src;
+          newwindow.document.body.appendChild(obj);
+          newwindow.focus();
+          // newwindow.print();
+          /*this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'finalSigningInstructions.pdf').subscribe(
+            value => {
+              saveAs(value, 'finalSigningInstructions.pdf');
+            }
+          );*/
+        }
+      }, (error) => { console.log(error); },
+      () => {
+
+      }
+    );
+  }
+
   goBack() {
     this.location.back();
   }
@@ -222,6 +254,9 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
     }
     if (this.downloadSubscription !== undefined) {
       this.downloadSubscription.unsubscribe();
+    }
+    if (this.printSubscription !== undefined) {
+      this.printSubscription.unsubscribe();
     }
   }
 

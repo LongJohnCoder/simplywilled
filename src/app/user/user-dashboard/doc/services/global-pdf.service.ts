@@ -34,6 +34,7 @@ export class GlobalPdfService {
     headers = headers.set('Accept', 'application/pdf');
     return this._http.get(environment.base_url + 'documents/' + userId + '/' + docname, { headers: headers, responseType: 'blob' });
   }
+
   finalSigningsInstructionsEmail() {
     return this._http.get(environment.API_URL + 'user/final-signing-instructions-email');
   }
@@ -54,4 +55,8 @@ export class GlobalPdfService {
     return this._http.get(environment.API_URL + 'user/final-disposition-email');
   }
 
+  printFile (userId: number, docname: string) {
+    let url = environment.base_url + 'documents/' + userId + '/' + docname;
+    return url;
+  }
 }

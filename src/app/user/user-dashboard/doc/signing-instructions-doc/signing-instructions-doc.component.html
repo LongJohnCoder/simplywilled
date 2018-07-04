@@ -162,9 +162,9 @@
       <li><a [routerLink]="['/dashboard/documents/last-will-and-testament']">Next <i class="fa fa-chevron-right"></i></a></li>
     </ul>
     <ul>
-      <li><a href=""><i class="fa fa-download"></i> Download</a></li>
+      <li><a href="javascript:void(0)" (click)="downloadPdf()"><i class="fa fa-download"></i> Download</a></li>
       <li><a href="javascript:void(0)" (click)="emailMe($event)"><i class="fa fa-envelope-o"></i> Email Me</a></li>
-      <li><a href=""><i class="fa fa-print"></i> Print</a></li>
+      <li><a href="javascript:void(0)" (click)="printPDF()"><i class="fa fa-print"></i> Print</a></li>
     </ul>
   </div>
 
