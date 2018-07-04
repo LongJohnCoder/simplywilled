@@ -138,7 +138,7 @@
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
 
                 <span>
-                   3. My funeral representative shall be:
+                   4. My funeral representative shall be:
                 </span>
 
                 <span>

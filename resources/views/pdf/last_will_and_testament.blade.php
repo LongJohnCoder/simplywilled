@@ -116,7 +116,7 @@
 
 					@if($tellUsAboutYou['deceased_children'] == '1')
 						I have the following deceased children:
-						@foreach(explode($tellUsAboutYou['deceased_children_names']) as $key => $each_deceased_children)
+						@foreach(explode(',', $tellUsAboutYou['deceased_children_names']) as $key => $each_deceased_children)
 							<span style="display:block;">NAME : {{strtoupper(trim($each_deceased_children))}}</span>
 						@endforeach
 					@endif
