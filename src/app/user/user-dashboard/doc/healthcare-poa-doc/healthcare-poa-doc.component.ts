@@ -1,3 +1,5 @@
+import { saveAs } from 'file-saver/FileSaver';
+import { Router } from '@angular/router';
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {GlobalPdfService} from '../services/global-pdf.service';
 import {Subscription} from 'rxjs/Subscription';
@@ -5,7 +7,6 @@ import {UserService} from '../../../user.service';
 import {ProgressbarService} from '../../shared/services/progressbar.service';
 import {UserAuthService} from '../../../user-auth/user-auth.service';
 import {Location} from '@angular/common';
-import { saveAs } from 'file-saver/FileSaver';
 
 @Component({
   selector: 'app-healthcare-poa-doc',
@@ -99,6 +100,11 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     az: false,
     de: false
   };
+
+  thNail = {
+    or : 9
+  }
+
   pdfData: any;
   globalPDFSubscription: Subscription;
 
@@ -108,7 +114,8 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private userAuth: UserAuthService,
     private progressbarService: ProgressbarService,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {
     this.loggedInUser = this.userAuth.getUser();
     this.getUserDetails();
@@ -118,11 +125,25 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
         if (response.status) {
           this.pdfData = response.data;
 
-          if ( this.pdfData.state !== undefined && this.pdfData.state.abr !== null) {
+          if ( this.pdfData.state !== undefined && this.pdfData.state !== null && this.pdfData.state.abr !== null) {
             const abr = this.pdfData.state.abr;
             if (this.states[abr.toLowerCase()] !== undefined) {
               this.states[abr.toLowerCase()] = true;
+              if (this.thNail[abr.toLowerCase()] !== undefined) {
+                this.docThumbImg = [];
+                for (let key = 0 ; key < this.thNail[abr.toLowerCase()] ; key++) {
+                  if (key % 2) {
+                    this.docThumbImg.push('../../../../../assets/images/doc1-thumb1.png');
+                  } else {
+                    this.docThumbImg.push('../../../../../assets/images/doc1-thumb2.png');
+                  }
+                }
+                this.liCount = this.docThumbImg.length * 114;
+              }
             }
+          } else {
+            console.log('state is here');
+            this.router.navigate(['/dashboard/documents/final-disposition']);
           }
         }
       }
@@ -252,7 +273,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   }
 
   scrollDoc(index: number) {
-    this.scrollHeight = 991 * index;
+    this.scrollHeight = 1011 * index;
     this.docBox.nativeElement.scrollTop = this.scrollHeight;
     this.thumbIndex = index;
     // this.thumbContainer.nativeElement.scrollLeft(100);
@@ -260,8 +281,8 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   }
 
   getScroll(scrollVal: number) {
-    if (scrollVal >=  991) {
-      this.thumbIndex = scrollVal !== 0 ? Math.round(scrollVal / 991) : 0;
+    if (scrollVal >=  1011) {
+      this.thumbIndex = scrollVal !== 0 ? Math.floor(scrollVal / 1011) : 0;
     } else {
       this.thumbIndex = 0;
     }
@@ -328,22 +349,12 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     this.printSubscription = this.globalPDFService.healthcarepoa(token).subscribe(
       (response: any) => {
         if (response.status) {
+
           let src = this.globalPDFService.printFile(userId, 'healthCarePOA.pdf');
-          console.log(src);
-          let newwindow = window.open('', 'blank');
-          let obj = newwindow.document.createElement('iframe');
-          obj.style.height = '100%';
-          obj.style.width = '100%';
-          //obj.style.visibility = 'hidden';
-          obj.src = src;
-          newwindow.document.body.appendChild(obj);
-          newwindow.focus();
-          // newwindow.print();
-          /*this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'finalSigningInstructions.pdf').subscribe(
-            value => {
-              saveAs(value, 'finalSigningInstructions.pdf');
-            }
-          );*/
+          let newwindow = window.open(src, '_blank');
+          if (newwindow !== null) {
+            newwindow.focus();
+          }
         }
       }, (error) => { console.log(error); },
       () => {

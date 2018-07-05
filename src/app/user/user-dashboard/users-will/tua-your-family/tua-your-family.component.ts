@@ -50,7 +50,7 @@ export class TuaYourFamilyComponent implements OnInit, OnDestroy {
               private progressBarService: ProgressbarService,
               private fb: FormBuilder) {
     this.createForm();
-    this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '11', '12'];
+    this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
     this.user = this.authService.getUser();
 
     this.toolTipMessageList = {

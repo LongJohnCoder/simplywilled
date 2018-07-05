@@ -1,3 +1,4 @@
+// import { Subscription } from 'rxjs/Subscription';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {SigningInstructionsDocComponent} from './signing-instructions-doc/signing-instructions-doc.component';
