@@ -165,6 +165,15 @@
               5. This authorization becomes effective upon my death. I hereby revoke any prior final disposition authorizations or instructions that I may have signed before the date that this document is signed. I hereby agree that any funeral director, crematory authority, or cemetery authority that receives a copy of this document may act under it. Any modification or revocation of this document is not effective as to a funeral director, crematory authority, or cemetery authority until the funeral director, crematory authority, or cemetery authority receives actual notice of the modification or revocation. No funeral director, crematory authority, or cemetery authority may be liable because of reliance on a copy of this document.
             </p>
 
+            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+              <span *ngIf="userDetails.tellUsAboutYou.state === 'Wisconsin'">
+                The representative and any successor representative, by accepting appointment under this document, assume the powers and duties specified for a representative under §154.30, Wisconsin Statutes.
+              </span>
+              <span *ngIf="userDetails.tellUsAboutYou.state === 'Michigan'">
+                The funeral representative and any successor funeral representative, by accepting appointment under this document, assume the powers and duties specified for a funeral representative under §700.3206(1), MCL and acknowledge that he/she is not a prohibited person pursuant to §700.3206(2)(c), MCL.
+              </span>
+            </p>
+
 
             <!--<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
             Congratulations <span style="text-transform: uppercase;">{{userDetails.firstname}}</span> Your custom estate documents are ready. Now it is time to sign your
@@ -342,7 +351,7 @@
             </p>&ndash;&gt;
           </div>
         </div>-->
-        <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;" *ngIf="userDetails.tellUsAboutYou.state === 'Wisconsin' || userDetails.tellUsAboutYou.state === 'Michigan'">
+        <!--<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;" *ngIf="userDetails.tellUsAboutYou.state === 'Wisconsin' || userDetails.tellUsAboutYou.state === 'Michigan'">
           <div class="docPageInner"
                style=" height: 890px;">
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
@@ -353,10 +362,10 @@
                 The funeral representative and any successor funeral representative, by accepting appointment under this document, assume the powers and duties specified for a funeral representative under §700.3206(1), MCL and acknowledge that he/she is not a prohibited person pursuant to §700.3206(2)(c), MCL.
               </span>
             </p>
-            <!--<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            &lt;!&ndash;<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
               [SIGNATURE PAGES FOLLOW]
-            </p>-->
-            <!--<ul style="margin: 20px 0 20px 20px">
+            </p>&ndash;&gt;
+            &lt;!&ndash;<ul style="margin: 20px 0 20px 20px">
               <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
                 Initial and date each page of your Last Will and Testament on the bottom right corner on the blank provided.
               </li>
@@ -419,9 +428,9 @@
               style="font-size: 15px; margin: 0 0 15px; padding-top:20px; font-family: Garamond; text-align: center; font-weight: bold;">
               Congratulations you’re done! It’s that simple.<br>
               Thank you for using SimplyWilled.com
-            </p>-->
+            </p>&ndash;&gt;
           </div>
-        </div>
+        </div>-->
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
           <div class="docPageInner"
                style=" height: 890px;">
@@ -539,7 +548,7 @@
             </p>-->
           </div>
         </div>
-        <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;" *ngIf="userDetails.tellUsAboutYou.city === 'Wisconsin' || userDetails.tellUsAboutYou.city === 'Michigan'">
+        <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;" *ngIf="userDetails.tellUsAboutYou.state === 'Wisconsin' || userDetails.tellUsAboutYou.state === 'Michigan'">
           <div class="docPageInner"
                style=" height: 890px;">
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">

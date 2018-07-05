@@ -176,6 +176,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
                this.giftStatements.pageLength.push(i);
                this.docThumbImg.push( '../../../../../assets/images/doc1-thumb1.png');
              }
+            this.liCount = this.docThumbImg.length * 114;
              console.log(this.giftStatements);
              //this.giftStatements.pageLength = Math.ceil(this.giftStatements.otherpages.length / 5);
           }
@@ -217,7 +218,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.docScrolled = 0;
     this.thumbIndex = 0;
-    this.liCount = this.docThumbImg.length * 114;
+    // this.liCount = this.docThumbImg.length * 114;
   }
 
   scrollDoc(index: number) {
