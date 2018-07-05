@@ -247,7 +247,11 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
       (response: any) => {
         if (response.status) {
           let src = this.globalPDFService.printFile(userId, 'financialPOA.pdf');
-          console.log(src);
+          let newwindow = window.open(src, '_blank');
+          if (newwindow !== null) {
+            newwindow.focus();
+          }
+        /*  console.log(src);
           let newwindow = window.open('', 'blank');
           let obj = newwindow.document.createElement('iframe');
           obj.style.height = '100%';
@@ -255,7 +259,7 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
           //obj.style.visibility = 'hidden';
           obj.src = src;
           newwindow.document.body.appendChild(obj);
-          newwindow.focus();
+          newwindow.focus();*/
           // newwindow.print();
           /*this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'finalSigningInstructions.pdf').subscribe(
             value => {
