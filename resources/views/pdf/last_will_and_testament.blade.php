@@ -29,7 +29,7 @@
 
 
 
-		<div class="pdf-container" style="font-family: Arial, Helvetica, sans-serif;">
+		<div class="pdf-container" style="font-family: 'Times New Roman, serif';">
 			<p style="text-align:center;">
 				<span style="font-size:30px; font-weight:bold;">LAST WILL AND TESTAMENT</span>
 				 <span style="display:block; padding:20px; font-size:20px;">OF</span>
