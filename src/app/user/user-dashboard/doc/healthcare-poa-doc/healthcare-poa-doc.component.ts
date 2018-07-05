@@ -332,16 +332,19 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   downloadPdf() {
     let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
     let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    this.loading = true;
     this.signingInstructionSubscription = this.globalPDFService.healthcarepoa(token).subscribe(
       (response: any) => {
         if (response.status) {
           this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'healthCarePOA.pdf').subscribe(
             value => {
               saveAs(value, 'healthCarePOA.pdf');
-            }
+            }, (err) => {this.loading = false; },
+            () => { this.loading = false; }
           );
         }
-      }, (error) => { console.log(error); }
+      }, (error) => { console.log(error); },
+      () => { this.loading = false; }
     );
   }
 
