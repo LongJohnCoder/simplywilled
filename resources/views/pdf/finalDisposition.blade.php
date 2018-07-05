@@ -9,9 +9,9 @@
 	
 	<div class="docView">
       <div class="docContainer">
-        <div class="docPage">
+        <div class="docPage" style="page-break-after: always;">
           <div id="doc" class="docPageInner" style=" height: 890px;">
-            <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; font-family: Garamond;">Final Disposition Authorization and Instructions</h1>
+            <h1 style="font-size: 28px; text-align: center; margin: 0 0 30px; font-family: Garamond;">Final Disposition Authorization and Instructions</h1>
 
 
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
@@ -165,10 +165,7 @@
 
                 </span>
             </p>
-          </div>
-        </div>
-        <div class="docPage">
-          <div class="docPageInner">
+            <br>
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
 
               If my funeral representative dies, becomes incapacitated, resigns, refuses to act, ceases to be qualified, or cannot be located within the time necessary to control the final disposition of my remains, I hereby appoint the following individual to serve as my successor funeral representative:
@@ -185,12 +182,13 @@
 
               (Telephone)
             </p>
+            <br>
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
               5. This authorization becomes effective upon my death. I hereby revoke any prior final disposition authorizations or instructions that I may have signed before the date that this document is signed. I hereby agree that any funeral director, crematory authority, or cemetery authority that receives a copy of this document may act under it. Any modification or revocation of this document is not effective as to a funeral director, crematory authority, or cemetery authority until the funeral director, crematory authority, or cemetery authority receives actual notice of the modification or revocation. No funeral director, crematory authority, or cemetery authority may be liable because of reliance on a copy of this document.
             </p>
           </div>
         </div>
-        
+ @if(strtolower($state['name']) == 'wisconsin' || strtolower($state['name']) == 'michigan') 
         <div class="docPage">
           <div class="docPageInner" style=" height: 890px;">
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
@@ -207,7 +205,7 @@
             </p>
           </div>
         </div>
-
+@endif
         <div class="docPage">
           <div class="docPageInner"
                style=" height: 890px;">
@@ -232,54 +230,59 @@
                 {{$genderTxt3}} 
 
                 appears to be of sound mind and not subject to duress, fraud, or undue influence. I further attest that I am not the representative or the successor representative appointed under this document, that I am at least eighteen (18) years of age, and that I am not related to the person who signed this document by blood, marriage, or adoption
-
+<br>
 
                 @if(strtolower($state['name']) == 'michigan')
                 	<span>, nor am I a prohibited witness pursuant to §700.3206(2)(b)(i), MCL.</span>
                 @endif
+                <div style="display: inline-block; width: 46%; padding-top: 50px;">
+                  <p>WITNESS 1: ____________________________</p>
 
-                  <span>WITNESS 1: _____________________________________</span>
+                  <p> ______________________________<br>[print name]</p>
 
-                  <span>[print name] ______________________________________</span>
+                  <p> ______________________________<br>[address]</p>
 
-                  <span>[address] _________________________________________</span>
+                  <p>_______________________________<br>[city/state]</p>
+                  </div>
+<div style="display: inline-block; width: 46%; padding-left: 50px; padding-top: 50px;">
+                <p>WITNESS 2: ____________________________</p>
 
-                  <span>[city/state]________________________________________</span>
+                  <p> ______________________________<br>[print name]</p>
 
-                  <span>WITNESS 2: _____________________________________</span>
+                  <p> ______________________________<br>[address]</p>
 
-                  <span>print name] ______________________________________</span>
+                  <p>_______________________________<br>[city/state]</p>
+                  </div>
 
-                  <span>[address] _________________________________________</span>
+                  <span>STATE OF ________________ )<br>
 
-                  <span>[city/state]________________________________________</span>
+                    _____________________________) ss.</span><br>
 
-                  <span>STATE OF ________________ )
-
-                    ) ss.</span>
-
-                  <span>COUNTY OF ________________ )</span>
+                  <span>COUNTY OF ________________ )</span><br><br>
 
                   <span>Subscribed, sworn and acknowledged before me by 
 
                   <span style="text-transform: uppercase;"> {{$tellUsAboutYou['fullname']}} </span>
 
-                  , and _________________________________________, as witness, and _____________________________________, as witness, who personally appeared on this _________ day of ________________________________, _______, and who are personally known to me or who have produced satisfactory photo identification, and whose names are signed to the foregoing instrument.
+                  , and _________________________________________, as witness, and _____________________________________, as witness, who personally appeared on this _________ day of ________________________________, _______, and who are personally known to me or who have produced satisfactory photo identification, and whose names are signed to the foregoing instrument.<br><br>
 
-                    ______________________________________ (Seal, if any)
+                    ______________________________________ (Seal, if any)<br>
 
-                    NOTARY PUBLIC
+                    NOTARY PUBLIC<br><br>
 
                 My commission expires: _________________</span>
               </p>
           </div>
         </div>
+
+
+     @if(strtolower($state['name']) == 'wisconsin' || strtolower($state['name']) == 'michigan')    
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
           <div class="docPageInner"
                style=" height: 890px;">
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
 
-              @if(strtolower($state['name']) == 'wisconsin' || strtolower($state['name']) == 'michigan') 
+              
               <span>
                  
                  <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; font-family: Garamond;">AGENT ACCEPTANCE AND ACKNOWLEDGMENT</h1>
@@ -335,10 +338,11 @@
 
                 My commission expires: _________________
               </span>
-              @endif
+              
             </p>
           </div>
         </div>
+        @endif
       </div>
     </div>
 
