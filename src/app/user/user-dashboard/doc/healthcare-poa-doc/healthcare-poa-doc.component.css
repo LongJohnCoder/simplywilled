@@ -118,7 +118,8 @@
 }
 .docPage{
   width: 700px !important;
-  height: 991px!important;
+  height: auto !important;
+  min-height: 991px;
   background: #fff;
   margin: 20px 0;
   box-sizing: border-box;

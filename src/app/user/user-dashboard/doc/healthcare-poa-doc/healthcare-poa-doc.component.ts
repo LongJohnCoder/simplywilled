@@ -47,6 +47,9 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   downloadSubscription: Subscription;
   printSubscription: Subscription;
 
+  totalY: number;
+  totalX: number;
+
   states = {
     ak: false,
     al: false,
@@ -142,6 +145,8 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
                   }
                 }
                 this.liCount = this.docThumbImg.length * 114;
+                this.totalY = this.docThumbImg.length * 1011;
+                this.totalX = this.docThumbImg.length * 793;
               }
             }
           } else {
@@ -275,7 +280,8 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     }
   }
 
-  scrollDoc(index: number) {
+  scrollDoc(index: number, e: any) {
+    console.log(e);
     this.scrollHeight = 1011 * index;
     this.docBox.nativeElement.scrollTop = this.scrollHeight;
     this.thumbIndex = index;
@@ -283,16 +289,15 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     // this.docBox.nativeElement.style.transition = 'top .8s cubic-bezier(0.77, 0, 0.175, 1)';
   }
 
-  getScroll(scrollVal: number) {
-    if (scrollVal >=  1011) {
-      this.thumbIndex = scrollVal !== 0 ? Math.floor(scrollVal / 1011) : 0;
-    } else {
-      this.thumbIndex = 0;
-    }
-    if (this.thumbIndex >= 4) {
-      this.thumbContainer.nativeElement.scrollLeft = this.thumbIndex * 31;
-    }
+  getScroll(scrollVal: number, e: any) {
+    this.thumbIndex = Math.floor(scrollVal / 1011);
+    const dx = e.target.offsetWidth + (this.docThumbImg.length * 7);
+    const u = dx / this.docThumbImg.length;
+    this.thumbContainer.nativeElement.scrollLeft = u * this.thumbIndex;
+  }
 
+  getThumbScroll(c: any) {
+    // console.log('thumb scroll', c);
   }
 
   /**Get the user details*/
