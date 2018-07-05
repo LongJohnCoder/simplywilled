@@ -66,7 +66,7 @@
                         <tr>
                           <td>
                             <!-- Contact & Follow Buttons -->
-                            <div style="text-align: center;padding: 15px 0;">
+                            {{-- <div style="text-align: center;padding: 15px 0;">
                               <div style="text-align: right;">
                                   <img src="{{url('/')}}/images/callus.jpg" style="height: 155px; margin-top: -40px;" alt="">
                               </div>
@@ -76,7 +76,8 @@
                                   <li style="float: right; padding: 5px;"><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{url('/')}}/images/in-icon.png"></a></li>
                                   <li style="float: right; padding: 5px;"><a href="https://www.instagram.com/simplywilled"><img src="{{url('/')}}/images/gram-icon.png"></a></li>
                                 </ul>
-                            </div></td>
+                            </div> --}}
+                          </td>
                         </tr>
                         <tr>
                             <td style="padding: 30px 20px; background: #095cab; font-size: 14px; color: #6dadeb; text-align: center;">
