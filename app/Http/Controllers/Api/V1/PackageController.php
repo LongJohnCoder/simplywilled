@@ -423,7 +423,7 @@ class PackageController extends Controller
               'pkgName' => $userPackage->package->name,
               'amount' => $userPackage->amount,
               'paymentStatus' => 'Success',
-              'paymentDate' => date('dS M, Y', strtotime($userPackage->created_at)),
+              'paymentDate' => date('jS M, Y', strtotime($userPackage->created_at)),
               'email' => $user->email
             ];
             Mail::send('emails.payment',$mailData, function($mail) use($mailData){
@@ -720,7 +720,7 @@ class PackageController extends Controller
               'pkgName' => $package->name,
               'amount' => $AMT,
               'paymentStatus' => $arr['ACK'],
-              'paymentDate' => date('dS M, Y', strtotime($userPackage->created_at)),
+              'paymentDate' => date('jS M, Y', strtotime($userPackage->created_at)),
               'email' => $user->email
             ];
             Mail::send('emails.payment',$mailData, function($mail) use($mailData){
@@ -865,7 +865,7 @@ class PackageController extends Controller
         'pkgName' => 'Something Packgae',
         'amount' => 199.00,
         'paymentStatus' => 'Success',
-        'paymentDate' => date('dS M, Y', strtotime('2018-05-05 05:05:05')),
+        'paymentDate' => date('jS M, Y', strtotime('2018-05-15 05:05:05')),
         'email' => 'abc@gmail.com'
       ];
 

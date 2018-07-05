@@ -57,11 +57,11 @@
                     <tr>
                       <td style="padding:10px 30px; background: #f2f2f2;">
                         <p style="text-align: center;padding: 15px 0;"><img src="{{url('/')}}/images/successImg.png" alt=""></p>
-                        <h2 style="color: #2479b8; margin-bottom: 25px; font-family: arial; font-weight: normal; font-size: 28px; text-align: center;">Thank You!</h2>
+                        <h2 style="color: #2479b8; margin-bottom: 15px; font-family: arial; font-weight: normal; font-size: 28px; text-align: center;">Thank You!</h2>
                         <p style="font-family: arial; font-size:16px; color: #373737; text-align: center;">Your payment has been successfully completed</p>
                         <p style="font-family: arial; font-size:16px; color: #373737; text-align: center;">Please <a href="{{url('/')}}">click here</a> to access dashboard.</p>
                         <p style="font-family: arial; font-size:16px; color: #373737; text-align: center;"><strong>Please find the transaction details bellow:</strong></p>
-                        <table cellpadding="0" cellspacing="0" border="0" align="center" style="border: 1px solid #ccc; width: 100%; border-radius: 10px; font-family: arial; font-size:14px; color: #373737; max-width: 600px;">
+                        <table  cellpadding="0" cellspacing="0" border="0" align="center" style="border: 1px solid #ccc; width: 100%; border-radius: 10px; font-family: arial; font-size:14px; color: #373737; max-width: 600px; margin-top: 12px;">
                         <tr>
                         <td width="50%" style="padding: 10px; border-bottom: 1px solid #ccc; border-right: 1px solid #ccc;">Transaction ID</td>
                         <td width="50%" style="padding: 10px; color: #2479b8; font-weight: bold; border-bottom: 1px solid #ccc;">{{$transactionID}}</td>
