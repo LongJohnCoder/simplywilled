@@ -49,6 +49,13 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     nu: false,
     uni: false
   };
+
+    thNail = {
+      sd: 15,
+      mo: 15,
+      nc: 15,
+      or: 15
+    };
   pdfData: any;
   globalPDFSubscription: Subscription;
   signingInstructionSubscription: Subscription;
@@ -84,6 +91,19 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
               } else if (st['type'] === 'non-uniform') {
                 this.states['nu'] = true;
               }
+
+                const abr = st['abr'];
+                if (this.thNail[abr.toLowerCase()] !== undefined) {
+                    this.docThumbImg = [];
+                    for (let key = 0 ; key < this.thNail[abr.toLowerCase()] ; key++) {
+                        if (key % 2) {
+                            this.docThumbImg.push('../../../../../assets/images/doc1-thumb2.png');
+                        } else {
+                            this.docThumbImg.push('../../../../../assets/images/doc1-thumb1.png');
+                        }
+                    }
+                    this.liCount = this.docThumbImg.length * 114;
+                }
 
             }
 
