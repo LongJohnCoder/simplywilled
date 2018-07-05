@@ -102,8 +102,11 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   };
 
   thNail = {
-    or : 9
-  }
+    or: 9,
+    mo: 6,
+    nc: 14,
+    sd: 7
+  };
 
   pdfData: any;
   globalPDFSubscription: Subscription;
