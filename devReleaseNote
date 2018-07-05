@@ -7,7 +7,7 @@ Business interest v0.1 unstable released to dev
 	Validation is work in progress.
 
 Business interest and specific assets v0.2 stable released to dev
-	Created the business interest and specific assets section 
+	Created the business interest and specific assets section
 
 Business interest and specific assets v0.3 stable released to dev
 	Modified the update api for business interest and specific assets section
@@ -22,21 +22,21 @@ protect your finances v0.2 stable released to dev
 bug fixes v0.1
 	protect your finance bug fixes.
 
-Validation V0.1 stable released to dev	
+Validation V0.1 stable released to dev
 	Validation for step 1
 
 Validation V0.2 stable released to dev
 	Validation for step 4 and step 2 partially
 
 UI changes V0.1 stable released to dev
-	Removed Get Started button from login, register, forget password and reset password page in footer section 
+	Removed Get Started button from login, register, forget password and reset password page in footer section
 	changed package text
 
 UI changes V0.2 stable released to dev
 	Changed text in user will second substep
 
 Loader V1.0 stable released to dev
-	Created loader 
+	Created loader
 
 UI changes V0.3 stable released to dev
 	Changed text in user will second substep
@@ -60,7 +60,7 @@ Validation V0.9 stable released to dev
 	Second section validation bug fixes.
 
 Validation V1.0  stable released to dev
-	Second section  validation bug fixes 
+	Second section  validation bug fixes
 	Loader incorporated in dashboard
 
 Validation V1.1 stable released to dev
@@ -119,7 +119,7 @@ Dashboard Changes V0.4  stable released to dev
 
 Document Page VI v0.1
 	SIGNING INSTRUCTIONS document completed
-	
+
 Dashboard Design Fining v3.0
 	Dashboard design issue fixed
 
@@ -132,7 +132,7 @@ Dashboard document preview page UI v0.3
 Dashboard Doc View v0.5
 	5 step doc view design completed
 
-Document exoskeleton v0.1 
+Document exoskeleton v0.1
 	Routes and global UI created for document section
 
 Site Changes V0.1 stable relased to dev
@@ -184,13 +184,13 @@ Documents v0.6 stable released to dev
 	Documents for Missouri, Mississipi, Montana and Georgia
 
 Documents V0.7 stable released to dev
-	Documents For Arizona and delaware 
+	Documents For Arizona and delaware
 
 Documents V0.7.1 stable released to dev
 	Documents bugfixes
 
 Documents web view v0.5
-	Document web view 
+	Document web view
 
 Documents v1.0 stable released to dev
 	Document webview for fl,md,mn,ny,non uniform
@@ -203,3 +203,6 @@ Downloads V0.1 stable released to dev
 
 Print V0.1 stable released to dev
 	Print for signing instruction, last will and final disposition
+
+Documents V1.2  stable released to dev
+	Bug fixes for documents si,lw and fd

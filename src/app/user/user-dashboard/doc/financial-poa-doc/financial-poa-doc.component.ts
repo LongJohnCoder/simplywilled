@@ -5,7 +5,7 @@ import {ProgressbarService} from '../../shared/services/progressbar.service';
 import {UserAuthService} from '../../../user-auth/user-auth.service';
 import {Location} from '@angular/common';
 import {GlobalPdfService} from '../services/global-pdf.service';
-// import { INTERNAL_BROWSER_DYNAMIC_PLATFORM_PROVIDERS } from '@angular/platform-browser-dynamic';
+import { saveAs } from 'file-saver/FileSaver';
 
 @Component({
   selector: 'app-financial-poa-doc',
@@ -51,6 +51,9 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   };
   pdfData: any;
   globalPDFSubscription: Subscription;
+  signingInstructionSubscription: Subscription;
+  downloadSubscription: Subscription;
+  printSubscription: Subscription;
 
   constructor(
     private globalPDFService: GlobalPdfService,
@@ -84,7 +87,7 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
 
             }
 
-            
+
           }
 
           console.log(this.pdfData);
@@ -219,6 +222,53 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   //     document.body.appendChild(canvas)
   //   });
   // }
+  /**Downloads the pdf*/
+  downloadPdf() {
+    let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+    let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    this.signingInstructionSubscription = this.globalPDFService.financialpoaPDF(token).subscribe(
+      (response: any) => {
+        if (response.status) {
+          this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'financialPOA.pdf').subscribe(
+            value => {
+              saveAs(value, 'financialPOA.pdf');
+            }
+          );
+        }
+      }, (error) => { console.log(error); }
+    );
+  }
+
+  /**Downloads the pdf*/
+  printPDF() {
+    let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+    let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    this.printSubscription = this.globalPDFService.financialpoaPDF(token).subscribe(
+      (response: any) => {
+        if (response.status) {
+          let src = this.globalPDFService.printFile(userId, 'financialPOA.pdf');
+          console.log(src);
+          let newwindow = window.open('', 'blank');
+          let obj = newwindow.document.createElement('iframe');
+          obj.style.height = '100%';
+          obj.style.width = '100%';
+          //obj.style.visibility = 'hidden';
+          obj.src = src;
+          newwindow.document.body.appendChild(obj);
+          newwindow.focus();
+          // newwindow.print();
+          /*this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'finalSigningInstructions.pdf').subscribe(
+            value => {
+              saveAs(value, 'finalSigningInstructions.pdf');
+            }
+          );*/
+        }
+      }, (error) => { console.log(error); },
+      () => {
+
+      }
+    );
+  }
 
   /**When the component is destroyed*/
   ngOnDestroy() {
@@ -230,6 +280,15 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     }
     if (this.progressSubscription !== undefined) {
       this.progressSubscription.unsubscribe();
+    }
+    if (this.signingInstructionSubscription !== undefined) {
+      this.signingInstructionSubscription.unsubscribe();
+    }
+    if (this.downloadSubscription !== undefined) {
+      this.downloadSubscription.unsubscribe();
+    }
+    if (this.printSubscription !== undefined) {
+      this.printSubscription.unsubscribe();
     }
   }
 }

@@ -29,6 +29,16 @@ export class GlobalPdfService {
         {'Authorization': token})});
   }
 
+  healthcarepoa(token: string) {
+    return this._http.get(environment.API_URL + 'user/final-disposition-pdf', {headers: new HttpHeaders(
+        {'Authorization': token})});
+  }
+
+  financialpoaPDF(token: string) {
+    return this._http.get(environment.API_URL + 'user/finances-doc', {headers: new HttpHeaders(
+        {'Authorization': token})});
+  }
+
   downloadFile(userId: number, docname: string) {
     let headers = new HttpHeaders();
     headers = headers.set('Accept', 'application/pdf');

@@ -7,6 +7,7 @@ import {ProgressbarService} from "../../shared/services/progressbar.service";
 import {Location} from '@angular/common';
 import {GlobalPdfService} from '../services/global-pdf.service';
 import { saveAs } from 'file-saver/FileSaver';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-last-will-and-testament',
@@ -77,6 +78,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   printSubscription: Subscription;
 
   constructor(
+      private router: Router,
       private globalPDFService: GlobalPdfService,
       private userService: UserService,
       private userAuth: UserAuthService,
@@ -129,7 +131,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
           if (response.data.gifts.length > 0) {
             let statement = '';
              for (let i = 0; i < response.data.gifts.length; i++) {
-               if ( i < 2 ) {
+               if ( i < 5 ) {
                  switch (response.data.gifts[i].type) {
                    case '1': statement = response.data.gifts[i].cash_description !== null ? JSON.parse(response.data.gifts[i].cash_description)[0].statement : '';
                      this.giftStatements.firstpage.push(statement);
@@ -242,6 +244,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
 
   /**Downloads the pdf*/
   downloadPdf() {
+    this.loading = true;
     let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
     let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     this.signingInstructionSubscription = this.globalPDFService.willTemplate(token).subscribe(
@@ -253,18 +256,25 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
             }
           );
         }
-      }, (error) => { console.log(error); }
+      }, (error) => { console.log(error); this.loading = false;},
+      () => {this.loading = false;}
     );
   }
 
   /**Downloads the pdf*/
   printPDF() {
+    this.loading = true;
     let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
     let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
-    this.printSubscription = this.globalPDFService.signingInstructions(token).subscribe(
+    this.printSubscription = this.globalPDFService.willTemplate(token).subscribe(
       (response: any) => {
         if (response.status) {
           let src = this.globalPDFService.printFile(userId, 'will-template.pdf');
+          let newwindow = window.open(src, '_blank');
+          if (newwindow !== null) {
+            newwindow.focus();
+          }
+          /*let src = this.globalPDFService.printFile(userId, 'will-template.pdf');
           console.log(src);
           let newwindow = window.open('', 'blank');
           let obj = newwindow.document.createElement('iframe');
@@ -273,7 +283,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
           //obj.style.visibility = 'hidden';
           obj.src = src;
           newwindow.document.body.appendChild(obj);
-          newwindow.focus();
+          newwindow.focus();*/
           // newwindow.print();
           /*this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'finalSigningInstructions.pdf').subscribe(
             value => {
@@ -281,9 +291,9 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
             }
           );*/
         }
-      }, (error) => { console.log(error); },
+      }, (error) => { console.log(error); this.loading = false; },
       () => {
-
+        this.loading = false;
       }
     );
   }
@@ -293,6 +303,15 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     this.location.back();
   }
 
+  goNext() {
+    if (!this.progressBar.protectYourFinance && !this.progressBar.provideYourLovedOnes) {
+      this.router.navigate(['/dashboard/documents/final-disposition']);
+    } else if (!this.progressBar.protectYourFinance && this.progressBar.provideYourLovedOnes) {
+      this.router.navigate(['/dashboard/documents/healthcare-poa']);
+    } else {
+      this.router.navigate(['/dashboard/documents/financial-poa']);
+    }
+  }
   // pdfDownload() {
   //
   //   var doc = new jsPDF({

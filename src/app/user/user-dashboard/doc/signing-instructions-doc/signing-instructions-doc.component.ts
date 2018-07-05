@@ -137,6 +137,7 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
 
   /**Downloads the pdf*/
   downloadPdf() {
+    this.loading = true;
     let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
     let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     this.signingInstructionSubscription = this.globalPDFService.signingInstructions(token).subscribe(
@@ -148,27 +149,38 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
             }
           );
         }
-      }, (error) => { console.log(error); }
+      },
+      (error) => {
+            console.log(error);
+            this.loading = false;
+        },
+      () => {
+        this.loading = false;
+      }
     );
   }
 
   /**Downloads the pdf*/
   printPDF() {
+    this.loading = true;
     let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
     let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     this.printSubscription = this.globalPDFService.signingInstructions(token).subscribe(
       (response: any) => {
         if (response.status) {
             let src = this.globalPDFService.printFile(userId, 'finalSigningInstructions.pdf');
-            console.log(src);
-            let newwindow = window.open('', 'blank');
-            let obj = newwindow.document.createElement('iframe');
-            obj.style.height = '100%';
-            obj.style.width = '100%';
-            //obj.style.visibility = 'hidden';
-            obj.src = src;
-            newwindow.document.body.appendChild(obj);
-            newwindow.focus();
+            let newwindow = window.open(src, '_blank');
+            if (newwindow !== null) {
+              /*let obj = newwindow.document.createElement('iframe');
+              obj.style.height = '100%';
+              obj.style.width = '100%';
+              //obj.style.visibility = 'hidden';
+              obj.src = src;
+              newwindow.document.body.appendChild(obj);
+              newwindow.document.body.style.margin = '0';
+              newwindow.document.body.style.padding = '0';*/
+              newwindow.focus();
+            }
            // newwindow.print();
           /*this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'finalSigningInstructions.pdf').subscribe(
             value => {
@@ -176,9 +188,12 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
             }
           );*/
         }
-      }, (error) => { console.log(error); },
+      }, (error) => {
+            console.log(error);
+            this.loading = false;
+        },
       () => {
-
+            this.loading = false;
         }
     );
   }

@@ -145,7 +145,25 @@
 
                 </span>
             </p>
+            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
 
+              If my funeral representative dies, becomes incapacitated, resigns, refuses to act, ceases to be qualified, or cannot be located within the time necessary to control the final disposition of my remains, I hereby appoint the following individual to serve as my successor funeral representative:
+
+              ________________________________________________
+
+              (Name)
+
+              ________________________________________________
+
+              (Address)
+
+              ________________________________________________
+
+              (Telephone)
+            </p>
+            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+              5. This authorization becomes effective upon my death. I hereby revoke any prior final disposition authorizations or instructions that I may have signed before the date that this document is signed. I hereby agree that any funeral director, crematory authority, or cemetery authority that receives a copy of this document may act under it. Any modification or revocation of this document is not effective as to a funeral director, crematory authority, or cemetery authority until the funeral director, crematory authority, or cemetery authority receives actual notice of the modification or revocation. No funeral director, crematory authority, or cemetery authority may be liable because of reliance on a copy of this document.
+            </p>
 
 
             <!--<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
@@ -206,10 +224,10 @@
           </p>-->
           </div>
         </div>
-        <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+       <!-- <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
           <div class="docPageInner"
                style=" height: 890px;">
-            <!--<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            &lt;!&ndash;<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
 
                 <span *ngIf="userDetails.tellUsAboutYou.state !== 'New Jersey'">
                    {{userDetails.personalRepresentative.city}},   {{userDetails.personalRepresentative.state}}   {{userDetails.personalRepresentative.zip}}
@@ -230,10 +248,10 @@
                 (Telephone)
 
                 </span>
-            </p>-->
+            </p>&ndash;&gt;
 
-              <!--«IF Successor?»-->
-            <!--<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;" *ngIf="userDetails.personalRepresentative !== null && userDetails.personalRepresentative !== undefined">-->
+              &lt;!&ndash;«IF Successor?»&ndash;&gt;
+            &lt;!&ndash;<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;" *ngIf="userDetails.personalRepresentative !== null && userDetails.personalRepresentative !== undefined">&ndash;&gt;
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
 
               If my funeral representative dies, becomes incapacitated, resigns, refuses to act, ceases to be qualified, or cannot be located within the time necessary to control the final disposition of my remains, I hereby appoint the following individual to serve as my successor funeral representative:
@@ -254,11 +272,11 @@
               5. This authorization becomes effective upon my death. I hereby revoke any prior final disposition authorizations or instructions that I may have signed before the date that this document is signed. I hereby agree that any funeral director, crematory authority, or cemetery authority that receives a copy of this document may act under it. Any modification or revocation of this document is not effective as to a funeral director, crematory authority, or cemetery authority until the funeral director, crematory authority, or cemetery authority receives actual notice of the modification or revocation. No funeral director, crematory authority, or cemetery authority may be liable because of reliance on a copy of this document.
             </p>
 
-           <!-- <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+           &lt;!&ndash; <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
               This authorization becomes effective upon my death. I hereby revoke any prior final disposition authorizations and/or instructions that I may have signed before the date that this document is signed. I hereby agree that any funeral director, crematory authority, or cemetery authority that receives a copy of this document may act under it. Any modification or revocation of this document is not effective as to a funeral director, crematory authority, or cemetery authority until the funeral director, crematory authority, or cemetery authority receives actual notice of the modification or revocation. No funeral director, crematory authority, or cemetery authority may be liable because of reliance on a copy of this document.
 
-            </p>-->
-            <!--<ul style="margin: 20px 0 20px 20px">
+            </p>&ndash;&gt;
+            &lt;!&ndash;<ul style="margin: 20px 0 20px 20px">
               <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
                 Initial and date each page of your Last Will and Testament on the bottom right corner on the blank provided.
               </li>
@@ -321,10 +339,10 @@
               style="font-size: 15px; margin: 0 0 15px; padding-top:20px; font-family: Garamond; text-align: center; font-weight: bold;">
               Congratulations you’re done! It’s that simple.<br>
               Thank you for using SimplyWilled.com
-            </p>-->
+            </p>&ndash;&gt;
           </div>
-        </div>
-        <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+        </div>-->
+        <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;" *ngIf="userDetails.tellUsAboutYou.state === 'Wisconsin' || userDetails.tellUsAboutYou.state === 'Michigan'">
           <div class="docPageInner"
                style=" height: 890px;">
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
@@ -521,12 +539,11 @@
             </p>-->
           </div>
         </div>
-        <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+        <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;" *ngIf="userDetails.tellUsAboutYou.city === 'Wisconsin' || userDetails.tellUsAboutYou.city === 'Michigan'">
           <div class="docPageInner"
                style=" height: 890px;">
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
-              «IF State = "Wisconsin" OR State = "Michigan"»
-              <span *ngIf="userDetails.tellUsAboutYou.city === 'Wisconsin' || userDetails.tellUsAboutYou.city === 'Michigan'">
+              <span>
                  <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; font-family: Garamond;">AGENT ACCEPTANCE AND ACKNOWLEDGMENT</h1>
 
                     I hereby accept appointment as <span *ngIf="userDetails.tellUsAboutYou.city === 'Michigan'"> funeral </span>representative for the control of final disposition of the declarant’s remains.

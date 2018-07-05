@@ -5,6 +5,7 @@ import {UserService} from '../../../user.service';
 import {ProgressbarService} from '../../shared/services/progressbar.service';
 import {UserAuthService} from '../../../user-auth/user-auth.service';
 import {Location} from '@angular/common';
+import { saveAs } from 'file-saver/FileSaver';
 
 @Component({
   selector: 'app-healthcare-poa-doc',
@@ -41,6 +42,9 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   loggedInUser: any;
   getUserDetailsSubscription: Subscription;
   count: number;
+  signingInstructionSubscription: Subscription;
+  downloadSubscription: Subscription;
+  printSubscription: Subscription;
 
   states = {
     ak: false,
@@ -236,6 +240,15 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     /*if (this.globalPDFSubscription !== undefined) {
       this.globalPDFSubscription.unsubscribe();
     }*/
+    if (this.signingInstructionSubscription !== undefined) {
+      this.signingInstructionSubscription.unsubscribe();
+    }
+    if (this.downloadSubscription !== undefined) {
+      this.downloadSubscription.unsubscribe();
+    }
+    if (this.printSubscription !== undefined) {
+      this.printSubscription.unsubscribe();
+    }
   }
 
   scrollDoc(index: number) {
@@ -288,6 +301,54 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
       (error: any) => {
         console.log(error);
       }, () => { this.loading = false; }
+    );
+  }
+
+  /**Downloads the pdf*/
+  downloadPdf() {
+    let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+    let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    this.signingInstructionSubscription = this.globalPDFService.healthcarepoa(token).subscribe(
+      (response: any) => {
+        if (response.status) {
+          this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'healthCarePOA.pdf').subscribe(
+            value => {
+              saveAs(value, 'healthCarePOA.pdf');
+            }
+          );
+        }
+      }, (error) => { console.log(error); }
+    );
+  }
+
+  /**Downloads the pdf*/
+  printPDF() {
+    let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+    let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    this.printSubscription = this.globalPDFService.healthcarepoa(token).subscribe(
+      (response: any) => {
+        if (response.status) {
+          let src = this.globalPDFService.printFile(userId, 'healthCarePOA.pdf');
+          console.log(src);
+          let newwindow = window.open('', 'blank');
+          let obj = newwindow.document.createElement('iframe');
+          obj.style.height = '100%';
+          obj.style.width = '100%';
+          //obj.style.visibility = 'hidden';
+          obj.src = src;
+          newwindow.document.body.appendChild(obj);
+          newwindow.focus();
+          // newwindow.print();
+          /*this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'finalSigningInstructions.pdf').subscribe(
+            value => {
+              saveAs(value, 'finalSigningInstructions.pdf');
+            }
+          );*/
+        }
+      }, (error) => { console.log(error); },
+      () => {
+
+      }
     );
   }
 
