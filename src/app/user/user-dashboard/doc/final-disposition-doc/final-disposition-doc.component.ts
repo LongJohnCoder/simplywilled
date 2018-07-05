@@ -81,7 +81,7 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
 
   getScroll(scrollVal: number) {
     if (scrollVal >=  991) {
-      this.thumbIndex = scrollVal !== 0 ? Math.round(scrollVal / 991) : 0;
+      this.thumbIndex = scrollVal !== 0 ? Math.floor(scrollVal / 991) : 0;
     } else {
       this.thumbIndex = 0;
     }
@@ -102,6 +102,9 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
             state: response.data.state,
             tellUsAboutYou: response.data.tellUsAboutYou
           };
+          if  (this.userDetails.tellUsAboutYou.city === 'Wisconsin' || this.userDetails.tellUsAboutYou.city === 'Michigan') {
+            this.docThumbImg.push('../../../../../assets/images/doc1-thumb2.png');
+          }
         }
 
         console.log(this.userDetails);

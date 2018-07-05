@@ -113,7 +113,7 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
 
   getScroll(scrollVal: number) {
     if (scrollVal >=  991) {
-      this.thumbIndex = scrollVal !== 0 ? Math.round(scrollVal / 991) : 0;
+      this.thumbIndex = scrollVal !== 0 ? Math.floor(scrollVal / 991) : 0;
     } else {
       this.thumbIndex = 0;
     }

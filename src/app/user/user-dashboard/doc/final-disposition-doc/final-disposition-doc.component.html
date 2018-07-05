@@ -428,20 +428,20 @@
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
               <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; font-family: Garamond;">SIGNATURE AND ACKNOWLEDGMENT</h1>
 
-              <p>Dated: _______________________________________</p>
+              <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">Dated: _______________________________________</p>
 
-              <p>Signed: _________________________________________</p>
+              <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">Signed: _________________________________________</p>
 
-              <span>{{userDetails.tellUsAboutYou.firstname}}</span> <span>{{userDetails.tellUsAboutYou.middlename}}</span> <span>{{userDetails.tellUsAboutYou.lastname}}</span>
+              <span style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;text-transform: capitalize">{{userDetails.tellUsAboutYou.firstname}}</span> <span style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;text-transform: capitalize">{{userDetails.tellUsAboutYou.middlename}}</span> <span style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;text-transform: capitalize">{{userDetails.tellUsAboutYou.lastname}}</span>
 
-              <p>{{userDetails.tellUsAboutYou.address}}</p>
+              <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;text-transform: capitalize">{{userDetails.tellUsAboutYou.address}}</p>
 
-              <p><span>{{userDetails.tellUsAboutYou.city}}</span>, <span>{{userDetails.tellUsAboutYou.state}} <span>{{userDetails.tellUsAboutYou.zip}}</span></span></p>
+              <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;text-transform: capitalize"><span>{{userDetails.tellUsAboutYou.city}}</span>, <span>{{userDetails.tellUsAboutYou.state}} <span>{{userDetails.tellUsAboutYou.zip}}</span></span></p>
 
-              <p>{{userDetails.tellUsAboutYou.phone}}</p>
+              <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">{{userDetails.tellUsAboutYou.phone}}</p>
 
-              <p>
-                By my signature below, I attest that <span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.firstname}} </span><span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.middlename}} </span><span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.lastname}} </span>, the person who signed this document, did so or acknowledged signing this document in my presence and that {{userDetails.tellUsAboutYou.gender !== null ? (userDetails.tellUsAboutYou.gender === 'Male' ? 'he' : 'she') : 'he' }} appears to be of sound mind and not subject to duress, fraud, or undue influence. I further attest that I am not the representative or the successor representative appointed under this document, that I am at least eighteen (18) years of age, and that I am not related to the person who signed this document by blood, marriage, or adoption<span *ngIf="userDetails.tellUsAboutYou.state === 'Michigan'">, nor am I a prohibited witness pursuant to §700.3206(2)(b)(i), MCL.</span>
+              <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+                By my signature below, I attest that <span style="text-transform: uppercase;text-transform: capitalize"> {{userDetails.tellUsAboutYou.firstname}} </span><span style="text-transform: capitalize;"> {{userDetails.tellUsAboutYou.middlename}} </span><span style="text-transform: capitalize;"> {{userDetails.tellUsAboutYou.lastname}} </span>, the person who signed this document, did so or acknowledged signing this document in my presence and that {{userDetails.tellUsAboutYou.gender !== null ? (userDetails.tellUsAboutYou.gender === 'Male' ? 'he' : 'she') : 'he' }} appears to be of sound mind and not subject to duress, fraud, or undue influence. I further attest that I am not the representative or the successor representative appointed under this document, that I am at least eighteen (18) years of age, and that I am not related to the person who signed this document by blood, marriage, or adoption<span *ngIf="userDetails.tellUsAboutYou.state === 'Michigan'">, nor am I a prohibited witness pursuant to §700.3206(2)(b)(i), MCL.</span>
 
                   <span>WITNESS 1: _____________________________________</span>
 

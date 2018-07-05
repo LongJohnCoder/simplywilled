@@ -30,7 +30,16 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   };*/
   docThumbImg: Array<any> = [
     '../../../../../assets/images/doc1-thumb1.png',
-    '../../../../../assets/images/doc1-thumb2.png'
+    '../../../../../assets/images/doc1-thumb2.png',
+    '../../../../../assets/images/doc1-thumb1.png',
+    '../../../../../assets/images/doc1-thumb2.png',
+    '../../../../../assets/images/doc1-thumb1.png',
+    '../../../../../assets/images/doc1-thumb2.png',
+    '../../../../../assets/images/doc1-thumb1.png',
+    '../../../../../assets/images/doc1-thumb2.png',
+    '../../../../../assets/images/doc1-thumb1.png',
+    '../../../../../assets/images/doc1-thumb2.png',
+    '../../../../../assets/images/doc1-thumb1.png',
   ];
   liCount: number;
   progressBar = {
@@ -165,6 +174,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
              }
              for (let i = 0; i < Math.ceil(this.giftStatements.otherpages.length / 5); i++) {
                this.giftStatements.pageLength.push(i);
+               this.docThumbImg.push( '../../../../../assets/images/doc1-thumb1.png');
              }
              console.log(this.giftStatements);
              //this.giftStatements.pageLength = Math.ceil(this.giftStatements.otherpages.length / 5);
@@ -220,7 +230,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
 
   getScroll(scrollVal: number) {
     if (scrollVal >=  991) {
-      this.thumbIndex = scrollVal !== 0 ? Math.round(scrollVal/991) : 0;
+      this.thumbIndex = scrollVal !== 0 ? Math.floor(scrollVal/991) : 0;
     } else {
       this.thumbIndex = 0;
     }
