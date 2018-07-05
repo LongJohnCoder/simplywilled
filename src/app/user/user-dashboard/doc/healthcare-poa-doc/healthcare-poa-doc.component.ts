@@ -136,9 +136,9 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
                 this.docThumbImg = [];
                 for (let key = 0 ; key < this.thNail[abr.toLowerCase()] ; key++) {
                   if (key % 2) {
-                    this.docThumbImg.push('../../../../../assets/images/doc1-thumb1.png');
-                  } else {
                     this.docThumbImg.push('../../../../../assets/images/doc1-thumb2.png');
+                  } else {
+                    this.docThumbImg.push('../../../../../assets/images/doc1-thumb1.png');
                   }
                 }
                 this.liCount = this.docThumbImg.length * 114;
