@@ -104,9 +104,17 @@
         @endif
         <span >, </span> being an adult of sound mind, hereby appoint my
         @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
+            @if(strlen(trim($healthFinance['relationOther'])) > 0)
+                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
+            @else
+                <span style="font-family:'Times New Roman, serif'">__________________</span>
+            @endif
         @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
+            @if(strlen(trim($healthFinance['relation'])) > 0)
+                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
+            @else
+                <span style="font-family:'Times New Roman, serif'">__________________</span>
+            @endif
         @else
             <span>(relation)______________</span>
         @endif
@@ -161,14 +169,20 @@
       In the event the person I appoint above is unable, unwilling or
       unavailable to act as my health care agent, I appoint as my successor
       agent</span></span>
-      @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == true)
+      @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == 'true')
 
         @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
-            <span>{{$healthFinance['backupRelation']}}</span>
-        @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
-            <span>{{$healthFinance['backupRelation']}}</span>
+            @if(strlen(trim($healthFinance['backupRelationOther'])) > 0)
+                <span>{{$healthFinance['backupRelationOther']}}</span>
+            @else
+                <span>(relation) __________________</span>
+            @endif
         @else
-            <span>(relation)______________</span>
+            @if(strlen(trim($healthFinance['backupRelation'])) > 0)
+                <span>{{$healthFinance['backupRelation']}}</span>
+            @else
+                <span>(relation) _________________</span>
+            @endif
         @endif
         <span>, </span>
 
@@ -220,7 +234,7 @@
       </span></span>
       @endif
       </p>
-      @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == false)
+      @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == 'false')
         <div>
             <p style="margin-bottom: 0in; ">
                 <span ><span style="font-family:'Times New Roman, serif'">
