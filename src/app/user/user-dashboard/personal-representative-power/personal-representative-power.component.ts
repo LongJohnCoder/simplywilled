@@ -8,6 +8,7 @@ import {LovedOnesInfo} from './models/lovedOnesInfo';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {ProgressbarService} from '../shared/services/progressbar.service';
+import {UserAuthService} from '../../user-auth/user-auth.service';
 @Component({
   selector: 'app-personal-representative-power',
   templateUrl: './personal-representative-power.component.html',
@@ -34,13 +35,15 @@ export class PersonalRepresentativePowerComponent implements OnInit, OnDestroy {
   userSubscription: Subscription;
   savePersonalRepresentativeDBSubscription: Subscription;
   toolTipMessageList: any;
+  checkUserSpouseStatusSubscription: Subscription;
 
   /**Constructor call*/
   constructor(
+    private  authService: UserAuthService,
     private prService: PersonalRepresentativePowerService,
     private usrService: UserService, private router: Router,
     private progressBarService: ProgressbarService) {
-    this.progressBarService.changeWidth({width: 0});
+    this.progressBarService.changeWidth({width: 12.5});
     this.toolTipMessageList = {
       'personal_representative' : [{
           'q' : 'What is a Personal Representative?',
@@ -157,8 +160,9 @@ export class PersonalRepresentativePowerComponent implements OnInit, OnDestroy {
       this.savePersonalRepresentativeDB = this.prService.savePersonalRepresentativePower(this.access_token, dataset);
       this.savePersonalRepresentativeDBSubscription = this.savePersonalRepresentativeDB.subscribe(data => {
         if (data.status) {
+          this.checkUserSpouseStatus();
           // router link to next page
-          this.router.navigate(['/dashboard/personal-representative-details']);
+         // this.router.navigate(['/dashboard/personal-representative-details']);
         } else {
           this.errFlag = true;
           this.errString = 'Something went wrong while updating the dataset. Please try again later!';
@@ -200,6 +204,24 @@ export class PersonalRepresentativePowerComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   *check User Spouse status for Routing
+   */
+  checkUserSpouseStatus() {
+    this.checkUserSpouseStatusSubscription = this.usrService.getUserDetails(this.authService.getUser()['id']).subscribe(
+      (response: any) => {
+        if ( response.data[0].data.userInfo.marital_status === 'M' || response.data[0].data.userInfo.marital_status === 'R' ) {
+          // move to spouse page
+          this.router.navigate(['/dashboard/provide-user-spouse']);
+        } else {
+          // move to personal property page
+          this.router.navigate(['/dashboard/personal-property-distributed']);
+        }
+      }, ( error: any ) => {
+        console.log(error.error);
+      });
+  }
+
   /**When the component is destroyed*/
   ngOnDestroy() {
     if (this.savePersonalRepresentativeDBSubscription !== undefined) {
@@ -207,6 +229,9 @@ export class PersonalRepresentativePowerComponent implements OnInit, OnDestroy {
     }
     if (this.userSubscription !== undefined) {
       this.userSubscription.unsubscribe();
+    }
+    if (this.checkUserSpouseStatusSubscription !== undefined) {
+      this.checkUserSpouseStatusSubscription.unsubscribe();
     }
   }
 }

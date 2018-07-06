@@ -181,7 +181,7 @@ export class PersonalPropertyDistributedComponent implements OnInit, OnDestroy {
         if (this.maritalStatus === 'M' || this.maritalStatus === 'R') {
             this.router.navigate(['/dashboard/provide-user-spouse']);
         } else {
-            this.router.navigate(['/dashboard/personal-representative-details']);
+            this.router.navigate(['/dashboard/your-personal-representative-powers']);
         }
     }
     /**

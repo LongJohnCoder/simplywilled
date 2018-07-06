@@ -37,7 +37,7 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
         private progressBarService: ProgressbarService,
         private fb: FormBuilder,
     ) {
-      this.progressBarService.changeWidth({width: 12.5});
+      this.progressBarService.changeWidth({width: 0});
         //this.createForm();
       this.getUserData();
 
@@ -178,7 +178,7 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
      *This function is for getting the back page link
      */
     goBack() {
-        this.router.navigate(['/dashboard/your-personal-representative-powers']);
+        this.router.navigate(['/dashboard']);
     }
 
     /**
@@ -193,8 +193,8 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
         modelData.user_id = this.authService.getUser()['id'];
         this.edituserSubscription = this.userService.editProfile(modelData).subscribe(
           (response: any) => {
-            // this.router.navigate(['/dashboard']);
-            this.checkUserSpouseStatus();
+            this.router.navigate(['/dashboard/your-personal-representative-powers']);
+            //this.checkUserSpouseStatus();
           },
           (error: any) => {
             this.errorFlag = true;

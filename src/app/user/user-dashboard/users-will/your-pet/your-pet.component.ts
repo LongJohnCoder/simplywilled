@@ -29,6 +29,7 @@ export class YourPetComponent implements OnInit, OnDestroy {
   loading = true;
   getUserSubscription: Subscription;
   editProfileSubscription: Subscription;
+  trackPage = false;
 
   /**Constructor call*/
   constructor(
@@ -88,7 +89,11 @@ export class YourPetComponent implements OnInit, OnDestroy {
 
   /**Go back to the previous route*/
   goBack() {
-    this._router.navigate(['/dashboard/will/3']);
+    if (this.trackPage) {
+      this._router.navigate(['/dashboard/will/2']);
+    } else {
+      this._router.navigate(['/dashboard/will/3']);
+    }
   }
 
   /**On form submit*/
@@ -222,8 +227,10 @@ export class YourPetComponent implements OnInit, OnDestroy {
         let totalChildrenData = response.data[1].data;
         if (totalChildrenData.totalChildren === undefined || totalChildrenData.totalChildren === null || totalChildrenData.totalChildren === 0) {
           this.progressBarService.changeWidth({width: 60});
+          this.trackPage = true;
         } else {
           this.progressBarService.changeWidth({width: 50});
+          this.trackPage = false;
         }
       },
       (error: any) => {

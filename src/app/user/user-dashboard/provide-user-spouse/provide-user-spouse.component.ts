@@ -82,7 +82,7 @@ export class ProvideUserSpouseComponent implements OnInit, OnDestroy {
      *function to go back to the previous page
      */
     goBack() {
-        this.router.navigate(['/dashboard/personal-representative-details']);
+        this.router.navigate(['/dashboard/your-personal-representative-powers']);
     }
 
     /**
