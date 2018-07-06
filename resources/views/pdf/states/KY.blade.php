@@ -4,50 +4,9 @@
     <meta charset="utf-8">
     <title>Untitled Document</title>
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        body{
-            margin: 0;
-            padding: 0;
-            font-family: Garamond;
-        }
-        /* width */
-        ::-webkit-scrollbar {
-            width: 14px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #0f69bb;
-
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #99cc33;
-            border-radius: 5px;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #57ab2a;
-        }
-
-        .docContainer{
-            width: 700px;
-            margin: 0 auto;
-        }
-        .docPage{
-            width: 700px !important;
-            height: 991px!important;
-            background: #fff;
-            box-shadow: 0 0 7px rgba(0,0,0,0.3);
-            margin: 20px 0;
-            box-sizing: border-box;
-            padding: 40px;
-        }
+        
+        
+        
 
 
 
@@ -59,59 +18,66 @@
 
 <div class="docContainer" id="doc">
 
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div id="doc" class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage">
+        <div id="doc" class="docPageInner">
 
             <p  style="text-align:center;margin-bottom: 0.06in; line-height: 0.23in; page-break-before: auto; page-break-after: auto">
                 <span  style="font-size: 13pt"><b>LIVING WILL DIRECTIVE AND</b></span></p>
             <p  style="text-align:center;margin-bottom: 0.06in; line-height: 0.23in"><span  style="font-size: 13pt"><b>HEALTH
       CARE SURROGATE DESIGNATION OF</b></span></p>
             <p style="margin-bottom: 0.08in; line-height: 115%">
-      <span color="#0000ff">
-         @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
-          @else
-              <b>________________________________</b>
-          @endif
-      </span>
+              <span color="#0000ff">
+                  @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+                      <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</b>
+                  @else
+                      <b>________________________________</b>
+                  @endif
+              </span>
             </p>
+            
             <p  style="text-align:center;margin-bottom: 0.06in; line-height: 0.23in">
-      <span  style="font-size: 13pt"><b>(date of birth:
-              @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                  {{$tellUsAboutYou['fullname']}}
-              @else
-                  ________________________________
-              @endif
-         {{-- <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.dob !== null && userDetails.tellUsAboutYou.dob !== undefined ? userDetails.tellUsAboutYou.dob : '_______________________'}}</span>
-          <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>--}}
-      )</b></span></p>
+              <span style="font-size: 13pt"><b>(date of birth:
+                @if(isset($tellUsAboutYou) && array_key_exists('dob',$tellUsAboutYou) && !is_null($tellUsAboutYou['dob']))
+                    {{date('jS M, Y', strtotime($tellUsAboutYou['dob']))}}
+                @else
+                    ________________________________
+                @endif)</b>
+              </span>
+            </p>
+
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
+
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
+
             <p style="margin-bottom: 0in; line-height: 115%">My wishes regarding
                 life-prolonging treatment and artificially provided nutrition and
                 hydration to be provided to me if I no longer have decisional
                 capacity, have a terminal condition, or become permanently
                 unconscious have been indicated by checking and initiating the
                 appropriate lines below.</p>
+            
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
+            
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
+            
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
+            
             <p  style="text-align:center;margin-bottom: 0in; border: 1.00pt solid #000001; padding: 0.01in 0.06in; line-height: 115%">
                 <b>HEALTH CARE SURROGATE DESIGNATION</b></p>
             <p  style="text-align:center;margin-bottom: 0in; line-height: 115%">
 
             </p>
+            
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">By
       checking and initialing the line below, I specifically:</span></span></span></span></span></p>
@@ -124,12 +90,20 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Designate
       my
+      
       @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
-          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
-      @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
-          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
+
+          @if(strlen(trim($healthFinance['relationOther'])) > 0)
+            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
+          @else
+            <span style="font-family:'Times New Roman, serif'">(relation) _______________</span>
+          @endif
       @else
-          <span>(relation)______________</span>
+          @if(strlen(trim($healthFinance['relation'])) > 0)
+            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
+          @else
+            <span style="font-family:'Times New Roman, serif'">(relation) _______________</span>
+          @endif
       @endif
       <span >, </span>
 
@@ -182,19 +156,29 @@
       health care decisions for me in accordance with this directive when I
       no longer have decisional capacity.</span></span></span></span></span></p>
 
-            @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == true)
+            @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == 'true')
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">If
               said surrogate refuses or is unable to act for me, or if I revoke
               this appointment or authority to act as my surrogate, then I
               designate my
+
               @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
-                  <span>{{$healthFinance['backupRelation']}}</span>
-              @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
-                  <span>{{$healthFinance['backupRelation']}}</span>
+
+                  @if(strlen(trim($healthFinance['backupRelationOther'])) > 0)
+                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}}</span>
+                  @else
+                    <span style="font-family:'Times New Roman, serif'">(relation) _______________</span>
+                  @endif
               @else
-                  <span>(relation)______________</span>
+                  @if(strlen(trim($healthFinance['backupRelation'])) > 0)
+                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}</span>
+                  @else
+                    <span style="font-family:'Times New Roman, serif'">(relation) _______________</span>
+                  @endif
               @endif
+
+
               <span>, </span>
 
               @if(isset($healthFinance) && array_key_exists('backupFullname',$healthFinance) && !is_null($healthFinance['backupFullname']))
@@ -255,24 +239,12 @@
 
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Living Will Directive and Health Care Surrogate Designation of {{$tellUsAboutYou['fullname']}}<br>
-                Page 1 of 6
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Living Will Directive and Health Care Surrogate Designation of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 1 of 6
-            </div>
-        @endif
     </div>
     <!-- !Page 1 -->
 
     <!-- Page 2 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage">
+        <div class="docPageInner">
 
             <p  style="text-align:center;margin-bottom: 0in; border: 1.00pt solid #000001; padding: 0.01in 0.06in; line-height: 115%; page-break-before: always">
                 <b>LIVING WILL DIRECTIVE</b></p>
@@ -349,24 +321,12 @@
 
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Living Will Directive and Health Care Surrogate Designation of {{$tellUsAboutYou['fullname']}}<br>
-                Page 2 of 6
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Living Will Directive and Health Care Surrogate Designation of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 2 of 6
-            </div>
-        @endif
     </div>
     <!-- !Page 2 -->
 
     <!-- Page 3 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage">
+        <div class="docPageInner">
 
             <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
 
@@ -442,25 +402,13 @@
                     the following space, indicate any other instructions regarding the
                     receipt or non-receipt of any health care)</i></p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Living Will Directive and Health Care Surrogate Designation of {{$tellUsAboutYou['fullname']}}<br>
-                Page 3 of 6
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Living Will Directive and Health Care Surrogate Designation of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 3 of 6
-            </div>
-        @endif
     </div>
     <!-- !Page 3 -->
 
 
     <!-- Page 4 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage">
+        <div class="docPageInner">
 
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">______________________________________________________________________________</span></span></span></span></span></p>
@@ -553,24 +501,12 @@
 
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Living Will Directive and Health Care Surrogate Designation of {{$tellUsAboutYou['fullname']}}<br>
-                Page 4 of 6
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Living Will Directive and Health Care Surrogate Designation of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 4 of 6
-            </div>
-        @endif
-    </div>
+      </div>
     <!-- !Page 4 -->
 
     <!-- Page 5 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage">
+        <div class="docPageInner">
 
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span style="text-decoration: none">Signed
       this </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span style="text-decoration: none">
@@ -587,7 +523,7 @@
             <p style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 115%">
       <span>
           @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+              <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</b>
           @else
               <b>________________________________</b>
           @endif
@@ -673,7 +609,7 @@
             <p style="margin-bottom: 0in; line-height: 115%">Before me, the
                 undersigned authority, came
                 @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                    <span>{{$tellUsAboutYou['fullname']}}</span>
+                    <span>{{strtoupper($tellUsAboutYou['fullname'])}}</span>
                 @else
                     <span>________________________________</span>
                 @endif,
@@ -703,7 +639,7 @@
       that each of us is 18 years of age or older and each personally
       witnessed
         @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+            <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</b>
         @else
             <b>________________________________</b>
         @endif
@@ -725,24 +661,12 @@
 
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Living Will Directive and Health Care Surrogate Designation of {{$tellUsAboutYou['fullname']}}<br>
-                Page 5 of 6
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Living Will Directive and Health Care Surrogate Designation of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 5 of 6
-            </div>
-        @endif
     </div>
     <!-- !Page 5 -->
 
     <!-- Page 6 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage">
+        <div class="docPageInner">
 
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000"><b>WITNESS
@@ -756,7 +680,7 @@
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[name
       printed]</span></span></span></span></span></p>
             <p  style="text-align:left;margin-left: 1.88in; text-indent: -1.5in; margin-bottom: 0in; line-height: 115%">
@@ -765,7 +689,7 @@
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[street
       address]</span></span></span></span></span></p>
             <p style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 115%">
@@ -775,7 +699,7 @@
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[city,
       state]</span></span></span></span></span></p>
             <p style="margin-left: 1.88in; text-indent: -1.5in; margin-bottom: 0in; line-height: 115%">
@@ -798,7 +722,7 @@
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[name
       printed]</span></span></span></span></span></p>
             <p  style="text-align:left;margin-left: 1.88in; text-indent: -1.5in; margin-bottom: 0in; line-height: 115%">
@@ -807,7 +731,7 @@
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[street
       address]</span></span></span></span></span></p>
             <p style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 115%">
@@ -817,7 +741,7 @@
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[city,
       state]</span></span></span></span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
@@ -827,17 +751,6 @@
 
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Living Will Directive and Health Care Surrogate Designation of {{$tellUsAboutYou['fullname']}}<br>
-                Page 6 of 6
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Living Will Directive and Health Care Surrogate Designation of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 6 of 6
-            </div>
-        @endif
     </div>
     <!-- !Page 6 -->
 

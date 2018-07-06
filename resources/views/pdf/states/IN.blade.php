@@ -4,53 +4,6 @@
     <meta charset="utf-8">
     <title>Untitled Document</title>
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        body{
-            margin: 0;
-            padding: 0;
-            font-family: Garamond;
-        }
-        /* width */
-        ::-webkit-scrollbar {
-            width: 14px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #0f69bb;
-
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #99cc33;
-            border-radius: 5px;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #57ab2a;
-        }
-
-        .docContainer{
-            width: 700px;
-            margin: 0 auto;
-        }
-        .docPage{
-            width: 700px !important;
-            height: 991px!important;
-            background: #fff;
-            box-shadow: 0 0 7px rgba(0,0,0,0.3);
-            margin: 20px 0;
-            box-sizing: border-box;
-            padding: 40px;
-        }
-
-
-
 
     </style>
 </head>
@@ -59,9 +12,8 @@
 
 <div class="docContainer" id="doc">
 
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div id="doc" class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage" style="page-break-after: always;">
+        <div id="doc" class="docPageInner">
             <p  style="text-align:center;margin-bottom: 0.13in; line-height: 0.28in; page-break-before: auto; page-break-after: auto">
                 <span  style="font-size: 17pt"><b>INDIANA ADVANCE DIRECTIVE</b></span></p>
             <p style="margin-bottom: 0in; line-height: 115%">
@@ -74,7 +26,7 @@
             </p>
             <p style="margin-bottom: 0in; line-height: 115%"><span  style="font-size: 12pt">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I,
       <b>
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
       </b>
       of
         <span style="text-transform: capitalize">{{$tellUsAboutYou['address']}}</span>,
@@ -83,9 +35,18 @@
           being at least eighteen (18) years of age, of sound mind, and capable
           of consenting to my health care, hereby appoint my
             @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
-            @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
+
+                @if(strlen(trim($healthFinance['relationOther'])) > 0)
+                  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
+                @else
+                  <span style="font-family:'Times New Roman, serif'"> (relation) _________________ </span>
+                @endif
+            @else
+                @if(strlen(trim($healthFinance['relation'])) > 0)
+                  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
+                @else
+                  <span style="font-family:'Times New Roman, serif'">(relation) ____________________</span>
+                @endif
             @endif
             <span>,</span>
             <span style="text-transform: capitalize" > {{$healthFinance['fullname']}} </span>, of
@@ -101,16 +62,26 @@
 
             </p>
 
-            @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == true)
+            @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == 'true')
             <p  style="text-align:left;margin-bottom: 0in; line-height: 115%"><span  style="font-size: 12pt">
               If the above-named is not available or becomes ineligible to act as my
               attorney-in-fact, or if I revoke this appointment or authority to
               act, then I designate my
                 @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
-                    <span>{{$healthFinance['backupRelation']}}</span>
-                @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
-                    <span>{{$healthFinance['backupRelation']}}</span>
+
+                  @if(strlen(trim($healthFinance['backupRelationOther'])) > 0)
+                    <span>{{$healthFinance['backupRelationOther']}}</span>
+                  @else
+                    <span>_____________________</span>
+                  @endif
+
                 @else
+
+                  @if(strlen(trim($healthFinance['backupRelation'])) > 0)
+                    <span>{{$healthFinance['backupRelation']}}</span>
+                  @else
+                    <span>_____________________</span>
+                  @endif                  
                     <span>(relation)______________</span>
                 @endif
               <span style="text-transform: capitalize" > {{$healthFinance['backupFullname']}} </span>,  of
@@ -161,12 +132,7 @@
             <p style="margin-bottom: 0in; line-height: 115%">
 
             </p>
-            <p style="text-indent: 0.38in; margin-bottom: 0in; line-height: 115%">
-      <span  style="font-size: 12pt">My representative’s powers
-        shall include the following:</span></p>
-            <p style="margin-bottom: 0in; line-height: 115%">
-
-            </p>
+            
         </div>
        {{-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
             <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Advance Directives of {{userDetails.tellUsAboutYou.fullname}} </span>
@@ -176,10 +142,14 @@
     <!-- !Page 1 -->
 
     <!-- Page 2 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage">
+        <div class="docPageInner">
+          <p style="text-indent: 0.38in; margin-bottom: 0in; line-height: 115%">
+      <span  style="font-size: 12pt">My representative’s powers
+        shall include the following:</span></p>
+            <p style="margin-bottom: 0in; line-height: 115%">
 
+            </p>
             <p style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 115%">
       <span  style="font-size: 12pt">(a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to
         employ or contract with servants, companions, or health care
@@ -218,9 +188,7 @@
         (including information governed by the Health Insurance Portability
         and Accountability Act of 1996 (HIPAA), 42 U.S.C. 1320d and 45 CFR
         160-164).</span></p>
-            <p style="margin-bottom: 0in; line-height: 115%">
-
-            </p>
+           
             <p style="margin-bottom: 0in; line-height: 115%">
 
             </p>
@@ -230,15 +198,10 @@
             <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 0.25in"><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span  style="font-size: 12pt"><span style="text-decoration: none">.</span></span></p>
+            <p style="margin-bottom: 0in; line-height: 0.25in">________________________________________<span  style="font-size: 12pt"><span style="text-decoration: none">.</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 115%"><i>(Attach
                     additional pages as needed).</i></p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
-
-            </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
-
-            </p>
+            
         </div>
        {{-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
             <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Advance Directives of {{userDetails.tellUsAboutYou.fullname}} </span>
@@ -248,9 +211,8 @@
     <!-- !Page 2 -->
 
     <!-- Page 3 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage">
+        <div class="docPageInner" style="page-break-after: always;">
 
             <p align="center" style="margin-bottom: 0in; line-height: 115%; page-break-before: always">
       <span size="3" style="font-size: 12pt"><b>SIGNATURE AND
@@ -259,7 +221,7 @@
 
             </p>
             <p style="margin-bottom: 0.08in; line-height: 115%"><span size="3" style="font-size: 12pt">I,
-      <span style="text-transform: capitalize" >{{$tellUsAboutYou['fullname']}}</span>,
+      <span style="text-transform: capitalize" >{{strtoupper($tellUsAboutYou['fullname'])}}</span>,
       the principal, sign my name to this instrument on this <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
       day of <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>,
       and do hereby declare to the undersigned witness that I sign it
@@ -272,7 +234,7 @@
             <p style="margin-bottom: 0in; line-height: 115%"><span size="3" style="font-size: 12pt">_______________________________________</span></p>
             <p style="margin-bottom: 0in; line-height: 115%">
                 <b>
-                    <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+                    <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
                 </b>
             </p>
             <p style="margin-bottom: 0in; line-height: 115%">
@@ -303,7 +265,7 @@
       State, this ____ day of &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>,
       <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>,
       personally appeared
-      <span style="text-transform: capitalize" >{{$tellUsAboutYou['fullname']}}</span>, said person being over the age of 18 years, and
+      <span style="text-transform: capitalize" >{{strtoupper($tellUsAboutYou['fullname'])}}</span>, said person being over the age of 18 years, and
       acknowledged the execution of the foregoing instrument.</span></p>
             <p style="margin-bottom: 0in; line-height: 115%">
 
@@ -340,13 +302,12 @@
 
 
     <!-- Page 4 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage" >
+        <div class="docPageInner">
 
             <p style="margin-bottom: 0.08in; line-height: 115%"><span  style="font-size: 12pt">We,
       the witnesses hereunder, certify that each of us is 18 years of age
-      or older and each personally witnessed <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+      or older and each personally witnessed <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
       the principal, sign
       or direct the signing of this appointment of health care
       representative; that we are acquainted with the principal and believe
@@ -364,11 +325,20 @@
 
 
             </p>
-            <p  style="text-align:left;text-indent: -0.19in; margin-bottom: 0in; line-height: 115%">
+            
+            
+        </div>
+       {{-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Advance Directives of {{userDetails.tellUsAboutYou.fullname}} </span>
+            <br>Page 4 of 6
+        </div>--}}
+    </div>
+    <!-- !Page 4 -->
 
+<div class="docPage">
+        <div class="docPageInner">
 
-            </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
+<p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
 
             </p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 115%"><span style="text-decoration: none"><b>WITNESS
@@ -411,18 +381,14 @@
             <p  style="text-align:left;margin-bottom: 0in; line-height: 0.23in">
 
             </p>
-        </div>
-       {{-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Advance Directives of {{userDetails.tellUsAboutYou.fullname}} </span>
-            <br>Page 4 of 6
-        </div>--}}
-    </div>
-    <!-- !Page 4 -->
+</div>
+</div>
+
+
 
     <!-- Page 5 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage">
+        <div class="docPageInner">
 
             <p  style="text-align:center;margin-bottom: 0in; line-height: 0.23in; page-break-before: always">
       <span  style="font-size: 13pt"><b>PART II:  INDIANA LIVING
@@ -442,7 +408,7 @@
             </p>
             <p style="margin-bottom: 0.08in; line-height: 115%"><span  style="font-size: 12pt">I,
       <b>
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>,
+        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>,
       </b>being at least eighteen (18) years old and of sound mind,
       willfully and voluntarily make known my desires that my dying shall
       not be artificially prolonged under the circumstances set forth
@@ -539,9 +505,8 @@
     <!-- !Page 5 -->
 
     <!-- Page 6 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage" style="">
+        <div class="docPageInner">
 
             <p style="margin-left: 0.38in; margin-bottom: 0in; line-height: 115%">
       <span  style="font-size: 12pt">In the absence of my ability
@@ -562,7 +527,7 @@
             </p>
             <p style="margin-bottom: 0in; line-height: 115%"><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span style="text-decoration: none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="font-size: 12pt">Date:</span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></span></p>
             <p style="margin-bottom: 0.08in; line-height: 115%">
-                <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+                <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
             </p>
             <p style="margin-bottom: 0in; line-height: 115%">
                 <span style="text-transform: capitalize" >{{$tellUsAboutYou['address']}}</span>,
@@ -579,7 +544,7 @@
             <p style="margin-bottom: 0.08in; line-height: 115%"><span  style="font-size: 12pt">We,
       the witnesses hereunder, certify that each of us is 18 years of age
       or older and each personally witnessed
-      <span style="text-transform: capitalize" >{{$tellUsAboutYou['fullname']}}</span>
+      <span style="text-transform: capitalize" >{{strtoupper($tellUsAboutYou['fullname'])}}</span>
       sign or direct the signing of this directive; that we are acquainted
       with the declarant and believe the declarant to be of sound mind;
       that the declarant's desires are as expressed above; that neither of

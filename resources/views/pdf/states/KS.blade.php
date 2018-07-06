@@ -59,9 +59,8 @@
 
 <div class="docContainer" id="doc">
 
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div id="doc" class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage" >
+        <div id="doc" class="docPageInner">
             <p  style="text-align:center;margin-bottom: 0.13in; line-height: 0.28in; page-break-before: auto; page-break-after: auto">
       <span  style="font-size: 17pt"><b>KANSAS DURABLE POWER OF
         ATTORNEY</b></span></p>
@@ -75,7 +74,7 @@
                     &nbsp;</b></p>
             <p  style="text-align:center;margin-bottom: 0.08in; line-height: 115%">
                 @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                    <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+                    <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
                 @else
                     <span>________________________________</span>
                 @endif
@@ -89,12 +88,7 @@
                     _________________________________________________________________________________</span>
                 @endif
             </p>
-            <!--<p  style="text-align:center;margin-bottom: 0in; line-height: 115%"><span color="#008f00"><span >«</span>IF
-              ANSWERED( Address2 )<span >»</span></span></p>-->
-            <!--<p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >«<span color="#0432ff">Address2</span>»</span></span></span></span></span></p>
-            <p  style="text-align:center;margin-bottom: 0in; line-height: 115%"><span color="#008f00"><span >«</span>END
-              IF<span >»</span></span></p>-->
+            
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 @if(isset($tellUsAboutYou) && array_key_exists('city',$tellUsAboutYou) && !is_null($tellUsAboutYou['city']))
                     <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
@@ -115,16 +109,15 @@
                 @else
                     <span style="text-transform: capitalize">(zip)_____________</span>
                 @endif
-      {{--</span></span>--}}{{--</span></span></span>--}}</p>
+            </p>
             <p  style="text-align:center;margin-bottom: 0in; line-height: 115%"><span color="#0432ff"><span >
                 @if(isset($tellUsAboutYou) && array_key_exists('phone',$tellUsAboutYou) && !is_null($tellUsAboutYou['phone']))
                     <span style="text-transform: capitalize">{{$tellUsAboutYou['phone']}}</span>
                 @else
                     <span style="text-transform: capitalize">(phone)_____________</span>
                 @endif
-      {{--<span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.phone !== null && userDetails.tellUsAboutYou.phone !== undefined ? userDetails.tellUsAboutYou.phone : '_______________________'}}</span>
-      <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>--}}
-    </span></span></p>
+      
+            </span></span></p>
             <p  style="text-align:center;margin-bottom: 0in; line-height: 115%">
 
             </p>
@@ -135,10 +128,24 @@
             <p style="margin-bottom: 0in; line-height: 115%">
 
             </p>
-            <p  style="text-align:center;margin-bottom: 0in; line-height: 115%"><span color="#0432ff">{{--<span ><b><span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.fullname !== null && userDetails.healthFinance.fullname !== undefined ? userDetails.healthFinance.fullname : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>, </b></span><span >(my
-       <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation !== 'Other'"> {{userDetails.healthFinance.relation !== null && userDetails.healthFinance.relation !== undefined ? userDetails.healthFinance.relation : '_______________________'}} </span>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation === 'Other'"> {{userDetails.healthFinance.relationOther !== null && userDetails.healthFinance.relationOther !== undefined ? userDetails.healthFinance.relationOther : '_______________________'}} </span>
-        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>)</span>--}}
+            <p  style="text-align:center;margin-bottom: 0in; line-height: 115%">
+                <span color="#0432ff">
+
+
+                    @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] == 'Other')
+                        @if(strlen(trim($healthFinance['relationOther'])) > 0)
+                            <span>{{$healthFinance['relationOther']}}</span>
+                        @else
+                            <span>(relation) ________________ </span>
+                        @endif
+                    @else
+                        @if(strlen(trim($healthFinance['relation'])) > 0)
+                            <span>{{$healthFinance['relation']}}</span>
+                        @else
+                            <span>(relation) ________________ </span>
+                        @endif
+                    @endif
+
                     @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
                         <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
                     @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
@@ -155,7 +162,7 @@
                         _______________________________________________________________________________,
                     </span>
                 @endif
-                {{--<span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address !== null && userDetails.healthFinance.address !== undefined ? userDetails.healthFinance.address : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>--}}
+                
             </p>
             <p  style="text-align:center;margin-bottom: 0in; line-height: 115%">
       <span color="#0000ff">
@@ -177,9 +184,7 @@
             @else
                 <span >(zip)__________________, </span>
             @endif
-       {{--   <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.city !== null && userDetails.healthFinance.city !== undefined ? userDetails.healthFinance.city : '_______________________'}} ,</span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>
-          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.state !== null && userDetails.healthFinance.state !== undefined ? userDetails.healthFinance.state : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
-          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.zip !== null && userDetails.healthFinance.zip !== undefined ? userDetails.healthFinance.zip : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>--}}
+
         </span>
       </span>
             </p>
@@ -191,7 +196,7 @@
             @else
                 <span>__________________</span>
             @endif
-          {{--<span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.phone !== null && userDetails.healthFinance.phone !== undefined ? userDetails.healthFinance.phone : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>--}}
+          
         </span>
       </span>
             </p>
@@ -207,7 +212,7 @@
             <p style="margin-bottom: 0in; line-height: 115%">
 
             </p>
-            @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == true)
+            @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == 'true')
             <p  style="text-align:center;margin-bottom: 0in; line-height: 115%">
               <span color="#0432ff">
                 <span >
@@ -221,16 +226,19 @@
                 </span>
                 <span >(my
                     @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
-                        <span>{{$healthFinance['backupRelation']}}</span>
-                    @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
-                        <span>{{$healthFinance['backupRelation']}}</span>
+                        @if(strlen(trim($healthFinance['backupRelationOther'])) > 0)
+                            <span>{{$healthFinance['backupRelationOther']}}</span>
+                        @else
+                            <span>(relation) ________________ </span>
+                        @endif
                     @else
-                        <span>(relation)______________</span>
+                        @if(strlen(trim($healthFinance['backupRelation'])) > 0)
+                            <span>{{$healthFinance['backupRelation']}}</span>
+                        @else
+                            <span>(relation) ________________ </span>
+                        @endif
                     @endif
-                   {{--   <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation !== 'Other'"> {{userDetails.healthFinance.backupRelation !== null && userDetails.healthFinance.backupRelation !== undefined ? userDetails.healthFinance.backupRelation : '_______________________'}} </span>
-                      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation === 'Other'"> {{userDetails.healthFinance.backupRelationOther !== null && userDetails.healthFinance.backupRelationOther !== undefined ? userDetails.healthFinance.backupRelationOther : '_______________________'}} </span>
-                      <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>--}}
-
+                   
                   )
                 </span>
               </span>
@@ -246,7 +254,7 @@
                             _______________________________________________________________________________,
                         </span>
                     @endif
-                 {{-- <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupAddress !== null && userDetails.healthFinance.backupAddress !== undefined ? userDetails.healthFinance.backupAddress : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>--}}
+                 
                 </span>
               </span>
             </p>
@@ -270,9 +278,7 @@
                     @else
                         <span>(zip)__________________, </span>
                     @endif
-                  {{--<span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupCity !== null && userDetails.healthFinance.backupCity !== undefined ? userDetails.healthFinance.backupCity : '_______________________'}} ,</span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupState !== null && userDetails.healthFinance.backupState !== undefined ? userDetails.healthFinance.backupState : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupZip !== null && userDetails.healthFinance.backupZip !== undefined ? userDetails.healthFinance.backupZip : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>--}}
+                  
                 </span>
               </span>
             </p>
@@ -284,7 +290,6 @@
                     @else
                         <span>__________________</span>
                     @endif
-                {{--  <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupphone !== null && userDetails.healthFinance.backupphone !== undefined ? userDetails.healthFinance.backupphone : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>--}}
                 </span>
               </span>
             </p>
@@ -316,24 +321,12 @@
 
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power by {{$tellUsAboutYou['fullname']}}<br>
-                Page 1 of 6
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power by «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 1 of 6
-            </div>
-        @endif
     </div>
     <!-- !Page 1 -->
 
     <!-- Page 2 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage">
+        <div class="docPageInner">
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consent,
       refuse consent, or withdraw consent to any care, treatment, service
@@ -397,25 +390,12 @@
 
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power by {{$tellUsAboutYou['fullname']}}<br>
-                Page 2 of 6
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power by «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 2 of 6
-            </div>
-        @endif
-
     </div>
     <!-- !Page 2 -->
 
     <!-- Page 3 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage">
+        <div class="docPageInner">
 
             <p  style="text-align:center;margin-left: 0.19in; text-indent: -0.19in; margin-top: 0.13in; margin-bottom: 0.13in; line-height: 115%">
                 <b>LIMITATIONS OF AUTHORITY</b></p>
@@ -493,7 +473,7 @@
             <p  style="text-align:justify;margin-bottom: 0.08in; line-height: 115%">
       <span color="#0000ff">
          @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+              <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</b>
           @else
               <b>________________________________</b>
           @endif
@@ -528,7 +508,7 @@
             <p  style="text-align:justify;margin-bottom: 0.08in; line-height: 115%"><span color="#0000ff"><span  style="font-size: 9pt"><span >________________,
       by
             @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+                <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
             @else
                 <span>________________________________</span>
             @endif.</span></span></span></p>
@@ -548,32 +528,20 @@
 
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power by {{$tellUsAboutYou['fullname']}}<br>
-                Page 3 of 6
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power by «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 3 of 6
-            </div>
-        @endif
 
     </div>
     <!-- !Page 3 -->
 
 
     <!-- Page 4 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage">
+        <div class="docPageInner">
 
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; page-break-before: always">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >The
       principal,
       @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-          <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+          <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</b>
       @else
           <b>________________________________</b>
       @endif,
@@ -661,25 +629,12 @@
 
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power by {{$tellUsAboutYou['fullname']}}<br>
-                Page 4 of 6
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power by «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 4 of 6
-            </div>
-        @endif
-
     </div>
     <!-- !Page 4 -->
 
     <!-- Page 5 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage">
+        <div class="docPageInner">
 
             <p  style="text-align:center;margin-bottom: 0in; line-height: 0.23in; page-break-before: always">
                 <span  style="font-size: 13pt"><b>KANSAS DECLARATION</b></span></p>
@@ -696,7 +651,7 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >I,
           @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+              <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</b>
           @else
               <b>________________________________</b>
           @endif,
@@ -759,7 +714,7 @@
             <p  style="text-align:justify;margin-bottom: 0.08in; line-height: 115%">
       <span color="#0000ff">
          @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+              <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</b>
           @else
               <b>________________________________</b>
           @endif
@@ -785,7 +740,7 @@
             <p style="margin-bottom: 0in; line-height: 115%"><span color="#0000ff"><span  style="font-size: 9pt"><span >________________,
       by </span>
         @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+            <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
         @else
             <span>________________________________</span>
         @endif.
@@ -804,25 +759,12 @@
       appointment expires:  _________________
       &nbsp;</span></p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power by {{$tellUsAboutYou['fullname']}}<br>
-                Page 5 of 6
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power by «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 5 of 6
-            </div>
-        @endif
-
     </div>
     <!-- !Page 5 -->
 
     <!-- Page 6 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+    <div class="docPage">
+        <div class="docPageInner">
 
 
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
@@ -908,21 +850,8 @@
 
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power by {{$tellUsAboutYou['fullname']}}<br>
-                Page 6 of 6
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power by «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 6 of 6
-            </div>
-        @endif
-
     </div>
     <!-- !Page 6 -->
-
 
 </div>
 
