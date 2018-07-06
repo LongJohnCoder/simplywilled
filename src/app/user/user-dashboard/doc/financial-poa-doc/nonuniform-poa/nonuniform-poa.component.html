@@ -13,7 +13,7 @@
       AFFAIRS</b></span></span></p>
     <!-- <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">ELSE
        IF State = &quot;Massachusetts&quot;</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>-->
-    <p align="center" style="margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city === 'Massachusetts'">
+    <p align="center" style="margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Massachusetts'">
       <span style="font-family:'Times New Roman, serif';"><b>(Pursuant to Chapter 190B of
         the Massachusetts General Laws)</b></span></p>
     <!--<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">END
@@ -54,7 +54,7 @@
           </span>
       <span style="font-family:'Times New Roman, serif';"> Power of
           Attorney (herein referred to as “this Power”).</span>
-      <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 0">
+      <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
         <span color="#008f00"><span style="font-family:'Times New Roman, serif';">
         </span></span><span style="font-family:'Times New Roman, serif';">THIS IS A
         DURABLE POWER OF ATTORNEY AND THE AUTHORITY OF MY AGENT
@@ -451,7 +451,7 @@
       documents that may be needed in the exercise of the rights granted by
       this Power of Attorney, as well as the authority to conduct banking
       transactions as set forth in the laws of </span><span color="#000000"><span style="font-family:'Times New Roman, serif';"></span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">
       and any </span></span><span style="font-family:'Times New Roman, serif';">other State
@@ -889,15 +889,21 @@
           <br/>
 
         </p>
-        <p style="margin-left: 42px; margin-top: 0.06in; margin-bottom: 0in; line-height: 100%">
-      <span style="font-family:'Times New Roman, serif';">Initials of
-        Principal						Initials of Witness</span></p>
+        <!--<p style="margin-left: 42px; margin-top: 0.06in; margin-bottom: 0in; line-height: 100%">-->
+      <!--<span style="font-family:'Times New Roman, serif';">Initials of-->
+        <!--Principal						Initials of Witness</span></p>-->
         <p style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
           <br/>
 
         </p>
-        <p style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-          <span style="font-family:'Times New Roman, serif';">_______________						______________</span></p>
+        <p style="margin-left: 42px; margin-top: 0.06in; margin-bottom: 0in; line-height: 100%; float: left;">
+          <span>__________________</span><br><span style="font-family:'Times New Roman, serif';">Initials of Principal</span>
+        </p>
+        <p style="margin-left: 42px; margin-top: 0.06in; margin-bottom: 0in; line-height: 100%; float: right;">
+          <span>__________________</span><br><span style="font-family:'Times New Roman, serif';">Initials of Witness</span>
+        </p>
+        <!--<p style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">-->
+          <!--<span style="font-family:'Times New Roman, serif';">_______________						______________</span></p>-->
         <!--<p style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
           <span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">ELSE</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>
         <p style="margin-top: 0.06in; margin-bottom: 0in; line-height: 100%"><br/>
@@ -1266,7 +1272,7 @@
       <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && (userDetails.tellUsAboutYou.state === 'Massachusetts' || userDetails.tellUsAboutYou.state === 'Kentucky')">
       <span color="#008f00"><span style="font-family:'Times New Roman, serif';">
       </span></span><span style="font-family:'Times New Roman, serif';">Commonwealth
-        of </span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">{{ userDetails !== undefined && userDetails.tellUsAboutYou !== null ? userDetails.tellUsAboutYou.state : '______________' }}</span></span><span style="font-family:'Times New Roman, serif';"></span>
+        of {{ userDetails !== undefined && userDetails.tellUsAboutYou !== null ? userDetails.tellUsAboutYou.state : '______________' }}</span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';"></span></span><span style="font-family:'Times New Roman, serif';"></span>
       <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && (userDetails.tellUsAboutYou.state !== 'Massachusetts' && userDetails.tellUsAboutYou.state !== 'Kentucky')">
       <span color="#008f00"><span style="font-family:'Times New Roman, serif';"></span></span><span style="font-family:'Times New Roman, serif';">State
       of </span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">{{ userDetails !== undefined && userDetails.tellUsAboutYou !== null ? userDetails.tellUsAboutYou.state : '______________' }}</span></span><span style="font-family:'Times New Roman, serif';"></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">
@@ -1305,7 +1311,7 @@
 <!-- !Page 12 -->
 
 
-<div style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Massachusetts'">
+<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Massachusetts'">
   <!-- Page 13 -->
   <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
     <div class="docPageInner"
@@ -1446,7 +1452,7 @@
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
       </p>
-      <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+      <p align="justify" style="margin-bottom: 0.08in; line-height: 100%;">
       <span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">On
         this </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>		</u></span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
       day of </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>			</u></span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
@@ -1494,7 +1500,7 @@
 
 
 
-<div style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Arizona'">
+<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Arizona'">
   <!-- Page 15 -->
   <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
     <div class="docPageInner"
@@ -1520,9 +1526,9 @@
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
         <span style="font-family:'Times New Roman, serif';">,
-      the principal, sign my name to this power of attorney this </span><span style="font-family:'Times New Roman, serif';"><u>	</u></span><span style="font-family:'Times New Roman, serif';">
-      day of </span><span style="font-family:'Times New Roman, serif';"><u>			</u></span><span style="font-family:'Times New Roman, serif';">,
-    </span><span style="font-family:'Times New Roman, serif';"><u>	</u></span><span style="font-family:'Times New Roman, serif';">
+      the principal, sign my name to this power of attorney this ____________</span><span style="font-family:'Times New Roman, serif';"></span><span style="font-family:'Times New Roman, serif';">
+      day of </span><span style="font-family:'Times New Roman, serif';">______________________</span><span style="font-family:'Times New Roman, serif';">,
+    </span><span style="font-family:'Times New Roman, serif';">___________</span><span style="font-family:'Times New Roman, serif';">
       and, being first duly sworn, do declare to the undersigned authority
       that I sign and execute this instrument as my power of attorney and
       that I sign it willingly, or willingly direct another to sign for me,
@@ -1578,7 +1584,7 @@
 
       </p>
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">I,
-    </span><span style="font-family:'Times New Roman, serif';"><u>			</u></span><span style="font-family:'Times New Roman, serif';">,
+    </span><span style="font-family:'Times New Roman, serif';">_________________________</span><span style="font-family:'Times New Roman, serif';">,
       the witness, sign my name to the foregoing power of attorney being
       first duly sworn and do declare to the undersigned authority that the
       principal signs and executes this instrument as the principal’s
@@ -1649,220 +1655,6 @@
       commission expires: _________________</span></span></span></p>
     </div>
   </div>
-</div>
-
-<div style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && (userDetails.tellUsAboutYou.state === 'Arizona' && userDetails.tellUsAboutYou.state === 'Massachusetts')">
-  <!-- Page 16 -->
-  <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-    <div class="docPageInner"
-         style="box-sizing: border-box; height: 890px;">
-      <!--<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">ELSE</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-      </p>-->
-      <p align="center" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
-        <span style="font-family:'Times New Roman, serif';"><b>SIGNATURE AND ACKNOWLEDGMENT</b></span></p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-      </p>
-      <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-        <span style="font-family:'Times New Roman, serif';">I, </span><!--<span style="font-family:'Times New Roman, serif';">«</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      FIRST NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-      «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      MIDDLE NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-      «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      LAST NAME</span></span><span style="font-family:'Times New Roman, serif';">»</span>-->
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-        <span style="font-family:'Times New Roman, serif';">,
-      the principal, sign my name to this power of attorney and do hereby
-      declare to the undersigned witnesses that I sign and execute this
-      instrument as my Power of Attorney and that I sign it willingly (or
-      willingly direct another to sign for me), that I execute it as my
-      free and voluntary act for the purposes therein expressed, and that I
-      am of legal age, of sound mind, and under no constraint or undue
-      influence.&nbsp;</span></p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-      </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><u>					</u></span><span style="font-family:'Times New Roman, serif';">		</span><span style="font-family:'Times New Roman, serif';"><b>DATE:
-    </b></span><span style="font-family:'Times New Roman, serif';"><u>			</u></span><span style="font-family:'Times New Roman, serif';">
-    </span>
-      </p>
-      <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif';"><b><!--</b></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';"><b>CLIENT
-        FIRST NAME</b></span></span><span style="font-family:'Times New Roman, serif';"><b>»
-        «</b></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';"><b>CLIENT
-        MIDDLE NAME</b></span></span><span style="font-family:'Times New Roman, serif';"><b>»
-        «</b></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';"><b>CLIENT
-        LAST NAME</b></span></span><span style="font-family:'Times New Roman, serif';"><b>»-->
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    </b></span>
-      </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"></span><span color="#0432ff"><span style="font-family:'Times New Roman, serif';">
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? userDetails.tellUsAboutYou.address : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    </span></span><span style="font-family:'Times New Roman, serif';"></span></p>
-      <!-- <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">«</span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">IF
-         ANSWERED( Address2 )</span></span><span style="font-family:'Times New Roman, serif';">»</span></p>
-       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">«</span><span color="#0432ff"><span style="font-family:'Times New Roman, serif';">Address2</span></span><span style="font-family:'Times New Roman, serif';">»</span></p>
-       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">«</span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">END
-         IF</span></span><span style="font-family:'Times New Roman, serif';">»</span></p>-->
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">«</span><span color="#0432ff"><span style="font-family:'Times New Roman, serif';">
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    </span></span><span style="font-family:'Times New Roman, serif';">,
-      </span><span color="#0432ff"><span style="font-family:'Times New Roman, serif';">
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      </span></span><span style="font-family:'Times New Roman, serif';">
-      </span><span color="#0432ff"><span style="font-family:'Times New Roman, serif';">
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.zip !== null && userDetails.tellUsAboutYou.zip !== undefined ? userDetails.tellUsAboutYou.zip : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      </span></span><span style="font-family:'Times New Roman, serif';"></span></p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"></span><span color="#0432ff"><span style="font-family:'Times New Roman, serif';">
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.phone !== null && userDetails.tellUsAboutYou.phone !== undefined ? userDetails.tellUsAboutYou.phone : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    </span></span><span style="font-family:'Times New Roman, serif';"></span></p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-      </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-      </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-      </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-      </p>
-      <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif';">We, the witnesses, sign our names
-        to this instrument, and at least one of us, being first duly sworn,
-        do hereby declare that </span><!--<span style="font-family:'Times New Roman, serif';">«</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      FIRST NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-      «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      MIDDLE NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-      «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      LAST NAME</span></span><span style="font-family:'Times New Roman, serif';">»</span>-->
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? userDetails.tellUsAboutYou.address : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-        <span style="font-family:'Times New Roman, serif';">,
-      the principal, signs and executes this instrument as </span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
-      <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'his' : 'her' ): 'his' }}</span>
-      </span></span><span style="font-family:'Times New Roman, serif';">
-      Power of Attorney and that the principal signs it willingly (or
-      willingly directs another to sign for </span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
-      <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'his' : 'her' ): 'his' }}</span>
-      </span></span><span style="font-family:'Times New Roman, serif';">,
-      and that each of us, in the presence and hearing of the principal,
-      hereby signs this instrument as witness to the principal’s signing,
-      and that to the best of our knowledge the principal is of legal age,
-      of sound mind, and under no constraint or undue influence.&nbsp;</span></p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-      </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><u>					</u></span><span style="font-family:'Times New Roman, serif';">		</span><span style="font-family:'Times New Roman, serif';"><u>					</u></span><span style="font-family:'Times New Roman, serif';">	</span></p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><b>(WITNESS
-      1)</b></span><span style="font-family:'Times New Roman, serif';">						</span><span style="font-family:'Times New Roman, serif';"><b>(WITNESS
-      2)</b></span></p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">NAME:						NAME:</span></p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">ADDRESS:						ADDRESS:</span></p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">CITY/STATE:						CITY/STATE:	</span></p>
-      <p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-      </p>
-      <p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-      </p>
-    </div>
-  </div>
-  <!-- !Page 16 -->
-
-
-  <!-- Page 17 -->
-  <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-    <div class="docPageInner"
-         style="box-sizing: border-box; height: 890px;">
-      <p align="justify" style="margin-bottom: 0in; line-height: 115%; page-break-before: always">
-      <span style="font-family:'Times New Roman, serif';"><span color="#000000">STATE OF
-        &nbsp;________________</span><span color="#000000">		</span><span color="#000000">)</span></span></p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 115%"><span style="font-family:'Times New Roman, serif';"><span color="#000000">					</span><span color="#000000">)
-      ss. </span></span>
-      </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 115%"><span style="font-family:'Times New Roman, serif';"><span color="#000000">COUNTY
-      OF ________________</span><span color="#000000">		</span><span color="#000000">)</span></span></p>
-      <p style="margin-bottom: 0in; line-height: 115%"><br/>
-
-      </p>
-      <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span color="#000000"><span style="font-family:'Times New Roman, serif';">Subscribed,
-        sworn and acknowledged before me by </span></span><!--<span style="font-family:'Times New Roman, serif';">«</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      FIRST NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-      «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      MIDDLE NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-      «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      LAST NAME</span></span><span style="font-family:'Times New Roman, serif';">»</span>-->
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? userDetails.tellUsAboutYou.address : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-        <span color="#000000"><span style="font-family:'Times New Roman, serif';">,
-      the principal, and _________________________________________, as
-      witness, and _____________________________________, as witness, who
-      personally appeared on this &nbsp;_________ day of
-      &nbsp;________________________________, _______, and who are
-      personally known to me or who have produced satisfactory photo
-      identification, and whose names are signed to the foregoing
-      instrument,</span></span><span style="font-family:'Times New Roman, serif';"> </span><span color="#000000"><span style="font-family:'Times New Roman, serif';">and,
-      all of said persons being by me first duly sworn, the principal
-      declared to me and to the said witnesses in my presence that the
-      instrument is </span></span><span color="#0432ff"><span style="font-family:'Times New Roman, serif';">
-        <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'his' : 'her' ): 'his' }}</span>
-      </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">
-      Power of Attorney, and that the principal has willingly and
-      voluntarily made and executed it as </span></span><span color="#0432ff"><span style="font-family:'Times New Roman, serif';">
-      <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'his' : 'her' ): 'his' }}</span>
-      </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">
-      free act and deed for the purposes therein expressed, and the
-      witnesses declared to me that they were each eighteen (18) years of
-      age or over, and that neither of them is related to the principal by
-      blood or marriage, or related to the attorney-in-fact by blood or
-      marriage.</span></span></p>
-      <p style="margin-bottom: 0in; line-height: 115%"><br/>
-
-      </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 115%"><span style="font-family:'Times New Roman, serif';"><span color="#000000">______________________________________
-    </span>(Seal)</span></p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 115%"><span style="font-family:'Times New Roman, serif';"><span color="#000000">NOTARY
-      PUBLIC</span></span></p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 115%"><br/>
-
-      </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 115%"><br/>
-
-      </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 115%"><span style="font-family:'Times New Roman, serif';"><span color="#000000">My
-      commission expires: _________________</span></span></p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-      </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-      </p>
-      <!-- <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">END
-         IF</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>-->
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-      </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-      </p>
-      <p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-      </p>
-    </div>
-  </div>
-  <!-- !Page 17 -->
 </div>
 
 
@@ -1970,7 +1762,7 @@
 			willingly directs another to sign for </span>
 
       <span color="#0433ff">
-				<span style="font-family:'Times New Roman, serif';">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'his' : 'her') : '_______________________'}}</span>
+				<span style="font-family:'Times New Roman, serif';">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'him' : 'her') : '_______________________'}}</span>
 			</span>
 
       <span style="font-family:'Times New Roman, serif';">,
