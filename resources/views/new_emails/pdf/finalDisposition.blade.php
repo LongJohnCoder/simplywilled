@@ -50,10 +50,17 @@
                     <tr>
                         <td style="padding:0 30px; background: #f2f2f2;">
                             <p style="color: #373737; font-size: 20px; line-height: 30px; padding-top: 32px; padding-bottom: 32px;">
-                                <strong style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">Hello {{ucwords(trim(strtolower($tellUsAboutYou['fullname'])))}},</strong><br><br>
-                                please check your Final Disposition pdf.<br><br>
+                                <span>
+                                    Dear {{$tellUsAboutYou['firstname']}},<br><br>
+
+                                        Thank you for choosing simplywilled.com. Please find the attached pdf file as PDF document. For any issue or query please contact to our customer support team.<br><br>
+
+                                        Sincerely,<br>
+
+                                        Simplywilled Team<br>
+                                </span>
                             </p>
-                            <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 20px;">
+                           {{-- <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 20px;">
                                 <tr>
                                     <td style="padding-right: 15px; width: 84px;" valign="top"><img src="{{url('/')}}/images/greenIcon.png" alt=""></td>
                                     <td>
@@ -61,22 +68,22 @@
                                         <p style="color: #373737; font-size: 14px;">Name guardians and list beneficiaries so those you love are in good hands.</p>
                                     </td>
                                 </tr>
-                            </table>
+                            </table> --}}
                         </td>
                         <tr>
                           <td>
                             <!-- Contact & Follow Buttons -->
-                            {{-- <div style="text-align: center;padding: 15px 0;">
-                              <div style="text-align: right;">
+                            <div style="text-align: center;padding: 15px 0;">
+                              <div style="text-align: center;">
                                   <img src="{{url('/')}}/images/callus.jpg" style="height: 155px; margin-top: -40px;" alt="">
                               </div>
-                              <ul style="list-style-type: none; margin-top: -8px;">
-                                  <li style="float: right; padding: 5px; "><a href="https://www.facebook.com/SimplyWilled"><img src="{{url('/')}}/images/fd-icon.png"></a></li>
-                                  <li style="float: right; padding: 5px;"><a href="https://twitter.com/simplywilled"><img src="{{url('/')}}/images/ttr-icon.png"></a></li>
-                                  <li style="float: right; padding: 5px;"><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{url('/')}}/images/in-icon.png"></a></li>
-                                  <li style="float: right; padding: 5px;"><a href="https://www.instagram.com/simplywilled"><img src="{{url('/')}}/images/gram-icon.png"></a></li>
+                              <ul style="list-style-type: none; margin-top: -8px; text-align: center;">
+                                  <li style="display: inline-block; padding: 5px; "><a href="https://www.facebook.com/SimplyWilled"><img src="{{url('/')}}/images/fd-icon.png"></a></li>
+                                  <li style="display: inline-block; padding: 5px;"><a href="https://twitter.com/simplywilled"><img src="{{url('/')}}/images/ttr-icon.png"></a></li>
+                                  <li style="display: inline-block; padding: 5px;"><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{url('/')}}/images/in-icon.png"></a></li>
+                                  <li style="display: inline-block; padding: 5px;"><a href="https://www.instagram.com/simplywilled"><img src="{{url('/')}}/images/gram-icon.png"></a></li>
                                 </ul>
-                            </div> --}}
+                            </div> 
                           </td>
                         </tr>
                         <tr>

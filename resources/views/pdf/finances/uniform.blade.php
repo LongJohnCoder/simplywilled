@@ -14,7 +14,7 @@
 	
 
 	<!-- check for district of columbia and if real estate -->
-	@if(strtolower($tellUsAboutYou['state']) == 'district of columbia')
+	@if(strtolower($state['name']) == 'district of columbia')
 		<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<br/>
 		</p>
@@ -1253,7 +1253,7 @@
 				<span color="#0433ff">{{$tellUsAboutYou['city']}}</span>
 				<span color="#000000">, </span>
 
-				<span color="#0433ff">{{$tellUsAboutYou['state']}}</span>
+				<span color="#0433ff">{{$state['name']}}</span>
 				<span color="#000000"> </span>
 
 				<span color="#0433ff">{{$tellUsAboutYou['zip']}}</span>
