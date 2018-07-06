@@ -94,6 +94,7 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
     if (this.progressBar.tellUsAboutYou) {
       count++;
     }
+    this.progressbarService.changeWidth({width: count !== 0 ? ((count / 5) * 100) : 0 });
     return count;
   }
 
@@ -169,8 +170,9 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
       (response: any) => {
         if (response.status) {
             let src = this.globalPDFService.printFile(userId, 'finalSigningInstructions.pdf');
-            let newwindow = window.open(src, '_blank');
-            if (newwindow !== null) {
+            const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
+            if (win !== null) {
+              win.document.write('<iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
               /*let obj = newwindow.document.createElement('iframe');
               obj.style.height = '100%';
               obj.style.width = '100%';
@@ -179,7 +181,7 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
               newwindow.document.body.appendChild(obj);
               newwindow.document.body.style.margin = '0';
               newwindow.document.body.style.padding = '0';*/
-              newwindow.focus();
+              win.focus();
             }
            // newwindow.print();
           /*this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'finalSigningInstructions.pdf').subscribe(
@@ -205,15 +207,14 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
 
   emailMe(e: any) {
     e.preventDefault();
-    console.log('came here');
     this.loading = true;
     this.getUserDetailsSubscription = this.globalPdfService.finalSigningsInstructionsEmail().subscribe(
       (response: any ) => {
-        console.log(response.data);
-        alert('email send successfully');
+        alert('Email has been sent successfully with attached document. Please check your inbox.');
       },
       (error: any) => {
         console.log(error);
+        this.loading = false;
       }, () => { this.loading = false; }
     );
   }

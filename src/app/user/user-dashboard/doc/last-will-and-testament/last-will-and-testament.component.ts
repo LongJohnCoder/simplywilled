@@ -212,6 +212,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     if (this.progressBar.tellUsAboutYou) {
       count++;
     }
+    this.progressbarService.changeWidth({width: count !== 0 ? ((count / 5) * 100) : 0 });
     return count;
   }
 
@@ -281,9 +282,10 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
       (response: any) => {
         if (response.status) {
           let src = this.globalPDFService.printFile(userId, 'will-template.pdf');
-          let newwindow = window.open(src, '_blank');
-          if (newwindow !== null) {
-            newwindow.focus();
+          const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
+          if (win !== null) {
+            win.document.write('<iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
+            win.focus();
           }
           /*let src = this.globalPDFService.printFile(userId, 'will-template.pdf');
           console.log(src);
@@ -348,15 +350,14 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
 
   emailMe(e: any) {
     e.preventDefault();
-    console.log('came here');
     this.loading = true;
     this.getUserDetailsSubscription = this.globalPDFService.willTemplateEmail().subscribe(
       (response: any ) => {
-        console.log(response.data);
-        alert('email send successfully');
+        alert('Email has been sent successfully with attached document. Please check your inbox.');
       },
       (error: any) => {
         console.log(error);
+        this.loading = false;
       }, () => { this.loading = false; }
     );
   }

@@ -194,6 +194,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     if (this.progressBar.tellUsAboutYou) {
       count++;
     }
+    this.progressbarService.changeWidth({width: count !== 0 ? ((count / 5) * 100) : 0 });
     return count;
   }
   /**When the component initialises*/
@@ -335,6 +336,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
 
   /**Downloads the pdf*/
   downloadPdf() {
+    this.loading = true;
     let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
     let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     this.loading = true;
@@ -348,13 +350,14 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
             () => { this.loading = false; }
           );
         }
-      }, (error) => { console.log(error); },
+      }, (error) => { console.log(error); this.loading = false;},
       () => { this.loading = false; }
     );
   }
 
   /**Downloads the pdf*/
   printPDF() {
+    this.loading = true;
     let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
     let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     this.printSubscription = this.globalPDFService.healthcarepoa(token).subscribe(
@@ -362,14 +365,15 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
         if (response.status) {
 
           let src = this.globalPDFService.printFile(userId, 'healthCarePOA.pdf');
-          let newwindow = window.open(src, '_blank');
-          if (newwindow !== null) {
-            newwindow.focus();
+          const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
+          if (win !== null) {
+            win.document.write('<iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
+            win.focus();
           }
         }
-      }, (error) => { console.log(error); },
+      }, (error) => { console.log(error); this.loading = false; },
       () => {
-
+        this.loading = false;
       }
     );
   }

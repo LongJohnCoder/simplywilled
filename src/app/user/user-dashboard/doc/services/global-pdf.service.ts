@@ -30,7 +30,7 @@ export class GlobalPdfService {
   }
 
   healthcarepoa(token: string) {
-    return this._http.get(environment.API_URL + 'user/final-disposition-pdf', {headers: new HttpHeaders(
+    return this._http.get(environment.API_URL + 'user/states-doc', {headers: new HttpHeaders(
         {'Authorization': token})});
   }
 

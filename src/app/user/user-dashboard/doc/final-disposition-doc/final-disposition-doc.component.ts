@@ -151,11 +151,13 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
     if (this.progressBar.tellUsAboutYou) {
       count++;
     }
+    this.progressbarService.changeWidth({width: count !== 0 ? ((count / 5) * 100) : 0 });
     return count;
   }
 
   /**Downloads the pdf*/
   downloadPdf() {
+    this.loading = true;
     let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
     let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     this.signingInstructionSubscription = this.globalPDFService.finalDisposition(token).subscribe(
@@ -167,21 +169,24 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
             }
           );
         }
-      }, (error) => { console.log(error); }
+      }, (error) => { console.log(error); this.loading = false; },
+      () => {this.loading = false; }
     );
   }
 
   /**Downloads the pdf*/
   printPDF() {
+    this.loading = true;
     let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
     let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     this.printSubscription = this.globalPDFService.finalDisposition(token).subscribe(
       (response: any) => {
         if (response.status) {
           let src = this.globalPDFService.printFile(userId, 'finanalDisposition.pdf');
-          let newwindow = window.open(src, '_blank');
-          if (newwindow !== null) {
-            newwindow.focus();
+          const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
+          if (win !== null) {
+            win.document.write('<iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
+            win.focus();
           }
         /*  let src = this.globalPDFService.printFile(userId, 'finanalDisposition.pdf');
           console.log(src);
@@ -200,9 +205,9 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
             }
           );*/
         }
-      }, (error) => { console.log(error); },
+      }, (error) => { console.log(error); this.loading = false; },
       () => {
-
+        this.loading = false;
       }
     );
   }
