@@ -14,7 +14,7 @@
 			<span size="4" style="font-size: 13pt"><b>
 			@if($attorneyPowers['isDurable'] == 1)
 				DURABLE
-@endif
+			@endif
 				POWER OF ATTORNEY FOR MANAGEMENT OF FINANCES, PROPERTY, AND PERSONAL
 				AFFAIRS</b>
 			</span>
@@ -593,7 +593,7 @@
 			<span style="font-family:'Times New Roman, serif';"></span>
 		</span>
 
-		@if(array_key_exists('isAuthorizeTotrade', $attorneyPowers) && $attorneyPowers['isAuthorizeTotrade'] == 1)
+		@if(array_key_exists('isAuthorizeTotrade', $attorneyPowers) && $attorneyPowers['isAuthorizeTotrade'] != 1)
 
 		<span style="font-family:'Times New Roman, serif';">
 		except commodity futures contracts and call and put options on stocks
@@ -1066,7 +1066,15 @@
 	the powers you give to your agent (Write “None” if no additional
 	instructions are given):</span></p>
 
-	<p align="justify" style="margin-bottom: 0in; line-height: 200%"><span style="font-family:'Times New Roman, serif';">________________________</span><span style="font-family:'Times New Roman, serif';">.</span></p>
+	<p align="justify" style="margin-bottom: 0in; line-height: 200%">
+		<span style="font-family:'Times New Roman, serif';">_________________________________________________________________________________________</span><br>
+		<span style="font-family:'Times New Roman, serif';">_________________________________________________________________________________________</span><br>
+		<span style="font-family:'Times New Roman, serif';">_________________________________________________________________________________________</span><br>
+		<span style="font-family:'Times New Roman, serif';">_________________________________________________________________________________________</span><br>
+		<span style="font-family:'Times New Roman, serif';">_________________________________________________________________________________________</span><br>
+		<span style="font-family:'Times New Roman, serif';">_________________________________________________________________________________________</span><br>
+		<span style="font-family:'Times New Roman, serif';">___________________________________________________</span><br>
+		<span style="font-family:'Times New Roman, serif';">.</span></p>
 
 	<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><b>Inspection
 	and Disclosure of Information Relating to My Physical or Mental
@@ -1367,20 +1375,15 @@
 	<span style="font-family:'Times New Roman, serif';">Commonwealth
 	of </span>
 
-	<span color="#0433ff">
-		<span style="font-family:'Times New Roman, serif';">State</span>
-	</span>
-
 	@else
 
 	<span style="font-family:'Times New Roman, serif';">State
 	of </span>
 
+	@endif
 	<span color="#0433ff">
 		<span style="font-family:'Times New Roman, serif';">{{$state['name']}}</span>
 	</span>
-
-	@endif
 
 	<span style="font-family:'Times New Roman, serif';">.</span></p>
 
@@ -1432,7 +1435,7 @@
 
 
 		<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">___________________________</span><span style="font-family:'Times New Roman, serif';">,
-		</span><span style="font-family:'Times New Roman, serif';"><u>		</u></span><span style="font-family:'Times New Roman, serif';">,
+		</span><span style="font-family:'Times New Roman, serif';">_________________________</span><span style="font-family:'Times New Roman, serif';">,
 		and being first duly sworn, do hereby declare to the undersigned
 		authority and below-named witnesses that I sign and execute this
 		instrument as my Power of Attorney, that I execute it as my free and
@@ -1492,11 +1495,11 @@
 
 
 
-		<p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
+		<p align="justify" style="margin-bottom: 0.08in;">
 		<span style="font-family:'Times New Roman, serif';">We, the witnesses who sign below,
 		each declare in the presence of </span>
 
-		<span style="font-family:'Times New Roman, serif';">«</span>
+		<span style="font-family:'Times New Roman, serif';"></span>
 
 		<span color="#0000ff">
 			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
@@ -1542,7 +1545,7 @@
 
 
 
-		<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><u>					</u></span><span style="font-family:'Times New Roman, serif';">		</span><span style="font-family:'Times New Roman, serif';"><u>					</u></span><span style="font-family:'Times New Roman, serif';">	</span></p>
+		<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">______________________________</span><span style="font-family:'Times New Roman, serif';">		</span><span style="font-family:'Times New Roman, serif';">_____________________________</span><span style="font-family:'Times New Roman, serif';">	</span></p>
 		<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><b>(WITNESS
 		1)</b></span><span style="font-family:'Times New Roman, serif';">						</span><span style="font-family:'Times New Roman, serif';"><b>(WITNESS
 		2)</b></span></p>
@@ -1561,9 +1564,9 @@
 
 		<p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
 		<span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">On
-		this </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>		</u></span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
-		day of </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>			</u></span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
-		</span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>	</u></span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
+		this </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">______________________________</span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
+		day of </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">____________________________</span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
+		</span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">____________________________</span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
 		before me, the undersigned notary public, personally appeared </span></span></span>
 
 		<span style="font-family:'Times New Roman, serif';">
@@ -1578,8 +1581,8 @@
 
 
 		<span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
-		as principal, and </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>					</u></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
-		and </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>					</u></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
+		as principal, and </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">___________________________</span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
+		and </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">______________________________</span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
 		as witnesses, who each </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">proved
 		to me through satisfactory evidence of identification to be the
 		persons whose names are signed on the preceding or attached document,
@@ -1590,7 +1593,7 @@
 
 		</p>
 		<p align="justify" style="margin-bottom: 0in; "><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">(seal)
-		</span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>					</u></span></span></span></p>
+		</span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">____________________________</span></span></span></p>
 		<p align="justify" style="text-indent: 0.5in; margin-bottom: 0in; ">
 		<span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">Notary
 		Public </span></span></span>
@@ -1612,9 +1615,9 @@
 		</span>
 
 		<span style="font-family:'Times New Roman, serif';">,
-		the principal, sign my name to this power of attorney this </span><span style="font-family:'Times New Roman, serif';"><u>	</u></span><span style="font-family:'Times New Roman, serif';">
-		day of </span><span style="font-family:'Times New Roman, serif';"><u>			</u></span><span style="font-family:'Times New Roman, serif';">,
-		</span><span style="font-family:'Times New Roman, serif';"><u>	</u></span><span style="font-family:'Times New Roman, serif';">
+		the principal, sign my name to this power of attorney this </span><span style="font-family:'Times New Roman, serif';">________________________________</span><span style="font-family:'Times New Roman, serif';">
+		day of </span><span style="font-family:'Times New Roman, serif';">________________________</span><span style="font-family:'Times New Roman, serif';">,
+		</span><span style="font-family:'Times New Roman, serif';">_______________________________</span><span style="font-family:'Times New Roman, serif';">
 		and, being first duly sworn, do declare to the undersigned authority
 		that I sign and execute this instrument as my power of attorney and
 		that I sign it willingly, or willingly direct another to sign for me,
@@ -1629,7 +1632,7 @@
 
 
 
-		<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><u>_____________________		_</u></span></p>
+		<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><u>______________________</u></span></p>
 		<p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
 
 
@@ -1691,7 +1694,7 @@
 
 			<span style="font-family:'Times New Roman, serif';">I, </span>
 
-			<span style="font-family:'Times New Roman, serif';"><u>			</u></span>
+			<span style="font-family:'Times New Roman, serif';">_______________________</span>
 			<span style="font-family:'Times New Roman, serif';">,
 			the witness, sign my name to the foregoing power of attorney being
 			first duly sworn and do declare to the undersigned authority that the
@@ -1710,14 +1713,14 @@
 			<p align="justify" style="margin-bottom: 0in; "><br/>
 
 			</p>
-			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><u>				</u></span><span style="font-family:'Times New Roman, serif';">	</span><span style="font-family:'Times New Roman, serif';"><u>					</u></span></p>
+			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">_____________________________</span><span style="font-family:'Times New Roman, serif';">	</span><span style="font-family:'Times New Roman, serif';">_________________________</span></p>
 			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">Witness
 			(Signature)				Street Address</span></p>
 			<p align="justify" style="margin-bottom: 0in; "><br/>
 
 			</p>
 
-			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><u>				</u></span><span style="font-family:'Times New Roman, serif';">	</span><span style="font-family:'Times New Roman, serif';"><u>					</u></span></p>
+			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">___________________________</span><span style="font-family:'Times New Roman, serif';">	</span><span style="font-family:'Times New Roman, serif';">__________________________________</span></p>
 
 			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">Print
 			Name				City, State, Zip</span></p>
@@ -1751,10 +1754,10 @@
 			the principal, and subscribed and sworn to before me by </span></span>
 			</p>
 
-			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>				</u></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
-			witness, this </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>	</u></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
-			day of </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>				</u></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
-			</span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>		</u></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">.</span></span></p>
+			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">_________________________________</span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
+			witness, this </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">__________________________________</span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
+			day of </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">_____________________________</span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
+			</span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">______________________________</span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">.</span></span></p>
 			<p align="justify" style="margin-bottom: 0in; "><br/>
 
 			</p>
@@ -1774,213 +1777,213 @@
 			commission expires: _________________</span></span></span></p>
 
 
-		@else
+	@else
 
-			<p align="justify" style="margin-bottom: 0in; "><br/>
+		<p align="justify" style="margin-bottom: 0in; "><br/>
 
-			</p>
-
-
-			<p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
-			<span style="font-family:'Times New Roman, serif';">I, </span>
+		</p>
 
 
-
-			<span color="#0000ff">
-				<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
-			</span>
-
-			<span style="font-family:'Times New Roman, serif';">,
-			the principal, sign my name to this power of attorney and do hereby
-			declare to the undersigned witnesses that I sign and execute this
-			instrument as my Power of Attorney and that I sign it willingly (or
-			willingly direct another to sign for me), that I execute it as my
-			free and voluntary act for the purposes therein expressed, and that I
-			am of legal age, of sound mind, and under no constraint or undue
-			influence.&nbsp;</span>
-			</p>
-			<p align="justify" style="margin-bottom: 0in; "><br/>
-
-			</p>
-
-			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">_____________________</span><span style="font-family:'Times New Roman, serif'; padding-left: 200px">		</span><span style="font-family:'Times New Roman, serif'; "><b>DATE:
-			</b></span><span style="font-family:'Times New Roman, serif';">______________________</span><span style="font-family:'Times New Roman, serif';">
-			</span>
-			</p>
-
-			<p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
-
-			<span color="#0000ff">
-				<span style="font-family:'Times New Roman, serif';">
-					<b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>
-				</span>
-			</span>
-
-			</p>
-
-			<p align="justify" style="margin-bottom: 0in; ">
-				<span color="#0432ff">
-					<span style="font-family:'Times New Roman, serif';">{{$tellUsAboutYou['address']}}</span>
-				</span>
-			</p>
-
-			<p align="justify" style="margin-bottom: 0in; ">
-
-				<span color="#0432ff">
-					<span style="font-family:'Times New Roman, serif';">{{$tellUsAboutYou['city']}}</span>
-				</span>
-
-			<span color="#0432ff">
-				<span style="font-family:'Times New Roman, serif';">{{$tellUsAboutYou['state']}}</span>
-			</span>
-
-			<span color="#0432ff">
-				<span style="font-family:'Times New Roman, serif';">{{$tellUsAboutYou['zip']}}</span>
-			</span>
-
-			<span style="font-family:'Times New Roman, serif';"></span>
-
-			</p>
-
-
-			<p align="justify" style="margin-bottom: 0in; ">
-				<span color="#0432ff">
-					<span style="font-family:'Times New Roman, serif';">{{$tellUsAboutYou['phone']}}</span>
-				</span>
-			</p>
+		<p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
+		<span style="font-family:'Times New Roman, serif';">I, </span>
 
 
 
-			<p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
-			<span style="font-family:'Times New Roman, serif';">We, the witnesses, sign our names
-			to this instrument, and at least one of us, being first duly sworn,
-			do hereby declare that </span>
+		<span color="#0000ff">
+			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+		</span>
 
-			<span color="#0000ff">
-				<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
-			</span>
+		<span style="font-family:'Times New Roman, serif';">,
+		the principal, sign my name to this power of attorney and do hereby
+		declare to the undersigned witnesses that I sign and execute this
+		instrument as my Power of Attorney and that I sign it willingly (or
+		willingly direct another to sign for me), that I execute it as my
+		free and voluntary act for the purposes therein expressed, and that I
+		am of legal age, of sound mind, and under no constraint or undue
+		influence.&nbsp;</span>
+		</p>
+		<p align="justify" style="margin-bottom: 0in; "><br/>
 
-			<span style="font-family:'Times New Roman, serif';">,
-			the principal, signs and executes this instrument as </span>
+		</p>
 
-			<span color="#0433ff">
-				<span style="font-family:'Times New Roman, serif';">{{$genderTxt4}}</span>
-			</span>
+		<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">_____________________</span><span style="font-family:'Times New Roman, serif'; padding-left: 200px">		</span><span style="font-family:'Times New Roman, serif'; "><b>DATE:
+		</b></span><span style="font-family:'Times New Roman, serif';">______________________</span><span style="font-family:'Times New Roman, serif';">
+		</span>
+		</p>
 
+		<p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
+
+		<span color="#0000ff">
 			<span style="font-family:'Times New Roman, serif';">
-			Power of Attorney and that the principal signs it willingly (or
-			willingly directs another to sign for </span>
-
-			<span color="#0433ff">
-				<span style="font-family:'Times New Roman, serif';">{{$genderTxt4}}</span>
+				<b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>
 			</span>
+		</span>
 
-			<span style="font-family:'Times New Roman, serif';">,
-			and that each of us, in the presence and hearing of the principal,
-			hereby signs this instrument as witness to the principal’s signing,
-			and that to the best of our knowledge the principal is of legal age,
-			of sound mind, and under no constraint or undue influence.&nbsp;</span>
-			</p>
+		</p>
 
-			<p align="justify" style="margin-bottom: 0in; "><br/>
-
-			</p>
-
-
-			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">________________________</span><span style="font-family:'Times New Roman, serif';">		</span><span style="font-family:'Times New Roman, serif'; padding-left: 200px;">__________________________</span><span style="font-family:'Times New Roman, serif';">	</span></p>
-			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><b>(WITNESS
-			1)</b></span><span style="font-family:'Times New Roman, serif';">						</span><span style="font-family:'Times New Roman, serif'; padding-left: 300px; display: inline-block;"><b> (WITNESS
-			2)</b></span></p>
-			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">NAME:_____________________<span style="padding-left: 170px; display: inline-block;"></span>NAME:______________________</span></p>
-			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">ADDRESS:______________________<span style="padding-left: 135px; display: inline-block;"></span>ADDRESS:________________________</span></p>
-			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">CITY/STATE:________________________<span style="padding-left: 100px; display: inline-block;"></span>CITY/STATE:________________________	</span></p>
-			<p style="margin-bottom: 0in; "><br/>
-
-			</p>
-			<p style="margin-bottom: 0in; "><br/>
-
-			</p>
-			<p align="justify" style="margin-bottom: 0in; line-height: 115%; page-break-before: always">
-			<span style="font-family:'Times New Roman, serif';"><span color="#000000">STATE OF
-			&nbsp;________________</span><span color="#000000">		</span><span color="#000000">)</span></span></p>
-			<p align="justify" style="margin-bottom: 0in; line-height: 115%"><span style="font-family:'Times New Roman, serif';"><span color="#000000">					</span><span color="#000000">)
-			ss. </span></span>
-			</p>
-			<p align="justify" style="margin-bottom: 0in; line-height: 115%"><span style="font-family:'Times New Roman, serif';"><span color="#000000">COUNTY
-			OF ________________</span><span color="#000000">		</span><span color="#000000">)</span></span></p>
-			<p style="margin-bottom: 0in; line-height: 115%"><br/>
-
-			</p>
-			<p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
-
-			<span color="#000000"><span style="font-family:'Times New Roman, serif';">Subscribed,
-			sworn and acknowledged before me by </span></span>
-
-			<span color="#0000ff">
-				<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+		<p align="justify" style="margin-bottom: 0in; ">
+			<span color="#0432ff">
+				<span style="font-family:'Times New Roman, serif';">{{$tellUsAboutYou['address']}}</span>
 			</span>
+		</p>
 
-			<span color="#000000"><span style="font-family:'Times New Roman, serif';">,
-			the principal, and _________________________________________, as
-			witness, and _____________________________________, as witness, who
-			personally appeared on this &nbsp;_________ day of
-			&nbsp;________________________________, _______, and who are
-			personally known to me or who have produced satisfactory photo
-			identification, and whose names are signed to the foregoing
-			instrument,</span></span>
-
-			<span style="font-family:'Times New Roman, serif';"> </span>
-
-			<span color="#000000"><span style="font-family:'Times New Roman, serif';">and,
-			all of said persons being by me first duly sworn, the principal
-			declared to me and to the said witnesses in my presence that the
-			instrument is </span></span>
+		<p align="justify" style="margin-bottom: 0in; ">
 
 			<span color="#0432ff">
-				<span style="font-family:'Times New Roman, serif';">{{$genderTxt4}}</span>
+				<span style="font-family:'Times New Roman, serif';">{{$tellUsAboutYou['city']}}</span>
 			</span>
 
-			<span color="#000000"><span style="font-family:'Times New Roman, serif';">
-			Power of Attorney, and that the principal has willingly and
-			voluntarily made and executed it as </span>
+		<span color="#0432ff">
+			<span style="font-family:'Times New Roman, serif';">{{$tellUsAboutYou['state']}}</span>
+		</span>
+
+		<span color="#0432ff">
+			<span style="font-family:'Times New Roman, serif';">{{$tellUsAboutYou['zip']}}</span>
+		</span>
+
+		<span style="font-family:'Times New Roman, serif';"></span>
+
+		</p>
+
+
+		<p align="justify" style="margin-bottom: 0in; ">
+			<span color="#0432ff">
+				<span style="font-family:'Times New Roman, serif';">{{$tellUsAboutYou['phone']}}</span>
 			</span>
-
-			<span color="#0432ff"><span style="font-family:'Times New Roman, serif';">{{$genderTxt4}}</span></span>
-
-			<span color="#000000"><span style="font-family:'Times New Roman, serif';">
-			free act and deed for the purposes therein expressed, and the
-			witnesses declared to me that they were each eighteen (18) years of
-			age or over, and that neither of them is related to the principal by
-			blood or marriage, or related to the attorney-in-fact by blood or
-			marriage.</span></span>
-			</p>
-
-			<p style="margin-bottom: 0in; line-height: 115%"><br/>
-
-			</p>
+		</p>
 
 
-			<p align="justify" style="margin-bottom: 0in; line-height: 115%"><span style="font-family:'Times New Roman, serif';"><span color="#000000">______________________________________
-			 </span>(Seal)</span></p>
-			<p align="justify" style="margin-bottom: 0in; line-height: 115%"><span style="font-family:'Times New Roman, serif';"><span color="#000000">NOTARY
-			PUBLIC</span></span></p>
-			<p align="justify" style="margin-bottom: 0in; line-height: 115%"><br/>
 
-			</p>
-			<p align="justify" style="margin-bottom: 0in; line-height: 115%"><br/>
+		<p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
+		<span style="font-family:'Times New Roman, serif';">We, the witnesses, sign our names
+		to this instrument, and at least one of us, being first duly sworn,
+		do hereby declare that </span>
 
-			</p>
-			<p align="justify" style="margin-bottom: 0in; line-height: 115%"><span style="font-family:'Times New Roman, serif';"><span color="#000000">My
-			commission expires: _________________</span></span></p>
-			<p align="justify" style="margin-bottom: 0in; "><br/>
+		<span color="#0000ff">
+			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+		</span>
 
-			</p>
-			<p align="justify" style="margin-bottom: 0in; "><br/>
+		<span style="font-family:'Times New Roman, serif';">,
+		the principal, signs and executes this instrument as </span>
 
-			</p>
+		<span color="#0433ff">
+			<span style="font-family:'Times New Roman, serif';">{{$genderTxt4}}</span>
+		</span>
+
+		<span style="font-family:'Times New Roman, serif';">
+		Power of Attorney and that the principal signs it willingly (or
+		willingly directs another to sign for </span>
+
+		<span color="#0433ff">
+			<span style="font-family:'Times New Roman, serif';">{{$genderTxt4}}</span>
+		</span>
+
+		<span style="font-family:'Times New Roman, serif';">,
+		and that each of us, in the presence and hearing of the principal,
+		hereby signs this instrument as witness to the principal’s signing,
+		and that to the best of our knowledge the principal is of legal age,
+		of sound mind, and under no constraint or undue influence.&nbsp;</span>
+		</p>
+
+		<p align="justify" style="margin-bottom: 0in; "><br/>
+
+		</p>
 
 
-		@endif
+		<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">________________________</span><span style="font-family:'Times New Roman, serif';">		</span><span style="font-family:'Times New Roman, serif'; padding-left: 200px;">__________________________</span><span style="font-family:'Times New Roman, serif';">	</span></p>
+		<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><b>(WITNESS
+		1)</b></span><span style="font-family:'Times New Roman, serif';">						</span><span style="font-family:'Times New Roman, serif'; padding-left: 300px; display: inline-block;"><b> (WITNESS
+		2)</b></span></p>
+		<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">NAME:_____________________<span style="padding-left: 170px; display: inline-block;"></span>NAME:______________________</span></p>
+		<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">ADDRESS:______________________<span style="padding-left: 135px; display: inline-block;"></span>ADDRESS:________________________</span></p>
+		<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">CITY/STATE:________________________<span style="padding-left: 100px; display: inline-block;"></span>CITY/STATE:________________________	</span></p>
+		<p style="margin-bottom: 0in; "><br/>
+
+		</p>
+		<p style="margin-bottom: 0in; "><br/>
+
+		</p>
+		<p align="justify" style="margin-bottom: 0in; line-height: 115%; page-break-before: always">
+		<span style="font-family:'Times New Roman, serif';"><span color="#000000">STATE OF
+		&nbsp;________________</span><span color="#000000">		</span><span color="#000000">)</span></span></p>
+		<p align="justify" style="margin-bottom: 0in; line-height: 115%"><span style="font-family:'Times New Roman, serif';"><span color="#000000">					</span><span color="#000000">)
+		ss. </span></span>
+		</p>
+		<p align="justify" style="margin-bottom: 0in; line-height: 115%"><span style="font-family:'Times New Roman, serif';"><span color="#000000">COUNTY
+		OF ________________</span><span color="#000000">		</span><span color="#000000">)</span></span></p>
+		<p style="margin-bottom: 0in; line-height: 115%"><br/>
+
+		</p>
+		<p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
+
+		<span color="#000000"><span style="font-family:'Times New Roman, serif';">Subscribed,
+		sworn and acknowledged before me by </span></span>
+
+		<span color="#0000ff">
+			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+		</span>
+
+		<span color="#000000"><span style="font-family:'Times New Roman, serif';">,
+		the principal, and _________________________________________, as
+		witness, and _____________________________________, as witness, who
+		personally appeared on this &nbsp;_________ day of
+		&nbsp;________________________________, _______, and who are
+		personally known to me or who have produced satisfactory photo
+		identification, and whose names are signed to the foregoing
+		instrument,</span></span>
+
+		<span style="font-family:'Times New Roman, serif';"> </span>
+
+		<span color="#000000"><span style="font-family:'Times New Roman, serif';">and,
+		all of said persons being by me first duly sworn, the principal
+		declared to me and to the said witnesses in my presence that the
+		instrument is </span></span>
+
+		<span color="#0432ff">
+			<span style="font-family:'Times New Roman, serif';">{{$genderTxt4}}</span>
+		</span>
+
+		<span color="#000000"><span style="font-family:'Times New Roman, serif';">
+		Power of Attorney, and that the principal has willingly and
+		voluntarily made and executed it as </span>
+		</span>
+
+		<span color="#0432ff"><span style="font-family:'Times New Roman, serif';">{{$genderTxt4}}</span></span>
+
+		<span color="#000000"><span style="font-family:'Times New Roman, serif';">
+		free act and deed for the purposes therein expressed, and the
+		witnesses declared to me that they were each eighteen (18) years of
+		age or over, and that neither of them is related to the principal by
+		blood or marriage, or related to the attorney-in-fact by blood or
+		marriage.</span></span>
+		</p>
+
+		<p style="margin-bottom: 0in; line-height: 115%"><br/>
+
+		</p>
+
+
+		<p align="justify" style="margin-bottom: 0in; line-height: 115%"><span style="font-family:'Times New Roman, serif';"><span color="#000000">______________________________________
+		 </span>(Seal)</span></p>
+		<p align="justify" style="margin-bottom: 0in; line-height: 115%"><span style="font-family:'Times New Roman, serif';"><span color="#000000">NOTARY
+		PUBLIC</span></span></p>
+		<p align="justify" style="margin-bottom: 0in; line-height: 115%"><br/>
+
+		</p>
+		<p align="justify" style="margin-bottom: 0in; line-height: 115%"><br/>
+
+		</p>
+		<p align="justify" style="margin-bottom: 0in; line-height: 115%"><span style="font-family:'Times New Roman, serif';"><span color="#000000">My
+		commission expires: _________________</span></span></p>
+		<p align="justify" style="margin-bottom: 0in; "><br/>
+
+		</p>
+		<p align="justify" style="margin-bottom: 0in; "><br/>
+
+		</p>
+
+
+	@endif
 
 
 
