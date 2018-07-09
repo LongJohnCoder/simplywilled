@@ -44,7 +44,7 @@
               <span style="font-size: 13pt"><b>Section 1. LIVING WILL</b></span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span style="font-size: 12pt"><span style="background: #ffffff"><span >I,
-                <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname}} </span>,
+                <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>,
                 being of sound mind and at least 19 years old, would like to make the
                 following wishes known. I direct that my family, my doctors and
                 health care workers, and all others follow the directions I am

@@ -17,7 +17,7 @@
       <span ><b>(1) DESIGNATION OF AGENT.</b></span><span >	</span><span >I,</span>
       
       <span color="#0000ff">
-          <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+          <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b>
           <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">________________________________</b>
       </span>
         
@@ -170,7 +170,7 @@
     </div>
     <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Durable Power of Attorney and Living Will of {{userDetails.tellUsAboutYou.fullname}}<br>
+      Durable Power of Attorney and Living Will of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}}<br>
       Page 1 of 7
         
     </div>
@@ -295,7 +295,7 @@
     </div>
     <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Durable Power of Attorney and Living Will of {{userDetails.tellUsAboutYou.fullname}}<br>
+      Durable Power of Attorney and Living Will of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}}<br>
       Page 2 of 7
         
     </div>
@@ -347,7 +347,7 @@
       <p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       I, <span color="#0000ff">
 
-        <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+        <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b>
         <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
 
       </span>
@@ -370,7 +370,7 @@
       </span><span  style="font-size: 12pt"><u>__________________________________</u></span></span></p>
       <p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span color="#0000ff">
-          <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+          <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b>
           <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
       </span>
       </p>
@@ -393,7 +393,7 @@
       <p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       Signed and sworn to before me by 
       <span color="#0000ff">
-        <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+        <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b>
         <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
       </span>, the principal, this _____ day of 
       </p>
@@ -411,7 +411,7 @@
     </div>
     <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Durable Power of Attorney and Living Will of {{userDetails.tellUsAboutYou.fullname}}<br>
+    Durable Power of Attorney and Living Will of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}}<br>
       Page 3 of 7
         
     </div>
@@ -433,7 +433,7 @@
       <p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       I declare under penalty of perjury under the laws of Wyoming that
       
-      <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+      <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b>
       <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
       
       <span style="letter-spacing: 0.1pt">,
@@ -496,7 +496,7 @@
     </div>
     <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Durable Power of Attorney and Living Will of {{userDetails.tellUsAboutYou.fullname}}<br>
+      Durable Power of Attorney and Living Will of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}}<br>
       Page 4 of 7
         
     </div>
@@ -538,7 +538,7 @@
       <p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       I, 
       <span color="#0000ff">
-          <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+          <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b>
           <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">________________________________</b>
       </span>
       
@@ -626,7 +626,7 @@
     </div>
     <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Durable Power of Attorney and Living Will of {{userDetails.tellUsAboutYou.fullname}}<br>
+      Durable Power of Attorney and Living Will of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}}<br>
       Page 5 of 7
         
     </div>
@@ -752,7 +752,7 @@
     </div>
     <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Durable Power of Attorney and Living Will of {{userDetails.tellUsAboutYou.fullname}}<br>
+      Durable Power of Attorney and Living Will of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}}<br>
       Page 6 of 7
         
     </div>
@@ -791,7 +791,7 @@
       </span><span  style="font-size: 12pt"><u>____________________________________</u></span></span></p>
       <p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
         <span color="#0000ff">
-            <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+            <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b>
             <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">________________________________</b>
         </span>
       </p>
@@ -815,7 +815,7 @@
       
       
       <span color="#0000ff">
-          <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+          <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b>
           <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">________________________________</b>
       </span>
       
@@ -875,7 +875,7 @@
 
       <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
       style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-        Durable Power of Attorney and Living Will of {{userDetails.tellUsAboutYou.fullname}}<br>
+        Durable Power of Attorney and Living Will of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}}<br>
         Page 7 of 7
           
       </div>

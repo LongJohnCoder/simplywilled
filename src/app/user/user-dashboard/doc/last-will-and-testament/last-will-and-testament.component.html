@@ -36,7 +36,7 @@
                 MIDDLE NAME</span></span></span><span style="font-family:'EB Garamond ExtraBold, serif'"><span size="5" style="font-size: 18pt">»
                 «</span></span><span ><span style="font-family:'EB Garamond ExtraBold, serif'"><span size="5" style="font-size: 18pt">CLIENT
                 LAST NAME</span></span></span><span style="font-family:'EB Garamond ExtraBold, serif'"><span size="5" style="font-size: 18pt">»</span>-->
-                <span size="5" style="font-size: 18pt;font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+                <span size="5" style="font-size: 18pt;font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
                 <span size="5" style="font-size: 18pt;font-family:'EB Garamond ExtraBold, serif'" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
             </span></p>
             <!--<p class="western" style="margin-bottom: 0.17in; line-height: 150%"><br/>
@@ -50,7 +50,7 @@
                 MIDDLE NAME</b></span></span><span style="font-family:'EB Garamond, serif'"><b>»
                 «</b></span><span ><span style="font-family:'EB Garamond, serif'"><b>CLIENT
                 LAST NAME</b></span></span><span style="font-family:'EB Garamond, serif'"><b>»-->
-                <span style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+                <span style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
                 <span style="font-family:'EB Garamond ExtraBold, serif'" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
                 </b></span><span style="font-family:'EB Garamond, serif'">,
                 residing at </span><span ><span style="font-family:'EB Garamond, serif'">
@@ -3191,7 +3191,7 @@
               <b><!--«</b><span ><b>CLIENT FIRST NAME</b></span><b>»
               «</b><span ><b>CLIENT MIDDLE NAME</b></span><b>»
               «</b><span ><b>CLIENT LAST NAME</b></span><b>»-->
-                <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+                <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
                 <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
               </b></p>
             <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
@@ -3205,7 +3205,7 @@
             <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
             <span style="font-family:'EB Garamond, serif'"><span size="2" style="font-size: 11pt">On
             the date last above written, </span></span><span ><span style="font-family:'EB Garamond, serif'"><span size="2" style="font-size: 11pt">
-              <span style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+              <span style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
               <span style="font-family:'EB Garamond ExtraBold, serif'" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
             </span></span></span><span style="font-family:'EB Garamond, serif'"><span size="2" style="font-size: 11pt">
             declared to us, the undersigned, that the foregoing instrument was
@@ -3214,12 +3214,12 @@
             </span></span></span><span style="font-family:'EB Garamond, serif'"><span size="2" style="font-size: 11pt">
             Last Will and Testament and requested us to act as witnesses to it.
             To the best of our knowledge, </span></span><span ><span style="font-family:'EB Garamond, serif'"><span size="2" style="font-size: 11pt">
-              <span style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+              <span style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
               <span style="font-family:'EB Garamond ExtraBold, serif'" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
             </span></span></span><span style="font-family:'EB Garamond, serif'"><span size="2" style="font-size: 11pt">
             was of legal age, of sound mind, and under no constraint or undue
             influence. </span></span><span ><span style="font-family:'EB Garamond, serif'"><span size="2" style="font-size: 11pt">
-              <span style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+              <span style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
               <span style="font-family:'EB Garamond ExtraBold, serif'" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
             </span></span></span><span style="font-family:'EB Garamond, serif'"><span size="2" style="font-size: 11pt">
             thereupon signed this Will in our presence, all of us being present
@@ -3282,7 +3282,7 @@
               MIDDLE NAME</span></span><span size="2" style="font-size: 10pt">»
               «</span><span ><span size="2" style="font-size: 10pt">CLIENT
               LAST NAME</span></span>-->
-              <span size="2" style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize;font-size: 10pt" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+              <span size="2" style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize;font-size: 10pt" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
               <span size="2" style="font-family:'EB Garamond ExtraBold, serif';font-size: 10pt" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
             <span size="2" style="font-size: 10pt">, the
             testator, and _________________________________________, as witness,
@@ -3297,7 +3297,7 @@
               MIDDLE NAME</span></span><span size="2" style="font-size: 10pt">»
               «</span><span ><span size="2" style="font-size: 10pt">CLIENT
               LAST NAME</span></span>-->
-              <span size="2" style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize;font-size: 10pt" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+              <span size="2" style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize;font-size: 10pt" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
               <span size="2" style="font-family:'EB Garamond ExtraBold, serif';font-size: 10pt" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
             <span size="2" style="font-size: 10pt">, the
             testator, declared to me and to the witnesses in my presence that the
@@ -3349,7 +3349,7 @@
               <b><!--«</b><span ><b>CLIENT FIRST NAME</b></span><b>»
               «</b><span ><b>CLIENT MIDDLE NAME</b></span><b>»
               «</b><span ><b>CLIENT LAST NAME</b></span><b>»-->
-                <span style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+                <span style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
                 <span style="font-family:'EB Garamond ExtraBold, serif'" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
               </b></p>
             <p class="western"  style="margin-bottom: 0in; line-height: 100%">
@@ -3360,7 +3360,7 @@
               UNDER OATH AND PENALTIES FOR PERJURY, WE, <!--<span >CLIENT
               FIRST NAME</span>» «<span >CLIENT MIDDLE NAME</span>»
               «<span >CLIENT LAST NAME</span>»-->
-              <span style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+              <span style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
               <span style="font-family:'EB Garamond ExtraBold, serif'" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
               , the Testator, and
               ______________________, and ______________________, the witnesses,
@@ -3416,7 +3416,7 @@
               <b><!--«</b><span ><b>CLIENT FIRST NAME</b></span><b>»
               «</b><span ><b>CLIENT MIDDLE NAME</b></span><b>»
               «</b><span ><b>CLIENT LAST NAME</b></span><b>»-->
-              <span style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+              <span style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
               <span style="font-family:'EB Garamond ExtraBold, serif'" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
               ,
               Testator</b></p>
@@ -3481,7 +3481,7 @@
               MIDDLE NAME</span></span><span size="2" style="font-size: 10pt">»
               «</span><span ><span size="2" style="font-size: 10pt">CLIENT
               LAST NAME</span></span>-->
-              <span size="2" style="font-family:'EB Garamond ExtraBold, serif;';text-transform: capitalize;font-size: 10pt" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+              <span size="2" style="font-family:'EB Garamond ExtraBold, serif;';text-transform: capitalize;font-size: 10pt" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
               <span size="2" style="font-family:'EB Garamond ExtraBold, serif';font-size: 10pt" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
               <span size="2" style="font-size: 10pt">, the
               testator, and subscribed, sworn, and acknowledged before me by
@@ -3528,7 +3528,7 @@
               MIDDLE NAME</span></span></span><span style="font-family:'EB Garamond ExtraBold, serif'"><span size="5" style="font-size: 18pt">»
               «</span></span><span ><span style="font-family:'EB Garamond ExtraBold, serif'"><span size="5" style="font-size: 18pt">CLIENT
               LAST NAME</span></span></span><span style="font-family:'EB Garamond ExtraBold, serif'"><span size="5" style="font-size: 18pt">»</span></span>-->
-              <span size="5" style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize;font-size: 18pt" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+              <span size="5" style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize;font-size: 18pt" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
               <span size="5" style="font-family:'EB Garamond ExtraBold, serif';font-size: 18pt" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
             </p>
           </div>

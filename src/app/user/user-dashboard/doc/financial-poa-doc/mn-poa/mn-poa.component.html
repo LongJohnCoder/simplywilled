@@ -25,7 +25,7 @@
       <span face="Times New Roman, serif"><b>PRINCIPAL (Name and Address of
         Person Granting the Power)</b></span></p>
     <p align="center" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
       <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       <span face="Times New Roman, serif">,</span>
     </p>
@@ -174,7 +174,7 @@
        style="box-sizing: border-box; height: 890px;">
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0; page-break-before: always">
       <span face="Times New Roman, serif">I, </span>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       <span face="Times New Roman, serif">
       (the above-named Principal), hereby appoint the above named

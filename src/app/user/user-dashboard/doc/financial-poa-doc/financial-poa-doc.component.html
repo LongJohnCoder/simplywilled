@@ -18,7 +18,7 @@
     </ul>
   </div>
   <div class="docViewBox">
-    <div class="docView" #docBox (scroll)="getScroll(docBox.scrollTop)">
+    <div class="docView" #docBox (scroll)="getScroll(docBox.scrollTop, $event)">
       <div class="docContainer">
         <app-fl-poa [data]="pdfData" *ngIf="states.fl"></app-fl-poa>
         <app-md-poa [data]="pdfData" *ngIf="states.md"></app-md-poa>

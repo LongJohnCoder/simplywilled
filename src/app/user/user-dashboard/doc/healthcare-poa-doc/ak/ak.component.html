@@ -926,7 +926,7 @@
     <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif;"><span style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">_______________________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOB:
       <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.dob !== null"><b>{{userDetails.tellUsAboutYou.dob}}</b></span></span></span></span></span></span></p>
-                  <p style="margin-bottom: 0in; line-height: 115%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"><span> {{userDetails.tellUsAboutYou.fullname}} </span></p>
+                  <p style="margin-bottom: 0in; line-height: 115%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"><span> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span></p>
                   <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.address !== null">
                     <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif;"><span style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000"><span color="#0000ff">{{userDetails.tellUsAboutYou.address}}</span></span></span></span></span></span></p>
                   <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
@@ -1088,7 +1088,7 @@
         <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>,
         <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>,
         before me appeared
-          <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname}} </span>
+          <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
           , personally known to me (or proved to me on
         the basis of satisfactory evidence) to be the person whose name is
         subscribed to this instrument, and acknowledged that the person

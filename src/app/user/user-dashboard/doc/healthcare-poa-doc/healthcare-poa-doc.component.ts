@@ -108,7 +108,12 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     or: 9,
     mo: 6,
     nc: 14,
-    sd: 7
+    sd: 7,
+    az: 19,
+    in: 6,
+    ks: 6,
+    ma: 8,
+    dc: 6
   };
 
   pdfData: any;
@@ -326,10 +331,11 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     this.getUserDetailsSubscription = this.globalPDFService.hcpoaEmail().subscribe(
       (response: any ) => {
         console.log(response.data);
-        alert('email send successfully');
+        alert('Email has been sent successfully with attached document. Please check your inbox');
       },
       (error: any) => {
         console.log(error);
+        this.loading = false;
       }, () => { this.loading = false; }
     );
   }

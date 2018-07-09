@@ -50,12 +50,11 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     uni: false
   };
 
-    thNail = {
-      sd: 15,
-      mo: 15,
-      nc: 15,
-      or: 15
-    };
+  thNail = {
+    nu: 15,
+    uni: 15
+  };
+
   pdfData: any;
   globalPDFSubscription: Subscription;
   signingInstructionSubscription: Subscription;
@@ -79,31 +78,40 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
 
           if ( this.pdfData.state !== undefined && this.pdfData.state.abr !== null) {
             const st = this.pdfData.state;
+            let limit = 0;
             if (st['type'] !== undefined) {
 
               if ( st['type'] === 'none') {
+                // tslint:disable-next-line:no-shadowed-variable
                 const abr = this.pdfData.state.abr;
                 if (this.states[abr.toLowerCase()] !== undefined) {
                   this.states[abr.toLowerCase()] = true;
+                  limit = this.thNail[abr.toLowerCase()] === undefined ? 2 : this.thNail[abr.toLowerCase()];
+                  console.log('limit 1 : ', limit);
                 }
               } else if (st['type'] === 'uniform') {
                 this.states['uni'] = true;
+                limit = this.thNail.uni === undefined ? 2 : this.thNail.uni;
+                console.log('limit 2 : ', limit);
               } else if (st['type'] === 'non-uniform') {
                 this.states['nu'] = true;
+                limit = this.thNail.nu === undefined ? 2 : this.thNail.nu;
+                console.log('limit 3 : ', limit);
               }
 
-                const abr = st['abr'];
-                if (this.thNail[abr.toLowerCase()] !== undefined) {
-                    this.docThumbImg = [];
-                    for (let key = 0 ; key < this.thNail[abr.toLowerCase()] ; key++) {
-                        if (key % 2) {
-                            this.docThumbImg.push('../../../../../assets/images/doc1-thumb2.png');
-                        } else {
-                            this.docThumbImg.push('../../../../../assets/images/doc1-thumb1.png');
-                        }
-                    }
-                    this.liCount = this.docThumbImg.length * 114;
-                }
+              const abr = st.abr;
+              console.log('abr : ', abr);
+              if (limit !== undefined) {
+                  this.docThumbImg = [];
+                  for (let key = 0 ; key < limit ; key++) {
+                      if (key % 2) {
+                          this.docThumbImg.push('../../../../../assets/images/doc1-thumb2.png');
+                      } else {
+                          this.docThumbImg.push('../../../../../assets/images/doc1-thumb1.png');
+                      }
+                  }
+                  this.liCount = this.docThumbImg.length * 114;
+              }
 
             }
 
@@ -159,40 +167,26 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     this.docScrolled = 0;
     this.thumbIndex = 0;
     this.liCount = this.docThumbImg.length * 114;
-    // this.states = {
-    //   fl: false,
-    //   md: false,
-    //   mn: false,
-    //   ny: false,
-    //   nu: false,
-    //   uni: true
-    // };
   }
 
   scrollDoc(index: number) {
     this.scrollHeight = 991 * index;
     this.docBox.nativeElement.scrollTop = this.scrollHeight;
     this.thumbIndex = index;
-    //this.thumbContainer.nativeElement.scrollLeft(100);
-    //this.docBox.nativeElement.style.transition = 'top .8s cubic-bezier(0.77, 0, 0.175, 1)';
   }
 
-  getScroll(scrollVal: number) {
-    if (scrollVal >=  991) {
-      this.thumbIndex = scrollVal !== 0 ? Math.round(scrollVal/991) : 0;
-    } else {
-      this.thumbIndex = 0;
-    }
-    if (this.thumbIndex >= 4) {
-      this.thumbContainer.nativeElement.scrollLeft = this.thumbIndex * 31;
-    }
-
+  getScroll(scrollVal: number, e: any) {
+    this.thumbIndex = Math.floor(scrollVal / 1011);
+    const dx = e.target.offsetWidth + (this.docThumbImg.length * 7);
+    const u = dx / this.docThumbImg.length;
+    this.thumbContainer.nativeElement.scrollLeft = u * this.thumbIndex;
   }
 
   /**Get the user details*/
   getUserDetails() {
     this.getUserDetailsSubscription = this.userService.getUserDetails(this.loggedInUser.id).subscribe(
       (response: any ) => {
+        // tslint:disable-next-line:max-line-length
         this.userDetails.firstname = response.data[0] !== null && response.data[0].data != null && response.data[0].data.userInfo !== null && response.data[0].data.userInfo.firstname !== null ? response.data[0].data.userInfo.firstname : '_____________';
       },
       (error: any) => {

@@ -20,7 +20,7 @@
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I,
-              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname}} </span>,
+              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>,
               hereby appoint my <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation !== 'Other'"> {{userDetails.healthFinance.relation}} ,</span>
               <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation === 'Other'"> {{userDetails.healthFinance.relationOther}} ,</span> </span> <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.fullname}} </span>,
                 of <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address}} </span> in <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.city}} ,</span>
@@ -94,7 +94,7 @@
 
           <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
             Page 1 of 7
           </div>
 
@@ -193,7 +193,7 @@
 
           <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
             Page 2 of 7
           </div>
 
@@ -217,7 +217,7 @@
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I,
-              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname}} </span>,
+              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>,
               being of sound mind and at least eighteen years of age, direct
               that my life shall not be artificially prolonged under the
               circumstances set forth below and hereby declare that: </span></span></span></span></span>
@@ -307,7 +307,7 @@
 
           <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
             Page 3 of 7
           </div>
 
@@ -431,7 +431,7 @@
 
           <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
             Page 4 of 7
           </div>
 
@@ -531,7 +531,7 @@
 
           <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
             Page 5 of 7
           </div>
 
@@ -576,7 +576,7 @@
             </p>
             <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></p>
             <p style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 115%">
-              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname}} </span>
+              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
              <!-- <span color="#0000ff"><b><span color="#000000">«</span>CLIENT FIRST
                 NAME<span color="#000000">» «</span>CLIENT MIDDLE NAME<span color="#000000">»
                   «</span>CLIENT LAST NAME<span color="#000000">»</span></b></span>--></p>
@@ -647,7 +647,7 @@
 
           <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
             Page 6 of 7
           </div>
 
@@ -683,7 +683,7 @@
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Subscribed
-                and sworn to before me by <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname}} </span>, the declarant, and by
+                and sworn to before me by <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>, the declarant, and by
                 _____________________________ and _____________________________, the
                 witnesses, as the voluntary act and deed of the declarant on this
                 <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>day
@@ -721,7 +721,7 @@
 
           <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
+          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
             Page 7 of 7
           </div>
 

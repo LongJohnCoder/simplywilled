@@ -17,7 +17,7 @@
       <span color="#0000ff">
         <span style="font-family:'Times New Roman, serif'">
 
-          <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+          <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b>
           <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
           
         </span>
@@ -269,7 +269,7 @@
 
     <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Advance Directive of {{userDetails.tellUsAboutYou.fullname}}<br>
+      Advance Directive of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}}<br>
       Page 1 of 4
         
     </div>
@@ -394,7 +394,7 @@
         </div>
         <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
         style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Advance Directive of {{userDetails.tellUsAboutYou.fullname}}<br>
+          Advance Directive of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}}<br>
           Page 2 of 4
             
         </div>
@@ -428,7 +428,7 @@
       <span style="font-family:'Times New Roman, serif'"></span>
       <span color="#0000ff">
         <span style="font-family:'Times New Roman, serif'">
-            <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+            <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b>
             <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">________________________________</b>
         </span>
       </span>
@@ -495,7 +495,7 @@
     </div>
     <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Advance Directive of {{userDetails.tellUsAboutYou.fullname}}<br>
+      Advance Directive of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}}<br>
       Page 3 of 4
         
     </div>
@@ -530,7 +530,7 @@
         
         <span color="#0000ff">
           <span style="font-family:'Times New Roman, serif'">
-              <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}}</b>
+              <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b>
               <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
           </span>
         </span>
@@ -610,7 +610,7 @@
     </div>
     <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Advance Directive of {{userDetails.tellUsAboutYou.fullname}}<br>
+      Advance Directive of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}}<br>
       Page 4 of 4
         
     </div>

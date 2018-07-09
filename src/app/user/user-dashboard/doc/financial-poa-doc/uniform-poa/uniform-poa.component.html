@@ -434,7 +434,7 @@
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
       I,
       <span color="#0433ff">
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </span>,
       <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== 'Illinois'"><span color="#000000"></span><span color="#008f00">
@@ -1163,7 +1163,7 @@
       FIRST NAME</b></span><b>» «</b><span color="#0000ff"><b>CLIENT
       MIDDLE NAME</b></span><b>» «</b><span color="#0000ff"><b>CLIENT
       LAST NAME</b></span><b>»</b><span color="#000000"><b>		-->
-          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
           <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </b></span></p>
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
@@ -1243,7 +1243,7 @@
         </span><b><!--«</b><span color="#0000ff"><b>CLIENT FIRST NAME</b></span><b>»
         «</b><span color="#0000ff"><b>CLIENT MIDDLE NAME</b></span><b>»
         «</b><span color="#0000ff"><b>CLIENT LAST NAME</b></span><b>»-->
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
         </b><span color="#000000">,
         the principal, and _________________________________________, as
@@ -1300,7 +1300,7 @@
       MIDDLE NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»
       «</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
       LAST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»-->
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
       <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </b></span><span face="Courier New, serif"><span size="2" style="font-size: 10pt"><span color="#000000"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"><span style="background: #ffffff">,
       known to me to be the same person whose name is subscribed as
@@ -1339,7 +1339,7 @@
       MIDDLE NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»
       «</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
       LAST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»-->
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
       <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </b></span><span face="Courier New, serif"><span size="2" style="font-size: 10pt"><span color="#000000"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"><span style="background: #ffffff">,
       known to me to be the same person whose name is subscribed as
@@ -1386,7 +1386,7 @@
       MIDDLE NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»
       «</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
       LAST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»-->
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
       <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </b></span><span color="#000000"><span size="2" style="font-size: 11pt">,
       the principal, and _________________________________________, as
@@ -1460,7 +1460,7 @@
       FIRST NAME</b></span><b>» «</b><span color="#0000ff"><b>CLIENT
       MIDDLE NAME</b></span><b>» «</b><span color="#0000ff"><b>CLIENT
       LAST NAME</b></span><b>»-->
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
       <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </b> granted me authority as an agent or
       successor agent in a power of attorney dated
@@ -1774,7 +1774,7 @@
       MIDDLE NAME</b></span></span><span size="4" style="font-size: 14pt"><b>»
       «</b></span><span color="#0000ff"><span size="4" style="font-size: 14pt"><b>CLIENT
       LAST NAME</b></span></span><span size="4" style="font-size: 14pt"><b>»-->
-          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
           <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     </b></span><span size="4" style="font-size: 14pt"><b>by (Your Name)
       as Agent&quot;</b></span></p>
@@ -1847,7 +1847,7 @@
     <p class="western" align="center" style="margin-left: 0.38in; margin-bottom: 0.13in; line-height: 100%">
       <span color="#0433ff"><u><b><!--«CLIENT FIRST NAME» «CLIENT MIDDLE
         NAME» «CLIENT LAST NAME» -->
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </b></u></span><u><b>by (Your Signature)
       as Agent</b></u></p>
@@ -2151,7 +2151,7 @@
       FIRST NAME</b></u></span><u><b>» «</b></u><span color="#0000ff"><u><b>CLIENT
       MIDDLE NAME</b></u></span><u><b>» «</b></u><span color="#0000ff"><u><b>CLIENT
       LAST NAME</b></u></span><u><b>»-->
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
       <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </b></u><span color="#000000"><u>,</u></span><span color="#000000">
       the principal, under a </span>
