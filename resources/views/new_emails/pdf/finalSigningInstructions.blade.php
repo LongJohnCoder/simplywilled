@@ -39,12 +39,12 @@
                 <table cellpadding="0" cellspacing="0" border="0" width="600" class="container">
                     <tr>
                         <td style="background: #003b7b; color:#fff; text-align: center; font-size: 18px; padding: 14px 10px;">
-                                <span style="color: #99cc33;">Need Help?</span> 1-855-965-1789
+                               <span style="color: #99cc33;">Need Help?</span> 1-855-965-1789
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <img src="{{url('/')}}/images/logo.jpg" alt="simplywilled.com" style="display: block;">
+                            <a href="{{url('/')}}"><img src="{{url('/')}}/images/logo.jpg" alt="simplywilled.com" style="display: block;"></a>
                         </td>
                     </tr>
                     <tr>
@@ -73,11 +73,11 @@
                         <tr>
                           <td>
                             <!-- Contact & Follow Buttons -->
-                             <div style="text-align: center;padding: 15px 0;">
-                              <div style="text-align: center;">
-                                  <img src="{{url('/')}}/images/callus.jpg" style="height: 155px; margin-top: -40px;" alt="">
+                             <div style="text-align: center;padding: 15px 0; background: #fff;">
+                              <div style="text-align: center; padding-top: 15px">
+                                  <a href="{{url('/')}}"><img src="{{url('/')}}/images/callus.jpg" style="height: 155px;" alt=""></a>
                               </div>
-                              <ul style="list-style-type: none; margin-top: -8px; text-align: center;">
+                              <ul style="list-style-type: none; margin-top: 10px; text-align: center;">
                                   <li style="display: inline-block; padding: 5px; "><a href="https://www.facebook.com/SimplyWilled"><img src="{{url('/')}}/images/fd-icon.png"></a></li>
                                   <li style="display: inline-block; padding: 5px;"><a href="https://twitter.com/simplywilled"><img src="{{url('/')}}/images/ttr-icon.png"></a></li>
                                   <li style="display: inline-block; padding: 5px;"><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{url('/')}}/images/in-icon.png"></a></li>
