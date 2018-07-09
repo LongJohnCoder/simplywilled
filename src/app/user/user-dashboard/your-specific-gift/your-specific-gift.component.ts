@@ -121,30 +121,11 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
       this.fetchGiftDataDBSubscription = this.fetchGiftDataDB.subscribe(data => {
         if (data.status === 200) {
           console.log(data.data[7].data.not_this_time);
+          // tslint:disable-next-line:max-line-length
           this.notThisTimeFlag = (data !== null && data.data[7] !== null && data.data[7] !== undefined && data.data[7].data !== null && data.data[7].data !== undefined && data.data[7].data.not_this_time !== null && data.data[7].data.not_this_time === 1);
-      //    this.giftResp = [];
-         // this.flags.charityFlag = (data !== null && data.data[7] !== null && data.data[7] !== undefined && data.data[7].data !== null && data.data[7].data !== undefined && data.data[7].data.charity !== null && data.data[7].data.charity === 1);
-         // this.flags.individualFlag = (data !== null && data.data[7] !== null && data.data[7] !== undefined && data.data[7].data !== null && data.data[7].data !== undefined && data.data[7].data.individualFlag !== null && data.data[7].data.individual === 1);
           if (data.data[6].data.isGift >= 1) {
             this.isAnyGift = true;
             this.giftCount = data.data[6].data.isGift;
-            /*for (let i = 0; i < data.data[6].data.gift.length; i++) {
-              if (this.flags.charityFlag && data.data[6].data.gift[i].charity === 1) {
-                this.giftResp.push(data.data[6].data.gift[i]);
-              }
-              if (this.flags.individualFlag && data.data[6].data.gift[i].individual === 1) {
-                this.giftResp.push(data.data[6].data.gift[i]);
-              }
-            }
-            console.log(this.giftResp.length);
-            if (this.giftResp.length > 0) {
-              this.onNewModule = false;
-              this.showAddGift = false;
-            } else {
-              this.onNewModule = true;
-              this.showAddGift = true;
-            }*/
-          //  console.log(this.giftResp);
             this.giftResp = data.data[6].data.gift;
           } else if (data.data[6].data.isGift === 0) {
               this.onNewModule = true;
@@ -232,6 +213,7 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
    * @param {number} id
    */
   deleteGift(id: number): any {
+    console.log('reached delete gift');
     if (this.access_token) {
       if (id) {
         const confirmation = confirm('Are You Sure?');
@@ -251,7 +233,9 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
             console.log(this.errString);
           }, () => {});
         } else {
-          window.location.reload();
+          console.log('delete gift from parent module');
+          
+          // window.location.reload();
         }
       } else {
         this.errFlag = true;
@@ -311,6 +295,8 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
    * this function helps on delete when get called from childs like cash gift business gift etc
    */
   changeViewState(): void {
+    console.log('changeViewState clicked in parent component');
+    this.fetchGiftData();
     this.cash_module = false;
     this.real_property_module = false;
     this.business_interest = false;
@@ -323,6 +309,8 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
     this.saveDataInDbSubscription = this.gftService.saveData(this.access_token, dataset).subscribe(data => {
       console.log(data);
       if (data.status) {
+        // this.reconfigureAllVariables();
+        this.changeViewState();
         this.router.navigate(['/dashboard/your-estate-distributed']);
       } else {
         this.errFlag = true;
@@ -334,6 +322,14 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
       this.errString = err.error.message;
       console.log(this.errString);
     }, () => { });
+  }
+
+  reconfigureAllVariables() {
+      this.onNewModule = true;
+      this.cash_module = false;
+      this.real_property_module = false;
+      this.business_interest = false;
+      this.specific_asset = false;
   }
 
   ngOnDestroy() {

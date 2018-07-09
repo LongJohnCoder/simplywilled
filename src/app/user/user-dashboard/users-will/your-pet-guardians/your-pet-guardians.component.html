@@ -37,7 +37,7 @@
     <hr>-->
     <hr>
     <div *ngIf="petGuardianForm.value.isPetGuardian == 'Yes'">
-      <h2>Name Your Pet(s) Caretaker</h2>
+      <h2>Name Your Pet(<span class="no-capitalise">s</span>) Caretaker</h2>
       <div formArrayName="petGuardian">
         <div *ngFor="let item of petGuardianForm.controls.petGuardian.controls; let i=index" [formGroupName]="i">
           <div class="form-group ">

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {RealPropertyService} from '../services/real-property.service';
@@ -17,6 +18,12 @@ import {Subscription} from 'rxjs/Subscription';
 export class RealPropertyComponent implements OnInit, OnDestroy {
   /**Variable declaration*/
   @Input() giftCount: any;
+
+  @Input() cash_module: any;
+  @Input() real_property_module: any;
+  @Input() business_interest: any;
+  @Input() specific_asset: any;
+
   @ViewChild(YourSpecificGiftComponent) YourSpecificGiftComponent: YourSpecificGiftComponent;
   realPropertyForm: FormGroup;
   multipleBeneficiaries: FormArray;
@@ -61,7 +68,8 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
     private ysgService: YourSpecificGiftService,
     private editService: EditGiftService,
     private ysgComponent: YourSpecificGiftComponent,
-    private rpService: RealPropertyService
+    private rpService: RealPropertyService,
+    private router: Router
   ) {
     this.createForm();
     let userId = this.parseUserId();
@@ -521,6 +529,7 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
     this.ysgService.updateGift(token, cashGiftDataSet).subscribe((data) => {
       if (data.status) {
         window.location.reload();
+        // this.router.navigate(['/dashboard/your-specific-gifts']);
       } else {
         this.errors.errorFlag = true;
         this.errors.errorMsg = 'Something went wrong while updating data';
@@ -538,6 +547,7 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
     this.ysgService.saveCashGiftData(token, cashGiftDataSet).subscribe((data) => {
       if (data.status) {
         window.location.reload();
+        // this.router.navigate(['/dashboard/your-specific-gifts']);
       } else {
         this.errors.errorFlag = true;
         this.errors.errorMsg = 'Something went wrong while updating data';
@@ -631,6 +641,7 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
     this.ysgComponent.changeViewState();
     this.editService.unsetData();
     window.location.reload();
+    // this.router.navigate(['/dashboard/your-specific-gifts']);
   }
 
   /**
@@ -639,6 +650,7 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
   popUp(): void {
     if (confirm('Are you sure you want to delete this gift?')) {
       window.location.reload();
+      // this.router.navigate(['/dashboard/your-specific-gifts']);
     }
   }
 }

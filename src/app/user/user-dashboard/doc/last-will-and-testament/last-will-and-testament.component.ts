@@ -69,7 +69,8 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     petGuardian : null,
     provideYourLovedOnes : null,
     state : null,
-    tellUsAboutYou: null
+    tellUsAboutYou: null,
+    custGiftsArr: null
   };
   globalPDFSubscription: Subscription;
   giftStatements = {
@@ -135,7 +136,8 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
             petGuardian : response.data.petGuardian,
             provideYourLovedOnes : response.data.provideYourLovedOnes,
             state : response.data.state,
-            tellUsAboutYou: response.data.tellUsAboutYou
+            tellUsAboutYou: response.data.tellUsAboutYou,
+            custGiftsArr: response.data.custGiftsArr
           };
           if (response.data.gifts.length > 0) {
             let statement = '';

@@ -4,6 +4,7 @@ import {YourSpecificGiftService} from '../services/your-specific-gift.service';
 import {EditGiftService} from '../services/edit-gift.service';
 import {Subscription} from 'rxjs/Subscription';
 import {YourSpecificGiftComponent} from '../your-specific-gift.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-specific-asset',
@@ -14,6 +15,12 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
 
   /**Variable declaration*/
   @Input() giftCount: any;
+
+  @Input() cash_module: any;
+  @Input() real_property_module: any;
+  @Input() business_interest: any;
+  @Input() specific_asset: any;
+
   @ViewChild(YourSpecificGiftComponent) YourSpecificGiftComponent: YourSpecificGiftComponent;
   specificAssetForm: FormGroup;
   multipleBeneficiaries: FormArray;
@@ -54,7 +61,8 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
     private _fb: FormBuilder,
     private ysgService: YourSpecificGiftService,
     private editService: EditGiftService,
-    private ysgComponent: YourSpecificGiftComponent
+    private ysgComponent: YourSpecificGiftComponent,
+    private router: Router
   ) {
     this.createForm();
     let userId = this.parseUserId();
@@ -459,6 +467,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
     this.ysgService.updateGift(token, cashGiftDataSet).subscribe((data) => {
       if (data.status) {
         window.location.reload();
+        // this.router.navigate(['/dashboard/your-specific-gifts']);
       } else {
         this.errors.errorFlag = true;
         this.errors.errorMsg = 'Something went wrong while updating data';
@@ -476,6 +485,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
     this.ysgService.saveCashGiftData(token, cashGiftDataSet).subscribe((data) => {
       if (data.status) {
         window.location.reload();
+        // this.router.navigate(['/dashboard/your-specific-gifts']);
       } else {
         this.errors.errorFlag = true;
         this.errors.errorMsg = 'Something went wrong while updating data';
@@ -569,6 +579,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
     this.ysgComponent.changeViewState();
     this.editService.unsetData();
     window.location.reload();
+    // this.router.navigate(['/dashboard/your-specific-gifts']);
   }
 
   /**
@@ -577,6 +588,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
   popUp(): void {
     if (confirm('Are you sure you want to delete this gift?')) {
       window.location.reload();
+      // this.router.navigate(['/dashboard/your-specific-gifts']);
     }
   }
 
