@@ -53,7 +53,7 @@
                       {
                         $pieces = explode(" ", $backupPetCaretaker);
                         $name = $pieces[0]; // piece1
-                      }else {
+                      } else {
                         $name = $backupPetCaretaker;
                       }
                       @endphp

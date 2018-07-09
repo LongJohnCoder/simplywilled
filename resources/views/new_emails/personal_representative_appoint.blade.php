@@ -58,18 +58,18 @@
                       }
                       @endphp
                         <td style="padding:0 30px; background: #f2f2f2;">
-                            <h1 style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">Hello {{$name}},</h1>
+                            <h1 style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">Hello {{ucwords(strtolower($name))}},</h1>
                             <p style="color: #373737; font-size: 20px; line-height: 30px;">
                                 You have been appointed as Personal Representative.<br><br>
                                 {{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}} recently joined the thousands of people who have used <a href="{{url('/')}}" target="_blank" style="color: #0a5dab;">SimplyWilled.com</a> to create their will and selected you to serve as their Personal Representative. Being selected as a Personal Representative is an important role reserved for those we trust the most. This email is being sent to you so you can let <strong>{{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}}</strong> know whether you accept or decline this honor.
                                 <br><br>
                                 <strong style="font-size: 22px;">What being selected as Primary Personal Representative means for you:</strong>
                                 <br><br>
-                                As Personal Representative (also called executor is some states) you will be legally responsible for carrying the out the instructions contained in a <strong>{{$firstName}}’s</strong> will. While the responsibilities can vary, you will be primarily responsible for settling the estate, distributing property according to the terms of the will and hiring legal professionals to assist with the probate process.
+                                As Personal Representative (also called executor is some states) you will be legally responsible for carrying the out the instructions contained in a <strong>{{ucwords(strtolower($firstName))}}’s</strong> will. While the responsibilities can vary, you will be primarily responsible for settling the estate, distributing property according to the terms of the will and hiring legal professionals to assist with the probate process.
                                 <br><br>
                                 <strong style="font-size: 22px;">Confirm you responsibility:</strong>
                                 <br><br>
-                                Your duties as Personal Representative do not take effect until <strong>{{$firstName}}</strong> passes away. If you accept this honor and duty, please take a moment to speak with <strong>{{$firstName}}</strong> to have a conversation about the terms of their will, their wishes, and any special instructions. It is important that you confirm the location of their will so that you can access it when the time comes. Otherwise, please let <strong>{{$firstName}}</strong> know you are unable to accept this responsibility so they can choose someone else.
+                                Your duties as Personal Representative do not take effect until <strong>{{ucwords(strtolower($firstName))}}</strong> passes away. If you accept this honor and duty, please take a moment to speak with <strong>{{ucwords(strtolower($firstName))}}</strong> to have a conversation about the terms of their will, their wishes, and any special instructions. It is important that you confirm the location of their will so that you can access it when the time comes. Otherwise, please let <strong>{{ucwords(strtolower($firstName))}}</strong> know you are unable to accept this responsibility so they can choose someone else.
                             </p>
                         </td>
                         <tr>

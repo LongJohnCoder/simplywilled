@@ -275,6 +275,7 @@ class UserController extends Controller
     public function updateTellUsAboutYou($request)
     {
         $invitationFlag = false;
+        $changeFlag = false;
 
         $userId     = $request->user_id;
         $firstName  = $request->firstname;
@@ -330,6 +331,11 @@ class UserController extends Controller
         $checkForExistUser = TellUsAboutYou::where('user_id', $userId)->first();
         if(!$checkForExistUser) {
           $checkForExistUser = new TellUsAboutYou;
+        }
+
+
+        if(($checkForExistUser->marital_status == 'M' && $maritalStatus == 'R') || ($checkForExistUser->marital_status == 'R' && $maritalStatus == 'M'))  {
+            $changeFlag = true;
         }
 
         // update TellUsAboutYou
@@ -427,7 +433,7 @@ class UserController extends Controller
 
         if ($checkForExistUser->save()) {
 
-            if($invitationFlag) {
+            if($invitationFlag || $changeFlag) {
                 $term = $checkForExistUser->marital_status == "M" ? 'spouse' : 'domestic partner';
                 \Log::info('email getting send for spouse invitation');
                 $arr = [
@@ -437,7 +443,8 @@ class UserController extends Controller
                     'spouseFullName'    =>  $checkForExistUser->partner_fullname,
                     'email'             =>  $checkForExistUser->partner_email,
                     'spouseFirstName'   =>  $checkForExistUser->partner_firstname,
-                    'term'              =>  $term
+                    'term'              =>  $term,
+                    'maritialStatus'    =>  $checkForExistUser->marital_status
                 ];
                 Mail::send('new_emails.spouse_invitation', $arr, function($mail) use($arr) {
                     $mail->from(config('settings.email'), ucwords($arr['term']).' Invitation to Simplywilled.com');
@@ -1062,6 +1069,8 @@ class UserController extends Controller
 
             //if user has not completed previous step in tellUsYou section then this step is not permited
 
+            $guardian['email'] = $guardian['email_notification'] == 1 ? $guardian['email'] : null;
+
             GuardianInfo::updateOrCreate(['user_id'=>$guardian['user_id'] , 'is_backup' => $guardian['is_backup']],$guardian);
             //Sending an email if email notification is set
             if($emailType != null && isset($guardian['email_notification']) && $guardian['email_notification'] == 1) {
@@ -1334,6 +1343,8 @@ class UserController extends Controller
 
             //if user has not completed previous step in tellUsYou section then this step is not permited
 
+            $petGuardian['email'] = $petGuardian['email_notification'] == 1 ? $petGuardian['email'] : null;
+            
             PetGuardian::updateOrCreate(['user_id'=>$petGuardian['user_id'] , 'is_backup' => $petGuardian['is_backup']],$petGuardian);
             //Sending an email if email notification is set
             if($emailType != null && isset($petGuardian['email_notification']) && $petGuardian['email_notification'] == 1) {

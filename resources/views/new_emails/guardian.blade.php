@@ -49,12 +49,12 @@
                     </tr>
                     <tr>
                       @php
-                      if(strpos(guardianName,' ') >= 0)
+                      if(strpos($guardianName,' ') >= 0)
                       {
-                        $pieces = explode(" ", guardianName);
+                        $pieces = explode(" ", $guardianName);
                         $name = $pieces[0]; // piece1
                       }else {
-                        $name = guardianName;
+                        $name = $guardianName;
                       }
                       @endphp
                         <td style="padding:0 30px; background: #f2f2f2;">

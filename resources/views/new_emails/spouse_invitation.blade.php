@@ -50,7 +50,9 @@
                     <tr>
                         <td style="padding:0 30px; background: #f2f2f2;">
                             <p style="color: #373737; font-size: 20px; line-height: 30px; padding-top: 32px; padding-bottom: 32px;">
-                                <strong style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">Dear {{ucwords(trim($spouseFirstName))}},</strong><br><br>
+                                <strong style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">Hi {{ucwords(trim($spouseFirstName))}},</strong><br>
+                                You have been appointed as a {{ucwords($term)}} of {{ucwords(trim($firstName.' '.$middleName.' '.$lastName))}}. <br><br>
+
                                 {{ucwords(trim($firstName))}} recently joined the thousands of people who have used <a href="{{url('/')}}" target="_blank" style="font-weight: bold; color:#0a5dab;">SimplyWilled.com</a> to create their last will and testament and supporting estate plan documents.<br><br>
                                 {{ucwords(trim($firstName))}} asked that we send you this email to invite you to sign up for SimplyWilled.com to get your affairs in order.
                             </p>

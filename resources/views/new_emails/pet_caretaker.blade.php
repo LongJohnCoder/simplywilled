@@ -49,12 +49,12 @@
                     </tr>
                     <tr>
                       @php
-                      if(strpos(petCaretaker,' ') >= 0)
+                      if(strpos($petCaretaker,' ') >= 0)
                       {
-                        $pieces = explode(" ", petCaretaker);
+                        $pieces = explode(" ", $petCaretaker);
                         $name = $pieces[0]; // piece1
                       }else {
-                        $name = petCaretaker;
+                        $name = $petCaretaker;
                       }
                       @endphp
                         <td style="padding:0 30px; background: #f2f2f2;">

@@ -33,13 +33,13 @@
             @if(strlen(trim($healthFinance['relationOther'])) > 0)
                 <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
             @else
-                <span style="font-family:'Times New Roman, serif'">(relation) __________________</span>
+                <span style="font-family:'Times New Roman, serif'">(relation) __________________ ,</span>
             @endif
 		@else
             @if(strlen(trim($healthFinance['relation'])) > 0)
                 <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}, </span>
             @else
-                <span style="font-family:'Times New Roman, serif'">(relation) __________________</span>
+                <span style="font-family:'Times New Roman, serif'">(relation) __________________ ,</span>
             @endif
 		@endif
         
@@ -139,14 +139,13 @@
               </span>
               
 				<span color="#000000">
-
-				<span face="Times, serif">
-					<span size="2" style="font-size: 9pt">
-						<span face="Times New Roman, serif">
-							<span size="3" style="font-size: 12pt">as</span>
-						</span>
-					</span>
-				</span>
+        			<span face="Times, serif">
+        				<span size="2" style="font-size: 9pt">
+        					<span face="Times New Roman, serif">
+        						<span size="3" style="font-size: 12pt">as</span>
+        					</span>
+        				</span>
+        			</span>
 				</span>
 
           		<span color="#000000">

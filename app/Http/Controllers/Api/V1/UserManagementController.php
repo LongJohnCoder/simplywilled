@@ -259,6 +259,20 @@ class UserManagementController extends Controller
             $backupEmail = isset($previousBackupArr['email']) ? $previousBackupArr['email'] : null;
           }
 
+          //code to erase pre-existing email if is-inform is 0
+          $attorneyPowersData = json_decode($attorneyPowers, true);
+          $attorneyHoldersData = json_decode($attorneyHolders, true);
+
+          if (array_key_exists('is_inform', $attorneyPowersData) && $attorneyPowersData['is_inform'] != 1) {
+            $attorneyPowersData['email'] = null;
+            $attorneyPowers = json_encode($attorneyPowersData);
+          }
+
+          if (array_key_exists('is_inform', $attorneyHoldersData) && $attorneyHoldersData['is_inform'] != 1) {
+            $attorneyHoldersData['email'] = null;
+            $attorneyHolders = json_encode($attorneyHoldersData);
+          }
+
           $financialPowerAttorney->attorney_powers    = $attorneyPowers == null ? $financialPowerAttorney->attorney_powers : $attorneyPowers;
           $financialPowerAttorney->attorney_holders   = $attorneyHolders == null ? $financialPowerAttorney->attorney_holders : $attorneyHolders;
           $financialPowerAttorney->attorney_backup    = $attorneyBackup == null ? $financialPowerAttorney->attorney_backup : $attorneyBackup;
