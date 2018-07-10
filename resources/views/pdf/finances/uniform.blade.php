@@ -7,17 +7,13 @@
 
 <div>
 
-	<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-		<br/>
-	</p>
+	
 
 	
 
 	<!-- check for district of columbia and if real estate -->
 	@if(strtolower($state['name']) == 'district of columbia')
-		<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
-		</p>
+		
 
 		<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<b>THIS POWER OF ATTORNEY AUTHORIZES THE PERSON NAMED BELOW AS MY
@@ -455,7 +451,7 @@
 		
 		
 
-		<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
+		<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%;">
 		<span size="4" style="font-size: 14pt"><b>DESIGNATION OF AGENT</b></span></p>
 		<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
 		<br/>
@@ -1212,26 +1208,17 @@
 			<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 			</p>
-			<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-			</p>
-			<p class="western" align="center" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%; page-break-before: always">
+			
+			<p class="western" align="center" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%; ">
 			<b>SIGNATURE AND ACKNOWLEDGMENT</b></p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<br/>
 
 			</p>
+			
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
-
-			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
-
-			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<span color="#000000"><u>					</u></span><span color="#000000">		</span><span color="#000000"><b>
-			 DATE: </b></span><u>			</u> 
+			<span color="#000000">___________________________</span><span color="#000000">		</span><span color="#000000"><b>
+			 DATE: </b></span>___________________
 			</p>
 			<p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
 			
@@ -1272,32 +1259,45 @@
 			@if(strtolower($state['name']) != 'illinois') 
 
 			<p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
-			<br/>
-			<br/>
 
 			</p>
 
 
-			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><u>					</u></span><span color="#000000">		</span><span color="#000000"><u>					</u></span><span color="#000000">	</span></p>
-			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>(WITNESS
-			1)</b></span><span color="#000000">						</span><span color="#000000"><b>(WITNESS
-			2)</b></span></p>
-			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">NAME:</span><span color="#000000">						</span><span color="#000000">NAME:</span></p>
-			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">ADDRESS:</span><span color="#000000">						</span><span color="#000000">ADDRESS:</span></p>
-			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">CITY/STATE:</span><span color="#000000">						</span><span color="#000000">CITY/STATE:</span></p>
-			<p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
+
+
+
+
+			<div style="float: left; width: 100%; padding: 32px 0;">
+                <div style="width: 48%; float: left;">
+                  <p>____________________________________<br>(WITNESS 1)<br></p>
+
+                  <p>NAME: ________________________________</p>
+
+                  <p>ADDRESS: _____________________________</p>
+
+                  <p>CITY/STATE: __________________________</p>
+                  </div>
+                  <div style="width: 48%; float: right;">
+                  <p>____________________________________<br>(WITNESS 2)<br></p>
+
+                  <p>NAME: ________________________________</p>
+
+                  <p>ADDRESS: _____________________________</p>
+
+                  <p>CITY/STATE: __________________________</p>
+                  </div>
+                </div>
+
+
+			<p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%; page-break-after: auto;">
 			<br/>
 			<br/>
 
 			</p>
-			<p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
-			<br/>
-			<br/>
-
-			</p>
+			
 			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">STATE
 			OF &nbsp;________________</span><span color="#000000">		</span><span color="#000000">)</span></p>
-			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">						</span><span color="#000000">)
+			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">						</span><span color="#000000">_____________________)
 			ss. </span>
 			</p>
 			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">COUNTY
@@ -1338,7 +1338,6 @@
 			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">My
 			commission expires: _________________</span></p>
 			<p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
-			<br/>
 			<br/>
 
 			</p>
@@ -1381,7 +1380,6 @@
 			under the foregoing power of attorney.&nbsp;</span></span></span></span></span></span></p>
 			
 			<p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-			<br/>
 			<br/>
 			</p>
 
@@ -1479,7 +1477,7 @@
 
 
 
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
+			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; ">
 			<i>The following optional form affidavit may be used by an agent to
 			certify facts concerning a power of attorney: </i>
 			</p>
@@ -1530,10 +1528,7 @@
 			<br/>
 
 			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
-
-			</p>
+			
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			I further certify that to my knowledge: 
 			</p>
@@ -1569,17 +1564,11 @@
 			<br/>
 
 			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
-
-			</p>
+			
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<b>SIGNATURE AND ACKNOWLEDGMENT </b>
 			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
-
-			</p>
+			
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			____________________________________________ 	__________ 
 			</p>
@@ -1618,10 +1607,7 @@
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			Agent's Telephone Number 
 			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
-
-			</p>
+			
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<br/>
 
@@ -1631,10 +1617,7 @@
 			__________________________, 20<u>	</u>,
 			by______________________________________ (Name of Agent) 
 			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
-
-			</p>
+			
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			____________________________________________ (Seal, if any) 
 			</p>
@@ -1965,7 +1948,7 @@
 
 
 
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
+			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; ">
 			
 
 			<span color="#008f00">IF STATE = “Delaware”</span>
@@ -2079,7 +2062,7 @@
 
 
 
-				<p align="center" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
+				<p align="center" style="margin-bottom: 0in; line-height: 100%; ">
 				<span color="#000000"><b>AGENT'S CERTIFICATION </b></span>
 				</p>
 				<p align="center" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>(NOTE:
@@ -2283,7 +2266,7 @@
 			
 			@endif
 				
-				<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
+				<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%;">
 				
 				
 			@if(strtolower($state['name']) == 'new hampshire')
@@ -2333,7 +2316,7 @@
 				<p style="margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
-				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><u>			</u></span><span color="#000000">    	_________</span></p>
+				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000">________________</span><span color="#000000">    	_________</span></p>
 				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>Agent					Date</b></span></p>
 				<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
@@ -2346,12 +2329,7 @@
 				<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
-				<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
-				<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
+				
 				
 
 
@@ -2362,7 +2340,7 @@
 				</p>
 
 				<p class="western" style="margin-bottom: 0in; line-height: 100%">I,
-				<u>						</u>, have read the attached power of attorney and am the
+				_______________________, have read the attached power of attorney and am the
 				person identified as the agent for the principal.  I hereby
 				acknowledge that when I act as agent:</p>
 				<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
@@ -2380,7 +2358,7 @@
 				<p style="margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
-				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><u>			</u></span><span color="#000000">    	_________</span></p>
+				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000">______________</span><span color="#000000">    	_________</span></p>
 				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>Agent					Date</b></span></p>
 				<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
@@ -3106,18 +3084,7 @@
 				with respect to personal and family maintenance is neither dependent
 				upon, nor limited by, authority that an agent may or may not have
 				with respect to gifts under this chapter.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<br/>
-
-				</p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<br/>
-
-				</p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<br/>
-
-				</p>
+				
 				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
 				<br/>
 
@@ -3336,13 +3303,7 @@
 				<span color="#000000"><b>5.</b></span><span color="#000000">&nbsp;The
 				principal's personal history of making or joining in making gifts.</span></p>
 				
-				<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
 				
-				<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
 			
 			@endif
 		
