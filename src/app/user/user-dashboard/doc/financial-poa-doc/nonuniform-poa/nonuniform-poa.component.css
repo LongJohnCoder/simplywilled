@@ -11,6 +11,6 @@ p, span{
   padding: 40px;
 }
 .docPageInner{
-  min-height: 991px;
   height: auto !important;
+  min-height: 400px;
 }
