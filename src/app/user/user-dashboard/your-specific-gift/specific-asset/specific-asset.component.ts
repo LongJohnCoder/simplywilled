@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, Output, ViewChild, EventEmitter} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {YourSpecificGiftService} from '../services/your-specific-gift.service';
 import {EditGiftService} from '../services/edit-gift.service';
@@ -15,11 +15,7 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
 
   /**Variable declaration*/
   @Input() giftCount: any;
-
-  @Input() cash_module: any;
-  @Input() real_property_module: any;
-  @Input() business_interest: any;
-  @Input() specific_asset: any;
+  @Output() specificAssetEvent = new EventEmitter();
 
   @ViewChild(YourSpecificGiftComponent) YourSpecificGiftComponent: YourSpecificGiftComponent;
   specificAssetForm: FormGroup;
@@ -401,12 +397,29 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
   /**Submit the form*/
   submit() {
     if (this.specificAssetForm.valid) {
-      let user = this.parseUserId();
-      let token = this.parseToken();
-      let data = this.prepareData();
+      const user = this.parseUserId();
+      const token = this.parseToken();
+      const data = this.prepareData();
       this.giftData.push(data);
       if (token) {
-        let cashGiftDataSet = this.flags.editFlag ? {'id': this.giftId, 'step': 7, 'user_id': user, 'giftType': 4,  'individual': this.flags.individualFlag ? 1 : 0, 'charity': this.flags.charityFlag ? 1 : 0,  'giftData': this.giftData} : {'step': 7, 'user_id': user, 'giftType': 4,  'individual': this.flags.individualFlag ? 1 : 0, 'charity': this.flags.charityFlag ? 1 : 0, 'giftData': this.giftData};
+        const cashGiftDataSet = this.flags.editFlag ?
+        {
+          'id': this.giftId,
+          'step': 7,
+          'user_id': user,
+          'giftType': 4,
+          'individual': this.flags.individualFlag ? 1 : 0,
+          'charity': this.flags.charityFlag ? 1 : 0,
+          'giftData': this.giftData
+        } :
+        {
+          'step': 7,
+          'user_id': user,
+          'giftType': 4,
+          'individual': this.flags.individualFlag ? 1 : 0,
+          'charity': this.flags.charityFlag ? 1 : 0,
+          'giftData': this.giftData
+        };
         if (this.flags.editFlag) {
           console.log('edit');
           this.editGiftData(token, cashGiftDataSet);
@@ -466,7 +479,8 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
   editGiftData(token: string, cashGiftDataSet) {
     this.ysgService.updateGift(token, cashGiftDataSet).subscribe((data) => {
       if (data.status) {
-        window.location.reload();
+        this.changeSpecificAssetViewState();
+        // window.location.reload();
         // this.router.navigate(['/dashboard/your-specific-gifts']);
       } else {
         this.errors.errorFlag = true;
@@ -484,7 +498,8 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
   createGiftData(token: string, cashGiftDataSet) {
     this.ysgService.saveCashGiftData(token, cashGiftDataSet).subscribe((data) => {
       if (data.status) {
-        window.location.reload();
+        this.changeSpecificAssetViewState();
+        // window.location.reload();
         // this.router.navigate(['/dashboard/your-specific-gifts']);
       } else {
         this.errors.errorFlag = true;
@@ -576,9 +591,11 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
   /**Deletes the gift*/
   popUpDelete(id: number): void {
     this.ysgComponent.deleteGift(id);
-    this.ysgComponent.changeViewState();
+    // this.ysgComponent.changeViewState();
     this.editService.unsetData();
-    window.location.reload();
+
+    this.changeSpecificAssetViewState();
+    // window.location.reload();
     // this.router.navigate(['/dashboard/your-specific-gifts']);
   }
 
@@ -587,9 +604,14 @@ export class SpecificAssetComponent implements OnInit, OnDestroy {
    */
   popUp(): void {
     if (confirm('Are you sure you want to delete this gift?')) {
-      window.location.reload();
+      this.changeSpecificAssetViewState();
+      // window.location.reload();
       // this.router.navigate(['/dashboard/your-specific-gifts']);
     }
+  }
+
+  changeSpecificAssetViewState(): void {
+    this.specificAssetEvent.emit();
   }
 
 }

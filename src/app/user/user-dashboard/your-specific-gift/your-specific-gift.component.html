@@ -103,11 +103,11 @@
         {{ errString }}
     </span>
   </div>
-
-<app-cash-gift *ngIf="cash_module" [giftCount]="giftCount+1" [cash_module]="cash_module" [real_property_module]="real_property_module" [business_interest]="business_interest" [specific_asset]="specific_asset"></app-cash-gift>
-<app-real-property *ngIf="real_property_module" [giftCount]="giftCount+1" [cash_module]="cash_module" [real_property_module]="real_property_module" [business_interest]="business_interest" [specific_asset]="specific_asset"></app-real-property>
-<app-business-interest *ngIf="business_interest" [giftCount]="giftCount+1" [cash_module]="cash_module" [real_property_module]="real_property_module" [business_interest]="business_interest" [specific_asset]="specific_asset"></app-business-interest>
-<app-specific-asset *ngIf="specific_asset" [giftCount]="giftCount+1" [cash_module]="cash_module" [real_property_module]="real_property_module" [business_interest]="business_interest" [specific_asset]="specific_asset"></app-specific-asset>
+<!-- (cashEvent)="fetchGiftData()" or initialSetup()-->
+<app-cash-gift (cashEvent)="initialSetup()" *ngIf="cash_module" [giftCount]="giftCount+1" ></app-cash-gift>
+<app-real-property (realPropertyEvent)="initialSetup()" *ngIf="real_property_module" [giftCount]="giftCount+1" ></app-real-property>
+<app-business-interest (businessInterestEvent)="initialSetup()" *ngIf="business_interest" [giftCount]="giftCount+1" ></app-business-interest>
+<app-specific-asset (specificAssetEvent)="initialSetup()" *ngIf="specific_asset" [giftCount]="giftCount+1" ></app-specific-asset>
 
 </div>
 <!--make decision which view to open start-->

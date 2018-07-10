@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild, EventEmitter, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {RealPropertyService} from '../services/real-property.service';
 import {Observable} from 'rxjs/Observable';
@@ -18,11 +18,7 @@ import {Subscription} from 'rxjs/Subscription';
 export class RealPropertyComponent implements OnInit, OnDestroy {
   /**Variable declaration*/
   @Input() giftCount: any;
-
-  @Input() cash_module: any;
-  @Input() real_property_module: any;
-  @Input() business_interest: any;
-  @Input() specific_asset: any;
+  @Output() realPropertyEvent = new EventEmitter();
 
   @ViewChild(YourSpecificGiftComponent) YourSpecificGiftComponent: YourSpecificGiftComponent;
   realPropertyForm: FormGroup;
@@ -125,7 +121,7 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
       if (Object.keys(this.editService.getData()).length) {
         this.flags.editFlag = true;
         this.formEditDataSet = this.editService.getData();
-        let parsedDataSet = JSON.parse(this.formEditDataSet.property_details)[0];
+        const parsedDataSet = JSON.parse(this.formEditDataSet.property_details)[0];
         this.giftId = this.formEditDataSet.id;
         this.createForm(this.flags.editFlag, parsedDataSet);
         this.flags.individualFlag = parsedDataSet.gift_to === 'IN';
@@ -528,7 +524,8 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
   editGiftData(token: string, cashGiftDataSet) {
     this.ysgService.updateGift(token, cashGiftDataSet).subscribe((data) => {
       if (data.status) {
-        window.location.reload();
+        this.changeRealPropertyViewState();
+        // window.location.reload();
         // this.router.navigate(['/dashboard/your-specific-gifts']);
       } else {
         this.errors.errorFlag = true;
@@ -546,7 +543,8 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
   createGiftData(token: string, cashGiftDataSet) {
     this.ysgService.saveCashGiftData(token, cashGiftDataSet).subscribe((data) => {
       if (data.status) {
-        window.location.reload();
+        this.changeRealPropertyViewState();
+        // window.location.reload();
         // this.router.navigate(['/dashboard/your-specific-gifts']);
       } else {
         this.errors.errorFlag = true;
@@ -638,9 +636,10 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
   /**Deletes the gift*/
   popUpDelete(id: number): void {
     this.ysgComponent.deleteGift(id);
-    this.ysgComponent.changeViewState();
+    // this.ysgComponent.changeViewState();
     this.editService.unsetData();
-    window.location.reload();
+    this.changeRealPropertyViewState();
+    // window.location.reload();
     // this.router.navigate(['/dashboard/your-specific-gifts']);
   }
 
@@ -649,8 +648,13 @@ export class RealPropertyComponent implements OnInit, OnDestroy {
    */
   popUp(): void {
     if (confirm('Are you sure you want to delete this gift?')) {
-      window.location.reload();
+      this.changeRealPropertyViewState();
+      // window.location.reload();
       // this.router.navigate(['/dashboard/your-specific-gifts']);
     }
+  }
+
+  changeRealPropertyViewState(): void {
+    this.realPropertyEvent.emit();
   }
 }

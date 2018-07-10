@@ -17,11 +17,7 @@ import {Subscription} from 'rxjs/Subscription';
 export class CashGiftComponent implements OnInit, OnDestroy {
   /**Variable declaration*/
   @Input() giftCount: any;
-  @Input() cash_module: any;
-  @Input() real_property_module: any;
-  @Input() business_interest: any;
-  @Input() specific_asset: any;
-  @Output() childEvent = new EventEmitter();
+  @Output() cashEvent = new EventEmitter();
 
   @ViewChild(YourSpecificGiftComponent) YourSpecificGiftComponent: YourSpecificGiftComponent;
   isIndividual: boolean;
@@ -214,7 +210,8 @@ export class CashGiftComponent implements OnInit, OnDestroy {
         this.saveCashGiftDBSubscription = this.saveCashGiftDB.subscribe(data => {
           if (data.status) {
             console.log('cash gift saved');
-            window.location.reload();
+            this.changeCashViewState();
+            // window.location.reload();
             // this.router.navigate(['/dashboard/your-specific-gifts']);
           } else {
             this.errFlag = true;
@@ -343,8 +340,9 @@ export class CashGiftComponent implements OnInit, OnDestroy {
     console.log('here cash popup');
     const confirm1 = confirm('Are you sure you want to delete this gift?');
     if (confirm1) {
-      this.changeViewState();
-      window.location.reload();
+      // this.changeViewState();
+      this.changeCashViewState();
+      // window.location.reload();
       // this.router.navigate(['/dashboard/your-specific-gifts']);
     }
   }
@@ -356,15 +354,16 @@ export class CashGiftComponent implements OnInit, OnDestroy {
   popUpDelete(id: number): void {
     console.log('here cash popup delete');
     this.ysgComponent.deleteGift(id);
-    this.ysgComponent.changeViewState();
-    this.editService.unsetData();
-    this.changeViewState();
-    window.location.reload();
+    this.changeCashViewState();
+    // this.ysgComponent.changeViewState();
+    // this.editService.unsetData();
+    // this.changeViewState();
+    // window.location.reload();
     // this.router.navigate(['/dashboard/your-specific-gifts']);
   }
 
-  changeViewState(): void {
-    this.childEvent.emit();
+  changeCashViewState(): void {
+    this.cashEvent.emit();
   }
 
   /**When the component is destroyed*/

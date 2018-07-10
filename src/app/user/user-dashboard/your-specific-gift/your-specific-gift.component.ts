@@ -63,6 +63,7 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
             },
             {
               'q': 'Should I make Specific Gifts?',
+              // tslint:disable-next-line:max-line-length
               'a': 'If you have specific asset or item that you want to go to a particular individual(s) or charity, then you should give it as a Specific Gift. For example, “I leave my XYZ Company to my son, Donald” or “I leave my watch to my grandson, Dwayne”'
             },
             {
@@ -71,6 +72,7 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
             },
             {
                 'q': 'What is a Gift of Real Property?',
+                // tslint:disable-next-line:max-line-length
                 'a': 'You can give your personal residence or other real property that you own, to the individual(s) or charities of your choosing.'
             },
             {
@@ -79,12 +81,22 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
             },
             {
                 'q': 'What is a Gift of a Specific Asset?',
+                // tslint:disable-next-line:max-line-length
                 'a': 'You can give Specific Assets, i.e. your car, boat, jewelry, or any personal property you own to the individual(s) or charity of your choosing.'
             }
         ]
       };
     }
+
   ngOnInit() {
+    this.initialSetup();
+  }
+
+  /*
+  * setting up initial variables
+  * */
+
+  initialSetup() {
     this.errFlag = false;
     this.errString = null;
     this.isAnyGift = false;
@@ -154,7 +166,7 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
 
     this.getUserDetailSubscription = this.userService.getUserDetails(this.myUserId).subscribe(
       (response: any) => {
-        let maritalStatus = response.data[0].data.userInfo.marital_status;
+        const maritalStatus = response.data[0].data.userInfo.marital_status;
         switch (maritalStatus ) {
           case 'M':
           case 'R': this.progressBarService.changeWidth({width: 60});
@@ -234,7 +246,6 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
           }, () => {});
         } else {
           console.log('delete gift from parent module');
-          
           // window.location.reload();
         }
       } else {
@@ -305,7 +316,15 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
 
   /**Continue to next*/
   submit() {
-    let dataset = {'user_id': this.myUserId, 'step': 8, 'data': {'isSpecificGift': 'Yes', 'individual': '1' , 'charity': '1', 'not_this_time': this.notThisTimeFlag ? 1 : 0}};
+    const dataset = {
+      'user_id': this.myUserId,
+      'step': 8, 'data': {
+        'isSpecificGift': 'Yes',
+        'individual': '1' , 'charity': '1',
+        'not_this_time': this.notThisTimeFlag ? 1 : 0
+      }
+    };
+
     this.saveDataInDbSubscription = this.gftService.saveData(this.access_token, dataset).subscribe(data => {
       console.log(data);
       if (data.status) {
