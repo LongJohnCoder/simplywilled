@@ -3,69 +3,20 @@
 <head>
     <meta charset="utf-8">
     <title>Untitled Document</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        body{
-            margin: 0;
-            padding: 0;
-            font-family: Garamond;
-        }
-        /* width */
-        ::-webkit-scrollbar {
-            width: 14px;
-        }
 
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #0f69bb;
-
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #99cc33;
-            border-radius: 5px;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #57ab2a;
-        }
-
-        .docContainer{
-            width: 700px;
-            margin: 0 auto;
-        }
-        .docPage{
-            width: 700px !important;
-            height: 991px!important;
-            background: #fff;
-            box-shadow: 0 0 7px rgba(0,0,0,0.3);
-            margin: 20px 0;
-            box-sizing: border-box;
-            padding: 40px;
-        }
-
-
-
-
-    </style>
 </head>
 
 <body>
 
 <div class="docContainer" id="doc">
 
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="margin: 20px 0;">
         <div id="doc" class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="">
             <p  style="text-align:center;margin-bottom: 0in; line-height: 0.28in; page-break-before: auto; page-break-after: auto">
                 <span  style="font-size: 17pt"><b>DISTRICT OF COLUMBIA</b></span></p>
             <p  style="text-align:center;margin-bottom: 0in; line-height: 0.28in"><span  style="font-size: 17pt"><b>POWER
-      OF ATTORNEY FOR HEALTH CARE</b></span></p>
+                OF ATTORNEY FOR HEALTH CARE</b></span></p>
             <p  style="text-align:center;margin-bottom: 0.19in; line-height: 115%">
 
 
@@ -77,37 +28,37 @@
             <p  style="text-align:center;margin-bottom: 0.19in; line-height: 115%"><b>INFORMATION
                     ABOUT THIS DOCUMENT</b></p>
             <p style="margin-bottom: 0.09in; line-height: 115%"><span  style="font-size: 9pt">This
-      is an important legal document. Before signing this document, it is
-      vital for you to know and understand these facts:</span></p>
+                is an important legal document. Before signing this document, it is
+                  vital for you to know and understand these facts:</span></p>
             <p style="margin-bottom: 0.09in; line-height: 115%"><span  style="font-size: 9pt">This
-      document gives the person you name as your attorney in fact the power
-      to make health-care decisions for you if you cannot make the
-      decisions for yourself.</span></p>
+                document gives the person you name as your attorney in fact the power
+                  to make health-care decisions for you if you cannot make the
+                  decisions for yourself.</span></p>
             <p style="margin-bottom: 0.09in; line-height: 115%"><span  style="font-size: 9pt">After
-      you have signed this document, you have the right to make health care
-      decisions for yourself if you are mentally competent to do so. In
-      addition, after you have signed this document, no treatment may be
-      given to you or stopped over your objection if you are mentally
-      competent to make that decision.</span></p>
+              you have signed this document, you have the right to make health care
+              decisions for yourself if you are mentally competent to do so. In
+              addition, after you have signed this document, no treatment may be
+              given to you or stopped over your objection if you are mentally
+              competent to make that decision.</span></p>
             <p style="margin-bottom: 0.09in; line-height: 115%"><span  style="font-size: 9pt">You
-      may state in this document any type of treatment that you do not
-      desire and any that you want to make sure you receive.</span></p>
+              may state in this document any type of treatment that you do not
+              desire and any that you want to make sure you receive.</span></p>
             <p style="margin-bottom: 0.09in; line-height: 115%"><span  style="font-size: 9pt">You
-      have the right to take away the authority of your attorney in fact,
-      unless you have been adjudicated incompetent, by notifying your
-      attorney in fact or health-care provider either orally or in writing.
-      Should you revoke the authority of your attorney in fact, it is
-      advisable to revoke in writing and to place copies of the revocation
-      wherever this document is located.</span></p>
+              have the right to take away the authority of your attorney in fact,
+              unless you have been adjudicated incompetent, by notifying your
+              attorney in fact or health-care provider either orally or in writing.
+              Should you revoke the authority of your attorney in fact, it is
+              advisable to revoke in writing and to place copies of the revocation
+              wherever this document is located.</span></p>
             <p style="margin-bottom: 0.09in; line-height: 115%"><span  style="font-size: 9pt">If
-      there is anything in this document that you do not understand, you
-      should ask a social worker, lawyer or other person to explain it to
-      you.</span></p>
+              there is anything in this document that you do not understand, you
+              should ask a social worker, lawyer or other person to explain it to
+              you.</span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span  style="font-size: 9pt">You
-      should keep a copy of this document after you have signed it. Give a
-      copy to the person you name as your attorney in fact. If you are in a
-      health-care facility, a copy of this document should be included in
-      your medical record.</span></p>
+              should keep a copy of this document after you have signed it. Give a
+              copy to the person you name as your attorney in fact. If you are in a
+              health-care facility, a copy of this document should be included in
+              your medical record.</span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
@@ -115,52 +66,54 @@
 
             </p>
         </div>
-    {{--    <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Durable Power of Attorney for Health Care of {{userDetails.tellUsAboutYou.fullname}} </span>
+
+        <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+            <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care of {{$tellUsAboutYou['fullname']}} </span>
             <br>Page 1 of 6
-        </div>--}}
+        </div>
     </div>
     <!-- !Page 1 -->
 
     <!-- Page 2 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="margin: 20px 0;">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="">
 
             <p  style="text-align:center;margin-bottom: 0in; line-height: 0.28in; page-break-before: always">
                 <span  style="font-size: 17pt"><b>DISTRICT OF COLUMBIA</b></span></p>
             <p  style="text-align:center;margin-bottom: 0in; line-height: 0.28in"><span  style="font-size: 17pt"><b>POWER
-      OF ATTORNEY FOR HEALTH CARE</b></span></p>
+              OF ATTORNEY FOR HEALTH CARE</b></span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I,
-      <b>
-        <span style="text-transform: capitalize" >{{$tellUsAboutYou['fullname']}}</span>
-      </b>,
-        of
-        <span style="text-transform: capitalize" >{{$tellUsAboutYou['address']}}</span>,
-        <span style="text-transform: capitalize" >{{$tellUsAboutYou['city']}}</span>,
-        <span style="text-transform: capitalize" >{{$tellUsAboutYou['state']}}</span>, hereby appoint my
-          @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
-              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
-          @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
-              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
-          @endif
-        <span style="text-transform: capitalize" > {{$healthFinance['fullname']}} </span>, of
-        <span style="text-transform: capitalize" > {{$healthFinance['address']}} </span>  in
-        <span style="text-transform: capitalize" > {{$healthFinance['city']}} </span>,
-        <span style="text-transform: capitalize" > {{$healthFinance['state']}} </span>
-        <span style="text-transform: capitalize" > {{$healthFinance['zip']}} </span>
-        (Tel: <span > {{$healthFinance['phone']}} </span> ),
-        as my attorney in fact to make
-        health care decisions for me if I become unable to make my own
-        health-care decisions.  This gives my attorney in fact the power to
-        grant, refuse, or withdraw consent on my behalf for any health-care
-        service, treatment or procedure. My attorney in fact also has the
-        authority to talk to health-care personnel, get information and sign
-        forms necessary to carry out these decisions.</span></span></span></span></span></p>
+              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I,
+              <b>
+                <span style="text-transform: capitalize" >{{$tellUsAboutYou['fullname']}}</span>
+              </b>,
+              of
+              <span style="text-transform: capitalize" >{{$tellUsAboutYou['address']}}</span>,
+              <span style="text-transform: capitalize" >{{$tellUsAboutYou['city']}}</span>,
+              <span style="text-transform: capitalize" >{{$tellUsAboutYou['state']}}</span>, hereby appoint my
+                @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
+                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
+                @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
+                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
+                @endif
+                <span style="text-transform: capitalize" > {{$healthFinance['fullname']}} </span>, of
+                <span style="text-transform: capitalize" > {{$healthFinance['address']}} </span>  in
+                <span style="text-transform: capitalize" > {{$healthFinance['city']}} </span>,
+                <span style="text-transform: capitalize" > {{$healthFinance['state']}} </span>
+                <span style="text-transform: capitalize" > {{$healthFinance['zip']}} </span>
+                (Tel: <span > {{$healthFinance['phone']}} </span> ),
+                as my attorney in fact to make
+                health care decisions for me if I become unable to make my own
+                health-care decisions.  This gives my attorney in fact the power to
+                grant, refuse, or withdraw consent on my behalf for any health-care
+                service, treatment or procedure. My attorney in fact also has the
+                authority to talk to health-care personnel, get information and sign
+                forms necessary to carry out these decisions.</span></span></span></span></span>
+            </p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
@@ -198,42 +151,42 @@
 
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Statement
-      of desires concerning life-prolonging care, treatment, services, and
-      procedures:</span></span></span></span></span></p>
+              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Statement
+              of desires concerning life-prolonging care, treatment, services, and
+              procedures:</span></span></span></span></span></p>
             <p  style="text-align:center;margin-bottom: 0.09in; line-height: 115%"><span  style="font-size: 9pt"><i><b>(initial
-      only the ONE option that applies)</b></i></span></p>
+            only the ONE option that applies)</b></i></span></p>
             <p style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.09in; line-height: 115%">
-      <span  style="font-size: 9pt">__________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I
-        direct that treatment be withheld or withdrawn, and that I be
-        permitted to die naturally with only the administration of medication
-        or the performance of any medical treatment deemed necessary to
-        alleviate pain.</span></p>
+            <span  style="font-size: 9pt">__________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I
+              direct that treatment be withheld or withdrawn, and that I be
+              permitted to die naturally with only the administration of medication
+              or the performance of any medical treatment deemed necessary to
+              alleviate pain.</span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span  style="font-size: 9pt">__________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I
-      DO NOT authorize that life-prolonging treatment be withheld or
-      withdrawn.</span></p>
+              DO NOT authorize that life-prolonging treatment be withheld or
+              withdrawn.</span></p>
             <p  style="text-align:center;margin-bottom: 0.09in; line-height: 115%">
 
 
             </p>
             <p  style="text-align:center;margin-bottom: 0.09in; line-height: 115%"><span  style="font-size: 9pt"><i><b>(initial
-      only the ONE option that applies)</b></i></span></p>
+                only the ONE option that applies)</b></i></span></p>
             <p style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.09in; line-height: 115%">
-      <span  style="font-size: 9pt">__________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I
-        authorize the withholding or withdrawal of artificially provided
-        food, water, or other artificially provided nourishment or fluids.</span></p>
+              <span  style="font-size: 9pt">__________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I
+                authorize the withholding or withdrawal of artificially provided
+                food, water, or other artificially provided nourishment or fluids.</span></p>
             <p style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.09in; line-height: 115%">
-      <span  style="font-size: 9pt">__________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I
-        DO NOT authorize the withholding or withdrawal of artificially
-        provided food, water, or other artificially provided nourishment or
-        fluids.</span></p>
+              <span  style="font-size: 9pt">__________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I
+                DO NOT authorize the withholding or withdrawal of artificially
+                provided food, water, or other artificially provided nourishment or
+                fluids.</span></p>
             <p style="margin-left: 1in; text-indent: -1in; margin-bottom: 0in; line-height: 115%">
-      <span  style="font-size: 9pt">__________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I
-        authorize my agent to withhold or withdraw artificially provided
-        nourishment or fluids, or other treatment if my agent determines that
-        withholding or withdrawing is in my best interest; but I do not
-        mandate that withholding or withdrawing.
-        &nbsp;</span></p>
+              <span  style="font-size: 9pt">__________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I
+                authorize my agent to withhold or withdraw artificially provided
+                nourishment or fluids, or other treatment if my agent determines that
+                withholding or withdrawing is in my best interest; but I do not
+                mandate that withholding or withdrawing.
+                &nbsp;</span></p>
         </div>
        {{-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
             <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Durable Power of Attorney for Health Care of {{userDetails.tellUsAboutYou.fullname}} </span>
@@ -243,9 +196,9 @@
     <!-- !Page 2 -->
 
     <!-- Page 3 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="margin: 20px 0; ">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="">
 
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Additional
@@ -343,24 +296,10 @@
     </div>
     <!-- !Page 3 -->
 
-
     <!-- Page 4 -->
-<!--<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-  <div class="docPageInner"
-       style="box-sizing: border-box; height: 890px;">
-
-  </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Durable Power of Attorney for Health Care of{{userDetails.tellUsAboutYou.fullname}} </span>
-    <br>Page 4 of 7
-  </div>
-</div>-->
-    <!-- !Page 4 -->
-
-    <!-- Page 4 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="margin: 20px 0;">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="">
             <!--<p style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 115%">
               <span color="#0000ff"><span color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span  style="font-size: 9pt"><b><span color="#000000">«</span>CLIENT
                 FIRST NAME<span color="#000000">» «</span>CLIENT MIDDLE NAME<span color="#000000">»
@@ -382,7 +321,7 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%"><u>_______________________________________________</u>(WITNESS
+            <p style="margin-bottom: 0in; line-height: 115%">_______________________________________________(WITNESS
                 1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></p>
             <p style="margin-bottom: 0in; line-height: 115%">NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 DATE</p>
@@ -394,7 +333,7 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%"><u>_______________________________________________</u>(WITNESS
+            <p style="margin-bottom: 0in; line-height: 115%">_______________________________________________(WITNESS
                 2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></p>
             <p style="margin-bottom: 0in; line-height: 115%">NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 DATE</p>
@@ -467,9 +406,9 @@
     <!-- !Page 4 -->
 
     <!-- Page 5 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="margin: 20px 0; ">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="">
 
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">_________________________________________</span></span></span></span></span></p>
@@ -577,9 +516,9 @@
     <!-- !Page 5 -->
 
     <!-- Page 6 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="margin: 20px 0;">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="">
 
             <p style="margin-bottom: 0in; line-height: 115%">I believe the
                 declarant to be of sound mind. I did not sign the declarant’s
@@ -601,7 +540,7 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%"><u>_______________________________________________</u>(WITNESS
+            <p style="margin-bottom: 0in; line-height: 115%">_______________________________________________(WITNESS
                 1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></p>
             <p style="margin-bottom: 0in; line-height: 115%">NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 DATE</p>
@@ -613,7 +552,7 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%"><u>_______________________________________________</u>(WITNESS
+            <p style="margin-bottom: 0in; line-height: 115%">_______________________________________________(WITNESS
                 2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></p>
             <p style="margin-bottom: 0in; line-height: 115%">NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 DATE</p>
