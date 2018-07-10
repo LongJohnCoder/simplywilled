@@ -8,6 +8,7 @@ import {Location} from '@angular/common';
 import {GlobalPdfService} from '../services/global-pdf.service';
 import { saveAs } from 'file-saver/FileSaver';
 import {Router} from '@angular/router';
+import { MapOperator } from 'rxjs/operators/map';
 
 @Component({
   selector: 'app-last-will-and-testament',
@@ -18,6 +19,8 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   @ViewChild('docBox')
   docBox: any;
   @ViewChild('thumbContainer')
+
+
   thumbContainer: any;
   progressSubscription: Subscription;
   thumbIndex: number;
@@ -28,6 +31,10 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   /*userDetails = {
     firstname: ''
   };*/
+
+  pageIndex = 1;
+  totalPagesPresent = 12;
+  deceasedChildrenNames = '';
   docThumbImg: Array<any> = [
     '../../../../../assets/images/doc1-thumb1.png',
     '../../../../../assets/images/doc1-thumb2.png',
@@ -154,6 +161,8 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
             } else {
               console.log('custGiftArray comming null or undefined');
             }
+
+            this.deceasedChildrenNames = this.userDetails.tellUsAboutYou.deceased_children_names.split(',');
 
             for (let i = 0; i < Math.ceil(this.giftStatements.otherpages.length / 5); i++) {
               this.giftStatements.pageLength.push(i);

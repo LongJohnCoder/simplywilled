@@ -125,13 +125,13 @@
   padding: 40px;
   transition: all 0.5s ease 0s;
 }
+*/
 .docPageInner{
-  border: 1px solid #000;
-  padding: 15px !important;
-  width: 620px !important;
-  height: 911px!important;
-  box-sizing: border-box;
+  height: auto !important;
+  min-height: 400px;
 }
+
+*/
 .docPage h1{
   font-size: 30px!important;
   text-align: center;
@@ -178,11 +178,9 @@
   margin: 20px 0;
   box-sizing: border-box;
   padding: 40px;
-}
-.docPageInner{
   height: auto !important;
-  min-height: 875px;
 }
+
 
 p { margin-bottom: 0.1in; border: none; padding: 0in; direction: ltr; color: #00000a; line-height: 120%; text-align: left; orphans: 2; widows: 2 }
 p.western { font-family: "Times New Roman", serif }
