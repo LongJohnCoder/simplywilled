@@ -307,7 +307,7 @@
               </span></span><span style="font-family:'EB Garamond, serif'">, who
               was born on </span><span ><span style="font-family:'EB Garamond, serif'">
                 <span *ngIf="userDetails !== undefined && userDetails.children !== null && userDetails.children.length > 0">
-                  {{userDetails.children[0].dob}}
+                  {{userDetails.children[0].dob | date}}
                 </span>
               </span></span><span style="font-family:'EB Garamond, serif'">.</span>
               <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.deceased_children === '1'">
@@ -359,11 +359,19 @@
               <span style="font-family:'EB Garamond, serif'">«</span><span ><span style="font-family:'EB Garamond, serif'">REPEAT
               KIDS</span></span><span style="font-family:'EB Garamond, serif'">»</span></p>-->
             <p class="western"  style="margin-bottom: 0in; line-height: 100%; text-align:center;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.children > 1">
-              <span *ngFor="let children of userDetails.tellUsAboutYou.children">
-              <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">CHILD'S
-              NAME: {{children.fullname}}</span></span><span style="font-family:'EB Garamond, serif'">, born
-              </span><span ><span style="font-family:'EB Garamond, serif'">Child's
-              DOB: {{children.dob}}</span></span><span style="font-family:'EB Garamond, serif'"></span>
+              <span *ngFor="let children of userDetails.children">
+                <span style="font-family:'EB Garamond, serif'"></span>
+                <span>
+                  <span style="font-family:'EB Garamond, serif'">CHILD'S NAME: {{children.fullname}}</span>
+                </span>
+                
+                <span style="font-family:'EB Garamond, serif'">, born </span>
+                <span>
+                  <span style="font-family:'EB Garamond, serif'">Child's DOB: {{children.dob | date}}</span>
+                </span>
+                
+                <span style="font-family:'EB Garamond, serif'"></span>
+                <br>
               </span>
             </p>
             <!--<p class="western"  style="margin-bottom: 0in; line-height: 100%; text-align:center;">

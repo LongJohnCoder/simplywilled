@@ -235,4 +235,5 @@ version : 1
 commit name : final sprint
 version : 2
 1> Fixed reloading issue in gifts section
+2> Last will webview multiple gifts issue fixed and console error fixed 
 ****************************************************************
