@@ -63,6 +63,7 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
             },
             {
               'q': 'Should I make Specific Gifts?',
+              // tslint:disable-next-line:max-line-length
               'a': 'If you have specific asset or item that you want to go to a particular individual(s) or charity, then you should give it as a Specific Gift. For example, “I leave my XYZ Company to my son, Donald” or “I leave my watch to my grandson, Dwayne”'
             },
             {
@@ -71,6 +72,7 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
             },
             {
                 'q': 'What is a Gift of Real Property?',
+                // tslint:disable-next-line:max-line-length
                 'a': 'You can give your personal residence or other real property that you own, to the individual(s) or charities of your choosing.'
             },
             {
@@ -79,12 +81,22 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
             },
             {
                 'q': 'What is a Gift of a Specific Asset?',
+                // tslint:disable-next-line:max-line-length
                 'a': 'You can give Specific Assets, i.e. your car, boat, jewelry, or any personal property you own to the individual(s) or charity of your choosing.'
             }
         ]
       };
     }
+
   ngOnInit() {
+    this.initialSetup();
+  }
+
+  /*
+  * setting up initial variables
+  * */
+
+  initialSetup() {
     this.errFlag = false;
     this.errString = null;
     this.isAnyGift = false;
@@ -121,30 +133,11 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
       this.fetchGiftDataDBSubscription = this.fetchGiftDataDB.subscribe(data => {
         if (data.status === 200) {
           console.log(data.data[7].data.not_this_time);
+          // tslint:disable-next-line:max-line-length
           this.notThisTimeFlag = (data !== null && data.data[7] !== null && data.data[7] !== undefined && data.data[7].data !== null && data.data[7].data !== undefined && data.data[7].data.not_this_time !== null && data.data[7].data.not_this_time === 1);
-      //    this.giftResp = [];
-         // this.flags.charityFlag = (data !== null && data.data[7] !== null && data.data[7] !== undefined && data.data[7].data !== null && data.data[7].data !== undefined && data.data[7].data.charity !== null && data.data[7].data.charity === 1);
-         // this.flags.individualFlag = (data !== null && data.data[7] !== null && data.data[7] !== undefined && data.data[7].data !== null && data.data[7].data !== undefined && data.data[7].data.individualFlag !== null && data.data[7].data.individual === 1);
           if (data.data[6].data.isGift >= 1) {
             this.isAnyGift = true;
             this.giftCount = data.data[6].data.isGift;
-            /*for (let i = 0; i < data.data[6].data.gift.length; i++) {
-              if (this.flags.charityFlag && data.data[6].data.gift[i].charity === 1) {
-                this.giftResp.push(data.data[6].data.gift[i]);
-              }
-              if (this.flags.individualFlag && data.data[6].data.gift[i].individual === 1) {
-                this.giftResp.push(data.data[6].data.gift[i]);
-              }
-            }
-            console.log(this.giftResp.length);
-            if (this.giftResp.length > 0) {
-              this.onNewModule = false;
-              this.showAddGift = false;
-            } else {
-              this.onNewModule = true;
-              this.showAddGift = true;
-            }*/
-          //  console.log(this.giftResp);
             this.giftResp = data.data[6].data.gift;
           } else if (data.data[6].data.isGift === 0) {
               this.onNewModule = true;
@@ -173,7 +166,7 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
 
     this.getUserDetailSubscription = this.userService.getUserDetails(this.myUserId).subscribe(
       (response: any) => {
-        let maritalStatus = response.data[0].data.userInfo.marital_status;
+        const maritalStatus = response.data[0].data.userInfo.marital_status;
         switch (maritalStatus ) {
           case 'M':
           case 'R': this.progressBarService.changeWidth({width: 60});
@@ -232,6 +225,7 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
    * @param {number} id
    */
   deleteGift(id: number): any {
+    console.log('reached delete gift');
     if (this.access_token) {
       if (id) {
         const confirmation = confirm('Are You Sure?');
@@ -251,7 +245,8 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
             console.log(this.errString);
           }, () => {});
         } else {
-          window.location.reload();
+          console.log('delete gift from parent module');
+          // window.location.reload();
         }
       } else {
         this.errFlag = true;
@@ -311,6 +306,8 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
    * this function helps on delete when get called from childs like cash gift business gift etc
    */
   changeViewState(): void {
+    console.log('changeViewState clicked in parent component');
+    this.fetchGiftData();
     this.cash_module = false;
     this.real_property_module = false;
     this.business_interest = false;
@@ -319,10 +316,20 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
 
   /**Continue to next*/
   submit() {
-    let dataset = {'user_id': this.myUserId, 'step': 8, 'data': {'isSpecificGift': 'Yes', 'individual': '1' , 'charity': '1', 'not_this_time': this.notThisTimeFlag ? 1 : 0}};
+    const dataset = {
+      'user_id': this.myUserId,
+      'step': 8, 'data': {
+        'isSpecificGift': 'Yes',
+        'individual': '1' , 'charity': '1',
+        'not_this_time': this.notThisTimeFlag ? 1 : 0
+      }
+    };
+
     this.saveDataInDbSubscription = this.gftService.saveData(this.access_token, dataset).subscribe(data => {
       console.log(data);
       if (data.status) {
+        // this.reconfigureAllVariables();
+        this.changeViewState();
         this.router.navigate(['/dashboard/your-estate-distributed']);
       } else {
         this.errFlag = true;
@@ -334,6 +341,14 @@ export class YourSpecificGiftComponent implements OnInit, OnDestroy {
       this.errString = err.error.message;
       console.log(this.errString);
     }, () => { });
+  }
+
+  reconfigureAllVariables() {
+      this.onNewModule = true;
+      this.cash_module = false;
+      this.real_property_module = false;
+      this.business_interest = false;
+      this.specific_asset = false;
   }
 
   ngOnDestroy() {

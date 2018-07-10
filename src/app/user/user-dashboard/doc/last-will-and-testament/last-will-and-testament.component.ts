@@ -69,7 +69,8 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     petGuardian : null,
     provideYourLovedOnes : null,
     state : null,
-    tellUsAboutYou: null
+    tellUsAboutYou: null,
+    custGiftsArr: null
   };
   globalPDFSubscription: Subscription;
   giftStatements = {
@@ -96,14 +97,16 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     ) {
     this.loggedInUser = this.userAuth.getUser();
     this.getUserDetails();
-    let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+    const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
     this.progressSubscription = this.progressbarService.fetchTotalCompletion(token).subscribe(
       (progress: any) => {
         if (progress.status !== undefined) {
           this.progressBar = {
             finalArrangements: progress.data !== null && progress.data.final_arrangements !== undefined && progress.data.final_arrangements,
             healthFinance: progress.data !== null && progress.data.health_finance !== undefined && progress.data.health_finance,
+            // tslint:disable-next-line:max-line-length
             protectYourFinance: progress.data !== null && progress.data.protect_your_finance !== undefined && progress.data.protect_your_finance,
+            // tslint:disable-next-line:max-line-length
             provideYourLovedOnes: progress.data !== null && progress.data.provide_your_loved_ones !== undefined && progress.data.provide_your_loved_ones,
             tellUsAboutYou: progress.data !== null && progress.data.tell_us_about_you !== undefined && progress.data.tell_us_about_you
           };
@@ -135,60 +138,42 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
             petGuardian : response.data.petGuardian,
             provideYourLovedOnes : response.data.provideYourLovedOnes,
             state : response.data.state,
-            tellUsAboutYou: response.data.tellUsAboutYou
+            tellUsAboutYou: response.data.tellUsAboutYou,
+            custGiftsArr: response.data.custGiftsArr
           };
           if (response.data.gifts.length > 0) {
-            let statement = '';
-             for (let i = 0; i < response.data.gifts.length; i++) {
-               if ( i < 5 ) {
-                 switch (response.data.gifts[i].type) {
-                   case '1': statement = response.data.gifts[i].cash_description !== null ? JSON.parse(response.data.gifts[i].cash_description)[0].statement : '';
-                     this.giftStatements.firstpage.push(statement);
-                     break;
-                   case '2': statement = response.data.gifts[i].property_details !== null ? JSON.parse(response.data.gifts[i].property_details)[0].statement : '';
-                     this.giftStatements.firstpage.push(statement);
-                     break;
-                   case '3': statement = response.data.gifts[i].business_details !== null ? JSON.parse(response.data.gifts[i].business_details)[0].statement : '';
-                     this.giftStatements.firstpage.push(statement);
-                     break;
-                   case '4': statement = response.data.gifts[i].asset_details !== null ? JSON.parse(response.data.gifts[i].asset_details)[0].statement : '';
-                     this.giftStatements.firstpage.push(statement);
-                     break;
-                 }
-               } else {
-                 switch (response.data.gifts[i].type) {
-                   case '1': statement = response.data.gifts[i].cash_description !== null ? JSON.parse(response.data.gifts[i].cash_description)[0].statement : '';
-                     this.giftStatements.otherpages.push(statement);
-                     break;
-                   case '2': statement = response.data.gifts[i].property_details !== null ? JSON.parse(response.data.gifts[i].property_details)[0].statement : '';
-                     this.giftStatements.otherpages.push(statement);
-                     break;
-                   case '3': statement = response.data.gifts[i].business_details !== null ? JSON.parse(response.data.gifts[i].business_details)[0].statement : '';
-                     this.giftStatements.otherpages.push(statement);
-                     break;
-                   case '4': statement = response.data.gifts[i].asset_details !== null ? JSON.parse(response.data.gifts[i].asset_details)[0].statement : '';
-                     this.giftStatements.otherpages.push(statement);
-                     break;
-                 }
-               }
-             }
-             for (let i = 0; i < Math.ceil(this.giftStatements.otherpages.length / 5); i++) {
-               this.giftStatements.pageLength.push(i);
-               this.docThumbImg.push( '../../../../../assets/images/doc1-thumb1.png');
-             }
+            console.log('custGiftsArr received : ', this.userDetails.custGiftsArr);
+            if (this.userDetails.custGiftsArr !== undefined && this.userDetails.custGiftsArr !== null) {
+              this.userDetails.custGiftsArr.forEach( (giftStatement, index) => {
+                if ( index < 5 ) {
+                  this.giftStatements.firstpage.push(giftStatement);
+                } else {
+                  this.giftStatements.otherpages.push(giftStatement);
+                }
+              });
+            } else {
+              console.log('custGiftArray comming null or undefined');
+            }
+
+            for (let i = 0; i < Math.ceil(this.giftStatements.otherpages.length / 5); i++) {
+              this.giftStatements.pageLength.push(i);
+              this.docThumbImg.push( '../../../../../assets/images/doc1-thumb1.png');
+            }
             this.liCount = this.docThumbImg.length * 114;
              console.log(this.giftStatements);
-             //this.giftStatements.pageLength = Math.ceil(this.giftStatements.otherpages.length / 5);
           }
           if (response.data.tellUsAboutYou.pet_names !== null) {
             this.petNames = JSON.parse(response.data.tellUsAboutYou.pet_names);
           }
           if (response.data.estateDistribute !== null) {
             this.estateDistribute = {
+              // tslint:disable-next-line:max-line-length
               _sb: response.data.estateDistribute.to_a_single_beneficiary !== null && response.data.estateDistribute.to_a_single_beneficiary !== undefined ? JSON.parse(response.data.estateDistribute.to_a_single_beneficiary)[0] : null,
+              // tslint:disable-next-line:max-line-length
               _mb: response.data.estateDistribute.to_multiple_beneficiary !== null && response.data.estateDistribute.to_multiple_beneficiary !== undefined ? JSON.parse(response.data.estateDistribute.to_multiple_beneficiary)[0] : null,
             } ;
           }
+          console.log('childrens : ', this.userDetails.children);
           console.log(this.estateDistribute);
         }
       }
@@ -246,7 +231,10 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   getUserDetails() {
     this.getUserDetailsSubscription = this.userService.getUserDetails(this.loggedInUser.id).subscribe(
       (response: any ) => {
-        this.firstname = response.data[0] !== null && response.data[0].data != null && response.data[0].data.userInfo !== null && response.data[0].data.userInfo.firstname !== null ? response.data[0].data.userInfo.firstname : '_____________';
+        this.firstname = response.data[0] !== null && response.data[0].data != null && response.data[0].data.userInfo !== null
+        && response.data[0].data.userInfo.firstname !== null
+             ? response.data[0].data.userInfo.firstname
+             : '_____________';
       },
       (error: any) => {
         console.log(error);
@@ -276,12 +264,12 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   /**Downloads the pdf*/
   printPDF() {
     this.loading = true;
-    let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
-    let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+    const userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     this.printSubscription = this.globalPDFService.willTemplate(token).subscribe(
       (response: any) => {
         if (response.status) {
-          let src = this.globalPDFService.printFile(userId, 'will-template.pdf');
+          const src = this.globalPDFService.printFile(userId, 'will-template.pdf');
           const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
           if (win !== null) {
             win.document.write('<iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');

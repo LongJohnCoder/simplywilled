@@ -228,3 +228,12 @@ Hotfixes V0.1 stable released to dev
 commit name : final sprint
 version : 1
 1> Fixed Upper case user full name issue in all 5 documents
+****************************************************************
+
+****************************************************************
+**************** Sprint 10th July 2018 **************************
+commit name : final sprint
+version : 2
+1> Fixed reloading issue in gifts section
+2> Last will webview multiple gifts issue fixed and console error fixed 
+****************************************************************

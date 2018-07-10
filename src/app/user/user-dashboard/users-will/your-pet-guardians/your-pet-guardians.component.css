@@ -336,3 +336,7 @@ select.form-control {
     display: none;
   }
 }
+
+.no-capitalise {
+  text-transform: none;
+}

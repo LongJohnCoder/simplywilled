@@ -191,7 +191,7 @@
       <span class="contact_class">Payment Options</span>
       <P class="headingInfo">Select any payment option.</P>
       <div class="form-group">
-        <button class="payPaypal" (click)="paymentMethod = 'paypal-payment'" [ngClass]="{'active': paymentMethod === 'paypal-payment'}">
+        <button class="payPaypal" (click)="paymentMethod = 'paypal-payment'; cardValid = true;" [ngClass]="{'active': paymentMethod === 'paypal-payment'}">
           Pay With <img src="../../../../../../assets/images/paypalLogo.png" alt="PayPal">
         </button>
         <button class="payCardHead" (click)="paymentMethod = 'card-payment'" [ngClass]="{'active': paymentMethod === 'card-payment'}">
@@ -233,11 +233,14 @@
             <div class="col-lg-6">
               <div class="cardLogo"><span class={{cardtype}}></span></div>
               <input type="text" class="form-control cardNumber" placeholder="Card Number"
-                     [(ngModel)]="data.cardNumber" ngModel #cardNumber="ngModel" name="cardNumber" mask="0000 0000 0000 0000"
+                     [(ngModel)]="data.cardNumber" ngModel #cardNumber="ngModel" name="cardNumber" mask="{{cardLength}}"
 
                      required #cardNum (keyup)="GetCardType(cardNum)">
-              <span class="error_txt" *ngIf="cardNumber.invalid && cardNumber.touched">
+                  <span class="error_txt" *ngIf="cardNumber.invalid && cardNumber.touched">
                     <p>Please enter proper card number</p>
+                  </span>
+                  <span class="error_txt" *ngIf="cardNumber.touched && !cardValid">
+                    <p>This card is not valid</p>
                   </span>
             </div>
             <!--</div>-->
@@ -252,7 +255,7 @@
             </div>
             <div class="col-sm-6 col-lg-3">
               <input type="password" class="form-control"
-                     [(ngModel)]="data.cvv" ngModel #cvv="ngModel" name="cvv" autocomplete="off" mask="0000"
+                     [(ngModel)]="data.cvv" ngModel #cvv="ngModel" name="cvv" autocomplete="off" mask="{{cvvLength}}"
                      placeholder="CVV" required>
               <span class="askCvv" (click)="openModal(askCvvModal)">What is this?</span>
               <span class="error_txt" *ngIf="cvv.invalid && cvv.touched">
@@ -267,7 +270,7 @@
       </div>
 
       <div class="form-footer">
-        <button class="btn common-button btn-complete" [disabled]="!form.valid" (click)="checkout()">Continue</button>
+        <button class="btn common-button btn-complete" [disabled]="!form.valid || !cardValid" (click)="checkout()">Continue</button>
       </div>
     </form>
 

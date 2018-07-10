@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import {GiftModel} from '../models/giftModel';
 import {environment} from '../../../../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class GiftService {
 
+  public currentToolTipType = new Subject<string>();
   constructor(private http: HttpClient) { }
 
   /**
@@ -29,4 +31,5 @@ export class GiftService {
     return this.http.post(environment.API_URL + 'user/edit-profile', data,{headers: new HttpHeaders(
         {'Authorization': token})});
   }
+
 }

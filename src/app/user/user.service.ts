@@ -66,4 +66,5 @@ export class UserService {
     fiduciaryOfUser(body: any): Observable<any> {
         return this.httpClient.post( environment.API_URL + 'fiduciary-user', body );
     }
+
 }

@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild, Output, EventEmitter} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
@@ -17,6 +17,8 @@ import {Subscription} from 'rxjs/Subscription';
 export class CashGiftComponent implements OnInit, OnDestroy {
   /**Variable declaration*/
   @Input() giftCount: any;
+  @Output() cashEvent = new EventEmitter();
+
   @ViewChild(YourSpecificGiftComponent) YourSpecificGiftComponent: YourSpecificGiftComponent;
   isIndividual: boolean;
   isCharity: boolean;
@@ -207,7 +209,10 @@ export class CashGiftComponent implements OnInit, OnDestroy {
         }
         this.saveCashGiftDBSubscription = this.saveCashGiftDB.subscribe(data => {
           if (data.status) {
-            window.location.reload();
+            console.log('cash gift saved');
+            this.changeCashViewState();
+            // window.location.reload();
+            // this.router.navigate(['/dashboard/your-specific-gifts']);
           } else {
             this.errFlag = true;
             this.errString = 'Something went wrong while updating data';
@@ -332,9 +337,13 @@ export class CashGiftComponent implements OnInit, OnDestroy {
    * this function for get back to the main gift page
    */
   popUp(): void {
+    console.log('here cash popup');
     const confirm1 = confirm('Are you sure you want to delete this gift?');
     if (confirm1) {
-      window.location.reload();
+      // this.changeViewState();
+      this.changeCashViewState();
+      // window.location.reload();
+      // this.router.navigate(['/dashboard/your-specific-gifts']);
     }
   }
 
@@ -343,10 +352,18 @@ export class CashGiftComponent implements OnInit, OnDestroy {
    * @param {number} id
    */
   popUpDelete(id: number): void {
+    console.log('here cash popup delete');
     this.ysgComponent.deleteGift(id);
-    this.ysgComponent.changeViewState();
-    this.editService.unsetData();
-    window.location.reload();
+    this.changeCashViewState();
+    // this.ysgComponent.changeViewState();
+    // this.editService.unsetData();
+    // this.changeViewState();
+    // window.location.reload();
+    // this.router.navigate(['/dashboard/your-specific-gifts']);
+  }
+
+  changeCashViewState(): void {
+    this.cashEvent.emit();
   }
 
   /**When the component is destroyed*/

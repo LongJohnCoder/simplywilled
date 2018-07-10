@@ -1,9 +1,10 @@
-import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, Output, OnDestroy, OnInit, ViewChild, EventEmitter} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs/Subscription';
 import {YourSpecificGiftService} from '../services/your-specific-gift.service';
 import {EditGiftService} from '../services/edit-gift.service';
 import {YourSpecificGiftComponent} from '../your-specific-gift.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-business-interest',
@@ -15,6 +16,8 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
 
   /**Variable declaration*/
   @Input() giftCount: any;
+  @Output() businessInterestEvent = new EventEmitter();
+
   @ViewChild(YourSpecificGiftComponent) YourSpecificGiftComponent: YourSpecificGiftComponent;
   businessInterestForm: FormGroup;
   multipleBeneficiaries: FormArray;
@@ -54,7 +57,8 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
     private _fb: FormBuilder,
     private ysgService: YourSpecificGiftService,
     private editService: EditGiftService,
-    private ysgComponent: YourSpecificGiftComponent
+    private ysgComponent: YourSpecificGiftComponent,
+    private router: Router
   ) {
     this.createForm();
     let userId = this.parseUserId();
@@ -443,7 +447,9 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
   editGiftData(token: string, cashGiftDataSet) {
     this.ysgService.updateGift(token, cashGiftDataSet).subscribe((data) => {
       if (data.status) {
-        window.location.reload();
+        this.changeBusinessInterestViewState();
+        // window.location.reload();
+        // this.router.navigate(['/dashboard/your-specific-gifts']);
       } else {
         this.errors.errorFlag = true;
         this.errors.errorMsg = 'Something went wrong while updating data';
@@ -460,7 +466,9 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
   createGiftData(token: string, cashGiftDataSet) {
     this.ysgService.saveCashGiftData(token, cashGiftDataSet).subscribe((data) => {
       if (data.status) {
-        window.location.reload();
+        this.changeBusinessInterestViewState();
+        // window.location.reload();
+        // this.router.navigate(['/dashboard/your-specific-gifts']);
       } else {
         this.errors.errorFlag = true;
         this.errors.errorMsg = 'Something went wrong while updating data';
@@ -551,9 +559,11 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
   /**Deletes the gift*/
   popUpDelete(id: number): void {
     this.ysgComponent.deleteGift(id);
-    this.ysgComponent.changeViewState();
+    // this.ysgComponent.changeViewState();
     this.editService.unsetData();
-    window.location.reload();
+    this.changeBusinessInterestViewState();
+    // window.location.reload();
+    // this.router.navigate(['/dashboard/your-specific-gifts']);
   }
 
   /**
@@ -561,7 +571,13 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
    */
   popUp(): void {
     if (confirm('Are you sure you want to delete this gift?')) {
-      window.location.reload();
+      this.changeBusinessInterestViewState();
+      // window.location.reload();
+      // this.router.navigate(['/dashboard/your-specific-gifts']);
     }
+  }
+
+  changeBusinessInterestViewState(): void {
+    this.businessInterestEvent.emit();
   }
 }
