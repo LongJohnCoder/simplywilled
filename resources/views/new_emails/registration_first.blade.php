@@ -44,7 +44,9 @@
                     </tr>
                     <tr>
                         <td>
+                          <a href="{{url('/')}}">
                             <img src="{{url('/')}}/images/logo.jpg" alt="simplywilled.com" style="display: block;">
+                          </a>
                         </td>
                     </tr>
                     <tr>
@@ -113,7 +115,9 @@
                             <!-- Contact & Follow Buttons -->
                             <div style="text-align: center;padding: 30px 0;">
                               <div style="text-align: center;">
+                                <a href="{{url('/')}}">
                                   <img src="{{url('/')}}/images/callus.jpg" style="height: 155px; margin-top: -40px;" alt="">
+                                </a>
                               </div>
                               <ul style="list-style-type: none; text-align:center;">
                                   <li style="display: inline-block; padding: 5px; "><a href="https://www.facebook.com/SimplyWilled"><img src="{{url('/')}}/images/fd-icon.png"></a></li>
