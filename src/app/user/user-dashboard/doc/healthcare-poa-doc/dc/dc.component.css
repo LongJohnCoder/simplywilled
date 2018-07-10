@@ -4,4 +4,10 @@ p, span {
 
 .docPage{
     box-shadow: 0 0 7px rgba(0,0,0,0.3);
+    height: auto !important;
+}
+
+.docPageInner{
+    height: auto !important;
+    min-height: 400px;
 }
