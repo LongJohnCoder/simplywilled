@@ -366,6 +366,17 @@
   font-size: 16px !important;
 }*/
 
+.docHeading{
+  color: #2479B8;
+  font-size: 30px;
+  text-align: center;
+  padding-bottom: 20px;
+  font-family: 'OpenSans-SemiBold';
+  border-bottom: 1px solid #d8d8d8;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
 .docContainer{
   width: 700px;
   margin: 0 auto;
@@ -389,12 +400,21 @@ p.ctl { font-family: "Times New Roman" }
   display: inline-block;
   width: 100%;
 }
+.docPage span, .docPage p, .docPage h1{
+  font-family: "Times New Roman" !important;
+}
 .docBtnArea ul{
   margin: 41px 0 0 0;
   float: left;
+  width: 100%;
 }
 .docBtnArea ul:last-child{
-  float: right;
+  float: none;
+  max-width: 360px;
+  text-align: center;
+  margin: 0 auto 0;
+  top: -39px;
+  position: relative;
 }
 .docBtnArea.uncompleted ul:last-child{
   display: none;
@@ -410,6 +430,14 @@ p.ctl { font-family: "Times New Roman" }
 }
 .docBtnArea ul li:last-child{
   margin-right: 0;
+  float: right;
+}
+.docBtnArea ul:last-child li:last-child{
+  float: none;
+}
+.docBtnArea ul:last-child li{
+  display: inline-block;
+  float: none;
 }
 .docBtnArea ul li a{
   background: linear-gradient(#48a1d7, #3784ca);
@@ -429,6 +457,9 @@ p.ctl { font-family: "Times New Roman" }
 }
 .docBtnArea ul li a i{
   padding-right: 5px;
+}
+.docBtnArea ul:first-child li:last-child{
+  float: left;
 }
 .docBtnArea ul:first-child li:last-child a i{
   padding-right: 0;
@@ -452,5 +483,32 @@ p.ctl { font-family: "Times New Roman" }
   .docBtnArea ul li{
     display: inline-block;
     float: none;
+  }
+  .docBtnArea ul{
+    width: 100%;
+    text-align: center;
+  }
+  .docBtnArea ul li{
+    display: inline-block;
+    float: none;
+  }
+  .docBtnArea ul:last-child {
+    float: left;
+    margin: 0 auto 24px;
+    top: 12px;
+    max-width: 100%;
+  }
+  .docBtnArea ul:last-child li{
+    margin-top: 12px;
+  }
+  .docBtnArea ul:first-child li:last-child{
+    float: none;
+  }
+  
+}
+
+@media screen and (max-width: 767px){
+  .main-content{
+    width: 100%;
   }
 }

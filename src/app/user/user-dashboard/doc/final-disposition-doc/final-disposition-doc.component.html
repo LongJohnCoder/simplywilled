@@ -11,6 +11,7 @@
 </div>
 
 <div class="main-content" *ngIf="!loading">
+  <h2 class="docHeading">Final Disposition Authorization and Instructions</h2>
   <div class="thumbContainer">
     <ul>
       <li *ngFor="let thumb of docThumbImg; let i = index" (click)="scrollDoc(i)" [ngClass]="{'active' : thumbIndex == i}"><p><img src="{{thumb}}" alt=""></p></li>
@@ -23,8 +24,8 @@
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
           <div id="doc" class="docPageInner"
                style=" height: 890px;">
-            <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; font-family: Garamond;">Final Disposition Authorization and Instructions</h1>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; ">Final Disposition Authorization and Instructions</h1>
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               I, <span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.firstname}} </span><span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.middlename}} </span><span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.lastname}} </span>, of <span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.address}} </span>,<span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.city}} </span> , <span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.state}} </span>,
               being of sound mind, willfully and voluntarily make known by this document
               <span *ngIf="userDetails.tellUsAboutYou.state === 'New Jersey'">my desires concerning, upon my death, the final disposition of my remains</span>
@@ -36,12 +37,12 @@
               </span>:
             </p>
 
-            <!--<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <!--<p style="font-size: 15px; margin: 0 0 15px; ">
 
               <span  *ngIf="userDetails.finalArrangements.type === '1'">cremated</span>
               <span  *ngIf="userDetails.finalArrangements.type === '0'">buried</span>.
             </p>-->
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               <span  *ngIf="userDetails.finalArrangements.type === '1'">
 
                 1. I wish to be cremated. I would like my ashes to be managed and disposed of in the following manner: <span *ngIf="userDetails.finalArrangements.ashes !== null && userDetails.finalArrangements.ashes !== undefined"> {{userDetails.finalArrangements.ashes}}.</span>
@@ -79,7 +80,7 @@
                 </span>
               </span>
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               2. I have made pre-arrangements at <span *ngIf="userDetails.finalArrangements.arrangements !== null && userDetails.finalArrangements.arrangements !== undefined"> {{userDetails.finalArrangements.arrangements}}.</span>
 
                 <span *ngIf="userDetails.finalArrangements.arrangements === null && userDetails.finalArrangements.arrangements === undefined">: ______________________________________
@@ -91,7 +92,7 @@
                 </span>
             </p>
 
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
                   3. I wish for my representative to honor the following instructions with regard to my funeral or other ceremony for the final disposition of my remains: ______________________________________
 
               ______________________________________________________________________
@@ -100,22 +101,22 @@
 
             </p>
 
-            <!--<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <!--<p style="font-size: 15px; margin: 0 0 15px; ">
                 <span *ngIf="userDetails.tellUsAboutYou.state !== 'New Jersey'">
 
                   4. My &lt;!&ndash;<span *ngIf="userDetails.tellUsAboutYou.state !== 'Michigan'"> &ndash;&gt;funeral &lt;!&ndash;</span> &ndash;&gt;representative shall be:______________________________________
 
                   ______________________________________
-                  &lt;!&ndash;<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;"> {{userDetails.personalRepresentative.fullname}} </p>&ndash;&gt;
-                  <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;"> (Name) </p>
+                  &lt;!&ndash;<p style="font-size: 15px; margin: 0 0 15px; "> {{userDetails.personalRepresentative.fullname}} </p>&ndash;&gt;
+                  <p style="font-size: 15px; margin: 0 0 15px; "> (Name) </p>
 
                   ______________________________________
-                  <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;" *ngIf="userDetails.personalRepresentative.address !== null && userDetails.personalRepresentative.address !== undefined">
+                  <p style="font-size: 15px; margin: 0 0 15px; " *ngIf="userDetails.personalRepresentative.address !== null && userDetails.personalRepresentative.address !== undefined">
                     {{userDetails.personalRepresentative.address}}
                   </p>
                 </span>
             </p>-->
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
 
                 <span>
                    3. My funeral representative shall be:
@@ -145,7 +146,7 @@
 
                 </span>
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
 
               If my funeral representative dies, becomes incapacitated, resigns, refuses to act, ceases to be qualified, or cannot be located within the time necessary to control the final disposition of my remains, I hereby appoint the following individual to serve as my successor funeral representative:
 
@@ -161,11 +162,11 @@
 
               (Telephone)
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               5. This authorization becomes effective upon my death. I hereby revoke any prior final disposition authorizations or instructions that I may have signed before the date that this document is signed. I hereby agree that any funeral director, crematory authority, or cemetery authority that receives a copy of this document may act under it. Any modification or revocation of this document is not effective as to a funeral director, crematory authority, or cemetery authority until the funeral director, crematory authority, or cemetery authority receives actual notice of the modification or revocation. No funeral director, crematory authority, or cemetery authority may be liable because of reliance on a copy of this document.
             </p>
 
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               <span *ngIf="userDetails.tellUsAboutYou.state === 'Wisconsin'">
                 The representative and any successor representative, by accepting appointment under this document, assume the powers and duties specified for a representative under §154.30, Wisconsin Statutes.
               </span>
@@ -175,60 +176,60 @@
             </p>
 
 
-            <!--<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <!--<p style="font-size: 15px; margin: 0 0 15px; ">
             Congratulations <span style="text-transform: uppercase;">{{userDetails.firstname}}</span> Your custom estate documents are ready. Now it is time to sign your
             documents. Please be sure to follow these instructions carefully.
           </p>
-          <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
+          <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; ">
             BEFORE YOU BEGIN, HERE ARE A FEW THINGS YOU WILL NEED:
           </h2>
-          <p class="para2" style="font-size: 15px; margin: 0 20px 15px; font-family: Garamond;">
+          <p class="para2" style="font-size: 15px; margin: 0 20px 15px; ">
             First, you will need a Blue Ink Pen.
             We recommend using a blue ink pens for everyone signing because it is easier to tell that the signatures are
             originals and not photocopies.
           </p>
-          <p class="para2" style="font-size: 15px; margin: 0 20px 15px; font-family: Garamond;">
+          <p class="para2" style="font-size: 15px; margin: 0 20px 15px; ">
             Second, you will need two witnesses, to witness your signature on the documents.
             Your witnesses must be over the age of 18, and cannot be a beneficiary of your estate, or a fiduciary of your
             estate. Estate fiduciaries include your Personal Representative, Executor, Financial Power of Attorney,
             Healthcare Power of Attorney, and Guardian for Minor Children.
           </p>
-          <p class="para2" style="font-size: 15px; margin: 0 20px 15px; font-family: Garamond;">
+          <p class="para2" style="font-size: 15px; margin: 0 20px 15px; ">
             Third, you will need a notary public to notarize your signature.
             You can find a notary public at a local bank or grocery store or UPS location.
             Remember to bring your government issued photo ID for the notary public to verify your identity, and if
             necessary, the identities of your witnesses.
           </p>
-          <p class="para2" style="font-size: 15px; margin: 0 20px 15px; font-family: Garamond;">
+          <p class="para2" style="font-size: 15px; margin: 0 20px 15px; ">
             Once you have these items, you are ready to review your documents.
           </p>
-          <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
+          <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; ">
             STEP ONE: REVIEW YOUR LAST WILL AND TESTAMENT:
           </h2>
-          <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+          <p style="font-size: 15px; margin: 0 0 15px; ">
             Read and review your Last Will and Testament carefully. Do not sign your Last Will and Testament until you have
             read all of its provisions. Only sign your Last Will and Testament if you are in full agreement with all of its
             provisions.
           </p>
-          <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+          <p style="font-size: 15px; margin: 0 0 15px; ">
             If you need to make changes to your Last Will and Testament, please return to the SimplyWilled.com interview to
             make any necessary changes. Once you have made your changes, please print out the new version of your Last Will
             and Testament and review it to confirm that the changes have been made to your satisfaction.
           </p>
-          <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
+          <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; ">
             STEP TWO: SIGN YOUR LAST WILL AND TESTAMENT:
           </h2>
-          <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+          <p style="font-size: 15px; margin: 0 0 15px; ">
             Please be sure to have two witnesses and a notary public present when you sign your Last Will and Testament.
             Both of your witnesses and the notary must all be present when you sign your Last Will and Testament. Your
             witnesses must see you sign, and additionally your witnesses must see each other sign. This should all be done
             in the presence of the notary public.
           </p>
-          <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+          <p style="font-size: 15px; margin: 0 0 15px; ">
             Don,t forget, your witnesses should be adults, over the age of 18, who are not beneficiaries or fiduciaries of
             your estate.
           </p>
-          <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+          <p style="font-size: 15px; margin: 0 0 15px; ">
             You, your two witnesses, and the notary public should all be present and witness the following:
           </p>-->
           </div>
@@ -236,7 +237,7 @@
        <!-- <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
           <div class="docPageInner"
                style=" height: 890px;">
-            &lt;!&ndash;<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            &lt;!&ndash;<p style="font-size: 15px; margin: 0 0 15px; ">
 
                 <span *ngIf="userDetails.tellUsAboutYou.state !== 'New Jersey'">
                    {{userDetails.personalRepresentative.city}},   {{userDetails.personalRepresentative.state}}   {{userDetails.personalRepresentative.zip}}
@@ -260,8 +261,8 @@
             </p>&ndash;&gt;
 
               &lt;!&ndash;«IF Successor?»&ndash;&gt;
-            &lt;!&ndash;<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;" *ngIf="userDetails.personalRepresentative !== null && userDetails.personalRepresentative !== undefined">&ndash;&gt;
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            &lt;!&ndash;<p style="font-size: 15px; margin: 0 0 15px; " *ngIf="userDetails.personalRepresentative !== null && userDetails.personalRepresentative !== undefined">&ndash;&gt;
+            <p style="font-size: 15px; margin: 0 0 15px; ">
 
               If my funeral representative dies, becomes incapacitated, resigns, refuses to act, ceases to be qualified, or cannot be located within the time necessary to control the final disposition of my remains, I hereby appoint the following individual to serve as my successor funeral representative:
 
@@ -277,75 +278,75 @@
 
               (Telephone)
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               5. This authorization becomes effective upon my death. I hereby revoke any prior final disposition authorizations or instructions that I may have signed before the date that this document is signed. I hereby agree that any funeral director, crematory authority, or cemetery authority that receives a copy of this document may act under it. Any modification or revocation of this document is not effective as to a funeral director, crematory authority, or cemetery authority until the funeral director, crematory authority, or cemetery authority receives actual notice of the modification or revocation. No funeral director, crematory authority, or cemetery authority may be liable because of reliance on a copy of this document.
             </p>
 
-           &lt;!&ndash; <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+           &lt;!&ndash; <p style="font-size: 15px; margin: 0 0 15px; ">
               This authorization becomes effective upon my death. I hereby revoke any prior final disposition authorizations and/or instructions that I may have signed before the date that this document is signed. I hereby agree that any funeral director, crematory authority, or cemetery authority that receives a copy of this document may act under it. Any modification or revocation of this document is not effective as to a funeral director, crematory authority, or cemetery authority until the funeral director, crematory authority, or cemetery authority receives actual notice of the modification or revocation. No funeral director, crematory authority, or cemetery authority may be liable because of reliance on a copy of this document.
 
             </p>&ndash;&gt;
             &lt;!&ndash;<ul style="margin: 20px 0 20px 20px">
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Initial and date each page of your Last Will and Testament on the bottom right corner on the blank provided.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Sign and date your Last Will and Testament on the provided signature line.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Witnesses should sign their names to your Last Will and Testament on the provided witness signature lines
                 <span style="text-decoration: underline;">after</span> you’ve signed your name.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 The notary public should notarize your Last Will and Testament using the supplied notary block at the end of
                 your Last Will and Testament.
               </li>
             </ul>
-            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
+            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; ">
               STEP THREE: REVIEW YOUR SUPPORTING ESTATE DOCUMENTS:
             </h2>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               Read and review your supporting estate documents carefully before signing. Your supporting estate documents may
               include your healthcare power of attorney, your financial power of attorney, your living will, your HIPAA Waiver
               and your burial instructions. Only sign supporting documents if you are in full agreement with all of the
               provisions they contain.
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               If you need to make changes to any of your supporting documents, please return to the SimplyWilled.com interview
               to make any necessary changes. Once you have made your changes, please print a new set of supporting documents
               and review to confirm that the changes have been made to your satisfaction.
             </p>
-            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
+            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; ">
               STEP FOUR: SIGN YOUR SUPPORTING DOCUMENTS:
             </h2>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               Please be sure to have two witnesses and a notary public present when you sign your supporting documents. Both
               of your witnesses and the notary must all be present when you sign your supporting documents. Your witnesses
               must see you sign, and additionally your witnesses must see each other sign. This should all be done in the
               presence of the notary public.
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               Don’t forget, your witnesses should be adults, over the age of 18, who are not beneficiaries or fiduciaries of
               your estate.
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               You, your two witnesses, and the notary public should all be present and witness the following:
             </p>
             <ul style="margin: 20px 0 20px 20px">
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Sign and date your supporting documents on the provided signature lines.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Witnesses should sign their names to your supporting documents on the provided witness signature lines <span
                 style="text-decoration: underline;">after</span> you’ve signed your name.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 The notary public should then notarize your supporting documents using the supplied notary block at the ends
                 of your supporting documents.
               </li>
             </ul>
             <p
-              style="font-size: 15px; margin: 0 0 15px; padding-top:20px; font-family: Garamond; text-align: center; font-weight: bold;">
+              style="font-size: 15px; margin: 0 0 15px; padding-top:20px;  text-align: center; font-weight: bold;">
               Congratulations you’re done! It’s that simple.<br>
               Thank you for using SimplyWilled.com
             </p>&ndash;&gt;
@@ -354,7 +355,7 @@
         <!--<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;" *ngIf="userDetails.tellUsAboutYou.state === 'Wisconsin' || userDetails.tellUsAboutYou.state === 'Michigan'">
           <div class="docPageInner"
                style=" height: 890px;">
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               <span *ngIf="userDetails.tellUsAboutYou.state === 'Wisconsin'">
                 The representative and any successor representative, by accepting appointment under this document, assume the powers and duties specified for a representative under §154.30, Wisconsin Statutes.
               </span>
@@ -362,70 +363,70 @@
                 The funeral representative and any successor funeral representative, by accepting appointment under this document, assume the powers and duties specified for a funeral representative under §700.3206(1), MCL and acknowledge that he/she is not a prohibited person pursuant to §700.3206(2)(c), MCL.
               </span>
             </p>
-            &lt;!&ndash;<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            &lt;!&ndash;<p style="font-size: 15px; margin: 0 0 15px; ">
               [SIGNATURE PAGES FOLLOW]
             </p>&ndash;&gt;
             &lt;!&ndash;<ul style="margin: 20px 0 20px 20px">
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Initial and date each page of your Last Will and Testament on the bottom right corner on the blank provided.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Sign and date your Last Will and Testament on the provided signature line.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Witnesses should sign their names to your Last Will and Testament on the provided witness signature lines
                 <span style="text-decoration: underline;">after</span> you’ve signed your name.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 The notary public should notarize your Last Will and Testament using the supplied notary block at the end of
                 your Last Will and Testament.
               </li>
             </ul>
-            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
+            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; ">
               STEP THREE: REVIEW YOUR SUPPORTING ESTATE DOCUMENTS:
             </h2>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               Read and review your supporting estate documents carefully before signing. Your supporting estate documents may
               include your healthcare power of attorney, your financial power of attorney, your living will, your HIPAA Waiver
               and your burial instructions. Only sign supporting documents if you are in full agreement with all of the
               provisions they contain.
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               If you need to make changes to any of your supporting documents, please return to the SimplyWilled.com interview
               to make any necessary changes. Once you have made your changes, please print a new set of supporting documents
               and review to confirm that the changes have been made to your satisfaction.
             </p>
-            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
+            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; ">
               STEP FOUR: SIGN YOUR SUPPORTING DOCUMENTS:
             </h2>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               Please be sure to have two witnesses and a notary public present when you sign your supporting documents. Both
               of your witnesses and the notary must all be present when you sign your supporting documents. Your witnesses
               must see you sign, and additionally your witnesses must see each other sign. This should all be done in the
               presence of the notary public.
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               Don’t forget, your witnesses should be adults, over the age of 18, who are not beneficiaries or fiduciaries of
               your estate.
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               You, your two witnesses, and the notary public should all be present and witness the following:
             </p>
             <ul style="margin: 20px 0 20px 20px">
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Sign and date your supporting documents on the provided signature lines.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Witnesses should sign their names to your supporting documents on the provided witness signature lines <span
                 style="text-decoration: underline;">after</span> you’ve signed your name.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 The notary public should then notarize your supporting documents using the supplied notary block at the ends
                 of your supporting documents.
               </li>
             </ul>
             <p
-              style="font-size: 15px; margin: 0 0 15px; padding-top:20px; font-family: Garamond; text-align: center; font-weight: bold;">
+              style="font-size: 15px; margin: 0 0 15px; padding-top:20px;  text-align: center; font-weight: bold;">
               Congratulations you’re done! It’s that simple.<br>
               Thank you for using SimplyWilled.com
             </p>&ndash;&gt;
@@ -434,45 +435,49 @@
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
           <div class="docPageInner"
                style=" height: 890px;">
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
-              <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; font-family: Garamond;">SIGNATURE AND ACKNOWLEDGMENT</h1>
+            <p style="font-size: 15px; margin: 0 0 15px; ">
+              <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; ">SIGNATURE AND ACKNOWLEDGMENT</h1>
 
-              <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">Dated: _______________________________________</p>
+              <p style="font-size: 15px; margin: 0 0 15px; ">Dated: _______________________________________</p>
 
-              <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">Signed: _________________________________________</p>
+              <p style="font-size: 15px; margin: 0 0 15px; ">Signed: _________________________________________</p>
 
-              <span style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;text-transform: capitalize">{{userDetails.tellUsAboutYou.firstname}}</span> <span style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;text-transform: capitalize">{{userDetails.tellUsAboutYou.middlename}}</span> <span style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;text-transform: capitalize">{{userDetails.tellUsAboutYou.lastname}}</span>
+              <span style="font-size: 15px; margin: 0 0 15px; text-transform: capitalize">{{userDetails.tellUsAboutYou.firstname}}</span> <span style="font-size: 15px; margin: 0 0 15px; text-transform: capitalize">{{userDetails.tellUsAboutYou.middlename}}</span> <span style="font-size: 15px; margin: 0 0 15px; text-transform: capitalize">{{userDetails.tellUsAboutYou.lastname}}</span>
 
-              <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;text-transform: capitalize">{{userDetails.tellUsAboutYou.address}}</p>
+              <p style="font-size: 15px; margin: 0 0 15px; text-transform: capitalize">{{userDetails.tellUsAboutYou.address}}</p>
 
-              <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;text-transform: capitalize"><span>{{userDetails.tellUsAboutYou.city}}</span>, <span>{{userDetails.tellUsAboutYou.state}} <span>{{userDetails.tellUsAboutYou.zip}}</span></span></p>
+              <p style="font-size: 15px; margin: 0 0 15px; text-transform: capitalize"><span>{{userDetails.tellUsAboutYou.city}}</span>, <span>{{userDetails.tellUsAboutYou.state}} <span>{{userDetails.tellUsAboutYou.zip}}</span></span></p>
 
-              <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">{{userDetails.tellUsAboutYou.phone}}</p>
+              <p style="font-size: 15px; margin: 0 0 15px; ">{{userDetails.tellUsAboutYou.phone}}</p>
 
-              <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+              <p style="font-size: 15px; margin: 0 0 15px; ">
                 By my signature below, I attest that <span style="text-transform: uppercase;text-transform: capitalize"> {{userDetails.tellUsAboutYou.firstname}} </span><span style="text-transform: capitalize;"> {{userDetails.tellUsAboutYou.middlename}} </span><span style="text-transform: capitalize;"> {{userDetails.tellUsAboutYou.lastname}} </span>, the person who signed this document, did so or acknowledged signing this document in my presence and that {{userDetails.tellUsAboutYou.gender !== null ? (userDetails.tellUsAboutYou.gender === 'Male' ? 'he' : 'she') : 'he' }} appears to be of sound mind and not subject to duress, fraud, or undue influence. I further attest that I am not the representative or the successor representative appointed under this document, that I am at least eighteen (18) years of age, and that I am not related to the person who signed this document by blood, marriage, or adoption<span *ngIf="userDetails.tellUsAboutYou.state === 'Michigan'">, nor am I a prohibited witness pursuant to §700.3206(2)(b)(i), MCL.</span>
+                <span style="float: left; width: 100%; padding: 32px 0;">
+                <span style="width: 48%; float: left;">
+                  <span>WITNESS 1: ____________________________________<br><br></span>
 
-                  <span>WITNESS 1: _____________________________________</span>
+                  <span> ____________________________________<br>[print name]</span>
 
-                  <span>[print name] ______________________________________</span>
+                  <span>_____________________________________<br>[address]</span>
 
-                  <span>[address] _________________________________________</span>
+                  <span>_____________________________________<br>[city/state]</span>
+                  </span>
+                  <span style="width: 48%; float: right;">
+                  <span>WITNESS 2: _____________________________________<br><br></span>
 
-                  <span>[city/state]________________________________________</span>
+                  <span> ____________________________________<br>[print name]</span>
 
-                  <span>WITNESS 2: _____________________________________</span>
+                  <span>_____________________________________<br>[address]</span>
 
-                  <span>print name] ______________________________________</span>
+                  <span>_____________________________________<br>[city/state]</span>
+                  </span>
+                </span>
 
-                  <span>[address] _________________________________________</span>
+                  <span>STATE OF ________________ )<br>
 
-                  <span>[city/state]________________________________________</span>
+                   ____________________________ ) ss.</span><br>
 
-                  <span>STATE OF ________________ )
-
-                    ) ss.</span>
-
-                  <span>COUNTY OF ________________ )</span>
+                  <span>COUNTY OF ________________ )</span><br><br>
 
                   <span>Subscribed, sworn and acknowledged before me by <span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.firstname}} </span><span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.middlename}} </span><span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.lastname}} </span>, and _________________________________________, as witness, and _____________________________________, as witness, who personally appeared on this _________ day of ________________________________, _______, and who are personally known to me or who have produced satisfactory photo identification, and whose names are signed to the foregoing instrument.
 
@@ -483,66 +488,66 @@
                 My commission expires: _________________</span>
               </p>
             <!--<ul style="margin: 20px 0 20px 20px">
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Initial and date each page of your Last Will and Testament on the bottom right corner on the blank provided.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Sign and date your Last Will and Testament on the provided signature line.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Witnesses should sign their names to your Last Will and Testament on the provided witness signature lines
                 <span style="text-decoration: underline;">after</span> you’ve signed your name.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 The notary public should notarize your Last Will and Testament using the supplied notary block at the end of
                 your Last Will and Testament.
               </li>
             </ul>
-            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
+            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; ">
               STEP THREE: REVIEW YOUR SUPPORTING ESTATE DOCUMENTS:
             </h2>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               Read and review your supporting estate documents carefully before signing. Your supporting estate documents may
               include your healthcare power of attorney, your financial power of attorney, your living will, your HIPAA Waiver
               and your burial instructions. Only sign supporting documents if you are in full agreement with all of the
               provisions they contain.
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               If you need to make changes to any of your supporting documents, please return to the SimplyWilled.com interview
               to make any necessary changes. Once you have made your changes, please print a new set of supporting documents
               and review to confirm that the changes have been made to your satisfaction.
             </p>
-            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
+            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; ">
               STEP FOUR: SIGN YOUR SUPPORTING DOCUMENTS:
             </h2>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               Please be sure to have two witnesses and a notary public present when you sign your supporting documents. Both
               of your witnesses and the notary must all be present when you sign your supporting documents. Your witnesses
               must see you sign, and additionally your witnesses must see each other sign. This should all be done in the
               presence of the notary public.
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               Don’t forget, your witnesses should be adults, over the age of 18, who are not beneficiaries or fiduciaries of
               your estate.
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               You, your two witnesses, and the notary public should all be present and witness the following:
             </p>
             <ul style="margin: 20px 0 20px 20px">
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Sign and date your supporting documents on the provided signature lines.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Witnesses should sign their names to your supporting documents on the provided witness signature lines <span
                 style="text-decoration: underline;">after</span> you’ve signed your name.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 The notary public should then notarize your supporting documents using the supplied notary block at the ends
                 of your supporting documents.
               </li>
             </ul>
             <p
-              style="font-size: 15px; margin: 0 0 15px; padding-top:20px; font-family: Garamond; text-align: center; font-weight: bold;">
+              style="font-size: 15px; margin: 0 0 15px; padding-top:20px;  text-align: center; font-weight: bold;">
               Congratulations you’re done! It’s that simple.<br>
               Thank you for using SimplyWilled.com
             </p>-->
@@ -551,9 +556,9 @@
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;" *ngIf="userDetails.tellUsAboutYou.state === 'Wisconsin' || userDetails.tellUsAboutYou.state === 'Michigan'">
           <div class="docPageInner"
                style=" height: 890px;">
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               <span>
-                 <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; font-family: Garamond;">AGENT ACCEPTANCE AND ACKNOWLEDGMENT</h1>
+                 <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; ">AGENT ACCEPTANCE AND ACKNOWLEDGMENT</h1>
 
                     I hereby accept appointment as <span *ngIf="userDetails.tellUsAboutYou.city === 'Michigan'"> funeral </span>representative for the control of final disposition of the declarant’s remains.
 
@@ -604,66 +609,66 @@
               </span>
             </p>
             <!--<ul style="margin: 20px 0 20px 20px">
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Initial and date each page of your Last Will and Testament on the bottom right corner on the blank provided.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Sign and date your Last Will and Testament on the provided signature line.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Witnesses should sign their names to your Last Will and Testament on the provided witness signature lines
                 <span style="text-decoration: underline;">after</span> you’ve signed your name.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 The notary public should notarize your Last Will and Testament using the supplied notary block at the end of
                 your Last Will and Testament.
               </li>
             </ul>
-            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
+            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; ">
               STEP THREE: REVIEW YOUR SUPPORTING ESTATE DOCUMENTS:
             </h2>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               Read and review your supporting estate documents carefully before signing. Your supporting estate documents may
               include your healthcare power of attorney, your financial power of attorney, your living will, your HIPAA Waiver
               and your burial instructions. Only sign supporting documents if you are in full agreement with all of the
               provisions they contain.
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               If you need to make changes to any of your supporting documents, please return to the SimplyWilled.com interview
               to make any necessary changes. Once you have made your changes, please print a new set of supporting documents
               and review to confirm that the changes have been made to your satisfaction.
             </p>
-            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
+            <h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; ">
               STEP FOUR: SIGN YOUR SUPPORTING DOCUMENTS:
             </h2>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               Please be sure to have two witnesses and a notary public present when you sign your supporting documents. Both
               of your witnesses and the notary must all be present when you sign your supporting documents. Your witnesses
               must see you sign, and additionally your witnesses must see each other sign. This should all be done in the
               presence of the notary public.
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               Don’t forget, your witnesses should be adults, over the age of 18, who are not beneficiaries or fiduciaries of
               your estate.
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+            <p style="font-size: 15px; margin: 0 0 15px; ">
               You, your two witnesses, and the notary public should all be present and witness the following:
             </p>
             <ul style="margin: 20px 0 20px 20px">
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Sign and date your supporting documents on the provided signature lines.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 Witnesses should sign their names to your supporting documents on the provided witness signature lines <span
                 style="text-decoration: underline;">after</span> you’ve signed your name.
               </li>
-              <li style="margin-bottom: 10px; font-size: 15px; font-family: Garamond; list-style: initial; line-height: initial;">
+              <li style="margin-bottom: 10px; font-size: 15px;  list-style: initial; line-height: initial;">
                 The notary public should then notarize your supporting documents using the supplied notary block at the ends
                 of your supporting documents.
               </li>
             </ul>
             <p
-              style="font-size: 15px; margin: 0 0 15px; padding-top:20px; font-family: Garamond; text-align: center; font-weight: bold;">
+              style="font-size: 15px; margin: 0 0 15px; padding-top:20px;  text-align: center; font-weight: bold;">
               Congratulations you’re done! It’s that simple.<br>
               Thank you for using SimplyWilled.com
             </p>-->

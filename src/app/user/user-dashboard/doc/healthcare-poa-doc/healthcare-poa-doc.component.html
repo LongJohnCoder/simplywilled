@@ -11,6 +11,7 @@
 </div>
 
 <div class="main-content" *ngIf="!loading">
+  <h2 class="docHeading">HEALTHCARE POWER OF ATTORNEY</h2>
   <div class="thumbContainer" #thumbContainer>
     <ul [ngStyle]="{'width.px' : liCount}">
       <li *ngFor="let thumb of docThumbImg; let i = index" (click)="scrollDoc(i, $event)" [ngClass]="{'active' : thumbIndex === i}"><p><img src="{{thumb}}" alt=""></p></li>
@@ -19,7 +20,6 @@
   <div class="docViewBox">
     <div class="docView" #docBox (scroll)="getScroll(docBox.scrollTop, $event)">
 
-      <div class="docContainer">
         <app-ak [data]="pdfData" *ngIf="states.ak"></app-ak>
         <app-al [data]="pdfData" *ngIf="states.al"></app-al>
         <app-ar [data]="pdfData" *ngIf="states.ar"></app-ar>
@@ -71,7 +71,6 @@
         <app-ga [data]="pdfData" *ngIf="states.ga"></app-ga>
         <app-az [data]="pdfData" *ngIf="states.az"></app-az>
         <app-de [data]="pdfData" *ngIf="states.de"></app-de>
-      </div>
     </div>
   </div>
 

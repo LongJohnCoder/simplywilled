@@ -31,25 +31,17 @@
 }
 .docPage{
   background: #fff;
+  box-shadow: 0 0 7px rgba(0,0,0,0.3);
+  height: auto !important;
 }
-/* width */
-::-webkit-scrollbar {
-  width: 8px;
+.docPageInner{
+  padding: 0 !important;
+  height: auto !important;
+  min-height: 400px;
 }
-/* Track */
-::-webkit-scrollbar-track {
-  background: rgba(0,0,0,0);
-  box-shadow: inset 0 0 5px rgba(0,0,0,0);
-  border-radius: 5px;
-}
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.3);
-  border-radius: 5px;
-}
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0,0,0,0.5);
+
+.docPage p, .docPage span{
+  font-family: "Times New Roman";
 }
 
 .thumbContainer{

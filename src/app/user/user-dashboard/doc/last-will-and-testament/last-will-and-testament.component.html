@@ -11,6 +11,7 @@
 </div>
 
 <div class="main-content" *ngIf="!loading">
+  <h2 class="docHeading">LAST WILL AND TESTAMENT</h2>
   <div class="thumbContainer" #thumbContainer >
     <ul [ngStyle]="{'width.px' : liCount}">
       <li *ngFor="let thumb of docThumbImg; let i = index" (click)="scrollDoc(i)" [ngClass]="{'active' : thumbIndex === i}"><p><img src="{{thumb}}" alt=""></p></li>
@@ -418,6 +419,7 @@
               interpreted to include any child of mine born or adopted after the
               date of this Will.</span></p>
           </div>
+          
         </div>
 
 
@@ -3249,15 +3251,14 @@
               <br/>
 
             </p>
-            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-              <span style="font-family:'EB Garamond, serif'"><span size="2" style="font-size: 11pt">_____________________________			_____________________________	(WITNESS
-              1)						(WITNESS 2)</span></span></p>
-            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-              <span style="font-family:'EB Garamond, serif'"><span size="2" style="font-size: 11pt">NAME:							NAME:</span></span></p>
-            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-              <span style="font-family:'EB Garamond, serif'"><span size="2" style="font-size: 11pt">ADDRESS:						ADDRESS:</span></span></p>
-            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-              <span style="font-family:'EB Garamond, serif'"><span size="2" style="font-size: 11pt">CITY/STATE:						CITY/STATE:</span></span></p>
+            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; padding-bottom: 15px;">
+              <span style="font-family:'EB Garamond, serif'"><span size="2" style="font-size: 11pt">_____________________________			<span style="padding-left: 150px;"></span>_____________________________	<br>(WITNESS 1)<span style="padding-left: 280px;"></span>(WITNESS 2)</span></span></p>
+            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%;">
+              <span style="font-family:'EB Garamond, serif'"><span size="2" style="font-size: 11pt">NAME:<span style="padding-left: 318px;"></span>NAME:</span></span></p>
+            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; padding-top: 10px;">
+              <span style="font-family:'EB Garamond, serif'"><span size="2" style="font-size: 11pt">ADDRESS:<span style="padding-left: 295px;"></span>ADDRESS:</span></span></p>
+            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; padding-top: 10px;">
+              <span style="font-family:'EB Garamond, serif'"><span size="2" style="font-size: 11pt">CITY/STATE:<span style="padding-left: 280px;"></span>CITY/STATE:</span></span></p>
             <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
               <br/>
 
@@ -3374,7 +3375,7 @@
               1.	That the Testator executed this instrument as <span >
                 <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'his' : 'her' ): 'his' }}</span>
               </span> Last Will and Testament;</p>
-            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; padding-top: 10px;">
               2.	That, in the presence of all witnesses, <span >
               <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she' ): 'he' }}</span>
             </span> signed <span >
@@ -3386,7 +3387,7 @@
               intended the attached or foregoing document to be <span >
               <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'his' : 'her' ): 'his' }}</span>
             </span> Last Will and Testament;</p>
-            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; padding-top: 10px;">
               3.	That <span >
               <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she' ): 'he' }}</span>
             </span>
@@ -3394,12 +3395,12 @@
               <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'his' : 'her' ): 'his' }}</span>
             </span> free and voluntary act for the purposes
               expressed in it;</p>
-            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; padding-top: 10px;">
               4.	That each of the witnesses, in the presence of the Testator and of
               each other, signed the Will as a witness;</p>
-            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; padding-top: 10px;">
               5.	That the Testator was of sound mind; and</p>
-            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; padding-top: 10px;">
               6.	That the Testator was, at the time, eighteen (18) or more years of
               age.</p>
             <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
@@ -3431,11 +3432,11 @@
             <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
               <span size="2" style="font-size: 11pt">_______________________________________________	(WITNESS
               1)</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; padding-top: 10px;">
               <span size="2" style="font-size: 11pt">NAME:</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; padding-top: 10px;">
               <span size="2" style="font-size: 11pt">ADDRESS:</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; padding-top: 10px;">
               <span size="2" style="font-size: 11pt">CITY/STATE:</span></p>
             <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
               <br/>
@@ -3448,11 +3449,11 @@
             <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
               <span size="2" style="font-size: 11pt">_______________________________________________	(WITNESS
               2)</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; padding-top: 10px;">
               <span size="2" style="font-size: 11pt">NAME:</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; padding-top: 10px;">
               <span size="2" style="font-size: 11pt">ADDRESS:</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+            <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; padding-top: 10px;">
               <span size="2" style="font-size: 11pt">CITY/STATE:</span></p>
             <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
               <br/>

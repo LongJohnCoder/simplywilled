@@ -2905,3 +2905,13 @@ app-paypal-success, app-payment-page, app-packages{
     }
 
 }
+
+@media screen and (max-width: 767px){
+    app-last-will-and-testament, 
+    app-signing-instructions-doc, 
+    app-financial-poa-doc, 
+    app-healthcare-poa-doc,
+    app-final-disposition-doc{
+        width: 100%;
+    }
+}
