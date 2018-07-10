@@ -251,7 +251,7 @@
 					@else
 						I direct the following specific distributions at my death:
 						@foreach($custGiftsArr as $key => $statement)	
-						<span style="display:block; padding-top:10px;"><strong>({{$key}})</strong> {{$statement}}</span>
+						<span style="display:block; padding-top:10px;"><strong>({{$key + 1}})</strong> {{$statement}}</span>
 						@endforeach
 					@endif
 				</p>

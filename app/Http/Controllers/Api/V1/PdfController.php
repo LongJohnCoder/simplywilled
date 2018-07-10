@@ -583,11 +583,47 @@ class PdfController extends Controller
 
             
             $custGiftsArr = [];
-            $i = 0;
+            
             foreach($gifts as $key => $gift) {
-                if(isset($gift[0]) && isset($gift[0]['statement']) && strlen($gift[0]['statement']) > 0) {
-                    $custGiftsArr[] = $gift[0]['statement'];
+                switch ($gift->type) {
+                    case '1':   $giftData = $gift->cash_description;
+                                $giftData = json_decode($giftData, true);
+                                if(isset($giftData) && isset($giftData[0]) && array_key_exists('statement', $giftData[0]) && strlen(trim($giftData[0]['statement'])) > 0 ) {
+                                    $statement = $giftData[0]['statement'];
+                                    $custGiftsArr[] = $statement;
+                                }
+                                break;
+
+                    case '2':   $giftData = $gift->property_details;
+                                $giftData = json_decode($giftData, true);
+                                if(isset($giftData) && isset($giftData[0]) && array_key_exists('statement', $giftData[0]) && strlen(trim($giftData[0]['statement'])) > 0) {
+                                    $statement = $giftData[0]['statement'];
+                                    $custGiftsArr[] = $statement;
+                                }
+                                break;
+
+                    case '3':   $giftData = $gift->business_details;
+                                $giftData = json_decode($giftData, true);
+                                if(isset($giftData) && isset($giftData[0]) && array_key_exists('statement', $giftData[0]) && strlen(trim($giftData[0]['statement'])) > 0) {
+                                    $statement = $giftData[0]['statement'];
+                                    $custGiftsArr[] = $statement;
+                                }
+                                break;
+
+                    case '4':   $giftData = $gift->asset_details;
+                                $giftData = json_decode($giftData, true);
+                                if(isset($giftData) && isset($giftData[0]) && array_key_exists('statement', $giftData[0]) && strlen(trim($giftData[0]['statement'])) > 0) {
+                                    $statement = $giftData[0]['statement'];
+                                    $custGiftsArr[] = $statement;
+                                }
+                                break;
+                    
+                    default:    break;
                 }
+                // dd($gift);
+                // if(isset($gift[0]) && isset($gift[0]['statement']) && strlen($gift[0]['statement']) > 0) {
+                //     $custGiftsArr[] = $gift[0]['statement'];
+                // }
             }
                     
 
