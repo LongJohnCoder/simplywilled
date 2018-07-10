@@ -154,6 +154,13 @@ class PdfController extends Controller
             $gifts = $totalData['data']['gifts'];
             $contingentBeneficiary = $totalData['data']['contingentBeneficiary'];
             $disinherit  = $totalData['data']['disinherit'];
+            $custGiftsArr = $totalData['data']['custGiftsArr'];
+            //dd($toMultipleBeneficiary['beneficiaryYes'][0]);
+
+            // foreach($toMultipleBeneficiary['beneficiaryYes'] as $key => $eachBeneficiary) {
+            //     //dd($eachBeneficiary);
+            //     dd($eachBeneficiary['beneficiaryRelationship'], $eachBeneficiary['beneficiaryFullName']);
+            // }
 
             $giftsArr = [];
             foreach ($gifts as $key => $gift) {
@@ -194,7 +201,8 @@ class PdfController extends Controller
                 'estateDistribute'  => $estateDistribute,
                 'gifts' => $gifts,
                 'contingentBeneficiary' => $contingentBeneficiary,
-                'disinherit'    => $disinherit
+                'disinherit'    => $disinherit,
+                'custGiftsArr'   => $custGiftsArr
             ];
             
             if(!is_dir(public_path().'/'.PATH)) {
@@ -573,6 +581,16 @@ class PdfController extends Controller
             $disinherit = Disinherit::where('user_id', ID)->first();
             $financialPowerOfAttorney = FinancialPowerAttorney::where('user_id', ID)->first(); 
 
+            
+            $custGiftsArr = [];
+            $i = 0;
+            foreach($gifts as $key => $gift) {
+                if(isset($gift[0]) && isset($gift[0]['statement']) && strlen($gift[0]['statement']) > 0) {
+                    $custGiftsArr[] = $gift[0]['statement'];
+                }
+            }
+                    
+
             return response()->json([
                     'status'    =>  true,
                     'message'   =>  'Success',
@@ -593,7 +611,8 @@ class PdfController extends Controller
                                         'gifts' => $gifts,
                                         'contingentBeneficiary' => $contingentBeneficiary,
                                         'disinherit'    => $disinherit,
-                                        'financialPowerOfAttorney' => $financialPowerOfAttorney
+                                        'financialPowerOfAttorney' => $financialPowerOfAttorney,
+                                        'custGiftsArr' => $custGiftsArr
                                     ]
             ] ,200);            
 
@@ -712,6 +731,7 @@ class PdfController extends Controller
             $gifts = $totalData['data']['gifts'];
             $contingentBeneficiary = $totalData['data']['contingentBeneficiary'];
             $disinherit  = $totalData['data']['disinherit'];
+            $custGiftsArr = $totalData['data']['custGiftsArr'];
 
             $giftsArr = [];
             foreach ( $gifts as $key => $gift ) {
@@ -751,7 +771,8 @@ class PdfController extends Controller
                 'estateDistribute'  => $estateDistribute,
                 'gifts' => $gifts,
                 'contingentBeneficiary' => $contingentBeneficiary,
-                'disinherit'    => $disinherit
+                'disinherit'    => $disinherit,
+                'custGiftsArr'   => $custGiftsArr
             ];
 
             $pdf = PDF::loadView('pdf.last_will_and_testament', $arr);

@@ -246,19 +246,12 @@
 				<p style="padding-bottom:20px;">
 					<span style="font-weight:bold;">D. Specific Distributions.</span>
 
-					@if(count($gifts) == 0)
+					@if(count($custGiftsArr) == 0)
 						I decline to make any specific gifts or requests and intend for all of my Estate to be distributed in the manner hereinafter set forth for the distribution of the residue of my Estate.
 					@else
 						I direct the following specific distributions at my death:
-
-						@php
-							$i = 1;
-						@endphp
-
-						@foreach($gifts as $key => $gift)
-							@if(isset($gift[0]) && isset($gift[0]['statement']) && strlen($gift[0]['statement']) > 0)
-								<span style="display:block; padding-top:10px;"><strong>({{$i++}})</strong> {{$gift[0]['statement']}}</span>
-							@endif
+						@foreach($custGiftsArr as $key => $statement)	
+						<span style="display:block; padding-top:10px;"><strong>({{$key}})</strong> {{$statement}}</span>
 						@endforeach
 					@endif
 				</p>
@@ -282,8 +275,9 @@
 							in equal shares;
 
 							@if($toMultipleBeneficiary['isEstateIntoEqualShares'] == 'Yes')
-								@foreach($toMultipleBeneficiary['beneficiaryYes'][0] as $key => $eachBeneficiary)
-									<span>one share shall be distributed to my $eachBeneficiary['beneficiaryRelationship'] $eachBeneficiary['beneficiaryFullName']</span>
+								@foreach($toMultipleBeneficiary['beneficiaryYes'] as $key => $eachBeneficiary)
+									<span>one share shall be distributed to my {{$eachBeneficiary['beneficiaryRelationship']}} {{$eachBeneficiary['beneficiaryFullName']}}</span>
+									
 								@endforeach
 								If any named residuary beneficiary shall not be living at my death, such beneficiary’s share shall be distributed
 
@@ -311,8 +305,8 @@
 							in equal shares;
 
 							@if($toMultipleBeneficiary['isEstateIntoEqualShares'] == 'Yes')
-								@foreach($toMultipleBeneficiary['beneficiaryYes'][0] as $key => $eachBeneficiary)
-									<span>$eachBeneficiary['beneficiaryNoPercentageToEstate'] one share shall be distributed to my $eachBeneficiary['beneficiaryNoRelationship'] $eachBeneficiary['beneficiaryNoFullName']</span>
+								@foreach($toMultipleBeneficiary['beneficiaryYes'] as $key => $eachBeneficiary)
+									<span>$eachBeneficiary['beneficiaryNoPercentageToEstate'] one share shall be distributed to my {{$eachBeneficiary['beneficiaryNoRelationship']}} {{$eachBeneficiary['beneficiaryNoFullName']}}</span>
 								@endforeach
 								If any named residuary beneficiary shall not be living at my death, such beneficiary’s share shall be distributed
 								@if($toMultipleBeneficiary['deceasedBeneficiaryShareToKids'] == "Yes")
@@ -423,7 +417,7 @@
 					@endif
 
 					@if($tellUsAboutYou['leaveMoney'] == 1)
-						I give and bequeath to my Pet Caretaker who takes possession of my pets the sum of $tellUsAboutYou['petAmount'] Dollars ({{'$'.$tellUsAboutYou['petAmount']}}) on the condition that my Pet Caretaker agrees to provide a suitable home for my pets, to keep them well fed and clean, and to provide them with appropriate medical care.
+						I give and bequeath to my Pet Caretaker who takes possession of my pets the sum of {{$tellUsAboutYou['petAmount']}} Dollars ({{'$'.$tellUsAboutYou['petAmount']}}) on the condition that my Pet Caretaker agrees to provide a suitable home for my pets, to keep them well fed and clean, and to provide them with appropriate medical care.
 					@endif
 				</p>
 				@endif

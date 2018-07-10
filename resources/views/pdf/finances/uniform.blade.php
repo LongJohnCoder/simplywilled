@@ -169,7 +169,7 @@
 			
 		<ol>
 			<li>
-				<p align="justify" style="margin-bottom: 0in; line-height: 100%">
+				<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 					<span face="Calibri, serif">
 						<span face="Times New Roman, serif">This
 							power of attorney grants broad authority to another person (your
@@ -201,7 +201,7 @@
 
 			<ol start="2">
 				<li>
-					<p align="justify" style="margin-bottom: 0in; line-height: 100%">
+					<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 					<span face="Calibri, serif"><span face="Times New Roman, serif">This
 					power of attorney does not authorize the agent to make health care
 					decisions for you.</span></span></p>
@@ -215,7 +215,7 @@
 
 			<ol start="3">
 				<li>
-				<p align="justify" style="margin-bottom: 0in; line-height: 100%">
+				<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 				<span face="Calibri, serif"><span face="Times New Roman, serif">Your
 				agent (attorney-in-fact) has no duty to act unless you and your
 				agent agree otherwise in writing.</span></span></p>
@@ -229,7 +229,7 @@
 			
 			<ol start="4">
 				<li>
-			<p align="justify" style="margin-bottom: 0in; line-height: 100%">
+			<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 				<span face="Calibri, serif"><span face="Times New Roman, serif">This
 				document does not give your agent the power to accept or receive any
 				of your property, in trust or otherwise, as a gift, unless you
@@ -244,7 +244,7 @@
 			
 			<ol start="5">
 				<li>
-			<p align="justify" style="margin-bottom: 0in; line-height: 100%">
+			<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 				<span face="Calibri, serif"><span face="Times New Roman, serif">You
 				should select someone you trust to serve as your agent. Unless you
 				specify otherwise, generally the agent's authority will continue
@@ -260,7 +260,7 @@
 			
 			<ol start="6">
 				<li>
-				<p align="justify" style="margin-bottom: 0in; line-height: 100%">
+				<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 				<span face="Calibri, serif"><span face="Times New Roman, serif">Your
 				agent is entitled to reasonable compensation unless you state
 				otherwise in the Special Instructions.</span></span></p>
@@ -274,7 +274,7 @@
 			
 			<ol start="7">
 				<li>
-				<p align="justify" style="margin-bottom: 0in; line-height: 100%">
+				<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 				<span face="Calibri, serif"><span face="Times New Roman, serif">This
 				form provides for designation of one agent.  If your agent is unable
 				or unwilling to act for you, your power of attorney will end unless
@@ -290,7 +290,7 @@
 			
 			<ol start="8">
 				<li>
-				<p align="justify" style="margin-bottom: 0in; line-height: 100%">
+				<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 				<span face="Calibri, serif"><span face="Times New Roman, serif">This
 				power of attorney becomes effective immediately unless you state
 				otherwise in the Special Instructions.</span></span></p>
@@ -304,7 +304,7 @@
 			
 			<ol start="9">
 				<li>
-				<p align="justify" style="margin-bottom: 0in; line-height: 100%">
+				<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 				<span face="Calibri, serif"><span face="Times New Roman, serif">You
 				can amend or change this </span>
 				
@@ -331,7 +331,7 @@
 			
 			<ol start="10">
 				<li>
-				<p align="justify" style="margin-bottom: 0in; line-height: 100%">
+				<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 				<span face="Calibri, serif"><span face="Times New Roman, serif">You
 				have the right to revoke or terminate this Power of Attorney at any
 				time, so long as you are competent.  </span><span face="Times New Roman, serif">This
@@ -350,7 +350,7 @@
 
 			<ol start="11">
 				<li>
-				<p align="justify" style="margin-bottom: 0in; line-height: 100%">
+				<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 				<span face="Calibri, serif"><span face="Times New Roman, serif">Pay
 				careful attention to the signing instructions within the document. 
 				Be certain to sign, date, and acknowledge this power of attorney
@@ -367,7 +367,7 @@
 			
 			<ol start="12">
 				<li>
-				<p align="justify" style="margin-bottom: 0in; line-height: 100%">
+				<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 				<span face="Calibri, serif"><span face="Times New Roman, serif">If
 				you elect to grant powers over real property, this Power of Attorney
 				may require recordation in the land records where the property is
@@ -384,7 +384,7 @@
 			@if($attorneyPowers['isDurable'] == 1 && strtolower($state['name']) != 'texas')
 				<ol start="13">
 					<li>
-						<p align="justify" style="margin-bottom: 0in; line-height: 100%">
+						<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 							<span face="Calibri, serif"><span face="Times New Roman, serif">The
 							powers you give your agent will continue to exist for your entire
 							lifetime, unless you state that the Durable Power of Attorney will
@@ -399,7 +399,7 @@
 			@elseif($attorneyPowers['isDurable'] == 1 && strtolower($state['name']) == 'texas')
 			<ol start="13">
 				<li>
-					<p align="justify" style="margin-bottom: 0in; line-height: 100%">
+					<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 						<span face="Calibri, serif"><span color="#000000"><span face="Times New Roman, serif">You
 						should select someone you trust to serve as your agent (attorney in
 						fact). Unless you specify otherwise, generally the agent's (attorney
