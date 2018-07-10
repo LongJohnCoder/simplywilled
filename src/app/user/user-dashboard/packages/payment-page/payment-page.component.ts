@@ -26,8 +26,11 @@ export class PaymentPageComponent implements OnInit  {
     thankYou: boolean;
     addAnimate: boolean;
     package_name: string;
-    cardLength: number;
-    cvvLength: number;
+    cardLength: string;
+    cvvLength: string;
+    cardValid: boolean;
+    card2length: boolean;
+    cvv2length: boolean;
     public modalRef: BsModalRef;
 
     constructor(
@@ -38,8 +41,11 @@ export class PaymentPageComponent implements OnInit  {
     ) { }
 
   ngOnInit() {
+        this.cardLength = '0000 0000 0000 0000';
+        this.cvvLength = '000';
       this.thankYou = false;
       this.loader = true;
+
     // console.log(this.paymentData);
       this.cardtype = '';
       this.data = {
@@ -68,6 +74,7 @@ export class PaymentPageComponent implements OnInit  {
     }
 
     GetCardType(number) {
+        this.cardValid = true;
         // visa
         if (number.value.match(new RegExp("^4")) != null){
             this.cardtype = "visa";
@@ -77,23 +84,32 @@ export class PaymentPageComponent implements OnInit  {
                 this.cardtype = "visa2";
                 this.cardPinch = 'Visa';
             }
+            this.cardLength = '0000 0000 0000 0000';
+            this.cvvLength = '000';
+
         }
         else if (number.value.match(new RegExp("^5[1-5]")) != null) {
             // Mastercard
             this.cardtype = "master";
             this.cardPinch = 'MasterCard';
+            this.cardLength = '0000 0000 0000 0000';
+            this.cvvLength = '000';
 
         }
         else if (number.value.match(new RegExp("^3[47]")) != null){
             // AMEX
             this.cardtype = "amex";
             this.cardPinch = 'Amex';
+            this.cardLength = '0000 0000 0000 000';
+            this.cvvLength = '0000';
 
         }
         else if (number.value.match(new RegExp("^(6011|622(12[6-9]|1[3-9][0-9]|[2-8][0-9]{2}|9[0-1][0-9]|92[0-5]|64[4-9])|65)")) != null){
             // Discover
             this.cardtype = "discover";
             this.cardPinch = 'Discover';
+            this.cardLength = '0000 0000 0000 0000';
+            this.cvvLength = '000';
 
         }
         // else if (number.value.match(new RegExp("^3(?:0[0-5]|[68][0-9])[0-9]{11}$")) != null){
@@ -108,12 +124,14 @@ export class PaymentPageComponent implements OnInit  {
         //     this.cardPinch = 'diners2';
         //
         // }
-        else if (number.value.match(new RegExp("^35(2[89]|[3-8][0-9])")) != null){
-            // JCB
-            this.cardtype = "jcb";
-            this.cardPinch = 'JCB';
-
-        }
+        // else if (number.value.match(new RegExp("^35(2[89]|[3-8][0-9])")) != null){
+        //     // JCB
+        //     this.cardtype = "jcb";
+        //     this.cardPinch = 'JCB';
+        //     this.cardLength = '0000 0000 0000 0000';
+        //     this.cvvLength = '000';
+        //
+        // }
         else{
             if(number.value != ""){
                 this.cardtype = "unknown";
@@ -124,6 +142,11 @@ export class PaymentPageComponent implements OnInit  {
                 this.cardPinch = 'null';
 
             }
+            this.cardLength = '0000 0000 0000 0000';
+            this.cardValid = false;
+
+            // this.data.cardNumber.invalid = true;
+
         }
     }
 

@@ -354,7 +354,7 @@ select.form-control{
     animation-name: cardType;
     animation-duration: 1s;
 }
-.cardLogo span.jcd{
+.cardLogo span.jcb{
     background-position-x: -630px;
     animation-name: cardType;
     animation-duration: 1s;
