@@ -80,7 +80,7 @@ class UserManagementController extends Controller
               ->subject('Your friend invited you to Simplywilled.com');
           });
 
-          
+
           if(Mail::failures()) {
               \Log::info('email sending error for friend invitation');
               return response()->json([
@@ -705,9 +705,9 @@ class UserManagementController extends Controller
 
                 ];
                 Mail::send('new_emails.health_care', $arr, function($mail) use($email, $arr){
-                    $mail->from(config('settings.email'), 'Notice for Health Care Executive');
+                    $mail->from(config('settings.email'), 'Notice for Healthcare Executive');
                     $mail->to(strtolower($email), $arr['executiveFirstName'].' '.$arr['executiveLastName']);
-                    $mail->subject('SimplyWilled.com – You have been appointed as a Health Care Agent');
+                    $mail->subject('SimplyWilled.com – You have been appointed as a Healthcare Agent');
                 });
                 if(Mail::failures()) {
                     \Log::info('email sending error for health care power of attorney');
@@ -735,9 +735,9 @@ class UserManagementController extends Controller
                     'token'      =>  Crypt::encryptString($request->userId)
                 ];
                 Mail::send('new_emails.health_care_backup', $arr, function($mail) use($backUpEmail, $arr){
-                    $mail->from(config('settings.email'), 'Notice for Health Care Executive');
+                    $mail->from(config('settings.email'), 'Notice for Healthcare Executive');
                     $mail->to(strtolower($backUpEmail), $arr['executiveFirstName'].' '.$arr['executiveLastName']);
-                    $mail->subject('SimplyWilled.com – You have been appointed as a Backup Health Care Agent');
+                    $mail->subject('SimplyWilled.com – You have been appointed as a Backup Healthcare Agent');
                 });
                 if(Mail::failures()) {
                     \Log::info('email sending error for health care power of attorney');
