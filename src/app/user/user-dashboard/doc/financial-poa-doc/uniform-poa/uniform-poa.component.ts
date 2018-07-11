@@ -1,5 +1,6 @@
 // tslint:disable-next-line:max-line-length
 import {Component, Input, OnChanges, OnInit, AfterViewInit, DoCheck} from '@angular/core';
+import { GlobalPdfService } from './../../services/global-pdf.service';
 
 @Component({
   selector: 'app-uniform-poa',
@@ -10,6 +11,7 @@ export class UniformPoaComponent implements OnInit, OnChanges  {
 
   /**Variable declaration*/
   @Input() data: any;
+
   userDetails = {
     backupGuardian : null,
     backupPersonalRepresentative : null,
@@ -37,7 +39,10 @@ export class UniformPoaComponent implements OnInit, OnChanges  {
   loading = true;
 
   totalPages: number;
-  constructor() { }
+
+  constructor(
+    public globalService: GlobalPdfService
+  ) { }
 
   ngOnInit() {}
 
@@ -45,6 +50,7 @@ export class UniformPoaComponent implements OnInit, OnChanges  {
   ngDoCheck() {
     this.totalPages = document.getElementsByClassName('pageCount')[0].children.length;
     console.log(this.totalPages);
+    this.globalService.fcpoaPages(this.totalPages);
   }
 
   ngOnChanges() {
@@ -70,8 +76,11 @@ export class UniformPoaComponent implements OnInit, OnChanges  {
         tellUsAboutYou: this.data.tellUsAboutYou
       };
       this.financialPOA = {
+        // tslint:disable-next-line:max-line-length
         attorney_backup: this.data.financialPowerOfAttorney !== null && this.data.financialPowerOfAttorney.attorney_backup !== null && this.data.financialPowerOfAttorney.attorney_backup !== undefined ? JSON.parse(this.data.financialPowerOfAttorney.attorney_backup) : null,
+        // tslint:disable-next-line:max-line-length
         attorney_holders: this.data.financialPowerOfAttorney !== null && this.data.financialPowerOfAttorney.attorney_holders !== null && this.data.financialPowerOfAttorney.attorney_holders !== undefined ? JSON.parse(this.data.financialPowerOfAttorney.attorney_holders) : null,
+        // tslint:disable-next-line:max-line-length
         attorney_powers: this.data.financialPowerOfAttorney !== null && this.data.financialPowerOfAttorney.attorney_powers !== null && this.data.financialPowerOfAttorney.attorney_powers !== undefined ? JSON.parse(this.data.financialPowerOfAttorney.attorney_powers) : null,
       };
       this.loading = false;

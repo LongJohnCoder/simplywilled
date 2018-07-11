@@ -1,12 +1,18 @@
 import { Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../../environments/environment';
-
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class GlobalPdfService {
 
-  constructor (private _http: HttpClient) { }
+  constructor (
+    private _http: HttpClient
+  ) { }
+
+  public totalFcpoaPages = new Subject<number>();
+  public totalHcpoaPages = new Subject<number>();
+  public totalLastWillPages = new Subject<number>();
 
   /**Fetch overall progress*/
   fetchData(token: string) {
@@ -66,7 +72,31 @@ export class GlobalPdfService {
   }
 
   printFile (userId: number, docname: string) {
-    let url = environment.base_url + 'documents/' + userId + '/' + docname;
-    return url;
+    return environment.base_url + 'documents/' + userId + '/' + docname;
   }
+
+  /**
+   * Subscription to broadcast totalPages which is dynamic in child component financial-poa-doc
+   * @param value
+   */
+  fcpoaPages(value: number) {
+    this.totalFcpoaPages.next(value);
+  }
+
+  /**
+   * Subscription to broadcast totalPages which is dynamic in child component healthcare-poa-doc
+   * @param value
+   */
+  hcpoaPages(value: number) {
+    this.totalHcpoaPages.next(value);
+  }
+
+  /**
+   * Subscription to broadcast totalPages which is dynamic in child component last-will-and-testament
+   * @param value
+   */
+  lastWillPages(value: number) {
+    this.totalLastWillPages.next(value);
+  }
+
 }

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild, OnChanges} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {UserService} from '../../../user.service';
 import {ProgressbarService} from '../../shared/services/progressbar.service';
@@ -41,6 +41,8 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   loggedInUser: any;
   getUserDetailsSubscription: Subscription;
   count: number;
+  totalPagesSubscription: Subscription;
+
   states = {
     fl: false,
     md: false,
@@ -54,6 +56,8 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     nu: 15,
     uni: 15
   };
+
+  thKey: string;
 
   pdfData: any;
   globalPDFSubscription: Subscription;
@@ -70,52 +74,14 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   ) {
     this.loggedInUser = this.userAuth.getUser();
     this.getUserDetails();
-    let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+    const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
     this.globalPDFSubscription = this.globalPDFService.fetchData(token).subscribe(
       (response: any) => {
         if (response.status) {
           this.pdfData = response.data;
 
           if ( this.pdfData.state !== undefined && this.pdfData.state.abr !== null) {
-            const st = this.pdfData.state;
-            let limit = 0;
-            if (st['type'] !== undefined) {
-
-              if ( st['type'] === 'none') {
-                // tslint:disable-next-line:no-shadowed-variable
-                const abr = this.pdfData.state.abr;
-                if (this.states[abr.toLowerCase()] !== undefined) {
-                  this.states[abr.toLowerCase()] = true;
-                  limit = this.thNail[abr.toLowerCase()] === undefined ? 2 : this.thNail[abr.toLowerCase()];
-                  console.log('limit 1 : ', limit);
-                }
-              } else if (st['type'] === 'uniform') {
-                this.states['uni'] = true;
-                limit = this.thNail.uni === undefined ? 2 : this.thNail.uni;
-                console.log('limit 2 : ', limit);
-              } else if (st['type'] === 'non-uniform') {
-                this.states['nu'] = true;
-                limit = this.thNail.nu === undefined ? 2 : this.thNail.nu;
-                console.log('limit 3 : ', limit);
-              }
-
-              const abr = st.abr;
-              console.log('abr : ', abr);
-              if (limit !== undefined) {
-                  this.docThumbImg = [];
-                  for (let key = 0 ; key < limit ; key++) {
-                      if (key % 2) {
-                          this.docThumbImg.push('../../../../../assets/images/doc1-thumb2.png');
-                      } else {
-                          this.docThumbImg.push('../../../../../assets/images/doc1-thumb1.png');
-                      }
-                  }
-                  this.liCount = this.docThumbImg.length * 114;
-              }
-
-            }
-
-
+            this.constructThumbnails();
           }
 
           console.log(this.pdfData);
@@ -128,7 +94,9 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
           this.progressBar = {
             finalArrangements: progress.data !== null && progress.data.final_arrangements !== undefined && progress.data.final_arrangements,
             healthFinance: progress.data !== null && progress.data.health_finance !== undefined && progress.data.health_finance,
+            // tslint:disable-next-line:max-line-length
             protectYourFinance: progress.data !== null && progress.data.protect_your_finance !== undefined && progress.data.protect_your_finance,
+            // tslint:disable-next-line:max-line-length
             provideYourLovedOnes: progress.data !== null && progress.data.provide_your_loved_ones !== undefined && progress.data.provide_your_loved_ones,
             tellUsAboutYou: progress.data !== null && progress.data.tell_us_about_you !== undefined && progress.data.tell_us_about_you
           };
@@ -140,6 +108,48 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
       (error) => { console.log(error); },
       () => {}
     );
+  }
+
+  constructThumbnails() {
+    const st = this.pdfData.state;
+    let limit = 0;
+    if (st['type'] !== undefined) {
+
+      if ( st['type'] === 'none') {
+        // tslint:disable-next-line:no-shadowed-variable
+        const abr = this.pdfData.state.abr;
+        this.thKey = abr.toLowerCase();
+        if (this.states[this.thKey] !== undefined) {
+          this.states[this.thKey] = true;
+          limit = this.thNail[this.thKey] === undefined ? 2 : this.thNail[this.thKey];
+          console.log('limit 1 : ', limit);
+        }
+      } else if (st['type'] === 'uniform') {
+        this.thKey = 'uni';
+        this.states[this.thKey] = true;
+        limit = this.thNail[this.thKey] === undefined ? 2 : this.thNail[this.thKey];
+        console.log('limit 2 : ', limit);
+      } else if (st['type'] === 'non-uniform') {
+        this.thKey = 'nu';
+        this.states[this.thKey] = true;
+        limit = this.thNail[this.thKey] === undefined ? 2 : this.thNail[this.thKey];
+        console.log('limit 3 : ', limit);
+      }
+
+      const abr = st.abr;
+      console.log('abr : ', abr);
+      if (limit !== undefined) {
+          this.docThumbImg = [];
+          for (let key = 0 ; key < limit ; key++) {
+              if (key % 2) {
+                  this.docThumbImg.push('../../../../../assets/images/doc1-thumb2.png');
+              } else {
+                  this.docThumbImg.push('../../../../../assets/images/doc1-thumb1.png');
+              }
+          }
+          this.liCount = this.docThumbImg.length * 114;
+      }
+    }
   }
 
   /**Sets the progress count**/
@@ -164,9 +174,24 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    console.log('life cycle financial-poa-doc --ngOnInit');
     this.docScrolled = 0;
     this.thumbIndex = 0;
     this.liCount = this.docThumbImg.length * 114;
+    this.totalPagesSubscription = this.globalPDFService.totalFcpoaPages.subscribe(
+      (resp) => {
+        if (resp !== undefined && resp !== null && resp > 0) {
+          console.log('response from subscription', resp);
+          this.thNail[this.thKey] = resp;
+          this.constructThumbnails();
+        }
+      }
+    );
+  }
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngOnChanges() {
+    console.log('life cycle financial-poa-doc --ngOnChanges');
   }
 
   scrollDoc(index: number) {
@@ -214,33 +239,11 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     );
   }
 
-  // pdfDownload() {
-  //
-  //   var doc = new jsPDF({
-  //     orientation: 'landscape',
-  //     unit: 'in',
-  //     format: [4, 2]
-  //   })
-  //
-  //   doc.text('Hello world!', 1, 1)
-  //   doc.save('two-by-four.pdf')
-  //
-  //   html2canvas(document.body).then(canvas => {
-  //     var imgData = canvas.toDataURL("image/png");
-  //     this.AddImagesResource(imgData);
-  //     document.body.appendChild(canvas);
-  //   });
-  //
-  //
-  //   html2canvas(document.querySelector("#capture")).then(canvas => {
-  //     document.body.appendChild(canvas)
-  //   });
-  // }
   /**Downloads the pdf*/
   downloadPdf() {
     this.loading = true;
-    let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
-    let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+    const userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     this.signingInstructionSubscription = this.globalPDFService.financialpoaPDF(token).subscribe(
       (response: any) => {
         if (response.status) {
@@ -258,34 +261,22 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   /**Downloads the pdf*/
   printPDF() {
     this.loading = true;
-    let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
-    let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+    const userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     this.printSubscription = this.globalPDFService.financialpoaPDF(token).subscribe(
       (response: any) => {
         if (response.status) {
-          let src = this.globalPDFService.printFile(userId, 'financialPOA.pdf');
+          const src = this.globalPDFService.printFile(userId, 'financialPOA.pdf');
           const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
           if (win !== null) {
             win.document.write('<iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
             win.focus();
           }
-        /*  console.log(src);
-          let newwindow = window.open('', 'blank');
-          let obj = newwindow.document.createElement('iframe');
-          obj.style.height = '100%';
-          obj.style.width = '100%';
-          //obj.style.visibility = 'hidden';
-          obj.src = src;
-          newwindow.document.body.appendChild(obj);
-          newwindow.focus();*/
-          // newwindow.print();
-          /*this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'finalSigningInstructions.pdf').subscribe(
-            value => {
-              saveAs(value, 'finalSigningInstructions.pdf');
-            }
-          );*/
         }
-      }, (error) => { console.log(error); this.loading = false;},
+      }, (error) => {
+            console.log(error);
+            this.loading = false;
+        },
       () => {
         this.loading = false;
       }
@@ -311,6 +302,9 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     }
     if (this.printSubscription !== undefined) {
       this.printSubscription.unsubscribe();
+    }
+    if (this.totalPagesSubscription !== undefined) {
+      this.totalPagesSubscription.unsubscribe();
     }
   }
 }
