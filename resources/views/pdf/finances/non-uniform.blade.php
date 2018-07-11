@@ -86,9 +86,10 @@
 
 	</p>
 
-
+	<br>
 	<p align="center" style="margin-top: 0.02in; margin-bottom: 0.05in; ">
 	<span style="font-family:'Times New Roman, serif';"><b>Important Information</b></span></p>
+	<br>
 	<p align="justify" style="margin-top: 0.02in; margin-bottom: 0.05in; ">
 	<span style="font-family:'Times New Roman, serif';"><b>THIS IS AN IMPORTANT LEGAL
 	DOCUMENT. BY SIGNING THE </b></span>

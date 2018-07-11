@@ -495,9 +495,9 @@
 					@if(array_key_exists('address', $attorneyHolders) &&
 						array_key_exists('state', $attorneyHolders) &&
 						array_key_exists('city', $attorneyHolders))
-					<span color="#0000ff">$attorneyHolders['address']</span>, 
-					<span color="#0000ff">$attorneyHolders['city']</span>, 
-					<span color="#0000ff">$attorneyHolders['state']</span>
+					<span color="#0000ff">{{$attorneyHolders['address']}}</span>, 
+					<span color="#0000ff">{{$attorneyHolders['city']}}</span>, 
+					<span color="#0000ff">{{$attorneyHolders['state']}}</span>
 					@else
 					<u>___________________________________________</u>
 					@endif
@@ -519,18 +519,16 @@
 
 				</p>
 
-				@if($financialPowerOfAttorney['is_backupattorney'] == 1)
-					
-					<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
-						<span size="4" style="font-size: 14pt">
-							<b>DESIGNATION OF SUCCESSOR AGENT</b>
-						</span>
-					</p>
-					<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
+				<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
+					<span size="4" style="font-size: 14pt">
+						<b>DESIGNATION OF SUCCESSOR AGENT</b>
+					</span>
+				</p>
+				<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
 					<br/>
+				</p>
 
-					</p>
-					
+				@if($financialPowerOfAttorney['is_backupattorney'] == 1)
 					<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 						If and until my primary agent is unable or unwilling to act for me, I
 						name my 
@@ -565,23 +563,56 @@
 
 						<span color="#0000ff">{{$attorneyBackup['state']}}</span>»
 					</p>
-				
-				@endif
-				
-				<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-				Primary Agent’s Telephone Number:
 
-				@if(array_key_exists('phone', $attorneyBackup))
-				<span color="#008f00"></span>
-				<span color="#0433ff"> {{$attorneyBackup['phone']}}</span>
+					<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+						Alternate Agent’s Telephone Number:
 
+						@if(array_key_exists('phone', $attorneyBackup))
+							<span color="#008f00"></span>
+							<span color="#0433ff"> {{$attorneyBackup['phone']}}</span>
+						@else
+							<u>__________________</u>
+						@endif
+						<span color="#008f00"></span>&nbsp;
+					</p>
 				@else
-				<u>__________________</u>
+
+					<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+						If and until my primary agent is unable or unwilling to act for me, I
+						name my 
+						<span color="#0433ff">_____________________</span>
+						
+						<span color="#000000">, </span>
+
+						<span color="#0433ff">_______________________________</span>, as my agent, to 
+						have all of the powers hereinafter set forth and as permitted under the
+						laws of 
+
+						<span color="#0433ff">________________</span>. The contact
+						information for my agent is as follows:
+					</p>
+				
+					<p class="western" align="justify" style="margin-top: 0.06in; margin-bottom: 0in; line-height: 100%">
+						Name of Successor Agent: 
+						<span color="#0433ff">_________________________</span>
+					</p>
+					
+					<p class="western" style="margin-bottom: 0in; line-height: 100%">Primary
+						Agent’s Address:
+						<span color="#008f00">_______________________________________________________</span>
+						<span color="#008f00">_______________________________________________________ ,</span>
+
+						<span color="#0000ff">_________________</span>, 
+
+						<span color="#0000ff">__________________</span>»
+					</p>
+
+					<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+						Alternate Agent’s Telephone Number:
+						<u>__________________</u>
+						<span color="#008f00"></span>&nbsp;
+					</p>
 				@endif
-				<span color="#008f00"></span>&nbsp;
-				</p>
-			
-			
 			
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<br/>
