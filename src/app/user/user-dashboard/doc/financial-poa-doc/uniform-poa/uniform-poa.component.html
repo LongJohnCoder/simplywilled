@@ -1,3 +1,6 @@
+
+<div class="pageCount">
+
 <!-- Page 1 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div id="doc" class="docPageInner"
@@ -169,9 +172,12 @@
       </p>
     </div>
   </div>
+  
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-     <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</span> <br>{{userDetails.tellUsAboutYou.fullname}}<br>
-      Page 1 of 15
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 
 </div>
@@ -217,10 +223,14 @@
       or your duties under it that you do not understand, you should ask a
       lawyer to explain it to you.</p>
   </div>
+  
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-      <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</span> <br>{{userDetails.tellUsAboutYou.fullname}}<br>
-       Page 2 of 15
-   </div>
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 2 -->
 </div>
@@ -228,7 +238,7 @@
 <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== 'Maine'">
 <!-- Page 3 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-  <div class="docPageInner"
+    <div class="docPageInner"
        style="box-sizing: border-box; height: 890px;">
 
       <ol start="7">
@@ -389,10 +399,14 @@
         or if you do not understand this Power of Attorney or any provision
         of it, you should seek legal advice before signing this form.</b></p>
     </div>
-      <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-        <span color="#000000"><b>«</b></span><span color="#008f00">END IF</span><span color="#000000"><b>»
-      </b></span>
-      </p>-->
+    
+    <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+      <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
+
   </div>
 </div>
 <!-- !Page 3 -->
@@ -563,6 +577,14 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 4 -->
 
@@ -679,6 +701,14 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 5 -->
 
@@ -794,6 +824,14 @@
       </p>
     </div>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 6 -->
 
@@ -886,6 +924,14 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 7 -->
 
@@ -999,6 +1045,14 @@
     </p>
     <p class="western" style="margin-bottom: 0.06in; line-height: 100%"><b>--OR--</b></p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 8-->
 
@@ -1108,6 +1162,14 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 9 -->
 
@@ -1272,6 +1334,14 @@
       </p>
     </div>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 10 -->
 
@@ -1402,6 +1472,14 @@
     </span>
     </p>-->
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 11 -->
 </div>
@@ -1581,6 +1659,14 @@
     </span>
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 12 -->
 
@@ -1671,10 +1757,19 @@
       <span color="#000000"><span size="4" style="font-size: 14pt">Principal's
         initials</span></span></p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+</div>
 </div>
 <!-- !Page 13 -->
 
 <!-- Page 14 -->
+<div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Illinois'">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
        style="box-sizing: border-box; height: 890px;">
@@ -1781,6 +1876,14 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 14 -->
 </div>
@@ -1871,6 +1974,14 @@
       <i>Termination of Agent's Authority</i></p>
     </div>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 15 -->
 
@@ -1924,6 +2035,14 @@
 
     </p>-->
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 16 -->
 </div>
@@ -2027,11 +2146,21 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
+</div>
 </div>
 <!-- !Page 17 -->
 
 
 <!-- Page 18 -->
+<div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Delaware'">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
        style="box-sizing: border-box; height: 890px;">
@@ -2121,6 +2250,14 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 18 -->
 </div>
@@ -2223,6 +2360,14 @@
 
     <!--</p>-->
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 19 -->
 </div>
@@ -2337,6 +2482,14 @@
     </p>
     </div>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 20 -->
 </div>
@@ -2499,10 +2652,19 @@
       granting general authority with respect to tangible personal property
       authorizes the agent to do all of the following:</span></p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+</div>
 </div>
 <!-- !Page 21 -->
 
 <!-- Page 22 -->
+<div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Wisconsin'">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
        style="box-sizing: border-box; height: 890px; text-align: justify">
@@ -2567,11 +2729,20 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+</div>
 </div>
 <!-- !Page 22 -->
 
 
 <!-- Page 23 -->
+<div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Wisconsin'">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
        style="box-sizing: border-box; height: 890px; text-align: justify">
@@ -2683,10 +2854,19 @@
       transactions; and accept a draft drawn by a person upon the principal
       and pay it when due.</span></p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+</div>
 </div>
 <!-- !Page 23 -->
 
 <!-- Page 24 -->
+<div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Wisconsin'">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
        style="box-sizing: border-box; height: 890px; text-align: justify">
@@ -2785,10 +2965,19 @@
       control and disburse the money in the operation of the entity or
       business.</span></p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+</div>
 </div>
 <!-- !Page 24 -->
 
 <!-- Page 25 -->
+<div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Wisconsin'">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
        style="box-sizing: border-box; height: 890px; text-align: justify">
@@ -2912,10 +3101,20 @@
       receive, receipt for, sell, assign, pledge, or exchange a share in or
       payment from an estate, trust, or beneficial interest.</span></p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
+</div>
 </div>
   <!-- !Page 25 -->
 
   <!-- Page 26 -->
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Wisconsin'">
   <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
     <div class="docPageInner"
          style="box-sizing: border-box; height: 890px; text-align: justify">
@@ -3016,10 +3215,19 @@
       affects an interest of the principal in property or other thing of
       value.</span></p>
     </div>
+
+    <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+      <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
+  </div>
   </div>
   <!-- !Page 26 -->
 
   <!-- Page 27 -->
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Wisconsin'">
   <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
     <div class="docPageInner"
          style="box-sizing: border-box; height: 890px; text-align: justify">
@@ -3131,10 +3339,19 @@
 
       </p>
     </div>
+
+    <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+      <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
+  </div>
   </div>
   <!-- !Page 27-->
 
   <!-- Page 28 -->
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Wisconsin'">
   <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
     <div class="docPageInner"
          style="box-sizing: border-box; height: 890px; text-align: justify">
@@ -3250,10 +3467,19 @@
         <span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Establish
       a retirement plan in the principal's name.</span></p>
     </div>
+
+    <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+      <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
+  </div>
   </div>
   <!-- !Page 28 -->
 
   <!-- Page 29 -->
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Wisconsin'">
   <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
     <div class="docPageInner"
          style="box-sizing: border-box; height: 890px; text-align: justify">
@@ -3370,6 +3596,14 @@
 
       </p>
     </div>
+
+    <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+      <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF {{userDetails.tellUsAboutYou.fullname}}</span> <br>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
+  </div>
   </div>
   <!-- !Page 29 -->
 </div>

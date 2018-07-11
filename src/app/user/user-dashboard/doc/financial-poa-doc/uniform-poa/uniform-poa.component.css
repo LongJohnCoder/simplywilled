@@ -1,3 +1,13 @@
+.pageCount{
+  counter-reset: index;
+}
+.pageNumber{
+  counter-increment: index;
+}
+.pageNumber:after{
+  content: counter(index);
+}
+
 .docPage{
   width: 700px !important;
   height: auto !important;

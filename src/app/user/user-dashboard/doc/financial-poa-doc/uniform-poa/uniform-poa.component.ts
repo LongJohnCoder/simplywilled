@@ -1,4 +1,5 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+// tslint:disable-next-line:max-line-length
+import {Component, Input, OnChanges, OnInit, AfterViewInit, DoCheck} from '@angular/core';
 
 @Component({
   selector: 'app-uniform-poa',
@@ -35,12 +36,19 @@ export class UniformPoaComponent implements OnInit, OnChanges  {
   };
   loading = true;
 
+  totalPages: number;
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngDoCheck() {
+    this.totalPages = document.getElementsByClassName('pageCount')[0].children.length;
+    console.log(this.totalPages);
   }
 
   ngOnChanges() {
+
     if (this.data !== undefined && this.data !== null) {
       this.userDetails = {
         backupGuardian : this.data.backupGuardian,

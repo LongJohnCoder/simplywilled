@@ -252,3 +252,6 @@ version : 3
 5> Uniform webview css and html modifications
 6> Uniform webview for wyoming and wisconsin.
 7> West virginia HCPOA
+8> Uniform css and webview (FCPOA)
+	i>  dynamic pagination
+	ii> footer fix
