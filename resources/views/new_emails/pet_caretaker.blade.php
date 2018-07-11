@@ -69,7 +69,7 @@
                                 <br><br>
                                 As Pet Caretaker you will be legally responsible for caring for <strong>{{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}}’s</strong> pets. You will have physical custody of their pets and will be responsible for their well being.
                                 <br><br>
-                                <strong style="font-size: 22px;">Confirm you responsibility:</strong>
+                                <strong style="font-size: 22px;">Confirm your responsibility:</strong>
                                 <br><br>
                                 Your duties as Pet Caretaker do not take effect until the person who nominated you passes away. If you accept this honor and duty, please take a moment to speak with the person who selected you to have a conversation about this important responsibility.  If you wish to decline this responsibility, please let them know you are unable to accept so they can choose someone else.
                             </p>

@@ -69,7 +69,7 @@
                                 <br><br>
                                 As Personal Representative (also called executor is some states) you will be legally responsible for carrying the out the instructions contained in a <strong>{{ucwords(strtolower($firstName))}}’s</strong> will. While the responsibilities can vary, you will be primarily responsible for settling the estate, distributing property according to the terms of the will and hiring legal professionals to assist with the probate process.
                                 <br><br>
-                                <strong style="font-size: 22px;">Confirm you responsibility:</strong>
+                                <strong style="font-size: 22px;">Confirm your responsibility:</strong>
                                 <br><br>
                                 Your duties as Personal Representative do not take effect until <strong>{{ucwords(strtolower($firstName))}}</strong> passes away. If you accept this honor and duty, please take a moment to speak with <strong>{{ucwords(strtolower($firstName))}}</strong> to have a conversation about the terms of their will, their wishes, and any special instructions. It is important that you confirm the location of their will so that you can access it when the time comes. Otherwise, please let <strong>{{ucwords(strtolower($firstName))}}</strong> know you are unable to accept this responsibility so they can choose someone else.
                             </p>

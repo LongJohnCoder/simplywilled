@@ -69,7 +69,7 @@
                                 <br><br>
                                 As the Primary Healthcare Power of Attorney you will be legally responsible for making medical decision for <strong>{{ucwords(strtolower($firstName))}}’s</strong> in the event they are incapacitated. Serving as a Primary Healthcare Power of Attorney is a very important role and carries with is significant powers should you be called upon to serve. Among them  commonly, people give their agent broad power to medical decisions on their behalf.
                                 <br><br>
-                                <strong style="font-size: 22px;">Confirm you responsibility:</strong>
+                                <strong style="font-size: 22px;">Confirm your responsibility:</strong>
                                 <br><br>
                                 Your duties as the Primary Healthcare Power of Attorney do not take effect unless <strong>{{ucwords(strtolower($firstName))}}</strong> is incapacitated. If you accept this honor and duty, please take a moment to speak with <strong>{{ucwords(strtolower($firstName))}}</strong> to have a conversation about the terms of their Healthcare Directives, and any special instructions they may have. It is important that you confirm the location of their estate documents so that you can access them if you are called upon to serve. Otherwise, please let <strong>{{ucwords(strtolower($firstName))}}</strong> know you are unable to accept this responsibility so they can choose someone else.
                             </p>
