@@ -11,23 +11,17 @@
       <span style="font-family:'Times New Roman, serif';"><span size="4" style="font-size: 13pt"><b>
       POWER OF ATTORNEY FOR MANAGEMENT OF FINANCES, PROPERTY, AND PERSONAL
       AFFAIRS</b></span></span></p>
-    <!-- <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">ELSE
-       IF State = &quot;Massachusetts&quot;</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>-->
+        
     <p align="center" style="margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Massachusetts'">
       <span style="font-family:'Times New Roman, serif';"><b>(Pursuant to Chapter 190B of
         the Massachusetts General Laws)</b></span></p>
-    <!--<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">END
-      IF</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>-->
+    
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
+      <br>
     </p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif';">I, </span><span style="font-family:'Times New Roman, serif';"><b><!--«</b></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';"><b>CLIENT
-      FIRST NAME</b></span></span><span style="font-family:'Times New Roman, serif';"><b>»
-      «</b></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';"><b>CLIENT
-      MIDDLE NAME</b></span></span><span style="font-family:'Times New Roman, serif';"><b>»
-      «</b></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';"><b>CLIENT
-      LAST NAME</b></span></span><span style="font-family:'Times New Roman, serif';"><b>»-->
+      <span style="font-family:'Times New Roman, serif';">I, </span><span style="font-family:'Times New Roman, serif';"><b>
+        
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </b></span><span style="font-family:'Times New Roman, serif';">,
@@ -35,10 +29,8 @@
           <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? userDetails.tellUsAboutYou.address : '_______________________'}}</span>
           <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </span></span><span style="font-family:'Times New Roman, serif';">,
-      </span><!--<span color="#008f00"><span style="font-family:'Times New Roman, serif';">IF
-      ANSWERED( Address2 )</span></span><span style="font-family:'Times New Roman, serif';">»«</span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">Address2</span></span><span style="font-family:'Times New Roman, serif';">»,
-      «</span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">END
-      IF</span></span>--><span style="font-family:'Times New Roman, serif';"></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
+      </span>
+      <span style="font-family:'Times New Roman, serif';"></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </span></span><span style="font-family:'Times New Roman, serif';">,
@@ -64,8 +56,10 @@
         </span></span><span style="font-family:'Times New Roman, serif';"></span>
       </span>
     </p>
-    <p align="center" style="margin-top: 0.02in; margin-bottom: 0.05in; line-height: 100%">
-      <span style="font-family:'Times New Roman, serif';"><b>Important Information</b></span></p>
+    <p align="center" style="margin-top: 0.02in; margin-bottom: 0.05in; line-height: 100%"><br>
+      <span style="font-family:'Times New Roman, serif';"><b>Important Information</b></span><br></p>
+
+    <br>
     <p align="justify" style="margin-top: 0.02in; margin-bottom: 0.05in; line-height: 100%">
       <span style="font-family:'Times New Roman, serif';"><b>THIS IS AN IMPORTANT LEGAL
         DOCUMENT. BY SIGNING THE </b></span>
@@ -266,8 +260,7 @@
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
-    <!--<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">IF
-      PofA Alternate Agents1?</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>-->
+    
     <p align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"><span color="#000000"><span style="font-family:'Times New Roman, serif';"><b>Alternate
       Agent</b></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">.
       If said </span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
@@ -296,11 +289,7 @@
       </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">)
       as my alternate Agent to have all of the powers hereinafter set
       forth.&nbsp;</span></span></p>
-    <!--<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">END
-      IF</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>-->
+    
   </div>
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
@@ -839,9 +828,7 @@
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
        style="box-sizing: border-box; height: 890px;">
-    <!--<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-      <span style="font-family:'Times New Roman, serif';">«</span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">IF
-      POA Bus Int?</span></span><span style="font-family:'Times New Roman, serif';">»</span></p>-->
+    
     <p align="justify" style="margin-left: 42px; margin-bottom: 0in; line-height: 100%" *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isAuthorisedToOperateBusiness === 1">
       <span style="font-family:'Times New Roman, serif';">(15)	</span><span style="font-family:'Times New Roman, serif';"><u>Business
       Interests</u></span><span style="font-family:'Times New Roman, serif';">. To operate
@@ -855,15 +842,11 @@
       for the sale of any business interest or the stock therein; and to
       exercise voting rights with respect to stock, either in person or by
       proxy, and exercise stock options.</span></p>
-    <!-- <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-       <span style="font-family:'Times New Roman, serif';">«</span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">END
-       IF</span></span><span style="font-family:'Times New Roman, serif';">»</span></p>-->
+    
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
-    <!--<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-      <span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">IF
-      PofA Gifts? </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>-->
+    
     <div *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isAuthorizeToMakeGift === 1">
       <p align="justify" style="margin-left: 42px; margin-bottom: 0in; line-height: 100%">
       <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isAuthorisedToOperateBusiness === 1">
@@ -915,9 +898,7 @@
       shall not apply to any gifts which incur no federal gift tax, such
       as, for example, gifts that qualify for the unlimited federal gift
       tax marital deduction or charitable deduction.</span></p>
-      <!--<p style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-        <span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">IF
-        State = &quot;Arizona&quot;</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>-->
+      
       <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
       </p>
@@ -938,9 +919,7 @@
           <br/>
 
         </p>
-        <!--<p style="margin-left: 42px; margin-top: 0.06in; margin-bottom: 0in; line-height: 100%">-->
-      <!--<span style="font-family:'Times New Roman, serif';">Initials of-->
-        <!--Principal						Initials of Witness</span></p>-->
+        
         <p style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
           <br/>
 
@@ -951,13 +930,7 @@
         <p style="margin-left: 42px; margin-top: 0.06in; margin-bottom: 0in; line-height: 100%; float: right;">
           <span>__________________</span><br><span style="font-family:'Times New Roman, serif';">Initials of Witness</span>
         </p>
-        <!--<p style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">-->
-          <!--<span style="font-family:'Times New Roman, serif';">_______________						______________</span></p>-->
-        <!--<p style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-          <span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">ELSE</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>
-        <p style="margin-top: 0.06in; margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>-->
+        
       </div>
       <div style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== 'Arizona'">
         <p style="margin-left: 0.38in; margin-top: 0.06in; margin-bottom: 0in; line-height: 100%">
@@ -990,19 +963,6 @@
   <div class="docPageInner"
        style="box-sizing: border-box; height: 890px;">
 
-
-    <!--<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-      <span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">END
-      IF</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>
-    <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-      <span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">END
-      IF</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>-->
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><b>SPECIAL
       INSTRUCTIONS: </b></span><span style="font-family:'Times New Roman, serif';">On the
       following lines are any special instructions limiting or extending
@@ -1406,15 +1366,9 @@
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
       </p>
-      <!--<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">IF
-        State = &quot;Massachusetts&quot;</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>-->
+      
       <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-        <span style="font-family:'Times New Roman, serif';">IN WITNESS WHEREOF, I, </span><!--<span style="font-family:'Times New Roman, serif';"></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-        FIRST NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-        «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-        MIDDLE NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-        «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-        LAST NAME</span></span><span style="font-family:'Times New Roman, serif';">»</span>-->
+        <span style="font-family:'Times New Roman, serif';">IN WITNESS WHEREOF, I, </span>
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
         <span style="font-family:'Times New Roman, serif';">,
@@ -1437,12 +1391,7 @@
       </p>
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">______________________________________</span></p>
       <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif';"><b><!--«</b></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';"><b>CLIENT
-        FIRST NAME</b></span></span><span style="font-family:'Times New Roman, serif';"><b>»
-        «</b></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';"><b>CLIENT
-        MIDDLE NAME</b></span></span><span style="font-family:'Times New Roman, serif';"><b>»
-        «</b></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';"><b>CLIENT
-        LAST NAME</b></span></span><span style="font-family:'Times New Roman, serif';"><b>»-->
+      <span style="font-family:'Times New Roman, serif';"><b>
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </b></span><span style="font-family:'Times New Roman, serif';">,
@@ -1452,11 +1401,7 @@
           <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? userDetails.tellUsAboutYou.address : '_______________________'}}</span>
           <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"></span></span></p>
-      <!--    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">IF
-            ANSWERED( Address2 ) </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">Address2</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">END
-            IF</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>-->
+      
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';"></span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
             <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}}</span>
             <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
@@ -1477,12 +1422,9 @@
       </p>
       <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif';">We, the witnesses who sign below,
-        each declare in the presence of </span><!--<span style="font-family:'Times New Roman, serif';">«</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      FIRST NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-      «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      MIDDLE NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-      «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      LAST NAME</span></span><span style="font-family:'Times New Roman, serif';">»</span>-->
+        each declare in the presence of </span>
+        
+        
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
         <span style="font-family:'Times New Roman, serif';">,
@@ -1496,12 +1438,9 @@
         <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she' ): 'he' }}</span>
       </span></span><span style="font-family:'Times New Roman, serif';">
       signed it willingly, that each of us signs this Durable Power of
-      Attorney as witness in the presence of </span><!--<span style="font-family:'Times New Roman, serif';">«</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      FIRST NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-      «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      MIDDLE NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-      «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      LAST NAME</span></span><span style="font-family:'Times New Roman, serif';">»</span>-->
+      Attorney as witness in the presence of </span>
+      
+      
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
         <span style="font-family:'Times New Roman, serif';">,
@@ -1540,12 +1479,9 @@
         this </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>		</u></span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
       day of </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>			</u></span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
     </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>	</u></span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
-      before me, the undersigned notary public, personally appeared </span></span></span><span style="font-family:'Times New Roman, serif';"><!--<span size="2" style="font-size: 9pt">«</span></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">CLIENT
-      FIRST NAME</span></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">»
-      «</span></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">CLIENT
-      MIDDLE NAME</span></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">»
-      «</span></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">CLIENT
-      LAST NAME</span></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">»</span>-->
+      before me, the undersigned notary public, personally appeared </span></span></span><span style="font-family:'Times New Roman, serif';">
+        
+        
       <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
       <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
@@ -1588,24 +1524,14 @@
   <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
     <div class="docPageInner"
          style="box-sizing: border-box; height: 890px;">
-      <!--  <p style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
-          <span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">ELSE
-          IF State = “Arizona”</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>
-        <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>-->
+      
       <p align="center" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
         <span style="font-family:'Times New Roman, serif';"><b>SIGNATURE AND ACKNOWLEDGMENT</b></span></p>
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
       </p>
       <p align="justify" style="margin-bottom: 0.08in; line-height: 100%;">
-        <span style="font-family:'Times New Roman, serif';">I, </span><!--<span style="font-family:'Times New Roman, serif';">«</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      FIRST NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-      «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      MIDDLE NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-      «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      LAST NAME</span></span><span style="font-family:'Times New Roman, serif';">»</span>-->
+        <span style="font-family:'Times New Roman, serif';">I, </span>
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
         <span style="font-family:'Times New Roman, serif';">,
@@ -1624,12 +1550,7 @@
       </p>
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><u>_____________________		_</u></span></p>
       <p align="justify" style="margin-bottom: 0.08in; line-height: 100%;">
-        <!-- <span style="font-family:'Times New Roman, serif';">«</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-         FIRST NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-         «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-         MIDDLE NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-         «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-         LAST NAME</span></span><span style="font-family:'Times New Roman, serif';">»</span>-->
+        
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
         <span style="font-family:'Times New Roman, serif';">,
@@ -1639,11 +1560,7 @@
           <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? userDetails.tellUsAboutYou.address : '_______________________'}}</span>
           <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"></span></span></p>
-      <!--<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">IF
-        ANSWERED( Address2 ) </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">Address2</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';">«</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">END
-        IF</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">»</span></span></p>-->
+      
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';"></span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
@@ -1704,12 +1621,7 @@
       </p>
       <p align="justify" style="margin-bottom: 0.08in; line-height: 100%;">
       <span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">Subscribed,
-        sworn to and acknowledged before me by </span></span><span style="font-family:'Times New Roman, serif';"><!--<span size="2" style="font-size: 9pt">«</span></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">CLIENT
-        FIRST NAME</span></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">»
-        «</span></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">CLIENT
-        MIDDLE NAME</span></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">»
-        «</span></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">CLIENT
-        LAST NAME</span></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">»</span>-->
+        sworn to and acknowledged before me by </span></span><span style="font-family:'Times New Roman, serif';">
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     </span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
@@ -2002,15 +1914,17 @@
         actually in the principal's best interest.&nbsp;</span></p>
     <p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">As
       agent you must not do any of the following:</span></p>
+    
     <p align="justify" style="margin-left: 0.5in; margin-bottom: 0.06in; line-height: 100%">
       <span style="font-family:'Times New Roman, serif';">(1) act so as to create a
         conflict of interest that is inconsistent with the other principles
         in this Notice to Agent;</span></p>
-    <p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">	(2)
+    
+    <p align="justify" style="margin-left: 0.5in; margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">	(2)
       do any act beyond the authority granted in this power of attorney;</span></p>
-    <p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">	(3)
+    <p align="justify" style="margin-left: 0.5in; margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">	(3)
       commingle the principal's funds with your funds;</span></p>
-    <p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">	(4)
+    <p align="justify" style="margin-left: 0.5in; margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">	(4)
       borrow funds or other property from the principal, unless otherwise
       authorized; or,</span></p>
     <p align="justify" style="margin-left: 0.5in; margin-bottom: 0.09in; line-height: 100%">
@@ -2026,12 +1940,7 @@
       writing or printing the name of the principal and signing your own
       name &quot;as Agent&quot; in the following manner:</span></p>
     <p align="justify" style="margin-left: 0.5in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      “<!--<span style="font-family:'Times New Roman, serif';">«</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      FIRST NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-      «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      MIDDLE NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-      «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      LAST NAME</span></span><span style="font-family:'Times New Roman, serif';">»</span>-->
+      “
       <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
       <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       <span style="font-family:'Times New Roman, serif';">by
@@ -2070,16 +1979,12 @@
 
     <p align="center" style="margin-bottom: 0.13in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><b>AGENT'S
       CERTIFICATION AND ACCEPTANCE OF AUTHORITY&nbsp;</b></span></p>
+    <br>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif';">I,
         __________________________________, certify that the attached is a
         true copy of a power of attorney naming the undersigned as agent or
-        successor agent for </span><!--<span style="font-family:'Times New Roman, serif';">«</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      FIRST NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-      «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      MIDDLE NAME</span></span><span style="font-family:'Times New Roman, serif';">»
-      «</span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">CLIENT
-      LAST NAME</span></span><span style="font-family:'Times New Roman, serif';">»</span>-->
+        successor agent for </span>
       <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
       <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       <span style="font-family:'Times New Roman, serif';">.</span></p>

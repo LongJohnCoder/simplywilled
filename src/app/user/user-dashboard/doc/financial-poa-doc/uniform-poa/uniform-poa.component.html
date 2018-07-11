@@ -2,19 +2,7 @@
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div id="doc" class="docPageInner"
        style="box-sizing: border-box; height: 890px;">
-    <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <span color="#000000">«</span><span color="#008f00">IF Uniform?</span><span color="#000000">»</span></p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <span color="#000000">«</span><span color="#008f00">IF Real Estate
-      AND State = &quot;District of Columbia&quot;</span><span color="#000000">»</span></p>
-    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>-->
+    
     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'District of Columbia'">
       <b>THIS POWER OF ATTORNEY AUTHORIZES THE PERSON NAMED BELOW AS MY
         ATTORNEY-IN-FACT TO DO ONE OR MORE OF THE FOLLOWING: TO SELL, LEASE,
@@ -22,15 +10,7 @@
         PROPERTY AND TO EXECUTE DEEDS AND ALL OTHER INSTRUMENTS ON MY BEHALF,
         UNLESS THIS POWER OF ATTORNEY IS OTHERWISE LIMITED HEREIN TO SPECIFIC
         REAL PROPERTY.</b></p>
-    <!--<p class="western" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>
-    <p class="western" style="margin-bottom: 0.06in; line-height: 100%"><br/>
-      <br/>
-
-    </p>-->
-    <!--<p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000"><span size="4" style="font-size: 13pt"></span></span><span color="#008f00"><span size="4" style="font-size: 13pt">IF
-      Durable </span></span><span color="#000000"><span size="4" style="font-size: 13pt"></span></span></p>-->
+   
     <div *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
       <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
         <span size="4" style="font-size: 14pt"><b></b></span><span color="#0433ff"><span size="4" style="font-size: 14pt"><b>
@@ -46,11 +26,7 @@
         <span size="4" style="font-size: 14pt"><b>FOR MANAGEMENT OF FINANCIAL
           AFFAIRS AND PROPERTY</b></span></p>
     </div>
-    <!--<p class="western" align="center" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000"><span size="4" style="font-size: 13pt">«</span></span><span color="#008f00"><span size="4" style="font-size: 13pt">Else</span></span><span color="#000000"><span size="4" style="font-size: 13pt">»</span></span></p>
-    <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000"><span size="4" style="font-size: 13pt">«</span></span><span color="#008f00"><span size="4" style="font-size: 13pt">IF
-      !Durable </span></span><span color="#000000"><span size="4" style="font-size: 13pt">»</span></span></p>-->
+    
     <div *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 0">
       <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
         <span size="4" style="font-size: 14pt"><b></b></span><span color="#0433ff"><span size="4" style="font-size: 14pt"><b>
@@ -61,27 +37,19 @@
       </p>
       <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
         <span size="4" style="font-size: 14pt"><b>POWER OF ATTORNEY</b></span></p>
-     <!-- <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
-        <span color="#000000"><span size="4" style="font-size: 14pt">«</span></span><span color="#008f00"><span size="4" style="font-size: 14pt">IF
-        State = &quot;Wisconsin&quot;</span></span><span color="#000000"><span size="4" style="font-size: 14pt">»</span></span></p>-->
+     
       <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Wisconsin'">
         <span size="4" style="font-size: 14pt"><b>FOR FINANCES AND PROPERTY</b></span></p>
-      <!--<p class="western" align="center" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
-        <span color="#000000"><span size="4" style="font-size: 13pt">«</span></span><span color="#008f00"><span size="4" style="font-size: 13pt">END
-        IF</span></span><span color="#000000"><span size="4" style="font-size: 13pt">»</span></span></p>-->
+      
     </div>
-    <!--<p class="western" align="center" style="margin-top: 0.03in; margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000"><span size="4" style="font-size: 13pt">«</span></span><span color="#008f00"><span size="4" style="font-size: 13pt">END
-      IF</span></span><span color="#000000"><span size="4" style="font-size: 13pt">»</span></span></p>-->
+    
     <p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
       <br/>
       <br/>
 
     </p>
     <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Maine'">
-    <!--<p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000">«</span><span color="#008f00">IF State =
-      &quot;Maine&quot;</span><span color="#000000">»</span></p>-->
+    
     <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
       <b>Notice to the Principal</b>: As the “Principal” you are using
       this power of attorney to grant power to another person (called the
@@ -192,7 +160,7 @@
           <p align="justify" style="margin-bottom: 0in; line-height: 100%">
         <span face="Calibri, serif"><span face="Times New Roman, serif">Your
           agent is entitled to reasonable compensation unless you state
-          otherwise in the Special Instructions.</span></span></p>
+          otherwise in the Special Instructions..</span></span></p>
         </li>
       </ol>
       <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
@@ -202,9 +170,10 @@
     </div>
   </div>
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-     <span style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</span> <br>{{userDetails.tellUsAboutYou.fullname}}<br>
-      Page 1 of 29
-    </div>
+     <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</span> <br>{{userDetails.tellUsAboutYou.fullname}}<br>
+      Page 1 of 15
+  </div>
+
 </div>
 <!-- !Page 1 -->
 
@@ -249,9 +218,9 @@
       lawyer to explain it to you.</p>
   </div>
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-     <span style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</span> <br>{{userDetails.tellUsAboutYou.fullname}}<br>
-      Page 2 of 29
-    </div>
+      <span style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</span> <br>{{userDetails.tellUsAboutYou.fullname}}<br>
+       Page 2 of 15
+   </div>
 </div>
 <!-- !Page 2 -->
 </div>
@@ -527,7 +496,7 @@
         <span color="#008f00"></span><span color="#008f00">
         </span>&nbsp;</p>
       <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-        Primary Agent’s Telephone Number:<span color="#008f00"></span><span color="#0433ff">
+        Alternate Agent’s Telephone Number:<span color="#008f00"></span><span color="#0433ff">
         <span *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.phone !== null && financialPOA.attorney_backup.phone !== undefined ? financialPOA.attorney_backup.phone : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
       </span><span color="#008f00"></span><span color="#008f00"></span>&nbsp;</p>
     </div>

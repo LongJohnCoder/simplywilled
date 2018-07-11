@@ -14,3 +14,8 @@ p, span{
   height: auto !important;
   min-height: 400px;
 }
+
+
+.docPage span, .docPage p {
+  line-height: initial !important;
+}

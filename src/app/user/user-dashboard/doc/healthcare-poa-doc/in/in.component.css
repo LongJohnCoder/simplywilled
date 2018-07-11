@@ -5,3 +5,16 @@ p, span {
 .docPage{
     box-shadow: 0 0 7px rgba(0,0,0,0.3);
 }
+
+.docPage{
+    height: auto !important;
+}
+.docPageInner{
+    height: auto !important;
+    min-height: 400px;
+}
+
+.docContainer {
+    width: 700px;
+    margin: 0 auto;
+}

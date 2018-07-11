@@ -8,9 +8,10 @@
   padding: 40px;
 }
 .docPageInner{
-	height: auto !important;
+  height: auto !important;
+  min-height: 400px;
 }
 
-.docPage p, .docPage span{
-	line-height: initial;
+.docPage span, .docPage p {
+  line-height: initial !important;
 }
