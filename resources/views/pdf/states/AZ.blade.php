@@ -254,14 +254,14 @@
       do not want my representative to make the following health care
       decisions for me (describe or write in “not applicable”):</span></p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">	</span><span style="font-family:'Times New Roman, serif'; line-height: 30px;"><u>
+      <span style="font-family:'Times New Roman, serif'">	</span><span style="font-family:'Times New Roman, serif'; line-height: 30px;">
       _____________________________________________________________________________<br>
       _____________________________________________________________________________<br>
       _____________________________________________________________________________<br>
       _____________________________________________________________________________<br>
       _____________________________________________________________________________<br>
       _____________________________________________________________________________
-      </u></span></p>
+      </span></p>
   </div>
 
 </div>
@@ -473,14 +473,14 @@
       history, dietary requirements, religious concerns, people to notify
       and any other matters that you feel are important):</span></p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-    <span style="font-family:'Times New Roman, serif'; line-height: 30px;"><u>
+    <span style="font-family:'Times New Roman, serif'; line-height: 30px;">
       _____________________________________________________________________________<br>
       _____________________________________________________________________________<br>
       _____________________________________________________________________________<br>
       _____________________________________________________________________________<br>
       _____________________________________________________________________________<br>
       _____________________________________________________________________________
-	    </u></span><span style="font-family:'Times New Roman, serif'">	</span></p>
+	    </span><span style="font-family:'Times New Roman, serif'">	</span></p>
     <p style="margin-bottom: 0.13in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">(Add
       additional pages if necessary)</span></span></p>
@@ -547,9 +547,9 @@
       <span style="font-family:'Times New Roman, serif'"><b>A.</b></span><span style="font-family:'Times New Roman, serif'">
         I am signing this Durable Health Care Power of Attorney as follows:</span></p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">My Signature: </span><span style="font-family:'Times New Roman, serif'"><u>_____________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">My Signature: </span><span style="font-family:'Times New Roman, serif'">_____________________________</span></p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Date: </span><span style="font-family:'Times New Roman, serif'"><u>______________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Date: </span><span style="font-family:'Times New Roman, serif'">______________________</span></p>
     <p  style="text-indent: -0.33in; margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
       <br/>
@@ -661,14 +661,14 @@
 
     </p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Witness Signature: </span><span style="font-family:'Times New Roman, serif'"><u>__________________________________</u></span><span style="font-family:'Times New Roman, serif'">  Date: </span><span style="font-family:'Times New Roman, serif'"><u>____________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Witness Signature: </span><span style="font-family:'Times New Roman, serif'">__________________________________</span><span style="font-family:'Times New Roman, serif'">  Date: </span><span style="font-family:'Times New Roman, serif'">____________________</span></p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
       <br/>
 
     </p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Witness Name (printed) </span><span style="font-family:'Times New Roman, serif'"><u>_______________________________________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Witness Name (printed) </span><span style="font-family:'Times New Roman, serif'">_______________________________________________________</span></p>
   </div>
 
 </div>
@@ -740,13 +740,13 @@
         by blood, marriage or adoption.</span></p>
     </ul>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Witness Signature: </span><span style="font-family:'Times New Roman, serif'"><u>___________________________________</u></span><span style="font-family:'Times New Roman, serif'">  Date: </span><span style="font-family:'Times New Roman, serif'"><u>____________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Witness Signature: </span><span style="font-family:'Times New Roman, serif'">___________________________________</span><span style="font-family:'Times New Roman, serif'">  Date: </span><span style="font-family:'Times New Roman, serif'">____________________</span></p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Witness Name (printed) </span><span style="font-family:'Times New Roman, serif'"><u>________________________________________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Witness Name (printed) </span><span style="font-family:'Times New Roman, serif'">________________________________________________________</span></p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Address: </span><span style="font-family:'Times New Roman, serif'"><u>____________________________________________________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Address: </span><span style="font-family:'Times New Roman, serif'">____________________________________________________________________</span></p>
     <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'"><u>____________________________________________________________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">____________________________________________________________________________</span></p>
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
 
@@ -888,18 +888,18 @@
 
     <p  style="margin-top: 0.15in; margin-bottom: 0in; line-height: 110%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">WITNESS
-      MY HAND AND SEAL this </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><u>
-          __________</u></span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">
-      day of </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><u>_____________________________</u></span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">,
-      </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><u>_____________</u></span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">.</span></span></p>
+      MY HAND AND SEAL this </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">
+          __________</span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">
+      day of </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">_____________________________</span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">,
+      </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">_____________</span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">.</span></span></p>
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
 
     </p>
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">Notary
-      Public </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><u>_________________________________________</u></span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">
-       My Commission Expires: </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><u>__________________</u></span></span></p>
+      Public </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">_________________________________________</span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">
+       My Commission Expires: </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">__________________</span></span></p>
   </div>
  
 </div>
@@ -1155,9 +1155,9 @@
       <span style="font-family:'Times New Roman, serif'"><b>A.</b></span><span style="font-family:'Times New Roman, serif'">
         I am signing this Living Will as follows:</span></p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">My Signature: </span><span style="font-family:'Times New Roman, serif'"><u>__________________________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">My Signature: </span><span style="font-family:'Times New Roman, serif'">__________________________________________</span></p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Date: </span><span style="font-family:'Times New Roman, serif'"><u>_________________________________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Date: </span><span style="font-family:'Times New Roman, serif'">_________________________________________________</span></p>
     <p  style="text-indent: -0.33in; margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
       <br/>
@@ -1267,19 +1267,19 @@
 
     </p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Witness Signature: </span><span style="font-family:'Times New Roman, serif'"><u>__________________________________</u></span><span style="font-family:'Times New Roman, serif'">  Date: </span><span style="font-family:'Times New Roman, serif'"><u>____________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Witness Signature: </span><span style="font-family:'Times New Roman, serif'">__________________________________</span><span style="font-family:'Times New Roman, serif'">  Date: </span><span style="font-family:'Times New Roman, serif'">____________________</span></p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
       <br/>
 
     </p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Witness Name (printed) </span><span style="font-family:'Times New Roman, serif'"><u>_______________________________________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Witness Name (printed) </span><span style="font-family:'Times New Roman, serif'">_______________________________________________________</span></p>
     <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Address  </span><span style="font-family:'Times New Roman, serif'"><u>____________________________________________________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Address  </span><span style="font-family:'Times New Roman, serif'">____________________________________________________________________</span></p>
   </div>
 </div>
 <!-- Page 11-->
@@ -1357,13 +1357,13 @@
         by blood, marriage or adoption.</span></p>
     </ul>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Witness Signature: </span><span style="font-family:'Times New Roman, serif'"><u>_________________________________</u></span><span style="font-family:'Times New Roman, serif'">  Date: </span><span style="font-family:'Times New Roman, serif'"><u>______________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Witness Signature: </span><span style="font-family:'Times New Roman, serif'">_________________________________</span><span style="font-family:'Times New Roman, serif'">  Date: </span><span style="font-family:'Times New Roman, serif'">______________________</span></p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Witness Name (printed) </span><span style="font-family:'Times New Roman, serif'"><u>________________________________________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Witness Name (printed) </span><span style="font-family:'Times New Roman, serif'">________________________________________________________</span></p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Address: </span><span style="font-family:'Times New Roman, serif'"><u>____________________________________________________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Address: </span><span style="font-family:'Times New Roman, serif'">____________________________________________________________________</span></p>
     <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'"><u>____________________________________________________________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">____________________________________________________________________________</span></p>
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
 
@@ -1512,7 +1512,7 @@
 
       <span style="font-family:'Times New Roman, serif'">
       	<span size="2" style="font-size: 10pt">
-      		<u>___________________________</u>
+      		___________________________
       	</span>
       </span>
 
@@ -1521,7 +1521,7 @@
       </span>
 
       <span style="font-family:'Times New Roman, serif'">
-      	<span size="2" style="font-size: 10pt"><u>_______________</u></span>
+      	<span size="2" style="font-size: 10pt">_______________</span>
       </span>
 
       <span style="font-family:'Times New Roman, serif'">
@@ -1529,7 +1529,7 @@
       </span>
 
       <span style="font-family:'Times New Roman, serif'">
-      	<span size="2" style="font-size: 10pt"><u>__________</u></span>
+      	<span size="2" style="font-size: 10pt">__________</span>
       </span>
 
       <span style="font-family:'Times New Roman, serif'">
@@ -1543,8 +1543,8 @@
 
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">Notary
-      Public </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><u>___________________________________</u></span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">
-       My Commission Expires: </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><u>________________________</u></span></span></p>
+      Public </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">___________________________________</span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">
+       My Commission Expires: </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">________________________</span></span></p>
   </div>
 </div>
 <!-- Page 12-->
@@ -1746,13 +1746,13 @@
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">_______ </span><span style="font-family:'Times New Roman, serif'"><b>D.	Other:</b></span><span style="font-family:'Times New Roman, serif'">	</span></p>
     <p  style="margin-left: 1in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-    <span style="font-family:'Times New Roman, serif'; line-height: 23px;"><u>
+    <span style="font-family:'Times New Roman, serif'; line-height: 23px;">
       _________________________________________________________________<br>
       _________________________________________________________________<br>
       _________________________________________________________________<br>
       _________________________________________________________________<br>
       _________________________________________________________________
-      </u></span><span style="font-family:'Times New Roman, serif'">.	</span></p>
+      </span><span style="font-family:'Times New Roman, serif'">.	</span></p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">		</span></p>
     <p  style="text-indent: -0.33in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
@@ -1761,13 +1761,13 @@
         decisions for myself: </b></span><span style="font-family:'Times New Roman, serif'">(Explain
         or write in &quot;None&quot;)	</span></p>
     <p  style="margin-left: 1in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-        <span style="font-family:'Times New Roman, serif'; line-height: 23px;"><u>
+        <span style="font-family:'Times New Roman, serif'; line-height: 23px;">
           _________________________________________________________________<br>
           _________________________________________________________________<br>
           _________________________________________________________________<br>
           _________________________________________________________________<br>
           _________________________________________________________________
-          </u></span><span style="font-family:'Times New Roman, serif'">.	</span></p>
+          </span></p>
     <p  style="text-indent: -0.33in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
       <br/>
@@ -1798,11 +1798,11 @@
       history, dietary requirements, religious concerns, people to notify
       and any other matters that you feel are important):</span></p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'; line-height: 23px;"><u>___________________________________________________________________________<br>
+      <span style="font-family:'Times New Roman, serif'; line-height: 23px;">___________________________________________________________________________<br>
         ___________________________________________________________________________<br>
         ___________________________________________________________________________<br>
         ___________________________________________________________________________<br>
-        ___________________________________________________________________________</u></span><span style="font-family:'Times New Roman, serif'">.	</span></p>
+        ___________________________________________________________________________</span><span style="font-family:'Times New Roman, serif'">.	</span></p>
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">(Add
       additional pages if necessary)</span></span></p>
@@ -1852,9 +1852,9 @@
        I am signing this Durable Mental Health Care Power of Attorney as
       follows:</span></p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">My Signature: </span><span style="font-family:'Times New Roman, serif'"><u>__________________________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">My Signature: </span><span style="font-family:'Times New Roman, serif'">__________________________________________</span></p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Date: </span><span style="font-family:'Times New Roman, serif'"><u>_________________________________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Date: </span><span style="font-family:'Times New Roman, serif'">_________________________________________________</span></p>
     <p  style="text-indent: -0.33in; margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
       <br/>
@@ -1965,14 +1965,14 @@
 
     </p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Witness Signature: </span><span style="font-family:'Times New Roman, serif'"><u>_________________________________</u></span><span style="font-family:'Times New Roman, serif'">  Date: </span><span style="font-family:'Times New Roman, serif'"><u>_______________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Witness Signature: </span><span style="font-family:'Times New Roman, serif'">_________________________________</span><span style="font-family:'Times New Roman, serif'">  Date: </span><span style="font-family:'Times New Roman, serif'">_______________________</span></p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
       <br/>
 
     </p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Witness Name (printed) </span><span style="font-family:'Times New Roman, serif'"><u>								_________________________________________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Witness Name (printed) </span><span style="font-family:'Times New Roman, serif'">								_________________________________________________________</span></p>
   </div>
 </div>
 <!-- Page 16-->
@@ -2051,13 +2051,13 @@
         by blood, marriage or adoption.</span></p>
     </ul>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Witness Signature: </span><span style="font-family:'Times New Roman, serif'"><u>________________________________</u></span><span style="font-family:'Times New Roman, serif'">  Date: </span><span style="font-family:'Times New Roman, serif'"><u>______________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Witness Signature: </span><span style="font-family:'Times New Roman, serif'">________________________________</span><span style="font-family:'Times New Roman, serif'">  Date: </span><span style="font-family:'Times New Roman, serif'">______________________</span></p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Witness Name (printed) </span><span style="font-family:'Times New Roman, serif'"><u>________________________________________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Witness Name (printed) </span><span style="font-family:'Times New Roman, serif'">________________________________________________________</span></p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">Address: </span><span style="font-family:'Times New Roman, serif'"><u>____________________________________________________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">Address: </span><span style="font-family:'Times New Roman, serif'">____________________________________________________________________</span></p>
     <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'"><u>____________________________________________________________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">____________________________________________________________________________</span></p>
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
 
@@ -2078,7 +2078,7 @@
 <!-- Page 18-->
 <div>
   <div>
-    <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; page-break-before: always">
+    <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0;">
       <span style="font-family:'Times New Roman, serif'"><b>Notary Public (</b></span><span style="font-family:'Times New Roman, serif'">NOTE:
        If a witness signs your form, you DO NOT need a notary to sign):</span></p>
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
@@ -2187,15 +2187,15 @@
     
     <p style="margin-top: 0.15in; margin-bottom: 0in; line-height: 110%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">WITNESS MY HAND AND SEAL this </span>
-      <span style="font-family:'Times New Roman, serif'"><u>________</u></span>
+      <span style="font-family:'Times New Roman, serif'">________</span>
 
       <span style="font-family:'Times New Roman, serif'"> day of </span>
 
-      <span style="font-family:'Times New Roman, serif'"><u>___________________</u></span>
+      <span style="font-family:'Times New Roman, serif'">___________________</span>
 
       <span style="font-family:'Times New Roman, serif'">,</span>
 
-      <span style="font-family:'Times New Roman, serif'"><u>__________</u></span>
+      <span style="font-family:'Times New Roman, serif'">__________</span>
 
       <span style="font-family:'Times New Roman, serif'">.</span>
   	</p>
@@ -2206,11 +2206,11 @@
 
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">Notary Public </span>
-      <span style="font-family:'Times New Roman, serif'"><u>_______________________________________</u></span></p><br>
+      <span style="font-family:'Times New Roman, serif'">_______________________________________</span></p><br>
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">	</span></p>
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">My Commission Expires: </span><span style="font-family:'Times New Roman, serif'"><u>_______________________________</u></span></p>
+      <span style="font-family:'Times New Roman, serif'">My Commission Expires: </span><span style="font-family:'Times New Roman, serif'">_______________________________</span></p>
   </div>
 </div>
 <!-- Page 18-->

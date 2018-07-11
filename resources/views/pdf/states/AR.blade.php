@@ -167,7 +167,7 @@
 
                 </p>
                 <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-                    Signature: <u>_______________________________________</u></p>
+                    Signature: _______________________________________</p>
                 <p class="western" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
                     <b></b>
                     <span><b>{{ucwords($tellUsAboutYou['fullname'])}}</b></span>
@@ -187,7 +187,7 @@
 
                 </p> -->
                 <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-                    Date: <u>_______________________________________</u></p>
+                    Date: _______________________________________</p>
                 <!-- <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
                     <br/>
 
@@ -220,22 +220,20 @@
                     <br/>
 
                 </p>
-                <p class="western" style="margin-bottom: 0in; line-height: 100%">
-                  <span><b>WITNESS 1</b></span>
-                  <span>: </span>
-                  <span><u>____________________</u></span>
-                  <span style="padding-left: 50px;">	Dated:</span>
-                  <span><u>______________________</u></span></p>
-                <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
-                    <span style="padding-left: 50px;">[signature]</span></p>
-                <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
-                    <span><u>____________________________</u></span><span>		</span><span style="padding-left: 122px;"><u>______________________</u></span></p>
-                <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-                    <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
-                <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:25px 0 0 350px;">
-                    <span>							</span><span><u>______________________</u></span></p>
-                <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
-                    <span style="padding-left: 40px;">								[city, state, zip]</span></p>
+               <p align="left" style="margin-bottom: 0in; line-height: 115%;">
+            <span  ><b>WITNESS 1: </b>__________________________</span><span style="text-decoration: none; padding-left: 20px;">Dated: __________________________</span>
+              </p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[signature]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              __________________________<span style="text-decoration: none; padding-left: 70px;">__________________________</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[name printed]<span style="padding-left: 200px;"></span>[street address]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              <span style="text-decoration: none"></span>__________________________</p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+                <span  style="font-size: 11pt">[city,
+              state, zip]</span></p>
                 <p class="western" style="margin-bottom: 0in; line-height: 100%">
                     <br/>
 
@@ -244,19 +242,20 @@
                     <br/>
 
                 </p>
-                <p class="western" style="margin-bottom: 0in; line-height: 100%">
-                  <span><b>WITNESS 2</b></span><span>: </span><span><u>____________________</u></span>
-                  <span style="padding-left: 50px;">	Dated:</span><span><u>______________________</u></span></p>
-                <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
-                    <span style="padding-left: 50px;">[signature]</span></p>
-                <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
-                    <span><u>____________________________</u></span><span>		</span><span style="padding-left: 122px;"><u>______________________</u></span></p>
-                <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-                    <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
-                <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:25px 0 0 350px;">
-                    <span>							</span><span><u>______________________</u></span></p>
-                <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
-                    <span style="padding-left: 40px;">								[city, state, zip]</span></p>
+                <p align="left" style="margin-bottom: 0in; line-height: 115%;">
+            <span  ><b>WITNESS 2: </b>__________________________</span><span style="text-decoration: none; padding-left: 20px;">Dated: __________________________</span>
+              </p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[signature]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              __________________________<span style="text-decoration: none; padding-left: 70px;">__________________________</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[name printed]<span style="padding-left: 200px;"></span>[street address]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              <span style="text-decoration: none"></span>__________________________</p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+                <span  style="font-size: 11pt">[city,
+              state, zip]</span></p>
             </div>
             <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Declaration and Durable Power of Attorney of
@@ -420,7 +419,7 @@
 
                 </p> -->
                 <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-                    Signature: <u>_______________________________________</u></p>
+                    Signature: _______________________________________</p>
                 <p class="western" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
                     {{ucwords($tellUsAboutYou['fullname'])}}</p>
                 <p class="western" style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
@@ -434,7 +433,7 @@
 
                 </p> -->
                 <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-                    Date: <u>_______________________________________</u></p>
+                    Date: _______________________________________</p>
                 <!-- <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
                     <br/>
 
@@ -514,17 +513,20 @@
                     <br/>
 
                 </p>
-                <p class="western" style="margin-bottom: 0in; line-height: 100%"><span><b>WITNESS 1</b></span><span>: </span><span><u>____________________</u></span><span style="padding-left: 50px;">	Dated: </span><span><u>______________________</u></span></p>
-                <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
-                    <span style="padding-left: 50px;">[signature]</span></p>
-                <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
-                    <span><u>____________________________</u></span><span>		</span><span style="padding-left: 122px;"><u>______________________</u></span></p>
-                <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-                    <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
-                <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:25px 0 0 350px;">
-                    <span>							</span><span><u>______________________</u></span></p>
-                <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
-                    <span style="padding-left: 40px;">								[city, state, zip]</span></p>
+                <p align="left" style="margin-bottom: 0in; line-height: 115%;">
+            <span  ><b>WITNESS 1: </b>__________________________</span><span style="text-decoration: none; padding-left: 20px;">Dated: __________________________</span>
+              </p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[signature]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              __________________________<span style="text-decoration: none; padding-left: 70px;">__________________________</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[name printed]<span style="padding-left: 200px;"></span>[street address]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              <span style="text-decoration: none"></span>__________________________</p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+                <span  style="font-size: 11pt">[city,
+              state, zip]</span></p>
                 <p class="western" style="margin-bottom: 0in; line-height: 100%">
                     <br/>
 
@@ -533,17 +535,20 @@
                     <br/>
 
                 </p>
-                <p class="western" style="margin-bottom: 0in; line-height: 100%"><span><b>WITNESS 2</b></span><span>: </span><span><u>____________________</u></span><span style="padding-left: 50px;">	Dated: </span><span><u>______________________</u></span></p>
-                <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
-                    <span style="padding-left: 50px;">[signature]</span></p>
-                <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
-                    <span><u>____________________________</u></span><span>		</span><span style="padding-left: 122px;"><u>______________________</u></span></p>
-                <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-                    <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
-                <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:25px 0 0 350px;">
-                    <span>							</span><span><u>______________________</u></span></p>
-                <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
-                    <span style="padding-left: 40px;">								[city, state, zip]</span></p>
+                <p align="left" style="margin-bottom: 0in; line-height: 115%;">
+            <span  ><b>WITNESS 2: </b>__________________________</span><span style="text-decoration: none; padding-left: 20px;">Dated: __________________________</span>
+              </p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[signature]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              __________________________<span style="text-decoration: none; padding-left: 70px;">__________________________</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[name printed]<span style="padding-left: 200px;"></span>[street address]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              <span style="text-decoration: none"></span>__________________________</p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+                <span  style="font-size: 11pt">[city,
+              state, zip]</span></p>
             </div>
             <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Declaration and Durable Power of Attorney of
