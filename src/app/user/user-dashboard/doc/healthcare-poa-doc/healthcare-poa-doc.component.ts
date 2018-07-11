@@ -113,7 +113,9 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     in: 6,
     ks: 6,
     ma: 8,
-    dc: 6
+    dc: 6,
+    wy: 7,
+    wi: 10
   };
 
   pdfData: any;
