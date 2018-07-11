@@ -58,20 +58,20 @@
         <div *ngIf="estateDistributedForm.value.singleBeneficiary == 'Yes'">
             <div formArrayName="toASingleBeneficiary">
                 <div  *ngFor="let item of estateDistributedForm['controls'].toASingleBeneficiary['controls']; let i=index"  [formGroupName]="i">
-            <div class="form-group">
-                <label>What is your Beneficiary's First name? </label>
-                <input type="text" class="form-control" formControlName="firstName">
-                <div *ngIf="!estateDistributedForm.get('toASingleBeneficiary.0.firstName').valid && estateDistributedForm.get('toASingleBeneficiary.0.firstName').touched">
-                    <span *ngIf="estateDistributedForm.get('toASingleBeneficiary.0.firstName').hasError('required')" class="error_txt">Please provide beneficiary first name.</span>
-                </div>
+            <!--<div class="form-group">-->
+                <!--<label>What is your Beneficiary's First name? </label>-->
+                <!--<input type="text" class="form-control" formControlName="firstName">-->
+                <!--<div *ngIf="!estateDistributedForm.get('toASingleBeneficiary.0.firstName').valid && estateDistributedForm.get('toASingleBeneficiary.0.firstName').touched">-->
+                    <!--<span *ngIf="estateDistributedForm.get('toASingleBeneficiary.0.firstName').hasError('required')" class="error_txt">Please provide beneficiary first name.</span>-->
+                <!--</div>-->
 
-            </div>
+            <!--</div>-->
             <div class="form-group">
-                <label>What is your Beneficiary's full legal name?</label>
+                <label>What is your Beneficiary’s Full Legal Name?</label>
                 <input type="text" class="form-control" formControlName="fullName">
                 <div *ngIf="!estateDistributedForm.get('toASingleBeneficiary.0.fullName').valid && estateDistributedForm.get('toASingleBeneficiary.0.fullName').touched" class="help-block">
-                    <span *ngIf="estateDistributedForm.get('toASingleBeneficiary.0.fullName').hasError('required')" class="error_txt"> Please enter a properly capitalized beneficiary name.</span>
-                    <span *ngIf="estateDistributedForm.get('toASingleBeneficiary.0.fullName').hasError('pattern')" class="error_txt">Please enter a properly capitalized beneficiary name.</span>
+                    <span *ngIf="estateDistributedForm.get('toASingleBeneficiary.0.fullName').hasError('required')" class="error_txt"> Please enter a properly capitalized Beneficiary name.</span>
+                    <span *ngIf="estateDistributedForm.get('toASingleBeneficiary.0.fullName').hasError('pattern')" class="error_txt">Please enter a properly capitalized Beneficiary name.</span>
                 </div>
 
             </div>
@@ -104,7 +104,7 @@
                  </div>
              </div>
             <div class="form-group">
-                <label>What is your beneficiary's gender?</label>
+                <label>Beneficiary’s Gender:</label>
                 <ul class="radio_ul6">
                     <li>
                         <label class="radio_custom" [ngClass]="{'active': estateDistributedForm.get('toASingleBeneficiary.0.gender').value == 'M'}">
@@ -124,7 +124,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>What happens if your beneficiary passes before you?
+                <label>What happens if your Beneficiary passes before you?
                     <app-global-tooltip (click)="toolTipClicked('beneficiary_qs')" [tooltipMessages]='toolTipMessageList.beneficiary_qs' toolTipType="beneficiary_qs"></app-global-tooltip>
                 </label>
                 <ul class="radio_ul6 gifts-list">
@@ -171,7 +171,7 @@
             <div formArrayName="toMultipleBeneficiary">
             <div  *ngFor="let item of estateDistributedForm['controls'].toMultipleBeneficiary['controls']; let j=index"  [formGroupName]="j">
             <div class="form-group">
-                <label>Would you like to divide the rest of your estate into equal shares for each beneficiary? <br>
+                <label>Would you like to divide the rest of your estate into equal shares for each Beneficiary? <br>
                     (If you prefer, you can enter separate percentages)</label>
                 <ul class="radio_ul6">
                     <li>
@@ -196,10 +196,10 @@
                         <div formArrayName="beneficiaryYes">
                             <div class="row formHeadingRow">
                                 <div class="threeColField">
-                                    <label>Beneficiary's full legal name</label>
+                                    <label>Beneficiary’s Full Legal Name</label>
                                 </div>
                                 <div class="threeColField">
-                                    <label>Beneficiary's relationship to you</label>
+                                    <label>Beneficiary’s Relationship To You</label>
                                 </div>
                             </div>
                             <div class="row formRow" *ngFor="let newItem of item.get('beneficiaryYes').controls; let m=index"  [formGroupName]="m">
@@ -287,7 +287,7 @@
                     <!-- <button type="button" class="btn-xs btn-default" (click)="addMoreOption(item.controls.beneficiaryNo, 2)">+ Add</button> -->
                 </div>
                 <div class="form-group">
-                    <label>Should a deceased beneficiary's share goes to his or her kids?</label>
+                    <label>Should a deceased Beneficiary's share goes to his or her kids?</label>
                     <ul class="radio_ul6">
                         <li>
                             <label class="radio_custom" [ngClass]="{'active': estateDistributedForm.get('toMultipleBeneficiary.0.deceasedBeneficiaryShareToKids').value == 'Yes'}">
@@ -307,7 +307,7 @@
                     </div>
                 </div>
                 <div class="form-group"  *ngIf="estateDistributedForm.get('toMultipleBeneficiary.0.isEstateIntoEqualShares').value == 'No'">
-                    <label>If the initial allocation of shares among beneficiaries is unequal, should a deceased beneficiarie's share be allocated to the other beneficiaries' shares in the same ratio as the initial division?</label>
+                    <label>If the initial allocation of shares among Beneficiaries is unequal, should a deceased Beneficiarie's share be allocated to the other Beneficiaries' shares in the same ratio as the initial division?</label>
                     <ul class="radio_ul6">
                         <li>
                             <label class="radio_custom" [ngClass]="{'active': estateDistributedForm.get('toMultipleBeneficiary.0.deceasedBeneficiarieShare').value == 'Yes'}">
@@ -327,7 +327,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Would you like for any minor beneficiary's share to be held in trust until they are an adult?</label>
+                    <label>Would you like for any minor Beneficiary's share to be held in trust until they are an adult?</label>
                     <ul class="radio_ul6">
                         <li>
                             <label class="radio_custom" [ngClass]="{'active': estateDistributedForm.get('toMultipleBeneficiary.0.minorBeneficiaryShareToBeHeldInTrust').value == 'Yes'}">

@@ -80,7 +80,7 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
           someOtherWay: ['No'],
           toASingleBeneficiary: this.fb.array([
               this.fb.group({
-                  firstName: [''],
+                  // firstName: [''],
                   relationship: [''],
                   fullName: [''],
                   gender: [''],
@@ -483,8 +483,8 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
    *Add validation to the  SingleBeneficiaryForm
    */
   addValidationToASingleBeneficiaryForm() {
-      this.estateDistributedForm.get(`toASingleBeneficiary.0.firstName`).setValidators([Validators.required]);
-      this.estateDistributedForm.get(`toASingleBeneficiary.0.firstName`).updateValueAndValidity();
+      // this.estateDistributedForm.get(`toASingleBeneficiary.0.firstName`).setValidators([Validators.required]);
+      // this.estateDistributedForm.get(`toASingleBeneficiary.0.firstName`).updateValueAndValidity();
       this.estateDistributedForm.get(`toASingleBeneficiary.0.fullName`).setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
       this.estateDistributedForm.get(`toASingleBeneficiary.0.fullName`).updateValueAndValidity();
       this.estateDistributedForm.get(`toASingleBeneficiary.0.relationship`).setValidators([Validators.required]);
@@ -505,8 +505,8 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
    *Remove validation to the  SingleBeneficiaryForm
    */
   removeValidationToASingleBeneficiaryForm() {
-      this.estateDistributedForm.get(`toASingleBeneficiary.0.firstName`).setValidators([]);
-      this.estateDistributedForm.get(`toASingleBeneficiary.0.firstName`).updateValueAndValidity();
+      // this.estateDistributedForm.get(`toASingleBeneficiary.0.firstName`).setValidators([]);
+      // this.estateDistributedForm.get(`toASingleBeneficiary.0.firstName`).updateValueAndValidity();
       this.estateDistributedForm.get(`toASingleBeneficiary.0.fullName`).setValidators([]);
       this.estateDistributedForm.get(`toASingleBeneficiary.0.fullName`).updateValueAndValidity();
       this.estateDistributedForm.get(`toASingleBeneficiary.0.relationship`).setValidators([]);
@@ -716,10 +716,10 @@ export class YourEstateDistributedComponent implements OnInit, OnDestroy {
 
   /**Previous page*/
   goBack() {
-    if (this.pageChange) {
+    // if (this.pageChange) {
       this.router.navigate(['/dashboard/your-specific-gifts']);
-    } else {
-      this.router.navigate(['/dashboard/tell-you-make-specific-gifts']);
-    }
+    // } else {
+    //   this.router.navigate(['/dashboard/tell-you-make-specific-gifts']);
+    // }
   }
 }
