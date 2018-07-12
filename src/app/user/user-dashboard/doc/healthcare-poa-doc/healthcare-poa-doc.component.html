@@ -76,7 +76,7 @@
 
   <div class="docBtnArea" [ngClass]="{'uncompleted' : count !== 5}">
     <ul>
-      <li><a href="javascript:void(0)" (click)="goBack()"><i class="fa fa-chevron-left"></i> Previous Document</a></li>
+      <li><a href="javascript:void(0)" [routerLink]="['/dashboard/documents/financial-poa']"><i class="fa fa-chevron-left"></i> Previous Document</a></li>
       <li><a [routerLink]="['/dashboard/documents/final-disposition']">Next Document <i class="fa fa-chevron-right"></i></a></li>
     </ul>
     <ul>
