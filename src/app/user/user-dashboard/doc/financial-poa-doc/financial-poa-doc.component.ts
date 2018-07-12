@@ -42,6 +42,7 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   getUserDetailsSubscription: Subscription;
   count: number;
   totalPagesSubscription: Subscription;
+  heightArr: Array<number>;
 
   states = {
     fl: false,
@@ -176,21 +177,32 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   ngOnInit() {
     console.log('life cycle financial-poa-doc --ngOnInit');
     this.docScrolled = 0;
-    this.thumbIndex = 0;
+    this.thumbIndex = 1;
     // this.liCount = this.docThumbImg.length * 114;
     this.totalPagesSubscription = this.globalPDFService.totalFcpoaPages.subscribe(
       (resp) => {
-        if (resp !== undefined && resp !== null && resp > 0) {
+        // tslint:disable-next-line:max-line-length
+        if (resp !== undefined && resp !== null && resp.pages !== undefined && resp.pages !== null && resp.heightArr !== undefined && resp.heightArr !== null) {
           // console.log('response from subscription', resp);
-          this.thNail[this.thKey] = resp;
-          setTimeout(() => {
-            this.constructThumbnails();
-            this.liCount = this.docThumbImg.length * 114;
-          }, 2000);
+          if ( resp.pages > 0 && resp.heightArr.length > 0) {
+            this.thNail[this.thKey] = resp.pages;
+            setTimeout(() => {
+              this.heightArr = resp.heightArr;
+              this.constructThumbnails();
+              this.liCount = this.docThumbImg.length * 114;
+            }, 2000);
+          } else {
+            console.log('incorrect response values gathered from rxjs/subscription', resp);
+          }
+        } else {
+          console.log('fault in incomming response from rxjs/subscription:', resp);
         }
+      }, (err) => {
+        console.log('err in rxjs/subscription', err);
+      }, () => {
+        console.log('rxjs subscription listning over');
       }
     );
-
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -206,11 +218,10 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   }
 
   getScroll(scrollVal: number, e: any) {
-    this.thumbIndex = Math.floor(scrollVal / 1011);
+    this.thumbIndex = this.globalPDFService.getAccurateScrollPosition(scrollVal, this.heightArr);
     const dx = e.target.offsetWidth + (this.docThumbImg.length * 7);
     const u = dx / this.docThumbImg.length;
-    this.thumbContainer.nativeElement.scrollLeft = u * this.thumbIndex;
-    console.log(this.thumbIndex, this.docThumbImg.length);
+    this.thumbContainer.nativeElement.scrollLeft = u * (this.thumbIndex - 1);
   }
 
   /**Get the user details*/

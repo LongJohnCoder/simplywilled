@@ -7,10 +7,10 @@ import { Subject } from 'rxjs/Subject';
 export class GlobalPdfService {
 
   constructor (
-    private _http: HttpClient
-  ) { }
+    private _http: HttpClient,
+  ) {}
 
-  public totalFcpoaPages = new Subject<number>();
+  public totalFcpoaPages = new Subject<any>();
   public totalHcpoaPages = new Subject<number>();
   public totalLastWillPages = new Subject<number>();
 
@@ -79,8 +79,8 @@ export class GlobalPdfService {
    * Subscription to broadcast totalPages which is dynamic in child component financial-poa-doc
    * @param value
    */
-  fcpoaPages(value: number) {
-    this.totalFcpoaPages.next(value);
+  fcpoaPages(arr: any) {
+    this.totalFcpoaPages.next(arr);
   }
 
   /**
@@ -97,6 +97,40 @@ export class GlobalPdfService {
    */
   lastWillPages(value: number) {
     this.totalLastWillPages.next(value);
+  }
+
+  getAccurateScrollPosition(x: number , list: Array<number>): number {
+    let min = 0;
+    let max = list.length - 1;
+    if (x <= list[min] ) {
+      return 1;
+    }
+    if (x >= list[max]) {
+      return list.length;
+    }
+    let index = Math.floor((list.length - 1) / 2);
+
+    while (index > 0) {
+      if (max < min) {
+        min = min + max;
+        max = min - max;
+        min = min - max;
+      }
+      if (min + 1 === max || min === max) {
+        index = min;
+        break;
+      }
+      if (x > list[index]) {
+        min = index;
+        index = Math.floor((max + min) / 2);
+      } else if (x < list[index]) {
+        max = index;
+        index = Math.floor((min + max) / 2);
+      } else {
+        break;
+      }
+    }
+    return index + 1;
   }
 
 }
