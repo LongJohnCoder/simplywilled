@@ -4,60 +4,27 @@
     <meta charset="utf-8">
     <title>Untitled Document</title>
     <style>
-    /*    *{
-            margin: 0;
-            padding: 0;
-        }
-        body{
-            margin: 0;
-            padding: 0;
-            font-family: Garamond;
-        }
-        !* width *!
-        ::-webkit-scrollbar {
-            width: 14px;
-        }
+    #footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+    text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+    padding-top: 5px;
+    }
+     #footer .page:after { content: counter(page, none); }
 
-        !* Track *!
-        ::-webkit-scrollbar-track {
-            background: #0f69bb;
-
-        }
-
-        !* Handle *!
-        ::-webkit-scrollbar-thumb {
-            background: #99cc33;
-            border-radius: 5px;
-        }
-
-        !* Handle on hover *!
-        ::-webkit-scrollbar-thumb:hover {
-            background: #57ab2a;
-        }
-
-        .docContainer{
-            width: 700px;
-            margin: 0 auto;
-        }
-        .docPage{
-            width: 700px !important;
-            height: 991px!important;
-            background: #fff;
-            box-shadow: 0 0 7px rgba(0,0,0,0.3);
-            margin: 20px 0;
-            box-sizing: border-box;
-            padding: 40px;
-        }
-
-
-
-*/
     </style>
 </head>
 
 <body>
-
-<div class="docContainer" id="doc">
+  <script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Advance Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
+<div class="docContainer" id="doc" style="text-align: justify;">
 
     <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
         <p style="margin-bottom: 0.06in; line-height: 100%; text-align: center;"><span  style="font-size: 13pt"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span  style="font-size: 16pt"><b>V</b></span></span></span><span  style="font-size: 16pt"><b>IRGINIA</b></span><span style="font-family:'Times New Roman, serif'"><span  style="font-size: 15pt"><span  style="font-size: 16pt"><b>
@@ -112,7 +79,7 @@
             @else
                 <span style="text-transform: capitalize">(state)_____________</span>
             @endif
-
+            , {{$tellUsAboutYou['state']}}
             willfully and voluntarily
             make known my wishes in the event that I am incapable of making an
             informed decision about my health care, as follows:</p>
@@ -126,7 +93,7 @@
         I:  APPOINTMENT AND POWERS OF MY AGENT </b></span></span>
         </p>
         <p  style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">
-        <span ><span  style="font-size: 9pt"><span><span  style="font-size: 12pt">I
+        <span ><span><span><span>I
         hereby appoint my </span></span>
        {{-- <span>
             <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther}}</span>
@@ -182,7 +149,7 @@
         @else
             <span>(relation)______________</span>
         @endif
-        <span >, </span>
+        <span > </span>
 
         @if(isset($healthFinance) && array_key_exists('fullname',$healthFinance) && !is_null($healthFinance['fullname']))
             <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}}</span>
@@ -372,24 +339,13 @@
             further health care decisions will require my informed consent.
         </p>
     </div>
-    @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-    <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-        Advance Medical Directive of <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span><br>
-        Page 1 of 7
-    </div>
-    @else
-    <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-        Advance Medical Directive of  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-        Page 1 of 7
-    </div>
-    @endif
 </div>
 
 
-<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-    <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+<div >
+    <div style="text-align: justify">
         <p  style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">
-        <span  style="font-size: 9pt"><span  style="font-size: 12pt">In
+        <span><span>In
         exercising the power to make health care decisions on my behalf, my
         agent shall follow my desires and preferences as stated in this
         document or as otherwise known to my agent. My agent shall be guided
@@ -458,22 +414,11 @@
             informed decision.
         </p>
     </div>
-    @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-        <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-            Advance Medical Directive of <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span><br>
-            Page 2 of 7
-        </div>
-    @else
-        <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-            Advance Medical Directive of  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-            Page 2 of 7
-        </div>
-    @endif
 </div>
 
 
-<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-    <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+<div style="text-align: justify">
+    <div>
         <p class="western" style="margin-bottom: 0.17in; line-height: 100%">7.
             To authorize my participation in any health care study approved by an
             institutional review board or research review committee according to
@@ -488,41 +433,28 @@
             promote human well-being, even though it offers no prospect of direct
             benefit to me.
         </p>
-        <p class="western" style="margin-bottom: 0in; line-height: 100%">9.
+        <p class="western" style="margin-bottom: 0in; line-height: 100%; page-break-before: always;">9.
             To make decisions regarding visitation during any time that I am
             admitted to any health care facility, consistent with the following
             directions:</p>
-        <p class="western" style="margin-bottom: 0in; line-height: 150%"><u>
-                <br>__________________________________________________________________________<br>
+        <p class="western" style="margin-bottom: 0in; line-height: 150%">
                 __________________________________________________________________________<br>
                 __________________________________________________________________________<br>
-            </u></p>
-        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+                __________________________________________________________________________<br>
+            </p>
 
-        </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span  style="font-size: 9pt"><span  style="font-size: 12pt">10.
+        <p><span><span>10.
         To take any lawful actions that may be necessary to carry out these
         decisions, including the granting of releases of liability to medical
-        providers.  </span><span  style="font-size: 12pt">Further, my
+        providers.  </span><span>Further, my
         agent shall not be liable for the costs of treatment pursuant to his
         authorization, based solely on that authorization.</span></span></p>
-        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-        </p>
-        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
         <p class="western" style="margin-bottom: 0in; line-height: 100%">ADDITIONAL
             POWERS OR LIMITATIONS, IF ANY:</p>
-        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-        </p>
-        <p class="western" style="margin-bottom: 0in; line-height: 150%"><u>																																							</u></p>
-        <p class="western" style="margin-bottom: 0in; line-height: 150%"><u>																																							</u></p>
-        <p  style="margin-bottom: 0in; line-height: 0.3in"><span  style="font-size: 12pt"><u>
+
+        <p  style="margin-bottom: 0in; line-height: 0.3in"><span  style="font-size: 12pt">
         __________________________________________________________________________<br>
         __________________________________________________________________________<br>
         __________________________________________________________________________<br>
@@ -530,26 +462,16 @@
         __________________________________________________________________________<br>
         __________________________________________________________________________<br>
         __________________________________________________________________________<br>
-        </u></span></p>
+        </span></p>
         <p class="western" style="margin-bottom: 0in; line-height: 200%"><span  style="font-size: 10pt"><i>(Attach
         additional pages if needed.)</i></span></p>
     </div>
-    @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-        <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-            Advance Medical Directive of <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span><br>
-            Page 3 of 7
-        </div>
-    @else
-        <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-            Advance Medical Directive of  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-            Page 3 of 7
-        </div>
-    @endif
+
 </div>
 
 
-<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-    <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+<div style="text-align: justify">
+    <div >
         <p style="margin-top: 0.06in; margin-bottom: 0.09in; line-height: 100%; page-break-before: always; text-align: center;">
         <span  style="font-size: 10pt"><span  style="font-size: 14pt"><b>SECTION
         II:  MY HEALTH CARE INSTRUCTIONS </b></span></span>

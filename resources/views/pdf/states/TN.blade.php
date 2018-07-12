@@ -18,10 +18,10 @@ padding-top: 5px;
     }
 </script>
 <div id="footer">
-<div style="">
-      Advance Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
-    </div>
+  <div style="">
+    Advance Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
   </div>
+</div>
 
 
 <div style="text-align: justify;">
@@ -231,16 +231,16 @@ padding-top: 5px;
       </span><span style="font-family:'Times New Roman, serif'"><b>(you can check as many
       of these items as you want)</b></span><span style="font-family:'Times New Roman, serif'">:</span></p>
       <p  style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 0.15in">
-      <input type="checkbox"> <span style="font-family:'Times New Roman, serif'"><b>Permanent Unconscious
+      <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> <span style="font-family:'Times New Roman, serif'"><b>Permanent Unconscious
       Condition: </b></span><span style="font-family:'Times New Roman, serif'">I become
       totally unaware of people or surroundings with little chance of ever
       waking up from the coma.</span></p>
       <p  style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 0.15in">
-      <input type="checkbox"> <span style="font-family:'Times New Roman, serif'"><b>Permanent Confusion: </b></span><span style="font-family:'Times New Roman, serif'">I
+      <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> <span style="font-family:'Times New Roman, serif'"><b>Permanent Confusion: </b></span><span style="font-family:'Times New Roman, serif'">I
       become unable to remember, understand or make decisions. I do not
       recognize loved ones or cannot have a clear conversation with them.</span></p>
       <p  style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 0.15in">
-      <input type="checkbox"> <span style="font-family:'Times New Roman, serif'"><b>Dependent in all
+      <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> <span style="font-family:'Times New Roman, serif'"><b>Dependent in all
       Activities of Daily Living: </b></span><span style="font-family:'Times New Roman, serif'">I
       am no longer able to talk clearly or move by myself. I depend on
       others for feeding, bathing, dressing and walking. Rehabilitation or
@@ -252,7 +252,7 @@ padding-top: 5px;
   <div>
     <div>
       <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 0.15in">
-        <input type="checkbox"> <span style="font-family:'Times New Roman, serif'"><b>End-Stage Illnesses: </b></span><span style="font-family:'Times New Roman, serif'">I
+        <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> <span style="font-family:'Times New Roman, serif'"><b>End-Stage Illnesses: </b></span><span style="font-family:'Times New Roman, serif'">I
         have an illness that has reached its final stages in spite of full
         treatment. Examples:&nbsp; Widespread cancer that does not respond
         anymore to treatment; chronic and/or damaged heart and lungs, where
@@ -283,7 +283,7 @@ padding-top: 5px;
 			   <tr valign="top">
 			      <td width="" style="border: none; padding: 0in; border-left: 1px solid #000; border-bottom: 1px solid #000;">
 							<p  style="margin-left: 0.19in; margin-bottom: 0in">
-							<span size="5" style="font-size: 18pt"><input type="checkbox"></span><span style="font-family:'Times New Roman, serif'"></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><input type="checkbox"></span></span></p>
+							<span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span><span style="font-family:'Times New Roman, serif'"></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span></span></p>
 							<p  style="margin-left: 0.19in"><span style="font-family:'Times New Roman, serif'">Yes No</span></p>
 			      </td>
 			      <td width="" style="border: none; padding-left: 20px; border: 1px solid #000; border-top: 0;">
@@ -301,7 +301,7 @@ padding-top: 5px;
 			   <tr valign="top">
 			      <td width="" style="border: none; padding: 0in; border-left: 1px solid #000; border-bottom: 1px solid #000;">
 							<p  style="margin-left: 0.19in; margin-bottom: 0in">
-				      <span size="5" style="font-size: 18pt"><input type="checkbox"></span><span style="font-family:'Times New Roman, serif'"></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><input type="checkbox"></span></span></p>
+				      <span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span><span style="font-family:'Times New Roman, serif'"></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span></span></p>
 				      <p  style="margin-left: 0.19in"><span style="font-family:'Times New Roman, serif'">Yes No</span></p>
 			      </td>
 						<td width="" style="border: none; padding-left: 20px; border: 1px solid #000; border-top: 0;">
@@ -317,7 +317,7 @@ padding-top: 5px;
 			   <tr valign="top">
 			      <td width="" style="border: none; padding: 0in; border-left: 1px solid #000; border-bottom: 1px solid #000;">
 							<p  style="margin-left: 0.19in; margin-bottom: 0in">
-							<span size="5" style="font-size: 18pt"><input type="checkbox"></span><span style="font-family:'Times New Roman, serif'"></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><input type="checkbox"></span></span></p>
+							<span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span><span style="font-family:'Times New Roman, serif'"></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span></span></p>
 							<p  style="margin-left: 0.19in"><span style="font-family:'Times New Roman, serif'">Yes No</span></p>
 			      </td>
 						<td width="" style="border: none; padding-left: 20px; border: 1px solid #000; border-top: 0;">
@@ -332,7 +332,7 @@ padding-top: 5px;
 				 <tr valign="top">
 			      <td width="" style="border: none; padding: 0in; border-left: 1px solid #000; border-bottom: 1px solid #000;">
 							<p  style="margin-left: 0.19in; margin-bottom: 0in">
-							<span size="5" style="font-size: 18pt"><input type="checkbox"></span><span style="font-family:'Times New Roman, serif'"></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><input type="checkbox"></span></span></p>
+							<span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span><span style="font-family:'Times New Roman, serif'"></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span></span></p>
 							<p  style="margin-left: 0.19in"><span style="font-family:'Times New Roman, serif'">Yes No</span></p>
 			      </td>
 						<td width="" style="border: none; padding-left: 20px; border: 1px solid #000; border-top: 0;">
@@ -364,9 +364,9 @@ padding-top: 5px;
         Upon my death, I wish to make the following anatomical gift (please
         mark one):</span></p>
         <p  style="margin-bottom: 0.06in; line-height: 100%">
-        <span size="5" style="font-size: 18pt"><input type="checkbox"></span>
-        <span style="font-family:'Times New Roman, serif'">Any organ/tissue&nbsp; </span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><input type="checkbox"></span></span><span style="font-family:'Times New Roman, serif'">
-        My entire body&nbsp; </span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><input type="checkbox"></span></span><span style="font-family:'Times New Roman, serif'">
+        <span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span>
+        <span style="font-family:'Times New Roman, serif'">Any organ/tissue&nbsp; </span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span></span><span style="font-family:'Times New Roman, serif'">
+        My entire body&nbsp; </span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span></span><span style="font-family:'Times New Roman, serif'">
         Only the following organs/tissues:</span></p><br>
         <p  style="margin-left: 0.75in; margin-bottom: 0.09in; line-height: 100%">
         <span style="font-family:'Times New Roman, serif'">_____________________________________________________________________</span></p>

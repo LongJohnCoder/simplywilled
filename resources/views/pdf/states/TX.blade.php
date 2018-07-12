@@ -2,9 +2,27 @@
 <html>
 <head>
 	<title>Health Care Power of Attorney</title>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
+
+	</style>
 </head>
 <body>
-<div>
+	<script type="text/php">
+	    if ( isset($pdf) ) {
+	        $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+	    }
+	</script>
+	<div id="footer">
+	  <div style="">
+	    Medical Power of Attorney and Living Will Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
+	  </div>
+	</div>
+<div style="text-align: justify;">
 	<div>
     <div>
       <p align="center" style="margin-bottom: 0in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 16pt"><b>TEXAS
@@ -12,9 +30,9 @@
         <p align="center" style="margin-bottom: 0.13in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 16pt"><b>OF
         ATTORNEY</b></span></span></p>
         <p align="center" style="margin-bottom: 0in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><u><b>DISCLOSURE
-        STATEMENT<br/>
-        </b></u></span><span style="font-family:'Times New Roman, serif'"><b>INFORMATION
-        CONCERNING THE MEDICAL POWER OF ATTORNEY</b></span></p>
+        STATEMENT
+			</b></u></span></p><p style="text-align: center;"><span style="line-height: 100%; font-family:'Times New Roman, serif'"><b>INFORMATION
+			CONCERNING THE MEDICAL POWER OF ATTORNEY</b></span></p>
         <p align="center" style="margin-bottom: 0in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><b>THIS
         IS AN IMPORTANT LEGAL DOCUMENT. BEFORE SIGNING THIS DOCUMENT, YOU
         SHOULD KNOW THESE IMPORTANT FACTS:</b></span></p>
@@ -71,10 +89,10 @@
         signed copies. Your agent is not liable for health care decisions
         made in good faith on your behalf.&nbsp;</span></p>
     </div>
-    
+
   </div>
-  
-  
+
+
   <div>
     <div>
       <p  style="margin-bottom: 0.17in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Even
@@ -136,8 +154,8 @@
     </div>
 
   </div>
-  
-  
+
+
   <div>
     <div>
       <p align="center" style="margin-bottom: 0.19in; line-height: 100%; text-align: center;">
@@ -148,43 +166,43 @@
         AGENT.</b></span></p>
         <p  style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif'">I,
         </span></span><span style="font-family:'Times New Roman, serif'"><b></b></span>
-        
+
         <span color="#0000ff">
           <span style="font-family:'Times New Roman, serif'">
-              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}},</b>
           </span>
         </span>
-        
+
         <span style="font-family:'Times New Roman, serif'"></span>
         <span color="#000000">
-          <span style="font-family:'Times New Roman, serif'">, of </span>
+          <span style="font-family:'Times New Roman, serif'"> of </span>
         </span>
-        
+
         <span color="#0433ff">
-            <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}}</span>
+            <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}},</span>
         </span>
-        
+
         <span color="#0433ff">
-            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}}</span>
+            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}},</span>
         </span>
-        
+
         <span color="#000000">
-          <span style="font-family:'Times New Roman, serif'">, </span>
+          <span style="font-family:'Times New Roman, serif'"> </span>
         </span>
-        
+
         <span color="#0433ff">
-            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}}</span>&nbsp;
+            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}},</span>&nbsp;
         </span>
-        
+
         <span color="#0433ff">
             <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['zip']}}, </span>
         </span>
-        
+
         <span color="#000000">
-          <span style="font-family:'Times New Roman, serif'">,
+          <span style="font-family:'Times New Roman, serif'">
         appoint my </span>
         </span>
-        
+
         <span color="#0433ff">
         	@if(strtolower($healthFinance['relation']) == 'other')
 				<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
@@ -192,53 +210,53 @@
 				<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}}, </span>
 			@endif
         </span>
-        
+
         <span color="#000000">
-          <span style="font-family:'Times New Roman, serif'">, </span>
+          <span style="font-family:'Times New Roman, serif'"> </span>
         </span>
-        
+
         <span color="#0433ff">
             <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}}</span>
         </span>
-        
+
         <span color="#000000"><span style="font-family:'Times New Roman, serif'">
         of </span>
         </span>
-        
+
         <span color="#0433ff">
             <span style="font-family:'Times New Roman, serif'">{{$healthFinance['address']}}, </span>
         </span>
-        
+
         <span color="#000000">
-          <span style="font-family:'Times New Roman, serif'">,
+          <span style="font-family:'Times New Roman, serif'">
         </span>
         </span>
-        
+
         <span color="#0000ff">
             <span style="font-family:'Times New Roman, serif'">{{$healthFinance['city']}}, </span>
         </span>
-        
-        <span style="font-family:'Times New Roman, serif'">, </span>
-        
+
+        <span style="font-family:'Times New Roman, serif'"> </span>
+
         <span color="#0000ff">
             <span style="font-family:'Times New Roman, serif'">{{$healthFinance['state']}}, </span>
         </span>
-        
+
         <span color="#0000ff">
             <span style="font-family:'Times New Roman, serif'">{{$healthFinance['zip']}}, </span>
         </span>
-        
+
         <span color="#000000">
           <span style="font-family:'Times New Roman, serif'">(Tel:</span>
         </span>
-        
+
         <span color="#0433ff">
             <span style="font-family:'Times New Roman, serif'">{{$healthFinance['phone']}}</span>
-            
+
         </span>
-        
+
         <span color="#000000">
-          <span style="font-family:'Times New Roman, serif'">),
+          <span style="font-family:'Times New Roman, serif'">)
             as my agent to make any and all health care decisions for me, except
             to the extent I state otherwise in this document. This medical power
             of attorney takes effect if I become unable to make my own health
@@ -246,7 +264,7 @@
           </span>
         </span>
         </p>
-        
+
         <p style="margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
         <span style="font-family:'Times New Roman, serif'"><b>LIMITATIONS ON THE
         DECISION-MAKING AUTHORITY OF MY AGENT ARE AS FOLLOWS:</b></span></p>
@@ -277,15 +295,15 @@
         <p  style="margin-bottom: 0in; line-height: 100%">
           <span style="font-family:'Times New Roman, serif'">If
         the person designated as my agent is unable or unwilling to make
-        health care decisions for me, I designate 
+        health care decisions for me, I designate
           </span>
-          
+
           <!-- if alternate agents-->
             @if($healthFinance['anyBackupAgent'] == 'true')
               	<span color="#000000">
                   <span style="font-family:'Times New Roman, serif'">my </span>
                 </span>
-                
+
 
                 <span color="#0433ff">
 				@if(strtolower($healthFinance['backupRelation']) == 'other')
@@ -294,47 +312,47 @@
 					<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
 				@endif
 		      	</span>
-                
-                <span style="font-family:'Times New Roman, serif'">, </span>
-                
+
+                <span style="font-family:'Times New Roman, serif'"></span>
+
                 <span color="#0433ff">
                     <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}}</span>
                 </span>
-                
+
                 <span style="font-family:'Times New Roman, serif'"> of </span>
-                
+
                 <span color="#0433ff">
                     <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupAddress']}}, </span>
                 </span>
-                
+
                 <span color="#0000ff">
                     <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupCity']}}, </span>
                 </span>
-                
+
                 <span style="font-family:'Times New Roman, serif'">, </span>
-                
+
                 <span color="#0000ff">
                     <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupState']}}, </span>
                 </span>
-                
+
                 <span color="#0000ff">
                     <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}}, </span>
-                    
+
                 </span>
-                
+
                 <span style="font-family:'Times New Roman, serif'">(Tel: </span>
-                
+
                 <span color="#0433ff">
                     <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupphone']}}</span>
                 </span>
 
-                <span style="font-family:'Times New Roman, serif'">),
+                <span style="font-family:'Times New Roman, serif'">)
                   as my alternate agent to make any and all health care decisions for
                   me as authorized by this document.</span>
           	@endif
-          
-        
-        
+
+
+
         <!-- if no backup health care agent-->
         	@if($healthFinance['anyBackupAgent'] == 'false')
               <span style="font-family:'Times New Roman, serif'">the
@@ -343,7 +361,7 @@
                 order:
               </span>
               <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-      
+
               </p>
               <p  style="margin-left: 0.38in; margin-bottom: 0.08in; line-height: 100%">
               <span color="#000000">
@@ -360,59 +378,59 @@
                   <span style="font-family:'Times New Roman, serif'">Name:</span>
                 </span>
                 <span color="#000000">
-                  <span style="font-family:'Times New Roman, serif'"><u>________________________________________________</u></span>
+                  <span style="font-family:'Times New Roman, serif'">________________________________________________</span>
                 </span>
               </p>
-              
+
               <p style="margin-left: 0.38in; margin-bottom: 0in; line-height: 150%">
                 <span color="#000000">
                   <span style="font-family:'Times New Roman, serif'">Address:		</span>
                 </span>
-              
+
                 <span color="#000000">
                   <span style="font-family:'Times New Roman, serif'">
-                    <u>________________________________________________</u>
+                    ________________________________________________
                   </span>
                 </span>
-              
+
                 <span color="#000000">
                   <span style="font-family:'Times New Roman, serif'">
                     <br/>
                 Phone:		</span>
                 </span>
-              
+
                 <span color="#000000">
                   <span style="font-family:'Times New Roman, serif'">
-                    <u>________________________________________________</u>
+                    ________________________________________________
                   </span>
                 </span>
               </p>
             @endif
-    
+
     </div>
 
   </div>
-    
-  
+
+
   <div>
     <div>
-      
+
       @if($healthFinance['anyBackupAgent'] == 'false')
           <p  style="margin-left: 0.38in; margin-bottom: 0.08in; line-height: 100%">
               <span color="#000000"><span style="font-family:'Times New Roman, serif'"><u>Second
               Alternate Agent</u></span></span>
             </p>
-            
+
             <p style="text-indent: 0.38in; margin-bottom: 0in; line-height: 150%">
             <span color="#000000"><span style="font-family:'Times New Roman, serif'">Name:
-              </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><u>________________________________________________</u></span></span></p>
+              </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'">________________________________________________</span></span></p>
             <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 150%">
-            <span color="#000000"><span style="font-family:'Times New Roman, serif'">Address:		</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><u>________________________________________________</u></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><br/>
-            Phone:		</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><u>________________________________________________</u></span></span></p>
+            <span color="#000000"><span style="font-family:'Times New Roman, serif'">Address:		</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'">________________________________________________</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><br/>
+            Phone:		</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'">________________________________________________</span></span></p>
             <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
             <span color="#000000"><span style="font-family:'Times New Roman, serif'"></span></span>
       @endif
-      
+
       <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
       <br/>
 
@@ -427,10 +445,10 @@
         </p>
         <p style="text-indent: 0.38in; margin-bottom: 0in; line-height: 150%">
         <span color="#000000"><span style="font-family:'Times New Roman, serif'">Name:
-          </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><u>________________________________________________</u></span></span></p>
+          </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'">________________________________________________</span></span></p>
         <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 150%">
-        <span color="#000000"><span style="font-family:'Times New Roman, serif'">Address:		</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><u>________________________________________________</u></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><br/>
-        Phone:		</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><u>________________________________________________</u></span></span></p>
+        <span color="#000000"><span style="font-family:'Times New Roman, serif'">Address:		</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'">________________________________________________</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><br/>
+        Phone:		</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'">________________________________________________</span></span></p>
         <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
         </p>
@@ -442,19 +460,19 @@
         </p>
         <p style="text-indent: 0.38in; margin-bottom: 0in; line-height: 150%">
         <span color="#000000"><span style="font-family:'Times New Roman, serif'">Name:
-          </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><u>________________________________________________</u></span></span></p>
+          </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'">________________________________________________</span></span></p>
         <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 150%">
-        <span color="#000000"><span style="font-family:'Times New Roman, serif'">Address:		</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><u>________________________________________________</u></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><br/>
-        Phone:		</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><u>________________________________________________</u></span></span></p>
+        <span color="#000000"><span style="font-family:'Times New Roman, serif'">Address:		</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'">________________________________________________</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><br/>
+        Phone:		</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'">________________________________________________</span></span></p>
         <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
         </p>
         <p style="text-indent: 0.38in; margin-bottom: 0in; line-height: 150%">
         <span color="#000000"><span style="font-family:'Times New Roman, serif'">Name:
-          </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><u>________________________________________________</u></span></span></p>
+          </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'">________________________________________________</span></span></p>
         <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 150%">
-        <span color="#000000"><span style="font-family:'Times New Roman, serif'">Address:		</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><u>________________________________________________</u></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><br/>
-        Phone:		</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><u>________________________________________________</u></span></span></p>
+        <span color="#000000"><span style="font-family:'Times New Roman, serif'">Address:		</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'">________________________________________________</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'"><br/>
+        Phone:		</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'">________________________________________________</span></span></p>
         <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
         </p>
@@ -462,7 +480,7 @@
         <br/>
 
         </p>
-        <p style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><b>HIPAA
+        <p style="margin-bottom: 0.09in; line-height: 100%; page-break-before: always;"><span style="font-family:'Times New Roman, serif'"><b>HIPAA
         WAIVER AND MEDICAL RECORDS RELEASE.</b></span></p>
         <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">To
         request, review, and receive any information, verbal or written,
@@ -488,10 +506,10 @@
         authority in writing and deliver it to my health care provider.</span></p>
     </div>
 
-    
+
   </div>
-  
-  
+
+
   <div>
     <div>
       <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
@@ -572,10 +590,10 @@
         document on pages 1-2 above.  </span>
         </p>
     </div>
-    
+
   </div>
-  
-  
+
+
   <div>
     <div>
       <p  style="text-indent: 0.38in; margin-top: 0.13in; margin-bottom: 0.09in; line-height: 100%">
@@ -600,40 +618,23 @@
 
         </p>
         <p  style="margin-bottom: 0in; line-height: 150%"><span style="font-family:'Times New Roman, serif'">I
-        sign my name to this medical power of attorney on this </span><span style="font-family:'Times New Roman, serif'"><u>__________</u></span><span style="font-family:'Times New Roman, serif'">
-        day of </span><span style="font-family:'Times New Roman, serif'"><u>____________</u></span><span style="font-family:'Times New Roman, serif'">,
-        </span><span style="font-family:'Times New Roman, serif'"><u>_________</u></span><span style="font-family:'Times New Roman, serif'">,
-        in </span><span style="font-family:'Times New Roman, serif'"><u>________________</u></span><span style="font-family:'Times New Roman, serif'">
+        sign my name to this medical power of attorney on this </span><span style="font-family:'Times New Roman, serif'">__________</span><span style="font-family:'Times New Roman, serif'">
+        day of </span><span style="font-family:'Times New Roman, serif'">____________</span><span style="font-family:'Times New Roman, serif'">,
+        </span><span style="font-family:'Times New Roman, serif'">_________</span><span style="font-family:'Times New Roman, serif'">,
+        in </span><span style="font-family:'Times New Roman, serif'">________________</span><span style="font-family:'Times New Roman, serif'">
         County, Texas.</span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
         <p  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
         <span style="font-family:'Times New Roman, serif'">_______________________________________</span></p>
         <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'"><b>	</b></span>
-        
+
         <span color="#0000ff">
           <span style="font-family:'Times New Roman, serif'">
               <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
           </span>
         </span>
-        
-        </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
         <p align="center" style="margin-bottom: 0in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><b>NOTARY
         ACKNOWLEDGEMENT</b></span></p>
-        <p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
         <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">State
         of Texas </span>
         </p>
@@ -646,14 +647,14 @@
         <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'">Before me, a notary, on this day
         personally appeared </span><span style="font-family:'Times New Roman, serif'"><b></b></span>
-        
+
         <span color="#0000ff">
           <span style="font-family:'Times New Roman, serif'">
               <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
           </span>
         </span>
-        
-        <span color="#000000"><span style="font-family:'Times New Roman, serif'"><b>,
+
+        <span color="#000000"><span style="font-family:'Times New Roman, serif'"><b>
         </b></span></span><span style="font-family:'Times New Roman, serif'">known to me (or
         proved to me to be the person whose name is subscribed to the
         foregoing Medical Power of Attorney and acknowledged to me that
@@ -664,26 +665,20 @@
 
         </p>
         <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Given
-        under my hand and seal of office this </span><span style="font-family:'Times New Roman, serif'"><u>_________</u></span><span style="font-family:'Times New Roman, serif'">
-        day of </span><span style="font-family:'Times New Roman, serif'"><u>_______________</u></span><span style="font-family:'Times New Roman, serif'">,
-        </span><span style="font-family:'Times New Roman, serif'"><u>__________</u></span><span style="font-family:'Times New Roman, serif'">.
+        under my hand and seal of office this </span><span style="font-family:'Times New Roman, serif'">_________</span><span style="font-family:'Times New Roman, serif'">
+        day of </span><span style="font-family:'Times New Roman, serif'">_______________</span><span style="font-family:'Times New Roman, serif'">,
+        </span><span style="font-family:'Times New Roman, serif'">__________</span><span style="font-family:'Times New Roman, serif'">.
         </span>
         </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p  style="margin-bottom: 0in; line-height: 100%; padding-left: 3in;"><span style="font-family:'Times New Roman, serif'">						</span><span style="font-family:'Times New Roman, serif'"><u>_________________________________</u></span></p>
+        <p  style="margin-bottom: 0in; line-height: 100%; padding-left: 3in;"><span style="font-family:'Times New Roman, serif'">						</span><span style="font-family:'Times New Roman, serif'">_________________________________</span></p>
         <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">(Personalized
         Seal) 				<span style="padding-left: 2.3in;">Notary Public's Signature</span> </span>
         </p>
     </div>
 
   </div>
-  
-  
+
+
   <div>
     <div>
       <p  style="margin-bottom: 0.09in; line-height: 100%; page-break-before: always">
@@ -710,45 +705,40 @@
 
         </p>
               <p class="western" style="margin-bottom: 0in; line-height: 100%"><span ><b>WITNESS
-        1</b></span><span >: </span><span ><u>____________________</u></span><span style="padding-left: 50px;">	Dated:
-        </span><span ><u>______________________</u></span></p>
+        1</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
+        </span><span >______________________</span></p>
         <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
         <span style="padding-left: 50px;">[signature]</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
-        <span ><u>____________________________</u></span><span >		</span><span style="padding-left: 122px;"><u>______________________</u></span></p>
+        <span >____________________________</span><span >		</span><span style="padding-left: 122px;">______________________</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
         <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:25px 0 0 350px;">
-        <span >							</span><span ><u>______________________</u></span></p>
+        <span >							</span><span >______________________</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
         <span style="padding-left: 40px;">								[city, state, zip]</span></p>
-        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
+				<br>
         <p class="western" style="margin-bottom: 0in; line-height: 100%"><span ><b>WITNESS
-        2</b></span><span >: </span><span ><u>____________________</u></span><span style="padding-left: 50px;">	Dated:
-        </span><span ><u>______________________</u></span></p>
+        2</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
+        </span><span >______________________</span></p>
         <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
         <span style="padding-left: 50px;">[signature]</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
-        <span ><u>____________________________</u></span><span >		</span><span style="padding-left: 122px;"><u>______________________</u></span></p>
+        <span >____________________________</span><span >		</span><span style="padding-left: 122px;">______________________</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
         <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:25px 0 0 350px;">
-        <span >							</span><span ><u>______________________</u></span></p>
+        <span >							</span><span >______________________</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
         <span style="padding-left: 40px;">								[city, state, zip]</span></p>
     </div>
-    
+
   </div>
-  
-  
+
+
   <div>
     <div>
-      <p align="center" style="margin-bottom: 0in; line-height: 100%; text-align: center;">
+      <p align="center" style="margin-bottom: 0in; line-height: 100%; text-align: center; page-break-before: always">
         <span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 14pt"><b>DIRECTIVE
         TO PHYSICIANS AND FAMILY</b></span></span><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 14pt">
         </span></span><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 14pt"><b>OR
@@ -798,51 +788,51 @@
         </p>
         <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'">I, </span><span style="font-family:'Times New Roman, serif'"><b></b></span>
-        
-        
+
+
         <span color="#0000ff">
           <span style="font-family:'Times New Roman, serif'">
-              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}},</b>
           </span>
         </span>
-        
-        <span style="font-family:'Times New Roman, serif'">,
+
+        <span style="font-family:'Times New Roman, serif'">
         of </span>
-        
+
         <span color="#0433ff">
-        	<span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['address']}}</span>
+        	<span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['address']}},</span>
         </span>
-        
-        <span style="font-family:'Times New Roman, serif'">,
+
+        <span style="font-family:'Times New Roman, serif'">
         </span>
-        
+
         <!-- <span color="#008f00">
           <span style="font-family:'Times New Roman, serif'">IF ANSWERED( Address2 )</span>
         </span>
-        
+
         <span style="font-family:'Times New Roman, serif'"></span>
-        
+
         <span color="#0433ff">
           <span style="font-family:'Times New Roman, serif'">Address2</span>
         </span>
-        
+
         <span style="font-family:'Times New Roman, serif'">, </span>
-        
+
         <span color="#008f00"><span style="font-family:'Times New Roman, serif'">END
         IF</span></span> -->
-        
+
         <span color="#0433ff">
-            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}}</span>
+            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}},</span>
         </span>
-        
+
         <span color="#0433ff">
-            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}}</span>&nbsp;
+            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}},</span>&nbsp;
         </span>
-        
+
         <span color="#0433ff">
             <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['zip']}}, </span>
         </span>
-        
+
         <span style="font-family:'Times New Roman, serif'">,
         recognize that the best health care is based upon a partnership of
         trust and communication with my physician. My physician and I will
@@ -867,10 +857,10 @@
         discontinued or withheld and my physician allow me to die as gently
         as possible; </span><span style="font-family:'Times New Roman, serif'"><b>OR</b></span></p>
     </div>
-    
+
   </div>
-  
-  
+
+
   <div>
     <div>
       <p  style="margin-left: 0.44in; text-indent: -0.44in; margin-bottom: 0in; line-height: 100%">
@@ -960,16 +950,16 @@
         <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
         </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">After
+        <p  style="margin-bottom: 0in; line-height: 100%; page-break-before: always;"><span style="font-family:'Times New Roman, serif'">After
         signing this directive, if my representative or I elect hospice care,
         I understand and agree that only those treatments needed to keep me
         comfortable would be provided and I would not be given available
         life-sustaining treatments.</span></p>
     </div>
-    
+
   </div>
-  
-  
+
+
   <div>
     <div>
       <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">If
@@ -988,64 +978,64 @@
 
         </p>
         <p  style="margin-left: 4in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-        <span style="font-family:'Times New Roman, serif'">Date: </span><span style="font-family:'Times New Roman, serif'"><u>__________________</u></span></p>
+        <span style="font-family:'Times New Roman, serif'">Date: </span><span style="font-family:'Times New Roman, serif'">__________________</span></p>
         <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
         </p>
-        <p  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+        <p  style="margin-left: 0.0in; margin-bottom: 0in; line-height: 100%">
         <span style="font-family:'Times New Roman, serif'">_______________________________________</span></p>
         <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
           <span style="font-family:'Times New Roman, serif'"></span>
-          
+
           <span color="#0000ff">
             <span style="font-family:'Times New Roman, serif'">
                 <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
-                
+
             </span>
           </span>
         </p>
-        
+
         <p  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
         <span color="#000000"><span style="font-family:'Times New Roman, serif'"></span></span>
-        
+
         <span color="#0433ff">
             <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}}</span>
         </span>
-          
+
         </p>
-        
+
         <!-- <p  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
         <span color="#008f00">
           <span style="font-family:'Times New Roman, serif'">IF ANSWERED( Address2 )</span>
         </span>
-        
+
         <span color="#0433ff">
           <span style="font-family:'Times New Roman, serif'">Address2</span>
         </span>
-        
+
         </p> -->
-        
+
         <p  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
           <span color="#0433ff">
               <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}}</span>
           </span>
-          
+
           <span color="#0433ff">
               <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}}</span>&nbsp;
           </span>
-          
+
           <span color="#0433ff">
               <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['zip']}}, </span>
           </span>
         </p>
-        
+
         <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
         </p>
         <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
         </p>
-        <p align="center" style="margin-bottom: 0.13in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><b>STATEMENT
+        <p align="center" style="margin-bottom: 0.13in; line-height: 100%; page-break-before: always; text-align: center;"><span style="font-family:'Times New Roman, serif'"><b>STATEMENT
         OF WITNESSES</b></span></p>
         <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Two
         competent adult witnesses must sign below, acknowledging the
@@ -1068,60 +1058,49 @@
 
         </p>
               <p class="western" style="margin-bottom: 0in; line-height: 100%"><span ><b>WITNESS
-        1</b></span><span >: </span><span ><u>____________________</u></span><span style="padding-left: 50px;">	Dated:
-        </span><span ><u>______________________</u></span></p>
+        1</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
+        </span><span >______________________</span></p>
         <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
         <span style="padding-left: 50px;">[signature]</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
-        <span ><u>____________________________</u></span><span >		</span><span style="padding-left: 122px;"><u>______________________</u></span></p>
+        <span >____________________________</span><span >		</span><span style="padding-left: 122px;">______________________</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
         <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:25px 0 0 350px;">
-        <span >							</span><span ><u>______________________</u></span></p>
+        <span >							</span><span >______________________</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
         <span style="padding-left: 40px;">								[city, state, zip]</span></p>
-        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
+				<br>
         <p class="western" style="margin-bottom: 0in; line-height: 100%"><span ><b>WITNESS
-        2</b></span><span >: </span><span ><u>____________________</u></span><span style="padding-left: 50px;">	Dated:
-        </span><span ><u>______________________</u></span></p>
+        2</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
+        </span><span >______________________</span></p>
         <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
         <span style="padding-left: 50px;">[signature]</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
-        <span ><u>____________________________</u></span><span >		</span><span style="padding-left: 122px;"><u>______________________</u></span></p>
+        <span >____________________________</span><span >		</span><span style="padding-left: 122px;">______________________</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
         <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:25px 0 0 350px;">
-        <span >							</span><span ><u>______________________</u></span></p>
+        <span >							</span><span >______________________</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
         <span style="padding-left: 40px;">								[city, state, zip]</span></p>
     </div>
 
 
   </div>
-  
-  
+
+
   <div>
     <div>
-      <p align="center" style="margin-top: 0.19in; margin-bottom: 0.09in; line-height: 100%; text-align: center;">
+      <p align="center" style="margin-top: 0.19in; margin-bottom: 0.09in; line-height: 100%; text-align: center; page-break-before: always">
         <span style="font-family:'Times New Roman, serif'"><b>DEFINITIONS:</b></span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><br/>
-        <br/>
 
-        </p>
         <p  style="margin-bottom: 0.09in; line-height: 100%">“<span style="font-family:'Times New Roman, serif'"><b>ARTIFICIAL
         NUTRITION AND HYDRATION</b></span><span style="font-family:'Times New Roman, serif'">”
         means the provision of nutrients or fluids by a tube inserted in a
         vein, under the skin in the subcutaneous tissues, or in the stomach
         (gastrointestinal tract).</span></p>
-        <p  style="margin-bottom: 0.09in; line-height: 100%"><br/>
-        <br/>
 
-        </p>
         <p  style="margin-bottom: 0.09in; line-height: 100%">“<span style="font-family:'Times New Roman, serif'"><b>IRREVERSIBLE
         CONDITION</b></span><span style="font-family:'Times New Roman, serif'">” means a
         condition, injury, or illness:</span></p>
@@ -1187,7 +1166,7 @@
         physician, family, or other important persons in your life.</span></p>
     </div>
 
-    
+
   </div>
 </div>
 </body>
