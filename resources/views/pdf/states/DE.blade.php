@@ -6,34 +6,34 @@
 <body>
 <div>
 	<!-- Page 1-->
-<div>
+<div style="page-break-after: always;">
   <div>
-    <p  style="margin-bottom: 0.25in; line-height: 100%; text-align:center;">
+    <p  style="margin-bottom: 0.25in;  text-align:center;">
       <span size="4" style="font-size: 13pt"><span size="4" style="font-size: 16pt"><b>ADVANCE
       HEALTH CARE DIRECTIVE</b></span></span></p>
-    <p  style="margin-bottom: 0.25in; line-height: 100%; text-align:center;"><span size="4" style="font-size: 13pt"><span size="4" style="font-size: 16pt"><b>of</b></span></span></p>
-    <p class="western"  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+    <p  style="margin-bottom: 0.25in;  text-align:center;"><span size="4" style="font-size: 13pt"><span size="4" style="font-size: 16pt"><b>of</b></span></span></p>
+    <p class="western"  style="margin-bottom: 0.08in;  text-align: center;">
       <b>
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
         </b></p>
-    <p  style="margin-bottom: 0.19in; line-height: 100%"><br/>
+    <p  style="margin-bottom: 0.19in; "><br/>
       <br/>
 
     </p>
-    <p  style="margin-bottom: 0.19in; line-height: 100%; text-align:center;"><span size="2" style="font-size: 9pt"><span size="4" style="font-size: 14pt"><b>GENERAL
+    <p  style="margin-bottom: 0.19in;  text-align:center;"><span size="2" style="font-size: 9pt"><span size="4" style="font-size: 14pt"><b>GENERAL
       INSTRUCTIONS</b></span></span></p>
-    <p  style="margin-bottom: 0.06in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
+    <p  style="margin-bottom: 0.06in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
       should read this form carefully before filling it in. You should fill
       it in completely. If there are health care decisions you do not want
       to make, you should strike the wording of that decision rather than
       leave it blank. You may not change the qualifications for witnesses
       or agents, even if you cross out the wording. You should write
       legibly.</span></span></p>
-    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+    <p  style="margin-bottom: 0.06in; "><br/>
       <br/>
 
     </p>
-    <p  style="margin-bottom: 0.06in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">After
+    <p  style="margin-bottom: 0.06in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">After
       you have filled out the form completely, you should sign the form
       before a notary public. Although signing before a notary public is
       not legally required, it is advisable. It is advisable because the
@@ -41,11 +41,11 @@
       when you sign the directive, if your competence becomes an issue.
       Notaries, who are registered with the State, are often easier to
       locate later than witnesses.</span></span></p>
-    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+    <p  style="margin-bottom: 0.06in; "><br/>
       <br/>
 
     </p>
-    <p  style="margin-bottom: 0.06in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
+    <p  style="margin-bottom: 0.06in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
       should retain your original Advance Health care Directive, and give
       copies to your doctor, agent, spouse, family members, and close
       friends, if you desire. You should explain to each person who
@@ -53,10 +53,10 @@
       on the form, and why. This will help if, while you lack competence,
       there arises a need to make a health care decision that is not
       explicitly set forth on your advance health care directive form.</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+    <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">This
+    <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">This
       form does not contain all of the types of health care decisions you
       are legally entitled to make. For example, the form does not give you
       the opportunity to nominate a guardian, in the event you become
@@ -85,18 +85,18 @@
 
 
 <!-- Page 2-->
-<div>
+<div style="page-break-after: always;">
   <div>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%">IF
+    <p class="western" style="margin-bottom: 0in; ">IF
       YOU HAVE QUESTIONS ABOUT THIS FORM, YOU SHOULD SEEK LEGAL ADVICE
       BEFORE COMPLETING AND SIGNING IT.
     </p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+    <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    <p  style="margin-bottom: 0.13in; line-height: 100%; text-align:center;"><span size="2" style="font-size: 9pt"><span size="4" style="font-size: 14pt"><b>PART
+    <p  style="margin-bottom: 0.13in;  text-align:center;"><span size="2" style="font-size: 9pt"><span size="4" style="font-size: 14pt"><b>PART
       I: POWER OF ATTORNEY FOR HEALTH CARE</b></span></span></p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Your
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Your
       agent may make any health care decision that you could have made
       while you had the capacity to make health care decisions. You may
       appoint an alternate agent to make health care decisions for you if
@@ -105,14 +105,14 @@
       alternate agent are related to you by blood, neither may own, operate
       or be employed by any residential long-term care institution where
       you are receiving care.</span></span></p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
       you wish to appoint an agent to make health care decisions for you
       under these circumstances and conditions, you must fill out the
       section below. You may cross out any wording you do not want.</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+    <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"><b>A.
+    <p  style="margin-bottom: 0in; "><span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"><b>A.
       DESIGNATION OF AGENT</b></span></span><span ><span size="3" style="font-size: 12pt">:
       I designate my </span></span>
 
@@ -141,12 +141,10 @@
       (Tel: <span> {{$healthFinance['phone']}} </span> ),
       as my agent to make health care decisions for me.
       </span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
+    
     
     @if($healthFinance['anyBackupAgent'] === 'true')
-    <p class="western" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'true'">
+    <p class="western" style="margin-bottom: 0in; " *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'true'">
 
     	<span >If said agent is not living, willing or able and reasonably available,
       then I designate my </span>
@@ -172,25 +170,25 @@
       as my alternate agent to make health care decisions for me.</span>
   	</p>
   	@endif
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+    <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>B.
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>B.
       AGENT’S AUTHORITY</b></span><span size="3" style="font-size: 12pt">:
       My agent is authorized to: </span><span size="3" style="font-size: 12pt"><i>(INITIAL
       ALL THAT APPLY)</i></span></span></p>
-    <p class="western" style="margin-bottom: 0.08in; line-height: 100%">_____
+    <p class="western" style="margin-bottom: 0.08in; ">_____
       Provide for my admission to, or discharge from, a medical, hospital,
       nursing, residential, mental health or similar facility
     </p>
-    <p class="western" style="margin-bottom: 0.08in; line-height: 100%">_____
+    <p class="western" style="margin-bottom: 0.08in; ">_____
       Enter into agreements for my care at home or in a facility
     </p>
-    <p class="western" style="margin-bottom: 0.08in; line-height: 100%">_____
+    <p class="western" style="margin-bottom: 0.08in; ">_____
       Employ and discharge medical personnel, including physicians,
       psychiatrists, dentists, nurses, and therapists
     </p>
-    <p class="western" style="margin-bottom: 0.08in; line-height: 100%">_____
+    <p class="western" style="margin-bottom: 0.08in; ">_____
       Consent to, refuse, or withdraw consent to any and all types of
       medical care, treatment, surgical procedures, diagnostic procedures,
       medication, and the use of mechanical or other procedures that affect
@@ -199,17 +197,17 @@
       damage, addiction, or hasten the moment of (but not intentionally
       cause) my death.
     </p>
-    <p class="western" style="margin-bottom: 0.08in; line-height: 100%">_____
+    <p class="western" style="margin-bottom: 0.08in; ">_____
       Consent to and arrange for the administration of pain-relieving drugs
     </p>
-    <p class="western" style="margin-bottom: 0.08in; line-height: 100%">_____
+    <p class="western" style="margin-bottom: 0.08in; ">_____
       Consent to psychiatric treatment
     </p>
-    <p class="western" style="margin-bottom: 0.08in; line-height: 100%">_____
+    <p class="western" style="margin-bottom: 0.08in; ">_____
       Sign medical releases for medical personnel who provide treatment to
       me pursuant to instructions given by my Agent
     </p>
-    <p class="western" style="margin-bottom: 0.08in; line-height: 100%">_____
+    <p class="western" style="margin-bottom: 0.08in; ">_____
       Sign, authorize or revoke a Delaware Medical Orders for Scope of
       Treatment (“DMOST”) or similar document under the laws of other
       States unless prohibited by the terms of the DMOST or other document.</p>
@@ -228,15 +226,15 @@
 <!-- Page 2-->
 
 <!-- Page 3-->
-<div>
+<div style="page-break-after: always;">
   <div>
-    <p  style="margin-bottom: 0.13in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>C.
+    <p  style="margin-bottom: 0.13in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>C.
       WHEN AGENT’S AUTHORITY BECOMES EFFECTIVE</b></span><span size="3" style="font-size: 12pt">:
       My agent’s authority becomes effective when my primary or attending
       physician determines I lack the capacity to make my own health care
       decisions.</span> </span>
     </p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>D.
+    <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>D.
       AGENT’S OBLIGATION</b></span><span size="3" style="font-size: 12pt">:
       My agent shall make health care decisions for me in accordance with
       this power of attorney for health care, any instructions I give in
@@ -249,10 +247,10 @@
       agent determines to be my best interest. In determining my best
       interest, my agent shall consider my personal values to the extent
       known to my agent.</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+    <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>E.
+    <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>E.
        AUTHORIZATION TO RELEASE MEDICAL INFORMATION.</b></span><span size="3" style="font-size: 12pt">
        </span><span size="3" style="font-size: 12pt">I authorize and
       request any physician, health-care professional, health-care
@@ -297,12 +295,12 @@
 
 
 <!-- Page 4-->
-<div>
+<div style="page-break-after: always;">
   <div>
-    <p  style="margin-top: 0.06in; margin-bottom: 0.13in; line-height: 100%; text-align:center;">
+    <p  style="margin-top: 0.06in; margin-bottom: 0.13in;  text-align:center;">
       1<span size="2" style="font-size: 9pt"><span size="4" style="font-size: 14pt"><b>PART
       II. INSTRUCTIONS FOR HEALTH CARE DECISIONS</b></span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
+    <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
       you are an adult who is mentally competent, you have the right to
       accept or refuse medical or surgical treatment, if such refusal is
       not contrary to existing public health laws. You may give advance
@@ -314,10 +312,10 @@
       your life prolonged, that instruction will only take effect if you
       are in a “qualifying condition.” </span></span>
     </p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+    <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+    <p class="western"  style="margin-bottom: 0in; ">
       This form offers you ability to specify how you wish to be treated if
       you are diagnosed with one or more of three “Qualifying
       Conditions.” &quot;Qualifying condition'' means the existence of
@@ -326,11 +324,11 @@
       and by at least one other physician who, when the condition in
       question is &quot;permanently unconscious'' shall be a
       board-certified neurologist and/or neurosurgeon:</p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+    <p class="western"  style="margin-bottom: 0in; ">
       <br/>
 
     </p>
-    <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+    <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; ">
       (1) &quot;Permanently unconscious'' or &quot;permanent
       unconsciousness'' means a medical condition that has existed for at
       least 4 weeks and that has been diagnosed in accordance with
@@ -340,11 +338,11 @@
       without limitation, a persistent vegetative state or irreversible
       coma.
     </p>
-    <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+    <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; ">
       <br/>
 
     </p>
-    <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+    <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; ">
       (2) &quot;Terminal condition'' means any disease, illness or
       condition sustained by any human being for which there is no
       reasonable medical expectation of recovery and which, as a medical
@@ -352,39 +350,34 @@
       of the use or discontinuance of medical treatment implemented for the
       purpose of sustaining life or the life processes.
     </p>
-    <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+    <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; ">
       <br/>
 
     </p>
-    <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+    <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; ">
       (3) &quot;Serious illness or frailty'' means a condition based on
       which the health-care practitioner would not be surprised if the
       patient died within the next year.</p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+    <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+   
+    <p class="western"  style="margin-bottom: 0in; ">
       <b>About your options: </b>It is important to read each option fully
       before choosing. Please note that you may to choose only one option
       under each qualifying condition but you may choose a different option
       under a different qualifying condition. You will also have the
       opportunity to write-in any other medical instructions.
     </p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+    <p class="western" style="margin-bottom: 0in; "><br/>
 
     </p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>A.
+   
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>A.
       END OF LIFE INSTRUCTIONS</b></span></span></p>
     <ul style="padding-left: 30px;">
       <li>
-        <p  style="margin-bottom: 0in; line-height: 100%">
+        <p  style="margin-bottom: 0in; margin-top: 0;">
           <u>After you have read all options, write your INITIALS on the line
             next to the option you have selected that represents your choice for
             treatment instructions.  You may only select one option. </u>
@@ -408,25 +401,20 @@
 
 
 <!-- Page 5-->
-<div>
+<div style="page-break-after: always;">
   <div>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><b>Qualifying
+    <p class="western" style="margin-bottom: 0in; "><b>Qualifying
       Condition 1: Terminally Ill. </b>
     </p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+    
+    <p class="western"  style="margin-bottom: 0in; ">
       _____ Option 1: My Agent will make decisions on my behalf: In the
       event I become terminally ill and I am unable to understand, make or
       communicate my wishes, I direct that my Agent make all medical
       decisions on my behalf.
     </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+    
+    <p class="western"  style="margin-bottom: 0in; ">
       _____ Option 2: Prolong Life: In the event I become terminally ill
       and I am unable to understand, make or communicate my wishes, I
       direct that my life be prolonged as long as possible using all
@@ -435,75 +423,69 @@
       treatments – if any – you do not want, even if they could prolong
       your life):
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+    
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       I DO NOT WANT the treatments initialed below:</p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       _____ heart-lung resuscitation (CPR)
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       _____ ventilator (breathing machine)
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       _____ dialysis (kidney machine)
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       _____ surgery
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       _____ blood transfusions
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       _____ chemotherapy or radiation treatment
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       _____ artificial nutrition or hydration through a conduit (tube
       feeding)
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       _____ antibiotics</p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+    <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+    <p class="western"  style="margin-bottom: 0in; ">
       _____ Option 3: Do not Prolong Life: In the event I become terminally
       ill and am unable to understand, make or communicate my wishes, I
       direct that no life sustaining measures be taken, with the following
       exceptions (initial those treatments – if any – you do want, even
       if they could sustain your life):
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+    
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       I DO WANT the treatments initialed below:
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       _____ heart-lung resuscitation (CPR)
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       _____ ventilator (breathing machine)</p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       _____ dialysis (kidney machine)
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       _____ surgery
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       _____ blood transfusions
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       _____ chemotherapy or radiation treatment
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       _____ artificial nutrition or hydration through a conduit (tube
       feeding)
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       _____ antibiotics</p>
   </div>
 
@@ -521,29 +503,23 @@
 <!-- Page 5-->
 
 <!-- Page 6-->
-<div>
+<div style="page-break-after: always;">
   <div>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+    <p class="western"  style="margin-bottom: 0in; ">
       <b>Qualifying Condition 2: Permanently Unconscious.</b> After you
       have read all options, write your initials on the line next to the
       option you have selected that represents your choice for treatment
       instructions. You may only select ONE option.
     </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+    
+    <p class="western"  style="margin-bottom: 0in; ">
       _____ Option 1: My Agent will make decisions on my behalf: In the
       event I become permanently unconscious and I am unable to understand,
       make or communicate my wishes, I direct that my Agent make all
       medical decisions on my behalf.
     </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+    
+    <p class="western"  style="margin-bottom: 0in; ">
       _____ Option 2: Prolong Life: In the event I become permanently
       unconscious and am unable to understand, make or communicate my
       wishes, I direct that my life be prolonged as long as possible using
@@ -552,83 +528,77 @@
       treatments -- if any -- you do not want, even if they could prolong
       your life):
     </p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">I DO NOT WANT the treatments
+   
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">I DO NOT WANT the treatments
       initialed below: </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ heart-lung resuscitation
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">_____ heart-lung resuscitation
       (CPR)</span></p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-       <span size="2" style="font-size: 11pt">_____ ventilator (breathing
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0; ">
+       <span size="2" style="">_____ ventilator (breathing
       machine) </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ dialysis (kidney
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">_____ dialysis (kidney
       machine) </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ surgery</span></p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ blood transfusions </span>
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">_____ surgery</span></p>
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">_____ blood transfusions </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ chemotherapy or
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">_____ chemotherapy or
       radiation treatment </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ artificial nutrition or
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">_____ artificial nutrition or
       hydration through a conduit (tube feeding) </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ antibiotics </span>
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">_____ antibiotics </span>
     </p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+    
+    <p class="western"  style="margin-bottom: 0in; ">
       _____ Option 3: Do Not Prolong Life: In the event I become
       permanently unconscious and am unable to understand, make or
       communicate my wishes, I direct that no life sustaining measures be
       taken, with the following exceptions (initial those treatments -- if
       any -- you do want, even if they could sustain your life):</p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">I DO WANT the treatments
+    
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">I DO WANT the treatments
       initialed below: </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ heart-lung resuscitation
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">_____ heart-lung resuscitation
       (CPR) </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ ventilator (breathing
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">_____ ventilator (breathing
       machine) </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ dialysis (kidney
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">_____ dialysis (kidney
       machine) </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ surgery </span>
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">_____ surgery </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ blood transfusions </span>
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">_____ blood transfusions </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ chemotherapy or
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">_____ chemotherapy or
       radiation treatment</span></p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ artificial nutrition or
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">_____ artificial nutrition or
       hydration through a conduit (tube feeding) </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ antibiotics</span></p>
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">_____ antibiotics</span></p>
   </div>
 
   {{--
@@ -645,9 +615,9 @@
 <!-- Page 6-->
 
 <!-- Page 7-->
-<div>
+<div style="page-break-after: always;">
   <div>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+    <p class="western"  style="margin-bottom: 0in; ">
       <b>Qualifying Condition 3: Serious Illness or Frailty.</b> NOTE:
       Whether you elect to complete this section or not, when you develop a
       “serious illness or frailty” as defined at the beginning of this
@@ -659,21 +629,15 @@
       you have selected that represents your choice for treatment
       instructions. <u>You may only select ONE option</u>.
     </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+   
+    <p class="western"  style="margin-bottom: 0in; ">
       _____ Option 1: My Agent will make decisions on my behalf: In the
       event I have a “serious illness or frailty” and I am unable to
       understand, make or communicate my wishes, I direct that my Agent
       make all medical decisions on my behalf.
     </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+    
+    <p class="western"  style="margin-bottom: 0in; ">
       _____ Option 2: Prolong Life: In the event I have a “serious
       illness or frailty” and I am unable to understand, make or
       communicate my wishes, I direct that my life be prolonged as long as
@@ -682,89 +646,80 @@
       (initial those treatments -- if any -- you do not want, even if they
       could prolong your life):
     </p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">I DO NOT WANT the treatments
+    
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">I DO NOT WANT the treatments
       initialed below: </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ heart-lung resuscitation
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">_____ heart-lung resuscitation
       (CPR) </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ ventilator (breathing
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in;  margin-top:10px;">
+      <span size="2" style="">_____ ventilator (breathing
       machine) </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ dialysis (kidney
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in;  margin-top:10px;">
+      <span size="2" style="">_____ dialysis (kidney
       machine) </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ surgery </span>
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in;  margin-top:10px;">
+      <span size="2" style="">_____ surgery </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ blood transfusions </span>
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in;  margin-top:10px;">
+      <span size="2" style="">_____ blood transfusions </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ chemotherapy or
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in;  margin-top:10px;">
+      <span size="2" style="">_____ chemotherapy or
       radiation treatment </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ artificial nutrition or
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in;  margin-top:10px;">
+      <span size="2" style="">_____ artificial nutrition or
       hydration through a conduit (tube feeding) </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ antibiotic </span>
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in;  margin-top:10px;">
+      <span size="2" style="">_____ antibiotic </span>
     </p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+    
+    <p class="western"  style="margin-bottom: 0in; ">
       _____ Option 3: Not to Prolong Life: In the event I have a “serious
       illness or frailty” and I am unable to understand, make or
       communicate my wishes, I direct that no life sustaining measures be
       taken, with the following exceptions (initial those treatments -- if
       any -- you do want, even if they could sustain your life):</p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">I DO WANT the treatments
+    
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="">I DO WANT the treatments
       initialed below: </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ heart-lung resuscitation
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; margin-top:10px;">
+      <span size="2" style="">_____ heart-lung resuscitation
       (CPR) </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ ventilator (breathing
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in;  margin-top:10px;">
+      <span size="2" style="">_____ ventilator (breathing
       machine) </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ dialysis (kidney
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in;  margin-top:10px;">
+      <span size="2" style="">_____ dialysis (kidney
       machine) </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ surgery </span>
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in;  margin-top:10px;">
+      <span size="2" style="">_____ surgery </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ blood transfusions </span>
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in;  margin-top:10px;">
+      <span size="2" style="">_____ blood transfusions </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ chemotherapy or
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in;  margin-top:10px;">
+      <span size="2" style="">_____ chemotherapy or
       radiation treatment </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ artificial nutrition or
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in;  margin-top:10px;">
+      <span size="2" style="">_____ artificial nutrition or
       hydration through a conduit (tube feeding) </span>
     </p>
-    <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
-      <span size="2" style="font-size: 11pt">_____ antibiotics</span></p>
+    <p class="western" style="text-indent: 0.5in; margin-bottom: 0in;  margin-top:10px;">
+      <span size="2" style="">_____ antibiotics</span></p>
   </div>
 
   {{--
@@ -782,45 +737,45 @@
 
 
 <!-- Page 8-->
-<div>
+<div style="page-break-after: always;">
   <div>
-    <p  style="margin-bottom: 0.13in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>B.
+    <p  style="margin-bottom: 0.13in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>B.
       RELIEF FROM PAIN</b></span><span size="3" style="font-size: 12pt">:
       </span><span size="3" style="font-size: 12pt">(</span><span size="3" style="font-size: 12pt"><u>Initial
       ONE choice below</u></span><span size="3" style="font-size: 12pt">) </span></span>
     </p>
-    <p  style="margin-bottom: 0.13in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________I
+    <p  style="margin-bottom: 0.13in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________I
       wish to be treated to relieve pain or provide comfort, and I
       understand that such treatment might shorten my life or suppress my
       appetite or breathing. </span></span>
     </p>
-    <p  style="margin-bottom: 0.13in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________I
+    <p  style="margin-bottom: 0.13in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________I
       do not wish to be treated to relieve pain or provide comfort.</span></span></p>
-    <p  style="margin-bottom: 0.13in; line-height: 100%"><br/>
+    <p  style="margin-bottom: 0.13in; "><br/>
       <br/>
 
     </p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>C.
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>C.
       OTHER MEDICAL INSTRUCTION</b></span><span size="3" style="font-size: 12pt">:
       If you wish to add to the instructions you have given above, you may
       do so here.</span></span></p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________ ______________________________________________________________________________</span></span></p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
-    <p  style="margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">(use
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________ ______________________________________________________________________________</span></span></p>
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
+    <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
+    <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______________________________________________________________________________</span></span></p>
+    <p  style="margin-bottom: 0in;  text-align:center;"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">(use
       additional sheets if necessary)</span></span></p>
   </div>
 
@@ -838,78 +793,67 @@
 <!-- Page 8-->
 
 <!-- Page 9-->
-<div>
+<div style="page-break-after: always;">
   <div>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%; text-align:center;">
+    <p class="western"  style="margin-bottom: 0in;  text-align:center; ">
       <span size="4" style="font-size: 14pt"><b>PART III. ANATOMICAL GIFT
       DECLARATION (Optional)</b></span></p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <p  style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">
+    
+    <p  style="text-indent: 0.38in; margin-bottom: 0in; margin-top: 0;">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       hereby make the following anatomical gift(s) to take effect upon my
       death. The marks in the appropriate squares and words filled into the
       blanks below indicate my desires:</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
+    <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       give</span><span size="3" style="font-size: 12pt">	</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%">□
+    <p  style="margin-bottom: 0in; "><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">my
       body;</span><span size="3" style="font-size: 12pt">	</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%">□
+    <p  style="margin-bottom: 0in; "><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">any
       needed organs or parts;</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%">□
+    <p  style="margin-bottom: 0in; "><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">the
       following organs or parts _________________________________________</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">to</span><span size="3" style="font-size: 12pt">	</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%">□
+    
+    <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">to</span><span size="3" style="font-size: 12pt">	</span></span></p>
+    <p  style="margin-bottom: 0in; "><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">the
       physician in attendance at my death;</span><span size="3" style="font-size: 12pt">	</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%">□
+    <p  style="margin-bottom: 0in; "><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">the
       hospital in which I die;</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%">□
+    <p  style="margin-bottom: 0in; "><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">the
       following named physician, hospital, storage bank or other medical
       institution:</span></span></p>
-    <p  style="margin-left: 0.5in; margin-bottom: 0.09in; line-height: 100%">
+    <p  style="margin-left: 0.5in; margin-bottom: 0.09in; ">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_____________________________________________________________</span></span></p>
-    <p  style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+    <p  style="text-indent: 0.5in; margin-bottom: 0in; ">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">for
       the following purpose(s):</span></span></p>
-    <p  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-        <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">□
+    <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
+        <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>
         </span></span></span><span size="3" style="font-size: 12pt">any
         purpose authorized by law;</span><span size="3" style="font-size: 12pt">	</span></span></p>
-    <p  style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-      □ <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">transplantation;</span></span></p>
-    <p  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-        <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">□
+    <p  style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; ">
+      <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">transplantation;</span></span></p>
+    <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
+        <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>
         </span></span></span><span size="3" style="font-size: 12pt">therapy;</span><span size="3" style="font-size: 12pt">	</span></span></p>
-    <p  style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-      □ <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">research;</span></span></p>
-    <p  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-      <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">□
+    <p  style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; ">
+      <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">research;</span></span></p>
+    <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
+      <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>
       </span></span></span><span size="3" style="font-size: 12pt">medical
-      education.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-    </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%; text-align:center;">
+      education.</span></span></p>
+    
+    
+    <p class="western"  style="margin-bottom: 0in;  text-align:center;">
       <span size="4" style="font-size: 14pt"><b>A</b></span><span size="4" style="font-size: 14pt"><b>DMINISTRATIVE
       PROVISIONS</b></span></p>
-    <p class="western" style="margin-bottom: 0.2in; line-height: 100%">
-    </p>
-    <p class="western"  style="margin-bottom: 0in; line-height: 100%">
+    
+    <p class="western"  style="margin-bottom: 0in; margin-top: 0;">
       <b>A. REVOCATION, REMOVAL, AMENDMENT, OR RESIGNATION:</b>  I
       understand that, if I am mentally competent, I may revoke all or part
       of this document by writing down my revocation instructions and
@@ -952,45 +896,45 @@
 <!-- Page 9-->
 
 <!-- Page 10-->
-<div>
+<div style="page-break-after: always;">
   <div>
-    <p  style="margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
+    <p  style="margin-top: 0.13in; margin-bottom: 0.13in; ">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>B.
        EFFECT OF COPY</b></span><span size="3" style="font-size: 12pt">: A
       copy of this form has the same effect as the original.</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+    <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+    <p class="western" style="margin-bottom: 0in; "><br/>
 
     </p>
-    <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;"><span size="2" style="font-size: 9pt"><span size="4" style="font-size: 14pt"><b>SIGNATURE
+    <p  style="margin-bottom: 0in;  text-align:center;"><span size="2" style="font-size: 9pt"><span size="4" style="font-size: 14pt"><b>SIGNATURE
       AND ACKNOWLEDGEMENT</b></span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+    <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
+    <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       understand the purpose and effect of this document.</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+    <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+    <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_________________________________	</span><span ><span size="3" style="font-size: 12pt"><b>DATE</b></span></span><span size="3" style="font-size: 12pt">
+    <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_________________________________	</span><span ><span size="3" style="font-size: 12pt"><b>DATE</b></span></span><span size="3" style="font-size: 12pt">
       _________________________ </span></span>
     </p>
-    <p class="western"  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+    <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <b>
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
       </b>
   	</p>
 
-    <p style="margin-bottom: 0in; line-height: 100%"><span><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"></span></span><span ><span size="3" style="font-size: 12pt">
+    <p style="margin-bottom: 0in; "><span><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"></span></span><span ><span size="3" style="font-size: 12pt">
         <span style="text-transform: capitalize">{{$tellUsAboutYou['address']}}</span>, 
     </span></span><span ><span size="3" style="font-size: 12pt"></span></span></span></span></p>
     
-    <p  style="margin-bottom: 0in; line-height: 100%">
+    <p  style="margin-bottom: 0in; ">
     <span>
     <span size="2" style="font-size: 9pt">
         
@@ -1002,47 +946,39 @@
         <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['zip'])}}</span>
         
     </span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p  style="margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
+    
+    <p  style="margin-top: 0.13in; margin-bottom: 0.13in; ">
       <br/>
       <br/>
 
     </p>
-    <p  style="margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%; text-align:center;">
+    <p  style="margin-top: 0.13in; margin-bottom: 0.13in;  text-align:center;">
         <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>Notary
         Acknowledgement (Optional):</b></span></span></p>
-    <p align="left" style="margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
+    <p align="left" style="margin-top: 0.13in; margin-bottom: 0.13in; ">
       <br/>
       <br/>
 
     </p>
-    <p align="left" style="margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
+    <p align="left" style="margin-top: 0.13in; margin-bottom: 0.13in; ">
         <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">STATE
         OF DELAWARE	)</span></span></p>
-    <p align="left" style="margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
+    <p align="left" style="margin-top: 0.13in; margin-bottom: 0.13in; ">
         <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">				)
         ss</span></span></p>
-    <p align="left" style="margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
+    <p align="left" style="margin-top: 0.13in; margin-bottom: 0.13in; ">
         <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">COUNTY
         OF 			)</span></span></p>
-    <p align="left" style="margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
+    <p align="left" style="margin-top: 0.13in; margin-bottom: 0.13in; ">
       <br/>
       <br/>
 
     </p>
-    <p class="western"  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+    <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">On
-      this </span></span><span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt"><u>_______</u></span></span><span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">
-      day of </span></span><span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt"><u>_____________________</u></span></span><span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">,
-      </span></span><span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt"><u>___________</u></span></span><span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">,
+      this </span></span><span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">_______</span></span><span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">
+      day of </span></span><span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">_____________________</span></span><span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">,
+      </span></span><span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">___________</span></span><span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">,
       before me appeared </span></span><b>
       <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
       </b>
@@ -1052,15 +988,15 @@
       evidence) to be the person whose name is subscribed to this
       instrument, and acknowledged that the person executed it. </span></span>
     </p>
-    <p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+    <p style="margin-top: 0.19in; margin-bottom: 0.19in; ">
       <span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">Notary
       Seal </span></span>
     </p>
-    <p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+    <p style="margin-top: 0.19in; margin-bottom: 0.19in; ">
       <span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">___________________________
       (signature of notary public) </span></span>
     </p>
-    <p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+    <p style="margin-top: 0.19in; margin-bottom: 0.19in; ">
       <span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">My
       commission expires:</span></span></p>
   </div>
@@ -1084,13 +1020,10 @@
 <!-- Page 11-->
 <div>
   <div>
-    <p  style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%; text-align:center;">
+    <p  style="margin-top: 0.13in; margin-bottom: 0.06in;  text-align:center;">
       <span size="4" style="font-size: 14pt"><b>STATEMENT OF WITNESSES</b></span></p>
-    <p  style="margin-bottom: 0.03in; line-height: 100%"><br/>
-      <br/>
-
-    </p>
-    <p  style="margin-bottom: 0.03in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">SIGNED
+   
+    <p  style="margin-bottom: 0.03in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">SIGNED
       AND DECLARED by the above-named declarant as and for </span>
 
       <span>
@@ -1123,7 +1056,7 @@
   		</span>
   		</p>
 
-    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 100%">
+    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; ">
       <span size="2" style="font-size: 9pt">
       	<span size="3" style="font-size: 12pt">A.</span>
       	<span size="3" style="font-size: 12pt">	</span>
@@ -1131,36 +1064,36 @@
       the Declarant is mentally competent.</span>
   		</span>
   	</p>
-    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 100%">
+    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; ">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">B.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">That
       neither of us is prohibited by §2503 of Title 16 of the Delaware
       Code from being a witness. Neither of us:</span></span></p>
-    <p  style="margin-left: 1.13in; text-indent: -0.38in; margin-bottom: 0.03in; line-height: 100%">
+    <p  style="margin-left: 1.13in; text-indent: -0.38in; margin-bottom: 0.03in; ">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">1.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Is
       related to the declarant by blood, marriage or adoption;</span></span></p>
-    <p  style="margin-left: 1.13in; text-indent: -0.38in; margin-bottom: 0.03in; line-height: 100%">
+    <p  style="margin-left: 1.13in; text-indent: -0.38in; margin-bottom: 0.03in; ">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">2.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Is
       entitled to any portion of the estate of the declarant under any will
       of the declarant or codicil thereto then existing nor, at the time of
       the executing of the advance health care directive, is so entitled by
       operation of law then existing;</span></span></p>
-    <p  style="margin-left: 1.13in; text-indent: -0.38in; margin-bottom: 0.03in; line-height: 100%">
+    <p  style="margin-left: 1.13in; text-indent: -0.38in; margin-bottom: 0.03in; ">
         <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">3.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Has,
         at the time of the execution of the advance health-care directive, a
         present or inchoate claim against any portion of the estate of the
         declarant;</span></span></p>
-    <p  style="margin-left: 1.13in; text-indent: -0.38in; margin-bottom: 0.03in; line-height: 100%">
+    <p  style="margin-left: 1.13in; text-indent: -0.38in; margin-bottom: 0.03in; ">
         <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">4.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Has
         a direct financial responsibility for the declarant's medical care;</span></span></p>
-    <p  style="margin-left: 1.13in; text-indent: -0.38in; margin-bottom: 0.03in; line-height: 100%">
+    <p  style="margin-left: 1.13in; text-indent: -0.38in; margin-bottom: 0.03in; ">
         <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">5.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Has
         a controlling interest in or is an operator or an employee of a
         residential long-term health-care institution in which the declarant
         is a resident; or</span></span></p>
-    <p  style="margin-left: 1.13in; text-indent: -0.38in; margin-bottom: 0.03in; line-height: 100%">
+    <p  style="margin-left: 1.13in; text-indent: -0.38in; margin-bottom: 0.03in; ">
         <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">6.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Is
         under eighteen years of age.</span></span></p>
-    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 100%">
+    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; ">
         <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">C.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">That
         if the declarant is a resident of a sanitarium, rest home, nursing
         home, boarding home or related institution, one of the witnesses,
@@ -1168,49 +1101,46 @@
         advance health-care directive, a patient advocate or ombudsman
         designated by the Division of Services for Aging and Adults with
         Physical Disabilities or the Public Guardian.</span></span></p>
-    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 100%"><a name="_GoBack"></a>
-      <br/>
+    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; "><a name="_GoBack"></a>
       <br/>
 
     </p>
-      <p  style="margin-bottom: 0.03in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 11pt">WITNESS
+      <p  style="margin-bottom: 0.03in; "><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 11pt">WITNESS
         1: ________________________________	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dated: ___________________</span></span></p>
-    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 100%">
-      <br/>
+    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; ">
 
     </p>
-    <p  style="margin-bottom: 0.03in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 11pt">____________________________________</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="2" style="font-size: 11pt">[name
+    <p  style="margin-bottom: 0.03in; "><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 11pt">____________________________________</span></span></p>
+    <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 7pt"><span size="2" style="font-size: 11pt">[name
         printed]</span></span></p>
-    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 100%">
-      <br/>
+    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; ">
+
     </p>
-    <p  style="margin-bottom: 0.03in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 11pt">____________________________________	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;____________________________________</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="2" style="font-size: 11pt">[street
+    <p  style="margin-bottom: 0.03in; "><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 11pt">____________________________________	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;____________________________________</span></span></p>
+    <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 7pt"><span size="2" style="font-size: 11pt">[street
       address] <span style="padding-left: 250px;"></span>[city, state]</span></span></p>
-    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 100%">
-      <br/>
-    </p>
-    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 100%">
-      <br/>
-      <br/>
+    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; ">
 
     </p>
-    <p  style="margin-bottom: 0.03in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 11pt">WITNESS
+    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; ">
+
+
+    </p>
+    <p  style="margin-bottom: 0.03in; "><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 11pt">WITNESS
         2: ________________________________	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dated: ___________________</span></span></p>
-    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 100%">
-      <br/>
+    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; ">
+
 
     </p>
-    <p  style="margin-bottom: 0.03in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 11pt">____________________________________</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="2" style="font-size: 11pt">[name
+    <p  style="margin-bottom: 0.03in; "><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 11pt">____________________________________</span></span></p>
+    <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 7pt"><span size="2" style="font-size: 11pt">[name
       printed]</span></span></p>
-    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 100%">
-      <br/>
+    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; ">
+
 
     </p>
-    <p  style="margin-bottom: 0.03in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 11pt">____________________________________	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;____________________________________</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="2" style="font-size: 11pt">[street
+    <p  style="margin-bottom: 0.03in; "><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 11pt">____________________________________	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;____________________________________</span></span></p>
+    <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 7pt"><span size="2" style="font-size: 11pt">[street
       address] <span style="padding-left: 250px;"></span>[city, state]</span></span></p>
   </div>
 

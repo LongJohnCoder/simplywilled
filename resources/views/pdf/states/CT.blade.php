@@ -6,7 +6,7 @@
 <body>
 <div>
 	<div class="docPage">
-  <div id="doc" class="docPageInner">
+  <div id="doc" class="docPageInner" style="page-break-after: always;">
     <p  style="text-align:center;margin-top: 0.06in; margin-bottom: 0.13in; line-height: 0.28in; page-break-before: auto; page-break-after: auto">
       <span  style="font-size: 17pt"><b>CONNECTICUT ADVANCE
         DIRECTIVES</b></span></p>
@@ -23,18 +23,15 @@
     <p style="margin-bottom: 0in; line-height: 0.25in">
 
     </p>
-    <ol>
-    	<li>
-      	<p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-        <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">My
+    
+      	<p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">
+        <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My
         Appointment of a Health Care Representative;</span></span></span></span></span></p>
-      	</li>
-      	<li>
-      	<p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-        <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">My
+      	<br>
+      	<p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">
+        <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My
         Living Will or Health Care Instructions;</span></span></span></span></span></p>
-    	</li>
-    </ol>
+    	
     <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My
       Document of Anatomical Gift; and,</span></span></span></span></span></p>
@@ -49,15 +46,13 @@
       health care representative or conservator of my person, if I am
       unable to make a decision for myself.</p>
     <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
-
+<br><br>
     </p>
-    <ol type="I">
-    	<li>
-      <p  style="text-align:justify;margin-top: 0.06in; margin-bottom: 0.06in; line-height: 0.23in">
-        <span  style="font-size: 13pt"><b>APPOINTMENT OF HEALTH CARE
+   
+      <p  style="text-align:center; margin-top: 0.06in; margin-bottom: 0.06in; line-height: 0.23in; margin-top: 0;">
+        <span  style="font-size: 13pt"><b>I. APPOINTMENT OF HEALTH CARE
           REPRESENTATIVE</b></span></p>
-         </li>
-    </ol>
+         
     <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
     </p>
@@ -123,7 +118,7 @@
 
 <!-- Page 2 -->
 <div class="docPage">
-  <div class="docPageInner">
+  <div class="docPageInner" style="page-break-after: always;">
 
     @if($healthFinance['anyBackupAgent'] === 'true')
     <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
@@ -211,12 +206,12 @@
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">(3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consent
       to the disclosure of this information.</span></span></span></span></span></p>
     <p style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 115%">
-
-
+<br>
+<br>
     </p>
     <ol type="I" start="2">
       <p  style="text-align:center;margin-top: 0.06in; margin-bottom: 0.06in; line-height: 0.23in">
-        <span  style="font-size: 13pt"><b>LIVING WILL or HEALTH CARE
+        <span  style="font-size: 13pt"><b>II. LIVING WILL or HEALTH CARE
           INSTRUCTIONS</b></span></p>
     </ol>
     <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
@@ -243,7 +238,7 @@
 
 <!-- Page 3 -->
 <div class="docPage">
-  <div class="docPageInner">
+  <div class="docPageInner" style="page-break-after: always;">
 
     <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I,
@@ -290,67 +285,77 @@
     <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
     </p>
-    <table cellpadding="4" cellspacing="0">
-      <th width="830">
-      <th width="833">
-      <th width="2682">
+    <table cellpadding="0" cellspacing="0" style="margin: 20px 0 20px 50px;">
+     
       <tr valign="top">
-        <td width="830" style="border: none; padding: 0in">
+        <td width="" style="border: 1px solid #000; padding: 0 20px;">
           <p  style="text-align: center"><u>PROVIDE</u></p>
         </td>
-        <td width="833" style="border: none; padding: 0in">
+        <td width="" style="border: 1px solid #000; border-left: 0; padding: 0 20px;">
           <p  style="text-align: center"><u>WITHHOLD</u></p>
         </td>
-        <td width="2682" style="border: none; padding: 0in">
+        <td width="" style="border: 1px solid #000; border-left: 0; padding-left: 20px;">
           <p><u>TREATMENT</u></p>
         </td>
       </tr>
       <tr valign="top">
-        <td width="830" style="border: none; padding: 0in">
-          <p  style="text-align: center">□</p>
+        <td width="" style="border: none; padding: 0in; border-left: 1px solid #000; border-bottom: 1px solid #000;">
+          <p  style="text-align: center">
+          <span style="display:inline-block; width:14px; height:14px; border:1px solid #000; margin: 0 0 0 48px;"></span>
+          </p>
         </td>
-        <td width="833" style="border: none; padding: 0in">
-          <p  style="text-align: center">□</p>
+        <td width="" style="border: none; padding: 0in; border-left: 1px solid #000; border-bottom: 1px solid #000;">
+          <p  style="text-align: center">
+            <span style="display:inline-block; width:14px; height:14px; border:1px solid #000; margin: 0 0 0 48px;"></span>
+          </p>
         </td>
-        <td width="2682" style="border: none; padding: 0in">
+        <td width="" style="border: none; padding-left: 20px; border: 1px solid #000; border-top: 0;">
           <p  style="text-align:left;margin-bottom: 0in">
 
           </p>
           <p style="font-variant: normal; letter-spacing: normal; font-style: normal">
-			<span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Cardiopulmonary
-			Resuscitation</span></span></span></span></span></p>
+      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Cardiopulmonary
+      Resuscitation</span></span></span></span></span></p>
         </td>
       </tr>
       <tr valign="top">
-        <td width="830" style="border: none; padding: 0in">
-          <p  style="text-align: center">□</p>
+        <td width="" style="border: none; padding: 0in; border-left: 1px solid #000; border-bottom: 1px solid #000;">
+          <p  style="text-align: center">
+            <span style="display:inline-block; width:14px; height:14px; border:1px solid #000; margin: 0 0 0 48px;"></span>
+          </p>
         </td>
-        <td width="833" style="border: none; padding: 0in">
-          <p  style="text-align: center">□</p>
+        <td width="" style="border: none; padding: 0in; border-left: 1px solid #000; border-bottom: 1px solid #000;">
+          <p  style="text-align: center">
+            <span style="display:inline-block; width:14px; height:14px; border:1px solid #000; margin: 0 0 0 48px;"></span>
+          </p>
         </td>
-        <td width="2682" style="border: none; padding: 0in">
+        <td width="" style="border: none; padding: 0in; border: 1px solid #000; border-top: 0; padding-left: 20px;">
           <p  style="text-align:left;margin-bottom: 0in">
 
           </p>
           <p style="font-variant: normal; letter-spacing: normal; font-style: normal">
-			<span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Artificial
-			Respiration (including a respirator)</span></span></span></span></span></p>
+      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Artificial
+      Respiration (including a respirator)</span></span></span></span></span></p>
         </td>
       </tr>
       <tr valign="top">
-        <td width="830" style="border: none; padding: 0in">
-          <p  style="text-align: center">□</p>
+        <td width="" style="border: none; padding: 0in; border-left: 1px solid #000; border-bottom: 1px solid #000;">
+          <p  style="text-align: center">
+            <span style="display:inline-block; width:14px; height:14px; border:1px solid #000; margin: 0 0 0 48px;"></span>
+          </p>
         </td>
-        <td width="833" style="border: none; padding: 0in">
-          <p  style="text-align: center">□</p>
+        <td width="" style="border: none; padding: 0in; border-left: 1px solid #000; border-bottom: 1px solid #000;">
+          <p  style="text-align: center">
+            <span style="display:inline-block; width:14px; height:14px; border:1px solid #000; margin: 0 0 0 48px;"></span>
+          </p>
         </td>
-        <td width="2682" style="border: none; padding: 0in">
+        <td width="" style="border: none; padding: 0in; border: 1px solid #000; border-top: 0; padding: 0 20px;">
           <p  style="text-align:left;margin-bottom: 0in">
 
           </p>
           <p style="font-variant: normal; letter-spacing: normal; font-style: normal">
-			<span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Artificial
-			means of providing nutrition and hydration</span></span></span></span></span></p>
+      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Artificial
+      means of providing nutrition and hydration</span></span></span></span></span></p>
         </td>
       </tr>
     </table>
@@ -396,7 +401,7 @@
 
 <!-- Page 4 -->
 <div class="docPage">
-  <div class="docPageInner">
+  <div class="docPageInner" style="page-break-after: always;">
     <ol type="I" start="3">
       <p  style="text-align:center;margin-top: 0.06in; margin-bottom: 0.06in; line-height: 0.23in">
         <span  style="font-size: 13pt"><b>DOCUMENT OF ANATOMICAL
@@ -430,10 +435,10 @@
     <p style="margin-left: 0.38in; margin-bottom: 0in; line-height: 115%">
       <i>I give: (check one)</i></p>
     <p style="margin-left: 0.75in; margin-bottom: 0in; line-height: 0.16in">
-      □&nbsp; <span  style="font-size: 11pt">(a) any needed
+      <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:3px 5px;"></span>&nbsp; <span  style="font-size: 11pt">(a) any needed
       organs or parts</span></p>
     <p style="margin-left: 0.75in; margin-bottom: 0in; line-height: 0.16in">
-      □&nbsp; <span  style="font-size: 11pt">(b) only the
+      <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:3px 5px;"></span>&nbsp; <span  style="font-size: 11pt">(b) only the
       following organs or parts:</span></p>
     <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">___________________________________________________________</span></span></span></span></span></p>
@@ -445,11 +450,11 @@
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">to
       be donated for: <i>(check one)</i></span></span></span></span></span></p>
     <p style="margin-left: 1.13in; margin-bottom: 0in; line-height: 0.15in">
-      □ <span  style="font-size: 11pt">any of the purposes stated
+      <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:3px 5px;"></span> <span  style="font-size: 11pt">any of the purposes stated
       in subsection (a) of sec. 19a-279f of the Connecticut general
       statutes; or</span></p>
     <p style="margin-left: 1.13in; margin-bottom: 0in; line-height: 0.15in">
-      □  <span  style="font-size: 11pt">these limited purposes:</span></p>
+      <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:3px 5px;"></span>  <span  style="font-size: 11pt">these limited purposes:</span></p>
     <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________________________</span></span></span></span></span></p>
     <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
@@ -510,7 +515,7 @@
 
 <!-- Page 5 -->
 <div class="docPage">
-  <div class="docPageInner">
+  <div class="docPageInner" style="">
 
     <p style="margin-bottom: 0in; line-height: 115%">B.  <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </u> (Initials) If a conservator of my person should need to be
@@ -527,29 +532,6 @@
 
     </p>
     <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
-
-    </p>
-    <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-
-
-    </p>
-  </div>
-
-  {{--
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Advance Directives of {{userDetails.tellUsAboutYou.fullname}} </span>
-    <br>Page 5 of 7
-  </div>
-  --}}
-</div>
-<!-- !Page 5 -->
-
-<!-- Page 6 -->
-<div class="docPage">
-  <div class="docPageInner">
-
-    <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in; page-break-before: always">
-
 
     </p>
     <ol type="I" start="5">
@@ -572,25 +554,20 @@
       facsimile of this document may rely upon it unless such party has
       received actual notice of my revocation of it.</p>
     <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
-
+<br>
     </p>
     <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
-
+<br>
     </p>
-    <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><u>_______________________________________</u><span style="text-decoration: none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:
+    <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">_______________________________________<span style="text-decoration: none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:
       </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></p>
     <p style="margin-bottom: 0.08in; line-height: 115%">
       <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
     </p>
     <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
-
+<br>
     </p>
-    <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
-
-    </p>
-    <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
-
-    </p>
+    
     <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Subscribed
       and sworn to before me by <b>
@@ -616,6 +593,22 @@
     <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
     </p>
+  </div>
+
+  {{--
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Advance Directives of {{userDetails.tellUsAboutYou.fullname}} </span>
+    <br>Page 5 of 7
+  </div>
+  --}}
+</div>
+<!-- !Page 5 -->
+
+<!-- Page 6 -->
+<!-- <div class="docPage">
+  <div class="docPageInner" style="">
+
+    
     <p  style="text-align:center;margin-bottom: 0.13in; line-height: 115%">
 
 
@@ -635,7 +628,7 @@
     <br>Page 6 of 7
   </div>
   --}}
-</div>
+</div> -->
 <!-- !Page 6 -->
 
 <!-- Page 7 -->
@@ -654,53 +647,47 @@
       improper influence. We have subscribed this document in the author's
       presence and at <span>{{$genderTxt4}}</span>
       request and in the presence of each other.</span></span></span></span></span></p>
-    <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
-    </p>
-    <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
-
-    </p>
     <p  style="text-align:left;text-indent: -0.38in; margin-bottom: 0in; line-height: 115%">
-
-
+<br><br>
     </p>
-    <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span  style="font-size: 9pt"><u>_______________________________________________</u>(WITNESS
-      1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></span></p>
-    <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span  style="font-size: 9pt">NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      DATE</span></p>
-    <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span  style="font-size: 9pt">ADDRESS:</span></p>
-    <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span  style="font-size: 9pt">CITY/STATE:</span></p>
+    
+    <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span  style="">__________________________________________(WITNESS
+              1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______________</span></p>
+            <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span  style="">NAME:
+            <span style="padding-left:430px; display: inline-block;"></span>
+              DATE</span></p>
+            <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span  style="">ADDRESS:</span></p>
+            <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span  style="">CITY/STATE:</span></p>
+            <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
+
+            </p>
+            <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
+<br>
+            </p>
+            <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span  style="">__________________________________________(WITNESS
+              2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______________</span></p>
+            <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span  style="">NAME:<span style="padding-left:430px; display: inline-block;"></span>
+              DATE</span></p>
+            <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span  style="">ADDRESS:</span></p>
+            <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span  style="">CITY/STATE:</span></p>
     <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
-
+<br>
     </p>
     <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
-
+<br>
     </p>
-    <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span  style="font-size: 9pt"><u>_______________________________________________</u>(WITNESS
-      2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></span></p>
-    <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span  style="font-size: 9pt">NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      DATE</span></p>
-    <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span  style="font-size: 9pt">ADDRESS:</span></p>
-    <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span  style="font-size: 9pt">CITY/STATE:</span></p>
-    <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
-
-    </p>
-    <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
-
-    </p>
-    <p style="margin-bottom: 0in; line-height: 115%">Subscribed and sworn
-      to before me by<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
+   <p style="margin-bottom: 0in; line-height: 115%">Subscribed and sworn
+      to before me by_________________________________________
       and
     </p>
-    <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span style="text-decoration: none">
-      as witnesses, on this </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span style="text-decoration: none">day
-      of </span>
+    <p style="margin-bottom: 0in; line-height: 115%">__________________________<span style="text-decoration: none">
+      as witnesses, on this </span>_______________________________<span style="text-decoration: none">day
+      of __________________, ____________. </span>
     </p>
-    <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span style="text-decoration: none">,
-      </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     </u><span style="text-decoration: none">.</span></p>
     <p  style="text-align:left;margin-top: 0.06in; margin-bottom: 0.06in; line-height: 115%">
 
-
+<br><br><br>
 
     </p>
     <p  style="text-align:left;margin-top: 0.06in; margin-bottom: 0.06in; line-height: 115%">
