@@ -19,3 +19,13 @@ p, span{
 .docPage span, .docPage p {
   line-height: initial !important;
 }
+
+.pageCount{
+  counter-reset: index;
+}
+.pageNumber{
+  counter-increment: index;
+}
+.pageNumber:after{
+  content: counter(index);
+}

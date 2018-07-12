@@ -174,7 +174,15 @@
   </div>
   
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
+    
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
     <span>
       Page <span class="pageNumber"></span> of {{totalPages}}
     </span>
@@ -224,12 +232,17 @@
       lawyer to explain it to you.</p>
   </div>
   
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 
 </div>
 <!-- !Page 2 -->
@@ -399,13 +412,17 @@
         or if you do not understand this Power of Attorney or any provision
         of it, you should seek legal advice before signing this form.</b></p>
     </div>
-    
-    <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-      <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-      <span>
-        Page <span class="pageNumber"></span> of {{totalPages}}
-      </span>
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
     </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
 
   </div>
 </div>
@@ -578,12 +595,17 @@
     </p>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 
 </div>
 <!-- !Page 4 -->
@@ -702,12 +724,17 @@
     </p>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 
 </div>
 <!-- !Page 5 -->
@@ -825,12 +852,17 @@
     </div>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 
 </div>
 <!-- !Page 6 -->
@@ -925,13 +957,17 @@
     </p>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
-
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 </div>
 <!-- !Page 7 -->
 
@@ -1046,12 +1082,17 @@
     <p class="western" style="margin-bottom: 0.06in; line-height: 100%"><b>--OR--</b></p>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 
 </div>
 <!-- !Page 8-->
@@ -1163,12 +1204,17 @@
     </p>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 
 </div>
 <!-- !Page 9 -->
@@ -1335,12 +1381,17 @@
     </div>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 
 </div>
 <!-- !Page 10 -->
@@ -1473,12 +1524,17 @@
     </p>-->
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 
 </div>
 <!-- !Page 11 -->
@@ -1660,12 +1716,17 @@
     </p>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 
 </div>
 <!-- !Page 12 -->
@@ -1758,12 +1819,17 @@
         initials</span></span></p>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 </div>
 </div>
 <!-- !Page 13 -->
@@ -1877,12 +1943,17 @@
     </p>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 
 </div>
 <!-- !Page 14 -->
@@ -1975,12 +2046,17 @@
     </div>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 
 </div>
 <!-- !Page 15 -->
@@ -2036,12 +2112,17 @@
     </p>-->
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 
 </div>
 <!-- !Page 16 -->
@@ -2147,12 +2228,17 @@
     </p>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 
 </div>
 </div>
@@ -2251,12 +2337,17 @@
     </p>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 
 </div>
 <!-- !Page 18 -->
@@ -2361,12 +2452,17 @@
     <!--</p>-->
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 
 </div>
 <!-- !Page 19 -->
@@ -2483,12 +2579,17 @@
     </div>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 
 </div>
 <!-- !Page 20 -->
@@ -2653,12 +2754,17 @@
       authorizes the agent to do all of the following:</span></p>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 </div>
 </div>
 <!-- !Page 21 -->
@@ -2730,12 +2836,17 @@
     </p>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 </div>
 </div>
 <!-- !Page 22 -->
@@ -2855,12 +2966,17 @@
       and pay it when due.</span></p>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 </div>
 </div>
 <!-- !Page 23 -->
@@ -2966,12 +3082,17 @@
       business.</span></p>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 </div>
 </div>
 <!-- !Page 24 -->
@@ -3102,12 +3223,17 @@
       payment from an estate, trust, or beneficial interest.</span></p>
   </div>
 
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-    <span>
-      Page <span class="pageNumber"></span> of {{totalPages}}
-    </span>
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
   </div>
+  <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+      <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+      <div>(CLIENT FULL NAME)</div>
+  </div>
+  <span>
+    Page <span class="pageNumber"></span> of {{totalPages}}
+  </span>
 
 </div>
 </div>
@@ -3216,12 +3342,17 @@
       value.</span></p>
     </div>
 
-    <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-      <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-      <span>
-        Page <span class="pageNumber"></span> of {{totalPages}}
-      </span>
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
     </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
   </div>
   <!-- !Page 26 -->
@@ -3340,12 +3471,17 @@
       </p>
     </div>
 
-    <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-      <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-      <span>
-        Page <span class="pageNumber"></span> of {{totalPages}}
-      </span>
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
     </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
   </div>
   <!-- !Page 27-->
@@ -3468,12 +3604,17 @@
       a retirement plan in the principal's name.</span></p>
     </div>
 
-    <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-      <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-      <span>
-        Page <span class="pageNumber"></span> of {{totalPages}}
-      </span>
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
     </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
   </div>
   <!-- !Page 28 -->
@@ -3597,12 +3738,17 @@
       </p>
     </div>
 
-    <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-      <div style="text-transform: capitalize;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">DURABLE GENERAL POWER OF ATTORNEY OF</div>      <div>{{userDetails.tellUsAboutYou.fullname}}</div>
-      <span>
-        Page <span class="pageNumber"></span> of {{totalPages}}
-      </span>
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
     </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">DURABLE GENERAL POWER OF ATTORNEY OF</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
   </div>
   <!-- !Page 29 -->

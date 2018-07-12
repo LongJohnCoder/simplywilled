@@ -133,4 +133,23 @@ export class GlobalPdfService {
     return index + 1;
   }
 
+  getDynamicPages(): any {
+    let x = document.getElementsByClassName('pageCount');
+    let totalPages = 0;
+    let heightArr = [];
+    if (x === undefined || x === null || x[0] === undefined || x[0].children === undefined) {} else {
+        x = x[0].children;
+        if (x.length !== totalPages) {
+          totalPages = x.length;
+          heightArr = Object.keys(x).map(function(key) {
+            return x[key].offsetTop - 20;
+          });
+        }
+    }
+    return {
+      'totalPages'  : totalPages,
+      'heightArr'   : heightArr
+    };
+  }
+
 }

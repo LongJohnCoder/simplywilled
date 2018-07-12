@@ -1,4 +1,5 @@
 <!-- Page 1 -->
+<div class="pageCount">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div id="doc" class="docPageInner"
        style="box-sizing: border-box; height: 890px;">
@@ -113,6 +114,23 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">Florida 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 1 -->
 
@@ -235,6 +253,23 @@
       purchasing supplies, hiring assistance or labor, and making repairs
       or alterations to the real property.&nbsp;</span></p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">Florida 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 2 -->
 
@@ -310,6 +345,23 @@
       proceeds or liability from the contract of insurance or annuity
       accruing by reason of the tax or assessment.&nbsp;</span></p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">Florida 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 3 -->
 
@@ -383,6 +435,23 @@
       retirement plan; borrow from, sell assets to, or purchase assets from
       a retirement plan.&nbsp;</span></p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">Florida 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 4 -->
 
@@ -477,6 +546,23 @@
 
     </p>-->
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">Florida 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 5 -->
 
@@ -544,6 +630,23 @@
       this power of attorney to take effect)</span></p>
     <!--<p align="justify" style="margin-bottom: 0.09in; line-height: 100%"><span face="Times New Roman, serif">«</span><span color="#4e8f00"><span face="Times New Roman, serif">ELSE</span></span><span face="Times New Roman, serif">»</span></p>-->
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">Florida 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 6 -->
 </div>
@@ -650,6 +753,23 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">Florida 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 7 -->
 
@@ -749,6 +869,23 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">Florida 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 8-->
 
@@ -830,6 +967,23 @@
     <p align="center" style="margin-bottom: 0in; line-height: 100%"><span face="Times New Roman, serif"><b>[signature
       and acknowledgement on next page]</b></span></p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">Florida 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 9 -->
 
@@ -924,6 +1078,23 @@
     <p style="margin-bottom: 0.06in; line-height: 100%"><span face="Times New Roman, serif">My
       commission expires: _________________</span></p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">Florida 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 10 -->
 
@@ -1025,6 +1196,23 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">Florida 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 11 -->
 
@@ -1166,6 +1354,23 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">Florida 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 12 -->
 
@@ -1277,6 +1482,23 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">Florida 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 13 -->
 
@@ -1369,6 +1591,23 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">Florida 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Maryland Statutory Form Personal Financial Power of Attorney</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 14 -->
-
+</div>

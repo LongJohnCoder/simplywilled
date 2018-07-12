@@ -1,3 +1,5 @@
+<div class="pageCount">
+
 <!-- Page 1 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div id="doc" class="docPageInner"
@@ -144,8 +146,12 @@
     <span style="text-transform: capitalize"> Power of attorney for management of finances, property, and personal affairs </span> of
     <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    <br>Page 1 of 15
+    <br>
+    <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
+
 </div>
 <!-- !Page 1 -->
 
@@ -296,7 +302,10 @@
     <span style="text-transform: capitalize"> Power of attorney for management of finances, property, and personal affairs </span> of
     <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    <br>Page 2 of 15
+    <br>
+    <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 </div>
 <!-- !Page 2 -->
@@ -384,7 +393,10 @@
     <span style="text-transform: capitalize"> Power of attorney for management of finances, property, and personal affairs </span> of
     <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    <br>Page 3 of 15
+    <br>
+    <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 </div>
 <!-- !Page 3 -->
@@ -508,7 +520,10 @@
     <span style="text-transform: capitalize"> Power of attorney for management of finances, property, and personal affairs </span> of
     <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    <br>Page 4 of 15
+    <br>
+    <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 </div>
 <!-- !Page 4 -->
@@ -622,7 +637,10 @@
     <span style="text-transform: capitalize"> Power of attorney for management of finances, property, and personal affairs </span> of
     <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    <br>Page 5 of 15
+    <br>
+    <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 </div>
 <!-- !Page 5 -->
@@ -724,7 +742,10 @@
     <span style="text-transform: capitalize"> Power of attorney for management of finances, property, and personal affairs </span> of
     <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    <br>Page 6 of 15
+    <br>
+    <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 </div>
 <!-- !Page 6 -->
@@ -819,7 +840,10 @@
     <span style="text-transform: capitalize"> Power of attorney for management of finances, property, and personal affairs </span> of
     <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    <br>Page 7 of 15
+    <br>
+    <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 </div>
 <!-- !Page 7 -->
@@ -953,7 +977,10 @@
     <span style="text-transform: capitalize"> Power of attorney for management of finances, property, and personal affairs </span> of
     <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    <br>Page 8 of 15
+    <br>
+    <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 </div>
 <!-- !Page 8-->
@@ -1018,7 +1045,10 @@
     <span style="text-transform: capitalize"> Power of attorney for management of finances, property, and personal affairs </span> of
     <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    <br>Page 9 of 15
+    <br>
+    <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 </div>
 <!-- !Page 9 -->
@@ -1124,7 +1154,10 @@
     <span style="text-transform: capitalize"> Power of attorney for management of finances, property, and personal affairs </span> of
     <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    <br>Page 10 of 15
+    <br>
+    <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 </div>
 <!-- !Page 10 -->
@@ -1232,7 +1265,10 @@
     <span style="text-transform: capitalize"> Power of attorney for management of finances, property, and personal affairs </span> of
     <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    <br>Page 11 of 15
+    <br>
+    <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 </div>
 <!-- !Page 11 -->
@@ -1349,7 +1385,10 @@
     <span style="text-transform: capitalize"> Power of attorney for management of finances, property, and personal affairs </span> of
     <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    <br>Page 12 of 15
+    <br>
+    <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 </div>
 <!-- !Page 12 -->
@@ -1511,7 +1550,10 @@
       <span style="text-transform: capitalize"> Power of attorney for management of finances, property, and personal affairs </span> of
       <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
       <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      <br>Page 13 of 15
+      <br>
+    <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
     </div>
 
   <!-- !Page 14 -->
@@ -1655,7 +1697,10 @@
     <span style="text-transform: capitalize"> Power of attorney for management of finances, property, and personal affairs </span> of
     <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    <br>Page 13 of 15
+    <br>
+    <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 
 </div>
@@ -1871,7 +1916,10 @@
     <span style="text-transform: capitalize"> Power of attorney for management of finances, property, and personal affairs </span> of
     <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    <br>Page 13 of 15
+    <br>
+    <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 </div>
 <!-- Page 18 -->
@@ -1966,7 +2014,10 @@
     <span style="text-transform: capitalize"> Power of attorney for management of finances, property, and personal affairs </span> of
     <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    <br>Page 14 of 15
+    <br>
+    <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 </div>
 <!-- !Page 18 -->
@@ -2066,8 +2117,11 @@
     <span style="text-transform: capitalize"> Power of attorney for management of finances, property, and personal affairs </span> of
     <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-    <br>Page 15 of 15
+    <br>
+    <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 </div>
 <!-- !Page 19 -->
-
+</div>

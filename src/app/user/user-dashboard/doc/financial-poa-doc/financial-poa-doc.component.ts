@@ -222,6 +222,7 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     const dx = e.target.offsetWidth + (this.docThumbImg.length * 7);
     const u = dx / this.docThumbImg.length;
     this.thumbContainer.nativeElement.scrollLeft = u * (this.thumbIndex - 1);
+    console.log(this.thumbIndex);
   }
 
   /**Get the user details*/

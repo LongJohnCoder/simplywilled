@@ -49,18 +49,12 @@ export class UniformPoaComponent implements OnInit, OnChanges  {
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngDoCheck() {
-    const x = document.getElementsByClassName('pageCount')[0].children;
-    if (x.length !== this.totalPages) {
-      this.totalPages = x.length;
-      const res = Object.keys(x).map(function(key) {
-        return x[key].offsetTop - 20;
-      });
-      const resp = {
-        'pages' : this.totalPages,
-        'heightArr' : res
-      };
-      this.globalService.fcpoaPages(resp);
-    }
+    const x = this.globalService.getDynamicPages();
+    this.totalPages = x.totalPages;
+    this.globalService.fcpoaPages({
+      'pages' : x.totalPages,
+      'heightArr' : x.heightArr
+    });
   }
 
   ngOnChanges() {

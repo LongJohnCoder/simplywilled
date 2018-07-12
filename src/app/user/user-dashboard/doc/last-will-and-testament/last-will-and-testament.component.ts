@@ -1,9 +1,9 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import * as html2canvas from "html2canvas";
-import {UserService} from "../../../user.service";
-import {Subscription} from "rxjs/Subscription";
-import {UserAuthService} from "../../../user-auth/user-auth.service";
-import {ProgressbarService} from "../../shared/services/progressbar.service";
+import {Component, OnDestroy, OnInit, ViewChild, DoCheck} from '@angular/core';
+import * as html2canvas from 'html2canvas';
+import {UserService} from '../../../user.service';
+import {Subscription} from 'rxjs/Subscription';
+import {UserAuthService} from '../../../user-auth/user-auth.service';
+import {ProgressbarService} from '../../shared/services/progressbar.service';
 import {Location} from '@angular/common';
 import {GlobalPdfService} from '../services/global-pdf.service';
 import { saveAs } from 'file-saver/FileSaver';
@@ -31,7 +31,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   /*userDetails = {
     firstname: ''
   };*/
-
+  totalPages: number;
   pageIndex = 1;
   totalPagesPresent = 12;
   deceasedChildrenNames = '';
@@ -93,6 +93,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   signingInstructionSubscription: Subscription;
   downloadSubscription: Subscription;
   printSubscription: Subscription;
+  heightArr: Array<number>;
 
   constructor(
       private router: Router,
@@ -189,6 +190,13 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     );
   }
 
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngDoCheck() {
+    const x = this.globalPDFService.getDynamicPages();
+    this.totalPages = x.totalPages;
+    this.heightArr = x.heightArr;
+  }
+
   /**Sets the progress count**/
   setProgress(progressBar: Object, count = 0) {
     if (this.progressBar.finalArrangements) {
@@ -220,20 +228,16 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     this.scrollHeight = 991 * index;
     this.docBox.nativeElement.scrollTop = this.scrollHeight;
     this.thumbIndex = index;
-    //this.thumbContainer.nativeElement.scrollLeft(100);
-    //this.docBox.nativeElement.style.transition = 'top .8s cubic-bezier(0.77, 0, 0.175, 1)';
+    // this.thumbContainer.nativeElement.scrollLeft(100);
+    // this.docBox.nativeElement.style.transition = 'top .8s cubic-bezier(0.77, 0, 0.175, 1)';
   }
 
-  getScroll(scrollVal: number) {
-    if (scrollVal >=  991) {
-      this.thumbIndex = scrollVal !== 0 ? Math.floor(scrollVal/991) : 0;
-    } else {
-      this.thumbIndex = 0;
-    }
-    if (this.thumbIndex >= 4) {
-      this.thumbContainer.nativeElement.scrollLeft = this.thumbIndex * 31;
-    }
-
+  getScroll(scrollVal: number, e: any) {
+    this.thumbIndex = this.globalPDFService.getAccurateScrollPosition(scrollVal, this.heightArr);
+    console.log('thumb index : ', this.thumbIndex, ' scrollVal : ', scrollVal, ' heightArr : ', this.heightArr);
+    const dx = e.target.offsetWidth + (this.docThumbImg.length * 7);
+    const u = dx / this.docThumbImg.length;
+    this.thumbContainer.nativeElement.scrollLeft = u * (this.thumbIndex - 1);
   }
 
   /**Get the user details*/
@@ -254,8 +258,8 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   /**Downloads the pdf*/
   downloadPdf() {
     this.loading = true;
-    let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
-    let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+    const userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     this.signingInstructionSubscription = this.globalPDFService.willTemplate(token).subscribe(
       (response: any) => {
         if (response.status) {
@@ -266,7 +270,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
           );
         }
       }, (error) => { console.log(error); this.loading = false;},
-      () => {this.loading = false;}
+      () => { this.loading = false; }
     );
   }
 
@@ -284,22 +288,6 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
             win.document.write('<iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
             win.focus();
           }
-          /*let src = this.globalPDFService.printFile(userId, 'will-template.pdf');
-          console.log(src);
-          let newwindow = window.open('', 'blank');
-          let obj = newwindow.document.createElement('iframe');
-          obj.style.height = '100%';
-          obj.style.width = '100%';
-          //obj.style.visibility = 'hidden';
-          obj.src = src;
-          newwindow.document.body.appendChild(obj);
-          newwindow.focus();*/
-          // newwindow.print();
-          /*this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'finalSigningInstructions.pdf').subscribe(
-            value => {
-              saveAs(value, 'finalSigningInstructions.pdf');
-            }
-          );*/
         }
       }, (error) => { console.log(error); this.loading = false; },
       () => {
@@ -322,28 +310,6 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
       this.router.navigate(['/dashboard/documents/financial-poa']);
     }
   }
-  // pdfDownload() {
-  //
-  //   var doc = new jsPDF({
-  //     orientation: 'landscape',
-  //     unit: 'in',
-  //     format: [4, 2]
-  //   })
-  //
-  //   doc.text('Hello world!', 1, 1)
-  //   doc.save('two-by-four.pdf')
-  //
-  //   html2canvas(document.body).then(canvas => {
-  //     var imgData = canvas.toDataURL("image/png");
-  //     this.AddImagesResource(imgData);
-  //     document.body.appendChild(canvas);
-  //   });
-  //
-  //
-  //   html2canvas(document.querySelector("#capture")).then(canvas => {
-  //     document.body.appendChild(canvas)
-  //   });
-  // }
 
   emailMe(e: any) {
     e.preventDefault();

@@ -1,4 +1,5 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import { GlobalPdfService } from './../../services/global-pdf.service';
+import { Component, Input, OnChanges, OnInit, DoCheck } from '@angular/core';
 
 @Component({
   selector: 'app-fl-poa',
@@ -34,10 +35,22 @@ export class FlPoaComponent implements OnInit, OnChanges {
     attorney_powers: null,
   };
   loading = true;
-
-  constructor() { }
+  totalPages: number;
+  constructor(
+    private globalService: GlobalPdfService
+  ) { }
 
   ngOnInit() {
+  }
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngDoCheck() {
+    const x = this.globalService.getDynamicPages();
+    this.totalPages = x.totalPages;
+    this.globalService.fcpoaPages({
+      'pages' : x.totalPages,
+      'heightArr' : x.heightArr
+    });
   }
 
   ngOnChanges() {
@@ -62,8 +75,11 @@ export class FlPoaComponent implements OnInit, OnChanges {
         tellUsAboutYou: this.data.tellUsAboutYou
       };
       this.financialPOA = {
+        // tslint:disable-next-line:max-line-length
         attorney_backup: this.data.financialPowerOfAttorney !== null && this.data.financialPowerOfAttorney.attorney_backup !== null && this.data.financialPowerOfAttorney.attorney_backup !== undefined ? JSON.parse(this.data.financialPowerOfAttorney.attorney_backup) : null,
+        // tslint:disable-next-line:max-line-length
         attorney_holders: this.data.financialPowerOfAttorney !== null && this.data.financialPowerOfAttorney.attorney_holders !== null && this.data.financialPowerOfAttorney.attorney_holders !== undefined ? JSON.parse(this.data.financialPowerOfAttorney.attorney_holders) : null,
+        // tslint:disable-next-line:max-line-length
         attorney_powers: this.data.financialPowerOfAttorney !== null && this.data.financialPowerOfAttorney.attorney_powers !== null && this.data.financialPowerOfAttorney.attorney_powers !== undefined ? JSON.parse(this.data.financialPowerOfAttorney.attorney_powers) : null,
       };
       this.loading = false;

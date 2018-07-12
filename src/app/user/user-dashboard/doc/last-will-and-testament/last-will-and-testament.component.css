@@ -264,7 +264,17 @@ line-height: initial !important;
   font-family: 'OpenSans-SemiBold';
   border-bottom: 1px solid #d8d8d8;
   margin-bottom: 20px;
-  }
+}
+
+.pageCount{
+  counter-reset: index;
+}
+.pageNumber{
+  counter-increment: index;
+}
+.pageNumber:after{
+  content: counter(index);
+}
 
 @media screen and (max-width: 1199px){
   .main-content{
