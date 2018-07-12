@@ -1,3 +1,5 @@
+
+<div class="pageCount">
 <!-- Page 1 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div id="doc" class="docPageInner"
@@ -165,6 +167,23 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;"> 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Statutory Short Form Power of Attorney Minnesota Statutes, Section 523.23</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Statutory Short Form Power of Attorney Minnesota Statutes, Section 523.23</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 1 -->
 
@@ -197,51 +216,51 @@
         the power unless the line in front of the power of (N) is checked or
         x-ed.)</b></span></p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">(A)	real
+      <span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">(A)	real
       estate transactions; </span>
     </p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">(B)	tangible
+      <span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">(B)	tangible
       personal property transactions;</span></p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">(C)	bond,
+      <span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">(C)	bond,
       share and commodity transactions;</span></p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">(D)	banking
+      <span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">(D)	banking
       transactions;</span></p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">(E)	business
+      <span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">(E)	business
       operating transactions;</span></p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">(F)	insurance
+      <span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">(F)	insurance
       transactions;</span></p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">(G)	beneficiary
+      <span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">(G)	beneficiary
       transactions;</span></p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">(H)	gift
+      <span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">(H)	gift
       transactions;</span></p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">(I)	fiduciary
+      <span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">(I)	fiduciary
       transactions;</span></p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">(J)	claims
+      <span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">(J)	claims
       and litigation;</span></p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">(K)	family
+      <span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">(K)	family
       maintenance;</span></p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">(L)	benefits
+      <span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">(L)	benefits
       from military service;</span></p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">(M)	records,
+      <span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">(M)	records,
       reports and statements;</span></p>
-    <p align="justify" style="text-indent: -1.06in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif">	</span><span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">(N)	all
+    <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+      <span face="Times New Roman, serif">	</span><span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">(N)	all
       of the powers listed (A) through (M) above and all other matters,
       other than health care decisions under a health care directive that
       complies with Minnesota Statutes, chapter 145C.</span></p>
-    <p align="justify" style="text-indent: -1.06in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+    <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
       <br/>
 
@@ -287,6 +306,23 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;"> 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Statutory Short Form Power of Attorney Minnesota Statutes, Section 523.23</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Statutory Short Form Power of Attorney Minnesota Statutes, Section 523.23</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 2 -->
 
@@ -309,14 +345,14 @@
       anyone the attorney(s)-in-fact are legally obligated to support, to
       an amount, in the aggregate, that does not exceed the federal annual
       gift tax exclusion amount in the year of the gift.)</b></span></p>
-    <p align="justify" style="text-indent: -0.44in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif">	</span><span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">I
+    <p align="justify" style=" margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+      <span face="Times New Roman, serif">	</span><span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">I
       do not authorize any of my attorney(s)-in-fact to make gifts to
       themselves or to anyone the attorney(s)-in-fact have a legal
       obligation to support. </span>
     </p>
-    <p align="justify" style="text-indent: -0.44in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif">	</span><span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">I
+    <p align="justify" style=" margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+      <span face="Times New Roman, serif">	</span><span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">I
       authorize _________________________________________________________
       (</span><span face="Times New Roman, serif"><b>handwrite in name(s)</b></span><span face="Times New Roman, serif">),
       as my attorney(s)-in-fact, to make gifts to themselves or to anyone
@@ -333,13 +369,13 @@
         accounting. Make a check or “x” on the line in front of the
         statement that expresses your intent.)</b></span></p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">My
+      <span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">My
       attorney-in-fact need not render an accounting unless I request it or
       the accounting is otherwise required by Minnesota Statutes, section
       523.21. </span>
     </p>
-    <p align="justify" style="text-indent: -0.44in; margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif">	</span><span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">My
+    <p align="justify" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+      <span face="Times New Roman, serif">	</span><span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">My
       attorney-in-fact must render a _________________________ accountings
       to me or</span></p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
@@ -405,6 +441,23 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;"> 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Statutory Short Form Power of Attorney Minnesota Statutes, Section 523.23</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Statutory Short Form Power of Attorney Minnesota Statutes, Section 523.23</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 3 -->
 
@@ -496,6 +549,23 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;"> 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Statutory Short Form Power of Attorney Minnesota Statutes, Section 523.23</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Statutory Short Form Power of Attorney Minnesota Statutes, Section 523.23</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 4 -->
 
@@ -514,8 +584,8 @@
     </p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif">In Witness Whereof, I have
-        hereunto signed my name this ____ day of </span><span face="Times New Roman, serif"><u>			</u></span><span face="Times New Roman, serif">,
-    </span><span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">.</span></p>
+        hereunto signed my name this ____ day of </span><span face="Times New Roman, serif"><span>__________</span></span><span face="Times New Roman, serif">,
+    </span><span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">.</span></p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
       <br/>
@@ -538,7 +608,7 @@
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif">	) ss.</span></p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif">COUNTY OF </span><span face="Times New Roman, serif"><u>				</u></span><span face="Times New Roman, serif">	)
+      <span face="Times New Roman, serif">COUNTY OF </span><span face="Times New Roman, serif"><span>____________</span></span><span face="Times New Roman, serif">	)
     </span>
     </p>
     <p align="justify" style="margin-top: 0.13in; margin-bottom: 0.25in; line-height: 100%; orphans: 0; widows: 0">
@@ -548,9 +618,9 @@
     </p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif">The foregoing instrument was
-        acknowledged before me this </span><span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">
-      day of </span><span face="Times New Roman, serif"><u>		</u></span><span face="Times New Roman, serif">,
-    </span><span face="Times New Roman, serif"><u>	</u></span><span face="Times New Roman, serif">,
+        acknowledged before me this </span><span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">
+      day of </span><span face="Times New Roman, serif"><span>_______</span></span><span face="Times New Roman, serif">,
+    </span><span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">,
       by </span>
       <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.fullname !== null && financialPOA.attorney_holders.fullname !== undefined ? financialPOA.attorney_holders.fullname : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
       <span face="Times New Roman, serif">.</span></p>
@@ -561,7 +631,7 @@
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif">Notary Public</span></p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif">My commission expires: </span><span face="Times New Roman, serif"><u>			</u></span><span face="Times New Roman, serif">
+      <span face="Times New Roman, serif">My commission expires: </span><span face="Times New Roman, serif"><span>__________</span></span><span face="Times New Roman, serif">
     </span>
     </p>
     <p style="margin-top: 0.17in; margin-bottom: 0.13in; line-height: 100%; orphans: 0; widows: 0">
@@ -618,6 +688,23 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;"> 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Statutory Short Form Power of Attorney Minnesota Statutes, Section 523.23</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Statutory Short Form Power of Attorney Minnesota Statutes, Section 523.23</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 5 -->
 
@@ -711,6 +798,23 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;"> 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Statutory Short Form Power of Attorney Minnesota Statutes, Section 523.23</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Statutory Short Form Power of Attorney Minnesota Statutes, Section 523.23</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 6 -->
 
@@ -719,29 +823,29 @@
   <div class="docPageInner"
        style="box-sizing: border-box; height: 890px;">
 
-    <p align="justify" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+    <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif">You have been nominated by the
         principal to act as an attorney-in-fact. You are under no duty to
         exercise the authority granted by the power of attorney. However,
         when you do exercise any power conferred by the power of attorney,
         you must:</span></p>
-    <p align="justify" style="text-indent: -0.31in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+    <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif">(1)	act with the interests of the
         principal utmost in mind;</span></p>
-    <p align="justify" style="text-indent: -0.31in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+    <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif">(2)	exercise the power in the
         same manner as an ordinarily prudent person of discretion and
         intelligence would exercise in the management of the person's own
         affairs;</span></p>
-    <p align="justify" style="text-indent: -0.31in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+    <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif">(3)	render accountings as
         directed by the principal or whenever you reimburse yourself for
         expenditures made on behalf of the principal;</span></p>
-    <p align="justify" style="text-indent: -0.31in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+    <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif">(4)	act in good faith for the
         best interest of the principal, using due care, competence, and
         diligence;</span></p>
-    <p align="justify" style="text-indent: -0.31in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+    <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif">(5)	cease acting on behalf of the
         principal if you learn of any event that terminates this power of
         attorney or terminates your authority under this power of attorney,
@@ -749,7 +853,7 @@
         death of the principal, or the commencement of proceedings for
         dissolution, separation, or annulment of your marriage to the
         principal;</span></p>
-    <p align="justify" style="text-indent: -0.31in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+    <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif">(6)	disclose your identity as an
         attorney-in-fact whenever you act for the principal by signing in
         substantially the following manner:</span></p>
@@ -758,7 +862,7 @@
         “attorney-in-fact for (name of the principal)” or “(name of the
         principal) by (name of the attorney-in-fact) the principal’s
         attorney-in-fact”;</b></span></p>
-    <p align="justify" style="text-indent: -0.31in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+    <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif">(7)	</span><span face="Times New Roman, serif"><u>acknowledge
       that you have read and understood this IMPORTANT NOTICE TO THE
       ATTORNEY(S)-IN-FACT by signing the power of attorney form.</u></span><span face="Times New Roman, serif">
@@ -786,7 +890,24 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;"> 
+            <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span> 
+            Statutory Short Form Power of Attorney Minnesota Statutes, Section 523.23</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">Statutory Short Form Power of Attorney Minnesota Statutes, Section 523.23</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 7 -->
-
+</div>
 

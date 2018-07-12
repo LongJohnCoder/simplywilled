@@ -233,6 +233,9 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   }
 
   getScroll(scrollVal: number, e: any) {
+    if (this.heightArr === undefined || this.heightArr === null || this.heightArr.length === 0) {
+      return;
+    }
     this.thumbIndex = this.globalPDFService.getAccurateScrollPosition(scrollVal, this.heightArr);
     console.log('thumb index : ', this.thumbIndex, ' scrollVal : ', scrollVal, ' heightArr : ', this.heightArr);
     const dx = e.target.offsetWidth + (this.docThumbImg.length * 7);
@@ -269,7 +272,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
             }
           );
         }
-      }, (error) => { console.log(error); this.loading = false;},
+      }, (error) => { console.log(error); this.loading = false; },
       () => { this.loading = false; }
     );
   }

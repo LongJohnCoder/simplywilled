@@ -1,3 +1,5 @@
+
+<div class="pageCount">
 <!-- Page 1 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div id="doc" class="docPageInner"
@@ -118,6 +120,22 @@
 
   <!--  </p>-->
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">  
+            New York Statutory Short Form</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">New York Statutory Short Form</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 1 -->
 
@@ -222,6 +240,22 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">  
+            New York Statutory Short Form</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">New York Statutory Short Form</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 2 -->
 
@@ -320,6 +354,22 @@
     <!--<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span face="Times New Roman, serif">«</span></span><span color="#008f00"><span face="Times New Roman, serif">END
       IF</span></span><span color="#000000"><span face="Times New Roman, serif">»</span></span></p>-->
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">  
+            New York Statutory Short Form</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">New York Statutory Short Form</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 3 -->
 
@@ -419,6 +469,22 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">  
+            New York Statutory Short Form</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">New York Statutory Short Form</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 4 -->
 
@@ -504,6 +570,22 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">  
+            New York Statutory Short Form</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">New York Statutory Short Form</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 5 -->
 
@@ -519,9 +601,9 @@
 
     </p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span face="Times New Roman, serif">In
-      Witness Whereof, I have hereunto signed my name on this </span></span><span color="#000000"><span face="Times New Roman, serif"><u>	</u></span></span><span color="#000000"><span face="Times New Roman, serif">
-      day of </span></span><span color="#000000"><span face="Times New Roman, serif"><u>				</u></span></span><span color="#000000"><span face="Times New Roman, serif">,
-    </span></span><span color="#000000"><span face="Times New Roman, serif"><u>	</u></span></span><span color="#000000"><span face="Times New Roman, serif">.</span></span></p>
+      Witness Whereof, I have hereunto signed my name on this </span></span><span color="#000000"><span face="Times New Roman, serif"><span>_____</span></span></span><span color="#000000"><span face="Times New Roman, serif">
+      day of </span></span><span color="#000000"><span face="Times New Roman, serif"><span>__________</span></span></span><span color="#000000"><span face="Times New Roman, serif">,
+    </span></span><span color="#000000"><span face="Times New Roman, serif"><span>_____</span></span></span><span color="#000000"><span face="Times New Roman, serif">.</span></span></p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
@@ -531,12 +613,7 @@
     <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
       <span face="Times New Roman, serif">_______________________________________</span></p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span face="Times New Roman, serif"><b>	<!--«</b></span><span color="#0000ff"><span face="Times New Roman, serif"><b>CLIENT
-        FIRST NAME</b></span></span><span face="Times New Roman, serif"><b>»
-        «</b></span><span color="#0000ff"><span face="Times New Roman, serif"><b>CLIENT
-        MIDDLE NAME</b></span></span><span face="Times New Roman, serif"><b>»
-        «</b></span><span color="#0000ff"><span face="Times New Roman, serif"><b>CLIENT
-        LAST NAME</b></span></span><span face="Times New Roman, serif"><b>»-->
+      <span face="Times New Roman, serif"><b>	
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </b></span></p>
@@ -545,14 +622,7 @@
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? userDetails.tellUsAboutYou.address : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </span></span><span color="#000000"><span face="Times New Roman, serif"></span></span></p>
-    <!--<p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-      <span color="#000000"><span face="Times New Roman, serif">«</span></span><span color="#008f00"><span face="Times New Roman, serif">IF
-      ANSWERED( Address2 )</span></span><span color="#000000"><span face="Times New Roman, serif">»</span></span></p>-->
-   <!-- <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-      <span color="#000000"><span face="Times New Roman, serif">«</span></span><span color="#0433ff"><span face="Times New Roman, serif">Address2</span></span><span color="#000000"><span face="Times New Roman, serif">»</span></span></p>
-    <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-      <span color="#000000"><span face="Times New Roman, serif">«</span></span><span color="#008f00"><span face="Times New Roman, serif">END
-      IF</span></span><span color="#000000"><span face="Times New Roman, serif">»</span></span></p>-->
+    
     <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
       <span color="#000000"><span face="Times New Roman, serif"></span></span><span color="#0433ff"><span face="Times New Roman, serif">
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}}</span>
@@ -623,6 +693,22 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">  
+            New York Statutory Short Form</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">New York Statutory Short Form</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 6 -->
 
@@ -698,6 +784,22 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">  
+            New York Statutory Short Form</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">New York Statutory Short Form</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 7 -->
 
@@ -824,6 +926,22 @@
 
     <!--</p>-->
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">  
+            New York Statutory Short Form</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">New York Statutory Short Form</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 8-->
 
@@ -843,8 +961,8 @@
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif">Attached to a New York Statutory
         Short Form Power of Attorney dated <br/>
-      </span><span face="Times New Roman, serif"><u>			</u></span><span face="Times New Roman, serif">,
-    </span><span face="Times New Roman, serif"><u>		</u></span><span face="Times New Roman, serif">,
+      </span><span face="Times New Roman, serif"><span>_________</span></span><span face="Times New Roman, serif">,
+    </span><span face="Times New Roman, serif"><span>______</span></span><span face="Times New Roman, serif">,
       made by </span><!--<span face="Times New Roman, serif"></span><span color="#0000ff"><span face="Times New Roman, serif">CLIENT
       FIRST NAME</span></span><span face="Times New Roman, serif">»
       «</span><span color="#0000ff"><span face="Times New Roman, serif">CLIENT
@@ -876,10 +994,27 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">  
+            New York Statutory Short Form</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">New York Statutory Short Form</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+</div>
 </div>
 <!-- !Page 9 -->
 
 <!-- Page 10 -->
+<div  *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isAuthorizeToMakeGift === 1">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
        style="box-sizing: border-box; height: 890px;">
@@ -936,7 +1071,7 @@
       transfers pursuant to my instructions, or otherwise for purposes
       which the agent reasonably deems to be in my best interest:</span></p>
     <p align="justify" style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">
-      <u>            </u>  <span face="Times New Roman, serif">Make gifts
+      <span>___________</span>  <span face="Times New Roman, serif">Make gifts
       to any person or persons in such amounts as my agent deems
       appropriate</span><span color="#000000"><span face="Times New Roman, serif">;</span></span></p>
     <p align="justify" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
@@ -944,21 +1079,21 @@
 
     </p>
     <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-      <u>           </u>  <span face="Times New Roman, serif">Open, modify
+      <span>____________</span>  <span face="Times New Roman, serif">Open, modify
       or terminate a deposit account in the name of the principal and other
       joint tenants;</span></p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
     <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-      <u>           </u>  <span face="Times New Roman, serif">Open, modify
+      <span>____________</span>  <span face="Times New Roman, serif">Open, modify
       or terminate any other joint account in the name of the principal and
       other joint tenants;</span></p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
     <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-      <u>           </u>  <span face="Times New Roman, serif">Open, modify
+      <span>____________</span>  <span face="Times New Roman, serif">Open, modify
       or terminate a bank account in trust form as described in §7-5.1 of
       the Estates, Powers and Trusts Law, and designate or change the
       beneficiary or beneficiaries of such account;</span></p>
@@ -966,7 +1101,7 @@
 
     </p>
     <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-      <u>           </u>  <span face="Times New Roman, serif">Open, modify
+      <span>____________</span>  <span face="Times New Roman, serif">Open, modify
       or terminate a “transfer on death account” as described in Part
       Four of Article Thirteen of the Estates, Powers and Trusts Law, and
       designate or change the beneficiary or beneficiaries of such account;</span></p>
@@ -974,7 +1109,7 @@
 
     </p>
     <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-      <u>           </u>  <span face="Times New Roman, serif">Change the
+      <span>____________</span>  <span face="Times New Roman, serif">Change the
       beneficiary or beneficiaries of any contract of insurance on the life
       of the principal or annuity contract for the benefit of the
       principal;</span></p>
@@ -982,7 +1117,7 @@
 
     </p>
     <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-      <u>           </u>  <span face="Times New Roman, serif">Procure new,
+      <span>____________</span>  <span face="Times New Roman, serif">Procure new,
       different or additional contracts of insurance on the life of the
       principal or annuity contracts for the benefit of the principal and
       designate the beneficiary or beneficiaries of any such contract;</span></p>
@@ -990,14 +1125,14 @@
 
     </p>
     <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-      <u>           </u>  <span face="Times New Roman, serif">Designate or
+      <span>____________</span>  <span face="Times New Roman, serif">Designate or
       change the beneficiary or beneficiaries of any type of retirement
       benefit or plan;</span></p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
     <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-      <u>           </u>  <span face="Times New Roman, serif">Create,
+      <span>____________</span>  <span face="Times New Roman, serif">Create,
       amend, revoke, or terminate an </span><span face="Times New Roman, serif"><i>inter
       vivos</i></span><span face="Times New Roman, serif"> trust, and
       transfer and convey to the trustee or trustees then acting of any
@@ -1009,7 +1144,7 @@
 
     </p>
     <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-      <u>           </u>  <span face="Times New Roman, serif">Create,
+      <span>____________</span>  <span face="Times New Roman, serif">Create,
       change or terminate other property interests or rights of
       survivorship, and designate or change the beneficiary or
       beneficiaries therein.</span></p>
@@ -1019,10 +1154,27 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">  
+            New York Statutory Short Form</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">New York Statutory Short Form</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+</div>
 </div>
 <!-- !Page 10 -->
 
 <!-- Page 11 -->
+<div  *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isAuthorizeToMakeGift === 1">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
        style="box-sizing: border-box; height: 890px;">
@@ -1097,9 +1249,9 @@
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span face="Times New Roman, serif">In
       Witness Whereof, I have hereunto signed my name on this</span></span><span color="#008f00"><span face="Times New Roman, serif">
     </span></span><span color="#000000"><span face="Times New Roman, serif">____
-      day of </span></span><span color="#000000"><span face="Times New Roman, serif"><u>			</u></span></span><span color="#000000"><span face="Times New Roman, serif">,<br/>
+      day of </span></span><span color="#000000"><span face="Times New Roman, serif"><span>_________</span></span></span><span color="#000000"><span face="Times New Roman, serif">,<br/>
 
-    </span></span><span color="#000000"><span face="Times New Roman, serif"><u>		</u></span></span><span color="#000000"><span face="Times New Roman, serif">.</span></span></p>
+    </span></span><span color="#000000"><span face="Times New Roman, serif"><span>______</span></span></span><span color="#000000"><span face="Times New Roman, serif">.</span></span></p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
@@ -1162,10 +1314,27 @@
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">  
+            New York Statutory Short Form</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">New York Statutory Short Form</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+</div>
 </div>
 <!-- !Page 11 -->
 
 <!-- Page 12 -->
+<div  *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isAuthorizeToMakeGift === 1">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner"
        style="box-sizing: border-box;  height: 890px;">
@@ -1173,12 +1342,7 @@
 
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0"><a name="_GoBack"></a>
       <span face="Times New Roman, serif">By signing as a witness, I
-        acknowledge that </span><span face="Times New Roman, serif"><b><!--«</b></span><span color="#0000ff"><span face="Times New Roman, serif"><b>CLIENT
-        FIRST NAME</b></span></span><span face="Times New Roman, serif"><b>»
-        «</b></span><span color="#0000ff"><span face="Times New Roman, serif"><b>CLIENT
-        MIDDLE NAME</b></span></span><span face="Times New Roman, serif"><b>»
-        «</b></span><span color="#0000ff"><span face="Times New Roman, serif"><b>CLIENT
-        LAST NAME</b></span></span><span face="Times New Roman, serif"><b>»-->
+        acknowledge that </span><span face="Times New Roman, serif"><b>
          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
           <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
       </b></span><span face="Times New Roman, serif">signed the Statutory
@@ -1204,8 +1368,8 @@
 
     </p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span face="Times New Roman, serif">Dated:
-      ____ day of </span></span><span color="#000000"><span face="Times New Roman, serif"><u>			</u></span></span><span color="#000000"><span face="Times New Roman, serif">,
-    </span></span><span color="#000000"><span face="Times New Roman, serif"><u>		</u></span></span><span color="#000000"><span face="Times New Roman, serif">.</span></span></p>
+      ____ day of </span></span><span color="#000000"><span face="Times New Roman, serif"><span>_________</span></span></span><span color="#000000"><span face="Times New Roman, serif">,
+    </span></span><span color="#000000"><span face="Times New Roman, serif"><span>______</span></span></span><span color="#000000"><span face="Times New Roman, serif">.</span></span></p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
@@ -1256,12 +1420,27 @@
 
     </p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span face="Times New Roman, serif">	</span></p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span face="Times New Roman, serif">«</span></span><span color="#008f00"><span face="Times New Roman, serif">END
-      IF</span></span><span color="#000000"><span face="Times New Roman, serif">»</span></span></p>
+    
     <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;"> 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div style="text-transform: capitalize;">  
+            New York Statutory Short Form</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div> 
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div style="text-transform: capitalize;">New York Statutory Short Form</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+</div>
 </div>
 <!-- !Page 12 -->
 </div>

@@ -218,6 +218,9 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   }
 
   getScroll(scrollVal: number, e: any) {
+    if (this.heightArr === undefined || this.heightArr === null || this.heightArr.length === 0) {
+      return;
+    }
     this.thumbIndex = this.globalPDFService.getAccurateScrollPosition(scrollVal, this.heightArr);
     const dx = e.target.offsetWidth + (this.docThumbImg.length * 7);
     const u = dx / this.docThumbImg.length;
