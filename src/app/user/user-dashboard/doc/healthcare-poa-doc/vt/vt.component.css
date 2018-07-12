@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: Times New Roman, serif;
 }
 body{
     margin: 0;
@@ -35,10 +36,14 @@ background: #57ab2a;
 }
 .docPage{
     width: 700px !important;
-    height: 991px!important;
+    height: auto !important;
     background: #fff;
     box-shadow: 0 0 7px rgba(0,0,0,0.3);
     margin: 20px 0;
     box-sizing: border-box;
     padding: 40px;
+}
+.docPageInner{
+    height: auto !important;
+    min-height: 400px;
 }
