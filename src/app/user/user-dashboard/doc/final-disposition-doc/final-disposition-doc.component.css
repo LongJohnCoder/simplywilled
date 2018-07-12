@@ -452,8 +452,9 @@ p.ctl { font-family: "Times New Roman" }
 .docBtnArea ul:first-child li a{
   background: linear-gradient(#5bbd45, #47aa36);
   border-bottom: 3px solid #308f26;
-  width: 110px;
+  width: 180px;
   text-align: center;
+  padding: 7px 10px;
 }
 .docBtnArea ul li a i{
   padding-right: 5px;
@@ -469,6 +470,15 @@ p.ctl { font-family: "Times New Roman" }
 @media screen and (max-width: 1199px){
   .main-content{
     width: 720px;
+  }
+  .docBtnArea ul:first-child li a{
+    width: 164px;
+    padding: 7px 0px;
+    font-size: 14px;
+  }
+  .docBtnArea ul li a{
+    padding: 7px 9px;
+    font-size: 14px;
   }
 }
 
@@ -510,5 +520,15 @@ p.ctl { font-family: "Times New Roman" }
 @media screen and (max-width: 767px){
   .main-content{
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 440px){
+  .docBtnArea ul:first-child li{
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+  .docBtnArea ul:first-child li:first-child{
+    margin-bottom: 15px;
   }
 }

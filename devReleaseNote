@@ -257,3 +257,5 @@ version : 3
 	ii> footer fix
 9> Dynamic page numbers broadcast from child component and receive in parent component
 10> Washington, Virginia HCPOA
+11> Doc view page navigation design changed.
+12> CA state doc UI completed.
