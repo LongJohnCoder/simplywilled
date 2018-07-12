@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild, OnChanges} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild, OnChanges, DoCheck, AfterViewChecked} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {UserService} from '../../../user.service';
 import {ProgressbarService} from '../../shared/services/progressbar.service';
@@ -122,22 +122,22 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
         if (this.states[this.thKey] !== undefined) {
           this.states[this.thKey] = true;
           limit = this.thNail[this.thKey] === undefined ? 2 : this.thNail[this.thKey];
-          console.log('limit 1 : ', limit);
+          // console.log('limit 1 : ', limit);
         }
       } else if (st['type'] === 'uniform') {
         this.thKey = 'uni';
         this.states[this.thKey] = true;
         limit = this.thNail[this.thKey] === undefined ? 2 : this.thNail[this.thKey];
-        console.log('limit 2 : ', limit);
+        // console.log('limit 2 : ', limit);
       } else if (st['type'] === 'non-uniform') {
         this.thKey = 'nu';
         this.states[this.thKey] = true;
         limit = this.thNail[this.thKey] === undefined ? 2 : this.thNail[this.thKey];
-        console.log('limit 3 : ', limit);
+        // console.log('limit 3 : ', limit);
       }
 
       const abr = st.abr;
-      console.log('abr : ', abr);
+      // console.log('abr : ', abr);
       if (limit !== undefined) {
           this.docThumbImg = [];
           for (let key = 0 ; key < limit ; key++) {
@@ -177,16 +177,20 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     console.log('life cycle financial-poa-doc --ngOnInit');
     this.docScrolled = 0;
     this.thumbIndex = 0;
-    this.liCount = this.docThumbImg.length * 114;
+    // this.liCount = this.docThumbImg.length * 114;
     this.totalPagesSubscription = this.globalPDFService.totalFcpoaPages.subscribe(
       (resp) => {
         if (resp !== undefined && resp !== null && resp > 0) {
-          console.log('response from subscription', resp);
+          // console.log('response from subscription', resp);
           this.thNail[this.thKey] = resp;
-          this.constructThumbnails();
+          setTimeout(() => {
+            this.constructThumbnails();
+            this.liCount = this.docThumbImg.length * 114;
+          }, 2000);
         }
       }
     );
+
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -198,6 +202,7 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     this.scrollHeight = 991 * index;
     this.docBox.nativeElement.scrollTop = this.scrollHeight;
     this.thumbIndex = index;
+    console.log('i am here:', this.thumbIndex);
   }
 
   getScroll(scrollVal: number, e: any) {
@@ -205,6 +210,7 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     const dx = e.target.offsetWidth + (this.docThumbImg.length * 7);
     const u = dx / this.docThumbImg.length;
     this.thumbContainer.nativeElement.scrollLeft = u * this.thumbIndex;
+    console.log(this.thumbIndex, this.docThumbImg.length);
   }
 
   /**Get the user details*/

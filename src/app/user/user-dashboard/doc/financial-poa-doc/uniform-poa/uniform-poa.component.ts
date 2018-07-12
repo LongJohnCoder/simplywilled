@@ -1,6 +1,7 @@
 // tslint:disable-next-line:max-line-length
 import {Component, Input, OnChanges, OnInit, AfterViewInit, DoCheck} from '@angular/core';
 import { GlobalPdfService } from './../../services/global-pdf.service';
+import { forEachChild } from 'typescript';
 
 @Component({
   selector: 'app-uniform-poa',
@@ -48,8 +49,9 @@ export class UniformPoaComponent implements OnInit, OnChanges  {
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngDoCheck() {
-    this.totalPages = document.getElementsByClassName('pageCount')[0].children.length;
-    console.log(this.totalPages);
+    const x = document.getElementsByClassName('pageCount')[0].children;
+    // console.log(x[0].clientHeight + (x[0].offsetTop)/2)
+    this.totalPages = x.length;
     this.globalService.fcpoaPages(this.totalPages);
   }
 
