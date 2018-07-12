@@ -9,14 +9,14 @@
 	
         <!-- Page 1 -->
         <div>
-            <div>
+            <div style="page-break-after: always;">
             <p align="center" style="margin-bottom: 0.03in; line-height: 0.28in; page-break-before: auto; page-break-after: auto">
               <span  style="font-size: 17pt"><b>ADVANCE HEALTH CARE
                 DIRECTIVE</b></span></p>
             <p align="center" style="margin-bottom: 0.03in; line-height: 0.23in"><span  style="font-size: 13pt"><b>(California
               Probate Code §4701)</b></span></p>
             <p align="center" style="margin-bottom: 0.09in; line-height: 0.23in"><span  style="font-size: 13pt"><b>Explanation</b></span></p>
-            <p style="margin-bottom: 0.06in; line-height: 115%"><span  style="font-size: 9pt">You
+            <p style="margin-bottom: 0.06in; line-height: 115%"><span  style="">You
               have the right to give instructions about your own health care. You
               also have the right to name someone else to make health care
               decisions for you. This form lets you do either or both of these
@@ -24,7 +24,7 @@
               organs and the designation of your primary physician. If you use this
               form, you may modify all or any part of it. You are free to use a
               different form.</span></p>
-            <p style="margin-bottom: 0.06in; line-height: 115%"><span  style="font-size: 9pt">Part
+            <p style="margin-bottom: 0.06in; line-height: 115%"><span  style="">Part
               1 of this form is a power of attorney for health care. Part 1 lets
               you name another individual as agent to make health care decisions
               for you if you become incapable of making your own decisions or if
@@ -37,35 +37,35 @@
               health care provider or employee of the health care institution where
               you are receiving care, unless your agent is related to you or is a
               co&#8209;worker.)</span></p>
-            <p style="margin-bottom: 0.06in; line-height: 115%"><span  style="font-size: 9pt">Unless
+            <p style="margin-bottom: 0.06in; line-height: 115%"><span  style="">Unless
               the form you sign limits the authority of your agent, your agent may
               make all health care decisions for you. This form has a place for you
               to limit the authority of your agent. You need not limit the
               authority of your agent if you wish to rely on your agent for all
               health care decisions that may have to be made. If you choose not to
               limit the authority of your agent, your agent will have the right to:</span></p>
-            <p style="text-indent: -0.38in; margin-bottom: 0.06in; line-height: 115%">
-              <span  style="font-size: 9pt">(a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consent
+            <p style="margin-bottom: 0.06in; line-height: 115%">
+              <span  style="">(a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consent
                 or refuse consent to any care, treatment, service, or procedure to
                 maintain, diagnose, or otherwise affect a physical or mental
                 condition.</span></p>
-            <p style="text-indent: -0.38in; margin-bottom: 0.06in; line-height: 115%">
-              <span  style="font-size: 9pt">(b)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select
+            <p style="margin-bottom: 0.06in; line-height: 115%">
+              <span  style="">(b)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select
                 or discharge health care providers and institutions.</span></p>
-            <p style="text-indent: -0.38in; margin-bottom: 0.06in; line-height: 115%">
-              <span  style="font-size: 9pt">(c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Approve
+            <p style="margin-bottom: 0.06in; line-height: 115%">
+              <span  style="">(c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Approve
                 or disapprove diagnostic tests, surgical procedures, and programs of
                 medication.</span></p>
-            <p style="text-indent: -0.38in; margin-bottom: 0.06in; line-height: 115%">
-              <span  style="font-size: 9pt">(d)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Direct
+            <p style="margin-bottom: 0.06in; line-height: 115%">
+              <span  style="">(d)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Direct
                 the provision, withholding, or withdrawal of artificial nutrition and
                 hydration and all other forms of health care, including
                 cardiopulmonary resuscitation.</span></p>
-            <p style="text-indent: -0.38in; margin-bottom: 0.06in; line-height: 115%">
-              <span  style="font-size: 9pt">(e)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Make
+            <p style="margin-bottom: 0.06in; line-height: 115%">
+              <span  style="">(e)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Make
                 anatomical gifts, authorize an autopsy and direct disposition of
                 remains.</span></p>
-            <p style="margin-bottom: 0.06in; line-height: 115%"><span  style="font-size: 9pt">Part
+            <p style="margin-bottom: 0.06in; line-height: 115%"><span  style="">Part
               2 of this form lets you give specific instructions about any aspect
               of your health care, whether or not you appoint an agent. Choices are
               provided for you to express your wishes regarding the provision,
@@ -75,24 +75,7 @@
               wishes. If you are satisfied to allow your agent to determine what is
               best for you in making end-of-life decisions, you need not fill out
               Part 2 of this form.</span></p>
-            <p style="margin-bottom: 0.06in; line-height: 115%"><span  style="font-size: 9pt">You
-              may also express an intention to donate your bodily organs and
-              tissues following your death and/or to designate a physician to have
-              primary responsibility for your health care.&nbsp;</span></p>
-            <p style="margin-bottom: 0.06in; line-height: 115%"><span  style="font-size: 9pt">After
-              completing this form, sign and date the form at the end. The form
-              must be signed by two qualified witnesses or acknowledged before a
-              notary public; if you are currently a patient in a skilled nursing
-              facility, it must also be signed by the “Patient Advocate” or
-              “Patient Ombudsman”. Give a copy of the signed and completed form
-              to your physician, to any other health care providers you may have,
-              to any health care institution at which you are receiving care, and
-              to any health care agents you have named. You should talk to the
-              person you have named as agent to make sure that he or she
-              understands your wishes and is willing to take the responsibility.</span></p>
-            <p style="margin-bottom: 0.06in; line-height: 115%"><span  style="font-size: 9pt">You
-              have the right to revoke this advance health care directive or
-              replace this form at any time.</span></p>
+            
           </div>
 
           {{--
@@ -113,6 +96,24 @@
         <!-- Page 2 -->
         <div>
           <div>
+          <p style="margin-bottom: 0.06in; line-height: 115%"><span  style="">You
+              may also express an intention to donate your bodily organs and
+              tissues following your death and/or to designate a physician to have
+              primary responsibility for your health care.&nbsp;</span></p>
+            <p style="margin-bottom: 0.06in; line-height: 115%"><span  style="">After
+              completing this form, sign and date the form at the end. The form
+              must be signed by two qualified witnesses or acknowledged before a
+              notary public; if you are currently a patient in a skilled nursing
+              facility, it must also be signed by the “Patient Advocate” or
+              “Patient Ombudsman”. Give a copy of the signed and completed form
+              to your physician, to any other health care providers you may have,
+              to any health care institution at which you are receiving care, and
+              to any health care agents you have named. You should talk to the
+              person you have named as agent to make sure that he or she
+              understands your wishes and is willing to take the responsibility.</span></p>
+            <p style="margin-bottom: 0.06in; line-height: 115%"><span  style="">You
+              have the right to revoke this advance health care directive or
+              replace this form at any time.</span></p>
             <p align="center" style="margin-bottom: 0.09in; line-height: 0.28in"><span  style="font-size: 17pt"><b>CALIFORNIA
               ADVANCE HEALTH CARE DIRECTIVE</b></span></p>
             <p style="text-indent: 0.38in; margin-bottom: 0in; line-height: 115%">
@@ -422,7 +423,7 @@
 
         <!-- Page 5 -->
         <div>
-          <div>
+          <div style="page-break-after: always;">
 
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >________________________________________________________________________</span></span></span></span></span></p>
