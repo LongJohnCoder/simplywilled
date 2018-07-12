@@ -1,3 +1,4 @@
+<div class="docContainer">
 <!-- Page 1-->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
@@ -5,7 +6,7 @@
       <span size="4" style="font-size: 13pt"><span size="4" style="font-size: 16pt"><b>ADVANCE
       HEALTH CARE DIRECTIVE</b></span></span></p>
     <p  style="margin-bottom: 0.25in; line-height: 100%; text-align:center;"><span size="4" style="font-size: 13pt"><span size="4" style="font-size: 16pt"><b>of</b></span></span></p>
-    <p class="western"  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+    <p class="western"  style="margin-bottom: 0.08in; line-height: 100%; text-align: center;">
       <b>
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
@@ -1163,3 +1164,4 @@
   </div>
 </div>
 <!-- Page 11-->
+</div>

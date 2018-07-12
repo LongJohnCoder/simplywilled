@@ -1,58 +1,60 @@
+<div class="docContainer">
 <!-- step 1 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div id="doc" class="docPageInner" style="box-sizing: border-box; height: 890px;">
-      <p align="center" style="margin-bottom: 0in; line-height: 100%"><span style="font:font-family;"><b>FLORIDA DESIGNATION OF HEALTH CARE SURROGATE</b></span></p>
+      <p align="center" style="margin-bottom: 0in; "><span style="font:font-family;"><b>FLORIDA DESIGNATION OF HEALTH CARE SURROGATE</b></span></p>
 
-      <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+      <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
+      <br>
       </p>
 
-      <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+      <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <span style="font-family: 'Times New Roman', serif">I,
         
         <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0" style="font:font-family;"><b>{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b></span>
         designate as my health care surrogate under S. 765.202, Florida Statutes:
-      
+      <br><br>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null" style="font:font-family;">_________________________</span>
         designate as my health care surrogate under S. 765.202, Florida Statutes:
       
       </span></p>
 
-        
+        <br>
       
-      <p style="text-align: center; margin-left: 0.38in; margin-bottom: 0.03in; line-height: 100%">
+      <p style=" margin-bottom: 0.15in; ">
         <span>
           <span style="font-family: 'Times New Roman', serif">
-          <span  style="font-size: 9pt"><span ><span  style="font-size: 12pt">Name:</span></span><span ><span  style="font-size: 12pt">		
+          <span  style=""><span ><span  >Name:</span></span><span ><span  >		
 
           </span></span>
-          <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.fullname !== null && userDetails.healthFinance.fullname.length > 0"  style="font-size: 12pt">{{userDetails.healthFinance.fullname}}</span>
-          <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"  style="font-size: 12pt">__________________________</span>
+          <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.fullname !== null && userDetails.healthFinance.fullname.length > 0"  >{{userDetails.healthFinance.fullname}}</span>
+          <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"  >__________________________</span>
        
           </span>
           </span>
         </span>
       </p>
       
-      <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 100%">
+      <p align="justify" style=" margin-bottom: 0.15in; ">
       <span>
         <span style="font-family: 'Times New Roman', serif">
-          <span  style="font-size: 9pt">
+          <span  style="">
             <span >
-              <span  style="font-size: 12pt">
+              <span  >
                 Address:
               </span>
             </span>
-            <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.address !== null && userDetails.healthFinance.address.length > 0" style="font-size: 12pt">
+            <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.address !== null && userDetails.healthFinance.address.length > 0" >
               {{userDetails.healthFinance.address}} </span>
-            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"  style="font-size: 12pt">
+            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"  >
               __________________________</span>
           </span>
           
-          <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.city !== null && userDetails.healthFinance.city.length > 0" style="font-size: 12pt">
+          <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.city !== null && userDetails.healthFinance.city.length > 0" >
               {{userDetails.healthFinance.city}}, </span>
-          <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.state !== null && userDetails.healthFinance.state.length > 0" style="font-size: 12pt">
+          <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.state !== null && userDetails.healthFinance.state.length > 0" >
               {{userDetails.healthFinance.state}}, </span>
-          <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.zip !== null && userDetails.healthFinance.zip.length > 0" style="font-size: 12pt">
+          <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.zip !== null && userDetails.healthFinance.zip.length > 0" >
               {{userDetails.healthFinance.zip}}</span>
         </span>
       </span>
@@ -61,29 +63,29 @@
       
         <span>
           <span style="font-family: 'Times New Roman', serif">
-            <span  style="font-size: 9pt">
+            <span  style="">
               <span >
-                <span  style="font-size: 12pt">
+                <span  >
                   Telephone:
                 </span>
               </span>
               
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.phone !== null && userDetails.healthFinance.phone.length > 0" style="font-size: 12pt">
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.phone !== null && userDetails.healthFinance.phone.length > 0" >
                 {{userDetails.healthFinance.phone}}</span>
-                <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"  style="font-size: 12pt">
+                <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"  >
                   __________________________</span>
             </span>
           </span>
         </span>
-      
+      <br><br>
 
       <div *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent == 'true'">
 
       
-      <p align="justify" style="margin-top: 0.13in; margin-bottom: 0.09in; line-height: 100%">
+      <p align="justify" style="margin-top: 0.13in; margin-bottom: 0.09in; ">
         <span style="font-family: 'Times New Roman', serif">
-          <span  style="font-size: 9pt">
-            <span  style="font-size: 12pt">If my health care surrogate is not willing, able, or reasonably
+          <span  style="">
+            <span  >If my health care surrogate is not willing, able, or reasonably
         available to perform his or her duties, I designate as my alternate
         health care surrogate:
             </span>
@@ -91,55 +93,55 @@
         </span>
       </p>
       
-      <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 100%">
+      <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.03in; ">
       <span>
         <span style="font-family: 'Times New Roman', serif">
-          <span  style="font-size: 9pt">
+          <span  style="">
             <span>
-              <span  style="font-size: 12pt">Name:</span>
+              <span  >Name:</span>
             </span>
             <span >
-              <span  style="font-size: 12pt">		
+              <span  >		
 
               </span>
             </span>
             
-            <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupFullname !== null && userDetails.healthFinance.backupFullname.length > 0"  style="font-size: 12pt">{{userDetails.healthFinance.backupFullname}}</span>
-            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"  style="font-size: 12pt">__________________________</span>
+            <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupFullname !== null && userDetails.healthFinance.backupFullname.length > 0"  >{{userDetails.healthFinance.backupFullname}}</span>
+            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"  >__________________________</span>
           </span>
         </span>
       </span>
     </p>
       
-    <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.03in; line-height: 100%">
+    <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.03in; ">
       <span>
         <span style="font-family: 'Times New Roman', serif">
-          <span  style="font-size: 9pt">
+          <span  style="">
               <span>
-                <span  style="font-size: 12pt">Address:</span>
+                <span  >Address:</span>
               </span>
               <span>
-                <span  style="font-size: 12pt">		</span>
+                <span  >		</span>
               </span>
               
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupAddress !== null && userDetails.healthFinance.backupAddress.length > 0" style="font-size: 12pt">{{userDetails.healthFinance.backupAddress}}</span>
-              <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" style="font-size: 12pt">_____________________________________________</span>  
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupAddress !== null && userDetails.healthFinance.backupAddress.length > 0" >{{userDetails.healthFinance.backupAddress}}</span>
+              <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" >_____________________________________________</span>  
           </span>
         </span>
       </span>
     </p>
       
-    <p style="margin-bottom: 0in; line-height: 100%"><span >			</span>
+    <p style="margin-bottom: 0in; "><span >			</span>
       <span style="font-family: 'Times New Roman', serif">
       </span>
       <span>
-        <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupCity !== null && userDetails.healthFinance.backupCity.length > 0" style="font-size: 12pt">{{userDetails.healthFinance.backupCity}}</span>
-        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" style="font-size: 12pt">____________</span>
+        <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupCity !== null && userDetails.healthFinance.backupCity.length > 0" >{{userDetails.healthFinance.backupCity}}</span>
+        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" >____________</span>
       </span>
       
       <span>
         <span style="font-family: 'Times New Roman', serif" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupState !== null && userDetails.healthFinance.backupState.length > 0">{{userDetails.healthFinance.backupState}}</span>
-        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" style="font-size: 12pt">_______________</span>
+        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" >_______________</span>
       </span>
         
       <span>
@@ -148,72 +150,72 @@
       </span>
     </p>
       
-    <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
+    <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
       <span>
         <span style="font-family: 'Times New Roman', serif">
-          <span  style="font-size: 9pt">
+          <span  style="">
             <span >
-              <span  style="font-size: 12pt">
+              <span  >
                 Telephone:
               </span>
             </span>
             <span >
-              <span  style="font-size: 12pt">	</span>
+              <span  >	</span>
             </span>
             
-            <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupphone !== null && userDetails.healthFinance.backupphone.length > 0" style="font-size: 12pt">
+            <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupphone !== null && userDetails.healthFinance.backupphone.length > 0" >
               {{userDetails.healthFinance.backupphone}}</span>
-            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"  style="font-size: 12pt">
+            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"  >
               __________________________</span>
       
             </span>
           </span>
         </span>
       </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+      <p align="justify" style="margin-bottom: 0in; ">
       
       </p>
       
       </div>
 
-      <p align="center" style="margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
-      <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt"><b>INSTRUCTIONS
+      <p align="center" style="margin-top: 0.13in; margin-bottom: 0.13in; ">
+      <span style="font-family: 'Times New Roman', serif"><span  style=""><span  ><b>INSTRUCTIONS
       FOR HEALTH CARE</b></span></span></span></p>
-      <p align="justify" style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">I
+      <p align="justify" style="margin-bottom: 0.09in; "><span style="font-family: 'Times New Roman', serif"><span  style=""><span  >I
       authorize my health care surrogate to:</span></span></span></p>
-      <p align="justify" style="margin-left: 0.75in; text-indent: -0.75in; margin-bottom: 0in; line-height: 100%">
-      <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">_________</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt"><b>(INITIALS)</b></span><span  style="font-size: 12pt">
-      </span><span  style="font-size: 12pt">Receive any of my
-      health information, whether oral or recorded in any form or</span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">
+      <p align="justify" style="margin-left: 0.75in; text-indent: -0.75in; margin-bottom: 0in; ">
+      <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >_________</span><span  >	</span><span  ><b>(INITIALS)</b></span><span  >
+      </span><span  >Receive any of my
+      health information, whether oral or recorded in any form or</span><span style="font-family: 'Times New Roman', serif"><span  style=""><span  >
       medium, that:</span></span></span></span></span></p>
-      <p align="justify" style="margin-left: 0.75in; text-indent: -0.75in; margin-bottom: 0in; line-height: 100%">
-      <span style="font-family: 'Times New Roman', serif"><span size="1" style="font-size: 7pt"><span  style="font-size: 12pt">		</span></span></span></p>
-      <p align="justify" style="margin-left: 0.75in; margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%">
-      <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">1.</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">Is
+      <p align="justify" style="margin-left: 0.75in; text-indent: -0.75in; margin-bottom: 0in; ">
+      <span style="font-family: 'Times New Roman', serif"><span size="1" style=""><span  >		</span></span></span></p>
+      <p align="justify" style="margin-left: 0.75in; margin-top: 0.06in; margin-bottom: 0.06in; ">
+      <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >1.</span><span  >	</span><span  >Is
       created or received by a health care provider, health care facility,
       health plan, public health authority, employer, life insurer, school
       or university, or health care clearinghouse; and</span></span></span></p>
-      <p align="justify" style="margin-left: 0.75in; margin-bottom: 0in; line-height: 100%">
-      <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">2.</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">Relates
+      <p align="justify" style="margin-left: 0.75in; margin-bottom: 0in; ">
+      <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >2.</span><span  >	</span><span  >Relates
       to my past, present, or future physical or mental health or
       condition; the provision of health care to me; or the past, present,
       or future payment for the provision of health care to me.</span></span></span></p>
-      <p align="justify" style="margin-top: 0.13in; margin-bottom: 0.09in; line-height: 100%">
+      <p align="justify" style="margin-top: 0.13in; margin-bottom: 0.09in; ">
       
       
       
       </p>
-      <p align="justify" style="margin-top: 0.13in; margin-bottom: 0.09in; line-height: 100%">
-      <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">I
+      <p align="justify" style="margin-top: 0.13in; margin-bottom: 0.09in; ">
+      <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >I
       further authorize my health care surrogate to:</span></span></span></p>
-      <p align="justify" style="margin-left: 0.75in; text-indent: -0.75in; margin-bottom: 0in; line-height: 100%">
-      <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">_________</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt"><b>(INITIALS)</b></span><span  style="font-size: 12pt">
-      </span><span  style="font-size: 12pt">Make all health care
-      decisions for me, which means he or she has the authority to:</span><span  style="font-size: 12pt">&nbsp;</span></span></span></p>
-      <p align="justify" style="margin-left: 0.75in; text-indent: -0.75in; margin-bottom: 0in; line-height: 100%">
-      <span style="font-family: 'Times New Roman', serif"><span size="1" style="font-size: 7pt"><span  style="font-size: 12pt">	</span></span></span></p>
-      <p align="justify" style="margin-left: 0.75in; margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%">
-      <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">1.</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">Provide
+      <p align="justify" style="margin-left: 0.75in; text-indent: -0.75in; margin-bottom: 0in; ">
+      <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >_________</span><span  >	</span><span  ><b>(INITIALS)</b></span><span  >
+      </span><span  >Make all health care
+      decisions for me, which means he or she has the authority to:</span><span  >&nbsp;</span></span></span></p>
+      <p align="justify" style="margin-left: 0.75in; text-indent: -0.75in; margin-bottom: 0in; ">
+      <span style="font-family: 'Times New Roman', serif"><span size="1" style=""><span  >	</span></span></span></p>
+      <p align="justify" style="margin-left: 0.75in; margin-top: 0.06in; margin-bottom: 0.06in; ">
+      <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >1.</span><span  >	</span><span  >Provide
       informed consent, refusal of consent, or withdrawal of consent to any
       and all of my health care, including life-prolonging procedures.</span></span></span></p>
   </div>
@@ -223,77 +225,77 @@
 <!-- step 2 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
     <div id="doc" class="docPageInner" style="box-sizing: border-box; height: 890px;">
-        <p align="justify" style="margin-left: 0.75in; margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%">
-        <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">2.</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">Apply
+        <p align="justify" style="margin-left: 0.75in; margin-top: 0.06in; margin-bottom: 0.06in; ">
+        <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >2.</span><span  >	</span><span  >Apply
         on my behalf for private, public, government, or veterans’ benefits
         to defray the cost of health care.</span></span></span></p>
-        <p align="justify" style="margin-left: 0.75in; margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%">
-        <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">3.</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">Access
+        <p align="justify" style="margin-left: 0.75in; margin-top: 0.06in; margin-bottom: 0.06in; ">
+        <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >3.</span><span  >	</span><span  >Access
         my health information reasonably necessary for the health care
         surrogate to make decisions involving my health care and to apply for
         benefits for me.</span></span></span></p>
-        <p align="justify" style="margin-left: 0.75in; margin-bottom: 0in; line-height: 100%">
-        <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">4.</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">Decide
+        <p align="justify" style="margin-left: 0.75in; margin-bottom: 0in; ">
+        <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >4.</span><span  >	</span><span  >Decide
         to make an anatomical gift pursuant to part V of chapter 765, Florida
         Statutes.</span></span></span></p>
-        <p align="justify" style="margin-left: 1.5in; text-indent: -0.75in; margin-top: 0.13in; margin-bottom: 0in; line-height: 100%">
-        <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt"><b>_________
-        (INITIALS)</b></span><span  style="font-size: 12pt"><b>	</b></span></span></span></p>
-        <p align="justify" style="margin-left: 1.5in; text-indent: -0.75in; margin-top: 0.13in; margin-bottom: 0in; line-height: 100%">
-        <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">Specific
-        instructions and restrictions:</span><span  style="font-size: 12pt">	</span></span></span></p>
-        <p align="justify" style="margin-left: 1.5in; text-indent: -0.5in; margin-top: 0.13in; margin-bottom: 0in; line-height: 100%">
-        <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">______________________________________________________	</span></span></span></p>
-        <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+        <p align="justify" style="margin-left: 1.5in; text-indent: -0.75in; margin-top: 0.13in; margin-bottom: 0in; ">
+        <span style="font-family: 'Times New Roman', serif"><span  style=""><span  ><b>_________
+        (INITIALS)</b></span><span  ><b>	</b></span></span></span></p>
+        <p align="justify" style="margin-left: 1.5in; text-indent: -0.75in; margin-top: 0.13in; margin-bottom: 0in; ">
+        <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >Specific
+        instructions and restrictions:</span><span  >	</span></span></span></p>
+        <p align="justify" style="margin-left: 1.5in; text-indent: -0.5in; margin-top: 0.13in; margin-bottom: 0in; ">
+        <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >______________________________________________________	</span></span></span></p>
+        <p align="justify" style="margin-bottom: 0in; ">
 
         </p>
-        <p align="justify" style="margin-left: 0.75in; margin-bottom: 0in; line-height: 100%">
-        <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">______________________________________________________</span></span></span></p>
-        <p align="justify" style="margin-left: 0.75in; margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
-        <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">______________________________________________________</span></span></span></p>
-        <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">While
+        <p align="justify" style="margin-left: 0.75in; margin-bottom: 0in; ">
+        <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >	</span><span  >______________________________________________________</span></span></span></p>
+        <p align="justify" style="margin-left: 0.75in; margin-top: 0.13in; margin-bottom: 0.13in; ">
+        <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >	</span><span  >______________________________________________________</span></span></span></p>
+        <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style=""><span  >While
         I have decision-making capacity, my wishes are controlling and my
         physicians and health care providers must clearly communicate to me
         the treatment plan or any change to the treatment plan prior to its
         implementation.</span></span></span></p>
-        <p align="justify" style="margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
-        <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">To
+        <p align="justify" style="margin-top: 0.13in; margin-bottom: 0.13in; ">
+        <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >To
         the extent I am capable of understanding, my health care surrogate
         shall keep me reasonably informed of all decisions that he or she has
         made on my behalf and matters concerning me.</span></span></span></p>
-        <p align="justify" style="margin-bottom: 0.13in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">This
+        <p align="justify" style="margin-bottom: 0.13in; "><span style="font-family: 'Times New Roman', serif"><span  style=""><span  >This
         health care surrogate designation is not affected by my subsequent
         incapacity except as provided in Chapter 765, Florida Statutes.</span></span></span></p>
-        <p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">Pursuant
+        <p align="justify" style="margin-bottom: 0.06in; "><span style="font-family: 'Times New Roman', serif"><span  style=""><span  >Pursuant
         to section 765.104, Florida Statutes, I understand that I may, at any
         time while I retain my capacity, revoke or amend this designation by:</span></span></span></p>
-        <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
-        <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">1.
+        <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; ">
+        <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >1.
         signing a written and dated instrument which expresses my intent to
         amend or revoke this designation;</span></span></span></p>
-        <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
-        <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">2.
+        <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; ">
+        <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >2.
         physically destroying this designation through my own action or by
         that of another person in my presence and under my direction;</span></span></span></p>
-        <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
-        <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">3.
+        <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; ">
+        <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >3.
         verbally expressing my intention to amend or revoke this
         designation; or,</span></span></span></p>
-        <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-        <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">4.
+        <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
+        <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >4.
         signing a new designation that is materially different from this
         designation.</span></span></span></p>
-        <p align="justify" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
-        <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">My
+        <p align="justify" style="margin-top: 0.13in; margin-bottom: 0.06in; ">
+        <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >My
         health care surrogate’s authority becomes effective when my primary
         physician determines that i am unable to make my own health care
         decisions unless i initial either or both of the following boxes:</span></span></span></p>
-        <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-        <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt"><b>
+        <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
+        <span style="font-family: 'Times New Roman', serif"><span  style=""><span  ><b>
         If
         I initial this box [________], my health care surrogate’s authority
         to receive my health information takes effect immediately.</b></span></span></span></p>
-        <p align="justify" style="margin-left: 0.38in; margin-top: 0.06in; margin-bottom: 0.13in; line-height: 100%">
+        <p align="justify" style="margin-left: 0.38in; margin-top: 0.06in; margin-bottom: 0.13in; ">
         
         
         </p>
@@ -304,8 +306,8 @@
 <!-- step 3 -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
     <div id="doc" class="docPageInner" style="box-sizing: border-box; height: 890px;">
-        <p align="justify" style="margin-left: 0.38in; margin-top: 0.06in; margin-bottom: 0.13in; line-height: 100%">
-            <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">
+        <p align="justify" style="margin-left: 0.38in; margin-top: 0.06in; margin-bottom: 0.13in; ">
+            <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >
               <b>If
             I initial this box [________], my health care surrogate’s authority
             to make health care decisions for me takes effect immediately.
@@ -316,16 +318,16 @@
             those made by me.
             </b></span></span></span>
           </p>
-            <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+            <p align="justify" style="margin-bottom: 0in; ">
             </p>
 
-            <p align="justify" style="margin-bottom: 0in; line-height: 100%">Executed on this ________ day of __________, ____________, in _______________________ County in Florida.</p>
-            <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+            <p align="justify" style="margin-bottom: 0in; ">Executed on this ________ day of __________, ____________, in _______________________ County in Florida.</p>
+            <p align="justify" style="margin-bottom: 0in; ">
             </p>
 
-            <p align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-            <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">_______________________________________</span></span></span></p>
-            <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+            <p align="justify" style="text-indent: 0.5in; margin-bottom: 0in; ">
+            <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >_______________________________________</span></span></span></p>
+            <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
             <span style="font-family: 'Times New Roman', serif"><b></b></span>
             
             <span>
@@ -342,110 +344,109 @@
             
             
             <span style="font-family: 'Times New Roman', serif"><b></b></span></p>
-            <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-            <span ><span style="font-family: 'Times New Roman', serif"><span size="1" style="font-size: 8pt"><span ><span  style="font-size: 12pt"></span></span>
-            <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address.length > 0" style="font-size: 12pt">{{userDetails.tellUsAboutYou.address}}</span>
-            <span ><span  style="font-size: 12pt"></span></span></span></span></span></p>
+            <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; ">
+            <span ><span style="font-family: 'Times New Roman', serif"><span size="1" style=""><span ><span  ></span></span>
+            <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address.length > 0" >{{userDetails.tellUsAboutYou.address}}</span>
+            <span ><span  ></span></span></span></span></span></p>
 
-            <!-- <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-            <span ><span style="font-family: 'Times New Roman', serif"><span size="1" style="font-size: 8pt"><span ><span  style="font-size: 12pt"></span></span><span  style="font-size: 12pt">Address2</span><span ><span  style="font-size: 12pt"></span></span></span></span></span></p> -->
+            <!-- <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; ">
+            <span ><span style="font-family: 'Times New Roman', serif"><span size="1" style=""><span ><span  ></span></span><span  >Address2</span><span ><span  ></span></span></span></span></span></p> -->
 
             
             
-            <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-            <span ><span style="font-family: 'Times New Roman', serif"><span size="1" style="font-size: 8pt"><span ></span><span  style="font-size: 12pt">City</span>
-            <span  style="font-size: 12pt">State:FL</span><span ><span  style="font-size: 12pt"></span></span></span></span></span></p>
-            <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+            <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; ">
+            <span ><span style="font-family: 'Times New Roman', serif"><span size="1" style=""><span ></span><span  >City</span>
+            <span  >State:FL</span><span ><span  ></span></span></span></span></span></p>
+            <p align="justify" style="margin-bottom: 0in; ">
             
             </p>
-            <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+            <p align="justify" style="margin-bottom: 0in; ">
             
             </p>
-            <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+            <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
             
             
-            <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">We,
+            <span style="font-family: 'Times New Roman', serif"><span  style="">We,
             the witnesses hereunder, certify that each of us is 18 years of age
             or older and each personally witnessed </span></span>
-            <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt"></span></span>
+            <span style="font-family: 'Times New Roman', serif"><span  style=""></span></span>
             
             <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0" style="font:font-family;"><b>{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b></span>
             <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null && (userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname.length == 0)" style="font:font-family;"><b>________________________</b></span>
 
-            <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">,
+            <span style="font-family: 'Times New Roman', serif"><span  style="">,
             </span></span>
             
-            <span style="letter-spacing: 0.1pt"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">the
+            <span style="letter-spacing: 0.1pt"><span style="font-family: 'Times New Roman', serif"><span  style="">the
             principal, </span></span></span>
             
-            <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">sign
+            <span style="font-family: 'Times New Roman', serif"><span  style="">sign
             or direct the signing of this Designation; that we are acquainted
             with the principal and believe </span></span>
             
-            <span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">{{genderTxt}}</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">
+            <span ><span style="font-family: 'Times New Roman', serif"><span  style="">{{genderTxt}}</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="">
             to be of sound mind; that neither of us is a person who signed the
             above Designation on behalf of the principal; that we are not named
             as surrogate or alternate surrogate by this Designation; that we are
             not related to the principal by blood or marriage nor are we entitled
-            to any portion of </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">{{genderTxt}}</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">
+            to any portion of </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="">{{genderTxt}}</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="">
             estate according to the laws of intestate succession of this state or
             under any will or codicil of the principal; that we are not directly
-            financially responsible for </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">{{genderTxt}}</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">
+            financially responsible for </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="">{{genderTxt}}</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="">
             medical care; and that we are not agents of any health care facility
-            in which </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">{{genderTxt}}</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">
+            in which </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="">{{genderTxt}}</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="">
             may be a patient at the time of signing this Designation.</span></span></p>
-            <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+            <p align="justify" style="margin-bottom: 0in; ">
+            <br>
+            </p>
+            <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+            <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >WITNESS
+            1: ________________________________	<span style="padding-left: 50px;"></span>Dated: ___________________</span></span></span></p>
+            <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
+            
+            
             
             </p>
-            <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-            <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">WITNESS
-            1: ________________________________	Dated: ___________________</span></span></span></p>
-            <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-            
-            
-            
-            </p>
-            <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-            <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">____________________________________</span></span></span></p>
-            <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
-            <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">[name
+            <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+            <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________</span></span></span></p>
+            <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
+            <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">[name
             printed]</span></span></span></p>
-            <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
+            <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
             
             
             
             </p>
-            <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-            <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">____________________________________	____________________________________</span></span></span></p>
-            <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
-            <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">[street
-            address]					[city, state]</span></span></span></p>
-            <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
+            <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+            <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________	<span style="padding-left: 35px;"></span>____________________________________</span></span></span></p>
+            <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
+            <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">[street
+            address]<span style="padding-left: 230px;"></span>[city, state]</span></span></span></p>
+            <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
+            <br>
+            <br>
+            </p>
+            <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+            <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >WITNESS
+            2: ________________________________<span style="padding-left: 50px;"></span> Dated: ___________________</span></span></span></p>
+            <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
             
             
             
             </p>
-            <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-            
-            
-            
-            </p>
-            <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-            <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">WITNESS
-            2: ________________________________	Dated: ___________________</span></span></span></p>
-            <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-            
-            
-            
-            </p>
-            <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-            <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">____________________________________</span></span></span></p>
-            <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
-            <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">[name
+            <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+            <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________</span></span></span></p>
+            <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
+            <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">[name
             printed]</span></span></span></p>
-            <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
+            <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
             
-            
+            <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________  <span style="padding-left: 35px;"></span>____________________________________</span></span></span></p>
+          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
+          
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">[street
+          address]<span style="padding-left: 230px;"></span>[city, state]</span></span></span></p>
                        
     </div>
 </div>
@@ -455,47 +456,42 @@
 <!-- step 4 now -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div id="doc" class="docPageInner" style="box-sizing: border-box; height: 890px;">
-      <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">____________________________________	____________________________________</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
-          
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">[street
-          address]					[city, state]</span></span></span></p>
-          <p align="center" style="margin-top: 0.19in; margin-bottom: 0.13in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 10pt"><span  style="font-size: 12pt"><b>AFFIDAVIT</b></span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span ><span  style="font-size: 12pt">STATE
-          OF FLORIDA</span></span><span ><span  style="font-size: 12pt">	</span></span><span ><span  style="font-size: 12pt">)</span></span></span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">				</span><span  style="font-size: 12pt">)
-          ss.</span><span  style="font-size: 12pt">&nbsp;</span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span ><span  style="font-size: 12pt">COUNTY
+      
+          <p align="center" style="margin-top: 0.19in; margin-bottom: 0.13in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  ><b>AFFIDAVIT</b></span></span></span></p>
+          <p align="justify" style="margin-bottom: 0in; "><span ><span style="font-family: 'Times New Roman', serif"><span  style=""><span ><span  >STATE
+          OF FLORIDA</span></span><span ><span  >	</span></span><span ><span style="padding-left: 45px;">)</span></span></span></span></span></p>
+          <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style=""><span  >				</span><span  style="padding-left: 190px;">)
+          ss.</span><span  >&nbsp;</span></span></span></p>
+          <p align="justify" style="margin-bottom: 0in; "><span ><span style="font-family: 'Times New Roman', serif"><span  style=""><span ><span  >COUNTY
           OF ____________)</span></span></span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <p align="justify" style="margin-bottom: 0in; ">
           
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">I,
-          </span><span ><span  style="font-size: 12pt">CLIENT'S
-          NAME</span></span><span  style="font-size: 12pt">, the
+          <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style=""><span  >I,
+          </span><span ><span  >CLIENT'S
+          NAME</span></span><span  >, the
           principal, declare to the officer taking my acknowledgment of this
           instrument, and to the subscribing witnesses, that I signed and
           executed this instrument as my Designation of Health Care Surrogate.</span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <p align="justify" style="margin-bottom: 0in; ">
           
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">______________________________________</span></span></span></p>
+          <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style=""><span  >	</span><span  >______________________________________</span></span></span></p>
           
           
-          <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+          <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
               <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0" style="font:font-family;"><b>{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b></span>
               <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="font:font-family;"><b>________________________</b></span>
           </p>
           
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <p align="justify" style="margin-bottom: 0in; ">
           
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <p align="justify" style="margin-bottom: 0in; ">
           
           </p>
-          <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif">We,
+          <p style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif">We,
           </span><span style="font-family: 'Times New Roman', serif"><u>					</u></span><span style="font-family: 'Times New Roman', serif">
           and </span><span style="font-family: 'Times New Roman', serif"><u>					</u></span><span style="font-family: 'Times New Roman', serif">,
           the witnesses, have been sworn by the officer signing below, and
@@ -509,67 +505,54 @@
           the principal, signed this Designation in our presence, and that we
           each signed the instrument as a witness in the presence of the
           principal and of each other.</span><span style="font-family: 'Times New Roman', serif">&nbsp;</span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-          
+          <p align="justify" style="margin-bottom: 0in; ">
+          <br>
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-          
+          <p align="justify" style="margin-bottom: 0in; ">
+          <br>
           </p>
-          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">WITNESS
-          1: ________________________________	Dated: ___________________</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          
-          
-          
-          </p>
-          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">____________________________________</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">[name
+          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >WITNESS
+          1: ________________________________	<span style="padding-left: 50px;"></span>Dated: ___________________</span></span></span></p>
+         
+          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________</span></span></span></p>
+          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">[name
           printed]</span></span></span></p>
-          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
           
-          
-          
+          <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
+          <br>
+          <br>
           </p>
-          <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
+          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >WITNESS
+          2: ________________________________	<span style="padding-left: 50px;"></span>Dated: ___________________</span></span></span></p>
           
-          
-          
-          </p>
-          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">WITNESS
-          2: ________________________________	Dated: ___________________</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          
-          
-          
-          </p>
-          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">____________________________________</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">[name
+          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________</span></span></span></p>
+          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">[name
           printed]</span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <p align="justify" style="margin-bottom: 0in; ">
+          <br>
+          </p>
+          <p align="justify" style="margin-bottom: 0in; ">
+          <br>
+          </p>
+          <p align="justify" style="margin-bottom: 0in; ">
           
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-          
-          </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-          
-          </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span >STATE
-          OF FLORIDA</span><span >	</span><span >)</span></span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">				)
+          <p align="justify" style="margin-bottom: 0in; "><span ><span style="font-family: 'Times New Roman', serif"><span  style=""><span >STATE
+          OF FLORIDA</span><span >	</span><span style="padding-left: 45px;">)</span></span></span></span></p>
+          <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="padding-left: 190px;">				)
           ss.&nbsp;</span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span >COUNTY
+          <p align="justify" style="margin-bottom: 0in; "><span ><span style="font-family: 'Times New Roman', serif"><span  style=""><span >COUNTY
           OF ____________)</span></span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-          
+          <p align="justify" style="margin-bottom: 0in; ">
+          <br>
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">Acknowledged
+          <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="">Acknowledged
           and subscribed before me by <span >CLIENT'S NAME</span>,
           the principal, who is personally known to me or who has produced
           satisfactory photo identification, to wit:
@@ -581,24 +564,18 @@
           has produced satisfactory photo identification, to wit:
           ________________________________, and subscribed before me in the
           presence of the principal and the subscribing witnesses, all on this
-          ____ day of <u>			</u>, <u>	</u>.</span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-          
+          ________ day of ____________, __________________.</span></span></p>
+          <p align="justify" style="margin-bottom: 0in; ">
+          <br><br>
           </p>
-  </div>
-</div>
-<!-- step 4 -end-->
-
-<!-- step 5 -->
-<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-  <div id="doc" class="docPageInner" style="box-sizing: border-box; height: 890px;">
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">	______________________________________</span></span></p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">	NOTARY
+  
+    <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="">	______________________________________</span></span></p>
+    <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="">	NOTARY
     PUBLIC (State of Florida)</span></span></p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+    <p align="justify" style="margin-bottom: 0in; ">
 
     </p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">My
+    <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="">My
     commission expires:</span></span></p>
   </div>
 </div>
@@ -607,97 +584,108 @@
 <!-- step 6 start -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div id="doc" class="docPageInner" style="box-sizing: border-box; height: 890px;">
-      <p align="center" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
+      <p align="center" style="margin-bottom: 0in;  page-break-before: always">
           <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 13pt"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 19pt"><b>F</b></span></span><b>LORIDA
           </b><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 19pt"><b>L</b></span></span><b>IVING
           </b><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 19pt"><b>W</b></span></span><b>ILL</b></span></span></p>
-          <p align="justify" style="text-indent: 0.38in; margin-bottom: 0.13in; line-height: 100%">
+          <p align="justify" style="text-indent: 0.38in; margin-bottom: 0.13in; ">
           
           
           
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 10pt"><span ><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">Declaration
-          made this </span></span></span><span ><span  style="font-size: 12pt">_____
+          <p align="justify" style="margin-bottom: 0in; "><span ><span style="font-family: 'Times New Roman', serif"><span  style=""><span ><span style="letter-spacing: 0.3pt"><span  >Declaration
+          made this </span></span></span><span ><span  >_____
           day of ____________________, ________.</span></span></span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <p align="justify" style="margin-bottom: 0in; ">
           
           </p>
           
-          <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-          <span style="letter-spacing: 0.3pt"><span style="font-family: 'Times New Roman', serif">I,</span></span><span face="Times, serif"><span  style="font-size: 9pt"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 12pt">
+          <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
+          <span style="letter-spacing: 0.3pt"><span style="font-family: 'Times New Roman', serif">I,</span></span><span face="Times, serif"><span  style=""><span style="font-family: 'Times New Roman', serif"><span  >
           </span></span></span></span><span style="font-family: 'Times New Roman', serif"></span>
           
           <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0" style="font:font-family;"><b>{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b></span>
           <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null && (userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname.length == 0)" style="font:font-family;"><b>________________________</b></span>
 
             
-            <span face="Times, serif"><span  style="font-size: 9pt"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 12pt">,</span></span></span></span><span style="letter-spacing: 0.3pt"><span style="font-family: 'Times New Roman', serif">
+            <span face="Times, serif"><span  style=""><span style="font-family: 'Times New Roman', serif"><span  ></span></span></span></span><span style="letter-spacing: 0.3pt"><span style="font-family: 'Times New Roman', serif">
           willfully </span></span><span style="letter-spacing: 0.2pt"><span style="font-family: 'Times New Roman', serif">and
           voluntarily make known my desire that my dying not be artificially</span></span><span style="letter-spacing: 0.3pt"><span style="font-family: 'Times New Roman', serif">
           prolonged under the circumstances set forth below, and I do hereby
           declare that:</span></span></p>
-          <p align="justify" style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">1.</span></span><span  style="font-size: 12pt"><span style="letter-spacing: 0.3pt">	</span></span><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">If
+          <p align="justify" style="margin-bottom: 0.09in; "><span style="font-family: 'Times New Roman', serif"><span  style=""><span style="letter-spacing: 0.3pt"><span  >1.</span></span><span  ><span style="letter-spacing: 0.3pt">	</span></span><span style="letter-spacing: 0.3pt"><span  >If
           at any time I am incapacitated and</span></span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">_______
-          </span></span><span style="font-family: 'Times New Roman', serif"><span size="1" style="font-size: 7pt"><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">(initial)</span></span></span></span><span  style="font-size: 12pt"><span style="letter-spacing: 0.3pt">	</span></span><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">I
+          <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span style="letter-spacing: 0.3pt"><span  >_______
+          </span></span><span style="font-family: 'Times New Roman', serif"><span size="1" style=""><span style="letter-spacing: 0.3pt"><span  >(initial)</span></span></span></span><span  ><span style="letter-spacing: 0.3pt">	</span></span><span style="letter-spacing: 0.3pt"><span  >I
           have a terminal condition, or</span></span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">_______
-          </span></span><span style="font-family: 'Times New Roman', serif"><span size="1" style="font-size: 7pt"><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">(initial)</span></span></span></span><span  style="font-size: 12pt"><span style="letter-spacing: 0.3pt">	</span></span><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">I
+          <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span style="letter-spacing: 0.3pt"><span  >_______
+          </span></span><span style="font-family: 'Times New Roman', serif"><span size="1" style=""><span style="letter-spacing: 0.3pt"><span  >(initial)</span></span></span></span><span  ><span style="letter-spacing: 0.3pt">	</span></span><span style="letter-spacing: 0.3pt"><span  >I
           have an end-stage condition, or</span></span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">_______
-          </span></span><span style="font-family: 'Times New Roman', serif"><span size="1" style="font-size: 7pt"><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">(initial)</span></span></span></span><span  style="font-size: 12pt"><span style="letter-spacing: 0.3pt">	</span></span><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">I
+          <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.09in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span style="letter-spacing: 0.3pt"><span  >_______
+          </span></span><span style="font-family: 'Times New Roman', serif"><span size="1" style=""><span style="letter-spacing: 0.3pt"><span  >(initial)</span></span></span></span><span  ><span style="letter-spacing: 0.3pt">	</span></span><span style="letter-spacing: 0.3pt"><span  >I
           am in a persistent vegetative state,</span></span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">and
+          <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span style="letter-spacing: 0.3pt"><span  >and
           if my attending or treating physician and another consulting
           physician have determined that there is no reasonable medical
           probability of my recovery from such condition, I direct that
-          life-</span></span><span style="letter-spacing: 0.1pt"><span  style="font-size: 12pt">prolonging
-          procedures be withheld or withdrawn when the application of</span></span><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">
+          life-</span></span><span style="letter-spacing: 0.1pt"><span  >prolonging
+          procedures be withheld or withdrawn when the application of</span></span><span style="letter-spacing: 0.3pt"><span  >
           such procedures would serve only to prolong artificially the process
           of dying, and that I be permitted to die naturally with only the
           administration of medication or the performance of any medical
           procedure deemed necessary to provide me with comfort care or to
           alleviate pain.</span></span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <p align="justify" style="margin-bottom: 0in; ">
           
           </p>
-          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span face="Times, serif"><span  style="font-size: 9pt"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 12pt">2.</span></span></span></span><span  style="font-size: 12pt">	</span><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">It
+          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span face="Times, serif"><span  style=""><span style="font-family: 'Times New Roman', serif"><span  >2.</span></span></span></span><span  >	</span><span style="letter-spacing: 0.3pt"><span  >It
           is my intention that this Declaration be honored by my family and
           physician as the final expression of my legal right to refuse medical
           or surgical treatment and to accept the consequences for such
           refusal.</span></span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <p align="justify" style="margin-bottom: 0in; ">
           
           </p>
-          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span style="letter-spacing: 0.1pt"><span  style="font-size: 12pt">3.</span></span><span  style="font-size: 12pt"><span style="letter-spacing: 0.1pt">	</span></span><span style="letter-spacing: 0.1pt"><span  style="font-size: 12pt">I
+          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span style="letter-spacing: 0.1pt"><span  >3.</span></span><span  ><span style="letter-spacing: 0.1pt">	</span></span><span style="letter-spacing: 0.1pt"><span  >I
           have executed a Designation of Health Care Surrogate concurrently
           herewith. In the event that I have been determined to be unable to
-          provide express</span></span><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">
+          provide express</span></span><span style="letter-spacing: 0.3pt"><span  >
           and informed consent regarding the withholding, withdrawal, or
           continuation of life-prolonging procedures, I authorize my
-          then-acting </span></span><span  style="font-size: 12pt">surrogate
-          </span><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">as
+          then-acting </span></span><span  >surrogate
+          </span><span style="letter-spacing: 0.3pt"><span  >as
           named in that document to carry out the provisions of this
           Declaration.</span></span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-          
+          <p align="justify" style="margin-bottom: 0in; ">
+          <br>
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-          
+          <p align="justify" style="margin-bottom: 0in; ">
+          <br>
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span style="letter-spacing: 0.1pt"><span  style="font-size: 12pt">Additional
+          <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style=""><span style="letter-spacing: 0.1pt"><span  >Additional
           Instructions: (Optional)</span></span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span style="letter-spacing: 0.1pt"><span  style="font-size: 12pt"><u>																																																																																																							</u></span></span><span style="letter-spacing: 0.1pt"><span  style="font-size: 12pt">.</span></span></span></span></p>
-          <p style="margin-bottom: 0in; line-height: 100%">
+          <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style=""><span style="letter-spacing: 0.1pt"><span  >
+          _____________________________________________________________________________
+          _____________________________________________________________________________
+          _____________________________________________________________________________
+          _____________________________________________________________________________
+          _____________________________________________________________________________
+          _____________________________________________________________________________
+          _____________________________________________________________________________
+          _____________________________________________________________________________
+          _____________________________________________________________________________.
+
+          </span></span><span style="letter-spacing: 0.1pt"><span  ></span></span></span></span></p>
+          <p style="margin-bottom: 0in; ">
           
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
+          <p align="justify" style="margin-bottom: 0in;  page-break-before: always">
           
           
           </p>
@@ -708,16 +696,16 @@
 <!-- step 7 start -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div id="doc" class="docPageInner" style="box-sizing: border-box; height: 890px;">
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span style="letter-spacing: 0.1pt"><span  style="font-size: 12pt">I
+      <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style=""><span style="letter-spacing: 0.1pt"><span  >I
           understand the full import of this Declaration, and I am emotionally
           and mentally competent to make this Declaration.</span></span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <p align="justify" style="margin-bottom: 0in; ">
           
           </p>
-          <p align="justify" style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">_______________________________________</span></span></span></p>
+          <p align="justify" style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >_______________________________________</span></span></span></p>
           
-          <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0"><a name="_GoBack"></a>
+          <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0"><a name="_GoBack"></a>
           <span style="font-family: 'Times New Roman', serif">		</span>
           
           <span style="font-family: 'Times New Roman', serif"><b></b></span>
@@ -726,13 +714,13 @@
           <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null && (userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname.length == 0)" style="font:font-family;"><b>________________________</b></span>
 
           <span style="font-family: 'Times New Roman', serif"></span>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <p align="justify" style="margin-bottom: 0in; ">
           
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <p align="justify" style="margin-bottom: 0in; ">
           
           </p>
-          <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+          <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
           <span style="font-family: 'Times New Roman', serif">We, the witnesses hereunder,
           certify that each of us is 18 years of age or older and each
           personally witnessed </span>
@@ -780,73 +768,35 @@
         
           </span><span style="font-family: 'Times New Roman', serif">
           may be a patient at the time of signing this directive.</span></p>
-          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
+          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
           
           
           
           </p>
-          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt"><b>WITNESS
-          1:</b></span><span  style="font-size: 12pt">
-          ________________________________	Dated: ___________________</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          
-          
-          
-          </p>
-          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">____________________________________</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">[name
+          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >WITNESS
+          1: ________________________________ <span style="padding-left: 50px; display: inline-block;"></span>Dated: ___________________</span></span></span></p>
+         
+          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________</span></span></span></p>
+          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">[name
           printed]</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
           
-          
-          
+          <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
+          <br>
+          <br>
           </p>
-          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">____________________________________	____________________________________</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">[street
-          address]					[city, state]</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
+          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >WITNESS
+          2: ________________________________ <span style="padding-left: 50px; display: inline-block;"></span>Dated: ___________________</span></span></span></p>
           
-          
-          
-          </p>
-          <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          
-          
-          
-          </p>
-          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt"><b>WITNESS
-          2:</b></span><span  style="font-size: 12pt">
-          ________________________________	Dated: ___________________</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          
-          
-          
-          </p>
-          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">____________________________________</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">[name
+          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________</span></span></span></p>
+          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">[name
           printed]</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          
-          
-          
-          </p>
-          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">____________________________________	____________________________________</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">[street
-          address]					[city, state]</span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-          
-          </p>
-          <p style="margin-bottom: 0in; line-height: 100%">
+          <p style="margin-bottom: 0in; ">
           
           </p>
           
@@ -857,18 +807,18 @@
 <!-- step 8 start -->
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div id="doc" class="docPageInner" style="box-sizing: border-box; height: 890px;">
-      <p align="center" style="margin-top: 0.19in; margin-bottom: 0.13in; line-height: 100%; page-break-before: always">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 10pt"><span  style="font-size: 14pt"><b>AFFIDAVIT</b></span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span ><span  style="font-size: 12pt">STATE
-          OF FLORIDA</span></span><span ><span  style="font-size: 12pt">	</span></span><span ><span  style="font-size: 12pt">)</span></span></span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">				</span><span  style="font-size: 12pt">)
-          ss.</span><span  style="font-size: 12pt">&nbsp;</span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span ><span  style="font-size: 12pt">COUNTY
-          OF ____________)</span></span></span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-          
+      <p align="center" style="margin-top: 0.19in; margin-bottom: 0.13in;  page-break-before: always">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="font-size: 14pt"><b>AFFIDAVIT</b></span></span></span></p>
+           <p align="justify" style="margin-bottom: 0in; "><span ><span style="font-family: 'Times New Roman', serif"><span  style=""><span >STATE
+          OF FLORIDA</span><span >  </span><span style="padding-left: 45px;">)</span></span></span></span></p>
+          <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="padding-left: 190px;">        )
+          ss.&nbsp;</span></span></p>
+          <p align="justify" style="margin-bottom: 0in; "><span ><span style="font-family: 'Times New Roman', serif"><span  style=""><span >COUNTY
+          OF ____________)</span></span></span></span></p>
+          <p align="justify" style="margin-bottom: 0in; ">
+          <br><br>
           </p>
-          <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+          <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
           <span style="font-family: 'Times New Roman', serif">I, </span><span style="font-family: 'Times New Roman', serif"></span>
           
           <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span>
@@ -876,108 +826,94 @@
           
           <span style="font-family: 'Times New Roman', serif"></span>
           
-          <span style="font-family: 'Times New Roman', serif">,
+          <span style="font-family: 'Times New Roman', serif">
           declare to the officer taking my acknowledgment of this instrument,
           and to the subscribing witnesses, that I signed and executed this
           instrument as my Living Will.</span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <p align="justify" style="margin-bottom: 0in; ">
           
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">______________________________________</span></span></span></p>
-          <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+          <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style=""><span  >	</span><span  >______________________________________</span></span></span></p>
+          <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
               <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span>
               <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">___________________________</span>             
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <p align="justify" style="margin-bottom: 0in; ">
           
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <p align="justify" style="margin-bottom: 0in; ">
           
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
+          <p align="justify" style="margin-bottom: 0in; ">
           
           </p>
-          <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+          <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
           <span style="font-family: 'Times New Roman', serif">We, </span><span style="font-family: 'Times New Roman', serif"><u>					</u></span><span style="font-family: 'Times New Roman', serif">
-          and </span><span style="font-family: 'Times New Roman', serif"><u>					</u></span><span style="font-family: 'Times New Roman', serif">,
+          and </span><span style="font-family: 'Times New Roman', serif">________________</span><span style="font-family: 'Times New Roman', serif">,
           the witnesses, have been sworn by the officer signing below, and
           declare to that officer on our oaths that </span><span style="font-family: 'Times New Roman', serif"></span>
           
-          <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span>
+          <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</span>
           <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">___________________________</span>         
           
-          <span style="font-family: 'Times New Roman', serif">,</span><span style="font-family: 'Times New Roman', serif">
+          <span style="font-family: 'Times New Roman', serif"></span><span style="font-family: 'Times New Roman', serif">
           the declarant, signed this Declaration in our presence, and that we
           each signed the instrument as a witness in the presence of the
           declarant and of each other.</span><span style="font-family: 'Times New Roman', serif">&nbsp;</span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-          
+          <p align="justify" style="margin-bottom: 0in; ">
+          <br>
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-          
+          <p align="justify" style="margin-bottom: 0in; ">
+          <br>
           </p>
-          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt"><b>WITNESS
-          1:</b></span><span  style="font-size: 12pt">
-          ________________________________	Dated: ___________________</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          
-          
-          
-          </p>
-          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">____________________________________</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">[name
+          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >WITNESS
+          1: ________________________________ <span style="padding-left: 50px;"></span>Dated: ___________________</span></span></span></p>
+         
+          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________</span></span></span></p>
+          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">[name
           printed]</span></span></span></p>
-          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
           
-          
-          
+          <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
+          <br>
+          <br>
           </p>
-          <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
+          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >WITNESS
+          2: ________________________________ <span style="padding-left: 50px;"></span>Dated: ___________________</span></span></span></p>
           
-          
-          
-          </p>
-          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt"><b>WITNESS
-          2:</b></span><span  style="font-size: 12pt">
-          ________________________________	Dated: ___________________</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          
-          
-          
-          </p>
-          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">____________________________________</span></span></span></p>
-          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 10pt">[name
+          <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________</span></span></span></p>
+          <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
+          <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">[name
           printed]</span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
           
+          <p align="justify" style="margin-bottom: 0in; ">
+          <br>
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-          
+          <p align="justify" style="margin-bottom: 0in; ">
+          <br>
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span >STATE
-          OF FLORIDA</span><span >	</span><span >)</span></span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">				)
+           <p align="justify" style="margin-bottom: 0in; "><span ><span style="font-family: 'Times New Roman', serif"><span  style=""><span >STATE
+          OF FLORIDA</span><span >  </span><span style="padding-left: 45px;">)</span></span></span></span></p>
+          <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="padding-left: 190px;">        )
           ss.&nbsp;</span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span >COUNTY
+          <p align="justify" style="margin-bottom: 0in; "><span ><span style="font-family: 'Times New Roman', serif"><span  style=""><span >COUNTY
           OF ____________)</span></span></span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-          
+          <p align="justify" style="margin-bottom: 0in; ">
+          <br><br>
           </p>
-          <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">Acknowledged
-          and subscribed before me by </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"></span></span></span>
+          <p style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="">Acknowledged
+          and subscribed before me by </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style=""></span></span></span>
           
-          <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span>
+          <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</span>
           <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">___________________________</span>         
           
           
           
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">,
+          <span style="font-family: 'Times New Roman', serif"><span  style=""></span></span><span style="font-family: 'Times New Roman', serif"><span  style="">
           the principal, who is personally known to me or who has produced
           satisfactory photo identification, to wit:
           ________________________________, and sworn to and subscribed before
@@ -988,22 +924,16 @@
           has produced satisfactory photo identification, to wit:
           ________________________________, and subscribed before me in the
           presence of the principal and the subscribing witnesses, all on this
-          ____ day of </span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><u>			</u></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">,
-          </span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><u>	</u></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">.</span></span></p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 100%">
-          
+          ______ day of </span></span><span style="font-family: 'Times New Roman', serif"><span  style="">____________</span></span><span style="font-family: 'Times New Roman', serif"><span  style="">,
+          </span></span><span style="font-family: 'Times New Roman', serif"><span  style="">___________________</span></span><span style="font-family: 'Times New Roman', serif"><span  style="">.</span></span></p>
+          <p align="justify" style="margin-bottom: 0in; ">
+          <br><br>
           </p>          
-  </div>
-</div>
-<!-- step 8 end -->
-
-<!-- step 9 start -->
-<div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-  <div id="doc" class="docPageInner" style="box-sizing: border-box; height: 890px;">
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">	______________________________________</span></span></p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">	NOTARY
+  
+      <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="">	______________________________________</span></span></p>
+      <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="">	NOTARY
       PUBLIC (State of Florida)			My commission expires:</span></span></p>
   </div>
 </div>
 <!-- step 9 end -->
-
+</div>

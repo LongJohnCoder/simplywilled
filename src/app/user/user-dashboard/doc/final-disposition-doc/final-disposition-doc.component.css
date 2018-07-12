@@ -421,7 +421,7 @@ p.ctl { font-family: "Times New Roman" }
 }
 .docBtnArea.uncompleted ul:first-child{
   float: none;
-  width: 230px;
+  width: 100%;
   margin: 41px auto 0;
 }
 .docBtnArea ul li{
