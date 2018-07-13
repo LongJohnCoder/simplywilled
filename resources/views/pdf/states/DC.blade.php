@@ -3,16 +3,31 @@
 <head>
     <meta charset="utf-8">
     <title>Untitled Document</title>
+    <style>
+  	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+  	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+  	padding-top: 5px;
+  	}
+  	 #footer .page:after { content: counter(page, none); }
 
+  	</style>
 </head>
 
 <body>
+  <script type="text/php">
+	    if ( isset($pdf) ) {
+	        $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+	    }
+	</script>
+	<div id="footer">
+	  <div style="">
+	    Advance Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
+	  </div>
+	</div>
+<div style="text-align: justify">
 
-<div class="docContainer" id="doc">
-
-    <div class="docPage" style="margin: 20px 0;">
-        <div id="doc" class="docPageInner"
-             style="">
+    <div>
+        <div>
             <p  style="text-align:center;margin-bottom: 0in; line-height: 0.28in; page-break-before: auto; page-break-after: auto">
                 <span  style="font-size: 17pt"><b>DISTRICT OF COLUMBIA</b></span></p>
             <p  style="text-align:center;margin-bottom: 0in; line-height: 0.28in"><span  style="font-size: 17pt"><b>POWER
@@ -66,18 +81,12 @@
 
             </p>
         </div>
-
-        <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-            <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care of {{$tellUsAboutYou['fullname']}} </span>
-            <br>Page 1 of 6
-        </div>
     </div>
     <!-- !Page 1 -->
 
     <!-- Page 2 -->
-    <div class="docPage" style="margin: 20px 0;">
-        <div class="docPageInner"
-             style="">
+    <div>
+        <div>
 
             <p  style="text-align:center;margin-bottom: 0in; line-height: 0.28in; page-break-before: always">
                 <span  style="font-size: 17pt"><b>DISTRICT OF COLUMBIA</b></span></p>
@@ -89,23 +98,24 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I,
               <b>
-                <span style="text-transform: capitalize" >{{$tellUsAboutYou['fullname']}}</span>
-              </b>,
+                <span style="text-transform: capitalize" >{{$tellUsAboutYou['fullname']}},</span>
+              </b>
               of
-              <span style="text-transform: capitalize" >{{$tellUsAboutYou['address']}}</span>,
-              <span style="text-transform: capitalize" >{{$tellUsAboutYou['city']}}</span>,
-              <span style="text-transform: capitalize" >{{$tellUsAboutYou['state']}}</span>, hereby appoint my
+              <span style="text-transform: capitalize" >{{$tellUsAboutYou['address']}},</span>
+              <span style="text-transform: capitalize" >{{$tellUsAboutYou['city']}},</span>
+              <span style="text-transform: capitalize" >{{$tellUsAboutYou['state']}},</span> hereby appoint my
                 @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
                     <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
                 @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
                     <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
                 @endif
-                <span style="text-transform: capitalize" > {{$healthFinance['fullname']}} </span>, of
-                <span style="text-transform: capitalize" > {{$healthFinance['address']}} </span>  in
-                <span style="text-transform: capitalize" > {{$healthFinance['city']}} </span>,
-                <span style="text-transform: capitalize" > {{$healthFinance['state']}} </span>
-                <span style="text-transform: capitalize" > {{$healthFinance['zip']}} </span>
-                (Tel: <span > {{$healthFinance['phone']}} </span> ),
+                ,
+                <span style="text-transform: capitalize" > {{$healthFinance['fullname']}}, </span> of
+                <span style="text-transform: capitalize" > {{$healthFinance['address']}},</span>  in
+                <span style="text-transform: capitalize" > {{$healthFinance['city']}}, </span>
+                <span style="text-transform: capitalize" > {{$healthFinance['state']}}, </span>
+                <span style="text-transform: capitalize" > {{$healthFinance['zip']}}, </span>
+                (Tel: <span > {{$healthFinance['phone']}} </span> )
                 as my attorney in fact to make
                 health care decisions for me if I become unable to make my own
                 health-care decisions.  This gives my attorney in fact the power to
@@ -113,9 +123,6 @@
                 service, treatment or procedure. My attorney in fact also has the
                 authority to talk to health-care personnel, get information and sign
                 forms necessary to carry out these decisions.</span></span></span></span></span>
-            </p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
-
             </p>
 
             <p style="margin-bottom: 0in; line-height: 115%"  *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'true'">
@@ -127,12 +134,13 @@
                 @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
                     <span>{{$healthFinance['backupRelation']}}</span>
                 @endif
-                <span style="text-transform: capitalize" > {{$healthFinance['backupFullname']}} </span> of
-                <span style="text-transform: capitalize" > {{$healthFinance['backupAddress']}} </span> in
-                <span style="text-transform: capitalize" > {{$healthFinance['backupCity']}} </span>,
-                <span style="text-transform: capitalize" > {{$healthFinance['backupState']}} </span>
-                <span style="text-transform: capitalize" > {{$healthFinance['backupZip']}} </span>
-                (Tel: <span > {{$healthFinance['backupphone']}} </span> ),
+                ,
+                <span style="text-transform: capitalize" > {{$healthFinance['backupFullname']}}, </span> of
+                <span style="text-transform: capitalize" > {{$healthFinance['backupAddress']}}, </span> in
+                <span style="text-transform: capitalize" > {{$healthFinance['backupCity']}}, </span>
+                <span style="text-transform: capitalize" > {{$healthFinance['backupState']}}, </span>
+                <span style="text-transform: capitalize" > {{$healthFinance['backupZip']}}, </span>
+                (Tel: <span > {{$healthFinance['backupphone']}} </span> )
                 as my alternate attorney in fact to
                 make health care decisions for me if I become unable to make my own
                 health-care decisions.
@@ -188,17 +196,13 @@
                 mandate that withholding or withdrawing.
                 &nbsp;</span></p>
         </div>
-       {{-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Durable Power of Attorney for Health Care of {{userDetails.tellUsAboutYou.fullname}} </span>
-            <br>Page 2 of 6
-        </div>--}}
+
     </div>
     <!-- !Page 2 -->
 
     <!-- Page 3 -->
-    <div class="docPage" style="margin: 20px 0; ">
-        <div class="docPageInner"
-             style="">
+    <div>
+        <div>
 
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Additional
@@ -216,7 +220,7 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; page-break-before: always; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Subject
       to any limitations in this document, my attorney in fact has the
       power and authority to do all of the following:</span></span></span></span></span></p>
@@ -288,24 +292,13 @@
             <p style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 115%">
                 <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
             </p>
-        </div>
-        {{--<div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Durable Power of Attorney for Health Care of {{userDetails.tellUsAboutYou.fullname}} </span>
-            <br>Page 3 of 6
-        </div>--}}
-    </div>
-    <!-- !Page 3 -->
 
-    <!-- Page 4 -->
-    <div class="docPage" style="margin: 20px 0;">
-        <div class="docPageInner"
-             style="">
             <!--<p style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 115%">
               <span color="#0000ff"><span color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span  style="font-size: 9pt"><b><span color="#000000">«</span>CLIENT
                 FIRST NAME<span color="#000000">» «</span>CLIENT MIDDLE NAME<span color="#000000">»
                   «</span>CLIENT LAST NAME<span color="#000000">»
                 </span><span color="#000000"><span ><span  style="font-size: 13pt">&nbsp;</span></span></span></b></span></span></p>-->
-            <p  style="text-align:center;margin-bottom: 0.13in; line-height: 0.23in"><span  style="font-size: 13pt"><b>STATEMENT
+            <p  style="text-align:center;margin-bottom: 0.13in; page-break-before: always; line-height: 0.23in"><span  style="font-size: 13pt"><b>STATEMENT
       OF WITNESSES</b></span></p>
             <p style="margin-bottom: 0in; line-height: 115%">I declare that the
                 person who signed or acknowledged this document is personally known
@@ -323,7 +316,7 @@
             </p>
             <p style="margin-bottom: 0in; line-height: 115%">_______________________________________________(WITNESS
                 1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></p>
-            <p style="margin-bottom: 0in; line-height: 115%">NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <p style="margin-bottom: 0in; line-height: 115%">NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 DATE</p>
             <p style="margin-bottom: 0in; line-height: 115%">ADDRESS:</p>
             <p style="margin-bottom: 0in; line-height: 115%">CITY/STATE:</p>
@@ -335,16 +328,12 @@
             </p>
             <p style="margin-bottom: 0in; line-height: 115%">_______________________________________________(WITNESS
                 2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></p>
-            <p style="margin-bottom: 0in; line-height: 115%">NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <p style="margin-bottom: 0in; line-height: 115%">NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 DATE</p>
             <p style="margin-bottom: 0in; line-height: 115%">ADDRESS:</p>
             <p style="margin-bottom: 0in; line-height: 115%">CITY/STATE:</p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
-            </p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
-            </p>
             <p style="margin-bottom: 0in; line-height: 115%">Subscribed and sworn
                 to before me by<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
                 and
@@ -366,13 +355,7 @@
                     PUBLIC</b></p>
             <p style="margin-bottom: 0in; line-height: 115%">My <b>c</b>ommission
                 expires: _________________</p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
-            </p>
-            <p  style="text-align:center;margin-bottom: 0.09in; line-height: 115%">
-
-
-            </p>
             <p  style="text-align:center;margin-bottom: 0.09in; line-height: 115%"><i>(AT
                     LEAST ONE OF THE ABOVE WITNESSES MUST ALSO SIGN THE FOLLOWING
                     DECLARATION.)</i></p>
@@ -389,26 +372,15 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[signature
       – please print name under this line]</span></span></span></span></span></p>
-            <p style="margin-left: 2.25in; margin-bottom: 0in; line-height: 115%">
 
-
-            </p>
-            <p style="margin-left: 2.25in; margin-bottom: 0in; line-height: 115%">
-
-
-            </p>
         </div>
-   {{--     <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Durable Power of Attorney for Health Care of {{userDetails.tellUsAboutYou.fullname}} </span>
-            <br>Page 4 of 6
-        </div>--}}
+
     </div>
     <!-- !Page 4 -->
 
     <!-- Page 5 -->
-    <div class="docPage" style="margin: 20px 0; ">
-        <div class="docPageInner"
-             style="">
+    <div>
+        <div>
 
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">_________________________________________</span></span></span></span></span></p>
@@ -418,7 +390,7 @@
             <p  style="text-align:center;margin-bottom: 0in; line-height: 115%">
 
             </p>
-            <p  style="text-align:center;margin-bottom: 0in; line-height: 115%"><span  style="font-size: 13pt"><b><span  style="font-size: 17pt">D</span>ISTRICT
+            <p  style="text-align:center;margin-bottom: 0in; page-break-before: always; line-height: 115%"><span  style="font-size: 13pt"><b><span  style="font-size: 17pt">D</span>ISTRICT
       OF <span  style="font-size: 17pt">C</span>OLUMBIA <span  style="font-size: 17pt">D</span>ECLARATION</b></span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
@@ -504,23 +476,18 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="text-transform: capitalize" >{{$tellUsAboutYou['zip']}}</span>
             </p>
-            <p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 115%">
+            <p style="margin-left: 0in; margin-bottom: 0in; line-height: 115%">
                 <span style="text-transform: capitalize" >{{$tellUsAboutYou['phone']}}</span>
             </p>
         </div>
-      {{--  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Durable Power of Attorney for Health Care of {{userDetails.tellUsAboutYou.fullname}} </span>
-            <br>Page 5 of 6
-        </div>--}}
     </div>
     <!-- !Page 5 -->
 
     <!-- Page 6 -->
-    <div class="docPage" style="margin: 20px 0;">
-        <div class="docPageInner"
-             style="">
+    <div>
+        <div>
 
-            <p style="margin-bottom: 0in; line-height: 115%">I believe the
+            <p style="margin-bottom: 0in; page-break-before: always; line-height: 115%">I believe the
                 declarant to be of sound mind. I did not sign the declarant’s
                 signature above for or at the direction of the declarant. I am at
                 least eighteen years of age and am not related to the declarant by
@@ -565,10 +532,6 @@
 
             </p>
         </div>
-        {{--<div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Durable Power of Attorney for Health Care of {{userDetails.tellUsAboutYou.fullname}} </span>
-            <br>Page 6 of 6
-        </div>--}}
     </div>
     <!-- !Page 6 -->
 
