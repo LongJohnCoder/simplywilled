@@ -4,51 +4,7 @@
     <meta charset="utf-8">
     <title>Untitled Document</title>
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        body{
-            margin: 0;
-            padding: 0;
-            font-family: Garamond;
-        }
-        /* width */
-        ::-webkit-scrollbar {
-            width: 14px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #0f69bb;
-
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #99cc33;
-            border-radius: 5px;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #57ab2a;
-        }
-
-        .docContainer{
-            width: 700px;
-            margin: 0 auto;
-        }
-        .docPage{
-            width: 700px !important;
-            height: 991px!important;
-            background: #fff;
-            box-shadow: 0 0 7px rgba(0,0,0,0.3);
-            margin: 20px 0;
-            box-sizing: border-box;
-            padding: 40px;
-        }
-
+        
 
 
 
@@ -58,14 +14,14 @@
 <body>
 
 <div class="docContainer" id="doc">
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="page-break-after: always;">
         <div id="doc" class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="">
             <p  style="text-align:center;margin-bottom: 0in; line-height: 0.28in; page-break-before: auto; page-break-after: auto">
       <span  style="font-size: 17pt"><b>IOWA DURABLE POWER OF
         ATTORNEY </b></span>
             </p>
-            <p  style="text-align:center;margin-bottom: 0in; line-height: 115%"><span  style="font-size: 17pt"><b>FOR
+            <p  style="text-align:center;margin-bottom: 0in; "><span  style="font-size: 17pt"><b>FOR
       HEALTH CARE DECISIONS<span  style="font-size: 13pt"> </span></b></span>
             </p>
             <p  style="text-align:center;margin-bottom: 0in; line-height: 0.23in"><span  style="font-size: 13pt"><b>(Medical
@@ -74,17 +30,17 @@
             <p  style="text-align:center;margin-bottom: 0in; line-height: 0.28in"><span  style="font-size: 17pt"><b>DECLARATION
       RELATING TO </b></span>
             </p>
-            <p  style="text-align:center;margin-bottom: 0in; line-height: 115%"><span  style="font-size: 17pt"><b>LIFE-SUSTAINING
+            <p  style="text-align:center;margin-bottom: 0in; "><span  style="font-size: 17pt"><b>LIFE-SUSTAINING
       PROCEDURES<span  style="font-size: 13pt"> </span></b></span>
             </p>
             <p  style="text-align:center;margin-bottom: 0in; line-height: 0.23in"><span  style="font-size: 13pt"><b>(Living
       Will) </b></span>
             </p>
-            <p  style="text-align:center;margin-bottom: 0.13in; line-height: 115%">
+            <p  style="text-align:center;margin-bottom: 0.13in; ">
 
 
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I,
       @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
           <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
@@ -173,11 +129,11 @@
         am unable, in the judgment of my attending physician, to make those
         health care decisions. The attorney in fact must act consistently
         with my desires as stated in this document or otherwise made known.</span></span></span></span></span></p>
-            <p style="margin-bottom: 0.13in; line-height: 115%">
+            <p style="margin-bottom: 0.13in; ">
 
 
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">If
       said agent is unable, unwilling or unavailable to act, or if I revoke
       this appointment or authority to act, then I designate my
@@ -239,16 +195,16 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Except
       as otherwise specified in this document, this document gives my agent
       the power, where otherwise consistent with the law of this state, to
       consent to my physician not giving health care or stopping health
       care which is necessary to keep me alive.</span></span></span></span></span></p>
-            <p  style="text-align:center;margin-bottom: 0in; line-height: 115%">
+            <p  style="text-align:center;margin-bottom: 0in; ">
 
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">This
       document gives my agent the power to make health care decisions on my
       behalf, including to consent, to refuse to consent, or to withdraw
@@ -259,17 +215,17 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">My
       agent has the right to examine my medical records and to consent to
       the disclosure of such records, for all purposes under federal or
       state law related to privacy of medical records, including the Health
       Insurance Portability and Accountability Act of 1996. </span></span></span></span></span>
             </p>
-            <p  style="text-align:center;margin-bottom: 0in; line-height: 115%">
+            <p  style="text-align:center;margin-bottom: 0in; ">
 
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000"><b>AUTHORIZATION
       TO RELEASE INFORMATION:</b> I authorize any physician, health care
       professional, dentist, health plan, hospital, clinic, laboratory,
@@ -290,7 +246,7 @@
                Page 1 of 12
              </div>-->
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+       <!--  @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Power of Attorney for Health Care Decisions and Living Will of {{$tellUsAboutYou['fullname']}}<br>
                 Page 1 of 7
@@ -300,48 +256,48 @@
                 Durable Power of Attorney for Health Care Decisions and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 1 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 1 -->
 
     <!-- Page 2 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="page-break-after: always;">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="">
 
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">___
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
+      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">_______
       sexually transmitted diseases, acquired immunodeficiency syndrome
       (AIDS), and human immunodeficiency virus (HIV);</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">___
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
+      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">_______
       behavioral and mental health; </span></span></span></span></span>
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">___
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
+      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">_______
       alcohol, drug and other substance abuse; and</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">___
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
+      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">_______
       genetic-related information); </span></span></span></span></span>
             </p>
-            <p  style="text-align:left;margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 115%">
+            <p  style="text-align:left;margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; ">
 
 
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">_________________________________
       Date</span></span></span></span></span></p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
+            <p  style="text-align:left;margin-bottom: 0in; ">
 
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">__________________________
       Signature of Principal </span></span></span></span></span>
             </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
+            <p  style="text-align:left;margin-bottom: 0in; ">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%">relating to my
+            <p style="margin-bottom: 0in; ">relating to my
                 ability to make health care decisions. The purpose of this request is
                 to assist in determining whether the person designated to act as my
                 agent should act as my agent. This authorization expires when I die
@@ -361,31 +317,31 @@
                 by the recipient and is no longer protected by the Health Insurance
                 Portability and Accountability Act of 1996 and regulations
                 promulgated pursuant thereto, as amended from time to time.</p>
-            <p style="margin-bottom: 0in; line-height: 115%">
+            <p style="margin-bottom: 0in; ">
 
             </p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000"><b>ADDITIONAL
       INSTRUCTIONS:  </b>I direct that my agent comply with the following
       additional instructions and/or limitations (optional):</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">________________________________________________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">________________________________________________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">________________________________________________________________________</span></span></span></span></span></p>
-            <p  style="text-align:center;margin-bottom: 0in; line-height: 115%"><span  style="font-size: 9pt">(add
+            <p  style="text-align:center;margin-bottom: 0in; "><span  style="">(add
       additional sheets if necessary)</span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%"><b>REVOCATION OF
+            <p style="margin-bottom: 0in; "><b>REVOCATION OF
                     PRIOR POWERS: </b>I hereby revoke any prior durable power of attorney
                 for health care.</p>
-            <p  style="text-align:center;margin-bottom: 0in; line-height: 115%">
+            <p  style="text-align:center;margin-bottom: 0in; ">
 
             </p>
             <!--<div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
@@ -393,7 +349,7 @@
               Page 1 of 12
             </div>-->
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Power of Attorney for Health Care Decisions and Living Will of {{$tellUsAboutYou['fullname']}}<br>
                 Page 2 of 7
@@ -403,24 +359,24 @@
                 Durable Power of Attorney for Health Care Decisions and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 2 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 2 -->
 
     <!-- Page 3 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="page-break-after: always;">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="">
 
-            <p style="margin-bottom: 0in; line-height: 115%"><b>EFFECT OF COPY:
+            <p style="margin-bottom: 0in; "><b>EFFECT OF COPY:
                 </b>Persons dealing with my agent may rely fully on a photocopy of
                 this document as though the photocopy was an original.</p>
-            <p  style="text-align:center;margin-bottom: 0in; line-height: 115%"><b>SIGNATURE
+            <p  style="text-align:center;margin-bottom: 0in; "><b>SIGNATURE
                     AND ACKNOWLEDGEMENT</b></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%">IMPORTANT NOTE: THIS
+            <p style="margin-bottom: 0in; ">IMPORTANT NOTE: THIS
                 DOCUMENT MUST BE SIGNED BEFORE A NOTARY PUBLIC OR TWO WITNESSES. IF
                 YOU HAVE QUESTIONS REGARDING THIS FORM OR NEED ASSISTANCE TO COMPLETE
                 IT, YOU SHOULD CONSULT AN ATTORNEY.</p>
@@ -430,7 +386,7 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
       <span style="display: inline-block; border: none; padding: 0in">
         <span style="font-family:Times New Roman, serif">
           <span  style="font-size: 12pt">
@@ -454,8 +410,8 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%">_______________________________________</p>
-            <p style="margin-bottom: 0.08in; line-height: 115%">
+            <p style="margin-bottom: 0in; ">_______________________________________</p>
+            <p style="margin-bottom: 0.08in; ">
       <span color="#0000ff">
         @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
               <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
@@ -464,7 +420,7 @@
           @endif
       </span>
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%">
+            <p style="margin-bottom: 0in; ">
                 @if(isset($tellUsAboutYou) && array_key_exists('address',$tellUsAboutYou) && !is_null($tellUsAboutYou['address']))
                     <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}}</span>
                 @else
@@ -474,7 +430,7 @@
                 @endif
                 <span>,</span>
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%">
+            <p style="margin-bottom: 0in; ">
                 @if(isset($tellUsAboutYou) && array_key_exists('city',$tellUsAboutYou) && !is_null($tellUsAboutYou['city']))
                     <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
                 @else
@@ -501,7 +457,7 @@
                     <span style="text-transform: capitalize">(phone)_____________</span>
                 @endif
             </p>
-            <p style="margin-left: 2.44in; margin-bottom: 0.06in; line-height: 115%">
+            <p style="margin-left: 2.44in; margin-bottom: 0.06in; ">
 
 
 
@@ -512,43 +468,43 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%">STATE OF
+            <p style="margin-bottom: 0in; ">STATE OF
                 IOWA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="background: #ffffff"><span color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt">)
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
+      <span style="display: inline-block; border: none; padding: 0in"><span style="background: #ffffff"><span color="#000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt; display: inline-block; padding-left: 100px;">)
       ss.&nbsp;</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; line-height: 115%">COUNTY OF
+            <p style="margin-bottom: 0in; ">COUNTY OF
                 ________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Signed
       and sworn to before me by
               @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
                   <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
               @else
                   <b>________________________________</b>
-              @endif, the principal, this _____ day of </span></span></span></span></span>
+              @endif, the principal, this ________ day of </span></span></span></span></span>
             </p>
-            <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span style="text-decoration: none">,
-      </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span style="text-decoration: none">.</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0in; ">______________________<span style="text-decoration: none">,
+      </span>_________________________<span style="text-decoration: none">.</span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">______________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">NOTARY
       PUBLIC</span></span></span></span></span></p>
-            <p  style="text-align:center;margin-bottom: 0.13in; line-height: 115%">
+            <p  style="text-align:center;margin-bottom: 0.13in; ">
 
 
             </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
+            <p  style="text-align:left;margin-bottom: 0in; ">
 
             </p>
             <!--  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
@@ -556,7 +512,7 @@
                 Page 1 of 12
               </div>-->
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Power of Attorney for Health Care Decisions and Living Will of {{$tellUsAboutYou['fullname']}}<br>
                 Page 3 of 7
@@ -566,22 +522,22 @@
                 Durable Power of Attorney for Health Care Decisions and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 3 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 3 -->
 
 
     <!-- Page 4 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="page-break-after: always;">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="">
 
-            <p  style="text-align:center;margin-bottom: 0.13in; line-height: 115%; page-break-before: always">
+            <p  style="text-align:center;margin-bottom: 0.13in;  ">
                 <b>STATEMENT OF WITNESSES</b></p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
+            <p  style="text-align:left;margin-bottom: 0in; ">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%">We, the undersigned,
+            <p style="margin-bottom: 0in; ">We, the undersigned,
                 hereby state that we signed this document in the presence of each
                 other and the Declarant/Principal and we witnessed the signing of the
                 document by the Declarant/Principal or by another person acting on
@@ -593,84 +549,72 @@
                 years of age, and that at least one of us is not related to the
                 Declarant/Principal by blood, marriage or adoption.</p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
-
+<br>
             </p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
+<br>
+            </p>
+            <p align="left" style="margin-bottom: 0in; line-height: 115%;">
+            <span  ><b>WITNESS 1: </b>__________________________</span><span style="text-decoration: none; padding-left: 20px;">Dated: __________________________</span>
+              </p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[signature]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              __________________________<span style="text-decoration: none; padding-left: 70px;">__________________________</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[name printed]<span style="padding-left: 200px; display: inline-block;"></span>[street address]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              <span style="text-decoration: none"></span>__________________________</p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+                <span  style="font-size: 11pt">[city,
+              state, zip]</span></p>
+            <p  style="margin-left: 0.38in; margin-bottom: 0.09in; ">
+
+<br><br>
 
             </p>
-            <p  style="text-align:left;margin-left: 0.38in; margin-bottom: 0.09in; line-height: 115%">
-                <b>WITNESS 1: _______________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dated:
-                    ___________________</b></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[signature]</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[name
-      printed]</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[street
-      address]</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[city,
-      state]</span></span></span></span></span></p>
-            <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 115%">
-
-
-
+            <p align="left" style="margin-bottom: 0in; line-height: 115%;">
+            <span  ><b>WITNESS 2: </b>__________________________</span><span style="text-decoration: none; padding-left: 20px;">Dated: __________________________</span>
+              </p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[signature]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              __________________________<span style="text-decoration: none; padding-left: 70px;">__________________________</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[name printed]<span style="padding-left: 200px; display: inline-block;"></span>[street address]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              <span style="text-decoration: none"></span>__________________________</p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+                <span  style="font-size: 11pt">[city,
+              state, zip]</span></p>
+            <p  style="text-align:left;margin-bottom: 0in; ">
+<br>
             </p>
-            <p  style="text-align:left;margin-left: 0.38in; margin-bottom: 0.09in; line-height: 115%">
-                <b>WITNESS 2: _______________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dated:
-                    ___________________</b></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[signature]</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[name
-      printed]</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[street
-      address]</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[city,
-      state]</span></span></span></span></span></p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
-
+            <p  style="text-align:left;margin-bottom: 0in; ">
+<br>
             </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
-
-            </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I
       further declare that I am not a relative of the principal by blood,
       marriage or adoption (within the third degree of consanguinity).</span></span></span></span></span></p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
+            <p  style="text-align:left;margin-bottom: 0in; ">
 
             </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
+            <p  style="text-align:left;margin-bottom: 0in; ">
 
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p  style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%">
+            <p  style="text-indent: 0.5in; margin-bottom: 0in; ">
                 <i>(first or second witness’ signature)</i></p>
-            <p  style="text-align:center;margin-bottom: 0in; line-height: 115%">
+            <p  style="text-align:center;margin-bottom: 0in; ">
 
             </p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 0.28in">
 
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Power of Attorney for Health Care Decisions and Living Will of {{$tellUsAboutYou['fullname']}}<br>
                 Page 4 of 7
@@ -680,16 +624,16 @@
                 Durable Power of Attorney for Health Care Decisions and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 4 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 4 -->
 
     <!-- Page 5 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="page-break-after: always;">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="">
 
-            <p  style="text-align:center;margin-bottom: 0in; line-height: 0.28in; page-break-before: always">
+            <p  style="text-align:center;margin-bottom: 0in; line-height: 0.28in; ">
                 <span  style="font-size: 17pt"><b>IOWA DECLARATION</b></span></p>
             <p  style="text-align:center;margin-bottom: 0in; line-height: 0.28in"><span  style="font-size: 17pt"><b>(Living
       Will)</b></span></p>
@@ -699,7 +643,7 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%">If I should have an
+            <p style="margin-bottom: 0in; ">If I should have an
                 incurable or irreversible condition that will result either in death
                 within a relatively short period of time or a state of permanent
                 unconsciousness from which, to a reasonable degree of medical
@@ -714,21 +658,21 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Additional
       Provisions:</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">________________________________________________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">________________________________________________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">________________________________________________________________________</span></span></span></span></span></p>
-            <p style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 115%">
+            <p style="margin-left: 0.38in; margin-bottom: 0.06in; ">
 
 
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%">YES__ NO__ (Mark the
+            <p style="margin-bottom: 0in; ">YES__ NO__ (Mark the
                 ONE that applies).  In the event that medical professionals determine
                 that I may be an organ donor, I agree to the use of life-sustaining
                 procedures, including a ventilator, for the sole purpose and time
@@ -753,8 +697,8 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></p>
-            <p style="margin-bottom: 0.08in; line-height: 115%">
+            <p style="text-indent: 0.5in; margin-bottom: 0in; "><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></p>
+            <p style="margin-bottom: 0.08in; ">
                 @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
                     <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
                 @else
@@ -767,16 +711,16 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span  style="font-size: 9pt">STATE
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span  style="">STATE
       OF IOWA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span></p>
-            <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="font-size: 9pt">)
+            <p style="text-indent: 0.5in; margin-bottom: 0in; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style=" display: inline-block; padding-left: 100px;">)
       ss.&nbsp;</span></p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span  style="font-size: 9pt">COUNTY
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span  style="">COUNTY
       OF ________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0.08in; line-height: 115%"><span  style="font-size: 9pt">Signed
+            <p style="margin-bottom: 0.08in; "><span  style="">Signed
       and sworn to before me by
         @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
@@ -788,11 +732,11 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"><span  style="font-size: 9pt">______________________________________</span></p>
-            <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"><span  style="font-size: 9pt">NOTARY
+            <p style="text-indent: 0.5in; margin-bottom: 0in; "><span  style="">______________________________________</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0in; "><span  style="">NOTARY
       PUBLIC</span></p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Power of Attorney for Health Care Decisions and Living Will of {{$tellUsAboutYou['fullname']}}<br>
                 Page 5 of 7
@@ -802,18 +746,18 @@
                 Durable Power of Attorney for Health Care Decisions and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 5 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 5 -->
 
     <!-- Page 6 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="page-break-after: always;">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="">
 
-            <p  style="text-align:center;margin-bottom: 0.13in; line-height: 115%"><b>STATEMENT
+            <p  style="text-align:center;margin-bottom: 0.13in; "><b>STATEMENT
                     OF WITNESSES</b></p>
-            <p style="margin-bottom: 0in; line-height: 115%">We, the undersigned,
+            <p style="margin-bottom: 0in; ">We, the undersigned,
                 hereby state that we signed this document in the presence of each
                 other and the Declarant/Principal and we witnessed the signing of the
                 document by the Declarant/Principal or by another person acting on
@@ -833,84 +777,72 @@
 
             </p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
+<br>
+            </p>
+            <p align="left" style="margin-bottom: 0in; line-height: 115%;">
+            <span  ><b>WITNESS 1: </b>__________________________</span><span style="text-decoration: none; padding-left: 20px;">Dated: __________________________</span>
+              </p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[signature]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              __________________________<span style="text-decoration: none; padding-left: 70px;">__________________________</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[name printed]<span style="padding-left: 200px; display: inline-block;"></span>[street address]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              <span style="text-decoration: none"></span>__________________________</p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+                <span  style="font-size: 11pt">[city,
+              state, zip]</span></p>
+            <p  style="text-align:left;margin-left: 0.38in; margin-bottom: 0.09in; ">
+
+<br><br>
 
             </p>
-            <p  style="text-align:left;margin-left: 0.38in; margin-bottom: 0.09in; line-height: 115%">
-                <b>WITNESS 1: _______________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dated:
-                    ___________________</b></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[signature]</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[name
-      printed]</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[street
-      address]</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[city,
-      state]</span></span></span></span></span></p>
-            <p  style="text-align:left;margin-left: 0.38in; margin-bottom: 0.09in; line-height: 115%">
-
-
+            <p align="left" style="margin-bottom: 0in; line-height: 115%;">
+            <span  ><b>WITNESS 1: </b>__________________________</span><span style="text-decoration: none; padding-left: 20px;">Dated: __________________________</span>
+              </p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[signature]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              __________________________<span style="text-decoration: none; padding-left: 70px;">__________________________</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[name printed]<span style="padding-left: 200px; display: inline-block;"></span>[street address]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              <span style="text-decoration: none"></span>__________________________</p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+                <span  style="font-size: 11pt">[city,
+              state, zip]</span></p>
+            <p  style="text-align:left;margin-bottom: 0in; ">
+<br>
+            </p>
+            <p  style="text-align:left;margin-bottom: 0in; ">
 
             </p>
-            <p  style="text-align:left;margin-left: 0.38in; margin-bottom: 0.09in; line-height: 115%">
-                <b>WITNESS 2: _______________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dated:
-                    ___________________</b></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[signature]</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[name
-      printed]</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[street
-      address]</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[city,
-      state]</span></span></span></span></span></p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
+            <p  style="text-align:left;margin-bottom: 0in; ">
 
             </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
-
-            </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
-
-            </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I
       further declare that I am not a relative of the declarant by blood,
       marriage or adoption (within the third degree of consanguinity).</span></span></span></span></span></p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
+            <p  style="text-align:left;margin-bottom: 0in; ">
 
             </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
+            <p  style="text-align:left;margin-bottom: 0in; ">
 
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; ">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">____________________________________</span></span></span></span></span></p>
-            <p  style="text-align:left;text-indent: 0.5in; margin-bottom: 0in; line-height: 115%">
+            <p  style="text-align:left;text-indent: 0.5in; margin-bottom: 0in; ">
                 <i>(first or second witness’ signature)</i></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
+            <p  style="text-align:left;margin-bottom: 0in; ">
 
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Power of Attorney for Health Care Decisions and Living Will of {{$tellUsAboutYou['fullname']}}<br>
                 Page 6 of 7
@@ -920,22 +852,22 @@
                 Durable Power of Attorney for Health Care Decisions and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 6 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 6 -->
 
     <!-- Page 7 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="">
 
 
-            <p  style="text-align:center;margin-bottom: 0in; line-height: 115%; page-break-before: always">
+            <p  style="text-align:center;margin-bottom: 0in;  ">
                 <b>GENERAL INFORMATION REGARDING THIS DOCUMENT</b></p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
+            <p  style="text-align:left;margin-bottom: 0in; ">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%">1. &quot;Health
+            <p style="margin-bottom: 0in; ">1. &quot;Health
                 care&quot; means any care, treatment, service, or procedure to
                 maintain, diagnose, or treat an individual's physical or mental
                 condition. &quot;Life-sustaining procedure&quot; means any medical
@@ -950,7 +882,7 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%">2. The terms &quot;health
+            <p style="margin-bottom: 0in; ">2. The terms &quot;health
                 care&quot; and &quot;life-sustaining procedure&quot; include
                 nutrition and hydration (food and water) only when provided
                 parenterally or through intubation (intravenously or by feeding
@@ -962,7 +894,7 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%">3. The following
+            <p style="margin-bottom: 0in; ">3. The following
                 individuals shall not be designated as the attorney in fact to make
                 health care decisions under a durable power of attorney for health
                 care:
@@ -970,11 +902,11 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"><span  style="font-size: 9pt">a.
+            <p style="text-indent: 0.5in; margin-bottom: 0in; "><span  style="">a.
       A health care provider attending the principal on the date of
       execution. </span>
             </p>
-            <p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 115%"><span  style="font-size: 9pt">b.
+            <p style="margin-left: 0.5in; margin-bottom: 0in; "><span  style="">b.
       An employee of such a health care provider unless the individual to
       be designated is related to the principal by blood, marriage, or
       adoption within the third degree of consanguinity. </span>
@@ -982,7 +914,7 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%">4. The power of
+            <p style="margin-bottom: 0in; ">4. The power of
                 attorney for health care decisions or the declaration relating to use
                 of life-sustaining procedures may be revoked at any time and in any
                 manner by which the principal/declarant is able to communicate the
@@ -995,14 +927,14 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%">5. It is the
+            <p style="margin-bottom: 0in; ">5. It is the
                 responsibility of the principal/declarant to provide the attending
                 health care provider with a copy of this document.
             </p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%">6. A declaration
+            <p style="margin-bottom: 0in; ">6. A declaration
                 relating to use of life-sustaining procedures will be given effect
                 only when the declarant's condition is determined to be terminal or
                 the declarant is in a state of permanent unconsciousness, and the
@@ -1020,21 +952,21 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 115%"><span  style="font-size: 9pt">1.
+            <p style="margin-left: 0.5in; margin-bottom: 0in; "><span  style="">1.
       Place original in a safe place known and accessible to family members
       or close friends. </span>
             </p>
-            <p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 115%"><span  style="font-size: 9pt">2.
+            <p style="margin-left: 0.5in; margin-bottom: 0in; "><span  style="">2.
       Provide a copy to your doctor. </span>
             </p>
-            <p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 115%"><span  style="font-size: 9pt">3.
+            <p style="margin-left: 0.5in; margin-bottom: 0in; "><span  style="">3.
       Provide a copy(s) to family member(s). </span>
             </p>
-            <p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 115%"><span  style="font-size: 9pt">4.
+            <p style="margin-left: 0.5in; margin-bottom: 0in; "><span  style="">4.
       Provide a copy to the designated attorney in fact (agent) and to
       alternate designated attorneys in fact (if any).</span></p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Power of Attorney for Health Care Decisions and Living Will of {{$tellUsAboutYou['fullname']}}<br>
                 Page 7 of 7
@@ -1044,7 +976,7 @@
                 Durable Power of Attorney for Health Care Decisions and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 7 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 7 -->
 </div>

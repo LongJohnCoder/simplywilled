@@ -3,56 +3,6 @@
 <head>
     <meta charset="utf-8">
     <title>Untitled Document</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        body{
-            margin: 0;
-            padding: 0;
-            font-family: Garamond;
-        }
-        /* width */
-        ::-webkit-scrollbar {
-            width: 14px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #0f69bb;
-
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #99cc33;
-            border-radius: 5px;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #57ab2a;
-        }
-
-        .docContainer{
-            width: 700px;
-            margin: 0 auto;
-        }
-        .docPage{
-            width: 700px !important;
-            height: 991px!important;
-            background: #fff;
-            box-shadow: 0 0 7px rgba(0,0,0,0.3);
-            margin: 20px 0;
-            box-sizing: border-box;
-            padding: 40px;
-        }
-
-
-
-
-    </style>
 </head>
 
 <body>
@@ -491,21 +441,21 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%">
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%"><span  style="font-size: 9pt">STATE
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%"><span  style="">STATE
       OF Kansas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span></p>
             <p  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0in; line-height: 115%">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="font-size: 9pt">)
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="display: inline-block; padding-left: 50px;">)
       ss.&nbsp;</span></p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%"><span  style="font-size: 9pt">COUNTY
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%"><span  style="">COUNTY
       OF ________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%">
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%"><span  style="font-size: 9pt">This
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%"><span  style="">This
       instrument was acknowledged before me on this _____ day of
       ________________, </span>
             </p>
-            <p  style="text-align:justify;margin-bottom: 0.08in; line-height: 115%"><span color="#0000ff"><span  style="font-size: 9pt"><span >________________,
+            <p  style="text-align:justify;margin-bottom: 0.08in; line-height: 115%"><span color="#0000ff"><span  style=""><span >________________,
       by
             @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
                 <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
@@ -516,13 +466,13 @@
 
             </p>
             <p  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0in; line-height: 115%">
-                <span  style="font-size: 9pt">______________________________________</span></p>
+                <span  style="">______________________________________</span></p>
             <p  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0in; line-height: 115%">
-                <span  style="font-size: 9pt">NOTARY PUBLIC</span></p>
+                <span  style="">NOTARY PUBLIC</span></p>
             <p  style="margin-bottom: 0in; line-height: 115%">
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%"><span  style="font-size: 9pt">My
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%"><span  style="">My
       appointment expires:  _________________</span></p>
             <p style="margin-bottom: 0in; line-height: 115%">
 
@@ -723,21 +673,21 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%">
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%"><span  style="font-size: 9pt">STATE
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%"><span  style="">STATE
       OF Kansas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span></p>
             <p  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0in; line-height: 115%">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="font-size: 9pt">)
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="display: inline-block; padding-left: 50px;">)
       ss.&nbsp;</span></p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%"><span  style="font-size: 9pt">COUNTY
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%"><span  style="">COUNTY
       OF ________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%">
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%"><span  style="font-size: 9pt">This
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%"><span  style="">This
       instrument was acknowledged before me on this _____ day of
       ________________, </span>
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%"><span color="#0000ff"><span  style="font-size: 9pt"><span >________________,
+            <p style="margin-bottom: 0in; line-height: 115%"><span color="#0000ff"><span  style=""><span >________________,
       by </span>
         @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
@@ -749,13 +699,13 @@
 
             </p>
             <p  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0in; line-height: 115%">
-                <span  style="font-size: 9pt">______________________________________</span></p>
+                <span  style="">______________________________________</span></p>
             <p  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0in; line-height: 115%">
-                <span  style="font-size: 9pt">NOTARY PUBLIC</span></p>
+                <span  style="">NOTARY PUBLIC</span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%">
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%"><span  style="font-size: 9pt">My
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%"><span  style="">My
       appointment expires:  _________________
       &nbsp;</span></p>
         </div>
