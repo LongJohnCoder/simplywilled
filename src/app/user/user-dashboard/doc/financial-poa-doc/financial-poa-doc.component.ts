@@ -26,10 +26,7 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   userDetails = {
     firstname: ''
   };
-  docThumbImg: Array<any> = [
-    '../../../../../assets/images/doc1-thumb1.png',
-    '../../../../../assets/images/doc1-thumb2.png'
-  ];
+  docThumbImg: Array<any>;
   liCount: number;
   progressBar = {
     finalArrangements: false,
@@ -53,10 +50,7 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     uni: false
   };
 
-  thNail = {
-    nu: 15,
-    uni: 15
-  };
+  thNail = {};
 
   thKey: string;
 
@@ -115,30 +109,24 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     const st = this.pdfData.state;
     let limit = 0;
     if (st['type'] !== undefined) {
-
+      this.thNail[this.thKey] = this.heightArr !== undefined ? this.heightArr.length : 2;
       if ( st['type'] === 'none') {
         // tslint:disable-next-line:no-shadowed-variable
         const abr = this.pdfData.state.abr;
         this.thKey = abr.toLowerCase();
         if (this.states[this.thKey] !== undefined) {
           this.states[this.thKey] = true;
-          limit = this.thNail[this.thKey] === undefined ? 2 : this.thNail[this.thKey];
-          // console.log('limit 1 : ', limit);
         }
       } else if (st['type'] === 'uniform') {
         this.thKey = 'uni';
         this.states[this.thKey] = true;
-        limit = this.thNail[this.thKey] === undefined ? 2 : this.thNail[this.thKey];
-        // console.log('limit 2 : ', limit);
       } else if (st['type'] === 'non-uniform') {
         this.thKey = 'nu';
         this.states[this.thKey] = true;
-        limit = this.thNail[this.thKey] === undefined ? 2 : this.thNail[this.thKey];
-        // console.log('limit 3 : ', limit);
       }
-
+      limit = this.thNail[this.thKey];
       const abr = st.abr;
-      // console.log('abr : ', abr);
+      console.log('limit : ', limit, 'height Arr : ', this.heightArr);
       if (limit !== undefined) {
           this.docThumbImg = [];
           for (let key = 0 ; key < limit ; key++) {
