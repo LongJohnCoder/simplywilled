@@ -1,12 +1,12 @@
 import { saveAs } from 'file-saver/FileSaver';
 import { Router } from '@angular/router';
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {GlobalPdfService} from '../services/global-pdf.service';
-import {Subscription} from 'rxjs/Subscription';
-import {UserService} from '../../../user.service';
-import {ProgressbarService} from '../../shared/services/progressbar.service';
-import {UserAuthService} from '../../../user-auth/user-auth.service';
-import {Location} from '@angular/common';
+import { Component, OnDestroy, OnInit, ViewChild, DoCheck } from '@angular/core';
+import { GlobalPdfService } from '../services/global-pdf.service';
+import { Subscription } from 'rxjs/Subscription';
+import { UserService } from '../../../user.service';
+import { ProgressbarService } from '../../shared/services/progressbar.service';
+import { UserAuthService } from '../../../user-auth/user-auth.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-healthcare-poa-doc',
@@ -28,10 +28,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   userDetails = {
     firstname: ''
   };
-  docThumbImg: Array<any> = [
-    '../../../../../assets/images/doc1-thumb1.png',
-    '../../../../../assets/images/doc1-thumb2.png'
-  ];
+  docThumbImg: Array<any> = [];
   liCount: number;
   progressBar = {
     finalArrangements: false,
@@ -49,6 +46,8 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
 
   totalY: number;
   totalX: number;
+  totalPagesSubscription: Subscription;
+  heightArr: Array<number>;
 
   states = {
     ak: false,
@@ -104,25 +103,59 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     de: false
   };
 
+  thKey: string;
   thNail = {
-    or: 9,
-    mo: 6,
-    nc: 14,
-    sd: 7,
-    az: 19,
-    in: 6,
-    ks: 6,
-    ma: 8,
-    dc: 6,
-    wy: 7,
-    wi: 10,
-    wv: 5,
-    wa: 7,
-    va: 7,
-    vt: 8,
-    ut: 7,
-    tx: 11,
-    tn: 4
+    ak: 4,
+    al: 4,
+    ar: 4,
+    ca: 4,
+    co: 4,
+    ct: 4,
+    dc: 4,
+    fl: 4,
+    ia: 4,
+    in: 4,
+    ks: 4,
+    ky: 4,
+    la: 4,
+    me: 4,
+    hi: 4,
+    id: 4,
+    il: 4,
+    tn: 4,
+    wy: 4,
+    wv: 4,
+    wi: 4,
+    wa: 4,
+    vt: 4,
+    va: 4,
+    ut: 4,
+    tx: 4,
+    md: 4,
+    ma: 4,
+    mi: 4,
+    mn: 4,
+    nm: 4,
+    nj: 4,
+    nh: 4,
+    ny: 4,
+    nc: 4,
+    nd: 4,
+    oh: 4,
+    ok: 4,
+    or: 4,
+    pa: 4,
+    ri: 4,
+    sc: 4,
+    sd: 4,
+    nv: 4,
+    ne: 4,
+    ms: 4,
+    mo: 4,
+    mt: 4,
+    ga: 4,
+    az: 4,
+    de: 4
   };
 
   pdfData: any;
@@ -139,33 +172,13 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   ) {
     this.loggedInUser = this.userAuth.getUser();
     this.getUserDetails();
-    let token = this.parseToken();
+    const token = this.parseToken();
     this.globalPDFSubscription = this.globalPDFService.fetchData(token).subscribe(
       (response: any) => {
         if (response.status) {
           this.pdfData = response.data;
-
-          if ( this.pdfData.state !== undefined && this.pdfData.state !== null && this.pdfData.state.abr !== null) {
-            const abr = this.pdfData.state.abr;
-            if (this.states[abr.toLowerCase()] !== undefined) {
-              this.states[abr.toLowerCase()] = true;
-              if (this.thNail[abr.toLowerCase()] !== undefined) {
-                this.docThumbImg = [];
-                for (let key = 0 ; key < this.thNail[abr.toLowerCase()] ; key++) {
-                  if (key % 2) {
-                    this.docThumbImg.push('../../../../../assets/images/doc1-thumb2.png');
-                  } else {
-                    this.docThumbImg.push('../../../../../assets/images/doc1-thumb1.png');
-                  }
-                }
-                this.liCount = this.docThumbImg.length * 114;
-                this.totalY = this.docThumbImg.length * 1011;
-                this.totalX = this.docThumbImg.length * 793;
-              }
-            }
-          } else {
-            console.log('state is here');
-            this.router.navigate(['/dashboard/documents/final-disposition']);
+          if ( this.pdfData.state !== undefined && this.pdfData.state.abr !== null) {
+            this.constructThumbnails();
           }
         }
       }
@@ -213,62 +226,47 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   }
   /**When the component initialises*/
   ngOnInit() {
-    // this.states = {
-    //   ak: false,
-    //   al: false,
-    //   ar: false,
-    //   ca: false,
-    //   co: false,
-    //   ct: false,
-    //   dc: false,
-    //   fl: false,
-    //   ia: false,
-    //   in: false,
-    //   ks: false,
-    //   ky: false,
-    //   la: false,
-    //   me: false,
-    //   hi: false,
-    //   id: false,
-    //   il: false,
-    //   tn: false,
-    //   wy: false,
-    //   wv: false,
-    //   wi: false,
-    //   wa: false,
-    //   vt: false,
-    //   va: false,
-    //   ut: false,
-    //   tx: false,
-    //   md: false,
-    //   ma: false,
-    //   mi: false,
-    //   mn: false,
-    //   nm: false,
-    //   nj: true,
-    //   nh: false,
-    //   ny: false,
-    //   nc: false,
-    //   nd: false,
-    //   oh: false,
-    //   ok: false,
-    //   or: false,
-    //   pa: false,
-    //   ri: false,
-    //   sc: false,
-    //   sd: false,
-    //   nv: false,
-    //   ne: false,
-    //   ms: false,
-    //   mo: false,
-    //   mt: false,
-    //   ga: false,
-    //   az: false,
-    //   de: false
-    // };
+    console.log('ng on init  called');
     this.docScrolled = 0;
-    this.thumbIndex = 0;
-    this.liCount = this.docThumbImg.length * 114;
+    this.thumbIndex = 1;
+    // this.liCount = this.docThumbImg.length * 114;
+    this.initialize();
+  }
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngDoCheck() {
+    // this.initialize();
+  }
+
+  initialize() {
+    this.totalPagesSubscription = this.globalPDFService.totalHcpoaPages.subscribe(
+      (resp) => {
+        // tslint:disable-next-line:max-line-length
+        if (resp !== undefined && resp !== null && resp.pages !== undefined && resp.pages !== null && resp.heightArr !== undefined && resp.heightArr !== null) {
+          // console.log('response from subscription', resp);
+
+          if (resp.pages > 0 && resp.heightArr.length > 0) {
+            // tslint:disable-next-line:max-line-length
+            if ( ((this.heightArr !== undefined) && (resp.heightArr[resp.pages - 1] !== this.heightArr[resp.pages - 1])) || (this.heightArr === undefined) )  {
+              // setTimeout(() => {
+                this.heightArr = resp.heightArr;
+                console.log(resp.heightArr);
+                this.constructThumbnails();
+                this.liCount = this.docThumbImg.length * 114;
+              // }, 000);
+            }
+          } else {
+            console.log('incorrect response values gathered from rxjs/subscription', resp);
+          }
+        } else {
+          console.log('fault in incomming response from rxjs/subscription:', resp);
+        }
+      }, (err) => {
+        console.log('err in rxjs/subscription', err);
+      }, () => {
+        console.log('rxjs subscription listning over');
+      }
+    );
   }
 
   /**Checks for authorization user id.*/
@@ -281,9 +279,9 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
 
   /**When the component is destroyed*/
   ngOnDestroy() {
-    /*if (this.globalPDFSubscription !== undefined) {
+    if (this.globalPDFSubscription !== undefined) {
       this.globalPDFSubscription.unsubscribe();
-    }*/
+    }
     if (this.signingInstructionSubscription !== undefined) {
       this.signingInstructionSubscription.unsubscribe();
     }
@@ -292,6 +290,41 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     }
     if (this.printSubscription !== undefined) {
       this.printSubscription.unsubscribe();
+    }
+    if (this.totalPagesSubscription !== undefined) {
+      this.totalPagesSubscription.unsubscribe();
+    }
+    if (this.progressSubscription !== undefined) {
+      this.progressSubscription.unsubscribe();
+    }
+    if (this.getUserDetailsSubscription !== undefined) {
+      this.getUserDetailsSubscription.unsubscribe();
+    }
+  }
+
+  constructThumbnails() {
+    if ( this.pdfData.state !== undefined && this.pdfData.state !== null && this.pdfData.state.abr !== null) {
+      const abr = this.pdfData.state.abr;
+      this.thKey = abr.toLowerCase();
+      if (this.states[this.thKey] !== undefined) {
+        this.states[abr.toLowerCase()] = true;
+        this.thNail[this.thKey] = this.heightArr;
+        if (this.thNail[this.thKey] !== undefined) {
+          console.log('key :', this.thKey);
+          const limit = this.heightArr === undefined ? 4 : this.heightArr.length;
+          console.log(limit);
+          this.docThumbImg = [];
+          for (let key = 0 ; key < limit ; key++) {
+            this.docThumbImg.push('../../../../../assets/images/doc1-thumb2.png');
+          }
+          // this.liCount = this.docThumbImg.length * 114;
+          // this.totalY = this.docThumbImg.length * 1011;
+          // this.totalX = this.docThumbImg.length * 793;
+        }
+      }
+    } else {
+      console.log('state is here');
+      this.router.navigate(['/dashboard/documents/final-disposition']);
     }
   }
 
@@ -305,10 +338,15 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   }
 
   getScroll(scrollVal: number, e: any) {
-    this.thumbIndex = Math.floor(scrollVal / 1011);
+    if (this.heightArr === undefined || this.heightArr === null || this.heightArr.length === 0) {
+      console.log(this.heightArr);
+      return;
+    }
+    this.thumbIndex = this.globalPDFService.getAccurateScrollPosition(scrollVal, this.heightArr);
     const dx = e.target.offsetWidth + (this.docThumbImg.length * 7);
     const u = dx / this.docThumbImg.length;
-    this.thumbContainer.nativeElement.scrollLeft = u * this.thumbIndex;
+    this.thumbContainer.nativeElement.scrollLeft = u * (this.thumbIndex - 1);
+    console.log(this.thumbIndex);
   }
 
   getThumbScroll(c: any) {
@@ -352,8 +390,8 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   /**Downloads the pdf*/
   downloadPdf() {
     this.loading = true;
-    let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
-    let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+    const userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     this.loading = true;
     this.signingInstructionSubscription = this.globalPDFService.healthcarepoa(token).subscribe(
       (response: any) => {
@@ -373,13 +411,12 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   /**Downloads the pdf*/
   printPDF() {
     this.loading = true;
-    let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
-    let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+    const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+    const userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     this.printSubscription = this.globalPDFService.healthcarepoa(token).subscribe(
       (response: any) => {
         if (response.status) {
-
-          let src = this.globalPDFService.printFile(userId, 'healthCarePOA.pdf');
+          const src = this.globalPDFService.printFile(userId, 'healthCarePOA.pdf');
           const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
           if (win !== null) {
             win.document.write('<iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
@@ -392,5 +429,4 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
       }
     );
   }
-
 }

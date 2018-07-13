@@ -11,7 +11,7 @@ export class GlobalPdfService {
   ) {}
 
   public totalFcpoaPages = new Subject<any>();
-  public totalHcpoaPages = new Subject<number>();
+  public totalHcpoaPages = new Subject<any>();
   public totalLastWillPages = new Subject<number>();
 
   /**Fetch overall progress*/
@@ -87,8 +87,8 @@ export class GlobalPdfService {
    * Subscription to broadcast totalPages which is dynamic in child component healthcare-poa-doc
    * @param value
    */
-  hcpoaPages(value: number) {
-    this.totalHcpoaPages.next(value);
+  hcpoaPages(arr: any) {
+    this.totalHcpoaPages.next(arr);
   }
 
   /**

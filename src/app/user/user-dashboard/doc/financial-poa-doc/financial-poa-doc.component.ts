@@ -179,6 +179,10 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     this.docScrolled = 0;
     this.thumbIndex = 1;
     // this.liCount = this.docThumbImg.length * 114;
+    this.initialize();
+  }
+
+  initialize() {
     this.totalPagesSubscription = this.globalPDFService.totalFcpoaPages.subscribe(
       (resp) => {
         // tslint:disable-next-line:max-line-length
@@ -187,9 +191,12 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
           if ( resp.pages > 0 && resp.heightArr.length > 0) {
             this.thNail[this.thKey] = resp.pages;
             setTimeout(() => {
-              this.heightArr = resp.heightArr;
-              this.constructThumbnails();
-              this.liCount = this.docThumbImg.length * 114;
+              // tslint:disable-next-line:max-line-length
+              if ( ((this.heightArr !== undefined) && (resp.heightArr[resp.pages - 1] !== this.heightArr[resp.pages - 1])) || (this.heightArr === undefined) ) {
+                this.heightArr = resp.heightArr;
+                this.constructThumbnails();
+                this.liCount = this.docThumbImg.length * 114;
+              }
             }, 2000);
           } else {
             console.log('incorrect response values gathered from rxjs/subscription', resp);

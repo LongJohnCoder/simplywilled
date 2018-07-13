@@ -1,4 +1,5 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import { GlobalPdfService } from './../../services/global-pdf.service';
+import {Component, Input, OnChanges, OnInit, DoCheck} from '@angular/core';
 
 @Component({
   selector: 'app-al',
@@ -23,10 +24,23 @@ export class AlComponent implements OnInit, OnChanges {
     tellUsAboutYou: null
   };
   loading = true;
+  totalPages: number;
 
-  constructor() { }
+  constructor(
+    private globalService: GlobalPdfService
+  ) { }
 
   ngOnInit() {
+  }
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngDoCheck() {
+    const x = this.globalService.getDynamicPages();
+    this.totalPages = x.totalPages;
+    this.globalService.hcpoaPages({
+      'pages' : x.totalPages,
+      'heightArr' : x.heightArr
+    });
   }
 
   ngOnChanges() {
