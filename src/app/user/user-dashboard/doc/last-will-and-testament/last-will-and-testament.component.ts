@@ -163,7 +163,11 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
               console.log('custGiftArray comming null or undefined');
             }
 
-            this.deceasedChildrenNames = this.userDetails.tellUsAboutYou.deceased_children_names.split(',');
+            if (this.userDetails.tellUsAboutYou.deceased_children_names !== null ) {
+              if (this.userDetails.tellUsAboutYou.deceased_children_names.trim().length !== 0) {
+                this.deceasedChildrenNames = this.userDetails.tellUsAboutYou.deceased_children_names.split(',');
+              }
+            }
 
             for (let i = 0; i < Math.ceil(this.giftStatements.otherpages.length / 5); i++) {
               this.giftStatements.pageLength.push(i);
