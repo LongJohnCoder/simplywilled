@@ -486,11 +486,11 @@
           the witnesses, have been sworn by the officer signing below, and
           declare to that officer on our oaths that </span><span ><span style="font-family: 'Times New Roman', serif"></span></span>
           
-          <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}}</b></span>
+          <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}},</b></span>
           
 
           
-          <span style="font-family: 'Times New Roman', serif">,
+          <span style="font-family: 'Times New Roman', serif">
           the principal, signed this Designation in our presence, and that we
           each signed the instrument as a witness in the presence of the
           principal and of each other.</span><span style="font-family: 'Times New Roman', serif">&nbsp;</span></p>
@@ -542,7 +542,7 @@
           
           </p>
           <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">Acknowledged
-          and subscribed before me by <span >{{strtoupper($tellUsAboutYou['fullname'])}}</span>,
+          and subscribed before me by <span >{{strtoupper($tellUsAboutYou['fullname'])}},</span>
           the principal, who is personally known to me or who has produced
           satisfactory photo identification, to wit:
           ________________________________, and sworn to and subscribed before
@@ -593,11 +593,11 @@
           <span style="letter-spacing: 0.3pt"><span style="font-family: 'Times New Roman', serif">I,</span></span><span face="Times, serif"><span  style="font-size: 9pt"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 12pt">
           </span></span></span></span><span style="font-family: 'Times New Roman', serif"></span>
           
-          <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}}</b></span>
+          <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}},</b></span>
           
 
             
-            <span face="Times, serif"><span  style="font-size: 9pt"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 12pt">,</span></span></span></span><span style="letter-spacing: 0.3pt"><span style="font-family: 'Times New Roman', serif">
+            <span face="Times, serif"><span  style="font-size: 9pt"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 12pt"></span></span></span></span><span style="letter-spacing: 0.3pt"><span style="font-family: 'Times New Roman', serif">
           willfully </span></span><span style="letter-spacing: 0.2pt"><span style="font-family: 'Times New Roman', serif">and
           voluntarily make known my desire that my dying not be artificially</span></span><span style="letter-spacing: 0.3pt"><span style="font-family: 'Times New Roman', serif">
           prolonged under the circumstances set forth below, and I do hereby
@@ -713,9 +713,9 @@
           certify that each of us is 18 years of age or older and each
           personally witnessed </span>
           
-          <span>{{$tellUsAboutYou['fullname']}}</span>        
+          <span>{{$tellUsAboutYou['fullname']}},</span>        
           
-          <span style="font-family: 'Times New Roman', serif"></span><span style="letter-spacing: 0.1pt"><span style="font-family: 'Times New Roman', serif">,
+          <span style="font-family: 'Times New Roman', serif"></span><span style="letter-spacing: 0.1pt"><span style="font-family: 'Times New Roman', serif">
           the declarant, </span></span><span style="font-family: 'Times New Roman', serif">sign
           or direct the signing of this directive; that we are acquainted with
           the declarant and believe </span>
@@ -831,12 +831,12 @@
           <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
           <span style="font-family: 'Times New Roman', serif">I, </span><span style="font-family: 'Times New Roman', serif"></span>
           
-          <span>{{$tellUsAboutYou['fullname']}}</span>
+          <span>{{$tellUsAboutYou['fullname']}},</span>
           
           
           <span style="font-family: 'Times New Roman', serif"></span>
           
-          <span style="font-family: 'Times New Roman', serif">,
+          <span style="font-family: 'Times New Roman', serif">
           declare to the officer taking my acknowledgment of this instrument,
           and to the subscribing witnesses, that I signed and executed this
           instrument as my Living Will.</span></p>
@@ -862,10 +862,10 @@
           the witnesses, have been sworn by the officer signing below, and
           declare to that officer on our oaths that </span><span style="font-family: 'Times New Roman', serif"></span>
           
-          <span>{{$tellUsAboutYou['fullname']}}</span>
+          <span>{{$tellUsAboutYou['fullname']}},</span>
           
           
-          <span style="font-family: 'Times New Roman', serif">,</span><span style="font-family: 'Times New Roman', serif">
+          <span style="font-family: 'Times New Roman', serif"></span><span style="font-family: 'Times New Roman', serif">
           the declarant, signed this Declaration in our presence, and that we
           each signed the instrument as a witness in the presence of the
           declarant and of each other.</span><span style="font-family: 'Times New Roman', serif">&nbsp;</span></p>
@@ -933,10 +933,10 @@
           <p style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">Acknowledged
           and subscribed before me by </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"></span></span></span>
           
-          <span>{{$tellUsAboutYou['fullname']}}</span>
+          <span>{{$tellUsAboutYou['fullname']}},</span>
           
           
-          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">,
+          <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">
           the principal, who is personally known to me or who has produced
           satisfactory photo identification, to wit:
           ________________________________, and sworn to and subscribed before
