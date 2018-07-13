@@ -1,9 +1,14 @@
+.docContainer{
+    width: 700px;
+    margin: 0 auto;
+}
+
 p{
   font-family: "Times New Roman";
 }
 .docPage{
   width: 700px !important;
-  height: 991px!important;
+  height: auto !important;
   background: #fff;
   box-shadow: 0 0 7px rgba(0,0,0,0.3);
   margin: 20px 0;
@@ -13,4 +18,10 @@ p{
 .docPage li{
   list-style-type: inherit;
   margin-left: 30px;
+}
+
+.docPageInner{
+    height: auto !important;
+    min-height: 400px;
+    padding-bottom: 25px; 
 }
