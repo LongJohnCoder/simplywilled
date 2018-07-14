@@ -1,7 +1,7 @@
 import { saveAs } from 'file-saver/FileSaver';
 import { Router } from '@angular/router';
 // tslint:disable-next-line:max-line-length
-import { Component, OnDestroy, OnInit, ViewChild, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 import { GlobalPdfService } from '../services/global-pdf.service';
 import { Subscription } from 'rxjs/Subscription';
 import { UserService } from '../../../user.service';
@@ -29,7 +29,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   userDetails = {
     firstname: ''
   };
-  docThumbImg: Array<any> = [
+  docThumbImg =  [
     '../../../../../assets/images/doc1-thumb2.png',
     '../../../../../assets/images/doc1-thumb2.png',
     '../../../../../assets/images/doc1-thumb2.png',
@@ -174,8 +174,13 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     private userAuth: UserAuthService,
     private progressbarService: ProgressbarService,
     private location: Location,
-    private router: Router
+    private router: Router,
+    private ref: ChangeDetectorRef
   ) {
+    // ref.detach();
+    // setInterval(() => {
+    //   this.ref.detectChanges();
+    // }, 2000);
     this.loggedInUser = this.userAuth.getUser();
     this.getUserDetails();
     const token = this.parseToken();
@@ -271,7 +276,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     console.log('calling initialize');
     this.totalPagesSubscription = this.globalPDFService.totalHcpoaPages.subscribe(
       (resp) => {
-        console.log('resp received : ', resp);
+        // console.log('resp received : ', resp);
         // tslint:disable-next-line:max-line-length
         if (resp !== undefined && resp !== null && resp.pages !== undefined && resp.pages !== null && resp.heightArr !== undefined && resp.heightArr !== null) {
           // console.log('response from subscription', resp);
@@ -279,14 +284,14 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
           if (resp.pages > 0 && resp.heightArr.length > 0) {
             // tslint:disable-next-line:max-line-length
             if ( ((this.heightArr !== undefined) && (resp.heightArr[resp.pages - 1] !== this.heightArr[resp.pages - 1])) || (this.heightArr === undefined) )  {
-               // setTimeout(() => {
+               setTimeout(() => {
                 this.heightArr = resp.heightArr;
                 console.log('heightArr in initialize : ', this.heightArr);
 
                 // console.log('resp received :', resp);
                 this.constructThumbnails();
                 this.liCount = this.docThumbImg.length * 114;
-              // }, 2000);
+                }, 1000);
             } else {
              // console.log('in else ++here++ : ', this.heightArr, resp.heightArr, resp.pages, 'docThumbImg : ', this.docThumbImg);
             }
@@ -314,6 +319,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
 
   /**When the component is destroyed*/
   ngOnDestroy() {
+    // this.ref.detach();
     if (this.globalPDFSubscription !== undefined) {
       this.globalPDFSubscription.unsubscribe();
     }

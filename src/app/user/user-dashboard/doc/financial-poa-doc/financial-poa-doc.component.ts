@@ -26,8 +26,7 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   userDetails = {
     firstname: ''
   };
-  docThumbImg: [
-    '../../../../../assets/images/doc1-thumb2.png',
+  docThumbImg = [
     '../../../../../assets/images/doc1-thumb2.png',
     '../../../../../assets/images/doc1-thumb2.png',
     '../../../../../assets/images/doc1-thumb2.png',
@@ -79,6 +78,10 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     private location: Location,
     private ref: ChangeDetectorRef
   ) {
+    // ref.detach();
+    // setInterval(() => {
+    //   this.ref.detectChanges();
+    // }, 2000);
     this.loggedInUser = this.userAuth.getUser();
     this.getUserDetails();
     const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
@@ -195,14 +198,14 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
           // console.log('response from subscription', resp);
           if ( resp.pages > 0 && resp.heightArr.length > 0) {
             this.thNail[this.thKey] = resp.pages;
-            // setTimeout(() => {
+            setTimeout(() => {
               // tslint:disable-next-line:max-line-length
               if ( ((this.heightArr !== undefined) && (resp.heightArr[resp.pages - 1] !== this.heightArr[resp.pages - 1])) || (this.heightArr === undefined) ) {
                 this.heightArr = resp.heightArr;
                 this.constructThumbnails();
                 this.liCount = this.docThumbImg.length * 114;
               }
-            // }, 2000);
+            }, 2000);
           } else {
             console.log('incorrect response values gathered from rxjs/subscription', resp);
           }
@@ -318,6 +321,7 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
 
   /**When the component is destroyed*/
   ngOnDestroy() {
+    // this.ref.detach();
     if (this.getUserDetailsSubscription !== undefined) {
       this.getUserDetailsSubscription.unsubscribe();
     }
