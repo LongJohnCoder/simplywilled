@@ -280,7 +280,8 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
             if ( ((this.heightArr !== undefined) && (resp.heightArr[resp.pages - 1] !== this.heightArr[resp.pages - 1])) || (this.heightArr === undefined) )  {
                // setTimeout(() => {
                 this.heightArr = resp.heightArr;
-                console.log('resp received :', resp);
+                console.log('heightArr in initialize : ', this.heightArr);
+                // console.log('resp received :', resp);
                 this.constructThumbnails();
                 this.liCount = this.docThumbImg.length * 114;
               // }, 2000);
@@ -337,24 +338,18 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   constructThumbnails() {
     console.log('in construct thumbnails');
     if ( this.pdfData.state !== undefined && this.pdfData.state !== null && this.pdfData.state.abr !== null) {
-      console.log('in construct thumbnails calling further');
       const abr = this.pdfData.state.abr;
       this.thKey = abr.toLowerCase();
       if (this.states[this.thKey] !== undefined) {
-          this.states[abr.toLowerCase()] = true;
-          const limit = this.heightArr === undefined ? 2 : this.heightArr.length;
-          this.thNail[this.thKey] = limit;
-          console.log('key : ', this.thKey, 'limit : ', limit);
-          this.docThumbImg = [];
-          for (let key = 0 ; key < limit ; key++) {
-            this.docThumbImg.push('../../../../../assets/images/doc1-thumb2.png');
-          }
-      } else {
-        console.log('states key is undefined : key -> ', this.thKey);
+        this.states[this.thKey] = true;
+        console.log('heightArr in const : ', this.heightArr);
+        const limit = this.heightArr === undefined ? 3 : this.heightArr.length;
+        this.thNail[this.thKey] = limit;
+        this.docThumbImg = [];
+        for (let key = 0 ; key < limit ; key ++) {
+          this.docThumbImg.push('../../../../../assets/images/doc1-thumb2.png');
+        }
       }
-    } else {
-      console.log('state is here');
-      this.router.navigate(['/dashboard/documents/final-disposition']);
     }
   }
 
