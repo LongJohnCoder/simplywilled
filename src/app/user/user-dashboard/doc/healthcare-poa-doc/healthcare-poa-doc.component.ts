@@ -230,13 +230,12 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     this.docScrolled = 0;
     this.thumbIndex = 1;
     // this.liCount = this.docThumbImg.length * 114;
-    this.initialize();
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngDoCheck() {
     console.log('ng do check - hcpoa');
-    // this.initialize();
+    this.initialize();
   }
 
   initialize() {
@@ -322,6 +321,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
           for (let key = 0 ; key < limit ; key++) {
             this.docThumbImg.push('../../../../../assets/images/doc1-thumb2.png');
           }
+          console.log('in construct thumbnails : docThumbImg -> ', this.docThumbImg);
           // this.liCount = this.docThumbImg.length * 114;
           // this.totalY = this.docThumbImg.length * 1011;
           // this.totalX = this.docThumbImg.length * 793;
