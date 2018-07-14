@@ -902,9 +902,9 @@ class PackageController extends Controller
         // Successful call is response code 100...
         if ($response['resp'] != "100")
         {
-          \Log::info('CartStack submit success for '.$email.' amount: '.$amount.' resp'=>json_encode($response));
+          \Log::info('CartStack submit success for '.$email.' amount: '.$amount.' resp=>'.json_encode($response));
         } else {
-          \Log::info('CartStack submit failed for '.$email.' amount: '.$amount.' resp'=>json_encode($response));
+          \Log::info('CartStack submit success for '.$email.' amount: '.$amount.' resp=>'.json_encode($response));
         }
       } catch (\Exception $e) {
         \Log::info('CartStack submit failed for '.$email.' amount: '.$amount.' message=>'.$e->getMessage());
