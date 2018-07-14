@@ -2,59 +2,69 @@
 <html>
 <head>
 	<title></title>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
+
+	</style>
 </head>
 <body>
+	<script type="text/php">
+			if ( isset($pdf) ) {
+					$pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+			}
+	</script>
+	<div id="footer">
+		<div style="">
+			Advance Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
+		</div>
+	</div>
+<div style="text-align: justify">
 
-<div>
-	
-	<div class="docView">
-      <div class="docContainer">
-        <div class="docPage" style="page-break-after: always;">
-          <div id="doc" class="docPageInner" style=" height: 890px;">
+	<div>
+      <div>
+        <div>
+          <div>
             <h1 style="font-size: 28px; text-align: center; margin: 0 0 30px; font-family: Garamond;">Final Disposition Authorization and Instructions</h1>
 
 
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
-              I, <span style="text-transform: uppercase;"> {{strtoupper($tellUsAboutYou['firstname'])}} </span>, of <span style="text-transform: uppercase;"> {{$tellUsAboutYou['address']}} </span>,<span style="text-transform: uppercase;"> {{$tellUsAboutYou['city']}} </span> , <span style="text-transform: uppercase;"> {{$tellUsAboutYou['state']}} </span>,
+              I,<span style="text-transform: uppercase;"> {{strtoupper($tellUsAboutYou['fullname'])}},</span>of<span style="text-transform: uppercase;"> {{$tellUsAboutYou['address']}},</span><span style="text-transform: uppercase;"> {{$tellUsAboutYou['city']}},</span><span style="text-transform: uppercase;"> {{$tellUsAboutYou['state']}}, {{$tellUsAboutYou['zip']}}</span>
               being of sound mind, willfully and voluntarily make known by this document
 
               @if(strtolower($state['name']) == 'new jersey')
-              <span>my desires concerning, upon my death, the final disposition of my remains</span>
-              
+              	<span>my desires concerning, upon my death, the final disposition of my remains</span>
               @else
-              <span>my desire that, upon my death, the final disposition of my remains be under the control of my
-
+              	<span>my desire that, upon my death, the final disposition of my remains be under the control of my</span>
+							@endif
               	@if(strtolower($state['name']) == 'wisconsin')
                 	<span>representative under the requirements of §154.30, Wisconsin Statutes</span>
                 @elseif(strtolower($state['name']) == 'michigan')
                 	<span>funeral representative pursuant to §700.3206, MCL</span>
                 @else
-                	<span>representative</span>,
+                	<span>representative</span>
                 @endif
-                
-                and, with respect to that final disposition only, I hereby appoint {{$personalRepresentative['fullname']}} as the representative
 
-                @if(isset($backupPersonalRepresentative) && strlen($backupPersonalRepresentative['fullname'] > 0))
-                <span> and as the successor representative</span> named in this document. All decisions made by my representative with respect to the final disposition of my remains shall be binding and, for the guidance of my representative, I am making my wishes known as follows
-              	@endif
-              </span>:
-              @endif
+                named in this document. All decisions made by my representative with respect to my funeral and the final disposition of my remains shall be binding and, for the guidance of my representative, I am making my wishes known as follows:
             </p>
 
 
 
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
-              
+
             @if(isset($finalArrangements) && $finalArrangements['ashes'] == 1)
               <span>
 
-                1. I wish to be cremated. I would like my ashes to be managed and disposed of in the following manner: 
+                1. I wish to be cremated. I would like my ashes to be managed and disposed of in the following manner:
 
                 @if(isset($finalArrangements) && strlen($finalArrangements['ashes']) > 0 )
                 	<span> {{userDetails.finalArrangements.ashes}}.</span>
-                
+
                 @else
-                
+
                 <span>: __________________________________________________
 
                 ______________________________________________________________________
@@ -69,7 +79,7 @@
             @elseif(isset($finalArrangements) && $finalArrangements['ashes'] == 0)
               <span>
 
-                1. I wish to be buried. I would like my remains interred 
+                1. I wish to be buried. I would like my remains interred
 
                 @if( isset($finalArrangements) && strlen($finalArrangements['ashes']) > 0)
                 <span> {{$finalArrangements['ashes']}}.</span>
@@ -85,11 +95,11 @@
 
                 @endif
               </span>
-              
+
             @elseif(isset($finalArrangements) && $finalArrangements['type'] == 2)
               <span>
 
-              	@if(strlen($finalArrangements['some_other_way']) > 0 ) 
+              	@if(strlen($finalArrangements['some_other_way']) > 0 )
 	                1. I wish for my representative to control and dispose of my remains in the following manner: <span> {{$finalArrangements['some_other_way']}}.</span>
                 @else
 	                <span>: ___________________________________________
@@ -100,7 +110,7 @@
 
 	                </span>
                 @endif
-              
+
               </span>
 
             @endif
@@ -108,10 +118,10 @@
 
 
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
-              2. I have made pre-arrangements at 
+              2. I have made pre-arrangements at
 
               @if(strlen($finalArrangements['arrangements']) > 0)
-              
+
               <span> {{$finalArrangements['arrangements']}}.</span>
 
               @else
@@ -188,9 +198,9 @@
             </p>
           </div>
         </div>
- @if(strtolower($state['name']) == 'wisconsin' || strtolower($state['name']) == 'michigan') 
-        <div class="docPage">
-          <div class="docPageInner" style=" height: 890px;">
+ 				@if(strtolower($state['name']) == 'wisconsin' || strtolower($state['name']) == 'michigan')
+        <div>
+          <div>
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
 
             @if(strtolower($state['name']) == 'wisconsin')
@@ -205,18 +215,17 @@
             </p>
           </div>
         </div>
-@endif
-        <div class="docPage">
-          <div class="docPageInner"
-               style=" height: 890px;">
-            <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+				@endif
+        <div>
+          <div>
+            <p style="font-size: 15px; page-break-before: always; margin: 0 0 15px; font-family: Garamond;">
               <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; font-family: Garamond;">SIGNATURE AND ACKNOWLEDGMENT</h1>
 
               <p>Dated: _______________________________________</p>
 
               <p>Signed: _________________________________________</p>
 
-              <span>{{$tellUsAboutYou['fullname']}}</span> 
+              <span>{{$tellUsAboutYou['fullname']}}</span>
 
               <p>{{$tellUsAboutYou['address']}}</p>
 
@@ -225,9 +234,9 @@
               <p>{{$tellUsAboutYou['phone']}}</p>
 
               <p>
-                By my signature below, I attest that <span style="text-transform: uppercase;"> {{$tellUsAboutYou['fullname']}} </span>, the person who signed this document, did so or acknowledged signing this document in my presence and that 
+                By my signature below, I attest that <span style="text-transform: uppercase;"> {{$tellUsAboutYou['fullname']}} </span>, the person who signed this document, did so or acknowledged signing this document in my presence and that
 
-                {{$genderTxt3}} 
+                {{$genderTxt3}}
 
                 appears to be of sound mind and not subject to duress, fraud, or undue influence. I further attest that I am not the representative or the successor representative appointed under this document, that I am at least eighteen (18) years of age, and that I am not related to the person who signed this document by blood, marriage, or adoption
 <br>
@@ -260,7 +269,7 @@
 
                   <span>COUNTY OF ________________ )</span><br><br>
 
-                  <span>Subscribed, sworn and acknowledged before me by 
+                  <span>Subscribed, sworn and acknowledged before me by
 
                   <span style="text-transform: uppercase;"> {{$tellUsAboutYou['fullname']}} </span>
 
@@ -268,7 +277,7 @@
 
                     ______________________________________ (Seal, if any)<br>
 
-                    NOTARY PUBLIC<br><br>
+                    NOTARY PUBLIC
 
                 My commission expires: _________________</span>
               </p>
@@ -276,18 +285,17 @@
         </div>
 
 
-     @if(strtolower($state['name']) == 'wisconsin' || strtolower($state['name']) == 'michigan')    
-        <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-          <div class="docPageInner"
-               style=" height: 890px;">
+     @if(strtolower($state['name']) == 'wisconsin' || strtolower($state['name']) == 'michigan')
+        <div style="page-break-before: always;">
+          <div>
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
 
-              
+
               <span>
-                 
+
                  <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; font-family: Garamond;">AGENT ACCEPTANCE AND ACKNOWLEDGMENT</h1>
 
-                    I hereby accept appointment as 
+                    I hereby accept appointment as
 
                     @if(strtolower($state['name']) == 'michigan')
                     	<span> funeral </span>
@@ -313,10 +321,10 @@
                     My commission expires: _________________
 
 
-                    I hereby accept appointment as successor 
+                    I hereby accept appointment as successor
 
 
-                    @if(strtolower($state['name']) == 'michigan' ) 
+                    @if(strtolower($state['name']) == 'michigan' )
                     	<span> funeral </span>
                     @endif
 
@@ -338,7 +346,7 @@
 
                 My commission expires: _________________
               </span>
-              
+
             </p>
           </div>
         </div>
