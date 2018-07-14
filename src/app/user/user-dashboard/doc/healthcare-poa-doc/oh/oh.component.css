@@ -1,12 +1,24 @@
-P{
-  font-family: "Times New Roman";
+.docContainer{
+    width: 700px;
+    margin: 0 auto;
 }
+
 .docPage{
-  width: 700px !important;
-  height: 991px!important;
-  background: #fff;
-  box-shadow: 0 0 7px rgba(0,0,0,0.3);
-  margin: 20px 0;
-  box-sizing: border-box;
-  padding: 40px;
+    width: 700px !important;
+    height: auto !important;
+    background: #fff;
+    box-shadow: 0 0 7px rgba(0,0,0,0.3);
+    margin: 20px 0;
+    box-sizing: border-box;
+    padding: 40px;
+}
+
+.docPageInner{
+    height: auto !important;
+    min-height: 400px;
+    padding-bottom: 25px;
+}
+
+.docPageInner span, .docPageInner p{
+    font-family: "Times New Roman" !important;
 }
