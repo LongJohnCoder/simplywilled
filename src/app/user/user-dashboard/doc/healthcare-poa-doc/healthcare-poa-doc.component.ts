@@ -241,7 +241,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line:use-life-cycle-interface
   ngDoCheck() {
     console.log('called - ngDoCheck - hcpoa');
-    // this.initialize();
+    this.initialize();
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -258,7 +258,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
     console.log('called - ngAfterViewInit - hcpoa');
-    this.initialize();
+    // this.initialize();
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -342,7 +342,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
       this.thKey = abr.toLowerCase();
       if (this.states[this.thKey] !== undefined) {
           this.states[abr.toLowerCase()] = true;
-          const limit = this.heightArr === undefined ? 4 : this.heightArr.length;
+          const limit = this.heightArr === undefined ? 2 : this.heightArr.length;
           this.thNail[this.thKey] = limit;
           console.log('key : ', this.thKey, 'limit : ', limit);
           this.docThumbImg = [];
