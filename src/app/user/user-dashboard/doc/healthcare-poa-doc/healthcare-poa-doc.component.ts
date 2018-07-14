@@ -1,6 +1,7 @@
 import { saveAs } from 'file-saver/FileSaver';
 import { Router } from '@angular/router';
-import { Component, OnDestroy, OnInit, ViewChild, DoCheck, AfterContentInit } from '@angular/core';
+// tslint:disable-next-line:max-line-length
+import { Component, OnDestroy, OnInit, ViewChild, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { GlobalPdfService } from '../services/global-pdf.service';
 import { Subscription } from 'rxjs/Subscription';
 import { UserService } from '../../../user.service';
@@ -231,7 +232,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   }
   /**When the component initialises*/
   ngOnInit() {
-    console.log('ng on init  called');
+    console.log('called - ngOnInit - hcpoa');
     this.docScrolled = 0;
     this.thumbIndex = 1;
     // this.liCount = this.docThumbImg.length * 114;
@@ -239,13 +240,30 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngDoCheck() {
-    console.log('ng do check - hcpoa');
-    this.initialize();
+    console.log('called - ngDoCheck - hcpoa');
+    // this.initialize();
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterContentInit() {
+    console.log('called - ngAfterContentInit - hcpoa');
     this.initialize();
+  }
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngAfterContentChecked() {
+    console.log('called - ngAfterContentChecked - hcpoa');
+    // this.initialize();
+  }
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngAfterViewInit() {
+    console.log('called - ngAfterViewInit - hcpoa');
+  }
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngAfterViewChecked() {
+    console.log('called - ngAfterViewInit - hcpoa');
   }
 
   initialize() {
@@ -303,9 +321,9 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     if (this.printSubscription !== undefined) {
       this.printSubscription.unsubscribe();
     }
-    if (this.totalPagesSubscription !== undefined) {
-      this.totalPagesSubscription.unsubscribe();
-    }
+    // if (this.totalPagesSubscription !== undefined) {
+    //   this.totalPagesSubscription.unsubscribe();
+    // }
     if (this.progressSubscription !== undefined) {
       this.progressSubscription.unsubscribe();
     }
