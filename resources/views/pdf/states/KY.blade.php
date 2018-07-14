@@ -85,7 +85,7 @@
 
 
             </p>
-            <p style="margin-bottom: 0.06in; line-height: 115%">&nbsp;□&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="font-size: 11pt">_______
+            <p style="margin-bottom: 0.06in; line-height: 115%">&nbsp;<span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="font-size: 11pt">_______
       (Check box and initial line, if you desire to name a surrogate)</span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Designate
@@ -262,7 +262,7 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000"><b>Life
       Prolonging Treatment </b>(check and initial only one)</span></span></span></span></span></p>
-            <p  style="text-align:justify;argin-bottom: 0in; line-height: 0.2in">&nbsp;□
+            <p  style="text-align:justify;argin-bottom: 0in; line-height: 0.2in">&nbsp;<span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="font-size: 11pt">_______
         (Check box and initial line, if you desire the option below)</span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
@@ -271,7 +271,7 @@
       die naturally with only the administration of medication or the
       performance of any medical treatment deemed necessary to alleviate
       pain.</span></span></span></span></span></p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">□&nbsp;
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="font-size: 11pt">_______
         (Check box and initial line, if you desire the option below)</span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
@@ -285,14 +285,14 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000"><b>Nourishment
       and/or Fluids</b> (check and initial only one)</span></span></span></span></span></p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">□&nbsp;
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="font-size: 11pt">_______
         (Check box and initial line, if you desire the option below)</span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Authorize
       the withholding or withdrawal of artificially provided food, water,
       or other artificially provided nourishment or fluids.</span></span></span></span></span></p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">&nbsp;□&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="font-size: 11pt">_______
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">&nbsp;<span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="font-size: 11pt">_______
       (Check box and initial line, if you desire the option below)</span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">DO
@@ -307,7 +307,7 @@
             <p style="margin-bottom: 0.06in; line-height: 115%"><b>NOTE: If you
                     desire this option, DO NOT choose any of the preceding options
                     regarding Life Prolonging Treatment and Nourishment and/or Fluids</b></p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">&nbsp;□&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="font-size: 11pt">_______
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">&nbsp;<span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="font-size: 11pt">_______
       (Check box and initial line, if you desire the option below)</span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I
@@ -344,7 +344,7 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Check
       appropriate box and initial the line beside that box:</span></span></span></span></span></p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">&nbsp;□&nbsp;
+            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">&nbsp;<span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="font-size: 11pt">_______&nbsp;
         Authorize the giving of all or any part of my body upon death for any
         purpose specified in KRS 311.1929.&nbsp;</span></p>
@@ -355,7 +355,7 @@
             </p>
             <p style="margin-top: 0.06in; margin-bottom: 0.06in; line-height: 115%">
                 <b>OR</b></p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">&nbsp;□&nbsp;
+            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">&nbsp;<span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="font-size: 11pt">_______&nbsp;
         The following organs or tissues only (check and initial all that
         apply): </span>
@@ -383,13 +383,21 @@
             <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
 
             </p>
-            <p  style="text-align:left;margin-left: 2in; text-indent: 0.5in; margin-bottom: 0in; line-height: 0.33in">
-                <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></p>
-            <p  style="text-align:left;margin-left: 2in; text-indent: 0.5in; margin-bottom: 0in; line-height: 0.33in">
-                <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></p>
+            <p  style="text-align:left;margin-left: 2in; margin-bottom: 0in; line-height: 0.27in">
+      ___________________________________________
+      <span style="padding-left: 48px; display: inline-block;"></span>___________________________________________
+      <span style="padding-left: 48px; display: inline-block;"></span>___________________________________________
+      <span style="padding-left: 48px; display: inline-block;"></span>___________________________________________
+      <span style="padding-left: 48px; display: inline-block;"></span>___________________________________________
+      <span style="padding-left: 48px; display: inline-block;"></span>_______________________
+      </p>
+    <p  style="text-align:left;margin-left: 2in; margin-bottom: 0in; line-height: 0.27in">
+    ___________________________________________
+    <span style="padding-left: 48px; display: inline-block;"></span>______________________
+    </p>
             <p style="margin-top: 0.06in; margin-bottom: 0.06in; line-height: 115%">
                 <b>OR</b></p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">□
+            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="font-size: 11pt">_______&nbsp;
         DO NOT authorize the giving of all or any part of my body upon
         death.&nbsp;</span></p>
@@ -627,7 +635,7 @@
       </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span style="text-decoration: none">.</span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">______________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">NOTARY
       PUBLIC</span></span></span></span></span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
@@ -668,11 +676,11 @@
     <div class="docPage">
         <div class="docPageInner">
 
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000"><b>WITNESS
       1</b>: _______________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dated:
       ___________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[signature]</span></span></span></span></span></p>
             <p  style="text-align:left;margin-left: 1.88in; text-indent: -1.5in; margin-bottom: 0in; line-height: 115%">
 
@@ -702,19 +710,13 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[city,
       state]</span></span></span></span></span></p>
-            <p style="margin-left: 1.88in; text-indent: -1.5in; margin-bottom: 0in; line-height: 115%">
+            
 
-
-            </p>
-            <p  style="text-align:left;margin-left: 1.88in; text-indent: -1.5in; margin-bottom: 0in; line-height: 115%">
-
-
-            </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000"><b>WITNESS
       2: </b>_______________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dated:
       ___________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[signature]</span></span></span></span></span></p>
             <p  style="text-align:left;margin-left: 1.88in; text-indent: -1.5in; margin-bottom: 0in; line-height: 115%">
 
@@ -744,12 +746,6 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[city,
       state]</span></span></span></span></span></p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
-
-            </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
-
-            </p>
         </div>
     </div>
     <!-- !Page 6 -->

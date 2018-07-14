@@ -221,7 +221,7 @@
         AGENT’S AUTHORITY BECOMES EFFECTIVE: </b></span><span size="3" style="font-size: 12pt">My
         agent’s authority becomes effective when my primary physician
         determines that I am unable to make my own health-care decisions
-        unless I mark the following box. If I mark this box </span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">□</span></span></span><span size="3" style="font-size: 12pt">,
+        unless I mark the following box. If I mark this box </span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span></span></span><span size="3" style="font-size: 12pt">,
         my agent’s authority to make health-care decisions for me takes
         effect immediately.</span></span></p>
     <p  style="margin-bottom: 0in; "><br/>
@@ -273,7 +273,7 @@
     <p align="left" style="margin-bottom: 0in; "><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(Check
       only one box)</i></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
-      □<span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(a)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>Choice
+      <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(a)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>Choice
         NOT To Prolong Life</b></span></span></p>
     <p  style="margin-left: 1in; margin-bottom: 0.09in; ">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
@@ -286,7 +286,7 @@
     <p  style="text-indent: 0.38in; margin-bottom: 0in; ">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>OR</b></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
-      □<span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(b)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>Choice
+      <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(b)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>Choice
         To Prolong Life</b></span></span></p>
     <p  style="margin-left: 1in; margin-bottom: 0in; ">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
@@ -301,7 +301,7 @@
     
     <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
-      I mark this box </span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="5" style="font-size: 20pt">□</span></span></span><span size="3" style="font-size: 12pt">,
+      I mark this box </span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="5" style="font-size: 20pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span></span></span><span size="3" style="font-size: 12pt">,
       artificial nutrition and hydration must be provided regardless of my
       condition and regardless of the choice I have made in paragraph (6).</span></span></p>
     
@@ -434,10 +434,10 @@
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       give: (check one)</span></span></p>
     <p  style="margin-left: 1.75in; margin-bottom: 0in; line-height: 0.16in">
-      □&nbsp; <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(a)
+      <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>&nbsp; <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(a)
         any needed organs, tissues or parts</span></span></p>
     <p  style="margin-left: 1.75in; margin-bottom: 0.09in; ">
-      □&nbsp; <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(b)
+      <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>&nbsp; <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(b)
         only the following organs, tissues or parts :</span></span></p>
     <p  style="margin-left: 1.17in; margin-bottom: 0.09in; ">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">___________________________________________________________</span></span></p>

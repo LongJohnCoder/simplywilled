@@ -271,44 +271,44 @@
       </i></span><span style="font-family:'Times New Roman, serif'">AUTHORIZATION OF
       ANATOMICAL GIFTS. I wish to AUTHORIZE my Agent to make an anatomical
       gift of my body or part (organ or tissue).</span></p>
-    <table width="605" cellpadding="5" cellspacing="0" style="font-size: 14px;">
+    <table width="100%" cellpadding="5" cellspacing="0" style="font-size: 16px; border: 1px solid #000; margin: 10px 0;">
       <!--<col width="241">
       <col width="344">-->
       <tr valign="top">
-        <td width="241" style="border: none; padding: 0in">
+        <td width="" style="border: none; padding: 0 5px; border-bottom: 1px solid #000; border-right: 1px solid #000;">
           <p ><span style="font-family:'Times New Roman, serif'">My
 			donations are for the following purposes: (check one)</span></p>
         </td>
-        <td width="344" style="border: none; padding: 0in">
+        <td width="" style="border: none; padding: 0 5px; border-bottom: 1px solid #000;">
           <p ><span style="font-family:'Times New Roman, serif'">GIFT
 			SPECIFICATIONS: (check one)</span></p>
         </td>
       </tr>
       <tr valign="top">
-        <td width="241" style="border: none; padding: 0in">
+        <td width="" style="border: none; padding: 0 5px; border-bottom: 1px solid #000; border-right: 1px solid #000;">
           <p  style="margin-left: 0.38in"><span class="checkBox"></span> <span style="font-family:'Times New Roman, serif'">Transplantation</span></p>
         </td>
-        <td width="344" style="border: none; padding: 0in">
+        <td width="" style="border: none; padding: 0 5px; border-bottom: 1px solid #000;">
           <p ><span style="font-family:'Times New Roman, serif'">I would
 			like to donate</span></p>
         </td>
       </tr>
       <tr valign="top">
-        <td width="241" style="border: none; padding: 0in">
+        <td width="" style="border: none; padding: 0 5px; border-bottom: 1px solid #000; border-right: 1px solid #000;">
           <p  style="margin-left: 0.38in"><span class="checkBox"></span> <span style="font-family:'Times New Roman, serif'">Therapy</span></p>
         </td>
-        <td width="344" style="border: none; padding: 0in">
+        <td width="" style="border: none; padding: 0 5px; border-bottom: 1px solid #000;">
           <p  style="margin-left: 0.01in"><span class="checkBox"></span> <span style="font-family:'Times New Roman, serif'">Any
 			needed organ and tissues, as allowed by law</span></p>
         </td>
       </tr>
       <tr valign="top">
-        <td width="241" style="border: none; padding: 0in">
+        <td width="" style="border: none; padding: 0 5px; border-bottom: 1px solid #000; border-right: 1px solid #000;">
           <p  style="margin-left: 0.38in; margin-bottom: 0.09in">
             <span class="checkBox"></span> <span style="font-family:'Times New Roman, serif'">Research</span></p>
           <p  style="margin-left: 0.38in"><span class="checkBox"></span> <span style="font-family:'Times New Roman, serif'">Education</span></p>
         </td>
-        <td width="344" style="border: none; padding: 0in">
+        <td width="" style="border: none; padding: 0 5px; border-bottom: 1px solid #000; border-right: 1px solid #000;">
           <p  style="margin-left: 0.19in; text-indent: -0.19in; margin-bottom: 0in">
             <span class="checkBox"></span> <span style="font-family:'Times New Roman, serif'">Any needed organs and
 			tissues as allowed by law, <br>with the following restrictions</span></p>
@@ -316,11 +316,11 @@
         </td>
       </tr>
       <tr valign="top">
-        <td width="241" style="border: none; padding: 0in">
+        <td width="" style="border: none; padding: 0 5px; border-bottom: 1px solid #000; border-right: 1px solid #000;">
           <p  style="margin-left: 0.38in"><span class="checkBox"></span> <span style="font-family:'Times New Roman, serif'">All
 			the above</span></p>
         </td>
-        <td width="344" style="border: none; padding: 0in">
+        <td width="" style="border: none; padding: 0 5px; border-bottom: 1px solid #000;">
           <p style="margin-top: 0;"><span style="font-family:'Times New Roman, serif'">____________________________________</span></p>
         </td>
       </tr>
