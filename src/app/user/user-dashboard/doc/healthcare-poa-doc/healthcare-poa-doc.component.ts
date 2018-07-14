@@ -1,6 +1,6 @@
 import { saveAs } from 'file-saver/FileSaver';
 import { Router } from '@angular/router';
-import { Component, OnDestroy, OnInit, ViewChild, DoCheck } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, DoCheck, AfterContentInit } from '@angular/core';
 import { GlobalPdfService } from '../services/global-pdf.service';
 import { Subscription } from 'rxjs/Subscription';
 import { UserService } from '../../../user.service';
@@ -28,7 +28,12 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   userDetails = {
     firstname: ''
   };
-  docThumbImg: Array<any> = [];
+  docThumbImg: Array<any> = [
+    '../../../../../assets/images/doc1-thumb2.png',
+    '../../../../../assets/images/doc1-thumb2.png',
+    '../../../../../assets/images/doc1-thumb2.png',
+    '../../../../../assets/images/doc1-thumb2.png'
+  ];
   liCount: number;
   progressBar = {
     finalArrangements: false,
@@ -238,6 +243,11 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     this.initialize();
   }
 
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngAfterContentInit() {
+    this.initialize();
+  }
+
   initialize() {
     this.totalPagesSubscription = this.globalPDFService.totalHcpoaPages.subscribe(
       (resp) => {
@@ -255,7 +265,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
                 this.liCount = this.docThumbImg.length * 114;
               // }, 2000);
             } else {
-              console.log('in else ++here++ : ', this.heightArr, resp.heightArr, resp.pages);
+              console.log('in else ++here++ : ', this.heightArr, resp.heightArr, resp.pages, 'docThumbImg : ', this.docThumbImg);
             }
           } else {
             console.log('incorrect response values gathered from rxjs/subscription', resp);
