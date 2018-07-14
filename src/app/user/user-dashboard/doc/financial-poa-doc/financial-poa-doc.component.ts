@@ -205,7 +205,7 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
                 this.constructThumbnails();
                 this.liCount = this.docThumbImg.length * 114;
               }
-            }, 2000);
+            }, 1000);
           } else {
             console.log('incorrect response values gathered from rxjs/subscription', resp);
           }
