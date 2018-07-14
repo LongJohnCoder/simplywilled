@@ -247,7 +247,6 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterContentInit() {
     console.log('called - ngAfterContentInit - hcpoa');
-    this.initialize();
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -259,6 +258,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
     console.log('called - ngAfterViewInit - hcpoa');
+    this.initialize();
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -321,9 +321,9 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     if (this.printSubscription !== undefined) {
       this.printSubscription.unsubscribe();
     }
-    // if (this.totalPagesSubscription !== undefined) {
-    //   this.totalPagesSubscription.unsubscribe();
-    // }
+    if (this.totalPagesSubscription !== undefined) {
+      this.totalPagesSubscription.unsubscribe();
+    }
     if (this.progressSubscription !== undefined) {
       this.progressSubscription.unsubscribe();
     }
