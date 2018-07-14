@@ -339,23 +339,14 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
       const abr = this.pdfData.state.abr;
       this.thKey = abr.toLowerCase();
       if (this.states[this.thKey] !== undefined) {
-        this.states[abr.toLowerCase()] = true;
-        this.thNail[this.thKey] = this.heightArr;
-        if (this.thNail[this.thKey] !== undefined) {
-          console.log('key :', this.thKey);
+          this.states[abr.toLowerCase()] = true;
           const limit = this.heightArr === undefined ? 4 : this.heightArr.length;
-          console.log(limit);
+          this.thNail[this.thKey] = limit;
+          console.log('key : ', this.thKey, 'limit : ', limit);
           this.docThumbImg = [];
           for (let key = 0 ; key < limit ; key++) {
             this.docThumbImg.push('../../../../../assets/images/doc1-thumb2.png');
           }
-          console.log('in construct thumbnails : docThumbImg -> ', this.docThumbImg);
-          // this.liCount = this.docThumbImg.length * 114;
-          // this.totalY = this.docThumbImg.length * 1011;
-          // this.totalX = this.docThumbImg.length * 793;
-        } else {
-          console.log('thNiil key is undefined : key -> ', this.thKey);
-        }
       } else {
         console.log('states key is undefined : key -> ', this.thKey);
       }
