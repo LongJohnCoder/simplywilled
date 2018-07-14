@@ -267,8 +267,10 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   }
 
   initialize() {
+    console.log('calling initialize');
     this.totalPagesSubscription = this.globalPDFService.totalHcpoaPages.subscribe(
       (resp) => {
+        console.log('resp received : ', resp);
         // tslint:disable-next-line:max-line-length
         if (resp !== undefined && resp !== null && resp.pages !== undefined && resp.pages !== null && resp.heightArr !== undefined && resp.heightArr !== null) {
           // console.log('response from subscription', resp);
@@ -278,7 +280,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
             if ( ((this.heightArr !== undefined) && (resp.heightArr[resp.pages - 1] !== this.heightArr[resp.pages - 1])) || (this.heightArr === undefined) )  {
                // setTimeout(() => {
                 this.heightArr = resp.heightArr;
-                console.log(resp.heightArr);
+                console.log('resp received :', resp);
                 this.constructThumbnails();
                 this.liCount = this.docThumbImg.length * 114;
               // }, 2000);
