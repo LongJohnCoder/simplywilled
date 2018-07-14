@@ -119,10 +119,10 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
       () => {}
     );
 
-    ref.detach();
-    setInterval(() => {
-      this.ref.detectChanges();
-    }, 3000);
+    // ref.detach();
+    // setInterval(() => {
+    //   this.ref.detectChanges();
+    // }, 3000);
   }
 
   constructThumbnails() {
