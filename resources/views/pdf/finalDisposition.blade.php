@@ -19,7 +19,7 @@
 	</script>
 	<div id="footer">
 		<div style="">
-			Advance Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
+			Final Disposition of <br>{{$tellUsAboutYou['fullname']}}<br>
 		</div>
 	</div>
 <div style="text-align: justify">
@@ -64,12 +64,12 @@
                 	<span> {{userDetails.finalArrangements.ashes}}.</span>
 
                 @else
-								<br>
-                <span>: ______________________________________________________________________
 
-                <br>______________________________________________________________________
+                <span>: __________________________________________________
 
-                <br>______________________________________________________________________
+                ______________________________________________________________________
+
+                ______________________________________________________________________
 
                 </span>
 
@@ -85,12 +85,11 @@
                 <span> {{$finalArrangements['ashes']}}.</span>
 
                 @else
-								<br>
-                <span>: ______________________________________________________________________
+                <span>: ___________________________________________
 
-                <br>______________________________________________________________________
+                ______________________________________________________________________
 
-                <br>______________________________________________________________________
+                ______________________________________________________________________
 
                 </span>
 
@@ -103,12 +102,11 @@
               	@if(strlen($finalArrangements['some_other_way']) > 0 )
 	                1. I wish for my representative to control and dispose of my remains in the following manner: <span> {{$finalArrangements['some_other_way']}}.</span>
                 @else
-								<br>
-	                <span>: ______________________________________________________________________
+	                <span>: ___________________________________________
 
-	                <br>______________________________________________________________________
+	                ______________________________________________________________________
 
-	                <br>______________________________________________________________________
+	                ______________________________________________________________________
 
 	                </span>
                 @endif
@@ -127,12 +125,11 @@
               <span> {{$finalArrangements['arrangements']}}.</span>
 
               @else
-							<br>
-                <span>: ______________________________________________________________________
+                <span>: ______________________________________
 
-                <br>______________________________________________________________________
+                ______________________________________________________________________
 
-                <br>______________________________________________________________________
+                ______________________________________________________________________
 
                 </span>
 
@@ -140,11 +137,11 @@
             </p>
 
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
-                  3. I wish for my representative to honor the following instructions with regard to my funeral or other ceremony for the final disposition of my remains: <br>______________________________________________________________________
+                  3. I wish for my representative to honor the following instructions with regard to my funeral or other ceremony for the final disposition of my remains: ______________________________________
 
-              <br>______________________________________________________________________
+              ______________________________________________________________________
 
-              <br>______________________________________________________________________
+              ______________________________________________________________________
 
             </p>
 
@@ -153,7 +150,7 @@
                 <span>
                    4. My funeral representative shall be:
                 </span>
-								<br>
+
                 <span>
 
                 ________________________________________________
@@ -161,7 +158,7 @@
                 (Name)
 
                 </span>
-								<br>
+
                 <span>
 
                 ________________________________________________
@@ -169,7 +166,7 @@
                 (Address)
 
                 </span>
-								<br>
+
                 <span>
 
                 ________________________________________________
@@ -182,15 +179,17 @@
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
 
               If my funeral representative dies, becomes incapacitated, resigns, refuses to act, ceases to be qualified, or cannot be located within the time necessary to control the final disposition of my remains, I hereby appoint the following individual to serve as my successor funeral representative:
-							<br>
+
               ________________________________________________
 
               (Name)
-							<br>
+
               ________________________________________________
+
               (Address)
-							<br>
+
               ________________________________________________
+
               (Telephone)
             </p>
             <br>
@@ -240,11 +239,11 @@
                 {{$genderTxt3}}
 
                 appears to be of sound mind and not subject to duress, fraud, or undue influence. I further attest that I am not the representative or the successor representative appointed under this document, that I am at least eighteen (18) years of age, and that I am not related to the person who signed this document by blood, marriage, or adoption
+<br>
 
                 @if(strtolower($state['name']) == 'michigan')
                 	<span>, nor am I a prohibited witness pursuant to §700.3206(2)(b)(i), MCL.</span>
                 @endif
-								<br>
                 <div style="display: inline-block; width: 46%; padding-top: 50px;">
                   <p>WITNESS 1: ____________________________</p>
 
@@ -268,13 +267,17 @@
 
                     _____________________________) ss.</span><br>
 
-                  <span>COUNTY OF ________________ )</span><br>
+                  <span>COUNTY OF ________________ )</span><br><br>
 
-                  <span>Subscribed, sworn and acknowledged before me by<span style="text-transform: uppercase;"> {{$tellUsAboutYou['fullname']}},</span> and _________________________________________, as witness, and _____________________________________, as witness, who personally appeared on this _________ day of ________________________________, _______, and who are personally known to me or who have produced satisfactory photo identification, and whose names are signed to the foregoing instrument.<br>
+                  <span>Subscribed, sworn and acknowledged before me by
+
+                  <span style="text-transform: uppercase;"> {{$tellUsAboutYou['fullname']}} </span>
+
+                  , and _________________________________________, as witness, and _____________________________________, as witness, who personally appeared on this _________ day of ________________________________, _______, and who are personally known to me or who have produced satisfactory photo identification, and whose names are signed to the foregoing instrument.<br><br>
 
                     ______________________________________ (Seal, if any)<br>
 
-                    NOTARY PUBLIC<br>
+                    NOTARY PUBLIC
 
                 My commission expires: _________________</span>
               </p>
@@ -286,10 +289,12 @@
         <div style="page-break-before: always;">
           <div>
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
+
+
               <span>
 
                  <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; font-family: Garamond;">AGENT ACCEPTANCE AND ACKNOWLEDGMENT</h1>
-								 		<br>
+
                     I hereby accept appointment as
 
                     @if(strtolower($state['name']) == 'michigan')
@@ -297,24 +302,25 @@
                     @endif
 
                     representative for the control of final disposition of the declarant’s remains.
-										<br><br>
+
                     Signature: ___________________________________ Dated: _______________________
 
-										<br><br>
+
                     STATE OF ________________ )
-										<br>
+
                     ) ss.
-										<br>
+
                     COUNTY OF ________________ )
-										<br><br>
+
                     Subscribed, sworn and acknowledged before me by ______________________________________ , who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
-										<br><br>
+
                     ______________________________________ (Seal, if any)
-										<br><br>
+
                     NOTARY PUBLIC
-										<br>
+
                     My commission expires: _________________
-										<br><br>
+
+
                     I hereby accept appointment as successor
 
 
@@ -323,21 +329,21 @@
                     @endif
 
                     representative for the control of final disposition of the declarant’s remains.
-										<br><br>
+
                     Signature: ___________________________________ Dated: _______________________
-										<br><br>
+
                 STATE OF ________________ )
-								<br>
+
                 ) ss.
-								<br>
+
                 COUNTY OF ________________ )
-								<br><br>
+
                 Subscribed, sworn and acknowledged before me by ___________________________________, who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
-								<br><br>
+
                 ______________________________________ (Seal, if any)
-								<br><br>
+
                 NOTARY PUBLIC
-								<br><br>
+
                 My commission expires: _________________
               </span>
 
