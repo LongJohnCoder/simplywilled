@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild, OnChanges, DoCheck, AfterViewChecked} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild, OnChanges, DoCheck, AfterViewChecked, ChangeDetectorRef} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {UserService} from '../../../user.service';
 import {ProgressbarService} from '../../shared/services/progressbar.service';
@@ -26,7 +26,18 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   userDetails = {
     firstname: ''
   };
-  docThumbImg: Array<any>;
+  docThumbImg: [
+    '../../../../../assets/images/doc1-thumb2.png',
+    '../../../../../assets/images/doc1-thumb2.png',
+    '../../../../../assets/images/doc1-thumb2.png',
+    '../../../../../assets/images/doc1-thumb2.png',
+    '../../../../../assets/images/doc1-thumb2.png',
+    '../../../../../assets/images/doc1-thumb2.png',
+    '../../../../../assets/images/doc1-thumb2.png',
+    '../../../../../assets/images/doc1-thumb2.png',
+    '../../../../../assets/images/doc1-thumb2.png',
+    '../../../../../assets/images/doc1-thumb2.png'
+  ];
   liCount: number;
   progressBar = {
     finalArrangements: false,
@@ -65,7 +76,8 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private userAuth: UserAuthService,
     private progressbarService: ProgressbarService,
-    private location: Location
+    private location: Location,
+    private ref: ChangeDetectorRef
   ) {
     this.loggedInUser = this.userAuth.getUser();
     this.getUserDetails();
@@ -103,6 +115,11 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
       (error) => { console.log(error); },
       () => {}
     );
+
+    ref.detach();
+    setInterval(() => {
+      this.ref.detectChanges();
+    }, 3000);
   }
 
   constructThumbnails() {
