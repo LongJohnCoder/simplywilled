@@ -633,18 +633,18 @@
        
         <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">STATE
         OF NEW HAMPSHIRE</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">)</span></span></span></p>
-        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">					)
+        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt; display: inline-block; padding-left: 185px;">					)
         ss.</span></span></span></p>
         <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">COUNTY
-        OF </span><span size="3" style="font-size: 12pt"><u>____________</u></span><span size="3" style="font-size: 12pt">	)</span></span></span></p>
+        OF </span><span size="3" style="font-size: 12pt">____________</span><span size="3" style="font-size: 12pt">	)</span></span></span></p>
         <p  style="margin-bottom: 0in; "><br/>
 
         </p>
         <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'">The foregoing durable power of
-        attorney for health care was acknowledged before me this </span><span style="font-family:'Times New Roman, serif'"><u>__________</u></span><span style="font-family:'Times New Roman, serif'">
-        day of </span><span style="font-family:'Times New Roman, serif'"><u>________________________________</u></span><span style="font-family:'Times New Roman, serif'">,
-        </span><span style="font-family:'Times New Roman, serif'"><u>__________________</u></span><span style="font-family:'Times New Roman, serif'">,
+        attorney for health care was acknowledged before me this </span><span style="font-family:'Times New Roman, serif'">__________</span><span style="font-family:'Times New Roman, serif'">
+        day of </span><span style="font-family:'Times New Roman, serif'">________________________________</span><span style="font-family:'Times New Roman, serif'">,
+        </span><span style="font-family:'Times New Roman, serif'">__________________</span><span style="font-family:'Times New Roman, serif'">,
         by </span>
         
         <span>
@@ -941,19 +941,19 @@
         </p>
         <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">STATE
         OF NEW HAMPSHIRE</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">)</span></span></span></p>
-        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">					)
+        <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt; display: inline-block; padding-left: 185px;">					)
         ss.</span></span></span></p>
         <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">COUNTY
-        OF </span><span size="3" style="font-size: 12pt"><u>			</u></span><span size="3" style="font-size: 12pt">	)</span></span></span></p>
+        OF </span><span size="3" style="font-size: 12pt"><______________________</span><span size="3" style="font-size: 12pt">	)</span></span></span></p>
         <p  style="margin-bottom: 0in; "><br/>
 
         </p>
 
         <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'">The foregoing durable power of
-        attorney for health care was acknowledged before me this </span><span style="font-family:'Times New Roman, serif'"><u>	</u></span><span style="font-family:'Times New Roman, serif'">
-        day of </span><span style="font-family:'Times New Roman, serif'"><u>					</u></span><span style="font-family:'Times New Roman, serif'">,
-        </span><span style="font-family:'Times New Roman, serif'"><u>		</u></span><span style="font-family:'Times New Roman, serif'">,
+        attorney for health care was acknowledged before me this </span><span style="font-family:'Times New Roman, serif'">_______</span><span style="font-family:'Times New Roman, serif'">
+        day of </span><span style="font-family:'Times New Roman, serif'">____________________</span><span style="font-family:'Times New Roman, serif'">,
+        </span><span style="font-family:'Times New Roman, serif'">________________</span><span style="font-family:'Times New Roman, serif'">,
         by </span>
         
         <span>

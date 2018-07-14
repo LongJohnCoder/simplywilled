@@ -358,7 +358,7 @@
                   <span style="font-family:'Times New Roman, serif'">
                     <span size="2" style="font-size: 9pt">
                       <span size="3" style="font-size: 12pt">Name:   </span>
-                      <span size="3" style="font-size: 12pt"><u>____________________________________________________</u> </span>
+                      <span size="3" style="font-size: 12pt">____________________________________________________ </span>
                     </span>
                   </span>
                 </p>
@@ -371,7 +371,7 @@
                   <span style="font-family:'Times New Roman, serif'">
                     <span size="2" style="font-size: 9pt">
                       <span size="3" style="font-size: 12pt">Address:  </span>
-                      <span size="3" style="font-size: 12pt"><u>____________________________________________________</u></span>
+                      <span size="3" style="font-size: 12pt">____________________________________________________</span>
                     </span>
                   </span>
                 </p>
@@ -384,7 +384,7 @@
                   <span style="font-family:'Times New Roman, serif'">
                     <span size="2" style="font-size: 9pt">
                       <span size="3" style="font-size: 12pt">Telephone:  </span>
-                      <span size="3" style="font-size: 12pt"><u>____________________________________________________</u></span>
+                      <span size="3" style="font-size: 12pt">____________________________________________________</span>
                     </span>
                   </span>
                 </p>
@@ -477,13 +477,13 @@
         pursuant </span><span face="Arial, serif"><span size="2" style="font-size: 9pt"><span style="font-family:'Times New Roman, serif'"><span size="3" style="font-size: 12pt">§</span></span></span></span><span size="3" style="font-size: 12pt">2983
         of the Consolidated Laws of New York, Public Health, Chapter 45,
         Article 29-C.</span></span></span></p>
-          <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+          <p  style="margin-bottom: 0in; line-height: 100%">
 
           </p>
           <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">6.</span><span size="3" style="font-size: 12pt">  </span><span size="3" style="font-size: 12pt">If
         a guardian of the person is to be appointed for me, I nominate the
         agent whom I named in this form to act as such guardian.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
-          <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+          <p  style="margin-bottom: 0in; line-height: 100%">
 
           </p>
           <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">7.</span><span size="3" style="font-size: 12pt">  </span><span size="3" style="font-size: 12pt">My
@@ -499,7 +499,6 @@
         </b></span><span size="3" style="font-size: 12pt">anatomical gift at
         this time.</span></span></span></p>
           <p align="left" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-            <br/>
 
           </p>
           <p align="left" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
@@ -538,6 +537,7 @@
           <p style="margin-left: 2in; margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
         <span style="font-family:'Times New Roman, serif'"><span face="Clearface, serif">_________________________________
         </span></span></p>
+        <p></p>
         </div>
         {{--
         <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
@@ -619,9 +619,9 @@
 
           </p>
           <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Executed
-        by me on this </span><span size="3" style="font-size: 12pt"><u> </u></span><span size="3" style="font-size: 12pt">
-        day of </span><span size="3" style="font-size: 12pt"><u>        </u></span><span size="3" style="font-size: 12pt">,
-        </span><span size="3" style="font-size: 12pt"><u>   </u></span><span size="3" style="font-size: 12pt">.</span></span></span></p>
+        by me on this </span><span size="3" style="font-size: 12pt">_________</span><span size="3" style="font-size: 12pt">
+        day of </span><span size="3" style="font-size: 12pt">____________________</span><span size="3" style="font-size: 12pt">,
+        </span><span size="3" style="font-size: 12pt">________________</span><span size="3" style="font-size: 12pt">.</span></span></span></p>
           <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
           </p>
@@ -728,16 +728,16 @@
 
           </p>
           <p class="western" style="margin-bottom: 0in; line-height: 100%"><span ><b>WITNESS
-      1</b></span><span >: </span><span ><u>____________________</u></span><span style="padding-left: 50px;"> Dated:
-      </span><span ><u>______________________</u></span></p>
+      1</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;"> Dated:
+      </span><span >______________________</span></p>
           <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
             <span style="padding-left: 50px;">[signature]</span></p>
           <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
-            <span ><u>____________________________</u></span><span >    </span><span style="padding-left: 122px;"><u>______________________</u></span></p>
+            <span >____________________________</span><span >    </span><span style="padding-left: 122px;">______________________</span></p>
           <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
             <span style="padding-left: 60px;">  [name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
           <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:25px 0 0 350px;">
-            <span >             </span><span ><u>______________________</u></span></p>
+            <span >             </span><span >______________________</span></p>
           <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
             <span style="padding-left: 40px;">                [city, state, zip]</span></p>
           <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
@@ -747,16 +747,16 @@
 
           </p>
           <p class="western" style="margin-bottom: 0in; line-height: 100%"><span ><b>WITNESS
-      2</b></span><span >: </span><span ><u>____________________</u></span><span style="padding-left: 50px;"> Dated:
-      </span><span ><u>______________________</u></span></p>
+      2</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;"> Dated:
+      </span><span >______________________</span></p>
           <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
             <span style="padding-left: 50px;">[signature]</span></p>
           <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
-            <span ><u>____________________________</u></span><span >    </span><span style="padding-left: 122px;"><u>______________________</u></span></p>
+            <span >____________________________</span><span >    </span><span style="padding-left: 122px;">______________________</span></p>
           <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
             <span style="padding-left: 60px;">  [name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
           <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:25px 0 0 350px;">
-            <span >             </span><span ><u>______________________</u></span></p>
+            <span >             </span><span >______________________</span></p>
           <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
             <span style="padding-left: 40px;">                [city, state, zip]</span></p>
         </div>

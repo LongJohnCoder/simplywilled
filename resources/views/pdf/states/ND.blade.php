@@ -367,14 +367,14 @@
     <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
       I want to say anything more about my health care agent's powers or
       limits on the powers, I can say it here:</span></span></span></p>
-    <p  style="margin-bottom: 0.06in; line-height: 200%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><u>																																___________________________________________________________________________<br>
+    <p  style="margin-bottom: 0.06in; line-height: 200%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">																																___________________________________________________________________________<br>
 					___________________________________________________________________________<br>
 					___________________________________________________________________________<br>
 					___________________________________________________________________________<br>
 					___________________________________________________________________________<br>
 					___________________________________________________________________________<br>
 					___________________________________________________________________________<br>
-					</u></span></span></span></p>
+					</span></span></span></p>
     <p  style="margin-bottom: 0in; "><br/>
 
     </p>
@@ -704,7 +704,7 @@
     </p>
     
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
-    sign my name to this Health Care Directive Form on this </span><span size="3" style="font-size: 12pt"><u>		</u></span><span size="3" style="font-size: 12pt">
+    sign my name to this Health Care Directive Form on this </span><span size="3" style="font-size: 12pt">________</span><span size="3" style="font-size: 12pt">
     day of </span><span size="3" style="font-size: 12pt">____________</span><span size="3" style="font-size: 12pt">,
     </span></span></span>
     </p>
@@ -752,28 +752,28 @@
       a notary or witnesses:</span></span></span></p>
     <ol>
       <li>
-      <p  style="margin-bottom: 0.06in; ">
+      <p  style="margin-bottom: 0.06in; margin-top: 0;">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">A
         person you designate as your agent or alternative agent;</span></span></span></p>
       </li>
       <li>
-      <p  style="margin-bottom: 0.06in; ">
+      <p  style="margin-bottom: 0.06in; margin-top: 0;">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Your
         spouse;</span></span></span></p>
       </li>
       <li>
-      <p  style="margin-bottom: 0.06in; ">
+      <p  style="margin-bottom: 0.06in; margin-top: 0;">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">A
         person related to you by blood, marriage or adoption;</span></span></span></p>
       </li>
       <li>
-      <p  style="margin-bottom: 0.06in; ">
+      <p  style="margin-bottom: 0.06in; margin-top: 0;">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">A
         person entitled to inherit any part of your estate upon your death;
         or</span></span></span></p>
       </li>
       <li>
-      <p  style="margin-bottom: 0in; ">
+      <p  style="margin-bottom: 0in; margin-top: 0;">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">A
         person who has, at the time of executing this document, any claim
         against your estate.</span></span></span></p>
@@ -803,9 +803,9 @@
 
     </p>
     <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">In my presence on this </span><span style="font-family:'Times New Roman, serif'"><u>		</u></span><span style="font-family:'Times New Roman, serif'">
-      day of </span><span style="font-family:'Times New Roman, serif'"><u>			</u></span><span style="font-family:'Times New Roman, serif'">,
-      </span><span style="font-family:'Times New Roman, serif'"><u>		</u></span><span style="font-family:'Times New Roman, serif'">,
+      <span style="font-family:'Times New Roman, serif'">In my presence on this </span><span style="font-family:'Times New Roman, serif'">________</span><span style="font-family:'Times New Roman, serif'">
+      day of </span><span style="font-family:'Times New Roman, serif'">_____________________</span><span style="font-family:'Times New Roman, serif'">,
+      </span><span style="font-family:'Times New Roman, serif'">_______________</span><span style="font-family:'Times New Roman, serif'">,
       </span><span style="font-family:'Times New Roman, serif'">
       <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
       
@@ -1057,7 +1057,7 @@ IF</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></
 
     </p>
     <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Dated:
-      </span></span><span ><span size="3" style="font-size: 12pt"><u>				</u></span></span></span></span></span></p>
+      </span></span><span ><span size="3" style="font-size: 12pt">_______________</span></span></span></span></span></p>
     <p  style="margin-bottom: 0in; "><br/>
 
     </p>

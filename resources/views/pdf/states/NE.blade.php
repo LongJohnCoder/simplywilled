@@ -258,7 +258,7 @@
     </p>
     <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">STATE
       OF NEBRASKA	</span></span><span ><span size="3" style="font-size: 12pt">	</span></span><span ><span size="3" style="font-size: 12pt">)</span></span></span></span></span></p>
-    <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">				</span><span size="3" style="font-size: 12pt">)
+    <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">				</span><span size="3" style="font-size: 12pt; display: inline-block; padding-left: 180px;">)
       ss.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
     <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">COUNTY
       ________________</span></span><span ><span size="3" style="font-size: 12pt">	</span></span><span ><span size="3" style="font-size: 12pt">)</span></span></span></span></span></p>
@@ -266,8 +266,8 @@
 
     </p>
     <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">On this _____ day of </span><span style="font-family:'Times New Roman, serif'"><u>				</u></span><span style="font-family:'Times New Roman, serif'">,
-    </span><span style="font-family:'Times New Roman, serif'"><u>		</u></span><span style="font-family:'Times New Roman, serif'">,
+      <span style="font-family:'Times New Roman, serif'">On this ______ day of </span><span style="font-family:'Times New Roman, serif'">_______________________</span><span style="font-family:'Times New Roman, serif'">,
+    </span><span style="font-family:'Times New Roman, serif'">__________________</span><span style="font-family:'Times New Roman, serif'">,
     before me, a notary public, personally came </span>
 
 

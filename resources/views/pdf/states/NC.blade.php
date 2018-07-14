@@ -964,8 +964,8 @@ OF </span></span><span ><span size="3" style="font-size: 12pt"><u>				</u></span
 
     </p>
     <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Sworn
-to (or affirmed) and subscribed before me this </span><span size="3" style="font-size: 12pt"><u>	</u></span><span size="3" style="font-size: 12pt">
-day of </span><span size="3" style="font-size: 12pt"><u>			</u></span><span size="3" style="font-size: 12pt">,</span></span></span></p>
+to (or affirmed) and subscribed before me this </span><span size="3" style="font-size: 12pt">_________</span><span size="3" style="font-size: 12pt">
+day of </span><span size="3" style="font-size: 12pt">_______________________</span><span size="3" style="font-size: 12pt">,</span></span></span></p>
     <p  style="margin-bottom: 0.08in; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">by </span><span style="font-family:'Times New Roman, serif'">
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
@@ -1301,9 +1301,9 @@ DEATH (&quot;LIVING WILL&quot;)</b></span></span></span></p>
 
     </p>
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">This
-      the </span><span size="3" style="font-size: 12pt"><u>______</u></span><span size="3" style="font-size: 12pt">
-      day of </span><span size="3" style="font-size: 12pt"><u>_____________________</u></span><span size="3" style="font-size: 12pt">,
-      </span><span size="3" style="font-size: 12pt"><u>_________________</u></span><span size="3" style="font-size: 12pt">.</span></span></span></p>
+      the </span><span size="3" style="font-size: 12pt">______</span><span size="3" style="font-size: 12pt">
+      day of </span><span size="3" style="font-size: 12pt">_____________________</span><span size="3" style="font-size: 12pt">,
+      </span><span size="3" style="font-size: 12pt">_________________</span><span size="3" style="font-size: 12pt">.</span></span></span></p>
     <p  style="margin-bottom: 0in; "><br/>
 
     </p>

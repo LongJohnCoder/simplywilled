@@ -618,7 +618,7 @@
     <div class="docPage" style="margin: 0; box-sizing: border-box; padding: 0px;">
         <div class="docPageInner" style="box-sizing: border-box; height: 875px; page-break-after: always;">
             @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == false)
-            <div>
+            
                 <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">person’s
       appointment or authority to act as my agent, then I designate and
       appoint the following persons to serve as my alternate agents to make
@@ -652,14 +652,17 @@
                     <span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Telephone:</span></span></span></span></p>
                 
                 
-            </div>
-            @endif
+                @endif
+
+                 <p class="western" style="margin-bottom: 0in; "><b>9.PRIOR
+                    DESIGNATIONS REVOKED.</b> I revoke any prior durable power of
+                attorney for health care.</p>
+            
+            
             <!--<p  style="margin-bottom: 0in; "><span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">«</span></span><span size="3" style="font-size: 12pt">END
             IF</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></span></p>-->
             
-            <p class="western" style="margin-bottom: 0in; "><b>9.</b><b>	</b><b>PRIOR
-                    DESIGNATIONS REVOKED.</b> I revoke any prior durable power of
-                attorney for health care.</p>
+           
         </div>
         <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">

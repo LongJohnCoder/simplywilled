@@ -332,15 +332,15 @@
     </p>
     
     <p class="western" style="margin-left: 0.5in; margin-bottom: 0in; ">
-      My religion <u>_____________________________________</u> 	</p>
+      My religion _____________________________________ 	</p>
     <p class="western" style="margin-left: 0.5in; margin-bottom: 0in; ">
     </p>
     
     <p class="western" style="margin-left: 0.5in; margin-bottom: 0in; ">
-      My faith community <u>______________________________</u></p>
+      My faith community ______________________________</p>
     
     <p class="western" style="margin-left: 0.5in; margin-bottom: 0in; ">
-      Contact person <u>__________________________________</u>
+      Contact person __________________________________
 
     </p>
     <p class="western" style="margin-bottom: 0in; ">I

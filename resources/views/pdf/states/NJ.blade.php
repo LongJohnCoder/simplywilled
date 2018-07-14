@@ -165,7 +165,7 @@
                         <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}}, </span>
                     </span>
                     
-                    <span size="3" style="font-size: 12pt">(Tel: «</span>
+                    <span size="3" style="font-size: 12pt">(Tel: </span>
                     
                     <span>
                         <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupphone']}}</span>
@@ -926,7 +926,7 @@
         </p>
         
         <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
-        <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></p>
+        <span ><span size="3" style="font-size: 12pt">_______________________________________</span></span></p>
         <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
           <span>
               <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
@@ -934,7 +934,7 @@
         </p>
         <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
         <span>
-          <span size="2" style="font-size: 9pt">
+          <span>
               <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}}</span>
           </span>
         </span>
@@ -943,19 +943,19 @@
         
 
         <p style="margin-left: 0.5in; margin-bottom: 0in; ">
-        <span><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">«</span></span>
+        <span><span><span ><span size="3" style="font-size: 12pt"></span></span>
         
         <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}}</span>
         
         
         <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}}</span>&nbsp;
         
-        <span ><span size="3" style="font-size: 12pt">»</span></span><span ><span size="3" style="font-size: 12pt">&nbsp;
-        </span></span><span ><span size="3" style="font-size: 12pt">«</span></span>
+        <span ><span size="3" style="font-size: 12pt"></span></span><span ><span size="3" style="font-size: 12pt">&nbsp;
+        </span></span><span ><span size="3" style="font-size: 12pt"></span></span>
         
         <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['zip']}}, </span>
         
-        <span ><span size="3" style="font-size: 12pt">»</span></span></span></span></p>
+        <span ><span size="3" style="font-size: 12pt"></span></span></span></span></p>
     </div>
     {{--
     <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
@@ -980,7 +980,7 @@
 
         </p>
         <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
-        <span >I declare that </span><b>«</b>
+        <span >I declare that </span><b></b>
         
         <span>
             <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
