@@ -306,7 +306,9 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   }
 
   constructThumbnails() {
+    console.log('in construct thumbnails');
     if ( this.pdfData.state !== undefined && this.pdfData.state !== null && this.pdfData.state.abr !== null) {
+      console.log('in construct thumbnails calling further');
       const abr = this.pdfData.state.abr;
       this.thKey = abr.toLowerCase();
       if (this.states[this.thKey] !== undefined) {
@@ -323,7 +325,11 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
           // this.liCount = this.docThumbImg.length * 114;
           // this.totalY = this.docThumbImg.length * 1011;
           // this.totalX = this.docThumbImg.length * 793;
+        } else {
+          console.log('thNiil key is undefined : key -> ', this.thKey);
         }
+      } else {
+        console.log('states key is undefined : key -> ', this.thKey);
       }
     } else {
       console.log('state is here');
