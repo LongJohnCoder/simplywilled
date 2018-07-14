@@ -31,6 +31,12 @@ export class AlComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit() {
+    // const x = this.globalService.getDynamicPages();
+    // this.totalPages = x.totalPages;
+    // this.globalService.hcpoaPages({
+    //   'pages' : x.totalPages,
+    //   'heightArr' : x.heightArr
+    // });
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -61,6 +67,13 @@ export class AlComponent implements OnInit, OnChanges {
       };
       this.loading = false;
       console.log(this.userDetails);
+
+      const x = this.globalService.getDynamicPages();
+      this.totalPages = x.totalPages;
+      this.globalService.hcpoaPages({
+        'pages' : x.totalPages,
+        'heightArr' : x.heightArr
+      });
     }
   }
 }

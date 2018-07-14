@@ -184,7 +184,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
         if (response.status) {
           this.pdfData = response.data;
           if ( this.pdfData.state !== undefined && this.pdfData.state.abr !== null) {
-            this.constructThumbnails();
+             this.constructThumbnails();
           }
         }
       }
@@ -236,6 +236,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     this.docScrolled = 0;
     this.thumbIndex = 1;
     // this.liCount = this.docThumbImg.length * 114;
+    this.initialize();
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -344,7 +345,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
       if (this.states[this.thKey] !== undefined) {
         this.states[this.thKey] = true;
         console.log('heightArr in const : ', this.heightArr);
-        const limit = this.heightArr === undefined ? 3 : this.heightArr.length;
+        const limit = this.heightArr === undefined ? 4 : this.heightArr.length;
         this.thNail[this.thKey] = limit;
         this.docThumbImg = [];
         for (let key = 0 ; key < limit ; key ++) {

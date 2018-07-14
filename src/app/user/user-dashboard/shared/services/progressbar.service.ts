@@ -28,8 +28,10 @@ export class ProgressbarService {
 
   /**Fetch overall progress*/
   fetchTotalCompletion(token: string) {
-    return this._http.get(environment.API_URL + 'user/fetchTotalCompletion', {headers: new HttpHeaders(
+    // setTimeout(() => {
+      return this._http.get(environment.API_URL + 'user/fetchTotalCompletion', {headers: new HttpHeaders(
         {'Authorization': token})});
+    // }, 2000);
   }
 
 }
