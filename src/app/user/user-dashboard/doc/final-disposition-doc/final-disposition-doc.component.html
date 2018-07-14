@@ -10,7 +10,7 @@
   </div>
 </div>
 
-<div class="main-content" *ngIf="!loading">
+<div class="main-content"  *ngIf="!loading">
   <h2 class="docHeading">Final Disposition Authorization and Instructions</h2>
   <div class="thumbContainer">
     <ul>
@@ -25,16 +25,16 @@
           <div id="doc" class="docPageInner"
                style=" height: 890px;">
             <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; ">Final Disposition Authorization and Instructions</h1>
-            <p style="font-size: 15px; margin: 0 0 15px; ">
-              I, <span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.firstname}} </span><span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.middlename}} </span><span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.lastname}} </span>, of <span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.address}} </span>,<span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.city}} </span> , <span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.state}} </span>,
+            <p style="font-size: 15px; margin: 0 0 15px; text-align: justify; ">
+              I, <span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.firstname}} </span><span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.middlename}} </span><span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.lastname}},</span> of <span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.address}}, </span><span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.city}}, </span> <span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.state}}, </span>
               being of sound mind, willfully and voluntarily make known by this document
               <span *ngIf="userDetails.tellUsAboutYou.state === 'New Jersey'">my desires concerning, upon my death, the final disposition of my remains</span>
-              <span *ngIf="userDetails.tellUsAboutYou.state !== 'New Jersey'">my desire that, upon my death, the final disposition of my remains be under the control of my
+              <span *ngIf="userDetails.tellUsAboutYou.state !== 'New Jersey'">my desire that, upon my death, the final disposition of my remains be under the control of my</span>
                 <span *ngIf="userDetails.tellUsAboutYou.state === 'Wisconsin'">representative under the requirements of §154.30, Wisconsin Statutes</span>
                 <span *ngIf="userDetails.tellUsAboutYou.state === 'Michigan'">funeral representative pursuant to §700.3206, MCL</span>
-                <span *ngIf="userDetails.tellUsAboutYou.state !== 'Wisconsin' && userDetails.tellUsAboutYou.state !== 'Michigan'">representative</span>,
-                and, with respect to that final disposition only, I hereby appoint {{userDetails.personalRepresentative.fullname !== null ? userDetails.personalRepresentative.fullname : '________'}} as the representative<span *ngIf="userDetails.backupPersonalRepresentative !== null"> and {{userDetails.backupPersonalRepresentative.fullname !== null ? userDetails.backupPersonalRepresentative.fullname : '________'}} as the successor representative</span> named in this document. All decisions made by my representative with respect to the final disposition of my remains shall be binding and, for the guidance of my representative, I am making my wishes known as follows
-              </span>:
+                <span *ngIf="userDetails.tellUsAboutYou.state !== 'Wisconsin' && userDetails.tellUsAboutYou.state !== 'Michigan'">representative</span>
+              named in this document. All decisions made by my representative with respect to my funeral and the final disposition of my remains shall be binding and, for the guidance of my representative, I am making my wishes known as follows:
+
             </p>
 
             <!--<p style="font-size: 15px; margin: 0 0 15px; ">
@@ -45,24 +45,22 @@
             <p style="font-size: 15px; margin: 0 0 15px; ">
               <span  *ngIf="userDetails.finalArrangements.type === '1'">
 
-                1. I wish to be cremated. I would like my ashes to be managed and disposed of in the following manner: <span *ngIf="userDetails.finalArrangements.ashes !== null && userDetails.finalArrangements.ashes !== undefined"> {{userDetails.finalArrangements.ashes}}.</span>
+                1. I wish to be cremated. I would like my ashes to be managed and disposed of in the following manner: <span *ngIf="userDetails.finalArrangements.ashes !== null && userDetails.finalArrangements.ashes !== undefined"> Ashes.</span>
 
                 <span *ngIf="userDetails.finalArrangements.ashes === null && userDetails.finalArrangements.ashes === undefined">: __________________________________________________
-
                 ______________________________________________________________________
-
+                ______________________________________________________________________
                 ______________________________________________________________________
 
                 </span>
               </span>
               <span  *ngIf="userDetails.finalArrangements.type === '0'">
 
-                1. I wish to be buried. I would like my remains interred <span *ngIf="userDetails.finalArrangements.ashes !== null && userDetails.finalArrangements.ashes !== undefined"> {{userDetails.finalArrangements.ashes}}.</span>
+                1. I wish to be buried. I would like my remains interred <span *ngIf="userDetails.finalArrangements.ashes !== null && userDetails.finalArrangements.ashes !== undefined"> Interred.</span>
 
                 <span *ngIf="userDetails.finalArrangements.ashes === null && userDetails.finalArrangements.ashes === undefined">: ___________________________________________
-
                 ______________________________________________________________________
-
+                ______________________________________________________________________
                 ______________________________________________________________________
 
                 </span>
@@ -74,7 +72,7 @@
                 <span *ngIf="userDetails.finalArrangements.some_other_way === null && userDetails.finalArrangements.some_other_way === undefined">: ___________________________________________
 
                 ______________________________________________________________________
-
+                ______________________________________________________________________
                 ______________________________________________________________________
 
                 </span>
