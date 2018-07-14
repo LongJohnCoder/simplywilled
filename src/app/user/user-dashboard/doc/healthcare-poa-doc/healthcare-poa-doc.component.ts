@@ -281,12 +281,13 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
                // setTimeout(() => {
                 this.heightArr = resp.heightArr;
                 console.log('heightArr in initialize : ', this.heightArr);
+
                 // console.log('resp received :', resp);
                 this.constructThumbnails();
                 this.liCount = this.docThumbImg.length * 114;
               // }, 2000);
             } else {
-              console.log('in else ++here++ : ', this.heightArr, resp.heightArr, resp.pages, 'docThumbImg : ', this.docThumbImg);
+             // console.log('in else ++here++ : ', this.heightArr, resp.heightArr, resp.pages, 'docThumbImg : ', this.docThumbImg);
             }
           } else {
             console.log('incorrect response values gathered from rxjs/subscription', resp);
