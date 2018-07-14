@@ -116,27 +116,27 @@
                 <span>
                    3. My funeral representative shall be:
                 </span>
-
+                <br>
                 <span>
 
                 ________________________________________________
-
+                <br>
                 (Name)
 
                 </span>
-
+                <br>
                 <span>
-
+                <br>
                 ________________________________________________
-
+                <br>
                 (Address)
 
                 </span>
-
+                <br>
                 <span>
 
                 ________________________________________________
-
+                <br>
                 (Telephone)
 
                 </span>
@@ -144,17 +144,17 @@
             <p style="font-size: 15px; margin: 0 0 15px; ">
 
               If my funeral representative dies, becomes incapacitated, resigns, refuses to act, ceases to be qualified, or cannot be located within the time necessary to control the final disposition of my remains, I hereby appoint the following individual to serve as my successor funeral representative:
-
+                <br>
               ________________________________________________
-
+                <br>
               (Name)
-
+                <br>
               ________________________________________________
-
+                <br>
               (Address)
-
+                <br>
               ________________________________________________
-
+                <br>
               (Telephone)
             </p>
             <p style="font-size: 15px; margin: 0 0 15px; ">
@@ -171,6 +171,11 @@
             </p>
 
           </div>
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
+                 style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+                Final Disposition of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
+                Page 1 of 3
+            </div>
         </div>
 
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
@@ -231,6 +236,11 @@
               </p>
 
           </div>
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
+                 style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+                Final Disposition of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
+                Page 2 of 3
+            </div>
         </div>
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;" *ngIf="userDetails.tellUsAboutYou.state === 'Wisconsin' || userDetails.tellUsAboutYou.state === 'Michigan'">
           <div class="docPageInner"
@@ -241,51 +251,56 @@
 
                     I hereby accept appointment as <span *ngIf="userDetails.tellUsAboutYou.city === 'Michigan'"> funeral </span>representative for the control of final disposition of the declarant’s remains.
 
-                    <br>Signature: ___________________________________ Dated: _______________________
+                    <br><br>Signature: ___________________________________ Dated: _______________________
 
-                    <br>Print Name: _____________________________________________________
+                    <br><br>Print Name: _____________________________________________________
 
 
-                    <br>STATE OF ________________ )
+                    <br><br>STATE OF ________________ )
 
                     <br>) ss.
 
                     <br>COUNTY OF ________________ )
 
-                    <br>Subscribed, sworn and acknowledged before me by ______________________________________, who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
+                    <br><br>Subscribed, sworn and acknowledged before me by ______________________________________, who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
 
-                    <br>______________________________________ (Seal, if any)
+                    <br><br>______________________________________ (Seal, if any)
 
-                    <br>NOTARY PUBLIC
+                    <br><br>NOTARY PUBLIC
 
-                    <br>My commission expires: _________________
-                    <br>
+                    <br><br>My commission expires: _________________
+                    <br><br>
 
 
                     I hereby accept appointment as successor <span *ngIf="userDetails.tellUsAboutYou.city === 'Michigan'"> funeral </span>representative for the control of final disposition of the declarant’s remains.
 
-                    <br>Signature: ___________________________________ Dated: _______________________
+                    <br><br>Signature: ___________________________________ Dated: _______________________
 
-                    <br>Print Name: _____________________________________________________
+                    <br><br>Print Name: _____________________________________________________
 
 
-                    <br>STATE OF ________________ )
+                    <br><br>STATE OF ________________ )
 
                     <br>) ss.
 
                     <br>COUNTY OF ________________ )
 
-                    <br>Subscribed, sworn and acknowledged before me by ______________________________________, who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
+                    <br><br>Subscribed, sworn and acknowledged before me by ______________________________________, who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
 
-                    <br>______________________________________ (Seal, if any)
+                    <br><br>______________________________________ (Seal, if any)
 
-                    <br>NOTARY PUBLIC
+                    <br><br>NOTARY PUBLIC
 
-                    <br>My commission expires: _________________
+                    <br><br>My commission expires: _________________
 
               </span>
             </p>
           </div>
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
+                 style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+                Final Disposition of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
+                Page 3 of 3
+            </div>
         </div>
       </div>
     </div>
