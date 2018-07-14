@@ -235,6 +235,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngDoCheck() {
+    console.log('ng do check - hcpoa');
     // this.initialize();
   }
 
@@ -248,12 +249,14 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
           if (resp.pages > 0 && resp.heightArr.length > 0) {
             // tslint:disable-next-line:max-line-length
             if ( ((this.heightArr !== undefined) && (resp.heightArr[resp.pages - 1] !== this.heightArr[resp.pages - 1])) || (this.heightArr === undefined) )  {
-               setTimeout(() => {
+               // setTimeout(() => {
                 this.heightArr = resp.heightArr;
                 console.log(resp.heightArr);
                 this.constructThumbnails();
                 this.liCount = this.docThumbImg.length * 114;
-              }, 2000);
+              // }, 2000);
+            } else {
+              console.log('in else ++here++ : ', this.heightArr, resp.heightArr, resp.pages);
             }
           } else {
             console.log('incorrect response values gathered from rxjs/subscription', resp);

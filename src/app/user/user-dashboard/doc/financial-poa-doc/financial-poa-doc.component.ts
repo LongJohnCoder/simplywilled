@@ -178,14 +178,14 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
           // console.log('response from subscription', resp);
           if ( resp.pages > 0 && resp.heightArr.length > 0) {
             this.thNail[this.thKey] = resp.pages;
-            setTimeout(() => {
+            // setTimeout(() => {
               // tslint:disable-next-line:max-line-length
               if ( ((this.heightArr !== undefined) && (resp.heightArr[resp.pages - 1] !== this.heightArr[resp.pages - 1])) || (this.heightArr === undefined) ) {
                 this.heightArr = resp.heightArr;
                 this.constructThumbnails();
                 this.liCount = this.docThumbImg.length * 114;
               }
-            }, 2000);
+            // }, 2000);
           } else {
             console.log('incorrect response values gathered from rxjs/subscription', resp);
           }
