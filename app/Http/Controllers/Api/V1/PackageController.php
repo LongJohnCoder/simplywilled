@@ -433,7 +433,7 @@ class PackageController extends Controller
           } catch (\Exception $e) {
             \Log::info('type: error,'.' res: '.$e->getMessage().', line:'.$getLine());
           }
-          $cartStack = $this->cartStackSubmit($user->email, $userPackage->amount);
+          // $cartStack = $this->cartStackSubmit($user->email, $userPackage->amount);
 
           return response()->json([
             'status'=> true,
@@ -750,7 +750,7 @@ class PackageController extends Controller
           } catch (\Exception $e) {
             \Log::info('type: error,'.' res: '.$e->getMessage().', line:'.$e->getLine());
           }
-          $cartStack = $this->cartStackSubmit($email, $AMT);
+          // $cartStack = $this->cartStackSubmit($email, $AMT);
           return response()->json([
             'status' => true,
             'message' => 'Payment has done successfully',
@@ -789,7 +789,7 @@ class PackageController extends Controller
             'message' => 'Unknown Package',
           ], 400);
         }
-        $checkUserPackage = User::where('id', $userID)->where('package', $pkgID)->first();
+        
         if ($checkUserPackage) {
           return response()->json([
             'status' => true,
@@ -856,7 +856,7 @@ class PackageController extends Controller
             $customClaims = ['package' => $user->package];
             $token        = JWTAuth::fromUser($user, $customClaims);
 
-            $cartStack = $this->cartStackSubmit($user->email);
+            // $cartStack = $this->cartStackSubmit($user->email);
 
             return response()->json([
               'status' => true,
