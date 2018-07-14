@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
 
-// declare function cartstack_updatecart(e): any;
+declare function cartstack_updatecart(e): any;
 
 @Component({
   selector: 'app-thank-you',
@@ -22,10 +22,10 @@ export class ThankYouComponent implements OnInit {
   ) {
         window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
         /* for cartstack api  */
-        // var _cartstack_update = [];
-        // _cartstack_update.push(['setSiteID', 'k5FdWlhK']);
-        // _cartstack_update.push(['setAPI', 'confirmation']);
-        // cartstack_updatecart(_cartstack_update);
+        var _cartstack_update = [];
+        _cartstack_update.push(['setSiteID', 'k5FdWlhK']);
+        _cartstack_update.push(['setAPI', 'confirmation']);
+        cartstack_updatecart(_cartstack_update);
         /* end */
         this.countDown = Observable.interval(1000).map((tick) => --this.count).share();
         this.timerSubscription = this.countDown.subscribe(
