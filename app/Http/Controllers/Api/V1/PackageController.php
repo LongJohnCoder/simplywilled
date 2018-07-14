@@ -552,6 +552,7 @@ class PackageController extends Controller
         $pkgID         = $request->pkg_id;
         $userID        = $request->user_id;
         $couponID      = $request->coupon_id;
+        $email         = $request->email;
         $package       = Packages::find($pkgID);
         $user          = User::find($userID);
         $coupon        = Coupon::find($couponID);
@@ -714,6 +715,24 @@ class PackageController extends Controller
           $arr['payment']  = $userPackage;
           $arr['package_name']  = $package->name;
 
+          // try {
+          //   $mailData = [
+          //     'userName' => $user->name,
+          //     'transactionID' => $arr['CORRELATIONID'],
+          //     'pkgName' => $package->name,
+          //     'amount' => $AMT,
+          //     'paymentStatus' => $arr['ACK'],
+          //     'paymentDate' => date('jS M, Y', strtotime($userPackage->created_at)),
+          //     'email' => $user->email
+          //   ];
+          //   Mail::send('emails.payment',$mailData, function($mail) use($mailData){
+          //           $mail->from(config('settings.email'), 'Simplywilled Payment Confirmation');
+          //           $mail->to(strtolower($mailData['email']), $mailData['userName'])->subject('You have purchased '.$mailData['pkgName'].'!');
+          //   });
+          // } catch (\Exception $e) {
+          //   \Log::info('type: error,'.' res: '.$e->getMessage().', line:'.$e->getLine());
+          // }
+
           try {
             $mailData = [
               'userName' => $user->name,
@@ -722,7 +741,7 @@ class PackageController extends Controller
               'amount' => $AMT,
               'paymentStatus' => $arr['ACK'],
               'paymentDate' => date('jS M, Y', strtotime($userPackage->created_at)),
-              'email' => $user->email
+              'email' => $email
             ];
             Mail::send('emails.payment',$mailData, function($mail) use($mailData){
                     $mail->from(config('settings.email'), 'Simplywilled Payment Confirmation');
@@ -731,7 +750,7 @@ class PackageController extends Controller
           } catch (\Exception $e) {
             \Log::info('type: error,'.' res: '.$e->getMessage().', line:'.$e->getLine());
           }
-          $cartStack = $this->cartStackSubmit($user->email, $AMT);
+          $cartStack = $this->cartStackSubmit($email, $AMT);
           return response()->json([
             'status' => true,
             'message' => 'Payment has done successfully',
@@ -904,7 +923,7 @@ class PackageController extends Controller
         {
           \Log::info('CartStack submit success for '.$email.' amount: '.$amount.' resp=>'.json_encode($response));
         } else {
-          \Log::info('CartStack submit success for '.$email.' amount: '.$amount.' resp=>'.json_encode($response));
+          \Log::info('CartStack submit failed for '.$email.' amount: '.$amount.' resp=>'.json_encode($response));
         }
       } catch (\Exception $e) {
         \Log::info('CartStack submit failed for '.$email.' amount: '.$amount.' message=>'.$e->getMessage());
