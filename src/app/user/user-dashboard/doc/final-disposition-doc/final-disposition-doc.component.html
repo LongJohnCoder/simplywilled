@@ -191,9 +191,10 @@
 
               <p style="font-size: 15px; margin: 0 0 15px; ">{{userDetails.tellUsAboutYou.phone}}</p>
 
-              <p style="font-size: 15px; margin: 0 0 15px; ">
-                By my signature below, I attest that <span style="text-transform: uppercase;text-transform: capitalize"> {{userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname === undefined ? '___________________________________' : userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>, the person who signed this document, did so or acknowledged signing this document in my presence and that {{userDetails.tellUsAboutYou.gender !== null ? (userDetails.tellUsAboutYou.gender === 'Male' ? 'he' : 'she') : 'he' }} appears to be of sound mind and not subject to duress, fraud, or undue influence. I further attest that I am not the representative or the successor representative appointed under this document, that I am at least eighteen (18) years of age, and that I am not related to the person who signed this document by blood, marriage, or adoption<span *ngIf="userDetails.tellUsAboutYou.state === 'Michigan'">, nor am I a prohibited witness pursuant to §700.3206(2)(b)(i), MCL.</span>
-                <span style="float: left; width: 100%; padding: 32px 0;">
+              <p style="font-size: 15px; text-align: justify; margin: 0 0 15px; ">
+                By my signature below, I attest that <span style="text-transform: uppercase;text-transform: capitalize"> {{userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname === undefined ? '___________________________________' : userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>, the person who signed this document, did so or acknowledged signing this document in my presence and that {{userDetails.tellUsAboutYou.gender !== null ? (userDetails.tellUsAboutYou.gender === 'Male' ? 'he' : 'she') : 'he' }} appears to be of sound mind and not subject to duress, fraud, or undue influence. I further attest that I am not the representative or the successor representative appointed under this document, that I am at least eighteen (18) years of age, and that I am not related to the person who signed this document by blood, marriage, or adoption<span *ngIf="userDetails.tellUsAboutYou.state === 'Michigan'">, nor am I a prohibited witness pursuant to §700.3206(2)(b)(i), MCL</span>.
+                <br>
+                <span style="float: left; text-align: left; width: 100%; padding: 32px 0;">
                 <span style="width: 48%; float: left;">
                   <span>WITNESS 1: ____________________________________<br><br></span>
 
@@ -220,13 +221,13 @@
 
                   <span>COUNTY OF ________________ )</span><br><br>
 
-                  <span>Subscribed, sworn and acknowledged before me by <span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.firstname}} </span><span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.middlename}} </span><span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.lastname}} </span>, and _________________________________________, as witness, and _____________________________________, as witness, who personally appeared on this _________ day of ________________________________, _______, and who are personally known to me or who have produced satisfactory photo identification, and whose names are signed to the foregoing instrument.
+                  <span>Subscribed, sworn and acknowledged before me by <span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname === undefined ? '___________________________________' : userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span> and _________________________________________, as witness, and _____________________________________, as witness, who personally appeared on this _________ day of ________________________________, _______, and who are personally known to me or who have produced satisfactory photo identification, and whose names are signed to the foregoing instrument.
 
-                    ______________________________________ (Seal, if any)
+                    <br>______________________________________ (Seal, if any)
 
-                    NOTARY PUBLIC
+                    <br>NOTARY PUBLIC
 
-                My commission expires: _________________</span>
+                    <br>My commission expires: _________________</span>
               </p>
 
           </div>
@@ -234,55 +235,53 @@
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;" *ngIf="userDetails.tellUsAboutYou.state === 'Wisconsin' || userDetails.tellUsAboutYou.state === 'Michigan'">
           <div class="docPageInner"
                style=" height: 890px;">
-            <p style="font-size: 15px; margin: 0 0 15px; ">
+            <p style="font-size: 15px; page-break-before: always; margin: 0 0 15px; ">
               <span>
                  <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; ">AGENT ACCEPTANCE AND ACKNOWLEDGMENT</h1>
 
                     I hereby accept appointment as <span *ngIf="userDetails.tellUsAboutYou.city === 'Michigan'"> funeral </span>representative for the control of final disposition of the declarant’s remains.
 
-                    Signature: ___________________________________ Dated: _______________________
+                    <br>Signature: ___________________________________ Dated: _______________________
 
-                    Print Name: _____________________________________________________
+                    <br>Print Name: _____________________________________________________
 
 
-                    STATE OF ________________ )
+                    <br>STATE OF ________________ )
 
-                    ) ss.
+                    <br>) ss.
 
-                    COUNTY OF ________________ )
+                    <br>COUNTY OF ________________ )
 
-                    Subscribed, sworn and acknowledged before me by ______________________________________, who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
+                    <br>Subscribed, sworn and acknowledged before me by ______________________________________, who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
 
-                    <br>
-                    ______________________________________ (Seal, if any)
+                    <br>______________________________________ (Seal, if any)
 
-                    NOTARY PUBLIC
+                    <br>NOTARY PUBLIC
 
-                    My commission expires: _________________
+                    <br>My commission expires: _________________
                     <br>
 
 
                     I hereby accept appointment as successor <span *ngIf="userDetails.tellUsAboutYou.city === 'Michigan'"> funeral </span>representative for the control of final disposition of the declarant’s remains.
 
-                    Signature: ___________________________________ Dated: _______________________
+                    <br>Signature: ___________________________________ Dated: _______________________
 
-                    Print Name: _____________________________________________________
+                    <br>Print Name: _____________________________________________________
 
 
-                    STATE OF ________________ )
+                    <br>STATE OF ________________ )
 
-                    ) ss.
+                    <br>) ss.
 
-                    COUNTY OF ________________ )
+                    <br>COUNTY OF ________________ )
 
-                    Subscribed, sworn and acknowledged before me by ______________________________________, who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
+                    <br>Subscribed, sworn and acknowledged before me by ______________________________________, who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
 
-                    <br>
-                    ______________________________________ (Seal, if any)
+                    <br>______________________________________ (Seal, if any)
 
-                    NOTARY PUBLIC
+                    <br>NOTARY PUBLIC
 
-                    My commission expires: _________________
+                    <br>My commission expires: _________________
 
               </span>
             </p>
