@@ -433,6 +433,7 @@ class PackageController extends Controller
           } catch (\Exception $e) {
             \Log::info('type: error,'.' res: '.$e->getMessage().', line:'.$getLine());
           }
+          $cartStack = $this->cartStackSubmit($user->email, $userPackage->amount);
 
           return response()->json([
             'status'=> true,
@@ -730,7 +731,7 @@ class PackageController extends Controller
           } catch (\Exception $e) {
             \Log::info('type: error,'.' res: '.$e->getMessage().', line:'.$e->getLine());
           }
-
+          $cartStack = $this->cartStackSubmit($user->email, $AMT);
           return response()->json([
             'status' => true,
             'message' => 'Payment has done successfully',
@@ -836,6 +837,8 @@ class PackageController extends Controller
             $customClaims = ['package' => $user->package];
             $token        = JWTAuth::fromUser($user, $customClaims);
 
+            $cartStack = $this->cartStackSubmit($user->email);
+
             return response()->json([
               'status' => true,
               'message' => 'Your full free checkout has been done',
@@ -870,5 +873,43 @@ class PackageController extends Controller
       ];
 
       return $view = \View::make('emails.payment', $mailData);
+    }
+
+    public function cartStackSubmit($email='', $amount = 0)
+    {
+      try {
+        // Setup the URL to CartStack...
+        $emailAddress = $email; // required, get from session or db...
+        $cartTotal = $amount; // optional, more accurate reporting...
+        $url = "https://api.cartstack.com/ss/v1/?key=f51ddb7586e8799e1c5e8dd52c5dbb56&siteid=k5FdWlhK&email=".$emailAddress."&total=".$cartTotal;
+
+        // Initialize cURL...
+        $ch = curl_init();
+
+        // Set URL and Return directives...
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        // Send the request...
+        $jsonResponse = curl_exec($ch);
+
+        // Close cURL...
+        curl_close($ch);
+
+        // Handle JSON response...
+        $response = json_decode($jsonResponse, true);
+
+        // Successful call is response code 100...
+        if ($response['resp'] != "100")
+        {
+          \Log::info('CartStack submit success for '.$email.' amount: '.$amount.' resp'=>json_encode($response));
+        } else {
+          \Log::info('CartStack submit failed for '.$email.' amount: '.$amount.' resp'=>json_encode($response));
+        }
+      } catch (\Exception $e) {
+        \Log::info('CartStack submit failed for '.$email.' amount: '.$amount.' message=>'.$e->getMessage());
+      }
+
+
     }
 }
