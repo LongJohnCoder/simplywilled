@@ -3,6 +3,8 @@ import {PackagesService} from '../packages.service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {Router} from '@angular/router';
 
+declare var _cartstack: any;
+
 @Component({
   selector: 'app-payment-page',
   templateUrl: './payment-page.component.html',
@@ -230,5 +232,10 @@ export class PaymentPageComponent implements OnInit  {
         }
 
 
+    }
+    
+    cartstackSetEmailAddressInput(ev: any){
+        _cartstack.push(['setEmailAddressInput', ev.target.value]);
+        _cartstack.push(['setCartTotal', '199.00']);
     }
 }

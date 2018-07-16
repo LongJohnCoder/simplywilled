@@ -48,12 +48,10 @@
         <div class="row">
           <div class="col-md-6">
             <label>Email Address:</label>
-            <input class="form-control" type="email"
-                   [(ngModel)]="data.email" ngModel #email="ngModel" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$"
-                    required>
+            <input class="form-control" type="email" [(ngModel)]="data.email" ngModel #email="ngModel" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$" required (change)="cartstackSetEmailAddressInput($event)">
             <span class="error_txt" *ngIf="email.invalid && email.touched || email.hasError('pattern')">
-                  <p>Please provide a valid email id.</p>
-              </span>
+                <p>Please provide a valid email id.</p>
+            </span>
           </div>
           <div class="col-md-6">
             <label>Phone Number:</label>
