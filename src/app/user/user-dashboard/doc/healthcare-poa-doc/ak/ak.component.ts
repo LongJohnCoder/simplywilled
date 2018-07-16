@@ -1,4 +1,5 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import { GlobalPdfService } from './../../services/global-pdf.service';
+import {Component, Input, OnChanges, OnInit, DoCheck} from '@angular/core';
 
 @Component({
   selector: 'app-ak',
@@ -24,10 +25,27 @@ export class AkComponent implements OnInit, OnChanges {
     tellUsAboutYou: null
   };
   loading = true;
+  totalPages: number;
 
-  constructor() { }
+  constructor(
+    private globalService: GlobalPdfService
+  ) { }
 
   ngOnInit() {
+  }
+
+  setThumbnails() {
+    const x = this.globalService.getDynamicPages();
+    this.totalPages = x.totalPages;
+    this.globalService.hcpoaPages({
+      'pages' : x.totalPages,
+      'heightArr' : x.heightArr
+    });
+  }
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngDoCheck() {
+    // this.setThumbnails();
   }
 
   ngOnChanges() {
@@ -48,6 +66,7 @@ export class AkComponent implements OnInit, OnChanges {
       };
       this.loading = false;
       console.log(this.userDetails);
+      this.setThumbnails();
     }
   }
 }

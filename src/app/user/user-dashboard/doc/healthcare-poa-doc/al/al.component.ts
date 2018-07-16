@@ -1,12 +1,12 @@
 import { GlobalPdfService } from './../../services/global-pdf.service';
-import {Component, Input, OnChanges, OnInit, DoCheck} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, DoCheck, OnDestroy} from '@angular/core';
 
 @Component({
   selector: 'app-al',
   templateUrl: './al.component.html',
   styleUrls: ['./al.component.css']
 })
-export class AlComponent implements OnInit, OnChanges {
+export class AlComponent implements OnInit, OnChanges, OnDestroy {
   /**Variable declaration*/
   @Input() data: any;
   userDetails = {
@@ -41,6 +41,10 @@ export class AlComponent implements OnInit, OnChanges {
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngDoCheck() {
+    // this.setThNails();
+  }
+
+  setThNails() {
     const x = this.globalService.getDynamicPages();
     this.totalPages = x.totalPages;
     this.globalService.hcpoaPages({
@@ -67,13 +71,10 @@ export class AlComponent implements OnInit, OnChanges {
       };
       this.loading = false;
       console.log(this.userDetails);
-
-      const x = this.globalService.getDynamicPages();
-      this.totalPages = x.totalPages;
-      this.globalService.hcpoaPages({
-        'pages' : x.totalPages,
-        'heightArr' : x.heightArr
-      });
+      this.setThNails();
     }
+  }
+
+  ngOnDestroy(): void {
   }
 }

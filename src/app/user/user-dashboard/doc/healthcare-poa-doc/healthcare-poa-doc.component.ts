@@ -8,6 +8,8 @@ import { UserService } from '../../../user.service';
 import { ProgressbarService } from '../../shared/services/progressbar.service';
 import { UserAuthService } from '../../../user-auth/user-auth.service';
 import { Location } from '@angular/common';
+import 'rxjs/add/operator/throttleTime';
+import 'rxjs/add/operator/debounceTime';
 
 @Component({
   selector: 'app-healthcare-poa-doc',
@@ -29,12 +31,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   userDetails = {
     firstname: ''
   };
-  docThumbImg =  [
-    '../../../../../assets/images/doc1-thumb2.png',
-    '../../../../../assets/images/doc1-thumb2.png',
-    '../../../../../assets/images/doc1-thumb2.png',
-    '../../../../../assets/images/doc1-thumb2.png'
-  ];
+  docThumbImg =  [];
   liCount: number;
   progressBar = {
     finalArrangements: false,
@@ -246,30 +243,30 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngDoCheck() {
-    console.log('called - ngDoCheck - hcpoa');
-    this.initialize();
+    // console.log('called - ngDoCheck - hcpoa');
+    // this.initialize();
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterContentInit() {
-    console.log('called - ngAfterContentInit - hcpoa');
+    // console.log('called - ngAfterContentInit - hcpoa');
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterContentChecked() {
-    console.log('called - ngAfterContentChecked - hcpoa');
+    // console.log('called - ngAfterContentChecked - hcpoa');
     // this.initialize();
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
-    console.log('called - ngAfterViewInit - hcpoa');
+    // console.log('called - ngAfterViewInit - hcpoa');
     // this.initialize();
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewChecked() {
-    console.log('called - ngAfterViewInit - hcpoa');
+    // console.log('called - ngAfterViewInit - hcpoa');
   }
 
   initialize() {
@@ -291,7 +288,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
                 // console.log('resp received :', resp);
                 this.constructThumbnails();
                 this.liCount = this.docThumbImg.length * 114;
-                }, 1000);
+                }, 200);
             } else {
              // console.log('in else ++here++ : ', this.heightArr, resp.heightArr, resp.pages, 'docThumbImg : ', this.docThumbImg);
             }
@@ -371,15 +368,22 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   }
 
   getScroll(scrollVal: number, e: any) {
-    if (this.heightArr === undefined || this.heightArr === null || this.heightArr.length === 0) {
-      console.log(this.heightArr);
-      return;
-    }
-    this.thumbIndex = this.globalPDFService.getAccurateScrollPosition(scrollVal, this.heightArr);
-    const dx = e.target.offsetWidth + (this.docThumbImg.length * 7);
-    const u = dx / this.docThumbImg.length;
-    this.thumbContainer.nativeElement.scrollLeft = u * (this.thumbIndex - 1);
-    console.log(this.thumbIndex);
+    // tslint:disable-next-line:max-line-length
+    const resp = this.globalPDFService.getScrollEvent(scrollVal, this.heightArr, this.docThumbImg, e);
+    this.thumbContainer.nativeElement.scrollLeft = resp.scrollLeft;
+    this.thumbIndex = resp.thumbIndex;
+  }
+
+  debounce(fn, delay) {
+    let timer = null;
+    return function() {
+      const self = this,
+          args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function() {
+        fn.apply(self, args);
+      }, delay);
+    };
   }
 
   getThumbScroll(c: any) {
@@ -436,7 +440,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
             () => { this.loading = false; }
           );
         }
-      }, (error) => { console.log(error); this.loading = false;},
+      }, (error) => { console.log(error); this.loading = false; },
       () => { this.loading = false; }
     );
   }

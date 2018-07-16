@@ -1,3 +1,4 @@
+import { GlobalPdfService } from './../../services/global-pdf.service';
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
 
 @Component({
@@ -23,10 +24,21 @@ export class ArComponent implements OnInit, OnChanges {
     tellUsAboutYou: null
   };
   loading = true;
-
-  constructor() { }
+  totalPages: number;
+  constructor(
+    private globalService: GlobalPdfService
+  ) { }
 
   ngOnInit() {
+  }
+
+  setThNails() {
+    const x = this.globalService.getDynamicPages();
+    this.totalPages = x.totalPages;
+    this.globalService.hcpoaPages({
+      'pages' : x.totalPages,
+      'heightArr' : x.heightArr
+    });
   }
 
   ngOnChanges() {
@@ -47,7 +59,7 @@ export class ArComponent implements OnInit, OnChanges {
       };
       this.loading = false;
       console.log(this.userDetails);
+      this.setThNails();
     }
   }
-
 }

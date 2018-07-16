@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../../environments/environment';
@@ -149,6 +150,23 @@ export class GlobalPdfService {
     return {
       'totalPages'  : totalPages,
       'heightArr'   : heightArr
+    };
+  }
+
+  getScrollEvent(scrollVal: number, heightArr: Array<number>, docThumbImg: Array<string>, e: any): any {
+    if (heightArr === undefined || heightArr === null || heightArr.length === 0) {
+      console.log('srcoll : ',  scrollVal, heightArr);
+      return;
+    }
+    const thumbIndex = this.getAccurateScrollPosition(scrollVal, heightArr);
+    const dx = e.target.offsetWidth + (docThumbImg.length * 7);
+    const u = dx / docThumbImg.length;
+    const scrollLeft = u * (thumbIndex - 1);
+    console.log('srcoll : ', thumbIndex, scrollVal, heightArr);
+    // thumbContainer.nativeElement.scrollLeft = u * (thumbIndex - 1);
+    return {
+      'scrollLeft': scrollLeft,
+      'thumbIndex': thumbIndex
     };
   }
 

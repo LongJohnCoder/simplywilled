@@ -1,6 +1,7 @@
 
 <div class="docContainer">
 <!-- Page 1-->
+<div class="pageCount">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0; text-align: center;">
@@ -169,15 +170,21 @@
         IF</span></span><span style="font-family:'Times New Roman, serif'">»</span>--></p>
     </div>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 1 of 19
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 1 of 19
-  </div>
+
 </div>
 <!-- Page 1-->
 
@@ -278,15 +285,21 @@
       _____________________________________________________________________________
       </u></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 2 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 2 of 19
-  </div>
+
 </div>
 <!-- Page 2-->
 
@@ -387,15 +400,21 @@
       <span style="font-family:'Times New Roman, serif'"><b>_____ c.</b></span><span style="font-family:'Times New Roman, serif'">
 	      I authorize my representative to make this decision.</span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 3 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 3 of 19
-  </div>
+
 </div>
 <!-- Page 3-->
 
@@ -483,15 +502,21 @@
       I have NOT SIGNED a Prehospital Medical Care Directive or Do Not
       Resuscitate Directive.</span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 4 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 4 of 19
-  </div>
+
 </div>
 <!-- Page 4-->
 
@@ -562,15 +587,21 @@
     <p  style="margin-bottom: 0in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><b>[signature
       pages follow]</b></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 5 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 5 of 19
-  </div>
+
 </div>
 <!-- Page 5-->
 
@@ -671,15 +702,21 @@
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">Witness Name (printed) </span><span style="font-family:'Times New Roman, serif'"><u>_______________________________________________________</u></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 6 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 6 of 19
-  </div>
+
 </div>
 <!-- Page 6-->
 
@@ -845,15 +882,21 @@
       Public </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><u>_________________________________________</u></span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">
        My Commission Expires: </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><u>__________________</u></span></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 7 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 7 of 19
-  </div>
+
 </div>
 <!-- Page 7-->
 
@@ -906,15 +949,21 @@
       <span style="font-family:'Times New Roman, serif'">Address:
       ________________________________________________________________</span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 8 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 8 of 19
-  </div>
+
 </div>
 <!-- Page 8-->
 
@@ -1029,15 +1078,21 @@
         statement concerning life-sustaining treatments and other matters
         relating to your health care at Section 3 of this form.</span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 9 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 9 of 19
-  </div>
+
 </div>
 <!-- Page 9-->
 
@@ -1119,15 +1174,21 @@
       I have attached additional special provisions or limitations about
       End of Life Care I want.</span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 10 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 10 of 19
-  </div>
+
 </div>
 <!-- Page 10-->
 
@@ -1228,15 +1289,21 @@
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">Address  </span><span style="font-family:'Times New Roman, serif'"><u>____________________________________________________________________</u></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 11 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 11 of 19
-  </div>
+
 </div>
 <!-- Page 11-->
 
@@ -1401,15 +1468,21 @@
       Public </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><u>___________________________________</u></span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">
        My Commission Expires: </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><u>________________________</u></span></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 12 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 12 of 19
-  </div>
+
 </div>
 <!-- Page 12-->
 
@@ -1581,15 +1654,21 @@
     </p>
     </div>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 13 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 13 of 19
-  </div>
+
 </div>
 <!-- Page 13-->
 
@@ -1676,15 +1755,21 @@
         care power of attorney or to disqualify any agent designated by me in
         this document.</span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 14 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 14 of 19
-  </div>
+
 </div>
 <!-- Page 14-->
 
@@ -1735,15 +1820,21 @@
     <p  style="margin-bottom: 0in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><b>[signature
     pages follow]</b></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 15 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 15 of 19
-  </div>
+
 </div>
 <!-- Page 15-->
 
@@ -1845,15 +1936,21 @@
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">Witness Name (printed) </span><span style="font-family:'Times New Roman, serif'"><u>								_________________________________________________________</u></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 16 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 16 of 19
-  </div>
+
 </div>
 <!-- Page 16-->
 
@@ -1949,15 +2046,21 @@
 
     </p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 17 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 17 of 19
-  </div>
+
 </div>
 <!-- Page 17-->
 
@@ -2039,15 +2142,21 @@
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">My Commission Expires: </span><span style="font-family:'Times New Roman, serif'"><u>_______________________________</u></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 18 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 18 of 19
-  </div>
+
 </div>
 <!-- Page 18-->
 
@@ -2100,15 +2209,22 @@
       <span style="font-family:'Times New Roman, serif'">Address:
       ________________________________________________________________</span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 19 of 19
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney
-    by «CLIENT FULL NAME» <br>
-    Page 19 of 19
-  </div>
+
 </div>
 <!-- Page 19-->
+</div>
 </div>

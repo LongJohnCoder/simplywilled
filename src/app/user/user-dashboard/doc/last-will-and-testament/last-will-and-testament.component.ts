@@ -123,11 +123,13 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
           console.log('Oops, something went wrong with the progress bar.');
         }
       },
-      (error) => { console.log(error); },
+      (error) => { 
+        console.log(error); 
+      },
       () => {}
     );
     this.globalPDFSubscription = this.globalPDFService.fetchData(token).subscribe(
-      (response: any) => {console.log(response);
+      (response: any) => { // console.log(response);
         if (response.status) {
           this.userDetails = {
             backupGuardian : response.data.backupGuardian,
@@ -150,7 +152,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
             custGiftsArr: response.data.custGiftsArr
           };
           if (response.data.gifts.length > 0) {
-            console.log('custGiftsArr received : ', this.userDetails.custGiftsArr);
+            // console.log('custGiftsArr received : ', this.userDetails.custGiftsArr);
             if (this.userDetails.custGiftsArr !== undefined && this.userDetails.custGiftsArr !== null) {
               this.userDetails.custGiftsArr.forEach( (giftStatement, index) => {
                 if ( index < 5 ) {
@@ -160,7 +162,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
                 }
               });
             } else {
-              console.log('custGiftArray comming null or undefined');
+              // console.log('custGiftArray comming null or undefined');
             }
 
             if (this.userDetails.tellUsAboutYou.deceased_children_names !== null ) {
@@ -174,7 +176,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
               this.docThumbImg.push( '../../../../../assets/images/doc1-thumb1.png');
             }
             this.liCount = this.docThumbImg.length * 114;
-             console.log(this.giftStatements);
+             // console.log(this.giftStatements);
           }
           if (response.data.tellUsAboutYou.pet_names !== null) {
             this.petNames = JSON.parse(response.data.tellUsAboutYou.pet_names);
@@ -187,8 +189,8 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
               _mb: response.data.estateDistribute.to_multiple_beneficiary !== null && response.data.estateDistribute.to_multiple_beneficiary !== undefined ? JSON.parse(response.data.estateDistribute.to_multiple_beneficiary)[0] : null,
             } ;
           }
-          console.log('childrens : ', this.userDetails.children);
-          console.log(this.estateDistribute);
+          // console.log('childrens : ', this.userDetails.children);
+          // console.log(this.estateDistribute);
         }
       }
     );

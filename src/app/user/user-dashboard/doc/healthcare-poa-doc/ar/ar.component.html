@@ -1,27 +1,7 @@
-<!--<div class="pageLoader" *ngIf="loading">
-  <div class="loaderInner">
-    <img src="../../../../assets/images/owl-loading.gif" alt="Loading...">
-    <p class="loadingTxt">
-      Please Wait
-      <span></span>
-      <span></span>
-      <span></span>
-    </p>
-  </div>
-</div>-->
 
-<!-- <div class="main-content"> -->
-  <!-- <div class="thumbContainer"> -->
-    <!-- <ul>
-       <li *ngFor="let thumb of docThumbImg; let i = index" (click)="scrollDoc(i)" [ngClass]="{'active' : thumbIndex == i}"><p><img src="{{thumb}}" alt=""></p></li>
-       &lt;!&ndash;<li (click)="scrollDoc(x)"><p><img src="../../../../../assets/images/doc1-thumb2.png" alt=""></p></li>&ndash;&gt;
-     </ul>-->
-  <!-- </div> -->
-  <!-- <div class="docViewBox"> -->
-    <!--<div class="docView" #docBox (scroll)="getScroll(docBox.scrollTop)">-->
-    <!-- <div class="docView" #docBox> -->
       <div class="docContainer">
         <!-- Page 1 -->
+        <div class="pageCount">
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
           <div id="doc" class="docPageInner" style=" padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
             <p align="center" style="margin-top: 0.08in; margin-bottom: 0.17in; line-height: 0.28in; page-break-before: auto; page-break-after: auto">
@@ -111,6 +91,21 @@
 
             </p>
           </div>
+
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Declaration and Durable Power of Attorney of</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Declaration and Durable Power of Attorney of</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
+          </div>
+
         </div>
         <!-- !Page 1 -->
 
@@ -192,6 +187,21 @@
 
             </p>
           </div>
+
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Declaration and Durable Power of Attorney of</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Declaration and Durable Power of Attorney of</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
+          </div>
+
         </div>
         <!-- !Page 2 -->
 
@@ -314,6 +324,21 @@
 
             </p>
           </div>
+
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Declaration and Durable Power of Attorney of</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Declaration and Durable Power of Attorney of</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
+          </div>
+
         </div>
         <!-- !Page 3 -->
 
@@ -420,6 +445,21 @@
             </p>
 
           </div>
+
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Declaration and Durable Power of Attorney of</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Declaration and Durable Power of Attorney of</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
+          </div>
+
         </div>
         <!-- !Page 4 -->
 
@@ -486,6 +526,21 @@
 
             </p>
           </div>
+
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Declaration and Durable Power of Attorney of</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Declaration and Durable Power of Attorney of</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
+          </div>
+
         </div>
         <!-- !Page 5 -->
 
@@ -578,6 +633,21 @@
             <p align="center" style="margin-bottom: 0in; line-height: 0.23in"><span  style="font-size: 13pt"><b>[Witness
               Statement and Signatures Follow]</b></span></p>
           </div>
+
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Declaration and Durable Power of Attorney of</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Declaration and Durable Power of Attorney of</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
+          </div>
+
         </div>
         <!-- !Page 6 -->
 
@@ -652,9 +722,24 @@
 
             </p>
           </div>
+
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Declaration and Durable Power of Attorney of</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Declaration and Durable Power of Attorney of</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
+          </div>
+
         </div>
         <!-- !Page 7 -->
-
+        </div>
       <!-- </div> -->
     </div>
   <!-- </div>

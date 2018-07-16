@@ -1,5 +1,6 @@
 <div class="docContainer">
 <!-- Page 1 -->
+<div class="pageCount">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div id="doc" class="docPageInner"
         style="box-sizing: border-box; height: 890px;">
@@ -90,6 +91,21 @@
       Page 1 of 12
     </div>
   </div>
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 1 -->
 
@@ -186,6 +202,21 @@
       Page 2 of 12
     </div>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 2 -->
 
@@ -321,6 +352,21 @@
       Page 3 of 12
     </div>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 3 -->
 
@@ -411,10 +457,21 @@
     <p style="margin-bottom: 0in; line-height: 115%"></p>
     <p style="margin-bottom: 0in; line-height: 115%"><i>OR</i></p>
   </div>
+  
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    Durable Health Care Power by {{userDetails.tellUsAboutYou.fullname}}<br>
-    Page 4 of 12
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
+
 </div>
 <!-- !Page 4 -->
 
@@ -508,10 +565,21 @@
         necessary)</span></p>
     <p style="margin-bottom: 0in; line-height: 115%"></p>
   </div>
+  
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-      Durable Health Care Power by {{userDetails.tellUsAboutYou.fullname}}<br>
-      Page 5 of 12
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
     </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 5 -->
 
@@ -592,10 +660,21 @@
     <p style="text-align:left;margin-bottom: 0in; line-height: 0.28in">
     </p>
   </div>
+  
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-      Durable Health Care Power by {{userDetails.tellUsAboutYou.fullname}}<br>
-      Page 6 of 12
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
     </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 6 -->
 
@@ -688,10 +767,21 @@
     <p style="margin-bottom: 0in; line-height: 115%">
     </p>
   </div>
+  
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-      Durable Health Care Power by {{userDetails.tellUsAboutYou.fullname}}<br>
-      Page 7 of 12
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
     </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 7 -->
 
@@ -788,10 +878,21 @@
       health treatment for up to&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;______
       days. <i>(The number of days not to exceed 17)</i></span></p>
   </div>
+  
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-      Durable Health Care Power by {{userDetails.tellUsAboutYou.fullname}}<br>
-      Page 8 of 12
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
     </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 8-->
 
@@ -881,10 +982,21 @@
 
     </p>
   </div>
+  
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-      Durable Health Care Power by {{userDetails.tellUsAboutYou.fullname}}<br>
-      Page 9 of 12
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
     </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 9 -->
 
@@ -992,10 +1104,21 @@
 
     </p>
   </div>
+  
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-      Durable Health Care Power by {{userDetails.tellUsAboutYou.fullname}}<br>
-      Page 10 of 12
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
     </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 10 -->
 
@@ -1055,10 +1178,21 @@
       the principal's death under a will or codicil. </span>
     </p>
   </div>
+  
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-      Durable Health Care Power by {{userDetails.tellUsAboutYou.fullname}}<br>
-      Page 11 of 12
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
     </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 11 -->
 
@@ -1145,10 +1279,22 @@
     <p align="left" style="margin-bottom: 0in; line-height: 115%">
     </p>
   </div>
+  
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-      Durable Health Care Power by {{userDetails.tellUsAboutYou.fullname}}<br>
-      Page 12 of 12
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power by</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
     </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power by</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- !Page 12 -->
+</div>
 </div>
