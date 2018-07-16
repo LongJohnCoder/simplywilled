@@ -1,3 +1,4 @@
+import { GlobalPdfService } from './../../services/global-pdf.service';
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
 
 @Component({
@@ -30,9 +31,21 @@ export class NeComponent implements OnInit, OnChanges  {
   genderTxt3 = null;
   genderTxt4 = null;
 
-  constructor() { }
+  totalPages: number;
+  constructor(
+    private globalService: GlobalPdfService
+  ) { }
 
   ngOnInit() {
+  }
+
+  setThNails() {
+    const x = this.globalService.getDynamicPages();
+    this.totalPages = x.totalPages;
+    this.globalService.hcpoaPages({
+      'pages' : x.totalPages,
+      'heightArr' : x.heightArr
+    });
   }
 
   ngOnChanges() {
@@ -53,6 +66,7 @@ export class NeComponent implements OnInit, OnChanges  {
       };
       this.loading = false;
       console.log(this.userDetails);
+      this.setThNails();
 
       if (this.userDetails !== undefined && this.userDetails.tellUsAboutYou !== null && this.userDetails.tellUsAboutYou.gender !== null) {
         this.genderTxt = this.userDetails.tellUsAboutYou.gender === 'M' ? 'him' : 'her';
