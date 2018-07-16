@@ -50,3 +50,22 @@ background: #57ab2a;
 .docPage span, .docPage p{
     font-family: Times New Roman;
 }
+
+.pageCount{
+counter-reset: index;
+}
+.pageNumber{
+counter-increment: index;
+}
+.pageNumber:after{
+content: counter(index);
+}
+
+.docPageInner{
+height: auto !important;
+min-height: 400px;
+}
+
+.docPage{
+height: auto !important;
+}

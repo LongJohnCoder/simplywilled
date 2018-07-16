@@ -1,4 +1,5 @@
 <div class="docContainer">
+    <div class="pageCount">
   <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px; text-align: justify">
     <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
       <p align="center" style="margin-bottom: 0in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 16pt"><b>TEXAS
@@ -66,11 +67,21 @@
         made in good faith on your behalf.&nbsp;</span></p>
     </div>
     <br>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-         style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Medical Power of Attorney and Living Will Directive of  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 1 of 11
+
+    <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Medical Power of Attorney and Living Will Directive of </div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Medical Power of Attorney and Living Will Directive of </div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
     </div>
+
   </div>
 
 
@@ -134,11 +145,19 @@
         your estate after your death.</span></p>
     </div>
     <br>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-         style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Medical Power of Attorney and Living Will Directive of  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 2 of 11
-    </div>
+    <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+        <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+        </div>
+        <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>(CLIENT FULL NAME)</div>
+        </div>
+        <span>
+          Page <span class="pageNumber"></span> of {{totalPages}}
+        </span>
+      </div>
   </div>
 
 
@@ -411,11 +430,19 @@
 
     </div>
     <br>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-         style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Medical Power of Attorney and Living Will Directive of  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 3 of 11
-    </div>
+    <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+        <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+        </div>
+        <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>(CLIENT FULL NAME)</div>
+        </div>
+        <span>
+          Page <span class="pageNumber"></span> of {{totalPages}}
+        </span>
+      </div>
   </div>
 
 
@@ -513,11 +540,19 @@
         authority in writing and deliver it to my health care provider.</span></p>
     </div>
     <br>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-         style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Medical Power of Attorney and Living Will Directive of  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 4 of 11
-    </div>
+    <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+        <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+        </div>
+        <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>(CLIENT FULL NAME)</div>
+        </div>
+        <span>
+          Page <span class="pageNumber"></span> of {{totalPages}}
+        </span>
+      </div>
   </div>
 
 
@@ -602,11 +637,19 @@
       </p>
     </div>
     <br>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-         style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Medical Power of Attorney and Living Will Directive of  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 5 of 11
-    </div>
+    <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+        <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+        </div>
+        <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>(CLIENT FULL NAME)</div>
+        </div>
+        <span>
+          Page <span class="pageNumber"></span> of {{totalPages}}
+        </span>
+      </div>
   </div>
 
 
@@ -717,11 +760,19 @@
       </p>
     </div>
     <br>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-         style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Medical Power of Attorney and Living Will Directive of  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 6 of 11
-    </div>
+    <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+        <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+        </div>
+        <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>(CLIENT FULL NAME)</div>
+        </div>
+        <span>
+          Page <span class="pageNumber"></span> of {{totalPages}}
+        </span>
+      </div>
   </div>
 
 
@@ -784,11 +835,19 @@
         <span style="padding-left: 40px;">								[city, state, zip]</span></p>
     </div>
     <br>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-         style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Medical Power of Attorney and Living Will Directive of  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 7 of 11
-    </div>
+    <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+        <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+        </div>
+        <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>(CLIENT FULL NAME)</div>
+        </div>
+        <span>
+          Page <span class="pageNumber"></span> of {{totalPages}}
+        </span>
+      </div>
   </div>
 
 
@@ -921,11 +980,19 @@
         as possible; </span><span style="font-family:'Times New Roman, serif'"><b>OR</b></span></p>
     </div>
     <br>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-         style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Medical Power of Attorney and Living Will Directive of  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 8 of 11
-    </div>
+    <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+        <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+        </div>
+        <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>(CLIENT FULL NAME)</div>
+        </div>
+        <span>
+          Page <span class="pageNumber"></span> of {{totalPages}}
+        </span>
+      </div>
   </div>
 
 
@@ -1025,11 +1092,19 @@
         life-sustaining treatments.</span></p>
     </div>
     <br>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-         style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Medical Power of Attorney and Living Will Directive of  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 9 of 11
-    </div>
+    <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+        <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+        </div>
+        <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>(CLIENT FULL NAME)</div>
+        </div>
+        <span>
+          Page <span class="pageNumber"></span> of {{totalPages}}
+        </span>
+      </div>
   </div>
 
 
@@ -1170,11 +1245,19 @@
         <span style="padding-left: 40px;">								[city, state, zip]</span></p>
     </div>
     <br>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-         style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Medical Power of Attorney and Living Will Directive of  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 10 of 11
-    </div>
+    <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+        <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+        </div>
+        <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>(CLIENT FULL NAME)</div>
+        </div>
+        <span>
+          Page <span class="pageNumber"></span> of {{totalPages}}
+        </span>
+      </div>
   </div>
 
 
@@ -1260,10 +1343,18 @@
         physician, family, or other important persons in your life.</span></p>
     </div>
     <br>
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-         style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Medical Power of Attorney and Living Will Directive of  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 11 of 11
-    </div>
+    <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+        <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+        </div>
+        <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+            <div>Medical Power of Attorney and Living Will Directive of </div> 
+            <div>(CLIENT FULL NAME)</div>
+        </div>
+        <span>
+          Page <span class="pageNumber"></span> of {{totalPages}}
+        </span>
+      </div>
   </div>
 </div>

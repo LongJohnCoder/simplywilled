@@ -1,5 +1,6 @@
 <div class="docContainer">
 <!-- Page 1 -->
+<div class="pageCount">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
     <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 13pt"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="4" style="font-size: 16pt"><b>S</b></span></span></span><span size="4" style="font-size: 16pt"><b>OUTH
@@ -61,9 +62,18 @@
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">B.</span><span size="3" style="font-size: 12pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span size="3" style="font-size: 12pt">A
       PERSON WHO IS DIRECTLY FINANCIALLY RESPONSIBLE FOR YOUR MEDICAL CARE.</span></span></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Declaration of <br> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} <br> </span>
-    Page 1 of 13
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Health Care Power of Attorney and Declaration of </div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Health Care Power of Attorney and Declaration of </div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 </div>
 <!-- Page 1 -->
@@ -104,10 +114,19 @@
       FACILITY OR A NURSING CARE FACILITY, A COPY OF THIS DOCUMENT SHOULD
       BE INCLUDED IN YOUR MEDICAL RECORD.</span></span></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Declaration of <br> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} <br> </span>
-    Page 2 of 13
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 2 -->
 
@@ -237,10 +256,19 @@
     in the event that I revoke the authority in writing and deliver it to
     my health care provider.</span></span></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Declaration of <br> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} <br> </span>
-    Page 3 of 13
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 3 -->
 
@@ -323,10 +351,19 @@
        <span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(Add
       additional sheets if needed.)</i></span></span></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Declaration of <br> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} <br> </span>
-    Page 4 of 13
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 4-->
 
@@ -413,10 +450,19 @@
       without regard to my condition, the chances I have for recovery, or
       the cost of the procedures.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Declaration of <br> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} <br> </span>
-    Page 5 of 13
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 5 -->
 
@@ -507,10 +553,19 @@
       power of attorney is intended to be valid in any jurisdiction in
       which it is presented.</span></span></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Declaration of <br> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} <br> </span>
-    Page 6 of 13
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 6 -->
 
@@ -642,10 +697,19 @@
     <p class="western" align="justify" style="margin-bottom: 0.06in;  padding-left: 350px;">
       <span style="padding-left: 40px;">								[city, state, zip]</span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Declaration of <br> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} <br> </span>
-    Page 7 of 13
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 7 -->
 
@@ -699,10 +763,19 @@
     <p style="margin-top: 0.05in; margin-bottom: 0.05in; line-height: 200%">
       <span style="font-family:'Times New Roman, serif'">My Commission Expires:	</span><span style="font-family:'Times New Roman, serif'"><u>________________________________________</u></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Declaration of <br> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} <br> </span>
-    Page 8 of 13
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 8-->
 
@@ -823,10 +896,19 @@
       </li>
     </ol>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Declaration of <br> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} <br> </span>
-    Page 9 of 13
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 9 -->
 
@@ -958,10 +1040,19 @@
       <span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(Add
       additional sheets if needed.)</i></span></span></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Declaration of <br> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} <br> </span>
-    Page 10 of 13
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 10 -->
 
@@ -1037,10 +1128,19 @@
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 11pt">(5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span size="2" style="font-size: 11pt">	</span><span size="2" style="font-size: 11pt">BY
       YOUR EXECUTING ANOTHER DECLARATION AT A LATER TIME.</span></span></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Declaration of <br> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} <br> </span>
-    Page 11 of 13
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 11 -->
 
@@ -1113,10 +1213,19 @@
     <p  style="margin-top: 0.05in; margin-bottom: 0.05in; line-height: 200%">
       <span style="font-family:'Times New Roman, serif'">My Commission Expires:	</span><span style="font-family:'Times New Roman, serif'"><u>______________________________________</u></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Declaration of <br> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} <br> </span>
-    Page 12 of 13
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 12 -->
 
@@ -1219,10 +1328,20 @@
     <p class="western" align="justify" style="margin-bottom: 0.06in;  padding-left: 350px;">
       <span style="padding-left: 40px;">								[city, state, zip]</span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Declaration of <br> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} <br> </span>
-    Page 13 of 13
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Health Care Power of Attorney and Declaration of </div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 13 -->
+</div>
 </div>
