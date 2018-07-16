@@ -1,8 +1,12 @@
-p, span {
-    font-family: 'Times New Roman', Times, serif;
+.docContainer{
+    width: 700px;
+    margin: 0 auto;
 }
 
 .docPage{
+    width: 700px !important;
+    height: auto !important;
+    background: #fff;
     box-shadow: 0 0 7px rgba(0,0,0,0.3);
 }
 
@@ -26,4 +30,17 @@ min-height: 400px;
 
 .docPage{
 height: auto !important;
+    margin: 20px 0;
+    box-sizing: border-box;
+    padding: 40px;
+}
+
+.docPageInner{
+    height: auto !important;
+    min-height: 400px;
+    padding-bottom: 25px;
+}
+
+.docPageInner span, .docPageInner p{
+    font-family: "Times New Roman" !important;
 }
