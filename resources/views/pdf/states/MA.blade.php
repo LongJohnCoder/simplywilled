@@ -443,8 +443,8 @@
           contents and the effect of this grant of authority to my Agent, that
           I sign it willingly in the presence of each of the undersigned
           witnesses, and that I sign it as my voluntary act for the purposes
-          expressed, this <u>	</u> day of <u>				</u>, <u>		</u>.</p>
-          <p align="justify" style="margin-bottom: 0in; "><br/>
+          expressed, this _____ day of ________________, __________________.</p>
+          <p align="justify" style="margin-bottom: 0in; ">
           
           </p>
           <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; ">
@@ -835,7 +835,7 @@
           </p>
           
           <p align="justify" style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt">	</span><span size="2" style="font-size: 10pt">______________________________________</span></span></p>
-          <p align="justify" style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt">	</span><span size="2" style="font-size: 10pt">[SEAL]</span><span size="2" style="font-size: 10pt">	</span><span size="2" style="font-size: 10pt">NOTARY
+          <p align="justify" style="margin-bottom: 0in; margin-top: 0;"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt">	</span><span size="2" style="font-size: 10pt">[SEAL]</span><span size="2" style="font-size: 10pt">	</span><span size="2" style="font-size: 10pt">NOTARY
           PUBLIC</span></span></p>
           <p align="justify" style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt">	</span></span></p>
           <p class="western" style="margin-bottom: 0in; "><span size="2" style="font-size: 10pt">My
