@@ -1,4 +1,5 @@
 <div class="docContainer">
+    <div class="pageCount">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div id="doc" class="docPageInner"
        style="box-sizing: border-box; height: 890px;">
@@ -104,10 +105,21 @@
         result, I would likely die primarily from malnutrition or dehydration
         rather than from my injury, disease, illness or condition as follows:</span></span></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Living Will and Durable Power of Attorney for Health Care of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 1 of 7
+
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Living Will and Durable Power of Attorney for Health Care of</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Living Will and Durable Power of Attorney for Health Care of</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
+
 </div>
 <!-- !Page 1 -->
 
@@ -190,10 +202,19 @@
       your treating health care provider; </i></span></span></span>
     </p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Living Will Directive and Health Care Surrogate Designation of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 2 of 7
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Living Will and Durable Power of Attorney for Health Care of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Living Will and Durable Power of Attorney for Health Care of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- !Page 2 -->
 
@@ -317,10 +338,19 @@
       such desires set forth in a living will, Physician Orders for Scope
       of Treatment (POST) form or similar document executed by me, if any.</span></span></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Living Will Directive and Health Care Surrogate Designation of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 3 of 7
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Living Will and Durable Power of Attorney for Health Care of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Living Will and Durable Power of Attorney for Health Care of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- !Page 3 -->
 
@@ -405,10 +435,19 @@ Grant of Power and Authority</span></span><span size="3" style="font-size: 12pt"
       <span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(4)
         Consent to the donation of any of my organs for medical purposes.</span></span></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Living Will Directive and Health Care Surrogate Designation of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 4 of 7
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Living Will and Durable Power of Attorney for Health Care of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Living Will and Durable Power of Attorney for Health Care of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- !Page 4 -->
 
@@ -567,10 +606,19 @@ Release Authority</span></span><span size="3" style="font-size: 12pt">.
 
     </p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Living Will Directive and Health Care Surrogate Designation of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 5 of 7
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Living Will and Durable Power of Attorney for Health Care of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Living Will and Durable Power of Attorney for Health Care of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- !Page 5 -->
 
@@ -657,10 +705,19 @@ Release Authority</span></span><span size="3" style="font-size: 12pt">.
 
     </p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Living Will Directive and Health Care Surrogate Designation of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 6 of 7
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Living Will and Durable Power of Attorney for Health Care of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Living Will and Durable Power of Attorney for Health Care of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- !Page 6 -->
 
@@ -757,10 +814,20 @@ Release Authority</span></span><span size="3" style="font-size: 12pt">.
     </p>
 
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Living Will Directive and Health Care Surrogate Designation of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 7 of 7
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Living Will and Durable Power of Attorney for Health Care of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Living Will and Durable Power of Attorney for Health Care of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- !Page 7 -->
+</div>
 </div>
