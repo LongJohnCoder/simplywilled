@@ -65,7 +65,7 @@
 
                 @else
 
-                <span>: __________________________________________________
+                <span>: <br> ______________________________________________________________________
 
                 ______________________________________________________________________
 
@@ -85,7 +85,7 @@
                 <span> {{$finalArrangements['ashes']}}.</span>
 
                 @else
-                <span>: ___________________________________________
+                <span>: <br> ______________________________________________________________________
 
                 ______________________________________________________________________
 
@@ -102,7 +102,7 @@
               	@if(strlen($finalArrangements['some_other_way']) > 0 )
 	                1. I wish for my representative to control and dispose of my remains in the following manner: <span> {{$finalArrangements['some_other_way']}}.</span>
                 @else
-	                <span>: ___________________________________________
+	                <span>: <br> ______________________________________________________________________
 
 	                ______________________________________________________________________
 
@@ -125,7 +125,7 @@
               <span> {{$finalArrangements['arrangements']}}.</span>
 
               @else
-                <span>: ______________________________________
+                <span>: <br> ______________________________________________________________________
 
                 ______________________________________________________________________
 
@@ -137,7 +137,8 @@
             </p>
 
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
-                  3. I wish for my representative to honor the following instructions with regard to my funeral or other ceremony for the final disposition of my remains: ______________________________________
+                  3. I wish for my representative to honor the following instructions with regard to my funeral or other ceremony for the final disposition of my remains:
+									<br> ______________________________________________________________________
 
               ______________________________________________________________________
 
@@ -153,25 +154,25 @@
 
                 <span>
 
-                ________________________________________________
+                <br>________________________________________________
 
-                (Name)
-
-                </span>
-
-                <span>
-
-                ________________________________________________
-
-                (Address)
+                <br>(Name)
 
                 </span>
 
                 <span>
 
-                ________________________________________________
+                <br>________________________________________________
 
-                (Telephone)
+                <br>(Address)
+
+                </span>
+
+                <span>
+
+                <br>________________________________________________
+
+                <br>(Telephone)
 
                 </span>
             </p>
@@ -180,17 +181,17 @@
 
               If my funeral representative dies, becomes incapacitated, resigns, refuses to act, ceases to be qualified, or cannot be located within the time necessary to control the final disposition of my remains, I hereby appoint the following individual to serve as my successor funeral representative:
 
-              ________________________________________________
+              <br>________________________________________________
 
-              (Name)
+              <br>(Name)
 
-              ________________________________________________
+              <br>________________________________________________
 
-              (Address)
+              <br>(Address)
 
-              ________________________________________________
+              <br>________________________________________________
 
-              (Telephone)
+              <br>(Telephone)
             </p>
             <br>
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
@@ -244,7 +245,7 @@
                 @if(strtolower($state['name']) == 'michigan')
                 	<span>, nor am I a prohibited witness pursuant to §700.3206(2)(b)(i), MCL.</span>
                 @endif
-                <div style="display: inline-block; width: 46%; padding-top: 50px;">
+                <div style="display: inline-block; width: 46%; padding-top: 40px;">
                   <p>WITNESS 1: ____________________________</p>
 
                   <p> ______________________________<br>[print name]</p>
@@ -253,8 +254,8 @@
 
                   <p>_______________________________<br>[city/state]</p>
                   </div>
-<div style="display: inline-block; width: 46%; padding-left: 50px; padding-top: 50px;">
-                <p>WITNESS 2: ____________________________</p>
+									<div style="display: inline-block; width: 46%; padding-top: 40px; padding-left: 50px;">
+                	<p>WITNESS 2: ____________________________</p>
 
                   <p> ______________________________<br>[print name]</p>
 
@@ -269,17 +270,13 @@
 
                   <span>COUNTY OF ________________ )</span><br><br>
 
-                  <span>Subscribed, sworn and acknowledged before me by
-
-                  <span style="text-transform: uppercase;"> {{$tellUsAboutYou['fullname']}} </span>
-
-                  , and _________________________________________, as witness, and _____________________________________, as witness, who personally appeared on this _________ day of ________________________________, _______, and who are personally known to me or who have produced satisfactory photo identification, and whose names are signed to the foregoing instrument.<br><br>
+                  <span>Subscribed, sworn and acknowledged before me by {{$tellUsAboutYou['fullname']}}, and ___________________________________, as witness, and _____________________________, as witness, who personally appeared on this _________ day of __________________________, _______, and who are personally known to me or who have produced satisfactory photo identification, and whose names are signed to the foregoing instrument.<br><br>
 
                     ______________________________________ (Seal, if any)<br>
 
-                    NOTARY PUBLIC
+                    NOTARY PUBLIC<br><br>
 
-                My commission expires: _________________</span>
+                		My commission expires: _________________</span>
               </p>
           </div>
         </div>
@@ -303,25 +300,25 @@
 
                     representative for the control of final disposition of the declarant’s remains.
 
-                    Signature: ___________________________________ Dated: _______________________
+                    <br><br>Signature: ___________________________________ Dated: _______________________
 
 
-                    STATE OF ________________ )
+                    <br><br>STATE OF ________________ )
 
-                    ) ss.
+                    <br>) ss.
 
-                    COUNTY OF ________________ )
+                    <br>COUNTY OF ________________ )
 
-                    Subscribed, sworn and acknowledged before me by ______________________________________ , who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
+                    <br><br>Subscribed, sworn and acknowledged before me by ______________________________________ , who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
 
-                    ______________________________________ (Seal, if any)
+                    <br><br>______________________________________ (Seal, if any)
 
-                    NOTARY PUBLIC
+                    <br>NOTARY PUBLIC
 
-                    My commission expires: _________________
+                    <br><br>My commission expires: _________________
 
 
-                    I hereby accept appointment as successor
+                    <br><br>I hereby accept appointment as successor
 
 
                     @if(strtolower($state['name']) == 'michigan' )
@@ -330,21 +327,21 @@
 
                     representative for the control of final disposition of the declarant’s remains.
 
-                    Signature: ___________________________________ Dated: _______________________
+                    <br><br>Signature: ___________________________________ Dated: _______________________
 
-                STATE OF ________________ )
+                <br><br>STATE OF ________________ )
 
-                ) ss.
+                <br>) ss.
 
-                COUNTY OF ________________ )
+                <br>COUNTY OF ________________ )
 
-                Subscribed, sworn and acknowledged before me by ___________________________________, who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
+                <br><br>Subscribed, sworn and acknowledged before me by ___________________________________, who is personally known to me or who has produced satisfactory photo identification, and whose name is signed to the foregoing instrument.
 
-                ______________________________________ (Seal, if any)
+                <br><br>______________________________________ (Seal, if any)
 
-                NOTARY PUBLIC
+                <br>NOTARY PUBLIC
 
-                My commission expires: _________________
+                <br><br>My commission expires: _________________
               </span>
 
             </p>
