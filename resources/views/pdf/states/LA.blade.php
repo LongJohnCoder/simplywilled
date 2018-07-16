@@ -4,51 +4,7 @@
     <meta charset="utf-8">
     <title>Untitled Document</title>
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        body{
-            margin: 0;
-            padding: 0;
-            font-family: Garamond;
-        }
-        /* width */
-        ::-webkit-scrollbar {
-            width: 14px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #0f69bb;
-
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #99cc33;
-            border-radius: 5px;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #57ab2a;
-        }
-
-        .docContainer{
-            width: 700px;
-            margin: 0 auto;
-        }
-        .docPage{
-            width: 700px !important;
-            height: 991px!important;
-            background: #fff;
-            box-shadow: 0 0 7px rgba(0,0,0,0.3);
-            margin: 20px 0;
-            box-sizing: border-box;
-            padding: 40px;
-        }
-
+        
 
 
 
@@ -58,9 +14,9 @@
 <body>
 
 <div class="docContainer" id="doc">
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="">
         <div id="doc" class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="page-break-after: always;">
 
             <p class="western"  style="text-align:center;margin-bottom: 0in; line-height: 100%">
       <span size="4" style="font-size: 16pt"><b>Louisiana Durable Health
@@ -241,7 +197,7 @@
                 <p class="western"  style="text-align:justify;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
                     <span color="#000000">Name:
                         @if(isset($healthFinance) && array_key_exists('backupFullname',$healthFinance) && !is_null($healthFinance['backupFullname']))
-                            <span style="text-transform: capitalize"> {{$healthFinance['backupFullname'] !== null && $healthFinance['backupFullname'] !== undefined ? $healthFinance['backupFullname'] : '_______________________'}} </span>
+                            <span style="text-transform: capitalize"> {{$healthFinance['backupFullname'] !== null ? $healthFinance['backupFullname'] : '_______________________'}} </span>
                         @else
                             <span > _______________________ </span>
                         @endif
@@ -310,7 +266,7 @@
 
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Health Care Power of Attorney and Declaration of {{$tellUsAboutYou['fullname']}}<br>
                 Page 1 of 7
@@ -320,35 +276,35 @@
                 Durable Health Care Power of Attorney and Declaration of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 1 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 1 -->
 
     <!-- Page 2 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="page-break-after: always;">
 
 
             <p class="western"  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
-                □  A. Grant, refuse, or withdraw consent on my behalf for any
+                <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>  A. Grant, refuse, or withdraw consent on my behalf for any
                 health care&nbsp;service, treatment or procedure, even though my
                 death may ensue.&nbsp;</p>
             <p class="western"  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
-                □  B. Talk to health care personnel, get information, have access
+                <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>  B. Talk to health care personnel, get information, have access
                 to medical records and sign forms necessary to carry out these
                 decisions.&nbsp;</p>
             <p class="western"  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
-                □  C. Authorize my admission to or discharge from any hospital,
+                <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>  C. Authorize my admission to or discharge from any hospital,
                 nursing home,&nbsp;residential care, assisted living or similar
                 facility or service.&nbsp;</p>
             <p class="western"  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
-                □  D. Contract on my behalf for any health-care related services or
+                <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>  D. Contract on my behalf for any health-care related services or
                 facility&nbsp;(without my agent incurring personal financial
                 liability for such contracts) such as&nbsp;surgery, medical expenses
                 and prescriptions.&nbsp;</p>
             <p class="western"  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
-                □  E. Make decisions regarding surgery, medical expenses and
+                <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>  E. Make decisions regarding surgery, medical expenses and
                 prescriptions.&nbsp;</p>
             <p class="western" style="margin-bottom: 0in; line-height: 100%">
 
@@ -411,7 +367,7 @@
 
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Health Care Power of Attorney and Declaration of {{$tellUsAboutYou['fullname']}}<br>
                 Page 2 of 7
@@ -421,14 +377,14 @@
                 Durable Health Care Power of Attorney and Declaration of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 2 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 2 -->
 
     <!-- Page 3 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="">
 
 
             <p class="western"  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
@@ -462,9 +418,8 @@
 
             </p>
             <p class="western" style="margin-bottom: 0in; line-height: 200%">I
-                sign my name to this form on&nbsp;this <u>		</u> day of <u>			</u>,
-                <u>		</u>, at <u>
-                    (City), 			</u>(State).</p>
+                sign my name to this form on&nbsp;this _________ day of ___________________,
+                _____________________, at ___________________(City), ___________________(State).</p>
             <p class="western" style="margin-bottom: 0in; line-height: 100%">
 
             </p>
@@ -494,10 +449,10 @@
             </p>
             <p class="western" style="margin-bottom: 0in; line-height: 100%">STATE
                 OF&nbsp;LOUISIANA	)</p>
-            <p class="western" style="margin-bottom: 0in; line-height: 100%">				)
+            <p class="western" style="margin-bottom: 0in; line-height: 100%; padding-left: 171px;">				)
                 ss</p>
             <p class="western" style="margin-bottom: 0in; line-height: 100%">PARISH
-                OF&nbsp;			)</p>
+                OF&nbsp;			<span style="padding-left: 82px; display: inline-block;"></span>)</p>
             <p class="western" style="margin-bottom: 0in; line-height: 100%">
 
             </p>
@@ -532,7 +487,7 @@
             <p class="western" style="margin-left: 2.5in; margin-bottom: 0in; line-height: 100%">
                 NOTARY PUBLIC&nbsp;</p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Health Care Power of Attorney and Declaration of {{$tellUsAboutYou['fullname']}}<br>
                 Page 3 of 7
@@ -542,17 +497,15 @@
                 Durable Health Care Power of Attorney and Declaration of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 3 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 3 -->
 
 
     <!-- Page 4 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
-
-
+             style="">
             <p class="western"  style="text-align:center;margin-bottom: 0in; line-height: 100%; page-break-before: always">
                 <b>WITNESSES</b></p>
             <p class="western" style="margin-bottom: 0in; line-height: 100%">
@@ -581,19 +534,20 @@
             <p class="western" style="margin-bottom: 0in; line-height: 100%">
 
             </p>
-            <p class="western" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>WITNESS
-      1</b></span><span color="#000000">: </span><span color="#000000"><u>					</u></span><span color="#000000">	Dated:
-    </span><span color="#000000"><u>				</u></span></p>
-            <p class="western"  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
-                <span color="#000000">[signature]</span></p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-                <span color="#000000"><u>					</u></span><span color="#000000">		</span><span color="#000000"><u>						</u></span></p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-                <span color="#000000">	[name printed]						[street address]</span></p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-                <span color="#000000">							</span><span color="#000000"><u>						</u></span></p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-                <span color="#000000">								[city, state, zip]</span></p>
+            <p align="left" style="margin-bottom: 0in; line-height: 115%;">
+            <span  ><b>WITNESS 1: </b>__________________________</span><span style="text-decoration: none; padding-left: 20px;">Dated: __________________________</span>
+              </p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[signature]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              __________________________<span style="text-decoration: none; padding-left: 70px;">__________________________</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[name printed]<span style="padding-left: 200px;"></span>[street address]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              <span style="text-decoration: none; padding-left: 278px;"></span>__________________________</p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0; padding-left: 288px;">
+                <span  style="font-size: 11pt">[city,
+              state, zip]</span></p>
             <p class="western" style="margin-bottom: 0in; line-height: 100%">
 
             </p>
@@ -608,19 +562,20 @@
             <p class="western" style="margin-bottom: 0in; line-height: 100%">
 
             </p>
-            <p class="western" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>WITNESS
-      2</b></span><span color="#000000">: </span><span color="#000000"><u>					</u></span><span color="#000000">	Dated:
-    </span><span color="#000000"><u>				</u></span></p>
-            <p class="western"  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
-                <span color="#000000">[signature]</span></p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-                <span color="#000000"><u>					</u></span><span color="#000000">		</span><span color="#000000"><u>						</u></span></p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-                <span color="#000000">	[name printed]						[street address]</span></p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-                <span color="#000000">							</span><span color="#000000"><u>						</u></span></p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-                <span color="#000000">								[city, state, zip]</span></p>
+            <p align="left" style="margin-bottom: 0in; line-height: 115%;">
+            <span  ><b>WITNESS 2: </b>__________________________</span><span style="text-decoration: none; padding-left: 20px;">Dated: __________________________</span>
+              </p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[signature]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              __________________________<span style="text-decoration: none; padding-left: 70px;">__________________________</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[name printed]<span style="padding-left: 200px;"></span>[street address]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              <span style="text-decoration: none; padding-left: 278px;"></span>__________________________</p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0; padding-left: 288px;">
+                <span  style="font-size: 11pt">[city,
+              state, zip]</span></p>
             <p class="western" style="margin-bottom: 0in; line-height: 100%">
 
             </p>
@@ -638,7 +593,7 @@
 
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Health Care Power of Attorney and Declaration of {{$tellUsAboutYou['fullname']}}<br>
                 Page 4 of 7
@@ -648,14 +603,14 @@
                 Durable Health Care Power of Attorney and Declaration of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 4 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 4 -->
 
     <!-- Page 5 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="page-break-after: always;">
 
 
             <p class="western"  style="text-align:center;margin-bottom: 0in; line-height: 100%; page-break-before: always">
@@ -665,22 +620,23 @@
 
 
             </p>
-            <p class="western"  style="text-align:center;margin-bottom: 0in; border: 1px solid #00000a; padding: 0.01in 0.06in; line-height: 100%">
 
-
+            <div style="border: 1px solid #000;">
+            <p class="western"  style="text-align:center; margin-bottom: 0in; line-height: 100%; margin: 0;">
+<br>
             </p>
-            <p class="western"  style="text-align:center;margin-bottom: 0in; border: 1px solid #00000a; padding: 0.01in 0.06in; line-height: 100%">
+            <p class="western"  style="text-align:center;margin-bottom: 0in; padding: 0.01in 0.06in; line-height: 100%">
       <span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 10pt"><b>INSTRUCTIONS
         FOR &quot;LIVING WILL&quot; DECLARATION</b></span></span></p>
-            <p class="western"  style="text-align:center;margin-bottom: 0in; border: 1px solid #00000a; padding: 0.01in 0.06in; line-height: 100%">
+            <p class="western"  style="text-align:center;margin-bottom: 0in; padding: 0.01in 0.06in; line-height: 100%">
       <span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 10pt">(R.S.
         40: 1151 </span></span><span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 10pt"><i>et
       seq</i></span></span><span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 10pt">.)</span></span></p>
-            <p class="western"  style="text-align:center;margin-bottom: 0in; border: 1px solid #00000a; padding: 0.01in 0.06in; line-height: 100%">
+            <p class="western"  style="text-align:center;margin-bottom: 0in; padding: 0.01in 0.06in; line-height: 100%">
 
 
             </p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0in; border: 1px solid #00000a; padding: 0.01in 0.06in; line-height: 100%">
+            <p class="western"  style="text-align:justify;margin-bottom: 0in; padding: 0.01in 0.06in; line-height: 100%">
       <span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 10pt">Per
         R.S. 40: l 151 </span></span><span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 10pt"><i>et
       seq</i></span></span><span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 10pt">.
@@ -693,10 +649,9 @@
       this office, there is an additional fee of $10.00. Mail the
       declaration, with the filing fee, to: Secretary of State, Attn:
       Publications, P.O. Box 94125, Baton Rouge, LA 70804-9125.</span></span></p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0in; border: 1px solid #00000a; padding: 0.01in 0.06in; line-height: 100%">
-
-
+            <p class="western"  style="text-align:justify;margin-bottom: 0in; padding: 0.01in 0.06in; line-height: 100%">
             </p>
+</div>
             <p class="western"  style="text-align:center;margin-bottom: 0in; line-height: 100%">
 
 
@@ -708,7 +663,7 @@
 
             </p>
             <p class="western" style="margin-bottom: 0in; line-height: 100%">Declaration
-                made this <u>	</u> day of <u>			</u>, <u>		</u>.</p>
+                made this _________ day of __________________, _____________________.</p>
             <p class="western"  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
 
 
@@ -793,11 +748,9 @@
                 procedure deemed necessary to provide me with</p>
             <p class="western"  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
                 comfort care.</p>
-            <p class="western" style="margin-bottom: 0in; line-height: 100%">
-
-            </p>
+           
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Health Care Power of Attorney and Declaration of {{$tellUsAboutYou['fullname']}}<br>
                 Page 5 of 7
@@ -807,14 +760,14 @@
                 Durable Health Care Power of Attorney and Declaration of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 5 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 5 -->
 
     <!-- Page 6 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="page-break-after: always;">
 
 
             <p class="western"  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
@@ -935,12 +888,9 @@
       <span size="2" style="font-size: 10pt">_____ Any legally authorized
         purpose. </span>
             </p>
-            <p class="western" style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-
-
-            </p>
+            
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Health Care Power of Attorney and Declaration of {{$tellUsAboutYou['fullname']}}<br>
                 Page 6 of 7
@@ -950,14 +900,14 @@
                 Durable Health Care Power of Attorney and Declaration of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 6 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 6 -->
 
     <!-- Page 7 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="">
             <p class="western" style="margin-bottom: 0in; line-height: 100%">ADDITIONAL
                 INSTRUCTIONS:&nbsp;
 
@@ -1034,44 +984,40 @@
 
 
             </p>
-            <p class="western" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span size="2" style="font-size: 10pt"><b>WITNESS
-                  1</b></span></span><span color="#000000"><span size="2" style="font-size: 10pt">:
-                </span></span><span color="#000000"><span size="2" style="font-size: 10pt"><u>					</u></span></span><span color="#000000"><span size="2" style="font-size: 10pt">	Dated:
-                </span></span><span color="#000000"><span size="2" style="font-size: 10pt"><u>				</u></span></span></p>
-            <p class="western"  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
-                <span color="#000000"><span size="2" style="font-size: 10pt">[signature]</span></span></p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-                <span color="#000000"><span size="2" style="font-size: 10pt"><u>					</u></span></span><span color="#000000"><span size="2" style="font-size: 10pt">		</span></span><span color="#000000"><span size="2" style="font-size: 10pt"><u>						</u></span></span></p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-              <span color="#000000"><span size="2" style="font-size: 10pt">	[name
-                printed]						[street address]</span></span></p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-                <span color="#000000"><span size="2" style="font-size: 10pt">							</span></span><span color="#000000"><span size="2" style="font-size: 10pt"><u>						</u></span></span></p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-              <span color="#000000"><span size="2" style="font-size: 10pt">								[city,
-                state, zip]</span></span></p>
+            <p align="left" style="margin-bottom: 0in; line-height: 115%;">
+            <span  ><b>WITNESS 1: </b>__________________________</span><span style="text-decoration: none; padding-left: 20px;">Dated: __________________________</span>
+              </p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[signature]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              __________________________<span style="text-decoration: none; padding-left: 70px;">__________________________</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[name printed]<span style="padding-left: 200px;"></span>[street address]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              <span style="text-decoration: none; padding-left: 278px;"></span>__________________________</p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0; padding-left: 288px;">
+                <span  style="font-size: 11pt">[city,
+              state, zip]</span></p>
             <p class="western" style="margin-bottom: 0in; line-height: 100%">
 
             </p>
-            <p class="western" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span size="2" style="font-size: 10pt"><b>WITNESS
-                  2</b></span></span><span color="#000000"><span size="2" style="font-size: 10pt">:
-                </span></span><span color="#000000"><span size="2" style="font-size: 10pt"><u>					</u></span></span><span color="#000000"><span size="2" style="font-size: 10pt">	Dated:
-                </span></span><span color="#000000"><span size="2" style="font-size: 10pt"><u>				</u></span></span></p>
-            <p class="western"  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
-                <span color="#000000"><span size="2" style="font-size: 10pt">[signature]</span></span></p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-                <span color="#000000"><span size="2" style="font-size: 10pt"><u>					</u></span></span><span color="#000000"><span size="2" style="font-size: 10pt">		</span></span><span color="#000000"><span size="2" style="font-size: 10pt"><u>						</u></span></span></p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-              <span color="#000000"><span size="2" style="font-size: 10pt">	[name
-                printed]						[street address]</span></span></p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-                <span color="#000000"><span size="2" style="font-size: 10pt">							</span></span><span color="#000000"><span size="2" style="font-size: 10pt"><u>						</u></span></span></p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-              <span color="#000000"><span size="2" style="font-size: 10pt">								[city,
-                state, zip]</span></span></p>
+            <p align="left" style="margin-bottom: 0in; line-height: 115%;">
+            <span  ><b>WITNESS 2: </b>__________________________</span><span style="text-decoration: none; padding-left: 20px;">Dated: __________________________</span>
+              </p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[signature]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              __________________________<span style="text-decoration: none; padding-left: 70px;">__________________________</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0;">
+              <span  style="font-size: 11pt">[name printed]<span style="padding-left: 200px;"></span>[street address]</span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%">
+              <span style="text-decoration: none; padding-left: 278px;"></span>__________________________</p>
+            <p style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 115%; margin-top: 0; padding-left: 288px;">
+                <span  style="font-size: 11pt">[city,
+              state, zip]</span></p>
 
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+       <!--  @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Durable Health Care Power of Attorney and Declaration of {{$tellUsAboutYou['fullname']}}<br>
                 Page 7 of 7
@@ -1081,7 +1027,7 @@
                 Durable Health Care Power of Attorney and Declaration of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 7 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 7 -->
 

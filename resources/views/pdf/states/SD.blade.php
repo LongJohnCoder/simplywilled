@@ -60,7 +60,7 @@
 <div class="docContainer" id="doc">
 
     <!-- Page 1-->
-    <div class="docPage" style="margin: 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="margin: 0; box-sizing: border-box; padding: 0px;">
         <div class="docPageInner" style="box-sizing: border-box; height: 800px;">
             <p  style="margin-bottom: 0in; line-height: 22px; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 13pt"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>S</b></span></span></span><span size="4" style="font-size: 16pt"><b>OUTH
     </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>D</b></span></span></span><span size="4" style="font-size: 16pt"><b>AKOTA</b></span></span></span></p>
@@ -70,7 +70,7 @@
             <p  style="margin-bottom: 0in; line-height: 22px; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 13pt"><span size="4" style="font-size: 16pt"><b>FOR
     </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>H</b></span></span></span><span size="4" style="font-size: 16pt"><b>EALTH
     </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>C</b></span></span></span><span size="4" style="font-size: 16pt"><b>ARE</b></span></span></span></p>
-            <p  style="margin-bottom: 0in; "><br/>
+            <p  style="margin-bottom: 0in; ">
 
             </p>
             <p style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'">I,
@@ -242,46 +242,46 @@
                 care decisions for me as authorized by this document, in the order
                 listed below:</span></span>
             </p>
-            <p  style="margin-bottom: 0in; "><br/>
+            <p  style="margin-bottom: 0in; ">
 
             </p>
             <p  style="margin-left: 1in; margin-bottom: 0in; ">
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"><u>Alternate
                 Agent 1</u></span></span></span></span></p>
             <p  style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
-                <br/>
+                
 
             </p>
             <p  style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
-                <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Name:		</span></span><span ><span size="3" style="font-size: 12pt"><u>_________________________________</u></span></span></span></span></p>
+                <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Name:		</span></span><span ><span size="3" style="font-size: 12pt">_________________________________</span></span></span></span></p>
             <p  style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
-                <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Address:	</span></span><span ><span size="3" style="font-size: 12pt"><u>_________________________________</u></span></span></span></span></p>
+                <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Address:	</span></span><span ><span size="3" style="font-size: 12pt">_________________________________</span></span></span></span></p>
             <p  style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
-                <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Telephone:	</span></span><span ><span size="3" style="font-size: 12pt"><u>_________________________________</u></span></span></span></span></p>
+                <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Telephone:	</span></span><span ><span size="3" style="font-size: 12pt">_________________________________</span></span></span></span></p>
             <p  style="margin-left: 1in; margin-bottom: 0in; ">
-                <br/>
+                
 
             </p>
             <p  style="margin-left: 1in; margin-bottom: 0in; ">
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"><u>Alternate
                 Agent 1</u></span></span></span></span></p>
             <p  style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
-                <br/>
+                
 
             </p>
             <p  style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
-                <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Name:		</span></span><span ><span size="3" style="font-size: 12pt"><u>_________________________________</u></span></span></span></span></p>
+                <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Name:		</span></span><span ><span size="3" style="font-size: 12pt">_________________________________</span></span></span></span></p>
             <p  style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
-                <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Address:	</span></span><span ><span size="3" style="font-size: 12pt"><u>_________________________________</u></span></span></span></span></p>
+                <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Address:	</span></span><span ><span size="3" style="font-size: 12pt">_________________________________</span></span></span></span></p>
             <p  style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
-                <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Telephone:	</span></span><span ><span size="3" style="font-size: 12pt"><u>_________________________________</u></span></span></span></span></p>
+                <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Telephone:	</span></span><span ><span size="3" style="font-size: 12pt">_________________________________</span></span></span></span></p>
             <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
-                <br/>
+                
 
             </p>
         </div>
       @endif
-            <p  style="margin-bottom: 0in; "><br/>
+            <p  style="margin-bottom: 0in; ">
 
             </p>
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">This
@@ -289,7 +289,7 @@
       any period in which my physician has determined in good faith that I
       do not have decisional capacity.  </span></span></span>
             </p>
-            <p  style="margin-bottom: 0in; "><br/>
+            <p  style="margin-bottom: 0in; ">
 
             </p>
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">I

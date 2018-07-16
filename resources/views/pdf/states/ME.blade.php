@@ -4,51 +4,7 @@
     <meta charset="utf-8">
     <title>Untitled Document</title>
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        body{
-            margin: 0;
-            padding: 0;
-            font-family: Garamond;
-        }
-        /* width */
-        ::-webkit-scrollbar {
-            width: 14px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #0f69bb;
-
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #99cc33;
-            border-radius: 5px;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #57ab2a;
-        }
-
-        .docContainer{
-            width: 700px;
-            margin: 0 auto;
-        }
-        .docPage{
-            width: 700px !important;
-            height: 991px!important;
-            background: #fff;
-            box-shadow: 0 0 7px rgba(0,0,0,0.3);
-            margin: 20px 0;
-            box-sizing: border-box;
-            padding: 40px;
-        }
-
+        
 
 
 
@@ -58,9 +14,9 @@
 <body>
 
 <div class="docContainer" id="doc">
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="">
         <div id="doc" class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="page-break-after: always;">
 
             <p  style="text-align:center;margin-bottom: 0.13in; line-height: 100%">
                 MAINE ADVANCE
@@ -74,7 +30,7 @@
             <p style="margin-bottom: 0in; line-height: 100%">
 
             </p>
-            <p  style="text-align:justify;text-indent: 0.33in; margin-bottom: 0in; line-height: 100%">
+            <p  style="text-align:justify;text-indent: 0.33in; margin-bottom: 0in;">
       <span size="2" style="font-size: 9pt"><span size="2" style="font-size: 11pt">You
         have the right to give instructions about your own health care. You
         also have the right to name someone else to make health-care
@@ -157,7 +113,7 @@
         responsibility.</span></span></p>
 
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Advance Health-Care Directive of {{$tellUsAboutYou['fullname']}}<br>
                 Page 1 of 7
@@ -167,29 +123,27 @@
                 Advance Health-Care Directive of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 1 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 1 -->
 
     <!-- Page 2 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
-
-
-            <p class="western"  style="text-align:justify;text-indent: 0.33in; margin-bottom: 0.1in; line-height: 100%">
+             style="page-break-after: always;">
+            <p class="western"  style="text-align:justify;text-indent: 0.33in; margin-bottom: 0.1in; ">
       <span color="#000000"><span size="2" style="font-size: 11pt">You have
         the right to revoke this advance health-care directive or replace
         this form at any time</span></span>
             </p>
-            <p  style="text-align:center;margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><span style="letter-spacing: 1.0pt">***********************</span></span></span></p>
+            <p  style="text-align:center;margin-bottom: 0in;"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><span style="letter-spacing: 1.0pt">***********************</span></span></span></p>
             <p  style="text-align:center;margin-left: 0.19in; text-indent: -0.19in; margin-top: 0.06in; margin-bottom: 0.13in; line-height: 100%">
       <span size="2" style="font-size: 10pt"><span size="4" style="font-size: 14pt"><b>PART
         I</b></span></span></p>
             <p  style="text-align:center;margin-left: 0.19in; text-indent: -0.19in; margin-top: 0.06in; margin-bottom: 0.13in; line-height: 100%">
       <span size="2" style="font-size: 10pt"><span size="4" style="font-size: 14pt"><b>POWER
         OF ATTORNEY FOR HEALTH CARE</b></span></span></p>
-            <p class="western" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">(1)	</span><span color="#000000"><b>DESIGNATION
+            <p class="western" style="margin-bottom: 0in;"><span color="#000000">(1)	</span><span color="#000000"><b>DESIGNATION
       OF AGENT</b></span><span color="#000000">:</span><span color="#000000">&nbsp;
     </span>
       <span color="#000000">I,
@@ -283,7 +237,7 @@
             @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == true)
             <!--<p  style="text-align:justify;margin-bottom: 0in; line-height: 100%"><span color="#008f00"><span size="2" style="font-size: 9pt"><span color="#000000"><span size="3" style="font-size: 12pt">«</span></span><span size="3" style="font-size: 12pt">IF
               Rx Alternate Agents?</span><span color="#000000"><span size="3" style="font-size: 12pt">»</span></span></span></span></p>-->
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt" ><span size="3" style="font-size: 12pt">If
+            <p  style="text-align:justify;margin-bottom: 0in;"><span size="2" style="font-size: 9pt" ><span size="3" style="font-size: 12pt">If
               I revoke my agent’s authority or if my agent is not willing, able,
               or reasonably available to make a health-care decision for me, I
               designate </span><span color="#000000"><span size="3" style="font-size: 12pt">my
@@ -349,7 +303,7 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(2)	</span><span size="3" style="font-size: 12pt"><b>AGENT'S
+            <p  style="text-align:justify;margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(2)	</span><span size="3" style="font-size: 12pt"><b>AGENT'S
       AUTHORITY</b></span><span size="3" style="font-size: 12pt">:</span><span size="3" style="font-size: 12pt">&nbsp;
     </span><span size="3" style="font-size: 12pt">My agent is authorized
       to make all healthcare decisions for me, including decisions to
@@ -371,14 +325,14 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.15in"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(3)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>WHEN
+            <p  style="text-align:justify;margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(3)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>WHEN
       AGENT’S AUTHORITY BECOMES EFFECTIVE: </b></span><span size="3" style="font-size: 12pt">My
       agent’s authority becomes effective when my primary physician
       determines that I am unable to make my own health-care decisions
       unless I mark the following box. </span></span>
             </p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.15in"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
-      I mark this box </span><span style="font-family:Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="6" style="font-size: 24pt">□</span></span></span><span size="3" style="font-size: 12pt">,
+            <p  style="text-align:justify;margin-bottom: 0in;"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
+      I mark this box </span><span style="font-family:Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="6" style="font-size: 24pt"><span style="display:inline-block; width:14px; height:14px; border:1px solid #000; margin:0 0 0 5px;"></span></span></span></span><span size="3" style="font-size: 12pt">,
       my agent’s authority to make health-care decisions for me takes
       effect immediately.</span></span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.15in">
@@ -387,7 +341,7 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.15in">
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(4)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>AGENT’S
+            <p  style="text-align:justify;margin-bottom: 0in;"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(4)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>AGENT’S
       OBLIGATION: </b></span><span size="3" style="font-size: 12pt">My
       agent shall make health-care decisions for me in accordance with this
       power of attorney for health care, any instructions I give in Part 2
@@ -403,7 +357,7 @@
 
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Advance Health-Care Directive of {{$tellUsAboutYou['fullname']}}<br>
                 Page 2 of 7
@@ -413,16 +367,16 @@
                 Advance Health-Care Directive of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 2 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 2 -->
 
     <!-- Page 3 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
+             style="page-break-after: always;">
 
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(5)	</span><span size="3" style="font-size: 12pt"><b>NOMINATION
+            <p  style="text-align:justify;margin-bottom: 0in;"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(5)	</span><span size="3" style="font-size: 12pt"><b>NOMINATION
       OF GUARDIAN: </b></span><span size="3" style="font-size: 12pt">If a
       guardian of my person needs to be appointed for me by a court, I
       nominate the agent (or alternate agent, if applicable) designated in
@@ -433,7 +387,7 @@
             <p  style="text-align:center;margin-left: 0.19in; text-indent: -0.19in; margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
       <span size="2" style="font-size: 10pt"><span size="4" style="font-size: 14pt"><b>INSTRUCTIONS
         FOR HEALTH CARE</b></span></span></p>
-            <p  style="text-align:left;margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
+            <p  style="text-align:left;margin-top: 0.13in; margin-bottom: 0.13in;">
       <span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt">If
         you are satisfied to allow your agent to determine what is best for
         you in making end-of-life decisions, you need not fill out this part
@@ -444,7 +398,7 @@
 
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(6)	</span><span size="3" style="font-size: 12pt"><b>END-OF-LIFE
+            <p  style="text-align:justify;margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(6)	</span><span size="3" style="font-size: 12pt"><b>END-OF-LIFE
       DECISIONS: </b></span><span size="3" style="font-size: 12pt">I direct
       that my health-care providers and others involved in my care provide,
       withhold or withdraw treatment in accordance with the choice I have
@@ -453,12 +407,12 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><i>(Check
+            <p  style="text-align:justify;margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><i>(Check
       only one box)</i></span></span></p>
-            <p  style="text-align:justify;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-                □<span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(a)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>Choice
+            <p  style="text-align:justify;margin-left: 0.38in; margin-bottom: 0in; ">
+                <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(a)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>Choice
       NOT To Prolong Life</b></span></span></p>
-            <p  style="text-align:justify;margin-left: 1in; margin-bottom: 0.09in; line-height: 100%">
+            <p  style="text-align:justify;margin-left: 1in; margin-bottom: 0.09in;">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
         do not want my life to be prolonged if (i) I have an incurable and
         irreversible condition that will result in my death within a
@@ -466,47 +420,47 @@
         degree of medical certainty, I will not regain consciousness, or
         (iii) the likely risks and burdens of treatment would outweigh the
         expected benefits,</span></span></p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>OR</b></span></span></p>
-            <p  style="text-align:justify;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-                □<span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(b)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>Choice
+            <p  style="text-align:justify;margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>OR</b></span></span></p>
+            <p  style="text-align:justify;margin-left: 0.38in; margin-bottom: 0in; ">
+                <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(b)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>Choice
       To Prolong Life</b></span></span></p>
-            <p  style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
+            <p  style="margin-left: 1in; margin-bottom: 0in;">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
         want my life to be prolonged as long as possible within the limits of
         generally accepted health-care standards.</span></span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0.03in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(7)	</span><span size="3" style="font-size: 12pt"><b>ARTIFICIAL
+            <p  style="text-align:justify;margin-bottom: 0.03in;"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(7)	</span><span size="3" style="font-size: 12pt"><b>ARTIFICIAL
       NUTRITION AND HYDRATION: </b></span><span size="3" style="font-size: 12pt">I
       also specify that under the conditions mentioned in the above
       paragraph</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%">
 
             </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(Check
+            <p  style="text-align:left;margin-bottom: 0in;"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(Check
       only one box)</i></span></span></p>
-            <p  style="text-align:justify;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-                □<span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(a)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
+            <p  style="text-align:justify;margin-left: 0.38in; margin-bottom: 0in; ">
+                <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(a)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
     </span><span size="3" style="font-size: 12pt"><b>do not </b></span><span size="3" style="font-size: 12pt">want
       artificial nutrition and hydration provided to me in order to prolong
       my life.</span><span size="3" style="font-size: 12pt"><b>&nbsp;</b></span></span></p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>OR</b></span></span></p>
-            <p  style="text-align:justify;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-                □<span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(b)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
+            <p  style="text-align:justify;margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>OR</b></span></span></p>
+            <p  style="text-align:justify;margin-left: 0.38in; margin-bottom: 0in;">
+                <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(b)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
     </span><span size="3" style="font-size: 12pt"><b>do </b></span><span size="3" style="font-size: 12pt">want
       artificial nutrition and hydration provided to me in order to prolong
       my life.</span><span size="3" style="font-size: 12pt"><b>&nbsp;</b></span></span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(8)	</span><span size="3" style="font-size: 12pt"><b>RELIEF
+            <p  style="text-align:justify;margin-bottom: 0.09in;"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(8)	</span><span size="3" style="font-size: 12pt"><b>RELIEF
       FROM PAIN:  </b></span><span size="3" style="font-size: 12pt">Except
       as I state in the following space, I direct that treatment for
       alleviation of pain or discomfort be provided at all times, even if
       it hastens my death:</span></span></p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Advance Health-Care Directive of {{$tellUsAboutYou['fullname']}}<br>
                 Page 3 of 7
@@ -516,17 +470,15 @@
                 Advance Health-Care Directive of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 3 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 3 -->
 
 
     <!-- Page 4 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
-
-
+             style="page-break-after: always;">
             <p  style="text-align:justify;margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
                 <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></p>
             <p  style="text-align:justify;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
@@ -537,7 +489,7 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0.09in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(9)	</span><span size="3" style="font-size: 12pt"><b>OTHER
+            <p  style="text-align:justify;margin-bottom: 0.09in;"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(9)	</span><span size="3" style="font-size: 12pt"><b>OTHER
       WISHES: </b></span><span size="3" style="font-size: 12pt">(If you do
       not agree with any of the optional choices above and wish to write
       your own, or if you wish to add to the instructions you have given
@@ -573,10 +525,10 @@
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
         give: (check one)</span></span></p>
             <p  style="text-align:justify;margin-left: 0.75in; margin-bottom: 0in; line-height: 0.16in">
-                □ <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(a)
+                <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(a)
       any needed organs, tissues or parts</span></span></p>
             <p  style="text-align:justify;margin-left: 0.75in; margin-bottom: 0.09in; line-height: 100%">
-                □ <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(b)
+                <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(b)
       only the following organs, tissues or parts :</span></span></p>
             <p  style="text-align:justify;margin-left: 1.17in; margin-bottom: 0.09in; line-height: 100%">
                 <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">___________________________________________________________</span></span></p>
@@ -585,7 +537,7 @@
             <p  style="text-align:justify;margin-left: 1.17in; margin-bottom: 0.13in; line-height: 100%">
                 <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">___________________________________________________________</span></span></p>
             <p style="margin-left: 0.75in; margin-bottom: 0.03in; line-height: 100%">
-                □ <span size="2" style="font-size: 9pt"><span style="font-family:Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">(c)
+                <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> <span size="2" style="font-size: 9pt"><span style="font-family:Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">(c)
     </span></span></span><span size="3" style="font-size: 12pt">My gift
       is for the following purposes: </span><span size="3" style="font-size: 12pt"><i>(strike
       any of the following you do not want)</i></span></span></p>
@@ -596,11 +548,9 @@
             <p style="margin-left: 1.5in; margin-bottom: 0.06in; line-height: 100%">
                 <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(iii)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Research</span></span></p>
             <p style="margin-left: 1.5in; margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(iv)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Education</span></span></p>
-            <p class="western" style="margin-bottom: 0in; line-height: 100%">
-
-            </p>
+            
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Advance Health-Care Directive of {{$tellUsAboutYou['fullname']}}<br>
                 Page 4 of 7
@@ -610,17 +560,15 @@
                 Advance Health-Care Directive of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 4 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 4 -->
 
     <!-- Page 5 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
-
-
-            <p  style="text-align:center;margin-left: 0.19in; text-indent: -0.19in; margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%; page-break-before: always">
+             style="page-break-after: always;">
+            <p  style="text-align:center;margin-left: 0.19in; text-indent: -0.19in; margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%;">
       <span size="2" style="font-size: 10pt"><span size="4" style="font-size: 14pt"><b>PART
         4</b></span></span></p>
             <p  style="text-align:center;margin-left: 0.19in; text-indent: -0.19in; margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
@@ -632,22 +580,26 @@
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">(11)
       I designate the following physician as my primary physician:</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%">
-
+<br>
             </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><u>										</u></span><span size="3" style="font-size: 12pt">					</span></span></p>
+            <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">
+            _____________________________________________________________________________________
+            </span><span size="3" style="font-size: 12pt">					</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">(name
       of physician)</span></span></p>
             <p  style="margin-bottom: 0in; line-height: 100%">
-
+<br>
             </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><u>										</u></span><span size="3" style="font-size: 12pt">													</span></span></p>
+            <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">
+              _____________________________________________________________________________________
+            </span><span size="3" style="font-size: 12pt">													</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%">
       <span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">(address)
         (city) (state) (zip code)</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%">
-
+<br>
             </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><u>										</u></span><span size="3" style="font-size: 12pt">		</span></span></p>
+            <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">_____________________________________________________________________________________</span><span size="3" style="font-size: 12pt">		</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">										</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%">
                 <span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">(phone)</span></span></p>
@@ -660,35 +612,39 @@
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%">
 
             </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">OPTIONAL:
+            <p  style="text-align:left;margin-bottom: 0in;"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">OPTIONAL:
       If the physician I have designated above is not willing, able or
       reasonably available to act as my primary physician, I designate the
       following physician as my primary physician:</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%">
-
+<br>
             </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><u>										</u></span><span size="3" style="font-size: 12pt">					</span></span></p>
+            <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">
+              _____________________________________________________________________________________
+            </span><span size="3" style="font-size: 12pt">					</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">(name
       of physician)</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%">
-
+<br>
             </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><u>										</u></span><span size="3" style="font-size: 12pt">													</span></span></p>
+            <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">
+              _____________________________________________________________________________________
+            </span><span size="3" style="font-size: 12pt">													</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%">
       <span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">(address)
         (city) (state) (zip code)</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%">
-
+<br>
             </p>
-            <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><u>										</u></span><span size="3" style="font-size: 12pt">		</span></span></p>
+            <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">
+            _____________________________________________________________________________________
+            </span><span size="3" style="font-size: 12pt">		</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">										</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%">
                 <span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">(phone)</span></span></p>
-            <p class="western" style="margin-bottom: 0in; line-height: 100%">
-
-            </p>
+            
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Advance Health-Care Directive of {{$tellUsAboutYou['fullname']}}<br>
                 Page 5 of 7
@@ -698,16 +654,15 @@
                 Advance Health-Care Directive of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 5 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 5 -->
 
     <!-- Page 6 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
-
-            <p  style="text-align:center;margin-left: 0.19in; text-indent: -0.19in; margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%; page-break-before: always">
+             style="page-break-after: always;">
+            <p  style="text-align:center;margin-left: 0.19in; text-indent: -0.19in; margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%;">
       <span size="2" style="font-size: 10pt"><span size="4" style="font-size: 14pt"><b>PART
         V</b></span></span></p>
             <p  style="text-align:center;margin-left: 0.19in; text-indent: -0.19in; margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
@@ -720,7 +675,7 @@
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(13)
+            <p  style="text-align:justify;margin-bottom: 0in;"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(13)
     </span><span size="3" style="font-size: 12pt"><b>HIPAA WAIVER AND
       RELEASE OF MEDICAL RECORDS</b></span><span size="3" style="font-size: 12pt">.</span><span size="3" style="font-size: 12pt">&nbsp;
     </span><span size="3" style="font-size: 12pt">Subject to any
@@ -762,7 +717,7 @@
 
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(14)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>SIGNATURE.
+            <p  style="text-align:justify;margin-bottom: 0in;"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(14)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>SIGNATURE.
     </b></span><span size="3" style="font-size: 12pt">Sign and date this
       form below in the presence of two witnesses, who should provide their
       signatures on the next page.</span></span></p>
@@ -772,11 +727,11 @@
             </p>
             <p  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
       <span color="#008f00"><span size="2" style="font-size: 9pt"><span color="#000000"><span size="3" style="font-size: 12pt">This
-        Advance Health Care Directive is executed by me on this </span></span><span color="#000000"><span size="3" style="font-size: 12pt"><u>		</u></span></span><span color="#000000"><span size="3" style="font-size: 12pt">
+        Advance Health Care Directive is executed by me on this </span></span><span color="#000000"><span size="3" style="font-size: 12pt">_________</span></span><span color="#000000"><span size="3" style="font-size: 12pt">
         day of </span></span></span></span>
             </p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%"><span color="#008f00"><span size="2" style="font-size: 9pt"><span color="#000000"><span size="3" style="font-size: 12pt"><u>				</u></span></span><span color="#000000"><span size="3" style="font-size: 12pt">,
-    </span></span><span color="#000000"><span size="3" style="font-size: 12pt"><u>		</u></span></span><span color="#000000"><span size="3" style="font-size: 12pt">.</span></span></span></span></p>
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%"><span color="#008f00"><span size="2" style="font-size: 9pt"><span color="#000000"><span size="3" style="font-size: 12pt">_______________</span></span><span color="#000000"><span size="3" style="font-size: 12pt">,
+    </span></span><span color="#000000"><span size="3" style="font-size: 12pt">_____________________</span></span><span color="#000000"><span size="3" style="font-size: 12pt">.</span></span></span></span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
 
             </p>
@@ -838,7 +793,7 @@
             </p>
 
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Advance Health-Care Directive of {{$tellUsAboutYou['fullname']}}<br>
                 Page 6 of 7
@@ -848,22 +803,20 @@
                 Advance Health-Care Directive of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 6 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 6 -->
 
     <!-- Page 7 -->
-    <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
+    <div class="docPage" style="">
         <div class="docPageInner"
-             style="box-sizing: border-box; height: 890px;">
-            <p class="western" style="margin-bottom: 0in; line-height: 100%">ADDITIONAL
-
-            <p  style="text-align:center;margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%; page-break-before: always">
+             style="">
+            <p  style="text-align:center;margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%;">
                 <span size="4" style="font-size: 14pt"><b>STATEMENT OF WITNESSES</b></span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
 
             </p>
-            <p class="western"  style="text-align:justify;margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0"><a name="_GoBack"></a>
+            <p class="western"  style="text-align:justify;margin-bottom: 0.08in; orphans: 0; widows: 0"><a name="_GoBack"></a>
                 I declare under penalty that
                 @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
                     <span>{{$tellUsAboutYou['fullname']}}</span>
@@ -885,12 +838,12 @@
                 <span>{{isset($tellUsAboutYou) && array_key_exists('gender',$tellUsAboutYou) && !is_null($tellUsAboutYou['gender']) && $tellUsAboutYou['gender'] == 'M' ? 'his' : (isset($tellUsAboutYou) && array_key_exists('gender',$tellUsAboutYou) && !is_null($tellUsAboutYou['gender']) && $tellUsAboutYou['gender'] == 'F' ? 'her' : 'his/her')}}</span>
                 death under a will now existing or by operation of law.</p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
-
+<br>
             </p>
             <p  style="text-align:left;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
       <span color="#008f00"><span size="2" style="font-size: 9pt"><span color="#00000a"><span size="3" style="font-size: 12pt"><b>WITNESS
         1</b></span></span><span color="#00000a"><span size="3" style="font-size: 12pt">:
-        _______________________________	Dated: ___________________</span></span></span></span></p>
+        _______________________________	<span style="display: inline-block; padding-left: 32px;"></span>Dated: ___________________</span></span></span></span></p>
             <p  style="text-align:left;margin-left: 0.38in; text-indent: 0.13in; margin-bottom: 0in; line-height: 100%">
                 <span color="#008f00"><span size="2" style="font-size: 9pt"><span color="#00000a"><span size="3" style="font-size: 12pt">[signature]</span></span></span></span></p>
             <p  style="margin-bottom: 0in; line-height: 100%">
@@ -898,7 +851,7 @@
             </p>
             <p  style="text-align:left;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
                 <span color="#008f00"><span size="2" style="font-size: 9pt"><span color="#00000a"><span size="3" style="font-size: 12pt">____________________________________</span></span></span></span></p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">[name
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%; padding-left: 40px;"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">[name
       printed]</span></span></p>
             <p  style="text-align:left;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
 
@@ -906,7 +859,7 @@
             </p>
             <p  style="text-align:left;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
                 <span color="#008f00"><span size="2" style="font-size: 9pt"><span color="#00000a"><span size="3" style="font-size: 12pt">____________________________________</span></span></span></span></p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">[street
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%; padding-left: 40px;"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">[street
       address]</span></span></p>
             <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
 
@@ -914,7 +867,7 @@
             </p>
             <p  style="text-align:justify;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
                 <span color="#008f00"><span size="2" style="font-size: 9pt"><span color="#00000a"><span size="3" style="font-size: 12pt">____________________________________</span></span></span></span></p>
-            <p  style="margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">[city,
+            <p  style="margin-bottom: 0in; line-height: 100%; padding-left: 40px;"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">[city,
       state]</span></span></p>
             <p  style="text-align:justify;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
 
@@ -925,12 +878,12 @@
 
             </p>
             <p  style="text-align:left;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-
+<br>
 
             </p>
             <p  style="text-align:left;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
       <span color="#008f00"><span size="2" style="font-size: 9pt"><span color="#00000a"><span size="3" style="font-size: 12pt"><b>WITNESS
-        2: </b></span></span><span color="#00000a"><span size="3" style="font-size: 12pt">_______________________________	Dated:
+        2: </b></span></span><span color="#00000a"><span size="3" style="font-size: 12pt">_______________________________	<span style="display: inline-block; padding-left: 32px;"></span>Dated:
         ___________________</span></span></span></span></p>
             <p  style="text-align:left;margin-left: 0.38in; text-indent: 0.13in; margin-bottom: 0in; line-height: 100%">
                 <span color="#008f00"><span size="2" style="font-size: 9pt"><span color="#00000a"><span size="3" style="font-size: 12pt">[signature]</span></span></span></span></p>
@@ -940,7 +893,7 @@
             </p>
             <p  style="text-align:left;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
                 <span color="#008f00"><span size="2" style="font-size: 9pt"><span color="#00000a"><span size="3" style="font-size: 12pt">____________________________________</span></span></span></span></p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">[name
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%; padding-left: 40px;"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">[name
       printed]</span></span></p>
             <p  style="text-align:left;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
 
@@ -948,7 +901,7 @@
             </p>
             <p  style="text-align:left;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
                 <span color="#008f00"><span size="2" style="font-size: 9pt"><span color="#00000a"><span size="3" style="font-size: 12pt">____________________________________</span></span></span></span></p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">[street
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%; padding-left: 40px;"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">[street
       address]</span></span></p>
             <p  style="text-align:justify;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
 
@@ -956,7 +909,7 @@
             </p>
             <p  style="text-align:justify;margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
                 <span color="#008f00"><span size="2" style="font-size: 9pt"><span color="#00000a"><span size="3" style="font-size: 12pt">____________________________________</span></span></span></span></p>
-            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">[city,
+            <p  style="text-align:justify;margin-bottom: 0in; line-height: 100%; padding-left: 40px;"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">[city,
       state]</span></span></p>
             <p class="western" style="margin-bottom: 0in; letter-spacing: 0.1pt; line-height: 100%">
 
@@ -966,7 +919,7 @@
 
             </p>
         </div>
-        @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
+        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Advance Health-Care Directive of {{$tellUsAboutYou['fullname']}}<br>
                 Page 7 of 7
@@ -976,7 +929,7 @@
                 Advance Health-Care Directive of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
                 Page 7 of 7
             </div>
-        @endif
+        @endif -->
     </div>
     <!-- !Page 7 -->
 </div>
