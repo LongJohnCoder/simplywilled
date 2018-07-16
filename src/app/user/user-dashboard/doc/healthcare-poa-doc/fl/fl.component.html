@@ -1,5 +1,6 @@
 <div class="docContainer">
 <!-- step 1 -->
+<div class="pageCount">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div id="doc" class="docPageInner" style="box-sizing: border-box; height: 890px;">
       <p align="center" style="margin-bottom: 0in; "><span style="font:font-family;"><b>FLORIDA DESIGNATION OF HEALTH CARE SURROGATE</b></span></p>
@@ -219,6 +220,21 @@
       informed consent, refusal of consent, or withdrawal of consent to any
       and all of my health care, including life-prolonging procedures.</span></span></span></p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Designation of Health Care Surrogate and Living Will of</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Designation of Health Care Surrogate and Living Will of</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- step 1 -ends -->
 
@@ -299,6 +315,20 @@
         
         
         </p>
+    </div>
+
+    <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+        <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+            <div>Designation of Health Care Surrogate and Living Will of</div> 
+            <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+        </div>
+        <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+            <div>Designation of Health Care Surrogate and Living Will of</div> 
+            <div>(CLIENT FULL NAME)</div>
+        </div>
+        <span>
+          Page <span class="pageNumber"></span> of {{totalPages}}
+        </span>
     </div>
 </div>
 <!-- step 2 -ends -->
@@ -449,6 +479,21 @@
           address]<span style="padding-left: 230px;"></span>[city, state]</span></span></span></p>
                        
     </div>
+
+    <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Designation of Health Care Surrogate and Living Will of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Designation of Health Care Surrogate and Living Will of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
+
 </div>
 <!-- step 3 - ends -->
 
@@ -578,6 +623,21 @@
     <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="">My
     commission expires:</span></span></p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Designation of Health Care Surrogate and Living Will of</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Designation of Health Care Surrogate and Living Will of</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- step 5 - end-->
 
@@ -690,6 +750,21 @@
           
           </p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Designation of Health Care Surrogate and Living Will of</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Designation of Health Care Surrogate and Living Will of</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- step 6 end-->
 
@@ -801,6 +876,21 @@
           </p>
           
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Designation of Health Care Surrogate and Living Will of</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Designation of Health Care Surrogate and Living Will of</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- step 7 end -->
 
@@ -934,6 +1024,22 @@
       <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="">	NOTARY
       PUBLIC (State of Florida)			My commission expires:</span></span></p>
   </div>
+
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Designation of Health Care Surrogate and Living Will of</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Designation of Health Care Surrogate and Living Will of</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
+  </div>
+
 </div>
 <!-- step 9 end -->
+</div>
 </div>

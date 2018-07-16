@@ -1,5 +1,6 @@
 <div class="docContainer">
 <!-- Page 1 -->
+<div class="pageCount">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
     <p class="western"  style="margin-top: 0.02in; margin-bottom: 0in; line-height: 0.26in; text-align:center;">
@@ -110,10 +111,21 @@
       or living will that you have completed before completing this form.
       You may revoke this completed form at any time.</p>
   </div>
+
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Directive for Health Care of <br> «CLIENT FULL NAME» <br>
-    Page 1 of 10
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Advance Directive for Health Care of</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Advance Directive for Health Care of</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
+
 </div>
 <!-- Page 1 -->
 
@@ -251,10 +263,21 @@
       unable to communicate my health care decisions or I choose to have my
       health care agent communicate my health care decisions.</p>
   </div>
+  
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Directive for Health Care of <br> «CLIENT FULL NAME» <br>
-    Page 2 of 10
-</div>
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
+
 </div>
 <!-- Page 2 -->
 
@@ -367,9 +390,18 @@
       of my current circumstances and treatment options.</p>
   </div>
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Directive for Health Care of <br> «CLIENT FULL NAME» <br>
-    Page 3 of 10
-  </div>
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 3 -->
 
@@ -470,9 +502,18 @@
       preferences and other factors described in Section (4) of PART ONE.]</p>
   </div>
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Directive for Health Care of <br> «CLIENT FULL NAME» <br>
-    Page 4 of 10
-  </div>
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 4 -->
 
@@ -552,9 +593,18 @@
       <u><b>OR</b></u></p>
   </div>
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Directive for Health Care of <br> «CLIENT FULL NAME» <br>
-    Page 5 of 10
-  </div>
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 5 -->
 
@@ -652,9 +702,18 @@
       specific preferences regarding pain relief.]</p>
   </div>
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Directive for Health Care of <br> «CLIENT FULL NAME» <br>
-    Page 6 of 10
-  </div>
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 6 -->
 
@@ -736,9 +795,18 @@
       <u><b>OR</b></u></p>
   </div>
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Directive for Health Care of <br> «CLIENT FULL NAME» <br>
-    Page 7 of 10
-  </div>
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 7 -->
 
@@ -834,9 +902,18 @@
       •	Cannot be a person who is directly involved in your health care.</p>
   </div>
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Directive for Health Care of <br> «CLIENT FULL NAME» <br>
-    Page 8 of 10
-  </div>
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 8 -->
 
@@ -878,9 +955,18 @@
       (Signature of Declarant)</p>
   </div>
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Directive for Health Care of <br> «CLIENT FULL NAME» <br>
-    Page 9 of 10
-  </div>
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 9 -->
 
@@ -972,9 +1058,19 @@
       as the original document.]</b></i></p>
   </div>
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Directive for Health Care of <br> «CLIENT FULL NAME» <br>
-    Page 10 of 10
-  </div>
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Directive for Health Care of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 10 -->
+</div>
 </div>

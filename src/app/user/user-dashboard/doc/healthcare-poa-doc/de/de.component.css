@@ -24,3 +24,22 @@
     font-family: "Times New Roman" !important;
     line-height: initial !important;
 }
+
+.pageCount{
+counter-reset: index;
+}
+.pageNumber{
+counter-increment: index;
+}
+.pageNumber:after{
+content: counter(index);
+}
+
+.docPageInner{
+height: auto !important;
+min-height: 400px;
+}
+
+.docPage{
+height: auto !important;
+}

@@ -1,79 +1,83 @@
 <div class="docContainer">
 <!-- Page 1-->
+<div class="pageCount">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-  <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
-    <p  style="margin-bottom: 0.25in; line-height: 100%; text-align:center;">
-      <span size="4" style="font-size: 13pt"><span size="4" style="font-size: 16pt"><b>ADVANCE
-      HEALTH CARE DIRECTIVE</b></span></span></p>
-    <p  style="margin-bottom: 0.25in; line-height: 100%; text-align:center;"><span size="4" style="font-size: 13pt"><span size="4" style="font-size: 16pt"><b>of</b></span></span></p>
-    <p class="western"  style="margin-bottom: 0.08in; line-height: 100%; text-align: center;">
-      <b>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
-        <!--«</b><span ><b>CLIENT FIRST NAME</b></span><b>»
-      «</b><span ><b>CLIENT MIDDLE NAME</b></span><b>»
-      «</b><span ><b>CLIENT LAST NAME</b></span><b>»--></b></p>
-    <p  style="margin-bottom: 0.19in; line-height: 100%"><br/>
-      <br/>
-
-    </p>
-    <p  style="margin-bottom: 0.19in; line-height: 100%; text-align:center;"><span size="2" style="font-size: 9pt"><span size="4" style="font-size: 14pt"><b>GENERAL
-      INSTRUCTIONS</b></span></span></p>
-    <p  style="margin-bottom: 0.06in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
-      should read this form carefully before filling it in. You should fill
-      it in completely. If there are health care decisions you do not want
-      to make, you should strike the wording of that decision rather than
-      leave it blank. You may not change the qualifications for witnesses
-      or agents, even if you cross out the wording. You should write
-      legibly.</span></span></p>
-    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-      <br/>
-
-    </p>
-    <p  style="margin-bottom: 0.06in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">After
-      you have filled out the form completely, you should sign the form
-      before a notary public. Although signing before a notary public is
-      not legally required, it is advisable. It is advisable because the
-      notary, as well as your witnesses, can testify as to your competence
-      when you sign the directive, if your competence becomes an issue.
-      Notaries, who are registered with the State, are often easier to
-      locate later than witnesses.</span></span></p>
-    <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-      <br/>
-
-    </p>
-    <p  style="margin-bottom: 0.06in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
-      should retain your original Advance Health care Directive, and give
-      copies to your doctor, agent, spouse, family members, and close
-      friends, if you desire. You should explain to each person who
-      receives a copy of your health care directive what choices you made
-      on the form, and why. This will help if, while you lack competence,
-      there arises a need to make a health care decision that is not
-      explicitly set forth on your advance health care directive form.</span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-    </p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">This
-      form does not contain all of the types of health care decisions you
-      are legally entitled to make. For example, the form does not give you
-      the opportunity to nominate a guardian, in the event you become
-      incompetent and need one. Also, the form does not give you the
-      opportunity to designate a primary care physician, or another person,
-      to certify that you lack the capacity to make your own decisions on
-      health care. Finally, the form does not include a provision that
-      accommodates a person’s religious or moral beliefs. If you would
-      like to exercise these options, you should talk to an attorney. If
-      anything on the form conflicts with your religious beliefs, you
-      should contact your clergy.</span></span></p>
-  </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Advance Health Care Directive of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 1 of 11
-  </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Advance Health Care Directive of <br> «CLIENT FULL NAME» <br>
-    Page 1 of 11
-  </div>
+    <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+        <p style="margin-bottom: 0.25in; line-height: 100%; text-align:center;">
+        <span size="4" style="font-size: 13pt"><span size="4" style="font-size: 16pt"><b>ADVANCE
+        HEALTH CARE DIRECTIVE</b></span></span></p>
+        <p style="margin-bottom: 0.25in; line-height: 100%; text-align:center;"><span size="4" style="font-size: 13pt"><span size="4" style="font-size: 16pt"><b>of</b></span></span></p>
+        <p class="western" style="margin-bottom: 0.08in; line-height: 100%; text-align: center;">
+        <b>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '___'}}</span>
+        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">___</span>
+        <!--«</b><span ><b>CLIENT FIRST NAME</b></span><b>» «</b><span ><b>CLIENT MIDDLE NAME</b></span><b>» «</b><span ><b>CLIENT LAST NAME</b></span><b>»--></b></p>
+        <p style="margin-bottom: 0.19in; line-height: 100%"><br/>
+        <br/>
+        
+        </p>
+        <p  style="margin-bottom: 0.19in; line-height: 100%; text-align:center;"><span size="2" style="font-size: 9pt"><span size="4" style="font-size: 14pt"><b>GENERAL
+          INSTRUCTIONS</b></span></span></p>
+        <p  style="margin-bottom: 0.06in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
+          should read this form carefully before filling it in. You should fill
+          it in completely. If there are health care decisions you do not want
+          to make, you should strike the wording of that decision rather than
+          leave it blank. You may not change the qualifications for witnesses
+          or agents, even if you cross out the wording. You should write
+          legibly.</span></span></p>
+        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+          <br/>
+        
+        </p>
+        <p  style="margin-bottom: 0.06in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">After
+          you have filled out the form completely, you should sign the form
+          before a notary public. Although signing before a notary public is
+          not legally required, it is advisable. It is advisable because the
+          notary, as well as your witnesses, can testify as to your competence
+          when you sign the directive, if your competence becomes an issue.
+          Notaries, who are registered with the State, are often easier to
+          locate later than witnesses.</span></span></p>
+        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
+          <br/>
+        
+        </p>
+        <p  style="margin-bottom: 0.06in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
+          should retain your original Advance Health care Directive, and give
+          copies to your doctor, agent, spouse, family members, and close
+          friends, if you desire. You should explain to each person who
+          receives a copy of your health care directive what choices you made
+          on the form, and why. This will help if, while you lack competence,
+          there arises a need to make a health care decision that is not
+          explicitly set forth on your advance health care directive form.</span></span></p>
+        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+        
+        </p>
+        <p  style="margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">This
+          form does not contain all of the types of health care decisions you
+          are legally entitled to make. For example, the form does not give you
+          the opportunity to nominate a guardian, in the event you become
+          incompetent and need one. Also, the form does not give you the
+          opportunity to designate a primary care physician, or another person,
+          to certify that you lack the capacity to make your own decisions on
+          health care. Finally, the form does not include a provision that
+          accommodates a person’s religious or moral beliefs. If you would
+          like to exercise these options, you should talk to an attorney. If
+          anything on the form conflicts with your religious beliefs, you
+          should contact your clergy.</span></span></p>
+      </div>
+      <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+        <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+            <div>Advance Health Care Directive of</div> 
+            <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+        </div>
+        <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+            <div>Advance Health Care Directive of</div> 
+            <div>(CLIENT FULL NAME)</div>
+        </div>
+        <span>
+          Page <span class="pageNumber"></span> of {{totalPages}}
+        </span>
+      </div>
 </div>
 <!-- Page 1-->
 
@@ -204,14 +208,21 @@
       Treatment (“DMOST”) or similar document under the laws of other
       States unless prohibited by the terms of the DMOST or other document.</p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Advance Health Care Directive of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 2 of 11
-  </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Advance Health Care Directive of <br> «CLIENT FULL NAME» <br>
-    Page 2 of 11
-  </div>
+  
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Health Care Directive of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Health Care Directive of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
+
 </div>
 <!-- Page 2-->
 
@@ -269,14 +280,19 @@
       of Federal Regulations and the medical information privacy laws and
       regulations.</span></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Advance Health Care Directive of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 3 of 11
-  </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Advance Health Care Directive of <br> «CLIENT FULL NAME» <br>
-    Page 3 of 11
-  </div>
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Health Care Directive of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Health Care Directive of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 3-->
 
@@ -377,14 +393,19 @@
       </li>
     </ul>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Advance Health Care Directive of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 4 of 11
-  </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Advance Health Care Directive of <br> «CLIENT FULL NAME» <br>
-    Page 4 of 11
-  </div>
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Health Care Directive of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Health Care Directive of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 4-->
 
@@ -488,14 +509,19 @@
     <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
       _____ antibiotics</p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Advance Health Care Directive of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 5 of 11
-  </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Advance Health Care Directive of <br> «CLIENT FULL NAME» <br>
-    Page 5 of 11
-  </div>
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Health Care Directive of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Health Care Directive of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 5-->
 
@@ -609,14 +635,19 @@
     <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
       <span size="2" style="font-size: 11pt">_____ antibiotics</span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Advance Health Care Directive of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 6 of 11
-  </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Advance Health Care Directive of <br> «CLIENT FULL NAME» <br>
-    Page 6 of 11
-  </div>
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Health Care Directive of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Health Care Directive of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 6-->
 
@@ -742,14 +773,19 @@
     <p class="western" style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 100%">
       <span size="2" style="font-size: 11pt">_____ antibiotics</span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Advance Health Care Directive of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 7 of 11
-  </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Advance Health Care Directive of <br> «CLIENT FULL NAME» <br>
-    Page 7 of 11
-  </div>
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Health Care Directive of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Health Care Directive of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 7-->
 
@@ -796,14 +832,19 @@
     <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">(use
       additional sheets if necessary)</span></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Advance Health Care Directive of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 8 of 11
-  </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Advance Health Care Directive of <br> «CLIENT FULL NAME» <br>
-    Page 8 of 11
-  </div>
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Health Care Directive of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Health Care Directive of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 8-->
 
@@ -907,14 +948,19 @@
       caring for me or has custody of me, one or more of my health-care
       Agents may resign.</p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Advance Health Care Directive of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 9 of 11
-  </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Advance Health Care Directive of <br> «CLIENT FULL NAME» <br>
-    Page 9 of 11
-  </div>
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Health Care Directive of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Health Care Directive of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 9-->
 
@@ -1035,14 +1081,19 @@
       <span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">My
       commission expires:</span></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Advance Health Care Directive of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 10 of 11
-  </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Advance Health Care Directive of <br> «CLIENT FULL NAME» <br>
-    Page 10 of 11
-  </div>
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Health Care Directive of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Health Care Directive of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 10-->
 
@@ -1154,14 +1205,20 @@
     <p  style="margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="2" style="font-size: 11pt">[street
       address] <span style="padding-left: 250px;"></span>[city, state]</span></span></p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Advance Health Care Directive of {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 11 of 11
-  </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Advance Health Care Directive of <br> «CLIENT FULL NAME» <br>
-    Page 11 of 11
-  </div>
+  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Advance Health Care Directive of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Advance Health Care Directive of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- Page 11-->
+</div>
 </div>
