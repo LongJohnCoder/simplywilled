@@ -19,3 +19,22 @@
 	min-height: 400px;
 	padding-bottom: 32px;
 }
+
+.pageCount{
+  counter-reset: index;
+}
+.pageNumber{
+  counter-increment: index;
+}
+.pageNumber:after{
+  content: counter(index);
+}
+
+.docPageInner{
+  height: auto !important;
+  min-height: 400px;
+}
+
+.docPage{
+  height: auto !important;
+}

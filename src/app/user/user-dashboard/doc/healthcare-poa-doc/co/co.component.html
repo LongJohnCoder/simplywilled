@@ -1,5 +1,6 @@
 <div class="docContainer">
         <!-- Page 1 -->
+        <div class="pageCount">
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
           <div class="docPageInner" style="box-sizing: border-box; height: 890px;">
             <p align="center" style="margin-bottom: 0in; line-height: 0.28in; page-break-before: auto; page-break-after: auto">
@@ -92,15 +93,18 @@
             </p>
           </div>
 
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-            Page 1 of 7
-          </div>
-
-          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-              Medical Durable Power of Attorney, Living Will, and Advance Directive by <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-            Page 1 of 7
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Medical Durable Power of Attorney, Living Will, and Advance Directive by</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Medical Durable Power of Attorney, Living Will, and Advance Directive by</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
           </div>
 
         </div>
@@ -191,15 +195,18 @@
             </p>
           </div>
 
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-            Page 2 of 7
-          </div>
-
-          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-              Medical Durable Power of Attorney, Living Will, and Advance Directive by <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-            Page 2 of 7
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Medical Durable Power of Attorney, Living Will, and Advance Directive by</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Medical Durable Power of Attorney, Living Will, and Advance Directive by</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
           </div>
 
         </div>
@@ -305,15 +312,18 @@
             </p>
           </div>
 
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-            Page 3 of 7
-          </div>
-
-          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-              Medical Durable Power of Attorney, Living Will, and Advance Directive by <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-            Page 3 of 7
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Medical Durable Power of Attorney, Living Will, and Advance Directive by</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Medical Durable Power of Attorney, Living Will, and Advance Directive by</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
           </div>
 
         </div>
@@ -429,15 +439,18 @@
               <i>(Other instructions and/or limitations)</i></p>
           </div>
 
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-            Page 4 of 7
-          </div>
-
-          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-              Medical Durable Power of Attorney, Living Will, and Advance Directive by <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-            Page 4 of 7
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Medical Durable Power of Attorney, Living Will, and Advance Directive by</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Medical Durable Power of Attorney, Living Will, and Advance Directive by</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
           </div>
 
         </div>
@@ -529,15 +542,18 @@
             </p>
           </div>
 
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-            Page 5 of 7
-          </div>
-
-          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-              Medical Durable Power of Attorney, Living Will, and Advance Directive by <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-            Page 5 of 7
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Medical Durable Power of Attorney, Living Will, and Advance Directive by</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Medical Durable Power of Attorney, Living Will, and Advance Directive by</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
           </div>
 
         </div>
@@ -646,15 +662,18 @@
             </p>
           </div>
 
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-            Page 6 of 7
-          </div>
-
-          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-              Medical Durable Power of Attorney, Living Will, and Advance Directive by <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-            Page 6 of 7
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Medical Durable Power of Attorney, Living Will, and Advance Directive by</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Medical Durable Power of Attorney, Living Will, and Advance Directive by</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
           </div>
 
         </div>
@@ -720,18 +739,21 @@
             </p>
           </div>
 
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-            Page 7 of 7
-          </div>
-
-          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-              Medical Durable Power of Attorney, Living Will, and Advance Directive by <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-            Page 7 of 7
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Medical Durable Power of Attorney, Living Will, and Advance Directive by</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Medical Durable Power of Attorney, Living Will, and Advance Directive by</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
           </div>
 
         </div>
         <!-- !Page 7 -->
-
-        </div>
+      </div>
+  </div>

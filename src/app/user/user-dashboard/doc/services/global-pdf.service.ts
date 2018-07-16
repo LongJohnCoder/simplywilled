@@ -162,7 +162,7 @@ export class GlobalPdfService {
     const dx = e.target.offsetWidth + (docThumbImg.length * 7);
     const u = dx / docThumbImg.length;
     const scrollLeft = u * (thumbIndex - 1);
-    console.log('srcoll : ', thumbIndex, scrollVal, heightArr);
+    console.log('srcoll : ', thumbIndex, scrollVal, heightArr, 'scroll left: ', scrollLeft);
     // thumbContainer.nativeElement.scrollLeft = u * (thumbIndex - 1);
     return {
       'scrollLeft': scrollLeft,

@@ -1,5 +1,6 @@
 <div class="docContainer">
         <!-- Page 1 -->
+        <div class="pageCount">
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
             <div class="docPageInner" style="box-sizing: border-box; height: 890px;">
             <p align="center" style="margin-bottom: 0.03in; line-height: 0.28in; page-break-before: auto; page-break-after: auto">
@@ -87,15 +88,18 @@
               replace this form at any time.</span></p>
           </div>
 
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-            Page 1 of 8
-          </div>
-
-          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-              Advanced Health Care Directive of <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-            Page 1 of 8
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Advanced Health Care Directive of</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Advanced Health Care Directive of</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
           </div>
 
         </div>
@@ -192,15 +196,18 @@
             </p>
           </div>
 
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-            Page 2 of 8
-          </div>
-
-          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-              Advanced Health Care Directive of <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-            Page 2 of 8
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Advanced Health Care Directive of</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Advanced Health Care Directive of</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
           </div>
 
         </div>
@@ -271,15 +278,18 @@
                 to the disclosure of this information;</span></span></span></span></span></p>
           </div>
 
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-            Page 3 of 8
-          </div>
-
-          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-              Advanced Health Care Directive of <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-            Page 3 of 8
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Advanced Health Care Directive of</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Advanced Health Care Directive of</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
           </div>
 
         </div>
@@ -368,15 +378,18 @@
               all times, even if it hastens my death:</p>
           </div>
 
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-            Page 4 of 8
-          </div>
-
-          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-              Advanced Health Care Directive of <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-            Page 4 of 8
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Advanced Health Care Directive of</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Advanced Health Care Directive of</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
           </div>
 
         </div>
@@ -458,15 +471,18 @@
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span ></span></span></span></span></span></p>
           </div>
 
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-            Page 5 of 8
-          </div>
-
-          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-              Advanced Health Care Directive of <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-            Page 5 of 8
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Advanced Health Care Directive of</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Advanced Health Care Directive of</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
           </div>
 
         </div>
@@ -539,15 +555,18 @@
             </p>
           </div>
 
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-            Page 6 of 8
-          </div>
-
-          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-              Advanced Health Care Directive of <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-            Page 6 of 8
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Advanced Health Care Directive of</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Advanced Health Care Directive of</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
           </div>
 
         </div>
@@ -652,15 +671,18 @@
             </p>
           </div>
 
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-            Page 7 of 8
-          </div>
-
-          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-              Advanced Health Care Directive of <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-            Page 7 of 8
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Advanced Health Care Directive of</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Advanced Health Care Directive of</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
           </div>
 
         </div>
@@ -729,19 +751,23 @@
             </p>
           </div>
 
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-          style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-            Page 8 of 8
-          </div>
-
-          <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-              Advanced Health Care Directive of <br>  CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-            Page 8 of 8
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Advanced Health Care Directive of</div> 
+                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+            </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Advanced Health Care Directive of</div> 
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
           </div>
 
         </div>
         <!-- !Page 8 -->
+      </div>
 
 </div>
 
