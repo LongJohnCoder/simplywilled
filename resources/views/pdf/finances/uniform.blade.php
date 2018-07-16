@@ -2,18 +2,43 @@
 <html>
 <head>
 	<title>Financial Power Of Attorney</title>
+	<style>
+ #footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+ text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+ padding-top: 5px;
+ }
+	#footer .page:after { content: counter(page, none); }
+
+ </style>
 </head>
+
 <body>
+ <script type="text/php">
+		 if ( isset($pdf) ) {
+				 $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+		 }
+ </script>
+ <div id="footer">
+	 <div style="">
+		 @if($attorneyPowers['isDurable'] == 1)
+		 Durable General Power of Attorney for Management of Financial Affairs and Property
+		 @else
+		 Power of Attorney
+ 		 @endif
+		 of
+		<br>{{$tellUsAboutYou['fullname']}}<br>
+	 </div>
+ </div>
 
 <div>
 
-	
 
-	
+
+
 
 	<!-- check for district of columbia and if real estate -->
 	@if(strtolower($state['name']) == 'district of columbia')
-		
+
 
 		<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<b>THIS POWER OF ATTORNEY AUTHORIZES THE PERSON NAMED BELOW AS MY
@@ -26,8 +51,8 @@
 	@endif
 	<br/>
 
-	
-	
+
+
 	@if($attorneyPowers['isDurable'] == 1)
 		<p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
 			<span color="#0433ff">
@@ -46,12 +71,12 @@
 				<b>FOR MANAGEMENT OF FINANCIAL AFFAIRS AND PROPERTY</b>
 			</span>
 		</p>
-	
+
 
 	@elseif($attorneyPowers['isDurable'] == 0)
 
 	<p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
-		<span size="4" style="font-size: 14pt"><b>«</b></span>
+		<span size="4" style="font-size: 14pt"><b></b></span>
 
 		<span color="#0433ff">
 			<span size="4" style="font-size: 14pt">
@@ -159,10 +184,10 @@
 			@if($attorneyPowers['isDurable'] == 1)
 				<b>DURABLE</b>
 			@endif
-			
+
 			<b>POWER OF ATTORNEY, YOU SHOULD KNOW THESE IMPORTANT FACTS:</b>
 		</p>
-			
+
 		<ol>
 			<li>
 				<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
@@ -189,7 +214,7 @@
 				</p>
 			</li>
 		</ol>
-		
+
 		<p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
 			<br/>
 
@@ -222,7 +247,7 @@
 			<br/>
 
 			</p>
-			
+
 			<ol start="4">
 				<li>
 			<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
@@ -232,12 +257,12 @@
 				specifically authorize the agent to accept or receive a gift.</span></span></p>
 			</li>
 			</ol>
-			
+
 			<p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
 			<br/>
 
 			</p>
-			
+
 			<ol start="5">
 				<li>
 			<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
@@ -248,12 +273,12 @@
 				or is unable to act for you.</span></span></p>
 			</li>
 			</ol>
-			
+
 			<p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
 			<br/>
 
 			</p>
-			
+
 			<ol start="6">
 				<li>
 				<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
@@ -262,15 +287,15 @@
 				otherwise in the Special Instructions.</span></span></p>
 				</li>
 			</ol>
-			
+
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<br/>
 
 			</p>
-			
-			<ol start="7">
+
+			<ol start="7" style="page-break-before: always;">
 				<li>
-				<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
+				<p align="justify" style="margin-bottom: 0in; line-height: 100%;  margin-top: 0;">
 				<span face="Calibri, serif"><span face="Times New Roman, serif">This
 				form provides for designation of one agent.  If your agent is unable
 				or unwilling to act for you, your power of attorney will end unless
@@ -278,12 +303,12 @@
 				</p>
 				</li>
 			</ol>
-			
+
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<br/>
 
 			</p>
-			
+
 			<ol start="8">
 				<li>
 				<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
@@ -292,20 +317,20 @@
 				otherwise in the Special Instructions.</span></span></p>
 				</li>
 			</ol>
-			
+
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<br/>
 
 			</p>
-			
+
 			<ol start="9">
 				<li>
 				<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 				<span face="Calibri, serif"><span face="Times New Roman, serif">You
 				can amend or change this </span>
-				
+
 				<span color="#000000">
-					<span face="Times New Roman, serif">«</span>
+					<span face="Times New Roman, serif"></span>
 				</span>
 
 				@if($attorneyPowers['isDurable'] == 1)
@@ -319,12 +344,12 @@
 				</p>
 				</li>
 			</ol>
-			
+
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<br/>
 
 			</p>
-			
+
 			<ol start="10">
 				<li>
 				<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
@@ -338,7 +363,7 @@
 				should also tell your bank and other financial institutions.</span></span></p>
 				</li>
 			</ol>
-			
+
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<br/>
 
@@ -348,19 +373,19 @@
 				<li>
 				<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
 				<span face="Calibri, serif"><span face="Times New Roman, serif">Pay
-				careful attention to the signing instructions within the document. 
+				careful attention to the signing instructions within the document.
 				Be certain to sign, date, and acknowledge this power of attorney
 				before a notary public and the required number of witnesses.  The
 				document may also require your agent’s signature, or your initials
 				to confirm your election in certain provisions.</span></span></p>
 				</li>
 			</ol>
-			
+
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<br/>
 
 			</p>
-			
+
 			<ol start="12">
 				<li>
 				<p align="justify" style="margin-bottom: 0in; line-height: 100%; margin-top: 0;">
@@ -370,7 +395,7 @@
 				situate.</span></span></p>
 				</li>
 			</ol>
-			
+
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<br/>
 
@@ -437,31 +462,28 @@
 
 			@if($attorneyPowers['isDurable'] == 1)
 				<b>Durable</b>
-			
+
 				<b>Power of Attorney will give your agent the right to deal with property that you now
 				have or might acquire in the future. </b>
 
 				<b>If you have questions about this document or the authority you are granting to your agent,
 				or if you do not understand this Power of Attorney or any provision
 				of it, you should seek legal advice before signing this form.</b></p>
-				
+
 			@endif
 
 		@endif
-		
-		
 
-		<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%;">
+
+
+		<p class="western" align="center" style="margin-bottom: 0in; page-break-before: always; line-height: 100%;">
 		<span size="4" style="font-size: 14pt"><b>DESIGNATION OF AGENT</b></span></p>
-		<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
-		<br/>
 
-		</p>
-		
+
 		<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 		I, <span color="#0433ff">{{strtoupper($tellUsAboutYou['fullname'])}}</span>, <span color="#000000"></span>
 
-			
+
 
 				@if(strtolower($state['name']) == 'illinois')
 					<span color="#000000"> </span>hereby
@@ -473,13 +495,13 @@
 
 
 				@if(strtolower($attorneyHolders['relationship']) == 'other')
-					<span color="#0433ff">{{ucwords(strtolower($attorneyHolders['other_relationship']))}}</span>
+					<span color="#0433ff">{{ucwords(strtolower($attorneyHolders['other_relationship']))}},</span>
 				@else
-					<span color="#0433ff">{{ucwords(strtolower($attorneyHolders['relationship']))}}</span>
+					<span color="#0433ff">{{ucwords(strtolower($attorneyHolders['relationship']))}},</span>
 				@endif
-					<span color="#000000">, </span>
+					<span color="#000000"></span>
 
-					<span color="#0433ff">{{ucwords($attorneyHolders['fullname'])}}</span>, as my agent, to 
+					<span color="#0433ff">{{ucwords($attorneyHolders['fullname'])}},</span> as my agent, to
 
 					<span color="#000000">have all of the powers hereinafter set forth and as permitted under the
 					laws of </span>
@@ -487,16 +509,16 @@
 				<span color="#0433ff">{{$state['name']}}</span>. The contact
 				information for my agent is as follows:</p>
 				<p class="western" align="justify" style="margin-top: 0.06in; margin-bottom: 0in; line-height: 100%">
-				Name of Primary Agent: 
+				Name of Primary Agent:
 				<span color="#0433ff">{{ucwords($attorneyHolders['fullname'])}}</span></p>
-				
+
 				<p class="western" style="margin-bottom: 0in; line-height: 100%">Primary Agent’s Address:
-					
+
 					@if(array_key_exists('address', $attorneyHolders) &&
 						array_key_exists('state', $attorneyHolders) &&
 						array_key_exists('city', $attorneyHolders))
-					<span color="#0000ff">{{$attorneyHolders['address']}}</span>, 
-					<span color="#0000ff">{{$attorneyHolders['city']}}</span>, 
+					<span color="#0000ff">{{$attorneyHolders['address']}}</span>,
+					<span color="#0000ff">{{$attorneyHolders['city']}}</span>,
 					<span color="#0000ff">{{$attorneyHolders['state']}}</span>
 					@else
 					<u>___________________________________________</u>
@@ -505,43 +527,35 @@
 
 				<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 				Primary Agent’s Telephone Number:
-				
+
 				<span color="#008f00">
-					@if(array_key_exists('phone', $attorneyHolders) && strlen($attorneyHolders['phone']) > 0) 
+					@if(array_key_exists('phone', $attorneyHolders) && strlen($attorneyHolders['phone']) > 0)
 						{{$attorneyHolders['phone']}}
 					@else
 						<span>_________________</span>
 					@endif
 				</span>
 
-				<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-				<br/>
 
-				</p>
-
+				@if($financialPowerOfAttorney['is_backupattorney'] == 1)
 				<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
 					<span size="4" style="font-size: 14pt">
 						<b>DESIGNATION OF SUCCESSOR AGENT</b>
 					</span>
 				</p>
-				<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
-					<br/>
-				</p>
-
-				@if($financialPowerOfAttorney['is_backupattorney'] == 1)
 					<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 						If and until my primary agent is unable or unwilling to act for me, I
-						name my 
+						name my
 
 						@if(strtolower($attorneyBackup['relationship']) == 'other')
-							<span color="#0433ff">{{$attorneyBackup['other_relationship']}}</span>
+							<span color="#0433ff">{{$attorneyBackup['other_relationship']}},</span>
 						@else
-							<span color="#0433ff">{{$attorneyBackup['relationship']}}</span>
+							<span color="#0433ff">{{$attorneyBackup['relationship']}},</span>
 						@endif
 
-						<span color="#000000">, </span>
+						<span color="#000000"></span>
 
-						<span color="#0433ff">{{ucwords($attorneyBackup['fullname'])}}</span>, as my agent, to 
+						<span color="#0433ff">{{ucwords($attorneyBackup['fullname'])}}</span> as my agent, to
 
 						<span color="#000000">have all of the powers hereinafter set forth and as permitted under the
 						laws of </span>
@@ -549,91 +563,80 @@
 						<span color="#0433ff">{{$attorneyBackup['state']}}</span>.  The contact
 						information for my agent is as follows:
 					</p>
-				
+
 					<p class="western" align="justify" style="margin-top: 0.06in; margin-bottom: 0in; line-height: 100%">
-						Name of Successor Agent: 
+						Name of Successor Agent:
 						<span color="#0433ff">{{ucwords($attorneyBackup['fullname'])}}</span>
 					</p>
-					
+
 					<p class="western" style="margin-bottom: 0in; line-height: 100%">Primary
 						Agent’s Address:
-						<span color="#008f00">{{$attorneyBackup['address']}}</span>, 
+						<span color="#008f00">{{$attorneyBackup['address']}}</span>,
 
-						<span color="#0000ff">{{$attorneyBackup['city']}}</span>, 
+						<span color="#0000ff">{{$attorneyBackup['city']}}</span>,
 
-						<span color="#0000ff">{{$attorneyBackup['state']}}</span>»
+						<span color="#0000ff">{{$attorneyBackup['state']}}</span>
 					</p>
 
 					<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-						Alternate Agent’s Telephone Number:
+						Primary Agent’s Telephone Number:
 
 						@if(array_key_exists('phone', $attorneyBackup))
 							<span color="#008f00"></span>
 							<span color="#0433ff"> {{$attorneyBackup['phone']}}</span>
 						@else
-							<u>__________________</u>
+							__________________
 						@endif
 						<span color="#008f00"></span>&nbsp;
 					</p>
 				@else
 
-					<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+					<!-- <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 						If and until my primary agent is unable or unwilling to act for me, I
-						name my 
-						<span color="#0433ff">_____________________</span>
-						
-						<span color="#000000">, </span>
+						name my
+						<span color="#0433ff">____________________,</span>
 
-						<span color="#0433ff">_______________________________</span>, as my agent, to 
+						<span color="#000000"> </span>
+
+						<span color="#0433ff">_______________________________,</span> as my agent, to
 						have all of the powers hereinafter set forth and as permitted under the
-						laws of 
+						laws of
 
 						<span color="#0433ff">________________</span>. The contact
 						information for my agent is as follows:
 					</p>
-				
+
 					<p class="western" align="justify" style="margin-top: 0.06in; margin-bottom: 0in; line-height: 100%">
-						Name of Successor Agent: 
+						Name of Successor Agent:
 						<span color="#0433ff">_________________________</span>
 					</p>
-					
+
 					<p class="western" style="margin-bottom: 0in; line-height: 100%">Primary
 						Agent’s Address:
 						<span color="#008f00">_______________________________________________________</span>
 						<span color="#008f00">_______________________________________________________ ,</span>
 
-						<span color="#0000ff">_________________</span>, 
+						<span color="#0000ff">_________________</span>,
 
-						<span color="#0000ff">__________________</span>»
+						<span color="#0000ff">__________________</span>
 					</p>
 
 					<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-						Alternate Agent’s Telephone Number:
+						Primary Agent’s Telephone Number:
 						<u>__________________</u>
 						<span color="#008f00"></span>&nbsp;
-					</p>
+					</p> -->
 				@endif
-			
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
 
-			</p>
-			
-			<p class="western" align="center" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="center" style="margin-top: 0.13in;  margin-bottom: 0.06in; line-height: 100%">
 			<span size="4" style="font-size: 14pt"><b>GRANT OF GENERAL AUTHORITY</b></span></p>
-			
-			<p class="western" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
-			<br/>
-			<br/>
-			</p>
-
 
 			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
 			I grant my agent and any successor agent general authority to act for
-			me, with the powers and duties as more fully defined in the 
+			me, with the powers and duties as more fully defined in the
 
-			<span color="#0433ff">{{$state['act']}}</span>, <span color="#0433ff">{{$state['code']}}</span>, 
-			
+			<span color="#0433ff">{{$state['act']}}</span>, <span color="#0433ff">{{$state['code']}}</span>,
+
 			@if(strtolower($state['name']) == 'wisconsin')
 
 			<span color="#000000">attached hereto and incorporated herein as </span>
@@ -643,7 +646,7 @@
 			<span color="#000000">,</span>
 
 			@elseif(strtolower($state['name']) == 'new jersey')
-			
+
 				<span color="#000000"> including the authority to conduct banking transactions as
 				specifically set forth in section 2 of P.L. 1991, c.95 C.46:2B-11,
 				</span>
@@ -654,11 +657,6 @@
 			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
 			<b>(INITIAL each subject, below, you want to include in the agent's
 			general authority.)</b></p>
-			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-			<br/>
-			<br/>
-
-			</p>
 
 			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
 			<span color="#000000"></span>
@@ -676,55 +674,41 @@
 				that category.)&nbsp;</span></span><span color="#000000"></span>
 				<span color="#000000"></span>
 			@endif
-			
-			</p>
-			
-			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-			<br/>
-			<br/>
 
 			</p>
 
-			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 80%">
 			( _____ )	(A)	Real Property&nbsp;</p>
-			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 80%">
 			( _____ )	(B)	Tangible Personal Property</p>
-			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 80%">
 			( _____ )	(C)	Stocks and Bonds</p>
-			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 80%">
 			( _____ )	(D)	Trade Commodities and Options</p>
-			<p class="western" style="margin-bottom: 0.06in; line-height: 100%">(
-			_____ )	(E)	Banks and Other Financial Institutions 
+			<p class="western" style="margin-bottom: 0.06in; line-height: 80%">(
+			_____ )	(E)	Banks and Other Financial Institutions
 			</p>
-			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 80%">
 			( _____ )	(F)	Operation of Entity or Business</p>
-			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 80%">
 			( _____ )	(G)	Insurance and Annuities</p>
-			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 80%">
 			( _____ )	(H)	Estates, Trusts, and Other Beneficial Interests</p>
-			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 80%">
 			( _____ )	(I)	Claims and Litigation</p>
-			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 80%">
 			( _____ )	(J)	Personal and Family Maintenance</p>
-			<p class="western" align="justify" style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="justify" style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.06in; line-height: 80%">
 			( _____ )	(K)	Benefits from Governmental Programs or Civil or
 			Military Service (TSP,  CSRS, FERS)</p>
-			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 80%">
 			( _____ )	(L)	Retirement Plans</p>
-			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 80%">
 			( _____ )	(M)	Taxes</p>
-			<p class="western" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
-			<br/>
-			<br/>
-
-			</p>
 
 
-
-			<p class="western" align="center" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="center" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%; page-break-before: always;">
 			<span size="4" style="font-size: 14pt"><b>GRANT OF SPECIFIC AUTHORITY</b></span></p>
-			
-
 
 			@if(strtolower($state['name']) == 'illinois')
 
@@ -746,7 +730,7 @@
 			@elseif(strtolower($state['name']) != 'illinois')
 
 			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-			Subject to the laws of 
+			Subject to the laws of
 			<span color="#0433ff">{{$state['name']}}</span>, my
 			agent MAY NOT do any of the following specific acts for me UNLESS I
 			have INITIALED the specific authority listed below:</p>
@@ -757,7 +741,7 @@
 				INITIAL ONLY the specific authority you WANT to give your agent.)</b>
 			</p>
 			@endif
-			
+
 			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
 			<br/>
 			<br/>
@@ -767,8 +751,8 @@
 			<p class="western" style="margin-bottom: 0.06in; line-height: 100%">(
 			_____ )	Amend, revoke, or terminate an inter vivos trust</p>
 			<p class="western" style="margin-left: 1in; text-indent: -1in; margin-bottom: 0.06in; line-height: 100%">
-			( _____ )	Make a gift, subject to the limitations of the «<span color="#0433ff">UPOAA
-			Act</span>» and any special instructions in this power of attorney</p>
+			( _____ )	Make a gift, subject to the limitations of the <span color="#0433ff">UPOAA
+			Act</span> and any special instructions in this power of attorney</p>
 			<p class="western" style="margin-bottom: 0.06in; line-height: 100%">(
 			_____ )	Create or change rights of survivorship</p>
 			<p class="western" style="margin-bottom: 0.06in; line-height: 100%">(
@@ -802,10 +786,10 @@
 			<span size="4" style="font-size: 14pt"><b>LIMITATION ON AGENT'S
 			AUTHORITY</b></span></p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			
-			
+
+
 			@if(array_key_exists('isAuthorizeToMakeGift', $attorneyPowers) && $attorneyPowers['isAuthorizeToMakeGift'] == 1)
-			
+
 			I direct that there shall
 			be no limitation to my agent’s authority except for those
 			limitations stated expressly herein, or by law, and hereby authorize
@@ -819,9 +803,9 @@
 
 				@else
 					<span color="#000000">.</span>
-				
+
 				@endif
-			
+
 			Whether my agent is my ancestor, spouse, or descendant shall pose no limitation to my
 			agent’s authority hereunder
 
@@ -840,14 +824,14 @@
 			</p>
 
 
-			<p class="western" align="center" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="center" style="margin-top: 0.13in; margin-bottom: 0.06in; page-break-before: always; line-height: 100%">
 				<span size="4" style="font-size: 14pt">
 					<b>SPECIAL INSTRUCTIONS</b>
 				</span>
 			</p>
 
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			I give my 
+			I give my
 
 			@if($financialPowerOfAttorney['is_backupattorney'] == 1)
 				agents
@@ -858,21 +842,15 @@
 			 the powers specified in this Power with the understanding
 			that they will be used for my benefit and on my behalf and will be
 			exercised only in a fiduciary capacity.</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
-
-			</p>
-			
-			
 
 			@if(array_key_exists('isIncapacity', $attorneyPowers) && $attorneyPowers['isIncapacity'] == 1)
 
 			<ol>
 				<li>
-				<p align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+				<p align="justify" style="margin-bottom: 0.06in; ">
 				<span face="Calibri, serif"><span face="Times New Roman, serif">The
 				above authority granted to my </span>
-				
+
 
 				@if($financialPowerOfAttorney['is_backupattorney'])
 					<span face="Times New Roman, serif"> agents</span>
@@ -886,13 +864,7 @@
 				<span face="Times New Roman, serif">determined
 				ONLY upon the occasion of the signing of a written statement EITHER:</span></span></p>
 				</li>
-			</ol>			<p class="western" align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
-			<br/>
-			<br/>
-
-			</p>
-
-
+			</ol>
 
 			<p class="western" align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
 			(INSTRUCTIONS: COMPLETE OR OMIT SECTION (I) <b>OR</b> SECTION (II)
@@ -923,19 +895,9 @@
 			psychologist or psychiatrist, certifying that I am suffering from
 			diminished capacity that would preclude me from conducting my affairs
 			in a competent manner;</p>
-			<p class="western" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
-			<br/>
-			<br/>
 
-			</p>
 			<p class="western" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
 			<b>--OR--</b></p>
-			<p class="western" align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
-			<br/>
-			<br/>
-
-			</p>
-
 
 			<p class="western" align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
 			(II)	By a person or persons named herein by me at this point:</p>
@@ -946,11 +908,6 @@
 			<p class="western" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
 			<span size="2" style="font-size: 10pt">(handwrite the full name(s)
 			and address(es) of the certifying person(s) chosen by you)</span></p>
-			<p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
-			<br/>
-			<br/>
-
-			</p>
 
 			<p class="western" align="justify" style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
 			CERTIFYING that the following specified event has occurred:</p>
@@ -962,28 +919,16 @@
 			<span size="2" style="font-size: 10pt">(handwrite the specified event
 			the certification of which will cause this power of attorney to take
 			effect)</span></p>
-			<p class="western" align="center" style="margin-left: 0.66in; margin-bottom: 0.06in; line-height: 100%">
-			<br/>
-			<br/>
-
-			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
-
-			</p>
-
-
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			
+			<p style="page-break-before: always;"></p>
 			@else
 
 
 
 			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-			1. 	This Power is effective immediately upon execution. 
+			1. 	This Power is effective immediately upon execution.
 			</p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			
+
 			@endif
 
 
@@ -1050,7 +995,7 @@
 			<br/>
 
 			</p>
-			<p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="center" style="margin-bottom: 0.06in; page-break-before: always; line-height: 100%">
 			<span size="4" style="font-size: 14pt"><b>NOMINATION OF GUARDIAN
 			(OPTIONAL)</b></span></p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
@@ -1164,13 +1109,13 @@
 			<br/>
 
 			</p>
-			
+
 			<p class="western" align="center" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
 			<b>EFFECT OF INCAPACITY OR DISABILITY OF PRINCIPAL</b></p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			
 
-			
+
+
 
 			@if($attorneyPowers['isDurable'] == 1)
 
@@ -1185,12 +1130,12 @@
 			JURISDICTION.</b>
 
 			@elseif($attorneyPowers['isDurable'] == 0)
-			
+
 			<b>THIS POWER OF
 			ATTORNEY SHALL TERMINATE UPON MY DISABILITY OR INCAPACITY, OR UPON MY
 			EARLIER REVOCATION OR TERMINATION OF THIS POWER.</b>
 
-			@endif	
+			@endif
 
 			</p>
 			<p class="western" align="center" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
@@ -1208,7 +1153,7 @@
 			terminated or is invalid.
 
 			@if(strtolower($state['name']) == 'south carolina')
-			
+
 			<span>
 				No person who may act in reliance upon the representation of my agent
 				for the scope of authority granted to the agent shall incur any
@@ -1217,7 +1162,7 @@
 				responsible to determine or ensure the proper application of funds or
 				property.
 			</span>
-			
+
 			@endif
 			</p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
@@ -1228,7 +1173,7 @@
 			<br/>
 
 			</p>
-			
+
 			@if(strtolower($state['name']) == 'illinois')
 				<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
 				<b>NOTICE TO AGENT</b></p>
@@ -1239,21 +1184,21 @@
 			<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 			</p>
-			
-			<p class="western" align="center" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%; ">
+
+			<p class="western" align="center" style="margin-top: 0.13in; page-break-before: always; margin-bottom: 0.06in; line-height: 100%; ">
 			<b>SIGNATURE AND ACKNOWLEDGMENT</b></p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<br/>
 
 			</p>
-			
+
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<span color="#000000">___________________________</span><span color="#000000">		</span><span color="#000000"><b>
 			 DATE: </b></span>___________________
 			</p>
 			<p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-			
-				<span color="#000000"></span><b>«</b>
+
+				<span color="#000000"></span>
 
 				<span color="#0000ff">
 					<b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>
@@ -1263,11 +1208,11 @@
 			</p>
 
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-				<span color="#0433ff">{{$tellUsAboutYou['address']}}</span>	
+				<span color="#0433ff">{{$tellUsAboutYou['address']}}</span>
 			</p>
 
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<span color="#000000">«</span>
+
 				<span color="#0433ff">{{$tellUsAboutYou['city']}}</span>
 				<span color="#000000">, </span>
 
@@ -1280,23 +1225,8 @@
 			<p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
 				<span color="#0433ff">{{$tellUsAboutYou['phone']}}</span>
 			</p>
-			
-			<p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
-			<br/>
-			<br/>
 
-			</p>
-
-			@if(strtolower($state['name']) != 'illinois') 
-
-			<p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
-
-			</p>
-
-
-
-
-
+			@if(strtolower($state['name']) != 'illinois')
 
 			<div style="float: left; width: 100%; padding: 32px 0;">
                 <div style="width: 48%; float: left;">
@@ -1325,7 +1255,7 @@
 			<br/>
 
 			</p>
-			
+
 			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">STATE
 			OF &nbsp;________________</span><span color="#000000">		</span><span color="#000000">)</span></p>
 			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">						</span><span color="#000000">_____________________)
@@ -1345,8 +1275,8 @@
 			</span>
 
 			<span color="#000000">,
-			the principal, and _________________________________________, as
-			witness, and _____________________________________, as witness, who
+			the principal, and ________________________________, as
+			witness, and ________________________________, as witness, who
 			personally appeared on this &nbsp;_________ day of
 			&nbsp;________________________________, _______, and who are
 			personally known to me or who have produced satisfactory photo
@@ -1379,12 +1309,12 @@
 			</p>
 
 			@elseif(strtolower($state['name']) == 'illinois')
-			
 
-			<p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-			
-				<span face="Courier New, serif"><span size="2" style="font-size: 10pt"><span color="#000000"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"><span style="background: #ffffff">The
-			undersigned witness certifies that </span></span></span></span></span></span><span size="2" style="font-size: 11pt"></span>
+
+			<p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 150%; orphans: 0; widows: 0">
+
+				<span face="Courier New, serif"><span size="2" style=""><span color="#000000"><span face="Times New Roman, serif"><span size="2" style="font-size: 12pt"><span style="background: #ffffff">The
+			undersigned witness certifies that </span></span></span></span></span></span><span size="2" style="font-size: 12pt"></span>
 
 			<span color="#0000ff">
 				<span size="2" style="font-size: 11pt">
@@ -1409,7 +1339,7 @@
 			under the foregoing power of attorney, whether such relationship is
 			by blood, marriage, or adoption; or (d) an agent or successor agent
 			under the foregoing power of attorney.&nbsp;</span></span></span></span></span></span></p>
-			
+
 			<p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
 			<br/>
 			</p>
@@ -1422,11 +1352,11 @@
 			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 			</p>
-			<p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+			<p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 150%; orphans: 0; widows: 0">
 			<span face="Courier New, serif"><span size="2" style="font-size: 10pt"><span color="#000000"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"><span style="background: #ffffff">The
 			undersigned witness certifies that </span></span></span></span></span></span>
 
-			
+
 			<span color="#0000ff">
 				<span size="2" style="font-size: 11pt">
 					<b>{{strtoupper(strtoupper($tellUsAboutYou['fullname']))}}</b>
@@ -1458,9 +1388,7 @@
 			</span></span></span></span></span><span face="Courier New, serif"><span size="2" style="font-size: 10pt"><span color="#000000"><span face="Times New Roman, serif"><span size="3" style="font-size: 12pt"><u>						</u></span></span></span></span></span></p>
 			<p class="western" align="justify" style="margin-bottom: 0.13in; line-height: 100%">
 			<span face="Courier New, serif"><span size="2" style="font-size: 10pt"><span color="#000000"><span face="Times New Roman, serif"><span size="3" style="font-size: 12pt">Witness</span></span></span></span></span><span color="#0433ff">		</span></p>
-			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-			</p>
 			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span size="2" style="font-size: 11pt">STATE
 			OF &nbsp;________________</span></span><span color="#000000"><span size="2" style="font-size: 11pt">		</span></span><span color="#000000"><span size="2" style="font-size: 11pt">)</span></span></p>
 			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span size="2" style="font-size: 11pt">						</span></span><span color="#000000"><span size="2" style="font-size: 11pt">)
@@ -1468,14 +1396,12 @@
 			</p>
 			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span size="2" style="font-size: 11pt">COUNTY
 			OF ________________</span></span><span color="#000000"><span size="2" style="font-size: 11pt">		</span></span><span color="#000000"><span size="2" style="font-size: 11pt">)</span></span></p>
-			<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-			</p>
 			<p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
 			<span color="#000000"><span size="2" style="font-size: 11pt">Subscribed,
 			sworn and acknowledged before me by </span></span>
 
-			
+
 
 			<span color="#0000ff">
 				<span size="2" style="font-size: 11pt">
@@ -1493,11 +1419,6 @@
 			identification, and whose names are signed to the foregoing
 			instrument. </span></span>
 			</p>
-			<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-			</p>
-
-
 
 			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span size="2" style="font-size: 11pt">_________________________________</span></span><span size="2" style="font-size: 11pt"><b>(Seal,
 			if any)</b></span></p>
@@ -1512,133 +1433,99 @@
 			<i>The following optional form affidavit may be used by an agent to
 			certify facts concerning a power of attorney: </i>
 			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
 
-			</p>
-			
+
 			<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
 			<b>AGENT'S CERTIFICATION AS TO THE VALIDITY OF POWER OF ATTORNEY </b>
 			</p>
 			<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
 			<b>AND AGENT'S AUTHORITY</b></p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
 
-			</p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			State of _____________________________ 
+			State of _____________________________
 			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
 
-			</p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			[County] of___________________________</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
 
-			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
 
-			</p>
 			<p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
 			I, _____________________________________________ (Name of Agent),
-			certify under penalty of perjury that 
-			
+			certify under penalty of perjury that
+
 			<span color="#0000ff">
 				<b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>
 			</span>
 
 			 granted me authority as an agent or
 			successor agent in a power of attorney dated
-			________________________. 
+			________________________.
 			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
 
-			</p>
-			
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			I further certify that to my knowledge: 
-			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
 
+			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+			I further certify that to my knowledge:
 			</p>
+
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			(1) the principal is alive and has not revoked the power of attorney
 			or my authority to act under the power of attorney and the power of
 			attorney and my authority to act under the power of attorney have not
-			terminated; 
+			terminated;
 			</p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			(2) if the power of attorney was drafted to become effective upon the
 			happening of an event or contingency, the event or contingency has
-			occurred; 
+			occurred;
 			</p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%"><a name="_GoBack"></a>
 			(3) if I was named as a successor agent, the prior agent is no longer
 			able or willing to serve; and
-			(4)_____________________________________________________________________
-			______________________________________________________________________________</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			______________________________________________________________________________
+			(4)_____________________________________________________________________<br>
+			______________________________________________________________________________<br>
+			______________________________________________________________________________<br>
 			_______________________________________________________________________
 			</p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<span size="2" style="font-size: 10pt">(Insert other relevant
 			statements) </span>
 			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
 
-			</p>
-			
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+
+			<p class="western" align="justify" style="margin-bottom: 0in; page-break-before: always; line-height: 100%">
 			<b>SIGNATURE AND ACKNOWLEDGMENT </b>
 			</p>
-			
+
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			____________________________________________ 	__________ 
+			____________________________________________ 	__________
 			</p>
 
 
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			Agent's Signature 						Date 
+			Agent's Signature 						Date
 			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
 
+			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+			____________________________________________
 			</p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			____________________________________________ 
+			Agent's Name Printed
 			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			Agent's Name Printed 
-			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
 
+			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+			____________________________________________
 			</p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			____________________________________________ 
+			Agent's Address
 			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			Agent's Address 
-			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<br/>
 
+			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+			____________________________________________
 			</p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			____________________________________________ 
+			Agent's Telephone Number
 			</p>
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			Agent's Telephone Number 
-			</p>
-			
+
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<br/>
 
@@ -1646,14 +1533,14 @@
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			This document was acknowledged before me on
 			__________________________, 20<u>	</u>,
-			by______________________________________ (Name of Agent) 
+			by______________________________________ (Name of Agent)
 			</p>
-			
+
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			____________________________________________ (Seal, if any) 
+			____________________________________________ (Seal, if any)
 			</p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			Signature of Notary 
+			Signature of Notary
 			</p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<br/>
@@ -1663,17 +1550,17 @@
 			My commission expires: ________________________<span size="2" style="font-size: 9pt">
 			</span>
 			</p>
-			
 
-			
+
+
 
 			@if(strtolower($state['name']) == 'illinois')
 
-			<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%; background: #ffffff">
-			<span color="#000000"><span size="4" style="font-size: 14pt"><b>NOTICE
+			<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%; page-break-before: always; background: #ffffff">
+			<span color="#000000"><span size="4" style="font-size: 12pt"><b>NOTICE
 			TO THE INDIVIDUAL SIGNING THE ILLINOIS</b></span></span></p>
 			<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%; background: #ffffff">
-			<span color="#000000"><span size="4" style="font-size: 14pt"><b>STATUTORY
+			<span color="#000000"><span size="4" style="font-size: 12pt"><b>STATUTORY
 			SHORT FORM POWER OF ATTORNEY FOR PROPERTY.</b></span></span></p>
 			<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%; background: #ffffff">
 			<br/>
@@ -1681,22 +1568,22 @@
 			</p>
 
 
-			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-			<span color="#000000"><span size="4" style="font-size: 14pt"><span style="background: #ffffff">PLEASE
+			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 120%">
+			<span color="#000000"><span size="4" style="font-size: 12pt"><span style="background: #ffffff">PLEASE
 			READ THIS NOTICE CAREFULLY. The form that you will be signing is a
 			legal document. It is governed by the Illinois Power of Attorney Act.
 			 If there is anything about this form that you do not understand, you
 			should ask a lawyer to explain it to you.</span></span></span></p>
-			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-			<span color="#000000"><span size="4" style="font-size: 14pt"><span style="background: #ffffff">The
+			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 120%">
+			<span color="#000000"><span size="4" style="font-size: 12pt"><span style="background: #ffffff">The
 			purpose of this Power of Attorney is to give your designated &quot;agent&quot;
 			broad powers to handle your financial affairs, which may include the
 			power to pledge, sell, or dispose of any of your real or personal
 			property, even without your consent or any advance notice to you.
 			When using the Statutory Short Form, you may name successor agents,
 			but you may not name co-agents.</span></span></span></p>
-			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-			<span color="#000000"><span size="4" style="font-size: 14pt"><span style="background: #ffffff">This
+			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 120%">
+			<span color="#000000"><span size="4" style="font-size: 12pt"><span style="background: #ffffff">This
 			form does not impose a duty upon your agent to handle your financial
 			affairs, so it is important that you select an agent who will agree
 			to do this for you. It is also important to select an agent whom you
@@ -1707,52 +1594,52 @@
 			with the directions in this form. Your agent must keep a record of
 			all receipts, disbursements, and significant actions taken as your
 			agent.</span></span></span></p>
-			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-			<span color="#000000"><span size="4" style="font-size: 14pt"><span style="background: #ffffff">Unless
+			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 120%">
+			<span color="#000000"><span size="4" style="font-size: 12pt"><span style="background: #ffffff">Unless
 			you specifically limit the period of time that this Power of Attorney
 			will be in effect, your agent may exercise the powers given to him or
 			her throughout your lifetime, both before and after you become
 			incapacitated. A court, however, can take away the powers of your
 			agent if it finds that the agent is not acting properly. You may also
 			revoke this Power of Attorney if you wish.</span></span></span></p>
-			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-			<span color="#000000"><span size="4" style="font-size: 14pt"><span style="background: #ffffff">This
+			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 120%">
+			<span color="#000000"><span size="4" style="font-size: 12pt"><span style="background: #ffffff">This
 			Power of Attorney does not authorize your agent to appear in court
 			for you as an attorney-at-law or otherwise to engage in the practice
 			of law unless he or she is a licensed attorney who is authorized to
 			practice law in Illinois.&nbsp;</span></span></span></p>
-			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-			<span color="#000000"><span size="4" style="font-size: 14pt"><span style="background: #ffffff">The
+			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 120%">
+			<span color="#000000"><span size="4" style="font-size: 12pt"><span style="background: #ffffff">The
 			powers you give your agent are explained more fully in Section 3-4 of
 			the Illinois Power of Attorney Act. This form is a part of that law.
 			The &quot;NOTE&quot; paragraphs throughout this form are
 			instructions.</span></span></span></p>
-			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-			<span color="#000000"><span size="4" style="font-size: 14pt"><span style="background: #ffffff">You
+			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 120%">
+			<span color="#000000"><span size="4" style="font-size: 12pt"><span style="background: #ffffff">You
 			are not required to sign this Power of Attorney, but it will not take
 			effect without your signature. You should not sign this Power of
 			Attorney if you do not understand everything in it, and what your
 			agent will be able to do if you do sign it.</span></span></span></p>
-			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 120%">
 			<br/>
 
 			</p>
-			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-			<span color="#000000"><span size="4" style="font-size: 14pt"><span style="background: #ffffff">Please
+			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 120%">
+			<span color="#000000"><span size="4" style="font-size: 12pt"><span style="background: #ffffff">Please
 			place your initials on the following line indicating that you have
 			read this Notice:</span></span></span></p>
+			<p class="western" align="right" style="margin-bottom: 0in; line-height: 120%; background: #ffffff">
+			<span color="#000000"><span size="4" style="font-size: 12pt">.....................</span></span></p>
 			<p class="western" align="right" style="margin-bottom: 0in; line-height: 100%; background: #ffffff">
-			<span color="#000000"><span size="4" style="font-size: 14pt">.....................</span></span></p>
-			<p class="western" align="right" style="margin-bottom: 0in; line-height: 100%; background: #ffffff">
-			<span color="#000000"><span size="4" style="font-size: 14pt">Principal's
+			<span color="#000000"><span size="4" style="font-size: 12pt">Principal's
 			initials</span></span></p>
-			<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
+			<p class="western" align="center" style="margin-bottom: 0in; page-break-before: always; line-height: 100%">
 			<span size="4" style="font-size: 14pt"><b>NOTICE TO AGENT</b></span></p>
 			<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 			</p>
 			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-			<span size="4" style="font-size: 14pt">When you accept the authority
+			<span size="4" style="font-size: 12pt">When you accept the authority
 			granted under this power of attorney a special legal relationship,
 			known as agency, is created between you and the principal. Agency
 			imposes upon you duties that continue until you resign or the power
@@ -1762,26 +1649,26 @@
 
 			</p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<span size="4" style="font-size: 14pt">As agent you must:</span></p>
+			<span size="4" style="font-size: 12pt">As agent you must:</span></p>
 			<p class="western" align="justify" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-			<span size="4" style="font-size: 14pt">(1) do what you know the
+			<span size="4" style="font-size: 12pt">(1) do what you know the
 			principal reasonably expects you to do with the principal’s
 			property;</span></p>
 			<p class="western" align="justify" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-			<span size="4" style="font-size: 14pt">(2) act in good faith for the
+			<span size="4" style="font-size: 12pt">(2) act in good faith for the
 			best interest of the principal, using due care, competence, and
 			diligence;</span></p>
 			<p class="western" align="justify" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-			<span size="4" style="font-size: 14pt">(3) keep a complete and
+			<span size="4" style="font-size: 12pt">(3) keep a complete and
 			detailed record of all receipts, disbursements, and significant
 			actions conducted for the principal;</span></p>
 			<p class="western" align="justify" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-			<span size="4" style="font-size: 14pt">(4) attempt to preserve the
+			<span size="4" style="font-size: 12pt">(4) attempt to preserve the
 			principal's estate plan, to the extent actually known by the agent,
 			if preserving the plan is consistent with the principal's best
 			interest; and</span></p>
 			<p class="western" align="justify" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-			<span size="4" style="font-size: 14pt">(5) cooperate with a person
+			<span size="4" style="font-size: 12pt">(5) cooperate with a person
 			who has authority to make health care decisions for the principal to
 			carry out the principal's reasonable expectations to the extent
 			actually in the principal's best interest.</span></p>
@@ -1792,23 +1679,23 @@
 
 
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<span size="4" style="font-size: 14pt">As agent you must not do any
+			<span size="4" style="font-size: 12pt">As agent you must not do any
 			of the following:</span></p>
 			<p class="western" align="justify" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-			<span size="4" style="font-size: 14pt">(1) act so as to create a
+			<span size="4" style="font-size: 12pt">(1) act so as to create a
 			conflict of interest that is inconsistent with the other principles
 			in this Notice to Agent;</span></p>
 			<p class="western" align="justify" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-			<span size="4" style="font-size: 14pt">(2) do any act beyond the
+			<span size="4" style="font-size: 12pt">(2) do any act beyond the
 			authority granted in this power of attorney;</span></p>
 			<p class="western" align="justify" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-			<span size="4" style="font-size: 14pt">(3) commingle the principal's
+			<span size="4" style="font-size: 12pt">(3) commingle the principal's
 			funds with your funds;</span></p>
 			<p class="western" align="justify" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-			<span size="4" style="font-size: 14pt">(4) borrow funds or other
+			<span size="4" style="font-size: 12pt">(4) borrow funds or other
 			property from the principal, unless otherwise authorized;</span></p>
 			<p class="western" align="justify" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-			<span size="4" style="font-size: 14pt">(5) continue acting on behalf
+			<span size="4" style="font-size: 12pt">(5) continue acting on behalf
 			of the principal if you learn of any event that terminates this power
 			of attorney or your authority under this power of attorney, such as
 			the death of the principal, your legal separation from the principal,
@@ -1818,7 +1705,7 @@
 
 			</p>
 			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-			<span size="4" style="font-size: 14pt">If you have special skills or
+			<span size="4" style="font-size: 12pt">If you have special skills or
 			expertise, you must use those special skills and expertise when
 			acting for the principal. </span>
 			</p>
@@ -1827,25 +1714,25 @@
 
 			</p>
 			<p class="western" align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-			<span size="4" style="font-size: 14pt">You must disclose your
+			<span size="4" style="font-size: 12pt">You must disclose your
 			identity as an agent whenever you act for the principal by writing or
 			printing the name of the principal and signing your own name &quot;as
-			Agent&quot; in the following manner:   </span><span size="4" style="font-size: 14pt"><b>&quot;</b></span>
+			Agent&quot; in the following manner:   </span><span size="4" style="font-size: 12pt"><b>&quot;</b></span>
 
 			<span color="#0000ff">
-				<span size="4" style="font-size: 14pt">
+				<span size="4" style="font-size: 12pt">
 					<b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>
 				</span>
 			</span>
 
-			<span size="4" style="font-size: 14pt">
+			<span size="4" style="font-size: 12pt">
 
-			<span size="4" style="font-size: 14pt"><b>by (Your Name)
+			<span size="4" style="font-size: 12pt"><b>by (Your Name)
 			as Agent&quot;</b></span>
 			</p>
 
 			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-			<span size="4" style="font-size: 14pt">The meaning of the powers
+			<span size="4" style="font-size: 12pt">The meaning of the powers
 			granted to you is contained in Section 3-4 of the Illinois Power of
 			Attorney Act, which is incorporated by reference into the body of the
 			power of attorney for property document.</span></p>
@@ -1854,7 +1741,7 @@
 
 			</p>
 			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-			<span size="4" style="font-size: 14pt">If you violate your duties as
+			<span size="4" style="font-size: 12pt">If you violate your duties as
 			agent or act outside the authority granted to you, you may be liable
 			for any damages, including attorney's fees and costs, caused by your
 			violation.</span></p>
@@ -1863,7 +1750,7 @@
 
 			</p>
 			<p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-			<span size="4" style="font-size: 14pt"><b>If there is anything about
+			<span size="4" style="font-size: 12pt"><b>If there is anything about
 			this document or your duties that you do not understand, you should
 			seek legal advice from an attorney.</b></span></p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
@@ -1872,13 +1759,12 @@
 			</p>
 
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<span color="#000000">«</span><span color="#008f00">ELSE IF State =
-			! “Illinois”</span><span color="#000000">» </span>
+			<span color="#000000"></span><span color="#008f00"></span><span color="#000000"> </span>
 			</p>
 
 			@elseif(strtolower($state['name'] != 'illinois'))
 
-			<p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="center" style="margin-bottom: 0.06in; page-break-before: always; line-height: 100%">
 			<b>IMPORTANT INFORMATION FOR AGENT</b></p>
 			<p class="western" align="center" style="margin-bottom: 0.06in; line-height: 100%">
 			<i>Agent’s Duties</i></p>
@@ -1955,46 +1841,28 @@
 			a court to end your marriage, or for your legal separation, unless
 			the Special Instructions in this power of attorney state that such an
 			action will not terminate your authority.</p>
-			<p class="western" align="center" style="margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%">
+			<p class="western" align="center" style="margin-top: 0.06in; margin-bottom: 0.06in; page-break-before: always; line-height: 100%">
 			<i>Liability of Agent</i></p>
-			
-			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-			The meaning of the authority granted to you is defined in the 
-			<span color="#0433ff">{{$state['act']}}</span>, 
 
-			<span color="#0433ff">{{$state['code']}}</span><span color="#0433ff">.</span>»
-			
+			<p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+			The meaning of the authority granted to you is defined in the
+			<span color="#0433ff">{{$state['act']}}</span>,
+
+			<span color="#0433ff">{{$state['code']}}</span><span color="#0433ff">.</span>
+
 			If you violate the <span color="#0433ff">{{$state['act']}}</span> or act
 			outside the authority granted, you may be liable for any damages
 			caused by your violation.</p>
 			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 			<b>If there is anything about this document or your duties that you
 			do not understand, you should seek legal advice.</b></p>
-			
+
 			@endif
-			
-			<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-			</p>
-
-
-
-			<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%; ">
-			
-
-			<span color="#008f00">IF STATE = “Delaware”</span>
-
-			
-			</p>
-
 
 			@if(strtolower($state['name']) == 'delaware')
 				<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
 				<span color="#000000"><b>NOTICE</b></span></p>
-				<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
-				<br/>
 
-				</p>
 				<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 				<span color="#000000">As the person signing this </span>
 
@@ -2063,7 +1931,7 @@
 				<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
-			
+
 				<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000">If
 				there is anything about this form that you do not understand, you
 				should ask a lawyer of your own choosing to explain it to you.</span></p>
@@ -2073,27 +1941,12 @@
 				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>I
 				have read or had explained to me this notice and I understand its
 				contents. (Acknowledge by signing below).</b></span></p>
-				<p style="margin-bottom: 0in; line-height: 100%"><br/>
 
-				</p>
-				<p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
-				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><u>			</u></span><span color="#000000">    	_________</span></p>
+				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><u>			</u></span><span color="#000000"> _________</span></p>
 				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>Principal					Date</b></span></p>
-				<p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
-				<p align="center" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
-				<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-				</p>
 
 
-
-				<p align="center" style="margin-bottom: 0in; line-height: 100%; ">
+				<p align="center" style="margin-bottom: 0in; line-height: 100%; page-break-before: always">
 				<span color="#000000"><b>AGENT'S CERTIFICATION </b></span>
 				</p>
 				<p align="center" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>(NOTE:
@@ -2101,7 +1954,7 @@
 				<p align="center" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
-			
+
 				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000">I,
 				</span><span color="#000000"><u>				</u></span><span color="#000000">,
 				have read the attached </span>
@@ -2110,16 +1963,16 @@
 					<span color="#000000">durable </span>
 				@endif
 
-				<span color="#000000">»personal power of attorney and I am
+				<span color="#000000">personal power of attorney and I am
 				the person identified as the Agent for the Principal.  To the best of
 				my knowledge this power has not been revoked. I hereby acknowledge
 				that, when I act as Agent, I shall:</span>
 				</p>
-				
+
 				<p style="margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
-			
+
 				<p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%"><span color="#000000">Act
 				in accordance with the principal's reasonable expectations to the
 				extent actually known to me and, otherwise, in the Principal's best
@@ -2153,7 +2006,7 @@
 					<span color="#000000">durable </span>
 				@endif
 
-				<span color="#000000">»personal
+				<span color="#000000">personal
 				power of attorney, when I act as Agent, I shall:</span></p>
 				<p style="margin-bottom: 0in; line-height: 100%"><br/>
 
@@ -2179,15 +2032,15 @@
 				<p style="margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
-				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><u>			</u></span><span color="#000000">    	_________</span></p>
+				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><u>			</u></span><span color="#000000"> _________</span></p>
 				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>Agent					Date</b></span></p>
-				
+
 			@endif
-			
+
 
 			@if(strtolower($state['name']) == 'michigan')
-			
-				<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
+
+				<p class="western" align="center" style="margin-bottom: 0in; page-break-before: always; line-height: 100%">
 				<span color="#000000"><b>AGENT ACKNOWLEDGEMENT</b></span></p>
 				<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
@@ -2210,10 +2063,10 @@
 					<span color="#000000">durable </span>
 				@endif
 
-				<span color="#000000">»power of attorney dated __________. 
+				<span color="#000000">power of attorney dated __________.
 				By signing this document, I acknowledge that if and when I act as
 				attorney-in-fact, all of the following apply:</span></p>
-				
+
 				<p align="justify" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; background: #ffffff">
 				<span color="#000000">(a) Except as provided in the </span>
 
@@ -2221,7 +2074,7 @@
 					<span color="#000000">durable </span>
 				@endif
 
-				<span color="#000000">»power of attorney, I must act in
+				<span color="#000000">power of attorney, I must act in
 				accordance with the standards of care applicable to fiduciaries
 				acting under </span>
 
@@ -2230,11 +2083,11 @@
 				@endif
 
 				<span color="#000000">powers of attorney.</span></p>
-				
+
 				<p align="justify" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; background: #ffffff">
 				<span color="#000000">(b) I must take reasonable steps to follow the
 				instructions of the principal.</span></p>
-				
+
 				<p align="justify" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; background: #ffffff">
 				<span color="#000000">(c) Upon request of the principal, I must keep
 				the principal informed of my actions. I must provide an accounting to
@@ -2249,7 +2102,7 @@
 					<span color="#000000">durable </span>
 				@endif
 
-				<span color="#000000">»power of attorney or by judicial
+				<span color="#000000">power of attorney or by judicial
 				order.</span></p>
 				<p align="justify" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; background: #ffffff">
 				<span color="#000000">(e) Unless provided in the </span>
@@ -2274,7 +2127,7 @@
 					<span color="#000000">durable </span>
 				@endif
 
-				<span color="#000000">»power of attorney, the principal may
+				<span color="#000000">power of attorney, the principal may
 				exonerate me of any liability to the principal for breach of
 				fiduciary duty except for actions committed by me in bad faith or
 				with reckless indifference. An exoneration clause is not enforceable
@@ -2283,7 +2136,7 @@
 				<p align="justify" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; background: #ffffff">
 				<span color="#000000">(h) I may be subject to civil or criminal
 				penalties if I violate my duties to the principal.</span></p>
-				
+
 				<p align="justify" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; background: #ffffff">
 				<br/>
 				<br/>
@@ -2294,16 +2147,15 @@
 				<p style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; background: #ffffff">
 				<span color="#000000">Signature: _______________________ Date:
 				______________________</span></p>
-			
+
 			@endif
-				
+
 				<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%;">
-				
-				
+
+
 			@if(strtolower($state['name']) == 'new hampshire')
 
-				<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
+				<p class="western" style="margin-bottom: 0in; page-break-before: always; line-height: 100%">
 				</p>
 				<p align="center" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>AGENT'S
 				ACKNOWLEDGEMENT </b></span>
@@ -2347,28 +2199,25 @@
 				<p style="margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
-				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000">________________</span><span color="#000000">    	_________</span></p>
+				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000">________________</span><span color="#000000"> _________</span></p>
 				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>Agent					Date</b></span></p>
 				<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
 				<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
 				</p>
-				
-			@endif	
-				
+
+			@endif
+
 				<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
-				
-				
+
+
 
 
 			@if(strtolower($state['name']) == 'pennsylvania')
-				
-				<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-				</p>
 
 				<p class="western" style="margin-bottom: 0in; line-height: 100%">I,
 				_______________________, have read the attached power of attorney and am the
@@ -2389,956 +2238,958 @@
 				<p style="margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
-				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000">______________</span><span color="#000000">    	_________</span></p>
+				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000">______________</span><span color="#000000"> _________</span></p>
 				<p style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>Agent					Date</b></span></p>
 				<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
 
 			@endif
-				
+
 				<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 				</p>
 
-			@if(strtolower($state['name']) == 'wisconsin')
 
-				<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
-				<span size="5" style="font-size: 20pt"><u><b>APPENDIX A</b></u></span></p>
-				<p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
-				<span size="4" style="font-size: 14pt"><b>Wis. Stat. Ann. §§ 244.44
-				- 244.56 (Definitions)</b></span></p>
-				<p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-				</p>
-				
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>244.44</b></span><span color="#000000"> </span><span color="#000000"><b>&nbsp;Real
-				property.</b></span><span color="#000000">&nbsp;Unless the power of
-				attorney otherwise provides, language in a power of attorney granting
-				general authority with respect to real property authorizes the agent
-				to do all of the following:</span></p>
-				
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(1)</b></span><span color="#000000"> Demand,
-				buy, lease, receive, accept as a gift or as security for an extension
-				of credit, or otherwise acquire or reject an interest in real
-				property or a right incident to real property.</span></p>
-				
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(2)</b></span><span color="#000000"> Sell;
-				exchange; convey with or without covenants, representations, or
-				warranties; quit claim; release; surrender; retain title for
-				security; encumber; partition; consent to partitioning; subject to an
-				easement or covenant; subdivide; apply for zoning or other
-				governmental permits; plat or consent to platting; develop; grant an
-				option concerning; lease; sublease; contribute to an entity in
-				exchange for an interest in that entity; or otherwise grant or
-				dispose of an interest in real property or a right incident to real
-				property.</span></p>
-				
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(3)</b></span><span color="#000000"> Pledge
-				or mortgage an interest in real property or right incident to real
-				property as security to borrow money or pay, renew, or extend the
-				time of payment of a debt of the principal or a debt guaranteed by
-				the principal.</span></p>
-				
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(4)</b></span><span color="#000000"> Release,
-				assign, satisfy, or enforce by any lawful means a mortgage, deed of
-				trust, conditional sale contract, encumbrance, lien, or other claim
-				to real property which exists or is asserted.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(5)</b></span><span color="#000000"> Manage
-				or conserve an interest in real property or a right incident to real
-				property owned or claimed to be owned by the principal, including by
-				doing any of the following:</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Insuring
-				against liability or casualty or other loss.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Obtaining
-				or regaining possession of or protecting the interest or right by
-				litigation or otherwise.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Paying,
-				assessing, compromising, or contesting taxes or assessments or
-				applying for and receiving refunds in connection with taxes or
-				assessments.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(d)</b></span><span color="#000000">&nbsp;Purchasing
-				supplies, hiring assistance or labor, and making repairs or
-				alterations to the real property.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(6)</b></span><span color="#000000"> Use,
-				develop, alter, replace, remove, erect, or install structures or
-				other improvements upon real property in or incident to which the
-				principal has, or claims to have, an interest or right.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(7)</b></span><span color="#000000"> 
-				Participate in a reorganization with respect to real property or an
-				entity that owns an interest in or right incident to real property
-				and receive, hold, and act with respect to stocks and bonds or other
-				property received in a plan of reorganization, including by doing any
-				of the following:</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Selling
-				or otherwise disposing of the stocks, bonds, or property.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Exercising
-				or selling an option, right of conversion, or similar right with
-				respect to the stocks, bonds, or property.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Exercising
-				any voting rights in person or by proxy.</span></p>
-				<p class="western" style="text-indent: -0.31in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(8)</b></span><span color="#000000"> Change
-				the form of title of an interest in or right incident to real
-				property.</span></p>
-				<p class="western" style="text-indent: -0.31in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(9)</b></span><span color="#000000"> Dedicate
-				to public use, with or without consideration, easements or other real
-				property in which the principal has, or claims to have, an interest.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<br/>
+				@if(strtolower($state['name']) == 'wisconsin')
 
-				</p>
+				  <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
+				  <span size="5" style="font-size: 20pt"><u><b>APPENDIX A</b></u></span></p>
+				  <p class="western" align="center" style="margin-bottom: 0in; line-height: 100%">
+				  <span size="4" style="font-size: 14pt"><b>Wis. Stat. Ann. §§ 244.44
+				  - 244.56 (Definitions)</b></span></p>
+				  <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>244.445</b></span><span color="#000000"> </span><span color="#000000"><b>&nbsp;Digital
-				property.</b></span><span color="#000000">&nbsp;Unless the power of
-				attorney otherwise provides, language in a power of attorney granting
-				general authority with respect to digital property authorizes the
-				agent, subject to</span><span color="#000000">&nbsp;s.&nbsp;</span>711.06
-				(1)<span color="#000000">, to do all of the following:</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(1)</b></span><span color="#000000"> Find,
-				access, manage, protect, distribute, dispose of, transfer, transfer
-				ownership rights in, or otherwise control digital devices, and any
-				digital property stored thereon, with digital devices to include
-				desktops, laptops, tablets, peripherals, storage devices, mobile
-				telephones, smartphones, and any similar digital device, either
-				currently in existence or that may exist as technology develops.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(2)</b></span><span color="#000000"> Access,
-				manage, distribute, delete, terminate, transfer, transfer ownership
-				rights in, or otherwise control [my] digital accounts, other than the
-				content of electronic communications, as defined in</span><span color="#000000">&nbsp;s.&nbsp;</span>711.03
-				(6)<span color="#000000">, with digital accounts to include [my] bank
-				or other financial institution accounts, electronic mail accounts,
-				blogs, software licenses, social network accounts, social media
-				accounts, file-sharing and storage accounts, financial management
-				accounts, domain registration accounts, domain name service accounts,
-				Web hosting accounts, tax preparation service accounts, online store
-				accounts, and affiliated programs currently in existence or that may
-				exist as technology develops.</span></p>
-				<p class="western" style="text-indent: -0.15in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>NOTE:&nbsp;</b></span><span color="#000000"><b>The
-				word in brackets is unnecessary. Corrective legislation is pending.</b></span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(3)</b></span><span color="#000000"> Access,
-				manage, distribute, delete, transfer, transfer ownership rights in,
-				or otherwise control any digital property the principal may own or
-				otherwise possess rights to, other than the content of electronic
-				communications, as defined in</span><span color="#000000">&nbsp;s.&nbsp;</span>711.03
-				(6)<span color="#000000">, regardless of the ownership of the digital
-				device on which the digital property is stored or the ownership of
-				the digital account within which the digital property is stored.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<br/>
+				  </p>
 
-				</p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>244.44</b></span><span color="#000000"><b>&nbsp;Real
+				  property.</b></span><span color="#000000">&nbsp;Unless the power of
+				  attorney otherwise provides, language in a power of attorney granting
+				  general authority with respect to real property authorizes the agent
+				  to do all of the following:</span></p>
 
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>244.45</b></span><span color="#000000"> </span><span color="#000000"><b>&nbsp;Tangible
-				personal property.</b></span><span color="#000000">&nbsp;Unless the
-				power of attorney otherwise provides, language in a power of attorney
-				granting general authority with respect to tangible personal property
-				authorizes the agent to do all of the following:</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(1)</b></span><span color="#000000"> Demand,
-				buy, receive, accept as a gift or as security for an extension of
-				credit, or otherwise acquire or reject ownership or possession of
-				tangible personal property or an interest in tangible personal
-				property.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(2)</b></span><span color="#000000"> Sell;
-				exchange; convey with or without covenants, representations, or
-				warranties; quit claim; release; surrender; create a security
-				interest in; grant options concerning; lease; sublease; or otherwise
-				dispose of tangible personal property or an interest in tangible
-				personal property.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(3)</b></span><span color="#000000"> Grant
-				a security interest in tangible personal property or an interest in
-				tangible personal property as security to borrow money or pay, renew,
-				or extend the time of payment of a debt of the principal or a debt
-				guaranteed by the principal.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(4)</b></span><span color="#000000"> Release,
-				assign, satisfy, or enforce by litigation or otherwise, a security
-				interest, lien, or other claim on behalf of the principal, with
-				respect to tangible personal property or an interest in tangible
-				personal property.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(5)</b></span><span color="#000000"> Manage
-				or conserve tangible personal property or an interest in tangible
-				personal property on behalf of the principal, including by doing any
-				of the following:</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Insuring
-				against liability or casualty or other loss.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Obtaining
-				or regaining possession of or protecting the property or interest, by
-				litigation or otherwise.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Paying,
-				assessing, compromising, or contesting taxes or assessments or
-				applying for and receiving refunds in connection with taxes or
-				assessments.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(d)</b></span><span color="#000000">&nbsp;Moving
-				the property from place to place.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(e)</b></span><span color="#000000">&nbsp;Storing
-				the property for hire or under a gratuitous bailment.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(f)</b></span><span color="#000000">&nbsp;Using
-				and making repairs, alterations, or improvements to the property.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(6)</b></span><span color="#000000"> Change
-				the form of title of an interest in tangible personal property.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<br/>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(1)</b></span><span color="#000000"> Demand,
+				  buy, lease, receive, accept as a gift or as security for an extension
+				  of credit, or otherwise acquire or reject an interest in real
+				  property or a right incident to real property.</span></p>
 
-				</p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>244.46</b></span><span color="#000000"> </span><span color="#000000"><b>&nbsp;Stocks
-				and bonds.</b></span><span color="#000000">&nbsp;Unless the power of
-				attorney otherwise provides, language in a power of attorney granting
-				general authority with respect to stocks and bonds authorizes the
-				agent to do all of the following:</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(1)</b></span><span color="#000000"> Buy,
-				sell, and exchange stocks and bonds.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(2)</b></span><span color="#000000"> Establish,
-				continue, modify, or terminate an account with respect to stocks and
-				bonds.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(3)</b></span><span color="#000000"> Pledge
-				stocks and bonds as security to borrow, pay, renew, or extend the
-				time of payment of a debt of the principal.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(4)</b></span><span color="#000000"> Receive
-				certificates and other evidences of ownership with respect to stocks
-				and bonds.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(5)</b></span><span color="#000000"> Exercise
-				voting rights with respect to stocks and bonds in person or by proxy,
-				enter into voting trusts, and consent to limitations on the right to
-				vote.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(6)</b></span><span color="#000000"> Exercise
-				in person or by proxy, or enforce by litigation or otherwise, a
-				right, power, privilege, or option the principal has or claims to
-				have as the holder of stocks and bonds.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(7)</b></span><span color="#000000"> Initiate,
-				participate in, submit to alternative dispute resolution, settle,
-				oppose, or propose or accept a compromise with respect to litigation
-				to which the principal is a party concerning stocks and bonds.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<br/>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(2)</b></span><span color="#000000"> Sell;
+				  exchange; convey with or without covenants, representations, or
+				  warranties; quit claim; release; surrender; retain title for
+				  security; encumber; partition; consent to partitioning; subject to an
+				  easement or covenant; subdivide; apply for zoning or other
+				  governmental permits; plat or consent to platting; develop; grant an
+				  option concerning; lease; sublease; contribute to an entity in
+				  exchange for an interest in that entity; or otherwise grant or
+				  dispose of an interest in real property or a right incident to real
+				  property.</span></p>
 
-				</p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>244.47</b></span><span color="#000000"> </span><span color="#000000"><b>&nbsp;Commodities
-				and options.</b></span><span color="#000000">&nbsp;Unless the power
-				of attorney otherwise provides, language in a power of attorney
-				granting general authority with respect to commodities and options
-				authorizes the agent to do all of the following:</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(1)</b></span><span color="#000000"> Buy,
-				sell, exchange, assign, settle, and exercise commodity futures
-				contracts and call or put options on stocks or stock indexes traded
-				on a regulated option exchange.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(2)</b></span><span color="#000000"> Establish,
-				continue, modify, and terminate option accounts.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<br/>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(3)</b></span><span color="#000000"> Pledge
+				  or mortgage an interest in real property or right incident to real
+				  property as security to borrow money or pay, renew, or extend the
+				  time of payment of a debt of the principal or a debt guaranteed by
+				  the principal.</span></p>
 
-				</p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>244.48</b></span><span color="#000000"> </span><span color="#000000"><b>&nbsp;Banks
-				and other financial institutions.</b></span><span color="#000000">&nbsp;Unless
-				the power of attorney otherwise provides, language in a power of
-				attorney granting general authority with respect to banks and other
-				financial institutions authorizes the agent to do all of the
-				following:</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(1)</b></span><span color="#000000"> Continue,
-				modify, and terminate an account or other banking arrangement made by
-				or on behalf of the principal.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(2)</b></span><span color="#000000"> Establish,
-				modify, and terminate an account or other banking arrangement with a
-				bank, trust company, savings and loan association, credit union,
-				thrift company, brokerage firm, or other financial institution
-				selected by the agent.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(3)</b></span><span color="#000000"> Contract
-				for services available from a financial institution, including
-				renting a safe deposit box or space in a vault.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(4)</b></span><span color="#000000"> Withdraw,
-				by check, order, electronic funds transfer, or otherwise, money or
-				property of the principal deposited with or left in the custody of a
-				financial institution.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(5)</b></span><span color="#000000"> Receive
-				statements of account, vouchers, notices, and similar documents from
-				a financial institution and act with respect to them.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(6)</b></span><span color="#000000"> Enter
-				a safe deposit box or vault and withdraw or add to the contents.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(7)</b></span><span color="#000000"> Borrow
-				money and pledge as security personal property of the principal
-				necessary to borrow money or pay, renew, or extend the time of
-				payment of a debt of the principal or a debt guaranteed by the
-				principal.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(8)</b></span><span color="#000000"> Make,
-				assign, draw, endorse, discount, guarantee, and negotiate promissory
-				notes, checks, drafts, and other negotiable or nonnegotiable paper of
-				the principal or payable to the principal or the principal's order;
-				transfer money, receive the cash or other proceeds of those
-				transactions; and accept a draft drawn by a person upon the principal
-				and pay it when due.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(9)</b></span><span color="#000000"> Receive
-				for the principal and act upon a sight draft, warehouse receipt, or
-				other document of title whether tangible or electronic, or other
-				negotiable or nonnegotiable instrument.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(10)</b></span><span color="#000000"> Apply
-				for, receive, and use letters of credit, credit and debit cards,
-				electronic transaction authorizations, and traveler's checks from a
-				financial institution and give an indemnity or other agreement in
-				connection with letters of credit.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(11)</b></span><span color="#000000"> Consent
-				to an extension of the time of payment with respect to commercial
-				paper or a financial transaction with a financial institution.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<br/>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(4)</b></span><span color="#000000"> Release,
+				  assign, satisfy, or enforce by any lawful means a mortgage, deed of
+				  trust, conditional sale contract, encumbrance, lien, or other claim
+				  to real property which exists or is asserted.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(5)</b></span><span color="#000000"> Manage
+				  or conserve an interest in real property or a right incident to real
+				  property owned or claimed to be owned by the principal, including by
+				  doing any of the following:</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Insuring
+				  against liability or casualty or other loss.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Obtaining
+				  or regaining possession of or protecting the interest or right by
+				  litigation or otherwise.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Paying,
+				  assessing, compromising, or contesting taxes or assessments or
+				  applying for and receiving refunds in connection with taxes or
+				  assessments.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(d)</b></span><span color="#000000">&nbsp;Purchasing
+				  supplies, hiring assistance or labor, and making repairs or
+				  alterations to the real property.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(6)</b></span><span color="#000000"> Use,
+				  develop, alter, replace, remove, erect, or install structures or
+				  other improvements upon real property in or incident to which the
+				  principal has, or claims to have, an interest or right.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(7)</b></span><span color="#000000">
+				  Participate in a reorganization with respect to real property or an
+				  entity that owns an interest in or right incident to real property
+				  and receive, hold, and act with respect to stocks and bonds or other
+				  property received in a plan of reorganization, including by doing any
+				  of the following:</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Selling
+				  or otherwise disposing of the stocks, bonds, or property.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Exercising
+				  or selling an option, right of conversion, or similar right with
+				  respect to the stocks, bonds, or property.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Exercising
+				  any voting rights in person or by proxy.</span></p>
+				  <p class="western" style=" margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(8)</b></span><span color="#000000"> Change
+				  the form of title of an interest in or right incident to real
+				  property.</span></p>
+				  <p class="western" style="margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(9)</b></span><span color="#000000"> Dedicate
+				  to public use, with or without consideration, easements or other real
+				  property in which the principal has, or claims to have, an interest.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <br/>
 
-				</p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>244.49</b></span><span color="#000000"> </span><span color="#000000"><b>&nbsp;Operation
-				of entity or business.</b></span><span color="#000000">&nbsp;Subject
-				to the terms of a document or an agreement governing an entity or
-				business or an entity or business ownership interest, and unless the
-				power of attorney otherwise provides, language in a power of attorney
-				granting general authority with respect to operation of an entity or
-				business authorizes the agent to do all of the following:</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(1)</b></span><span color="#000000"> Operate,
-				buy, sell, enlarge, reduce, or terminate an ownership interest.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(2)</b></span><span color="#000000"> Perform
-				a duty or discharge a liability and exercise in person or by proxy a
-				right, power, privilege, or option that the principal has, may have,
-				or claims to have.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(3)</b></span><span color="#000000"> Enforce
-				the terms of an ownership agreement.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(4)</b></span><span color="#000000"> Initiate,
-				participate in, submit to alternative dispute resolution, settle,
-				oppose, or propose or accept a compromise with respect to litigation
-				to which the principal is a party because of an ownership interest.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(5)</b></span><span color="#000000"> Exercise
-				in person or by proxy, or enforce by litigation or otherwise, a
-				right, power, privilege, or option the principal has or claims to
-				have as the holder of stocks and bonds.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(6)</b></span><span color="#000000"> Initiate,
-				participate in, submit to alternative dispute resolution, settle,
-				oppose, or propose or accept a compromise with respect to litigation
-				to which the principal is a party concerning stocks and bonds.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(7)</b></span><span color="#000000"> With
-				respect to an entity or business owned solely by the principal, do
-				all of the following:</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Continue,
-				modify, renegotiate, extend, and terminate a contract made by or on
-				behalf of the principal with respect to the entity or business before
-				execution of the power of attorney.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Determine
-				all of the following:</span></p>
-				<p class="western" style="margin-left: 0.67in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>1.</b></span><span color="#000000">&nbsp;The
-				location of its operation.</span></p>
-				<p class="western" style="margin-left: 0.67in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>2.</b></span><span color="#000000">&nbsp;The
-				nature and extent of its business.</span></p>
-				<p class="western" style="margin-left: 0.67in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>3.</b></span><span color="#000000">&nbsp;The
-				methods of manufacturing, selling, merchandising, financing,
-				accounting, and advertising employed in its operation.</span></p>
-				<p class="western" style="margin-left: 0.67in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>4.</b></span><span color="#000000">&nbsp;The
-				amount and types of insurance carried.</span></p>
-				<p class="western" style="margin-left: 0.67in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>5.</b></span><span color="#000000">&nbsp;The
-				mode of engaging, compensating, and dealing with its employees and
-				accountants, attorneys, or other advisors.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Change
-				the name or form of organization under which the entity or business
-				is operated and enter into an ownership agreement with other persons
-				to take over all or part of the operation of the entity or business.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(d)</b></span><span color="#000000">&nbsp;Demand
-				and receive money due or claimed by the principal or on the
-				principal's behalf in the operation of the entity or business and
-				control and disburse the money in the operation of the entity or
-				business.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(8)</b></span><span color="#000000"> Put
-				additional capital into an entity or business in which the principal
-				has an interest.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(9)</b></span><span color="#000000"> Join
-				in a plan of reorganization, consolidation, conversion, interest
-				exchange, domestication, or merger of the entity or business.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(10)</b></span><span color="#000000"> Sell
-				or liquidate all or part of an entity or business.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(11)</b></span><span color="#000000"> Establish
-				the value of an entity or business under a buy-out agreement to which
-				the principal is a party.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(12)</b></span><span color="#000000"> Prepare,
-				sign, file, and deliver reports, compilations of information,
-				returns, or other papers with respect to an entity or business and
-				make related payments.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(13)</b></span><span color="#000000"> Pay,
-				compromise, or contest taxes, assessments, fines, or penalties and
-				perform any other act to protect the principal from illegal or
-				unnecessary taxation, assessments, fines, or penalties, with respect
-				to an entity or business, including attempts to recover, in any
-				manner permitted by law, money paid before or after the execution of
-				the power of attorney.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<br/>
+				  </p>
 
-				</p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>244.50</b></span><span color="#000000"> </span><span color="#000000"><b>&nbsp;Insurance
-				and annuities.</b></span><span color="#000000">&nbsp;Unless the power
-				of attorney otherwise provides, language in a power of attorney
-				granting general authority with respect to insurance and annuities
-				authorizes the agent to do all of the following:</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(1)</b></span><span color="#000000"> Continue,
-				pay the premium or make a contribution on, modify, exchange, rescind,
-				release, or terminate a contract procured by or on behalf of the
-				principal which insures or provides an annuity to either the
-				principal or another person, whether or not the principal is a
-				beneficiary under the contract.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(2)</b></span><span color="#000000"> Procure
-				new, different, and additional contracts of insurance and annuities
-				for the principal and the principal's spouse or domestic partner,
-				children, and other dependents, and select the amount, type of
-				insurance or annuity, and mode of payment.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(3)</b></span><span color="#000000"> Pay
-				the premium or make a contribution on, modify, exchange, rescind,
-				release, or terminate a contract of insurance or annuity procured by
-				the agent.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(4)</b></span><span color="#000000"> Apply
-				for and receive a loan secured by a contract of insurance or annuity.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(5)</b></span><span color="#000000"> Surrender
-				and receive the cash surrender value on a contract of insurance or
-				annuity.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(6)</b></span><span color="#000000"> Exercise
-				an election.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(7)</b></span><span color="#000000"> Exercise
-				investment powers available under a contract of insurance or annuity.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(8)</b></span><span color="#000000"> Change
-				the manner of paying premiums on a contract of insurance or annuity.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(9)</b></span><span color="#000000"> Change
-				or convert the type of insurance or annuity with respect to which the
-				principal has or claims to have authority described in this section.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(10)</b></span><span color="#000000"> Apply
-				for and procure a benefit or assistance under a statute, rule, or
-				regulation to guarantee or pay premiums of a contract of insurance on
-				the life of the principal.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(11)</b></span><span color="#000000"> Collect,
-				sell, assign, hypothecate, borrow against, or pledge the interest of
-				the principal in a contract of insurance or annuity.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(12)</b></span><span color="#000000"> Select
-				the form and timing of the payment of proceeds from a contract of
-				insurance or annuity.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(13)</b></span><span color="#000000"> Pay,
-				from proceeds or otherwise, compromise or contest, and apply for
-				refunds in connection with, a tax or assessment levied by a taxing
-				authority with respect to a contract of insurance or annuity or its
-				proceeds or liability accruing by reason of the tax or assessment.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<br/>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>244.445</b></span><span color="#000000"><b>&nbsp;Digital
+				  property.</b></span><span color="#000000">&nbsp;Unless the power of
+				  attorney otherwise provides, language in a power of attorney granting
+				  general authority with respect to digital property authorizes the
+				  agent, subject to</span><span color="#000000">&nbsp;s.&nbsp;</span>711.06
+				  (1)<span color="#000000">, to do all of the following:</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(1)</b></span><span color="#000000"> Find,
+				  access, manage, protect, distribute, dispose of, transfer, transfer
+				  ownership rights in, or otherwise control digital devices, and any
+				  digital property stored thereon, with digital devices to include
+				  desktops, laptops, tablets, peripherals, storage devices, mobile
+				  telephones, smartphones, and any similar digital device, either
+				  currently in existence or that may exist as technology develops.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(2)</b></span><span color="#000000"> Access,
+				  manage, distribute, delete, terminate, transfer, transfer ownership
+				  rights in, or otherwise control [my] digital accounts, other than the
+				  content of electronic communications, as defined in</span><span color="#000000">&nbsp;s.&nbsp;</span>711.03
+				  (6)<span color="#000000">, with digital accounts to include [my] bank
+				  or other financial institution accounts, electronic mail accounts,
+				  blogs, software licenses, social network accounts, social media
+				  accounts, file-sharing and storage accounts, financial management
+				  accounts, domain registration accounts, domain name service accounts,
+				  Web hosting accounts, tax preparation service accounts, online store
+				  accounts, and affiliated programs currently in existence or that may
+				  exist as technology develops.</span></p>
+				  <p class="western" style="margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>NOTE:&nbsp;</b></span><span color="#000000"><b>The
+				  word in brackets is unnecessary. Corrective legislation is pending.</b></span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(3)</b></span><span color="#000000"> Access,
+				  manage, distribute, delete, transfer, transfer ownership rights in,
+				  or otherwise control any digital property the principal may own or
+				  otherwise possess rights to, other than the content of electronic
+				  communications, as defined in</span><span color="#000000">&nbsp;s.&nbsp;</span>711.03
+				  (6)<span color="#000000">, regardless of the ownership of the digital
+				  device on which the digital property is stored or the ownership of
+				  the digital account within which the digital property is stored.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <br/>
 
-				</p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>244.51</b></span><span color="#000000"> </span><span color="#000000"><b>&nbsp;Estates,
-				trusts, and other beneficial interests.</b></span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(1)</b></span><span color="#000000"> In
-				this section, “estates, trusts, and other beneficial interests&quot;
-				means a trust, probate estate, guardianship, conservatorship, escrow,
-				or custodianship or a fund from which the principal is, may become,
-				or claims to be, entitled to a share or payment.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(2)</b></span><span color="#000000"> Unless
-				the power of attorney otherwise provides, language in a power of
-				attorney granting general authority with respect to estates, trusts,
-				and other beneficial interests authorizes the agent to do all of the
-				following:</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Accept,
-				receive, receipt for, sell, assign, pledge, or exchange a share in or
-				payment from an estate, trust, or beneficial interest.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Demand
-				or obtain money or another thing of value to which the principal is,
-				may become, or claims to be, entitled by reason of an estate, trust,
-				or beneficial interest, by litigation or otherwise.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Exercise
-				for the benefit of the principal a presently exercisable general
-				power of appointment held by the principal.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(d)</b></span><span color="#000000">&nbsp;Initiate,
-				participate in, submit to alternative dispute resolution, settle,
-				oppose, or propose or accept a compromise with respect to litigation
-				to ascertain the meaning, validity, or effect of a deed, will,
-				declaration of trust, or other instrument or transaction affecting
-				the interest of the principal.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(e)</b></span><span color="#000000">&nbsp;Initiate,
-				participate in, submit to alternative dispute resolution, settle,
-				oppose, or propose or accept a compromise with respect to litigation
-				to remove, substitute, or surcharge a fiduciary.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(f)</b></span><span color="#000000">&nbsp;Conserve,
-				invest, disburse, or use anything received for an authorized purpose.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(g)</b></span><span color="#000000">&nbsp;Transfer
-				an interest of the principal in real property, stocks and bonds,
-				accounts with financial institutions or securities intermediaries,
-				insurance, annuities, and other property to the trustee of a
-				revocable trust created by the principal as settlor.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(h)</b></span><span color="#000000">&nbsp;Sign
-				a waiver or consent in a probate matter.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(i)</b></span><span color="#000000">&nbsp;Reject,
-				renounce, disclaim, release, or consent to a reduction in or
-				modification of a share in or payment from an estate, trust, or
-				beneficial interest.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<br/>
+				  </p>
 
-				</p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>244.52</b></span><span color="#000000"> </span><span color="#000000"><b>&nbsp;Claims
-				and litigation.</b></span><span color="#000000">&nbsp;Unless the
-				power of attorney otherwise provides, language in a power of attorney
-				granting general authority with respect to claims and litigation
-				authorizes the agent to do all of the following:</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(1)</b></span><span color="#000000"> Assert
-				and maintain before a court or administrative agency a claim, claim
-				for relief, cause of action, counterclaim, offset, recoupment, or
-				defense, including an action to recover property or other thing of
-				value, recover damages sustained by the principal, eliminate or
-				modify tax liability, or seek an injunction, specific performance, or
-				other relief.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(2)</b></span><span color="#000000"> Bring
-				an action to determine adverse claims or intervene or otherwise
-				participate in litigation.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(3)</b></span><span color="#000000"> Seek
-				an attachment, garnishment, order of arrest, or other preliminary,
-				provisional, or intermediate relief and use any available procedure
-				to effect or satisfy a judgment, order, or decree.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(4)</b></span><span color="#000000"> Make
-				or accept a tender, offer of judgment, or admission of facts, submit
-				a controversy on an agreed statement of facts, consent to
-				examination, and bind the principal in litigation.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(5)</b></span><span color="#000000"> Submit
-				to alternative dispute resolution, settle, and propose or accept a
-				compromise.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(6)</b></span><span color="#000000"> Waive
-				the issuance and service of process upon the principal, accept
-				service of process, appear for the principal, designate persons upon
-				which process directed to the principal may be served, execute and
-				file or deliver stipulations on the principal's behalf, verify
-				pleadings, seek appellate review, procure and give surety and
-				indemnity bonds, contract and pay for the preparation and printing of
-				records and briefs, receive, execute, and file or deliver a consent,
-				waiver, release, confession of judgment, satisfaction of judgment,
-				notice, agreement, or other instrument in connection with the
-				prosecution, settlement, or defense of a claim or litigation.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(7)</b></span><span color="#000000"> Act
-				for the principal with respect to bankruptcy or insolvency, whether
-				voluntary or involuntary, concerning the principal or some other
-				person, or with respect to a reorganization, receivership, or
-				application for the appointment of a receiver or trustee which
-				affects an interest of the principal in property or other thing of
-				value.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(8)</b></span><span color="#000000"> Pay a
-				judgment, award, or order against the principal or a settlement made
-				in connection with a claim or litigation.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(9)</b></span><span color="#000000"> Receive
-				money or other thing of value paid in settlement of or as proceeds of
-				a claim or litigation.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<br/>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>244.45</b></span><span color="#000000"><b>&nbsp;Tangible
+				  personal property.</b></span><span color="#000000">&nbsp;Unless the
+				  power of attorney otherwise provides, language in a power of attorney
+				  granting general authority with respect to tangible personal property
+				  authorizes the agent to do all of the following:</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(1)</b></span><span color="#000000"> Demand,
+				  buy, receive, accept as a gift or as security for an extension of
+				  credit, or otherwise acquire or reject ownership or possession of
+				  tangible personal property or an interest in tangible personal
+				  property.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(2)</b></span><span color="#000000"> Sell;
+				  exchange; convey with or without covenants, representations, or
+				  warranties; quit claim; release; surrender; create a security
+				  interest in; grant options concerning; lease; sublease; or otherwise
+				  dispose of tangible personal property or an interest in tangible
+				  personal property.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(3)</b></span><span color="#000000"> Grant
+				  a security interest in tangible personal property or an interest in
+				  tangible personal property as security to borrow money or pay, renew,
+				  or extend the time of payment of a debt of the principal or a debt
+				  guaranteed by the principal.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(4)</b></span><span color="#000000"> Release,
+				  assign, satisfy, or enforce by litigation or otherwise, a security
+				  interest, lien, or other claim on behalf of the principal, with
+				  respect to tangible personal property or an interest in tangible
+				  personal property.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(5)</b></span><span color="#000000"> Manage
+				  or conserve tangible personal property or an interest in tangible
+				  personal property on behalf of the principal, including by doing any
+				  of the following:</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Insuring
+				  against liability or casualty or other loss.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Obtaining
+				  or regaining possession of or protecting the property or interest, by
+				  litigation or otherwise.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Paying,
+				  assessing, compromising, or contesting taxes or assessments or
+				  applying for and receiving refunds in connection with taxes or
+				  assessments.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(d)</b></span><span color="#000000">&nbsp;Moving
+				  the property from place to place.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(e)</b></span><span color="#000000">&nbsp;Storing
+				  the property for hire or under a gratuitous bailment.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(f)</b></span><span color="#000000">&nbsp;Using
+				  and making repairs, alterations, or improvements to the property.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(6)</b></span><span color="#000000"> Change
+				  the form of title of an interest in tangible personal property.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <br/>
 
-				</p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>244.53</b></span><span color="#000000"> </span><span color="#000000"><b>&nbsp;Personal
-				and family maintenance.</b></span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(1)</b></span><span color="#000000"> Unless
-				the power of attorney otherwise provides, language in a power of
-				attorney granting general authority with respect to personal and
-				family maintenance authorizes the agent to do all of the following:</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Perform
-				the acts necessary to maintain the customary standard of living of
-				the principal, the principal's spouse or the principal's domestic
-				partner, and the following individuals, whether living when the power
-				of attorney is executed or later born:</span></p>
-				<p class="western" style="margin-left: 0.67in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>1.</b></span><span color="#000000">&nbsp;The
-				principal's children.</span></p>
-				<p class="western" style="margin-left: 0.67in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>2.</b></span><span color="#000000">&nbsp;Other
-				individuals legally entitled to be supported by the principal.</span></p>
-				<p class="western" style="margin-left: 0.67in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>3.</b></span><span color="#000000">&nbsp;The
-				individuals whom the principal has customarily supported or indicated
-				the intent to support.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Make
-				periodic payments of child support and other family maintenance
-				required by a court or governmental agency or an agreement to which
-				the principal is a party.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Provide
-				living quarters for the individuals described in&nbsp;</span><span color="#000000">par.&nbsp;(a)</span><span color="#000000">&nbsp;by
-				doing any of the following:</span></p>
-				<p class="western" style="margin-left: 0.67in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>1.</b></span><span color="#000000">&nbsp;Purchasing,
-				leasing, or entering into a contract.</span></p>
-				<p class="western" style="margin-left: 0.67in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>2.</b></span><span color="#000000">&nbsp;Paying
-				the operating costs, including interest, amortization payments,
-				repairs, improvements, and taxes, for premises owned by the principal
-				or occupied by those individuals.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(d)</b></span><span color="#000000">&nbsp;Provide
-				normal domestic help, usual vacations and travel expenses, and funds
-				for shelter, clothing, food, appropriate education, including
-				postsecondary and vocational education, and other current living
-				costs for the individuals described in&nbsp;</span><span color="#000000">par.&nbsp;(a)</span><span color="#000000">.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(e)</b></span><span color="#000000">&nbsp;Pay
-				expenses for necessary health care and custodial care on behalf of
-				the individuals described in&nbsp;</span><span color="#000000">par.&nbsp;(a)</span><span color="#000000">.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(f)</b></span><span color="#000000">&nbsp;Act
-				as the principal's personal representative under&nbsp;42 USC 1320d,
-				the Health Insurance Portability and Accountability Act, and
-				applicable regulations, in making decisions related to the past,
-				present, or future payment for the provision of health care consented
-				to by the principal or anyone authorized under the law of this state
-				to consent to health care on behalf of the principal.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(g)</b></span><span color="#000000">&nbsp;Continue
-				any provision made by the principal for motor vehicles or other means
-				of transportation, including registering, licensing, insuring, and
-				replacing the vehicles, for the individuals described in&nbsp;</span><span color="#000000">par.&nbsp;</span><a href="https://docs.legis.wisconsin.gov/document/statutes/244.53(1)(a)"><span color="#426986">(a)</span></a><span color="#000000">.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(h)</b></span><span color="#000000">&nbsp;Maintain
-				credit and debit accounts for the convenience of the individuals
-				described in&nbsp;</span><span color="#000000">par.&nbsp;</span><a href="https://docs.legis.wisconsin.gov/document/statutes/244.53(1)(a)"><span color="#426986">(a)</span></a><span color="#000000">&nbsp;and
-				open new accounts.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(i)</b></span><span color="#000000">&nbsp;Continue
-				payments incidental to the membership or affiliation of the principal
-				in a religious institution, club, society, order, or other
-				organization or to continue contributions to those organizations.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.65in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(2)</b></span><span color="#000000"> Authority
-				with respect to personal and family maintenance is neither dependent
-				upon, nor limited by, authority that an agent may or may not have
-				with respect to gifts under this chapter.</span></p>
-				
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<br/>
+				  </p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>244.46</b></span><span color="#000000"><b>&nbsp;Stocks
+				  and bonds.</b></span><span color="#000000">&nbsp;Unless the power of
+				  attorney otherwise provides, language in a power of attorney granting
+				  general authority with respect to stocks and bonds authorizes the
+				  agent to do all of the following:</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(1)</b></span><span color="#000000"> Buy,
+				  sell, and exchange stocks and bonds.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(2)</b></span><span color="#000000"> Establish,
+				  continue, modify, or terminate an account with respect to stocks and
+				  bonds.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(3)</b></span><span color="#000000"> Pledge
+				  stocks and bonds as security to borrow, pay, renew, or extend the
+				  time of payment of a debt of the principal.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(4)</b></span><span color="#000000"> Receive
+				  certificates and other evidences of ownership with respect to stocks
+				  and bonds.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(5)</b></span><span color="#000000"> Exercise
+				  voting rights with respect to stocks and bonds in person or by proxy,
+				  enter into voting trusts, and consent to limitations on the right to
+				  vote.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(6)</b></span><span color="#000000"> Exercise
+				  in person or by proxy, or enforce by litigation or otherwise, a
+				  right, power, privilege, or option the principal has or claims to
+				  have as the holder of stocks and bonds.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(7)</b></span><span color="#000000"> Initiate,
+				  participate in, submit to alternative dispute resolution, settle,
+				  oppose, or propose or accept a compromise with respect to litigation
+				  to which the principal is a party concerning stocks and bonds.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <br/>
 
-				</p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>244.54</b></span><span color="#000000"> </span><span color="#000000"><b>&nbsp;Benefits
-				from governmental programs or civil or military service.</b></span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(1)</b></span><span color="#000000"> In
-				this section, “benefits from governmental programs or civil or
-				military service&quot; means any benefit, program or assistance
-				provided under a statute, rule, or regulation, including social
-				security, medicare, and medicaid.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(2)</b></span><span color="#000000"> Unless
-				the power of attorney otherwise provides, language in a power of
-				attorney granting general authority with respect to benefits from
-				governmental programs or civil or military service authorizes the
-				agent to do all of the following:</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Execute
-				vouchers in the name of the principal for allowances and
-				reimbursements payable by the United States or a foreign government
-				or by a state or subdivision of a state to the principal, including
-				allowances and reimbursements for transportation of the individuals
-				described in</span><span color="#000000">&nbsp;s.&nbsp;244.53 (1)
-				(a)</span><span color="#000000">, and for shipment of their household
-				effects.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Take
-				possession and order the removal and shipment of property of the
-				principal from a post, warehouse, depot, dock, or other place of
-				storage or safekeeping, either governmental or private, and execute
-				and deliver a release, voucher, receipt, bill of lading, shipping
-				ticket, certificate, or other instrument for that purpose.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Enroll
-				in, apply for, select, reject, change, amend, or discontinue, on the
-				principal's behalf, a benefit or program.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(d)</b></span><span color="#000000">&nbsp;Prepare,
-				file, and maintain a claim of the principal for a benefit or
-				assistance, financial or otherwise, to which the principal may be
-				entitled under a statute, rule, or regulation.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(e)</b></span><span color="#000000">&nbsp;Initiate,
-				participate in, submit to alternative dispute resolution, settle,
-				oppose, or propose or accept a compromise with respect to litigation
-				concerning any benefit or assistance the principal may be entitled to
-				receive under a statute, rule, or regulation.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(f)</b></span><span color="#000000">&nbsp;Receive
-				the financial proceeds of a claim described in&nbsp;</span><span color="#000000">par.&nbsp;(d)</span><span color="#000000">&nbsp;and
-				conserve, invest, disburse, or use for a lawful purpose anything so
-				received.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<br/>
+				  </p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>244.47</b></span><span color="#000000"><b>&nbsp;Commodities
+				  and options.</b></span><span color="#000000">&nbsp;Unless the power
+				  of attorney otherwise provides, language in a power of attorney
+				  granting general authority with respect to commodities and options
+				  authorizes the agent to do all of the following:</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(1)</b></span><span color="#000000"> Buy,
+				  sell, exchange, assign, settle, and exercise commodity futures
+				  contracts and call or put options on stocks or stock indexes traded
+				  on a regulated option exchange.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				 <b>(2)</b> Establish,
+				  continue, modify, and terminate option accounts.</p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <br/>
 
-				</p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>244.55</b></span><span color="#000000"> </span><span color="#000000"><b>&nbsp;Retirement
-				plans.</b></span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(1)</b></span><span color="#000000"> In
-				this section, “retirement plan&quot; means a plan or account
-				created by an employer, the principal, or another individual to
-				provide retirement benefits or deferred compensation of which the
-				principal is a participant, beneficiary, or owner, including the
-				following plans or accounts:</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;An
-				individual retirement account under section&nbsp;408&nbsp;of the
-				Internal Revenue Code.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;A
-				Roth individual retirement account under section&nbsp;408A&nbsp;of
-				the Internal Revenue Code.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;A
-				deemed individual retirement account under section&nbsp;408&nbsp;(q)
-				of the Internal Revenue Code.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(d)</b></span><span color="#000000">&nbsp;An
-				annuity or mutual fund custodial account under section&nbsp;403&nbsp;(b)
-				of the Internal Revenue Code.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(e)</b></span><span color="#000000">&nbsp;A
-				pension, profit-sharing, stock bonus, or other retirement plan
-				qualified under section&nbsp;401&nbsp;(a) of the Internal Revenue
-				Code.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(f)</b></span><span color="#000000">&nbsp;A
-				plan under section&nbsp;457&nbsp;(b) of the Internal Revenue Code.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(g)</b></span><span color="#000000">&nbsp;A
-				nonqualified deferred compensation plan under section&nbsp;409A&nbsp;of
-				the Internal Revenue Code.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(2)</b></span><span color="#000000"> Unless
-				the power of attorney otherwise provides, language in a power of
-				attorney granting general authority with respect to retirement plans
-				authorizes the agent to do all of the following:</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Select
-				the form and timing of payments under a retirement plan and withdraw
-				benefits from a plan.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Make
-				a rollover, including a direct trustee-to-trustee rollover, of
-				benefits from one retirement plan to another.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Establish
-				a retirement plan in the principal's name.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(d)</b></span><span color="#000000">&nbsp;Make
-				contributions to a retirement plan.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(e)</b></span><span color="#000000">&nbsp;Exercise
-				investment powers available under a retirement plan.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(f)</b></span><span color="#000000">&nbsp;Borrow
-				from, sell assets to, or purchase assets from a retirement plan.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<br/>
+				  </p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>244.48</b></span><span color="#000000"><b>&nbsp;Banks
+				  and other financial institutions.</b></span><span color="#000000">&nbsp;Unless
+				  the power of attorney otherwise provides, language in a power of
+				  attorney granting general authority with respect to banks and other
+				  financial institutions authorizes the agent to do all of the
+				  following:</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(1)</b></span><span color="#000000"> Continue,
+				  modify, and terminate an account or other banking arrangement made by
+				  or on behalf of the principal.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(2)</b></span><span color="#000000"> Establish,
+				  modify, and terminate an account or other banking arrangement with a
+				  bank, trust company, savings and loan association, credit union,
+				  thrift company, brokerage firm, or other financial institution
+				  selected by the agent.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(3)</b></span><span color="#000000"> Contract
+				  for services available from a financial institution, including
+				  renting a safe deposit box or space in a vault.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(4)</b></span><span color="#000000"> Withdraw,
+				  by check, order, electronic funds transfer, or otherwise, money or
+				  property of the principal deposited with or left in the custody of a
+				  financial institution.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(5)</b></span><span color="#000000"> Receive
+				  statements of account, vouchers, notices, and similar documents from
+				  a financial institution and act with respect to them.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(6)</b></span><span color="#000000"> Enter
+				  a safe deposit box or vault and withdraw or add to the contents.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(7)</b></span><span color="#000000"> Borrow
+				  money and pledge as security personal property of the principal
+				  necessary to borrow money or pay, renew, or extend the time of
+				  payment of a debt of the principal or a debt guaranteed by the
+				  principal.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(8)</b></span><span color="#000000"> Make,
+				  assign, draw, endorse, discount, guarantee, and negotiate promissory
+				  notes, checks, drafts, and other negotiable or nonnegotiable paper of
+				  the principal or payable to the principal or the principal's order;
+				  transfer money, receive the cash or other proceeds of those
+				  transactions; and accept a draft drawn by a person upon the principal
+				  and pay it when due.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(9)</b></span><span color="#000000"> Receive
+				  for the principal and act upon a sight draft, warehouse receipt, or
+				  other document of title whether tangible or electronic, or other
+				  negotiable or nonnegotiable instrument.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(10)</b></span><span color="#000000"> Apply
+				  for, receive, and use letters of credit, credit and debit cards,
+				  electronic transaction authorizations, and traveler's checks from a
+				  financial institution and give an indemnity or other agreement in
+				  connection with letters of credit.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(11)</b></span><span color="#000000"> Consent
+				  to an extension of the time of payment with respect to commercial
+				  paper or a financial transaction with a financial institution.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <br/>
 
-				</p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>244.56</b></span><span color="#000000"> </span><span color="#000000"><b>&nbsp;Taxes.</b></span><span color="#000000">&nbsp;Unless
-				the power of attorney otherwise provides, language in a power of
-				attorney granting general authority with respect to taxes authorizes
-				the agent to do all of the following:</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(1)</b></span><span color="#000000"> Prepare,
-				sign, and file federal, state, local, and foreign income, gift,
-				payroll, property, Federal Insurance Contributions Act, and other tax
-				returns, claims for refunds, requests for extension of time,
-				petitions regarding tax matters, and any other tax-related documents,
-				including receipts, offers, waivers, consents, including consents and
-				agreements under section&nbsp;</span><a href="https://docs.legis.wisconsin.gov/document/usc/26%20USC%202032A"><span color="#426986">2032A</span></a><span color="#000000">&nbsp;of
-				the Internal Revenue Code, closing agreements, and any power of
-				attorney required by the Internal Revenue Service or other taxing
-				authority with respect to a tax year upon which the statute of
-				limitations has not run and the following 25 tax years.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(2)</b></span><span color="#000000"> Pay
-				taxes due, collect refunds, post bonds, receive confidential
-				information, and contest deficiencies determined by the Internal
-				Revenue Service or other taxing authority.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(3)</b></span><span color="#000000"> Exercise
-				any election available to the principal under federal, state, local,
-				or foreign tax law.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(4)</b></span><span color="#000000"> Act
-				for the principal in all tax matters for all periods before the
-				Internal Revenue Service, or other taxing authority.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<br/>
+				  </p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>244.49</b></span><span color="#000000"><b>&nbsp;Operation
+				  of entity or business.</b></span><span color="#000000">&nbsp;Subject
+				  to the terms of a document or an agreement governing an entity or
+				  business or an entity or business ownership interest, and unless the
+				  power of attorney otherwise provides, language in a power of attorney
+				  granting general authority with respect to operation of an entity or
+				  business authorizes the agent to do all of the following:</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(1)</b></span><span color="#000000"> Operate,
+				  buy, sell, enlarge, reduce, or terminate an ownership interest.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(2)</b></span><span color="#000000"> Perform
+				  a duty or discharge a liability and exercise in person or by proxy a
+				  right, power, privilege, or option that the principal has, may have,
+				  or claims to have.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(3)</b></span><span color="#000000"> Enforce
+				  the terms of an ownership agreement.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(4)</b></span><span color="#000000"> Initiate,
+				  participate in, submit to alternative dispute resolution, settle,
+				  oppose, or propose or accept a compromise with respect to litigation
+				  to which the principal is a party because of an ownership interest.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(5)</b></span><span color="#000000"> Exercise
+				  in person or by proxy, or enforce by litigation or otherwise, a
+				  right, power, privilege, or option the principal has or claims to
+				  have as the holder of stocks and bonds.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(6)</b></span><span color="#000000"> Initiate,
+				  participate in, submit to alternative dispute resolution, settle,
+				  oppose, or propose or accept a compromise with respect to litigation
+				  to which the principal is a party concerning stocks and bonds.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(7)</b></span><span color="#000000"> With
+				  respect to an entity or business owned solely by the principal, do
+				  all of the following:</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Continue,
+				  modify, renegotiate, extend, and terminate a contract made by or on
+				  behalf of the principal with respect to the entity or business before
+				  execution of the power of attorney.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Determine
+				  all of the following:</span></p>
+				  <p class="western" style="margin-left: 0.67in; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>1.</b></span><span color="#000000">&nbsp;The
+				  location of its operation.</span></p>
+				  <p class="western" style="margin-left: 0.67in; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>2.</b></span><span color="#000000">&nbsp;The
+				  nature and extent of its business.</span></p>
+				  <p class="western" style="margin-left: 0.67in; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>3.</b></span><span color="#000000">&nbsp;The
+				  methods of manufacturing, selling, merchandising, financing,
+				  accounting, and advertising employed in its operation.</span></p>
+				  <p class="western" style="margin-left: 0.67in; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>4.</b></span><span color="#000000">&nbsp;The
+				  amount and types of insurance carried.</span></p>
+				  <p class="western" style="margin-left: 0.67in; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>5.</b></span><span color="#000000">&nbsp;The
+				  mode of engaging, compensating, and dealing with its employees and
+				  accountants, attorneys, or other advisors.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Change
+				  the name or form of organization under which the entity or business
+				  is operated and enter into an ownership agreement with other persons
+				  to take over all or part of the operation of the entity or business.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(d)</b></span><span color="#000000">&nbsp;Demand
+				  and receive money due or claimed by the principal or on the
+				  principal's behalf in the operation of the entity or business and
+				  control and disburse the money in the operation of the entity or
+				  business.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(8)</b></span><span color="#000000"> Put
+				  additional capital into an entity or business in which the principal
+				  has an interest.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(9)</b></span><span color="#000000"> Join
+				  in a plan of reorganization, consolidation, conversion, interest
+				  exchange, domestication, or merger of the entity or business.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(10)</b></span><span color="#000000"> Sell
+				  or liquidate all or part of an entity or business.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(11)</b></span><span color="#000000"> Establish
+				  the value of an entity or business under a buy-out agreement to which
+				  the principal is a party.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(12)</b></span><span color="#000000"> Prepare,
+				  sign, file, and deliver reports, compilations of information,
+				  returns, or other papers with respect to an entity or business and
+				  make related payments.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(13)</b></span><span color="#000000"> Pay,
+				  compromise, or contest taxes, assessments, fines, or penalties and
+				  perform any other act to protect the principal from illegal or
+				  unnecessary taxation, assessments, fines, or penalties, with respect
+				  to an entity or business, including attempts to recover, in any
+				  manner permitted by law, money paid before or after the execution of
+				  the power of attorney.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <br/>
 
-				</p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>244.57</b></span><span color="#000000"> </span><span color="#000000"><b>&nbsp;Gifts.</b></span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(1)</b></span><span color="#000000"> In
-				this section, a gift “for the benefit of&quot; a person includes a
-				gift to a trust, an account under</span><span color="#000000">&nbsp;ss.&nbsp;</span><a href="https://docs.legis.wisconsin.gov/document/statutes/54.854"><span color="#426986">54.854</span></a><span color="#000000">&nbsp;to&nbsp;</span><a href="https://docs.legis.wisconsin.gov/document/statutes/54.898"><span color="#426986">54.898</span></a><span color="#000000">,
-				and a tuition savings account or prepaid tuition plan as defined
-				under section&nbsp;</span><a href="https://docs.legis.wisconsin.gov/document/usc/26%20USC%20529"><span color="#426986">529</span></a><span color="#000000">&nbsp;of
-				the Internal Revenue Code.</span></p>
-				<p class="western" style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(2)</b></span><span color="#000000"> Unless
-				the power of attorney otherwise provides, language in a power of
-				attorney granting general authority with respect to gifts authorizes
-				the agent to do all of the following:</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Make
-				outright to, or for the benefit of, a person, a gift of any of the
-				principal's property, including by the exercise of a presently
-				exercisable general power of appointment held by the principal, in an
-				amount per donee not to exceed the annual dollar limits of the
-				federal gift tax exclusion under section&nbsp;2503&nbsp;(b) of the
-				Internal Revenue Code, without regard to whether the federal gift tax
-				exclusion applies to the gift, or if the principal's spouse agrees to
-				consent to a split gift under section&nbsp;2513&nbsp;of the Internal
-				Revenue Code, in an amount per donee not to exceed twice the annual
-				federal gift tax exclusion limit.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Consent,
-				under section&nbsp;2513&nbsp;of the Internal Revenue Code, to the
-				splitting of a gift made by the principal's spouse in an amount per
-				donee not to exceed the aggregate annual gift tax exclusions for both
-				spouses.</span></p>
-				<p class="western" style="margin-left: 0.33in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Make
-				a gift of the principal's property only as the agent determines is
-				consistent with the principal's objectives if actually known by the
-				agent and, if unknown, as the agent determines is consistent with the
-				principal's best interest based on all relevant factors, including
-				all of the following:</span></p>
-				<p class="western" style="margin-left: 0.67in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>1.</b></span><span color="#000000">&nbsp;The
-				value and nature of the principal's property.</span></p>
-				<p class="western" style="margin-left: 0.67in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>2.</b></span><span color="#000000">&nbsp;The
-				principal's foreseeable obligations and need for maintenance.</span></p>
-				<p class="western" style="margin-left: 0.67in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>3.</b></span><span color="#000000">&nbsp;Minimization
-				of taxes, including income, estate, inheritance, generation skipping
-				transfer, and gift taxes.</span></p>
-				<p class="western" style="margin-left: 0.67in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>4.</b></span><span color="#000000">&nbsp;Eligibility
-				for a benefit, a program, or assistance under a statute, rule, or
-				regulation.</span></p>
-				
-				<p class="western" style="margin-left: 0.67in; text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; background: #ffffff">
-				<span color="#000000"><b>5.</b></span><span color="#000000">&nbsp;The
-				principal's personal history of making or joining in making gifts.</span></p>
-				
-				
-			
-			@endif
-		
-	</div>
+				  </p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>244.50</b></span><span color="#000000"><b>&nbsp;Insurance
+				  and annuities.</b></span><span color="#000000">&nbsp;Unless the power
+				  of attorney otherwise provides, language in a power of attorney
+				  granting general authority with respect to insurance and annuities
+				  authorizes the agent to do all of the following:</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(1)</b></span><span color="#000000"> Continue,
+				  pay the premium or make a contribution on, modify, exchange, rescind,
+				  release, or terminate a contract procured by or on behalf of the
+				  principal which insures or provides an annuity to either the
+				  principal or another person, whether or not the principal is a
+				  beneficiary under the contract.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(2)</b></span><span color="#000000"> Procure
+				  new, different, and additional contracts of insurance and annuities
+				  for the principal and the principal's spouse or domestic partner,
+				  children, and other dependents, and select the amount, type of
+				  insurance or annuity, and mode of payment.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(3)</b></span><span color="#000000"> Pay
+				  the premium or make a contribution on, modify, exchange, rescind,
+				  release, or terminate a contract of insurance or annuity procured by
+				  the agent.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(4)</b></span><span color="#000000"> Apply
+				  for and receive a loan secured by a contract of insurance or annuity.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(5)</b></span><span color="#000000"> Surrender
+				  and receive the cash surrender value on a contract of insurance or
+				  annuity.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(6)</b></span><span color="#000000"> Exercise
+				  an election.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(7)</b></span><span color="#000000"> Exercise
+				  investment powers available under a contract of insurance or annuity.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(8)</b></span><span color="#000000"> Change
+				  the manner of paying premiums on a contract of insurance or annuity.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(9)</b></span><span color="#000000"> Change
+				  or convert the type of insurance or annuity with respect to which the
+				  principal has or claims to have authority described in this section.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(10)</b></span><span color="#000000"> Apply
+				  for and procure a benefit or assistance under a statute, rule, or
+				  regulation to guarantee or pay premiums of a contract of insurance on
+				  the life of the principal.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(11)</b></span><span color="#000000"> Collect,
+				  sell, assign, hypothecate, borrow against, or pledge the interest of
+				  the principal in a contract of insurance or annuity.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(12)</b></span><span color="#000000"> Select
+				  the form and timing of the payment of proceeds from a contract of
+				  insurance or annuity.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(13)</b></span><span color="#000000"> Pay,
+				  from proceeds or otherwise, compromise or contest, and apply for
+				  refunds in connection with, a tax or assessment levied by a taxing
+				  authority with respect to a contract of insurance or annuity or its
+				  proceeds or liability accruing by reason of the tax or assessment.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <br/>
 
-</body>
-</html>
+				  </p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>244.51</b></span><span color="#000000"><b>&nbsp;Estates,
+				  trusts, and other beneficial interests.</b></span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(1)</b></span><span color="#000000"> In
+				  this section, “estates, trusts, and other beneficial interests&quot;
+				  means a trust, probate estate, guardianship, conservatorship, escrow,
+				  or custodianship or a fund from which the principal is, may become,
+				  or claims to be, entitled to a share or payment.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(2)</b></span><span color="#000000"> Unless
+				  the power of attorney otherwise provides, language in a power of
+				  attorney granting general authority with respect to estates, trusts,
+				  and other beneficial interests authorizes the agent to do all of the
+				  following:</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Accept,
+				  receive, receipt for, sell, assign, pledge, or exchange a share in or
+				  payment from an estate, trust, or beneficial interest.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Demand
+				  or obtain money or another thing of value to which the principal is,
+				  may become, or claims to be, entitled by reason of an estate, trust,
+				  or beneficial interest, by litigation or otherwise.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Exercise
+				  for the benefit of the principal a presently exercisable general
+				  power of appointment held by the principal.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(d)</b></span><span color="#000000">&nbsp;Initiate,
+				  participate in, submit to alternative dispute resolution, settle,
+				  oppose, or propose or accept a compromise with respect to litigation
+				  to ascertain the meaning, validity, or effect of a deed, will,
+				  declaration of trust, or other instrument or transaction affecting
+				  the interest of the principal.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(e)</b></span><span color="#000000">&nbsp;Initiate,
+				  participate in, submit to alternative dispute resolution, settle,
+				  oppose, or propose or accept a compromise with respect to litigation
+				  to remove, substitute, or surcharge a fiduciary.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(f)</b></span><span color="#000000">&nbsp;Conserve,
+				  invest, disburse, or use anything received for an authorized purpose.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(g)</b></span><span color="#000000">&nbsp;Transfer
+				  an interest of the principal in real property, stocks and bonds,
+				  accounts with financial institutions or securities intermediaries,
+				  insurance, annuities, and other property to the trustee of a
+				  revocable trust created by the principal as settlor.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(h)</b></span><span color="#000000">&nbsp;Sign
+				  a waiver or consent in a probate matter.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(i)</b></span><span color="#000000">&nbsp;Reject,
+				  renounce, disclaim, release, or consent to a reduction in or
+				  modification of a share in or payment from an estate, trust, or
+				  beneficial interest.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <br/>
+
+				  </p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>244.52</b></span><span color="#000000"><b>&nbsp;Claims
+				  and litigation.</b></span><span color="#000000">&nbsp;Unless the
+				  power of attorney otherwise provides, language in a power of attorney
+				  granting general authority with respect to claims and litigation
+				  authorizes the agent to do all of the following:</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(1)</b></span><span color="#000000"> Assert
+				  and maintain before a court or administrative agency a claim, claim
+				  for relief, cause of action, counterclaim, offset, recoupment, or
+				  defense, including an action to recover property or other thing of
+				  value, recover damages sustained by the principal, eliminate or
+				  modify tax liability, or seek an injunction, specific performance, or
+				  other relief.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(2)</b></span><span color="#000000"> Bring
+				  an action to determine adverse claims or intervene or otherwise
+				  participate in litigation.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(3)</b></span><span color="#000000"> Seek
+				  an attachment, garnishment, order of arrest, or other preliminary,
+				  provisional, or intermediate relief and use any available procedure
+				  to effect or satisfy a judgment, order, or decree.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(4)</b></span><span color="#000000"> Make
+				  or accept a tender, offer of judgment, or admission of facts, submit
+				  a controversy on an agreed statement of facts, consent to
+				  examination, and bind the principal in litigation.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(5)</b></span><span color="#000000"> Submit
+				  to alternative dispute resolution, settle, and propose or accept a
+				  compromise.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(6)</b></span><span color="#000000"> Waive
+				  the issuance and service of process upon the principal, accept
+				  service of process, appear for the principal, designate persons upon
+				  which process directed to the principal may be served, execute and
+				  file or deliver stipulations on the principal's behalf, verify
+				  pleadings, seek appellate review, procure and give surety and
+				  indemnity bonds, contract and pay for the preparation and printing of
+				  records and briefs, receive, execute, and file or deliver a consent,
+				  waiver, release, confession of judgment, satisfaction of judgment,
+				  notice, agreement, or other instrument in connection with the
+				  prosecution, settlement, or defense of a claim or litigation.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(7)</b></span><span color="#000000"> Act
+				  for the principal with respect to bankruptcy or insolvency, whether
+				  voluntary or involuntary, concerning the principal or some other
+				  person, or with respect to a reorganization, receivership, or
+				  application for the appointment of a receiver or trustee which
+				  affects an interest of the principal in property or other thing of
+				  value.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(8)</b></span><span color="#000000"> Pay a
+				  judgment, award, or order against the principal or a settlement made
+				  in connection with a claim or litigation.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(9)</b></span><span color="#000000"> Receive
+				  money or other thing of value paid in settlement of or as proceeds of
+				  a claim or litigation.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <br/>
+
+				  </p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>244.53</b></span><span color="#000000"><b>&nbsp;Personal
+				  and family maintenance.</b></span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(1)</b></span><span color="#000000"> Unless
+				  the power of attorney otherwise provides, language in a power of
+				  attorney granting general authority with respect to personal and
+				  family maintenance authorizes the agent to do all of the following:</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Perform
+				  the acts necessary to maintain the customary standard of living of
+				  the principal, the principal's spouse or the principal's domestic
+				  partner, and the following individuals, whether living when the power
+				  of attorney is executed or later born:</span></p>
+				  <p class="western" style="margin-left: 0.67in; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>1.</b></span><span color="#000000">&nbsp;The
+				  principal's children.</span></p>
+				  <p class="western" style="margin-left: 0.67in; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>2.</b></span><span color="#000000">&nbsp;Other
+				  individuals legally entitled to be supported by the principal.</span></p>
+				  <p class="western" style="margin-left: 0.67in; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>3.</b></span><span color="#000000">&nbsp;The
+				  individuals whom the principal has customarily supported or indicated
+				  the intent to support.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Make
+				  periodic payments of child support and other family maintenance
+				  required by a court or governmental agency or an agreement to which
+				  the principal is a party.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Provide
+				  living quarters for the individuals described in&nbsp;</span><span color="#000000">par.&nbsp;(a)</span><span color="#000000">&nbsp;by
+				  doing any of the following:</span></p>
+				  <p class="western" style="margin-left: 0.67in; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>1.</b></span><span color="#000000">&nbsp;Purchasing,
+				  leasing, or entering into a contract.</span></p>
+				  <p class="western" style="margin-left: 0.67in; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>2.</b></span><span color="#000000">&nbsp;Paying
+				  the operating costs, including interest, amortization payments,
+				  repairs, improvements, and taxes, for premises owned by the principal
+				  or occupied by those individuals.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(d)</b></span><span color="#000000">&nbsp;Provide
+				  normal domestic help, usual vacations and travel expenses, and funds
+				  for shelter, clothing, food, appropriate education, including
+				  postsecondary and vocational education, and other current living
+				  costs for the individuals described in&nbsp;</span><span color="#000000">par.&nbsp;(a)</span><span color="#000000">.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(e)</b></span><span color="#000000">&nbsp;Pay
+				  expenses for necessary health care and custodial care on behalf of
+				  the individuals described in&nbsp;</span><span color="#000000">par.&nbsp;(a)</span><span color="#000000">.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(f)</b></span><span color="#000000">&nbsp;Act
+				  as the principal's personal representative under&nbsp;42 USC 1320d,
+				  the Health Insurance Portability and Accountability Act, and
+				  applicable regulations, in making decisions related to the past,
+				  present, or future payment for the provision of health care consented
+				  to by the principal or anyone authorized under the law of this state
+				  to consent to health care on behalf of the principal.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(g)</b></span><span color="#000000">&nbsp;Continue
+				  any provision made by the principal for motor vehicles or other means
+				  of transportation, including registering, licensing, insuring, and
+				  replacing the vehicles, for the individuals described in&nbsp;</span><span color="#000000">par.&nbsp;</span><a href="https://docs.legis.wisconsin.gov/document/statutes/244.53(1)(a)"><span color="#426986">(a)</span></a><span color="#000000">.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(h)</b></span><span color="#000000">&nbsp;Maintain
+				  credit and debit accounts for the convenience of the individuals
+				  described in&nbsp;</span><span color="#000000">par.&nbsp;</span><a href="https://docs.legis.wisconsin.gov/document/statutes/244.53(1)(a)"><span color="#426986">(a)</span></a><span color="#000000">&nbsp;and
+				  open new accounts.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(i)</b></span><span color="#000000">&nbsp;Continue
+				  payments incidental to the membership or affiliation of the principal
+				  in a religious institution, club, society, order, or other
+				  organization or to continue contributions to those organizations.</span></p>
+				  <p class="western" style=" ;  margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(2)</b></span><span color="#000000"> Authority
+				  with respect to personal and family maintenance is neither dependent
+				  upon, nor limited by, authority that an agent may or may not have
+				  with respect to gifts under this chapter.</span></p>
+
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <br/>
+
+				  </p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>244.54</b></span><span color="#000000"><b>&nbsp;Benefits
+				  from governmental programs or civil or military service.</b></span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(1)</b></span><span color="#000000"> In
+				  this section, “benefits from governmental programs or civil or
+				  military service&quot; means any benefit, program or assistance
+				  provided under a statute, rule, or regulation, including social
+				  security, medicare, and medicaid.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(2)</b></span><span color="#000000"> Unless
+				  the power of attorney otherwise provides, language in a power of
+				  attorney granting general authority with respect to benefits from
+				  governmental programs or civil or military service authorizes the
+				  agent to do all of the following:</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Execute
+				  vouchers in the name of the principal for allowances and
+				  reimbursements payable by the United States or a foreign government
+				  or by a state or subdivision of a state to the principal, including
+				  allowances and reimbursements for transportation of the individuals
+				  described in</span><span color="#000000">&nbsp;s.&nbsp;244.53 (1)
+				  (a)</span><span color="#000000">, and for shipment of their household
+				  effects.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Take
+				  possession and order the removal and shipment of property of the
+				  principal from a post, warehouse, depot, dock, or other place of
+				  storage or safekeeping, either governmental or private, and execute
+				  and deliver a release, voucher, receipt, bill of lading, shipping
+				  ticket, certificate, or other instrument for that purpose.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Enroll
+				  in, apply for, select, reject, change, amend, or discontinue, on the
+				  principal's behalf, a benefit or program.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(d)</b></span><span color="#000000">&nbsp;Prepare,
+				  file, and maintain a claim of the principal for a benefit or
+				  assistance, financial or otherwise, to which the principal may be
+				  entitled under a statute, rule, or regulation.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(e)</b></span><span color="#000000">&nbsp;Initiate,
+				  participate in, submit to alternative dispute resolution, settle,
+				  oppose, or propose or accept a compromise with respect to litigation
+				  concerning any benefit or assistance the principal may be entitled to
+				  receive under a statute, rule, or regulation.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(f)</b></span><span color="#000000">&nbsp;Receive
+				  the financial proceeds of a claim described in&nbsp;</span><span color="#000000">par.&nbsp;(d)</span><span color="#000000">&nbsp;and
+				  conserve, invest, disburse, or use for a lawful purpose anything so
+				  received.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <br/>
+
+				  </p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>244.55</b></span><span color="#000000"><b>&nbsp;Retirement
+				  plans.</b></span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(1)</b></span><span color="#000000"> In
+				  this section, “retirement plan&quot; means a plan or account
+				  created by an employer, the principal, or another individual to
+				  provide retirement benefits or deferred compensation of which the
+				  principal is a participant, beneficiary, or owner, including the
+				  following plans or accounts:</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;An
+				  individual retirement account under section&nbsp;408&nbsp;of the
+				  Internal Revenue Code.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;A
+				  Roth individual retirement account under section&nbsp;408A&nbsp;of
+				  the Internal Revenue Code.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;A
+				  deemed individual retirement account under section&nbsp;408&nbsp;(q)
+				  of the Internal Revenue Code.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(d)</b></span><span color="#000000">&nbsp;An
+				  annuity or mutual fund custodial account under section&nbsp;403&nbsp;(b)
+				  of the Internal Revenue Code.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(e)</b></span><span color="#000000">&nbsp;A
+				  pension, profit-sharing, stock bonus, or other retirement plan
+				  qualified under section&nbsp;401&nbsp;(a) of the Internal Revenue
+				  Code.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(f)</b></span><span color="#000000">&nbsp;A
+				  plan under section&nbsp;457&nbsp;(b) of the Internal Revenue Code.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(g)</b></span><span color="#000000">&nbsp;A
+				  nonqualified deferred compensation plan under section&nbsp;409A&nbsp;of
+				  the Internal Revenue Code.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(2)</b></span><span color="#000000"> Unless
+				  the power of attorney otherwise provides, language in a power of
+				  attorney granting general authority with respect to retirement plans
+				  authorizes the agent to do all of the following:</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Select
+				  the form and timing of payments under a retirement plan and withdraw
+				  benefits from a plan.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Make
+				  a rollover, including a direct trustee-to-trustee rollover, of
+				  benefits from one retirement plan to another.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(c)</b></span><span color="#000000">Establish
+				  a retirement plan in the principal's name.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(d)</b></span><span color="#000000">&nbsp;Make
+				  contributions to a retirement plan.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(e)</b></span><span color="#000000">&nbsp;Exercise
+				  investment powers available under a retirement plan.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(f)</b></span><span color="#000000">&nbsp;Borrow
+				  from, sell assets to, or purchase assets from a retirement plan.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <br/>
+
+				  </p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>244.56</b></span><span color="#000000"><b>&nbsp;Taxes.</b></span><span color="#000000">&nbsp;Unless
+				  the power of attorney otherwise provides, language in a power of
+				  attorney granting general authority with respect to taxes authorizes
+				  the agent to do all of the following:</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(1)</b></span><span color="#000000"> Prepare,
+				  sign, and file federal, state, local, and foreign income, gift,
+				  payroll, property, Federal Insurance Contributions Act, and other tax
+				  returns, claims for refunds, requests for extension of time,
+				  petitions regarding tax matters, and any other tax-related documents,
+				  including receipts, offers, waivers, consents, including consents and
+				  agreements under section&nbsp;</span><a href="https://docs.legis.wisconsin.gov/document/usc/26%20USC%202032A"><span color="#426986">2032A</span></a><span color="#000000">&nbsp;of
+				  the Internal Revenue Code, closing agreements, and any power of
+				  attorney required by the Internal Revenue Service or other taxing
+				  authority with respect to a tax year upon which the statute of
+				  limitations has not run and the following 25 tax years.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(2)</b></span><span color="#000000"> Pay
+				  taxes due, collect refunds, post bonds, receive confidential
+				  information, and contest deficiencies determined by the Internal
+				  Revenue Service or other taxing authority.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(3)</b></span><span color="#000000"> Exercise
+				  any election available to the principal under federal, state, local,
+				  or foreign tax law.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(4)</b></span><span color="#000000"> Act
+				  for the principal in all tax matters for all periods before the
+				  Internal Revenue Service, or other taxing authority.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <br/>
+
+				  </p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>244.57</b></span><span color="#000000"><b>&nbsp;Gifts.</b></span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(1)</b></span><span color="#000000"> In
+				  this section, a gift “for the benefit of&quot; a person includes a
+				  gift to a trust, an account under</span><span color="#000000">&nbsp;ss.&nbsp;</span><a href="https://docs.legis.wisconsin.gov/document/statutes/54.854"><span color="#426986">54.854</span></a><span color="#000000">&nbsp;to&nbsp;</span><a href="https://docs.legis.wisconsin.gov/document/statutes/54.898"><span color="#426986">54.898</span></a><span color="#000000">,
+				  and a tuition savings account or prepaid tuition plan as defined
+				  under section&nbsp;</span><a href="https://docs.legis.wisconsin.gov/document/usc/26%20USC%20529"><span color="#426986">529</span></a><span color="#000000">&nbsp;of
+				  the Internal Revenue Code.</span></p>
+				  <p class="western" style="; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(2)</b></span><span color="#000000"> Unless
+				  the power of attorney otherwise provides, language in a power of
+				  attorney granting general authority with respect to gifts authorizes
+				  the agent to do all of the following:</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(a)</b></span><span color="#000000">&nbsp;Make
+				  outright to, or for the benefit of, a person, a gift of any of the
+				  principal's property, including by the exercise of a presently
+				  exercisable general power of appointment held by the principal, in an
+				  amount per donee not to exceed the annual dollar limits of the
+				  federal gift tax exclusion under section&nbsp;2503&nbsp;(b) of the
+				  Internal Revenue Code, without regard to whether the federal gift tax
+				  exclusion applies to the gift, or if the principal's spouse agrees to
+				  consent to a split gift under section&nbsp;2513&nbsp;of the Internal
+				  Revenue Code, in an amount per donee not to exceed twice the annual
+				  federal gift tax exclusion limit.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(b)</b></span><span color="#000000">&nbsp;Consent,
+				  under section&nbsp;2513&nbsp;of the Internal Revenue Code, to the
+				  splitting of a gift made by the principal's spouse in an amount per
+				  donee not to exceed the aggregate annual gift tax exclusions for both
+				  spouses.</span></p>
+				  <p class="western" style=" ; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>(c)</b></span><span color="#000000">&nbsp;Make
+				  a gift of the principal's property only as the agent determines is
+				  consistent with the principal's objectives if actually known by the
+				  agent and, if unknown, as the agent determines is consistent with the
+				  principal's best interest based on all relevant factors, including
+				  all of the following:</span></p>
+				  <p class="western" style="margin-left: 0.67in; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>1.</b></span><span color="#000000">&nbsp;The
+				  value and nature of the principal's property.</span></p>
+				  <p class="western" style="margin-left: 0.67in; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>2.</b></span><span color="#000000">&nbsp;The
+				  principal's foreseeable obligations and need for maintenance.</span></p>
+				  <p class="western" style="margin-left: 0.67in; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>3.</b></span><span color="#000000">&nbsp;Minimization
+				  of taxes, including income, estate, inheritance, generation skipping
+				  transfer, and gift taxes.</span></p>
+				  <p class="western" style="margin-left: 0.67in; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>4.</b></span><span color="#000000">&nbsp;Eligibility
+				  for a benefit, a program, or assistance under a statute, rule, or
+				  regulation.</span></p>
+
+				  <p class="western" style="margin-left: 0.67in; ; margin-bottom: 0in; line-height: 100%; background: #ffffff">
+				  <span color="#000000"><b>5.</b></span><span color="#000000">&nbsp;The
+				  principal's personal history of making or joining in making gifts.</span></p>
+
+
+
+				@endif
+
+				</div>
+
+				</body>
+				</html>

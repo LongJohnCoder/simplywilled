@@ -2,11 +2,30 @@
 <html>
 <head>
 	<title></title>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
 
+	</style>
 </head>
 
-
-<body lang="en-US" dir="ltr">
+<body>
+<script type="text/php">
+		if ( isset($pdf) ) {
+				$pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+		}
+</script>
+<div id="footer">
+	<div style="">
+		@if($attorneyPowers['isDurable'] == 1)
+			Durable
+		@endif
+		Power of Attorney for Management of Finances, Property, and Personal Affairs of <br>{{$tellUsAboutYou['fullname']}}<br>
+	</div>
+</div>
 <p align="center" style="margin-bottom: 0.06in; ">
 
 
@@ -183,7 +202,7 @@
 	<span style="font-family:'Times New Roman, serif';">(8) 	This power of attorney
 	becomes effective immediately unless you state otherwise herein.</span></p>
 
-	<p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; ">
+	<p align="justify" style="margin-left: 0.5in; page-break-before: always; margin-bottom: 0in; ">
 	<span style="font-family:'Times New Roman, serif';">(9) 	You can amend or change this
 	</span>
 
@@ -484,14 +503,13 @@
 	</ol>
 
 
-	<p align="justify" style="margin-bottom: 0in; "><br/>
-
+	<p align="justify" style="margin-bottom: 0in; page-break-before: always">
 	</p>
 
 
 	<ol start="2">
 		<li>
-		<p align="justify" style="margin-bottom: 0in; margin-top: 0;">
+		<p align="justify" style="margin-bottom: 0in; margin-top: 0; ">
 		<span style="font-family:'Times New Roman, serif';"><u>Personal Property</u></span><span style="font-family:'Times New Roman, serif';">.
 		 To take any actions for the management or maintenance of any
 		personal property in which I own an interest when this Power is
@@ -582,7 +600,7 @@
 
 
 
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
+	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; page-break-before: always">
 		<span style="font-family:'Times New Roman, serif';">(5)	</span>
 		<span style="font-family:'Times New Roman, serif';"><u>Stock
 		and Bond Transactions</u></span><span style="font-family:'Times New Roman, serif';">.
@@ -615,10 +633,7 @@
 		in person or by proxy, and, to enter into voting trusts and consent
 		to limitations on the right to vote.</span>
 	</p>
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
-	<br/>
 
-	</p>
 
 
 	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
@@ -629,10 +644,7 @@
 	for the payment thereof any or all of my securities, real estate,
 	personal property, or other property of whatever nature and wherever
 	situated, held by me personally or in trust for my benefit.</span></p>
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
-	<br/>
 
-	</p>
 	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
 	<span style="font-family:'Times New Roman, serif';">(7)	</span><span style="font-family:'Times New Roman, serif';"><u>Safe
 	Deposit Boxes</u></span><span style="font-family:'Times New Roman, serif';">. To hire
@@ -648,10 +660,7 @@
 	contents thereof, and to surrender or relinquish any safe deposit
 	box. </span>
 	</p>
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
-	<br/>
 
-	</p>
 
 
 
@@ -673,10 +682,7 @@
 	to the extent permitted under the terms of those contracts.  My Agent
 	shall not have the power to cash in or change the beneficiary of any
 	life insurance policy.</span></p>
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
-	<br/>
 
-	</p>
 
 	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
 	<span style="font-family:'Times New Roman, serif';">(8)	</span><span style="font-family:'Times New Roman, serif';"><u>Beneficial
@@ -696,10 +702,7 @@
 	participate in, and oppose litigation to remove, substitute, or
 	surcharge a fiduciary; and, conserve, invest, disburse and use
 	anything received for an authorized purpose.</span></p>
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
-	<br/>
 
-	</p>
 	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
 	<span style="font-family:'Times New Roman, serif';">(9)	</span><span style="font-family:'Times New Roman, serif';"><u>Digital
 	Assets</u></span><span style="font-family:'Times New Roman, serif';">. To take any
@@ -724,13 +727,10 @@
 	@endif
 
 	<span style="font-family:'Times New Roman, serif';">.</span></p>
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
-	<br/>
-
-	</p>
 
 
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; ">
+
+	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; page-break-before: always">
 	<span style="font-family:'Times New Roman, serif';">(10)	</span><span style="font-family:'Times New Roman, serif';"><u>Retirement
 	Plans and Benefits</u></span><span style="font-family:'Times New Roman, serif';">. In
 	connection with any pension, profit sharing or stock bonus plan,
@@ -800,11 +800,6 @@
 
 	@endif
 
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
-	<br/>
-
-	</p>
-
 
 
 	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
@@ -829,10 +824,8 @@
 	waivers, and all other matters in any way affecting the process of
 	any claim or litigation; and, satisfy judgments that have been
 	rendered against me.</span></p>
-	<p align="justify" style="margin-bottom: 0in; "><br/>
 
-	</p>
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
+	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; page-break-before: always">
 	<span style="font-family:'Times New Roman, serif';">(12)	</span><span style="font-family:'Times New Roman, serif';"><u>Tax
 	Matters</u></span><span style="font-family:'Times New Roman, serif';">. To prepare,
 	complete, sign, and file any local, state and federal tax returns on
@@ -850,10 +843,7 @@
 	liability, including audits; and, to exercise any elections that may
 	be available to me under applicable state or federal tax laws or
 	regulations.</span></p>
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
-	<br/>
 
-	</p>
 	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
 	<span style="font-family:'Times New Roman, serif';">(13)	</span><span style="font-family:'Times New Roman, serif';"><u>Personal
 	and Family Maintenance</u></span><span style="font-family:'Times New Roman, serif';">.
@@ -1061,7 +1051,7 @@
 
 
 
-	<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><b>SPECIAL
+	<p align="justify" style="margin-bottom: 0in; page-break-before: always"><span style="font-family:'Times New Roman, serif';"><b>SPECIAL
 	INSTRUCTIONS: </b></span><span style="font-family:'Times New Roman, serif';">On the
 	following lines are any special instructions limiting or extending
 	the powers you give to your agent (Write “None” if no additional
@@ -1226,7 +1216,7 @@
 	<p align="justify" style="margin-bottom: 0in; "><br/>
 
 	</p>
-	<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><b>Revocation
+	<p align="justify" style="margin-bottom: 0in; page-break-before: always"><span style="font-family:'Times New Roman, serif';"><b>Revocation
 	and Amendment</b></span><span style="font-family:'Times New Roman, serif';">. I
 	revoke all prior General Powers of Attorney and retain the right to
 	revoke or amend this document and to substitute other agent in place
@@ -1254,9 +1244,7 @@
 	person(s) for appointment, who shall serve without bond being
 	required, or if required to give bond, shall be exempt from
 	furnishing any surety thereon:&nbsp;</span></p>
-	<p align="justify" style="margin-bottom: 0in; page-break-after: always;"><br/>
 
-	</p>
 
 	<p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; ">
 	<span style="font-family:'Times New Roman, serif';"><b>CONSERVATOR OF MY ESTATE:</b></span><span style="font-family:'Times New Roman, serif';">
@@ -1307,25 +1295,17 @@
 	<p align="justify" style="text-indent: 0.5in; margin-bottom: 0in; ">
 	<span style="font-family:'Times New Roman, serif';">(SELECT OR OMIT EITHER OPTION
 	BELOW, BUT NEVER SELECT BOTH.)</span></p>
-	<p align="justify" style="margin-bottom: 0in; "><br/>
 
-	</p>
 	<p align="justify" style="margin-left: 1in; margin-bottom: 0in; ">
 	<span style="font-family:'Times New Roman, serif';"><b>(If you select your
 	above-named agent, please INITIAL below.)</b></span><span style="font-family:'Times New Roman, serif';">&nbsp;</span></p>
 	<p align="justify" style="margin-left: 1in; margin-bottom: 0in; ">
 	<span style="font-family:'Times New Roman, serif';">( _____ ) my Agent (or successor
 	Agent) named above&nbsp;</span></p>
-	<p align="justify" style="margin-left: 1in; margin-bottom: 0in; ">
-	<br/>
 
-	</p>
 	<p align="justify" style="margin-left: 1in; margin-bottom: 0in; ">
 	<span style="font-family:'Times New Roman, serif';"><b>--OR--</b></span></p>
-	<p align="justify" style="margin-left: 1in; margin-bottom: 0in; ">
-	<br/>
 
-	</p>
 	<p align="justify" style="margin-left: 1in; margin-bottom: 0in; ">
 	<span style="font-family:'Times New Roman, serif';"><b>(If you select someone other
 	than your above-named agent, please HANDWRITE your designation
@@ -1351,9 +1331,7 @@
 	<p align="justify" style="margin-bottom: 0in; "><br/>
 
 	</p>
-	<p align="justify" style="margin-bottom: 0in; "><br/>
 
-	</p>
 	<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><b>Severability</b></span><span style="font-family:'Times New Roman, serif';">.
 	If any of the provisions of this Power are found to be invalid for
 	any reason, such invalidity shall not affect any of the other
@@ -1415,7 +1393,7 @@
 
 
 
-	<p align="center" style="margin-bottom: 0in; ">
+	<p align="center" style="margin-bottom: 0in; page-break-before: always">
 	<span style="font-family:'Times New Roman, serif';"><b>SIGNATURE AND ACKNOWLEDGMENT</b></span></p>
 
 
@@ -1986,18 +1964,6 @@
 
 	@endif
 
-
-
-		<p align="justify" style="margin-bottom: 0in; "><br/>
-
-		</p>
-		<p align="justify" style="margin-bottom: 0in; "><br/>
-
-		</p>
-
-		<p style="margin-bottom: 0in; "><br/>
-
-		</p>
 
 		<p align="center" style="margin-bottom: 0in;  page-break-before: always">
 		<span style="font-family:'Times New Roman, serif';"><b>NOTICE TO AGENT&nbsp;</b></span></p>
