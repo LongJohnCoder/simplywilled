@@ -3,75 +3,27 @@
 
 <head>
     <title></title>
-    <!-- <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
+    <style>
+  	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+  	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+  	padding-top: 5px;
+  	}
+  	 #footer .page:after { content: counter(page, none); }
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Garamond;
-        }
-        /* width */
-
-        ::-webkit-scrollbar {
-            width: 14px;
-        }
-        /* Track */
-
-        ::-webkit-scrollbar-track {
-            background: #0f69bb;
-        }
-        /* Handle */
-
-        ::-webkit-scrollbar-thumb {
-            background: #99cc33;
-            border-radius: 5px;
-        }
-        /* Handle on hover */
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #57ab2a;
-        }
-
-        .docContainer {
-            width: 700px;
-            margin: 0 auto;
-        }
-
-        .docPage {
-            width: 700px !important;
-            height: 991px!important;
-            background: #fff;
-            box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
-            margin: 20px 0;
-            box-sizing: border-box;
-            padding: 40px;
-        }
-
-        p {
-            margin-bottom: 0.1in;
-            direction: ltr;
-            line-height: 120%;
-            text-align: left;
-            orphans: 2;
-            widows: 2
-        }
-
-        p.western {
-            font-family: "Times New Roman", serif
-        }
-
-        p.ctl {
-            font-family: "Times New Roman"
-        }
-    </style> -->
+  	</style>
 </head>
 
 <body>
-
+  <script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Advance Directive for Health Care of <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
     <div>
         <!-- Page 1 -->
         <div style="page-break-after: always;">
@@ -93,7 +45,7 @@
 
                 </p> -->
                 <p class="western" style="margin-bottom: 0in; ">
-                    <span>Date of Birth: {{$tellUsAboutYou['dob']}}</p>
+                    <span>Date of Birth: {{date('jS M, Y', strtotime($tellUsAboutYou['dob']))}}</p>
                 <!-- <p class="western" style="margin-bottom: 0in; ">
                     <br/>
 
@@ -374,7 +326,7 @@
                 </p>
                 <p class="western" style="margin-top: 0.25in; margin-bottom: 0.03in;  text-align:center;">
                     <span size="4" style="font-size: 14pt"><b>PART TWO:  TREATMENT PREFERENCES</b></span></p>
-                
+
                 <p class="western" style="margin-bottom: 0in; ">
                     [PART TWO will be effective only if you are unable to communicate your treatment preferences after reasonable and appropriate efforts have been made to communicate with you about your treatment preferences. PART TWO will be effective even if PART ONE is not completed. If you have not selected a health care agent in PART ONE, or if your health care agent is not available, then PART TWO will provide your physician and other health care providers with your treatment preferences. If you have selected a health care agent in PART ONE, then your health care agent will have the authority to make all health care decisions for you regarding matters covered by PART TWO. Your health care agent will be guided by your treatment preferences and other factors described in Section (4) of PART ONE.]</p>
             </div>
@@ -497,7 +449,7 @@
                     <br/>
 
                 </p> -->
-               
+
                 <p class="western" style="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; ">
                     <br/>
 
@@ -590,12 +542,12 @@
                     (B) _________ (Initials) I nominate the following person to serve as my guardian:</p>
                 <p class="western" style="margin-top: 0.19in; margin-bottom: 0in; ">
                     <b>Name: </b><br>
-               
-                
+
+
                     <b>Address:</b><br>
-                
+
                     <b>Telephone Number:</b><br>
-               
+
                     <b>Email Address:  </b>
                 </p>
                 <p class="western" style="margin-top: 0in; margin-bottom: 0in; ">
@@ -667,13 +619,13 @@
                     <br/>
 
                 </p> -->
-               
+
                 <p class="western" style="margin-bottom: 0in; ">
                     <span>_____________________________________________</span><span>    </span><span><b>    </b></span><span>(Date)</span><span>___________________</span></p>
                 <p class="western" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
                     <a name="_GoBack"></a>
                     <span>{{ucwords($tellUsAboutYou['fullname'])}}<br>(Signature of Declarant)</span></p>
-                
+
             </div>
             <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
                 Advance Directive for Health Care of
@@ -686,8 +638,8 @@
         <!-- Page 9 -->
         <div style="">
             <div>
-               
-            
+
+
                 <p class="western" style="margin-bottom: 0in;  text-align:center;">
                     <span size="4" style="font-size: 14pt"><b>WITNESSES</b></span></p>
                 <!-- <p class="western" style="margin-bottom: 0in; ">
@@ -701,7 +653,7 @@
                     <br/>
 
                 </p> -->
-               
+
                 <p align="left" style="margin-left: 0.19in; text-indent: -0.19in; margin-bottom: 0in; ">
                     <br/>
 
@@ -713,21 +665,21 @@
                 <p style="margin-top: 0;"><span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">[signature]</span></span>
                     </span>
                 </p>
-                
+
                 <p style=" "><span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span>
                     </span>
                 </p>
                 <p style="margin-top: 0;"><span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[name printed]</span></span>
                     </span>
                 </p>
-                
+
                 <p style=""><span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span>
                     </span>
                 </p>
                 <p style="margin-top: 0;"><span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[street address]</span></span>
                     </span>
                 </p>
-                
+
                 <p style=""><span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span>
                     </span>
                 </p>
@@ -745,28 +697,28 @@
                 <p style="margin-top: 0;"><span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">[signature]</span></span>
                     </span>
                 </p>
-                
+
                 <p style=""><span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span>
                     </span>
                 </p>
                 <p style="margin-top: 0;"><span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[name printed]</span></span>
                     </span>
                 </p>
-                
+
                 <p style=""><span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span>
                     </span>
                 </p>
                 <p style="margin-top: 0;"><span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[street address]</span></span>
                     </span>
                 </p>
-                
+
                 <p style=""><span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span>
                     </span>
                 </p>
                 <p style="margin-top: 0;"><span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[city, state]</span></span>
                     </span>
                 </p>
-                
+
                 <p class="western" style="margin-bottom: 0in; "><i><b>[This form does not need to be notarized and a copy of a validly executed advance directive for health care carries the same meaning and effect as the original document.]</b></i></p>
             </div>
             <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">

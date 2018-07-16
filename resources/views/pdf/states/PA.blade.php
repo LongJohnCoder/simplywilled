@@ -53,9 +53,27 @@
 */
 
     </style>
+    <style>
+  	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+  	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+  	padding-top: 5px;
+  	}
+  	 #footer .page:after { content: counter(page, none); }
+
+  	</style>
 </head>
 
 <body>
+  <script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Durable Health Care Power of Attorney and Living Will of <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
 
 <div class="docContainer" id="doc">
 
@@ -78,13 +96,13 @@
       REMARKS ON</b></span></p>
             <p  style="margin-bottom: 0in; ; text-align:center; margin-top: 0;"><span face="Times New Roman, serif"><b>HEALTH
       CARE DECISION MAKING</b></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">You
       have the right to decide the type of health care you want. Should you
       become unable to understand, make, or communicate decisions about
       medical care, your wishes for medical treatment are most likely to be
       followed if you express those wishes in advance by:</span></span></span></p>
-            
+
             <p  style="margin-left: 0.63in; text-indent: -0.26in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">(1)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">naming
       a health care agent to decide treatment for you; and</span></span></span></p>
@@ -92,7 +110,7 @@
       <span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">(2)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">giving
       health care treatment instructions to your health care agent or
       health care provider.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">An
       advance health care directive is a written set of instructions
       expressing your wishes for medical treatment. It may contain a health
@@ -102,7 +120,7 @@
       choices regarding the initiation, continuation, withholding, or
       withdrawal of life-sustaining treatment and other specific
       directions.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">You
       may limit your health care agent's involvement in deciding your
       medical treatment so that your health care agent will speak for you
@@ -118,18 +136,18 @@
       introduction or continuation of medical treatment. You, and not your
       health care agent, remain responsible for the cost of your medical
       care.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">If
       you do not write down your wishes about your health care in advance,
       and if later you become unable to understand, make, or communicate
       these decisions, those wishes may not be honored because they may
       remain unknown to others.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">A
       health care provider who refuses to honor your wishes about health
       care must tell you of its refusal and help to transfer you to a
       health care provider who will honor your wishes.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">You
     should give a copy of your advance health care directive (a living
     will, health care power of attorney or a document containing both) to
@@ -172,7 +190,7 @@
       regarding medical treatment. The following document is an example of
       an advance health care directive that combines a health care power of
       attorney with a living will.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0.13in; ; text-align:center;"><span face="Times New Roman, serif"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt"><i><span style="text-decoration: none"><b>NOTES
       ABOUT THE USE OF THIS DOCUMENT</b></span></i></span></span></span></p>
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">If
@@ -180,23 +198,23 @@
       care directive, you should consult with your physician and your
       attorney to make sure that your wishes are clearly expressed and
       comply with the law.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">If
       you decide to use this document but disagree with any of its
       statements, you may cross out those statements. </span></span></span>
             </p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">You
       may add comments to this document or use your own document to help
       your physician or health care agent decide your medical care.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">This
       form is designed to give your health care agent broad powers to make
       health care decisions for you whenever you cannot make them for
       yourself. It is also designed to express a desire to limit or
       authorize care if you have an end-stage medical condition or are
       permanently unconscious.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">If
       you do not desire to give your health care agent broad powers, or you
       do not wish to limit your care if you have an end-stage medical
@@ -207,7 +225,7 @@
       AGENT TO BE ABLE TO SPEAK FOR YOU IMMEDIATELY. In these situations,
       it is particularly important that you consult with your attorney and
       physician to make sure that your wishes are clearly expressed.</span></span></span></p>
-           
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">This
       document allows you to tell your health care agent your goals if you
       have an end-stage medical condition or other extreme and irreversible
@@ -238,7 +256,7 @@
       your instructions or whether you want your health care agent to be
       able to decide at the time what course of treatment the health care
       agent thinks most fully reflects your wishes and values.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">If
       you are a woman and diagnosed as being pregnant at the time a health
       care decision would otherwise be made pursuant to this document, the
@@ -247,7 +265,7 @@
       hydration, be withheld or withdrawn from you, unless your attending
       physician and an obstetrician who have examined you certify in your
       medical record that the life-sustaining treatment:</span></span></span></p>
-            
+
             <p  style="margin-left: 0.63in; text-indent: -0.25in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">(1)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">will
       not maintain you in such a way as to permit the continuing
@@ -258,12 +276,12 @@
             <p  style="margin-left: 0.63in; text-indent: -0.25in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">(3)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">will
       cause pain to you that cannot be alleviated by medication.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">A
       physician is not required to perform a pregnancy test on you unless
       the physician has reason to believe that you may be pregnant. </span></span></span>
             </p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">Pennsylvania
       law protects your health care agent and health care providers from
       any legal liability for following in good faith your wishes as
@@ -271,7 +289,7 @@
       It does not otherwise change professional standards or excuse
       negligence in the way your wishes are carried out. If you have any
       questions about the law, consult an attorney for guidance.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">This
       form and explanation is not intended to take the place of specific
       legal or medical advice for which you should rely upon your own
@@ -317,7 +335,7 @@
                 <span face="Times New Roman, serif">appoint the
       person named below to be my health care agent to make health and
       personal care decisions for me.</span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">Effective
       immediately and continuously until my death or revocation by a
       writing signed by me or someone authorized to make health care
@@ -456,7 +474,7 @@
       <span style="font-family: 'Times New Roman; serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'true'"> During such time as co-Agents are acting, only one signature shall be
       required</span></span></span><!--<span size="3" style="font-size: 12pt">END
       IF</span>--><span ><span size="3" style="font-size: 12pt">.</span></span><span ><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">IF
       YOU DO NOT NAME A HEALTH CARE AGENT, HEALTH CARE PROVIDERS WILL ASK
       YOUR FAMILY OR AN ADULT WHO KNOWS YOUR PREFERENCES AND VALUES FOR
@@ -464,7 +482,7 @@
       THAT YOU MAY NOT APPOINT YOUR DOCTOR OR OTHER HEALTH CARE PROVIDER AS
       YOUR HEALTH CARE AGENT, UNLESS RELATED TO YOU BY BLOOD, MARRIAGE OR
       ADOPTION.</span></span></span></p>
-            
+
             @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == true)
             <p style="margin-bottom: 0in; "><span face="Times New Roman, serif">If
       my Agent is not available or if my health care agent is my spouse and
@@ -589,7 +607,7 @@
       life-threatening conditions in the same manner as directed for an
       end-stage medical condition or state of permanent unconsciousness as
       I have indicated below.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">I
       agree ________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
       disagree ________</span></span></span></p>
@@ -639,26 +657,26 @@
       IRREVERSIBLE VEGETATIVE STATE AND THERE IS NO REALISTIC HOPE OF
       SIGNIFICANT RECOVERY, ALL OF THE FOLLOWING APPLY: </span></span></span>
             </p>
-           
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span face="Times New Roman, serif"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><b>(Cross
       out any treatment instructions with which you do not agree)</b></span></span></span></span></span></p>
-            
+
             <p  style="margin-left: 0.57in; text-indent: -0.2in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">1.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
       direct that I be given health care treatment to relieve pain or
       provide comfort even if such treatment might shorten my life,
       suppress my appetite or my breathing, or be habit forming.</span></span></span></p>
-            
+
             <p  style="margin-left: 0.57in; text-indent: -0.2in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">2.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
       direct that all life prolonging procedures be withheld or withdrawn.</span></span></span></p>
-            
+
             <p style="margin-left: 0.56in; text-indent: -0.19in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">3.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
       specifically do not want any of the following as life prolonging
       procedures: </span></span></span>
             </p>
-            
+
             <p style="margin-left: 0.88in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt"><b>(If
       you wish to receive any of these treatments, </b></span></span></span>
@@ -666,7 +684,7 @@
             <p style="margin-left: 0.88in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt"><b>write
       “I do want” after the treatment)</b></span></span></span></p>
-            
+
             <p style="margin-left: 0.73in; text-indent: -0.19in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">heart-lung
       resuscitation (CPR)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">__________________________________</span></span></span></p>
@@ -683,24 +701,24 @@
       radiation treatment</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">________________________________</span></span></span></p>
             <p style="margin-left: 0.73in; text-indent: -0.19in; margin-bottom: 0in; ">
                 <span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">antibiotics</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">__________________________________________________</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0.09in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">Please
       indicate whether you want nutrition (food) or hydration (water)
       medically supplied by a tube into your nose, stomach, intestine,
       arteries, or veins if you have an end-stage medical condition or are
       permanently unconscious and there is no realistic hope of significant
       recovery.</span></span></span></p>
-            
+
             <p align="left" style="margin-bottom: 0.09in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><b>(Initial
       only one statement.)</b></span></span></span></p>
-            
+
             <p  style="margin-bottom: 0.09in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">TUBE
       FEEDINGS</span></span></span></p>
             <p  style="margin-bottom: 0.09in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">_____</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
       want tube feedings to be given.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0.09in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt"><b>OR</b></span></span></span></p>
-            
+
             <p  style="margin-bottom: 0.09in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">NO
       TUBE FEEDINGS</span></span></span></p>
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">_____</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
@@ -727,21 +745,21 @@
             <p  style="margin-left: 0.19in; text-indent: -0.19in; margin-top: 0.19in; margin-bottom: 0.09in; ; text-align:center;">
       <span face="Times New Roman, serif"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt"><b>HEALTH
       CARE AGENT'S USE OF INSTRUCTIONS</b></span><span size="3" style="font-size: 12pt"><b>&nbsp;</b></span></span></span></p>
-            
+
             <p align="left" style="margin-bottom: 0.09in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><b>(Initial
     only one statement.)</b></span></span></span></p>
-            
+
             <p  style="margin-bottom: 0.09in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">_____</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">My
     health care agent must follow these instructions.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0.09in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt"><b>OR</b></span></span></span></p>
-            
+
             <p style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">_____</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">These
       instructions are only guidance. My health care agent shall have final
       say and may override any of my instructions. (Indicate any
       exceptions)</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">If
       I did not appoint a health care agent, these instructions shall be
       followed.</span></span></span></p>
@@ -822,7 +840,7 @@
       </span><span size="3" style="font-size: 12pt">____________</span><span size="3" style="font-size: 12pt">,
       revoking all previous health care powers of attorney and health care
       treatment instructions.</span></span></span></p>
-            
+
             <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
                 <span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">__________________________________________</span></span></span></p>
             <p  style="margin-bottom: 0.08in; ; orphans: 0; widows: 0; margin-top: 0;">
@@ -833,8 +851,8 @@
                 ________________________________
             @endif
       </b></span></p>
-            
-            
+
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="2" style="font-size: 10pt">Two
       witnesses at least 18 years of age are required by Pennsylvania law
       and should witness your signature in each other's presence. A person
@@ -842,7 +860,7 @@
       principal may not be a witness. </span><span face="Times New Roman, serif"><span size="1" style="font-size: 7pt"><span size="2" style="font-size: 10pt">(It
       is preferable if the witnesses are not your heirs, nor your
       creditors, nor employed by any of your health care providers.)</span></span></span></span></span></p>
-           
+
             <p class="western" style="margin-bottom: 0in; "><span ><b>WITNESS
       1</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
       </span><span >______________________</span></p>
@@ -856,8 +874,8 @@
                 <span >							</span><span >______________________</span></p>
             <p class="western" align="justify" style="margin-bottom: 0.06in; ; padding-left: 350px;">
                 <span style="padding-left: 40px;">								[city, state, zip]</span></p>
-            
-            
+
+
             <p class="western" style="margin-bottom: 0in; "><span ><b>WITNESS
       2</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
       </span><span >______________________</span></p>
@@ -871,14 +889,14 @@
                 <span >							</span><span >______________________</span></p>
             <p class="western" align="justify" style="margin-bottom: 0.06in; ; padding-left: 350px;">
                 <span style="padding-left: 40px;">								[city, state, zip]</span></p>
-            
-            
+
+
             <p  style="margin-bottom: 0in; ; text-align:center;"><a name="_GoBack"></a>
       <span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt"><b>(Notarization
       of document is not required by Pennsylvania law, but if the document
       is both witnessed and notarized, it is more likely to be honored by
       the laws of some other states.)</b></span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt">On
       this..........day of ..........,....., ……. before me personally
       appeared the aforesaid declarant and principal, to me known to be the
@@ -886,12 +904,12 @@
       acknowledged that he/she executed the same as his/her free act and
       deed.  </span></span></span>
             </p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt">IN
       WITNESS WHEREOF, I have hereunto set my hand and affixed my official
       seal in the County of.........., State of Pennsylvania, the day and
       year first above written.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt">Notary
       Public						My commission expires</span></span></span></p>
         </div>

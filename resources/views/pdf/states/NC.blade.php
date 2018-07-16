@@ -2,14 +2,33 @@
 <html>
 <head>
 	<title></title>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
+
+	</style>
 </head>
+
 <body>
+<script type="text/php">
+		if ( isset($pdf) ) {
+				$pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+		}
+</script>
+<div id="footer">
+	<div style="">
+		Health Care Power of Attorney and Living Will of <br>{{$tellUsAboutYou['fullname']}}<br>
+	</div>
+</div>
 
 <div>
 	<!-- Page 1 -->
 <div>
-  
-  
+
+
   <div>
 	    <p  style="margin-bottom: 0in; text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="4" style="font-size: 16pt"><b>STATE
 	OF NORTH CAROLINA</b></span></span></span></p>
@@ -132,7 +151,7 @@
 
 		<span>
 			<span size="3" style="font-size: 12pt">Name:
-    			<span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['fullname']}} </span> 
+    			<span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['fullname']}} </span>
          	</span>
         </span>
 
@@ -158,7 +177,7 @@
 		<span style="font-family:'Times New Roman, serif'">
 			<span size="2" style="font-size: 9pt">
 				<span>
-					<span size="3" style="font-size: 12pt">Telephone: 
+					<span size="3" style="font-size: 12pt">Telephone:
 						<span> {{$healthFinance['phone']}} </span>
       				</span>
       			</span>
@@ -172,7 +191,7 @@
 			<span size="2" style="font-size: 9pt">
 				<span>
 					<span size="3" style="font-size: 12pt">Address:
-						<span style="text-transform: capitalize"> {{$healthFinance['address']}} </span> 
+						<span style="text-transform: capitalize"> {{$healthFinance['address']}} </span>
       				</span>
       			</span>
       		</span>
@@ -201,20 +220,20 @@
       <br/>
 
     </p>
-      
-    
+
+
     @if($healthFinance['anyBackupAgent'] === 'true')
 
-    
+
     <ol type="A" start="2" style="margin-left: 50px;">
       <li>
       <p  style="margin-bottom: 0in; ">
 	    <span>
 	    	<span style="font-family:'Times New Roman, serif'">
 
-	    		
+
 	    		<span size="2" style="font-size: 9pt">
-	    			
+
 	    			<span>
 	    				<span size="3" style="font-size: 12pt">Name:
 	    					<span style="text-transform: capitalize"> {{$healthFinance['backupFullname']}} </span>
@@ -236,15 +255,15 @@
 							</span>
         				</span>
         			</span>
-					
+
         		</span>
         	</span>
         </span>
     	</p>
       </li>
     </ol>
-    
-    
+
+
     <p  style="margin-left: 0.75in; margin-bottom: 0in; ">
       <span>
       	<span style="font-family:'Times New Roman, serif'">
@@ -258,7 +277,7 @@
       	</span>
       </span>
   	</p>
-    
+
     <p  style="margin-left: 0.75in; margin-bottom: 0in; ">
       <span>
       	<span style="font-family:'Times New Roman, serif'">
@@ -286,15 +305,15 @@
 
       				<span style="text-transform: capitalize"> {{$healthFinance['backupState']}}, </span>
 
-      				<span style="text-transform: capitalize"> {{$healthFinance['backupZip']}} </span> 
+      				<span style="text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
       			</span>
       		</span>
       	</span>
       </span>
   	</p>
     @endif
-    
-    
+
+
     <p  style="margin-top: 0.11in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'">
       	<span size="2" style="font-size: 9pt"><span style="letter-spacing: -0.1pt"><span size="3" style="font-size: 12pt">Any
@@ -348,9 +367,9 @@
 <!-- Page 2 -->
 
 <!-- Page 3 -->
-<div>
+<div style="page-break-before: always">
   <div>
-    <p  style="margin-top: 0.13in; margin-bottom: 0in; page-break-before: always">
+    <p  style="margin-top: 0.13in; margin-bottom: 0in; ">
 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span style="letter-spacing: 0.1pt"><span size="3" style="font-size: 12pt"><b>4.</b></span></span><span size="3" style="font-size: 12pt"><span style="letter-spacing: 0.1pt"><b>	</b></span></span><span style="letter-spacing: 0.1pt"><span size="3" style="font-size: 12pt"><b>General
 Statement of Authority Granted.</b></span></span></span></span></p>
     <p  style="margin-top: 0.09in; margin-bottom: 0in; ">
@@ -553,7 +572,7 @@ Statement of Authority Granted.</b></span></span></span></span></p>
       your health care agent </b></span></span></span><span style="letter-spacing: 1.7pt"><span size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><b>shall
       have NO AUTHORITY to withhold artificial nutrition or </b></span></span></span><span size="3" style="font-size: 12pt"><b>hydration.</b></span></span></span></p>
   </div>
-  
+
 </div>
 <!-- Page 4 -->
 
@@ -717,7 +736,7 @@ Concerning Health Care Decisions</span></u></span><span style="letter-spacing: -
     <p  style="margin-left: 0.63in; text-indent: 0.5in; margin-top: 0.06in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 14px"><span size="3" style="font-size: 12pt"><u><b>NOTE:
       DO NOT initial unless you insert a limitation.</b></u></span></span></span></p>
-    
+
     <p  style="margin-left: 0.5in; margin-top: 0.09in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 14px"><span size="3" style="font-size: 12pt"><b>NOTE:
       NO AUTHORITY FOR ORGAN DONATION IS GRANTED IN THIS INSTRUMENT WITHOUT
@@ -855,19 +874,19 @@ Concerning Health Care Decisions</span></u></span><span style="letter-spacing: -
     <p  style="margin-top: 0.13in; margin-bottom: 0in; text-align:center;">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="4" style="font-size: 14pt"><b>SIGNATURE
       AND ACKNOWLEDGMENTS</b></span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">By
       signing here, I indicate that I am mentally alert and competent,
       fully informed as to the contents of this document, and understand
       the full import of this grant of powers to my health care agent.</span></span></span></p>
-    
-    
+
+
     <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></span></p>
     <p  style="margin-bottom: 0.08in; orphans: 0; widows: 0; margin-top: 0; padding-left: 50px;">
       <span style="font-family:'Times New Roman, serif'"><b>
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-        
+
        </b>
    		</span>
    	</p>
@@ -876,13 +895,13 @@ Concerning Health Care Decisions</span></u></span><span style="letter-spacing: -
     </p>
     <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Dated:</span></span><span ><span size="3" style="font-size: 12pt">&nbsp;
         </span></span><span ><span size="3" style="font-size: 12pt">___________________________</span></span></span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.08in; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       hereby state that the principal, </span></span></span>
 
       <span style="font-family:'Times New Roman, serif'">
-      	<span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>	
+      	<span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
       </span>
 
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">,
@@ -921,7 +940,7 @@ Concerning Health Care Decisions</span></u></span><span style="letter-spacing: -
     <p class="western" style="margin-bottom: 0in; "><br/>
 
     </p>
-    
+
     <p class="western" style="margin-bottom: 0in; "><span ><b>WITNESS
       2</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
       </span><span >______________________</span></p>
@@ -984,7 +1003,7 @@ day of </span><span size="3" style="font-size: 12pt">_______________________</sp
 Public			</span><span size="3" style="font-size: 12pt"><i>(Official
 Seal)</i></span></span></span></p><br>My
       commission expires:  ______________________
-    
+
   </div>
   {{--
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
@@ -1061,7 +1080,7 @@ DEATH (&quot;LIVING WILL&quot;)</b></span></span></span></p>
     <p  style="margin-bottom: 0.08in; orphans: 0; widows: 0">
       I, <span style="font-family:'Times New Roman, serif'">
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-        
+
           </span>,
           being of sound mind, desire that, as specified below, my life not be
           prolonged by life-prolonging measures:</p>
@@ -1334,10 +1353,10 @@ DEATH (&quot;LIVING WILL&quot;)</b></span></span></span></p>
     <p  style="margin-bottom: 0.08in; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       hereby state that the declarant, </span></span></span><span style="font-family:'Times New Roman, serif'"><b>
-        
+
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-        
-      
+
+
       </b></span>
 
       <span style="font-family:'Times New Roman, serif'">

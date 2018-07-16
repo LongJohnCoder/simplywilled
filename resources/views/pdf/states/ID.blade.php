@@ -4,11 +4,26 @@
     <meta charset="utf-8">
     <title>Untitled Document</title>
     <style>
-    </style>
+  	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+  	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+  	padding-top: 5px;
+  	}
+  	 #footer .page:after { content: counter(page, none); }
+
+  	</style>
 </head>
 
 <body>
-
+  <script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Living Will and Durable Power of Attorney for Health Care of <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
 <div class="docContainer" id="doc">
     <div class="docPage" style="">
         <div id="doc" class="docPageInner"

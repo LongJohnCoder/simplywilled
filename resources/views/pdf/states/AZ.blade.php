@@ -2,8 +2,26 @@
 <html>
 <head>
 	<title></title>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
+
+	</style>
 </head>
 <body>
+	<script type="text/php">
+			if ( isset($pdf) ) {
+					$pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+			}
+	</script>
+	<div id="footer">
+		<div style="">
+			Durable Health Care Power of Attorney, Living Will, and Durable Mental Health Care Power of Attorney by <br>{{$tellUsAboutYou['fullname']}}<br>
+		</div>
+	</div>
 <div>
 	<!-- Page 1-->
 <div>
@@ -52,32 +70,32 @@
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">My Name: 		</span>
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
-        
+
         </p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">My Date of Birth: 	</span>
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{date('jS M, Y', strtotime($tellUsAboutYou['dob']))}}</span>
-        
+
         </p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">My Address:         	</span>
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['address']}}</span>
-      
+
       </p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
-        
-        
+
+
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>
-        
+
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['zip']}}</span>
-        
+
         </span></p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">My Telephone:
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['phone']}}</span>
-        
+
         <!--«</span><span ><span style="font-family:'Times New Roman, serif'">Client
       Telephone</span></span><span style="font-family:'Times New Roman, serif'">»--></span></p>
     <p  style="margin-top: 0.13in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
@@ -107,15 +125,15 @@
     <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Address:
 		  </span>
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['address']}} </span>
-      
+
     </p>
     <p style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
-      
+
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['state']}} </span>
-      
+
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['zip']}} </span>
-      
+
       </p>
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
@@ -144,23 +162,23 @@
         <span style="font-family:'Times New Roman, serif'">Telephone:  		</span>
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupphone']}} </span>
       </p>
-      
+
       <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'">Address: 		 	</span>
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupAddress']}} </span>
-        
+
       </p>
       <p style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-        
+
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupCity']}} ,</span>
-        
+
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupState']}} </span>
-        
+
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
         </p>
     </div>
     @endif
-  
+
   </div>
 
 </div>
@@ -377,7 +395,7 @@
     <!--<p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">«</span><span ><span style="font-family:'Times New Roman, serif'">IF
       Cremate?</span></span><span style="font-family:'Times New Roman, serif'">»</span></p>-->
-    
+
     <div>
     @if($finalArrangements['type'] == '1')
       <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
@@ -409,7 +427,7 @@
       and family follow these instructions for my disposition arrangements.</span></p>
     @endif
     </div>
-    
+
     <!--<p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">«</span><span ><span style="font-family:'Times New Roman, serif'">END
       IF</span></span><span style="font-family:'Times New Roman, serif'">»</span></p>-->
@@ -558,9 +576,9 @@
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><b>B.</b></span><span style="font-family:'Times New Roman, serif'">
        I, </span>
-      
+
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
-      
+
       <span style="font-family:'Times New Roman, serif'">,
       am physically unable to sign this Durable Health Care Power of
       Attorney, so a witness is verifying my desires as follows:</span></p>
@@ -571,9 +589,9 @@
       <span style="font-family:'Times New Roman, serif'"><b>Witness Verification</b></span><span style="font-family:'Times New Roman, serif'">:
         I believe that this Durable Health Care Power of Attorney accurately
         expresses the wishes communicated to me by </span>
-        
+
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
-        
+
         <span style="font-family:'Times New Roman, serif'">.
         </span>
 
@@ -703,16 +721,16 @@
       <span style="font-family:'Times New Roman, serif'"><b>Witness:</b></span><span style="font-family:'Times New Roman, serif'">
         I certify that I witnessed the signing of this Durable Health Care
         Power of Attorney by </span>
-        
+
 
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
-        
-        
+
+
         <span style="font-family:'Times New Roman, serif'">,
         the Principal. </span>
-        
+
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
-        
+
         <span style="font-family:'Times New Roman, serif'">
         appeared to be of sound mind and under no pressure to make specific
         choices or sign the document. I understand the requirements of being
@@ -816,7 +834,7 @@
 		        behalf. I am not directly involved in providing care as a
 		        professional to </span>
 		</span>
-		
+
 		<span>
 			<span style="font-family:'Times New Roman, serif'">
 				<span size="2" style="font-size: 10pt">
@@ -856,7 +874,7 @@
         <span style="font-family:'Times New Roman, serif'">
         	<span size="2" style="font-size: 10pt">»
 		        directly indicated to me that the Durable Health Care Power of
-		        Attorney expresses 
+		        Attorney expresses
 		    </span>
 		</span>
 
@@ -884,7 +902,7 @@
         intends to adopt the Durable Health Care Power of Attorney at this
         time.</span></span>
     </p>
-    
+
 
     <p  style="margin-top: 0.15in; margin-bottom: 0in; line-height: 110%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">WITNESS
@@ -901,7 +919,7 @@
       Public </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">_________________________________________</span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">
        My Commission Expires: </span></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">__________________</span></span></p>
   </div>
- 
+
 </div>
 <!-- Page 7-->
 
@@ -1002,7 +1020,7 @@
     <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><b>1.	Information about me: </b></span><span style="font-family:'Times New Roman, serif'">(I
       am called the “Principal”)</span></p>
-    
+
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
       <br/>
@@ -1017,18 +1035,18 @@
       <span style="font-family:'Times New Roman, serif'">My Date of Birth: 	</span>
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{date('jS M, Y', strtotime($tellUsAboutYou['dob']))}}</span>
     </p>
-    
+
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">My Address:         	</span>
-      
+
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['address']}}</span>
-      
-      
+
+
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>,
 
-      <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>, 
-     
+      <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>,
+
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['zip']}}</span>
     </p>
 
@@ -1138,7 +1156,7 @@
       End of Life Care I want.</span></p>
   </div>
 
-  
+
 </div>
 <!-- Page 10-->
 
@@ -1166,7 +1184,7 @@
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><b>B.</b></span><span style="font-family:'Times New Roman, serif'">
        I, </span>
-      
+
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
 
       <span style="font-family:'Times New Roman, serif'">,
@@ -1179,8 +1197,8 @@
         <span style="font-family:'Times New Roman, serif'">I believe that this Living Will
         accurately expresses the wishes communicated to me by </span>
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
-        
-        
+
+
         <span style="font-family:'Times New Roman, serif'">,
         the principal of this document. </span>
 
@@ -1309,7 +1327,7 @@
       <br/>
 
     </p>
-    
+
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       	<span style="font-family:'Times New Roman, serif'"><b>Witness:</b></span>
 
@@ -1317,13 +1335,13 @@
         I certify that I witnessed the signing of this Living Will by </span>
 
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
-        
+
         <span style="font-family:'Times New Roman, serif'">,
         the Principal. </span>
-        
+
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
-        
-        
+
+
         <span style="font-family:'Times New Roman, serif'">
         appeared to be of sound mind and under no pressure to make specific
         choices or sign the document. I understand the requirements of being
@@ -1504,7 +1522,7 @@
       		intends to adopt the Living Will at this time.</span>
       </span>
       </p>
-    
+
     <p  style="margin-top: 0.15in; margin-bottom: 0in; line-height: 110%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">
       	<span size="2" style="font-size: 10pt">WITNESS MY HAND AND SEAL this </span>
@@ -1536,7 +1554,7 @@
       	<span size="2" style="font-size: 10pt">.</span>
       </span>
   	</p>
-    
+
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
     </p>
@@ -1587,26 +1605,26 @@
           am called the “Principal”)</span></p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'">My Name: 		</span>
-        <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span> 
+        <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
     </p>
-    
+
 
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">My Date of Birth: 	</span>
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{date('jS M, Y', strtotime($tellUsAboutYou['dob']))}}</span>
     </p>
-    
+
 
     <p style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">My Address:         	</span>
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['address']}}</span>
     </p>
-    
-    <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">  
+
+    <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
-      
-      <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>, 
-      
+
+      <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>,
+
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['zip']}}</span>
   	</p>
 
@@ -1634,30 +1652,30 @@
 
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['fullname']}} </span>
     </p>
-    
+
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">Telephone:  		</span>
-      
+
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['phone']}} </span>
     </p>
     <p style="margin-bottom: 0in; line-height: 100%">
-    
+
     <span style="font-family:'Times New Roman, serif'">Address:</span>
-      
+
     <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['address']}} </span>
-      
+
     </p>
     <p style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-      
+
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
-      
+
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['state']}} </span>
-      
+
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['zip']}} </span>
-      
+
 
       </p>
-    
+
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
     </p>
@@ -1689,11 +1707,11 @@
     <p style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
 
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupCity']}} ,</span>
-      
-      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupState']}} </span> 
+
+      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupState']}} </span>
 
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
-      
+
     </p>
     @endif
     </div>
@@ -1861,13 +1879,13 @@
 
     </p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      
+
       <span style="font-family:'Times New Roman, serif'"><b>B.</b></span><span style="font-family:'Times New Roman, serif'">
        I, </span>
-      
+
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
-      
-      
+
+
       <span style="font-family:'Times New Roman, serif'">,
       am physically unable to sign this Durable Mental Health Care Power of
       Attorney, so a witness is verifying my desires as follows:</span>
@@ -1881,9 +1899,9 @@
       <span style="font-family:'Times New Roman, serif'">:
       I believe that this Durable Mental Health Care Power of Attorney
       accurately expresses the wishes communicated to me by </span>
-      
+
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
-      
+
       <span style="font-family:'Times New Roman, serif'">.</span>
 
       <span>
@@ -1933,7 +1951,7 @@
       <span style="font-family:'Times New Roman, serif'">
       intends to adopt the Durable Mental Health Care Power of Attorney at
       this time. I further affirm that </span><span ><span style="font-family:'Times New Roman, serif'">
-       
+
        <span>{{$genderTxt3}}</span>
       </span></span><span style="font-family:'Times New Roman, serif'">
       appears to be of sound mind and not under duress, fraud, or undue
@@ -2008,31 +2026,31 @@
       Care Power of Attorney by </span>
 
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
-      
+
       <span style="font-family:'Times New Roman, serif'">,
       the Principal. </span>
-      
+
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
-      
-      
+
+
       <span style="font-family:'Times New Roman, serif'">
       appeared to be of sound mind and under no pressure to make specific
       choices or sign the document. I understand the requirements of being
       a witness and I confirm the following:</span></p>
-    	
+
     	<ul style="padding-left: 50px;">
       	<li>
       	<p style="margin-top: 0.08in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
         	<span style="font-family:'Times New Roman, serif'">I am not currently designated to
         	make medical decisions for this person.</span></p>
       	</li>
-      	
+
       	<li>
       	<p style="margin-top: 0.08in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'">I am not directly involved in
         administering health care to this person.</span></p>
       	</li>
-      	
+
       	<li>
       	<p  style="margin-top: 0.08in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'">I am not entitled to any portion
@@ -2045,7 +2063,7 @@
         <span style="font-family:'Times New Roman, serif'">death under a will or by operation of law.</span>
     	</p>
       	</li>
-      	
+
       	<p style="margin-top: 0.08in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'">I am not related to this person
         by blood, marriage or adoption.</span></p>
@@ -2071,7 +2089,7 @@
     </p>
   </div>
 
-  
+
 </div>
 <!-- Page 17-->
 
@@ -2103,8 +2121,8 @@
 
 
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
-      
-      
+
+
       <span style="font-family:'Times New Roman, serif'">,
       the person making this Durable Mental Health Care Power of Attorney,
       has dated and signed or marked it in my presence and appears to me to
@@ -2123,9 +2141,9 @@
 
       <span>
       	<span style="font-family:'Times New Roman, serif'">
-        
+
         <span>{{$genderTxt4}}</span>
-      
+
       	</span>
       </span>
 
@@ -2134,7 +2152,7 @@
       professional to </span>
 
       <span>
-      	<span style="font-family:'Times New Roman, serif'"> 
+      	<span style="font-family:'Times New Roman, serif'">
         <span>{{$genderTxt4}}</span>
       	</span>
       </span>
@@ -2143,7 +2161,7 @@
       I am not entitled to any part of </span>
 
       <span>
-      	<span style="font-family:'Times New Roman, serif'"> 
+      	<span style="font-family:'Times New Roman, serif'">
         <span>{{$genderTxt}}</span>
       	</span>
       </span>
@@ -2184,7 +2202,7 @@
           this time.</span>
       </span>
   	</p>
-    
+
     <p style="margin-top: 0.15in; margin-bottom: 0in; line-height: 110%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">WITNESS MY HAND AND SEAL this </span>
       <span style="font-family:'Times New Roman, serif'">________</span>
@@ -2199,7 +2217,7 @@
 
       <span style="font-family:'Times New Roman, serif'">.</span>
   	</p>
-    
+
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
     </p>
@@ -2264,7 +2282,7 @@
       <span style="font-family:'Times New Roman, serif'">Address:
       ________________________________________________________________</span></p>
   </div>
-  
+
 </div>
 <!-- Page 19-->
 

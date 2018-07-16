@@ -4,10 +4,27 @@
     <meta charset="utf-8">
     <title>Untitled Document</title>
    <style type="text/css"></style>
+   <style>
+  #footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+  text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+  padding-top: 5px;
+  }
+   #footer .page:after { content: counter(page, none); }
+
+  </style>
 </head>
 
 <body>
-
+  <script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Living Will and Health Care Proxy by <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
 <div class="docContainer" id="doc">
 
 
@@ -96,10 +113,7 @@
                     your health care to the extent allowed by law,</b> except you may not
                 authorize mercy killing, assisted suicide, or euthanasia.</p>
             <p style="margin-bottom: 0in; line-height: 115%;"></p>
-        {{--    <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-                Durable Health Care Power by «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 1 of 12
-            </div>--}}
+
         </div>
     </div>
     <!-- !Page 1 -->
@@ -192,10 +206,7 @@
       form that follows is found in AS 13.52.300</b></span></p>
             <p align="left" style="margin-bottom: 0in; line-height: 0.23in"></p>
             <br><br><br><br><br><br><br>
-         {{--   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-                Durable Health Care Power by «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 1 of 12
-            </div>--}}
+
         </div>
     </div>
     <!-- !Page 2 -->
@@ -336,10 +347,7 @@
             </p>
             <p
                     style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%;"></p>
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-                Durable Health Care Power by «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 1 of 12
-            </div>
+
         </div>
     </div>
     <!-- !Page 3 -->
@@ -430,10 +438,7 @@
             <p style="margin-bottom: 0in; line-height: 115%;"></p>
             <p style="margin-bottom: 0in; line-height: 115%;"><i>OR</i></p>
         </div>
-     {{--   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-            Durable Health Care Power by «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-            Page 1 of 12
-        </div>--}}
+
     </div>
     <!-- !Page 4 -->
 
@@ -997,7 +1002,7 @@
 
     <!-- Page 11 -->
     <div class="docPage" >
-        <div class="docPageInner" style="page-break-after: always;" 
+        <div class="docPageInner" style="page-break-after: always;"
              >
             <p align="center" style="margin-bottom: 0in; line-height: 0.23in"><span face="TimesNewRomanPS, serif"><span
                             style="font-size: 13pt"><b>ALTERNATIVE

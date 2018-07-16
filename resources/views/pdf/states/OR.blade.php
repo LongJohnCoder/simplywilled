@@ -31,9 +31,27 @@
 
 
     </style>
+    <style>
+  	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+  	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+  	padding-top: 5px;
+  	}
+  	 #footer .page:after { content: counter(page, none); }
+
+  	</style>
 </head>
 
 <body>
+  <script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Advance Directive for Health Care of <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
 
 <div class="docContainer" id="doc">
 
@@ -82,17 +100,17 @@
     form is valid only if you sign it voluntarily and when you are of
     sound mind. If you do not want an advance directive, you do not have
     to sign this form.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Unless
     you have limited the duration of this advance directive, it will not
     expire. If you have set an expiration date, and you become unable to
     direct your health care before that date, this advance directive will
     not expire until you are able to make those decisions again.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
     may revoke this document at any time. To do so, notify your
     representative and your health care provider of the revocation.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Despite
     this document, you have the right to decide your own health care as
     long as you are able to do so. If there is anything in this document
@@ -138,22 +156,22 @@
             <p align="left" style="margin-left: 1in; margin-bottom: 0in; ">
                   <span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"></span></span><span ><span size="3" style="font-size: 12pt"> <span style="text-transform: capitalize" > {{$healthFinance['city']}} </span></span></span><span ><span size="3" style="font-size: 12pt">,
                   </span></span><span ><span size="3" style="font-size: 12pt"><span style="text-transform: capitalize" > {{$healthFinance['state']}} </span> </span></span><span ><span size="3" style="font-size: 12pt"></span></span></span></span></span></p>
-            
+
             <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>Unless
       revoked or suspended, this advance directive will continue for:</b></span></span></span></p>
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">INITIAL
       ONE:</span><span size="3" style="font-size: 12pt">	</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; line-height: 150%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______
       My entire life</span><span size="3" style="font-size: 12pt">	</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; line-height: 150%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">______
       Other period (_______ Years)</span></span></span></p>
-            
-            
+
+
             <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt"><u><b>PART
       B: APPOINTMENT OF HEALTH CARE REPRESENTATIVE</b></u></span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'">I
       appoint my </span></span>
         @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
@@ -190,11 +208,11 @@
             @endif
             as my alternate health care representative.</span>
             </p>
-            
+
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       authorize my representative (or alternate) to direct my health care
       when I can’t do so.</span></span></span></p>
-           
+
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">In
       order to fully effectuate this authority, I agree to, authorize and
       allow full release of information by any government agency, medical
@@ -203,14 +221,14 @@
       representative named herein, pursuant to the Health Insurance
       Portability and Accountability Act of 1996 (HIPAA), Public Law
       104-191, as amended, and applicable regulations.</span></p>
-           
+
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">NOTE:
       You may not appoint your doctor, an employee of your doctor, or an
       owner, operator or employee of your health care facility, unless that
       person is related to you by blood, marriage or adoption or that
       person was appointed before your admission into the health care
       facility.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>1.</b></span><span size="3" style="font-size: 12pt"><b>	</b></span><span size="3" style="font-size: 12pt"><b>L</b></span><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><b>IMITS</b></span></span></span><span size="3" style="font-size: 12pt"><b>.</b></span></span></span></p>
             <p  style="margin-bottom: 0.06in; line-height: 150%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Special
     Conditions or Instructions:
@@ -245,7 +263,7 @@
                 <br/>
 
             </p>
-            
+
             <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>2.</b></span></span></span><span size="3" style="font-size: 12pt"><b>	</b></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>L</b></span></span></span><span size="3" style="font-size: 12pt"><b>IFE
       </b></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>S</b></span></span></span><span size="3" style="font-size: 12pt"><b>UPPORT</b></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>.</b></span></span></span></span></span></p>
             <p  style="margin-bottom: 0.06in; ">“<span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Life
@@ -268,7 +286,7 @@
                 <br/>
 
             </p>
-            
+
             <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>3.</b></span></span></span><span size="3" style="font-size: 12pt"><b>	</b></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>T</b></span></span></span><span size="3" style="font-size: 12pt"><b>UBE
       </b></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>F</b></span></span></span><span size="3" style="font-size: 12pt"><b>EEDING</b></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>.</b></span></span></span></span></span></p>
             <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">One
@@ -352,7 +370,7 @@
             <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-           
+
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Here
       are my desires about my health care if my doctor and another
       knowledgeable doctor confirm that I am in a medical condition
@@ -361,7 +379,7 @@
                 <br/>
 
             </p>
-            
+
             <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>1.</b></span></span></span><span size="3" style="font-size: 12pt"><b>	</b></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>C</b></span></span></span><span size="3" style="font-size: 12pt"><b>LOSE
     TO </b></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>D</b></span></span></span><span size="3" style="font-size: 12pt"><b>EATH</b></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>.
      </b></span></span></span></span></span>
@@ -534,7 +552,7 @@
             </p>
             <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>5.</b></span></span></span><span size="3" style="font-size: 12pt"><b>	</b></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>G</b></span></span></span><span size="3" style="font-size: 12pt"><b>ENERAL
       </b></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>I</b></span></span></span><span size="3" style="font-size: 12pt"><b>NSTRUCTION</b></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>.</b></span></span></span></span></span></p>
-            
+
             <p  style="margin-left: 0.38in; text-indent: 0.13in; margin-bottom: 0.06in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i><b>INITIAL
       IF THIS APPLIES:</b></i></span></span></span></p>
@@ -544,7 +562,7 @@
       want tube feeding as life support. I want my doctors to allow me to
       die naturally if my doctor and another knowledgeable doctor confirm I
       am in any of the medical conditions listed in Items 1 to 4 above.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>6.</b></span></span></span><span size="3" style="font-size: 12pt"><b>	</b></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>A</b></span></span></span><span size="3" style="font-size: 12pt"><b>DDITIONAL
       </b></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>C</b></span></span></span><span size="3" style="font-size: 12pt"><b>ONDITIONS
       OR </b></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>I</b></span></span></span><span size="3" style="font-size: 12pt"><b>NSTRUCTIONS</b></span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>.</b></span></span></span></span></span></p>
@@ -599,19 +617,19 @@
             <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            
+
             <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="4" style="font-size: 14pt"><b>SIGN
     HERE TO GIVE INSTRUCTIONS</b></span></span></span></p>
             <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-           
+
             <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Dated:</span></span><span ><span size="3" style="font-size: 12pt">&nbsp;
     </span></span><span ><span size="3" style="font-size: 12pt">________________________</span></span><span size="3" style="font-size: 12pt">	</span></span></span></span></p>
             <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            
+
             <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Signed
     By: </span></span><span ><span size="3" style="font-size: 12pt">__________________________________</span></span><span ><span size="3" style="font-size: 12pt">		</span></span></span></span></span></p>
             <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0"><a name="_GoBack"></a>
@@ -627,7 +645,7 @@
                 <br/>
 
             </p>
-           
+
             <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><b>[witness
     signatures appear on next page]</b></span></p>
         </div>
@@ -676,7 +694,7 @@
             </p>
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Witnessed
       by:</span></span></span></p>
-            
+
             <p style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><b>WITNESS
       1</b></span></span></span><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">:
       ________________________________	Dated: ___________________</span></span></span></p>
@@ -693,7 +711,7 @@
       state]</span></span></span></p>
 
       <p><br></p>
-            
+
             <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><b>WITNESS
       2: </b></span></span></span><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt">________________________________	Dated:
       ___________________</span></span></span></p>
@@ -711,7 +729,7 @@
             <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            
+
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">NOTE:
     One witness must not be a relative (by blood, marriage or adoption)
     of the person signing this advance directive. That witness must also

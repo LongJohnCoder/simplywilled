@@ -2,8 +2,27 @@
 <html>
   <head>
     <title></title>
-  </head>
-  <body>
+    <style>
+  	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+  	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+  	padding-top: 5px;
+  	}
+  	 #footer .page:after { content: counter(page, none); }
+
+  	</style>
+</head>
+
+<body>
+  <script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Durable Power of Attorney for Health Care and Living Will of <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
     <div>
       <!-- Page 1-->
       <div>
@@ -25,7 +44,7 @@
             1337.17. If, after reading this notice, you still have questions
             concerning the effect and legal consequences of executing this
             document, you should speak with a qualified attorney.</b></p>
-         
+
           <p class="western" align="center" style="margin-bottom: 0.13in;  text-align:center;">
             <b>NOTICE TO ADULT EXECUTING THIS DOCUMENT</b></p>
           <p class="western"  style="margin-bottom: 0.06in; ">
@@ -469,12 +488,12 @@
               </p>
             </li>
           </ol>
-          
+
           <p class="western"  style="margin-bottom: 0in; ">
             <b>(2)	Agent’s Authority.  </b>My agent is authorized to make all
             health-care decisions for me.
           </p>
-          
+
           <ul>
             <ul>
               <li>
@@ -501,7 +520,7 @@
       <!-- Page 6-->
       <!-- Page 7-->
       <div>
-        <div style="page-break-after: always;"> 
+        <div style="page-break-after: always;">
           <ul>
             <ul>
               <li>
@@ -514,7 +533,7 @@
               </li>
             </ul>
           </ul>
-          
+
           <p class="western"  style="margin-bottom: 0in; ">
             Any limitations on my agent's authority are listed here:
           </p>
@@ -545,7 +564,7 @@
             <br/>
 
           </p>
-          
+
           <p class="western"  style="margin-bottom: 0in; ">
             <b>(3)	Agent’s Obligation. </b>My agent shall make health-care
             decisions for me in accordance with this power of attorney for health
@@ -555,7 +574,7 @@
             my best interest. In determining my best interest, my agent shall
             consider my personal values to the extent known to my agent.
           </p>
-          
+
           <p class="western"  style="margin-bottom: 0.03in; ">
             <b>Additional Instructions:</b><i><b>&nbsp;</b></i></p>
           <p class="western" align="center" style="margin-left: 0.38in; margin-bottom: 0in;  text-align:center;">
@@ -612,7 +631,7 @@
             <br/>
 
           </p>
-          
+
           <p class="western" align="center" style="margin-bottom: 0.09in;  text-align:center;">
             <b>SIGNATURE OF PRINCIPAL</b></p>
           <p class="western"  style="margin-bottom: 0.06in; ">
@@ -700,10 +719,10 @@
             ______________________________________</p>
           <p class="western"  style="margin-bottom: 0in; ">
             <b>NOTARY PUBLIC</b></p>
-          
+
           <p class="western" align="center" style="margin-bottom: 0in;  text-align:center;">
             <b>WITNESSES </b>[R.C. §1337.12(B)]</p>
-          
+
           <p class="western"  style="margin-bottom: 0.06in; margin-top: 0;">
             <span size="2" style="font-size: 10pt">[The following persons CANNOT
             serve as a witness to this Health Care Power of Attorney:</span></p>
@@ -727,7 +746,7 @@
           <p class="western"  style="margin-left: 0.38in; text-indent: -0.19in; margin-bottom: 0in; margin-top: 0;">
             •<span size="2" style="font-size: 10pt">	The administrator of any
             nursing home where you are receiving care.]</span></p>
-          
+
           <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
             I hereby state that the Declarant, <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>, signed the above
             declaration in my presence and that I am not related to the declarant
@@ -737,7 +756,7 @@
             of sound mind and not under or subject to duress, fraud, or undue
             influence.
           </p>
-          
+
           <p class="western" style="margin-bottom: 0in; "><span ><span size="2" style="font-size: 10pt"><b>WITNESS
             1</b></span></span><span ><span size="2" style="font-size: 10pt">:
             ________________________________<span style="padding-left: 40px;"></span>Dated: ___________________</span></span></p>
@@ -748,11 +767,11 @@
           <p class="western"  style="margin-bottom: 0.06in; ">
             <span ><span size="2" style="font-size: 10pt">	[name
             printed]</span></span></p>
-          
+
           <p class="western"  style="margin-bottom: 0.06in; ">
             <span ><span size="2" style="font-size: 10pt">____________________________________ <span style="padding-left: 80px;"></span>____________________________________<br>[street
             address]<span style="padding-left: 280px;"></span>[city, state]</span></span></p>
-          
+
           <p class="western" style="margin-bottom: 0in; "><span ><span size="2" style="font-size: 10pt"><b>WITNESS
             2</b></span></span><span ><span size="2" style="font-size: 10pt">:
             ________________________________<span style="padding-left: 40px;"></span>Dated: ___________________</span></span></p>
@@ -768,7 +787,7 @@
           <p class="western"  style="margin-bottom: 0.06in; ">
             <span ><span size="2" style="font-size: 10pt">____________________________________ <span style="padding-left: 80px;"></span>____________________________________<br>[street
             address]<span style="padding-left: 280px;"></span>[city, state]</span></span></p>
-          
+
         </div>
         <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
           <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care and Living Will of <br> {{$tellUsAboutYou['fullname']}} <br> </span>
@@ -889,7 +908,7 @@
             and physicians as the final expression of my legal right to refuse
             certain health care.
           </p>
-          
+
           <p style="margin-bottom: 0.09in; "><span face="Calibri, serif"><span face="Times New Roman, serif"><i><b>Definitions</b></i></span><b>.
              </b>Several legal and medical terms are used in this document.  For
             convenience they are explained below.</span></p>
@@ -983,7 +1002,7 @@
             4. Permit me to die naturally and take no action to postpone my
             death, providing me with only that care necessary to make me
             comfortable and to relieve my pain.</p>
-          
+
           <p class="western"  style="margin-bottom: 0.09in; ">
             <i><b>Health Care if I Am in a Permanently Unconscious State</b></i><b>.
           </b>If I am in a permanently unconscious state, I direct that my
@@ -1000,7 +1019,7 @@
             4. Permit me to die naturally and take no action to postpone my
             death, providing me with only that care necessary to make me
             comfortable and to relieve my pain.</p>
-          
+
           <p class="western"  style="margin-bottom: 0.06in; ">
             <i><b>Special Instructions.</b></i>  <b>By placing my initials at
             number 3 below, I want to specifically authorize my physician to
@@ -1026,7 +1045,7 @@
               have placed my initials on this line:  </b></span><span face="Times New Roman, serif"><u><b>		</b></u></span></span></p>
             </li>
           </ol>
-          
+
           <p class="western"  style="margin-bottom: 0.06in; ">
             <i><b>Additional instructions or limitations</b></i><b>:  </b><i>If
             you do not have any additional instructions or limitations, write
@@ -1214,7 +1233,7 @@
             all that apply</i></span></span></span><span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">)</span></span></span></p>
           <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 0.15in">
             <span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="6" style="font-size: 24pt"><input type="checkbox" style="margin:5px 0 0 10px;"></span></span></span>&nbsp; transplantation	<span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="6" style="font-size: 24pt"><input type="checkbox" style="margin:5px 0 0 10px;"></span></span></span>therapy	<span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="6" style="font-size: 24pt"><input type="checkbox" style="margin:5px 0 0 10px;"></span></span></span>research	<span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="6" style="font-size: 24pt"><input type="checkbox" style="margin:5px 0 0 10px;"></span></span></span>education.</p>
-         
+
           <p class="western"  style="margin-bottom: 0.09in; ">
             If I do not indicate a desire to donate all or part of my body by
             filling in the lines above, no presumption is created about my desire
@@ -1222,12 +1241,12 @@
           <p class="western"  style="margin-bottom: 0.09in; ">
             This is a legal document under the Uniform Anatomical Gift Act or
             similar laws.</p>
-          
+
           <p class="western"  style="margin-bottom: 0.13in; ">
             <i><b>No Expiration Date</b></i><b>. </b>This Living Will Declaration
             will have no expiration date. However, I may revoke it at any time.
           </p>
-          
+
           <p class="western"  style="margin-bottom: 0.13in; ">
             <i><b>Copies the Same as Original</b></i><b>.</b><i><b> </b></i>Any
             person may rely on a copy of this document.
@@ -1253,7 +1272,7 @@
             <br/>
 
           </p>
-          
+
           <p class="western"  style="margin-bottom: 0.13in; ">
             I have completed a <b>Health Care Power of Attorney</b>:	</p>
           <p class="western"  style="margin-bottom: 0.13in; ">
@@ -1262,17 +1281,17 @@
           <p class="western" style="margin-bottom: 0in; "><br/>
 
           </p>
-          
+
           <p class="western" align="center" style="margin-bottom: 0.09in;  text-align:center;">
             <b>SIGNATURE of PRINCIPAL</b></p>
           <p class="western" align="center" style="margin-bottom: 0.09in;  text-align:center;">
             <b>[see below for witness or notary requirements]</b></p>
-          
+
           <p class="western"  style="margin-bottom: 0.19in; ">
             I understand the purpose and effect of this document and sign my name
-            to this Living Will Declaration on this <u>___________</u> day of  <u>__________________________</u>,
-            <u>________________</u>.</p>
-          
+            to this Living Will Declaration on this ___________ day of  __________________________,
+            ________________.</p>
+
           <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; ">
             _______________________________________</p>
           <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
@@ -1283,7 +1302,7 @@
             «</b><span ><b>CLIENT LAST NAME</b></span><b>»--></b></p>
           <p class="western"  style="margin-left: 0.5in; margin-bottom: 0.13in; ">
             Principal/Declarant</p>
-          <
+          
           <p class="western"  style="margin-bottom: 0.06in; ">
             <i>[You are responsible for telling members of your family, the agent
               named in your Health Care Power of Attorney (if you have one), and
@@ -1291,11 +1310,11 @@
               religious advisor and your lawyer that you have signed a Living Will
               Declaration.  You may wish to give a copy to each person notified.] </i>
           </p>
-          
+
           <p class="western"  style="margin-bottom: 0.06in; ">
             <i>[You may choose to file a copy of this Living Will Declaration
               with your county recorder for safekeeping.]</i></p>
-          
+
           <p class="western" style="margin-bottom: 0in; "><b>THIS
             DOCUMENT MUST BE WITNESSED BY TWO ELIGIBLE WITNESSES WHO ARE PRESENT
             WHEN YOU SIGN, OR ACKNOWLEDGED BY THE DECLARANT BEFORE A NOTARY
@@ -1344,10 +1363,10 @@
             ______________________________________</p>
           <p class="western"  style="margin-bottom: 0in; ">
             <b>NOTARY PUBLIC</b></p>
-          
+
           <p class="western" align="center" style="margin-bottom: 0in;  text-align:center;">
             <b>Option 2: WITNESSES</b></p>
-          
+
           <p class="western"  style="margin-bottom: 0.06in; ">
             <i>[The following persons CANNOT serve as a witness to this Living
               Will Declaration: the agent or successor agent named in your Health
@@ -1355,7 +1374,7 @@
               related to you by blood, marriage or adoption; your attending
               physician; or, if you are in a nursing home, the administrator of the
               nursing home.]</i></p>
-          
+
           <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
             I attest that the Declarant, <!--«<span >CLIENT FIRST
             NAME</span>» «<span >CLIENT MIDDLE NAME</span>»
@@ -1369,7 +1388,7 @@
             care, and I am an adult not related to the Declarant by blood,
             marriage or adoption.
           </p>
-          
+
           <p class="western" style="margin-bottom: 0in; "><span ><span size="2" style="font-size: 10pt"><b>WITNESS
             1</b></span></span><span ><span size="2" style="font-size: 10pt">:
             ________________________________<span style="padding-left: 40px;"></span>Dated: ___________________</span></span></p>

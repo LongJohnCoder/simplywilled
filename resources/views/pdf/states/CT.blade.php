@@ -2,8 +2,26 @@
 <html>
 <head>
 	<title>Health Care Power of Attorney</title>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
+
+	</style>
 </head>
 <body>
+	<script type="text/php">
+			if ( isset($pdf) ) {
+					$pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+			}
+	</script>
+	<div id="footer">
+		<div style="">
+			Advance Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
+		</div>
+	</div>
 <div>
 	<div class="docPage">
   <div id="doc" class="docPageInner" style="page-break-after: always;">
@@ -23,7 +41,7 @@
     <p style="margin-bottom: 0in; line-height: 0.25in">
 
     </p>
-    
+
       	<p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">
         <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My
         Appointment of a Health Care Representative;</span></span></span></span></span></p>
@@ -31,7 +49,7 @@
       	<p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">
         <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My
         Living Will or Health Care Instructions;</span></span></span></span></span></p>
-    	
+
     <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My
       Document of Anatomical Gift; and,</span></span></span></span></span></p>
@@ -48,11 +66,11 @@
     <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 <br><br>
     </p>
-   
+
       <p  style="text-align:center; margin-top: 0.06in; margin-bottom: 0.06in; line-height: 0.23in; margin-top: 0;">
         <span  style="font-size: 13pt"><b>I. APPOINTMENT OF HEALTH CARE
           REPRESENTATIVE</b></span></p>
-         
+
     <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
     </p>
@@ -60,21 +78,21 @@
         <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I,
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>,
         appoint my
-        
+
 
         @if(strtolower($healthFinance['relation']) == 'other')
 			<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}}, </span>
 		@else
 			<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relation']))}}, </span>
 		@endif
-        
+
 
         <span style="text-transform: capitalize"> {{$healthFinance['fullname']}} </span> of
 
 
         <span style="text-transform: capitalize"> {{$healthFinance['address']}} </span> in
 
-        <span style="text-transform: capitalize"> {{$healthFinance['city']}} ,</span> 
+        <span style="text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
 
         <span style="text-transform: capitalize"> {{$healthFinance['state']}} </span>
 
@@ -127,7 +145,7 @@
             <span  style="font-size: 12pt"><span style="background: #ffffff">
               <span color="#000000">
                 If said health care representative is unwilling or unable to serve as my health care representative, or if I revoke this appointment or authority to act as my health care representative, then I appoint my
-                
+
 
                 <span style="text-transform: capitalize">
                 	@if(strtolower($healthFinance['backupRelation']) == 'other')
@@ -138,15 +156,15 @@
                 </span>
 
                 <span style="text-transform: capitalize"> {{$healthFinance['backupFullname']}} </span> of
-                
+
                 <span style="text-transform: capitalize"> {{$healthFinance['backupAddress']}} </span> in
 
                 <span style="text-transform: capitalize"> {{$healthFinance['backupCity']}} ,</span>
-                
+
                 <span style="text-transform: capitalize"> {{$healthFinance['backupState']}} </span>
-                
+
                 <span style="text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
-                
+
                 (Tel: <span> {{$healthFinance['backupphone']}} </span> ) as my
                 alternate health care representative.
               </span>
@@ -242,7 +260,7 @@
 
     <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I,
-      <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>, 
+      <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>,
       the author of this document, request that, if my condition is deemed
       terminal or if I am determined to be permanently unconscious, I be
       allowed to die and not be kept alive through life support systems.</span></span></span></span></span></p>
@@ -286,7 +304,7 @@
 
     </p>
     <table cellpadding="0" cellspacing="0" style="margin: 20px 0 20px 50px;">
-     
+
       <tr valign="top">
         <td width="" style="border: 1px solid #000; padding: 0 20px;">
           <p  style="text-align: center"><u>PROVIDE</u></p>
@@ -567,7 +585,7 @@
     <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 <br>
     </p>
-    
+
     <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Subscribed
       and sworn to before me by <b>
@@ -608,7 +626,7 @@
 <!-- <div class="docPage">
   <div class="docPageInner" style="">
 
-    
+
     <p  style="text-align:center;margin-bottom: 0.13in; line-height: 115%">
 
 
@@ -639,7 +657,7 @@
     <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">This
       document was signed in our presence by <b>
-          <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>, 
+          <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>,
       </b>the author of this document, who
       appeared to be eighteen years of age or older, of sound mind and able
       to understand the nature and consequences of health care decisions at
@@ -651,7 +669,7 @@
     <p  style="text-align:left;text-indent: -0.38in; margin-bottom: 0in; line-height: 115%">
 <br><br>
     </p>
-    
+
     <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span  style="">__________________________________________(WITNESS
               1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______________</span></p>
             <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span  style="">NAME:

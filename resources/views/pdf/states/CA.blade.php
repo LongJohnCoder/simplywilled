@@ -2,11 +2,28 @@
 <html>
 <head>
 	<title>Health Care Power of Attorney</title>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
+
+	</style>
 </head>
 <body>
-
+	<script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Advance Health Care Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
 <div>
-	
+
         <!-- Page 1 -->
         <div>
             <div style="page-break-after: always;">
@@ -75,11 +92,11 @@
               wishes. If you are satisfied to allow your agent to determine what is
               best for you in making end-of-life decisions, you need not fill out
               Part 2 of this form.</span></p>
-            
+
           </div>
 
           {{--
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
           Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
             Page 1 of 8
@@ -122,7 +139,7 @@
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >By
-              this document, I,  
+              this document, I,
 
               <span>{{$tellUsAboutYou['fullname']}} </span>
               intend to create an Advance Health Care Directive (the “Directive”)
@@ -137,7 +154,7 @@
             <p align="center" style="margin-bottom: 0.13in; line-height: 115%"><b>POWER
               OF ATTORNEY FOR HEALTH CARE</b></p>
             <p style="margin-bottom: 0in; line-height: 115%">1.1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>DESIGNATION
-              OF AGENT</b>. I designate my 
+              OF AGENT</b>. I designate my
 
               <span>
               	@if(strtolower($healthFinance['relation']) == 'other')
@@ -146,8 +163,8 @@
 					<span style="font-family:'Times New Roman, serif'" >{{ucwords(strtolower($healthFinance['relation']))}}, </span>
 				@endif
               </span>
-              
-              
+
+
 
               of <span> {{$healthFinance['address']}} </span> in <span> {{$healthFinance['city']}} ,</span>
               <span> {{$healthFinance['state']}} </span>
@@ -158,10 +175,10 @@
             </p>
 
               	@if($healthFinance['anyBackupAgent'] === 'true')
-              
+
 	            <p style="margin-bottom: 0in; line-height: 115%">If I revoke my
 	                agent’s authority or if my agent is not willing, able or reasonably
-	                available to make a health care decision for me, I designate my 
+	                available to make a health care decision for me, I designate my
 
 	                <span>
 	                	@if(strtolower($healthFinance['backupRelation']) == 'other')
@@ -170,22 +187,22 @@
 		                	<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
 		              	@endif
 	                </span>
-	                
+
 
 	                <span>{{$healthFinance['backupFullname']}} ,</span>
 	                of  <span> {{$healthFinance['backupAddress']}} </span> in
 	                <span>{{$healthFinance['backupCity']}} ,</span>
 	                <span> {{$healthFinance['backupState']}} </span>
-	                <span> {{$healthFinance['backupZip']}} </span> (Tel: 
+	                <span> {{$healthFinance['backupZip']}} </span> (Tel:
 	                <span> {{$healthFinance['backupphone']}} </span>), as my
 	                alternate agent.
 	            </p>
             	@endif
-             
+
 	            <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
 
 	            </p>
-            	
+
             	<p style="margin-bottom: 0in; line-height: 115%">1.2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>AGENT’S
               AUTHORITY</b>. My agent is authorized to make all health care
               decisions for me, including decisions to provide, withhold, or
@@ -227,7 +244,7 @@
           </div>
 
           {{--
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
           Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
             Page 2 of 8
@@ -308,7 +325,7 @@
           </div>
 
           {{--
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
           Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
             Page 3 of 8
@@ -407,7 +424,7 @@
           </div>
 
           {{--
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
           Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
             Page 4 of 8
@@ -498,7 +515,7 @@
           </div>
 
           {{--
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
           Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
             Page 5 of 8
@@ -556,28 +573,28 @@
              </b></span></span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span style="text-decoration: none">
             </span></span>
             </p>
-            
+
             <p style="margin-bottom: 0.08in; line-height: 115%">
               <b>{{$tellUsAboutYou['fullname']}}</b>
             </p>
-            
+
             <p style="margin-bottom: 0in; line-height: 115%">
             	<b>{{$tellUsAboutYou['address']}}</b>
             </p>
-            
+
             <p style="margin-bottom: 0in; line-height: 115%">
             	<span>{{$tellUsAboutYou['city']}} ,
             </span>
 
             <span>
             	{{$tellUsAboutYou['state']}}
-            </span> 
+            </span>
 
             <span>
             	{{$tellUsAboutYou['zip']}}
             </span>
         	</p>
-            
+
             <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
             	<span>
             		{{$tellUsAboutYou['phone']}}
@@ -596,7 +613,7 @@
           </div>
 
           {{--
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
           Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
             Page 6 of 8
@@ -619,10 +636,10 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >I
               declare under penalty of perjury under the laws of California (1)
-              that 
+              that
               <span> {{$tellUsAboutYou['fullname']}} </span>,
               the individual who signed or acknowledged this advance health care
-              directive is personally known to me (or that 
+              directive is personally known to me (or that
               <span> {{$genderTxt4}} </span> identity was proven to me by convincing
               evidence), (2) that the individual signed or acknowledged this
               advance directive in my presence, (3) that the individual appears to
@@ -633,17 +650,17 @@
               a community care facility, and employee of an operator of a community
               care facility, the operator of a residential care facility for the
               elderly, nor an employee of an operator of a residential care
-              facility for the elderly. 
+              facility for the elderly.
 
               <b>I further declare under perjury under
               the laws of California that I am not related to the individual
               executing this advance health care directive document by blood,
               marriage or adoption and, to the best of my knowledge, I am not
-              entitled to any part of the individual’s estate upon 
+              entitled to any part of the individual’s estate upon
 
               <span>
               	<b> {{$genderTxt4}} </b>
-              </span> 
+              </span>
               death under a will now existing or
               by operation of law.
           		</b>
@@ -725,7 +742,7 @@
           </div>
 
           {{--
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
           Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
             Page 7 of 8
@@ -757,7 +774,7 @@
               sign the following statement:]
           		</b>
           	</p>
-            
+
             <p align="center" style="margin-bottom: 0.13in; line-height: 115%"></p>
 
             <p style="margin-bottom: 0in; line-height: 115%">I declare under
@@ -812,7 +829,7 @@
           </div>
 
           {{--
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
           Advanced Health Care Directive of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
             Page 8 of 8
@@ -823,7 +840,7 @@
             Page 8 of 8
           </div>
           --}}
-        
+
         </div>
         <!-- !Page 8 -->
 

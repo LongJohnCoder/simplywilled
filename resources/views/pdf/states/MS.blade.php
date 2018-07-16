@@ -2,9 +2,27 @@
 <html>
 <head>
 	<title></title>
-</head>
-<body>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
 
+	</style>
+</head>
+
+<body>
+<script type="text/php">
+		if ( isset($pdf) ) {
+				$pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+		}
+</script>
+<div id="footer">
+	<div style="">
+		Health Care Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
+	</div>
+</div>
 	<div>
 		<!-- Page 1 -->
 <div>
@@ -18,7 +36,7 @@
 
     </p>
     <p  style="margin-bottom: 0in;  text-align:center;"><span size="4" style="font-size: 14pt"><b>Explanation</b></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">You
         have the right to give instructions about your own health care. You
         also have the right to name someone else to make health-care
@@ -27,7 +45,7 @@
         designation of your health care provider. If you use this form, you
         may complete or modify all or any part of it. You are free to use a
         different form.</span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Part
         1 of this form is a power of attorney for health care. Part 1 lets
         you name another individual as agent to make health-care decisions
@@ -38,7 +56,7 @@
         make decisions for you. Unless related to you, your agent may not be
         an owner, operator, or employee of a health-care institution where
         you are receiving care.</span></span></p>
-   
+
     <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Unless
         the form you sign limits the authority of your agent, your agent may
         make all healthcare decisions for you. This form has a place for you
@@ -62,7 +80,7 @@
         <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(d)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Direct
         the provision, withholding, or withdrawal of artificial nutrition and
         hydration and all other forms of health care.</span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Part
         2 of this form lets you give specific instructions about any aspect
         of your health care. Choices are provided for you to express your
@@ -71,13 +89,13 @@
         nutrition and hydration, as well as the provision of pain relief
         medication. Space is provided for you to add to the choices you have
         made or for you to write out any additional wishes.</span></span></p>
-    
+
     <p class="western" style="margin-bottom: 0in; ">Part
       3 of this form lets you designate a physician to have primary
       responsibility for your health care, indicate your desires for organ
       donation, and specify instructions for your personal care if you
       become incapacitated.</p>
-    
+
     <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Finally,
       Part 4 of this form provides instructions to facilitate the health
       care decisions, including the release of your medical information to
@@ -121,9 +139,9 @@
 
         </span><span >I, </span><b>
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-        
-        </b><span >, designate my 
-        
+
+        </b><span >, designate my
+
         <span size="3" style="font-size: 12pt">
 			@if(strtolower($healthFinance['relation']) == 'other')
 				<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
@@ -131,24 +149,24 @@
 				<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}}, </span>
 			@endif
 		</span>
-        
+
         <span style="text-transform: capitalize"> {{$healthFinance['fullname']}} </span> of
-        
+
 
         <span style="text-transform: capitalize"> {{$healthFinance['address']}} </span> in
-        
+
         <span style="text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
-        
+
         <span style="text-transform: capitalize"> {{$healthFinance['state']}} </span>
-        
+
         <span style="text-transform: capitalize"> {{$healthFinance['zip']}} </span>
-        
+
         (Tel: <span> {{$healthFinance['phone']}} </span> ),
         as my agent to make health care decisions for me.</span></p>
     <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-   
+
    @if($healthFinance['anyBackupAgent'] === 'true')
     <p  style="margin-bottom: 0in; ">
     	<span size="2" style="font-size: 9pt">
@@ -166,7 +184,7 @@
         <span ><span size="3" style="font-size: 12pt">my
         </span></span>
 
-        
+
 
         <span size="3" style="font-size: 12pt">
 			@if(strtolower($healthFinance['backupRelation'] == 'other'))
@@ -175,26 +193,26 @@
 									<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
 								@endif
     	</span>
-        
+
         <span size="3" style="text-transform: capitalize;font-size: 12pt;font-size: 12pt"> {{$healthFinance['backupFullname']}} </span> of
-        
+
         <span size="3" style="text-transform: capitalize;font-size: 12pt"> {{$healthFinance['backupAddress']}} </span> in
-        
-        <span size="3" style="text-transform: capitalize;font-size: 12pt"> {{$healthFinance['backupCity']}} ,</span> 
-        
-        <span size="3" style="text-transform: capitalize;font-size: 12pt"> {{$healthFinance['backupState']}} </span> 
 
-        <span size="3" style="text-transform: capitalize;font-size: 12pt"> {{$healthFinance['backupZip']}} </span> 
+        <span size="3" style="text-transform: capitalize;font-size: 12pt"> {{$healthFinance['backupCity']}} ,</span>
 
-        
+        <span size="3" style="text-transform: capitalize;font-size: 12pt"> {{$healthFinance['backupState']}} </span>
+
+        <span size="3" style="text-transform: capitalize;font-size: 12pt"> {{$healthFinance['backupZip']}} </span>
+
+
       	<span style="text-transform: capitalize;font-size: 12pt"> (Tel: <span size="3"> {{$healthFinance['backupphone']}} </span> ,</span>
-        
+
         <span size="3" style="font-size: 12pt">as my alternate
         agent to make health care decisions for me.</span>
 
         <span size="3" style="font-size: 12pt">&nbsp;</span></span></p>
-    @endif  
-    
+    @endif
+
 
 
     <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(2)	</span><span size="3" style="font-size: 12pt"><b>AUTHORITY</b></span><span size="3" style="font-size: 12pt">.</span><span size="3" style="font-size: 12pt">&nbsp;
@@ -237,7 +255,7 @@
       my best interest. In determining my best interest, my agent shall
       consider my personal values to the extent known to my agent.</span></span></p>
   </div>
-  
+
 </div>
 <!-- Page 2 -->
 
@@ -263,13 +281,13 @@
         you in making end-of-life decisions, you need not fill out this part
         of the form. If you do fill out this part of the form, you may strike
         any wording you do not want.</span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(6)	</span><span size="3" style="font-size: 12pt"><b>END-OF-LIFE
       DECISIONS: </b></span><span size="3" style="font-size: 12pt">I direct
       that my health-care providers and others involved in my care provide,
       withhold or withdraw treatment in accordance with the choice I have
       marked below:</span></span></p>
-    
+
     <p align="left" style="margin-bottom: 0in; "><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(Check
       only one box)</i></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
@@ -292,19 +310,19 @@
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       want my life to be prolonged as long as possible within the limits of
       generally accepted health-care standards.</span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(7)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>ARTIFICIAL
       NUTRITION AND HYDRATION: </b></span><span size="3" style="font-size: 12pt">Artificial
       nutrition and hydration must be provided, withheld or withdrawn in
       accordance with the choice I have made in paragraph 2.A(1). unless I
       mark the following box:</span></span></p>
-    
+
     <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
       I mark this box </span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="5" style="font-size: 20pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span></span></span><span size="3" style="font-size: 12pt">,
       artificial nutrition and hydration must be provided regardless of my
       condition and regardless of the choice I have made in paragraph (6).</span></span></p>
-    
+
     <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(8)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>RELIEF
       FROM PAIN OR DISCOMFORT: </b></span><span size="3" style="font-size: 12pt">Except
       as I state in the following space, I direct that treatment for
@@ -320,7 +338,7 @@
     <p align="left" style="margin-bottom: 0in; "><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(Add
       additional sheets if needed..)</i></span></span></p>
   </div>
-  
+
 </div>
 <!-- Page 3 -->
 
@@ -413,13 +431,13 @@
     <p style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(11)	Upon
         my death: (</span><span size="3" style="font-size: 12pt"><b>INITIAL</b></span><span size="3" style="font-size: 12pt">
         the applicable boxes)</span></span></p>
-   
+
     <p  style="margin-left: 3.38in; text-indent: -3in; margin-bottom: 0in; line-height: 0.16in">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______
       (Initial) I make </span><span size="3" style="font-size: 12pt"><b>no
       </b></span><span size="3" style="font-size: 12pt">anatomical gift at
       this time. </span><span size="3" style="font-size: 12pt">		</span></span></p>
-    
+
     <p  style="margin-left: 3.38in; text-indent: -3in; margin-bottom: 0in; line-height: 0.16in">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>OR</b></span></span></p>
     <p  style="margin-bottom: 0in; line-height: 0.16in"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span></span></p>
@@ -429,7 +447,7 @@
     <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">acceptable,
       to take effect upon my death:</span><span size="3" style="font-size: 12pt">	</span></span></p>
-    
+
     <p  style="margin-left: 1.38in; text-indent: 0.13in; margin-bottom: 0in; line-height: 0.16in">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       give: (check one)</span></span></p>
@@ -467,12 +485,12 @@
     <p  style="margin-left: 0.19in; text-indent: -0.19in; margin-top: 0.13in; margin-bottom: 0.13in; ">
       <span size="2" style="font-size: 10pt"><span size="4" style="font-size: 14pt"><b>MISCELLANEOUS
       MATTERS</b></span></span></p>
-    
+
       <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(12)	</span><span size="3" style="font-size: 12pt"><b>EFFECT
         OF A COPY</b></span><span size="3" style="font-size: 12pt">.</span><span size="3" style="font-size: 12pt">&nbsp;
         </span><span size="3" style="font-size: 12pt">A copy of this form has
         the same effect as the original.</span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(13)	</span><span size="3" style="font-size: 12pt"><b>HIPAA
         Waiver and Medical Records Release.</b></span><span size="3" style="font-size: 12pt">
          Subject to any limitations in this document, my agent has the power
@@ -512,7 +530,7 @@
     </p>
     <p  style="margin-bottom: 0in;  text-align:center;"><span ><span size="2" style="font-size: 9pt"><span ><span size="4" style="font-size: 14pt"><b>SIGNATURE
       AND ACKNOWLEDGEMENTS</b></span></span></span></span></p>
-    
+
     <p  style="text-indent: 0.5in; margin-bottom: 0in; ">
       <span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">This
       </span></span><span ><span ><span size="3" style="font-size: 12pt">Advance
@@ -522,22 +540,22 @@
     </p>
     <p class="western"  style="margin-bottom: 0in; line-height: 200%">
       ________________________________________, _______________________.</p>
-    
+
     <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></p>
     <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <b>
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-        
+
         </b>
     </p>
 
     <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">My
       Address: </span>
-      
+
         <span style="text-transform: capitalize">{{$tellUsAboutYou['address']}}</span>
       <span size="3" style="font-size: 12pt">,</span>
-      
+
       <span>
       	<span size="3" style="font-size: 12pt">
         <!--City-->
@@ -546,12 +564,12 @@
       </span><span ><span size="3" style="font-size: 12pt">
         <!--State-->
         <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>
-        
+
       </span></span><span size="3" style="font-size: 12pt"></span></span></p>
     <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    
+
     <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">STATE
       OF MISSISSIPPI</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">)</span></span></p>
     <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">				</span><span size="3" style="font-size: 12pt">)
@@ -565,7 +583,7 @@
       On this _________ day of __________________________________, _____________________ before me, the
       undersigned, appeared <b>
       <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-      
+
       </b>, personally known to me (or proved to me on
       the basis of satisfactory evidence) to be the person whose name is
       subscribed to this instrument, and acknowledged that <span >
@@ -577,7 +595,7 @@
     <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    
+
     <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">______________________________________</span></span></p>
     <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">NOTARY
       PUBLIC</span></span></p><br>
@@ -606,7 +624,7 @@
       I declare under penalty of false swearing pursuant to Section
       97-9-61, Mississippi Code of 1972, that <b>
       <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-      
+
       </b><span style="letter-spacing: 0.1pt">,
       </span>the principal, is personally known to me, that <span>
         {{$genderTxt4}}

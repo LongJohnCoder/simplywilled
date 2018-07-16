@@ -3,10 +3,27 @@
 <head>
     <meta charset="utf-8">
     <title>Untitled Document</title>
+    <style>
+    #footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+    text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+    padding-top: 5px;
+    }
+     #footer .page:after { content: counter(page, none); }
+
+    </style>
 </head>
 
 <body>
-
+  <script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Durable Power of Attorney for Health Care of <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
 <div class="docContainer" id="doc">
 
     <div class="docPage" >
@@ -38,7 +55,7 @@
                     _________________________________________________________________________________</span>
                 @endif
             </p>
-            
+
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 @if(isset($tellUsAboutYou) && array_key_exists('city',$tellUsAboutYou) && !is_null($tellUsAboutYou['city']))
                     <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
@@ -66,7 +83,7 @@
                 @else
                     <span style="text-transform: capitalize">(phone)_____________</span>
                 @endif
-      
+
             </span></span></p>
             <p  style="text-align:center;margin-bottom: 0in; line-height: 115%">
 
@@ -112,7 +129,7 @@
                         _______________________________________________________________________________,
                     </span>
                 @endif
-                
+
             </p>
             <p  style="text-align:center;margin-bottom: 0in; line-height: 115%">
       <span color="#0000ff">
@@ -146,7 +163,7 @@
             @else
                 <span>__________________</span>
             @endif
-          
+
         </span>
       </span>
             </p>
@@ -188,7 +205,7 @@
                             <span>(relation) ________________ </span>
                         @endif
                     @endif
-                   
+
                   )
                 </span>
               </span>
@@ -204,7 +221,7 @@
                             _______________________________________________________________________________,
                         </span>
                     @endif
-                 
+
                 </span>
               </span>
             </p>
@@ -228,7 +245,7 @@
                     @else
                         <span>(zip)__________________, </span>
                     @endif
-                  
+
                 </span>
               </span>
             </p>

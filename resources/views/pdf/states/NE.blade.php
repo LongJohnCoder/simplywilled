@@ -2,8 +2,27 @@
 <html>
 <head>
 	<title>Health Care Power of Attorney</title>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
+
+	</style>
 </head>
+
 <body>
+<script type="text/php">
+		if ( isset($pdf) ) {
+				$pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+		}
+</script>
+<div id="footer">
+	<div style="">
+		Health Care Directive and Living Will Declaration of <br>{{$tellUsAboutYou['fullname']}}<br>
+	</div>
+</div>
 <div>
 	<!-- Page 1-->
 <div class="docPage" style="margin: 0; box-sizing: border-box; padding: 0px;">
@@ -18,7 +37,7 @@
 
     	<span>
     		<span style="font-family:'Times New Roman, serif'">I
-      appoint my 
+      appoint my
       	<span size="3" style="font-size: 12pt">
 			@if(strtolower($healthFinance['relation']) == 'other')
 				<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
@@ -26,59 +45,59 @@
 				<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}}, </span>
 			@endif
 		</span>
-      
+
 
       <span style="text-transform: capitalize"> {{$healthFinance['fullname']}} </span> of
-      
+
 
       <span style="text-transform: capitalize"> {{$healthFinance['address']}} </span> in
-      
+
 
       <span style="text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
-      
+
 
       <span style="text-transform: capitalize"> {{$healthFinance['state']}} </span>
-      
 
-      <span style="text-transform: capitalize"> {{$healthFinance['zip']}} </span> 
-      
+
+      <span style="text-transform: capitalize"> {{$healthFinance['zip']}} </span>
+
       (Tel: <span> {{$healthFinance['phone']}} </span> as my attorney-in-fact for health care.
 
-      
-      
+
+
       @if($healthFinance['anyBackupAgent'] === 'true')
       <span>
       If said agent is
       unable, unwilling or unavailable to act, or if I revoke this
-      appointment or authority to act, then I designate 
+      appointment or authority to act, then I designate
   		</span>
       <span>
       	<span>
       		<span style="font-family:'Times New Roman, serif'">my</span>
       	</span>
       </span>
-      
+
 
 		@if(strtolower($healthFinance['backupRelation'] == 'other'))
 			<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}}, </span>
 		@else
 			<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
 		@endif
-      
+
 
       <span style="text-transform: capitalize"> {{$healthFinance['backupFullname']}} </span> of
-      
+
       <span style="text-transform: capitalize"> {{$healthFinance['backupAddress']}} </span> in
-      
+
       <span style="text-transform: capitalize"> {{$healthFinance['backupCity']}} ,</span>
-      
+
       <span style="text-transform: capitalize"> {{$healthFinance['backupState']}} </span>
 
       <span style="text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
-      
+
       (Tel: <span> {{$healthFinance['backupphone']}} </span> ),
-    
-      @endif  
+
+      @endif
    		</span>
 
    	<span style="font-family:'Times New Roman, serif'">I authorize
@@ -88,8 +107,8 @@
       this document and understand the consequences of executing a power of
       attorney for health care.</span></span>
     </p>
-    
-    
+
+
     <p  style="text-indent: 0.38in; margin-bottom: 0.09in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       direct that my attorney in fact comply with the following
@@ -153,7 +172,7 @@
       attorney in fact has the full and immediate power and authority to do
       all of the following:</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
   </div>
-  
+
 </div>
 <!-- Page 1-->
 
@@ -201,7 +220,7 @@
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(c)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Consent
       to the disclosure of this information.</span></span></span></p>
   </div>
-  
+
 </div>
 <!-- Page 2-->
 
@@ -240,7 +259,7 @@
       <span ><span style="font-family:'Times New Roman, serif'"><b>(signature)
       </b></span></span><span style="font-family:'Times New Roman, serif'"><b>
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-        
+
       </b>
   	</span>
   	</p>
@@ -272,7 +291,7 @@
 
 
     <span style="font-family:'Times New Roman, serif'">
-    
+
     <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
     </span><span style="font-family:'Times New Roman, serif'">,
     personally to me known to be the identical person whose name is
@@ -302,7 +321,7 @@
     voluntary act and deed, and that I am not the attorney in fact or
     successor attorney in fact designated by this power of attorney for
     health care.</span></p>
-    
+
     <p style="margin-bottom: 0in; "><br/>
 
     </p>
@@ -310,7 +329,7 @@
       my hand and notarial seal.  </span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">______________________________________
        NOTARY PUBLIC</span></span></span></p>
   </div>
-  
+
 </div>
 <!-- Page 3-->
 
@@ -325,11 +344,11 @@
       </span><span style="font-family:'Times New Roman, serif'">
 
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-        
+
       ,</span><span style="font-family:'Times New Roman, serif'">
       is personally known to us, that the principal signed or acknowledged
       </span>
-      
+
       <span>
       	<span size="3" style="font-size: 12pt">{{$genderTxt4}}</span>
       </span>
@@ -340,10 +359,10 @@
       or undue influence, and that neither of us nor the principal’s
       attending physician is the person appointed as attorney in fact by
       this document.</span></p>
-    	
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Witnessed
       by:</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt"><b>WITNESS
       1</b></span></span></span><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">:
       ________________________________	Dated: ___________________</span></span></span></p>
@@ -374,7 +393,7 @@
       ___________________</span></span></span></p>
     <p  style="margin-bottom: 0in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">[signature]</span></span></span></p>
     <p  style="margin-bottom: 0in; "><br/>
-    
+
     </p>
     <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span></span></p>
     <p  style="margin-bottom: 0in; margin-top: 0;"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[name
@@ -398,7 +417,7 @@
     <p  style="margin-bottom: 0in; margin-top: 0;"><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="2" style="font-size: 11pt">	</span><span size="2" style="font-size: 11pt">[city,
       state]</span></span></span></p>
   </div>
-  
+
 </div>
 <!-- Page 4-->
 
@@ -409,7 +428,7 @@
     <p  style="margin-bottom: 0in;  text-align:center;">
       <span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 13pt"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="4" style="font-size: 14pt"><b>N</b></span></span></span><span size="4" style="font-size: 14pt"><b>EBRASKA
       LIVING WILL </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="4" style="font-size: 14pt"><b>D</b></span></span></span><span size="4" style="font-size: 14pt"><b>ECLARATION</b></span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
       I should lapse into a persistent vegetative state or have an
       incurable and irreversible condition that, without the administration
@@ -419,7 +438,7 @@
       direct my attending physician, pursuant to the Rights of the
       Terminally Ill Act, to withhold or withdraw life-sustaining treatment
       that is not necessary for my comfort or to alleviate pain.</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
       I am in the condition(s) described above I direct the followingt:
       </span><span size="3" style="font-size: 12pt">(</span><span size="3" style="font-size: 12pt"><b>INITIAL</b></span><span size="3" style="font-size: 12pt">
@@ -444,14 +463,14 @@
       </span><span size="3" style="font-size: 12pt">DO</span><span size="3" style="font-size: 12pt"><b>
       </b></span><span size="3" style="font-size: 12pt">want maximum pain
       relief, even if it may hasten my death.</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Other
       directions (if any):</span></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0.09in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Signed
       this </span></span><span ><span size="3" style="font-size: 12pt">________</span></span><span ><span size="3" style="font-size: 12pt">
       day of  </span></span><span ><span size="3" style="font-size: 12pt">_______________________</span></span><span ><span size="3" style="font-size: 12pt">,
@@ -470,11 +489,11 @@
     <p  style="text-indent: 0.5in; margin-bottom: 0in; ">
       <span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"></span></span><span ><span size="3" style="font-size: 12pt">
         <span style="text-transform: capitalize">{{$tellUsAboutYou['address']}}</span>
-        
+
       </span></span><span ><span size="3" style="font-size: 12pt">,
       </span></span></span></span></span>
     </p>
-    
+
     <p  style="text-indent: 0.5in; margin-bottom: 0in; ">
       <span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"></span></span><span ><span size="3" style="font-size: 12pt">
         <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
@@ -484,10 +503,10 @@
       <span><span size="3" style="font-size: 12pt">,
       </span></span><span ><span size="3" style="font-size: 12pt">
         <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>
-        
+
       </span></span><span ><span size="3" style="font-size: 12pt">.</span></span></span></span></span></p>
-    
-    
+
+
     <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">STATE
       OF NEBRASKA	</span></span><span ><span size="3" style="font-size: 12pt">	</span></span><span ><span size="3" style="font-size: 12pt">)</span></span></span></span></span></p>
     <p  style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; ">
@@ -495,14 +514,14 @@
       ss.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
     <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">COUNTY
       OF ________________</span></span><span ><span size="3" style="font-size: 12pt">	</span></span><span ><span size="3" style="font-size: 12pt">)</span></span></span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">The declarant </span><span style="font-family:'Times New Roman, serif'">
       <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
     </span></p>
     <p style="margin-bottom: 0in; "> <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">voluntarily
         signed this writing in my presence.</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">______________________________________</span></span></span></p>
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">NOTARY
       PUBLIC</span></span></span></p>
@@ -520,7 +539,7 @@
     <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0"><a name="_GoBack"></a>
       <span style="font-family:'Times New Roman, serif'">The declarant </span><span style="font-family:'Times New Roman, serif'">
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-        
+
       </span><span style="font-family:'Times New Roman, serif'">
         voluntarily signed this writing in my presence.</span></p>
     <p  style="margin-bottom: 0in; "><br/>

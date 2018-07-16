@@ -2,11 +2,28 @@
 <html>
 <head>
 	<title>Health Care Power of Attorney</title>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
+
+	</style>
 </head>
 <body>
-
+	<script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Advance Health Care Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
 <div>
-	
+
 
         <!-- Page 1 -->
         <div class="docPage">
@@ -16,11 +33,11 @@
             <p align="center" style="margin-bottom: 0in; line-height: 0.28in"><span  style="font-size: 17pt"><b>POWER
               OF ATTORNEY FOR HEALTH CARE </b></span>
             </p>
-            
+
             <p align="center" style="margin-bottom: 0in; line-height: 0.28in"><span  style="font-size: 17pt"><b>AND
               ADVANCE DIRECTIVE FOR </b></span>
             </p>
-            
+
             <p align="center" style="margin-bottom: 0in; line-height: 0.28in"><span  style="font-size: 17pt"><b>MEDICAL
               / SURGICAL TREATMENT</b></span></p>
             <p align="center" style="margin-bottom: 0.13in; line-height: 0.33in">————————————</p>
@@ -33,19 +50,19 @@
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff">
 
               	<span color="#000000">I,
-              		<span> {{$tellUsAboutYou['fullname']}} </span> hereby appoint my 
+              		<span> {{$tellUsAboutYou['fullname']}} </span> hereby appoint my
 
 	              	@if(strtolower($healthFinance['relation']) == 'other')
 	      				<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}}, </span>
 	      			@else
 	      				<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relation']))}}, </span>
 	      			@endif
-          		</span> 
+          		</span>
 
           		<span> {{ucwords(strtolower($healthFinance['fullname']))}} </span>,
                 of <span> {{$healthFinance['address']}} </span> in <span> {{ucwords(strtolower($healthFinance['city']))}} ,</span>
                 <span> {{ucwords(strtolower($healthFinance['state']))}} </span>
-              <span> {{$healthFinance['zip']}} </span> 
+              <span> {{$healthFinance['zip']}} </span>
               (Tel: <span> {{$healthFinance['phone']}} </span>), as my
               agent to make health care decisions for me if and when I am unable to
               make my own health care decisions. This gives my agent the power to
@@ -58,11 +75,11 @@
             <p style="margin-bottom: 0in; line-height: 115%">
 
             </p>
-            
+
             @if($healthFinance['anyBackupAgent'] == 'true')
 	            <p style="margin-bottom: 0in; line-height: 115%">
 	            	If said agent is not available, or is unable or unwilling to act, or if I revoke this
-	              appointment or authority to act, then I designate my 
+	              appointment or authority to act, then I designate my
 
 		            @if(strtolower($healthFinance['backupRelation']) == 'other')
 		            	<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupRelationOther']))}}, </span>
@@ -74,19 +91,19 @@
 	              of  <span> {{$healthFinance['backupAddress']}} </span> in
 	              <span> {{ucwords(strtolower($healthFinance['backupCity']))}} ,</span>
 	              <span> {{ucwords(strtolower($healthFinance['backupState']))}} </span>
-	              <span> {{$healthFinance['backupZip']}} </span> 
+	              <span> {{$healthFinance['backupZip']}} </span>
 
 	              (Tel: <span> {{$healthFinance['backupphone']}} </span>) as my
 	              alternate agent to make health care decisions for me as authorized by
 	              this document.&nbsp;
 	          	</p>
-            
+
 	            <p style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; line-height: 115%">
 
 
 	            </p>
             @endif
-            
+
             <p style="margin-bottom: 0in; line-height: 115%">By this document I
               intend to create a Medical Durable Power of Attorney which shall take
               effect upon my incapacity to make my own health care decisions and
@@ -125,7 +142,7 @@
           </div>
 
           {{--
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
           Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
             Page 1 of 7
@@ -195,7 +212,7 @@
             </p>
             <p style="margin-top: 0.09in; margin-bottom: 0.09in; line-height: 115%">
               <b><u>Definitions</u>:</b></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 100%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000"><i>Life-Sustaining
               Procedure</i><b>: </b>Any medical procedure or intervention that, if
               administered to a qualified patient, would serve only to prolong the
@@ -226,7 +243,7 @@
           </div>
 
           {{--
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
           Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
             Page 2 of 7
@@ -343,7 +360,7 @@
           </div>
 
           {{--
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
           Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
             Page 3 of 7
@@ -469,7 +486,7 @@
           </div>
 
           {{--
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
           Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
             Page 4 of 7
@@ -571,7 +588,7 @@
           </div>
 
           {{--
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
           Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
             Page 5 of 7
@@ -632,7 +649,7 @@
           		</span>
           	</span>
           	</p>
-            
+
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
             <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif">
 
@@ -640,8 +657,8 @@
             		<span style="background: #ffffff">
             			<span color="#000000">
             				<span>{{ucwords(strtolower($tellUsAboutYou['city']))}} ,</span>
-            
-            				<span>{{ucwords(strtolower($tellUsAboutYou['state']))}}</span> 
+
+            				<span>{{ucwords(strtolower($tellUsAboutYou['state']))}}</span>
 
             				<span>{{ucwords(strtolower($tellUsAboutYou['zip']))}}</span>
             			</span>
@@ -650,13 +667,13 @@
             </span>
         	</span>
         	</p>
-            
+
             <p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 115%">
             	<span color="#0432ff">
             		<span>{{$tellUsAboutYou['phone']}}</span>
             	</span>
             </p>
-            
+
             <p align="left" style="margin-bottom: 0in; line-height: 115%">
 
             </p>
@@ -668,7 +685,7 @@
             		<b>WITNESSES</b>
             	</span>
             </p>
-            
+
             <p style="margin-bottom: 0in; line-height: 115%">I declare that the
               person who signed or acknowledged this document is personally known
               to me, that <span>{{$genderTxt3}}</span>
@@ -680,11 +697,11 @@
               employee of the declarant’s health care provider.  I did not sign
               this document for the declarant.  I have no claim, nor am I entitled
               to, any portion of the declarant’s estate.</p>
-            
+
             <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            
+
             <p align="left" style="margin-bottom: 0in; line-height: 115%">
 
             </p>
@@ -719,7 +736,7 @@
           </div>
 
           {{--
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
           Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
             Page 6 of 7
@@ -758,7 +775,7 @@
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Subscribed
-                and sworn to before me by 
+                and sworn to before me by
 
                 <span> {{ucwords(strtolower($tellUsAboutYou['fullname']))}} </span>, the declarant, and by
                 _____________________________ and _____________________________, the
@@ -797,7 +814,7 @@
           </div>
 
           {{--
-          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+          <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
           style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
           Medical Durable Power of Attorney, Living Will, and Advance Directive by <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
             Page 7 of 7

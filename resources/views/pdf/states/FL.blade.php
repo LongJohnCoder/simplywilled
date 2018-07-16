@@ -2,8 +2,26 @@
 <html>
 <head>
 	<title></title>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
+
+	</style>
 </head>
 <body>
+	<script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Advance Health Care Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
 <div>
 	<!-- step 1 -->
 <div class="docPage" style="page-break-after: always;">
@@ -15,27 +33,27 @@
 
       <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <span style="font-family: 'Times New Roman', serif">I,
-        
+
         <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}}</b></span>
         designate as my health care surrogate under S. 765.202, Florida Statutes:
-      
+
       </span></p>
 
-        
-      
+
+
       <p style=" margin-bottom: 0.1in; ">
         <span>
           <span style="font-family: 'Times New Roman', serif">
-          <span  style="font-size: 9pt"><span ><span  style="font-size: 12pt">Name:</span></span><span ><span  style="font-size: 12pt">		
+          <span  style="font-size: 9pt"><span ><span  style="font-size: 12pt">Name:</span></span><span ><span  style="font-size: 12pt">
 
           </span> </span>
           <span  style="font-size: 12pt">{{strtoupper($healthFinance['fullname'])}}</span>
-       
+
           </span>
           </span>
         </span>
       </p>
-      
+
       <p align="justify" style="">
       <span>
         <span style="font-family: 'Times New Roman', serif">
@@ -47,18 +65,18 @@
             </span>
             <span style="font-size: 12pt">{{$healthFinance['address']}} </span>
           </span>
-          
+
           <span style="font-size: 12pt">{{$healthFinance['city']}}, </span>
-          
+
           <span style="font-size: 12pt">{{$healthFinance['state']}}, </span>
-          
+
           <span style="font-size: 12pt">{{$healthFinance['zip']}}</span>
-        
+
         </span>
       </span>
       </p>
 
-      
+
         <span>
           <span style="font-family: 'Times New Roman', serif">
             <span  style="font-size: 9pt">
@@ -71,9 +89,9 @@
             </span>
           </span>
         </span>
-      
 
-      
+
+
       	@if($healthFinance['anyBackupAgent'] == 'true')
 		<p align="justify" style="margin-top: 0.13in; margin-bottom: 0.09in; ">
 		<span style="font-family: 'Times New Roman', serif">
@@ -85,7 +103,7 @@
 		  </span>
 		</span>
 		</p>
-      
+
 		<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.03in; ">
 		<span>
 		<span style="font-family: 'Times New Roman', serif">
@@ -94,18 +112,18 @@
 		      <span  style="font-size: 12pt">Name:</span>
 		    </span>
 		    <span >
-		      <span  style="font-size: 12pt">		
+		      <span  style="font-size: 12pt">
 
 		      </span>
 		    </span>
-		    
+
 		    <span style="font-size: 12pt">{{strtoupper($healthFinance['backupFullname'])}}</span>
-		    
+
 		  </span>
 		</span>
 		</span>
 		</p>
-      
+
 	    <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.03in; ">
 	      <span>
 	        <span style="font-family: 'Times New Roman', serif">
@@ -116,30 +134,30 @@
 	              <span>
 	                <span  style="font-size: 12pt">		</span>
 	              </span>
-	              
+
 	              <span style="font-size: 12pt">{{$healthFinance['backupAddress']}}</span>
 	          </span>
 	        </span>
 	      </span>
 	    </p>
-      
+
 	    <p style="margin-bottom: 0in; "><span >			</span>
 	      <span style="font-family: 'Times New Roman', serif">
 	      </span>
 	      <span>
 	        <span style="font-size: 12pt">{{$healthFinance['backupCity']}}</span>
 	      </span>
-	      
+
 	      <span>
-	        <span style="font-family: 'Times New Roman', serif">{{$healthFinance['backupState']}}</span> 
+	        <span style="font-family: 'Times New Roman', serif">{{$healthFinance['backupState']}}</span>
 	      </span>
-	        
+
 	      <span>
 	        <span style="font-family: 'Times New Roman', serif">{{$healthFinance['backupZip']}}</span>
-	        
+
 	      </span>
 	    </p>
-      
+
     	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
       	<span>
         <span style="font-family: 'Times New Roman', serif">
@@ -152,20 +170,20 @@
             <span >
               <span  style="font-size: 12pt">	</span>
             </span>
-            
+
             <span style="font-size: 12pt">{{$healthFinance['backupphone']}}</span>
             </span>
           </span>
         </span>
       	</p>
-      	
+
       	<p align="justify" style="margin-bottom: 0in; ">
           <br><br>
       	</p>
-      	
-      	
+
+
   		@endif
-      
+
       <p align="center" style="margin-top: 0.13in; margin-bottom: 0.13in; ">
       <span style="font-family: 'Times New Roman', serif; font-size: 12pt;"><b>INSTRUCTIONS
       FOR HEALTH CARE</b></span></p>
@@ -176,7 +194,7 @@
       </span><span  style="font-size: 12pt">Receive any of my
       health information, whether oral or recorded in any form or</span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">
       medium, that:</span></span></span></span></span></p>
-      
+
       <p align="justify" style="margin-left: 0.75in; margin-top: 0.06in; margin-bottom: 0.06in; ">
       <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">1.</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">Is
       created or received by a health care provider, health care facility,
@@ -187,10 +205,10 @@
       to my past, present, or future physical or mental health or
       condition; the provision of health care to me; or the past, present,
       or future payment for the provision of health care to me.</span></p>
-      
+
       <p align="justify" style="margin-top: 0.13in; margin-bottom: 0.09in; ">
       <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 12pt">I
-      further authorize my health care surrogate to:</span></span></p> 
+      further authorize my health care surrogate to:</span></span></p>
       <p align="justify" style="margin-left: 0.75in; text-indent: -0.75in; margin-bottom: 0in; ">
       <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">_________</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt"><b>(INITIALS)</b></span><span  style="font-size: 12pt">
       </span><span  style="font-size: 12pt">Make all health care
@@ -200,7 +218,7 @@
 1. Provide informed consent, refusal of consent, or withdrawal of consent to any
       and all of my health care, including life-prolonging procedures.
       </span><span  style="font-size: 12pt">&nbsp;</span></span></span></p>
-    
+
   </div>
 </div>
 <!-- step 1 -ends -->
@@ -279,8 +297,8 @@
         I initial this box [________], my health care surrogate’s authority
         to receive my health information takes effect immediately.</b></span></span></span></p>
         <p align="justify" style="margin-left: 0.38in; margin-top: 0.06in; margin-bottom: 0.13in; ">
-        
-        
+
+
         </p>
     </div>
 </div>
@@ -312,7 +330,7 @@
             <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">_______________________________________</span></span></span></p>
             <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
             <span style="font-family: 'Times New Roman', serif"><b></b></span>
-            
+
             <span>
               <span style="font-family: 'Times New Roman', serif">
                 <b>
@@ -320,15 +338,15 @@
                 </b>
               </span>
             </span>
-            
-            
-            
+
+
+
             <span style="font-family: 'Times New Roman', serif"><b></b></span></p>
             <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; ">
             <span ><span style="font-family: 'Times New Roman', serif"><span size="1" style="font-size: 8pt"><span ><span  style="font-size: 12pt"></span></span>
             <span style="font-size: 12pt">{{$tellUsAboutYou['address']}}</span>
-            <span ><span  style="font-size: 12pt"></span></span></span></span></span></p>            
-            
+            <span ><span  style="font-size: 12pt"></span></span></span></span></span></p>
+
             <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; ">
             <span>
             	<span style="font-family: 'Times New Roman', serif">
@@ -345,32 +363,32 @@
         	</p>
 
             <p align="justify" style="margin-bottom: 0in; ">
-            
+
             </p>
             <p align="justify" style="margin-bottom: 0in; ">
-            
+
             </p>
             <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
-            
-            
+
+
             <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">We,
             the witnesses hereunder, certify that each of us is 18 years of age
             or older and each personally witnessed </span></span>
             <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt"></span></span>
-            
+
             <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}}</b></span>
-            
+
 
             <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">,
             </span></span>
-            
+
             <span style="letter-spacing: 0.1pt"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">the
             principal, </span></span></span>
-            
+
             <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">sign
             or direct the signing of this Designation; that we are acquainted
             with the principal and believe </span></span>
-            
+
             <span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">{{$genderTxt}}</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">
             to be of sound mind; that neither of us is a person who signed the
             above Designation on behalf of the principal; that we are not named
@@ -384,15 +402,15 @@
             in which </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">{{$genderTxt}}</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">
             may be a patient at the time of signing this Designation.</span></span></p>
             <p align="justify" style="margin-bottom: 0in; ">
-            
+
             </p>
             <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >WITNESS
             1: ________________________________ <span style="padding-left: 50px;"></span>Dated: ___________________</span></span></span></p>
             <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
-            
+
             <br>
-            
+
             </p>
             <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________</span></span></span></p>
@@ -400,9 +418,9 @@
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">[name
             printed]</span></span></span></p>
             <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
-            
+
             <br>
-            
+
             </p>
             <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________  <span style="padding-left: 35px;"></span>____________________________________</span></span></span></p>
@@ -417,9 +435,9 @@
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >WITNESS
             2: ________________________________<span style="padding-left: 50px;"></span> Dated: ___________________</span></span></span></p>
             <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
-            
+
            <br>
-            
+
             </p>
             <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________</span></span></span></p>
@@ -431,12 +449,12 @@
             <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
           <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________  <span style="padding-left: 35px;"></span>____________________________________</span></span></span></p>
           <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
-          
+
           <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">[street
           address]<span style="padding-left: 230px;"></span>[city, state]</span></span></span></p>
-            
-            
-                       
+
+
+
     </div>
 </div>
 <!-- step 3 - ends -->
@@ -445,7 +463,7 @@
 <!-- step 4 now -->
 <div class="docPage" style="">
   <div id="doc" class="docPageInner" style="">
-      
+
           <p align="center" style="margin-top: 0.19in; margin-bottom: 0.13in; ">
           <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 10pt"><span  style="font-size: 12pt"><b>AFFIDAVIT</b></span></span></span></p>
          <p align="justify" style="margin-bottom: 0in; "><span ><span style="font-family: 'Times New Roman', serif"><span  style=""><span ><span  >STATE
@@ -455,7 +473,7 @@
           <p align="justify" style="margin-bottom: 0in; "><span ><span style="font-family: 'Times New Roman', serif"><span  style=""><span ><span  >COUNTY
           OF ____________)</span></span></span></span></span></p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">I,
           </span><span >
@@ -465,51 +483,51 @@
           instrument, and to the subscribing witnesses, that I signed and
           executed this instrument as my Designation of Health Care Surrogate.</span></span></span></p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">______________________________________</span></span></span></p>
-          
-          
+
+
           <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
               <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}}</b></span>
           </p>
-          
+
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif">We,
           </span><span style="font-family: 'Times New Roman', serif"><u>					</u></span><span style="font-family: 'Times New Roman', serif">
           and </span><span style="font-family: 'Times New Roman', serif"><u>					</u></span><span style="font-family: 'Times New Roman', serif">,
           the witnesses, have been sworn by the officer signing below, and
           declare to that officer on our oaths that </span><span ><span style="font-family: 'Times New Roman', serif"></span></span>
-          
-          <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}},</b></span>
-          
 
-          
+          <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}},</b></span>
+
+
+
           <span style="font-family: 'Times New Roman', serif">
           the principal, signed this Designation in our presence, and that we
           each signed the instrument as a witness in the presence of the
           principal and of each other.</span><span style="font-family: 'Times New Roman', serif">&nbsp;</span></p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
           <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >WITNESS
           1: ________________________________ <span style="padding-left: 50px;"></span>Dated: ___________________</span></span></span></p>
-         
+
           <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
           <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________</span></span></span></p>
           <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
           <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">[name
           printed]</span></span></span></p>
-          
+
           <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
           <br>
           <br>
@@ -517,17 +535,17 @@
           <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
           <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >WITNESS
           2: ________________________________ <span style="padding-left: 50px;"></span>Dated: ___________________</span></span></span></p>
-          
+
           <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
           <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________</span></span></span></p>
           <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
           <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">[name
           printed]</span></span></span></p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0in; ">
           <br>
@@ -539,7 +557,7 @@
           <p align="justify" style="margin-bottom: 0in; "><span ><span style="font-family: 'Times New Roman', serif"><span  style=""><span ><span  >COUNTY
           OF ____________)</span></span></span></span></span></p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">Acknowledged
           and subscribed before me by <span >{{strtoupper($tellUsAboutYou['fullname'])}},</span>
@@ -555,9 +573,9 @@
           presence of the principal and the subscribing witnesses, all on this
           ______ day of _______________, ____________________.</span></span></p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
-  
+
     <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">	______________________________________</span></span></p>
     <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">	NOTARY
     PUBLIC (State of Florida)</span></span></p>
@@ -578,25 +596,25 @@
           </b><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 19pt"><b>L</b></span></span><b>IVING
           </b><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 19pt"><b>W</b></span></span><b>ILL</b></span></span></p>
           <p align="justify" style="text-indent: 0.38in; margin-bottom: 0.13in; ">
-          
-          
-          
+
+
+
           </p>
           <p align="justify" style="margin-bottom: 0in; "><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 10pt"><span ><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">Declaration
           made this </span></span></span><span ><span  style="font-size: 12pt">_____
           day of ____________________, ________.</span></span></span></span></span></p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
-          
+
           <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
           <span style="letter-spacing: 0.3pt"><span style="font-family: 'Times New Roman', serif">I,</span></span><span face="Times, serif"><span  style="font-size: 9pt"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 12pt">
           </span></span></span></span><span style="font-family: 'Times New Roman', serif"></span>
-          
-          <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}},</b></span>
-          
 
-            
+          <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}},</b></span>
+
+
+
             <span face="Times, serif"><span  style="font-size: 9pt"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 12pt"></span></span></span></span><span style="letter-spacing: 0.3pt"><span style="font-family: 'Times New Roman', serif">
           willfully </span></span><span style="letter-spacing: 0.2pt"><span style="font-family: 'Times New Roman', serif">and
           voluntarily make known my desire that my dying not be artificially</span></span><span style="letter-spacing: 0.3pt"><span style="font-family: 'Times New Roman', serif">
@@ -629,7 +647,7 @@
           procedure deemed necessary to provide me with comfort care or to
           alleviate pain.</span></span></span></span></p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
           <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span face="Times, serif"><span  style="font-size: 9pt"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 12pt">2.</span></span></span></span><span  style="font-size: 12pt">	</span><span style="letter-spacing: 0.3pt"><span  style="font-size: 12pt">It
@@ -638,7 +656,7 @@
           or surgical treatment and to accept the consequences for such
           refusal.</span></span></span></span></p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
           <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span style="letter-spacing: 0.1pt"><span  style="font-size: 12pt">3.</span></span><span  style="font-size: 12pt"><span style="letter-spacing: 0.1pt">	</span></span><span style="letter-spacing: 0.1pt"><span  style="font-size: 12pt">I
@@ -652,10 +670,10 @@
           named in that document to carry out the provisions of this
           Declaration.</span></span></span></span></p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span style="letter-spacing: 0.1pt"><span  style="font-size: 12pt">Additional
           Instructions: (Optional)</span></span></span></span></p>
@@ -671,11 +689,11 @@
           _____________________________________________________________________________.
           </span></span><span style="letter-spacing: 0.1pt"><span  style="font-size: 12pt"></span></span></span></span></p>
           <p style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0in;  page-break-before: always">
-          
-          
+
+
           </p>
   </div>
 </div>
@@ -688,85 +706,85 @@
           understand the full import of this Declaration, and I am emotionally
           and mentally competent to make this Declaration.</span></span></span></span></p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; ">
           <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">_______________________________________</span></span></span></p>
-          
+
           <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0"><a name="_GoBack"></a>
           <span style="font-family: 'Times New Roman', serif">		</span>
-          
+
           <span style="font-family: 'Times New Roman', serif"><b></b></span>
 
           <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}}</b></span>
-          
+
 
           <span style="font-family: 'Times New Roman', serif"></span>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
           <span style="font-family: 'Times New Roman', serif">We, the witnesses hereunder,
           certify that each of us is 18 years of age or older and each
           personally witnessed </span>
-          
-          <span>{{$tellUsAboutYou['fullname']}},</span>        
-          
+
+          <span>{{$tellUsAboutYou['fullname']}},</span>
+
           <span style="font-family: 'Times New Roman', serif"></span><span style="letter-spacing: 0.1pt"><span style="font-family: 'Times New Roman', serif">
           the declarant, </span></span><span style="font-family: 'Times New Roman', serif">sign
           or direct the signing of this directive; that we are acquainted with
           the declarant and believe </span>
-          
+
           <span>
             <span style="font-family: 'Times New Roman', serif">{{$genderTxt}}</span>
           </span>
-          
+
           <span style="font-family: 'Times New Roman', serif">
           to be of sound mind; that neither of us is a person who signed the
           above directive on behalf of the declarant; that we are not named as
           </span>
-          
+
           <span >
             <span style="font-family: 'Times New Roman', serif">{{$genderTxt}}</span>
           </span>
-          
+
           <span style="font-family: 'Times New Roman', serif">
           surrogate or alternate surrogate by any Designation of Health Care
           Surrogate; that we are not related to the declarant by blood or
           marriage nor are we entitled to any portion of </span>
-          
+
           <span ><span style="font-family: 'Times New Roman', serif">{{$genderTxt}}</span></span>
-          
+
           <span style="font-family: 'Times New Roman', serif">
           estate according to the laws of intestate succession of this state or
           under any will or codicil of the declarant; that we are not directly
           financially responsible for </span><span >
-          
+
           <span style="font-family: 'Times New Roman', serif">{{$genderTxt}}</span>
-          
+
           </span><span style="font-family: 'Times New Roman', serif">
           medical care; and that we are not agents of any health care facility
           in which </span><span>
-            
+
           <span style="font-family: 'Times New Roman', serif">{{$genderTxt}}</span>
-        
+
           </span><span style="font-family: 'Times New Roman', serif">
           may be a patient at the time of signing this directive.</span></p>
           <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
-          
-          
+
+
           <br>
           </p>
           <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >WITNESS
             1: ________________________________ <span style="padding-left: 50px;"></span>Dated: ___________________</span></span></span></p>
             <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
-            
+
             <br>
-            
+
             </p>
             <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________</span></span></span></p>
@@ -774,9 +792,9 @@
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">[name
             printed]</span></span></span></p>
             <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
-            
+
             <br>
-            
+
             </p>
             <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________  <span style="padding-left: 35px;"></span>____________________________________</span></span></span></p>
@@ -791,9 +809,9 @@
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >WITNESS
             2: ________________________________<span style="padding-left: 50px;"></span> Dated: ___________________</span></span></span></p>
             <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
-            
+
            <br>
-            
+
             </p>
             <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________</span></span></span></p>
@@ -805,11 +823,11 @@
             <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
           <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________  <span style="padding-left: 35px;"></span>____________________________________</span></span></span></p>
           <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
-          
+
           <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">[street
           address]<span style="padding-left: 230px;"></span>[city, state]</span></span></span></p>
-          
-          
+
+
   </div>
 </div>
 <!-- step 7 end -->
@@ -826,62 +844,62 @@
           <p align="justify" style="margin-bottom: 0in; "><span ><span style="font-family: 'Times New Roman', serif"><span  style=""><span >COUNTY
           OF ____________)</span></span></span></span></p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
           <span style="font-family: 'Times New Roman', serif">I, </span><span style="font-family: 'Times New Roman', serif"></span>
-          
+
           <span>{{$tellUsAboutYou['fullname']}},</span>
-          
-          
+
+
           <span style="font-family: 'Times New Roman', serif"></span>
-          
+
           <span style="font-family: 'Times New Roman', serif">
           declare to the officer taking my acknowledgment of this instrument,
           and to the subscribing witnesses, that I signed and executed this
           instrument as my Living Will.</span></p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">______________________________________</span></span></span></p>
           <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
               <span>{{$tellUsAboutYou['fullname']}}</span>
           </p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
           <span style="font-family: 'Times New Roman', serif">We, </span><span style="font-family: 'Times New Roman', serif"><u>					</u></span><span style="font-family: 'Times New Roman', serif">
           and </span><span style="font-family: 'Times New Roman', serif"><u>					</u></span><span style="font-family: 'Times New Roman', serif">,
           the witnesses, have been sworn by the officer signing below, and
           declare to that officer on our oaths that </span><span style="font-family: 'Times New Roman', serif"></span>
-          
+
           <span>{{$tellUsAboutYou['fullname']}},</span>
-          
-          
+
+
           <span style="font-family: 'Times New Roman', serif"></span><span style="font-family: 'Times New Roman', serif">
           the declarant, signed this Declaration in our presence, and that we
           each signed the instrument as a witness in the presence of the
           declarant and of each other.</span><span style="font-family: 'Times New Roman', serif">&nbsp;</span></p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >WITNESS
             1: ________________________________ <span style="padding-left: 50px;"></span>Dated: ___________________</span></span></span></p>
             <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
-            
+
             <br>
-            
+
             </p>
             <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________</span></span></span></p>
@@ -889,11 +907,11 @@
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">[name
             printed]</span></span></span></p>
             <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
-            
+
             <br>
-            
+
             </p>
-            
+
             <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
             <br>
             <br>
@@ -902,9 +920,9 @@
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  >WITNESS
             2: ________________________________<span style="padding-left: 50px;"></span> Dated: ___________________</span></span></span></p>
             <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
-            
+
            <br>
-            
+
             </p>
             <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________</span></span></span></p>
@@ -914,12 +932,12 @@
             <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
             <br>
             </p>
-            
+
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p align="justify" style="margin-bottom: 0in; "><span ><span style="font-family: 'Times New Roman', serif"><span  style=""><span >STATE
           OF FLORIDA</span><span >  </span><span style="padding-left: 45px;">)</span></span></span></span></p>
@@ -928,14 +946,14 @@
           <p align="justify" style="margin-bottom: 0in; "><span ><span style="font-family: 'Times New Roman', serif"><span  style=""><span >COUNTY
           OF ____________)</span></span></span></span></p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
           <p style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">Acknowledged
           and subscribed before me by </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"></span></span></span>
-          
+
           <span>{{$tellUsAboutYou['fullname']}},</span>
-          
-          
+
+
           <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">
           the principal, who is personally known to me or who has produced
           satisfactory photo identification, to wit:
@@ -950,7 +968,7 @@
           ______ day of </span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">___________</span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">,
           </span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">_________________</span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt">.</span></span></p>
           <p align="justify" style="margin-bottom: 0in; ">
-          
+
           </p>
   </div>
 </div>

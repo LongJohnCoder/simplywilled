@@ -11,8 +11,27 @@
       line-height: 120%;
     }
   </style>
+  <style>
+  #footer { position: fixed; left: 0px; bottom: -80px; right: 0px; height: 150px;
+  text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+  padding-top: 5px;
+  }
+   #footer .page:after { content: counter(page, none); }
+
+  </style>
 </head>
+
 <body>
+<script type="text/php">
+    if ( isset($pdf) ) {
+        $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+    }
+</script>
+<div id="footer">
+  <div style="">
+    Health Care Proxy of <br>{{$tellUsAboutYou['fullname']}}<br>
+  </div>
+</div>
 
   <div etyle="width: 500px">
     <!-- Page 1 -->
@@ -113,7 +132,7 @@
                 recognize people or speak and there is no hope that my condition
                 will improve, I do/don’t want the following types of
                 treatments:...</i></span></span></p>
-            
+
                 </div>
 
 
@@ -252,13 +271,13 @@
           <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
             <span ><span style="font-family:'Times New Roman, serif'">1.</span></span><span ><span style="font-family:'Times New Roman, serif'">  </span></span><span ><span style="font-family:'Times New Roman, serif'">I,
               </span></span><span style="font-family:'Times New Roman, serif'"><b>
-                
+
                 <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
 
                 <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
               </b></span><span ><span style="font-family:'Times New Roman, serif'">,
               hereby my
-            
+
               @if(strtolower($healthFinance['relation']) == 'other')
                 <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
               @else
@@ -266,24 +285,24 @@
               @endif
 
               <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
-              
-              <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['fullname']}} </span> 
+
+              <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['fullname']}} </span>
 
               <span>of ,</span>
-              
+
               <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['address']}} </span> in
-              
-              <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['city']}} ,</span> 
-              
-              <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['state']}} </span> 
+
+              <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
+
+              <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['state']}} </span>
 
               <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
 
-              <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['zip']}} </span> 
+              <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['zip']}} </span>
 
               <span> _______________________ </span>
               (Tel: <span> {{$healthFinance['phone']}} </span> ),
-            
+
 
               as my health care agent to make any and all health care decisions
               for me, except to the extent that I state otherwise.  This proxy
@@ -314,17 +333,17 @@
                       @else
                         <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
                       @endif
-                    
+
                       <span style="text-transform: capitalize"> {{$healthFinance['backupFullname']}}, </span>of
-                      
+
                       <span style="text-transform: capitalize"> {{$healthFinance['backupAddress']}} </span>in
-                      
-                      <span style="text-transform: capitalize"> {{$healthFinance['backupCity']}} ,</span> 
 
-                      
-                      <span style="text-transform: capitalize"> {{$healthFinance['backupState']}} </span> 
+                      <span style="text-transform: capitalize"> {{$healthFinance['backupCity']}} ,</span>
 
-                      <span style="text-transform: capitalize"> {{$healthFinance['backupZip']}} </span> 
+
+                      <span style="text-transform: capitalize"> {{$healthFinance['backupState']}} </span>
+
+                      <span style="text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
 
                       (Tel: <span> {{$healthFinance['backupphone']}} </span>),
                       as my alternate agent to make health care decisions for me as
@@ -337,7 +356,7 @@
 
 
               <div *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'false'">
-                
+
 
                 <p  style="margin-bottom: 0in; line-height: 100%">
                   <span style="font-family:'Times New Roman, serif'">
@@ -366,7 +385,7 @@
                 <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
                 </p>
-                
+
                 <p  style="margin-bottom: 0in; line-height: 100%">
                   <span style="font-family:'Times New Roman, serif'">
                     <span size="2" style="font-size: 9pt">
@@ -379,7 +398,7 @@
                 <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
                 </p>
-                
+
                 <p  style="margin-bottom: 0in; line-height: 100%">
                   <span style="font-family:'Times New Roman, serif'">
                     <span size="2" style="font-size: 9pt">
@@ -401,7 +420,7 @@
           <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
           </p>
-          
+
           <p style="margin-bottom: 0.09in; line-height: 100%">
             <span style="font-family:'Times New Roman, serif'">
               <span size="2" style="font-size: 9pt">
@@ -471,22 +490,22 @@
           <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
           </p>
-          <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">5.</span><span size="3" style="font-size: 12pt">  </span><span size="3" style="font-size: 12pt">My
+          <p  style="margin-bottom: 0in; line-height: 150%"><span style="font-family:'Times New Roman, serif'"><span size="2" style=""><span size="3" style="">5.</span><span size="3" style="">  </span> My
         agent's authority becomes effective when my primary physician
         determines I lack the capacity to make my own health-care decisions
-        pursuant </span><span face="Arial, serif"><span size="2" style="font-size: 9pt"><span style="font-family:'Times New Roman, serif'"><span size="3" style="font-size: 12pt">§</span></span></span></span><span size="3" style="font-size: 12pt">2983
+        pursuant </span><span face="Arial, serif"><span size="2" style=""><span style="font-family:'Times New Roman, serif'"><span size="3" style="">§</span></span></span></span><span size="3" style="">2983
         of the Consolidated Laws of New York, Public Health, Chapter 45,
         Article 29-C.</span></span></span></p>
           <p  style="margin-bottom: 0in; line-height: 100%">
 
           </p>
-          <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">6.</span><span size="3" style="font-size: 12pt">  </span><span size="3" style="font-size: 12pt">If
+          <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style=""><span size="3">6.</span><span size="3" style="">  </span><span size="3" style="">If
         a guardian of the person is to be appointed for me, I nominate the
-        agent whom I named in this form to act as such guardian.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
+        agent whom I named in this form to act as such guardian.</span><span size="3" style="">&nbsp;</span></span></span></p>
           <p  style="margin-bottom: 0in; line-height: 100%">
 
           </p>
-          <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">7.</span><span size="3" style="font-size: 12pt">  </span><span size="3" style="font-size: 12pt">My
+          <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><span size="2" style=""><span size="3" style="">7.</span><span size="3" style="">  </span><span size="3" style="">My
         desires as to anatomical gifts at my death are as follows: </span></span></span>
           </p>
           <p style="text-indent: 0.5in; margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
@@ -632,10 +651,10 @@
             <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></span></p>
           <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
             <span style="font-family:'Times New Roman, serif'"><b>
-              
+
 
               <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-              
+
               <!--«</b></span><span ><span style="font-family:'Times New Roman, serif'"><b>CLIENT
         FIRST NAME</b></span></span><span style="font-family:'Times New Roman, serif'"><b>»
         «</b></span><span ><span style="font-family:'Times New Roman, serif'"><b>CLIENT
@@ -675,7 +694,7 @@
                       <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>
 
                       <span style="text-transform: capitalize">{{$tellUsAboutYou['zip']}}</span>
-                      
+
                     </span>
                   </span>
                 </span>
@@ -706,7 +725,7 @@
             <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
         declare that </span></span></span>
         <span style="font-family:'Times New Roman, serif'">
-          <b>               
+          <b>
             <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
           </b>
         </span>

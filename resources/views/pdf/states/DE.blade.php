@@ -2,8 +2,26 @@
 <html>
 <head>
 	<title></title>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
+
+	</style>
 </head>
 <body>
+	<script type="text/php">
+			if ( isset($pdf) ) {
+					$pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+			}
+	</script>
+	<div id="footer">
+		<div style="">
+			Advance Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
+		</div>
+	</div>
 <div>
 	<!-- Page 1-->
 <div style="page-break-after: always;">
@@ -125,10 +143,10 @@
       </span>
 
       <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['fullname']}} </span> of
-      
+
 
       <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['address']}} </span> in
-      
+
 
 
       <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
@@ -141,8 +159,8 @@
       (Tel: <span> {{$healthFinance['phone']}} </span> ),
       as my agent to make health care decisions for me.
       </span></span></p>
-    
-    
+
+
     @if($healthFinance['anyBackupAgent'] === 'true')
     <p class="western" style="margin-bottom: 0in; " *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'true'">
 
@@ -156,7 +174,7 @@
 	  	@endif
 
       <span style="font-size: 12pt;text-transform: capitalize"> {{strtoupper($healthFinance['backupFullname'])}} </span> of
-      
+
       <span style="font-size: 12pt;text-transform: capitalize"> {{strtoupper($healthFinance['backupAddress'])}} </span> in
 
       <span style="font-size: 12pt;text-transform: capitalize"> {{strtoupper($healthFinance['backupCity'])}} ,</span>
@@ -361,7 +379,7 @@
     <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-   
+
     <p class="western"  style="margin-bottom: 0in; ">
       <b>About your options: </b>It is important to read each option fully
       before choosing. Please note that you may to choose only one option
@@ -372,7 +390,7 @@
     <p class="western" style="margin-bottom: 0in; "><br/>
 
     </p>
-   
+
     <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>A.
       END OF LIFE INSTRUCTIONS</b></span></span></p>
     <ul style="padding-left: 30px;">
@@ -406,14 +424,14 @@
     <p class="western" style="margin-bottom: 0in; "><b>Qualifying
       Condition 1: Terminally Ill. </b>
     </p>
-    
+
     <p class="western"  style="margin-bottom: 0in; ">
       _____ Option 1: My Agent will make decisions on my behalf: In the
       event I become terminally ill and I am unable to understand, make or
       communicate my wishes, I direct that my Agent make all medical
       decisions on my behalf.
     </p>
-    
+
     <p class="western"  style="margin-bottom: 0in; ">
       _____ Option 2: Prolong Life: In the event I become terminally ill
       and I am unable to understand, make or communicate my wishes, I
@@ -423,7 +441,7 @@
       treatments – if any – you do not want, even if they could prolong
       your life):
     </p>
-    
+
     <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       I DO NOT WANT the treatments initialed below:</p>
     <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
@@ -460,7 +478,7 @@
       exceptions (initial those treatments – if any – you do want, even
       if they could sustain your life):
     </p>
-    
+
     <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       I DO WANT the treatments initialed below:
     </p>
@@ -511,14 +529,14 @@
       option you have selected that represents your choice for treatment
       instructions. You may only select ONE option.
     </p>
-    
+
     <p class="western"  style="margin-bottom: 0in; ">
       _____ Option 1: My Agent will make decisions on my behalf: In the
       event I become permanently unconscious and I am unable to understand,
       make or communicate my wishes, I direct that my Agent make all
       medical decisions on my behalf.
     </p>
-    
+
     <p class="western"  style="margin-bottom: 0in; ">
       _____ Option 2: Prolong Life: In the event I become permanently
       unconscious and am unable to understand, make or communicate my
@@ -528,7 +546,7 @@
       treatments -- if any -- you do not want, even if they could prolong
       your life):
     </p>
-   
+
     <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       <span size="2" style="">I DO NOT WANT the treatments
       initialed below: </span>
@@ -560,14 +578,14 @@
     <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       <span size="2" style="">_____ antibiotics </span>
     </p>
-    
+
     <p class="western"  style="margin-bottom: 0in; ">
       _____ Option 3: Do Not Prolong Life: In the event I become
       permanently unconscious and am unable to understand, make or
       communicate my wishes, I direct that no life sustaining measures be
       taken, with the following exceptions (initial those treatments -- if
       any -- you do want, even if they could sustain your life):</p>
-    
+
     <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       <span size="2" style="">I DO WANT the treatments
       initialed below: </span>
@@ -629,14 +647,14 @@
       you have selected that represents your choice for treatment
       instructions. <u>You may only select ONE option</u>.
     </p>
-   
+
     <p class="western"  style="margin-bottom: 0in; ">
       _____ Option 1: My Agent will make decisions on my behalf: In the
       event I have a “serious illness or frailty” and I am unable to
       understand, make or communicate my wishes, I direct that my Agent
       make all medical decisions on my behalf.
     </p>
-    
+
     <p class="western"  style="margin-bottom: 0in; ">
       _____ Option 2: Prolong Life: In the event I have a “serious
       illness or frailty” and I am unable to understand, make or
@@ -646,7 +664,7 @@
       (initial those treatments -- if any -- you do not want, even if they
       could prolong your life):
     </p>
-    
+
     <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       <span size="2" style="">I DO NOT WANT the treatments
       initialed below: </span>
@@ -680,14 +698,14 @@
     <p class="western" style="text-indent: 0.5in; margin-bottom: 0in;  margin-top:10px;">
       <span size="2" style="">_____ antibiotic </span>
     </p>
-    
+
     <p class="western"  style="margin-bottom: 0in; ">
       _____ Option 3: Not to Prolong Life: In the event I have a “serious
       illness or frailty” and I am unable to understand, make or
       communicate my wishes, I direct that no life sustaining measures be
       taken, with the following exceptions (initial those treatments -- if
       any -- you do want, even if they could sustain your life):</p>
-    
+
     <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
       <span size="2" style="">I DO WANT the treatments
       initialed below: </span>
@@ -798,7 +816,7 @@
     <p class="western"  style="margin-bottom: 0in;  text-align:center; ">
       <span size="4" style="font-size: 14pt"><b>PART III. ANATOMICAL GIFT
       DECLARATION (Optional)</b></span></p>
-    
+
     <p  style="text-indent: 0.38in; margin-bottom: 0in; margin-top: 0;">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       hereby make the following anatomical gift(s) to take effect upon my
@@ -815,7 +833,7 @@
     <p  style="margin-bottom: 0in; "><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">the
       following organs or parts _________________________________________</span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">to</span><span size="3" style="font-size: 12pt">	</span></span></p>
     <p  style="margin-bottom: 0in; "><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">the
@@ -828,7 +846,7 @@
       following named physician, hospital, storage bank or other medical
       institution:</span></span></p>
     <p  style="margin-left: 0.5in; margin-bottom: 0.09in; ">
-      <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_____________________________________________________________</span></span></p>
+      <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 10pt">_____________________________________________________________</span></span></p>
     <p  style="text-indent: 0.5in; margin-bottom: 0in; ">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">for
       the following purpose(s):</span></span></p>
@@ -847,12 +865,12 @@
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span>
       </span></span></span><span size="3" style="font-size: 12pt">medical
       education.</span></span></p>
-    
-    
+
+
     <p class="western"  style="margin-bottom: 0in;  text-align:center;">
       <span size="4" style="font-size: 14pt"><b>A</b></span><span size="4" style="font-size: 14pt"><b>DMINISTRATIVE
       PROVISIONS</b></span></p>
-    
+
     <p class="western"  style="margin-bottom: 0in; margin-top: 0;">
       <b>A. REVOCATION, REMOVAL, AMENDMENT, OR RESIGNATION:</b>  I
       understand that, if I am mentally competent, I may revoke all or part
@@ -931,22 +949,22 @@
   	</p>
 
     <p style="margin-bottom: 0in; "><span><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"></span></span><span ><span size="3" style="font-size: 12pt">
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['address']}}</span>, 
+        <span style="text-transform: capitalize">{{$tellUsAboutYou['address']}}</span>,
     </span></span><span ><span size="3" style="font-size: 12pt"></span></span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in; ">
     <span>
     <span size="2" style="font-size: 9pt">
-        
+
         <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['city'])}}</span> ,
-        
+
 
         <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['state'])}}</span>
-        
+
         <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['zip'])}}</span>
-        
+
     </span></span></p>
-    
+
     <p  style="margin-top: 0.13in; margin-bottom: 0.13in; ">
       <br/>
       <br/>
@@ -1022,7 +1040,7 @@
   <div>
     <p  style="margin-top: 0.13in; margin-bottom: 0.06in;  text-align:center;">
       <span size="4" style="font-size: 14pt"><b>STATEMENT OF WITNESSES</b></span></p>
-   
+
     <p  style="margin-bottom: 0.03in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">SIGNED
       AND DECLARED by the above-named declarant as and for </span>
 
@@ -1101,10 +1119,7 @@
         advance health-care directive, a patient advocate or ombudsman
         designated by the Division of Services for Aging and Adults with
         Physical Disabilities or the Public Guardian.</span></span></p>
-    <p  style="margin-left: 0.38in; margin-bottom: 0.03in; "><a name="_GoBack"></a>
-      <br/>
 
-    </p>
       <p  style="margin-bottom: 0.03in; "><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 11pt">WITNESS
         1: ________________________________	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dated: ___________________</span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0.03in; ">

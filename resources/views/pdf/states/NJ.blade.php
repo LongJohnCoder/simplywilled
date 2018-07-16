@@ -2,14 +2,33 @@
 <html>
 <head>
 	<title></title>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
+
+	</style>
 </head>
+
 <body>
+<script type="text/php">
+		if ( isset($pdf) ) {
+				$pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+		}
+</script>
+<div id="footer">
+	<div style="">
+		Advance Health Care Directive (Proxy and Living Will) of <br>{{$tellUsAboutYou['fullname']}}<br>
+	</div>
+</div>
 
 <div>
 	<div class="docPage" style="margin: 0; box-sizing: border-box; padding: 0px;">
     <div class="docPageInner" style="box-sizing: border-box; height: 875px; page-break-after: always;">
       <p  style="margin-bottom: 0in;  text-align:center;">
-        
+
         <span size="4" style="font-size: 14pt">
           <span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>N</b></span></span></span><span size="4" style="font-size: 16pt"><b>EW
         </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>J</b></span></span></span><span size="4" style="font-size: 16pt"><b>ERSEY</b></span></span></p>
@@ -17,7 +36,7 @@
         </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>H</b></span></span></span><span size="4" style="font-size: 16pt"><b>EALTH
         </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>C</b></span></span></span><span size="4" style="font-size: 16pt"><b>ARE
         </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>D</b></span></span></span><span size="4" style="font-size: 16pt"><b>IRECTIVE</b></span></span></p>
-       
+
 
         <p  style="margin-left: 0.19in; text-indent: -0.19in; margin-top: 0.13in; margin-bottom: 0.13in;  text-align:center;">
         <span size="2" style="font-size: 10pt"><span size="4" style="font-size: 14pt"><b>PART
@@ -26,7 +45,7 @@
         DIRECTIVE – (DURABLE POWER OF ATTORNEY FOR HEALTH CARE)</b></span></span></p>
         <p  style="margin-bottom: 0in;  text-align:center;"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt"><b>DESIGNATION
         OF A HEALTH CARE </b></span><span size="3" style="font-size: 12pt"><b>REPRESENTATIVE</b></span></span></p>
-        
+
         <p class="western"  style="margin-bottom: 0in; border: 1px solid #00000a; padding: 0.1in 0.06in; ">
         I understand that as a competent adult, I have the right to make
         decisions about my health care. There may come a time when I am
@@ -38,9 +57,9 @@
         authority to make health care decisions on my behalf and to consult
         with my physician and others. I direct that this document become part
         of my permanent medical records.</p>
-        
-        
-        
+
+
+
         <ol type="A">
         <li>
           <p  style="margin-bottom: 0in;  margin-top: 0;">
@@ -51,56 +70,56 @@
             <span>
               <span style="font-family:'Times New Roman, serif'">
                   <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
-                  
+
               </span>
-          
+
               <span style="font-family:'Times New Roman, serif'">, hereby designate
               and appoint my </span>
-          
-              <span> 
+
+              <span>
                   	@if(strtolower($healthFinance['relation']) == 'other')
 						<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
 					@else
 						<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}}, </span>
 					@endif
               </span>
-          
+
               <span>
                   <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}}</span>
-                  
+
               </span>
-          
+
             <span style="font-family:'Times New Roman, serif'">, of </span>
-          
+
             <span>
                 <span style="font-family:'Times New Roman, serif'">{{$healthFinance['address']}}, </span>
             </span>
-          
+
             <span style="font-family:'Times New Roman, serif'"> in </span>
-          
+
             <span>
                 <span style="font-family:'Times New Roman, serif'">{{$healthFinance['city']}}, </span>
             </span>
-          
+
             <span style="font-family:'Times New Roman, serif'">, </span>
-          
+
             <span>
                 <span style="font-family:'Times New Roman, serif'">{{$healthFinance['state']}}, </span>
             </span>
-          
+
             <span style="font-family:'Times New Roman, serif'"> </span>
-          
+
             <span>
                 <span style="font-family:'Times New Roman, serif'">{{$healthFinance['zip']}}, </span>
             </span>
-          
+
             <span style="font-family:'Times New Roman, serif'"> (Tel: </span>
             <span>
                 <span style="font-family:'Times New Roman, serif'">{{$healthFinance['phone']}}</span>
             </span>
-          
+
             <span style="font-family:'Times New Roman, serif'">), </span>
-          
+
               <span style="font-family:'Times New Roman, serif'">as my health care
               representative to make any and all health care decisions for me,
               including decisions to accept or to refuse any treatment, service or
@@ -111,8 +130,8 @@
               otherwise known to him or her. In the event my wishes are not clear,
               my representative is authorized to make decisions in my best
               interest, based on what is known of my wishes.</span>
-          
-          
+
+
             </span>
           </span>
           </p>
@@ -122,7 +141,7 @@
 
         	@if($healthFinance['anyBackupAgent'] == 'true')
                 <p style="margin-bottom: 0in; ">
-                  
+
                   <span size="2" style="font-size: 9pt">
                     <span size="3" style="font-size: 12pt">If said representative is not available or becomes ineligible to act, or
                       if I revoke this appointment or authority to act as my
@@ -134,51 +153,51 @@
 							<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
 						@endif
 						</span>
-                  
+
                     <span size="3" style="font-size: 12pt">, </span>
-                  
+
                     <span>
                         <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}}</span>
                     </span>
-                  
+
                     <span size="3" style="font-size: 12pt">, of </span>
-                    
+
                     <span>
                         <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupAddress']}}, </span>
                     </span>
-                  
+
                     <span size="3" style="font-size: 12pt"> in </span>
-                  
+
                     <span>
                         <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupCity']}}, </span>
-                        
+
                     </span>
-                  
+
                     <span size="3" style="font-size: 12pt">, </span>
                     <span>
                         <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupState']}}, </span>
                     </span>
-                  
+
                     <span size="3" style="font-size: 12pt"> </span>
-                    
+
                     <span>
                         <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}}, </span>
                     </span>
-                    
+
                     <span size="3" style="font-size: 12pt">(Tel: </span>
-                    
+
                     <span>
                         <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupphone']}}</span>
                     </span>
-                    
+
                     <span size="3" style="font-size: 12pt">), as my alternate representative to make health care decisions for me
                       as authorized in this document.</span>
-                      
+
                     <span size="3" style="font-size: 12pt">&nbsp;</span>
                 </span></p>
             @endif
 
-        
+
         <p class="western"  style="margin-bottom: 0in; ">
         This durable power of attorney for health care shall take effect in
         the event I become unable to make my own health care decisions, as
@@ -186,10 +205,10 @@
         care, and any necessary confirming determinations.  Unless I revoke
         it, this proxy shall remain in effect indefinitely.  I revoke any
         prior advance health care directive and any prior health care proxy.&nbsp;</p>
-    </div> 
+    </div>
 
     {{--
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 1 of 9
@@ -201,10 +220,10 @@
     </div>
     --}}
 </div>
-  
 
 
-  
+
+
 <div class="docPage" style="margin: 0; box-sizing: border-box; padding:0px;">
     <div class="docPageInner" style="box-sizing: border-box; height: 875px; page-break-after: always;">
       <ol type="A" start="2">
@@ -215,23 +234,23 @@
         initial the statement below which best expresses your wishes</b></span><span style="font-family:'Times New Roman, serif'">.</span></span></p>
         </li>
         </ol>
-        
+
         <p style="margin-left: 0.5in; margin-bottom: 0in; ">
         <span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">_____
         My health care representative is authorized to direct that
         artificially provided fluids and nutrition, such as by feeding tube
         or intravenous infusion, be withheld or withdrawn. </span></span>
         </p>
-        
+
         <p style="margin-left: 0.5in; margin-bottom: 0in; "><span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'"><b>OR
         </b></span></span>
         </p>
-        
+
         <p style="margin-left: 0.5in; margin-bottom: 0in; "><span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">_____
         My health care representative does not have this authority, and I
         direct that artificially provided fluids and nutrition be provided to
         preserve my life, to the extent medically appropriate.</span></span></p>
-        
+
         <ol type="A" start="3">
         <li>
         <p style="margin-bottom: 0in; margin-top: 0;"><span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'"><b>ADDITIONAL
@@ -287,7 +306,7 @@
     </div>
 
     {{--
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 2 of 9
@@ -299,23 +318,23 @@
     </div>
     --}}
 </div>
-  
-  
+
+
 <div>
     <div style="page-break-after: always;">
       <p style="margin-left: 0.5in; margin-bottom: 0in; ">
         <span size="2" style="font-size: 9pt">
           <span size="3" style="font-size: 12pt">2.</span>
-          
+
           <span size="3" style="font-size: 12pt">	</span>
-          
+
           <span size="3" style="font-size: 12pt">Execute
         on my behalf any releases or other documents that may be required in
         order to obtain this information; and</span></span></p>
         <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
         <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">3.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Consent
         to the disclosure of this information.</span></span></p>
-        
+
         <ol type="A" start="5">
         <li>
         <p  style="margin-bottom: 0in; margin-top: 0;">
@@ -326,7 +345,7 @@
         act as such guardian.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></p>
         </li>
         </ol>
-        
+
         <ol type="A" start="6">
         <li>
         <p  style="margin-bottom: 0in; margin-top: 0;">
@@ -340,44 +359,44 @@
         </p>
         </li>
         </ol>
-        
+
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-        1. name 	___________________________________ 
+        1. name 	___________________________________
         </p>
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-        address 	_________________________________ 
+        address 	_________________________________
         </p>
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-        city 		________________________ state _______ 
+        city 		________________________ state _______
         </p>
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-        telephone 	__________________________ 
+        telephone 	__________________________
         </p>
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
         <br/>
 
         </p>
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-        2. name 	___________________________________ 
+        2. name 	___________________________________
         </p>
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-        address		 _________________________________ 
+        address		 _________________________________
         </p>
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-        city		 ________________________ state _______ 
+        city		 ________________________ state _______
         </p>
         <p class="western" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
         telephone 	__________________________</p>
         <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        
+
         <p  style="margin-left: 0.19in; text-indent: -0.19in; margin-top: 0.13in; margin-bottom: 0.13in;  text-align:center;">
         <span size="2" style="font-size: 10pt"><span size="4" style="font-size: 14pt"><b>PART
         II</b></span></span></p>
         <p  style="margin-bottom: 0.13in;  text-align:center;"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt"><b>INSTRUCTION
         DIRECTIVE (LIVING WILL)</b></span></span></p>
-        
+
         <p class="western"  style="margin-bottom: 0in; border: 1px solid #00000a; padding: 0.05in 0.06in; ">
         I understand that as a competent adult I have the right to make
         decisions about my health care. There may come a time when I am
@@ -386,20 +405,20 @@
         direction concerning my care and they will require information about
         my values and health care wishes. In order to provide the guidance
         and authority needed to make decisions on my behalf:</p>
-        
+
         <ol type="A">
         <li>
         <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0; margin-top: 0;">
         <span face="Calibri, serif">
           <span style="font-family:'Times New Roman, serif'">I,</span>
           <span style="font-family:'Times New Roman, serif'"></span>
-          
+
           <span>
-        
+
             <span style="font-family:'Times New Roman, serif'">
                 <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
             </span>
-        
+
             <span style="font-family:'Times New Roman, serif'">hereby declare and
             make known to my family, physician, and others, my instructions and
             wishes for my future health care. I direct that all health care
@@ -418,12 +437,12 @@
         </p>
           </li>
           </ol>
-        
+
 
     </div>
 
     {{--
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 3 of 9
@@ -435,8 +454,8 @@
     </div>
     --}}
 </div>
-  
-  
+
+
 <div>
   <div style="page-break-after: always;">
     <p  style="margin-bottom: 0in;  text-align:center;"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><u><b>Statement
@@ -478,10 +497,10 @@
       </p>
       </li>
       </ol>
-      
+
       <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>Initial
       ONE of the following two statements with which you agree:</b></span></span></p>
-     
+
       <ol>
       <li>
       <p  style="margin-bottom: 0in; ">
@@ -491,10 +510,10 @@
       </p>
       </li>
       </ol>
-      
+
       <p class="western"  style="margin-bottom: 0in; ">
       OR</p>
-      
+
       <ol start="2">
       <li>
       <p  style="margin-bottom: 0in; ">
@@ -507,12 +526,12 @@
       which I would choose to forego life-sustaining measures.</span></span></p>
       </li>
       </ol>
-      
+
       <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; ">
       <i><b>If you have initialed statement 2 immediately above, please
       initial each of the statements (a, b, c) with which you agree: </b></i>
       </p>
-      
+
       <ol type="a">
       <li>
       <p  style="margin-bottom: 0in; ">
@@ -531,7 +550,7 @@
       </ol>
   </div>
   {{--
-  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 4 of 9
@@ -543,31 +562,31 @@
     </div>
     --}}
 </div>
-  
-  
+
+
 <div class="docPage" style="margin: 0; box-sizing: border-box; padding: 0px;">
     <div class="docPageInner" style="box-sizing: border-box; height: 875px; page-break-after: always;">
       <p class="western"  style="margin-left: 1in; margin-bottom: 0in; ">
         <i><b>In the space provided, write in the bracketed phrase with which
-        you agree:</b></i> 
+        you agree:</b></i>
         </p>
-        
+
         <p class="western"  style="margin-left: 1in; margin-bottom: 0in; ">
         To me, terminal condition means that my physicians have determined
         that: (Initial ONE choice below)</p>
-        
+
         <p class="western"  style="margin-left: 1.5in; margin-bottom: 0in; ">
-        ______ (i) I will die within a few days,  
+        ______ (i) I will die within a few days,
         </p>
         <p class="western"  style="margin-left: 1.5in; margin-bottom: 0in; ">
-        ______ (ii) I will die within a few weeks, OR 
+        ______ (ii) I will die within a few weeks, OR
         </p>
         <p class="western"  style="margin-left: 1.5in; margin-bottom: 0in; ">
         ______ (iii) I have a life expectancy of approximately 6 months or
-        less 
+        less
         </p>
         <p class="western"  style="margin-left: 1.5in; margin-bottom: 0in; ">
-        ______ (iv) I have a life expectancy of approximately 1 year or less 
+        ______ (iv) I have a life expectancy of approximately 1 year or less
         </p>
         <p class="western"  style="margin-left: 0.75in; margin-bottom: 0in; ">
         <br/>
@@ -575,7 +594,7 @@
         </p>
         <p class="western"  style="margin-left: 0.75in; margin-bottom: 0in; ">
         <b>OR</b></p>
-        
+
         <ol type="a" start="2">
         <li>
         <p  style="margin-bottom: 0in; ">
@@ -592,11 +611,11 @@
         care necessary to provide for my personal hygiene and dignity.</span></span></p>
         </li>
         </ol>
-        
+
         <p class="western"  style="margin-left: 0.75in; margin-bottom: 0in; ">
         <b>OR </b>
         </p>
-        
+
         <ol type="a" start="3">
         <li>
         <p  style="margin-bottom: 0in; ">
@@ -616,7 +635,7 @@
         </p>
         </li>
         </ol>
-        
+
         <p  style="margin-left: 1.25in; margin-bottom: 0in; ">
         <span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">(</span><span style="font-family:'Times New Roman, serif'"><i>Paragraph
         c. covers a wide range of possible situations in which you may have
@@ -636,7 +655,7 @@
     </div>
 
     {{--
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 5 of 9
@@ -648,15 +667,15 @@
     </div>
     --}}
 </div>
-  
-  
+
+
 <div>
     <div style="page-break-after: always;">
       <p  style="margin-left: 1.25in; margin-bottom: 0in; ">
         <span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">Examples
         of conditions which I find unacceptable are: </span></span>
         </p>
-        
+
         <p  style="margin-left: 1.25in; margin-bottom: 0in; line-height: 150%">
         <span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">________________________________________________</span></span></p>
         <p  style="margin-left: 1.25in; margin-bottom: 0in; line-height: 150%">
@@ -667,7 +686,7 @@
         <span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">________________________________________________</span></span></p>
         <p  style="margin-left: 1.25in; margin-bottom: 0in; line-height: 150%">
         <span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">________________________________________________</span></span></p>
-        
+
         <p  style="margin-bottom: 0in; "><br/>
 
         </p>
@@ -693,7 +712,7 @@
         <p class="western" style="margin-left: 0.25in; margin-bottom: 0in; ">
         <b>In the space provided, INITIAL the choice with which you agree: </b>
         </p>
-        
+
         <ol>
         <li>
         <p style="margin-bottom: 0in; "><span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">In
@@ -704,7 +723,7 @@
         </p>
         </li>
         </ol>
-        
+
         <p  style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; ">
         <span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">______
         (i) be withheld or withdrawn and that I be allowed to die</span></span></p>
@@ -714,11 +733,11 @@
         </p>
         <p  style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; ">
         <span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'"><b>OR</b></span></span></p>
-        
+
         <p  style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; ">
         <span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">______
         (ii) be provided to the extent medically appropriate</span></span></p>
-        
+
         <p style="margin-left: 0.25in; margin-bottom: 0in; ">
         <span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">2.</span>
         <span style="font-family:'Times New Roman, serif'">In the circumstances I initialed
@@ -726,11 +745,11 @@
         Instructions”)</span>, if I should suffer a cardiac arrest, I also
         direct that cardiopulmonary resuscitation (CPR) </span>
         </p>
-        
+
         <p  style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; ">
         <span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">______
         (i) not be provided and that I be allowed to die</span></span></p>
-        
+
         <p  style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; ">
         <span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'"><b>OR</b></span></span></p>
         <p  style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; ">
@@ -740,7 +759,7 @@
     </div>
 
     {{--
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 6 of 9
@@ -752,8 +771,8 @@
     </div>
     --}}
 </div>
-          
-          
+
+
 <div>
     <div style="page-break-after: always;">
       <p class="western"  style="margin-left: 0.25in; margin-bottom: 0in; ">
@@ -772,7 +791,7 @@
         <br/>
 
         </p>
-       
+
         <p  style="margin-bottom: 0in; "><span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">D)
         </span><span style="font-family:'Times New Roman, serif'"><b>ADDITIONAL
         INSTRUCTIONS:</b></span><span style="font-family:'Times New Roman, serif'"> </span><span style="font-family:'Times New Roman, serif'"><i>(You
@@ -793,7 +812,7 @@
         <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        
+
         <p class="western"  style="margin-bottom: 0in; ">
         E) 	<b>BRAIN DEATH:</b> (The State of New Jersey recognizes the
         irreversible cessation of all functions of the entire brain,
@@ -801,13 +820,13 @@
         legal standard for the declaration of death. However, individuals who
         cannot accept this standard because of their personal religious
         beliefs may request that it not be applied in determining their
-        death.) 
+        death.)
         </p>
-        
+
         <p class="western"  style="text-indent: 0.5in; margin-bottom: 0in; ">
         <b>Initial the following statement only if it applies to you: </b>
         </p>
-        
+
         <p style="margin-left: 0.5in; margin-bottom: 0in; "><span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">______
         To declare my death on the basis of the whole brain death standard
         would violate my personal religious beliefs. I therefore wish my
@@ -817,7 +836,7 @@
         <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        
+
         <p class="western"  style="margin-bottom: 0in; ">
         F) 	<b>AFTER DEATH - ANATOMICAL GIFTS: </b><i>(It is now possible to
         transplant human organs and tissue in order to save and improve the
@@ -829,7 +848,7 @@
     </div>
 
     {{--
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 7 of 9
@@ -840,22 +859,22 @@
     </div>
     --}}
 </div>
-  
-  
+
+
 <div>
     <div style="page-break-after: always;">
       <p class="western"  style="text-indent: 0.5in; margin-bottom: 0in; margin-top: 0;">
         <b>Initial the statements which express your wishes: (OPTIONAL)</b></p>
-        
+
         <ol>
         <li>
         <p style="margin-bottom: 0in; "> <span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">______
         I do not wish to make an anatomical upon my death.\</span></span></p>
         </li>
         </ol>
-        
+
         <p class="western" style="margin-bottom: 0in; "><b>OR</b></p>
-        
+
         <ol start="2">
         <li>
         <p style="margin-bottom: 0in; "><span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">______
@@ -864,7 +883,7 @@
         </p>
         </li>
         </ol>
-        
+
         <ol type="A">
         <li>
         <p style="margin-bottom: 0in; "><span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">______
@@ -882,7 +901,7 @@
         <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">___________________________________________</span></span></p>
         <p  style="margin-left: 2.5in; margin-bottom: 0in; line-height: 0.16in">
         <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">___________________________________________</span></span></p>
-        
+
         <ol type="A" start="3">
         <li>
         <p style="margin-bottom: 0in; "><span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">______My
@@ -899,7 +918,7 @@
         <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">___________________________________________</span></span></p>
         <p  style="margin-left: 2.5in; margin-bottom: 0in; line-height: 0.16in">
         <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">___________________________________________</span></span></p>
-        
+
         <p class="western"  style="margin-bottom: 0in; ">
         <br/>
 
@@ -907,24 +926,22 @@
         <p class="western"  style="margin-bottom: 0in;  text-align:center;">
         <span size="4" style="font-size: 14pt"><b>PART III – SIGNATURE AND
         ACKNOWLEDGMENTS</b></span></p>
-        
+
         <p class="western"  style="margin-bottom: 0in; ">
         By writing this Advance Directive for Health Care, I inform those who
         may become entrusted with my care of my health care wishes and intend
         to ease the burdens of decision making which this responsibility may
         impose.  I understand the purpose and effect of this document and
         sign it knowingly, voluntarily and after careful deliberation</p>
-        <p  style="margin-bottom: 0in; "><br/>
 
-        </p>
-        
+
         <p class="western"  style="margin-bottom: 0in; ">
-        Signed this _____________ day of ______________, ______. 
+        Signed this _____________ day of ______________, ______.
         </p>
         <p class="western" style="margin-bottom: 0in; "><br/>
 
         </p>
-        
+
         <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
         <span ><span size="3" style="font-size: 12pt">_______________________________________</span></span></p>
         <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
@@ -940,25 +957,25 @@
         </span>
         </p>
         <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
-        
+
 
         <p style="margin-left: 0.5in; margin-bottom: 0in; ">
         <span><span><span ><span size="3" style="font-size: 12pt"></span></span>
-        
+
         <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}}</span>
-        
-        
+
+
         <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}}</span>&nbsp;
-        
+
         <span ><span size="3" style="font-size: 12pt"></span></span><span ><span size="3" style="font-size: 12pt">&nbsp;
         </span></span><span ><span size="3" style="font-size: 12pt"></span></span>
-        
+
         <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['zip']}}, </span>
-        
+
         <span ><span size="3" style="font-size: 12pt"></span></span></span></span></p>
     </div>
     {{--
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 8 of 9
@@ -970,8 +987,8 @@
     </div>
     --}}
   </div>
-  
-  
+
+
 <div>
     <div>
       <p  style="margin-bottom: 0in;  text-align:center;"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>WITNESS
@@ -981,27 +998,27 @@
         </p>
         <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
         <span >I declare that </span><b></b>
-        
+
         <span>
             <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
-            
+
         </span>
-        
+
         <span>, signed the
         foregoing document in my presence, or asked another to sign this
-        document on</span> 
-        
+        document on</span>
+
         <span>{{$genderTxt4}}</span>
-        
+
         <span >behalf, and that </span>
-        
-        <span>{{$genderTxt3}}</span> 
+
+        <span>{{$genderTxt3}}</span>
 
         <span> is personally known
         to me, and that </span>
-        
-        <span>{{$genderTxt3}}</span> 
-        
+
+        <span>{{$genderTxt3}}</span>
+
         <span >appears to be of sound
         mind and free of duress or undue influence. I am 18 years of age or
         older, and am not designated by this or any other document as the
@@ -1010,23 +1027,23 @@
         <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        
+
         <p class="western"  style="margin-bottom: 0.06in; ">
         <span ><b>WITNESS 1</b></span><span >:
         ________________________________	Dated: ___________________</span></p>
         <p class="western"  style="margin-bottom: 0.06in; ">
         <span >[signature]</span></p>
-       
+
         <p class="western"  style="margin-bottom: 0.06in; ">
         <span >____________________________________</span></p>
         <p class="western"  style="margin-bottom: 0.06in; ">
         <span >	[name printed]</span></p>
-        
+
         <p class="western"  style="margin-bottom: 0.06in; ">
         <span >____________________________________</span></p>
         <p class="western"  style="margin-bottom: 0.06in; ">
         <span >	[street address]</span></p>
-        
+
         <p class="western"  style="margin-bottom: 0.06in; ">
         <span >____________________________________</span></p>
         <p class="western"  style="margin-bottom: 0.06in; ">
@@ -1035,24 +1052,24 @@
         <br/>
 
         </p>
-        
+
         <p class="western"  style="margin-bottom: 0.06in; ">
         <span ><b>WITNESS 2:
         </b></span><span >________________________________	Dated:
         ___________________</span></p>
         <p class="western"  style="margin-bottom: 0.06in; ">
         <span >[signature]</span></p>
-        
+
         <p class="western"  style="margin-bottom: 0.06in; ">
         <span >____________________________________</span></p>
         <p class="western"  style="margin-bottom: 0.06in; ">
         <span >	[name printed]</span></p>
-        
+
         <p class="western"  style="margin-bottom: 0.06in; ">
         <span >____________________________________</span></p>
         <p class="western"  style="margin-bottom: 0.06in; ">
         <span >	[street address]</span></p>
-        
+
         <p class="western"  style="margin-bottom: 0.06in; ">
         <span >____________________________________</span></p>
         <p class="western"  style="margin-bottom: 0.06in; ">
@@ -1060,7 +1077,7 @@
     </div>
 
     {{--
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
     style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
     Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
       Page 9 of 9

@@ -4,12 +4,26 @@
     <meta charset="utf-8">
     <title>Untitled Document</title>
     <style>
+  	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+  	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+  	padding-top: 5px;
+  	}
+  	 #footer .page:after { content: counter(page, none); }
 
-    </style>
+  	</style>
 </head>
 
 <body>
-
+  <script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Advance Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
 <div class="docContainer" id="doc">
 
     <div class="docPage" style="page-break-after: always;">
@@ -81,7 +95,7 @@
                     <span>{{$healthFinance['backupRelation']}}</span>
                   @else
                     <span>_____________________</span>
-                  @endif                  
+                  @endif
                     <span>(relation)______________</span>
                 @endif
               <span style="text-transform: capitalize" > {{$healthFinance['backupFullname']}} </span>,  of
@@ -132,7 +146,7 @@
             <p style="margin-bottom: 0in; line-height: 115%">
 
             </p>
-            
+
         </div>
        {{-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
             <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Advance Directives of {{userDetails.tellUsAboutYou.fullname}} </span>
@@ -188,7 +202,7 @@
         (including information governed by the Health Insurance Portability
         and Accountability Act of 1996 (HIPAA), 42 U.S.C. 1320d and 45 CFR
         160-164).</span></p>
-           
+
             <p style="margin-bottom: 0in; line-height: 115%">
 
             </p>
@@ -201,7 +215,7 @@
             <p style="margin-bottom: 0in; line-height: 0.25in">________________________________________<span  style="font-size: 12pt"><span style="text-decoration: none">.</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 115%"><i>(Attach
                     additional pages as needed).</i></p>
-            
+
         </div>
        {{-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
             <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Advance Directives of {{userDetails.tellUsAboutYou.fullname}} </span>
@@ -325,8 +339,8 @@
 
 
             </p>
-            
-            
+
+
         </div>
        {{-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
             <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Advance Directives of {{userDetails.tellUsAboutYou.fullname}} </span>

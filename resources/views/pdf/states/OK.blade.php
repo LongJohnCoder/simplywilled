@@ -13,7 +13,7 @@
             padding: 0;
             font-family: Garamond;
         }
-        
+
 
         .docContainer{
             width: 700px;
@@ -33,9 +33,27 @@
 
 
     </style>
+    <style>
+  	#footer { position: fixed; left: 0px; bottom: -80px; right: 0px; height: 150px;
+  	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+  	padding-top: 5px;
+  	}
+  	 #footer .page:after { content: counter(page, none); }
+
+  	</style>
 </head>
 
 <body>
+  <script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Advance Directive for Health Care of <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
 
 <div class="docContainer" id="doc">
     <!-- Page 1-->

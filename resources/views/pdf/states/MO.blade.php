@@ -11,8 +11,27 @@
       margin-right: 5px;
     }
   </style>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
+
+	</style>
 </head>
+
 <body>
+<script type="text/php">
+		if ( isset($pdf) ) {
+				$pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+		}
+</script>
+<div id="footer">
+	<div style="">
+		Durable Power of Attorney for Health Care / Health Care Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
+	</div>
+</div>
 
 <div>
 	<!-- Page 1 -->
@@ -26,7 +45,7 @@
     <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0; text-align:center;">
       <span style="font-family:'Times New Roman, serif'"><span size="3" style="font-size: 13pt"><b>
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-        
+
       </b></span></span></p>
     <p  style="margin-bottom: 0in;  text-align:center;">
     	<span>
@@ -41,7 +60,7 @@
     	<span>
     		<span style="font-family:'Times New Roman, serif'">,</span>
     	</span>
-        
+
         <span>
         	<span style="font-family:'Times New Roman, serif'">
         		<span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
@@ -63,7 +82,7 @@
       	</span>
       </p>
 
-    	
+
     <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 14pt"><b>PART
       I. DURABLE POWER OF ATTORNEY FOR HEALTH CARE</b></span></span></p>
     <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'">(If
@@ -81,7 +100,7 @@
       of Agent</b></span></span><span ><span style="font-family:'Times New Roman, serif'">.
       I, </span></span><span style="font-family:'Times New Roman, serif'"><b>
       <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-      
+
       </b></span><span ><span style="font-family:'Times New Roman, serif'">,
       currently a resident of </span></span><span ><span style="font-family:'Times New Roman, serif'">________________</span></span><span ><span style="font-family:'Times New Roman, serif'">County,
       Missouri, appoint my </span></span>
@@ -95,30 +114,30 @@
 		</span>
 
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['fullname']}} </span> of
-      
+
 
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['address']}} </span> in
-      
+
 
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
-      
-      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['state']}} </span>, 
+
+      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['state']}} </span>,
 
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['zip']}} </span>
-      
+
       <span style="font-family:'Times New Roman, serif'">(Tel: <span> {{$healthFinance['phone']}} </span> )
         as my TRUE AND LAWFUL attorney-in-fact (“Agent”&quot;).</span></p>
-    
-    
 
-    
+
+
+
     <p style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">2.
       </span><span style="font-family:'Times New Roman, serif'"><b>Alternate Agent</b></span><span style="font-family:'Times New Roman, serif'">.
       </span>
-      
+
       <span>
       	@if($healthFinance['anyBackupAgent'] === 'true')
-      
+
       <span style="font-family:'Times New Roman, serif'">If
       my Agent resigns or is not able or available to make health care
       decisions for me, or if an Agent named by me is divorced from me or
@@ -136,13 +155,13 @@
       	<span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupFullname']}} </span> of
 
       	<span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupAddress']}} </span> in
-      
+
       	<span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupCity']}} ,</span>
 
       	<span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupState']}} </span>
 
       	<span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
-      
+
       	<span style="font-family:'Times New Roman, serif'">(Tel: <span> {{$healthFinance['backupphone']}} </span> ),
       	to serve as my alternate Agent and to have the same powers as my
         Agent.<!--</span>--></span>
@@ -165,24 +184,24 @@
   			</span>
   		</span>
   		@endif
-  		
+
   		<span>
   			<span style="font-family:'Times New Roman, serif'"></span>
   		</span>
-  		
+
       </span>
     </p>
 
-    
 
-    
+
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">3.
       </span><span style="font-family:'Times New Roman, serif'"><b>Durability</b></span><span style="font-family:'Times New Roman, serif'">.
       This is a Durable Power of Attorney, and the authority of my Agent,
       when effective, shall not terminate or be void or voidable if I am or
       become disabled or incapacitated or in the event of later uncertainty
       as to whether I am dead or alive.</span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">4.
         </span><span style="font-family:'Times New Roman, serif'"><b>Effective Date</b></span><span style="font-family:'Times New Roman, serif'">.
         This Durable Power of Attorney is effective when I am incapacitated
@@ -192,7 +211,7 @@
         <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    
+
     <p  style="margin-bottom: 0in;  text-align:center;"><span class="checkBox"></span>
       <span style="font-family:'Times New Roman, serif'; display: inline-block;"> one physician 	</span><span style="font-family:'Times New Roman, serif'; display: inline-block; padding: 0 20px;"><b>OR</b></span><span style="font-family:'Times New Roman, serif'">
       </span>
@@ -200,9 +219,9 @@
      <span class="checkBox"></span>
       <span style="font-family:'Times New Roman, serif'; display: inline-block;"> two physicians.</span>
   	</p>
-    
-    
-    
+
+
+
     <p  style="margin-bottom: 0in; "><br/>
 
     </p>
@@ -217,7 +236,7 @@
       result, including, but not limited to, an out of hospital
       do-not-resuscitate order, with the following specific authorization:&nbsp;</span></p>
   </div>
-  
+
   <!-- <span style="border-top: 1px solid #000;"><strong>INITIALS</strong></span> -->
 </div>
 <!-- Page 1 -->
@@ -228,7 +247,7 @@
     <p  style="margin-left: 0.56in; text-indent: -0.19in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><i><b>(INITIAL ONE of the
       following to indicate your choice)</b></i></span></p>
-    
+
     <p  style="margin-left: 1.31in; text-indent: -0.56in; margin-bottom: 0.06in; ">
       <span style="font-family:'Times New Roman, serif'">_______	I wish to AUTHORIZE my
       Agent to direct a health care provider to withhold or withdraw
@@ -265,7 +284,7 @@
       <span style="font-family:'Times New Roman, serif'">F.	With respect to anatomical
       gifts of my body or any part (i.e., organs or tissues), please
       initial your desired choice below:</span></p>
-    
+
     <p  style="margin-left: 0.75in; text-indent: -0.56in; margin-bottom: 0.09in; ">
       <span style="font-family:'Times New Roman, serif'">_______ </span><span style="font-family:'Times New Roman, serif'"><b>(INITIAL)</b></span><span style="font-family:'Times New Roman, serif'"><i>
       </i></span><span style="font-family:'Times New Roman, serif'">AUTHORIZATION OF
@@ -330,7 +349,7 @@
       GIFTS. I DO NOT AUTHORIZE my Agent to make an anatomical gift of my
       body or any part (organ or tissue).</span></p>
   </div>
-  
+
 <!--   <span style="border-top: 1px solid #000;"><strong>INITIALS</strong></span> -->
 </div>
 <!-- Page 2 -->
@@ -350,7 +369,7 @@
     <p  style="margin-bottom: 0in;  text-align:center;">————————————</p>
     <p  style="margin-bottom: 0.03in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 14pt"><b>PART
       II. HEALTH CARE DIRECTIVE</b></span></span></p>
-    
+
     <p  style="margin-bottom: 0.09in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><i><b>(If
       you DO NOT WISH to make a health care directive but only wish to have
       an Agent make your decisions without the directive, be sure that you
@@ -413,7 +432,7 @@
       shorten my life, suppress my appetite or my breathing, or be
       habit-forming.</span></p>
   </div>
-<!--   
+<!--
   <span style="border-top: 1px solid #000;"><strong>INITIALS</strong></span> -->
 </div>
 <!-- Page 3 -->
@@ -486,7 +505,7 @@
       of attorney, I revoke any health care terms contained in that durable
       power of attorney.&nbsp;</span></p>
   </div>
-  
+
 <!--   <span style="border-top: 1px solid #000;"><strong>INITIALS</strong></span> -->
 </div>
 <!-- Page 4 -->
@@ -521,18 +540,18 @@
     </p>
     <p  style="margin-bottom: 0in; line-height: 200%"><span style="font-family:'Times New Roman, serif'">_____________________________</span><span style="font-family:'Times New Roman, serif'">,
       </span><span style="font-family:'Times New Roman, serif'">__________________</span><span style="font-family:'Times New Roman, serif'">.</span></p>
-    
+
     <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'">_______________________________________</span></p>
     <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><b>
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-        
+
       </b>
   	  </span>
   	</p>
 
-   
+
     <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><b>NOTARY
       ACKNOWLEDGMENT</b></span></p>
     <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'">(Only
@@ -551,9 +570,9 @@
         </span><span style="font-family:'Times New Roman, serif'">______________</span><span style="font-family:'Times New Roman, serif'">,
         before me, personally </span><span style="font-family:'Times New Roman, serif'">
 
-        
+
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-        
+
         </span><span style="font-family:'Times New Roman, serif'">,
         to me known to be the person described in and who executed the
         foregoing instrument, and acknowledged that </span>
@@ -579,7 +598,7 @@
       have hereunto set my hand and affixed my official seal in the County
       or City and state aforementioned, on the day and year first above
       written.</span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">	______________________________________</span></p>
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">	NOTARY
       PUBLIC</span></p>
@@ -590,7 +609,7 @@
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">	Printed
       Name</span></p>
   </div>
-  
+
   <!-- <span style="border-top: 1px solid #000;"><strong>INITIALS</strong></span> -->
 </div>
 <!-- Page 5 -->
@@ -611,15 +630,15 @@
         1</b></span></span></span><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">:
         ________________________________	Dated: ___________________</span></span></span></p>
     <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">[signature]</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span></span></p>
     <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[name
       printed]</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span></span></p>
     <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[street
       address]</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span></span></p>
     <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[city,
       state]</span></span></span></p>
@@ -631,20 +650,20 @@
       2: </b></span></span></span><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">________________________________	Dated:
       ___________________</span></span></span></p>
     <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">[signature]</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span></span></p>
     <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[name
       printed]</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span></span></p>
     <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[street
       address]</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">____________________________________</span></span></span></p>
     <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 11pt">	[city,
       state]</span></span></span></p>
   </div>
-  
+
   <!-- <span style="border-top: 1px solid #000;"><strong>INITIALS</strong></span> -->
 </div>
 <!-- Page 6 -->

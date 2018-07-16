@@ -2,12 +2,30 @@
 <html>
 <head>
 	<title></title>
-</head>
-<body>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
 
+	</style>
+</head>
+
+<body>
+<script type="text/php">
+		if ( isset($pdf) ) {
+				$pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+		}
+</script>
+<div id="footer">
+	<div style="">
+		Health Care Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
+	</div>
+</div>
 
 <div>
-	
+
 	<!-- Page 1 -->
 <div>
   <div style="page-break-after: always;">
@@ -16,13 +34,13 @@
     <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 13pt"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>H</b></span></span></span><span size="4" style="font-size: 16pt"><b>EALTH
       </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>C</b></span></span></span><span size="4" style="font-size: 16pt"><b>ARE
       </b></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>D</b></span></span></span><span size="4" style="font-size: 16pt"><b>IRECTIVE</b></span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       I, <span style="font-family:'Times New Roman, serif'"><b>
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
         </b></span>,
       understand this document allows me to do ONE OR ALL of the following:</p>
-    
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>PART
       I</b></span><span size="3" style="font-size: 12pt">: Name another
       person (called the health care agent) to make health care decisions
@@ -31,9 +49,9 @@
       me based on the instructions I provide in this document (Part II), if
       any, the wishes I have made known to him or her, or my agent must act
       in my best interest if I have not made my health care wishes known.</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>AND/OR</b></span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>PART
       II</b></span><span size="3" style="font-size: 12pt">: Give health
       care instructions to guide others making health care decisions for
@@ -41,14 +59,14 @@
       used by the agent. These instructions may also be used by my health
       care providers, others assisting with my health care and my family,
       in the event I cannot make and communicate decisions for myself.</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>AND/OR</b></span></span></span></p>
-   
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>PART
       III</b></span><span size="3" style="font-size: 12pt">: Allows me to
       make an organ and tissue donation upon my death by signing a document
       of anatomical gift.</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="4" style="font-size: 14pt"><b>PART
       I: APPOINTMENT OF HEALTH CARE AGENT</b></span></span></span></p>
     <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="4" style="font-size: 14pt"><b>This
@@ -57,7 +75,7 @@
     <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 8pt"><span size="4" style="font-size: 14pt"><i>(I
       know I can change my agent or alternate agent at any time and I know
       I do not have to appoint an agent or an alternate agent)</i></span></span></span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt"><b>NOTE:</b></span><span size="3" style="font-size: 12pt">
       If you appoint an agent, you should discuss this health care
       directive with your agent and give your agent a copy. If you do not
@@ -66,10 +84,10 @@
       agent: your treating health care provider, a non-relative employee of
       your treating health care provider, an operator of a long-term care
       facility, or a non-relative employee of a long-term care facility.</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">When
       I am unable to make and communicate health care decisions for myself,
-      I trust and appoint my 
+      I trust and appoint my
 
 		<span>
 			<span size="3" style="font-size: 12pt">
@@ -80,13 +98,13 @@
 				@endif
 			</span>
 		</span>
-      
+
 
 
       <span style="text-transform: capitalize">{{$healthFinance['fullname']}}</span> to
       make health care decisions for me. This person is called my health
       care agent.</span></span></span></p>
-    
+
     <p  style="margin-left: 1.5in; text-indent: -1.13in; margin-bottom: 0in; ">
       <span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Telephone
       number:</span></span><span ><span size="3" style="font-size: 12pt">	</span></span>
@@ -97,7 +115,7 @@
         	</span>
     	</span>
     </span></span></span></p>
-    
+
     <p  style="margin-left: 1.5in; text-indent: -1.13in; margin-bottom: 0in; ">
       <span>
       	<span style="font-family:'Times New Roman, serif'">
@@ -106,19 +124,19 @@
       				<span size="3" style="font-size: 12pt">Address:
         <span style="text-transform: capitalize">{{$healthFinance['address']}}</span>
 
-        
+
       </span></span></span></span></span>
     </p>
     <p  style="margin-left: 1.5in; margin-bottom: 0in; ">
       <span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt">
 
       	<span size="3" style="font-size: 12pt">
-        
-        	<span style="text-transform: capitalize"> {{$healthFinance['city']}} ,</span> 
-        
+
+        	<span style="text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
+
         	<span style="text-transform: capitalize"> {{$healthFinance['state']}} </span>
 
-        	<span style="text-transform: capitalize"> {{$healthFinance['zip']}} </span> 
+        	<span style="text-transform: capitalize"> {{$healthFinance['zip']}} </span>
 
         </span>
     </span></span></span></p>
@@ -132,17 +150,17 @@
 <!-- Page 2 -->
 <div>
   <div>
-   
+
     @if($healthFinance['anyBackupAgent'] === 'true')
-	
-       	
+
+
       <p  style="margin-bottom: 0in; ">
 
       	<span style="font-family:'Times New Roman, serif'">
       		<span size="2" style="font-size: 9pt">
       			<span size="3" style="font-size: 12pt">
       				APPOINTMENT OF ALTERNATE HEALTH CARE AGENT: If my health care agent is not reasonably available, I trust and appoint my
-    	
+
 
     	<span size="3" style="font-size: 12pt">
 			@if(strtolower($healthFinance['backupRelation'] == 'other'))
@@ -151,13 +169,13 @@
 									<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
 								@endif
     	</span>
-    	
 
-        <span style="text-transform: capitalize"> {{$healthFinance['fullname']}} </span> 
+
+        <span style="text-transform: capitalize"> {{$healthFinance['fullname']}} </span>
         to make health care decisions for me. This person is my alternate health
         care agent.</span></span></span>
        </p>
-       
+
       <p  style="margin-left: 1.5in; text-indent: -1.13in; margin-bottom: 0in; ">
         <br/>
 
@@ -188,7 +206,7 @@
         	</span>
         </span>
     	</p>
-      
+
       	<p style="margin-left: 1.5in; text-indent: -1.13in; margin-bottom: 0in; ">
           <span>
           	<span style="font-family:'Times New Roman, serif'">
@@ -198,21 +216,21 @@
           			</span>
           			<span size="3" style="font-size: 12pt">
 			            <span style="text-transform: capitalize">{{$healthFinance['backupCity']}} ,</span>
-			            
+
 			            <span style="text-transform: capitalize">{{$healthFinance['backupState']}} ,</span>
-			            
+
 			            <span style="text-transform: capitalize">{{$healthFinance['backupZip']}} </span>
-			            
+
           			</span>
           		</span>
           	</span>
           </span>
       </p>
-      
+
     @endif
-    
-        
-    
+
+
+
     <p  style="margin-bottom: 0in; "><br/>
 
     </p>
@@ -241,7 +259,7 @@
     		</span>
     	</span>
     </p>
-    
+
     <p style="margin-bottom: 0in; "><br/></p>
 
     <p style="margin-bottom: 0in; ">
@@ -309,9 +327,9 @@
       shall expire only in the event that I revoke the authority in writing
       and deliver it to my health care provider.</span></span></span></p>
 
-     
+
   </div>
-  
+
 
 </div>
 <!-- Page 2 -->
@@ -323,11 +341,11 @@
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(ii)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Execute
       on my behalf any releases or other documents that may be required in
       order to obtain this information;</span></span></span></p>
-    
+
     <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(iii)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Consent
       to the further disclosure of this information if necessary;</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
       I </span><span size="3" style="font-size: 12pt"><b>DO NOT</b></span><span size="3" style="font-size: 12pt">
       want my health care agent to have a power listed above in (A) through
@@ -339,14 +357,14 @@
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0.06in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
-   
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">My
       health care agent is </span><span size="3" style="font-size: 12pt"><b>NOT</b></span><span size="3" style="font-size: 12pt">
       automatically given the powers listed below in (1) and (2). If I </span><span size="3" style="font-size: 12pt"><b>WANT</b></span><span size="3" style="font-size: 12pt">
       my agent to have any of the powers in (1) and (2), I must </span><span size="3" style="font-size: 12pt"><b>INITIAL</b></span><span size="3" style="font-size: 12pt">
       the line in front of the power; then my agent </span><span size="3" style="font-size: 12pt"><b>WILL
       HAVE</b></span><span size="3" style="font-size: 12pt"> that power.</span></span></span></p>
-    
+
     <p  style="margin-left: 0.75in; text-indent: -0.75in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_____</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(1)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">To
       decide whether to donate any parts of my body, including organs,
@@ -354,7 +372,7 @@
     <p  style="margin-left: 0.25in; text-indent: 0.5in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">eyes,
       when I die.</span></span></span></p>
-    
+
     <p  style="margin-left: 0.75in; text-indent: -0.75in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_____</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(2)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">To
       decide what will happen with my body when I die (burial, cremation).
@@ -363,7 +381,7 @@
       Disposition, and that such authority provided herein shall be second
       to the authority of any representative I appoint in such document, if
       different from the agent I appoint in this Directive.</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
       I want to say anything more about my health care agent's powers or
       limits on the powers, I can say it here:</span></span></span></p>
@@ -380,7 +398,7 @@
     </p>
   </div>
 
-  
+
 </div>
 <!-- Page 3 -->
 
@@ -400,17 +418,17 @@
       chose not to appoint an agent in Part I, you MUST complete, at a
       minimum, Part II (B) if you wish to make a valid health care
       directive.</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">These
       are instructions for my health care when I am unable to make and
       communicate health care decisions for myself. These instructions must
       be followed (so long as they address my needs).</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 8pt"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>(A)
       THESE ARE MY BELIEFS AND VALUES ABOUT MY HEALTH CARE</b></span></span></span></span></span></p>
     <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">(I
       know I can change these choices or leave any of them blank)</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       want you to know these things about me to help you make decisions
       about my health care: My goals for my health care:</span></span></span></p>
@@ -420,7 +438,7 @@
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 10pt">_______________________________________________________________________________________________</span></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 10pt">_______________________________________________________________________________________________</span></span></span></p>
-    
+
     <p style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">My
       fears about my health care:</span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
@@ -429,7 +447,7 @@
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 10pt">_______________________________________________________________________________________________</span></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 10pt">_______________________________________________________________________________________________</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">My
       spiritual or religious beliefs and traditions:</span></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
@@ -438,7 +456,7 @@
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 10pt">_______________________________________________________________________________________________</span></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 10pt">_______________________________________________________________________________________________</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">My
       beliefs about when life would be no longer worth living:</span></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
@@ -447,7 +465,7 @@
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 10pt">_______________________________________________________________________________________________</span></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 10pt">_______________________________________________________________________________________________</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">My
       thoughts about how my medical condition might affect my family:</span></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
@@ -456,7 +474,7 @@
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 10pt">_______________________________________________________________________________________________</span></span></span></p>
   </div>
 
-  
+
 </div>
 <!-- Page 4 -->
 
@@ -481,14 +499,14 @@
       dialysis, antibiotics, and blood transfusions. Most medical
       treatments can be tried for a while and then stopped if they do not
       help.</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 8pt"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       have these views about my health care in these situations: </span></span></span></span></span>
     </p>
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">(Note:
       You can discuss general feelings, specific treatments, or leave any
       of them blank)</span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">.</span></span></span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
       I had a reasonable chance of recovery and were temporarily unable to
       make and communicate health care decisions for myself, I would want:</span></span></span></p>
@@ -498,7 +516,7 @@
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0.06in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
       I were dying and unable to make and communicate health care decisions
       for myself, I would want:</span></span></span></p>
@@ -508,7 +526,7 @@
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0.06in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
       I were permanently unconscious and unable to make and communicate
       health care decisions for myself, I would want:</span></span></span></p>
@@ -518,7 +536,7 @@
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0.06in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
-   
+
     <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
       I were completely dependent on others for my care and unable to make
       and communicate health care decisions for myself, I would want:</span></span></span></p>
@@ -548,12 +566,12 @@
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0.06in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>OPTIONAL.</b></span><span size="3" style="font-size: 12pt">
      If you choose to make either of the following statements, please
     </span><span size="3" style="font-size: 12pt"><b>INITIAL</b></span><span size="3" style="font-size: 12pt">
     on the line to the left of such statement below:</span></span></span></p>
-    
+
     <p  style="margin-left: 0.75in; text-indent: -0.5in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_____</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">(1)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">If
       I become permanently incapacitated and unconscious, with no
@@ -562,7 +580,7 @@
       me except that oral fluids and medication may be mercifully
       administered to me to alleviate suffering even though this may
       shorten my remaining life.</span></span></span></p>
-    
+
     <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_____(2)
       I desire that my life be prolonged to the greatest possible extent
@@ -572,7 +590,7 @@
       this end.  I trust my agent, who knows my desires well, and in whose
       judgment I have absolute faith to exercise discretionary decisions in
       a manner that would be satisfactory to me.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
-    
+
     <p  style="margin-bottom: 0in; "><br/>
 
     </p>
@@ -580,7 +598,7 @@
       anything herein to the contrary, I direct that treatment for
       alleviation of pain or discomfort be provided at all times, even if
       it hastens my death.</span></span></span></p>
-    
+
     <p style="margin-bottom: 0in; "><br/>
 
     </p>
@@ -596,7 +614,7 @@
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
     <p  style="margin-left: 0.38in; margin-bottom: 0.06in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________________________________________________________________________</span></span></span></p>
-    
+
     <p  style="margin-left: 0.38in; margin-bottom: 0.06in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Where
       I would like to live to receive health care:</span></span></span></p>
@@ -702,28 +720,28 @@
     <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
     sign my name to this Health Care Directive Form on this </span><span size="3" style="font-size: 12pt">________</span><span size="3" style="font-size: 12pt">
     day of </span><span size="3" style="font-size: 12pt">____________</span><span size="3" style="font-size: 12pt">,
     </span></span></span>
     </p>
-    
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">at
       </span><span size="3" style="font-size: 12pt">_______________________</span><span size="3" style="font-size: 12pt">,
       </span><span size="3" style="font-size: 12pt">______________________</span><span size="3" style="font-size: 12pt">.</span></span></span></p>
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(city)<span style="padding-left: 180px;"></span>(state)</span></span></span></p>
-    
+
     <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></span></p>
     <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
 	    <span style="font-family:'Times New Roman, serif'"><b>
 	        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-	        
+
 	        </b>
 	    </span>
 	</p>
-    
+
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(THIS
       HEALTH CARE DIRECTIVE WILL NOT BE VALID UNLESS IT IS SIGNED IS
       NOTARIZED OR BY TWO (2) QUALIFIED WITNESSES WHO ARE PRESENT WHEN YOU
@@ -734,7 +752,7 @@
     <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    
+
     <p  style="margin-bottom: 0.06in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>NOTARY
       PUBLIC OR STATEMENT OF WITNESSES</b></span></span></span></p>
     <p  style="margin-bottom: 0.06in; "><br/>
@@ -808,7 +826,7 @@
       </span><span style="font-family:'Times New Roman, serif'">_______________</span><span style="font-family:'Times New Roman, serif'">,
       </span><span style="font-family:'Times New Roman, serif'">
       <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-      
+
       </span>
 
       <span style="font-family:'Times New Roman, serif'">
@@ -868,7 +886,7 @@
         </span><span style="font-family:'Times New Roman, serif'">________________</span><span style="font-family:'Times New Roman, serif'">,
         </span><span style="font-family:'Times New Roman, serif'">
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-        
+
 
         </span><span style="font-family:'Times New Roman, serif'">acknowledged </span>
         <span>
@@ -904,7 +922,7 @@
       :[________ ]</span></span></span></p>
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       certify that the information in (1) through (3) is true and correct.</span></span></span></p>
-    
+
     <p class="western" style="margin-bottom: 0in; "><span ><b>WITNESS
       1</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
       </span><span >______________________</span></p>
@@ -928,7 +946,7 @@
       </span>
 
       <span style="font-family:'Times New Roman, serif'">
-      	<span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>  
+      	<span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
       </span>
 
       <span style="font-family:'Times New Roman, serif'">
@@ -938,7 +956,7 @@
       	<span style="font-family:'Times New Roman, serif'">
 
       		<span>{{$genderTxt4}}</span></span></span><span style="font-family:'Times New Roman, serif'">
-      
+
       		signature on this document or acknowledged that </span>
 
       		<span>
@@ -947,7 +965,7 @@
       			</span>
       		</span>
       		<span style="font-family:'Times New Roman, serif'">
-      				directed the person signing this document to sign on 
+      				directed the person signing this document to sign on
       		</span>
 			<span>
 				<span style="font-family:'Times New Roman, serif'">
@@ -968,8 +986,8 @@
       :[________ ]</span></span></span></p>
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       certify that the information in (1) through (3) is true and correct.</span></span></span></p>
-    
-    
+
+
     <p class="western" style="margin-bottom: 0in; "><span ><b>WITNESS
       2</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
       </span><span >______________________</span></p>

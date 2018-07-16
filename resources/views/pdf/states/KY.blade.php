@@ -4,18 +4,26 @@
     <meta charset="utf-8">
     <title>Untitled Document</title>
     <style>
-        
-        
-        
+  	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+  	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+  	padding-top: 5px;
+  	}
+  	 #footer .page:after { content: counter(page, none); }
 
-
-
-
-    </style>
+  	</style>
 </head>
 
 <body>
-
+  <script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Living Will Directive and Health Care Surrogate Designation of <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
 <div class="docContainer" id="doc">
 
     <div class="docPage">
@@ -34,7 +42,7 @@
                   @endif
               </span>
             </p>
-            
+
             <p  style="text-align:center;margin-bottom: 0.06in; line-height: 0.23in">
               <span style="font-size: 13pt"><b>(date of birth:
                 @if(isset($tellUsAboutYou) && array_key_exists('dob',$tellUsAboutYou) && !is_null($tellUsAboutYou['dob']))
@@ -59,25 +67,25 @@
                 capacity, have a terminal condition, or become permanently
                 unconscious have been indicated by checking and initiating the
                 appropriate lines below.</p>
-            
+
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            
+
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            
+
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            
+
             <p  style="text-align:center;margin-bottom: 0in; border: 1.00pt solid #000001; padding: 0.01in 0.06in; line-height: 115%">
                 <b>HEALTH CARE SURROGATE DESIGNATION</b></p>
             <p  style="text-align:center;margin-bottom: 0in; line-height: 115%">
 
             </p>
-            
+
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">By
       checking and initialing the line below, I specifically:</span></span></span></span></span></p>
@@ -90,7 +98,7 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Designate
       my
-      
+
       @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
 
           @if(strlen(trim($healthFinance['relationOther'])) > 0)
@@ -710,7 +718,7 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">[city,
       state]</span></span></span></span></span></p>
-            
+
 
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000"><b>WITNESS

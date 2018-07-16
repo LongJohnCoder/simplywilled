@@ -53,9 +53,27 @@
 */
 
     </style>
+    <style>
+  	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+  	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+  	padding-top: 5px;
+  	}
+  	 #footer .page:after { content: counter(page, none); }
+
+  	</style>
 </head>
 
 <body>
+  <script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Durable Power of Attorney for Health Care of <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
 
 <div class="docContainer" id="doc">
 
@@ -72,33 +90,33 @@
             <p  style="margin-bottom: 0in;  text-align:center;"><span size="4" style="font-size: 13pt"><span size="4" style="font-size: 16pt"><b>FOR
     </b></span><span face="Times New Roman, serif"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>H</b></span></span></span><span size="4" style="font-size: 16pt"><b>EALTH
     </b></span><span face="Times New Roman, serif"><span size="5" style="font-size: 19pt"><span size="4" style="font-size: 16pt"><b>C</b></span></span></span><span size="4" style="font-size: 16pt"><b>ARE</b></span></span></p>
-            
+
             <p  style="margin-bottom: 0in;  text-align:center;"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>WARNING
     TO PERSON EXECUTING THIS DOCUMENT</b></span></span></p>
             <p  style="margin-bottom: 0in;  text-align:center;"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><b>(R.I.
     Gen. Laws 23-4.10-1 to 23-4.10-2 [1989])</b></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">This
     is an important legal document which is authorized by the general
     laws of this state. Before executing this document, you should know
     these important facts:</span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">You
     must be at least eighteen (18) years of age and a resident of the
     state of Rhode Island for this document to be legally valid and
     binding.</span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">This
     document gives the person you designate as your agent (the attorney
     in fact) the power to make health care decisions for you. Your agent
     must act consistently with your desires as stated in this document or
     otherwise made known.</span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">Except
     as you otherwise specify in this document, this document gives your
     agent the power to consent to your doctor not giving treatment or
     stopping treatment necessary to keep you alive.</span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">This
     document gives your agent authority to consent, to refuse to consent,
     or to withdraw consent to any care, treatment, service, or procedure
@@ -108,7 +126,7 @@
     types of treatment that you do not desire. In addition, a court can
     take away the power of your agent to make health care decisions for
     you if your agent:</span></span></p>
-            
+
             <p  style="margin-left: 0.38in; margin-bottom: 0.09in; ">
       <span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">(1)
       Authorizes anything that is illegal,</span></span></p>
@@ -119,22 +137,22 @@
       <span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">(3)
       Where your desires are not known, does anything that is clearly
       contrary to your best interests.</span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">Unless
       you specify a specific period, this power will exist until you revoke
       it. Your agent’s power and authority ceases upon your death except
       to inform your next of kin of your desire, if any, to be an organ and
       tissue donor.</span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">You
       have the right to revoke the authority of your agent by notifying
       your agent or your treating doctor, hospital, or other health care
       provider orally or in writing of the revocation.</span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">Your
       agent has the right to examine your medical records and to consent to
       their disclosure unless you limit this right in this document.</span></span></p>
-            
+
         </div>
         <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
@@ -156,16 +174,16 @@
         <div class="docPageInner" style="box-sizing: border-box; height: 875px;page-break-after: always;">
             <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">This
       document revokes any prior durable power of attorney for health care.</span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">You
       should carefully read and follow the witnessing procedure described
       at the end of this form. This document will not be valid unless you
       comply with the witnessing procedure.</span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">If
       there is anything in this document that you do not understand, you
       should ask a lawyer to explain it to you.</span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">Your
       agent may need this document immediately in case of an emergency that
       requires a decision concerning your health care. Either keep this
@@ -173,7 +191,7 @@
       alternate agents or give each of them an executed copy of this
       document. </span></span>
             </p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt"><b>1.</b></span><span size="3" style="font-size: 12pt"><b>	</b></span><span size="3" style="font-size: 12pt"><b>DESIGNATION
       OF HEALTH CARE AGENT.</b></span></span></p>
             <p style="margin-bottom: 0in; "><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>[None
@@ -182,7 +200,7 @@
       health care provider, (3) an operator of a community care facility,
       or (4) a non-relative employee of an operator of a community care
       facility.]</i></span></span></p>
-            
+
             <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
                 <span >I, </span><b></b><span >
                 @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
@@ -253,7 +271,7 @@
             <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>2.</b></span><span size="3" style="font-size: 12pt"><b>	</b></span><span size="3" style="font-size: 12pt"><b>CREATION
     OF DURABLE POWER OF ATTORNEY FOR HEALTH CARE. </b></span><span size="3" style="font-size: 12pt">By
     this document I intend to create a durable power of attorney for
@@ -274,7 +292,7 @@
       concerning obtaining or refusing or withdrawing life-prolonging care,
       treatment, services, and procedures and informing my family or next
       of kin of my desire, if any, to be an organ or tissue donor.</span></span></p>
-            
+
             <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
       <span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(If
       you want to limit the authority of your agent to make health care
@@ -406,11 +424,11 @@
       statement. If you attach additional pages, you must date and sign
       EACH of the additional pages at the same time you date and sign this
       document).</i></span></span></p>
-            
-            
+
+
             <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(c)&nbsp;&nbsp;&nbsp;&nbsp;</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Statement
       of desire regarding organ and tissue donation:</span></span></p>
-            
+
             <p align="left" style="margin-left: 0.75in; margin-bottom: 0.09in; ">
       <span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><b>Initial
       one to indicate your choice:</b></span></span></p>
@@ -423,13 +441,13 @@
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">________</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
       do NOT wish to be an organ donor. </span></span>
             </p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>5.</b></span><span size="3" style="font-size: 12pt"><b>	</b></span><span size="3" style="font-size: 12pt"><b>INSPECTION
       AND DISCLOSURE OF INFORMATION RELATING TO MY PHYSICAL OR MENTAL
       HEALTH.</b></span><span size="3" style="font-size: 12pt"> Subject to
       any limitations in this document, my agent has the power and
       authority to do all of the following:</span></span></p>
-            
+
             <p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
     <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(a)&nbsp;&nbsp;&nbsp;&nbsp;</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Request,
     review, and receive any information, verbal or written, regarding my
@@ -476,18 +494,18 @@
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(b)&nbsp;&nbsp;&nbsp;&nbsp;</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Execute
       on my behalf any releases or other documents that may be required in
       order to obtain this information;</span></span></p>
-            
+
             <p  style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0.06in; ">
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(c)&nbsp;&nbsp;&nbsp;&nbsp;</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Consent
       to the further disclosure of this information if necessary;</span></span></p>
-            
+
             <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
       <span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(If
       you want to limit the authority of your agent to receive and disclose
       information relating to your health, you must state the limitations
       in paragraph 4 (“Statement of desires, special provisions, and
       limitations”) above.)</i></span></span></p>
-            
+
             <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>6.</b></span><span size="3" style="font-size: 12pt"><b>	</b></span><span size="3" style="font-size: 12pt"><b>SIGNING
     DOCUMENTS, WAIVERS, AND RELEASES.</b></span><span size="3" style="font-size: 12pt">
     Where necessary to implement the health care decisions that my agent
@@ -500,7 +518,7 @@
             <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(b)&nbsp;&nbsp;&nbsp;&nbsp;</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Any
     necessary waiver or release from liability required by a hospital or
     physician.</span></span></p>
-            
+
             <p  style="margin-bottom: 0.06in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>7.</b></span><span size="3" style="font-size: 12pt"><b>	</b></span><span size="3" style="font-size: 12pt"><b>DURATION.
       </b></span><span size="3" style="font-size: 12pt"><i>(Unless you
       specify a shorter period in the space below, this power of attorney
@@ -511,7 +529,7 @@
             <p  style="margin-bottom: 0in;  text-align:center;"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(Fill
     in this space ONLY if you want the authority of your agent to end on
     a specific date.)</i></span></span></p>
-            
+
             <p  style="margin-bottom: 0.06in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>8.</b></span><span size="3" style="font-size: 12pt"><b>	</b></span><span size="3" style="font-size: 12pt"><b>DESIGNATION
     OF ALTERNATE AGENTS.</b></span></span></p>
             <p  style="margin-bottom: 0in; "><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(You
@@ -589,7 +607,7 @@
                 as my alternate agent to make health care
                 decisions for me as authorized by this document.&nbsp;</span></p>
             @endif
-            
+
             @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == false)
             <!--<p  style="margin-bottom: 0in; "><span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">«</span></span><span size="3" style="font-size: 12pt">ELSE</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></span></p>-->
             <p style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
@@ -598,45 +616,27 @@
                 make health care decisions for me, or if I revoke that </span><span size="3" style="font-size: 12pt">&nbsp;</span></span>
             </p>
             @endif
-        </div>
-       <!--  @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Power of Attorney for Health Care of {{$tellUsAboutYou['fullname']}}<br>
-                Page 5 of 10
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Power of Attorney for Health Care of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 5 of 10
-            </div>
-        @endif -->
-    </div>
-    <!-- Page 5 -->
 
-
-    <!-- Page 6 -->
-    <div class="docPage" style="margin: 0; box-sizing: border-box; padding: 0px;">
-        <div class="docPageInner" style="box-sizing: border-box; height: 875px; page-break-after: always;">
             @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == false)
-            
+
                 <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">person’s
       appointment or authority to act as my agent, then I designate and
       appoint the following persons to serve as my alternate agents to make
       health care decisions for me as authorized by this document, such
       persons to serve in the order listed below:</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></p>
-                <br><br>
+
                 <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
         <span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"><u>First
         Alternate Agent</u></span></span></span></span></p>
                 <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
                     <span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Name:</span></span></span></span></p>
-                
+
                 <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
                     <span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Address:</span></span></span></span></p>
-               
+
                 <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
                     <span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Telephone:</span></span></span></span></p>
-               
+
                 <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
         <span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"><u>Second
         Alternate Agent</u></span></span></span></span></p>
@@ -644,37 +644,23 @@
         <span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Name:
         </span></span></span></span>
                 </p>
-                
+
                 <p  style="margin-left: 0.38in; margin-bottom: 0in;">
                     <span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Address:</span></span></span></span></p>
-               
+
                 <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
                     <span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Telephone:</span></span></span></span></p>
-                
-                
+
+
                 @endif
 
                  <p class="western" style="margin-bottom: 0in; "><b>9.PRIOR
                     DESIGNATIONS REVOKED.</b> I revoke any prior durable power of
                 attorney for health care.</p>
-            
-            
-            <!--<p  style="margin-bottom: 0in; "><span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">«</span></span><span size="3" style="font-size: 12pt">END
-            IF</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></span></p>-->
-            
-           
+                <br>
+
         </div>
-        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Power of Attorney for Health Care of {{$tellUsAboutYou['fullname']}}<br>
-                Page 6 of 10
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Power of Attorney for Health Care of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 6 of 10
-            </div>
-        @endif -->
+
     </div>
     <!-- Page 6 -->
 
@@ -694,7 +680,7 @@
       Health Care on this </span><span size="3" style="font-size: 12pt">_______</span><span size="3" style="font-size: 12pt">
       day of </span><span size="3" style="font-size: 12pt">____________________</span><span size="3" style="font-size: 12pt">,
       </span><span size="3" style="font-size: 12pt">_____________</span><span size="3" style="font-size: 12pt">.</span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><br/>
 
             </p>
@@ -707,14 +693,14 @@
                         <b>(fullname)________________________________</b>
                     @endif
             </p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(THIS
       POWER OF ATTORNEY WILL NOT BE VALID UNLESS IT IS SIGNED BY ONE NOTARY
       PUBLIC OR TWO (2) QUALIFIED WITNESSES WHO ARE PRESENT WHEN YOU SIGN
       OR ACKNOWLEDGE YOUR SIGNATURE. IF YOU HAVE ATTACHED ANY ADDITIONAL
       PAGES TO THIS FORM, YOU MUST DATE AND SIGN EACH OF THE ADDITIONAL
       PAGES AT THE SAME TIME YOU DATE AND SIGN THIS POWER OF ATTORNEY.)</span></span></p>
-           
+
             <p class="western"  style="margin-bottom: 0in;  text-align:center;">
                 <b>NOTARY ACKNOWLEDGEMENT</b></p>
             <p class="western" style="margin-bottom: 0in; "><br/>
@@ -743,7 +729,7 @@
                 the preceding or attached document, and acknowledged to the notary
                 that (he) (she) signed it voluntarily for its stated purpose.
             </p>
-            
+
             <p class="western" style="margin-bottom: 0in; ">____________________________________</p>
             <p class="western" style="margin-bottom: 0in; ">
                 Seal (official signature of notary)</p>
@@ -796,7 +782,7 @@
       that I am not a health care provider; an employee of a health care
       provider; the operator of a community care facility; nor an employee
       of an operator of a community care facility.</b></span></span></p>
-            
+
             <p class="western" style="margin-bottom: 0in; font-size: 14px;"><span ><b>WITNESS
       1</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
       </span><span >______________________</span></p>
@@ -810,8 +796,8 @@
                 <span >							</span><span >______________________</span></p>
             <p class="western" align="justify" style="margin-bottom: 0in;  padding-left: 350px;margin-top: 0;font-size: 14px;">
                 <span style="padding-left: 40px;">								[city, state, zip]</span></p>
-           
-            
+
+
             <p class="western" style="margin-bottom: 0in; font-size: 14px;"><span ><b>WITNESS
       2</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
       </span><span >______________________</span></p>
@@ -825,7 +811,7 @@
                 <span >							</span><span >______________________</span></p>
             <p class="western" align="justify" style="margin-bottom: 0in;  padding-left: 350px;margin-top: 0;font-size: 14px;">
                 <span style="padding-left: 40px;">								[city, state, zip]</span></p>
-            
+
             <p  style="margin-bottom: 0in;  text-align:center;"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(AT
       LEAST ONE OF THE ABOVE WITNESSES MUST ALSO SIGN THE FOLLOWING.)</i></span></span></p>
             <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
@@ -834,7 +820,7 @@
       knowledge, I am not entitled to any part of the estate of the
       principal upon the death of the principal under a will now existing
       or by operation of law.</span></span></p>
-           
+
             <p  style="margin-left: 2.25in; margin-bottom: 0in; ">
                 <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_________________________________________ </span></span></p>
             <p  style="margin-left: 2.25in; margin-bottom: 0in; margin-top: 0;">
@@ -887,17 +873,17 @@
         treatment, I direct my attending physician to withhold or withdraw
         procedures that merely prolong the dying process and are not
         necessary to my comfort, or to alleviate pain.</span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">This
       authorization: </span></span>
             </p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><i><b>(Initial</b></i></span><span size="3" style="font-size: 12pt"><i><b>&nbsp;</b></i></span><span size="3" style="font-size: 12pt"><i><b>one
       option to indicate your choice)</b></i></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______
       includes the withholding or withdrawal of artificial feeding.</span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______
       does not include the withholding or withdrawal of artificial feeding.
       </span></span>
@@ -905,7 +891,7 @@
             <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            
+
             <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Other
       directions:</span></span></p>
             <p  style="margin-left: 0.38in; margin-bottom: 0.09in; ">
@@ -920,7 +906,7 @@
       statement. If you attach additional pages, you must date and sign
       EACH of the additional pages at the same time you date and sign this
       document).</i></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><br/>
 
             </p>
@@ -1027,7 +1013,7 @@
             <p class="western" style="margin-bottom: 0in; "><br/>
 
             </p>
-            
+
             <p class="western" style="margin-bottom: 0in; "><span ><b>WITNESS
       2</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
       </span><span >______________________</span></p>
