@@ -1,3 +1,5 @@
+
+<div class="pageCount">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div id="doc" class="docPageInner"
        style="box-sizing: border-box; height: 890px;">
@@ -156,9 +158,18 @@
 
     </p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Durable Health Care Power of Attorney and Declaration of  {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 1 of 7
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+        <div>Durable Health Care Power of Attorney and Declaration of</div> 
+        <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+    </div>
+    <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+        <div>Durable Health Care Power of Attorney and Declaration of</div> 
+        <div>(CLIENT FULL NAME)</div>
+    </div>
+    <span>
+      Page <span class="pageNumber"></span> of {{totalPages}}
+    </span>
   </div>
 </div>
 <!-- !Page 1 -->
@@ -250,10 +261,19 @@
 
     </p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Durable Health Care Power of Attorney and Declaration of  {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 2 of 7
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Durable Health Care Power of Attorney and Declaration of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Durable Health Care Power of Attorney and Declaration of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- !Page 2 -->
 
@@ -294,8 +314,8 @@
 
     </p>
     <p class="western" style="margin-bottom: 0in; line-height: 200%">I
-      sign my name to this form on&nbsp;this <u>		</u> day of <u>			</u>,
-      <u>		</u>, at <u>
+      sign my name to this form on&nbsp;this <span>________</span> day of <span>_____________</span>,
+      <span>________</span>, at <u>
         (City), 			</u>(State).</p>
     <p class="western" style="margin-bottom: 0in; line-height: 100%">
 
@@ -359,10 +379,19 @@
     <p class="western" style="margin-left: 2.5in; margin-bottom: 0in; line-height: 100%">
       NOTARY PUBLIC&nbsp;</p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Durable Health Care Power of Attorney and Declaration of  {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 3 of 7
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Durable Health Care Power of Attorney and Declaration of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Durable Health Care Power of Attorney and Declaration of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- !Page 3 -->
 
@@ -401,16 +430,16 @@
 
     </p>
     <p class="western" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>WITNESS
-      1</b></span><span color="#000000">: </span><span color="#000000"><u>					</u></span><span color="#000000">	Dated:
-    </span><span color="#000000"><u>				</u></span></p>
+      1</b></span><span color="#000000">: </span><span color="#000000"><span>_____________________</span></span><span color="#000000">	Dated:
+    </span><span color="#000000"><span>_________________</span></span></p>
     <p class="western"  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
       <span color="#000000">[signature]</span></p>
     <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000"><u>					</u></span><span color="#000000">		</span><span color="#000000"><u>						</u></span></p>
+      <span color="#000000"><span>_____________________</span></span><span color="#000000">		</span><span color="#000000"><span>_____________________________</span></span></p>
     <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
       <span color="#000000">	[name printed]						[street address]</span></p>
     <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000">							</span><span color="#000000"><u>						</u></span></p>
+      <span color="#000000">							</span><span color="#000000"><span>_____________________________</span></span></p>
     <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
       <span color="#000000">								[city, state, zip]</span></p>
     <p class="western" style="margin-bottom: 0in; line-height: 100%">
@@ -428,16 +457,16 @@
 
     </p>
     <p class="western" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><b>WITNESS
-      2</b></span><span color="#000000">: </span><span color="#000000"><u>					</u></span><span color="#000000">	Dated:
-    </span><span color="#000000"><u>				</u></span></p>
+      2</b></span><span color="#000000">: </span><span color="#000000"><span>_____________________</span></span><span color="#000000">	Dated:
+    </span><span color="#000000"><span>_________________</span></span></p>
     <p class="western"  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
       <span color="#000000">[signature]</span></p>
     <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000"><u>					</u></span><span color="#000000">		</span><span color="#000000"><u>						</u></span></p>
+      <span color="#000000"><span>_____________________</span></span><span color="#000000">		</span><span color="#000000"><span>_____________________________</span></span></p>
     <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
       <span color="#000000">	[name printed]						[street address]</span></p>
     <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000">							</span><span color="#000000"><u>						</u></span></p>
+      <span color="#000000">							</span><span color="#000000"><span>_____________________________</span></span></p>
     <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
       <span color="#000000">								[city, state, zip]</span></p>
     <p class="western" style="margin-bottom: 0in; line-height: 100%">
@@ -457,10 +486,19 @@
 
     </p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Durable Health Care Power of Attorney and Declaration of  {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 4 of 7
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Durable Health Care Power of Attorney and Declaration of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Durable Health Care Power of Attorney and Declaration of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- !Page 4 -->
 
@@ -520,7 +558,7 @@
 
     </p>
     <p class="western" style="margin-bottom: 0in; line-height: 100%">Declaration
-      made this <u>	</u> day of <u>			</u>, <u>		</u>.</p>
+      made this <span>______</span> day of <span>_____________</span>, <span>________</span>.</p>
     <p class="western"  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
 
 
@@ -608,10 +646,19 @@
 
     </p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Durable Health Care Power of Attorney and Declaration of  {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 5 of 7
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Durable Health Care Power of Attorney and Declaration of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Durable Health Care Power of Attorney and Declaration of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- !Page 5 -->
 
@@ -744,10 +791,19 @@
 
     </p>
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Durable Health Care Power of Attorney and Declaration of  {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 6 of 7
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Durable Health Care Power of Attorney and Declaration of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Durable Health Care Power of Attorney and Declaration of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- !Page 6 -->
 
@@ -790,21 +846,21 @@
 
     </p>
     <p class="western"  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
-      Date:		<u>				</u>
+      Date:		<span>_________________</span>
     </p>
     <p class="western"  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
 
 
     </p>
     <p class="western"  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
-      Signature: 	<u>				</u>		</p>
+      Signature: 	<span>_________________</span>		</p>
     <p class="western"  style="text-align:justify;margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <b>
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
       </b></p>
     <p class="western"  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
-      City and Parish:	<u>				</u>
+      City and Parish:	<span>_________________</span>
     </p>
     <p class="western"  style="text-align:justify;margin-left: 0.56in; text-indent: 0.44in; margin-bottom: 0.13in; line-height: 100%">
 
@@ -831,17 +887,17 @@
     </p>
     <p class="western" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span size="2" style="font-size: 10pt"><b>WITNESS
       1</b></span></span><span color="#000000"><span size="2" style="font-size: 10pt">:
-    </span></span><span color="#000000"><span size="2" style="font-size: 10pt"><u>					</u></span></span><span color="#000000"><span size="2" style="font-size: 10pt">	Dated:
-    </span></span><span color="#000000"><span size="2" style="font-size: 10pt"><u>				</u></span></span></p>
+    </span></span><span color="#000000"><span size="2" style="font-size: 10pt"><span>_____________________</span></span></span><span color="#000000"><span size="2" style="font-size: 10pt">	Dated:
+    </span></span><span color="#000000"><span size="2" style="font-size: 10pt"><span>_________________</span></span></span></p>
     <p class="western"  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
       <span color="#000000"><span size="2" style="font-size: 10pt">[signature]</span></span></p>
     <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000"><span size="2" style="font-size: 10pt"><u>					</u></span></span><span color="#000000"><span size="2" style="font-size: 10pt">		</span></span><span color="#000000"><span size="2" style="font-size: 10pt"><u>						</u></span></span></p>
+      <span color="#000000"><span size="2" style="font-size: 10pt"><span>_____________________</span></span></span><span color="#000000"><span size="2" style="font-size: 10pt">		</span></span><span color="#000000"><span size="2" style="font-size: 10pt"><span>_____________________________</span></span></span></p>
     <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
       <span color="#000000"><span size="2" style="font-size: 10pt">	[name
         printed]						[street address]</span></span></p>
     <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000"><span size="2" style="font-size: 10pt">							</span></span><span color="#000000"><span size="2" style="font-size: 10pt"><u>						</u></span></span></p>
+      <span color="#000000"><span size="2" style="font-size: 10pt">							</span></span><span color="#000000"><span size="2" style="font-size: 10pt"><span>_____________________________</span></span></span></p>
     <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
       <span color="#000000"><span size="2" style="font-size: 10pt">								[city,
         state, zip]</span></span></p>
@@ -850,26 +906,36 @@
     </p>
     <p class="western" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span size="2" style="font-size: 10pt"><b>WITNESS
       2</b></span></span><span color="#000000"><span size="2" style="font-size: 10pt">:
-    </span></span><span color="#000000"><span size="2" style="font-size: 10pt"><u>					</u></span></span><span color="#000000"><span size="2" style="font-size: 10pt">	Dated:
-    </span></span><span color="#000000"><span size="2" style="font-size: 10pt"><u>				</u></span></span></p>
+    </span></span><span color="#000000"><span size="2" style="font-size: 10pt"><span>_____________________</span></span></span><span color="#000000"><span size="2" style="font-size: 10pt">	Dated:
+    </span></span><span color="#000000"><span size="2" style="font-size: 10pt"><span>_________________</span></span></span></p>
     <p class="western"  style="text-align:justify;text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
       <span color="#000000"><span size="2" style="font-size: 10pt">[signature]</span></span></p>
     <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000"><span size="2" style="font-size: 10pt"><u>					</u></span></span><span color="#000000"><span size="2" style="font-size: 10pt">		</span></span><span color="#000000"><span size="2" style="font-size: 10pt"><u>						</u></span></span></p>
+      <span color="#000000"><span size="2" style="font-size: 10pt"><span>_____________________</span></span></span><span color="#000000"><span size="2" style="font-size: 10pt">		</span></span><span color="#000000"><span size="2" style="font-size: 10pt"><span>_____________________________</span></span></span></p>
     <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
       <span color="#000000"><span size="2" style="font-size: 10pt">	[name
         printed]						[street address]</span></span></p>
     <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
-      <span color="#000000"><span size="2" style="font-size: 10pt">							</span></span><span color="#000000"><span size="2" style="font-size: 10pt"><u>						</u></span></span></p>
+      <span color="#000000"><span size="2" style="font-size: 10pt">							</span></span><span color="#000000"><span size="2" style="font-size: 10pt"><span>_____________________________</span></span></span></p>
     <p class="western"  style="text-align:justify;margin-bottom: 0.06in; line-height: 100%">
       <span color="#000000"><span size="2" style="font-size: 10pt">								[city,
         state, zip]</span></span></p>
 
   </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined"> Durable Health Care Power of Attorney and Declaration of  {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-    <br>Page 7 of 7
-  </div>
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Durable Health Care Power of Attorney and Declaration of</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Durable Health Care Power of Attorney and Declaration of</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
+    </div>
 </div>
 <!-- !Page 7 -->
 
+</div>

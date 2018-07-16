@@ -5,3 +5,25 @@ p, span {
 .docPage{
     box-shadow: 0 0 7px rgba(0,0,0,0.3);
 }
+
+.docPageInner span, .docPageInner p{
+    font-family: "Times New Roman" !important;
+}
+.pageCount{
+counter-reset: index;
+}
+.pageNumber{
+counter-increment: index;
+}
+.pageNumber:after{
+content: counter(index);
+}
+
+.docPageInner{
+height: auto !important;
+min-height: 400px;
+}
+
+.docPage{
+height: auto !important;
+}
