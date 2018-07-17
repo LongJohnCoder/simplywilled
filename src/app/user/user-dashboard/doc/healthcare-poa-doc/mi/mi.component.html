@@ -1,4 +1,5 @@
 <div class="docContainer">
+<div class="pageCount">
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
   <div id="doc" class="docPageInner"
        style="box-sizing: border-box; height: 890px;">
@@ -25,7 +26,7 @@
       document explains what a patient advocate designation is, why it is
       important and how to complete the Patient Advocate Designation form
       (DCH3916). A copy of this document can also be found here:
-      www.michigan.gov/advancedirective Make sure that you have read this
+      <a href="https://www.michigan.gov/advancedirective">www.michigan.gov/advancedirective</a> Make sure that you have read this
       document and ask for help if you have questions. If you do not want a
       patient advocate, you do not have to complete this form. However, you
       may want to keep this page for your records. 
@@ -122,16 +123,20 @@
       
   </div>
 
-  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Designation of Patient Advocate (Medical Power of Attorney) by  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 1 of 10
+    <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
     </div>
 
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-        Designation of Patient Advocate (Medical Power of Attorney) by <br> CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 1 of 10
-    </div>
 </div>
 
 <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
@@ -189,27 +194,26 @@
           </p>
           <p class="western" align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
           I, <span color="#0000ff">
-              <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b>
-              <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
+              <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</b>
+              <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________,</b>
           </span>
-          , of 
+           of 
           
-          <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.address !== null" style="font-family:'Times New Roman, serif'" >{{userDetails.tellUsAboutYou.address}}</span>
+          <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.address !== null" style="font-family:'Times New Roman, serif'" >{{userDetails.tellUsAboutYou.address}},</span>
               <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(address)_________________________________________________________________
                 ___________________________________________________________________________________________
-              _________________________________________________________________________________</span> 
+              _________________________________________________________________________________,</span> 
           
           
-          
-              <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.city}}</span>
-              <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(city)_____________</span>
+              <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.city}},</span>
+              <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(city)___________________,</span>
 
 
-              <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.state}}</span>&nbsp;
+              <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.state}},</span>&nbsp;
               <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="font-family:'Times New Roman, serif'">(state)_____________________</span>
           
           
-          , am of sound mind, and I
+           am of sound mind, and I
           voluntarily make this designation.</p>
           <p align="justify" style="margin-bottom: 0in; "><br/>
           
@@ -219,11 +223,11 @@
           
           <span color="#000000">I designate my </span>
           
-          <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther}}</span>
-            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation}}</span>
+          <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther}},</span>
+            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation}},</span>
             <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">______________</span>
           
-          <span color="#000000">, </span>
+          <span color="#000000"> </span>
           
           <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.fullname.length > 0" style="font-family:'Times New Roman, serif'">{{userDetails.healthFinance.fullname}}</span>
           <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" style="font-family:'Times New Roman, serif'">(fullname)_____________________________</span>
@@ -334,15 +338,18 @@
           </p>          
   </div>
 
-  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Designation of Patient Advocate (Medical Power of Attorney) by  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 2 of 10
-    </div>
-
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-        Designation of Patient Advocate (Medical Power of Attorney) by <br> CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 2 of 10
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
     </div>
 </div>
 
@@ -441,15 +448,18 @@
         </p>
   </div>
 
-  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Designation of Patient Advocate (Medical Power of Attorney) by  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 3 of 10
-    </div>
-
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-        Designation of Patient Advocate (Medical Power of Attorney) by <br> CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 3 of 10
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
     </div>
 </div>
 
@@ -555,15 +565,18 @@
         </p>
   </div>
 
-  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Designation of Patient Advocate (Medical Power of Attorney) by  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 4 of 10
-    </div>
-
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-        Designation of Patient Advocate (Medical Power of Attorney) by <br> CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 4 of 10
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
     </div>
 </div>
 
@@ -669,15 +682,18 @@
           
   </div>
 
-  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Designation of Patient Advocate (Medical Power of Attorney) by  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 5 of 10
-    </div>
-
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-        Designation of Patient Advocate (Medical Power of Attorney) by <br> CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 5 of 10
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
     </div>
 </div>
 
@@ -712,15 +728,18 @@
       
   </div>
 
-  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Designation of Patient Advocate (Medical Power of Attorney) by  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 6 of 10
-    </div>
-
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-        Designation of Patient Advocate (Medical Power of Attorney) by <br> CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 6 of 10
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
     </div>
 </div>
 
@@ -874,15 +893,18 @@
         </p>    
   </div>
 
-  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Designation of Patient Advocate (Medical Power of Attorney) by  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 7 of 10
-    </div>
-
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-        Designation of Patient Advocate (Medical Power of Attorney) by <br> CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 7 of 10
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
     </div>
 </div>
 
@@ -1028,15 +1050,18 @@
           </div>
   </div>
 
-  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Designation of Patient Advocate (Medical Power of Attorney) by  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 8 of 10
-    </div>
-
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-        Designation of Patient Advocate (Medical Power of Attorney) by <br> CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 8 of 10
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
     </div>
 </div>
 
@@ -1132,15 +1157,18 @@
     </p>
   </div>
 
-  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Designation of Patient Advocate (Medical Power of Attorney) by  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 9 of 10
-    </div>
-
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-        Designation of Patient Advocate (Medical Power of Attorney) by <br> CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 9 of 10
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
     </div>
 </div>
 
@@ -1271,15 +1299,19 @@
       </p>      
   </div>
 
-  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null" 
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Designation of Patient Advocate (Medical Power of Attorney) by  <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-      Page 10 of 10
+  <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
+      <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+      </div>
+      <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+          <div>Designation of Patient Advocate (Medical Power of Attorney) by</div> 
+          <div>(CLIENT FULL NAME)</div>
+      </div>
+      <span>
+        Page <span class="pageNumber"></span> of {{totalPages}}
+      </span>
     </div>
-
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-        Designation of Patient Advocate (Medical Power of Attorney) by <br> CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 10 of 10
-    </div>
+</div>
 </div>
 </div>
