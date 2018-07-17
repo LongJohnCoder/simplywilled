@@ -1,3 +1,4 @@
+<div class="tourBg" *ngIf="stepNumber > 0"></div>
 <header>
     <div class="container">
         <div class="customRow">
@@ -56,11 +57,32 @@
                                         <h1>{{step1Data?.data?.spouseInfo?.name}}<br> <span></span></h1>
                                     </a>
                                 </li>-->
-                                <li>
-                                    <button class="btn common-button btn-dashboard" (click)="userDasboardRoute('/dashboard')">Back to Dashboard</button>
+                                <li class="tourGuideArea">
+                                    <button class="btn common-button btn-dashboard" (click)="userDasboardRoute('/dashboard')" [ngClass]="{'tourSpot' : stepNumber == 1}">Back to Dashboard</button>
+                                    <div class="tourGuide pop1" *ngIf="stepNumber == 1">
+                                        <h3>Step 1 <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span></h3>
+                                        <p>
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                                            Temporibus quam quibusdam eius necessitatibus eos totam laborios
+                                        </p>
+                                        <div class="tourBtnArea">
+                                            <button type="button" (click)="changeTourState('forward')" class="next">Next <i class="fa fa-chevron-right"></i></button>
+                                        </div>
+                                    </div>
                                 </li>
-                                <li>
-                                    <button class="btn common-button btn-preview" [routerLink]="['/dashboard/documents/signing-instruction']">Preview Documents</button>
+                                <li class="tourGuideArea">
+                                    <button class="btn common-button btn-preview" [routerLink]="['/dashboard/documents/signing-instruction']" [ngClass]="{'tourSpot' : stepNumber == 2}">Preview Documents</button>
+                                    <div class="tourGuide pop1" *ngIf="stepNumber == 2">
+                                        <h3>Step 2 <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span></h3>
+                                        <p>
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                                            Temporibus quam quibusdam eius necessitatibus eos totam laborios
+                                        </p>
+                                        <div class="tourBtnArea">
+                                            <button type="button" (click)="changeTourState('backward')" class="prev"><i class="fa fa-chevron-left"></i> Previous</button>
+                                            <button type="button" (click)="changeTourState('forward')" class="next">Next <i class="fa fa-chevron-right"></i></button>
+                                        </div>
+                                    </div>
                                 </li>
                                 <!--<li>-->
                                     <!--<button class="btn common-button btn-progress">Save Progress</button>-->

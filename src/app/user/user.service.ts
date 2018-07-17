@@ -2,13 +2,18 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import { Subject } from 'rxjs/Subject';
+import { Subject,  } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class UserService {
 
   public currentToolTipType = new Subject<string>();
-  constructor( private httpClient: HttpClient ) { }
+  public stepNumForTourGuide = new BehaviorSubject<number>(0);
+
+  constructor( private httpClient: HttpClient, public router: Router) {
+   }
 
   /** Function call for logging in*/
 
@@ -67,4 +72,18 @@ export class UserService {
         return this.httpClient.post( environment.API_URL + 'fiduciary-user', body );
     }
 
+    /** Function to send tour value*/
+    changeStepNumber(type: string) {
+        if (type == "forward"){
+            if (this.stepNumForTourGuide.value == 2){
+                this.router.navigate(['/dashboard/will']);
+            }
+            this.stepNumForTourGuide.next(this.stepNumForTourGuide.value + 1)
+            
+        }else if(type == "backward"){
+            this.stepNumForTourGuide.next(this.stepNumForTourGuide.value - 1)
+        } else if(type == "close"){
+            this.stepNumForTourGuide.next(0);
+        }
+    }
 }

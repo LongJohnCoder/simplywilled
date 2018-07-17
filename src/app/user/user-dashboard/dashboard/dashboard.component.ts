@@ -20,6 +20,7 @@ import {environment} from '../../../../environments/environment';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
     /**Variable  declaration*/
+    tourStapes : number = 0;
     loggedInUser: any;
     userDetails: any = {};
     step1Data: any = {};
@@ -41,6 +42,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     };
     loading = false;
     isMyAccountClickedVal: boolean;
+    tourSubscription: Subscription;
+    stepNumber: Number;
+    tourSub : Subscription
 
     /**Constructor call*/
     constructor(
@@ -71,6 +75,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
             this.showProgressBar = true;
           }
         });
+        this.tourSub = this.userService.stepNumForTourGuide.subscribe(value => {
+          this.stepNumber = value 
+        });
+        this.userService.stepNumForTourGuide.next(1);
     }
 
     /**Initialises the form**/
@@ -80,6 +88,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
         'lastname': new FormControl(''),
         'email': new FormControl(''),
       });
+    }
+
+    ngOnChanges() {
+      this.tourSubscription = this.userService.tour.subscribe(
+        (currentVal: number) => {
+          if (currentVal !== this.tourStapes) {
+            this.tourStapes = currentVal;
+          }
+        }
+      );
     }
 
     /**When the component is initialised*/
@@ -94,6 +112,26 @@ export class DashboardComponent implements OnInit, OnDestroy {
           },
         (error) =>  {console.log(error);}
       );
+
+      localStorage.setItem('tourStapes', '1');
+      this.tourStapes = +localStorage.getItem('tourStapes');
+    }
+    
+    nextStep(){
+      this.tourStapes = this.tourStapes + 1;
+      this.userService.changeTourType(this.tourStapes);
+      console.log('afterClick',this.tourStapes);
+    }
+    prevStep(){
+      this.tourStapes = this.tourStapes - 1;
+      this.userService.changeTourType(this.tourStapes);
+    }
+    closeTour(){
+      this.tourStapes = 0;
+      this.userService.changeTourType(this.tourStapes);
+    }
+    changeTourState(type: string){
+      this.userService.changeStepNumber(type);
     }
 
     /**Checks for authorization user id.*/
@@ -218,6 +256,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       }
       if (this.referAFriendSubscription !== undefined) {
         this.referAFriendSubscription.unsubscribe();
+      }
+      if (this.tourSubscription !== undefined) {
+        this.tourSubscription.unsubscribe();
       }
     }
 

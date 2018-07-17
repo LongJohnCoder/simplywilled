@@ -15,7 +15,21 @@
   <form #form="ngForm" (ngSubmit)="onSubmit(form)">
     <div class="form-group" [ngClass]="{'valid': firstname.valid, 'invalid': firstname.errors && (firstname.dirty || firstname.touched)}">
       <label>First Name:
-        <app-global-tooltip (click)="toolTipClicked('name')" [tooltipMessages]='toolTipMessageList.name' toolTipType="name"></app-global-tooltip>
+        <span class="tourGuideArea">
+          <app-global-tooltip (click)="toolTipClicked('name')" [tooltipMessages]='toolTipMessageList.name' toolTipType="name" [ngClass]="{'tourSpot' : stepNumber == 3}"></app-global-tooltip>
+          <div class="tourGuide" *ngIf="stepNumber == 3">
+              <h3>Step 3 <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span></h3>
+              <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                  Temporibus quam quibusdam eius necessitatibus eos totam laborios
+              </p>
+              <div class="tourBtnArea">
+                  <button type="button" (click)="changeTourState('backward')" class="prev"><i class="fa fa-chevron-left"></i> Previous</button>
+                  <button type="button" (click)="changeTourState('forward')" class="next">Next <i class="fa fa-chevron-right"></i></button>
+              </div>
+          </div>
+        </span>
+        
       </label>
       <input
         type="text"
@@ -163,7 +177,20 @@
 
     <div class="form-group" >
       <label>Home Address:
-          <app-global-tooltip (click)="toolTipClicked('address')" [tooltipMessages]='toolTipMessageList.address' toolTipType="address"></app-global-tooltip>
+          <span class="tourGuideArea">
+          <app-global-tooltip (click)="toolTipClicked('address')" [tooltipMessages]='toolTipMessageList.address' toolTipType="address" [ngClass]="{'tourSpot' : stepNumber == 4}"></app-global-tooltip>
+          <div class="tourGuide" *ngIf="stepNumber == 4">
+              <h3>Step 4 <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span></h3>
+              <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                  Temporibus quam quibusdam eius necessitatibus eos totam laborios
+              </p>
+              <div class="tourBtnArea">
+                  <button type="button" (click)="changeTourState('backward')" class="prev"><i class="fa fa-chevron-left"></i> Previous</button>
+                  <button type="button" (click)="changeTourState('forward')" class="next">Next <i class="fa fa-chevron-right"></i></button>
+              </div>
+          </div>
+        </span>
       </label>
       <input type="text"
              class="form-control"
@@ -324,8 +351,21 @@
 
     <div class="form-group">
       <label>Marital Status:
-          <app-global-tooltip (click)="toolTipClicked('maritial_status')" [tooltipMessages]='toolTipMessageList.maritial_status' toolTipType="maritial_status"></app-global-tooltip>
-      </label>
+          <span class="tourGuideArea">
+          <app-global-tooltip (click)="toolTipClicked('maritial_status')" [tooltipMessages]='toolTipMessageList.maritial_status' toolTipType="maritial_status" [ngClass]="{'tourSpot' : stepNumber == 5}"></app-global-tooltip>
+          <div class="tourGuide" *ngIf="stepNumber == 5">
+              <h3>Step 5 <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span></h3>
+              <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                  Temporibus quam quibusdam eius necessitatibus eos totam laborios
+              </p>
+              <div class="tourBtnArea">
+                  <button type="button" (click)="changeTourState('backward')" class="prev"><i class="fa fa-chevron-left"></i> Previous</button>
+                  <button type="button" (click)="changeTourState('forward')" class="next">Next <i class="fa fa-chevron-right"></i></button>
+              </div>
+          </div>
+          </span>
+        </label>
 
       <ul class="first_page_radio" id="customer_status">
         <li>
@@ -392,7 +432,20 @@
     <hr>
 
     <h2 *ngIf=" marital_status.value == 'M' || marital_status.value == 'R'">About Your {{marital_status.value == 'R'? typeOfPartner[1] : typeOfPartner[0]}}
-        <app-global-tooltip (click)="toolTipClicked('partner')" [tooltipMessages]='toolTipMessageList.partner' toolTipType="partner"></app-global-tooltip>
+        <span class="tourGuideArea">
+      <app-global-tooltip class="step6" (click)="toolTipClicked('partner')" [tooltipMessages]='toolTipMessageList.partner' toolTipType="partner" [ngClass]="{'tourSpot' : stepNumber == 6}"></app-global-tooltip>
+      <div class="tourGuide" *ngIf="stepNumber == 6">
+          <h3>Step 6 <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span></h3>
+          <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+              Temporibus quam quibusdam eius necessitatibus eos totam laborios
+          </p>
+          <div class="tourBtnArea">
+              <button type="button" (click)="changeTourState('backward')" class="prev"><i class="fa fa-chevron-left"></i> Previous</button>
+              <button type="button" (click)="changeTourState('close')" class="next">Next <i class="fa fa-chevron-right"></i></button>
+          </div>
+      </div>
+    </span>
     </h2>
 
     <div *ngIf=" marital_status.value == 'M' || marital_status.value == 'R'">

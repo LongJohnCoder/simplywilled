@@ -173,20 +173,22 @@ header{
     display: none;
 }
 .btn-dashboard{
-    padding: 10px 0 10px 15px;
-    width: 100%;
+    padding: 8px 0 10px 30px;
+    width: 200px;
     margin-top: 0;
     background: url('../../../../assets/images/btn-dashboard.png') no-repeat left !important;
     background-size: 100% 100%;
     text-shadow: 1px 1px 1px #2150b0;
+    border-radius: 14px;
 }
 .btn-preview{
-    padding: 10px 0 10px 15px;
-    width: 100%;
+    padding: 8px 0 10px 30px;
+    width: 200px;
     margin-top: 0;
     background: url('../../../../assets/images/btn-preview.png') no-repeat left !important;
     background-size: 100% 100%;
     text-shadow: 1px 1px 1px #2150b0;
+    border-radius: 14px;
 }
 .btn-progress{
     padding: 10px 0 10px 15px;

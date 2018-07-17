@@ -16,6 +16,7 @@ import {ProgressbarService} from '../../shared/services/progressbar.service';
 })
 export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
   /**Variable declaration*/
+  tourStapes:number = 3;
   days: string[] = [];
   months: string[];
   years: string[] = [];
@@ -33,6 +34,10 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
   classId: number;
   toolTipMessageList: any;
   toolTipMessage: any;
+  tourSubscription: Subscription;
+
+  stepNumber: Number;
+  tourSub : Subscription
 
   /**Constructor call*/
   constructor(
@@ -82,6 +87,10 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
           -What address is listed on your federal tax return?`
         }]
       };
+
+      this.tourSub = this.userService.stepNumForTourGuide.subscribe(value => {
+        this.stepNumber = value 
+      });
   }
 
   /**When the component is initialised*/
@@ -117,8 +126,37 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
       let day = (i / 10) < 1 ? '0' + String(i) : String(i);
       this.days.push(day);
     }
+    // this.tourStapes = +localStorage.getItem('tourStapes');
   }
 
+  // ngOnChanges() {
+  //   this.tourSubscription = this.userService.tour.subscribe(
+  //     (currentVal: number) => {
+  //       if (currentVal !== this.tourStapes) {
+  //         this.tourStapes = currentVal;
+  //         console.log('data eceived :',this.tourStapes);
+  //       }
+  //     }
+  //   );
+  // }
+
+  nextStep(){
+    this.tourStapes = this.tourStapes + 1;
+    this.userService.changeTourType(this.tourStapes);
+    console.log('afterClick',this.tourStapes);
+  }
+  prevStep(){
+    this.tourStapes = this.tourStapes - 1;
+    this.userService.changeTourType(this.tourStapes);
+  }
+  closeTour(){
+    this.tourStapes = 0;
+    this.userService.changeTourType(this.tourStapes);
+  }
+
+  changeTourState(type: string){
+    this.userService.changeStepNumber(type);
+  }
   /**When the form submits*/
   onSubmit(form: NgForm) {
     if (form.valid) {
@@ -170,6 +208,9 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
     }
     if (this.editSubscription !== undefined) {
       this.editSubscription.unsubscribe();
+    }
+    if (this.tourSubscription !== undefined) {
+      this.tourSubscription.unsubscribe();
     }
   }
 
