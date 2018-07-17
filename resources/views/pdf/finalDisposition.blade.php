@@ -32,7 +32,7 @@
 
 
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
-              I,<span style="text-transform: uppercase;"> {{strtoupper($tellUsAboutYou['fullname'])}},</span>of<span style="text-transform: uppercase;"> {{$tellUsAboutYou['address']}},</span><span style="text-transform: uppercase;"> {{$tellUsAboutYou['city']}},</span><span style="text-transform: uppercase;"> {{$tellUsAboutYou['state']}}, {{$tellUsAboutYou['zip']}}</span>
+              I,<span style="text-transform: uppercase;"> {{strtoupper($tellUsAboutYou['fullname'])}},</span> of<span style="text-transform: uppercase;"> {{$tellUsAboutYou['address']}},</span><span style="text-transform: uppercase;"> {{$tellUsAboutYou['city']}},</span><span style="text-transform: uppercase;"> {{$tellUsAboutYou['state']}}</span>
               being of sound mind, willfully and voluntarily make known by this document
 
               @if(strtolower($state['name']) == 'new jersey')
@@ -55,28 +55,28 @@
 
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
 
-            @if(isset($finalArrangements) && $finalArrangements['ashes'] == 1)
+            @if(isset($finalArrangements) && $finalArrangements['type'] == 1)
               <span>
 
                 1. I wish to be cremated. I would like my ashes to be managed and disposed of in the following manner:
 
                 @if(isset($finalArrangements) && strlen($finalArrangements['ashes']) > 0 )
-                	<span> {{userDetails.finalArrangements.ashes}}.</span>
+                	<span> {{$finalArrangements['ashes']}}.</span>
 
                 @else
 
-                <span>: <br> ______________________________________________________________________
+                <span>: <br> _______________________________________________________________________________________________
 
-                ______________________________________________________________________
+                _______________________________________________________________________________________________
 
-                ______________________________________________________________________
+                _______________________________________________________________________________________________
 
                 </span>
 
                 @endif
               </span>
 
-            @elseif(isset($finalArrangements) && $finalArrangements['ashes'] == 0)
+            @elseif(isset($finalArrangements) && $finalArrangements['type'] == 0)
               <span>
 
                 1. I wish to be buried. I would like my remains interred
@@ -85,11 +85,11 @@
                 <span> {{$finalArrangements['ashes']}}.</span>
 
                 @else
-                <span>: <br> ______________________________________________________________________
+                <span>: <br> _______________________________________________________________________________________________
 
-                ______________________________________________________________________
+                _______________________________________________________________________________________________
 
-                ______________________________________________________________________
+                _______________________________________________________________________________________________
 
                 </span>
 
@@ -102,11 +102,11 @@
               	@if(strlen($finalArrangements['some_other_way']) > 0 )
 	                1. I wish for my representative to control and dispose of my remains in the following manner: <span> {{$finalArrangements['some_other_way']}}.</span>
                 @else
-	                <span>: <br> ______________________________________________________________________
+	                <span>: <br> _______________________________________________________________________________________________
 
-	                ______________________________________________________________________
+	                _______________________________________________________________________________________________
 
-	                ______________________________________________________________________
+	                _______________________________________________________________________________________________
 
 	                </span>
                 @endif
@@ -125,11 +125,11 @@
               <span> {{$finalArrangements['arrangements']}}.</span>
 
               @else
-                <span>: <br> ______________________________________________________________________
+                <span>: <br> _______________________________________________________________________________________________
 
-                ______________________________________________________________________
+                _______________________________________________________________________________________________
 
-                ______________________________________________________________________
+                _______________________________________________________________________________________________
 
                 </span>
 
@@ -138,11 +138,11 @@
 
             <p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
                   3. I wish for my representative to honor the following instructions with regard to my funeral or other ceremony for the final disposition of my remains:
-									<br> ______________________________________________________________________
+									<br> _______________________________________________________________________________________________
 
-              ______________________________________________________________________
+              _______________________________________________________________________________________________
 
-              ______________________________________________________________________
+              _______________________________________________________________________________________________
 
             </p>
 
@@ -235,16 +235,15 @@
               <p>{{$tellUsAboutYou['phone']}}</p>
 
               <p>
-                By my signature below, I attest that <span style="text-transform: uppercase;"> {{$tellUsAboutYou['fullname']}} </span>, the person who signed this document, did so or acknowledged signing this document in my presence and that
+                By my signature below, I attest that <span style="text-transform: uppercase;"> {{$tellUsAboutYou['fullname']}},</span> the person who signed this document, did so or acknowledged signing this document in my presence and that
 
                 {{$genderTxt3}}
 
                 appears to be of sound mind and not subject to duress, fraud, or undue influence. I further attest that I am not the representative or the successor representative appointed under this document, that I am at least eighteen (18) years of age, and that I am not related to the person who signed this document by blood, marriage, or adoption
-<br>
-
                 @if(strtolower($state['name']) == 'michigan')
-                	<span>, nor am I a prohibited witness pursuant to §700.3206(2)(b)(i), MCL.</span>
+                	, nor am I a prohibited witness pursuant to §700.3206(2)(b)(i), MCL
                 @endif
+								.
                 <div style="display: inline-block; width: 46%; padding-top: 40px;">
                   <p>WITNESS 1: ____________________________</p>
 
@@ -270,7 +269,7 @@
 
                   <span>COUNTY OF ________________ )</span><br><br>
 
-                  <span>Subscribed, sworn and acknowledged before me by {{$tellUsAboutYou['fullname']}}, and ___________________________________, as witness, and _____________________________, as witness, who personally appeared on this _________ day of __________________________, _______, and who are personally known to me or who have produced satisfactory photo identification, and whose names are signed to the foregoing instrument.<br><br>
+                  <span>Subscribed, sworn and acknowledged before me by {{$tellUsAboutYou['fullname']}}, and ________________, as witness, and ________________, as witness, who personally appeared on this _________ day of ________________, _______, and who are personally known to me or who have produced satisfactory photo identification, and whose names are signed to the foregoing instrument.<br><br>
 
                     ______________________________________ (Seal, if any)<br>
 
