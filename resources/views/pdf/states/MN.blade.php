@@ -2,8 +2,29 @@
 <html>
 <head>
 	<title>Health Care Power of Attorney</title>
-</head>
-<body>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
+
+	</style>
+
+	</head>
+
+	<body>
+
+	<script type="text/php">
+		if ( isset($pdf) ) {
+				$pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+		}
+	</script>
+	<div id="footer">
+	<div style="">
+		Health Care Directive by <br>{{$tellUsAboutYou['fullname']}}<br>
+	</div>
+	</div>
 <div>
 
 <div>
@@ -15,7 +36,7 @@
       <p align="center" style="margin-top: 0.06in; margin-bottom: 0.13in; ">
       <br/>
       <br/>
-      
+
       </p>
       <p align="justify" style="margin-left: 0.5in; margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <span face="Times New Roman, serif">MY NAME: 		</span><span face="Times New Roman, serif"></span>
@@ -27,42 +48,42 @@
 
       </p>
       <p style="margin-bottom: 0in; "><br/>
-      
+
       </p>
       <p style="margin-left: 0.5in; margin-bottom: 0in; "><span face="Times New Roman, serif">MY
       ADDRESS:		</span>
-      
+
       <span color="#0432ff">
           <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}}</span>
       </span>
-      
+
       </p>
-      
+
       <!-- <p style="margin-left: 2in; text-indent: 0.5in; margin-bottom: 0in; ">
         <span color="#008f00">
-          
+
           <span face="Times New Roman, serif">IF ANSWERED( Address2 )</span></span><span face="Times New Roman, serif"></span><span color="#0432ff"><span face="Times New Roman, serif">Address2</span></span><span face="Times New Roman, serif"></span><span color="#008f00"><span face="Times New Roman, serif">END
         IF</span></span>
-        
+
         <span face="Times New Roman, serif"></span>
-    
+
       </p>
        -->
-      
-      
+
+
        <p style="margin-left: 2in; text-indent: 0.5in; margin-bottom: 0in; ">
       <span color="#0432ff">
-          <span style="text-transform: capitalize"  style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}} ,</span> 
+          <span style="text-transform: capitalize"  style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}} ,</span>
       </span>
-      
+
       <span color="#0432ff">
           <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}} ,</span>&nbsp;
       </span>
-      
+
       <span color="#0432ff">
           <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['zip']}}, </span>
       </span>
-      
+
         </p>
 
       <p align="left" style="margin-left: 0.5in; margin-top: 0.06in; margin-bottom: 0.13in; ">
@@ -70,7 +91,7 @@
         <span size="2" style="font-size: 10pt">
           <span size="3" style="font-size: 12pt">MY
       TELEPHONE:		</span>
-      
+
       <span color="#0432ff">
           <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['phone']}}, </span>
       </span>
@@ -78,7 +99,7 @@
       </span>
       </span>
       </p>
-      
+
       <p align="left" style="margin-left: 0.5in; margin-top: 0.06in; margin-bottom: 0.13in; ">
       <span face="Times New Roman, serif">
         <span size="2" style="font-size: 10pt">
@@ -92,13 +113,13 @@
 
       <p align="left" style="margin-left: 0.5in; margin-top: 0.06in; margin-bottom: 0.13in; ">
       <span face="Times New Roman, serif">
-        
+
         <span size="2" style="font-size: 10pt">
           <span size="3" style="font-size: 12pt">MY SOCIAL SECURITY #:	(write-in)</span>
           <span size="3" style="font-size: 12pt">_______________________</span><span size="3" style="font-size: 12pt">	</span></span></span></p>
       <p align="left" style="margin-left: 1in; margin-top: 0.06in; margin-bottom: 0.13in; ">
       <br/>
-      
+
       </p>
       <p align="center" style="margin-top: 0.06in; margin-bottom: 0.13in; ">
       <span face="Times New Roman, serif"><span size="2" style="font-size: 10pt"><span size="4" style="font-size: 14pt"><b>PART
@@ -108,14 +129,14 @@
       of Agent.</b></span></span></span></p>
       <p style="margin-left: 0.38in; margin-bottom: 0in; ">
       <span color="#000000"><span face="Times New Roman, serif">I, </span></span><span face="Times New Roman, serif"><b></b></span><span color="#0000ff">
-        
+
       <span face="Times New Roman, serif">
           <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
       </span>
     </span>
-    
-      
-      
+
+
+
       <span color="#000000">
         <span face="Times New Roman, serif">, of </span>
       </span>
@@ -125,20 +146,20 @@
       <span color="#000000">
         <span face="Times New Roman, serif">, </span>
       </span>
-      
+
       <!-- <span face="Times New Roman, serif">IF ANSWERED( Address2 )</span><span color="#000000"><span face="Times New Roman, serif"></span></span><span color="#0433ff"><span face="Times New Roman, serif">Address2</span></span><span color="#000000"><span face="Times New Roman, serif">,
       </span></span><span face="Times New Roman, serif">END IF</span><span color="#000000"><span face="Times New Roman, serif"></span></span>
        -->
-      
-      
+
+
       <span color="#0433ff">
           <span style="text-transform: capitalize"  style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}}</span>
       </span>
-      
+
       <span color="#0433ff">
           <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}}</span>&nbsp;
       </span>
-      
+
       <span color="#000000">
         <span face="Times New Roman, serif">, hereby appoint my </span>
       </span>
@@ -149,105 +170,105 @@
 				<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}}, </span>
 			@endif
       </span>
-      
+
       <span color="#000000">
-        
+
         <span face="Times New Roman, serif">, </span>
       </span>
-      
+
       <span color="#0433ff">
           <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}}</span>
       </span>
-      
+
       <span color="#000000">
         <span face="Times New Roman, serif">, of </span>
       </span>
-      
+
       <span color="#0433ff">
           <span style="font-family:'Times New Roman, serif'">{{$healthFinance['address']}}, </span>
       </span>
-      
+
       <span>
       <span face="Times New Roman, serif">in </span>
       <span style="font-family:'Times New Roman, serif'">{{$healthFinance['city']}}, </span>
       </span>
-      
+
       <span face="Times New Roman, serif">, </span>
-      
+
       <span color="#0000ff">
           <span style="font-family:'Times New Roman, serif'">{{$healthFinance['state']}}, </span>
       </span>
-      
+
       <span color="#0000ff">
           <span style="font-family:'Times New Roman, serif'">{{$healthFinance['zip']}}, </span>
       </span>
-      
+
       <span color="#000000">
         <span face="Times New Roman, serif">(Tel: </span>
       </span>
-      
+
       <span color="#0433ff">
           <span style="font-family:'Times New Roman, serif'">{{$healthFinance['phone']}}</span>
       </span>
-      
+
       <span color="#000000">
         <span face="Times New Roman, serif">, as my agent to make health care decisions for me.  </span>
       </span>
       </p>
       <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
       <br/>
-      
+
       </p>
       <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
-      
+
 
       <!-- if alternate agents-->
         @if($healthFinance['anyBackupAgent'] == 'true')
           <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
           <span face="Times New Roman, serif">
             <span size="2" style="font-size: 9pt">
-              <span size="3" style="font-size: 12pt">If 
+              <span size="3" style="font-size: 12pt">If
                 said agent is not available or becomes ineligible to act, or if I
                 revoke this appointment or authority to act as my agent, then I
-                designate my 
+                designate my
               </span>
-              
+
               @if(strtolower($healthFinance['backupRelation']) == 'other')
                 <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}}, </span>
               @else
                 <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
               @endif
-              
+
               <span color="#0433ff">
                   <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}}</span>
               </span>
-              
+
               <span color="#000000">
                 <span size="3" style="font-size: 12pt">, of </span>
               </span>
-              
+
               <span color="#0433ff">
                   <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupAddress']}}, </span>
               </span>
-              
+
               <span color="#000000">
                 <span size="3" style="font-size: 12pt"> </span>
               </span>
-              
+
               <span size="3" style="font-size: 12pt">in </span>
                 <span color="#0000ff">
                     <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupCity']}}, </span>
                 </span>
                 <span size="3" style="font-size: 12pt">, </span>
-                
+
                 <span color="#0000ff">
                     <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupState']}}, </span>
                 </span>
-                
+
                 <span color="#0000ff">
                     <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}}, </span>
                 </span>
-                
+
                 <span color="#000000">
                   <span size="3" style="font-size: 12pt">
                   (Tel: </span>
@@ -255,21 +276,21 @@
                 <span color="#0433ff">
                     <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupphone']}}</span>
                 </span>
-                
+
                 <span color="#000000">
-                  <span size="3" style="font-size: 12pt">), as my 
-                    alternate agent to make health care decisions for me.  
+                  <span size="3" style="font-size: 12pt">), as my
+                    alternate agent to make health care decisions for me.
                   </span>
                 </span>
               </span>
             </span>
           </p>
         @endif
-      
+
       <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0.09in; ">
       <br/>
       <br/>
-      
+
       </p>
       <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0.09in; ">
       <span face="Times, serif"><span size="2" style="font-size: 9pt"><span face="Times New Roman, serif"><span size="3" style="font-size: 12pt"><b>Agent
@@ -303,7 +324,7 @@
       <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0.09in; ">
       <br/>
       <br/>
-      
+
       </p>
       <p style="margin-bottom: 0in; "><span face="Times New Roman, serif"><b>Agent
       Powers.  </b></span><span face="Times New Roman, serif">If I am
@@ -343,7 +364,7 @@
           </li>
         </ul>
         <p align="justify" style="margin-bottom: 0in; ">
-        
+
         </p>
         <p style="margin-bottom: 0.09in; "><span face="Times, serif"><span size="2" style="font-size: 9pt"><span face="Times New Roman, serif"><span size="3" style="font-size: 12pt"><b>Additional
         Powers of My Agent.  </b></span></span><span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
@@ -374,14 +395,14 @@
         antipsychotic medication, including neuroleptics. </span>
         </p>
         <p align="justify" style="margin-bottom: 0in; ">
-        
+
         </p>
         <p align="justify" style="margin-bottom: 0in; "><span face="Times, serif"><span size="2" style="font-size: 9pt"><span face="Times New Roman, serif"><span size="3" style="font-size: 12pt"><b>Limitations.
          </b></span></span><span face="Times New Roman, serif"><span size="3" style="font-size: 12pt">I
         wish to limit the powers of my health care agent in the following
         ways:</span></span></span></span></p>
         <p align="justify" style="margin-bottom: 0in; ">
-        
+
         </p>
         <p align="justify" style="margin-bottom: 0in; line-height: 150%"><span face="Times, serif"><span size="2" style="font-size: 9pt"><span face="Times New Roman, serif"><span size="3" style="font-size: 12pt">
           ____________________________________________________________________________<br>
@@ -393,7 +414,7 @@
         _____________________________________.
         </span></span><span face="Times New Roman, serif"><span size="3" style="font-size: 12pt"></span></span></span></span></p>
         <p align="justify" style="margin-bottom: 0in; line-height: 150%">
-        
+
         </p>
         <p align="justify" style="margin-bottom: 0.09in; "><span face="Times, serif"><span size="2" style="font-size: 9pt"><span face="Times New Roman, serif"><span size="3" style="font-size: 12pt"><b>When
         Effective.  </b></span></span><span face="Times New Roman, serif"><span size="3" style="font-size: 12pt">My
@@ -408,7 +429,7 @@
         <span face="Times, serif"><span size="2" style="font-size: 9pt"><span face="Times New Roman, serif"><span size="3" style="font-size: 12pt">_______</span></span><span face="Times New Roman, serif"><span size="3" style="font-size: 12pt">	</span></span><span face="Times New Roman, serif"><span size="3" style="font-size: 12pt">When
         this document is signed.</span></span><span face="Times New Roman, serif"><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></span></p>
         <p align="justify" style="margin-bottom: 0in; ">
-        
+
         </p>
         <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
         <span face="Times, serif"><span size="2" style="font-size: 9pt"><span face="Times New Roman, serif"><span size="3" style="font-size: 12pt"><b>General
@@ -420,7 +441,7 @@
         best interest, to be determined by my agent after considering the
         benefits, burdens, and risks that might result from a given treatment
         or course of treatment, or from the withholding or withdrawal of a
-        treatment or course of treatment.</span></span></span></span></p>        
+        treatment or course of treatment.</span></span></span></span></p>
   </div>
 </div>
 
@@ -440,7 +461,7 @@
       below:</span></span></span></p>
       <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
       <br/>
-      
+
       </p>
       <p align="left" style="margin-top: 0.06in; margin-bottom: 0.06in; ">
       <span face="Times New Roman, serif"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><b>Terminal
@@ -453,7 +474,7 @@
       <span face="Times New Roman, serif"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><b>(INITIAL
       one)</b></span></span></span></p>
       <p align="justify" style="margin-bottom: 0in; "><br/>
-      
+
       </p>
       <p align="justify" style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
@@ -462,14 +483,14 @@
       that I be given all medically appropriate treatment and care
       necessary to make me comfortable and to relieve pain.</span></span></span></p>
       <p align="justify" style="margin-bottom: 0in; ">
-      
+
       </p>
       <p align="justify" style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
       direct that life-sustaining treatment be continued, if medically
       appropriate.</span></span></span></p>
       <p align="justify" style="margin-bottom: 0in; ">
-      
+
       </p>
       <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>Permanent
@@ -483,7 +504,7 @@
       <span face="Times New Roman, serif"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><b>(INITIAL
       one)</b></span></span></span></p>
       <p align="justify" style="margin-bottom: 0in; ">
-      
+
       </p>
       <p align="justify" style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
@@ -493,14 +514,14 @@
       treatment and care necessary to provide for my personal hygiene and
       dignity.</span></span></span></p>
       <p align="justify" style="margin-bottom: 0in; ">
-      
+
       </p>
       <p align="justify" style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
       direct that life-sustaining treatment be continued, if medically
       appropriate.</span></span></span></p>
       <p align="justify" style="margin-bottom: 0in; ">
-      
+
       </p>
       <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>End-Stage
@@ -521,7 +542,7 @@
       that I be given all medically appropriate care necessary to make me
       comfortable and to relieve pain.</span></span></span></p>
       <p align="justify" style="margin-bottom: 0in; ">
-      
+
       </p>
       <p align="justify" style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
@@ -649,7 +670,7 @@
           and deliver it to my health care provider.</span></span></span></p>
           <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
           <br/>
-          
+
           </p>
           <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
           <span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>Nomination
@@ -658,12 +679,12 @@
           agent to serve as such conservator:</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
           <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
           <br/>
-          
+
           </p>
           <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
           <span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">_______________________________</span></span></span></p>
           <p align="justify" style="margin-bottom: 0in; "><br/>
-          
+
           </p>
           <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
           <span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>Revocation
@@ -671,14 +692,14 @@
           revoke any prior health care directives, &quot;Living Wills&quot; and
           any prior powers of attorney for health care.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
           <p align="justify" style="margin-bottom: 0in; "><br/>
-          
+
           </p>
           <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
           <span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>Effect
-          of Photocopy.</b></span><span size="3" style="font-size: 12pt"> 
+          of Photocopy.</b></span><span size="3" style="font-size: 12pt">
           Persons dealing with my agent may rely fully on a photocopy of this
           document as though the photocopy was an original.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
-          
+
   </div>
 </div>
 
@@ -688,51 +709,51 @@
       <span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="4" style="font-size: 14pt"><b>SIGNATURE
       AND ACKNOWLEDGEMENT</b></span></span></span></p>
       <p align="justify" style="margin-bottom: 0in; "><br/>
-      
+
       </p>
       <p align="justify" style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">By
       signing below, I agree with everything that is written in this
       document, and have made this document willingly</span></span></span></p>
       <p align="justify" style="margin-bottom: 0in; "><br/>
-      
+
       </p>
       <p align="justify" style="margin-bottom: 0in; "><span face="Times, serif"><span size="2" style="font-size: 9pt"><span face="Times New Roman, serif"><span size="4" style="font-size: 15pt"><span size="3" style="font-size: 12pt">Executed
       this </span></span></span><span face="Times New Roman, serif"><span size="4" style="font-size: 15pt"><span size="3" style="font-size: 12pt">____________</span></span></span><span face="Times New Roman, serif"><span size="4" style="font-size: 15pt"><span size="3" style="font-size: 12pt">
       day of </span></span></span><span face="Times New Roman, serif"><span size="4" style="font-size: 15pt"><span size="3" style="font-size: 12pt">_________________</span></span></span><span face="Times New Roman, serif"><span size="4" style="font-size: 15pt"><span size="3" style="font-size: 12pt">,
       </span></span></span><span face="Times New Roman, serif"><span size="4" style="font-size: 15pt"><span size="3" style="font-size: 12pt">_________</span></span></span><span face="Times New Roman, serif"><span size="4" style="font-size: 15pt"><span size="3" style="font-size: 12pt">.</span></span></span></span></span></p>
       <p align="justify" style="margin-bottom: 0in; "><br/>
-      
+
       </p>
-      
+
       <p align="justify" style="text-indent: 0.5in; margin-bottom: 0in; ">
       <span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></span></p>
       <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <span face="Times New Roman, serif"><b>	</b></span>
-      
+
       <span color="#0000ff">
         <span face="Times New Roman, serif">
             <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
         </span>
       </span>
-      
+
       </p>
       <p align="justify" style="margin-bottom: 0in; "><br/>
-      
+
       </p>
       <p align="justify" style="margin-left: 1.94in; text-indent: 0.5in; margin-bottom: 0in; ">
       <span color="#008f00"><span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span color="#000000"><span size="3" style="font-size: 12pt">Date
       of Birth: 	</span></span><span color="#0433ff"><span size="3" style="font-size: 12pt">Client
       DOB</span></span><span color="#000000"><span size="3" style="font-size: 12pt"></span></span></span></span></span></p>
       <p align="justify" style="margin-bottom: 0in; "><br/>
-      
+
       </p>
-      
+
       <p align="center" style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="4" style="font-size: 14pt"><b>Notary
       Public OR Witnesses</b></span></span></span></p>
       <p align="center" style="margin-bottom: 0in; "><br/>
-      
+
       </p>
-      
+
       <p align="justify" style="margin-bottom: 0in; "><span color="#0433ff"><span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span color="#000000"><span size="3" style="font-size: 12pt">STATE
       OF MINNESOTA	</span></span><span color="#000000"><span size="3" style="font-size: 12pt">	</span></span><span color="#000000"><span size="3" style="font-size: 12pt">)</span></span></span></span></span></p>
       <p align="justify" style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">					</span><span size="3" style="font-size: 12pt; display: inline-block; padding-left: 200px;">)
@@ -740,41 +761,41 @@
       <p align="justify" style="margin-bottom: 0in; "><span color="#008f00"><span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span color="#000000"><span size="3" style="font-size: 12pt">COUNTY
       OF ________________</span></span><span color="#000000"><span size="3" style="font-size: 12pt">	</span></span><span color="#000000"><span size="3" style="font-size: 12pt">)</span></span></span></span></span></p>
       <p align="justify" style="margin-bottom: 0in; "><br/>
-      
+
       </p>
       <p align="justify" style="margin-bottom: 0.19in; "><br/>
       <br/>
-      
+
       </p>
       <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <span face="Times New Roman, serif">In my presence on this </span><span face="Times New Roman, serif">________</span><span face="Times New Roman, serif">
       day of </span><span face="Times New Roman, serif">_________</span><span face="Times New Roman, serif">,
       </span><span face="Times New Roman, serif">__________</span><span face="Times New Roman, serif">,
       </span><span face="Times New Roman, serif"></span>
-      
+
       <span color="#0000ff">
         <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
       </span>
-      
-      
+
+
       <span face="Times New Roman, serif">acknowledged </span>
-      
+
       <span color="#0433ff">
           <span face="Times New Roman, serif">{{$genderTxt4}}</span>
       </span>
-      
+
       <span face="Times New Roman, serif"> signature on this document or acknowledged that </span>
       <span color="#0433ff">
         <span face="Times New Roman, serif">{{$genderTxt3}}</span>
       </span>
-      
+
       <span face="Times New Roman, serif">
       authorized the person signing this document to sign on </span>
-      
+
       <span color="#0433ff">
           <span face="Times New Roman, serif">{{$genderTxt4}}</span>
       </span>
-      
+
       <span face="Times New Roman, serif">
       behalf. I am not named as a health care agent or alternate health
       care agent in this document.</span></p>
@@ -782,11 +803,11 @@
       <p align="justify" style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">NOTARY
       PUBLIC</span></span></span></p>
       <p align="justify" style="margin-bottom: 0in; "><br/>
-      
+
       </p>
       <p align="justify" style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">My
       commission expires: __________________</span></span></span></p>
-     
+
   </div>
 </div>
 
@@ -806,7 +827,7 @@
     <p align="justify" style="margin-bottom: 0in; "><br/>
 
     </p>
-    
+
     <p align="left" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; ">
     <span face="Times, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>WITNESS
     1</b></span><span size="3" style="font-size: 12pt">:

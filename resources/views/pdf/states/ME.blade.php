@@ -4,14 +4,26 @@
     <meta charset="utf-8">
     <title>Untitled Document</title>
     <style>
-        
-
-
+    #footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+    text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+    padding-top: 5px;
+    }
+     #footer .page:after { content: counter(page, none); }
 
     </style>
 </head>
 
 <body>
+  <script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Advance Health-Care Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
 
 <div class="docContainer" id="doc">
     <div class="docPage" style="">
@@ -548,7 +560,7 @@
             <p style="margin-left: 1.5in; margin-bottom: 0.06in; line-height: 100%">
                 <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(iii)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Research</span></span></p>
             <p style="margin-left: 1.5in; margin-bottom: 0in; line-height: 100%"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(iv)</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">Education</span></span></p>
-            
+
         </div>
         <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
@@ -642,7 +654,7 @@
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">										</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 100%">
                 <span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt">(phone)</span></span></p>
-            
+
         </div>
         <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">

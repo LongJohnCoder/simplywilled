@@ -2,10 +2,28 @@
 <html>
 <head>
 	<title></title>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
+
+	</style>
 </head>
 
 <body>
-	
+<script type="text/php">
+		if ( isset($pdf) ) {
+				$pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+		}
+</script>
+<div id="footer">
+	<div style="">
+		Power of Attorney of <br>{{$tellUsAboutYou['fullname']}}<br>
+	</div>
+</div>
+
 <p align="center" style="margin-bottom: 0.13in; line-height: 100%"><font face="Times New Roman, serif"><b>POWER
 OF ATTORNEY</b></font></p>
 <p align="center" style="margin-bottom: 0.19in; line-height: 100%"><font face="Times New Roman, serif"><b>NEW
@@ -60,7 +78,7 @@ OF AGENT</b></font></font><font color="#000000"><font face="Times New Roman, ser
 I hereby designate and appoint </font></font><font color="#000000"><font face="Times New Roman, serif">my</font></font><font color="#000000"><font face="Times New Roman, serif">
 </font></font>
 
-<font color="#0433ff">
+<font color="">
 	@if(strtolower($attorneyHolders['relationship']) == 'other')
 			<span face="Times New Roman, serif">{{ucwords(strtolower($attorneyHolders['other_relationship']))}}</span>
 		@else
@@ -71,24 +89,24 @@ I hereby designate and appoint </font></font><font color="#000000"><font face="T
 	<font face="Times New Roman, serif">, </font>
 </font>
 
-<font color="#0433ff">
+<font color="">
 	<font face="Times New Roman, serif">{{ucwords($attorneyHolders['fullname'])}}</font>
 </font>
 <font color="#000000"><font face="Times New Roman, serif">, of </font></font>
 
-<font color="#0000ff">
+<font color="">
 	<font face="Times New Roman, serif">{{ucwords($attorneyHolders['address'])}}</font>
 </font>
 
 <font face="Times New Roman, serif">, </font>
 
-<font color="#0000ff">
+<font color="">
 	<font face="Times New Roman, serif">{{ucwords($attorneyHolders['city'])}}</font>
 </font>
 
 <font face="Times New Roman, serif">, </font>
 
-<font color="#0000ff">
+<font color="">
 	<font face="Times New Roman, serif">{{ucwords($attorneyHolders['state'])}}</font>
 </font>
 
@@ -96,7 +114,7 @@ I hereby designate and appoint </font></font><font color="#000000"><font face="T
 	<font face="Times New Roman, serif"> (Tel:  </font>
 </font>
 
-<font color="#0433ff">
+<font color="">
 	<font face="Times New Roman, serif">{{$attorneyHolders['phone']}}</font>
 </font>
 
@@ -126,7 +144,7 @@ I hereby designate and appoint </font></font><font color="#000000"><font face="T
 		<font face="Times New Roman, serif">.If said </font>
 	</font>
 
-	<font color="#0433ff">
+	<font color="">
 		<font face="Times New Roman, serif">{{ucwords($attorneyHolders['fullname'])}} </font>
 	</font>
 
@@ -135,7 +153,7 @@ I hereby designate and appoint </font></font><font color="#000000"><font face="T
 			appointment or authority to act, then I designate my </font>
 	</font>
 
-	<font color="#0433ff">
+	<font color="">
 		@if(strtolower($attorneyBackup['relationship']) == 'other')
 			<span face="Times New Roman, serif">{{$attorneyBackup['other_relationship']}}</span>
 		@else
@@ -147,7 +165,7 @@ I hereby designate and appoint </font></font><font color="#000000"><font face="T
 		<font face="Times New Roman, serif">, </font>
 	</font>
 
-	<font color="#0433ff">
+	<font color="">
 		<font face="Times New Roman, serif">{{ucwords($attorneyBackup['fullname'])}}</font>
 	</font>
 
@@ -155,19 +173,19 @@ I hereby designate and appoint </font></font><font color="#000000"><font face="T
 		<font face="Times New Roman, serif"> of </font>
 	</font>
 
-	<font color="#0000ff">
+	<font color="">
 		<font face="Times New Roman, serif">{{ucwords($attorneyBackup['address'])}}</font>
 	</font>
 
 	<font face="Times New Roman, serif">, </font>
 
-	<font color="#0000ff">
+	<font color="">
 		<font face="Times New Roman, serif">{{ucwords($attorneyBackup['city'])}}</font>
 	</font>
 
 	<font face="Times New Roman, serif">, </font>
 
-	<font color="#0000ff">
+	<font color="">
 		<font face="Times New Roman, serif">{{ucwords($attorneyBackup['state'])}}</font>
 	</font>
 
@@ -177,12 +195,12 @@ I hereby designate and appoint </font></font><font color="#000000"><font face="T
 		<font face="Times New Roman, serif">(Tel: </font>
 	</font>
 
-	<font color="#0433ff">
+	<font color="">
 		<font face="Times New Roman, serif">{{ucwords($attorneyBackup['phone'])}}</font>
 	</font>
 
 	<font color="#000000">
-		<font face="Times New Roman, serif">») as my alternate Agent to have all of the powers hereinafter set
+		<font face="Times New Roman, serif">) as my alternate Agent to have all of the powers hereinafter set
 			forth.&nbsp;</font>
 	</font>
 </p>
@@ -236,72 +254,67 @@ the same authority are to act together.</font></p>
 <p style="margin-top: 0.13in; margin-bottom: 0.09in; line-height: 100%">
 <font face="Times New Roman, serif"><b>GRANT OF AUTHORITY:</b></font><font face="Times New Roman, serif">&nbsp;</font></p>
 
-<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">To
+<p align="justify" style="margin-bottom: 0.06in; margin-top: 0.06in;"><font face="Times New Roman, serif">To
 grant your agent some or all of the authority below, either</font></p>
 <ol>
-	<li/>
-<p align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+	<li>
 	<font face="Times New Roman, serif">Initial the bracket at each
-	authority you grant, or</font></p>
-	<li/>
-<p align="justify" style="margin-bottom: 0in; line-height: 100%">
+	authority you grant, or</font></li>
+	<li>
 	<font face="Times New Roman, serif">Write or type the letters for
 	each authority you grant on the blank line at (P), and initial the
 	bracket at (P). If you initial (P), you do not need to initial the
-	other lines.</font></p>
+	other lines.</font></li>
 </ol>
-<p align="justify" style="margin-left: 0.75in; margin-bottom: 0in; line-height: 100%">
-<br/>
 
-</p>
-<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">I
+<p align="justify" style="margin-bottom: 0in; line-height: 120%"><font face="Times New Roman, serif">I
 grant authority to my agent(s) with respect to the following subjects
 as defined in §§5-1502A through 5-1502N of the New York General
 Obligations Law:</font></p>
-<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">(	)
+<p align="justify" style="margin-bottom: 0.06in; line-height: 80%"><font face="Times New Roman, serif">(	)
 (A)	real estate transactions;</font></p>
-<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">(	)
+<p align="justify" style="margin-bottom: 0.06in; line-height: 80%"><font face="Times New Roman, serif">(	)
 (B)	chattel and goods transactions;</font></p>
-<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">(	)
+<p align="justify" style="margin-bottom: 0.06in; line-height: 80%"><font face="Times New Roman, serif">(	)
 (C)	bond, share, and commodity transactions;</font></p>
-<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">(	)
+<p align="justify" style="margin-bottom: 0.06in; line-height: 80%"><font face="Times New Roman, serif">(	)
 (D)	banking transactions;</font></p>
-<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">(	)
+<p align="justify" style="margin-bottom: 0.06in; line-height: 80%"><font face="Times New Roman, serif">(	)
 (E)	business operating transactions;</font></p>
-<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">(	)
+<p align="justify" style="margin-bottom: 0.06in; line-height: 80%"><font face="Times New Roman, serif">(	)
 (F)	insurance transactions;</font></p>
-<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">(	)
+<p align="justify" style="margin-bottom: 0.06in; line-height: 80%"><font face="Times New Roman, serif">(	)
 (G)	estate transactions;</font></p>
-<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">(	)
+<p align="justify" style="margin-bottom: 0.06in; line-height: 80%"><font face="Times New Roman, serif">(	)
 (H)	claims and litigation;</font></p>
-<p align="justify" style="margin-left: 0.5in; text-indent: -0.5in; margin-bottom: 0.06in; line-height: 100%">
+<p align="justify" style="margin-left: 0.5in; text-indent: -0.5in; margin-bottom: 0.06in; line-height: 120%">
 <font face="Times New Roman, serif">(	) (I)	personal and family
 maintenance. If you grant your agent this authority, it will allow
 the agent to make gifts that you customarily have made to
 individuals, including the agent, and charitable organizations. The
 total amount of all such gifts in any one calendar year cannot exceed
 five hundred dollars;</font></p>
-<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">(	)
+<p align="justify" style="margin-bottom: 0.06in; line-height: 80%"><font face="Times New Roman, serif">(	)
 (J)	benefits from governmental programs or civil or military service;</font></p>
-<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">(	)
+<p align="justify" style="margin-bottom: 0.06in; line-height: 80%"><font face="Times New Roman, serif">(	)
 (K)	health care billing and payment matters; records, reports, and
 statements;</font></p>
-<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">(	)
+<p align="justify" style="margin-bottom: 0.06in; line-height: 80%"><font face="Times New Roman, serif">(	)
 (L)	retirement benefit transactions;</font></p>
-<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">(	)
+<p align="justify" style="margin-bottom: 0.06in; line-height: 80%"><font face="Times New Roman, serif">(	)
 (M)	tax matters;</font></p>
-<p align="justify" style="margin-left: 0.5in; text-indent: -0.5in; margin-bottom: 0.06in; line-height: 100%">
+<p align="justify" style="margin-left: 0.5in; text-indent: -0.5in; margin-bottom: 0.06in; line-height: 80%">
 <font face="Times New Roman, serif">(	) (N)	all other matters;</font></p>
-<p align="justify" style="margin-left: 0.5in; text-indent: -0.5in; margin-bottom: 0.06in; line-height: 100%">
+<p align="justify" style="margin-left: 0.5in; text-indent: -0.5in; margin-bottom: 0.06in; line-height: 80%">
 <font face="Times New Roman, serif">(	) (O)	full and unqualified
 authority to my agent(s) to delegate any or all of the foregoing
 powers to any person or persons whom my agent(s) select;</font></p>
-<p align="justify" style="margin-left: 0.5in; text-indent: -0.5in; margin-bottom: 0.06in; line-height: 100%">
+<p align="justify" style="margin-left: 0.5in; text-indent: -0.5in; margin-bottom: 0.06in; line-height: 80%">
 <font face="Times New Roman, serif">(	) (P)	EACH of the matters
 identified by the following letters: __________________.</font></p>
-<p align="justify" style="margin-bottom: 0.13in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">You
+<p align="justify" style="margin-bottom: 0.13in; line-height: 80%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">You
 need not initial the other lines if you initial line (P).</font></font></p>
-<p style="margin-bottom: 0in; line-height: 100%"><br/>
+<p style="margin-bottom: 0in; line-height: 80%"><br/>
 
 </p>
 <p style="margin-bottom: 0.09in; line-height: 100%; page-break-before: always">
@@ -313,20 +326,6 @@ cannot use this Modifications section to grant your agent authority
 to make gifts or changes to interests in your property. If you wish
 to grant your agent such authority, you MUST complete the Statutory
 Gifts Rider.</font></p>
-
-<p align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-	<font color="#000000">
-		<font face="Times New Roman, serif">«</font>
-	</font>
-
-	<font color="#008f00">
-		<font face="Times New Roman, serif">IF PofA Springing?</font>
-	</font>
-
-	<font color="#000000">
-		<font face="Times New Roman, serif">»</font>
-	</font>
-</p>
 
 @if(array_key_exists('isIncapacity', $attorneyPowers) && $attorneyPowers['isIncapacity'] == 1)
 
@@ -350,12 +349,6 @@ Gifts Rider.</font></p>
 	<font color="#000000"><font face="Times New Roman, serif">
 	shall take effect on my disability or incapacity, as determined ONLY
 	upon the occasion of the signing of a written statement EITHER:</font></font></p>
-	<p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%">
-	<br/>
-	<br/>
-
-	</p>
-
 
 	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.06in; line-height: 100%">
 	<font face="Times New Roman, serif">(INSTRUCTIONS: COMPLETE OR OMIT
@@ -419,7 +412,7 @@ Gifts Rider.</font></p>
 	<font face="Times New Roman, serif">(Insert hereinabove the specified
 	event the certification of which will cause this power of attorney to
 	take effect)</font></p>
-	
+
 	@else
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font color="#000000"><font face="Times New Roman, serif">1.
 			This Power is effective immediately upon execution. </font></font>
@@ -430,10 +423,10 @@ Gifts Rider.</font></p>
 
 
 
-	<p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
+	<p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; page-break-before: always; margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
 	<font face="Times New Roman, serif"><b>2.	</b></font>
 
-	
+
 	@if(array_key_exists('isDurable', $attorneyPowers) && $attorneyPowers['isDurable'] == 1)
 
 	<font face="Times New Roman, serif"><b>THIS POWER OF
@@ -470,9 +463,7 @@ Gifts Rider.</font></p>
 	by written certification by a physician licensed to practice under
 	the laws of the state of my residency that I am capable of properly
 	caring for myself or am able to manage my person or property.</font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
 	<p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
 	<font face="Times New Roman, serif">2.	My agent has the power and
 	authority to request, review, and receive, to the extent I could do
@@ -523,14 +514,8 @@ Gifts Rider.</font></p>
 	<font face="Times New Roman, serif">________________________________________________________________________</font></p>
 	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.13in; line-height: 100%">
 	<font face="Times New Roman, serif">________________________________________________________________________</font></p>
-	<p style="margin-bottom: 0.09in; line-height: 100%"><br/>
-	<br/>
 
-	</p>
-
-
-
-	<p style="margin-bottom: 0.09in; line-height: 100%"><font face="Times New Roman, serif"><b>CERTAIN
+	<p style="margin-bottom: 0.09in; page-break-before: always; line-height: 100%"><font face="Times New Roman, serif"><b>CERTAIN
 	GIFT TRANSACTIONS: STATUTORY GIFTS RIDER (OPTIONAL)</b></font></p>
 	<p align="justify" style="margin-bottom: 0.09in; line-height: 100%"><font face="Times New Roman, serif">In
 	order to authorize your agent to make gifts in excess of an annual
@@ -543,13 +528,13 @@ Gifts Rider.</font></p>
 	supervised by a lawyer.</font></p>
 
 	@if(array_key_exists('isAuthorizeToOperategift', $attorneyPowers) && $attorneyPowers['isAuthorizeToOperategift'] == 1)
-	
+
 	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.13in; line-height: 100%">
 	 <font face="Times New Roman, serif">(		) (INITIAL) (SGR) I grant my
 	agent authority to make gifts in accordance with the terms and
 	conditions of the Statutory Gifts Rider that supplements this
 	Statutory Power of Attorney.</font></p>
-	
+
 	@elseif(!array_key_exists('isAuthorizeToOperategift', $attorneyPowers) || $attorneyPowers['isAuthorizeToOperategift'] == 0)
 
 	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.13in; line-height: 100%">
@@ -557,14 +542,14 @@ Gifts Rider.</font></p>
 		<font face="Times New Roman, serif">«</font>
 	</font>
 	</p>
-	
+
 
 	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.13in; line-height: 100%">
 	<font face="Times New Roman, serif">I decline to grant my agent
 	authority to make gifts in excess of the annual total of $500 for all
 	gifts described in (I) of the grant of authority section of this
 	document (under personal and family maintenance).</font></p>
-	
+
 	@endif
 
 	<p style="margin-bottom: 0.09in; line-height: 100%"><font face="Times New Roman, serif"><b>DESIGNATION
@@ -607,46 +592,34 @@ Gifts Rider.</font></p>
 	events which terminate the Power of Attorney.</font><font face="Times New Roman, serif"><b>
 	</b></font>
 	</p>
-	<p style="margin-bottom: 0.09in; line-height: 100%; page-break-before: always">
-	<br/>
-	<br/>
 
-	</p>
-	<p align="center" style="margin-bottom: 0.09in; line-height: 100%"><font face="Times New Roman, serif"><b>SIGNATURE
+	<p align="center" style="margin-bottom: 0.09in; page-break-before: always; line-height: 100%"><font face="Times New Roman, serif"><b>SIGNATURE
 	AND ACKNOWLEDGMENT:</b></font></p>
-	<p align="center" style="margin-bottom: 0.09in; line-height: 100%"><br/>
-	<br/>
-
-	</p>
-
-
 
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%">
 		<font color="#000000"><font face="Times New Roman, serif">In Witness Whereof, I have hereunto signed my name on this </font>
 	</font>
 
-	<font color="#000000"><font face="Times New Roman, serif"><u>	</u></font></font><font color="#000000"><font face="Times New Roman, serif">
-	day of </font></font><font color="#000000"><font face="Times New Roman, serif"><u>				</u></font></font><font color="#000000"><font face="Times New Roman, serif">,
-	</font></font><font color="#000000"><font face="Times New Roman, serif"><u>	</u></font></font><font color="#000000"><font face="Times New Roman, serif">.</font></font></p>
+	<font color="#000000"><font face="Times New Roman, serif">__________________</font></font><font color="#000000"><font face="Times New Roman, serif">
+	day of </font></font><font color="#000000"><font face="Times New Roman, serif">__________________</font></font><font color="#000000"><font face="Times New Roman, serif">,
+	</font></font><font color="#000000"><font face="Times New Roman, serif">__________________</font></font><font color="#000000"><font face="Times New Roman, serif">.</font></font></p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
 	<p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
 	<font face="Times New Roman, serif">_______________________________________</font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	
-	<font color="#0000ff">
+
+	<font color="">
 		<font face="Times New Roman, serif">
 			<b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>
 		</font>
 	</font>
-	
+
 
 	<p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-	<font color="#0433ff">
+	<font color="">
 		<font face="Times New Roman, serif">{{$tellUsAboutYou['address']}}</font>
 	</font>
 	</p>
@@ -654,7 +627,7 @@ Gifts Rider.</font></p>
 
 	<p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
 
-		<font color="#0433ff">
+		<font color="">
 			<font face="Times New Roman, serif">{{ucwords($tellUsAboutYou['city'])}}</font>
 		</font>
 
@@ -662,31 +635,28 @@ Gifts Rider.</font></p>
 			<font face="Times New Roman, serif">, </font>
 		</font>
 
-		<font color="#0433ff">
+		<font color="">
 			<font face="Times New Roman, serif">{{ucwords($tellUsAboutYou['state'])}}</font>
 		</font>
 
 
-		<font color="#0433ff">
+		<font color="">
 			<font face="Times New Roman, serif">{{ucwords($tellUsAboutYou['zip'])}}</font>
 		</font>
-	
+
 	</p>
-	
+
 
 	<p align="justify" style="margin-left: 0.5in; margin-bottom: 0.13in; line-height: 100%">
-	<font color="#0433ff">
+	<font color="">
 		<font face="Times New Roman, serif">{{$tellUsAboutYou['phone']}}</font>
-	</font><font color="#000000"><font face="Times New Roman, serif">»</font></font></p>
+	</font><font color="#000000"><font face="Times New Roman, serif"></font></font></p>
 	<p align="justify" style="margin-left: 2.44in; margin-bottom: 0in; line-height: 100%">
 	<br/>
 
 	</p>
-	
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	
+
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">STATE
 	OF NEW YORK</font></p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">COUNTY
@@ -694,19 +664,19 @@ Gifts Rider.</font></p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 	</p>
-	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+	<p align="justify" style="margin-bottom: 0.08in; line-height: 120%; orphans: 0; widows: 0">
 	<font face="Times New Roman, serif">On the ____________ day of
 	_________________ in the year __________ before me, the undersigned,
 	personally appeared </font>
 
 
-	<font color="#0000ff">
+	<font color="">
 		<font face="Times New Roman, serif">
 			<b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>
 		</font>
 	</font>
 
-	<font face="Times New Roman, serif">,
+	<font face="Times New Roman, serif" >,
 	personally known to me or proved to me on the basis of satisfactory
 	evidence to be the individual whose name is subscribed to the within
 	instrument and acknowledged to me that he/she/they executed the same
@@ -729,12 +699,7 @@ Gifts Rider.</font></p>
 
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">My
 	Commission Expires: _____________________</font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
 	<p align="center" style="margin-bottom: 0.09in; line-height: 100%; page-break-before: always">
 	<font face="Times New Roman, serif"><b>IMPORTANT INFORMATION FOR THE
 	AGENT</b></font></p>
@@ -804,9 +769,7 @@ Gifts Rider.</font></p>
 	have violated the law or acted outside the authority granted to you
 	in the Power of Attorney, you may be liable under the law for your
 	violation.</font></p>
-	<p style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
 
 
 	<p align="justify" style="margin-top: 0.13in; margin-bottom: 0.09in; line-height: 100%; page-break-before: always">
@@ -814,40 +777,36 @@ Gifts Rider.</font></p>
 	ACKNOWLEDGMENT OF APPOINTMENT: </b></font><font face="Times New Roman, serif">It
 	is not required that the principal and the agent(s) sign at the same
 	time, nor that multiple agents sign at the same time.</font></p>
-	<p align="justify" style="margin-bottom: 0.09in; line-height: 100%"><font face="Times New Roman, serif">I, </font><font color="#0433ff"><font face="Times New Roman, serif">
+	<p align="justify" style="margin-bottom: 0.09in; line-height: 100%"><font face="Times New Roman, serif">I, </font><font color=""><font face="Times New Roman, serif">
 	{{$attorneyHolders['fullname']}}</font></font><font face="Times New Roman, serif">,
 	have read the foregoing Power of Attorney. I am the person identified
 	therein as agent for the principal named therein.</font></p>
-	
-	<p align="justify" style="margin-bottom: 0.13in; line-height: 100%"><font face="Times New Roman, serif">I
+
+	<p align="justify" style="margin-bottom: 0.13in; line-height: 80%"><font face="Times New Roman, serif">I
 	acknowledge my legal responsibilities.</font></p>
-	
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	
-	<p align="justify" style="margin-bottom: 0.19in; line-height: 100%"><font face="Times New Roman, serif">Agent
+	<p align="justify" style="margin-bottom: 0.19in; line-height: 80%"><font face="Times New Roman, serif">Agent
 	signs here:	__________________________________________</font></p>
-	
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">STATE
+
+	<p align="justify" style="margin-bottom: 0in; line-height: 80%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">STATE
 	OF NEW YORK</font></font></p>
-	
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">COUNTY
+
+	<p align="justify" style="margin-bottom: 0in; line-height: 80%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">COUNTY
 	OF ___________________</font></font></p>
-	
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+	<p align="justify" style="margin-bottom: 0in; line-height: 80%"><br/>
 
 	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">On
+	<p align="justify" style="margin-bottom: 0in; line-height: 80%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">On
 	the ____________ day of _________________ in the year __________
 	before me, the undersigned, personally appeared,</font></font>
-	<font color="#0433ff">
+	<font color="">
 		<font face="Times New Roman, serif">
 			<font size="2" style="font-size: 9pt">{{$attorneyHolders['fullname']}}</font>
 		</font>
 	</font>
 
-	<font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">»,
+	<font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">,
 	personally known to me or proved to me on the basis of satisfactory
 	evidence to be the individual(s) whose name(s) is (are) subscribed to
 	the within instrument and acknowledged to me that he/she/they
@@ -855,25 +814,17 @@ Gifts Rider.</font></p>
 	his/her/their signature(s) on the instrument, the individual(s), or
 	the person upon behalf of which the individual(s) acted, executed the
 	instrument.</font></font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">______________________________</font></font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">Notary
+	<p align="justify" style="margin-bottom: 0in; line-height: 80%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">______________________________</font></font></p>
+	<p align="justify" style="margin-bottom: 0in; line-height: 80%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">Notary
 	Public</font></font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">Printed
+	<p align="justify" style="margin-bottom: 0in; line-height: 80%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">Printed
 	Name: _________________</font></font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
+	<p align="justify" style="margin-bottom: 0in; line-height: 80%"><br/>
 
 	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">My
+	<p align="justify" style="margin-bottom: 0in; line-height: 80%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">My
 	Commission Expires: _____________________</font></font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
 
 
 	<p style="margin-bottom: 0.09in; line-height: 100%"><font face="Times New Roman, serif"><b>SUCCESSOR
@@ -884,50 +835,44 @@ Gifts Rider.</font></p>
 	attorney unless the agent(s) designated above is/are unable or
 	unwilling to serve.</font></p>
 	<p style="margin-bottom: 0.09in; line-height: 100%">
-	
+
 	<font face="Times New Roman, serif">I </font>
 
 	@if($financialPowerOfAttorney['is_backupattorney'] == 1)
-		<font color="#0433ff">
+		<font color="">
 			<font face="Times New Roman, serif">{{$attorneyBackup['fullname']}}</font>
 		</font>
 	@else
-		<font color="#0433ff">
+		<font color="">
 			<font face="Times New Roman, serif">________________________</font>
 		</font>
 	@endif
 
-	
+
 	<font face="Times New Roman, serif">, have
 	read the foregoing Power of Attorney. I am the person identified
 	therein as SUCCESSOR agent(s) for the principal named therein.</font></p>
-	<p align="justify" style="margin-top: 0.09in; margin-bottom: 0.09in; line-height: 100%">
+	<p align="justify" style="margin-top: 0.09in; margin-bottom: 0.09in; line-height: 80%">
 	<font face="Times New Roman, serif">I acknowledge my legal
 	responsibilities.</font></p>
-	<p align="justify" style="margin-bottom: 0.13in; line-height: 100%"><font face="Times New Roman, serif">Agent
+	<p align="justify" style="margin-bottom: 0.13in; line-height: 80%"><font face="Times New Roman, serif">Agent
 	signs here:	__________________________________________</font></p>
-	<p align="justify" style="margin-bottom: 0.13in; line-height: 100%"><br/>
-	<br/>
 
-	</p>
-
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">STATE
+	<p align="justify" style="margin-bottom: 0in; line-height: 80%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">STATE
 	OF NEW YORK</font></font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">COUNTY
+	<p align="justify" style="margin-bottom: 0in; line-height: 80%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">COUNTY
 	OF ___________________</font></font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">On
+	<p align="justify" style="margin-bottom: 0in; line-height: 80%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">On
 	the ____________ day of _________________ in the year __________
 	before me, the undersigned, personally appeared,</font></font>
 
 	@if($financialPowerOfAttorney['is_backupattorney'] == 1)
-		<font color="#0433ff">
+		<font color="">
 			<font face="Times New Roman, serif">{{$attorneyBackup['fullname']}}</font>
 		</font>
 	@else
-		<font color="#0433ff">
+		<font color="">
 			<font face="Times New Roman, serif">________________________</font>
 		</font>
 	@endif
@@ -943,45 +888,32 @@ Gifts Rider.</font></p>
 	instrument.</font>
 	</font>
 	</p>
-	
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-
-
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">______________________________</font></font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">Notary
+	<p align="justify" style="margin-bottom: 0in; line-height: 80%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">______________________________</font></font></p>
+	<p align="justify" style="margin-bottom: 0in; line-height: 80%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">Notary
 	Public</font></font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">Printed
+	<p align="justify" style="margin-bottom: 0in; line-height: 80%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">Printed
 	Name: _________________</font></font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">My
+	<p align="justify" style="margin-bottom: 0in; line-height: 80%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">My
 	Commission Expires: _____________________</font></font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
 
 	@if(array_key_exists('isAuthorizeToMakeGift', $attorneyPowers) && $attorneyPowers['isAuthorizeToMakeGift'] == 1)
 
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-		</p>
-		<p align="center" style="margin-bottom: 0.13in; line-height: 100%"><font face="Times New Roman, serif"><font size="4" style="font-size: 13pt"><b>POWER
+		<p align="center" style="margin-bottom: 0.13in; page-break-before: always; line-height: 80%"><font face="Times New Roman, serif"><font size="4" style="font-size: 13pt"><b>POWER
 		OF ATTORNEY</b></font></font></p>
-		<p align="center" style="margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%">
+		<p align="center" style="margin-top: 0.06in; margin-bottom: 0.06in; line-height: 80%">
 		<font face="Times New Roman, serif"><b>STATUTORY GIFTS RIDER</b></font></p>
-		<p align="center" style="margin-top: 0.06in; margin-bottom: 0.13in; line-height: 100%">
+		<p align="center" style="margin-top: 0.06in; margin-bottom: 0.13in; line-height: 80%">
 		<font face="Times New Roman, serif"><b>AUTHORIZATION FOR CERTAIN GIFT
 		TRANSACTIONS</b></font></p>
-		<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+		<p align="justify" style="margin-bottom: 0.08in; line-height: 80%; orphans: 0; widows: 0">
 		<font face="Times New Roman, serif">Attached to a New York Statutory
 		Short Form Power of Attorney dated <br/>
-		</font><font face="Times New Roman, serif"><u>			</u></font><font face="Times New Roman, serif">,
-		</font><font face="Times New Roman, serif"><u>		</u></font><font face="Times New Roman, serif">,
+	</font><font face="Times New Roman, serif">__________________</font><font face="Times New Roman, serif">,
+		</font><font face="Times New Roman, serif">__________________</font><font face="Times New Roman, serif">,
 		made by </font>
-		<font color="#0000ff">
+		<font color="">
 			<font face="Times New Roman, serif">{{strtoupper($tellUsAboutYou['fullname'])}}</font>
 		</font>
 
@@ -1006,11 +938,6 @@ Gifts Rider.</font></p>
 		agent to exercise granted authority, but when he or she exercises
 		this authority, he or she must act according to any instructions you
 		provide, or otherwise in your best interest.</font></p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-		</p>
-
-
 
 		<p align="justify" style="margin-bottom: 0.09in; line-height: 100%"><font face="Times New Roman, serif">This
 		Statutory Gifts Rider and the Power of Attorney it supplements must
@@ -1047,7 +974,7 @@ Gifts Rider.</font></p>
 			MODIFICATIONS:</b></font></p>
 		<p align="justify" style="margin-bottom: 0.09in; line-height: 100%"><font face="Times New Roman, serif"><i>Use
 		this section if you wish to authorize gifts in excess of the above
-		amount, gifts to other beneficiaries or other types of transfers. 
+		amount, gifts to other beneficiaries or other types of transfers.
 		</i></font><font face="Times New Roman, serif"><i><u><b>Initial</b></u></i></font><font face="Times New Roman, serif"><i>
 		the bracket to the left of each specific authorization you intend to
 		grant your agent to make gifts on your behalf from your estate.</i></font></p>
@@ -1058,78 +985,61 @@ Gifts Rider.</font></p>
 		authorize your agent to make gifts or transfers to himself or
 		herself, you must separately grant that authority in subdivision (c)
 		below.</i></font></p>
-		<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.13in; line-height: 100%">
+		<p align="justify" style="margin-left: 0.38in; page-break-before: always; margin-bottom: 0.13in; line-height: 100%">
 		<font face="Times New Roman, serif">(		) (</font><font face="Times New Roman, serif"><b>INITIAL</b></font><font face="Times New Roman, serif">)
 		I grant the following authority to my agent to make gifts or
 		transfers pursuant to my instructions, or otherwise for purposes
 		which the agent reasonably deems to be in my best interest:</font></p>
 		<p align="justify" style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">
-		<u>            </u>  <font face="Times New Roman, serif">Make gifts
+		____________________<font face="Times New Roman, serif">Make gifts
 		to any person or persons in such amounts as my agent deems
 		appropriate</font><font color="#000000"><font face="Times New Roman, serif">;</font></font></p>
-		<p align="justify" style="margin-left: 1in; margin-bottom: 0in; line-height: 100%">
-		<br/>
 
-		</p>
 		<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-		<u>           </u>  <font face="Times New Roman, serif">Open, modify
+		__________________  <font face="Times New Roman, serif">Open, modify
 		or terminate a deposit account in the name of the principal and other
 		joint tenants;</font></p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-		</p>
 		<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-		<u>           </u>  <font face="Times New Roman, serif">Open, modify
+		__________________  <font face="Times New Roman, serif">Open, modify
 		or terminate any other joint account in the name of the principal and
 		other joint tenants;</font></p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-		</p>
 		<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-		<u>           </u>  <font face="Times New Roman, serif">Open, modify
+		____________________ <font face="Times New Roman, serif">Open, modify
 		or terminate a bank account in trust form as described in §7-5.1 of
 		the Estates, Powers and Trusts Law, and designate or change the
 		beneficiary or beneficiaries of such account;</font></p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-		</p>
 		<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-		<u>           </u>  <font face="Times New Roman, serif">Open, modify
+		____________________<font face="Times New Roman, serif">Open, modify
 		or terminate a “transfer on death account” as described in Part
 		Four of Article Thirteen of the Estates, Powers and Trusts Law, and
 		designate or change the beneficiary or beneficiaries of such account;</font></p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-		</p>
 		<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-		<u>           </u>  <font face="Times New Roman, serif">Change the
+		____________________ <font face="Times New Roman, serif">Change the
 		beneficiary or beneficiaries of any contract of insurance on the life
 		of the principal or annuity contract for the benefit of the
 		principal;</font></p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-		</p>
-
 
 
 
 		<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-		<u>           </u>  <font face="Times New Roman, serif">Procure new,
+		__________________ <font face="Times New Roman, serif">Procure new,
 		different or additional contracts of insurance on the life of the
 		principal or annuity contracts for the benefit of the principal and
 		designate the beneficiary or beneficiaries of any such contract;</font></p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-		</p>
 		<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-		<u>           </u>  <font face="Times New Roman, serif">Designate or
+		__________________ <font face="Times New Roman, serif">Designate or
 		change the beneficiary or beneficiaries of any type of retirement
 		benefit or plan;</font></p>
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 		</p>
 		<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-		<u>           </u>  <font face="Times New Roman, serif">Create,
+		__________________ <font face="Times New Roman, serif">Create,
 		amend, revoke, or terminate an </font><font face="Times New Roman, serif"><i>inter
 		vivos</i></font><font face="Times New Roman, serif"> trust, and
 		transfer and convey to the trustee or trustees then acting of any
@@ -1141,36 +1051,32 @@ Gifts Rider.</font></p>
 
 		</p>
 		<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-		<u>           </u>  <font face="Times New Roman, serif">Create,
+		__________________ <font face="Times New Roman, serif">Create,
 		change or terminate other property interests or rights of
 		survivorship, and designate or change the beneficiary or
 		beneficiaries therein.</font></p>
-		<p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0.09in; line-height: 100%">
-		<br/>
-		<br/>
 
-		</p>
-		
-		<p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0.09in; line-height: 100%">
+
+		<p align="justify" style="margin-left: 0.38in; page-break-before: always; text-indent: -0.38in; margin-bottom: 0.09in; line-height: 100%">
 		<font face="Times New Roman, serif"><b>(c)	GRANT OF SPECIFIC
 		AUTHORITY FOR AN AGENT TO MAKE GIFTS TO HIMSELF OR HERSELF:
 		(OPTIONAL)</b></font></p>
-		
+
 		<p align="justify" style="margin-bottom: 0.09in; line-height: 100%"><font face="Times New Roman, serif"><i>If
 		you wish to authorize your agent to make gifts to himself or herself,
 		you must grant that authority in this section, indicating to which
 		agent(s) the authorization is granted, and any limitations and
 		guidelines.</i></font></p>
-		
+
 		@if(array_key_exists('isAuthorizeToOperategift', $attorneyPowers) && $attorneyPowers['isAuthorizeToOperategift'] == 1)
 
 		<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
-		
+
 		<font face="Times New Roman, serif">(		) (INITIAL) I grant specific
 		authority for </font>
-		
 
-		<font color="#0433ff">
+
+		<font color="">
 			<font face="Times New Roman, serif">{{$attorneyHolders['fullname']}}</font>
 		</font>
 
@@ -1178,13 +1084,13 @@ Gifts Rider.</font></p>
 			<font face="Times New Roman, serif"> and </font>
 		</font>
 
-		<font color="#0433ff">
+		<font color="">
 			@if($financialPowerOfAttorney['is_backupattorney'] == 1)
-				<font color="#0433ff">
+				<font color="">
 					<font face="Times New Roman, serif">{{$attorneyBackup['fullname']}}</font>
 				</font>
 			@else
-				<font color="#0433ff">
+				<font color="">
 					<font face="Times New Roman, serif">________________________</font>
 				</font>
 			@endif
@@ -1215,21 +1121,21 @@ Gifts Rider.</font></p>
 		<font face="Times New Roman, serif">I decline to grant specific
 		authority for </font>
 
-	
-		<font color="#0433ff">
+
+		<font color="">
 			<font face="Times New Roman, serif">{{$attorneyHolders['fullname']}}</font>
 		</font>
 
 		<font color="#000000"><font face="Times New Roman, serif">
 		and </font></font>
 
-		<font color="#0433ff">
+		<font color="">
 			@if($financialPowerOfAttorney['is_backupattorney'] == 1)
-				<font color="#0433ff">
+				<font color="">
 					<font face="Times New Roman, serif">{{$attorneyBackup['fullname']}}</font>
 				</font>
 			@else
-				<font color="#0433ff">
+				<font color="">
 					<font face="Times New Roman, serif">________________________</font>
 				</font>
 			@endif
@@ -1239,7 +1145,7 @@ Gifts Rider.</font></p>
 		<font face="Times New Roman, serif">to make gifts to
 		him or herself, or to persons to whom he or she has a legal
 		obligation to support.</font></p>
-		
+
 		@endif
 
 
@@ -1248,56 +1154,44 @@ Gifts Rider.</font></p>
 		agree to indemnify the third party for any claims that may arise
 		against the third party because of reliance on this Statutory Gifts
 		Rider.</font></p>
-		<p align="justify" style="margin-bottom: 0.09in; line-height: 100%"><br/>
-		<br/>
 
-		</p>
 
 
 		<p align="justify" style="margin-bottom: 0.09in; line-height: 100%"><font face="Times New Roman, serif"><b>(e)	SIGNATURE
 		OF PRINCIPAL AND ACKNOWLEDGMENT:</b></font></p>
-		
+
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font color="#000000"><font face="Times New Roman, serif">In
 		Witness Whereof, I have hereunto signed my name on this</font></font><font color="#008f00"><font face="Times New Roman, serif">
 		</font></font><font color="#000000"><font face="Times New Roman, serif">____
-		day of </font></font><font color="#000000"><font face="Times New Roman, serif"><u>			</u></font></font><font color="#000000"><font face="Times New Roman, serif">,<br/>
+		day of </font></font><font color="#000000"><font face="Times New Roman, serif">_____________</font></font><font color="#000000"><font face="Times New Roman, serif"><br/>
 
 		</font></font><font color="#000000"><font face="Times New Roman, serif"><u>		</u></font></font><font color="#000000"><font face="Times New Roman, serif">.</font></font></p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-		</p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-		</p>
 		<p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
 		<font face="Times New Roman, serif">_______________________________________</font></p>
 		<p align="justify" style="margin-left: 0.5in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
 		<font face="Times New Roman, serif"></font>
 
-		<font color="#0000ff">
+		<font color="">
 			<font face="Times New Roman, serif">
 				<b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>
 			</font>
 		</font>
 
 		</p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-		</p>
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">STATE
 		OF NEW YORK</font></font></p>
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">COUNTY
 		OF ___________________</font></font></p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-		</p>
 		<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
 		<font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">On
 		the ____________ day of _________________ in the year __________
 		before me, the undersigned, personally appeared </font></font>
 
 
-		<font color="#0000ff">
+		<font color="">
 			<font face="Times New Roman, serif">
 				<font size="2" style="font-size: 9pt">
 					<b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>
@@ -1313,31 +1207,23 @@ Gifts Rider.</font></p>
 		in his/her/their capacity, and that by his/her/their signature(s) on
 		the instrument, the individual(s), or the person upon behalf of which
 		the individual acted, executed the instrument.</font></font></p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-		</p>
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">______________________________</font></font></p>
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">Notary
 		Public</font></font></p>
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><font size="2" style="font-size: 9pt">Printed
 		Name: _________________			My Commission Expires:
 		_____________________</font></font></p>
-		<p style="margin-top: 0.26in; margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><b>(f)	SIGNATURES
+		<p style="margin-top: 0.26in; margin-bottom: 0in; page-break-before: always; line-height: 100%"><font face="Times New Roman, serif"><b>(f)	SIGNATURES
 		OF WITNESSES:</b></font></p>
-		<p align="justify" style="margin-bottom: 0.09in; line-height: 100%"><br/>
-		<br/>
-
-		</p>
-
-
 
 		<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0"><a name="_GoBack"></a>
 		<font face="Times New Roman, serif">By signing as a witness, I
 		acknowledge that </font>
 
-		
 
-		<font color="#0000ff">
+
+		<font color="">
 			<font face="Times New Roman, serif">
 				<b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>
 			</font>
@@ -1348,56 +1234,39 @@ Gifts Rider.</font></p>
 		that the principal acknowledged to me that the principal's signature
 		was affixed by </font>
 
-		<font color="#0433ff">
+		<font color="">
 			<font face="Times New Roman, serif">{{$genderTxt4}}</font>
 		</font>
 
 		<font face="Times New Roman, serif">
 		or at </font>
 
-		<font color="#0433ff">
+		<font color="">
 			<font face="Times New Roman, serif">{{$genderTxt4}}</font>
 		</font>
 
-		<font face="Times New Roman, serif">»
+		<font face="Times New Roman, serif">
 		direction. I also acknowledge that the principal has stated that this
 		Statutory Gifts Rider reflects </font>
 
-		<font color="#0433ff">
+		<font color="">
 			<font face="Times New Roman, serif">{{$genderTxt4}}</font>
 		</font>
 
-		<font face="Times New Roman, serif">»
+		<font face="Times New Roman, serif">
 		wishes and that </font>
-		<font color="#0433ff">
+		<font color="">
 			<font face="Times New Roman, serif">{{$genderTxt3}}</font>
 		</font>
 
 		<font face="Times New Roman, serif">
 		has signed it voluntarily. </font><font face="Times New Roman, serif"><u><b>I
 		am not named herein as a permissible recipient of gifts</b></u></font><font face="Times New Roman, serif"><b>.</b></font></p>
-		<p align="justify" style="margin-bottom: 0.09in; line-height: 100%"><br/>
-		<br/>
-
-		</p>
-
-
 
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font color="#000000"><font face="Times New Roman, serif">Dated:
 		____ day of </font></font><font color="#000000"><font face="Times New Roman, serif"><u>			</u></font></font><font color="#000000"><font face="Times New Roman, serif">,
 		</font></font><font color="#000000"><font face="Times New Roman, serif"><u>		</u></font></font><font color="#000000"><font face="Times New Roman, serif">.</font></font></p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-		</p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-		</p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-		</p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-		</p>
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">_______________________________________	____________________________________</font></p>
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">signature
 		– please print name under this line]	[street address]</font></p>
@@ -1409,19 +1278,13 @@ Gifts Rider.</font></p>
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">							____________________________________</font></p>
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">							[city,
 		state]</font></p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-		</p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-		</p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-		</p>
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">_______________________________________	____________________________________</font></p>
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">signature
 		– please print name under this line]	[street address]</font></p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">(WITNESS
+		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+		</p><font face="Times New Roman, serif">(WITNESS
 		2)</font></p>
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
@@ -1429,19 +1292,11 @@ Gifts Rider.</font></p>
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">							____________________________________</font></p>
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">							[city,
 		state]</font></p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-		</p>
-		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-		</p>
 		<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">	</font></p>
-		
+
 		@endif
 
-		<p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-		</p>
 
 </body>
 

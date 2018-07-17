@@ -4,15 +4,26 @@
     <meta charset="utf-8">
     <title>Untitled Document</title>
     <style>
-        
-
-
+    #footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+    text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+    padding-top: 5px;
+    }
+     #footer .page:after { content: counter(page, none); }
 
     </style>
 </head>
 
 <body>
-
+  <script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Durable Health Care Power of Attorney and Declaration of <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
 <div class="docContainer" id="doc">
     <div class="docPage" style="">
         <div id="doc" class="docPageInner"
@@ -45,7 +56,7 @@
             <p class="western"  style="text-align:center;margin-bottom: 0in; line-height: 100%">
                 Date of Birth:
                 @if(isset($tellUsAboutYou) && array_key_exists('dob',$tellUsAboutYou) && !is_null($tellUsAboutYou['dob']))
-                    <span>{{$tellUsAboutYou['dob']}}</span>
+                    <span>{{date('jS M, Y', strtotime($tellUsAboutYou['dob']))}}</span>
                 @else
                     <span>________________________________</span>
                 @endif
@@ -748,7 +759,7 @@
                 procedure deemed necessary to provide me with</p>
             <p class="western"  style="text-align:justify;margin-bottom: 0in; line-height: 100%">
                 comfort care.</p>
-           
+
         </div>
         <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
@@ -888,7 +899,7 @@
       <span size="2" style="font-size: 10pt">_____ Any legally authorized
         purpose. </span>
             </p>
-            
+
         </div>
         <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">

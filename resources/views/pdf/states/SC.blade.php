@@ -53,9 +53,27 @@
 
 
     </style>
+    <style>
+    #footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+    text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+    padding-top: 5px;
+    }
+     #footer .page:after { content: counter(page, none); }
+
+    </style>
 </head>
 
 <body>
+  <script type="text/php">
+      if ( isset($pdf) ) {
+          $pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+      }
+  </script>
+  <div id="footer">
+    <div style="">
+      Health Care Power of Attorney and Declaration of <br>{{$tellUsAboutYou['fullname']}}<br>
+    </div>
+  </div>
 
 <div class="docContainer" id="doc">
 
@@ -259,7 +277,7 @@
         <span >),
       as my agent to make health care decisions for me as authorized in
       this document.</span></span></span></p>
-            
+
             @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == true)
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
               my agent dies, becomes legally disabled, resigns, refuses to act,
@@ -322,7 +340,7 @@
               authorized by this document.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></span></p>
             @endif
 
-            
+
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><span style="text-decoration: none">Unavailability
       of Agent(s)</span></span><span size="3" style="font-size: 12pt">: If
       at any relevant time the agent or successor agents named here are
@@ -332,14 +350,14 @@
       is my intention that the guardian, Probate Court, or surrogate make
       those decisions in accordance with my directions as stated in this
       document.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>2.
 	    EFFECTIVE DATE AND DURABILITY</b></span></span></span></p>
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">By
     this document I intend to create a durable power of attorney
     effective upon, and only during, any period of mental incompetence,
     except as provided in Paragraph 3 below.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>3.
 	    HIPAA AUTHORIZATION</b></span></span></span></p>
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">When
@@ -443,8 +461,8 @@
                 <span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 6pt"><span size="3" style="font-size: 12pt"><i>________________________________________________________________________</i></span></span></span></p>
             <p align="left" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 90%">
                 <span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 6pt"><span size="3" style="font-size: 12pt"><i>________________________________________________________________________</i></span></span></span></p>
-          
-            
+
+
             <p align="left" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 90%">
                 <span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 6pt"><span size="3" style="font-size: 12pt"><i>________________________________________________________________________</i></span></span></span></p>
             <p align="left" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 90%">
@@ -493,19 +511,19 @@
             <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            
+
             <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>7.
 	    STATEMENT OF DESIRES AND SPECIAL PROVISIONS</b></span></span></span></p>
             <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">With
         respect to any Life-Sustaining Treatment, I direct the following:</span></span></span></p>
-            
+
             <p align="left" style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><b>(INITIAL
     </b></span><span size="3" style="font-size: 12pt"><u><b>ONLY ONE</b></u></span><span size="3" style="font-size: 12pt"><b>
     OF THE FOLLOWING 3 PARAGRAPHS)</b></span></span></span></p>
-            
+
             <p  style="margin-left: 0.75in; text-indent: -0.75in; margin-bottom: 0.09in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(1)
-      </span><span size="3" style="font-size: 12pt"><u>_______</u></span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">GRANT
+      </span><span size="3" style="font-size: 12pt">_______</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">GRANT
       OF DISCRETION TO AGENT. I do not want my life to be prolonged nor do
       I want life-sustaining treatment to be provided or continued if my
       agent believes the burdens of the treatment outweigh the expected
@@ -514,7 +532,7 @@
       possible extension of my life in making decisions concerning
       life-sustaining treatment.</span></span></span></p>
             <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>OR</b></span></span></span></p>
-            
+
             <p  style="margin-left: 0.75in; text-indent: -0.75in; margin-bottom: 0.09in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(2)
       </span><span size="3" style="font-size: 12pt">_______</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">DIRECTIVE
@@ -563,11 +581,11 @@
       respect to Nutrition and Hydration provided by means of a nasogastric
       tube or tube into the stomach, intestines, or veins, I wish to make
       clear that:</span></span></span></p>
-            
+
             <p align="left" style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><b>(INITIAL
       </b></span><span size="3" style="font-size: 12pt"><u><b>ONLY ONE</b></u></span><span size="3" style="font-size: 12pt"><b>
       OF THE FOLLOWING 3 PARAGRAPHS)</b></span></span></span></p>
-            
+
             <p style="margin-left: 0.75in; text-indent: -0.75in; margin-top: 0.05in; margin-bottom: 0.05in; ">
                 <span style="font-family:'Times New Roman, serif'">(1) </span><span style="font-family:'Times New Roman, serif'">_______</span><span style="font-family:'Times New Roman, serif'">	GRANT
         OF DISCRETION TO AGENT. I do not want my life to be prolonged by tube
@@ -578,14 +596,14 @@
         decision.&nbsp;</span></p>
             <p style="margin-left: 0.75in; text-indent: -0.75in; margin-top: 0.05in; margin-bottom: 0.05in; ">
                 <span style="font-family:'Times New Roman, serif'"><b>OR&nbsp;</b></span></p>
-           
+
             <p style="margin-left: 0.75in; text-indent: -0.75in; margin-top: 0.05in; margin-bottom: 0.05in; ">
                 <span style="font-family:'Times New Roman, serif'">(2) </span><span style="font-family:'Times New Roman, serif'">_______</span><span style="font-family:'Times New Roman, serif'">	DIRECTIVE
       TO WITHHOLD OR WITHDRAW TUBE FEEDING. I do not want my life prolonged
       by tube feeding.&nbsp;</span></p>
             <p style="margin-left: 0.75in; text-indent: -0.75in; margin-top: 0.05in; margin-bottom: 0.05in; ">
                 <span style="font-family:'Times New Roman, serif'"><b>OR&nbsp;</b></span></p>
-            
+
             <p style="margin-left: 0.75in; text-indent: -0.75in; margin-top: 0.05in; margin-bottom: 0.05in; ">
                 <span style="font-family:'Times New Roman, serif'">(3) </span><span style="font-family:'Times New Roman, serif'">_______</span><span style="font-family:'Times New Roman, serif'">	DIRECTIVE
       FOR PROVISION OF TUBE FEEDING. I want tube feeding to be provided
@@ -594,7 +612,7 @@
       my condition, the chances I have for recovery, or the cost of the
       procedure, and without regard to whether other forms of
       life-sustaining treatment are being withheld or withdrawn.&nbsp;</span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">IF
     YOU DO NOT INITIAL EITHER OF THE ABOVE STATEMENTS, YOUR AGENT WILL
     NOT HAVE AUTHORITY TO DIRECT THAT NUTRITION AND HYDRATION NECESSARY
@@ -602,10 +620,10 @@
             <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            
+
             <p  style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>9.
     ADMINISTRATIVE PROVISIONS</b></span></span></span></p>
-            
+
             <p  style="margin-left: 0.5in; text-indent: -0.5in; margin-bottom: 0.09in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">A.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
       revoke any prior Health Care Power of Attorney and any provisions
@@ -635,18 +653,18 @@
             <p  style="margin-bottom: 0in;  text-align:center;">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>SIGNATURE
       AND ACKNOWLEDGEMENT</b></span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">BY
       SIGNING HERE I INDICATE THAT I UNDERSTAND THE CONTENTS OF THIS
       DOCUMENT AND THE EFFECT OF THIS GRANT OF POWERS TO MY AGENT.</span></span></span></p>
-            
+
             <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">I
       sign my name to this Health Care Power of Attorney on this </span></span><span ><span size="3" style="font-size: 12pt">__________</span></span><span ><span size="3" style="font-size: 12pt">
       day of </span></span></span></span></span>
             </p>
             <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">_____________________</span></span><span ><span size="3" style="font-size: 12pt">,
     </span></span><span ><span size="3" style="font-size: 12pt">_________________</span></span><span ><span size="3" style="font-size: 12pt">.</span></span></span></span></span></p>
-            
+
             <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></span></p>
             <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
@@ -691,7 +709,7 @@
                     <span style="text-transform: capitalize">(zip)_____________</span>
                 @endif
               </span></span><span size="3" style="font-size: 12pt">,</span></span></span></p>
-            
+
 
             <p  style="margin-bottom: 0.09in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>WITNESS
       STATEMENT</b></span></span></span></p>
@@ -741,8 +759,8 @@
                 <span >							</span><span >______________________</span></p>
             <p class="western" align="justify" style="margin-bottom: 0in;  padding-left: 350px;margin-top: 0;">
                 <span style="padding-left: 40px;">								[city, state, zip]</span></p>
-            
-           
+
+
             <p class="western" style="margin-bottom: 0in; "><span ><b>WITNESS
       2</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
       </span><span >______________________</span></p>
@@ -886,7 +904,7 @@
       condition is terminal or if I am in a state of permanent
       unconsciousness, and I declare:  </span></span></span>
             </p>
-            
+
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
       at any time I have a condition certified to be a terminal condition
       by two physicians who have personally examined me, one of whom is my
@@ -899,38 +917,38 @@
       that I be permitted to die naturally with only the administration of
       medication or the performance of any medical procedure necessary to
       provide me with comfort care.</span></span></span></p><br><br>
-            
+
             <p  style="margin-bottom: 0.06in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>INSTRUCTIONS
       CONCERNING ARTIFICIAL NUTRITION AND HYDRATION</b></span></span></span></p>
-            
+
             <p  style="margin-bottom: 0.09in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><b>INITIAL
       </b></span><span size="3" style="font-size: 12pt"><u><b>ONE</b></u></span><span size="3" style="font-size: 12pt"><b>
       OF THE FOLLOWING STATEMENTS</b></span></span></span></p>
-            
+
                     <p  style="margin-bottom: 0.09in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">1. &nbsp;&nbsp;If
         my condition is terminal and could result in death within a
         reasonably short time,</span></span></span></p>
-                
-            
-            
+
+
+
                     <p  style="margin-bottom: 0.09in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">A. &nbsp;&nbsp;_____</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
         direct that nutrition and hydration BE PROVIDED through any
         medically indicated means, including medically or surgically
         implanted tubes.</span></span></span></p>
-                
-            
+
+
             <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>OR</b></span></span></span></p>
-            
-           
+
+
                     <p  style="margin-bottom: 0in; ">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">B. &nbsp;&nbsp;_____</span><span size="3" style="font-size: 12pt">
         I direct that nutrition and hydration NOT BE PROVIDED t h rough any
         medically indicated means, including medically or surgically
         implanted tubes.</span></span></span></p>
-                
+
         </div>
         <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
@@ -961,7 +979,7 @@
         permanent unconsciousness,</span></span></span></p>
                 </li>
             </ol>
-            
+
             <ol type="A" style="margin-left: 20px;">
                 <li>
                     <p  style="margin-bottom: 0.09in; margin-top: 0;">
@@ -971,10 +989,10 @@
         means, including medically or surgically implanted tubes.</span></span></span></p>
                 </li>
             </ol>
-            
+
             <p  style="margin-left: 1.25in; text-indent: -0.75in; margin-bottom: 0.09in; ">
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>OR</b></span></span></span></p>
-            
+
             <ol type="A" start="2" style="margin-left: 20px;">
                 <li>
                     <p  style="margin-bottom: 0in; margin-top: 0;">
@@ -984,11 +1002,11 @@
         implanted tubes.</span></span></span></p>
                 </li>
             </ol>
-            
+
             <p align="left" style="margin-left: 0.25in; margin-bottom: 0.09in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><b>AND,
       INITIAL THE FOLLOWING STATEMENT IF DESIRED</b></span></span></span></p>
-            
+
             <ol type="A" start="3" style="margin-left: 20px;">
                 <li>
                     <p  style="margin-bottom: 0in; margin-top: 0;">
@@ -997,8 +1015,8 @@
         suffering and minimal intravenous fluids to avoid discomfort.</span></span></span></p>
                 </li>
             </ol>
-            
-            
+
+
             <ol start="3" style="margin-left: 20px;">
                 <li>
                     <p  style="margin-bottom: 0in; margin-top: 0;">
@@ -1011,7 +1029,7 @@
         consequences from the refusal.</span></span></span></p>
                 </li>
             </ol>
-            
+
             <ol start="4" style="margin-left: 20px;">
                 <li>
                     <p  style="margin-bottom: 0in; margin-top: 0;">
@@ -1021,8 +1039,8 @@
         competent to make this Declaration.</span></span></span></p>
                 </li>
             </ol>
-            
-            
+
+
             <p  style="margin-bottom: 0.09in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>OTHER
       INSTRUCTIONS</b></span></span></span></p>
             <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 150%">
@@ -1244,7 +1262,7 @@
       ss.</span></span><span ><span size="3" style="font-size: 12pt">&nbsp;</span></span><span size="3" style="font-size: 12pt">		</span><span ><span size="3" style="font-size: 12pt; padding-left: 80px; display: inline-block;"><b>AFFIDAVIT</b></span></span></span></span></span></p>
             <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">COUNTY
       OF </span></span><span ><span size="3" style="font-size: 12pt">________________________</span></span><span ><span size="3" style="font-size: 12pt">		</span></span><span ><span size="3" style="font-size: 12pt">)</span></span></span></span></span></p>
-            
+
             <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
                 <span style="font-family:'Times New Roman, serif'">We,</span><span style="font-family:'Times New Roman, serif'">_________________________</span><span style="font-family:'Times New Roman, serif'">
       and </span><span style="font-family:'Times New Roman, serif'">_________________________</span><span style="font-family:'Times New Roman, serif'">,
@@ -1297,7 +1315,7 @@
             <p  style="margin-bottom: 0in; "><br/>
 
             </p>
-            
+
             <p class="western" style="margin-bottom: 0in; "><span ><b>WITNESS
       1</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
       </span><span >______________________</span></p>
@@ -1314,7 +1332,7 @@
             <p class="western" style="margin-bottom: 0in; "><br/>
 
             </p>
-            
+
             <p class="western" style="margin-bottom: 0in; "><span ><b>WITNESS
       2</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
       </span><span >______________________</span></p>

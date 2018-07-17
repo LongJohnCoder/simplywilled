@@ -2,8 +2,27 @@
 <html>
 <head>
 	<title></title>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
+
+	</style>
 </head>
+
 <body>
+<script type="text/php">
+		if ( isset($pdf) ) {
+				$pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+		}
+</script>
+<div id="footer">
+	<div style="">
+		Maryland Statutory from Personal Financial Power of Attorney of <br>{{$tellUsAboutYou['fullname']}}<br>
+	</div>
+</div>
 
 <p align="center" style="margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%">
 <font face="Times New Roman, serif"><font size="5" style="font-size: 17pt"><b>MARYLAND
@@ -12,10 +31,7 @@ STATUTORY FORM </b></font></font>
 <p align="center" style="margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%">
 <font face="Times New Roman, serif"><font size="5" style="font-size: 17pt"><b>PERSONAL
 FINANCIAL&nbsp;POWER OF ATTORNEY</b></font></font></p>
-<p align="center" style="margin-bottom: 0.13in; line-height: 100%"><br/>
-<br/>
 
-</p>
 <p align="center" style="margin-bottom: 0.13in; line-height: 100%"><font face="Times New Roman, serif"><b>IMPORTANT
 INFORMATION AND WARNING</b></font></p>
 <p align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
@@ -27,21 +43,13 @@ decisions concerning your property for you (the principal). Your
 agent will be able to make decisions and act with respect to your
 property (including your money) whether or not you are able to act
 for yourself.&nbsp;</font></p>
-<p align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
-<br/>
-<br/>
 
-</p>
 <p align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
 <font face="Times New Roman, serif">You should select someone you
 trust to serve as your agent. Unless you specify otherwise, generally
 the agent’s authority will continue until you die or revoke the
 power of attorney or the agent resigns or is unable to act for you.&nbsp;</font></p>
-<p align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
-<br/>
-<br/>
 
-</p>
 <p align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
 <font face="Times New Roman, serif">You need not grant all of the
 powers listed below. If you choose to grant less than all of the
@@ -50,36 +58,24 @@ Power of Attorney and mark on that Maryland Statutory Form Limited
 Power of Attorney which powers you intend to delegate to your
 attorney–in–fact (the agent) and which you do not want the agent
 to exercise.&nbsp;</font></p>
-<p align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
-<br/>
-<br/>
 
-</p>
 <p align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
 <font face="Times New Roman, serif">This power of attorney becomes
 effective immediately unless you state otherwise in the special
 instructions.&nbsp;</font></p>
-<p align="justify" style="text-indent: 0.5in; margin-bottom: 0.13in; line-height: 100%">
-<br/>
-<br/>
 
-</p>
 <p align="justify" style="text-indent: 0.5in; margin-bottom: 0.13in; line-height: 100%">
 <font face="Times New Roman, serif">You should obtain competent legal
 advice before you sign this power of attorney if you have any
 questions about the document or the authority you are granting to
 your agent.&nbsp;</font></p>
-<p align="center" style="margin-top: 0.06in; margin-bottom: 0.13in; line-height: 100%">
-<br/>
-<br/>
 
-</p>
 <p align="center" style="margin-top: 0.06in; margin-bottom: 0.13in; line-height: 100%">
 <font face="Times New Roman, serif"><b>DESIGNATION OF AGENT</b></font></p>
 <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
 <font face="Times New Roman, serif">I, </font>
 
-<font color="#0000ff">
+<font color=" ">
 	<font face="Times New Roman, serif">{{strtoupper($tellUsAboutYou['fullname'])}}</font>
 </font>
 
@@ -91,11 +87,11 @@ your agent.&nbsp;</font></p>
 
 <font face="Times New Roman, serif">appoint my </font>
 
-<font color="#0433ff">
+<font color=" ">
 	@if(strtolower($attorneyHolders['relationship']) == 'other')
-		<span color="#0433ff">{{ucwords(strtolower($attorneyHolders['other_relationship']))}}</span>
+		<span color=" ">{{ucwords(strtolower($attorneyHolders['other_relationship']))}}</span>
 	@else
-		<span color="#0433ff">{{ucwords(strtolower($attorneyHolders['relationship']))}}</span>
+		<span color=" ">{{ucwords(strtolower($attorneyHolders['relationship']))}}</span>
 	@endif
 </font>
 
@@ -103,7 +99,7 @@ your agent.&nbsp;</font></p>
 	<font face="Times New Roman, serif">, </font>
 </font>
 
-<font color="#0433ff">
+<font color=" ">
 	<font face="Times New Roman, serif">{{$attorneyHolders['fullname']}}</font>
 </font>
 
@@ -121,7 +117,7 @@ The contact information for my agent is as follows:</font>
 <p style="margin-top: 0.06in; margin-bottom: 0in; line-height: 100%">
 
 	<font face="Times New Roman, serif">Name of Primary Agent: </font>
-	<font color="#0433ff">
+	<font color=" ">
 		<font face="Times New Roman, serif">{{$attorneyHolders['fullname']}}</font>
 	</font>
 
@@ -133,19 +129,19 @@ The contact information for my agent is as follows:</font>
 
 	@if(array_key_exists('address', $attorneyHolders) && strlen($attorneyHolders['address']) > 0)
 
-		<font color="#008f00">
-			<font color="#0433ff">
+		<font color=" ">
+			<font color=" ">
 				<font face="Times New Roman, serif"> {{$attorneyHolders['address']}}</font>
 			</font>
 		</font>
 
-		<font color="#0433ff">
+		<font color=" ">
 			<font face="Times New Roman, serif">{{$attorneyHolders['city']}}</font>
 		</font>
 
 		<font face="Times New Roman, serif">, </font>
 
-		<font color="#0433ff">
+		<font color=" ">
 			<font face="Times New Roman, serif">{{$attorneyHolders['state']}}</font>
 		</font>
 
@@ -163,7 +159,7 @@ The contact information for my agent is as follows:</font>
 	Agent’s Telephone Number:</font>
 
 	@if(array_key_exists('phone', $attorneyHolders) && strlen($attorneyHolders['phone']) > 0)
-	<font color="#0433ff">
+	<font color=" ">
 		<font face="Times New Roman, serif"> {{$attorneyHolders['phone']}}</font>
 	</font>
 
@@ -188,11 +184,11 @@ The contact information for my agent is as follows:</font>
 		and until my primary agent is unable or unwilling to act for me, I
 		name my </font>
 
-		<font color="#0433ff">
+		<font color=" ">
 			@if(strtolower($attorneyBackup['relationship']) == 'other')
-				<span color="#0433ff">{{$attorneyBackup['other_relationship']}}</span>
+				<span color=" ">{{$attorneyBackup['other_relationship']}}</span>
 			@else
-				<span color="#0433ff">{{$attorneyBackup['relationship']}}</span>
+				<span color=" ">{{$attorneyBackup['relationship']}}</span>
 			@endif
 		</font>
 
@@ -200,7 +196,7 @@ The contact information for my agent is as follows:</font>
 			<font face="Times New Roman, serif">, </font>
 		</font>
 
-		<font color="#0433ff">
+		<font color=" ">
 			<font face="Times New Roman, serif">{{ucwords($attorneyBackup['fullname'])}}</font>
 		</font>
 
@@ -218,12 +214,12 @@ The contact information for my agent is as follows:</font>
 		<p style="margin-top: 0.06in; margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">Name
 		of Successor Agent: </font>
 
-		<font color="#0433ff">
+		<font color=" ">
 			<font face="Times New Roman, serif">{{ucwords($attorneyBackup['fullname'])}}</font>
 		</font>
-		
+
 		</p>
-	
+
 
 		<p style="margin-bottom: 0in; line-height: 100%">
 
@@ -231,21 +227,21 @@ The contact information for my agent is as follows:</font>
 
 			@if(array_key_exists('address',$attorneyBackup) && strlen($attorneyBackup['address']) > 0)
 
-				<font color="#0433ff">
+				<font color=" ">
 					<font face="Times New Roman, serif"> {{$attorneyBackup['address']}}</font>
 				</font>
 
-				<font color="#008f00">
+				<font color=" ">
 					<font face="Times New Roman, serif">,</font>
 				</font>
 
-				<font color="#0433ff">
+				<font color=" ">
 					<font face="Times New Roman, serif"> {{$attorneyBackup['city']}}</font>
 				</font>
 
 				<font face="Times New Roman, serif">, </font>
 
-				<font color="#0433ff">
+				<font color=" ">
 					<font face="Times New Roman, serif">{{$attorneyBackup['state']}}</font>
 
 				</font>
@@ -258,7 +254,7 @@ The contact information for my agent is as follows:</font>
 
 				<font face="Times New Roman, serif">&nbsp;</font>
 		</p>
-	
+
 
 		<p style="margin-bottom: 0in; line-height: 100%">
 			<font face="Times New Roman, serif">Primary
@@ -266,7 +262,7 @@ The contact information for my agent is as follows:</font>
 
 			@if(array_key_exists('phone', $attorneyBackup) && strlen($attorneyBackup['phone']) > 0)
 
-			<font color="#0433ff">
+			<font color=" ">
 				<font face="Times New Roman, serif">{{$attorneyBackup['phone']}}</font>
 			</font>
 
@@ -280,14 +276,9 @@ The contact information for my agent is as follows:</font>
 		</p>
 
 	@endif
-	
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
 
-	
-
-	<p align="center" style="margin-top: 0.06in; margin-bottom: 0.13in; line-height: 100%">
+	<p align="center" style="margin-top: 0.06in; page-break-before: always; margin-bottom: 0.13in; line-height: 100%">
 	<font face="Times New Roman, serif"><b>GRANT OF GENERAL AUTHORITY</b></font></p>
 	<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">I
 	(“the principal”) grant my agent and any successor agent, with
@@ -327,12 +318,7 @@ The contact information for my agent is as follows:</font>
 	<p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0.06in; line-height: 100%">
 	<font face="Times New Roman, serif">(7)	do lawful acts with respect
 	to the subject and all property related to the subject.&nbsp;</font></p>
-	<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><br/>
-	<br/>
-
-	</p>
-
-
+	<br>
 	<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">My
 	agent’s authority shall include the authority to act as stated
 	below with regard to each of the following subjects:&nbsp;</font></p>
@@ -370,7 +356,7 @@ The contact information for my agent is as follows:</font>
 	ownership with respect to stocks and bonds; exercise voting rights
 	with respect to stocks and bonds in person or by proxy, enter into
 	voting trusts, and consent to limitations on the right to vote.&nbsp;</font></p>
-	<p align="justify" style="margin-bottom: 0.17in; line-height: 100%"><font face="Times New Roman, serif"><u><b>Banks
+	<p align="justify" style="margin-bottom: 0.17in; page-break-before: always; line-height: 100%"><font face="Times New Roman, serif"><u><b>Banks
 	and Other Financial Institutions</b></u></font><font face="Times New Roman, serif">
 	– with respect to this subject, I authorize my agent to: continue,
 	modify, and terminate an account or other banking arrangement made by
@@ -462,7 +448,7 @@ The contact information for my agent is as follows:</font>
 	or regulation; and receive the financial proceeds of a claim
 	described above and conserve, invest, disburse, or use for a lawful
 	purpose anything so received.&nbsp;</font></p>
-	<p align="justify" style="margin-bottom: 0.17in; line-height: 100%"><font face="Times New Roman, serif"><u><b>Retirement
+	<p align="justify" style="margin-bottom: 0.17in; page-break-before: always; line-height: 150%"><font face="Times New Roman, serif"><u><b>Retirement
 	Plans (including a plan or account created by an employer, the
 	principal, or another individual to provide retirement benefits or
 	deferred compensation of which the principal is a participant,
@@ -480,7 +466,7 @@ The contact information for my agent is as follows:</font>
 	457(b), 26 U.S.C. § 457(b); and (7) a nonqualified deferred
 	compensation plan under Internal Revenue Code Section 409(a), 26
 	U.S.C. § 409(a)</b></u></font><font face="Times New Roman, serif"><b>
-	</b></font><font face="Times New Roman, serif">– with respect to
+	</b></font><font face="Times New Roman, serif" style="line-height: 100%">– with respect to
 	this subject, I authorize my Agent to: select the form and timing of
 	payments under a retirement plan and withdraw benefits from a plan;
 	make a rollover, including a direct trustee–to–trustee rollover,
@@ -545,7 +531,7 @@ The contact information for my agent is as follows:</font>
 			sections </font>
 
 
-		
+
 
 
 		@if(array_key_exists('isAuthorizeToOperategift', $attorneyPowers) && $attorneyPowers['isAuthorizeToOperategift'] == 1)
@@ -582,20 +568,9 @@ The contact information for my agent is as follows:</font>
 		marital deduction or charitable deduction.</font></p>
 
 	@endif
-	<p align="justify" style="margin-bottom: 0.17in; line-height: 100%"><br/>
-	<br/>
 
-	</p>
-
-	
-
-
-	<p align="center" style="margin-top: 0.13in; margin-bottom: 0.03in; line-height: 100%">
+	<p align="center" style="margin-top: 0.13in; page-break-before: always; margin-bottom: 0.03in; line-height: 100%">
 	<font face="Times New Roman, serif"><b>SPECIAL INSTRUCTIONS</b></font></p>
-	<p align="justify" style="margin-bottom: 0.09in; line-height: 100%"><br/>
-	<br/>
-	</p>
-
 
 	@if($attorneyPowers['isIncapacity'] == 1)
 
@@ -607,11 +582,6 @@ The contact information for my agent is as follows:</font>
 		authority granted to my agent shall take effect on my disability or
 		incapacity, as determined ONLY upon the occasion of the signing of a
 		written statement EITHER:</font></p>
-		
-		<p align="justify" style="margin-bottom: 0.09in; line-height: 100%"><br/>
-		<br/>
-
-		</p>
 
 
 		<p align="justify" style="margin-bottom: 0.09in; line-height: 100%"><font face="Times New Roman, serif">(INSTRUCTIONS:
@@ -697,17 +667,12 @@ The contact information for my agent is as follows:</font>
 		</font>
 	@endif
 	</p>
-	
-	<p align="justify" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
-	<br/>
-	<br/>
-
-	</p>
 
 
-	<p align="justify" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
+
+	<p align="justify" style="margin-top: 0.13in; margin-bottom: 0.06in; page-break-before: always; line-height: 100%">
 	<font face="Times New Roman, serif">3.	</font><font face="Times New Roman, serif"><b>HIPAA
-	RELEASE AND WAIVER.</b></font><font face="Times New Roman, serif"> 
+	RELEASE AND WAIVER.</b></font><font face="Times New Roman, serif">
 	My agent has the power and authority to request, review, and receive,
 	to the extent I could do so individually, any information, verbal or
 	written, regarding my physical or mental health, including, but not
@@ -731,88 +696,65 @@ The contact information for my agent is as follows:</font>
 	is effective, and shall terminate as provided herein or in the event
 	that I revoke the authority in writing and deliver it to my health
 	care provider.</font></p>
-	<p align="justify" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
-	<br/>
-	<br/>
 
-	</p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">4.</font><font face="Times New Roman, serif"><b>	COMPENSATION
 	AND REIMBURSEMENT.  </b></font><font face="Times New Roman, serif">My
 	Agent shall not be entitled to compensation for services in handling
 	my financial affairs; however, my Agent shall be entitled to
 	reimbursement from my assets for reasonable expenses incurred on my
 	behalf, upon providing proof of any such expense.</font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">5.	</font><font face="Times New Roman, serif"><b>DIGITAL
 	ASSETS.  </b></font><font face="Times New Roman, serif">My agent has
 	the power and authority to access, continue, modify, maintain,
 	terminate, or take any other action in connection with any of my
 	digital accounts, assets or rights, including the power to create or
 	change any passwords and user identification profiles.</font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
-	<p style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">6.	</font><font face="Times New Roman, serif"><b>I
+	<p style="margin-bottom: 0.06in; line-height: 80%"><font face="Times New Roman, serif">6.	</font><font face="Times New Roman, serif"><b>I
 	GIVE THE FOLLOWING ADDITIONAL INSTRUCTIONS (OPTIONAL):&nbsp;</b></font></p>
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 80%">
 	<font face="Times New Roman, serif">________________________________________________________________________</font></p>
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 80%">
 	<font face="Times New Roman, serif">________________________________________________________________________</font></p>
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 80%">
 	<font face="Times New Roman, serif">________________________________________________________________________</font></p>
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.13in; line-height: 100%">
+	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.13in; line-height: 80%">
 	<font face="Times New Roman, serif">________________________________________________________________________</font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p align="center" style="margin-top: 0.13in; margin-bottom: 0.03in; line-height: 100%">
+	<p align="center" style="margin-top: 0in; margin-bottom: 0.03in; line-height: 80%">
 	<font face="Times New Roman, serif"><b>NOMINATION OF GUARDIAN</b></font></p>
-	<p align="center" style="margin-bottom: 0.13in; line-height: 100%"><font face="Times New Roman, serif"><b>(OPTIONAL)</b></font></p>
-	<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">If
+	<p align="center" style="margin-bottom: 0in; line-height: 80%"><font face="Times New Roman, serif"><b>(OPTIONAL)</b></font></p>
+	<p align="justify" style="margin-bottom: 0.0in; line-height: 80%"><font face="Times New Roman, serif">If
 	it becomes necessary for a court to appoint a guardian of my estate
 	or guardian of my person, I nominate the following person(s) for
 	appointment:&nbsp;</font></p>
-	<p style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">Name
+	<p style="margin-bottom: 0.0in; line-height: 80%"><font face="Times New Roman, serif">Name
 	of nominee for guardian of my property:&nbsp;</font></p>
-	<p style="margin-bottom: 0.09in; line-height: 100%"><font face="Times New Roman, serif">(</font><font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">)
+	<p style="margin-bottom: 0.0in; line-height: 80%"><font face="Times New Roman, serif">(</font><font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">)
 	my Agent (or successor Agent) named above&nbsp;</font></p>
-	<p style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">OR&nbsp;</font></p>
-	<p style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">______________________________________________________________________________&nbsp;</font></p>
-	<p style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">Nominee’s
+	<p style="margin-bottom: 0.0in; line-height: 80%"><font face="Times New Roman, serif">OR&nbsp;</font></p>
+	<p style="margin-bottom: 0.0in; line-height: 80%"><font face="Times New Roman, serif">______________________________________________________________________________&nbsp;</font></p>
+	<p style="margin-bottom: 0.0in; line-height: 80%"><font face="Times New Roman, serif">Nominee’s
 	address:
 	_____________________________________________________________&nbsp;</font></p>
-	<p style="margin-bottom: 0.09in; line-height: 100%"><font face="Times New Roman, serif">Nominee’s
+	<p style="margin-bottom: 0.0in; line-height: 80%"><font face="Times New Roman, serif">Nominee’s
 	telephone number: __________________________________________&nbsp;</font></p>
-	<p style="margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%">
+	<p style="margin-top: 0.0in; margin-bottom: 0.0in; line-height: 80%">
 	<font face="Times New Roman, serif">Name of nominee for guardian of
 	my person:&nbsp;</font></p>
-	<p style="margin-bottom: 0.09in; line-height: 100%"><font face="Times New Roman, serif">(</font><font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">)
+	<p style="margin-bottom: 0.0in; line-height: 80%"><font face="Times New Roman, serif">(</font><font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">)
 	my Agent (or successor Agent) named above&nbsp;</font></p>
-	<p style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">OR&nbsp;</font></p>
-	<p style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">______________________________________________________________________________&nbsp;</font></p>
-	<p style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">Nominee’s
+	<p style="margin-bottom: 0.0in; line-height: 80%"><font face="Times New Roman, serif">OR&nbsp;</font></p>
+	<p style="margin-bottom: 0.0in; line-height: 80%"><font face="Times New Roman, serif">______________________________________________________________________________&nbsp;</font></p>
+	<p style="margin-bottom: 0.0in; line-height: 80%"><font face="Times New Roman, serif">Nominee’s
 	address:
 	_____________________________________________________________&nbsp;</font></p>
-	<p style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">Nominee’s
+	<p style="margin-bottom: 0.0in; line-height: 80%"><font face="Times New Roman, serif">Nominee’s
 	telephone number: __________________________________________&nbsp;</font></p>
-	<p align="center" style="margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%">
-	<br/>
-	<br/>
 
-	</p>
-	<p align="center" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><b>GENERAL
+	<p align="center" style="margin-bottom: 0in; page-break-before: always; line-height: 80%"><font face="Times New Roman, serif"><b>GENERAL
 	PROVISIONS</b></font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
 
 
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><b>Reliance
@@ -820,7 +762,7 @@ The contact information for my agent is as follows:</font>
 	person, including my agent, may rely upon the validity of this power
 	of attorney or a photocopy of it unless that person knows it has
 	terminated or is invalid.</font><font color="#000000"><font face="Times New Roman, serif">
-	</font></font><font color="#008f00"><font face="Times New Roman, serif">
+	</font></font><font color=" "><font face="Times New Roman, serif">
 	</font></font><font face="Times New Roman, serif">I, for myself and
 	on behalf of my heirs, successors, and assigns, hereby waive any
 	privilege that may attach to information requested by my Agent in the
@@ -906,17 +848,17 @@ The contact information for my agent is as follows:</font>
 	<font face="Times New Roman, serif">; and I have
 	the right to revoke or terminate this Power at any time and must do
 	so in writing.&nbsp;</font>
-	
+
 	</p>
-	
+
 	<p style="margin-bottom: 0in; line-height: 100%"><br/>
 
 	</p>
-	
+
 	<p align="center" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 	</p>
-	
+
 	<p align="center" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><b>[signature
 	and acknowledgement on next page]</b></font></p>
 	<p align="center" style="margin-top: 0.13in; margin-bottom: 0.13in; line-height: 100%; page-break-before: always">
@@ -933,22 +875,22 @@ The contact information for my agent is as follows:</font>
 	</b></font></font><font color="#000000"><font face="Times New Roman, serif"><u>					</u></font></font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
 
-	<font color="#0000ff">
+	<font color=" ">
 		<font face="Times New Roman, serif">
 			<b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>
 		</font>
 	</font>
 
 	<font color="#000000"><font face="Times New Roman, serif"><b>		</b></font></font></p>
-	
+
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%">
-		<font color="#0433ff">
+		<font color=" ">
 			<font face="Times New Roman, serif">{{$tellUsAboutYou['address']}}</font>
 		</font>
 	</p>
 
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%">
-		<font color="#0433ff">
+		<font color=" ">
 			<font face="Times New Roman, serif">{{$tellUsAboutYou['city']}}</font>
 		</font>
 
@@ -956,7 +898,7 @@ The contact information for my agent is as follows:</font>
 			<font face="Times New Roman, serif">, </font>
 		</font>
 
-		<font color="#0433ff">
+		<font color=" ">
 			<font face="Times New Roman, serif">{{$tellUsAboutYou['state']}}</font>
 		</font>
 
@@ -964,14 +906,14 @@ The contact information for my agent is as follows:</font>
 			<font face="Times New Roman, serif"> </font>
 		</font>
 
-		<font color="#0433ff">
+		<font color=" ">
 			<font face="Times New Roman, serif">{{$tellUsAboutYou['zip']}}</font>
 		</font>
 	</p>
-	
+
 
 	<p align="justify" style="margin-bottom: 0.13in; line-height: 100%">
-		<font color="#0433ff">
+		<font color=" ">
 			<font face="Times New Roman, serif">{{$tellUsAboutYou['phone']}}</font>
 		</font>
 	</p>
@@ -996,7 +938,7 @@ The contact information for my agent is as follows:</font>
 	</font></font><font color="#000000"><font face="Times New Roman, serif"><u>	</u></font></font><font color="#000000"><font face="Times New Roman, serif">,
 	by </font></font>
 
-	<font color="#0433ff">
+	<font color=" ">
 		<font face="Times New Roman, serif">{{strtoupper($tellUsAboutYou['fullname'])}}</font>
 	</font>
 
@@ -1004,7 +946,7 @@ The contact information for my agent is as follows:</font>
 		<font face="Times New Roman, serif"> to be </font>
 	</font>
 
-	<font color="#0433ff">
+	<font color=" ">
 
 		<font face="Times New Roman, serif">{{$genderTxt4}}</font>
 	</font>
@@ -1036,28 +978,28 @@ The contact information for my agent is as follows:</font>
 	<font face="Times New Roman, serif">The foregoing Power of Attorney
 	was, on the date written above, published and declared by </font>
 
-	<font color="#0000ff">
+	<font color=" ">
 		<font face="Times New Roman, serif">{{$tellUsAboutYou['fullname']}}</font>
 	</font>
 
 	<font face="Times New Roman, serif">
 	in our presence to be </font>
 
-	<font color="#0433ff">
+	<font color=" ">
 		<font face="Times New Roman, serif">{{$genderTxt4}}</font>
 	</font>
 
 	<font face="Times New Roman, serif">
 	Power of Attorney. We, in </font>
 
-	<font color="#0433ff">
+	<font color=" ">
 		<font face="Times New Roman, serif">{{$genderTxt4}}</font>
 	</font>
 
 	<font face="Times New Roman, serif">
 	presence and at </font>
 
-	<font color="#0433ff">
+	<font color=" ">
 		<font face="Times New Roman, serif">{{$genderTxt4}}</font>
 	</font>
 
@@ -1067,26 +1009,10 @@ The contact information for my agent is as follows:</font>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><b>_______________________________________</b></font></p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><b>WITNESS
 	1 [signature – please print name under this line]</b></font></p>
-	<p align="justify" style="margin-bottom: 0.13in; line-height: 100%"><br/>
-	<br/>
-
-	</p>
-
 
 
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">____________________________________</font></p>
@@ -1101,19 +1027,11 @@ The contact information for my agent is as follows:</font>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><b>_______________________________________</b></font></p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><b>WITNESS
 	2 [signature – please print name under this line]</b></font></p>
-	<p align="justify" style="margin-bottom: 0.13in; line-height: 100%"><br/>
-	<br/>
 
-	</p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">____________________________________</font></p>
 	<p align="justify" style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">[street
 	address]</font></p>
@@ -1126,20 +1044,10 @@ The contact information for my agent is as follows:</font>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
 	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
 	<p align="center" style="margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%; page-break-before: always">
 	<font face="Times New Roman, serif"><b>IMPORTANT INFORMATION FOR
 	AGENT&nbsp;</b></font></p>
-	<p align="center" style="margin-bottom: 0.13in; line-height: 100%"><br/>
-	<br/>
-
-	</p>
-
 
 	<p align="center" style="margin-bottom: 0.13in; line-height: 100%"><font face="Times New Roman, serif"><b>AGENT’S
 	DUTIES</b></font></p>
@@ -1164,15 +1072,11 @@ The contact information for my agent is as follows:</font>
 	agent whenever you act for the principal by writing or printing the
 	name of the principal and signing your own name as “agent” in the
 	following manner:&nbsp;</font></p>
-	<p style="margin-left: 0.75in; margin-top: 0.06in; margin-bottom: 0.13in; line-height: 100%">
-	<br/>
-	<br/>
 
-	</p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
 	“
 
-	<font color="#0000ff">
+	<font color=" ">
 		<font face="Times New Roman, serif">
 			<b>{{$tellUsAboutYou['fullname']}}</b>
 		</font>
@@ -1181,11 +1085,6 @@ The contact information for my agent is as follows:</font>
 	<font face="Times New Roman, serif">
 	</font><font face="Times New Roman, serif"><b>by (your signature) as
 	agent”</b></font></p>
-	<p style="margin-left: 0.75in; margin-top: 0.06in; margin-bottom: 0.13in; line-height: 100%">
-	<br/>
-	<br/>
-
-	</p>
 
 	<p align="justify" style="margin-bottom: 0.09in; line-height: 100%"><font face="Times New Roman, serif">Unless
 	the special instructions in this power of attorney state otherwise,
@@ -1193,35 +1092,35 @@ The contact information for my agent is as follows:</font>
 
 
 	<ol>
-		<ol>
-			<li>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<font face="Times New Roman, serif">(1)	act loyally for the
+		<ol style="white-space:nowrap;">
+			<li style="">
+	<p align="justify" style="margin-bottom: 0in;  margin-top: 0;">
+			<font face="Times New Roman, serif">act loyally for the
 			principal’s benefit;&nbsp;</font></p>
 			</li>
 			<li>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<font face="Times New Roman, serif">(2)	avoid conflicts that would
+	<p align="justify" style="margin-bottom: 0in;  margin-top: 0;">
+			<font face="Times New Roman, serif">avoid conflicts that would
 			impair your ability to act in the principal’s best interest;&nbsp;</font></p>
 			</li>
-			
+
 			<li>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<font face="Times New Roman, serif">(3)	keep a record of all
+	<p align="justify" style="margin-bottom: 0in;  margin-top: 0;">
+			<font face="Times New Roman, serif">keep a record of all
 			receipts, disbursements, and transactions made on behalf of the
 			principal;&nbsp;</font></p>
 			</li>
 			<li>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%">
-			<font face="Times New Roman, serif">(4)	cooperate with any person
+	<p align="justify" style="margin-bottom: 0in;  margin-top: 0;">
+			<font face="Times New Roman, serif">cooperate with any person
 			that has authority to make health care decisions for the principal
 			to do what you know the principal reasonably expects or, if you do
 			not know the principal’s expectations, to act in the principal’s
 			best interest; and&nbsp;</font></p>
 			</li>
 			<li>
-	<p align="justify" style="margin-bottom: 0.13in; line-height: 100%">
-			<font face="Times New Roman, serif">(5)	attempt to preserve the
+	<p align="justify" style="margin-bottom: 0in;  margin-top: 0;">
+			<font face="Times New Roman, serif">attempt to preserve the
 			principal’s estate plan if you know the plan and preserving the
 			plan is consistent with the principal’s best interest.&nbsp;</font></p>
 			</li>
@@ -1237,27 +1136,27 @@ The contact information for my agent is as follows:</font>
 	<ol>
 		<ol type="a">
 			<li>
-	<p align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-			<font face="Times New Roman, serif">(1)	death of the principal;&nbsp;</font></p>
+	<p align="justify" style="margin-bottom: 0in;  margin-top: 0;">
+			<font face="Times New Roman, serif">death of the principal;&nbsp;</font></p>
 			</li>
 			<li>
-	<p align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-			<font face="Times New Roman, serif">(2)	the principal’s
+	<p align="justify" style="margin-bottom: 0in;  margin-top: 0;">
+			<font face="Times New Roman, serif">the principal’s
 			revocation of the power of attorney or your authority;&nbsp;</font></p>
 			</li>
 			<li>
-	<p align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-			<font face="Times New Roman, serif">(3)	the occurrence of a
+	<p align="justify" style="margin-bottom: 0in;  margin-top: 0;">
+			<font face="Times New Roman, serif">the occurrence of a
 			termination event stated in the power of attorney;&nbsp;</font></p>
 			</li>
 			<li>
-	<p align="justify" style="margin-bottom: 0.06in; line-height: 100%">
-			<font face="Times New Roman, serif">(4)	the purpose of the power of
+	<p align="justify" style="margin-bottom: 0in;  margin-top: 0;">
+			<font face="Times New Roman, serif">the purpose of the power of
 			attorney is fully accomplished; or&nbsp;</font></p>
 			</li>
 			<li>
-	<p align="justify" style="margin-bottom: 0.13in; line-height: 100%">
-			<font face="Times New Roman, serif">(5)	if you are married to the
+	<p align="justify" style="margin-bottom: 0in;  margin-top: 0;">
+			<font face="Times New Roman, serif">if you are married to the
 			principal, a legal action is filed with a court to end your
 			marriage, or for your legal separation, unless the special
 			instructions in this power of attorney state that such an action
@@ -1265,13 +1164,6 @@ The contact information for my agent is as follows:</font>
 			</li>
 		</ol>
 	</ol>
-
-
-	<p align="center" style="margin-bottom: 0.09in; line-height: 100%"><br/>
-	<br/>
-
-	</p>
-
 
 	<p align="center" style="margin-bottom: 0.09in; line-height: 100%"><font face="Times New Roman, serif"><b>Liability
 	of agent&nbsp;</b></font></p>
@@ -1284,36 +1176,22 @@ The contact information for my agent is as follows:</font>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">If
 	there is anything about this document or your duties that you do not
 	understand, you should seek legal advice.&nbsp;</font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">The
+	<p align="justify" style="margin-bottom: 0in; page-break-before: always; line-height: 100%"><font face="Times New Roman, serif">The
 	following optional form may be used by an agent to certify facts
 	concerning a power of attorney:&nbsp;</font></p>
-	<p align="center" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p align="center" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
 	<p align="center" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><b>Agent’s
 	certification as to the validity of power of attorney and agent’s
 	authority&nbsp;</b></font></p>
-	<p align="center" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p align="center" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">State
 	of _________________________	)</font></p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">						)
 	ss.&nbsp;</font></p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">County
 	of _______________________	)</font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0"><a name="_GoBack"></a>
 	<font face="Times New Roman, serif">I,
 	__________________________________________ (name of agent), certify
@@ -1321,7 +1199,7 @@ The contact information for my agent is as follows:</font>
 
 
 
-	<font color="#0000ff">
+	<font color=" ">
 		<font face="Times New Roman, serif">{{strtoupper($tellUsAboutYou['fullname'])}}</font>
 	</font>
 
@@ -1372,94 +1250,50 @@ The contact information for my agent is as follows:</font>
 	<p align="center" style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
 	<font face="Times New Roman, serif">(insert other relevant
 	statements)</font></p>
-	<p style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p align="center" style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%; page-break-before: always">
-	<br/>
-	<br/>
-
-	</p>
-	<p align="center" style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+	<p align="center" style="margin-left: 0.38in; margin-bottom: 0.09in; page-break-before: always; line-height: 100%">
 	<font face="Times New Roman, serif"><b>Agent Signature and
 	Acknowledgment</b></font></p>
-	<p align="center" style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
-	<br/>
-	<br/>
-
-	</p>
-	<p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
-	<p style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><u>								</u></font><font face="Times New Roman, serif">	</font><font face="Times New Roman, serif"><u>				</u></font></p>
+	<br>
+	<p style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">_______________________</font><font face="Times New Roman, serif">	</font><font face="Times New Roman, serif">______________________________</font></p>
 	<p style="margin-bottom: 0.13in; line-height: 100%"><font face="Times New Roman, serif">	Agent’s
-	signature							Date&nbsp;</font></p>
-	<p style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><u>								</u></font><font face="Times New Roman, serif">&nbsp;</font></p>
+	signature &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date&nbsp;</font></p>
+	<p style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">___________________________</font><font face="Times New Roman, serif">&nbsp;</font></p>
 	<p style="margin-bottom: 0.13in; line-height: 100%"><font face="Times New Roman, serif">	Agent’s
 	name printed&nbsp;</font></p>
-	<p style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><u>								</u></font><font face="Times New Roman, serif">&nbsp;</font></p>
+	<p style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">________________________</font><font face="Times New Roman, serif">&nbsp;</font></p>
 	<p style="margin-bottom: 0.13in; line-height: 100%"><font face="Times New Roman, serif">	Agent’s
 	address&nbsp;</font></p>
-	<p style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif"><u>								</u></font><font face="Times New Roman, serif">&nbsp;</font></p>
+	<p style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">________________________</font><font face="Times New Roman, serif">&nbsp;</font></p>
 	<p style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">	Agent’s
 	telephone number&nbsp;</font></p>
-	<p style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
-	<p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font color="#000000"><font face="Times New Roman, serif">STATE
 	OF MARYLAND		)</font></font></p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">				)
 	ss.&nbsp;</font></p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font color="#000000"><font face="Times New Roman, serif">COUNTY
 	OF ________________	)</font></font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-	</p>
 	<p align="justify" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
 	<font face="Times New Roman, serif">This document was acknowledged
-	before me on this ____ day of </font><font face="Times New Roman, serif"><u>				</u></font><font face="Times New Roman, serif">,
+	before me on this ____ day of </font><font face="Times New Roman, serif">________________________</font><font face="Times New Roman, serif">,
 	</font>
 	</p>
 	<p align="justify" style="margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
-	<font face="Times New Roman, serif"><u>		</u></font><font face="Times New Roman, serif">,
-	by</font><font face="Times New Roman, serif"><u>					</u></font><font face="Times New Roman, serif">
+	<font face="Times New Roman, serif">________________________</font><font face="Times New Roman, serif">,
+	by</font><font face="Times New Roman, serif">________________________</font><font face="Times New Roman, serif">
 	to be his/her own act.</font></p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">	</font><font face="Times New Roman, serif"><u>								</u></font></p>
+	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">	</font><font face="Times New Roman, serif">________________________</font></p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><font face="Times New Roman, serif">	NOTARY
 	PUBLIC</font></p>
-	<p style="margin-bottom: 0.06in; line-height: 100%"><br/>
-	<br/>
 
-	</p>
-	<p style="margin-bottom: 0.06in; line-height: 100%"><br/>
-	<br/>
-
-	</p>
 	<p style="margin-bottom: 0.06in; line-height: 100%"><font face="Times New Roman, serif">My
 	commission expires: ___________________</font></p>
-	<p style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
-	<p style="margin-bottom: 0in; line-height: 100%"><br/>
 
-	</p>
 
-	
 
 </body>
 </html>
