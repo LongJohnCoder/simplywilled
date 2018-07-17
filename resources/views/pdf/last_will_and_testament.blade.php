@@ -11,6 +11,8 @@
 	$partnerOrSpouse = $tellUsAboutYou['marital_status'] == "M" ? "spouse" : "partner";
 
 	$stateTxt = $tellUsAboutYou['state'] == "California" ? "by right of representation" : "per stirpes";
+
+	$countChild = isset($children) ? count($children) : 0;
 @endphp
 
 
@@ -23,9 +25,28 @@
 			line-height: 25px;
 		}
 	</style>
+	<style>
+	#footer { position: fixed; left: 0px; bottom: -130px; right: 0px; height: 150px;
+	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
+	padding-top: 5px;
+	}
+	 #footer .page:after { content: counter(page, none); }
+
+	</style>
 </head>
+
 <body>
-	<div>
+<script type="text/php">
+		if ( isset($pdf) ) {
+				$pdf->page_text(282, 767,  "Page {PAGE_NUM} of {PAGE_COUNT}", null, 10);
+		}
+</script>
+<div id="footer">
+	<div style="">
+		Last Will and Testament of <br>{{$tellUsAboutYou['fullname']}}<br>
+	</div>
+</div>
+	<div style="text-align: justify">
 
 
 
@@ -36,7 +57,7 @@
 				<span style="display:block; font-size:24px;">{{$tellUsAboutYou['fullname']}}</span></p>
 			<div class="client-details" style="margin-top:32px;">
 
-				<p style="margin-bottom:20px;">
+				<p style="margin-bottom:20px; ">
 					@if($tellUsAboutYou != null)
 						I, <strong>{{strtoupper($tellUsAboutYou['fullname'])}}</strong> residing at <strong>{{strtoupper($tellUsAboutYou['address'])}}</strong>, <strong>{{strtoupper($tellUsAboutYou['city'])}}</strong>, <strong>{{strtoupper($tellUsAboutYou['state'])}}</strong>, <strong>{{$tellUsAboutYou['zip']}}</strong>, being over the age of eighteen (18) years and of sound and disposing mind and memory, and not being under any duress, fraud, mistake, or undue influence, do make, publish, and declare this to be my Last Will and Testament, hereby revoking all prior Last Wills, Testaments, and Codicils.
 					@endif
@@ -92,32 +113,32 @@
 					@endif
 				</p>
 
-				<p style="padding-bottom:20px;">
-					@if($tellUsAboutYou['children'] == 0 || $tellUsAboutYou['children'] == null)
+				<p style="padding-bottom:20px; text-align: justify;">
+					@if($countChild == 0 || $countChild == null)
 
 						<span style="font-weight:bold;">C. Children.</span> I have no children.
 
-					@elseif($tellUsAboutYou['children'] == 1)
+					@elseif($countChild == 1)
 
 						<span style="font-weight:bold;">C. Children.</span> I have one child now living. My child’s name is
 						@foreach($children as $child)
-							<span style="display:block;">Only Child: {{strtoupper($child['fullname'])}}, who was born on {{date('F d, Y', strtotime($child['dob']))}}</span>
+							{{strtoupper($child['fullname'])}}, who was born on {{date('F d, Y', strtotime($child['dob']))}}
 						@endforeach
 
-					@elseif($tellUsAboutYou['children'] > 1)
+					@elseif($countChild > 1)
 
-						<span style="font-weight:bold;">C. Children.</span> I have {{$tellUsAboutYou['children']}} children now living; their names and dates of birth are:
-
+						<span style="font-weight:bold;">C. Children.</span> I have {{$countChild}} children now living; their names and dates of birth are:
+						<br>
 						@foreach($children as $child)
-							<span style="display:block; padding:10px 0 0 90px;">CHILD'S NAME : {{strtoupper($child['fullname'])}}, born {{date('F d, Y', strtotime($child['dob']))}}</span>
+							<span style="margin-left: 175px;">{{strtoupper($child['fullname'])}}, born {{date('F d, Y', strtotime($child['dob']))}}</span><br>
 						@endforeach
 
 					@endif
 
 					@if($tellUsAboutYou['deceased_children'] == '1')
-						I have the following deceased children:
+						I have the following deceased children: <br>
 						@foreach(explode(',', $tellUsAboutYou['deceased_children_names']) as $key => $each_deceased_children)
-							<span style="display:block;">NAME : {{strtoupper(trim($each_deceased_children))}}</span>
+							<span style="margin-left: 175px;">{{strtoupper(trim($each_deceased_children))}}</span><br>
 						@endforeach
 					@endif
 				</p>
@@ -250,7 +271,7 @@
 						I decline to make any specific gifts or requests and intend for all of my Estate to be distributed in the manner hereinafter set forth for the distribution of the residue of my Estate.
 					@else
 						I direct the following specific distributions at my death:
-						@foreach($custGiftsArr as $key => $statement)	
+						@foreach($custGiftsArr as $key => $statement)
 						<span style="display:block; padding-top:10px;"><strong>({{$key + 1}})</strong> {{$statement}}</span>
 						@endforeach
 					@endif
@@ -277,7 +298,7 @@
 							@if($toMultipleBeneficiary['isEstateIntoEqualShares'] == 'Yes')
 								@foreach($toMultipleBeneficiary['beneficiaryYes'] as $key => $eachBeneficiary)
 									<span>one share shall be distributed to my {{$eachBeneficiary['beneficiaryRelationship']}} {{$eachBeneficiary['beneficiaryFullName']}}</span>
-									
+
 								@endforeach
 								If any named residuary beneficiary shall not be living at my death, such beneficiary’s share shall be distributed
 
@@ -385,9 +406,9 @@
 				@if($tellUsAboutYou['has_pet'] == 1)
 				<p style="padding-bottom:20px;">
 					<span style="font-weight:bold;">F. Pet Care Directive.</span> It is my desire that upon my death, my pets now living, and any other pets I may then own, shall be provided for with the same standard of care, maintenance, and comfort as I provided my pets during my lifetime. My pets now living are:
-
+					<br>
 					@foreach($petNames as $key => $pet)
-						<span>My {{ucwords(strtolower($pet['petType']))}} {{ucwords(strtolower($pet['petName']))}}</span>
+						<span style="text-align: center; margin-left: 250px;">My {{ucwords(strtolower($pet['petType']))}},  {{ucwords(strtolower($pet['petName']))}}</span><br>
 					@endforeach
 
 					I nominate my
@@ -616,13 +637,15 @@
 
 					<span style="padding-top:10px; display:block;"><b>(20)</b> To insure my {{$executor_title}} against liability to third persons, the cost of which shall be included as an estate expense.</span>
 
-<span style="padding-top:10px; display:block;">
 					@if($provideYourLovedOnes['business_interest'])
+					<span style="padding-top:10px; display:block;">
 						<b>(21)</b> To continue the operation of, sell, or liquidate any business or interest in any business that I or my estate may own, at any time, on any terms, and in any manner as my {{$executor_title}} deems advisable and in the best interests of my estate.
+					</span>
 					@endif
 
 					@if($provideYourLovedOnes['farm_or_ranch'])
-						<b>(22)</b> To continue to hold, operate, sell, purchase, acquire, invest in, or liquidate any farming or ranching property, or any interest that I or my estate may own in farming or ranching property, at any time, on any terms, and in any manner as my «ExecutorTitle» deems advisable and in the best interests of my estate.
+					<span style="padding-top:10px; display:block;">
+						<b>(22)</b> To continue to hold, operate, sell, purchase, acquire, invest in, or liquidate any farming or ranching property, or any interest that I or my estate may own in farming or ranching property, at any time, on any terms, and in any manner as my {{$executor_title}} deems advisable and in the best interests of my estate.
 					@endif
 					</span>
 				</p>
@@ -786,7 +809,7 @@
 
 				<p style="font-size:18px; padding:0 0 10px 0; text-align:center; margin:0;">{{$tellUsAboutYou['fullname']}}</p>
 
-				<p style="font-size: 13px;">UNDER OATH AND PENALTIES FOR PERJURY, WE, {{$tellUsAboutYou['fullname']}}, the Testator, and ______________________, and ______________________, the witnesses, whose names are signed to the attached or foregoing instrument, declare:?<p>
+				<p style="font-size: 13px;">UNDER OATH AND PENALTIES FOR PERJURY, WE, {{$tellUsAboutYou['fullname']}}, the Testator, and ______________________, and ______________________, the witnesses, whose names are signed to the attached or foregoing instrument, declare:<p>
 
 				<p style="margin:0; padding:0 0 5px 0;font-size: 13px;">1. That the Testator executed this instrument as {{$gender2Txt}}
 
