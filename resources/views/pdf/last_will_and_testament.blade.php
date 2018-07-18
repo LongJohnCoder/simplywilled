@@ -8,11 +8,17 @@
 	$gender3Txt = $tellUsAboutYou['gender'] == "M" ? "him" : "her";
 	$gender3TxtCaps = $tellUsAboutYou['gender'] == "M" ? "Him" : "Her";
 
+	$gender4Txt = $tellUsAboutYou['partner_gender'] == 'M' ? 'him' : 'her';
+
 	$partnerOrSpouse = $tellUsAboutYou['marital_status'] == "M" ? "spouse" : "partner";
 
 	$stateTxt = $tellUsAboutYou['state'] == "California" ? "by right of representation" : "per stirpes";
 
 	$countChild = isset($children) ? count($children) : 0;
+
+	$beneRelation = $toSingleBeneficiary['gender'] == 'M' ? 'his' : 'her';
+
+	$beneRelation2 = $toSingleBeneficiary['gender'] == 'M' ? 'he' : 'she';
 @endphp
 
 
@@ -32,6 +38,15 @@
 	}
 	 #footer .page:after { content: counter(page, none); }
 
+	.divCount{
+		counter-reset: index;
+	}
+	.divNumber{
+		counter-increment: index;
+	}
+	.divNumber:after{
+		content: counter(index, upper-alpha);
+	}
 	</style>
 </head>
 
@@ -73,7 +88,7 @@
 					@if($state == "District Of Columbia")
 						District of Columbia.
 					@elseif($state =="Massachusetts" || $state == "Virginia" || $state == "Kentucky" || $state == "Pennsylvania")
-						CONTAINS Commonwealth of {{$state}}.
+						Commonwealth of {{$state}}.
 					@else
 						State of {{$state}}.
 					@endif
@@ -82,7 +97,7 @@
 				<p style="padding-bottom:20px;">
 					@if($tellUsAboutYou['marital_status'] == "M")
 
-						<span style="font-weight:bold;">B. Marital Status.</span> I am legally married to {{strtoupper($tellUsAboutYou['partner_fullname'])}} and all references to “my spouse” or to {{strtoupper($tellUsAboutYou['partner_firstname'])}} shall be to {{$gender3Txt}}.
+						<span style="font-weight:bold;">B. Marital Status.</span> I am legally married to {{strtoupper($tellUsAboutYou['partner_fullname'])}} and all references to “my spouse” or to {{'"'.ucwords(strtolower(trim($tellUsAboutYou['partner_firstname']))).'"'}} shall be to {{$gender4Txt}}.
 
 					@elseif($tellUsAboutYou['marital_status'] == "R")
 
@@ -96,7 +111,7 @@
 							State of {{$state}})
 						@endif
 
-						 	with {{strtoupper($tellUsAboutYou['partner_fullname'])}} and all references to “my partner” or to {{strtoupper($tellUsAboutYou['partner_firstname'])}} shall be to {{$gender3Txt}}
+						 	with {{strtoupper($tellUsAboutYou['partner_fullname'])}} and all references to “my partner” or to {{'"'.ucwords(strtolower($tellUsAboutYou['partner_firstname'])).'"'}} shall be to {{$$gender4Txt}}
 
 					@elseif($tellUsAboutYou['marital_status'] == "D")
 
@@ -189,7 +204,7 @@
 
 
 				@if($tellUsAboutYou['guardian_minor_children'] == '1')
-<p style="padding-bottom:20px;">
+					<p style="padding-bottom:20px;">
 					<span style="font-weight:bold;">D. Guardian/Conservator.</span> I nominate my
 
 					@if(strtolower($guardian['relationship_with']) == "other")
@@ -217,373 +232,291 @@
 
 			</div>
 
-			<div class="article-3">
+			<div style="max-height: auto" class="article-3">
 
 
 				<p style="font-size:24px; font-weight:bold; padding:20px 0 10px 0; text-align:center;">ARTICLE III: DISTRIBUTIONS</p>
-				<p style="padding-bottom:20px;">
-					<span style="font-weight:bold;">A. Payment of Estate Expenses.</span> My {{$executor_title}} may pay from my Estate all debts which are then due and enforceable against my Estate, the expenses of my last illness, the expenses of my final disposition without the necessity of prior court approval, the expenses of administering my Estate, and all death taxes and governmental charges imposed upon and made payable from my Estate under the laws of the United States or of any state or country by reason of my death.
-				</p>
+				<div class="divCount">
+					
+					<p style="padding-bottom:20px;">
+						<span style="font-weight:bold;"><span class="divNumber"></span>. Payment of Estate Expenses.</span> My {{$executor_title}} may pay from my Estate all debts which are then due and enforceable against my Estate, the expenses of my last illness, the expenses of my final disposition without the necessity of prior court approval, the expenses of administering my Estate, and all death taxes and governmental charges imposed upon and made payable from my Estate under the laws of the United States or of any state or country by reason of my death.
+					</p>
 
-				<p style="padding-bottom:20px;">
-					<span style="font-weight:bold;">B. Tangible Personal Property.</span> It is my intention that any separate memorandum or written instructions I may leave expressing my wishes for the disposition of certain articles of my tangible personal property will be followed by my {{$executor_title}}, subject to any specific gifts of certain articles of my tangible personal property made in this Last Will & Testament below, which shall be absolute and unaffected by any such memorandum or written instruction. Excepting any articles of my tangible personal property that are otherwise gifted specifically herein or included in my separate written instructions, I give my tangible personal property, or the remainder thereof, to be distributed
-
-
-					@if($provideYourLovedOnes['is_tangible_property_distribute'] == 2)
-						@if($tellUsAboutYou['marital_status'] == "M")
-							to my spouse
-						@elseif($tellUsAboutYou['marital_status'] == "D")
-							to my partner
-						@endif
+					<p style="padding-bottom:20px;">
+						<span style="font-weight:bold;"><span class="divNumber"></span>. Tangible Personal Property.</span> It is my intention that any separate memorandum or written instructions I may leave expressing my wishes for the disposition of certain articles of my tangible personal property will be followed by my {{$executor_title}}, subject to any specific gifts of certain articles of my tangible personal property made in this Last Will & Testament below, which shall be absolute and unaffected by any such memorandum or written instruction. Excepting any articles of my tangible personal property that are otherwise gifted specifically herein or included in my separate written instructions, I give my tangible personal property, or the remainder thereof, to be distributed
 
 
-					@elseif($provideYourLovedOnes['is_tangible_property_distribute'] == 1)
-
-						@if($tellUsAboutYou['children'] > 1)
-							to my surviving children in equal shares
-						@elseif($tellUsAboutYou['children'] == 1)
-							to my child
-						@endif
-
-
-					@elseif($provideYourLovedOnes['is_tangible_property_distribute'] == 3)
-						with the residue of my Estate
-
-
-
-					@elseif($provideYourLovedOnes['is_tangible_property_distribute'] == 4)
-
-						as follows: {{$provideYourLovedOnes['tangible_property_distribute']}}
-
-					@endif
-
-					I direct that all costs of safeguarding, insuring, storing and delivering my tangible personal property to the beneficiaries entitled thereto be paid out of my Estate as an expense of administration. If a beneficiary designated in this provision does not survive me, my tangible personal property shall be distributed with the residue of my estate.
-				</p>
-
-				<p style="padding-bottom:20px;">
-					<span style="font-weight:bold;">C. Confirmation of Joint Tenancy.</span> I hereby confirm that all of my interest in any jointly titled assets held in my name with any other person or persons as “Joint Tenants” or as “Joint Tenants with Rights of Survivorship” shall pass to said co-tenant(s) if I predecease said co-tenant(s).
-				</p>
-
-				<p style="padding-bottom:20px;">
-					<span style="font-weight:bold;">D. Specific Distributions.</span>
-
-					@if(count($custGiftsArr) == 0)
-						I decline to make any specific gifts or requests and intend for all of my Estate to be distributed in the manner hereinafter set forth for the distribution of the residue of my Estate.
-					@else
-						I direct the following specific distributions at my death:
-						@foreach($custGiftsArr as $key => $statement)
-						<span style="display:block; padding-top:10px;"><strong>({{$key + 1}})</strong> {{$statement}}</span>
-						@endforeach
-					@endif
-				</p>
-
-				@if(isset($estateDistribute))
-
-					@if($estateDistribute['distribute_type'] == 2)
-
-						@if(isset($toMultipleBeneficiary['isEstateIntoEqualShares']) && $toMultipleBeneficiary['isEstateIntoEqualShares'] == "Yes")
-						<p style="padding-bottom:20px;">
-							<span style="font-weight:bold;">E. Residuary Estate.</span> I direct that my {{$executor_title}} divide and distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)
-
-							@if(isset($provideYourLovedOnes) && $provideYourLovedOnes['residue_to_partner_first'] == 1)
-								@if($tellUsAboutYou['marital_status'] == "M")
-									to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
-								@elseif($tellUsAboutYou['marital_status'] == "R")
-									to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
-								@endif
-							@endif
-
-							in equal shares;
-
-							@if($toMultipleBeneficiary['isEstateIntoEqualShares'] == 'Yes')
-								@foreach($toMultipleBeneficiary['beneficiaryYes'] as $key => $eachBeneficiary)
-									<span>one share shall be distributed to my {{$eachBeneficiary['beneficiaryRelationship']}} {{$eachBeneficiary['beneficiaryFullName']}}</span>
-
-								@endforeach
-								If any named residuary beneficiary shall not be living at my death, such beneficiary’s share shall be distributed
-
-								@if($toMultipleBeneficiary['deceasedBeneficiaryShareToKids'] == "Yes")
-									to his or her then-living issue, {{$stateTxt}} provided, however, if such deceased beneficiary is not survived by issue, the deceased beneficiary’s share shall be added
-								@endif
-								equally to the other shares.
-							@endif
-						</p>
-						@endif
-
-
-						@if(isset($toMultipleBeneficiary['isEstateIntoEqualShares']) && $toMultipleBeneficiary['isEstateIntoEqualShares'] == "No")
-						<p style="padding-bottom:20px;">
-							<span style="font-weight:bold;">E. Residuary Estate.</span> I direct that my {{$executor_title}} divide and distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)
-
-							@if(isset($provideYourLovedOnes) && $provideYourLovedOnes['residue_to_partner_first'] == 1)
-								@if($tellUsAboutYou['marital_status'] == "M")
-									to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
-								@elseif($tellUsAboutYou['marital_status'] == "R")
-									to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
-								@endif
-							@endif
-
-							in equal shares;
-
-							@if($toMultipleBeneficiary['isEstateIntoEqualShares'] == 'Yes')
-								@foreach($toMultipleBeneficiary['beneficiaryYes'] as $key => $eachBeneficiary)
-									<span>$eachBeneficiary['beneficiaryNoPercentageToEstate'] one share shall be distributed to my {{$eachBeneficiary['beneficiaryNoRelationship']}} {{$eachBeneficiary['beneficiaryNoFullName']}}</span>
-								@endforeach
-								If any named residuary beneficiary shall not be living at my death, such beneficiary’s share shall be distributed
-								@if($toMultipleBeneficiary['deceasedBeneficiaryShareToKids'] == "Yes")
-									to his or her then-living issue, {{$stateTxt}} provided, however, if such deceased beneficiary is not survived by issue, the deceased beneficiary’s share shall be added
-								@endif
-								equally to the other shares.
-							@endif
-						</p>
-						@endif
-
-					<!-- Distribution type 1 is for single beneficicary -->
-					@elseif($estateDistribute['distribute_type'] == 1)
-						<p style="padding-bottom:20px;">
-						<span style="font-weight:bold;">E. Residuary Estate.</span> I direct that my {{$executor_title}} distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)
-
-						@if(isset($provideYourLovedOnes) && $provideYourLovedOnes['residue_to_partner_first'] == 1)
+						@if($provideYourLovedOnes['is_tangible_property_distribute'] == 2)
 							@if($tellUsAboutYou['marital_status'] == "M")
-								to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
-							@elseif($tellUsAboutYou['marital_status'] == "R")
-								to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
+								to my spouse
+							@elseif($tellUsAboutYou['marital_status'] == "D")
+								to my partner
 							@endif
+
+
+						@elseif($provideYourLovedOnes['is_tangible_property_distribute'] == 1)
+
+							@if($tellUsAboutYou['children'] > 1)
+								to my surviving children in equal shares
+							@elseif($tellUsAboutYou['children'] == 1)
+								to my child
+							@endif
+
+
+						@elseif($provideYourLovedOnes['is_tangible_property_distribute'] == 3)
+							with the residue of my Estate
+
+
+
+						@elseif($provideYourLovedOnes['is_tangible_property_distribute'] == 4)
+
+							as follows: {{$provideYourLovedOnes['tangible_property_distribute']}}
+
 						@endif
 
-						@if(isset($toSingleBeneficiary))
-							@if(strtolower($toSingleBeneficiary['relationship']) == 'other')
-								to my {{$toSingleBeneficiary['otherRelationship']}}
+						I direct that all costs of safeguarding, insuring, storing and delivering my tangible personal property to the beneficiaries entitled thereto be paid out of my Estate as an expense of administration. If a beneficiary designated in this provision does not survive me, my tangible personal property shall be distributed with the residue of my estate.
+					</p>
+
+					<p style="padding-bottom:20px;">
+						<span style="font-weight:bold;"><span class="divNumber"></span>. Confirmation of Joint Tenancy.</span> I hereby confirm that all of my interest in any jointly titled assets held in my name with any other person or persons as “Joint Tenants” or as “Joint Tenants with Rights of Survivorship” shall pass to said co-tenant(s) if I predecease said co-tenant(s).
+					</p>
+	
+					<p style="padding-bottom:20px;">
+						<span style="font-weight:bold;"><span class="divNumber"></span>. Specific Distributions.</span>
+
+						@if(count($custGiftsArr) == 0)
+							I decline to make any specific gifts or requests and intend for all of my Estate to be distributed in the manner hereinafter set forth for the distribution of the residue of my Estate.
+						@else
+							I direct the following specific distributions at my death:
+							@foreach($custGiftsArr as $key => $statement)
+							<span style="display:block; padding-top:10px;"><strong>({{$key + 1}})</strong> {{$statement}}</span>
+							@endforeach
+						@endif
+					</p>
+
+					@if(isset($estateDistribute))
+
+						@if($estateDistribute['distribute_type'] == 2)
+
+							@if(isset($toMultipleBeneficiary['isEstateIntoEqualShares']) && $toMultipleBeneficiary['isEstateIntoEqualShares'] == "Yes")
+							<p style="padding-bottom:20px;">
+								<span style="font-weight:bold;"><span class="divNumber"></span>. Residuary Estate.</span> I direct that my {{$executor_title}} divide and distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)
+
+								@if(isset($provideYourLovedOnes) && $provideYourLovedOnes['residue_to_partner_first'] == 1)
+									@if($tellUsAboutYou['marital_status'] == "M")
+										to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
+									@elseif($tellUsAboutYou['marital_status'] == "R")
+										to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
+									@endif
+								@endif
+
+								in equal shares;
+
+								@if($toMultipleBeneficiary['isEstateIntoEqualShares'] == 'Yes')
+									@foreach($toMultipleBeneficiary['beneficiaryYes'] as $key => $eachBeneficiary)
+										<span>one share shall be distributed to my {{$eachBeneficiary['beneficiaryRelationship']}} {{$eachBeneficiary['beneficiaryFullName']}}</span>
+
+									@endforeach
+									If any named residuary beneficiary shall not be living at my death, such beneficiary’s share shall be distributed
+
+									@if($toMultipleBeneficiary['deceasedBeneficiaryShareToKids'] == "Yes")
+										to his or her then-living issue, {{$stateTxt}} provided, however, if such deceased beneficiary is not survived by issue, the deceased beneficiary’s share shall be added
+									@endif
+									equally to the other shares.
+								@endif
+							</p>
+							@endif
+
+
+							@if(isset($toMultipleBeneficiary['isEstateIntoEqualShares']) && $toMultipleBeneficiary['isEstateIntoEqualShares'] == "No")
+							<p style="padding-bottom:20px;">
+								<span style="font-weight:bold;"><span class="divNumber"></span>. Residuary Estate.</span> I direct that my {{$executor_title}} divide and distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)
+
+								@if(isset($provideYourLovedOnes) && $provideYourLovedOnes['residue_to_partner_first'] == 1)
+									@if($tellUsAboutYou['marital_status'] == "M")
+										to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
+									@elseif($tellUsAboutYou['marital_status'] == "R")
+										to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
+									@endif
+								@endif
+
+								in the following manner:
+
+								
+								@foreach($toMultipleBeneficiary['beneficiaryNo'] as $key => $eachBeneficiary)
+									<div>
+										<span>{{$eachBeneficiary['beneficiaryNoPercentageToEstate']}} % shall be distributed to my {{ucwords(trim(strtolower($eachBeneficiary['beneficiaryNoRelationship'])))}} {{ucwords(trim(strtolower($eachBeneficiary['beneficiaryNoFullName'])))}}</span>
+									</div>
+								@endforeach
+								If any named residuary beneficiary shall not be living at my death, such beneficiary’s share shall be distributed
+								@if($toMultipleBeneficiary['deceasedBeneficiaryShareToKids'] == "Yes")
+									to his or her then-living issue, {{$stateTxt}} provided, however, if such deceased beneficiary is not survived by issue, the deceased beneficiary’s share shall be added
+								@endif
+								equally to the other shares.
+								
+							</p>
+							@endif
+
+						<!-- Distribution type 1 is for single beneficicary -->
+						@elseif($estateDistribute['distribute_type'] == 1)
+							<p style="padding-bottom:20px;">
+							<span style="font-weight:bold;"><span class="divNumber"></span>. Residuary Estate.</span> I direct that my {{$executor_title}} distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)
+
+							@if(isset($provideYourLovedOnes) && $provideYourLovedOnes['residue_to_partner_first'] == 1)
+								@if($tellUsAboutYou['marital_status'] == "M")
+									to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
+								@elseif($tellUsAboutYou['marital_status'] == "R")
+									to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
+								@endif
+							@endif
+
+							@if(isset($toSingleBeneficiary))
+								@if(strtolower($toSingleBeneficiary['relationship']) == 'other')
+									to my {{$toSingleBeneficiary['otherRelationship']}}
+								@else
+									to my {{$toSingleBeneficiary['relationship']}}
+								@endif
+							@endif
+
+							{{$toSingleBeneficiary['fullName']}}. If {{$beneRelation2}} is not living at the time of distribution,
+
+							@if(isset($toSingleBeneficiary['ifPassesbeforeyou']))
+
+								{{-- Distribute to beneficicary's issue --}}
+								@if($toSingleBeneficiary['ifPassesbeforeyou'] == 1)
+								this gift shall be distributed to  {{$gender2Txt}} then-living issue, {{$stateTxt}}
+
+								{{-- Distribute to rest of my heirs --}}
+								however, if {{$gender2Txt}} is not survived by issue, then to my heirs at law.
+								@elseif($toSingleBeneficiary['ifPassesbeforeyou'] == 2)
+								to my heirs at law.
+
+								{{-- Some other way --}}
+								@elseif($toSingleBeneficiary['ifPassesbeforeyou'] == 3)
+								in the following manner:
+									<span>{{$toSingleBeneficiary['someotherway']}}</span>
+								@endif
+							@endif
+							</p>
+
+						<!-- Distribution type 3 is for heirs at law -->
+						@elseif($estateDistribute['distribute_type'] == 3)
+							<p style="padding-bottom:20px;">
+								<span style="font-weight:bold;"><span class="divNumber"></span>. Residuary Estate.</span> I direct that my {{$executor_title}} distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)
+								@if(isset($provideYourLovedOnes) && $provideYourLovedOnes['residue_to_partner_first'] == 1)
+									to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
+								@endif
+								to my to my heirs at law.
+							</p>
+						@elseif($estateDistribute['distribute_type'] == 4)
+							<p style="padding-bottom:20px;">
+								<span style="font-weight:bold;"><span class="divNumber"></span>. Residuary Estate.</span> I direct that my {{$executor_title}} distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)
+								@if(isset($provideYourLovedOnes) && $provideYourLovedOnes['residue_to_partner_first'] == 1)
+									to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
+								@endif
+								in the following manner: {{$toSingleBeneficiary['someotherway']}}
+							</p>
+						@endif
+
+					@endif
+
+
+					@if($tellUsAboutYou['has_pet'] == 1)
+						<div>
+							<p style="padding-bottom:20px;">
+								<span style="font-weight:bold;"><span class="divNumber"></span>. Pet Care Directive.</span> It is my desire that upon my death, my pets now living, and any other pets I may then own, shall be provided for with the same standard of care, maintenance, and comfort as I provided my pets during my lifetime. My pets now living are:
+								<br>
+								@foreach($petNames as $key => $pet)
+									<div>My {{ucwords(strtolower($pet['petType']))}}, {{ucwords(strtolower($pet['petName']))}}</div>
+								@endforeach
+
+								I nominate my
+
+								@if(strtolower($petGuardian['relationship_with']) == "other")
+									@if(strlen(trim($petGuardian['relationship_other'])) > 0)
+										{{ucwords(strtolower($petGuardian['relationship_other']))}},
+									@endif
+								@else
+									{{ucwords(strtolower($petGuardian['relationship_with']))}},
+								@endif
+
+								 {{ucwords(strtolower($petGuardian['fullname']))}} of {{$petGuardian['address']}}, {{ucwords(strtolower($petGuardian['city']))}}, {{ucwords(strtolower($petGuardian['state']))}}, {{$petGuardian['zip']}}, to serve as the Pet Caretaker
+								for my pets, to accept possession of them and to care for them.
+
+								@if($backupPetGuardian != null)
+									If {{ucwords(strtolower($petGuardian['fullname']))}} is unavailable or unwilling to serve as my Pet Caretaker, I nominate my
+									@if(strtolower($backupPetGuardian['relationship_with']) == "other")
+										@if(strlen(trim($backupPetGuardian['relationship_other'])) > 0)
+											{{$backupPetGuardian['relationship_other']}},
+										@endif
+									@else
+										{{$backupPetGuardian['relationship_with']}},
+									@endif
+
+									{{ucwords(strtolower($backupPetGuardian['fullname']))}} of {{$backupPetGuardian['address']}}, {{ucwords(strtolower($backupPetGuardian['city']))}}, {{ucwords(strtolower($backupPetGuardian['state']))}}, {{$backupPetGuardian['zip']}}, as alternate Pet Caretaker for my pets.
+								@endif
+
+								If said 
+								@if($backupPetGuardian != null)
+									Pet Caretakers are
+								@else
+									Pet Caretaker is
+								@endif
+								unavailable or unwilling to accept and care for my pets, I direct that my {{ucwords(strtolower($executor_title))}} use his or her best discretion to select an appropriate caregiver to accept and care for my pets.  
+							</p>
+						</div>
+						<div>
+							<br>
+							<p style="padding-bottom:20px;">
+							@if($tellUsAboutYou['leaveMoney'] == 1)
+								I give and bequeath to my Pet Caretaker who takes possession of my pets the sum of {{$tellUsAboutYou['petAmount']}} Dollars ({{'$'.$tellUsAboutYou['petAmount']}}) on the condition that my Pet Caretaker agrees to provide a suitable home for my pets, to keep them well fed and clean, and to provide them with appropriate medical care.
+							@endif
+							</p>
+						</div>
+					@endif
+
+					@if($estateDistribute['distribute_type'] == 2 && $toMultipleBeneficiary['minorBeneficiaryShareToBeHeldInTrust'] == 'Yes')
+						<p style="padding-bottom:20px;">
+							<span style="font-weight:bold;"><span class="divNumber"></span>. Distributions to Minor Beneficiaries.</span>  If any beneficiary provided for herein has not yet attained the age of majority under the applicable Transfer to Minors Act or Gift to Minors Act, the distribution shall be held for said beneficiary in a custodial account under the provisions of the applicable Transfer to Minors Act or Gift to Minors Act with
+
+							@if($toMultipleBeneficiary['minorParentsTrustee'] == "Yes")
+								the parent of such beneficiary
 							@else
-								to my {{$toSingleBeneficiary['relationship']}}
+								{{$toMultipleBeneficiary['whoServeAsTrusteeAccount']}}
 							@endif
-						@endif
 
-						{{$toSingleBeneficiary['fullName']}}. If {{$genderTxt}} is not living at the time of distribution,
-
-						@if(isset($toSingleBeneficiary['ifPassesbeforeyou']))
-
-							{{-- Distribute to beneficicary's issue --}}
-							@if($toSingleBeneficiary['ifPassesbeforeyou'] == 1)
-							this gift shall be distributed to  {{$gender2Txt}} then-living issue, {{$stateTxt}}
-
-							{{-- Distribute to rest of my heirs --}}
-							however, if {{$gender2Txt}} is not survived by issue, then to my heirs at law.
-							@elseif($toSingleBeneficiary['ifPassesbeforeyou'] == 2)
-							to my heirs at law.
-
-							{{-- Some other way --}}
-							@elseif($toSingleBeneficiary['ifPassesbeforeyou'] == 3)
-							in the following manner:
-								<span>{{$toSingleBeneficiary['someotherway']}}</span>
-							@endif
-						@endif
-						</p>
-
-					<!-- Distribution type 3 is for heirs at law -->
-					@elseif($estateDistribute['distribute_type'] == 3)
-						<p style="padding-bottom:20px;">
-							<span style="font-weight:bold;">E. Residuary Estate.</span> I direct that my {{$executor_title}} distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)
-							@if(isset($provideYourLovedOnes) && $provideYourLovedOnes['residue_to_partner_first'] == 1)
-								to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
-							@endif
-							to my to my heirs at law.
-						</p>
-					@elseif($estateDistribute['distribute_type'] == 4)
-						<p style="padding-bottom:20px;">
-							<span style="font-weight:bold;">E. Residuary Estate.</span> I direct that my {{$executor_title}} distribute the rest, residue and remainder of my Estate (real, personal, and mixed, of every kind and description, and wherever located, including all benefits payable to my estate and all lapsed or void legacies, bequests, or devises)
-							@if(isset($provideYourLovedOnes) && $provideYourLovedOnes['residue_to_partner_first'] == 1)
-								to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
-							@endif
-							in the following manner: {{$toSingleBeneficiary['someotherway']}}
+							
+							as the custodian until the beneficiary reaches the age of {{$toMultipleBeneficiary['whatAgeMinorShareDistributed']}}, and no earlier, unless required by applicable law.
 						</p>
 					@endif
 
-				@endif
-
-
-
-				@if($tellUsAboutYou['has_pet'] == 1)
-				<p style="padding-bottom:20px;">
-					<span style="font-weight:bold;">F. Pet Care Directive.</span> It is my desire that upon my death, my pets now living, and any other pets I may then own, shall be provided for with the same standard of care, maintenance, and comfort as I provided my pets during my lifetime. My pets now living are:
-					<br>
-					@foreach($petNames as $key => $pet)
-						<span style="text-align: center; margin-left: 250px;">My {{ucwords(strtolower($pet['petType']))}},  {{ucwords(strtolower($pet['petName']))}}</span><br>
-					@endforeach
-
-					I nominate my
-
-					@if(strtolower($petGuardian['relationship_with']) == "other")
-						@if(strlen(trim($petGuardian['relationship_other'])) > 0)
-							{{ucwords(strtolower($petGuardian['relationship_other']))}},
-						@endif
-					@else
-						{{ucwords(strtolower($petGuardian['relationship_with']))}},
-					@endif
-
-					 {{ucwords(strtolower($petGuardian['fullname']))}} of {{$petGuardian['address']}}, {{ucwords(strtolower($petGuardian['city']))}}, {{ucwords(strtolower($petGuardian['state']))}}, {{$petGuardian['zip']}}, to serve as the Pet Caretaker
-					for my pets, to accept possession of them and to care for them.
-
-					@if($backupPetGuardian != null)
-						If {{ucwords(strtolower($petGuardian['fullname']))}} is unavailable or unwilling to serve as my Pet Caretaker, I nominate my
-						@if(strtolower($backupPetGuardian['relationship_with']) == "other")
-							@if(strlen(trim($backupPetGuardian['relationship_other'])) > 0)
-								{{$backupPetGuardian['relationship_other']}},
+					@if(isset($contingentBeneficiary) && $contingentBeneficiary['is_contingent_beneficiary'] == 1)
+						<p>
+							<b><span class="divNumber"></span>. Contingent Disposition of My Estate.</b>  If I have no living beneficiaries or issue prior to the distribution of the entirety of my estate, I give the undistributed portion of my estate to my heirs at law, their distributions to be determined according to the laws of the
+							@if(strtolower($state) == "district of columbia")
+								{{$state}}
+							@elseif(strtolower($state) == "Massachusetts" || strtolower($state) == "Virginia" || strtolower($state) == "Kentucky" || strtolower($state) == "Pennsylvania")
+								Commonwealth of {{$state}}
+							@else
+								State of {{$state}}
 							@endif
-						@else
-							{{$backupPetGuardian['relationship_with']}},
-						@endif
-
-						{{ucwords(strtolower($backupPetGuardian['fullname']))}} of {{$backupPetGuardian['address']}}, {{ucwords(strtolower($backupPetGuardian['city']))}}, {{ucwords(strtolower($backupPetGuardian['state']))}}, {{$backupPetGuardian['zip']}}, as alternate Pet Caretaker for my pets.
+							in effect at the date of execution of this Will
+						</p>
 					@endif
 
-					@if($tellUsAboutYou['leaveMoney'] == 1)
-						I give and bequeath to my Pet Caretaker who takes possession of my pets the sum of {{$tellUsAboutYou['petAmount']}} Dollars ({{'$'.$tellUsAboutYou['petAmount']}}) on the condition that my Pet Caretaker agrees to provide a suitable home for my pets, to keep them well fed and clean, and to provide them with appropriate medical care.
+					@if(isset($disinherit) && count($disinherit) > 0 && isset($disinherit['disinherit']) && $disinherit['disinherit'] == 1)
+						<p>
+							<b><span class="divNumber"></span>. Disinheritance.</b> I specifically make no provision for the following persons or their issue (if any) upon my death with the intent to disinherit: My
+							@if(strtolower($disinherit['relationship']) == 'other')
+								{{$disinherit['other_relationship']}},
+							@else
+								{{$disinherit['relationship']}},
+							@endif
+							{{$disinherit['fullname']}}
+						</p>
 					@endif
-				</p>
-				@endif
 
-
-				@php
-					$point = '';
-					if($toMultipleBeneficiary['minorBeneficiaryShareToBeHeldInTrust'] == 'Yes')
-					{
-						if($tellUsAboutYou['has_pet'] == 1)
-							$point = 'G.';
-						else
-							$point = 'F.';
-					}
-				@endphp
-
-
-				@if($estateDistribute['distribute_type'] == 2 && $toMultipleBeneficiary['minorBeneficiaryShareToBeHeldInTrust'] == 'Yes')
-				<p style="padding-bottom:20px;">
-					<span style="font-weight:bold;">{{$point}} Distributions to Minor Beneficiaries.</span>  If any beneficiary provided for herein has not yet attained the age of majority under the applicable Transfer to Minors Act or Gift to Minors Act, the distribution shall be held for said beneficiary in a custodial account under the provisions of the applicable Transfer to Minors Act or Gift to Minors Act with
-
-					@if($toMultipleBeneficiary['minorParentsTrustee'] == "Yes")
-						the parent of such beneficiary
-					@else
-						{{$toMultipleBeneficiary['whoServeAsTrusteeAccount']}}
-				@php
-					$point = '';
-					if(isset($contingentBeneficiary) && $contingentBeneficiary['is_contingent_beneficiary'] == 1) {
-						if($tellUsAboutYou['has_pet'] == 0 && $toMultipleBeneficiary['minorBeneficiaryShareToBeHeldInTrust'] == 'No')
-							$point = 'F.';
-						elseif($tellUsAboutYou['has_pet'] == 0 && $toMultipleBeneficiary['minorBeneficiaryShareToBeHeldInTrust'] == 'Yes')
-							$point = 'G.';
-
-						elseif($tellUsAboutYou['has_pet'] == 1 && $toMultipleBeneficiary['minorBeneficiaryShareToBeHeldInTrust'] == 'No')
-							$point = 'G.';
-
-						elseif($tellUsAboutYou['has_pet'] == 1 && $toMultipleBeneficiary['minorBeneficiaryShareToBeHeldInTrust'] == 'Yes')
-							$point = 'H.';
-					}
-				@endphp
-
-				@if(isset($contingentBeneficiary) && $contingentBeneficiary['is_contingent_beneficiary'] == 1)
-					<p>
-						{{$point}} Contingent Disposition of My Estate.  If I have no living beneficiaries or issue prior to the distribution of the entirety of my estate, I give the undistributed portion of my estate to my heirs at law, their distributions to be determined according to the laws of the
-						@if(strtolower($state) == "district of columbia")
-							{{$state}}
-						@elseif(strtolower($state) == "Massachusetts" || strtolower($state) == "Virginia" || strtolower($state) == "Kentucky" || strtolower($state) == "Pennsylvania")
-							Commonwealth of {{$state}}
-						@else
-							State of {{$state}}
-						@endif
-						in effect at the date of execution of this Will
-					</p>
-				@endif
-
-				@php
-					$point = '';
-					if(isset($disinherit) && count($disinherit) > 0 && isset($disinherit['disinherit']) && $disinherit['disinherit'] == 1) {
-						if($tellUsAboutYou['has_pet'] == 0 && $toMultipleBeneficiary['minorBeneficiaryShareToBeHeldInTrust'] == 'No' && $contingentBeneficiary['is_contingent_beneficiary'] == 0)
-							$point = 'F. ';
-
-						elseif($tellUsAboutYou['has_pet'] == 0 && $toMultipleBeneficiary['minorBeneficiaryShareToBeHeldInTrust'] == 'No' && $contingentBeneficiary['is_contingent_beneficiary'] == 1)
-							$point = 'G. ';
-
-						elseif($tellUsAboutYou['has_pet'] == 0 && $toMultipleBeneficiary['minorBeneficiaryShareToBeHeldInTrust'] == 'Yes' && $contingentBeneficiary['is_contingent_beneficiary'] == 0)
-							$point = 'G. ';
-
-						elseif($tellUsAboutYou['has_pet'] == 1 && $toMultipleBeneficiary['minorBeneficiaryShareToBeHeldInTrust'] == 'No' && $contingentBeneficiary['is_contingent_beneficiary'] == 0)
-							$point = 'G. ';
-
-						elseif($tellUsAboutYou['has_pet'] == 0 && $toMultipleBeneficiary['minorBeneficiaryShareToBeHeldInTrust'] == 'Yes' && $contingentBeneficiary['is_contingent_beneficiary'] == 1)
-							$point = 'H. ';
-
-						elseif($tellUsAboutYou['has_pet'] == 1 && $toMultipleBeneficiary['minorBeneficiaryShareToBeHeldInTrust'] == 'No' && $contingentBeneficiary['is_contingent_beneficiary'] == 1)
-							$point = 'H. ';
-
-						elseif($tellUsAboutYou['has_pet'] == 1 && $toMultipleBeneficiary['minorBeneficiaryShareToBeHeldInTrust'] == 'Yes' && $contingentBeneficiary['is_contingent_beneficiary'] == 0)
-							$point = 'H. ';
-
-						elseif($tellUsAboutYou['has_pet'] == 1 && $toMultipleBeneficiary['minorBeneficiaryShareToBeHeldInTrust'] == 'Yes' && $contingentBeneficiary['is_contingent_beneficiary'] == 1)
-							$point = 'I. ';
-					}
-				@endphp
-
-				@if(isset($disinherit) && count($disinherit) > 0 && isset($disinherit['disinherit']) && $disinherit['disinherit'] == 1)
-					<p>
-						{{$point}} Disinheritance. I specifically make no provision for the following persons or their issue (if any) upon my death with the intent to disinherit: My
-						@if(strtolower($disinherit['relationship']) == 'other')
-							{{$disinherit['other_relationship']}},
-						@else
-							{{$disinherit['relationship']}},
-						@endif
-						{{$disinherit['fullname']}}
-					</p>
-				@endif
-					@endif
-					as the custodian until the beneficiary reaches the age of {{$toMultipleBeneficiary['whatAgeMinorShareDistributed']}}, and no earlier, unless required by applicable law.
-				</p>
-				@endif
-
-
-				{{--
-				«IF Pets?»
-
-					«IF Will Contingent Beneficiaries?»
-						«IF (!Pets? AND !Sum UTMA? AND Will Contingent Beneficiaries?)»F.
-
-							«ELSE IF (!Pets? AND Sum UTMA? AND Will Contingent Beneficiaries?)»G.
-							«ELSE IF (Pets? AND !Sum UTMA? AND Will Contingent Beneficiaries?)»G.
-							ELSE IF (Pets? AND Sum UTMA? AND Will Contingent Beneficiaries?)»H.
-						«END IF»
-						Contingent Disposition of My Estate.  If I have no living beneficiaries or issue prior to the distribution of the entirety of my estate, I give the undistributed portion of my estate to my heirs at law, their distributions to be determined according to the laws of the
-						«IF State = "District of Columbia"»
-							District of Columbia
-							«ELSE IF "Massachusetts Virginia Kentucky Pennsylvania" CONTAINS State»
-								Commonwealth of «State»
-							«ELSE»
-								State of «State»
-						«END IF»
-						in effect at the date of execution of this Will
-					«END IF»«.»
-
-					«IF Will Disinherit?»
-						«IF (!Pets? AND !Sum UTMA? AND !Will Contingent Beneficiaries? AND Will Disinherit?)»F.
-
-							«ELSE IF (!Pets? AND !Sum UTMA? AND Will Contingent Beneficiaries? AND Will Disinherit?)»G.
-
-							«ELSE IF (!Pets? AND Sum UTMA? AND !Will Contingent Beneficiaries? AND Will Disinherit?)»G.
-
-							«ELSE IF (Pets? AND !Sum UTMA? AND !Will Contingent Beneficiaries? AND Will Disinherit?)»G.
-
-							«IF (!Pets? AND Sum UTMA? AND Will Contingent Beneficiaries? AND Will Disinherit?)»H.
-
-							«IF (Pets? AND !Sum UTMA? AND Will Contingent Beneficiaries? AND Will Disinherit?)»H.
-
-							«IF (Pets? AND Sum UTMA? AND !Will Contingent Beneficiaries? AND Will Disinherit?)»H.
-
-							«ELSE IF (Pets? AND Sum UTMA? AND Will Contingent Beneficiaries? AND Will Disinherit?)»I.
-						«END IF»
-						Disinheritance. I specifically make no provision for the following persons or their issue (if any) upon my death with the intent to disinherit:
-						«Will Disinherited Heirs»
-					«END IF»
-
-				«END IF»
-				--}}
+				</div>				
 
 			</div>
 
@@ -646,8 +579,9 @@
 					@if($provideYourLovedOnes['farm_or_ranch'])
 					<span style="padding-top:10px; display:block;">
 						<b>(22)</b> To continue to hold, operate, sell, purchase, acquire, invest in, or liquidate any farming or ranching property, or any interest that I or my estate may own in farming or ranching property, at any time, on any terms, and in any manner as my {{$executor_title}} deems advisable and in the best interests of my estate.
-					@endif
 					</span>
+					@endif
+					
 				</p>
 
 				<p style="padding-bottom:20px;">
