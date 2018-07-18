@@ -298,7 +298,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     this.signingInstructionSubscription = this.globalPDFService.willTemplate(token).subscribe(
       (response: any) => {
         if (response.status) {
-          this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'last-will-and-testament.pdf').subscribe(
+          this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'will-template.pdf').subscribe(
             value => {
               saveAs(value, 'last-will-and-testament.pdf');
             }
