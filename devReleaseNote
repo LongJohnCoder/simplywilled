@@ -329,3 +329,6 @@ version : 8
 1> HCPOA : Fix Arkansas state issue.
 2> HCPOA : Machachussets, Maryland, Maine, Michigan, Minnesota
 3> tour guide ui v0.6
+
+Tag Manager V1.0 stable released to dev
+	Added google tag manager dataLayer code in thank you page
