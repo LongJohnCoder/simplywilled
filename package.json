@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "ng-high-mem": "node --max_old_space_size=4096 node_modules/@angular/cli/bin/ng build --prod"
+    "ng-high-mem-stage": "node --max_old_space_size=4096 node_modules/@angular/cli/bin/ng build --stage",
+    "ng-high-mem-prod": "node --max_old_space_size=4096 node_modules/@angular/cli/bin/ng build --prod"
   },
   "private": true,
   "dependencies": {

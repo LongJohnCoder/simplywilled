@@ -333,3 +333,22 @@ line-height: initial !important;
   }
 }
 
+.divCount{
+  counter-reset: list;
+}
+.divNumber{
+  counter-increment: list;
+}
+.divNumber:after{
+  content: counter(list, upper-alpha);
+}
+
+.articleCount{
+  counter-reset: articlenum;
+}
+.articleNumber{
+  counter-increment: articlenum;
+}
+.articleNumber:after{
+  content: counter(articlenum);
+}

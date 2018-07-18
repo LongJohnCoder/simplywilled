@@ -79,7 +79,8 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     provideYourLovedOnes : null,
     state : null,
     tellUsAboutYou: null,
-    custGiftsArr: null
+    custGiftsArr: null,
+    toMultipleBeneficiary: null
   };
   globalPDFSubscription: Subscription;
   giftStatements = {
@@ -92,6 +93,8 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     _sb: null,
     _mb: null
   };
+  point1: string;
+  point2: string;
   signingInstructionSubscription: Subscription;
   downloadSubscription: Subscription;
   printSubscription: Subscription;
@@ -129,8 +132,8 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
           console.log('Oops, something went wrong with the progress bar.');
         }
       },
-      (error) => { 
-        console.log(error); 
+      (error) => {
+        console.log(error);
       },
       () => {}
     );
@@ -155,8 +158,17 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
             provideYourLovedOnes : response.data.provideYourLovedOnes,
             state : response.data.state,
             tellUsAboutYou: response.data.tellUsAboutYou,
-            custGiftsArr: response.data.custGiftsArr
+            custGiftsArr: response.data.custGiftsArr,
+            toMultipleBeneficiary: null
           };
+
+          this.userDetails.toMultipleBeneficiary = response.data.estateDistribute.to_multiple_beneficiary !== null 
+                                                    ? JSON.parse(response.data.estateDistribute.to_multiple_beneficiary)
+                                                    : null;
+          // tslint:disable-next-line:max-line-length
+          this.userDetails.toMultipleBeneficiary = this.userDetails.toMultipleBeneficiary !== null ? this.userDetails.toMultipleBeneficiary[0] : null;
+          console.log('nultiple bene: ', this.userDetails.toMultipleBeneficiary);
+
           if (response.data.gifts.length > 0) {
             // console.log('custGiftsArr received : ', this.userDetails.custGiftsArr);
             if (this.userDetails.custGiftsArr !== undefined && this.userDetails.custGiftsArr !== null) {
@@ -186,6 +198,10 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
           }
           if (response.data.tellUsAboutYou.pet_names !== null) {
             this.petNames = JSON.parse(response.data.tellUsAboutYou.pet_names);
+            // this.petNames = this.petNames.map((val) => {
+            //   return [val.petName, val.petType];
+            // });
+            // console.log('pet names : ', this.petNames);
           }
           if (response.data.estateDistribute !== null) {
             this.estateDistribute = {
