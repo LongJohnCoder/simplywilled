@@ -1,3 +1,4 @@
+import { GlobalTourModule } from './../global-tour/global-tour.module';
 import { GlobalTooltipModule } from './../global-tooltip/global-tooltip.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -21,7 +22,8 @@ import { YourPetGuardiansComponent } from './your-pet-guardians/your-pet-guardia
       UsersWillRoutingModule,
       NgxMaskModule.forRoot(),
       ReactiveFormsModule,
-      GlobalTooltipModule
+      GlobalTooltipModule,
+      GlobalTourModule
   ],
   declarations: [
     TellUsAboutYourselfComponent,

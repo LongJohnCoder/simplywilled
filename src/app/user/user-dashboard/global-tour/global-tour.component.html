@@ -1,0 +1,11 @@
+<div class="tourGuide" [ngClass]="">
+    <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
+    <p>
+        {{guide | json}}
+        
+    </p>
+    <div class="tourBtnArea">
+        <button type="button" (click)="changeTourState('backward')" class="prev"><i class="fa fa-chevron-left"></i> Previous</button>
+        <button type="button" (click)="changeTourState('forward')" class="next">Next <i class="fa fa-chevron-right"></i></button>
+    </div>
+</div>

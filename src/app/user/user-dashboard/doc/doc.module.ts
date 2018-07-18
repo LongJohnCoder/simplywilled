@@ -1,3 +1,4 @@
+import { GlobalTourModule } from './../global-tour/global-tour.module';
 // import { Subscription } from 'rxjs/Subscription';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -69,7 +70,8 @@ import { NonuniformPoaComponent } from './financial-poa-doc/nonuniform-poa/nonun
 @NgModule({
   imports: [
     CommonModule,
-    DocRoutingModule
+    DocRoutingModule,
+    GlobalTourModule
   ],
   declarations: [
     SigningInstructionsDocComponent,

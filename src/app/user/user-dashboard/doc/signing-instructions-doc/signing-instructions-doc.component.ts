@@ -1,13 +1,13 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import * as html2canvas from "html2canvas";
-//import * as jsPdf from 'jspdf';
+// import * as jsPdf from 'jspdf';
 import {UserService} from "../../../user.service";
 import {Subscription} from "rxjs/Subscription";
 import {UserAuthService} from "../../../user-auth/user-auth.service";
 import {ProgressbarService} from "../../shared/services/progressbar.service";
 import {Location} from '@angular/common';
 import {GlobalPdfService} from '../services/global-pdf.service';
-//import 'jspdf-autotable' as JA from 'jspdf-autotable';
+// import 'jspdf-autotable' as JA from 'jspdf-autotable';
 import { saveAs } from 'file-saver/FileSaver';
 
 @Component({
@@ -37,8 +37,8 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
   ];
   liCount: number;
 
-  stepNumber: Number;
-  tourSub : Subscription
+  stepNumber: number;
+  tourSub: Subscription;
 
   progressBar = {
     finalArrangements: false,

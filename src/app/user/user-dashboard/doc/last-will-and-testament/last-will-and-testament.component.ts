@@ -9,6 +9,7 @@ import {GlobalPdfService} from '../services/global-pdf.service';
 import { saveAs } from 'file-saver/FileSaver';
 import {Router} from '@angular/router';
 import { MapOperator } from 'rxjs/operators/map';
+import { GlobalTourComponent } from '../../global-tour/global-tour.component';
 
 @Component({
   selector: 'app-last-will-and-testament',
@@ -16,8 +17,8 @@ import { MapOperator } from 'rxjs/operators/map';
   styleUrls: ['./last-will-and-testament.component.css']
 })
 export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
-  stepNumber: Number;
-  tourSub : Subscription;
+  stepNumber: number;
+  tourSub: Subscription;
 
   @ViewChild('docBox')
   docBox: any;

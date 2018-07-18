@@ -1,3 +1,4 @@
+import { GlobalTourComponent } from './../global-tour/global-tour.component';
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../user.service';
 import {Router, NavigationEnd} from '@angular/router';
@@ -42,8 +43,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     loading = false;
     isMyAccountClickedVal: boolean;
     tourSubscription: Subscription;
-    stepNumber: Number;
-    tourSub : Subscription
+    stepNumber: number;
+    tourSub: Subscription;
 
     /**Constructor call*/
     constructor(
@@ -75,7 +76,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
           }
         });
         this.tourSub = this.userService.stepNumForTourGuide.subscribe(value => {
-          this.stepNumber = value 
+          this.stepNumber = value;
         });
         //this.userService.stepNumForTourGuide.next(1);
 
@@ -115,13 +116,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.step1DataSubscription = this.userDashboardService.step1Data.subscribe(
           (data: any) => {
               this.step1Data = data;
+              // tslint:disable-next-line:max-line-length
               this.userName = this.step1Data !== null && this.step1Data.data !== null && this.step1Data.data.userInfo !== null &&  this.step1Data.data.userInfo !== undefined ? this.step1Data.data.userInfo.firstname : 'Your';
           },
-        (error) =>  {console.log(error);}
+        (error) =>  {console.log(error); }
       );
-      
     }
-    
+
     // nextStep(){
     //   this.tourStapes = this.tourStapes + 1;
     //   this.userService.changeTourType(this.tourStapes);

@@ -1,3 +1,4 @@
+import { GlobalTourComponent } from './../../global-tour/global-tour.component';
 import { GlobalTooltipComponent } from './../../global-tooltip/global-tooltip.component';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormArray, FormGroup, NgForm} from '@angular/forms';
@@ -35,8 +36,8 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
   toolTipMessage: any;
   tourSubscription: Subscription;
 
-  stepNumber: Number;
-  tourSub : Subscription
+  stepNumber: number;
+  tourSub: Subscription;
 
   /**Constructor call*/
   constructor(
@@ -46,8 +47,6 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
       private progressbarService: ProgressbarService,
       private dashboardService: UserDashboardService
   ) {
-    
-
       this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
       this.progressbarService.changeWidth({width: 0});
 
@@ -90,7 +89,7 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
       };
 
       this.tourSub = this.userService.stepNumForTourGuide.subscribe(value => {
-        this.stepNumber = value 
+        this.stepNumber = value;
       });
   }
 
@@ -128,14 +127,12 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
       this.days.push(day);
     }
     // this.tourStapes = +localStorage.getItem('tourStapes');
-    
     setTimeout(() => {
-      if (localStorage.getItem('newUser') == '1') {
+      if (localStorage.getItem('newUser') === '1') {
         this.changeTourState('forward');
         localStorage.removeItem('newUser');
       }
-    } ,300);
-    
+    } , 300);
   }
 
   // ngOnChanges() {

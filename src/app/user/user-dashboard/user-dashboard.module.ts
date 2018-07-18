@@ -1,3 +1,4 @@
+import { GlobalTourModule } from './global-tour/global-tour.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -11,17 +12,19 @@ import {ReferFriendService} from './shared/services/referFriend.service';
 import {FinalDispositionPdfService} from './doc/services/final-disposition-pdf.service';
 import { SubscribedPackageComponent } from './subscribed-package/subscribed-package.component';
 import {GlobalPdfService} from './doc/services/global-pdf.service';
+import { GlobalTourComponent } from './global-tour/global-tour.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
     UserDashboardRoutingModule,
-    //PersonalRepresentativePowerModule,
+    // PersonalRepresentativePowerModule,
     ReactiveFormsModule,
-    //GlobalTooltipModule
+    GlobalTourModule,
+    // GlobalTooltipModule
   ],
-  declarations: [DashboardComponent, MainDashboardComponent, SubscribedPackageComponent  ],
+  declarations: [DashboardComponent, MainDashboardComponent, SubscribedPackageComponent ],
     providers: [
         UserPaidGuard, UserUnPaidGuard, ProgressbarService, ReferFriendService, FinalDispositionPdfService, GlobalPdfService
     ]
