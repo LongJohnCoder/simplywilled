@@ -124,9 +124,9 @@
     .get_start_pkg_btn i{
         font-size:18px;
     }
-    .pkg_benefits_ul > li{
+    /* .pkg_benefits_ul > li{
         min-height:85px;
-    }
+    } */
     .include_ul > li{
         min-height:70px;
     }
@@ -1682,6 +1682,9 @@
     .adminModalSmall {
         width: 100%;
     }
+    .pkg_benefits_ul > li{
+        padding: 10px 10px;
+    }
 }
 
 @media only screen and (max-width: 429px){
@@ -1695,6 +1698,9 @@
     padding-right: 10px;
     text-align: center;
   }
+  .featureSwich span, .featureSwich2 span{
+    display: none !important;
+}
 }
 
 @media only screen and (max-width: 420px){
@@ -1717,6 +1723,15 @@
     }
     .securityBrand img:last-child{
         padding-left: 20px;
+    }
+}
+
+@media only screen and (max-width: 370px){
+    .faster_text {
+        font-size: 14px;
+    }
+    .featureSwich span, .featureSwich2 span{
+        display: none !important;
     }
 }
 

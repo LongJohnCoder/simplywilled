@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
 
   public modalRef : BsModalRef;
   public whatIncl : boolean = false;
+  public whatIncl2 : boolean = false;
   data: any;
 
   constructor(
@@ -41,7 +42,19 @@ export class HomeComponent implements OnInit {
   }
 
   showIncluded(){
-    this.whatIncl = !this.whatIncl;
+    
+    if(this.whatIncl == true && this.whatIncl2 == true){
+        this.whatIncl2 = false;
+    }else{
+        this.whatIncl = !this.whatIncl;
+    }
+    
+  }
+  showIncluded2(){
+    this.whatIncl2 = !this.whatIncl2;
+    if(this.whatIncl2 == true){
+        this.whatIncl = true;
+    }
   }
 
     getPackages() {

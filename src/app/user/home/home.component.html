@@ -197,7 +197,7 @@
       <ul class="packages_ul">
         <li>
           <div class="pkg_first_sec">
-            <span class="single_pkg"><img src="../../../../assets/images/pkg1.png" alt="error img"></span>
+            <span class="single_pkg" *ngIf="whatIncl == false"><img src="../../../../assets/images/pkg1.png" alt="error img"></span>
             <h3 class="single_text_heading">{{data.name}}</h3>
             <h4 class="pkg_text"><!--Package--> Bundle For One</h4>
             <!--<p class="will_package_info">{{data.description}}</p>-->
@@ -212,23 +212,45 @@
             <a routerLink="/register" class="get_start_pkg_btn hide_btn"><i class="fa fa-chevron-right" aria-hidden="true"></i> Buy Now</a>
           </div>
 
-          <div class="hide_show_main_pkg" [ngClass]="{'open': whatIncl}">
+          <div class="featureArea" [ngClass]="{'show' : whatIncl}">
+            <p (click)="showIncluded()" class="featureSwich">
+              <i class="fa fa-angle-double-up" *ngIf="whatIncl == false"></i>
+              <i class="fa fa-angle-double-down" *ngIf="whatIncl == true"></i>
+              <span *ngIf="whatIncl == false">Key Benefits</span>
+            </p>
             <span class="key_benefits_text">Key Benefits</span>
             <ul class="pkg_benefits_ul">
               <li *ngFor="let benefit of data.key_benefits"><span class="faster_text">{{benefit}}</span></li>
             </ul>
+            <!-- <a href="javascript:void(0)" class="include_text" (click)="showIncluded()">
+              {{whatIncl == true ? 'Hide' : 'See what’s included'}}
+            </a> -->
+          </div>
 
+          <div class="featureArea2" [ngClass]="{'show' : whatIncl2}">
+            <p (click)="showIncluded2()" class="featureSwich2">
+              <i class="fa fa-angle-double-up" *ngIf="whatIncl2 == false"></i>
+              <i class="fa fa-angle-double-down" *ngIf="whatIncl2 == true"></i>
+              <span *ngIf="whatIncl2 == false">What’s Included</span>
+            </p>
             <span class="whats_included_text">What’s Included:</span>
             <ul class="include_ul">
               <li *ngFor="let inclu of data.included">
                 <span class="faster_text2">{{inclu}}</span>
               </li>
             </ul>
-            <a routerLink="/register" class="get_start_pkg_btn"><i class="fa fa-chevron-right" aria-hidden="true"></i> Buy Now</a>
+            <!-- <a href="javascript:void(0)" class="include_text" (click)="showIncluded()">
+              {{whatIncl == true ? 'Hide' : 'See what’s included'}}
+            </a> -->
           </div>
-          <a href="javascript:void(0)" class="include_text" (click)="showIncluded()">
-            {{whatIncl == true ? 'Hide' : 'See what’s included'}}
-          </a>
+
+          <!-- <div class="" [ngClass]="{'open': whatIncl}">
+            
+            <a routerLink="/register" class="get_start_pkg_btn"><i class="fa fa-chevron-right" aria-hidden="true"></i> Buy Now</a>
+          </div> -->
+
+
+          
         </li>
         <!-- <li>
           <div class="pkg_first_sec">
