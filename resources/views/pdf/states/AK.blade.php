@@ -25,7 +25,7 @@
       Living Will and Health Care Proxy by <br>{{$tellUsAboutYou['fullname']}}<br>
     </div>
   </div>
-<div class="docContainer" id="doc">
+<div class="docContainer" id="doc" style="text-align: justify">
 
 
     <!-- Page 1 -->
@@ -149,12 +149,12 @@
                     responsibility for your health care.</b></p>
             <p style="margin-bottom: 0in; line-height: 115%;"></p>
             <p
-                    style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-bottom: 20px;">
+                    style="margin-bottom: 0in; line-height: 115%; margin-bottom: 20px;">
         <span style="text-indent: 0.5in;display: inline-block; border: none; padding: 0in"><span
                     style="font-family: Times New Roman, serif"><span style="font-size: 12pt"><span
                             style="background: #ffffff"><b>After
-        completing this form, </b>sign and date the form at the end <i style="letter-spacing: 1px;">and
-        </i><u>have the form</u> <u>witnessed by one of the two alternative
+        completing this form, </b>sign and date the form at the end and
+        <u>have the form</u> <u>witnessed by one of <br>the two alternative
         methods listed below.</u> Give a copy of the signed and completed
         form to your physician, to any other health care providers you may
         have, to any health care institution at which you are receiving care,
@@ -169,7 +169,7 @@
                   style="font-family: Times New Roman, serif"><span style="font-size: 12pt"><span
                           style="background: #ffffff"><b>You
       have the right to revoke this advance health care directive </b>or
-      replace this form at any time, except that you may not revoke this
+      replace this form at any time, <br>except that you may not revoke this
       declaration when you are determined not to be competent by a court,
       by two physicians, at least one of whom shall be a psychiatrist, or
       by both a physician and a professional mental health clinician.</span></span></span></span>
@@ -229,12 +229,12 @@
             <p style="font-family: Times New Roman, serif;margin-bottom: 0in; line-height: 115%;"><span style="font-size: 11pt"><span style="font-size: 13pt"><b>(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DESIGNATION
       OF AGENT.</b></span><b> </b>I designate my
         @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] == 'Other')
-            <span>{{$healthFinance['relation']}}</span>
+            <span>{{$healthFinance['relation']}},</span>
         @elseif(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
-            <span>{{$healthFinance['relation']}}</span>
+            <span>{{$healthFinance['relation']}},</span>
         @endif
-      <span> {{$healthFinance['fullname']}} </span>
-      of <span> {{$healthFinance['address']}} </span> (Tel: <span> {{$healthFinance['phone']}} </span>), as my agent to make health care
+      <span> {{$healthFinance['fullname']}},</span>
+      of <span> {{$healthFinance['address']}},</span> (Tel: <span> {{$healthFinance['phone']}} </span>), as my agent to make health care
       decisions for me. </span>
             </p>
             <p style="margin-bottom: 0in; line-height: 115%;"></p>
@@ -248,12 +248,12 @@
               ineligible to act, or if I revoke this appointment or authority to
               act, then I designate my
                 @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
-                    <span>{{$healthFinance['backupRelation']}}</span>
+                    <span>{{$healthFinance['backupRelation']}},</span>
                 @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
-                    <span>{{$healthFinance['backupRelation']}}</span>
+                    <span>{{$healthFinance['backupRelation']}},</span>
                 @endif
               <span> {{$healthFinance['backupFullname']}} </span>
-              of <span> {{$healthFinance['backupAddress']}} </span> (Tel: <span> {{$healthFinance['backupphone']}} </span>), as my agent to make health care
+              of <span> {{$healthFinance['backupAddress']}},</span> (Tel: <span> {{$healthFinance['backupphone']}}, </span>), as my agent to make health care
               decisions for me. </span>
             </p>
             @endif
@@ -950,7 +950,7 @@
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%;">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif;"><span style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">_______________________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOB:
-      <span><b>{{$tellUsAboutYou['dob']}}</b></span></span></span></span></span></span></p>
+      <span><b>{{date('jS M, Y', strtotime($tellUsAboutYou['dob']))}}</b></span></span></span></span></span></span></p>
             <p style="margin-bottom: 0in; line-height: 115%;"><span> {{$tellUsAboutYou['fullname']}} </span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%;" >
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif;"><span style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000"><span color="#0000ff">{{$tellUsAboutYou['address']}}</span></span></span></span></span></span></p>
@@ -1113,8 +1113,8 @@
         <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>,
         <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>,
         before me appeared
-          <span> {{$tellUsAboutYou['fullname']}} </span>
-          , personally known to me (or proved to me on
+          <span> {{$tellUsAboutYou['fullname']}},</span>
+        personally known to me (or proved to me on
         the basis of satisfactory evidence) to be the person whose name is
         subscribed to this instrument, and acknowledged that the person
         executed it. </span></span></span></span></span>

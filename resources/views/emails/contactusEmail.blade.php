@@ -50,14 +50,21 @@
                     </tr>
                     <tr>
                       <td style="padding:0 30px; background: #f2f2f2;">
-                          <h1 style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">Contact Us On Simply Willed</h1>
+                          <h1 style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">Dear {{$data['name']}},</h1>
                           <p style="color: #373737; font-size: 20px; line-height: 30px;">
-                            Name: {{$data['name']}}<br>
-                            Email: {{$data['email']}}<br>
-                            Message: {{$data['message']}}<br>
+                            Thank you for contacting us. One of our representative will respond to you shortly.
+                            <br>
+                            Please find the details below.
+                            <br><br>
+                            Name: {{$data['name']}}
+                            <br>
+                            Email ID: {{$data['email']}}
+                            <br>
+                            Message: {{$data['message']}}
+                            <br><br>
                           </p>
                           <p style="color: #373737; font-size: 20px; line-height: 30px;">
-                            <strong style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;"><a href='{{$url}}'> Click here </a></strong>to reset password
+                            <strong style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">
                           </p>
                           <p style="color: #373737; font-size: 20px; line-height: 30px;">
                             Sincerely,<br><strong style="color: #0a5dab;"> SimplyWilled’s team </strong><br><br>

@@ -59,10 +59,10 @@
 	      			@endif
           		</span>
 
-          		<span> {{ucwords(strtolower($healthFinance['fullname']))}} </span>,
-                of <span> {{$healthFinance['address']}} </span> in <span> {{ucwords(strtolower($healthFinance['city']))}} ,</span>
-                <span> {{ucwords(strtolower($healthFinance['state']))}} </span>
-              <span> {{$healthFinance['zip']}} </span>
+          		<span> {{ucwords(strtolower($healthFinance['fullname']))}} </span>
+                of <span> {{$healthFinance['address']}} </span> in <span> {{ucwords(strtolower($healthFinance['city']))}},</span>
+                <span> {{ucwords(strtolower($healthFinance['state']))}}, </span>
+              <span> {{$healthFinance['zip']}}, </span>
               (Tel: <span> {{$healthFinance['phone']}} </span>), as my
               agent to make health care decisions for me if and when I am unable to
               make my own health care decisions. This gives my agent the power to
@@ -87,11 +87,11 @@
 		            	<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupRelation']))}}, </span>
 		          	@endif
 
-	              <span> {{ucwords(strtolower($healthFinance['backupFullname']))}} ,</span>
+	              <span> {{ucwords(strtolower($healthFinance['backupFullname']))}},</span>
 	              of  <span> {{$healthFinance['backupAddress']}} </span> in
-	              <span> {{ucwords(strtolower($healthFinance['backupCity']))}} ,</span>
-	              <span> {{ucwords(strtolower($healthFinance['backupState']))}} </span>
-	              <span> {{$healthFinance['backupZip']}} </span>
+	              <span> {{ucwords(strtolower($healthFinance['backupCity']))}},</span>
+	              <span> {{ucwords(strtolower($healthFinance['backupState']))}}, </span>
+	              <span> {{$healthFinance['backupZip']}}, </span>
 
 	              (Tel: <span> {{$healthFinance['backupphone']}} </span>) as my
 	              alternate agent to make health care decisions for me as authorized by
@@ -270,7 +270,7 @@
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I,
-              <span> {{$tellUsAboutYou['fullname']}} </span>,
+              <span> {{$tellUsAboutYou['fullname']}},</span>
               being of sound mind and at least eighteen years of age, direct
               that my life shall not be artificially prolonged under the
               circumstances set forth below and hereby declare that: </span></span></span></span></span>
@@ -777,7 +777,7 @@
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Subscribed
                 and sworn to before me by
 
-                <span> {{ucwords(strtolower($tellUsAboutYou['fullname']))}} </span>, the declarant, and by
+                <span> {{ucwords(strtolower($tellUsAboutYou['fullname']))}}, </span> the declarant, and by
                 _____________________________ and _____________________________, the
                 witnesses, as the voluntary act and deed of the declarant on this
                 <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>day

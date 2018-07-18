@@ -61,25 +61,25 @@
                 <!-- <p class="western" style="margin-bottom: 0in; line-height: 100%">
                     <br/>
                 </p> -->
-                <p class="western" style="margin-bottom: 0in; line-height: 100%"><input type="checkbox"> Cardiopulmonary Resuscitation.
+                <p class="western" style="margin-bottom: 0in;"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> Cardiopulmonary Resuscitation.
                 </p>
-                <p class="western" style="margin-bottom: 0in; line-height: 100%"><input type="checkbox"> Mechanical Breathing.
+                <p class="western" style="margin-bottom: 0in; line-height: 100%"> <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> Mechanical Breathing.
                 </p>
-                <p class="western" style="margin-bottom: 0in; line-height: 100%"><input type="checkbox"> Major Surgery.
+                <p class="western" style="margin-bottom: 0in; line-height: 100%"> <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> Major Surgery.
                 </p>
-                <p class="western" style="margin-bottom: 0in; line-height: 100%"><input type="checkbox"> Kidney Dialysis.
+                <p class="western" style="margin-bottom: 0in; line-height: 100%"> <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> Kidney Dialysis.
                 </p>
-                <p class="western" style="margin-bottom: 0in; line-height: 100%"><input type="checkbox"> Chemotherapy.
+                <p class="western" style="margin-bottom: 0in; line-height: 100%"> <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> Chemotherapy.
                 </p>
-                <p class="western" style="margin-bottom: 0in; line-height: 100%"><input type="checkbox"> Minor Surgery (unless necessary for my comfort or to alleviate pain).
+                <p class="western" style="margin-bottom: 0in; line-height: 100%"> <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> Minor Surgery (unless necessary for my comfort or to alleviate pain).
                 </p>
-                <p class="western" style="margin-bottom: 0in; line-height: 100%"><input type="checkbox"> Invasive Diagnostic Tests.
+                <p class="western" style="margin-bottom: 0in; line-height: 100%"> <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> Invasive Diagnostic Tests.
                 </p>
-                <p class="western" style="margin-bottom: 0in; line-height: 100%"><input type="checkbox"> Antibiotics.
+                <p class="western" style="margin-bottom: 0in; line-height: 100%"> <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> Antibiotics.
                 </p>
-                <p class="western" style="margin-bottom: 0in; line-height: 100%"><input type="checkbox"> Blood Products.
+                <p class="western" style="margin-bottom: 0in; line-height: 100%"> <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> Blood Products.
                 </p>
-                <p class="western" style="margin-bottom: 0in; line-height: 100%"><input type="checkbox"> Other Medications not Necessary for Alleviation of Pain.
+                <p class="western" style="margin-bottom: 0in; line-height: 100%"> <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> Other Medications not Necessary for Alleviation of Pain.
                 </p>
             </div>
             <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
@@ -104,9 +104,9 @@
                 <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
                     Artificial Nutrition: <i>(check the option desired)</i></p>
                 <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-                    <input type="checkbox"> artificial nutrition be withheld after consultation with my attending physician.</p>
+                     <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> artificial nutrition be withheld after consultation with my attending physician.</p>
                 <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-                    <input type="checkbox"> artificial nutrition may <i>NOT </i>be withheld.</p>
+                     <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> artificial nutrition may <i>NOT </i>be withheld.</p>
                 <!-- <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
                     <br/>
                 </p> -->
@@ -116,9 +116,9 @@
                 <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
                     Artificial Hydration: <i>(check the option desired)</i></p>
                 <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-                    <input type="checkbox"> artificial hydration be withheld after consultation with my attending physician.</p>
+                     <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> artificial hydration be withheld after consultation with my attending physician.</p>
                 <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-                    <input type="checkbox"> artificial hydration may <i>NOT </i>be withheld.</p>
+                     <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> artificial hydration may <i>NOT </i>be withheld.</p>
                 <!-- <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
                     <br/>
                 </p> -->
@@ -218,10 +218,10 @@
                     <span size="4" style="font-size: 14pt"><b>STATEMENT OF WITNESSES</b></span></p>
                 <p class="western" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
                     I declare that
-                    <span>{{ucwords($tellUsAboutYou['fullname'])}}</span>
+                    <span>{{ucwords($tellUsAboutYou['fullname'])}},</span>
                     <!-- <span>{{$tellUsAboutYou['middlename']}}</span> -->
                     <!-- <span>{{$tellUsAboutYou['lastname']}}</span> -->
-                    <span style="letter-spacing: 0.1pt">,</span> the declarant, appeared to execute the Declaration willingly and free from duress. <span style="letter-spacing: 0.1pt"></span>
+                    <span style="letter-spacing: 0.1pt"></span> the declarant, appeared to execute the Declaration willingly and free from duress. <span style="letter-spacing: 0.1pt"></span>
                     <span><span style="letter-spacing: 0.1pt">{{ucwords($genderTxt3)}}</span></span>
                     <span style="letter-spacing: 0.1pt"></span>
                     signed (or asked another to sign for
@@ -285,7 +285,7 @@
         <!-- Page 4 -->
         <div>
             <div>
-                <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; text-align:center;">
+                <p class="western" style="margin-bottom: 0in; page-break-before: always; line-height: 100%; orphans: 0; widows: 0; text-align:center;">
                     <span size="4" style="font-size: 16pt"><b>ARKANSAS</b></span></p>
                 <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; text-align:center;">
                     <span size="4" style="font-size: 16pt"><b>DURABLE POWER OF ATTORNEY FOR HEALTH CARE</b></span></p>
@@ -294,9 +294,9 @@
 
                 </p> -->
                 <p class="western" style="margin-bottom: 0in; line-height: 100%">
-                    I, <span>{{ucwords($tellUsAboutYou['fullname'])}}</span>, hereby designate and appoint my {{strtolower($healthFinance['relation'])}}, {{ucwords($healthFinance['fullname'])}}, of {{ucwords($healthFinance['address'])}} in {{ucwords($healthFinance['city'])}},  {{ucwords($healthFinance['state'])}} {{$healthFinance['zip']}} (Tel: {{$healthFinance['phone']}}), as my true and lawful health care agent and attorney-in-fact (hereinafter, my “agent”), to make decisions regarding my health care during periods when my health care provider has determined that I lack capacity to decide for myself.
+                    I, <span>{{ucwords($tellUsAboutYou['fullname'])}}</span>, hereby designate and appoint my {{strtolower($healthFinance['relation'])}}, {{ucwords($healthFinance['fullname'])}}, of {{ucwords($healthFinance['address'])}} in {{ucwords($healthFinance['city'])}},  {{ucwords($healthFinance['state'])}}, {{$healthFinance['zip']}}, (Tel: {{$healthFinance['phone']}}), as my true and lawful health care agent and attorney-in-fact (hereinafter, my “agent”), to make decisions regarding my health care during periods when my health care provider has determined that I lack capacity to decide for myself.
                     @if($healthFinance['anyBackupAgent'] == 'true')
-                      If my agent is not able, available, or willing to make health care decisions for me, I appoint my {{strtolower($healthFinance['backupRelation'])}}, {{ucwords($healthFinance['backupFullname'])}}, of {{ucwords($healthFinance['backupAddress'])}} in {{ucwords($healthFinance['backupCity'])}}, {{ucwords($healthFinance['backupState'])}} {{$healthFinance['backupZip']}} (Tel: {{$healthFinance['backupphone']}})), as my successor agent, with all of the rights and powers and authority herein stated.
+                      If my agent is not able, available, or willing to make health care decisions for me, I appoint my {{strtolower($healthFinance['backupRelation'])}}, {{ucwords($healthFinance['backupFullname'])}}, of {{ucwords($healthFinance['backupAddress'])}} in {{ucwords($healthFinance['backupCity'])}}, {{ucwords($healthFinance['backupState'])}}, {{$healthFinance['backupZip']}}, (Tel: {{$healthFinance['backupphone']}})), as my successor agent, with all of the rights and powers and authority herein stated.
                     @endif
                 </p>
                 <!-- <p class="western" style="margin-bottom: 0in; line-height: 100%">
