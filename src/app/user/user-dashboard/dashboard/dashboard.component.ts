@@ -20,7 +20,6 @@ import {environment} from '../../../../environments/environment';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
     /**Variable  declaration*/
-    tourStapes : number = 0;
     loggedInUser: any;
     userDetails: any = {};
     step1Data: any = {};
@@ -78,7 +77,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.tourSub = this.userService.stepNumForTourGuide.subscribe(value => {
           this.stepNumber = value 
         });
-        this.userService.stepNumForTourGuide.next(1);
+        //this.userService.stepNumForTourGuide.next(1);
+
+        // if(localStorage.getItem('newUser') == '1'){
+        //   this.stepNumber = 1;
+        //   localStorage.removeItem('newUser');
+        // }else{
+        //   this.stepNumber = 0;
+        // }
+        this.stepNumber = 0;
     }
 
     /**Initialises the form**/
@@ -90,15 +97,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
       });
     }
 
-    ngOnChanges() {
-      this.tourSubscription = this.userService.tour.subscribe(
-        (currentVal: number) => {
-          if (currentVal !== this.tourStapes) {
-            this.tourStapes = currentVal;
-          }
-        }
-      );
-    }
+    // ngOnChanges() {
+    //   this.tourSubscription = this.userService.tour.subscribe(
+    //     (currentVal: number) => {
+    //       if (currentVal !== this.tourStapes) {
+    //         this.tourStapes = currentVal;
+    //       }
+    //     }
+    //   );
+    // }
 
     /**When the component is initialised*/
     ngOnInit() {
@@ -112,24 +119,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
           },
         (error) =>  {console.log(error);}
       );
-
-      localStorage.setItem('tourStapes', '1');
-      this.tourStapes = +localStorage.getItem('tourStapes');
+      
     }
     
-    nextStep(){
-      this.tourStapes = this.tourStapes + 1;
-      this.userService.changeTourType(this.tourStapes);
-      console.log('afterClick',this.tourStapes);
-    }
-    prevStep(){
-      this.tourStapes = this.tourStapes - 1;
-      this.userService.changeTourType(this.tourStapes);
-    }
-    closeTour(){
-      this.tourStapes = 0;
-      this.userService.changeTourType(this.tourStapes);
-    }
+    // nextStep(){
+    //   this.tourStapes = this.tourStapes + 1;
+    //   this.userService.changeTourType(this.tourStapes);
+    //   console.log('afterClick',this.tourStapes);
+    // }
+    // prevStep(){
+    //   this.tourStapes = this.tourStapes - 1;
+    //   this.userService.changeTourType(this.tourStapes);
+    // }
+    // closeTour(){
+    //   this.tourStapes = 0;
+    //   this.userService.changeTourType(this.tourStapes);
+    // }
     changeTourState(type: string){
       this.userService.changeStepNumber(type);
     }

@@ -163,9 +163,24 @@
     </div>
   </div>
 
-  <div class="docBtnArea" [ngClass]="{'uncompleted' : count !== 5}">
+  <div class="docBtnArea" [ngClass]="{'uncompleted' : count !== 5 && stepNumber == 0}" #docNav>
     <ul>
-      <li><a [routerLink]="['/dashboard/documents/last-will-and-testament']">Next Document <i class="fa fa-chevron-right"></i></a></li>
+      <li>
+        <span class="tourGuideArea">
+        <a [routerLink]="['/dashboard/documents/last-will-and-testament']" [ngClass]="{'tourSpot' : stepNumber == 4}">Next Document <i class="fa fa-chevron-right"></i></a>
+        <div class="tourGuide" *ngIf="stepNumber === 4">
+            <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                Temporibus quam quibusdam eius necessitatibus eos totam laborios
+            </p>
+            <div class="tourBtnArea">
+                <button type="button" (click)="changeTourState('backward')" class="prev"><i class="fa fa-chevron-left"></i> Previous</button>
+                <button type="button" (click)="changeTourState('forward')" class="next">Next <i class="fa fa-chevron-right"></i></button>
+            </div>
+        </div>
+      </span>
+      </li>
     </ul>
     <ul>
       <li><a href="javascript:void(0)" (click)="downloadPdf()"><i class="fa fa-download"></i> Download</a></li>

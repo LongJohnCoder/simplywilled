@@ -2888,7 +2888,7 @@ app-paypal-success, app-payment-page, app-packages{
 .tourSpot{
     position: relative;
     z-index: 999;
-    box-shadow: 0 0 20px rgba(255,255,255,1);
+    box-shadow: 0 0 20px rgba(255,255,255,1) !important;
     pointer-events: none;
 }
 .tourGuideArea{
@@ -2911,6 +2911,16 @@ app-paypal-success, app-payment-page, app-packages{
     margin-top: 0;
     left: 20px;
 }
+.tourGuide.pop2{
+    margin-top: 100px;
+    left: -370px !important;
+    text-align: left;
+}
+.tourGuide.pop3{
+    margin-top: 50px;
+    left: -100% !important;
+    text-align: left;
+}
 .tourGuide::after{
     content: "";
     position: absolute;
@@ -2921,6 +2931,10 @@ app-paypal-success, app-payment-page, app-packages{
     border-left: 10px solid rgba(0,0,0,0);
     border-right: 10px solid rgba(0,0,0,0);
     border-top: none;
+}
+.tourGuide.pop3::after{
+    left: unset;
+    right: 16px;
 }
 .tourGuide h3{
     font-size: 18px;
@@ -2936,10 +2950,13 @@ app-paypal-success, app-payment-page, app-packages{
     width: 25px;
     height: 25px;
     font-size: 16px;
-    padding-top: 2px;
     right: -10px;
     top: -10px;
     cursor: pointer;
+}
+.tourGuide.pop3 .closeTour{
+    right: unset;
+    left: -10px;
 }
 .tourGuide .closeTour i{
     position: unset !important;
@@ -3004,6 +3021,7 @@ app-global-tooltip.step6{
 app-global-tooltip.step6 .customTooltip{
     margin: 0px 1px 15px;
 }
+
 
 @media screen and (max-width: 820px){
     #dataTable_wrapper .row:first-child .col-sm-12.col-md-6{

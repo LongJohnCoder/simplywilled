@@ -16,8 +16,11 @@ import { saveAs } from 'file-saver/FileSaver';
   styleUrls: ['./signing-instructions-doc.component.css']
 })
 export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
+  tourStapes:number;
   @ViewChild('docBox')
   docBox: any;
+  @ViewChild('docNav')
+  docNav: any;
   @ViewChild('thumbContainer')
   thumbContainer: any;
   progressSubscription: Subscription;
@@ -33,6 +36,10 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
     '../../../../../assets/images/doc1-thumb2.png'
   ];
   liCount: number;
+
+  stepNumber: Number;
+  tourSub : Subscription
+
   progressBar = {
     finalArrangements: false,
     healthFinance: false,
@@ -75,6 +82,10 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
       (error) => { console.log(error); },
       () => {}
     );
+
+    this.tourSub = this.userService.stepNumForTourGuide.subscribe(value => {
+      this.stepNumber = value;
+    });
   }
 
   /**Sets the progress count**/
@@ -122,6 +133,10 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
       this.thumbContainer.nativeElement.scrollLeft = this.thumbIndex * 31;
     }
 
+  }
+
+  changeTourState(type: string){
+    this.userService.changeStepNumber(type);
   }
 
   /**Get the user details*/

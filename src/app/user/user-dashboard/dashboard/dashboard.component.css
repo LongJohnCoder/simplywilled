@@ -207,9 +207,17 @@ header{
     width: 90%;
     padding: 25px 14px 10px;
     text-align: center;
-    margin: 50px 0 0;
+    margin: 0 0 20px;
     position: relative;
   background: #f9f9f9;
+}
+.notification.takeAtour{
+    margin-top: 42px;
+    padding-top: 45px;
+}
+.notification.takeAtour a{
+    font-family: "OpenSans-Semibold";
+    color: #2479B8;
 }
 .notification p{
     font-size: 18px;
@@ -230,6 +238,7 @@ header{
     font-family: 'Lato-Regular';
     position: absolute;
     top: 0;
+    left: 50%;
     color: #42A82D;
     font-size: 24px;
     background: #fff;
@@ -240,7 +249,6 @@ header{
     border: 1px solid #ddd;
     line-height: 30px;
     transform: translate(-50%,-50%);
-    cursor: pointer;
 }
 .notification span.imp img{
   max-width: 55%;
@@ -252,10 +260,11 @@ header{
 }
 .notification h2{
   font-size: 18px;
-  margin: 22px 0;
+  margin: -10px 0 22px;
   color: #2479B8;
   font-family: 'OpenSans-Semibold';
   cursor: pointer;
+  line-height: initial;
 }
 .email-box .form-control{
   font-size: 14px;
@@ -461,6 +470,7 @@ header{
 }
 .logOut{
   margin-top: 38px;
+  border-radius: 14px; 
 }
 
 .sslLogo{

@@ -28,6 +28,7 @@ export class ThankYouComponent implements OnInit {
         _cartstack_update.push(['setAPI', 'confirmation']);
         _cartstack_update.push(['setCartTotal', this.data.amount]);
         cartstack_updatecart(_cartstack_update);
+        localStorage.setItem('newUser', '1');
         /* end */
         
         /* google tagmanager datalayer settings  */

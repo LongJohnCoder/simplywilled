@@ -16,10 +16,12 @@ import { MapOperator } from 'rxjs/operators/map';
   styleUrls: ['./last-will-and-testament.component.css']
 })
 export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
+  stepNumber: Number;
+  tourSub : Subscription;
+
   @ViewChild('docBox')
   docBox: any;
   @ViewChild('thumbContainer')
-
 
   thumbContainer: any;
   progressSubscription: Subscription;
@@ -103,6 +105,10 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
       private progressbarService: ProgressbarService,
       private location: Location
     ) {
+    this.tourSub = this.userService.stepNumForTourGuide.subscribe(value => {
+      this.stepNumber = value 
+    });
+
     this.loggedInUser = this.userAuth.getUser();
     this.getUserDetails();
     const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
@@ -228,6 +234,10 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     this.docScrolled = 0;
     this.thumbIndex = 0;
     // this.liCount = this.docThumbImg.length * 114;
+  }
+
+  changeTourState(type: string){
+    this.userService.changeStepNumber(type);
   }
 
   scrollDoc(index: number) {

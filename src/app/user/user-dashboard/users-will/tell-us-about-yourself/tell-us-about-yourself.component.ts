@@ -16,7 +16,6 @@ import {ProgressbarService} from '../../shared/services/progressbar.service';
 })
 export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
   /**Variable declaration*/
-  tourStapes:number = 3;
   days: string[] = [];
   months: string[];
   years: string[] = [];
@@ -47,6 +46,8 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
       private progressbarService: ProgressbarService,
       private dashboardService: UserDashboardService
   ) {
+    
+
       this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
       this.progressbarService.changeWidth({width: 0});
 
@@ -127,6 +128,14 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
       this.days.push(day);
     }
     // this.tourStapes = +localStorage.getItem('tourStapes');
+    
+    setTimeout(() => {
+      if (localStorage.getItem('newUser') == '1') {
+        this.changeTourState('forward');
+        localStorage.removeItem('newUser');
+      }
+    } ,300);
+    
   }
 
   // ngOnChanges() {
@@ -140,19 +149,19 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
   //   );
   // }
 
-  nextStep(){
-    this.tourStapes = this.tourStapes + 1;
-    this.userService.changeTourType(this.tourStapes);
-    console.log('afterClick',this.tourStapes);
-  }
-  prevStep(){
-    this.tourStapes = this.tourStapes - 1;
-    this.userService.changeTourType(this.tourStapes);
-  }
-  closeTour(){
-    this.tourStapes = 0;
-    this.userService.changeTourType(this.tourStapes);
-  }
+  // nextStep(){
+  //   this.tourStapes = this.tourStapes + 1;
+  //   this.userService.changeTourType(this.tourStapes);
+  //   console.log('afterClick',this.tourStapes);
+  // }
+  // prevStep(){
+  //   this.tourStapes = this.tourStapes - 1;
+  //   this.userService.changeTourType(this.tourStapes);
+  // }
+  // closeTour(){
+  //   this.tourStapes = 0;
+  //   this.userService.changeTourType(this.tourStapes);
+  // }
 
   changeTourState(type: string){
     this.userService.changeStepNumber(type);

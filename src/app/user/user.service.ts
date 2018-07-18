@@ -75,12 +75,17 @@ export class UserService {
     /** Function to send tour value*/
     changeStepNumber(type: string) {
         if (type == "forward"){
-            if (this.stepNumForTourGuide.value == 2){
+            if (this.stepNumForTourGuide.value == 1){
                 this.router.navigate(['/dashboard/will']);
+            }else if(this.stepNumForTourGuide.value == 3){
+                this.router.navigate(['/dashboard/documents/signing-instruction']);
+                
+            }else if(this.stepNumForTourGuide.value == 4){
+                this.router.navigate(['/dashboard/documents/last-will-and-testament']);
             }
-            this.stepNumForTourGuide.next(this.stepNumForTourGuide.value + 1)
+            this.stepNumForTourGuide.next(this.stepNumForTourGuide.value + 1);
             
-        }else if(type == "backward"){
+        } else if(type == "backward"){
             this.stepNumForTourGuide.next(this.stepNumForTourGuide.value - 1)
         } else if(type == "close"){
             this.stepNumForTourGuide.next(0);

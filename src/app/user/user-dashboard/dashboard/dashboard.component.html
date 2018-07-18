@@ -10,15 +10,41 @@
                 </div>
             </div>
             <div class="dashboardHeaderRight text-right">
-                <div class="accountBtnArea" [ngClass]="{'active' : isMyAccountClickedVal}" (click)="isMyAccountClicked()">
-                  <a href="javascript:void(0)" class="myAccount"><i class="fa fa-user leftIcon"></i> <span>My Account <i class="fa fa-chevron-down"></i></span> </a>
-                  <span class="drop">
-                    <a [routerLink]="['/dashboard/will']" class="myAccount"><i class="fa fa-pencil leftIcon"></i> <span>Edit Profile</span></a>
-                    <a [routerLink]="['/dashboard/change-password']" class="myAccount"><i class="fa fa-lock leftIcon"></i> <span>Change Password</span></a>
-                    <!--<a [routerLink]="['/dashboard/subscribed-package']" class="myAccount"><i class="fa fa-shopping-bag leftIcon"></i> <span>Packages</span></a>-->
-                  </span>
-                </div>
-                <button class="btn common-button green-btn logOut" (click)="onLogOut()">Logout</button>
+                <span class="tourGuideArea">
+                    <div class="accountBtnArea" [ngClass]="{'active' : isMyAccountClickedVal, 'tourSpot' : stepNumber == 10}" (click)="isMyAccountClicked()">
+                    <a href="javascript:void(0)" class="myAccount"><i class="fa fa-user leftIcon"></i> <span>My Account <i class="fa fa-chevron-down"></i></span> </a>
+                    <span class="drop">
+                        <a [routerLink]="['/dashboard/will']" class="myAccount"><i class="fa fa-pencil leftIcon"></i> <span>Edit Profile</span></a>
+                        <a [routerLink]="['/dashboard/change-password']" class="myAccount"><i class="fa fa-lock leftIcon"></i> <span>Change Password</span></a>
+                        <!--<a [routerLink]="['/dashboard/subscribed-package']" class="myAccount"><i class="fa fa-shopping-bag leftIcon"></i> <span>Packages</span></a>-->
+                    </span>
+                    </div>
+                    <div class="tourGuide pop2" *ngIf="stepNumber == 10">
+                        <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
+                        <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                            Temporibus quam quibusdam eius necessitatibus eos totam laborios
+                        </p>
+                        <div class="tourBtnArea">
+                            <button type="button" (click)="changeTourState('backward')" class="prev"><i class="fa fa-chevron-left"></i> Previous</button>
+                            <button type="button" (click)="changeTourState('forward')" class="next">Next <i class="fa fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </span>
+                <span class="tourGuideArea">
+                    <button class="btn common-button green-btn logOut" (click)="onLogOut()" [ngClass]="{'tourSpot' : stepNumber == 11}">Logout</button>
+                    <div class="tourGuide pop3" *ngIf="stepNumber == 11">
+                        <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
+                        <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                            Temporibus quam quibusdam eius necessitatibus eos totam laborios
+                        </p>
+                        <div class="tourBtnArea">
+                            <button type="button" (click)="changeTourState('backward')" class="prev"><i class="fa fa-chevron-left"></i> Previous</button>
+                            <button type="button" (click)="changeTourState('close')" class="next">Next <i class="fa fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </span>
             </div>
         </div>
     </div>
@@ -60,7 +86,7 @@
                                 <li class="tourGuideArea">
                                     <button class="btn common-button btn-dashboard" (click)="userDasboardRoute('/dashboard')" [ngClass]="{'tourSpot' : stepNumber == 1}">Back to Dashboard</button>
                                     <div class="tourGuide pop1" *ngIf="stepNumber == 1">
-                                        <h3>Step 1 <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span></h3>
+                                        <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
                                         <p>
                                             Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
                                             Temporibus quam quibusdam eius necessitatibus eos totam laborios
@@ -71,9 +97,9 @@
                                     </div>
                                 </li>
                                 <li class="tourGuideArea">
-                                    <button class="btn common-button btn-preview" [routerLink]="['/dashboard/documents/signing-instruction']" [ngClass]="{'tourSpot' : stepNumber == 2}">Preview Documents</button>
-                                    <div class="tourGuide pop1" *ngIf="stepNumber == 2">
-                                        <h3>Step 2 <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span></h3>
+                                    <button class="btn common-button btn-preview" [routerLink]="['/dashboard/documents/signing-instruction']" [ngClass]="{'tourSpot' : stepNumber == 3}">Preview Documents</button>
+                                    <div class="tourGuide pop1" *ngIf="stepNumber == 3">
+                                        <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
                                         <p>
                                             Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
                                             Temporibus quam quibusdam eius necessitatibus eos totam laborios
@@ -90,11 +116,19 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="notification">
-                        <span class="imp" (click)="toggleShowDiv()" ><img src="../../../../assets/images/owl.png"></span>
+                    <div class="notification takeAtour">
+                        <span class="imp"><img src="../../../../assets/images/owl.png"></span>
+                        <a (click)="changeTourState('forward')" [routerLink]="['/dashboard/will']">Take a tour</a>
+                    </div>
+                    <span class="tourGuideArea">
+                    <div class="notification" [ngClass]="{'tourSpot' : stepNumber == 9}">
+                        <!-- <span class="imp"><img src="../../../../assets/images/owl.png"></span> -->
                         <!--<p [@fadeInOut]="fadeState">They’ll be notified via e-mail at the address you provided.</p>-->
-                      <h2 (click)="toggleShowDiv()">Refer A Friend</h2>
-                        <div [@slideInOut]="animationState">
+                      <h2 >
+                            Enjoy Using SimplyWilled.com?<br>Refer A Friend
+                            this one
+                      </h2>
+                        <div >
                             <form [formGroup] = "referAFriendForm">
                               <div class="form-group">
                                 <div class="email-box" [ngClass]="{'valid':referAFriendForm.get('firstname').valid, 'invalid': !referAFriendForm.get('firstname').valid && referAFriendForm.get('firstname').touched}">
@@ -125,6 +159,18 @@
                             </form>
                         </div>
                     </div>
+                    <div class="tourGuide pop1" *ngIf="stepNumber == 9">
+                            <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
+                            <p>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                                Temporibus quam quibusdam eius necessitatibus eos totam laborios
+                            </p>
+                            <div class="tourBtnArea">
+                                <button type="button" (click)="changeTourState('backward')" class="prev"><i class="fa fa-chevron-left"></i> Previous</button>
+                                <button type="button" (click)="changeTourState('forward')" class="next">Next <i class="fa fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                </span>
                 </div>
             </div>
             <div class="col-md-8 col-sm-12 col-lg-9" [ngClass]="{'packagesLeft' : !showLeft}">
