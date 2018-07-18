@@ -20,7 +20,8 @@
   </div>
   <div class="docViewBox">
       
-      <div class="docView" #docBox (scroll)="getScroll(docBox.scrollTop, $event)">
+      <div class="docView divCount" #docBox (scroll)="getScroll(docBox.scrollTop, $event)">
+        <div class="articleCount">
         <div class="docContainer pageCount" id="doc">
 
           <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
@@ -42,25 +43,25 @@
               <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
                 <span style="font-family:'EB Garamond, serif'">I, </span><span style="font-family:'EB Garamond, serif'"><b>
 
-                  <span style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-                  <span style="font-family:'EB Garamond ExtraBold, serif'" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-                  </b></span><span style="font-family:'EB Garamond, serif'">,
+                  <span style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+                  <span style="font-family:'EB Garamond ExtraBold, serif'" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+                  </b></span><span style="font-family:'EB Garamond, serif'">
                   residing at </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? userDetails.tellUsAboutYou.address : '_______________________'}}</span>
-                  <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">,
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? userDetails.tellUsAboutYou.address : '_______________________'}},</span>
+                  <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+                  </span></span><span style="font-family:'EB Garamond, serif'">
                   </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}}</span>
-                  <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">,
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}},</span>
+                  <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+                  </span></span><span style="font-family:'EB Garamond, serif'">
                   </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
                   <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
                   </span></span><span style="font-family:'EB Garamond, serif'">
                   </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.zip !== null && userDetails.tellUsAboutYou.zip !== undefined ? userDetails.tellUsAboutYou.zip : '_______________________'}}</span>
-                  <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">,
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.zip !== null && userDetails.tellUsAboutYou.zip !== undefined ? userDetails.tellUsAboutYou.zip : '_______________________'}},</span>
+                  <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+                  </span></span><span style="font-family:'EB Garamond, serif'">
                   being over the age of eighteen (18) years and of sound and disposing
                   mind and memory, and not being under any duress, fraud, mistake, or
                   undue influence, do make, publish, and declare this to be my Last
@@ -70,10 +71,7 @@
                 <br/>
 
               </p>
-              <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-                <br/>
-
-              </p>
+              
             
               <p class="western"  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; text-align:center;">
               <span style="font-family:'EB Garamond, serif'"><span size="5" style="font-size: 18pt"><b>ARTICLE
@@ -220,18 +218,33 @@
               
               <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.children === 1">
                 <span style="font-family:'EB Garamond, serif'"><b>C.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Children</b></span><span style="font-family:'EB Garamond, serif'">.
-                I have one child now living.  My child’s name is </span><span ><span style="font-family:'EB Garamond, serif'">
-                <span *ngIf="userDetails !== undefined && userDetails.children !== null && userDetails.children.length > 0">
-                  {{userDetails.children[0].fullname}}
+                I have one child now living.  My child’s name is </span>
+                
+                <span>
+                  <span style="font-family:'EB Garamond, serif'">
+                    <span *ngIf="userDetails !== undefined && userDetails.children !== null && userDetails.children.length > 0">
+                        {{userDetails.children[0].fullname}},
+                    </span>
+                  </span>
                 </span>
-                </span></span><span style="font-family:'EB Garamond, serif'">, who
-                was born on </span><span ><span style="font-family:'EB Garamond, serif'">
+                
+                <span style="font-family:'EB Garamond, serif'"> who
+                was born on </span>
+                
+                <span>
+                  <span style="font-family:'EB Garamond, serif'">
                   <span *ngIf="userDetails !== undefined && userDetails.children !== null && userDetails.children.length > 0">
                     {{userDetails.children[0].dob | date: 'longDate'}}
                   </span>
-                </span></span><span style="font-family:'EB Garamond, serif'">.</span>
+                  </span>
+                </span>
+                <span style="font-family:'EB Garamond, serif'">.</span>
                 <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.deceased_children === '1'">
-                <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> I
+                <span>
+                  <span style="font-family:'EB Garamond, serif'"></span>
+                </span>
+                
+                <span style="font-family:'EB Garamond, serif'"> I
                 have the following deceased children: </span></span>
               </p>
               <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.children === 1">
@@ -266,12 +279,12 @@
                   <span *ngFor="let children of userDetails.children">
                     <span style="font-family:'EB Garamond, serif'"></span>
                     <span>
-                      <span style="font-family:'EB Garamond, serif'">CHILD'S NAME: {{children.fullname}}</span>
+                      <span style="font-family:'EB Garamond, serif'">{{children.fullname.toUpperCase()}}, </span>
                     </span>
                     
-                    <span style="font-family:'EB Garamond, serif'">, born </span>
+                    <span style="font-family:'EB Garamond, serif'">born </span>
                     <span>
-                      <span style="font-family:'EB Garamond, serif'">Child's DOB: {{children.dob | date: 'longDate'}}</span>
+                      <span style="font-family:'EB Garamond, serif'">{{children.dob | date: 'longDate'}}</span>
                     </span>
                     
                     <span style="font-family:'EB Garamond, serif'"></span>
@@ -279,31 +292,24 @@
                   </span>
                 </p>
               
-                <p class="western"  style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.children > 1">
-                  <br/>
-
-                </p>
+                
               
               <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.children > 1 && userDetails.tellUsAboutYou.deceased_children === '1'">
+                  <br>
                 <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">
                 </span></span><span style="font-family:'EB Garamond, serif'"> I
                 have the following deceased children: </span>
               </p>
-              <p class="western"  style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.children > 1">
-
-              </p>
+              
               
               <p class="western"  style="margin-bottom: 0in; line-height: 100%; padding-left: 50px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.children > 1 && userDetails.tellUsAboutYou.deceased_children === '1'">
-                <span style="font-family:'EB Garamond, serif'"></span>
-                
                 <span>
                   <span *ngFor="let dcName of deceasedChildrenNames" style="font-family:'EB Garamond, serif'"> 
-                    <span>NAME : {{dcName.toUpperCase()}}</span>
+                    <span>{{dcName.toUpperCase()}}</span>
                     <br>
                   </span>
-                </span>
-                
-                <span style="font-family:'EB Garamond, serif'"></span></p>
+                </span>  
+              </p>
               
               <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
                 <br/>
@@ -312,9 +318,19 @@
               
               
               <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'"><b>D.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Afterborn
-                Children</b></span><span style="font-family:'EB Garamond, serif'">. </span><span style="font-family:'EB Garamond, serif'"><b>
-                </b></span><span style="font-family:'EB Garamond, serif'">Unless specifically stated
+                <span style="font-family:'EB Garamond, serif'">
+                  <b>D.</b>
+                </span>
+                
+                <span style="font-family:'EB Garamond, serif'">	</span>
+                <span style="font-family:'EB Garamond, serif'">
+                  <b>Afterborn Children</b>
+                </span>
+                <span style="font-family:'EB Garamond, serif'">. </span>
+                <span style="font-family:'EB Garamond, serif'">
+                  <b></b>
+                </span>
+                <span style="font-family:'EB Garamond, serif'">Unless specifically stated
                 otherwise, any provision in this Will for “my children” shall be
                 interpreted to include any child of mine born or adopted after the
                 date of this Will.</span></p>
@@ -348,28 +364,45 @@
               <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
                 <span style="font-family:'EB Garamond, serif'"><b>A.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b></b></span><span ><span style="font-family:'EB Garamond, serif'"><b>
                   <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-                    {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
+                    {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}.
                   </span>
-                </b></span></span><span style="font-family:'EB Garamond, serif'"><b></b></span><span style="font-family:'EB Garamond, serif'">.
-                  I nominate my </span><span ><span style="font-family:'EB Garamond, serif'">
+                </b></span></span><span style="font-family:'EB Garamond, serif'"><b></b></span><span style="font-family:'EB Garamond, serif'">
+                  I nominate my </span>
+                  
+                  <span>
+                    <span style="font-family:'EB Garamond, serif'">  
+                    <span style="text-transform: capitalize" 
+                    *ngIf="userDetails !== undefined && userDetails.personalRepresentative !== null && userDetails.personalRepresentative.relationship_with !== 'Other'">
+                    {{userDetails.personalRepresentative.relationship_with !== null && userDetails.personalRepresentative.relationship_with !== undefined 
+                      ?userDetails.personalRepresentative.relationship_with
+                      :'_______________________'}},</span>
+                    <span style="text-transform: capitalize" 
+                    *ngIf="userDetails !== undefined && userDetails.personalRepresentative !== null && userDetails.personalRepresentative.relationship_with === 'Other'">
+                    {{userDetails.personalRepresentative.relationship_other !== null && userDetails.personalRepresentative.relationship_other !== undefined 
+                      ?userDetails.personalRepresentative.relationship_other
+                      :'_______________________'}},</span>
                     
-                    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.personalRepresentative !== null && userDetails.personalRepresentative.relationship_with !== 'Other'">{{userDetails.personalRepresentative.relationship_with !== null && userDetails.personalRepresentative.relationship_with !== undefined ? userDetails.personalRepresentative.relationship_with:'_______________________'}}</span><span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.personalRepresentative !== null && userDetails.personalRepresentative.relationship_with === 'Other'">{{userDetails.personalRepresentative.relationship_other !== null && userDetails.personalRepresentative.relationship_other !== undefined ? userDetails.personalRepresentative.relationship_other:'_______________________'}}</span><span *ngIf="userDetails === undefined || userDetails.personalRepresentative === null"> _______________________ </span></span></span><span style="font-family:'EB Garamond, serif'">,</span>
+                    <span *ngIf="userDetails === undefined || userDetails.personalRepresentative === null"> _______________________, </span>
+                    </span>
+                  </span>
+                  
+                  <span style="font-family:'EB Garamond, serif'"></span>
                   
                   <span><span style="font-family:'EB Garamond, serif'">
                     <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.personalRepresentative !== null"> {{userDetails.personalRepresentative.fullname !== null && userDetails.personalRepresentative.fullname !== undefined ? userDetails.personalRepresentative.fullname: '_______________________'}}</span><span *ngIf="userDetails === undefined || userDetails.personalRepresentative === null"> _______________________ </span>
                   </span></span><span style="font-family:'EB Garamond, serif'"> of
                   </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.personalRepresentative !== null"> {{userDetails.personalRepresentative.address !== null && userDetails.personalRepresentative.address !== undefined ? userDetails.personalRepresentative.address: '_______________________'}}</span><span *ngIf="userDetails === undefined || userDetails.personalRepresentative === null"> _______________________ </span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">,
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.personalRepresentative !== null"> {{userDetails.personalRepresentative.address !== null && userDetails.personalRepresentative.address !== undefined ? userDetails.personalRepresentative.address: '_______________________'}},</span><span *ngIf="userDetails === undefined || userDetails.personalRepresentative === null"> _______________________, </span>
+                  </span></span><span style="font-family:'EB Garamond, serif'">
                   </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.personalRepresentative !== null"> {{userDetails.personalRepresentative.city !== null && userDetails.personalRepresentative.city !== undefined ? userDetails.personalRepresentative.city: '_______________________'}}</span><span *ngIf="userDetails === undefined || userDetails.personalRepresentative === null"> _______________________ </span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">,
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.personalRepresentative !== null"> {{userDetails.personalRepresentative.city !== null && userDetails.personalRepresentative.city !== undefined ? userDetails.personalRepresentative.city: '_______________________'}},</span><span *ngIf="userDetails === undefined || userDetails.personalRepresentative === null"> _______________________, </span>
+                  </span></span><span style="font-family:'EB Garamond, serif'">
                   </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.personalRepresentative !== null"> {{userDetails.personalRepresentative.state !== null && userDetails.personalRepresentative.state !== undefined ? userDetails.personalRepresentative.state: '_______________________'}}</span><span *ngIf="userDetails === undefined || userDetails.personalRepresentative === null"> _______________________ </span>
                   </span></span><span style="font-family:'EB Garamond, serif'">
                   </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.personalRepresentative !== null"> {{userDetails.personalRepresentative.zip !== null && userDetails.personalRepresentative.zip !== undefined ? userDetails.personalRepresentative.zip: '_______________________'}}</span><span *ngIf="userDetails === undefined || userDetails.personalRepresentative === null"> _______________________ </span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">,
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.personalRepresentative !== null"> {{userDetails.personalRepresentative.zip !== null && userDetails.personalRepresentative.zip !== undefined ? userDetails.personalRepresentative.zip: '_______________________'}},</span><span *ngIf="userDetails === undefined || userDetails.personalRepresentative === null"> _______________________, </span>
+                  </span></span><span style="font-family:'EB Garamond, serif'">
                   as </span><span ><span style="font-family:'EB Garamond, serif'">
                     <span *ngIf="userDetails !== undefined && userDetails.state !== null">
                       {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title: '____________'}}
@@ -398,17 +431,17 @@
                   <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPersonalRepresentative !== null"> {{userDetails.backupPersonalRepresentative.fullname !== null && userDetails.backupPersonalRepresentative.fullname !== undefined ? userDetails.backupPersonalRepresentative.fullname: '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.backupPersonalRepresentative === null"> _______________________ </span>
                   </span></span><span style="font-family:'EB Garamond, serif'"> of
                   </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPersonalRepresentative !== null"> {{userDetails.backupPersonalRepresentative.address !== null && userDetails.backupPersonalRepresentative.address !== undefined ? userDetails.backupPersonalRepresentative.address: '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.backupPersonalRepresentative === null"> _______________________ </span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">,
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPersonalRepresentative !== null"> {{userDetails.backupPersonalRepresentative.address !== null && userDetails.backupPersonalRepresentative.address !== undefined ? userDetails.backupPersonalRepresentative.address: '_______________________'}}, </span> <span *ngIf="userDetails === undefined || userDetails.backupPersonalRepresentative === null"> _______________________, </span>
+                  </span></span><span style="font-family:'EB Garamond, serif'">
                   </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPersonalRepresentative !== null"> {{userDetails.backupPersonalRepresentative.city !== null && userDetails.backupPersonalRepresentative.city !== undefined ? userDetails.backupPersonalRepresentative.city: '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.backupPersonalRepresentative === null"> _______________________ </span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">,
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPersonalRepresentative !== null"> {{userDetails.backupPersonalRepresentative.city !== null && userDetails.backupPersonalRepresentative.city !== undefined ? userDetails.backupPersonalRepresentative.city: '_______________________'}}, </span> <span *ngIf="userDetails === undefined || userDetails.backupPersonalRepresentative === null"> _______________________, </span>
+                  </span></span><span style="font-family:'EB Garamond, serif'">
                   </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPersonalRepresentative !== null"> {{userDetails.backupPersonalRepresentative.state !== null && userDetails.backupPersonalRepresentative.state !== undefined ? userDetails.backupPersonalRepresentative.state: '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.backupPersonalRepresentative === null"> _______________________ </span>
                   </span></span><span style="font-family:'EB Garamond, serif'">
                   </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPersonalRepresentative !== null"> {{userDetails.backupPersonalRepresentative.zip !== null && userDetails.backupPersonalRepresentative.zip !== undefined ? userDetails.backupPersonalRepresentative.zip: '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.backupPersonalRepresentative === null"> _______________________ </span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">,
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPersonalRepresentative !== null"> {{userDetails.backupPersonalRepresentative.zip !== null && userDetails.backupPersonalRepresentative.zip !== undefined ? userDetails.backupPersonalRepresentative.zip: '_______________________'}}, </span> <span *ngIf="userDetails === undefined || userDetails.backupPersonalRepresentative === null"> _______________________, </span>
+                  </span></span><span style="font-family:'EB Garamond, serif'">
                   as successor </span><span ><span style="font-family:'EB Garamond, serif'">
                     <span *ngIf="userDetails !== undefined && userDetails.state !== null">
                       {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title: '____________'}}
@@ -456,55 +489,55 @@
               <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.guardian !== null">
                 <span style="font-family:'EB Garamond, serif'"><b>D.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Guardian/Conservator</b></span><span style="font-family:'EB Garamond, serif'">.
                   I nominate my </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.guardian !== null && userDetails.guardian.relationship_with !== 'Other'"> {{userDetails.guardian.relationship_with !== null && userDetails.guardian.relationship_with !== undefined ? userDetails.guardian.relationship_with : '_______________________'}} </span>
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.guardian !== null && userDetails.guardian.relationship_with === 'Other'"> {{userDetails.guardian.relationship_other !== null && userDetails.guardian.relationship_other !== undefined ? userDetails.guardian.relationship_other : '_______________________'}} </span>
-                  <span *ngIf="userDetails === undefined || userDetails.guardian === null"> _______________________ </span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">,
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.guardian !== null && userDetails.guardian.relationship_with !== 'Other'"> {{userDetails.guardian.relationship_with !== null && userDetails.guardian.relationship_with !== undefined ? userDetails.guardian.relationship_with : '_______________________'}}, </span>
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.guardian !== null && userDetails.guardian.relationship_with === 'Other'"> {{userDetails.guardian.relationship_other !== null && userDetails.guardian.relationship_other !== undefined ? userDetails.guardian.relationship_other : '_______________________'}}, </span>
+                  <span *ngIf="userDetails === undefined || userDetails.guardian === null"> _______________________, </span>
+                  </span></span><span style="font-family:'EB Garamond, serif'">
                   </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.guardian !== null"> {{userDetails.guardian.fullname !== null && userDetails.guardian.fullname !== undefined ? userDetails.guardian.fullname : '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.guardian === null"> _______________________ </span>
                   </span></span><span style="font-family:'EB Garamond, serif'">
                   of </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.guardian !== null"> {{userDetails.guardian.address !== null && userDetails.guardian.address !== undefined ? userDetails.guardian.address: '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.guardian === null"> _______________________ </span>
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.guardian !== null"> {{userDetails.guardian.address !== null && userDetails.guardian.address !== undefined ? userDetails.guardian.address: '_______________________'}}, </span> <span *ngIf="userDetails === undefined || userDetails.guardian === null"> _______________________, </span>
                   </span></span><span style="font-family:'EB Garamond, serif'"> </span><span ><span style="font-family:'EB Garamond, serif'">
-                  </span></span><span style="font-family:'EB Garamond, serif'">,
+                  </span></span><span style="font-family:'EB Garamond, serif'">
                   </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.guardian !== null"> {{userDetails.guardian.city !== null && userDetails.guardian.city !== undefined ? userDetails.guardian.city: '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.guardian === null"> _______________________ </span>
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.guardian !== null"> {{userDetails.guardian.city !== null && userDetails.guardian.city !== undefined ? userDetails.guardian.city: '_______________________'}}, </span> <span *ngIf="userDetails === undefined || userDetails.guardian === null"> _______________________, </span>
 
-                  </span></span><span style="font-family:'EB Garamond, serif'">,
+                  </span></span><span style="font-family:'EB Garamond, serif'">
                   </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.guardian !== null"> {{userDetails.guardian.state !== null && userDetails.guardian.state !== undefined ? userDetails.guardian.state: '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.guardian === null"> _______________________ </span>
 
                   </span></span><span style="font-family:'EB Garamond, serif'">
                   </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.guardian !== null"> {{userDetails.guardian.zip !== null && userDetails.guardian.zip !== undefined ? userDetails.guardian.zip: '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.guardian === null"> _______________________ </span>
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.guardian !== null"> {{userDetails.guardian.zip !== null && userDetails.guardian.zip !== undefined ? userDetails.guardian.zip: '_______________________'}}, </span> <span *ngIf="userDetails === undefined || userDetails.guardian === null"> _______________________, </span>
 
-                  </span></span><span style="font-family:'EB Garamond, serif'">,
+                  </span></span><span style="font-family:'EB Garamond, serif'"> 
                   as Guardian of the person and Conservator of the estate of any minor
                   child of mine.  </span>
                   <span  *ngIf="userDetails !== undefined && userDetails.backupGuardian !== null">
                   <span ><span style="font-family:'EB Garamond, serif'">
                   </span></span><span style="font-family:'EB Garamond, serif'"> If
                   said nominee fails to qualify or ceases to act, I nominate my </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupGuardian !== null && userDetails.backupGuardian.relationship_with !== 'Other'"> {{userDetails.backupGuardian.relationship_with !== null && userDetails.backupGuardian.relationship_with !== undefined ? userDetails.backupGuardian.relationship_with : '_______________________'}} </span>
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupGuardian!== null && userDetails.backupGuardian.relationship_with === 'Other'"> {{userDetails.backupGuardian.relationship_other !== null && userDetails.backupGuardian.relationship_other !== undefined ? userDetails.backupGuardian.relationship_other : '_______________________'}} </span>
-                  <span *ngIf="userDetails === undefined || userDetails.backupGuardian === null"> _______________________ </span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">,
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupGuardian !== null && userDetails.backupGuardian.relationship_with !== 'Other'"> {{userDetails.backupGuardian.relationship_with !== null && userDetails.backupGuardian.relationship_with !== undefined ? userDetails.backupGuardian.relationship_with : '_______________________'}}, </span>
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupGuardian!== null && userDetails.backupGuardian.relationship_with === 'Other'"> {{userDetails.backupGuardian.relationship_other !== null && userDetails.backupGuardian.relationship_other !== undefined ? userDetails.backupGuardian.relationship_other : '_______________________'}}, </span>
+                  <span *ngIf="userDetails === undefined || userDetails.backupGuardian === null"> _______________________, </span>
+                  </span></span><span style="font-family:'EB Garamond, serif'">
                   </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupGuardian !== null"> {{userDetails.backupGuardian.fullname !== null && userDetails.backupGuardian.fullname !== undefined ? userDetails.backupGuardian.fullname : '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.backupGuardian === null"> _______________________ </span>
                   </span></span><span style="font-family:'EB Garamond, serif'">
                   of </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupGuardian !== null"> {{userDetails.backupGuardian.address !== null && userDetails.backupGuardian.address !== undefined ? userDetails.backupGuardian.address: '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.backupGuardian === null"> _______________________ </span>
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupGuardian !== null"> {{userDetails.backupGuardian.address !== null && userDetails.backupGuardian.address !== undefined ? userDetails.backupGuardian.address: '_______________________'}}, </span> <span *ngIf="userDetails === undefined || userDetails.backupGuardian === null"> _______________________, </span>
                   </span></span><span style="font-family:'EB Garamond, serif'"> </span><span ><span style="font-family:'EB Garamond, serif'">
-                  </span></span><span style="font-family:'EB Garamond, serif'">,
+                  </span></span><span style="font-family:'EB Garamond, serif'">
                   </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupGuardian !== null"> {{userDetails.backupGuardian.city !== null && userDetails.backupGuardian.city !== undefined ? userDetails.backupGuardian.city: '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.backupGuardian === null"> _______________________ </span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">,
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupGuardian !== null"> {{userDetails.backupGuardian.city !== null && userDetails.backupGuardian.city !== undefined ? userDetails.backupGuardian.city: '_______________________'}}, </span> <span *ngIf="userDetails === undefined || userDetails.backupGuardian === null"> _______________________, </span>
+                  </span></span><span style="font-family:'EB Garamond, serif'">
                   </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupGuardian !== null"> {{userDetails.backupGuardian.state !== null && userDetails.backupGuardian.state !== undefined ? userDetails.backupGuardian.state: '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.backupGuardian === null"> _______________________ </span>
                   </span></span><span style="font-family:'EB Garamond, serif'">
                   </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupGuardian !== null"> {{userDetails.backupGuardian.zip !== null && userDetails.backupGuardian.zip !== undefined ? userDetails.backupGuardian.zip: '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.backupGuardian === null"> _______________________ </span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">,
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupGuardian !== null"> {{userDetails.backupGuardian.zip !== null && userDetails.backupGuardian.zip !== undefined ? userDetails.backupGuardian.zip: '_______________________'}}, </span> <span *ngIf="userDetails === undefined || userDetails.backupGuardian === null"> _______________________, </span>
+                  </span></span><span style="font-family:'EB Garamond, serif'">
                   as the successor Guardian and/or Conservator for any minor child of
                     mine.  </span></span>
               </p>
@@ -541,142 +574,153 @@
                     <br/>
       
                   </p>
-                  <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                    <span style="font-family:'EB Garamond, serif'"><b>A.	Payment of Estate Expenses</b></span><span style="font-family:'EB Garamond, serif'">.
-                    My </span><span ><span style="font-family:'EB Garamond, serif'">
-                      <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-                        {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
-                      </span>
-                    </span></span><span style="font-family:'EB Garamond, serif'"> may pay from my
-                    Estate all debts which are then due and enforceable against my
-                    Estate, the expenses of my last illness, the expenses of my final
-                    disposition without the necessity of prior court approval, the
-                    expenses of administering my Estate, and all death taxes and
-                    governmental charges imposed upon and made payable from my Estate
-                    under the laws of the United States or of any state or country by
-                    reason of my death. </span>
-                  </p>
-                  <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                    <br/>
-      
-                  </p>
-                  <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                    <span style="font-family:'EB Garamond, serif'"><b>B.	Tangible Personal Property</b></span><span style="font-family:'EB Garamond, serif'">.
-                    It is my intention that any separate memorandum or written
-                    instructions I may leave expressing my wishes for the disposition of
-                    certain articles of my tangible personal property will be followed by
-                    my </span><span ><span style="font-family:'EB Garamond, serif'">
-                      <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-                        {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
-                      </span>
-                    </span></span><span style="font-family:'EB Garamond, serif'">, subject to any
-                    specific gifts of certain articles of my tangible personal property
-                    made in this Last Will &amp; Testament below, which shall be absolute
-                    and unaffected by any such memorandum or written instruction.
-                    Excepting any articles of my tangible personal property that are
-                    otherwise gifted specifically herein or included in my separate
-                    written instructions, I give my tangible personal property, or the
-                    remainder thereof, to be distributed </span>
-                    <span *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null">
-                      <span *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute == '2'">
-                          <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.marital_status === 'M'">
-                            <span ><span style="font-family:'EB Garamond, serif'"></span>
-                            </span><span style="font-family:'EB Garamond, serif'"> to my
-                            spouse
+
+                  
+                  <div>
+                      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+                          <span style="font-family:'EB Garamond, serif'"><b><span class='divNumber'></span>.	Payment of Estate Expenses</b></span><span style="font-family:'EB Garamond, serif'">.
+                          My </span><span ><span style="font-family:'EB Garamond, serif'">
+                            <span *ngIf="userDetails !== undefined && userDetails.state !== null">
+                              {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
+                            </span>
+                          </span></span><span style="font-family:'EB Garamond, serif'"> may pay from my
+                          Estate all debts which are then due and enforceable against my
+                          Estate, the expenses of my last illness, the expenses of my final
+                          disposition without the necessity of prior court approval, the
+                          expenses of administering my Estate, and all death taxes and
+                          governmental charges imposed upon and made payable from my Estate
+                          under the laws of the United States or of any state or country by
+                          reason of my death. </span>
+                        </p>
+                        <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+                          <br/>
+            
+                        </p>
+                  </div>
+                      
+                  <div>
+                      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+                          <span style="font-family:'EB Garamond, serif'"><b><span class='divNumber'></span>.	Tangible Personal Property</b></span><span style="font-family:'EB Garamond, serif'">.
+                          It is my intention that any separate memorandum or written
+                          instructions I may leave expressing my wishes for the disposition of
+                          certain articles of my tangible personal property will be followed by
+                          my </span>
+                          <span>
+                            <span style="font-family:'EB Garamond, serif'">
+                              <span *ngIf="userDetails !== undefined && userDetails.state !== null">
+                                {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== ''
+                                ?userDetails.state.executor_title
+                                :'____________'}},
+                              </span>
+                            </span>
                           </span>
-                          <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.marital_status === 'R'">
-                            <span ><span style="font-family:'EB Garamond, serif'"></span></span><span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> to
-                            my partner</span>
+                          
+                          <span style="font-family:'EB Garamond, serif'"> subject to any
+                          specific gifts of certain articles of my tangible personal property
+                          made in this Last Will &amp; Testament below, which shall be absolute
+                          and unaffected by any such memorandum or written instruction.
+                          Excepting any articles of my tangible personal property that are
+                          otherwise gifted specifically herein or included in my separate
+                          written instructions, I give my tangible personal property, or the
+                          remainder thereof, to be distributed </span>
+                          
+                          <span *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null">
+                            <span *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute == '2'">
+                                <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.marital_status === 'M'">
+                                  <span ><span style="font-family:'EB Garamond, serif'"></span>
+                                  </span><span style="font-family:'EB Garamond, serif'"> to my
+                                  spouse
+                                </span>
+                                <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.marital_status === 'R'">
+                                  <span ><span style="font-family:'EB Garamond, serif'"></span></span><span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> to
+                                  my partner</span>
+                                </span>
+                              </span>
+                            </span>
+            
+                            <span *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute == '1'">
+                              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.children > 1">
+                                <span style="font-family:'EB Garamond, serif'"> to my surviving children in equal shares </span>
+                              </span>
+                              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.children === 1">
+                                <span style="font-family:'EB Garamond, serif'"> to my child </span>
+                              </span>
+                            </span>
+            
+                            <span *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute == '3'">
+                                <span style="font-family:'EB Garamond, serif'">with the
+                                residue of my Estate </span>
+                            </span>
+            
+                            <span *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute == '4'">
+                              <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'">as
+                            follows: {{userDetails.provideYourLovedOnes.tangible_property_distribute}}.</span>
+                            </span>
                           </span>
-                        </span>
-                      </span>
-      
-                      <span *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute == '1'">
-                        <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.children > 1">
-                          <span ><span style="font-family:'EB Garamond, serif'"></span></span><span ><span style="font-family:'EB Garamond, serif'"></span></span>
-                          <span style="font-family:'EB Garamond, serif'"> to
-                            my surviving children in equal shares </span>
-                        </span>
-                        <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.children === 1">
-                          <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> to my
-                            child </span>
-                        </span>
-                      </span>
-      
-                      <span *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute == '3'">
-                          <span ><span style="font-family:'EB Garamond, serif'">
-                          </span></span><span style="font-family:'EB Garamond, serif'">with the
-                          residue of my Estate </span>
-                      </span>
-      
-                      <span *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute == '4'">
-                        <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'">as
-                      follows:</span>
-                      </span>
-                    </span>
-                  </p>
-                  <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                    <br/>
-      
-                  </p>
-                  <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute !== null && userDetails.provideYourLovedOnes.is_tangible_property_distribute == '4'">
-                    <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">
-                    {{userDetails.provideYourLovedOnes.tangible_property_distribute}}
-                    </span></span><span style="font-family:'EB Garamond, serif'">.</span><span ><span style="font-family:'EB Garamond, serif'">
-                    </span></span><span style="font-family:'EB Garamond, serif'">  </span>
-                  </p>
-                  <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                    <br/>
-      
-                  </p>
-                  <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                    <span style="font-family:'EB Garamond, serif'">I direct that all costs of
-                    safeguarding, insuring, storing and delivering my tangible personal
-                    property to the beneficiaries entitled thereto be paid out of my
-                    Estate as an expense of administration.  If a beneficiary designated
-                    in this provision does not survive me, my tangible personal property
-                    shall be distributed with the residue of my estate.  </span>
-                  </p>
-                  <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                    <br/>
-      
-                  </p>
-                  <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                    <span style="font-family:'EB Garamond, serif'"><b>C. 	Confirmation of Joint Tenancy</b></span><span style="font-family:'EB Garamond, serif'">.
-                    I hereby confirm that all of my interest in any jointly titled
-                    assets held in my name with any other person or persons as “Joint
-                    Tenants” or as “Joint Tenants with Rights of Survivorship”
-                    shall pass to said co-tenant(s) if I predecease said co-tenant(s).</span></p>
-                  <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                    <br/>
-      
-                  </p>
+                        </p>
+                        <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+                          <br/>
+                        </p>
+                  </div>
 
+                  <div>
+                      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+                          <span style="font-family:'EB Garamond, serif'">I direct that all costs of
+                          safeguarding, insuring, storing and delivering my tangible personal
+                          property to the beneficiaries entitled thereto be paid out of my
+                          Estate as an expense of administration.  If a beneficiary designated
+                          in this provision does not survive me, my tangible personal property
+                          shall be distributed with the residue of my estate.  </span>
+                        </p>
+                        <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+                          <br/>
+                        </p>
+                  </div>
 
-              <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'"><b>D.	Specific Distributions</b></span><span style="font-family:'EB Garamond, serif'">.</span>
-                <span *ngIf="userDetails !== undefined && userDetails.gifts !== null && userDetails.gifts.length === 0">
-                <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> I decline
-                to make any specific gifts or bequests and intend for all of my
-                Estate to be distributed in the manner hereinafter set forth for the
-                distribution of the residue of my Estate. </span></span>
-                <span *ngIf="userDetails !== undefined && userDetails.gifts !== null && userDetails.gifts.length > 0">
-                <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'">
-                </span><span ><span style="font-family:'EB Garamond, serif'">
-                </span></span><span style="font-family:'EB Garamond, serif'"> I direct
-                  the following specific distributions at my death: </span></span>
-              </p>
-              <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                <br/>
+                  <div>
+                      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+                          <span style="font-family:'EB Garamond, serif'"><b><span class='divNumber'></span>. 	Confirmation of Joint Tenancy</b></span><span style="font-family:'EB Garamond, serif'">.
+                          I hereby confirm that all of my interest in any jointly titled
+                          assets held in my name with any other person or persons as “Joint
+                          Tenants” or as “Joint Tenants with Rights of Survivorship”
+                          shall pass to said co-tenant(s) if I predecease said co-tenant(s).</span>
+                        </p>
+                        <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+                          <br/>
+                        </p>
+                  </div>
 
-              </p>
-              <div *ngIf="giftStatements.firstpage.length > 0">
-                <p class="western" align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%" *ngFor="let statement of giftStatements.firstpage; let i = index" style="padding-bottom: 10px;">
-                      <span style="font-family:'EB Garamond, serif'" >({{i+1}})
-                        {{statement}}
-                      </span>
-                </p>
-              </div>
+                  <div>
+                      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+                          <span style="font-family:'EB Garamond, serif'"><b><span class='divNumber'></span>.	Specific Distributions.</b></span>
+                          
+                          <span *ngIf="userDetails !== undefined && userDetails.gifts !== null && userDetails.gifts.length === 0">
+                            <span style="font-family:'EB Garamond, serif'"> I decline
+                            to make any specific gifts or bequests and intend for all of my
+                            Estate to be distributed in the manner hereinafter set forth for the
+                            distribution of the residue of my Estate. </span>
+                          </span>
+                          
+                          <span *ngIf="userDetails !== undefined && userDetails.gifts !== null && userDetails.gifts.length > 0">
+                            <span style="font-family:'EB Garamond, serif'"> I direct the following specific distributions at my death: </span>
+                          </span>
+                        </p>
+
+                        <div *ngIf="giftStatements.firstpage.length > 0">
+                          <p class="western" align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%" *ngFor="let statement of giftStatements.firstpage; let i = index" style="padding-bottom: 10px;">
+                                <span style="font-family:'EB Garamond, serif'" >({{i+1}})
+                                  {{statement}}
+                                </span>
+                          </p>
+                        </div>
+                        <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+                          <br/>
+                        </p>
+                  </div>
+                   
+                  <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+                    <br/>
+                  </p>
             </div>
 
             <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
@@ -727,7 +771,7 @@
 
               <div *ngIf="userDetails !== undefined && userDetails.estateDistribute !== null && userDetails.estateDistribute.distribute_type === '2' && estateDistribute._mb !== null">
                 <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="estateDistribute._mb !== null && estateDistribute._mb.isEstateIntoEqualShares === 'Yes'">
-                  <span style="font-family:'EB Garamond, serif'"><b>E.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Residuary
+                  <span style="font-family:'EB Garamond, serif'"><b><span class='divNumber'></span>.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Residuary
                     Estate.  </b></span><span style="font-family:'EB Garamond, serif'">I direct that my
                     </span><span ><span style="font-family:'EB Garamond, serif'">
                       <span *ngIf="userDetails !== undefined && userDetails.state !== null">
@@ -756,47 +800,58 @@
 
                     <span *ngIf="estateDistribute._mb.beneficiaryYes !== null">
                       <span *ngFor="let beneficiary of estateDistribute._mb.beneficiaryYes">
-                        <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> one
-                        share shall be distributed to my </span><span ><span style="font-family:'EB Garamond, serif'">
-                        {{beneficiary.beneficiaryRelationship !== null && beneficiary.beneficiaryRelationship !== undefined ? beneficiary.beneficiaryRelationship : ''}} ,
-                        {{beneficiary.beneficiaryFullName !== null && beneficiary.beneficiaryFullName !== undefined ? beneficiary.beneficiaryFullName : ''}}
-                        </span></span><span style="font-family:'EB Garamond, serif'">
-                        </span>
+                        <div>
+                            <span style="font-family:'EB Garamond, serif'"> one share shall be distributed to my </span>
+                        
+                            <span>
+                              <span style="font-family:'EB Garamond, serif'">
+                              {{beneficiary.beneficiaryRelationship !== null && beneficiary.beneficiaryRelationship !== undefined?beneficiary.beneficiaryRelationship:''}}, 
+                                {{beneficiary.beneficiaryFullName !== null && beneficiary.beneficiaryFullName !== undefined
+                                  ?beneficiary.beneficiaryFullName
+                                  :''}}
+                              </span>
+                            </span>
+                        </div>
                       </span>
                     </span>
 
-                    <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">
-                    </span></span><span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'">. If any named
+                    <span style="font-family:'EB Garamond, serif'"> .If any named
                     residuary beneficiary shall not be living at my death, such
                     beneficiary’s share shall be distributed</span>
 
                     <span *ngIf="estateDistribute._mb.deceasedBeneficiaryShareToKids === 'Yes'">
-                    <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'">
+                    <span>
+                      <span style="font-family:'EB Garamond, serif'"></span>
+                    </span>
+                    <span style="font-family:'EB Garamond, serif'">
                     to his or her then-living issue, </span>
 
                     <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'California'">
                     <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> by
-                      right of representation </span></span>
+                      right of representation; </span></span>
 
                     <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== 'California'">
                     <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> per
-                      stirpes </span></span>
+                      stirpes; </span></span>
 
-                    <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'">; provided,
+                    <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> provided,
                     however, if such deceased beneficiary is not survived by issue, the
                     deceased beneficiary’s share shall be added </span><span ><span style="font-family:'EB Garamond, serif'">
                     </span></span><span style="font-family:'EB Garamond, serif'"> equally to the
-                      other shares </span></span>
-                    <span ><span style="font-family:'EB Garamond, serif'">
-                    </span></span><span style="font-family:'EB Garamond, serif'">.</span>
+                      other shares. </span></span>
                 </p>
               
                 <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%"  *ngIf="estateDistribute._mb !== null && estateDistribute._mb.isEstateIntoEqualShares !== 'Yes'">
                   <span style="font-family:'EB Garamond, serif'"><b>E.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Residuary
-                  Estate.  </b></span><span style="font-family:'EB Garamond, serif'">I direct that my
+                  Estate.  </b></span><span style="font-family:'EB Garamond, serif'"> I direct that my
                   </span><span ><span style="font-family:'EB Garamond, serif'">
                     <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-                      {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
+                      {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== ''
+                      ?userDetails.state.executor_title
+                      :'_________________'}}
+                    </span>
+                    <span *ngIf="userDetails === undefined || userDetails.state == null">
+                        (executor)__________________
                     </span>
                   </span></span><span style="font-family:'EB Garamond, serif'">
                   divide and distribute the rest, residue and remainder of my Estate
@@ -819,22 +874,39 @@
                     <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> in the following
                     manner:</span></span>
                 </p>
-                <p align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="estateDistribute._mb !== null && estateDistribute._mb.isEstateIntoEqualShares !== 'Yes'"><br/>
-
-                </p>
+                
                 
                 <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;" *ngIf="estateDistribute._mb !== null && estateDistribute._mb.isEstateIntoEqualShares !== 'Yes'">
                   <span *ngIf="estateDistribute._mb.beneficiaryYes !== null">
-                    <span *ngFor="let beneficiary of estateDistribute._mb.beneficiaryYes">
-                        <span ><span size="2" style="font-size: 9pt" >
-                        <span ><span style="font-family:'Garamond, serif'"><span size="3" style="font-size: 12pt"></span></span></span><span style="font-family:'Garamond, serif'"><span size="3" style="font-size: 12pt">
-                          {{beneficiary.beneficiaryNoPercentageToEstate !== null && beneficiary.beneficiaryNoPercentageToEstate !== undefined ? beneficiary.beneficiaryNoPercentageToEstate : '0'}}
-                        </span></span><span ><span style="font-family:'Garamond, serif'"><span size="3" style="font-size: 12pt">%
-                        shall be distributed to my </span></span></span><span style="font-family:'Garamond, serif'"><span size="3" style="font-size: 12pt">
-                            {{beneficiary.beneficiaryNoRelationship !== null && beneficiary.beneficiaryNoRelationship !== undefined ? beneficiary.beneficiaryNoRelationship : ''}}
-                        </span></span><span ><span style="font-family:'Garamond, serif'"><span size="3" style="font-size: 12pt"></span></span></span><span style="font-family:'Garamond, serif'"><span size="3" style="font-size: 12pt">
-                            {{beneficiary.beneficiaryNoFullName !== null && beneficiary.beneficiaryNoFullName !== undefined ? beneficiary.beneficiaryNoFullName : ''}}
-                        </span></span><span ><span style="font-family:'Garamond, serif'"><span size="3" style="font-size: 12pt"></span></span></span></span></span>
+                    <span *ngFor="let beneficiary of estateDistribute._mb.beneficiaryNo">
+                      <div>
+                        <span>
+                            <span size="2" style="font-size: 9pt">
+                              
+                              <span style="font-family:'Garamond, serif'">
+                                <span size="3" style="font-size: 12pt; text-transform: capitalize">{{beneficiary.beneficiaryNoPercentageToEstate !== null && beneficiary.beneficiaryNoPercentageToEstate !== undefined ? beneficiary.beneficiaryNoPercentageToEstate.toLowerCase().trim() : '0'}}
+                                </span>
+                              </span>
+                              
+                              <span>
+                                <span style="font-family:'Garamond, serif'">
+                                  <span size="3" style="font-size: 12pt">% shall be distributed to my </span>
+                                </span>
+                              </span>
+                              
+                              <span style="font-family:'Garamond, serif'">
+                                <span size="3" style="font-size: 12pt; text-transform: capitalize;">
+                                  {{beneficiary.beneficiaryNoRelationship !== null && beneficiary.beneficiaryNoRelationship !== undefined ? beneficiary.beneficiaryNoRelationship.toLowerCase().trim() : ''}}
+                                </span>
+                              </span>
+                              
+                              <span style="font-family:'Garamond, serif'">
+                                <span size="3" style="font-size: 12pt;  text-transform: capitalize;">{{beneficiary.beneficiaryNoFullName !== null && beneficiary.beneficiaryNoFullName !== undefined ? beneficiary.beneficiaryNoFullName.toLowerCase().trim() : ''}}</span>
+                              </span>
+                              
+                            </span>
+                          </span>
+                      </div>
                     </span>
                   </span>
                 </p>
@@ -867,13 +939,13 @@
                   </span>
 
                   <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> equally to the
-                  other shares</span><span ><span style="font-family:'EB Garamond, serif'">
-                  </span></span><span style="font-family:'EB Garamond, serif'">.</span></p>
+                  other shares.</span><span ><span style="font-family:'EB Garamond, serif'">
+                  </span></span><span style="font-family:'EB Garamond, serif'"></span></p>
               
               </div>
               
               <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.estateDistribute !== null && userDetails.estateDistribute.distribute_type === '1'">
-                <span style="font-family:'EB Garamond, serif'"><b>E.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Residuary
+                <span style="font-family:'EB Garamond, serif'"><b><span class='divNumber'></span>.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Residuary
                 Estate.  </b></span><span style="font-family:'EB Garamond, serif'">I direct that my
                 </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span *ngIf="userDetails !== undefined && userDetails.state !== null">
@@ -902,11 +974,20 @@
 
                 <span *ngIf="estateDistribute._sb !== null">
                 <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'">
-                  to my </span><span ><span style="font-family:'EB Garamond, serif'">
-                  {{estateDistribute._sb.relationship !== null && estateDistribute._sb.relationship !== undefined && estateDistribute._sb.relationship === 'Other' ? estateDistribute._sb.otherRelationship : estateDistribute._sb.relationship}}
-                </span></span><span style="font-family:'EB Garamond, serif'">, </span><span ><span style="font-family:'EB Garamond, serif'">
-                  {{estateDistribute._sb.fullName !== null && estateDistribute._sb.fullName !== undefined ? estateDistribute._sb.fullName : '__________'}}
-                </span></span><span style="font-family:'EB Garamond, serif'">.  If </span><span ><span style="font-family:'EB Garamond, serif'">
+                  to my </span>
+                  <span>
+                    <span style="font-family:'EB Garamond, serif'">
+                      {{estateDistribute._sb.relationship !== null && estateDistribute._sb.relationship !== undefined && estateDistribute._sb.relationship === 'Other'
+                      ?estateDistribute._sb.otherRelationship
+                      :estateDistribute._sb.relationship}},
+                    </span>
+                  </span>
+                  
+                  <span>
+                    <span style="font-family:'EB Garamond, serif'">
+                      {{estateDistribute._sb.fullName !== null && estateDistribute._sb.fullName !== undefined ? estateDistribute._sb.fullName : '__________'}}.
+                    </span>
+                  </span><span style="font-family:'EB Garamond, serif'"> If </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she' ): 'he' }}</span>
                 </span></span><span style="font-family:'EB Garamond, serif'">
                   is not living at the time of distribution, </span>
@@ -925,7 +1006,7 @@
                     <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> per
                     stirpes</span>
                   </span>
-                  <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'">; however, if </span>
+                  <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> however, if </span>
 
                   <span ><span style="font-family:'EB Garamond, serif'">
                       <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she' ): 'he' }}</span>
@@ -956,7 +1037,7 @@
 
 
               <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.estateDistribute !== null && userDetails.estateDistribute.distribute_type === '3'">
-                <span style="font-family:'EB Garamond, serif'"><b>E.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Residuary
+                <span style="font-family:'EB Garamond, serif'"><b><span class='divNumber'></span>.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Residuary
                 Estate.  </b></span><span style="font-family:'EB Garamond, serif'">I direct that my
                 </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span *ngIf="userDetails !== undefined && userDetails.state !== null">
@@ -985,7 +1066,7 @@
               </p>
             
               <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.estateDistribute !== null && userDetails.estateDistribute.distribute_type === '4'">
-                <span style="font-family:'EB Garamond, serif'"><b>E.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Residuary
+                <span style="font-family:'EB Garamond, serif'"><b><span class='divNumber'></span>.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Residuary
                 Estate.  </b></span><span style="font-family:'EB Garamond, serif'">I direct that my
                 </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span *ngIf="userDetails !== undefined && userDetails.state !== null">
@@ -1027,7 +1108,7 @@
               
               <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.has_pet === 1">
                 <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                  <span style="font-family:'EB Garamond, serif'"><b>F.	Pet Care Directive</b></span><span style="font-family:'EB Garamond, serif'">.
+                  <span style="font-family:'EB Garamond, serif'"><b><span class='divNumber'></span>.	Pet Care Directive</b></span><span style="font-family:'EB Garamond, serif'">.
                 It is my desire that upon my death, my pets now living, and any
                 other pets I may then own, shall be provided for with the same
                 standard of care, maintenance, and comfort as I provided my pets
@@ -1039,8 +1120,24 @@
                 
                 <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%; text-align:center;" *ngIf="petNames.length > 0">
                 <span *ngFor="let petDetail of petNames">
-                  <span style="font-family:'EB Garamond, serif'">My </span><span ><span style="font-family:'EB Garamond, serif'">{{petDetail.type !== undefined && petDetail.type !== null ?  petDetail.type : '________' }}</span></span><span style="font-family:'EB Garamond, serif'">, </span>
-                  <span ><span style="font-family:'EB Garamond, serif'">{{petDetail.name !== undefined && petDetail.name !== null ?  petDetail.name : '________' }}</span></span><span style="font-family:'EB Garamond, serif'"></span>
+                  <div class="float-left">
+                      <span style="font-family:'EB Garamond, serif'">My </span>
+                      <span>
+                        <span style="font-family:'EB Garamond, serif'; text-transform: capitalize">{{petDetail.petType !== undefined && petDetail.petType !== null
+                          ? petDetail.petType
+                          : '________' }},
+                        </span>
+                      </span>
+                      
+                      <span style="font-family:'EB Garamond, serif'; text-transform: capitalize"> </span>
+                      <span>
+                        <span style="font-family:'EB Garamond, serif'; text-transform: capitalize">{{petDetail.petName !== undefined && petDetail.petName !== null
+                          ?petDetail.petName
+                          :'________'}}
+                        </span>
+                      </span>
+                      <span style="font-family:'EB Garamond, serif'"></span>
+                  </div><br>
                 </span>
                 </p>
                 
@@ -1051,43 +1148,44 @@
                 <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
                   <span style="font-family:'EB Garamond, serif'">I nominate my </span>
                   <span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.petGuardian !== null && userDetails.petGuardian.relationship_with !== 'Other'"> {{userDetails.petGuardian.relationship_with !== null && userDetails.petGuardian.relationship_with !== undefined ? userDetails.petGuardian.relationship_with : '_______________________'}} </span>
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.petGuardian !== null && userDetails.petGuardian.relationship_with === 'Other'"> {{userDetails.petGuardian.relationship_other !== null && userDetails.petGuardian.relationship_other !== undefined ? userDetails.petGuardian.relationship_other : '_______________________'}} </span>
-                  <span *ngIf="userDetails === undefined || userDetails.petGuardian === null"> _______________________ </span>
-                </span></span><span style="font-family:'EB Garamond, serif'">,</span><span ><span style="font-family:'EB Garamond, serif'">
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.petGuardian !== null && userDetails.petGuardian.relationship_with !== 'Other'"> {{userDetails.petGuardian.relationship_with !== null && userDetails.petGuardian.relationship_with !== undefined ? userDetails.petGuardian.relationship_with : '_______________________'}}, </span>
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.petGuardian !== null && userDetails.petGuardian.relationship_with === 'Other'"> {{userDetails.petGuardian.relationship_other !== null && userDetails.petGuardian.relationship_other !== undefined ? userDetails.petGuardian.relationship_other : '_______________________'}}, </span>
+                  <span *ngIf="userDetails === undefined || userDetails.petGuardian === null"> _______________________, </span>
+                </span></span><span ><span style="font-family:'EB Garamond, serif'">
                 <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.petGuardian !== null"> {{userDetails.petGuardian.fullname !== null && userDetails.petGuardian.fullname !== undefined ? userDetails.petGuardian.fullname : '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.petGuardian === null"> _______________________ </span>
                 </span></span><span style="font-family:'EB Garamond, serif'"> of </span><span ><span style="font-family:'EB Garamond, serif'">
-                <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.petGuardian !== null"> {{userDetails.petGuardian.address !== null && userDetails.petGuardian.address !== undefined ? userDetails.petGuardian.address : '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.petGuardian === null"> _______________________ </span>
-                </span></span><span style="font-family:'EB Garamond, serif'">, </span><span ><span style="font-family:'EB Garamond, serif'">
-                <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.petGuardian !== null"> {{userDetails.petGuardian.city !== null && userDetails.petGuardian.city !== undefined ? userDetails.petGuardian.city : '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.petGuardian === null"> _______________________ </span>
-                </span></span><span style="font-family:'EB Garamond, serif'">, </span><span ><span style="font-family:'EB Garamond, serif'">
+                <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.petGuardian !== null"> {{userDetails.petGuardian.address !== null && userDetails.petGuardian.address !== undefined ? userDetails.petGuardian.address : '_______________________'}}, </span> <span *ngIf="userDetails === undefined || userDetails.petGuardian === null"> _______________________, </span>
+                </span></span><span style="font-family:'EB Garamond, serif'"> </span><span ><span style="font-family:'EB Garamond, serif'">
+                <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.petGuardian !== null"> {{userDetails.petGuardian.city !== null && userDetails.petGuardian.city !== undefined ? userDetails.petGuardian.city : '_______________________'}}, </span> <span *ngIf="userDetails === undefined || userDetails.petGuardian === null"> _______________________, </span>
+                </span></span><span style="font-family:'EB Garamond, serif'"> </span><span ><span style="font-family:'EB Garamond, serif'">
                 <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.petGuardian !== null"> {{userDetails.petGuardian.state !== null && userDetails.petGuardian.state !== undefined ? userDetails.petGuardian.state : '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.petGuardian === null"> _______________________ </span>
                 </span></span><span style="font-family:'EB Garamond, serif'"> </span><span ><span style="font-family:'EB Garamond, serif'">
-                <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.petGuardian !== null"> {{userDetails.petGuardian.zip !== null && userDetails.petGuardian.zip !== undefined ? userDetails.petGuardian.zip : '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.petGuardian === null"> _______________________ </span>
-                </span></span><span style="font-family:'EB Garamond, serif'">, to serve as the
+                <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.petGuardian !== null"> {{userDetails.petGuardian.zip !== null && userDetails.petGuardian.zip !== undefined ? userDetails.petGuardian.zip : '_______________________'}}, </span> <span *ngIf="userDetails === undefined || userDetails.petGuardian === null"> _______________________, </span>
+                </span></span><span style="font-family:'EB Garamond, serif'"> to serve as the
                 Pet Caretaker for my pets, to accept possession of them and to care
                 for them.  </span>
                   <span   *ngIf="userDetails !== undefined && userDetails.backupPetGuardian !== null">
                 <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'">If
                 </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPetGuardian !== null"> {{userDetails.backupPetGuardian.fullname !== null && userDetails.backupPetGuardian.fullname !== undefined ? userDetails.backupPetGuardian.fullname : '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.backupPetGuardian === null"> _______________________ </span>
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPetGuardian !== null"> {{userDetails.petGuardian.fullname !== null && userDetails.petGuardian.fullname !== undefined ? userDetails.petGuardian.fullname : '_______________________'}} </span> 
+                  <span *ngIf="userDetails === undefined || userDetails.backupPetGuardian === null"> _______________________ </span>
                 </span></span><span style="font-family:'EB Garamond, serif'">
                 is unavailable or unwilling to serve as my Pet Caretaker, I nominate
                 my </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.personalRepresentative !== null && userDetails.personalRepresentative.relationship_with !== 'Other'"> {{userDetails.personalRepresentative.relationship_with !== null && userDetails.personalRepresentative.relationship_with !== undefined ? userDetails.personalRepresentative.relationship_with : '_______________________'}} </span>
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.personalRepresentative !== null && userDetails.personalRepresentative.relationship_with === 'Other'"> {{userDetails.personalRepresentative.relationship_other !== null && userDetails.personalRepresentative.relationship_other !== undefined ? userDetails.personalRepresentative.relationship_other : '_______________________'}} </span>
-                  <span *ngIf="userDetails === undefined || userDetails.personalRepresentative === null"> _______________________ </span>
-                </span></span><span style="font-family:'EB Garamond, serif'">, </span><span ><span style="font-family:'EB Garamond, serif'">
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPetGuardian !== null && userDetails.backupPetGuardian.relationship_with !== 'Other'"> {{userDetails.backupPetGuardian.relationship_with !== null && userDetails.backupPetGuardian.relationship_with !== undefined ? userDetails.backupPetGuardian.relationship_with : '_______________________'}}, </span>
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPetGuardian !== null && userDetails.backupPetGuardian.relationship_with === 'Other'"> {{userDetails.backupPetGuardian.relationship_other !== null && userDetails.backupPetGuardian.relationship_other !== undefined ? userDetails.backupPetGuardian.relationship_other : '_______________________'}}, </span>
+                  <span *ngIf="userDetails === undefined || userDetails.personalRepresentative === null"> _______________________, </span>
+                </span></span><span style="font-family:'EB Garamond, serif'"> </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPetGuardian !== null"> {{userDetails.backupPetGuardian.fullname !== null && userDetails.backupPetGuardian.fullname !== undefined ? userDetails.backupPetGuardian.fullname : '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.backupPetGuardian === null"> _______________________ </span>
                 </span></span><span style="font-family:'EB Garamond, serif'"> of </span><span ><span style="font-family:'EB Garamond, serif'">
-                    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPetGuardian !== null"> {{userDetails.backupPetGuardian.address !== null && userDetails.backupPetGuardian.address !== undefined ? userDetails.backupPetGuardian.address : '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.backupPetGuardian === null"> _______________________ </span>
-                </span></span><span style="font-family:'EB Garamond, serif'">, </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPetGuardian !== null"> {{userDetails.backupPetGuardian.city !== null && userDetails.backupPetGuardian.city !== undefined ? userDetails.backupPetGuardian.city : '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.backupPetGuardian === null"> _______________________ </span>
-                </span></span><span style="font-family:'EB Garamond, serif'">, </span><span ><span style="font-family:'EB Garamond, serif'">
+                    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPetGuardian !== null"> {{userDetails.backupPetGuardian.address !== null && userDetails.backupPetGuardian.address !== undefined ? userDetails.backupPetGuardian.address : '_______________________'}}, </span> <span *ngIf="userDetails === undefined || userDetails.backupPetGuardian === null"> _______________________, </span>
+                </span></span><span style="font-family:'EB Garamond, serif'"> </span><span ><span style="font-family:'EB Garamond, serif'">
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPetGuardian !== null"> {{userDetails.backupPetGuardian.city !== null && userDetails.backupPetGuardian.city !== undefined ? userDetails.backupPetGuardian.city : '_______________________'}}, </span> <span *ngIf="userDetails === undefined || userDetails.backupPetGuardian === null"> _______________________, </span>
+                </span></span><span style="font-family:'EB Garamond, serif'"> </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPetGuardian !== null"> {{userDetails.backupPetGuardian.state !== null && userDetails.backupPetGuardian.state !== undefined ? userDetails.backupPetGuardian.state : '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.backupPetGuardian === null"> _______________________ </span>
                 </span></span><span style="font-family:'EB Garamond, serif'"> </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPetGuardian !== null"> {{userDetails.backupPetGuardian.zip !== null && userDetails.backupPetGuardian.zip !== undefined ? userDetails.backupPetGuardian.zip : '_______________________'}} </span> <span *ngIf="userDetails === undefined || userDetails.backupPetGuardian === null"> _______________________ </span>
-                </span></span><span style="font-family:'EB Garamond, serif'">, as alternate Pet
+                  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.backupPetGuardian !== null"> {{userDetails.backupPetGuardian.zip !== null && userDetails.backupPetGuardian.zip !== undefined ? userDetails.backupPetGuardian.zip : '_______________________'}}, </span> <span *ngIf="userDetails === undefined || userDetails.backupPetGuardian === null"> _______________________, </span>
+                </span></span><span style="font-family:'EB Garamond, serif'"> as alternate Pet
                 Caretaker for my pets.</span><span ><span style="font-family:'EB Garamond, serif'">
                 </span></span>
                 </span>
@@ -1123,116 +1221,123 @@
                 of </span><span ><span style="font-family:'EB Garamond, serif'"><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.petAmount !== null ? userDetails.tellUsAboutYou.petAmount : '0'}}</span></span></span><span style="font-family:'EB Garamond, serif'">
                 Dollars (</span><span ><span style="font-family:'EB Garamond, serif'"><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">$ {{userDetails.tellUsAboutYou.petAmount !== null ? userDetails.tellUsAboutYou.petAmount : '0'}}</span></span></span><span style="font-family:'EB Garamond, serif'">)</span>
                   on the condition that my Pet Caretaker agrees to provide a suitable
-                  home for my <span style="font-family:'EB Garamond, serif'">pets</span>, to keep them
+                  home for my <span style="font-family:'EB Garamond, serif'">pets,</span> to keep them
                   well fed and clean, and to provide them with appropriate medical
                   care.<span style="font-family:'EB Garamond, serif'"> </span><span ><span style="font-family:'EB Garamond, serif'">
                 </span></span><span style="font-family:'EB Garamond, serif'"></span>
                 </p>
 
-                <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.estateDistribute !== null && userDetails.estateDistribute.distribute_type === '2' && estateDistribute._mb !== null && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust !== undefined && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust === 'Yes'">
-                  <span style="font-family:'EB Garamond, serif'"></span>
-                  <span *ngIf="userDetails.tellUsAboutYou.has_pet === 0 && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust === 'Yes'">
-                <span ><span style="font-family:'EB Garamond, serif'">
-                </span></span><span style="font-family:'EB Garamond, serif'"><b>F.</b></span></span>
-                  <span *ngIf="userDetails.tellUsAboutYou.has_pet === 1 && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust === 'Yes'">
-                <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b>G.</b></span></span><span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">
-                </span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b>	Distributions
-                to Minor Beneficiaries. </b></span><span style="font-family:'EB Garamond, serif'">
-                If any beneficiary provided for herein has not yet attained the age
-                of majority under the applicable Transfer to Minors Act or Gift to
-                Minors Act, the distribution shall be held for said beneficiary in a
-                custodial account under the provisions of the applicable Transfer to
-                Minors Act or Gift to Minors Act with </span>
-                  <span *ngIf="estateDistribute._mb.minorParentsTrustee === 'Yes'">
-                <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> the
-                  parent of such beneficiary </span></span><span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span>
-                  <span *ngIf="estateDistribute._mb.minorParentsTrustee !== 'Yes'">
-                <span ><span style="font-family:'EB Garamond, serif'">
-                  {{estateDistribute._mb.whoServeAsTrusteeAccount !== null && estateDistribute._mb.whoServeAsTrusteeAccount !== undefined ? estateDistribute._mb.whoServeAsTrusteeAccount : ''}}
-                </span></span><span style="font-family:'EB Garamond, serif'"> </span></span><span ><span style="font-family:'EB Garamond, serif'">
-                </span></span><span style="font-family:'EB Garamond, serif'"> as the custodian
-                until the beneficiary reaches the age of </span><span ><span style="font-family:'EB Garamond, serif'">Age: {{estateDistribute._mb.whatAgeMinorShareDistributed !== null && estateDistribute._mb.whatAgeMinorShareDistributed !== undefined ? estateDistribute._mb.whatAgeMinorShareDistributed : '18'}}</span></span><span style="font-family:'EB Garamond, serif'">,
-                and no earlier, unless required by applicable law.</span></p>
-                
-                <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                  <br/>
-
-                </p>
-                
-                <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.contingentBeneficiary !== null && userDetails.contingentBeneficiary.is_contingent_beneficiary === '1'">
-                <span *ngIf="userDetails.tellUsAboutYou.has_pet === 0 && estateDistribute._mb !== null  && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust !== 'Yes' && userDetails.contingentBeneficiary.is_contingent_beneficiary === '1'">
-                  <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"><b>F.</b></span></span>
-                  <span *ngIf="userDetails.tellUsAboutYou.has_pet === 0 && estateDistribute._mb !== null && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust === 'Yes' && userDetails.contingentBeneficiary.is_contingent_beneficiary === '1'">
-                  <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b>G.</b></span></span>
-                  <span *ngIf="userDetails.tellUsAboutYou.has_pet === 1 && estateDistribute._mb !== null && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust !== 'Yes' && userDetails.contingentBeneficiary.is_contingent_beneficiary === '1'">
-                  <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b>G.</b></span></span>
-                  <span *ngIf="userDetails.tellUsAboutYou.has_pet === 1 && estateDistribute._mb !== null && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust === 'Yes' && userDetails.contingentBeneficiary.is_contingent_beneficiary === '1'">
-                  <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b>H.</b></span><span style="font-family:'EB Garamond, serif'"></span></span><span ><span style="font-family:'EB Garamond, serif'"></span></span>
-                  <span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Contingent
-                Disposition of My Estate</b></span><span style="font-family:'EB Garamond, serif'">.
-                If I have no living beneficiaries or issue prior to the distribution
-                of the entirety of my estate, I give the undistributed portion of my
-                estate to my heirs at law, their distributions to be determined
-                according to the laws of the </span>
-                  <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'District of Columbia'">
-                <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> District
-                  of Columbia </span></span>
-                  <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && (userDetails.tellUsAboutYou.state === 'Massachusetts' || userDetails.tellUsAboutYou.state === 'Virginia' || userDetails.tellUsAboutYou.state === 'Kentucky' || userDetails.tellUsAboutYou.state === 'Pennsylvania')">
-                <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'">Commonwealth of
-                </span><span ><span style="font-family:'EB Garamond, serif'">
-                    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
-                    <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-                </span></span></span>
-                  <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'"></span></span>
-                  <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && (userDetails.tellUsAboutYou.state !== 'Massachusetts' && userDetails.tellUsAboutYou.state !== 'Virginia' && userDetails.tellUsAboutYou.state !== 'Kentucky' && userDetails.tellUsAboutYou.state !== 'Pennsylvania' && userDetails.tellUsAboutYou.state !== 'District of Columbia')">
-                <span style="font-family:'EB Garamond, serif'"> State
-                of </span><span ><span style="font-family:'EB Garamond, serif'">
-                    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
-                    <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-                </span></span><span style="font-family:'EB Garamond, serif'"></span></span><span ><span style="font-family:'EB Garamond, serif'">
-                </span></span><span style="font-family:'EB Garamond, serif'"> in effect at the
-                date of execution of this Will </span><span ><span style="font-family:'EB Garamond, serif'">
-                </span></span><span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">.</span></span><span style="font-family:'EB Garamond, serif'"></span></p>
-                <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                  <br/>
-
-                </p>
-                
-                <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%"  *ngIf="userDetails !== undefined && userDetails.disinherit !== null && userDetails.disinherit.disinherit === '1'">
-                  <span *ngIf="userDetails.tellUsAboutYou.has_pet === 0 && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust !== 'Yes' && userDetails.contingentBeneficiary.is_contingent_beneficiary !== '1' && userDetails.disinherit.disinherit === '1'">
-                    <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"><b>F.</b></span></span>
-                    <span *ngIf="userDetails.tellUsAboutYou.has_pet === 0 && estateDistribute._mb !== null && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust !== 'Yes' && userDetails.contingentBeneficiary.is_contingent_beneficiary === '1' && userDetails.disinherit.disinherit === '1'">
-                    <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b>G.</b></span></span>
-                    <span *ngIf="userDetails.tellUsAboutYou.has_pet === 0 && estateDistribute._mb !== null && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust === 'Yes' && userDetails.contingentBeneficiary.is_contingent_beneficiary !== '1' && userDetails.disinherit.disinherit === '1'">
-                    <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b>G.</b></span></span>
-                    <span *ngIf="userDetails.tellUsAboutYou.has_pet === 1 && estateDistribute._mb !== null && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust !== 'Yes' && userDetails.contingentBeneficiary.is_contingent_beneficiary !== '1' && userDetails.disinherit.disinherit === '1'">
-                    <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b>G.</b></span></span><span style="font-family:'EB Garamond, serif'"></span>
-                    <span *ngIf="userDetails.tellUsAboutYou.has_pet === 0 && estateDistribute._mb !== null && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust === 'Yes' && userDetails.contingentBeneficiary.is_contingent_beneficiary === '1' && userDetails.disinherit.disinherit === '1'">
-                    <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"><b>H.</b></span><span style="font-family:'EB Garamond, serif'"></span></span>
-                    <span *ngIf="userDetails.tellUsAboutYou.has_pet === 1 && estateDistribute._mb !== null && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust !== 'Yes' && userDetails.contingentBeneficiary.is_contingent_beneficiary === '1' && userDetails.disinherit.disinherit === '1'">
-                    <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"><b>H.</b></span><span style="font-family:'EB Garamond, serif'"></span></span>
-                    <span *ngIf="userDetails.tellUsAboutYou.has_pet === 1 && estateDistribute._mb !== null && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust === 'Yes' && userDetails.contingentBeneficiary.is_contingent_beneficiary !== '1' && userDetails.disinherit.disinherit === '1'">
-                    <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"><b>H.</b></span></span>
-                    <span *ngIf="userDetails.tellUsAboutYou.has_pet === 1 && estateDistribute._mb !== null && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust === 'Yes' && userDetails.contingentBeneficiary.is_contingent_beneficiary === '1' && userDetails.disinherit.disinherit === '1'">
-                    <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b>I.</b></span></span><span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">
-                  </span></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Disinheritance</b></span><span style="font-family:'EB Garamond, serif'">.
-                  I specifically make no provision for the following persons or their
-                  issue (if any) upon my death with the intent to disinherit:  </span>
-                    <span ><span style="font-family:'EB Garamond, serif'">
-                    <span *ngIf="userDetails.disinherit.relationship === 'Other'">
-                      {{userDetails.disinherit.other_relationship}}
+                <span *ngIf="userDetails.estateDistribute !== undefined && userDetails.toMultipleBeneficiary !== null" align="justify" style="margin-bottom: 0in; line-height: 100%">
+                    <span *ngIf="userDetails.estateDistribute.distribute_type == 2 && userDetails.toMultipleBeneficiary.minorBeneficiaryShareToBeHeldInTrust == 'Yes'">
+                        <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.estateDistribute !== null && userDetails.estateDistribute.distribute_type === '2' && estateDistribute._mb !== null && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust !== undefined && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust === 'Yes'">
+                            <span style="font-family:'EB Garamond, serif'"></span>
+                            <span *ngIf="userDetails.tellUsAboutYou.has_pet === 0 && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust === 'Yes'">
+                          <span ><span style="font-family:'EB Garamond, serif'">
+                          </span></span><span style="font-family:'EB Garamond, serif'"><b>F.</b></span></span>
+                            <span *ngIf="userDetails.tellUsAboutYou.has_pet === 1 && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust === 'Yes'">
+                          <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b>G.</b></span></span><span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">
+                          </span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b><span class='divNumber'></span>. Distributions
+                          to Minor Beneficiaries. </b></span><span style="font-family:'EB Garamond, serif'">
+                          If any beneficiary provided for herein has not yet attained the age
+                          of majority under the applicable Transfer to Minors Act or Gift to
+                          Minors Act, the distribution shall be held for said beneficiary in a
+                          custodial account under the provisions of the applicable Transfer to
+                          Minors Act or Gift to Minors Act with </span>
+                            <span *ngIf="estateDistribute._mb.minorParentsTrustee === 'Yes'">
+                          <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> the
+                            parent of such beneficiary </span></span><span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span>
+                            <span *ngIf="estateDistribute._mb.minorParentsTrustee !== 'Yes'">
+                          <span ><span style="font-family:'EB Garamond, serif'">
+                            {{estateDistribute._mb.whoServeAsTrusteeAccount !== null && estateDistribute._mb.whoServeAsTrusteeAccount !== undefined ? estateDistribute._mb.whoServeAsTrusteeAccount : ''}}
+                          </span></span><span style="font-family:'EB Garamond, serif'"> </span></span><span ><span style="font-family:'EB Garamond, serif'">
+                          </span></span><span style="font-family:'EB Garamond, serif'"> as the custodian
+                          until the beneficiary reaches the age of </span><span ><span style="font-family:'EB Garamond, serif'">Age: {{estateDistribute._mb.whatAgeMinorShareDistributed !== null && estateDistribute._mb.whatAgeMinorShareDistributed !== undefined ? estateDistribute._mb.whatAgeMinorShareDistributed : '18'}},</span></span><span style="font-family:'EB Garamond, serif'">
+                          and no earlier, unless required by applicable law.</span></p>
+                          
+                          <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+                            <br/>
+          
+                          </p>
                     </span>
-                    <span *ngIf="userDetails.disinherit.relationship !== 'Other'">
-                      {{userDetails.disinherit.relationship}}
-                    </span>,
-                    {{userDetails.disinherit.fullname}}
-                  </span></span><span style="font-family:'EB Garamond, serif'">
-                  </span><span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span>
-                </p>
-                <p class="western" align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-                  <br/>
+                </span>
 
-                </p>
+                <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.contingentBeneficiary !== null && userDetails.contingentBeneficiary.is_contingent_beneficiary === '1'">
+                    <!-- <span *ngIf="userDetails.tellUsAboutYou.has_pet === 0 && estateDistribute._mb !== null  && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust !== 'Yes' && userDetails.contingentBeneficiary.is_contingent_beneficiary === '1'">
+                      <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"><b>F.</b></span></span>
+                      <span *ngIf="userDetails.tellUsAboutYou.has_pet === 0 && estateDistribute._mb !== null && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust === 'Yes' && userDetails.contingentBeneficiary.is_contingent_beneficiary === '1'">
+                      <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b>G.</b></span></span>
+                      <span *ngIf="userDetails.tellUsAboutYou.has_pet === 1 && estateDistribute._mb !== null && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust !== 'Yes' && userDetails.contingentBeneficiary.is_contingent_beneficiary === '1'">
+                      <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b>G.</b></span></span>
+                      <span *ngIf="userDetails.tellUsAboutYou.has_pet === 1 && estateDistribute._mb !== null && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust === 'Yes' && userDetails.contingentBeneficiary.is_contingent_beneficiary === '1'">
+                      <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b>H.</b></span><span style="font-family:'EB Garamond, serif'"></span></span>
+                       -->
+                      <span>
+                        <span style="font-family:'EB Garamond, serif'"></span>
+                      </span>
+    
+                      <span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b><span class='divNumber'></span>.Contingent
+                    Disposition of My Estate.</b></span><span style="font-family:'EB Garamond, serif'">
+                    If I have no living beneficiaries or issue prior to the distribution
+                    of the entirety of my estate, I give the undistributed portion of my
+                    estate to my heirs at law, their distributions to be determined
+                    according to the laws of the </span>
+                      <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'District of Columbia'">
+                    <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> District
+                      of Columbia </span></span>
+                      <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && (userDetails.tellUsAboutYou.state === 'Massachusetts' || userDetails.tellUsAboutYou.state === 'Virginia' || userDetails.tellUsAboutYou.state === 'Kentucky' || userDetails.tellUsAboutYou.state === 'Pennsylvania')">
+                    <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'">Commonwealth of
+                    </span><span ><span style="font-family:'EB Garamond, serif'">
+                        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
+                        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+                    </span></span></span>
+                      <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'"></span></span>
+                      <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && (userDetails.tellUsAboutYou.state !== 'Massachusetts' && userDetails.tellUsAboutYou.state !== 'Virginia' && userDetails.tellUsAboutYou.state !== 'Kentucky' && userDetails.tellUsAboutYou.state !== 'Pennsylvania' && userDetails.tellUsAboutYou.state !== 'District of Columbia')">
+                    <span style="font-family:'EB Garamond, serif'"> State
+                    of </span><span ><span style="font-family:'EB Garamond, serif'">
+                        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
+                        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+                    </span></span><span style="font-family:'EB Garamond, serif'"></span></span><span ><span style="font-family:'EB Garamond, serif'">
+                    </span></span><span style="font-family:'EB Garamond, serif'"> in effect at the
+                    date of execution of this Will. </span><span ><span style="font-family:'EB Garamond, serif'">
+                    </span></span><span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span>
+                  </p>
+                    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
+                      <br/>
+    
+                    </p>
+                    
+
+                <span>
+                  <span>
+                      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%"  *ngIf="userDetails !== undefined && userDetails.disinherit !== null && userDetails.disinherit.disinherit === '1'">    
+                            <span style="font-family:'EB Garamond, serif'">
+                              <b><span class='divNumber'></span>. Disinheritance</b>
+                            </span>
+                            
+                            <span style="font-family:'EB Garamond, serif'">.
+                          I specifically make no provision for the following persons or their
+                          issue (if any) upon my death with the intent to disinherit:  </span>
+                            <span>
+                              <span style="font-family:'EB Garamond, serif'">
+                                <span *ngIf="userDetails.disinherit.relationship === 'Other'">
+                                  {{userDetails.disinherit.other_relationship}},
+                                </span>
+                                <span *ngIf="userDetails.disinherit.relationship !== 'Other'">
+                                  {{userDetails.disinherit.relationship}},
+                                </span>
+                                  {{userDetails.disinherit.fullname}}
+                              </span>
+                            </span>
+                        </p>
+                        <p class="western" align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
+                          <br/>
+        
+                        </p>
+                  </span>
+                </span>
+
+                
+                
                 
               </div>
             </div>
@@ -1289,8 +1394,9 @@
                 <br/>
 
               </p>
+              
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-              <span style="font-family:'EB Garamond, serif'">(1)	To take possession or control of
+              <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)	To take possession or control of
               my estate, real or personal, and receive rents, income, interest, and
               profits therefrom prior to distribution to my heirs or beneficiaries;</span></p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
@@ -1298,21 +1404,21 @@
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-              <span style="font-family:'EB Garamond, serif'">(2) 	To deposit money belonging to my
+              <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>) 	To deposit money belonging to my
               estate in an insured account in a financial institution;</span></p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
                 <br/>
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-              <span style="font-family:'EB Garamond, serif'">(3) 	To collect, pursue payment of,
+              <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>) 	To collect, pursue payment of,
               and sue for all debts due to me or to my estate;</span></p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
                 <br/>
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-              <span style="font-family:'EB Garamond, serif'">(4)	To take any action necessary or
+              <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)	To take any action necessary or
               proper to recover possession of any real or personal property in my
               Estate, including an action to quiet title; and,</span></p>
               <p class="western" align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
@@ -1320,7 +1426,7 @@
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-              <span style="font-family:'EB Garamond, serif'">(5)	To take any action reasonably
+              <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)	To take any action reasonably
               necessary to safeguard, protect, preserve, and manage my estate
               property, including payment of taxes and insurance using estate
               funds;</span></p>
@@ -1329,7 +1435,7 @@
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-              <span style="font-family:'EB Garamond, serif'">(6)	To lease any estate property on
+              <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)	To lease any estate property on
               such terms and conditions as my </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span *ngIf="userDetails !== undefined && userDetails.state !== null">
                     {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
@@ -1341,7 +1447,7 @@
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-              <span style="font-family:'EB Garamond, serif'">(7)	To retain any property of my
+              <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)	To retain any property of my
               estate (real or personal) as my </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span *ngIf="userDetails !== undefined && userDetails.state !== null">
                     {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
@@ -1355,14 +1461,14 @@
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'">(8)	To borrow on behalf of my estate
+                <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)	To borrow on behalf of my estate
                 and to pledge or mortgage any property as collateral;</span></p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
                 <br/>
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'">(9) 	To make secured or unsecured
+                <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>) 	To make secured or unsecured
                 loans on behalf of my estate, including loans without interest to any
                 beneficiary of my estate;</span></p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
@@ -1370,7 +1476,7 @@
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'">(10)	To exercise any option and use
+                <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)	To exercise any option and use
                 any property in my estate to acquire the property covered by the
                 option; </span>
               </p>
@@ -1379,7 +1485,7 @@
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'">(11) 	To sell and grant options to
+                <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)	To sell and grant options to
                 purchase all or any part of my Estate (real or personal) upon terms
                 as my </span><span ><span style="font-family:'EB Garamond, serif'">
                     <span *ngIf="userDetails !== undefined && userDetails.state !== null">
@@ -1393,7 +1499,7 @@
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'">(12)	To hold any securities
+                <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)	To hold any securities
                 (including “street certificates”) or other property (real or
                 personal) in the name of my </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span *ngIf="userDetails !== undefined && userDetails.state !== null">
@@ -1402,9 +1508,9 @@
                 </span></span><span style="font-family:'EB Garamond, serif'">
                 or in the name of any nominee selected by my </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-                    {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
+                    {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}},
                   </span>
-                </span></span><span style="font-family:'EB Garamond, serif'">,
+                </span></span><span style="font-family:'EB Garamond, serif'">
                 without having to disclose that the property is held in a fiduciary
                 capacity, and to indemnify any such nominee against loss resulting
                 from holding such property as nominee;</span></p>
@@ -1429,7 +1535,7 @@
           <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
             <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'">(13)	To exercise any voting rights
+                <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)	To exercise any voting rights
                 with respect to any stock, membership in a company, membership in a
                 nonprofit corporation, or other property in my Estate, and to
                 authorize, ratify, approve, or confirm any action that could be taken
@@ -1440,7 +1546,7 @@
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'">(14)	To make any elections permitted
+                <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)	To make any elections permitted
                 under any pension, profit sharing, employee stock ownership or other
                 benefit plan;</span></p>
               <p class="western" align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
@@ -1448,7 +1554,7 @@
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'">(15)	To enter into, ratify, and
+                <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)	To enter into, ratify, and
                 perform any contract with any third party or entity on behalf of my
                 estate; </span>
               </p>
@@ -1457,7 +1563,7 @@
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'">(16) 	To sue or be sued on behalf of
+                <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)	To sue or be sued on behalf of
                 my estate, and to participate in any mediation or arbitration
                 proceeding on behalf of my estate;</span></p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
@@ -1465,7 +1571,7 @@
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'">(17) 	To disclaim any legacy, devise,
+                <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)	To disclaim any legacy, devise,
                 or interest in any Will, trust, or other disposition provided for my
                 benefit that creates an interest for my estate, and to renounce any
                 privilege or power granted to me under any Will or Trust that creates
@@ -1475,7 +1581,7 @@
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'">(18)	To dispose of, donate to any
+                <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)	To dispose of, donate to any
                 charitable organization, or abandon my tangible personal property,
                 except any item of tangible personal property that is subject to a
                 specific gift herein or subject to disposition under any separate
@@ -1487,7 +1593,7 @@
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'">(19)	To employ or retain the services
+                <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)	To employ or retain the services
                 of any professional in connection with the administration of my
                 Estate, including legal counsel, investment advisors, brokers,
                 accountants, realtors, and agents, and to pay reasonable compensation
@@ -1502,7 +1608,7 @@
 
               </p>
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'">(20) 	To insure my </span><span ><span style="font-family:'EB Garamond, serif'">
+                <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)	To insure my </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span *ngIf="userDetails !== undefined && userDetails.state !== null">
                     {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
                   </span>
@@ -1517,7 +1623,7 @@
                 <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">IF
                   Will Business?</span></span><span style="font-family:'EB Garamond, serif'"></span></p>-->
               <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null && userDetails.provideYourLovedOnes.business_interest === '1'">
-                <span style="font-family:'EB Garamond, serif'">(21)</span><span style="font-family:'EB Garamond, serif'"><b>	</b></span><span style="font-family:'EB Garamond, serif'">To
+                <span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)</span><span style="font-family:'EB Garamond, serif'"><b>	</b></span><span style="font-family:'EB Garamond, serif'">To
                 continue the operation of, sell, or liquidate any business or
                 interest in any business that I or my estate may own, at any time, on
                 any terms, and in any manner as my </span><span ><span style="font-family:'EB Garamond, serif'">
@@ -1530,20 +1636,9 @@
                 <br/>
 
               </p>
-              <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">END
-                IF</span></span><span style="font-family:'EB Garamond, serif'"></span></p>-->
-              <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">IF
-                Will Farm?</span></span><span style="font-family:'EB Garamond, serif'"></span></p>-->
-              <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null && userDetails.provideYourLovedOnes.farm_or_ranch === '1'">
-                <span *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null && userDetails.provideYourLovedOnes.business_interest === '1'">
-                  <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"><b>	</b></span><span style="font-family:'EB Garamond, serif'">(21)</span>
-                </span>
-                <span *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null && userDetails.provideYourLovedOnes.business_interest === '0'">
-                  <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b>	</b></span><span style="font-family:'EB Garamond, serif'">(22)</span>
-                </span>
-                <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b>		</b></span><span style="font-family:'EB Garamond, serif'">To
+              
+              <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null && userDetails.provideYourLovedOnes.farm_or_ranch === '1'">
+                <span ><span style="font-family:'EB Garamond, serif'">(<span class="articleNumber"></span>)</span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b>		</b></span><span style="font-family:'EB Garamond, serif'">To
                 continue to hold, operate, sell, purchase, acquire, invest in, or
                 liquidate any farming or ranching property, or any interest that I or
                 my estate may own in farming or ranching property, at any time, on
@@ -1552,7 +1647,8 @@
                     {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
                   </span>
                 </span></span><span style="font-family:'EB Garamond, serif'">
-                deems advisable and in the best interests of my estate.</span></p>
+                deems advisable and in the best interests of my estate.</span>
+              </p>
               <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
                 <br/>
 
@@ -1614,12 +1710,41 @@
                 death to my estate or to a trust created by me or established for my
                 benefit.  </span>
                 <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Oregon'">
-                <span ><span style="font-family:'EB Garamond, serif'">
-                </span></span><span style="font-family:'EB Garamond, serif'">As
-                used in this Will, the term “Estate tax” shall include any
-                “Inheritance Tax” imposed on the Estate of a decedent pursuant to
-                  Chapter 118 of the Oregon Revised Statutes.  </span></span><span ><span style="font-family:'EB Garamond, serif'">
-              </span></span><span style="font-family:'EB Garamond, serif'"></span></p>
+                  <span style="font-family:'EB Garamond, serif'">As
+                    used in this Will, the term “Estate tax” shall include any
+                    “Inheritance Tax” imposed on the Estate of a decedent pursuant to
+                      Chapter 118 of the Oregon Revised Statutes.  </span>
+                </span>
+
+                <span class="western" align="justify" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.marital_status === 'M'">
+                    <span style="font-family:'EB Garamond, serif'">To the extent and in the manner
+                    authorized by §2010(c)(2) of the Internal Revenue Code (the “Code”)
+                    and any applicable regulations thereto, my </span>
+                    
+                    <span>
+                      <span style="font-family:'EB Garamond, serif'">
+                        <span *ngIf="userDetails !== undefined && userDetails.state !== null">
+                          {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
+                        </span>
+                      </span>
+                    </span>
+                    <span style="font-family:'EB Garamond, serif'">
+                    is specifically authorized to elect the allocation to my spouse of
+                    any unused portion of my “applicable exclusion amount” for
+                    federal Estate tax purposes.  It is my intent that my </span>
+                    <span>
+                      <span style="font-family:'EB Garamond, serif'">
+                        <span *ngIf="userDetails !== undefined && userDetails.state !== null">
+                          {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
+                        </span>
+                      </span>
+                    </span>
+                    <span style="font-family:'EB Garamond, serif'">
+                    may affirmatively elect “portability” of the “deceased spousal
+                    unused exclusion amount” [as said term is defined in §2010(c)(4)
+                    of the Code] pursuant to §2010(c)(5)(A) of the Code.</span>
+                  </span>
+              </p>
               <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
                 <br/>
 
@@ -1627,24 +1752,7 @@
               <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
                 <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">IF
                 (Marital Status = &quot;Married&quot;)</span></span><span style="font-family:'EB Garamond, serif'"></span></p>-->
-              <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.marital_status === 'M'">
-                <span style="font-family:'EB Garamond, serif'">To the extent and in the manner
-                authorized by §2010(c)(2) of the Internal Revenue Code (the “Code”)
-                and any applicable regulations thereto, my </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-                    {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
-                  </span>
-                </span></span><span style="font-family:'EB Garamond, serif'">
-                is specifically authorized to elect the allocation to my spouse of
-                any unused portion of my “applicable exclusion amount” for
-                federal Estate tax purposes.  It is my intent that my </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-                    {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
-                  </span>
-                </span></span><span style="font-family:'EB Garamond, serif'">
-                may affirmatively elect “portability” of the “deceased spousal
-                unused exclusion amount” [as said term is defined in §2010(c)(4)
-                of the Code] pursuant to §2010(c)(5)(A) of the Code.</span></p>
+              
             <!-- <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
                 <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">END
                 IF</span></span><span style="font-family:'EB Garamond, serif'"></span></p>-->
@@ -1709,51 +1817,69 @@
               <span style="font-family:'EB Garamond, serif'"><b>F.	Compensation of
               </b></span><span ><span style="font-family:'EB Garamond, serif'"><b>
                   <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-                    {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
+                    {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}.
                   </span>
               </b></span></span>
                 <span  *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null && userDetails.provideYourLovedOnes.is_getcompensate === '1'">
-                <span style="font-family:'EB Garamond, serif'"><b></b></span><span style="font-family:'EB Garamond, serif'">.
-                  </span><span ><span style="font-family:'EB Garamond, serif'">IF
-                  Exec-Comp?</span></span><span style="font-family:'EB Garamond, serif'"> In
+                
+                <span style="font-family:'EB Garamond, serif'"> In
                   addition to reimbursement for all necessary expenses incurred in the
-                  administration of my estate and the discharge of my </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-                    {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
+                  administration of my estate and the discharge of my </span>
+                  
+                  <span>
+                    <span style="font-family:'EB Garamond, serif'">
+                      <span *ngIf="userDetails !== undefined && userDetails.state !== null">
+                        {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}'s
+                      </span>
+                    </span>
                   </span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">’s
-                  duties, I direct that my </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-                    {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
+                  
+                  <span style="font-family:'EB Garamond, serif'">
+                  duties, I direct that my </span>
+                  
+                  <span>
+                    <span style="font-family:'EB Garamond, serif'">
+                      <span *ngIf="userDetails !== undefined && userDetails.state !== null">
+                        {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
+                      </span>
+                    </span>
                   </span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">
+                  
+                  <span style="font-family:'EB Garamond, serif'">
                   be entitled to reasonable compensation from the net value of my
                   Estate for services in the administration of my Estate, which amount
                   shall be equally divided between the </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span *ngIf="userDetails !== undefined && userDetails.state !== null">
                     {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
                   </span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">
+                  </span></span>
+                  
+                  <span style="font-family:'EB Garamond, serif'">
                   and any successor </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-                    {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
+                    {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}.
                   </span>
                   </span></span></span>
                   <span  *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null && userDetails.provideYourLovedOnes.is_getcompensate === '0'">
-                  <span style="font-family:'EB Garamond, serif'">.</span><span ><span style="font-family:'EB Garamond, serif'">
-                  </span></span><span style="font-family:'EB Garamond, serif'">  It is
-                  my desire that my </span><span ><span style="font-family:'EB Garamond, serif'">
-                  <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-                    {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
+                  <span style="font-family:'EB Garamond, serif'"> It is
+                  my desire that my </span>
+                  
+                  <span>
+                    <span style="font-family:'EB Garamond, serif'">
+                    <span *ngIf="userDetails !== undefined && userDetails.state !== null">
+                      {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
+                    </span>
+                    </span>
                   </span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">
+                  
+                  <span style="font-family:'EB Garamond, serif'">
                   serve without compensation from my Estate, and shall only be entitled
                   to reimbursement for all necessary expenses incurred in the
                   administration of my estate and the discharge of my </span><span ><span style="font-family:'EB Garamond, serif'">
                   <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-                    {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
+                    {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}'s
                   </span>
-              </span></span><span style="font-family:'EB Garamond, serif'">’s
+              </span></span><span style="font-family:'EB Garamond, serif'">
                   duties. </span></span><span ><span style="font-family:'EB Garamond, serif'">
               </span></span><span style="font-family:'EB Garamond, serif'"></span></p>
               <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
@@ -1826,53 +1952,7 @@
 
           <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
             <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
-              <!--<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">IF
-                  State = &quot;Washington&quot;</span></span><span style="font-family:'EB Garamond, serif'"></span></p>-->
-            <!-- <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Washington'">
-                <span style="font-family:'EB Garamond, serif'"><b>G.	Court Intervention.</b></span><span style="font-family:'EB Garamond, serif'">
-                I intend that my Estate be managed, administered, distributed, and
-                settled without Court intervention to the maximum extent permissible
-                by law, and that the Court grant Nonintervention Powers pursuant to
-                §11.68.011 of the Revised Code of Washington.</span></p>
-              &lt;!&ndash;<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">ELSE
-                IF State = &quot;Georgia&quot;</span></span><span style="font-family:'EB Garamond, serif'"></span></p>&ndash;&gt;
-              <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Georgia'">
-                <span style="font-family:'EB Garamond, serif'"><b>G.	Court Supervision</b></span><span style="font-family:'EB Garamond, serif'">.
-                  Pursuant to §53-7-33 and §53-7-69 of the Official Code of Georgia
-                  Annotated, I hereby relieve my </span><span ><span style="font-family:'EB Garamond, serif'">
-                      <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-                        {{userDetails.state.executor_title !== null && userDetails.state.executor_title !== undefined && userDetails.state.executor_title !== '' ? userDetails.state.executor_title : '____________'}}
-                      </span>
-                  </span></span><span style="font-family:'EB Garamond, serif'">
-                  from all reporting requirements in the administration of my Estate.
-                  I intend that my Estate be administered and settled with the minimum
-                  Court intervention permitted by law.</span></p>
-              &lt;!&ndash;<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">ELSE
-                  IF State = &quot;Texas&quot;</span></span><span style="font-family:'EB Garamond, serif'"></span></p>&ndash;&gt;
-              <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Texas'">
-                <span style="font-family:'EB Garamond, serif'"><b>G.	Court Supervision</b></span><span style="font-family:'EB Garamond, serif'">.
-                Pursuant to Subtitle I of Title 2 of the Texas Estates Code, I direct
-                that no other action shall be had in the probate court in relation to
-                the administration and settlement of my Estate other than the
-                probating and recording of this Last Will and Testament, and the
-                return of any required inventory, appraisement and list of claims of
-                my Estate.</span></p>
-              &lt;!&ndash;<p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">ELSE</span></span><span style="font-family:'EB Garamond, serif'"></span></p>&ndash;&gt;
-              <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && (userDetails.tellUsAboutYou.state !== 'Washington' && userDetails.tellUsAboutYou.state !== 'Georgia' && userDetails.tellUsAboutYou.state !== 'Texas')">
-                <span style="font-family:'EB Garamond, serif'"><b>G.	Court Supervision</b></span><span style="font-family:'EB Garamond, serif'">.
-                I intend that my Estate administration be unsupervised and settled
-                with the minimum Court intervention permitted by law.</span></p>
-            &lt;!&ndash; <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                <span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">END
-                  IF</span></span><span style="font-family:'EB Garamond, serif'"></span></p>&ndash;&gt;
-              <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                <br/>
-
-              </p>-->
+             
               <p class="western"  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; text-align:center;">
                 <span style="font-family:'EB Garamond, serif'"><span size="5" style="font-size: 18pt"><b>ARTICLE
                 V: GENERAL PROVISIONS<br/>
@@ -1942,28 +2022,39 @@
                   the extent permitted under the laws of the </span>
                 </span>
                 <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'District of Columbia'">
-                <span ><span style="font-family:'EB Garamond, serif'">
-                </span></span><span style="font-family:'EB Garamond, serif'"> District
-                  of Columbia </span></span>
+                  <span style="font-family:'EB Garamond, serif'"> District
+                  of Columbia 
+                  </span>
+                </span>
                 <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && (userDetails.tellUsAboutYou.state === 'Massachusetts' || userDetails.tellUsAboutYou.state === 'Virginia' || userDetails.tellUsAboutYou.state === 'Kentucky' || userDetails.tellUsAboutYou.state === 'Pennsylvania')">
-                <span ><span style="font-family:'EB Garamond, serif'">
-                </span></span><span style="font-family:'EB Garamond, serif'">Commonwealth of
-                </span><span ><span style="font-family:'EB Garamond, serif'">
-                      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
-                      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+                
+                <span style="font-family:'EB Garamond, serif'">Commonwealth of
+                </span>
+                
+                <span>
+                  <span style="font-family:'EB Garamond, serif'">
+                      <span style="text-transform: capitalize" 
+                      *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}},</span>
+                      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
                 </span></span></span><span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'"></span></span>
                 <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && (userDetails.tellUsAboutYou.state !== 'Massachusetts' && userDetails.tellUsAboutYou.state !== 'Virginia' && userDetails.tellUsAboutYou.state !== 'Kentucky' && userDetails.tellUsAboutYou.state !== 'Pennsylvania' && userDetails.tellUsAboutYou.state !== 'District of Columbia')">
                 <span style="font-family:'EB Garamond, serif'"> State
-                of </span><span ><span style="font-family:'EB Garamond, serif'">
-                      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
-                      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-                </span></span></span><span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">
-                </span></span><span style="font-family:'EB Garamond, serif'">, </span>
+                of </span>
+                
+                <span>
+                  <span style="font-family:'EB Garamond, serif'">
+                      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}, </span>
+                      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________, </span>
+                  </span>
+                </span>
+                </span>
+                
+                <span style="font-family:'EB Garamond, serif'"> </span>
                 <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'California'">
                 <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'">Pursuant
                 to §21310, </span><span style="font-family:'EB Garamond, serif'"><i>et seq</i></span><span style="font-family:'EB Garamond, serif'">.,
                   of the California Probate Code</span></span><span ><span style="font-family:'EB Garamond, serif'">
-                </span></span><span style="font-family:'EB Garamond, serif'">, in the event any
+                </span></span><span style="font-family:'EB Garamond, serif'"> in the event any
                 person or persons named as beneficiary or disinherited hereunder
                 commence any proceeding to challenge the dispositions in this Will,
                 or contest in any Court the validity of this Will or any of its
@@ -2185,24 +2276,19 @@
                 MIDDLE NAME</span></span><span size="2" style="font-size: 10pt">
                 </span><span ><span size="2" style="font-size: 10pt">CLIENT
                 LAST NAME</span></span>-->
-                <span size="2" style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize;font-size: 10pt" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-                <span size="2" style="font-family:'EB Garamond ExtraBold, serif';font-size: 10pt" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-              <span size="2" style="font-size: 10pt">, the
+                <span size="2" style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize;font-size: 10pt" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+                <span size="2" style="font-family:'EB Garamond ExtraBold, serif';font-size: 10pt" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+              <span size="2" style="font-size: 10pt"> the
               testator, and _________________________________________, as witness,
               and _____________________________________, as witness, who personally
               appeared on this  _________ day of  ________________________________,
               _______, and who are personally known to me or who have produced
               satisfactory photo identification, and whose names are signed to the
               foregoing instrument and, all of these persons being under oath and
-              by me first duly sworn, </span><!--<span ><span size="2" style="font-size: 10pt">CLIENT
-                FIRST NAME</span></span><span size="2" style="font-size: 10pt">
-                </span><span ><span size="2" style="font-size: 10pt">CLIENT
-                MIDDLE NAME</span></span><span size="2" style="font-size: 10pt">
-                </span><span ><span size="2" style="font-size: 10pt">CLIENT
-                LAST NAME</span></span>-->
-                <span size="2" style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize;font-size: 10pt" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-                <span size="2" style="font-family:'EB Garamond ExtraBold, serif';font-size: 10pt" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-              <span size="2" style="font-size: 10pt">, the
+              by me first duly sworn, </span>
+                <span size="2" style="font-family:'EB Garamond ExtraBold, serif';text-transform: capitalize;font-size: 10pt" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+                <span size="2" style="font-family:'EB Garamond ExtraBold, serif';font-size: 10pt" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+              <span size="2" style="font-size: 10pt"> the
               testator, declared to me and to the witnesses in my presence that the
               instrument is </span><span ><span size="2" style="font-size: 10pt">
                   <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'his' : 'her' ): 'his' }}</span>
@@ -2478,6 +2564,7 @@
             
           </div>
 
+        </div>
         </div>
       </div>
     
