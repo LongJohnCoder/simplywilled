@@ -75,18 +75,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
             this.showProgressBar = true;
           }
         });
-        this.tourSub = this.userService.stepNumForTourGuide.subscribe(value => {
-          this.stepNumber = value;
-        });
-        //this.userService.stepNumForTourGuide.next(1);
-
-        // if(localStorage.getItem('newUser') == '1'){
-        //   this.stepNumber = 1;
-        //   localStorage.removeItem('newUser');
-        // }else{
-        //   this.stepNumber = 0;
-        // }
-        this.stepNumber = 0;
     }
 
     /**Initialises the form**/
@@ -97,16 +85,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
         'email': new FormControl(''),
       });
     }
-
-    // ngOnChanges() {
-    //   this.tourSubscription = this.userService.tour.subscribe(
-    //     (currentVal: number) => {
-    //       if (currentVal !== this.tourStapes) {
-    //         this.tourStapes = currentVal;
-    //       }
-    //     }
-    //   );
-    // }
 
     /**When the component is initialised*/
     ngOnInit() {
@@ -121,6 +99,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
           },
         (error) =>  {console.log(error); }
       );
+
+      setTimeout(() => {
+        this.tourSub = this.userService.stepNumForTourGuide.subscribe(value => {
+          this.stepNumber = value;
+        });
+      }, 200);
     }
 
     // nextStep(){

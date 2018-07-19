@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnDestroy} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
+import { UserService } from '../../../user.service';
 
 declare function cartstack_updatecart(e): any;
 declare var dataLayer: any;
@@ -11,7 +12,7 @@ declare var dataLayer: any;
   templateUrl: './thank-you.component.html',
   styleUrls: ['./thank-you.component.css']
 })
-export class ThankYouComponent implements OnInit {
+export class ThankYouComponent implements OnInit, OnDestroy {
   @Input() data: any;
   @Input() package_name: string;
 
@@ -19,12 +20,18 @@ export class ThankYouComponent implements OnInit {
     count = 10;
     timerSubscription: Subscription;
   constructor(
-      private router: Router
+      private router: Router,
+      private userService: UserService
   ) {}
 
   ngOnInit() {
       // console.log(this.data);
       this.initialize();
+  }
+
+  navigateTODashboard() {
+    // localStorage.removeItem('newUser');
+    this.router.navigate(['/dashboard']);
   }
 
   initialize() {
@@ -35,7 +42,7 @@ export class ThankYouComponent implements OnInit {
     _cartstack_update.push(['setAPI', 'confirmation']);
     _cartstack_update.push(['setCartTotal', this.data != null && this.data.amount != null ? this.data.amount : null]);
     cartstack_updatecart(_cartstack_update);
-    localStorage.setItem('newUser', '1');
+    // localStorage.setItem('newUser', '1');
     /* end */
     /* google tagmanager datalayer settings  */
     dataLayer.push({
@@ -61,6 +68,17 @@ export class ThankYouComponent implements OnInit {
             }
         }
     );
+  }
+
+  changeTourState(type: string){
+    this.userService.changeStepNumber(type);
+  }
+
+  ngOnDestroy() {
+      if(this.timerSubscription !== undefined) {
+        this.timerSubscription.unsubscribe();
+      }
+      this.changeTourState('forward');
   }
 
 }
