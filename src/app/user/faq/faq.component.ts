@@ -27,7 +27,8 @@ export class FaqComponent implements OnInit {
 
     ngOnInit() {
         this.searchFaqQstn = this._route.snapshot.queryParamMap['params'].query;
-        // console.log(this.searchFaqQstn);
+        this.searchParam  = this.searchFaqQstn;
+        console.log(this.searchParam);
         this.getFaqCategories();
     }
 
@@ -118,7 +119,7 @@ export class FaqComponent implements OnInit {
     }
 
     searchFaq(e) {
-        if (this.searchParam === '') {
+        if (this.searchParam === '' || this.searchParam === null || this.searchParam === undefined) {
             this.faqDetails = this.getQuestions(this.faqData, this.counter);
         } else {
             const questionArray = [];

@@ -14,7 +14,7 @@
     <div class="body_container faq">
     	<div class="about_sec1">
         	<div class="wrapper text-center">
-            	<form id="faqSearch" #form="ngForm" (ngSubmit)="onSubmit(form)">
+            	<form id="faqSearch" #form="ngForm" (ngSubmit)="onSubmit(form)" (keydown.enter)="$event.preventDefault()">
                         <input type="text" placeholder="Write your question here" name="search" ngModel #search=ngModel class="form-control"
                                [(ngModel)]="searchParam" (keyup)="searchFaq($event)"
                         >
