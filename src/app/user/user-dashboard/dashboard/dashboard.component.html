@@ -19,7 +19,7 @@
                             <!--<a [routerLink]="['/dashboard/subscribed-package']" class="myAccount"><i class="fa fa-shopping-bag leftIcon"></i> <span>Packages</span></a>-->
                         </span>
                     </div>
-                    <app-global-tour [stepNumber]='stepNumber' class="pop1" *ngIf="stepNumber == 10"></app-global-tour>
+                    <app-global-tour [stepNumber]='stepNumber' class="pop2" *ngIf="stepNumber == 10"></app-global-tour>
                     
                     <!-- <div class="tourGuide pop2" *ngIf="stepNumber == 10">
                         <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
@@ -37,7 +37,7 @@
                     <button class="btn common-button green-btn logOut" (click)="onLogOut()" [ngClass]="{'tourSpot' : stepNumber == 11}">Logout</button>
                     
                     <!-- <app-global-toor *ngIf="stepNumber == 11"></app-global-toor> -->
-                    <app-global-tour [stepNumber]='stepNumber' class="pop1" *ngIf="stepNumber == 11"></app-global-tour>
+                    <app-global-tour [stepNumber]='stepNumber' class="pop3" *ngIf="stepNumber == 11"></app-global-tour>
 
                     <!-- <div class="tourGuide pop3" *ngIf="stepNumber == 11">
                         <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
@@ -133,7 +133,7 @@
                         <span class="imp"><img src="../../../../assets/images/owl.png"></span>
                         <a (click)="changeTourState('forward')" [routerLink]="['/dashboard/will']">Take a tour</a>
                     </div>
-                    <span class="tourGuideArea">
+                    <span class="tourGuideArea referArea">
                     <div class="notification" [ngClass]="{'tourSpot' : stepNumber == 9}">
                         <!-- <span class="imp"><img src="../../../../assets/images/owl.png"></span> -->
                         <!--<p [@fadeInOut]="fadeState">They’ll be notified via e-mail at the address you provided.</p>-->
@@ -174,7 +174,7 @@
                     </div>
 
                     <!-- <app-global-toor *ngIf="stepNumber == 9"></app-global-toor> -->
-                    <app-global-tour [stepNumber]='stepNumber' class="pop1" *ngIf="stepNumber == 9"></app-global-tour>
+                    <app-global-tour [stepNumber]='stepNumber' class="pop4" *ngIf="stepNumber == 9"></app-global-tour>
 
                     <!-- <div class="tourGuide pop1" *ngIf="stepNumber == 9">
                             <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>

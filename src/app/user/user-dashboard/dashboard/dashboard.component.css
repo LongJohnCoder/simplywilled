@@ -314,7 +314,7 @@ header{
     border: 1px solid #DEDEDE !important;
     background: #F2F2F2 !important;
     box-shadow: inset 0 0 2px 0px #EDEDED !important;
-    width: 90%;
+    width: calc(100% - 113px) !important;
     float: left !important;
     position: relative !important;
 }
@@ -491,6 +491,12 @@ header{
     .contactus span.number {
         font-size: 25px;
     }
+    .btn-dashboard, .btn-preview{
+        width: 100%;
+    }
+    .sidebar-body ul li{
+        padding: 20px 10px;
+    }
 }
 @media screen and (max-width: 991px){
     header .common-button {
@@ -539,6 +545,10 @@ header{
         margin-bottom: 15px;
         padding: 0 15px;
         box-sizing: border-box;
+    }
+    .referArea{
+        display: block;
+        width: 100%;
     }
 }
 

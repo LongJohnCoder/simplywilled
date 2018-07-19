@@ -2952,23 +2952,27 @@ app-paypal-success, app-payment-page, app-packages{
     padding: 10px;
     top:100%;
     left: -6px;
-    margin-top: 25px;;
+    margin-top: 15px;;
     min-width: 260px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.5);
 }
-.tourGuide.pop1{
+.pop1 .tourGuide{
     margin-top: 0;
     left: 20px;
 }
-.tourGuide.pop2{
+.pop2 .tourGuide{
     margin-top: 100px;
     left: -370px !important;
     text-align: left;
 }
-.tourGuide.pop3{
+.pop3 .tourGuide{
     margin-top: 50px;
     left: -100% !important;
     text-align: left;
+}
+.pop4 .tourGuide{
+    left: 0;
+    margin-top: 0;
 }
 .tourGuide::after{
     content: "";
@@ -2981,7 +2985,7 @@ app-paypal-success, app-payment-page, app-packages{
     border-right: 10px solid rgba(0,0,0,0);
     border-top: none;
 }
-.tourGuide.pop3::after{
+.pop3 .tourGuide::after{
     left: unset;
     right: 16px;
 }
@@ -3003,7 +3007,7 @@ app-paypal-success, app-payment-page, app-packages{
     top: -10px;
     cursor: pointer;
 }
-.tourGuide.pop3 .closeTour{
+.pop3 .tourGuide .closeTour{
     right: unset;
     left: -10px;
 }
@@ -3071,7 +3075,6 @@ app-global-tooltip.step6 .customTooltip{
     margin: 0px 1px 15px;
 }
 
-
 @media screen and (max-width: 820px){
     #dataTable_wrapper .row:first-child .col-sm-12.col-md-6{
         width: 100%;
@@ -3107,5 +3110,64 @@ app-global-tooltip.step6 .customTooltip{
     app-healthcare-poa-doc,
     app-final-disposition-doc{
         width: 100%;
+    }
+    .pop1 .tourGuide {
+        margin-top: 12px;
+        left: 0;
+    }
+    .pop1 .tourGuide::after{
+        left: 50%;
+    }
+    .tourGuideArea{
+        display: block;
+    }
+    .pop5 .tourGuide{
+        left: unset;
+        right: 0;
+    }
+    .pop5 .tourGuide::after{
+        left: unset;
+        right: 10px;
+    }
+    .pop5 .tourGuide .closeTour{
+        left: -10px;
+        right: unset;
+    }
+    .pop2 .tourGuide {
+        margin-top: 100px;
+        left: 0 !important;
+    }
+    .pop3 .tourGuide {
+        margin-top: 20px;
+        left: 0 !important;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .pop6 .tourGuide{
+        left: -100px;
+    }
+    .pop6 .tourGuide::after{
+        left: 50%;
+    }
+}
+
+@media screen and (max-width: 420px){
+    .pop2 .tourGuide {
+        margin-top: 10px;
+    }
+    .pop3 .tourGuide::after{
+        right: 45%;
+    }
+}
+
+@media screen and (max-width: 397px){
+    .pop5 .tourGuide {
+        left: unset;
+        right: -90px;
+    }
+    .pop5 .tourGuide::after {
+        left: unset;
+        right: 44%;
     }
 }
