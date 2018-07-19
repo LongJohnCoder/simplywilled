@@ -15,7 +15,7 @@
   <ul class="paymentDetails">
     <li>
       <p>Transaction ID</p>
-      <p>{{data.payment_token}}</p>
+      <p>{{ data != null && data.payment_token !== null ? data.payment_token : ''}}</p>
     </li>
     <li>
       <p>Package</p>
@@ -23,15 +23,15 @@
     </li>
     <li>
       <p>Amount</p>
-      <p>${{data.amount}}</p>
+      <p>${{data != null && data.amount !== null && data.amount !== undefined ? data.amount : ''}}</p>
     </li>
     <li>
       <p>Payment Status</p>
-      <p class="green">{{data.payment_status === '2' ? 'Success' : 'Failed'}}</p>
+      <p [ngClass]="{'green': data != null && data.payment_status != null && data.payment_status === 2}">{{ data != null && data.payment_status != null && data.payment_status === '2' ? 'Success' : 'Failed'}}</p>
     </li>
     <li>
       <p>Payment Date</p>
-      <p>{{data.updated_at | date}}</p>
+      <p>{{ data != null && data.updated_at != null ?  data.updated_at : '' | date}}</p>
     </li>
   </ul>
 <!--</div>-->

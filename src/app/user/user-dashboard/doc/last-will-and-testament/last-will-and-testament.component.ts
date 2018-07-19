@@ -110,7 +110,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
       private location: Location
     ) {
     this.tourSub = this.userService.stepNumForTourGuide.subscribe(value => {
-      this.stepNumber = value 
+      this.stepNumber = value;
     });
 
     this.loggedInUser = this.userAuth.getUser();
@@ -163,7 +163,8 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
             toMultipleBeneficiary: null
           };
 
-          this.userDetails.toMultipleBeneficiary = response.data.estateDistribute.to_multiple_beneficiary !== null 
+          // tslint:disable-next-line:max-line-length
+          this.userDetails.toMultipleBeneficiary =  response.data.estateDistribute !== null && response.data.estateDistribute.to_multiple_beneficiary !== null
                                                     ? JSON.parse(response.data.estateDistribute.to_multiple_beneficiary)
                                                     : null;
           // tslint:disable-next-line:max-line-length
@@ -212,6 +213,8 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
               _mb: response.data.estateDistribute.to_multiple_beneficiary !== null && response.data.estateDistribute.to_multiple_beneficiary !== undefined ? JSON.parse(response.data.estateDistribute.to_multiple_beneficiary)[0] : null,
             } ;
           }
+
+          // console.log(this.giftStatements.pageLength.length);
           // console.log('childrens : ', this.userDetails.children);
           // console.log(this.estateDistribute);
         }
