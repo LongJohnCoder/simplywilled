@@ -42,13 +42,11 @@ export class HomeComponent implements OnInit {
   }
 
   showIncluded(){
-    
     if(this.whatIncl == true && this.whatIncl2 == true){
         this.whatIncl2 = false;
     }else{
         this.whatIncl = !this.whatIncl;
     }
-    
   }
   showIncluded2(){
     this.whatIncl2 = !this.whatIncl2;

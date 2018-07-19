@@ -8,7 +8,8 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
   styleUrls: ['./packages.component.css']
 })
 export class PackagesComponent implements OnInit {
-  whatIncl: boolean;
+    public whatIncl : boolean = false;
+    public whatIncl2 : boolean = false;
   userId: string;
   token: string;
   data: any;
@@ -48,8 +49,18 @@ export class PackagesComponent implements OnInit {
       this.respType = false;
   }
 
-  showIncluded() {
-    this.whatIncl = !this.whatIncl;
+  showIncluded(){
+    if(this.whatIncl == true && this.whatIncl2 == true){
+        this.whatIncl2 = false;
+    }else{
+        this.whatIncl = !this.whatIncl;
+    }
+  }
+  showIncluded2(){
+    this.whatIncl2 = !this.whatIncl2;
+    if(this.whatIncl2 == true){
+        this.whatIncl = true;
+    }
   }
 
   getPackages() {

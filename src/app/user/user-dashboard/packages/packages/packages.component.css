@@ -28,6 +28,8 @@
 }
 .book_sec_main{
     box-shadow: 0px 4px 7px rgba(0,0,0,.1);
+    border: 1px solid #e0e0e0;
+    border-top: 0;
 }
 .book_main {
     width: 350px;
@@ -67,6 +69,9 @@ span.bestValue img {
     float: left;
     width: 100%;
 }
+.single_pkg{
+  top: 0;
+}
 .promoCode input[type="text"] {
     border: 1px solid #d0d0d0;
     border-radius: 5px;
@@ -82,7 +87,7 @@ span.bestValue img {
   box-shadow: none;
 }
 .pkg_benefits_ul > li, .include_ul > li{
-  padding: 17px 10px;
+  padding: 12px 10px;
   height: auto;
   min-height: auto;
 }
@@ -243,7 +248,7 @@ span.bestValue img {
   width: 344px;
 }
 .book_price{
-  color: #333;
+  color: #256290;
 }
 .whats_included_text{
   padding-left: 15px;
@@ -254,6 +259,9 @@ span.bestValue img {
 }
 .couponresp_invalid{
     color: red;
+}
+.single_text_heading{
+  top: 0;
 }
 
 @media screen and (max-width: 1200px){
@@ -298,6 +306,15 @@ span.bestValue img {
     margin-right: -281px;
     width: 270px;
   }
+  .featureSwich2{
+    transform: translateX(5px);
+  }
+  .featureSwich, .featureSwich2{
+    margin-left: 46%;
+  }
+  .faster_text{
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-width: 768px){
@@ -320,7 +337,7 @@ span.bestValue img {
 
 @media screen and (max-width: 480px) {
   .single_will_book img{
-    width: 90px;
+    width: 132px;
   }
   .book_main{
     width: 216px;
@@ -342,6 +359,16 @@ span.bestValue img {
     font-size: 28px;
     padding-top: 0;
   }
+  .book_sec_main{
+    min-height: 370px;
+  }
+  .pkg_benefits_ul > li, .include_ul > li{
+    padding: 7px 10px;
+  }
+  .payPal {
+    width: auto;
+    margin-top: 76px;
+}
 }
 
 @media screen and (max-width: 400px){
