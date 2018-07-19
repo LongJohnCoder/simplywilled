@@ -20,7 +20,7 @@
 </script>
 <div id="footer">
 	<div style="">
-		Power of Attorney of <br>{{$tellUsAboutYou['fullname']}}<br>
+		New York Statutory Short Form of <br>{{$tellUsAboutYou['fullname']}}<br>
 	</div>
 </div>
 
