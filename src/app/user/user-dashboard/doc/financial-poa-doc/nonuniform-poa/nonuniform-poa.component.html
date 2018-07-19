@@ -24,23 +24,23 @@
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif';">I, </span><span style="font-family:'Times New Roman, serif';"><b>
         
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      </b></span><span style="font-family:'Times New Roman, serif';">,
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+      </b></span><span style="font-family:'Times New Roman, serif';">
       of </span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
-          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? userDetails.tellUsAboutYou.address : '_______________________'}}</span>
-          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      </span></span><span style="font-family:'Times New Roman, serif';">,
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? userDetails.tellUsAboutYou.address : '_______________________'}},</span>
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+      </span></span><span style="font-family:'Times New Roman, serif';">
       </span>
       <span style="font-family:'Times New Roman, serif';"></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      </span></span><span style="font-family:'Times New Roman, serif';">,
-      </span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}},</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
       </span></span><span style="font-family:'Times New Roman, serif';">
-      , intend to create a </span>
+      </span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}},</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+      </span></span><span style="font-family:'Times New Roman, serif';">
+       intend to create a </span>
       <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
           <span color="#008f00"><span style="font-family:'Times New Roman, serif';">
             </span></span><span style="font-family:'Times New Roman, serif';">Durable</span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">
@@ -137,9 +137,8 @@
       <span style="font-family:'Times New Roman, serif';">(6) 	Your agent is entitled to
         reasonable compensation unless you state otherwise in the Special
         Instructions.</span></p>
-    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
+    <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/></p>
 
-    </p>
   </div>
   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
@@ -242,19 +241,19 @@
       of Agent</b></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">.
       I hereby designate and appoint </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">my</span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">
       </span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
-        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null && financialPOA.attorney_holders.relationship !== 'Other'"> {{financialPOA.attorney_holders.relationship !== null && financialPOA.attorney_holders.relationship !== undefined ? financialPOA.attorney_holders.relationship : '_______________________'}} </span>
-        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null && financialPOA.attorney_holders.relationship === 'Other'"> {{financialPOA.attorney_holders.other_relationship !== null && financialPOA.attorney_holders.other_relationship !== undefined ? financialPOA.attorney_holders.other_relationship : '_______________________'}} </span>
-        <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
-      </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">,
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null && financialPOA.attorney_holders.relationship !== 'Other'"> {{financialPOA.attorney_holders.relationship !== null && financialPOA.attorney_holders.relationship !== undefined ? financialPOA.attorney_holders.relationship : '_______________________'}}, </span>
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null && financialPOA.attorney_holders.relationship === 'Other'"> {{financialPOA.attorney_holders.other_relationship !== null && financialPOA.attorney_holders.other_relationship !== undefined ? financialPOA.attorney_holders.other_relationship : '_______________________'}}, </span>
+        <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________, </span>
+      </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">
       </span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
-       <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.fullname !== null && financialPOA.attorney_holders.fullname !== undefined ? financialPOA.attorney_holders.fullname : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
-      </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">,
+       <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.fullname !== null && financialPOA.attorney_holders.fullname !== undefined ? financialPOA.attorney_holders.fullname : '_______________________'}}, </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________, </span>
+      </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">
       of </span></span><span style="font-family:'Times New Roman, serif';"></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">
-        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.address !== null && financialPOA.attorney_holders.address !== undefined ? financialPOA.attorney_holders.address : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
-      </span></span><span style="font-family:'Times New Roman, serif';">,
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.address !== null && financialPOA.attorney_holders.address !== undefined ? financialPOA.attorney_holders.address : '_______________________'}}, </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________, </span>
+      </span></span><span style="font-family:'Times New Roman, serif';">
       </span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">
-        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.city !== null && financialPOA.attorney_holders.city !== undefined ? financialPOA.attorney_holders.city : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
-      </span></span><span style="font-family:'Times New Roman, serif';">,
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.city !== null && financialPOA.attorney_holders.city !== undefined ? financialPOA.attorney_holders.city : '_______________________'}}, </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________, </span>
+      </span></span><span style="font-family:'Times New Roman, serif';">
       </span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">
         <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.state !== null && financialPOA.attorney_holders.state !== undefined ? financialPOA.attorney_holders.state : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
       </span></span><span style="font-family:'Times New Roman, serif';"></span><span color="#000000">
@@ -271,23 +270,23 @@
     <p align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"><span color="#000000"><span style="font-family:'Times New Roman, serif';"><b>Alternate
       Agent</b></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">.
       If said </span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
-        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.fullname !== null && financialPOA.attorney_backup.fullname !== undefined ? financialPOA.attorney_backup.fullname : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_holders.fullname !== null && financialPOA.attorney_holders.fullname !== undefined ? financialPOA.attorney_holders.fullname : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
       </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">
       is not available or becomes ineligible to act, or if I revoke their
       appointment or authority to act, then I designate my </span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
-        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null && financialPOA.attorney_backup.relationship !== 'Other'"> {{financialPOA.attorney_backup.relationship !== null && financialPOA.attorney_backup.relationship !== undefined ? financialPOA.attorney_backup.relationship : '_______________________'}} </span>
-        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null && financialPOA.attorney_backup.relationship === 'Other'"> {{financialPOA.attorney_backup.other_relationship !== null && financialPOA.attorney_backup.other_relationship !== undefined ? financialPOA.attorney_backup.other_relationship : '_______________________'}} </span>
-        <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
-      </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">,
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null && financialPOA.attorney_backup.relationship !== 'Other'"> {{financialPOA.attorney_backup.relationship !== null && financialPOA.attorney_backup.relationship !== undefined ? financialPOA.attorney_backup.relationship : '_______________________'}}, </span>
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null && financialPOA.attorney_backup.relationship === 'Other'"> {{financialPOA.attorney_backup.other_relationship !== null && financialPOA.attorney_backup.other_relationship !== undefined ? financialPOA.attorney_backup.other_relationship : '_______________________'}}, </span>
+        <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________, </span>
+      </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">
       </span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
         <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.fullname !== null && financialPOA.attorney_backup.fullname !== undefined ? financialPOA.attorney_backup.fullname : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
       </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">
       of </span></span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">
-        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.address !== null && financialPOA.attorney_backup.address !== undefined ? financialPOA.attorney_backup.address : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
-      </span></span><span style="font-family:'Times New Roman, serif';">,
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.address !== null && financialPOA.attorney_backup.address !== undefined ? financialPOA.attorney_backup.address : '_______________________'}}, </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________, </span>
+      </span></span><span style="font-family:'Times New Roman, serif';">
       </span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">
-        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.city !== null && financialPOA.attorney_backup.city !== undefined ? financialPOA.attorney_backup.city : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
-      </span></span><span style="font-family:'Times New Roman, serif';">,
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.city !== null && financialPOA.attorney_backup.city !== undefined ? financialPOA.attorney_backup.city : '_______________________'}}, </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________, </span>
+      </span></span><span style="font-family:'Times New Roman, serif';">
       </span><span color="#0000ff"><span style="font-family:'Times New Roman, serif';">
         <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.state !== null && financialPOA.attorney_backup.state !== undefined ? financialPOA.attorney_backup.state : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
       </span></span><span style="font-family:'Times New Roman, serif';"></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">
@@ -622,18 +621,18 @@
       communications and/or digital assets in which I have an interest when
       this Power is executed, or in which I later acquire an interest</span>
       <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== 'Oregon'">
-      <span color="#008f00"><span style="font-family:'Times New Roman, serif';"></span></span><span style="font-family:'Times New Roman, serif';">,
+      <span color="#008f00"><span style="font-family:'Times New Roman, serif';"></span></span><span style="font-family:'Times New Roman, serif';">
       including the power to access, continue, modify, or terminate
       existing accounts; create or change any “passwords” and/or “user
       identification profiles”. “Digital asset” means an electronic
       record in which an individual has a right or interest. “Digital
       asset” does not include an underlying asset or liability unless the
-      asset or liability is itself an electronic record </span></span>
+      asset or liability is itself an electronic record. </span></span>
       <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Oregon'">
       <span color="#008f00"><span style="font-family:'Times New Roman, serif';"></span></span><span style="font-family:'Times New Roman, serif';">
       pursuant to the Revised Uniform Fiduciary Access to Digital Assets
-      Act (2015), Chapter 19 ORS </span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">
-      </span></span><span style="font-family:'Times New Roman, serif';">.</span></span></p>
+      Act (2015), Chapter 19 ORS. </span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">
+      </span></span><span style="font-family:'Times New Roman, serif';"></span></span></p>
     <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
       <br/>
 
@@ -824,8 +823,8 @@
       the Civil Service Retirement System (CSRS), the Federal Employee
       Retirement System (FERS), the Federal Employees Group Life Insurance
       (FEGLI) program, and/or the Federal Employee Health Benefits (FEHB)
-        program]</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">
-      </span></span><span style="font-family:'Times New Roman, serif';">, existing when
+        program],</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">
+      </span></span><span style="font-family:'Times New Roman, serif';"> existing when
       this Power is executed or accruing thereafter, whether existing or
       accruing in the state or elsewhere. My Agent is appointed as my
       “Representative Payee” for the purpose of receiving Social
@@ -897,10 +896,10 @@
       to make gifts, grants, or other transfers without consideration, of
       cash or other property, including the power to forgive indebtedness
       and consent to gift splitting under Internal Revenue Code §2513 or
-      successor sections</span><span color="#000000"><span style="font-family:'Times New Roman, serif';"></span></span>
+      successor sections,</span><span color="#000000"><span style="font-family:'Times New Roman, serif';"></span></span>
         <span  *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isAuthorizeToOperategift === 1">
       <span color="#008f00"><span style="font-family:'Times New Roman, serif';">
-      </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">,
+      </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">
       and including the power</span></span><span style="font-family:'Times New Roman, serif';">
       to make gifts to themselves or to anyone the agent has a legal
       obligation to support </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"></span></span>
@@ -1017,8 +1016,8 @@
       _____________________________________________________________________________
       _____________________________________________________________________________
       _____________________________________________________________________________
-      ____________________
-      <span style="font-family:'Times New Roman, serif';"><u>																																																																																										</u></span><span style="font-family:'Times New Roman, serif';">.</span></p>
+      ____________________ .
+    </p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
@@ -1107,8 +1106,10 @@
       ATTORNEY IS A “DURABLE” POWER OF ATTORNEY </b></span><span style="font-family:'Times New Roman, serif';"><b>AND,
       TO THE MAXIMUM EXTENT PERMITTED BY LAW, SHALL NOT BE AFFECTED BY MY
       DISABILITY, INCAPACITY OR INCOMPETENCY, OR IN THE EVENT OF LATER
-      UNCERTAINTY AS TO WHETHER I AM DEAD OR ALIVE, OR BY LAPSE OF TIME</b></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><b>,</b></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">
-    </span></span><span style="font-family:'Times New Roman, serif';"><b>UNLESS OR UNTIL
+      UNCERTAINTY AS TO WHETHER I AM DEAD OR ALIVE, OR BY LAPSE OF TIME,</b></span>
+      
+      
+      <span style="font-family:'Times New Roman, serif';"><b>UNLESS OR UNTIL
         OTHERWISE ORDERED BY A COURT OF COMPETENT JURISDICTION.</b></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"></span></span>
       <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 0">
       <span color="#008f00"><span style="font-family:'Times New Roman, serif';">
@@ -1369,8 +1370,8 @@
         of {{ userDetails !== undefined && userDetails.tellUsAboutYou !== null ? userDetails.tellUsAboutYou.state : '______________' }}</span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';"></span></span><span style="font-family:'Times New Roman, serif';"></span>
       <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && (userDetails.tellUsAboutYou.state !== 'Massachusetts' && userDetails.tellUsAboutYou.state !== 'Kentucky')">
       <span color="#008f00"><span style="font-family:'Times New Roman, serif';"></span></span><span style="font-family:'Times New Roman, serif';">State
-      of </span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">{{ userDetails !== undefined && userDetails.tellUsAboutYou !== null ? userDetails.tellUsAboutYou.state : '______________' }}</span></span><span style="font-family:'Times New Roman, serif';"></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">
-      </span></span></span><span style="font-family:'Times New Roman, serif';">.</span></p>
+      of </span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">{{ userDetails !== undefined && userDetails.tellUsAboutYou !== null ? userDetails.tellUsAboutYou.state : '______________' }}.</span></span><span style="font-family:'Times New Roman, serif';"></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">
+      </span></span></span><span style="font-family:'Times New Roman, serif';"></span></p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
@@ -1382,10 +1383,10 @@
       dispose of, sell, convey, and encumber my real and personal property;
       the powers granted in this Power will exist for an indefinite period
       of time unless I limit their duration by the terms of this Power or
-      revoke this Power</span>
+      revoke this Power </span>
       <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
       <span color="#008f00"><span style="font-family:'Times New Roman, serif';">
-      </span></span><span style="font-family:'Times New Roman, serif';">, and will
+      </span></span><span style="font-family:'Times New Roman, serif';"> and will
       continue to exist notwithstanding my subsequent disability or
         incapacity</span></span><span color="#008f00"><span style="font-family:'Times New Roman, serif';">
       </span></span><span style="font-family:'Times New Roman, serif';">; and I have
@@ -1431,14 +1432,14 @@
       
       <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif';">IN WITNESS WHEREOF, I, </span>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-        <span style="font-family:'Times New Roman, serif';">,
-      the principal, sign my name to this instrument on this </span><span style="font-family:'Times New Roman, serif';"><u>		</u></span><span style="font-family:'Times New Roman, serif';">
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+        <span style="font-family:'Times New Roman, serif';">
+      the principal, sign my name to this instrument on this </span><span style="font-family:'Times New Roman, serif';"><span>______</span></span><span style="font-family:'Times New Roman, serif';">
       day of </span>
       </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><u>			</u></span><span style="font-family:'Times New Roman, serif';">,
-    </span><span style="font-family:'Times New Roman, serif';"><u>		</u></span><span style="font-family:'Times New Roman, serif';">,
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><span>__________</span></span><span style="font-family:'Times New Roman, serif';">,
+    </span><span style="font-family:'Times New Roman, serif';"><span>______</span></span><span style="font-family:'Times New Roman, serif';">,
       and being first duly sworn, do hereby declare to the undersigned
       authority and below-named witnesses that I sign and execute this
       instrument as my Power of Attorney, that I execute it as my free and
@@ -1454,9 +1455,9 @@
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">______________________________________</span></p>
       <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif';"><b>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      </b></span><span style="font-family:'Times New Roman, serif';">,
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+      </b></span><span style="font-family:'Times New Roman, serif';">
       Principal</span></p>
       <p align="justify" style="margin-top: 0.04in; margin-bottom: 0in; line-height: 100%">
         <span color="#000000"><span style="font-family:'Times New Roman, serif';"></span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
@@ -1465,9 +1466,9 @@
       </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"></span></span></p>
       
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';"></span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}}</span>
-            <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-        </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">,
+            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}},</span>
+            <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+        </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">
         </span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
             <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
             <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
@@ -1503,9 +1504,9 @@
       Attorney as witness in the presence of </span>
       
       
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-        <span style="font-family:'Times New Roman, serif';">,
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+        <span style="font-family:'Times New Roman, serif';">
       and that to the best of our knowledge «</span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
       <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she' ): 'he' }}</span>
       </span></span><span style="font-family:'Times New Roman, serif';">
@@ -1517,7 +1518,7 @@
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
       </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><u>					</u></span><span style="font-family:'Times New Roman, serif';">		</span><span style="font-family:'Times New Roman, serif';"><u>					</u></span><span style="font-family:'Times New Roman, serif';">	</span></p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><span>________________</span></span><span style="font-family:'Times New Roman, serif';">		</span><span style="font-family:'Times New Roman, serif';"><span>________________</span></span><span style="font-family:'Times New Roman, serif';">	</span></p>
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><b>(WITNESS
       1)</b></span><span style="font-family:'Times New Roman, serif';">						</span><span style="font-family:'Times New Roman, serif';"><b>(WITNESS
       2)</b></span></p>
@@ -1538,17 +1539,17 @@
       </p>
       <p align="justify" style="margin-bottom: 0.08in; line-height: 100%;">
       <span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">On
-        this </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>		</u></span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
-      day of </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>			</u></span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
-    </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>	</u></span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
+        this </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><span>______</span></span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
+      day of, </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><span>__________</span></span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
+    </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><span>_____</span></span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
       before me, the undersigned notary public, personally appeared </span></span></span><span style="font-family:'Times New Roman, serif';">
         
         
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      </span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
-      as principal, and </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>					</u></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
-      and </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>					</u></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+      </span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
+      as principal, and </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><span>________________</span></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
+      and </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><span>________________</span></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
       as witnesses, who each </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">proved
       to me through satisfactory evidence of identification to be the
       persons whose names are signed on the preceding or attached document,
@@ -1560,7 +1561,7 @@
       </p>
 
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">(seal)
-    </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>					</u></span></span></span></p>
+    </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><span>________________</span></span></span></span></p>
       <p align="justify" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
       <span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">Notary
         Public </span></span></span>
@@ -1599,9 +1600,9 @@
       </p>
       <p align="justify" style="margin-bottom: 0.08in; line-height: 100%;">
         <span style="font-family:'Times New Roman, serif';">I, </span>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-        <span style="font-family:'Times New Roman, serif';">,
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+        <span style="font-family:'Times New Roman, serif';">
       the principal, sign my name to this power of attorney this ____________</span><span style="font-family:'Times New Roman, serif';"></span><span style="font-family:'Times New Roman, serif';">
       day of </span><span style="font-family:'Times New Roman, serif';">______________________</span><span style="font-family:'Times New Roman, serif';">,
     </span><span style="font-family:'Times New Roman, serif';">___________</span><span style="font-family:'Times New Roman, serif';">
@@ -1615,12 +1616,12 @@
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
       </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><u>_____________________		_</u></span></p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><u>________________________</u></span></p>
       <p align="justify" style="margin-bottom: 0.08in; line-height: 100%;">
         
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-        <span style="font-family:'Times New Roman, serif';">,
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+        <span style="font-family:'Times New Roman, serif';">
       Principal</span></p>
       <p align="justify" style="margin-top: 0.04in; margin-bottom: 0in; line-height: 100%">
         <span color="#000000"><span style="font-family:'Times New Roman, serif';"></span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
@@ -1629,9 +1630,9 @@
       </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"></span></span></p>
       
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif';"></span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">,
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}},</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+      </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">
       </span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif';">
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
@@ -1667,13 +1668,13 @@
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
       </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><u>				</u></span><span style="font-family:'Times New Roman, serif';">	</span><span style="font-family:'Times New Roman, serif';"><u>					</u></span></p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><span>____________</span></span><span style="font-family:'Times New Roman, serif';">	</span><span style="font-family:'Times New Roman, serif';"><span>________________</span></span></p>
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">Witness
       (Signature)				Street Address</span></p>
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
       </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><u>				</u></span><span style="font-family:'Times New Roman, serif';">	</span><span style="font-family:'Times New Roman, serif';"><u>					</u></span></p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><span>____________</span></span><span style="font-family:'Times New Roman, serif';">	</span><span style="font-family:'Times New Roman, serif';"><span>________________</span></span></p>
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">Print
       Name				City, State, Zip</span></p>
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
@@ -1694,10 +1695,10 @@
     </span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
       the principal, and subscribed and sworn to before me by </span></span>
       </p>
-      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>				</u></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
-      witness, this </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>	</u></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
-      day of </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>				</u></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
-    </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><u>		</u></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">.</span></span></p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><span>____________</span></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
+      witness, this </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><span>_____</span></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
+      day of </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><span>____________</span></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
+    </span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt"><span>______</span></span></span><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">.</span></span></p>
       <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
       </p>
@@ -1752,10 +1753,10 @@
 
 
       <span color="#0000ff">
-				<span style="font-family:'Times New Roman, serif';">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
+				<span style="font-family:'Times New Roman, serif';">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
 			</span>
 
-      <span style="font-family:'Times New Roman, serif';">,
+      <span style="font-family:'Times New Roman, serif';">
 			the principal, sign my name to this power of attorney and do hereby
 			declare to the undersigned witnesses that I sign and execute this
 			instrument as my Power of Attorney and that I sign it willingly (or
@@ -1822,10 +1823,10 @@
 			do hereby declare that </span>
 
       <span color="#0000ff">
-				<span style="font-family:'Times New Roman, serif';">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
+				<span style="font-family:'Times New Roman, serif';">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
 			</span>
 
-      <span style="font-family:'Times New Roman, serif';">,
+      <span style="font-family:'Times New Roman, serif';">
 			the principal, signs and executes this instrument as </span>
 
       <span color="#0433ff">
@@ -1837,10 +1838,10 @@
 			willingly directs another to sign for </span>
 
       <span color="#0433ff">
-				<span style="font-family:'Times New Roman, serif';">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'him' : 'her') : '_______________________'}}</span>
+				<span style="font-family:'Times New Roman, serif';">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'him' : 'her') : '_______________________'}},</span>
 			</span>
 
-      <span style="font-family:'Times New Roman, serif';">,
+      <span style="font-family:'Times New Roman, serif';">
 			and that each of us, in the presence and hearing of the principal,
 			hereby signs this instrument as witness to the principal’s signing,
 			and that to the best of our knowledge the principal is of legal age,
@@ -1882,10 +1883,10 @@
 			sworn and acknowledged before me by </span></span>
 
       <span color="#0000ff">
-				<span style="font-family:'Times New Roman, serif';">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
+				<span style="font-family:'Times New Roman, serif';">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
 			</span>
 
-      <span color="#000000"><span style="font-family:'Times New Roman, serif';">,
+      <span color="#000000"><span style="font-family:'Times New Roman, serif';">
 			the principal, and _________________________________________, as witness, and _____________________________________, as witness, who personally appeared on this &nbsp;_________ day of	&nbsp;________________________________, _______, and who are personally known to me or who have produced satisfactory photo identification, and whose names are signed to the foregoing instrument,</span></span>
 
       <span style="font-family:'Times New Roman, serif';"> </span>
@@ -2067,9 +2068,9 @@
         __________________________________, certify that the attached is a
         true copy of a power of attorney naming the undersigned as agent or
         successor agent for </span>
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      <span style="font-family:'Times New Roman, serif';">.</span></p>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}.</span>
+      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________ .</span>
+      <span style="font-family:'Times New Roman, serif';"></span></p>
     <p style="margin-bottom: 0.06in; line-height: 100%"><br/>
       <br/>
 
