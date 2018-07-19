@@ -97,10 +97,10 @@
           are able to act for yourself. The meaning of authority over subjects
           listed on this form is explained in the </span>
           <span color="#0433ff" *ngIf="userDetails !== undefined && userDetails.state !== null"><span face="Times New Roman, serif">
-            {{userDetails.state.act !== null && userDetails.state.act !== undefined && userDetails.state.act !== '' ? userDetails.state.act : '____________'}}
-          </span></span><span face="Times New Roman, serif">, in </span><span color="#0433ff" *ngIf="userDetails !== undefined && userDetails.state !== null"><span face="Times New Roman, serif">
-            {{userDetails.state.code !== null && userDetails.state.code !== undefined && userDetails.state.code !== '' ? userDetails.state.code : '____________'}}
-          </span></span><span face="Times New Roman, serif">.</span></span></p>
+            {{userDetails.state.act !== null && userDetails.state.act !== undefined && userDetails.state.act !== '' ? userDetails.state.act : '____________'}},
+          </span></span><span face="Times New Roman, serif"> in </span><span color="#0433ff" *ngIf="userDetails !== undefined && userDetails.state !== null"><span face="Times New Roman, serif">
+            {{userDetails.state.code !== null && userDetails.state.code !== undefined && userDetails.state.code !== '' ? userDetails.state.code : '____________'}}.
+          </span></span><span face="Times New Roman, serif"></span></span></p>
           </li>
         </ol>
         <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
@@ -488,26 +488,27 @@
       <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
         I,
         <span color="#0433ff">
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      </span>,
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+      </span>
         <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Illinois'"><span color="#000000"></span><span color="#008f00">
       </span><span color="#000000"> </span>hereby
       revoke all prior powers of attorney for property executed by me
       and<span color="#000000"></span></span>
         <span color="#008f00"></span><span color="#000000">
       </span>appoint my <span color="#000000"></span><span color="#0433ff">
-        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null && financialPOA.attorney_holders.relationship !== 'Other'"> {{financialPOA.attorney_holders.relationship !== null && financialPOA.attorney_holders.relationship !== undefined ? financialPOA.attorney_holders.relationship : '_______________________'}} </span>
-        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null && financialPOA.attorney_holders.relationship === 'Other'"> {{financialPOA.attorney_holders.other_relationship !== null && financialPOA.attorney_holders.other_relationship !== undefined ? financialPOA.attorney_holders.other_relationship : '_______________________'}} </span>
-        <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
-      </span><span color="#000000">, </span><span color="#0433ff">
-        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.fullname !== null && financialPOA.attorney_holders.fullname !== undefined ? financialPOA.attorney_holders.fullname : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
-      </span>, as my agent, to <span color="#000000">have
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null && financialPOA.attorney_holders.relationship !== 'Other'"> {{financialPOA.attorney_holders.relationship !== null && financialPOA.attorney_holders.relationship !== undefined ? financialPOA.attorney_holders.relationship : '_______________________'}}, </span>
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null && financialPOA.attorney_holders.relationship === 'Other'"> {{financialPOA.attorney_holders.other_relationship !== null && financialPOA.attorney_holders.other_relationship !== undefined ? financialPOA.attorney_holders.other_relationship : '_______________________'}}, </span>
+        <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________, </span>
+      </span><span color="#000000"> </span><span color="#0433ff">
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.fullname !== null && financialPOA.attorney_holders.fullname !== undefined ? financialPOA.attorney_holders.fullname : '_______________________'}}, </span> 
+        <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________, </span>
+      </span> as my agent, to <span color="#000000">have
       all of the powers hereinafter set forth and as permitted under the
       laws of </span><span color="#0433ff">
-          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
-          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      </span>.  The contact
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}.</span>
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________ .</span>
+      </span> The contact
         information for my agent is as follows:</p>
       <p class="western" align="justify" style="margin-top: 0.06in; margin-bottom: 0in; line-height: 100%">
         Name of Primary Agent: <span color="#0433ff">
@@ -515,11 +516,11 @@
       </span></p>
       <p class="western" style="margin-bottom: 0in; line-height: 100%">Primary
         Agent’s Address: <span color="#008f00"></span><span color="#0000ff">
-        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.address !== null && financialPOA.attorney_holders.address !== undefined ? financialPOA.attorney_holders.address : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
-      </span>,
+        <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.address !== null && financialPOA.attorney_holders.address !== undefined ? financialPOA.attorney_holders.address : '_______________________'}}, </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________, </span>
+      </span>
         <span color="#0000ff">
-         <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.city !== null && financialPOA.attorney_holders.city !== undefined ? financialPOA.attorney_holders.city : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
-      </span>, <span color="#0000ff">
+         <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.city !== null && financialPOA.attorney_holders.city !== undefined ? financialPOA.attorney_holders.city : '_______________________'}}, </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________, </span>
+      </span> <span color="#0000ff">
          <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.state !== null && financialPOA.attorney_holders.state !== undefined ? financialPOA.attorney_holders.state : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
       </span>
         <span color="#008f00"></span><span color="#008f00"></span>&nbsp;</p>
@@ -546,17 +547,17 @@
           If and until my primary agent is unable or unwilling to act for me, I
           name my
           <span color="#000000"></span><span color="#0433ff">
-            <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null && financialPOA.attorney_backup.relationship !== 'Other'"> {{financialPOA.attorney_backup.relationship !== null && financialPOA.attorney_backup.relationship !== undefined ? financialPOA.attorney_backup.relationship : '_______________________'}} </span>
-            <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null && financialPOA.attorney_backup.relationship === 'Other'"> {{financialPOA.attorney_backup.other_relationship !== null && financialPOA.attorney_backup.other_relationship !== undefined ? financialPOA.attorney_backup.other_relationship : '_______________________'}} </span>
-            <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
-        </span><span color="#000000">, </span><span color="#0433ff">
-           <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.fullname !== null && financialPOA.attorney_backup.fullname !== undefined ? financialPOA.attorney_backup.fullname : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
-        </span>, as my agent, to <span color="#000000">have
+            <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null && financialPOA.attorney_backup.relationship !== 'Other'"> {{financialPOA.attorney_backup.relationship !== null && financialPOA.attorney_backup.relationship !== undefined ? financialPOA.attorney_backup.relationship : '_______________________'}}, </span>
+            <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null && financialPOA.attorney_backup.relationship === 'Other'"> {{financialPOA.attorney_backup.other_relationship !== null && financialPOA.attorney_backup.other_relationship !== undefined ? financialPOA.attorney_backup.other_relationship : '_______________________'}}, </span>
+            <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________, </span>
+        </span><span color="#000000"> </span><span color="#0433ff">
+           <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.fullname !== null && financialPOA.attorney_backup.fullname !== undefined ? financialPOA.attorney_backup.fullname : '_______________________'}}, </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________, </span>
+        </span> as my agent, to <span color="#000000">have
         all of the powers hereinafter set forth and as permitted under the
         laws of </span><span color="#0433ff">
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
-            <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-        </span>.  The contact
+            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}.</span>
+            <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________ .</span>
+        </span>  The contact
           information for my agent is as follows:</p>
         <p class="western" align="justify" style="margin-top: 0.06in; margin-bottom: 0in; line-height: 100%">
           Name of Successor Agent: <span color="#0433ff">
@@ -564,10 +565,10 @@
       </span></p>
         <p class="western" style="margin-bottom: 0in; line-height: 100%">Primary
           Agent’s Address: <span color="#008f00"></span><span color="#0433ff"> </span><span color="#0000ff">
-            <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.address !== null && financialPOA.attorney_backup.address !== undefined ? financialPOA.attorney_backup.address : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
-        </span>, <span color="#0000ff">
-            <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.city !== null && financialPOA.attorney_backup.city !== undefined ? financialPOA.attorney_backup.city : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
-        </span>, <span color="#0000ff">
+            <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.address !== null && financialPOA.attorney_backup.address !== undefined ? financialPOA.attorney_backup.address : '_______________________'}}, </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________, </span>
+        </span> <span color="#0000ff">
+            <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.city !== null && financialPOA.attorney_backup.city !== undefined ? financialPOA.attorney_backup.city : '_______________________'}}, </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________, </span>
+        </span> <span color="#0000ff">
             <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.state !== null && financialPOA.attorney_backup.state !== undefined ? financialPOA.attorney_backup.state : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
         </span>
           <span color="#008f00"></span><span color="#008f00">
@@ -595,16 +596,16 @@
         me, with the powers and duties as more fully defined in the <!--«<span color="#0433ff">UPOAA
       Act</span>, «<span color="#0433ff">UPOAA Code</span>»-->
         <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-        {{userDetails.state.act !== null && userDetails.state.act !== undefined && userDetails.state.act !== '' ? userDetails.state.act : '____________'}}
-      </span>,
-        <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-        {{userDetails.state.code !== null && userDetails.state.code !== undefined && userDetails.state.code !== '' ? userDetails.state.code : '____________'}}
+        {{userDetails.state.act !== null && userDetails.state.act !== undefined && userDetails.state.act !== '' ? userDetails.state.act : '____________'}},
       </span>
-        , <span color="#000000"></span>
+        <span *ngIf="userDetails !== undefined && userDetails.state !== null">
+        {{userDetails.state.code !== null && userDetails.state.code !== undefined && userDetails.state.code !== '' ? userDetails.state.code : '____________'}},
+      </span>
+         <span color="#000000"></span>
         <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'Wisconsin'">
       <span color="#008f00"></span><span color="#000000">attached hereto
       and incorporated herein as </span><span color="#000000"><u>Appendix
-        A</u></span><span color="#000000">,</span></span>
+        A,</u></span><span color="#000000"></span></span>
         <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state === 'New Jersey'">
       <span color="#008f00"></span><span color="#000000">
       including the authority to conduct banking transactions as
@@ -731,9 +732,9 @@
       <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== 'Illinois'">
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
           Subject to the laws of <span color="#0433ff">
-              <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
-              <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-        </span>, my
+              <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}},</span>
+              <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+        </span> my
           agent MAY NOT do any of the following specific acts for me UNLESS I
           have INITIALED the specific authority listed below:</p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
@@ -831,9 +832,9 @@
       <span color="#008f00"></span>I direct that there shall
       be no limitation to my agent’s authority except for those
       limitations stated expressly herein, or by law, and hereby authorize
-      my agent to use my property as my agent sees fit
+      my agent to use my property as my agent sees fit,
       <span  *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isAuthorizeToOperategift === 1">
-      , to make gifts to benefit the agent or any person to whom the agent owes an
+       to make gifts to benefit the agent or any person to whom the agent owes an
         obligation of support.</span><span color="#000000"></span></span>
         <span color="#008f00"></span>
         <span  *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isAuthorizeToOperategift === 0">
@@ -1272,7 +1273,7 @@
       POWER OF ATTORNEY IS A “DURABLE” POWER OF ATTORNEY </b><b>AND, TO
       THE MAXIMUM EXTENT PERMITTED BY LAW, SHALL NOT BE AFFECTED BY MY
       DISABILITY, INCAPACITY OR INCOMPETENCY, OR IN THE EVENT OF LATER
-      UNCERTAINTY AS TO WHETHER I AM DEAD OR ALIVE, OR BY LAPSE OF TIME</b><span color="#000000"><b>,</b></span><span color="#000000">
+      UNCERTAINTY AS TO WHETHER I AM DEAD OR ALIVE, OR BY LAPSE OF TIME,</b><span color="#000000"><b></b></span><span color="#000000">
       </span><b>UNLESS OR UNTIL OTHERWISE ORDERED BY A COURT OF COMPETENT
         JURISDICTION.</b><span color="#000000"></span></span>
         <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 0">
@@ -1407,9 +1408,9 @@
          <span color="#000000">«</span><span color="#008f00">END IF</span><span color="#000000">»</span></p>-->
       <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
         <span color="#000000"></span><span color="#0433ff">
-          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}}</span>
-          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      </span><span color="#000000">,
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}},</span>
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+      </span><span color="#000000">
       </span><span color="#0433ff">
           <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
           <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
@@ -1486,9 +1487,9 @@
         </span><b><!--«</b><span color="#0000ff"><b>CLIENT FIRST NAME</b></span><b>»
         «</b><span color="#0000ff"><b>CLIENT MIDDLE NAME</b></span><b>»
         «</b><span color="#0000ff"><b>CLIENT LAST NAME</b></span><b>»-->
-          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-        </b><span color="#000000">,
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+        </b><span color="#000000">
         the principal, and _________________________________________, as
         witness, and _____________________________________, as witness, who
         personally appeared on this &nbsp;_________ day of
@@ -1572,9 +1573,9 @@
       MIDDLE NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»
       «</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
       LAST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»-->
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      </b></span><span face="Courier New, serif"><span size="2" style="font-size: 10pt"><span color="#000000"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"><span style="background: #ffffff">,
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+      </b></span><span face="Courier New, serif"><span size="2" style="font-size: 10pt"><span color="#000000"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"><span style="background: #ffffff">
       known to me to be the same person whose name is subscribed as
       principal to the foregoing power of attorney, appeared before me and
       the notary public and acknowledged signing and delivering the
@@ -1611,9 +1612,9 @@
       MIDDLE NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»
       «</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
       LAST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»-->
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      </b></span><span face="Courier New, serif"><span size="2" style="font-size: 10pt"><span color="#000000"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"><span style="background: #ffffff">,
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+      </b></span><span face="Courier New, serif"><span size="2" style="font-size: 10pt"><span color="#000000"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"><span style="background: #ffffff">
       known to me to be the same person whose name is subscribed as
       principal to the foregoing power of attorney, appeared before me and
       the notary public and acknowledged signing and delivering the
@@ -1658,9 +1659,9 @@
       MIDDLE NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»
       «</b></span><span color="#0000ff"><span size="2" style="font-size: 11pt"><b>CLIENT
       LAST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»-->
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      </b></span><span color="#000000"><span size="2" style="font-size: 11pt">,
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+      </b></span><span color="#000000"><span size="2" style="font-size: 11pt">
       the principal, and _________________________________________, as
       witness, and _____________________________________, as witness, who
       personally appeared on this &nbsp;_________ day of
@@ -2329,11 +2330,11 @@
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
           The meaning of the authority granted to you is defined in the
           <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-        {{userDetails.state.act !== null && userDetails.state.act !== undefined && userDetails.state.act !== '' ? userDetails.state.act : '____________'}}
-      </span>,
+        {{userDetails.state.act !== null && userDetails.state.act !== undefined && userDetails.state.act !== '' ? userDetails.state.act : '____________'}},
+      </span>
           <span *ngIf="userDetails !== undefined && userDetails.state !== null">
-        {{userDetails.state.code !== null && userDetails.state.code !== undefined && userDetails.state.code !== '' ? userDetails.state.code : '____________'}}
-      </span> <span color="#0433ff">.</span>
+        {{userDetails.state.code !== null && userDetails.state.code !== undefined && userDetails.state.code !== '' ? userDetails.state.code : '____________'}}.
+      </span> <span color="#0433ff"></span>
           If you violate the
           <span *ngIf="userDetails !== undefined && userDetails.state !== null">
         {{userDetails.state.act !== null && userDetails.state.act !== undefined && userDetails.state.act !== '' ? userDetails.state.act : '____________'}}
@@ -2658,9 +2659,9 @@
       FIRST NAME</b></u></span><u><b>» «</b></u><span color="#0000ff"><u><b>CLIENT
       MIDDLE NAME</b></u></span><u><b>» «</b></u><span color="#0000ff"><u><b>CLIENT
       LAST NAME</b></u></span><u><b>»-->
-          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-        </b></u><span color="#000000"><u>,</u></span><span color="#000000">
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+        </b></u><span color="#000000"><u></u></span><span color="#000000">
       the principal, under a </span>
           <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
       <span color="#008f00">
@@ -3850,10 +3851,7 @@
           <br/>
 
         </p>
-        <p class="western" style="  margin-bottom: 0in; line-height: 100%; background: #ffffff">
-          <br/>
-
-        </p>
+        
         <p class="western" style="  margin-bottom: 0in; line-height: 100%; background: #ffffff">
           <br/>
 
