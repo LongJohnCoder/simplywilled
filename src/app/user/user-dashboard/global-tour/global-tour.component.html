@@ -1,10 +1,11 @@
-<div class="tourGuide">
+<div class="tourGuide" id="tourguide">
     <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
     <p>
         {{guide[stepNumber]}}
     </p>
     <div class="tourBtnArea">
-        <button type="button" (click)="changeTourState('backward')" class="prev"><i class="fa fa-chevron-left"></i> Previous</button>
-        <button type="button" (click)="changeTourState('forward')" class="next">Next <i class="fa fa-chevron-right"></i></button>
+        <button *ngIf="stepNumber > 1" type="button" (click)="changeTourState('backward')" class="prev"><i class="fa fa-chevron-left"></i> Previous</button>
+
+        <button type="button" (click)="changeTourState('forward')" class="next">{{stepNumber === 11 ? 'Got It' : 'Next'}} <i [ngClass]="{'fa-chevron-right': stepNumber < 11, 'fa-check': stepNumber === 11}" class="fa"></i></button>
     </div>
 </div>

@@ -130,7 +130,7 @@
                         </div>
                     </div>
                     <div class="notification takeAtour">
-                        <span class="imp"><img src="../../../../assets/images/owl.png"></span>
+                            <a (click)="changeTourState('forward')" [routerLink]="['/dashboard/will']"><span class="imp"><img src="../../../../assets/images/owl.png"></span></a>
                         <a (click)="changeTourState('forward')" [routerLink]="['/dashboard/will']">Take a tour</a>
                     </div>
                     <span class="tourGuideArea referArea">
@@ -139,7 +139,6 @@
                         <!--<p [@fadeInOut]="fadeState">They’ll be notified via e-mail at the address you provided.</p>-->
                       <h2 >
                             Enjoy Using SimplyWilled.com?<br>Refer A Friend
-                            this one
                       </h2>
                         <div >
                             <form [formGroup] = "referAFriendForm">

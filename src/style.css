@@ -3019,6 +3019,7 @@ app-paypal-success, app-payment-page, app-packages{
     font-size: 14px !important;
     line-height: normal !important;
     margin-bottom: 15px !important;
+    text-align: left;
 }
 .tourBtnArea{
     display: inline-block;
