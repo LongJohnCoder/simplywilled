@@ -34,8 +34,8 @@ const routes: Routes = [
         { path: 'terms-of-service', pathMatch: 'full', component: TermsOfServiceComponent },
         { path: 'privacy-policy', pathMatch: 'full', component: PrivacyPolicyComponent },
         { path: 'contact-us', pathMatch: 'full', component: ContactUsComponent },
-        { path: 'fiduciary/:type/:token', pathMatch: 'full', component: FiduciaryComponent },
-        { path: '**', component: NotFoundComponent}
+        { path: 'fiduciary/:type/:token', pathMatch: 'full', component: FiduciaryComponent }
+        
         
         // tslint:disable-next-line:max-line-length
         
@@ -46,6 +46,7 @@ const routes: Routes = [
       canActivateChild: [ UserAuthGuard ],
       loadChildren: './user-dashboard/user-dashboard.module#UserDashboardModule'
     },
+    {path: '', component: FullLayoutComponent, data: { title: 'Home' }, children: [{path: '**', component: NotFoundComponent}]}
 ];
 console.log('user-routing-module is called');
 @NgModule({

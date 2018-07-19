@@ -160,7 +160,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.logoutSubscription = this.userService.logout().subscribe(
           (data: any) => {
               localStorage.removeItem('loggedInUser');
-              this.router.navigate(['/']);
+              this.router.navigate(['/sign-in']);
           },
           (error: any) => {
               console.log(error);
