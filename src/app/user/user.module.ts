@@ -32,6 +32,7 @@ import {MedicalEmergencyService} from './user-dashboard/plan-for-medical-emergen
 import { ProtectYourFinancesService } from './user-dashboard/protect-your-finances/services/protect-your-finances.service';
 import {PackagesService} from './user-dashboard/packages/packages.service';
 import { FiduciaryComponent } from './fiduciary/fiduciary.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   imports: [
@@ -61,6 +62,7 @@ import { FiduciaryComponent } from './fiduciary/fiduciary.component';
     BlogdetailsComponent,
     BlogCategoryComponent,
     FiduciaryComponent,
+    NotFoundComponent
   ],
   providers: [
     ProtectYourFinancesService,

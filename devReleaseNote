@@ -348,3 +348,7 @@ version : 9
 2> Package drawer ui completed for home and dashoard
 3> Correction in Last Will Page and payment success page
 4> Tour guide ui and responsive completed.
+
+404 V1.0 stable released to dev
+	Added 404 component, changed route module
+	Made state name reditection to home page

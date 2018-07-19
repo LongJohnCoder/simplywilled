@@ -15,7 +15,7 @@ import { BlogComponent } from './blog/blog.component';
 import { BlogdetailsComponent } from './blog/blogdetails/blogdetails.component';
 import {BlogCategoryComponent} from './blog/blog-category/blog-category.component';
 import {FiduciaryComponent} from './fiduciary/fiduciary.component';
-
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
    {path: '', component: FullLayoutComponent, data: { title: 'Home' }, children: [
@@ -35,6 +35,8 @@ const routes: Routes = [
         { path: 'privacy-policy', pathMatch: 'full', component: PrivacyPolicyComponent },
         { path: 'contact-us', pathMatch: 'full', component: ContactUsComponent },
         { path: 'fiduciary/:type/:token', pathMatch: 'full', component: FiduciaryComponent },
+        { path: '**', component: NotFoundComponent}
+        
         // tslint:disable-next-line:max-line-length
         
    ]},

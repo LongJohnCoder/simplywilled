@@ -59,7 +59,7 @@ export class FullLayoutComponent implements OnInit {
   onLogout() {
     localStorage.removeItem('loggedInUser');
     localStorage.removeItem('_loggedInToken');
-    this.router.navigate(['/']);
+    this.router.navigate(['/sign-in']);
     this.isLogIn = false ;
   }
 
