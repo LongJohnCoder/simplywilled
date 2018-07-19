@@ -130,17 +130,17 @@
                 to act, or if I revoke that person’s appointment or authority to
                 act, then I appoint my
                 @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
-                    <span>{{$healthFinance['backupRelation']}}</span>
+                    <span>{{$healthFinance['backupRelation']}},</span>
                 @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
-                    <span>{{$healthFinance['backupRelation']}}</span>
+                    <span>{{$healthFinance['backupRelation']}},</span>
                 @endif
-                ,
+
                 <span style="text-transform: capitalize" > {{$healthFinance['backupFullname']}}, </span> of
                 <span style="text-transform: capitalize" > {{$healthFinance['backupAddress']}}, </span> in
                 <span style="text-transform: capitalize" > {{$healthFinance['backupCity']}}, </span>
                 <span style="text-transform: capitalize" > {{$healthFinance['backupState']}}, </span>
                 <span style="text-transform: capitalize" > {{$healthFinance['backupZip']}}, </span>
-                (Tel: <span > {{$healthFinance['backupphone']}} </span> )
+                (Tel: <span > {{$healthFinance['backupphone']}} </span> ),
                 as my alternate attorney in fact to
                 make health care decisions for me if I become unable to make my own
                 health-care decisions.
@@ -307,7 +307,7 @@
                 to be of sound mind and under no duress, fraud, or undue influence. I
                 am not the person appointed as the attorney in fact by this document,
                 nor am I the health-care provider of the principal or an employee of
-                the health-care provider of the principal</p>
+                the health-care provider of the principal.</p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
@@ -408,8 +408,8 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I,
       <b>
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-      </b>,
+        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}},</span>
+      </b>
       being of sound mind, willfully and voluntarily make known my desire
       that my dying shall not be artificially prolonged under the
       circumstances set forth below, do hereby declare:</span></span></span></span></span></p>
@@ -465,16 +465,16 @@
                 <span style="text-transform: capitalize" >{{$tellUsAboutYou['fullname']}}</span>
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="text-transform: capitalize" >{{$tellUsAboutYou['address']}}</span>,
+                <span style="text-transform: capitalize" >{{$tellUsAboutYou['address']}},</span>
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="text-transform: capitalize" >{{$tellUsAboutYou['city']}}</span>,
+                <span style="text-transform: capitalize" >{{$tellUsAboutYou['city']}},</span>
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="text-transform: capitalize" >{{$tellUsAboutYou['state']}}</span>
+                <span style="text-transform: capitalize" >{{$tellUsAboutYou['state']}},</span>
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-                <span style="text-transform: capitalize" >{{$tellUsAboutYou['zip']}}</span>
+                <span style="text-transform: capitalize" >{{$tellUsAboutYou['zip']}},</span>
             </p>
             <p style="margin-left: 0in; margin-bottom: 0in; line-height: 115%">
                 <span style="text-transform: capitalize" >{{$tellUsAboutYou['phone']}}</span>
