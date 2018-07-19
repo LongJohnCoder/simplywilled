@@ -19,7 +19,7 @@
                             <!--<a [routerLink]="['/dashboard/subscribed-package']" class="myAccount"><i class="fa fa-shopping-bag leftIcon"></i> <span>Packages</span></a>-->
                         </span>
                     </div>
-                    <app-global-tour stepNumber="stepNumber" class="pop1" *ngIf="stepNumber == 10"></app-global-tour>
+                    <app-global-tour [stepNumber]='stepNumber' class="pop1" *ngIf="stepNumber == 10"></app-global-tour>
                     
                     <!-- <div class="tourGuide pop2" *ngIf="stepNumber == 10">
                         <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
@@ -37,7 +37,7 @@
                     <button class="btn common-button green-btn logOut" (click)="onLogOut()" [ngClass]="{'tourSpot' : stepNumber == 11}">Logout</button>
                     
                     <!-- <app-global-toor *ngIf="stepNumber == 11"></app-global-toor> -->
-                    <app-global-tour stepNumber="stepNumber" class="pop1" *ngIf="stepNumber == 11"></app-global-tour>
+                    <app-global-tour [stepNumber]='stepNumber' class="pop1" *ngIf="stepNumber == 11"></app-global-tour>
 
                     <!-- <div class="tourGuide pop3" *ngIf="stepNumber == 11">
                         <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
@@ -92,7 +92,7 @@
                                 <li class="tourGuideArea">
                                     <button class="btn common-button btn-dashboard" (click)="userDasboardRoute('/dashboard')" [ngClass]="{'tourSpot' : stepNumber == 1}">Back to Dashboard</button>
                                     
-                                    <app-global-tour stepNumber="stepNumber" class="pop1" *ngIf="stepNumber == 1"></app-global-tour>
+                                    <app-global-tour [stepNumber]='stepNumber' class="pop1" *ngIf="stepNumber == 1"></app-global-tour>
 
                                     <!-- <div class="tourGuide pop1" *ngIf="stepNumber == 1">
                                         <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
@@ -109,7 +109,7 @@
                                     <button class="btn common-button btn-preview" [routerLink]="['/dashboard/documents/signing-instruction']" [ngClass]="{'tourSpot' : stepNumber == 3}">Preview Documents</button>
                                     
                                     <!-- <app-global-toor *ngIf="stepNumber == 3"></app-global-toor> -->
-                                    <app-global-tour stepNumber="stepNumber" class="pop1" *ngIf="stepNumber == 3"></app-global-tour>
+                                    <app-global-tour [stepNumber]='stepNumber' class="pop1" *ngIf="stepNumber == 3"></app-global-tour>
                                     
                                     <!-- <div class="tourGuide pop1" *ngIf="stepNumber == 3">
                                         <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
@@ -174,7 +174,7 @@
                     </div>
 
                     <!-- <app-global-toor *ngIf="stepNumber == 9"></app-global-toor> -->
-                    <app-global-tour stepNumber="stepNumber" class="pop1" *ngIf="stepNumber == 9"></app-global-tour>
+                    <app-global-tour [stepNumber]='stepNumber' class="pop1" *ngIf="stepNumber == 9"></app-global-tour>
 
                     <!-- <div class="tourGuide pop1" *ngIf="stepNumber == 9">
                             <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>

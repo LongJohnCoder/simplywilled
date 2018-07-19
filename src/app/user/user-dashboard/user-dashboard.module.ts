@@ -13,6 +13,7 @@ import {FinalDispositionPdfService} from './doc/services/final-disposition-pdf.s
 import { SubscribedPackageComponent } from './subscribed-package/subscribed-package.component';
 import {GlobalPdfService} from './doc/services/global-pdf.service';
 import { GlobalTourComponent } from './global-tour/global-tour.component';
+import { Ng2PageScrollModule } from 'ng2-page-scroll';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { GlobalTourComponent } from './global-tour/global-tour.component';
     // PersonalRepresentativePowerModule,
     ReactiveFormsModule,
     GlobalTourModule,
+    Ng2PageScrollModule
     // GlobalTooltipModule
   ],
   declarations: [DashboardComponent, MainDashboardComponent, SubscribedPackageComponent ],

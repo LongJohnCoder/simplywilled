@@ -28,7 +28,7 @@
                   <button type="button" (click)="changeTourState('forward')" class="next">Next <i class="fa fa-chevron-right"></i></button>
               </div>
           </div> -->
-          <app-global-tour stepNumber="stepNumber" *ngIf="stepNumber === 2"></app-global-tour>
+          <app-global-tour [stepNumber]='stepNumber' *ngIf="stepNumber === 2"></app-global-tour>
         </span>
         
       </label>

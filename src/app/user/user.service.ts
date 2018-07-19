@@ -74,21 +74,26 @@ export class UserService {
 
     /** Function to send tour value*/
     changeStepNumber(type: string) {
-        if (type == "forward"){
-            if (this.stepNumForTourGuide.value == 1){
+        let newVal = 0;
+        if (type === 'forward') {
+            newVal = this.stepNumForTourGuide.value + 1;
+        } else if (type === 'backward') {
+            newVal = this.stepNumForTourGuide.value - 1;
+        } else {
+            newVal = 0;
+        }
+
+        if (newVal < 1 || newVal > 11) {
+            this.stepNumForTourGuide.next(0);
+        } else {
+            if (newVal === 2) {
                 this.router.navigate(['/dashboard/will']);
-            }else if(this.stepNumForTourGuide.value == 3){
+            } else if (newVal === 4) {
                 this.router.navigate(['/dashboard/documents/signing-instruction']);
-                
-            }else if(this.stepNumForTourGuide.value == 4){
+            } else if (newVal === 5) {
                 this.router.navigate(['/dashboard/documents/last-will-and-testament']);
             }
-            this.stepNumForTourGuide.next(this.stepNumForTourGuide.value + 1);
-            
-        } else if(type == "backward"){
-            this.stepNumForTourGuide.next(this.stepNumForTourGuide.value - 1)
-        } else if(type == "close"){
-            this.stepNumForTourGuide.next(0);
+            this.stepNumForTourGuide.next(newVal);
         }
     }
 }

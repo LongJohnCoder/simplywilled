@@ -2576,7 +2576,7 @@
         <span class="tourGuideArea">
         <a style="cursor: pointer;" [routerLink]="['/dashboard/documents/signing-instruction']" [ngClass]="{'tourSpot' : stepNumber == 5}"><i class="fa fa-chevron-left"></i> Previous Document</a>
         
-        <app-global-tour stepNumber="stepNumber" *ngIf="stepNumber === 5"></app-global-tour>
+        <app-global-tour [stepNumber]='stepNumber' *ngIf="stepNumber === 5"></app-global-tour>
         
         <!-- <div class="tourGuide" *ngIf="stepNumber === 5">
             <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
@@ -2600,7 +2600,7 @@
         <span class="tourGuideArea">
         <a href="javascript:void(0)" (click)="downloadPdf()" [ngClass]="{'tourSpot' : stepNumber == 6}"><i class="fa fa-download"></i> Download</a>
         
-        <app-global-tour stepNumber="stepNumber" *ngIf="stepNumber === 6"></app-global-tour>
+        <app-global-tour [stepNumber]='stepNumber' *ngIf="stepNumber === 6"></app-global-tour>
         
         <!-- <div class="tourGuide" *ngIf="stepNumber === 6">
             <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
@@ -2619,7 +2619,7 @@
           <span class="tourGuideArea">
         <a href="javascript:void(0)" (click)="emailMe($event)" [ngClass]="{'tourSpot' : stepNumber == 7}"><i class="fa fa-envelope-o"></i> Email Me</a>
         
-        <app-global-tour stepNumber="stepNumber" *ngIf="stepNumber === 7"></app-global-tour>
+        <app-global-tour [stepNumber]='stepNumber' *ngIf="stepNumber === 7"></app-global-tour>
         
         <!-- <div class="tourGuide" *ngIf="stepNumber === 7">
             <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
@@ -2638,7 +2638,7 @@
           <span class="tourGuideArea">
         <a href="javascript:void(0)" (click)="printPDF()" [ngClass]="{'tourSpot' : stepNumber == 8}"><i class="fa fa-print"></i> Print</a>
         
-        <app-global-tour stepNumber="stepNumber" *ngIf="stepNumber === 8"></app-global-tour>
+        <app-global-tour [stepNumber]='stepNumber' *ngIf="stepNumber === 8"></app-global-tour>
         
         <!-- <div class="tourGuide" *ngIf="stepNumber === 8">
             <span class="closeTour" (click)="changeTourState('close')"><i class="fa fa-remove"></i></span>
