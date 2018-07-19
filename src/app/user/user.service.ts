@@ -85,6 +85,7 @@ export class UserService {
 
         if (newVal < 1 || newVal > 11) {
             this.stepNumForTourGuide.next(0);
+            this.router.navigate(['/dashboard']);
         } else {
             if (newVal === 2) {
                 this.router.navigate(['/dashboard/will']);

@@ -349,7 +349,7 @@ version : 9
 3> Correction in Last Will Page and payment success page
 4> Tour guide ui and responsive completed.
 5> Tour guide ui scroll height fixed.
-
+6> Package drawer font size change done for home page and dashoard page
 
 404 V1.0 stable released to dev
 	Added 404 component, changed route module

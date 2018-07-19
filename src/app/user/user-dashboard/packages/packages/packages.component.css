@@ -313,7 +313,10 @@ span.bestValue img {
     margin-left: 46%;
   }
   .faster_text{
-    font-size: 14px;
+    font-size: 16px;
+  }
+  .book_sec_main{
+    padding-bottom: 50px;
   }
 }
 
@@ -384,5 +387,11 @@ span.bestValue img {
   }
   .norton{
     width: 80px;
+  }
+  .faster_text, .faster_text2 {
+    font-size: 14px;
+  }
+  .book_sec_main {
+    min-height: 360px;
   }
 }
