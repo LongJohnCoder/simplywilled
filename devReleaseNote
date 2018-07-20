@@ -368,3 +368,9 @@ Env V1.3 stable released to dev
 
 ipad responsive issue fixed
 	ipad responsive issue fixed in dashpoard page
+
+Error message design change
+	form error message has been fixed in login, register, forget password and reset password pages.
+
+Tour guide
+	new tour guide text has been implement in the tooltips. 

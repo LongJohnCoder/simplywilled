@@ -39,8 +39,8 @@
                  #email="ngModel">
           <span class="alert-danger"
                 *ngIf="email.errors && (email.dirty || email.touched)">
-                <p *ngIf="email.errors?.required">Email is required</p>
-                <p *ngIf="email.errors?.pattern">Email is not correct!</p>
+                <p *ngIf="email.errors?.required" class="formErrorMsg">Email is required</p>
+                <p *ngIf="email.errors?.pattern" class="formErrorMsg">Email is not correct!</p>
           </span>
 
           <input type="password" name="password" placeholder="Password" class="email_form"
@@ -50,8 +50,8 @@
 
           <span class="alert-danger"
                 *ngIf="password.errors && (password.dirty || password.touched)">
-                <p *ngIf="password.errors?.required">Password is required</p>
-                <p *ngIf="password.errors?.minlength">Password should be minimum 6!</p>
+                <p *ngIf="password.errors?.required" class="formErrorMsg">Password is required</p>
+                <p *ngIf="password.errors?.minlength" class="formErrorMsg">Password should be minimum 6!</p>
           </span>
 
           <input type="password" name="confirm_password" placeholder="Confirm Password" class="email_form"
@@ -61,11 +61,11 @@
 
           <span class="alert-danger"
                 *ngIf="confirm.errors && (confirm.dirty || confirm.touched)">
-                <p *ngIf="confirm.errors?.required">Confirm Password is required</p>
-                <p *ngIf="confirm.errors?.minlength">Confirm Password should be minimum 6!</p>
+                <p *ngIf="confirm.errors?.required" class="formErrorMsg">Confirm Password is required</p>
+                <p *ngIf="confirm.errors?.minlength" class="formErrorMsg">Confirm Password should be minimum 6!</p>
           </span>
           <span *ngIf="confirm.invalid && (confirm.dirty || confirm.touched)" class="text-danger">
-              <p>Confirm Password should be same as password!</p>
+              <p class="formErrorMsg">Confirm Password should be same as password!</p>
           </span>
 
           <div class="loader_parent" id="response_loader">
