@@ -44,6 +44,44 @@ a:hover{
     cursor: not-allowed;
 }
 
+.pageNotFound{
+    background: url('./../../../assets/images/404.jpg') no-repeat;
+    background-size: auto;
+    background-position: top left;
+    max-width: 620px;
+    height: 570px;
+    margin: 60px auto 0;
+}
+.errorBox{
+    float: right;
+    text-align: center;
+}
+.errorBox h1{
+    font-size: 120px;
+    color: #f17878;
+    margin-top: 50px;
+    font-family: "OpenSans-Bold";
+}
+.errorBox p{
+    font-size: 34px;
+    color: #256290;
+}
+
+@media screen and (max-width: 650px){
+    .pageNotFound{
+       max-width: 480px;
+       height: 570px; 
+       background-size: 100% auto;
+    }
+    .errorBox h1{
+        font-size: 80px;
+        margin-top: 50px;
+    }
+    .errorBox p{
+        font-size: 28px;
+    }
+}
+
 @media screen and (max-width:600px){
     .inner_banner{
         background-image: url('./../../../assets/images/contactusbannerMobile.png');
@@ -60,6 +98,20 @@ a:hover{
     .banner_heading_two {
         font-size: 34px;
         display: inline;
+    }
+}
+
+@media screen and (max-width:500px){
+    .pageNotFound {
+        max-width: 300px;
+        height: 300px;
+    }
+    .errorBox h1 {
+        font-size: 50px;
+        margin-top: 50px;
+    }
+    .errorBox p {
+        font-size: 20px;
     }
 }
 
