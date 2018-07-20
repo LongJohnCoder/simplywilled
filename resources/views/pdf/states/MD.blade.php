@@ -46,7 +46,7 @@
                                                                            </span></span><span color="#000000"><span face="Palatino Linotype, serif"><span  style="font-size: 10pt">
                                                            </span></span></span>
         </p>
-        <p style="margin-left: 1.38in; text-indent: -1.38in; margin-bottom: 0in; line-height: 0.17in">
+        <p style="margin-left: 1.38in; text-indent: -1.38in; margin-bottom: 0in; float: right; line-height: 0.17in">
         <span color="#000000"><span face="Palatino Linotype, serif"><span  style="font-size: 10pt"><b>		(Month/Day/Year)</b></span></span></span></p>
         <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
         <span color="#000000"><span face="Palatino Linotype, serif"><span  style="font-size: 10pt">	</span></span></span><span face="Times New Roman, serif"><b></b></span>
@@ -112,19 +112,19 @@
 
         <span color="#0000ff">
           <span face="Times New Roman, serif">
-              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}},</b>
           </span>
         </span>
 
 
 
-        <span face="Times New Roman, serif"><b></b></span><span color="#000000"><span face="Times New Roman, serif">,
+        <span face="Times New Roman, serif"><b></b></span><span color="#000000"><span face="Times New Roman, serif">
         of </span></span>
         <span color="#0433ff">
-            <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}}</span>
+            <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}},</span>
         </span>
 
-          <span color="#000000"><span face="Times New Roman, serif">,
+          <span color="#000000"><span face="Times New Roman, serif">
         </span></span>
 
         <!-- <span face="Times New Roman, serif">IF ANSWERED(
@@ -141,37 +141,37 @@
         <span color="#000000"><span face="Times New Roman, serif"></span></span>
 
         <span color="#0433ff">
-            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}} ,</span>
+            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}},</span>
         </span>
 
         <span color="#0433ff">
-            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}}</span>
+            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}},</span>
         </span>
 
         <span color="#000000">
-          <span face="Times New Roman, serif">, hereby appoint my </span>
+          <span face="Times New Roman, serif"> hereby appoint my </span>
         </span>
 
 
 
         <span color="#0433ff">
         	@if(strtolower($healthFinance['relation']) == 'other')
-            	<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
+            	<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}},</span>
             @else
-            	<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}}</span>
+            	<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}},</span>
             @endif
         </span>
 
         <span color="#000000">
-          <span face="Times New Roman, serif">, </span>
+          <span face="Times New Roman, serif"> </span>
         </span>
 
         <span color="#0433ff">
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}}</span>
+            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}},</span>
         </span>
 
         <span color="#000000">
-          <span face="Times New Roman, serif">, of </span>
+          <span face="Times New Roman, serif"> of </span>
         </span>
 
         <span color="#0433ff">
@@ -181,10 +181,10 @@
         <span face="Times New Roman, serif">in </span>
 
         <span color="#0000ff">
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['city']}}, </span>,
+            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['city']}}, </span>
         </span>
 
-        <span face="Times New Roman, serif">, </span>
+        <span face="Times New Roman, serif"> </span>
 
         <span color="#0000ff">
             <span style="font-family:'Times New Roman, serif'">{{$healthFinance['state']}}, </span>
@@ -246,11 +246,11 @@
                       </span>
 
                       <span color="#0433ff">
-                          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}}</span>
+                          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}},</span>
                       </span>
 
                       <span color="#000000">
-                        <span face="Times New Roman, serif">, of </span>
+                        <span face="Times New Roman, serif"> of </span>
                       </span>
 
                       <span color="#0433ff">
@@ -263,7 +263,7 @@
                           <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupCity']}}, </span>
                       </span>
 
-                      <span face="Times New Roman, serif">, </span>
+                      <span face="Times New Roman, serif"> </span>
 
                       <span color="#0000ff">
                           <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupState']}}, </span>
@@ -282,7 +282,7 @@
                       </span>
 
                       <span color="#000000">
-                        <span face="Times New Roman, serif">) as my alternate agent to make health care decisions for me.</span>
+                        <span face="Times New Roman, serif">), as my alternate agent to make health care decisions for me.</span>
                       </span>
                     </p>
                     <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
@@ -338,7 +338,7 @@
             <br/>
 
             </p>
-            <p style="margin-left: 0.5in; text-indent: -0.5in; margin-bottom: 0in; line-height: 0.17in">
+            <p style="margin-left: 0.25in; text-indent: 0in; margin-bottom: 0in; line-height: 0.17in">
             <span color="#000000">      <span face="Times New Roman, serif">3.	Decide
             where I should be treated, including whether I should be in a
             <p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0.09in; ">
@@ -362,7 +362,7 @@
                 <br/>
 
                 </p>
-                <p style="margin-left: 0.5in; text-indent: -0.5in; margin-bottom: 0in; line-height: 0.17in">
+                <p style="margin-left: 0.25in; text-indent: 0in; margin-bottom: 0in; line-height: 0.17in">
                 <span color="#000000">      <span face="Times New Roman, serif">3.	Decide
                 where I should be treated, including whether I should be in a
                 hospital, nursing home, other medical care facility, or hospice
@@ -656,10 +656,10 @@
           <p align="justify" style="margin-bottom: 0in; "><br/>
 
           </p>
-          <p style="margin-left: 0.33in; text-indent: -0.58in; margin-bottom: 0in; line-height: 0.17in">
+          <p style="margin-left: 0.33in; margin-bottom: 0in; line-height: 0.17in">
           <span color="#000000"><span face="Times New Roman, serif"><b>	Pain
           Relief.  (INITIAL ONE)</b></span></span></p>
-          <p style="margin-left: 0.33in; text-indent: -0.58in; margin-bottom: 0in; line-height: 0.17in">
+          <p style="margin-left: 0.33in;  margin-bottom: 0in; line-height: 0.17in">
           <br/>
 
           </p>
@@ -912,25 +912,25 @@
 
           <p style="margin-bottom: 0in; ">
             <span color="#0432ff">
-                <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}}</span>
-            </span>
-
-            <span face="Times New Roman, serif">, </span>
-
-            <span color="#0432ff">
-                <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}}</span>&nbsp;
+                <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}},</span>
             </span>
 
             <span face="Times New Roman, serif"> </span>
 
             <span color="#0432ff">
-                <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['zip']}}, </span>
+                <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}},</span>&nbsp;
+            </span>
+
+            <span face="Times New Roman, serif"> </span>
+
+            <span color="#0432ff">
+                <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['zip']}} </span>
             </span>
             </p>
 
             <p style="margin-bottom: 0in; ">
               <span color="#0432ff">
-                  <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['phone']}}, </span>
+                  <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['phone']}} </span>
               </span>
             </p>
             <p align="justify" style="margin-left: 2.44in; margin-bottom: 0in; ">
@@ -952,7 +952,7 @@
           by </span>
 
           <span color="#0000ff">
-              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}},</b>
           </span>
 
           <span style="letter-spacing: 0.1pt"><span face="Times New Roman, serif">
@@ -1034,10 +1034,10 @@
           </span></span>
 
           <span color="#0000ff">
-              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}},</b>
           </span>
 
-          <span style="letter-spacing: 0.1pt"><span face="Times New Roman, serif">,
+          <span style="letter-spacing: 0.1pt"><span face="Times New Roman, serif">
           the Declarant, signed or acknowledged signing this document in my
           p</span></span><span face="Times New Roman, serif">resence and, that
           </span><span color="#0433ff">

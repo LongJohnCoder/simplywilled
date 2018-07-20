@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Role;
 use App\Models\NewsletterSubscriber;
+use Newsletter;
 
 class NewsletterController extends Controller
 {
@@ -34,12 +35,29 @@ class NewsletterController extends Controller
                 $createSubscriber->email_send_status = 0;
                 $createSubscriber->status = 1;          // subscribe to the newslatter
                 if($createSubscriber->save()){
-                    return response()->json([
-                        'status' => true,
-                        'message' => 'Thanks for subscribe our newslatter ',
-                        'data' => ['subscriberDetails' => $createSubscriber]
-                    ], 200);
-                    $this->sendEmailToNewsletterSubscriber($createSubscriber->email);
+                    try {
+                      $res = Newsletter::subscribe($subscriberEmail);
+                      if ($res == false) {
+                        return response()->json([
+                            'status'  => false,
+                            'message' => 'This email ID is already subscribed. Use another email ID to subscribe our newsletter !',
+                            'data'    => []
+                        ], 200);
+                      }
+                      return response()->json([
+                          'status' => true,
+                          'message' => 'Thanks for subscribe our newslatter ',
+                          'data' => ['subscriberDetails' => $createSubscriber]
+                      ], 200);
+                      $this->sendEmailToNewsletterSubscriber($createSubscriber->email);
+                    } catch (\Exception $e) {
+                      return response()->json([
+                          'status'  => false,
+                          'message' => $e->getMessage(),
+                          'line'    => $e->getLine(),
+                          'data'    => []
+                      ], 500);
+                    }
                 }else{
                     return response()->json([
                         'status'  => false,
@@ -50,7 +68,7 @@ class NewsletterController extends Controller
             }else{
                 return response()->json([
                     'status'  => false,
-                    'message' => 'you are already subscribe with this email,please enter a new email address!',
+                    'message' => 'This email ID is already subscribed. Use another email ID to subscribe our newsletter !',
                     'data'    => []
                 ], 200);
             }
@@ -61,6 +79,33 @@ class NewsletterController extends Controller
                 'data' => []
             ], 500);
         }
+    }
+
+    public function unsubscribeNewsletter(Request $request)
+    {
+      $subscriberEmail = trim($request->subscriberEmail);
+      $validator = Validator::make($request->all(), [
+          'subscriberEmail'       =>  'required|email|max:50',
+      ]);
+      if ($validator->fails()) {
+          return response()->json([
+              'status'  => false,
+              'message' => $validator->errors(),
+              'data'    => []
+          ], 400);
+      }
+      $checkForExistEmail = NewsletterSubscriber::where('email',$subscriberEmail)->first();
+      if($checkForExistEmail){
+        $createSubscriber->status = 0;          // unsubscribe to the newslatter
+        $createSubscriber->save();
+      }
+
+      $res = Newsletter::unsubscribe($subscriberEmail);
+      return response()->json([
+          'status' => true,
+          'message' => 'You have successfully unsubscribed our newsletter',
+          'data' => ['subscriberDetails' => $createSubscriber]
+      ], 200);
     }
 
     public function sendEmailToNewsletterSubscriber($emailId){

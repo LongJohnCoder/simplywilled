@@ -33,7 +33,7 @@
                 <span  style="font-size: 13pt"><b>LIVING WILL DIRECTIVE AND</b></span></p>
             <p  style="text-align:center;margin-bottom: 0.06in; line-height: 0.23in"><span  style="font-size: 13pt"><b>HEALTH
       CARE SURROGATE DESIGNATION OF</b></span></p>
-            <p style="margin-bottom: 0.08in; line-height: 115%">
+            <p style="margin-bottom: 0.08in; text-align: center; line-height: 115%">
               <span color="#0000ff">
                   @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
                       <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</b>
@@ -102,25 +102,25 @@
       @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
 
           @if(strlen(trim($healthFinance['relationOther'])) > 0)
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
+            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}},</span>
           @else
-            <span style="font-family:'Times New Roman, serif'">(relation) _______________</span>
+            <span style="font-family:'Times New Roman, serif'">(relation) _______________,</span>
           @endif
       @else
           @if(strlen(trim($healthFinance['relation'])) > 0)
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
+            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}},</span>
           @else
-            <span style="font-family:'Times New Roman, serif'">(relation) _______________</span>
+            <span style="font-family:'Times New Roman, serif'">(relation) _______________,</span>
           @endif
       @endif
-      <span >, </span>
+      <span > </span>
 
       @if(isset($healthFinance) && array_key_exists('fullname',$healthFinance) && !is_null($healthFinance['fullname']))
-          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}}</span>
+          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}},</span>
       @else
-          <span style="font-family:'Times New Roman, serif'">_____________________________</span>
+          <span style="font-family:'Times New Roman, serif'">_____________________________,</span>
       @endif
-      <span >, of </span>
+      <span > of </span>
 
       @if(isset($healthFinance) && array_key_exists('address',$healthFinance) && !is_null($healthFinance['address']))
           <span style="font-family:'Times New Roman, serif'">{{$healthFinance['address']}}, </span>
@@ -174,27 +174,27 @@
               @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
 
                   @if(strlen(trim($healthFinance['backupRelationOther'])) > 0)
-                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}}</span>
+                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}},</span>
                   @else
-                    <span style="font-family:'Times New Roman, serif'">(relation) _______________</span>
+                    <span style="font-family:'Times New Roman, serif'">(relation) _______________,</span>
                   @endif
               @else
                   @if(strlen(trim($healthFinance['backupRelation'])) > 0)
-                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}</span>
+                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}},</span>
                   @else
-                    <span style="font-family:'Times New Roman, serif'">(relation) _______________</span>
+                    <span style="font-family:'Times New Roman, serif'">(relation) _______________,</span>
                   @endif
               @endif
 
 
-              <span>, </span>
+              <span> </span>
 
               @if(isset($healthFinance) && array_key_exists('backupFullname',$healthFinance) && !is_null($healthFinance['backupFullname']))
-                  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}}</span>
+                  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}},</span>
               @else
-                  <span style="font-family:'Times New Roman, serif'">_____________________________</span>
+                  <span style="font-family:'Times New Roman, serif'">_____________________________,</span>
               @endif
-              <span >, of </span>
+              <span > of </span>
 
               @if(isset($healthFinance) && array_key_exists('backupAddress',$healthFinance) && !is_null($healthFinance['backupAddress']))
                   <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupAddress']}}, </span>
@@ -565,16 +565,16 @@
           <span  style="font-size: 12pt"><span style="background: #ffffff">
               <span color="#000000">
                 @if(isset($tellUsAboutYou) && array_key_exists('city',$tellUsAboutYou) && !is_null($tellUsAboutYou['city']))
-                      <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
+                      <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}},</span>
                   @else
-                      <span style="text-transform: capitalize">(city)_____________</span>
+                      <span style="text-transform: capitalize">(city)_____________,</span>
                   @endif
-                  <span >, </span>
+                  <span > </span>
 
                   @if(isset($tellUsAboutYou) && array_key_exists('state',$tellUsAboutYou) && !is_null($tellUsAboutYou['state']))
-                      <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>
+                      <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}},</span>
                   @else
-                      <span style="text-transform: capitalize">(state)_____________</span>
+                      <span style="text-transform: capitalize">(state)_____________,</span>
                   @endif
 
                   @if(isset($tellUsAboutYou) && array_key_exists('zip',$tellUsAboutYou) && !is_null($tellUsAboutYou['zip']))
@@ -625,10 +625,10 @@
             <p style="margin-bottom: 0in; line-height: 115%">Before me, the
                 undersigned authority, came
                 @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                    <span>{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+                    <span>{{strtoupper($tellUsAboutYou['fullname'])}},</span>
                 @else
-                    <span>________________________________</span>
-                @endif,
+                    <span>________________________________,</span>
+                @endif
                 the grantor, who is of sound mind and eighteen (18) years of age, or
                 older, and acknowledged that
                 <span>{{isset($tellUsAboutYou) && array_key_exists('gender',$tellUsAboutYou) && !is_null($tellUsAboutYou['gender']) && $tellUsAboutYou['gender'] == 'M' ? 'he' : (isset($tellUsAboutYou) && array_key_exists('gender',$tellUsAboutYou) && !is_null($tellUsAboutYou['gender']) && $tellUsAboutYou['gender'] == 'F' ? 'she' : 'he/she')}}</span>
@@ -655,11 +655,11 @@
       that each of us is 18 years of age or older and each personally
       witnessed
         @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</b>
+            <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</b>
         @else
-            <b>________________________________</b>
+            <b>________________________________,</b>
         @endif
-        ,
+
       the grantor, sign or direct the signing of this directive and in the
       presence of each other; that we are acquainted with the grantor and
       believe the grantor to be of sound mind; that the grantor's desires

@@ -254,9 +254,9 @@
       <span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">my
       </span><span size="3" style="font-size: 12pt">
             @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
-              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
+              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}},</span>
             @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
-              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
+              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}},</span>
             @endif
         <span style="text-transform: capitalize" > {{$healthFinance['fullname']}} </span>
       </span></span></span></p>
@@ -280,7 +280,7 @@
             </p>
             <p  style="text-align:justify;margin-left: 1.81in; text-indent: -1.31in; margin-bottom: 0.03in; ">
       <span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">
-        <span style="text-transform: capitalize" > {{$healthFinance['city']}} ,
+        <span style="text-transform: capitalize" > {{$healthFinance['city']}},
         <span style="text-transform: capitalize" > {{$healthFinance['state']}}, </span>
         <span style="text-transform: capitalize" > {{$healthFinance['zip']}}</span>
       </span></span></span></span></p>
@@ -537,9 +537,9 @@ Release Authority</span></span><span size="3" style="font-size: 12pt">.
       <span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">my
       </span><span size="3" style="font-size: 12pt">
          @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
-              <span>{{$healthFinance['backupRelation']}}</span>
+              <span>{{$healthFinance['backupRelation']}},</span>
          @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
-              <span>{{$healthFinance['backupRelation']}}</span>
+              <span>{{$healthFinance['backupRelation']}},</span>
          @endif
          <span style="text-transform: capitalize" > {{$healthFinance['backupFullname']}} </span>
       </span></span></span></p>
@@ -564,8 +564,8 @@ Release Authority</span></span><span size="3" style="font-size: 12pt">.
                 <p  style="text-align:justify;margin-left: 1.81in; text-indent: -1.31in; margin-bottom: 0.03in; ">
       <span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">
          in
-      <span style="text-transform: capitalize" > {{$healthFinance['backupCity']}} ,</span>
-      <span style="text-transform: capitalize" > {{$healthFinance['backupState']}} ,</span>
+      <span style="text-transform: capitalize" > {{$healthFinance['backupCity']}},</span>
+      <span style="text-transform: capitalize" > {{$healthFinance['backupState']}},</span>
       <span style="text-transform: capitalize" > {{$healthFinance['backupZip']}} </span>
       </span></span></span></p>
                 <p  style="text-align:justify;margin-left: 1.81in; text-indent: -1.31in; margin-bottom: 0.03in; ">
@@ -650,7 +650,7 @@ Release Authority</span></span><span size="3" style="font-size: 12pt">.
       </b></span></p>
             <p  style="text-align:justify;margin-bottom: 0in; ">
       <span style="font-family:Times New Roman, serif">
-        <span style="text-transform: capitalize" >{{$tellUsAboutYou['address']}}</span>,
+        <span style="text-transform: capitalize" >{{$tellUsAboutYou['address']}},</span>
       </span>
             </p>
             <!--<p  style="text-align:justify;margin-bottom: 0in; "><span style="font-family:Times New Roman, serif">«</span><span color="#008f00"><span style="font-family:Times New Roman, serif">IF
@@ -660,8 +660,8 @@ Release Authority</span></span><span size="3" style="font-size: 12pt">.
               IF</span></span><span style="font-family:Times New Roman, serif">»</span></p>-->
             <p  style="text-align:justify;margin-bottom: 0in; ">
       <span style="font-family:Times New Roman, serif">
-        <span style="text-transform: capitalize" >{{$tellUsAboutYou['city']}}</span>,
-        <span style="text-transform: capitalize" >{{$tellUsAboutYou['state']}}</span>
+        <span style="text-transform: capitalize" >{{$tellUsAboutYou['city']}},</span>
+        <span style="text-transform: capitalize" >{{$tellUsAboutYou['state']}},</span>
         <span style="text-transform: capitalize" >{{$tellUsAboutYou['zip']}}</span>
       </span>
             </p>

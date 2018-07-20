@@ -40,34 +40,28 @@
             </p>
             <p style="margin-bottom: 0in; line-height: 115%"><span  style="font-size: 12pt">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I,
       <b>
-        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
       </b>
       of
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['address']}}</span>,
-        <span style="text-transform: capitalize" >{{$tellUsAboutYou['city']}}</span>,
+        <span style="text-transform: capitalize">{{$tellUsAboutYou['address']}},</span>
+        <span style="text-transform: capitalize" >{{$tellUsAboutYou['city']}},</span>
         <span style="text-transform: capitalize" >{{$tellUsAboutYou['state']}}</span>
           being at least eighteen (18) years of age, of sound mind, and capable
           of consenting to my health care, hereby appoint my
             @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
 
-                @if(strlen(trim($healthFinance['relationOther'])) > 0)
                   <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
-                @else
-                  <span style="font-family:'Times New Roman, serif'"> (relation) _________________ </span>
-                @endif
+
             @else
-                @if(strlen(trim($healthFinance['relation'])) > 0)
                   <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
-                @else
-                  <span style="font-family:'Times New Roman, serif'">(relation) ____________________</span>
-                @endif
+
             @endif
             <span>,</span>
-            <span style="text-transform: capitalize" > {{$healthFinance['fullname']}} </span>, of
-            <span style="text-transform: capitalize" > {{$healthFinance['address']}} </span>, in
+            <span style="text-transform: capitalize" > {{$healthFinance['fullname']}}, </span> of
+            <span style="text-transform: capitalize" > {{$healthFinance['address']}}, </span> in
             <span style="text-transform: capitalize" > {{$healthFinance['city']}},
             <span style="text-transform: capitalize" > {{$healthFinance['state']}}</span>,
-            <span style="text-transform: capitalize" > {{$healthFinance['zip']}} </span>
+            <span style="text-transform: capitalize" > {{$healthFinance['zip']}}, </span>
             (Tel: <span > {{$healthFinance['phone']}} </span> ), as my lawful health care representative
       (agent) to make health care decisions on my behalf whenever I am
       incapable of making my own health care decisions. </span></span>
@@ -84,26 +78,26 @@
                 @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
 
                   @if(strlen(trim($healthFinance['backupRelationOther'])) > 0)
-                    <span>{{$healthFinance['backupRelationOther']}}</span>
+                    <span>{{$healthFinance['backupRelationOther']}},</span>
                   @else
-                    <span>_____________________</span>
+                    <span>_____________________,</span>
                   @endif
 
                 @else
 
                   @if(strlen(trim($healthFinance['backupRelation'])) > 0)
-                    <span>{{$healthFinance['backupRelation']}}</span>
+                    <span>{{$healthFinance['backupRelation']}},</span>
                   @else
-                    <span>_____________________</span>
+                    <span>_____________________,</span>
                   @endif
-                    <span>(relation)______________</span>
+                    <span>(relation)______________,</span>
                 @endif
-              <span style="text-transform: capitalize" > {{$healthFinance['backupFullname']}} </span>,  of
-              <span style="text-transform: capitalize" > {{$healthFinance['backupAddress']}} </span>, in
-              <span style="text-transform: capitalize" > {{$healthFinance['backupCity']}} </span>,
-              <span style="text-transform: capitalize" > {{$healthFinance['backupState']}} </span>,
-              <span style="text-transform: capitalize" > {{$healthFinance['backupZip']}} </span>
-              (Tel: <span > {{$healthFinance['backupphone']}} </span> ) as my alternate attorney-in-fact to make
+              <span style="text-transform: capitalize" > {{$healthFinance['backupFullname']}}, </span>  of
+              <span style="text-transform: capitalize" > {{$healthFinance['backupAddress']}}, </span> in
+              <span style="text-transform: capitalize" > {{$healthFinance['backupCity']}}, </span>
+              <span style="text-transform: capitalize" > {{$healthFinance['backupState']}}, </span>
+              <span style="text-transform: capitalize" > {{$healthFinance['backupZip']}}, </span>
+              (Tel: <span > {{$healthFinance['backupphone']}} </span> ), as my alternate attorney-in-fact to make
               the health care decisions for me as authorized in this document.&nbsp;</span>
             </p>
             @endif
@@ -321,7 +315,7 @@
 
             <p style="margin-bottom: 0.08in; line-height: 115%"><span  style="font-size: 12pt">We,
       the witnesses hereunder, certify that each of us is 18 years of age
-      or older and each personally witnessed <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+      or older and each personally witnessed <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
       the principal, sign
       or direct the signing of this appointment of health care
       representative; that we are acquainted with the principal and believe
@@ -544,11 +538,11 @@
                 <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
             </p>
             <p style="margin-bottom: 0in; line-height: 115%">
-                <span style="text-transform: capitalize" >{{$tellUsAboutYou['address']}}</span>,
+                <span style="text-transform: capitalize" >{{$tellUsAboutYou['address']}},</span>
             </p>
             <p style="margin-bottom: 0in; line-height: 115%"><span  style="font-size: 12pt">
-              <span style="text-transform: capitalize" >{{$tellUsAboutYou['city']}}</span>
-              <span style="text-transform: capitalize" >{{$tellUsAboutYou['state']}}</span>
+              <span style="text-transform: capitalize" >{{$tellUsAboutYou['city']}},</span>
+              <span style="text-transform: capitalize" >{{$tellUsAboutYou['state']}},</span>
               <span style="text-transform: capitalize" >{{$tellUsAboutYou['zip']}}</span>
             </span>
             </p>
@@ -558,7 +552,7 @@
             <p style="margin-bottom: 0.08in; line-height: 115%"><span  style="font-size: 12pt">We,
       the witnesses hereunder, certify that each of us is 18 years of age
       or older and each personally witnessed
-      <span style="text-transform: capitalize" >{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+      <span style="text-transform: capitalize" >{{strtoupper($tellUsAboutYou['fullname'])}},</span>
       sign or direct the signing of this directive; that we are acquainted
       with the declarant and believe the declarant to be of sound mind;
       that the declarant's desires are as expressed above; that neither of

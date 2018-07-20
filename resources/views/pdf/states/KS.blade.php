@@ -46,7 +46,7 @@
                     <span>________________________________</span>
                 @endif
             </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; text-align:center; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 @if(isset($tellUsAboutYou) && array_key_exists('address',$tellUsAboutYou) && !is_null($tellUsAboutYou['address']))
                     <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}}</span>
                 @else
@@ -56,19 +56,19 @@
                 @endif
             </p>
 
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+            <p style="margin-bottom: 0in; text-align:center; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 @if(isset($tellUsAboutYou) && array_key_exists('city',$tellUsAboutYou) && !is_null($tellUsAboutYou['city']))
-                    <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
+                    <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}},</span>
                 @else
-                    <span style="text-transform: capitalize">(city)_____________</span>
+                    <span style="text-transform: capitalize">(city)_____________,</span>
                     <span >, </span>
                 @endif
 
 
                 @if(isset($tellUsAboutYou) && array_key_exists('state',$tellUsAboutYou) && !is_null($tellUsAboutYou['state']))
-                    <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>
+                    <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}},</span>
                 @else
-                    <span style="text-transform: capitalize">(state)_____________</span>
+                    <span style="text-transform: capitalize">(state)_____________,</span>
                 @endif
 
                 @if(isset($tellUsAboutYou) && array_key_exists('zip',$tellUsAboutYou) && !is_null($tellUsAboutYou['zip']))
@@ -97,26 +97,11 @@
             </p>
             <p  style="text-align:center;margin-bottom: 0in; line-height: 115%">
                 <span color="#0432ff">
-
-
-                    @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] == 'Other')
-                        @if(strlen(trim($healthFinance['relationOther'])) > 0)
-                            <span>{{$healthFinance['relationOther']}}</span>
-                        @else
-                            <span>(relation) ________________ </span>
-                        @endif
-                    @else
-                        @if(strlen(trim($healthFinance['relation'])) > 0)
-                            <span>{{$healthFinance['relation']}}</span>
-                        @else
-                            <span>(relation) ________________ </span>
-                        @endif
-                    @endif
-
+                    <span><b>{{$healthFinance['fullname']}}</b></span>
                     @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
                         <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
                     @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
-                        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
+                        <span style="font-family:'Times New Roman, serif'">(my {{$healthFinance['relation']}})</span>
                     @else
                         <span>(relation)______________</span>
                     @endif
@@ -475,10 +460,10 @@
             <p  style="text-align:justify;margin-bottom: 0.08in; line-height: 115%"><span color="#0000ff"><span  style=""><span >________________,
       by
             @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+                <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}.</span>
             @else
-                <span>________________________________</span>
-            @endif.</span></span></span></p>
+                <span>________________________________.</span>
+            @endif</span></span></span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%">
 
             </p>
@@ -508,10 +493,10 @@
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >The
       principal,
       @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-          <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</b>
+          <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</b>
       @else
-          <b>________________________________</b>
-      @endif,
+          <b>________________________________,</b>
+      @endif
       has been personally known to me and I believe
       <span>{{isset($tellUsAboutYou) && array_key_exists('gender',$tellUsAboutYou) && !is_null($tellUsAboutYou['gender']) && $tellUsAboutYou['gender'] == 'M' ? 'him' : (isset($tellUsAboutYou) && array_key_exists('gender',$tellUsAboutYou) && !is_null($tellUsAboutYou['gender']) && $tellUsAboutYou['gender'] == 'F' ? 'her' : 'him/her')}}</span>
       to be of sound mind. I did not sign the
@@ -618,10 +603,10 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >I,
           @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-              <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</b>
+              <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</b>
           @else
-              <b>________________________________</b>
-          @endif,
+              <b>________________________________,</b>
+          @endif
       being of sound mind, willfully and voluntarily make known my desire
       that my dying shall not be artificially prolonged under the
       circumstances set forth below, and do hereby declare:</span></span></span></span></span></p>
@@ -707,10 +692,10 @@
             <p style="margin-bottom: 0in; line-height: 115%"><span color="#0000ff"><span  style=""><span >________________,
       by </span>
         @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+            <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}.</span>
         @else
-            <span>________________________________</span>
-        @endif.
+            <span>________________________________.</span>
+        @endif
     </span></span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%">
 

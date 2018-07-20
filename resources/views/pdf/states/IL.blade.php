@@ -468,9 +468,9 @@
             <p  style="text-align:justify;margin-left: 0.19in; margin-bottom: 0.06in; ">
               <span style="font-family:Times New Roman, serif">(Agent name):			my
                   @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
-                      <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
+                      <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}},</span>
                   @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
-                      <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
+                      <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}},</span>
                   @endif
                   <span style="text-transform: capitalize" > {{$healthFinance['fullname']}} </span>
               </span></p>
@@ -480,8 +480,8 @@
               </span>
             </p>
             <p style="margin-left: 2.5in; margin-bottom: 0in; "><span style="font-family:Times New Roman, serif">
-              <span style="text-transform: capitalize" > {{$healthFinance['city']}} </span>,
-                <span style="text-transform: capitalize" > {{$healthFinance['state']}} </span>,
+              <span style="text-transform: capitalize" > {{$healthFinance['city']}}, </span>
+                <span style="text-transform: capitalize" > {{$healthFinance['state']}}, </span>
                 <span style="text-transform: capitalize" > {{$healthFinance['zip']}} </span>
               </span>
             </p>
@@ -518,10 +518,10 @@
                 <p  style="text-align:justify;margin-left: 0.19in; margin-bottom: 0.06in; ">
                     <span style="font-family:Times New Roman, serif">(Successor Agent name):		my
                         @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
-                            <span>{{$healthFinance['backupRelation']}}</span>
+                            <span>{{$healthFinance['backupRelation']}},</span>
                         @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
-                            <span>{{$healthFinance['backupRelation']}}</span>
-                        @endif,
+                            <span>{{$healthFinance['backupRelation']}},</span>
+                        @endif
                       <span style="text-transform: capitalize" > {{$healthFinance['backupFullname']}} </span>
                     </span></p>
                 <p  style="text-align:justify;margin-left: 1.31in; text-indent: -1.13in; margin-bottom: 0.06in; ">
@@ -531,8 +531,8 @@
                 </p>
                 <p style="margin-left: 2.5in; margin-bottom: 0in; ">
                     <span style="font-family:Times New Roman, serif">
-                      <span style="text-transform: capitalize" > {{$healthFinance['backupCity']}} </span>,
-                      <span style="text-transform: capitalize" > {{$healthFinance['backupState']}} </span>
+                      <span style="text-transform: capitalize" > {{$healthFinance['backupCity']}}, </span>
+                      <span style="text-transform: capitalize" > {{$healthFinance['backupState']}}, </span>
                       <span style="text-transform: capitalize" > {{$healthFinance['backupZip']}} </span>
                     </span>
                 </p>

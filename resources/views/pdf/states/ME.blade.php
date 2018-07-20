@@ -200,11 +200,11 @@
           <span >, </span>
 
           @if(isset($healthFinance) && array_key_exists('fullname',$healthFinance) && !is_null($healthFinance['fullname']))
-              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}}</span>
+              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}},</span>
           @else
-              <span style="font-family:'Times New Roman, serif'">_____________________________</span>
+              <span style="font-family:'Times New Roman, serif'">_____________________________,</span>
           @endif
-          <span >, of </span>
+          <span > of </span>
 
           @if(isset($healthFinance) && array_key_exists('address',$healthFinance) && !is_null($healthFinance['address']))
               <span style="font-family:'Times New Roman, serif'">{{$healthFinance['address']}}, </span>
@@ -256,18 +256,18 @@
             @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
                 <span>{{$healthFinance['backupRelation']}}</span>
             @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
-                <span>{{$healthFinance['backupRelation']}}</span>
+                <span>{{$healthFinance['backupRelation']}},</span>
             @else
-                <span>(relation)______________</span>
+                <span>(relation)______________,</span>
             @endif
-            <span>, </span>
+            <span> </span>
 
             @if(isset($healthFinance) && array_key_exists('backupFullname',$healthFinance) && !is_null($healthFinance['backupFullname']))
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}}</span>
+                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}},</span>
             @else
-                <span style="font-family:'Times New Roman, serif'">_____________________________</span>
+                <span style="font-family:'Times New Roman, serif'">_____________________________,</span>
             @endif
-            <span >, of </span>
+            <span > of </span>
 
             @if(isset($healthFinance) && array_key_exists('backupAddress',$healthFinance) && !is_null($healthFinance['backupAddress']))
                 <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupAddress']}}, </span>
@@ -757,38 +757,38 @@
                 <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></p>
             <p class="western"  style="text-align:justify;margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
                 @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                    <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+                    <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}},</b>
                 @else
-                    <b>________________________________</b>
+                    <b>________________________________,</b>
                 @endif
             </p>
             <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
                 @if(isset($tellUsAboutYou) && array_key_exists('address',$tellUsAboutYou) && !is_null($tellUsAboutYou['address']))
-                    <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}}</span>
+                    <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}},</span>
                 @else
                     <span>_________________________________________________________________
                     ___________________________________________________________________________________________
-                    _________________________________________________________________________________</span>
+                    _________________________________________________________________________________,</span>
                 @endif
-                <span>,</span>
+                <span></span>
             </p>
             <!--<p class="western" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
               «<span color="#008f00">IF ANSWERED( Address2 )</span>»«<span color="#0432ff">Address2</span>»«<span color="#008f00">END
               IF</span>»</p>-->
             <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
                 @if(isset($tellUsAboutYou) && array_key_exists('city',$tellUsAboutYou) && !is_null($tellUsAboutYou['city']))
-                    <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
+                    <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}},</span>
                 @else
-                    <span style="text-transform: capitalize">(city)_____________</span>
+                    <span style="text-transform: capitalize">(city)_____________,</span>
                 @endif
-                <span >, </span>
+                <span > </span>
 
                 @if(isset($tellUsAboutYou) && array_key_exists('state',$tellUsAboutYou) && !is_null($tellUsAboutYou['state']))
-                    <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>
+                    <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}},</span>
                 @else
-                    <span style="text-transform: capitalize">(state)_____________</span>
+                    <span style="text-transform: capitalize">(state)_____________,</span>
                 @endif
-                <span >, </span>
+                <span > </span>
 
                 @if(isset($tellUsAboutYou) && array_key_exists('zip',$tellUsAboutYou) && !is_null($tellUsAboutYou['zip']))
                     <span style="text-transform: capitalize">{{$tellUsAboutYou['zip']}}</span>
@@ -831,9 +831,9 @@
             <p class="western"  style="text-align:justify;margin-bottom: 0.08in; orphans: 0; widows: 0"><a name="_GoBack"></a>
                 I declare under penalty that
                 @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                    <span>{{$tellUsAboutYou['fullname']}}</span>
+                    <span>{{$tellUsAboutYou['fullname']}},</span>
                 @else
-                    <span>________________________________</span>
+                    <span>________________________________,</span>
                 @endif
                 the principal, is personally known to me, that
                 <span>{{isset($tellUsAboutYou) && array_key_exists('gender',$tellUsAboutYou) && !is_null($tellUsAboutYou['gender']) && $tellUsAboutYou['gender'] == 'M' ? 'he' : (isset($tellUsAboutYou) && array_key_exists('gender',$tellUsAboutYou) && !is_null($tellUsAboutYou['gender']) && $tellUsAboutYou['gender'] == 'F' ? 'she' : 'he/she')}}</span>

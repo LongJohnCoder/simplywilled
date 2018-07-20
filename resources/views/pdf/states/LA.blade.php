@@ -74,16 +74,16 @@
             <p class="western"  style="text-align:center;margin-bottom: 0in; line-height: 100%">
                 Address:
                 @if(isset($tellUsAboutYou) && array_key_exists('city',$tellUsAboutYou) && !is_null($tellUsAboutYou['city']))
-                    <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
+                    <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}},</span>
                 @else
-                    <span style="text-transform: capitalize">(city)_____________</span>
+                    <span style="text-transform: capitalize">(city)_____________,</span>
                 @endif
-                <span >, </span>
+                <span > </span>
 
                 @if(isset($tellUsAboutYou) && array_key_exists('state',$tellUsAboutYou) && !is_null($tellUsAboutYou['state']))
-                    <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>
+                    <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}},</span>
                 @else
-                    <span style="text-transform: capitalize">(state)_____________</span>
+                    <span style="text-transform: capitalize">(state)_____________,</span>
                 @endif
                 <span >, </span>
                 @if(isset($tellUsAboutYou) && array_key_exists('zip',$tellUsAboutYou) && !is_null($tellUsAboutYou['zip']))
@@ -524,9 +524,9 @@
             </p>
             <p class="western"  style="text-align:justify;margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
                 @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                    <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+                    <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}},</b>
                 @else
-                    <b>________________________________</b>
+                    <b>________________________________,</b>
                 @endif
                 the
                 person who signed or acknowledged this document, is personally known
@@ -686,10 +686,10 @@
             <p class="western"  style="text-align:justify;margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
                 I,
                 @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                    <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+                    <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}},</b>
                 @else
-                    <b>________________________________</b>
-                @endif,
+                    <b>________________________________,</b>
+                @endif
                 being of sound mind, willfully and voluntarily make known my desire
                 that my dying shall not be artificially prolonged under the
                 circumstances set forth below and do hereby declare:
