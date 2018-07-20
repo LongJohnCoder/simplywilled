@@ -27,23 +27,23 @@
       <span face="Times New Roman, serif"><b>PRINCIPAL (Name and Address of
         Person Granting the Power)</b></span></p>
     <p align="center" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      <span face="Times New Roman, serif">,</span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+      <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+      <span face="Times New Roman, serif"></span>
     </p>
     <p align="center" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif">of </span><span color="#0000ff"><span face="Times New Roman, serif">
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? userDetails.tellUsAboutYou.address : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      </span></span><span face="Times New Roman, serif">,
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? userDetails.tellUsAboutYou.address : '_______________________'}},</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+      </span></span><span face="Times New Roman, serif">
       </span><!--<span color="#008000"><span face="Times New Roman, serif"></span></span><span face="Times New Roman, serif"></span><span color="#0000ff"><span face="Times New Roman, serif">Address2</span></span><span face="Times New Roman, serif">»
       «</span><span color="#008000"><span face="Times New Roman, serif">END
       IF</span></span><span face="Times New Roman, serif">»</span>--></p>
     <p align="center" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif"></span><span color="#0000ff"><span face="Times New Roman, serif">
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      </span></span><span face="Times New Roman, serif">,
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}},</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+      </span></span><span face="Times New Roman, serif">
       </span><span color="#0000ff"><span face="Times New Roman, serif">
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
         <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span></span>
@@ -81,22 +81,20 @@
           </p>
           <p align="justify" style="margin-right: -0.9in; margin-bottom: 0.08in; orphans: 0; widows: 0">
             <span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"></span></span><span color="#0000ff"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt">
-              <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.address !== null && financialPOA.attorney_holders.address !== undefined ? financialPOA.attorney_holders.address : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>,
+              <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.address !== null && financialPOA.attorney_holders.address !== undefined ? financialPOA.attorney_holders.address : '_______________________'}}, </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________, </span>
             </span></span></span><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt">
           </span></span>
           </p>
           <p align="justify" style="margin-right: -0.9in; margin-bottom: 0.08in; orphans: 0; widows: 0">
             <span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"></span></span><span color="#0000ff"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt">
-               <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.city !== null && financialPOA.attorney_holders.city !== undefined ? financialPOA.attorney_holders.city : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
-            </span></span></span><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt">,
+               <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.city !== null && financialPOA.attorney_holders.city !== undefined ? financialPOA.attorney_holders.city : '_______________________'}}, </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________, </span>
+            </span></span></span><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt">
             </span></span><span color="#0000ff"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt">
               <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_holders !== null"> {{financialPOA.attorney_holders.state !== null && financialPOA.attorney_holders.state !== undefined ? financialPOA.attorney_holders.state : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_holders === null"> _______________________ </span>
             </span></span></span><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt">
           </span></span>
           </p>
-          <p align="justify" style="margin-right: -0.9in; margin-bottom: 0.08in; orphans: 0; widows: 0">
-
-          </p>
+          
           <p style="margin-right: -0.9in; orphans: 0; widows: 0"><br/>
 
           </p>
@@ -112,6 +110,17 @@
           </span></span>
           </p>-->
           <p align="justify" style="margin-bottom: 0.08in; orphans: 0; widows: 0">
+            <span color="#0000ff">
+              <span face="Times New Roman, serif">
+                <span size="2" style="font-size: 11pt">
+                  <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> 
+                    {{financialPOA.attorney_backup !== null && financialPOA.attorney_backup.fullname !== null && financialPOA.attorney_backup.fullname !== undefined ? financialPOA.attorney_backup.fullname.toLowerCase() : '_______________________'}} </span>
+                  <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
+                </span>
+              </span>
+            </span> 
+          </p>
+          <p align="justify" style="margin-bottom: 0.08in; orphans: 0; widows: 0">
             <span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"></span></span><span color="#0000ff"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt">
               <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.address !== null && financialPOA.attorney_backup.address !== undefined ? financialPOA.attorney_backup.address : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
             </span></span></span><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt">
@@ -119,8 +128,8 @@
           </p>
           <p align="justify" style="margin-bottom: 0.08in; orphans: 0; widows: 0">
             <span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"></span></span><span color="#0000ff"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt">
-              <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.city !== null && financialPOA.attorney_backup.city !== undefined ? financialPOA.attorney_backup.city : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
-            </span></span></span><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt">,
+              <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.city !== null && financialPOA.attorney_backup.city !== undefined ? financialPOA.attorney_backup.city : '_______________________'}}, </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________, </span>
+            </span></span></span><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt">
             </span></span><span color="#0000ff"><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt">
               <span style="text-transform: capitalize" *ngIf="financialPOA !== undefined && financialPOA.attorney_backup !== null"> {{financialPOA.attorney_backup.state !== null && financialPOA.attorney_backup.state !== undefined ? financialPOA.attorney_backup.state : '_______________________'}} </span> <span *ngIf="financialPOA === undefined || financialPOA.attorney_backup === null"> _______________________ </span>
           </span></span></span><span face="Times New Roman, serif"><span size="2" style="font-size: 11pt"></span></span>
@@ -139,14 +148,16 @@
     </p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <span color="#000000"><span face="Times New Roman, serif"><b>EFFECTIVE
-        DATE.</b></span></span><!--<span color="#000000"><span face="Times New Roman, serif">«</span></span><span color="#009c00"><span face="Times New Roman, serif">IF
-      PofA Springing?</span></span><span color="#000000"><span face="Times New Roman, serif">»
-      &nbsp;</span></span>--><span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isIncapacity === 1"><span face="Times New Roman, serif">The above
+        DATE.</b></span></span>
+        <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isIncapacity === 1"><span face="Times New Roman, serif">The above
       authority granted to my Attorney-in-fact shall take effect </span><span color="#212121"><span face="Times New Roman, serif">on
       my disability or incapacity, as defined herein or as otherwise
       determined by a court of competent jurisdiction.</span></span><span color="#000000"><span face="Times New Roman, serif"></span></span><span color="#009c00"><span face="Times New Roman, serif"></span></span><span color="#000000"><span face="Times New Roman, serif"></span></span><span color="#009c00"><span face="Times New Roman, serif">
-    </span></span></span><span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isIncapacity === 0"><span face="Times New Roman, serif">This Power is
-      effective immediately upon execution.</span><span color="#000000"><span face="Times New Roman, serif"></span></span><span color="#009c00"><span face="Times New Roman, serif"></span></span><span color="#000000"><span face="Times New Roman, serif"></span></span></span></p>
+    </span></span></span>
+    
+    <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isIncapacity === 0"><span face="Times New Roman, serif">This Power is
+      effective immediately upon execution.</span><span color="#000000"><span face="Times New Roman, serif"></span></span><span color="#009c00"><span face="Times New Roman, serif"></span></span><span color="#000000"><span face="Times New Roman, serif"></span></span></span>
+    </p>
     <p align="justify" style="margin-right: -0.9in; margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
 
@@ -275,7 +286,7 @@
       TO THE MAXIMUM EXTENT PERMITTED BY LAW, SHALL NOT BE AFFECTED BY MY
       DISABILITY, ABSENCE, INCAPACITY OR INCOMPETENCY, OR IN THE EVENT OF
       LATER UNCERTAINTY AS TO WHETHER I AM DEAD OR ALIVE, OR BY LAPSE OF
-      TIME</b></span><span color="#000000"><span face="Times New Roman, serif"><b>,</b></span></span><span color="#000000"><span face="Times New Roman, serif">
+      TIME,</b></span><span color="#000000"><span face="Times New Roman, serif">
       </span></span><span face="Times New Roman, serif"><b>UNLESS OR UNTIL
         OTHERWISE ORDERED BY A COURT OF COMPETENT JURISDICTION.</b></span><span color="#000000"><span face="Times New Roman, serif"></span></span><span color="#008f00"><span face="Times New Roman, serif">ELSE
       </span></span>
@@ -411,7 +422,7 @@
     </p>
     <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span face="Times New Roman, serif"><b>Reliance
       by Third Parties</b></span><span face="Times New Roman, serif">.  Any
-      person, including my </span><span face="Times New Roman, serif">Attorney-in-fact</span><span face="Times New Roman, serif">,
+      person, including my, </span><span face="Times New Roman, serif">Attorney-in-fact</span><span face="Times New Roman, serif">
       may rely upon the validity of this power of attorney or a photocopy
       of it unless that person knows it has terminated or is invalid.</span><span color="#000000"><span face="Times New Roman, serif">
     </span></span><span color="#008f00"><span face="Times New Roman, serif">
@@ -523,10 +534,10 @@
       dispose of, sell, convey, and encumber my real and personal property;
       the powers granted in this Power will exist for an indefinite period
       of time unless I limit their duration by the terms of this Power or
-      revoke this Power
+      revoke this Power<span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">,</span>
       </span>
       <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">
-      <span color="#008f00"><span face="Times New Roman, serif"></span></span><span face="Times New Roman, serif">, and will
+      <span face="Times New Roman, serif"> and will
       continue to exist notwithstanding my subsequent disability or
       incapacity </span><span color="#008f00"><span face="Times New Roman, serif">
       </span></span></span><span face="Times New Roman, serif">; and I have

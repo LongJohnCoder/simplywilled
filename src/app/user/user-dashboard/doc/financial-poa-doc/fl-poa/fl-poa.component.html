@@ -946,9 +946,9 @@
     </p>
     <p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif">I, </span>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      <span face="Times New Roman, serif">,
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}},</span>
+        <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________,</span>
+      <span face="Times New Roman, serif">
     </span><span face="Times New Roman, serif">declare to the officer
       taking my acknowledgment of this instrument, and to the subscribing
       witnesses, that I signed and executed this instrument as my Durable
@@ -1001,9 +1001,9 @@
         Sworn to (or
         affirmed) and subscribed before me this ______day of _____________
         [month], _________ [year] by </span></span>
-          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}</span>
-          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
-      <span color="#000000"><span face="Times New Roman, serif">.
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toUpperCase() : '_______________________'}}.</span>
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________.</span>
+      <span color="#000000"><span face="Times New Roman, serif">
       The affiant is [choose one:] ____ personally known to me, or ____
       produced the following identification:
       _____________________.<br/>
@@ -1024,9 +1024,6 @@
     <p align="justify" style="margin-top: 0.19in; margin-bottom: 0.17in; line-height: 100%">
       <br/>
       <br/>
-
-    </p>
-    <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
     <p style="margin-bottom: 0in; line-height: 100%"><br/>
