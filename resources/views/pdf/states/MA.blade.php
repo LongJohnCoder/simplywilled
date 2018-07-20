@@ -39,27 +39,27 @@
         </span>
 
         <span color="#0000ff">
-            <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</b>
+            <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</b>
         </span>
 
-        <span color="#000000">, hereby appoint my </span>
+        <span color="#000000"> hereby appoint my </span>
 
         @if(strtolower($healthFinance['relation']) == 'other')
             @if(strlen(trim($healthFinance['relationOther'])) > 0)
                 <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
             @else
-                <span style="font-family:'Times New Roman, serif'">(relation) __________________ ,</span>
+                <span style="font-family:'Times New Roman, serif'">(relation) __________________,</span>
             @endif
 		@else
             @if(strlen(trim($healthFinance['relation'])) > 0)
                 <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}, </span>
             @else
-                <span style="font-family:'Times New Roman, serif'">(relation) __________________ ,</span>
+                <span style="font-family:'Times New Roman, serif'">(relation) __________________,</span>
             @endif
 		@endif
 
-        <span color="#000000">, </span>
-        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}}</span>
+        <span color="#000000"> </span>
+        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}},</span>
 
 
         <span color="#000000"> of </span>
@@ -111,21 +111,21 @@
                     @if(strlen(trim($healthFinance['backupRelationOther'])) > 0)
 	                   <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}}, </span>
                     @else
-                        <span>(relation) ____________________</span>
+                        <span>(relation) ____________________,</span>
                     @endif
 	              @else
                     @if(strlen(trim($healthFinance['backupRelation'])) > 0)
                        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
                     @else
-                        <span>(relation) ____________________</span>
+                        <span>(relation) ____________________,</span>
                     @endif
 	              @endif
 
-	              <span color="#000000">, </span>
+	              <span color="#000000"> </span>
 
-	              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}}</span>
+	              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}},</span>
 
-	              <span color="#000000">, of </span>
+	              <span color="#000000"> of </span>
 
 	              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupAddress']}}, </span>
 
@@ -135,9 +135,7 @@
 	              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupState']}}, </span>
 
 				  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}}, </span>
-              </p>
 
-              <p align="justify" style="margin-bottom: 0in; "><span color="#000000">
               <span size="2" style="font-size: 9pt">
                 <span size="3" style="font-size: 12pt">(Tel: </span>
               </span>
@@ -433,11 +431,11 @@
       <p class="western" align="justify" style="margin-bottom: 0.08in; ; orphans: 0; widows: 0; page-break-before: always">
           I,
           <span color="#0000ff">
-              <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+              <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
 
           </span>
 
-          , by signing this Health Care Proxy, declare that I understand its
+           by signing this Health Care Proxy, declare that I understand its
           contents and the effect of this grant of authority to my Agent, that
           I sign it willingly in the presence of each of the undersigned
           witnesses, and that I sign it as my voluntary act for the purposes
@@ -457,13 +455,17 @@
           </p>
 
           <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; ">
-          <span color="#0433ff"><span size="2" style="font-size: 9pt"><span color="#000000">
+          <span color="#0433ff"><span size="2"><span color="#000000">
             </span>
 
             <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}}</span>
 
             </span></span></p>
-
+						<p>
+							<span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['city']}},</span>
+							<span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['state']}},</span>
+							<span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['zip']}}</span>
+						</p>
 
             <!-- <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; ">
             <span color="#008f00">
@@ -483,17 +485,17 @@
 
 
           <p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; ">
-          <span color="#0433ff"><span size="2" style="font-size: 9pt"><span color="#000000"><span size="3" style="font-size: 12pt"></span></span>
+          <span color="#0433ff"><span size="2"><span color="#000000"><span size="3" style="font-size: 12pt"></span></span>
 
-          <span size="3" style="font-size: 12pt">City</span>
+          <span size="3" style="font-size: 12pt"></span>
 
-          <span size="3" style="font-size: 12pt">State</span>
+          <span size="3" style="font-size: 12pt"></span>
 
           <span color="#000000"><span size="3" style="font-size: 12pt">&nbsp;</span></span>
 
           <span color="#000000"><span size="3" style="font-size: 12pt"></span></span>
 
-          <span size="3" style="font-size: 12pt">ZIP</span>
+          <span size="3" style="font-size: 12pt"></span>
 
           </span></span></p>
 
@@ -501,9 +503,9 @@
           <p class="western" align="justify" style="margin-bottom: 0.08in; ; orphans: 0; widows: 0">
           We, the witnesses who sign below, each declare in the presence of
 
-          <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+          <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
 
-          <span color="#0000ff">, </span>
+          <span color="#0000ff"> </span>
 
           that neither of us has been named as Agent or alternate Agent in this
           Health Care Proxy and neither of us is related to
@@ -718,16 +720,14 @@
       <p class="western" align="justify" style="margin-bottom: 0.08in; ; orphans: 0; widows: 0; page-break-before: always">
           We, the witnesses who sign below, each declare in the presence of
 
-          <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>that
-
-          <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</b>
+          <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</span> that
 
           signed this Declaration in the presence of each of us, that
 
           <span color="#0433ff">{{$genderTxt3}}</span> signed it willingly, that each of us signs
           this Declaration as witness in the presence of
 
-          <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span> , and that to the
+          <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</span> and that to the
           best of our knowledge
 
           <span color="#0433ff">{{$genderTxt3}}</span>
@@ -777,7 +777,7 @@
           appeared </span><span color="#767171"></span>
 
           <span color="#0432ff">
-              <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+              <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
           </span>
 
 
@@ -789,14 +789,14 @@
           the principal declared to me and to the said witnesses in my presence
           that the instrument is </span><span color="#0433ff">
 
-          <span color="#0433ff">{{$genderTxt4}}</span>
+          <span color="#0433ff" style="font-size: 10pt">{{$genderTxt4}}</span>
 
 
           </span><span size="2" style="font-size: 10pt">
           Health Care Proxy, and that the principal has willingly and
           voluntarily made and executed it as </span><span color="#0433ff">
 
-          <span color="#0433ff">{{$genderTxt4}}</span>
+          <span color="#0433ff" style="font-size: 10pt">{{$genderTxt4}}</span>
 
 
 
