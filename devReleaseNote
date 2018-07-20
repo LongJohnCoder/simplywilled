@@ -365,3 +365,6 @@ version : 9
 
 Env V1.3 stable released to dev
 	Implemented stage with prod build
+
+ipad responsive issue fixed
+	ipad responsive issue fixed in dashpoard page
