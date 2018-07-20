@@ -608,8 +608,7 @@ class UserController extends Controller
             if ($totalChildren && $totalChildren > 0) {
 
                 // create entry in children table
-                $checkForExistUser->children = $totalChildren;
-                $checkForExistUser->save();
+                
                 // check for the exist children table
                 $checkForExistchildren = Children::where('user_id', $userId)->get();
 
@@ -621,6 +620,8 @@ class UserController extends Controller
 
                 //create a new list of children
                 if ($childrenInfoArray) {
+                    $checkForExistUser->children = count($childrenInfoArray);
+                    $checkForExistUser->save();
                     foreach ($childrenInfoArray as $key => $value) {
                         $createChildren = new Children;
                         if(isset($usersArray[$value['user_id']])) {
@@ -632,6 +633,8 @@ class UserController extends Controller
                         }
                     }
                 } else {
+                    $checkForExistUser->children = 0;
+                    $checkForExistUser->save();
                     // return response()->json([
                     //     'status' => false,
                     //     'message' => 'Data not found for update this step',

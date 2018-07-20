@@ -7,7 +7,7 @@
 	<div>
 		<div class="doc-container" style="border: 1px solid #000; padding: 15px; box-sizing: border-box; padding: 20px; height: 890px;">
 			<h1 style="font-size: 28px; text-align: center; margin: 40px 0 30px; font-family: Garamond;">SIGNING INSTRUCTIONS</h1>
-			
+
 			<p>
 				Congratulations <span style="text-transform: uppercase;">{{$firstname}}</span>! Your custom estate documents are ready. Now it is time to sign your documents. Please be sure to follow these instructions carefully.
 			</p>
@@ -23,11 +23,11 @@
 				</p>
 
 				<p class="para2" style="font-size: 15px; margin: 0 20px 15px; font-family: Garamond;">
-					Second, you will need two witnesses, to witness your signature on the documents.
+					Second, you will need <u>two witnesses</u>, to witness your signature on the documents.
 					Your witnesses must be over the age of 18, and cannot be a beneficiary of your estate, or a fiduciary of your estate. Estate fiduciaries include your Personal Representative, Executor, Financial Power of Attorney, Healthcare Power of Attorney, and Guardian for Minor Children.
 				</p>
 				<p class="para2" style="font-size: 15px; margin: 0 20px 15px; font-family: Garamond;">
-					Third, you will need a notary public to notarize your signature.
+					Third, you will need a <u>notary public</u> to notarize your signature.
 					You can find a notary public at a local bank or grocery store or UPS location.
 					Remember to bring your government issued photo ID for the notary public to verify your identity, and if necessary, the identities of your witnesses.
 				</p>
@@ -92,7 +92,7 @@
 					Read and review your supporting estate documents carefully before signing. Your supporting estate documents may include your healthcare power of attorney, your financial power of attorney, your living will, your HIPAA Waiver and your burial instructions. Only sign supporting documents if you are in full agreement with all of the provisions they contain.
 				</p>
 				<p style="font-size: 15px; margin: 0 0 15px; font-family: Garamond;">
-					If you need to make changes to any of your supporting documents, please return to the SimplyWilled.com interview to make any necessary changes. Once you have made your changes, please print a new set of supporting documents and review to confirm that the changes have been made to your satisfaction. 
+					If you need to make changes to any of your supporting documents, please return to the SimplyWilled.com interview to make any necessary changes. Once you have made your changes, please print a new set of supporting documents and review to confirm that the changes have been made to your satisfaction.
 				</p>
 				<h2 style="font-size: 17px; margin: 20px 0 10px; text-decoration: underline; font-family: Garamond;">
 					STEP FOUR: SIGN YOUR SUPPORTING DOCUMENTS:
@@ -126,8 +126,3 @@ Thank you for using SimplyWilled.com
 	</div>
 </body>
 </html>
-
-
-
-
-

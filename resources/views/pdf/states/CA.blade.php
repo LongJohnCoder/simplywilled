@@ -53,7 +53,7 @@
               care facility where you are receiving care, or your supervising
               health care provider or employee of the health care institution where
               you are receiving care, unless your agent is related to you or is a
-              co&#8209;worker.)</span></p>
+              co-worker.)</span></p>
             <p style="margin-bottom: 0.06in; line-height: 115%"><span  style="">Unless
               the form you sign limits the authority of your agent, your agent may
               make all health care decisions for you. This form has a place for you
@@ -166,9 +166,9 @@
 
 
 
-              of <span> {{$healthFinance['address']}} </span> in <span> {{$healthFinance['city']}} ,</span>
-              <span> {{$healthFinance['state']}} </span>
-              <span> {{$healthFinance['zip']}} </span> (Tel: <span> {{$healthFinance['phone']}} </span>), as my agent to make health care
+              of <span> {{$healthFinance['address']}} </span> in <span> {{$healthFinance['city']}},</span>
+              <span> {{$healthFinance['state']}},</span>
+              <span> {{$healthFinance['zip']}},</span> (Tel: <span> {{$healthFinance['phone']}}n</span>) as my agent to make health care
               decisions for me.</p>
             <p style="margin-bottom: 0in; line-height: 115%">
 
@@ -189,11 +189,11 @@
 	                </span>
 
 
-	                <span>{{$healthFinance['backupFullname']}} ,</span>
+	                <span>{{$healthFinance['backupFullname']}},</span>
 	                of  <span> {{$healthFinance['backupAddress']}} </span> in
-	                <span>{{$healthFinance['backupCity']}} ,</span>
-	                <span> {{$healthFinance['backupState']}} </span>
-	                <span> {{$healthFinance['backupZip']}} </span> (Tel:
+	                <span>{{$healthFinance['backupCity']}},</span>
+	                <span> {{$healthFinance['backupState']}},</span>
+	                <span> {{$healthFinance['backupZip']}},</span> (Tel:
 	                <span> {{$healthFinance['backupphone']}} </span>), as my
 	                alternate agent.
 	            </p>
@@ -395,7 +395,7 @@
               involved in my care provide, withhold, or withdraw treatment in
               accordance with the choice I have marked below:</p>
             <p style="text-indent: 0.18in; margin-top: 0.03in; margin-bottom: 0in; line-height: 115%">
-              □ <span  style="font-size: 11pt">(a) Choice Not to Prolong
+               <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> <span  style="font-size: 11pt">(a) Choice Not to Prolong
               Life</span></p>
             <p style="margin-bottom: 0in; line-height: 115%">I do not want my
               life to be prolonged if (1) I have an incurable and irreversible
@@ -409,7 +409,7 @@
             </p>
             <p style="margin-bottom: 0in; line-height: 115%">OR
             </p>
-            <p style="margin-bottom: 0in; line-height: 115%">□ <span  style="font-size: 11pt">(b)
+            <p style="margin-bottom: 0in; line-height: 115%"> <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> <span  style="font-size: 11pt">(b)
               Choice to Prolong Life</span></p>
             <p style="margin-bottom: 0in; line-height: 115%">I want my life to be
               prolonged as long as possible within the limits of generally accepted
@@ -477,15 +477,15 @@
             <p align="center" style="margin-bottom: 0.13in; line-height: 0.23in"><span  style="font-size: 13pt"><b>(OPTIONAL)</b></span></p>
             <p style="margin-bottom: 0in; line-height: 115%">3.1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Upon
               my death (mark applicable box):</p>
-            <p style="margin-bottom: 0in; line-height: 115%">□ <span  style="font-size: 11pt">(a)
+            <p style="margin-bottom: 0in; line-height: 115%"> <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> <span  style="font-size: 11pt">(a)
               I give any needed organs, tissues, or parts, OR</span></p>
-            <p style="margin-bottom: 0in; line-height: 115%">□ <span  style="font-size: 11pt">(b)
+            <p style="margin-bottom: 0in; line-height: 115%"> <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> <span  style="font-size: 11pt">(b)
               I give the following organs, tissues, or parts only.</span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >________________________________________________________________________</span></span></span></span></span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >________________________________________________________________________</span></span></span></span></span></p>
-            <p style="margin-bottom: 0.03in; line-height: 115%">□ <span  style="font-size: 11pt">(c)
+            <p style="margin-bottom: 0.03in; line-height: 115%"> <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> <span  style="font-size: 11pt">(c)
               My gift is for the following purposes (strike any of the following
               you do not want):</span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
@@ -583,11 +583,11 @@
             </p>
 
             <p style="margin-bottom: 0in; line-height: 115%">
-            	<span>{{$tellUsAboutYou['city']}} ,
+            	<span>{{$tellUsAboutYou['city']}},
             </span>
 
             <span>
-            	{{$tellUsAboutYou['state']}}
+            	{{$tellUsAboutYou['state']}},
             </span>
 
             <span>

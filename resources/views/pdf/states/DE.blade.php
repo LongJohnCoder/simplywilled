@@ -130,7 +130,7 @@
     <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    <p  style="margin-bottom: 0in; "><span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"><b>A.
+    <p  style="margin-bottom: 0in; "><span ><span size="2"><span ><span size="3" style="font-size: 12pt"><b>A.
       DESIGNATION OF AGENT</b></span></span><span ><span size="3" style="font-size: 12pt">:
       I designate my </span></span>
 
@@ -142,18 +142,18 @@
 		@endif
       </span>
 
-      <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['fullname']}} </span> of
+      <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['fullname']}}, </span> of
 
 
       <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['address']}} </span> in
 
 
 
-      <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
+      <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['city']}},</span>
 
-      <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['state']}} </span>
+      <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['state']}}, </span>
 
-      <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['zip']}} </span>
+      <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['zip']}}, </span>
 
 
       (Tel: <span> {{$healthFinance['phone']}} </span> ),
@@ -177,11 +177,11 @@
 
       <span style="font-size: 12pt;text-transform: capitalize"> {{strtoupper($healthFinance['backupAddress'])}} </span> in
 
-      <span style="font-size: 12pt;text-transform: capitalize"> {{strtoupper($healthFinance['backupCity'])}} ,</span>
+      <span style="font-size: 12pt;text-transform: capitalize"> {{strtoupper($healthFinance['backupCity'])}},</span>
 
-      <span style="font-size: 12pt;text-transform: capitalize"> {{strtoupper($healthFinance['backupState'])}} </span>
+      <span style="font-size: 12pt;text-transform: capitalize"> {{strtoupper($healthFinance['backupState'])}}, </span>
 
-      <span style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
+      <span style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['backupZip']}}, </span>
 
       <span style="font-size: 12pt;"> (Tel: <span> {{$healthFinance['backupphone']}} </span> ),
 
@@ -229,23 +229,7 @@
       Sign, authorize or revoke a Delaware Medical Orders for Scope of
       Treatment (“DMOST”) or similar document under the laws of other
       States unless prohibited by the terms of the DMOST or other document.</p>
-  </div>
-  {{--
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">
-    <span style="text-transform: capitalize"> Advance Health Care Directive of {{userDetails.tellUsAboutYou.fullname}} </span>
-    <br>Page 2 of 11
-  </div>
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null ">
-    Advance Health Care Directive of <br> «CLIENT FULL NAME» <br>
-    Page 2 of 11
-  </div>
-  --}}
-</div>
-<!-- Page 2-->
 
-<!-- Page 3-->
-<div style="page-break-after: always;">
-  <div>
     <p  style="margin-bottom: 0.13in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>C.
       WHEN AGENT’S AUTHORITY BECOMES EFFECTIVE</b></span><span size="3" style="font-size: 12pt">:
       My agent’s authority becomes effective when my primary or attending
@@ -316,7 +300,7 @@
 <div style="page-break-after: always;">
   <div>
     <p  style="margin-top: 0.06in; margin-bottom: 0.13in;  text-align:center;">
-      1<span size="2" style="font-size: 9pt"><span size="4" style="font-size: 14pt"><b>PART
+      <span size="2" style="font-size: 9pt"><span size="4" style="font-size: 14pt"><b>PART
       II. INSTRUCTIONS FOR HEALTH CARE DECISIONS</b></span></span></p>
     <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
       you are an adult who is mentally competent, you have the right to
@@ -954,7 +938,7 @@
 
     <p  style="margin-bottom: 0in; ">
     <span>
-    <span size="2" style="font-size: 9pt">
+    <span size="2">
 
         <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['city'])}}</span> ,
 
@@ -998,10 +982,10 @@
       day of </span></span><span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">_____________________</span></span><span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">,
       </span></span><span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">___________</span></span><span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">,
       before me appeared </span></span><b>
-      <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+      <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
       </b>
 
-      <span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">,
+      <span face="TimesNewRomanPSMT, serif"><span size="3" style="font-size: 13pt">
        personally known to me (or proved to me on the basis of satisfactory
       evidence) to be the person whose name is subscribed to this
       instrument, and acknowledged that the person executed it. </span></span>

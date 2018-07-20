@@ -140,7 +140,7 @@
                 <p class="western" style="margin-left: 1.13in; text-indent: -1.13in; margin-bottom: 0in; ">
                     <span>Address: {{ucwords($healthFinance['address'])}}</span></p>
                 <p class="western" style="margin-bottom: 0in; ">
-                  <span>{{ucwords($healthFinance['city'])}}, {{ucwords($healthFinance['state'])}} {{ucwords($healthFinance['zip'])}}</span></p>
+                  <span>{{ucwords($healthFinance['city'])}}, {{ucwords($healthFinance['state'])}}, {{ucwords($healthFinance['zip'])}}</span></p>
                 <p class="western" style="margin-left: 1.13in; text-indent: -1.13in; margin-bottom: 0in; ">
                     <span>Telephone Number:	{{$healthFinance['phone']}}</span></p>
                 <p class="western" style="margin-top: 0.19in; margin-bottom: 0.13in; ">
@@ -164,7 +164,7 @@
                         <span>Relationship:	{{ucwords($healthFinance['backupRelation'])}}</span></p>
                     <p class="western" style="margin-left: 1.13in; text-indent: -1.13in; margin-bottom: 0in; ">
                         <span>Address: {{ucwords($healthFinance['backupAddress'])}}</span></p>
-                    <p class="western" style="margin-bottom: 0in; "><span>{{ucwords($healthFinance['backupCity'])}}, {{ucwords($healthFinance['backupState'])}} {{ucwords($healthFinance['backupZip'])}}</span></p>
+                    <p class="western" style="margin-bottom: 0in; "><span>{{ucwords($healthFinance['backupCity'])}}, {{ucwords($healthFinance['backupState'])}}, {{ucwords($healthFinance['backupZip'])}}</span></p>
                     <p class="western" style="margin-left: 1.13in; text-indent: -1.13in; margin-bottom: 0in; ">
                         <span>Telephone Number:	{{ucwords($healthFinance['backupphone'])}}</span></p>
                 @else

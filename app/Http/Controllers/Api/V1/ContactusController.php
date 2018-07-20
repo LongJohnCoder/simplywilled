@@ -80,21 +80,22 @@ class ContactusController extends Controller
      *function to send contact us email
      *
      */
-    public function sendContactUsEmail($email, $name, $message){
-        if($email && $name && $message){
+    public function sendContactUsEmail($emailUser, $name, $message){
+        if($emailUser && $name && $message){
             $data = array();
             $data['name'] = $name;
-            $data['email'] = $email;
+            $data['email'] = $emailUser;
             $data['message'] = $message;
-
+            // return \View::make('emails.contactusEmail', $data);
             Mail::send('emails.contactusEmail', [
                 'email'         => 'info@simplywilled.com',
                 'data'          => $data,
-            ], function ($mail) use ($email,$name) {
+            ], function ($mail) use ($emailUser,$name) {
                 /** @noinspection PhpUndefinedMethodInspection */
                 $mail->from('info@simplywilled.com', 'Simplywilled Contact Us');
+                $mail->replyTo('support@simplywilledhelp.zendesk.com', 'Simplywilled Helpdesk');
                 /** @noinspection PhpUndefinedMethodInspection */
-                $mail->to($email, $name)
+                $mail->to($emailUser, $name)
                     ->subject('Thanks for contacting us [Simplywilled]');
             });
             return response()->json([

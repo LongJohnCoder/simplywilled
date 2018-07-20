@@ -92,11 +92,11 @@
 
         <span style="text-transform: capitalize"> {{$healthFinance['address']}} </span> in
 
-        <span style="text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
+        <span style="text-transform: capitalize"> {{$healthFinance['city']}},</span>
 
-        <span style="text-transform: capitalize"> {{$healthFinance['state']}} </span>
+        <span style="text-transform: capitalize"> {{$healthFinance['state']}},</span>
 
-        <span style="text-transform: capitalize"> {{$healthFinance['zip']}} </span>
+        <span style="text-transform: capitalize"> {{$healthFinance['zip']}},</span>
 
 
         (Tel: <span> {{$healthFinance['phone']}} </span> ), as my health care representative. If my
@@ -155,17 +155,17 @@
 		          	@endif
                 </span>
 
-                <span style="text-transform: capitalize"> {{$healthFinance['backupFullname']}} </span> of
+                <span style="text-transform: capitalize"> {{$healthFinance['backupFullname']}}, </span> of
 
                 <span style="text-transform: capitalize"> {{$healthFinance['backupAddress']}} </span> in
 
-                <span style="text-transform: capitalize"> {{$healthFinance['backupCity']}} ,</span>
+                <span style="text-transform: capitalize"> {{$healthFinance['backupCity']}},</span>
 
-                <span style="text-transform: capitalize"> {{$healthFinance['backupState']}} </span>
+                <span style="text-transform: capitalize"> {{$healthFinance['backupState']}},</span>
 
-                <span style="text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
+                <span style="text-transform: capitalize"> {{$healthFinance['backupZip']}},</span>
 
-                (Tel: <span> {{$healthFinance['backupphone']}} </span> ) as my
+                (Tel: <span> {{$healthFinance['backupphone']}} </span> ), as my
                 alternate health care representative.
               </span>
             </span>
