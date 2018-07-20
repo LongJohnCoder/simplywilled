@@ -137,7 +137,7 @@
 
 						<span style="font-weight:bold;">C. Children.</span> I have one child now living. My child’s name is
 						@foreach($children as $child)
-							{{strtoupper($child['fullname'])}}, who was born on {{date('F d, Y', strtotime($child['dob']))}}
+							{{ucwords(strtolower(trim($child['fullname'])))}}, who was born on {{date('F d, Y', strtotime($child['dob']))}}
 						@endforeach
 
 					@elseif($countChild > 1)

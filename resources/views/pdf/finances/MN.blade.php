@@ -47,7 +47,7 @@
 	<font face="Times New Roman, serif"></font>
 
 	<font color="">
-		<font face="Times New Roman, serif">{{$tellUsAboutYou['fullname']}},</font>
+		<font face="Times New Roman, serif">{{strtoupper($tellUsAboutYou['fullname'])}},</font>
 	</font>
 	<font face="Times New Roman, serif"></font>
 	</p>
@@ -72,7 +72,7 @@
 	<font face="Times New Roman, serif"></font>
 
 	<font color="">
-		<font face="Times New Roman, serif">{{ucwords($tellUsAboutYou['state'])}},</font>
+		<font face="Times New Roman, serif">{{ucwords($tellUsAboutYou['state'])}}</font>
 	</font>
 
 	</p>
@@ -289,47 +289,47 @@
 	the power unless the line in front of the power of (N) is checked or
 	x-ed.)</b></font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">(A)	real
+	<font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">(A)	real
 	estate transactions; </font>
 	</p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">(B)	tangible
+	<font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">(B)	tangible
 	personal property transactions;</font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">(C)	bond,
+	<font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">(C)	bond,
 	share and commodity transactions;</font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">(D)	banking
+	<font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">(D)	banking
 	transactions;</font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">(E)	business
+	<font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">(E)	business
 	operating transactions;</font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">(F)	insurance
+	<font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">(F)	insurance
 	transactions;</font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">(G)	beneficiary
+	<font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">(G)	beneficiary
 	transactions;</font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">(H)	gift
+	<font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">(H)	gift
 	transactions;</font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">(I)	fiduciary
+	<font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">(I)	fiduciary
 	transactions;</font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">(J)	claims
+	<font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">(J)	claims
 	and litigation;</font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">(K)	family
+	<font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">(K)	family
 	maintenance;</font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">(L)	benefits
+	<font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">(L)	benefits
 	from military service;</font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">(M)	records,
+	<font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">(M)	records,
 	reports and statements;</font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif">	</font><font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">(N)	all
+	<font face="Times New Roman, serif">	</font><font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">(N)	all
 	of the powers listed (A) through (M) above and all other matters,
 	other than health care decisions under a health care directive that
 	complies with Minnesota Statutes, chapter 145C.</font></p>
@@ -399,13 +399,13 @@
 	an amount, in the aggregate, that does not exceed the federal annual
 	gift tax exclusion amount in the year of the gift.)</b></font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif">	</font><font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">I
+	<font face="Times New Roman, serif">	</font><font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">I
 	do not authorize any of my attorney(s)-in-fact to make gifts to
 	themselves or to anyone the attorney(s)-in-fact have a legal
 	obligation to support. </font>
 	</p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif">	</font><font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">I
+	<font face="Times New Roman, serif">	</font><font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">I
 	authorize _________________________________________________________
 	(</font><font face="Times New Roman, serif"><b>handwrite in name(s)</b></font><font face="Times New Roman, serif">),
 	as my attorney(s)-in-fact, to make gifts to themselves or to anyone
@@ -424,13 +424,13 @@
 	accounting. Make a check or “x” on the line in front of the
 	statement that expresses your intent.)</b></font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">My
+	<font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">My
 	attorney-in-fact need not render an accounting unless I request it or
 	the accounting is otherwise required by Minnesota Statutes, section
 	523.21. </font>
 	</p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif">	</font><font face="Times New Roman, serif"><u>	</u></font><font face="Times New Roman, serif">My
+	<font face="Times New Roman, serif">	</font><font face="Times New Roman, serif"><span>____</span></font><font face="Times New Roman, serif">My
 	attorney-in-fact must render a _________________________ accountings
 	to me or</font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
@@ -553,7 +553,7 @@
 
 	@if(array_key_exists('isDurable', $attorneyPowers) && $attorneyPowers['isDurable'] == 1)
 
-	<font face="Times New Roman, serif">, and will
+	<font face="Times New Roman, serif"> and will
 	continue to exist notwithstanding my subsequent disability or
 	incapacity</font>
 
@@ -597,7 +597,7 @@
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
 	<font face="Times New Roman, serif">	) ss.</font></p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif">COUNTY OF </font><font face="Times New Roman, serif"><u>				</u></font><font face="Times New Roman, serif">	)
+	<font face="Times New Roman, serif">COUNTY OF </font><font face="Times New Roman, serif"><span>_________________</span></font><font face="Times New Roman, serif">	)
 	</font>
 	</p>
 
@@ -623,7 +623,7 @@
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
 	<font face="Times New Roman, serif">Notary Public</font></p>
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif">My commission expires: </font><font face="Times New Roman, serif"><u>			</u></font><font face="Times New Roman, serif">
+	<font face="Times New Roman, serif">My commission expires: </font><font face="Times New Roman, serif"><span>__________</span></font><font face="Times New Roman, serif">
 	</font>
 	</p>
 

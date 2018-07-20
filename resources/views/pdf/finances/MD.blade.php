@@ -76,10 +76,8 @@ your agent.&nbsp;</font></p>
 <font face="Times New Roman, serif">I, </font>
 
 <font color=" ">
-	<font face="Times New Roman, serif">{{strtoupper($tellUsAboutYou['fullname'])}}</font>
+	<font face="Times New Roman, serif">{{strtoupper($tellUsAboutYou['fullname'])}},</font>
 </font>
-
-<font face="Times New Roman, serif">,</font>
 
 <font color="#000000">
 	<font face="Times New Roman, serif"></font>
@@ -89,27 +87,23 @@ your agent.&nbsp;</font></p>
 
 <font color=" ">
 	@if(strtolower($attorneyHolders['relationship']) == 'other')
-		<span color=" ">{{ucwords(strtolower($attorneyHolders['other_relationship']))}}</span>
+		<span color=" ">{{ucwords(trim(strtolower($attorneyHolders['other_relationship'])))}},</span>
 	@else
-		<span color=" ">{{ucwords(strtolower($attorneyHolders['relationship']))}}</span>
+		<span color=" ">{{ucwords(trim(strtolower($attorneyHolders['relationship'])))}},</span>
 	@endif
 </font>
 
-<font color="#000000">
-	<font face="Times New Roman, serif">, </font>
-</font>
-
 <font color=" ">
-	<font face="Times New Roman, serif">{{$attorneyHolders['fullname']}}</font>
+	<font face="Times New Roman, serif">{{ucwords(trim(strtolower($attorneyHolders['fullname'])))}},</font>
 </font>
 
-<font face="Times New Roman, serif">, as my agent, to </font>
+<font face="Times New Roman, serif"> as my agent, to </font>
 
 <font color="#000000">
-	<font face="Times New Roman, serif">have all of the powers hereinafter set forth</font>
+	<font face="Times New Roman, serif">have all of the powers hereinafter set forth.</font>
 </font>
 
-<font face="Times New Roman, serif">.
+<font face="Times New Roman, serif">
 The contact information for my agent is as follows:</font>
 </p>
 
@@ -118,7 +112,7 @@ The contact information for my agent is as follows:</font>
 
 	<font face="Times New Roman, serif">Name of Primary Agent: </font>
 	<font color=" ">
-		<font face="Times New Roman, serif">{{$attorneyHolders['fullname']}}</font>
+		<font face="Times New Roman, serif">{{ucwords(trim(strtolower($attorneyHolders['fullname'])))}}</font>
 	</font>
 
 </p>
@@ -131,18 +125,18 @@ The contact information for my agent is as follows:</font>
 
 		<font color=" ">
 			<font color=" ">
-				<font face="Times New Roman, serif"> {{$attorneyHolders['address']}}</font>
+				<font face="Times New Roman, serif"> {{ucwords(trim(strtolower($attorneyHolders['address'])))}}</font>
 			</font>
 		</font>
 
 		<font color=" ">
-			<font face="Times New Roman, serif">{{$attorneyHolders['city']}}</font>
+			<font face="Times New Roman, serif">{{ucwords(trim(strtolower($attorneyHolders['city'])))}}</font>
 		</font>
 
 		<font face="Times New Roman, serif">, </font>
 
 		<font color=" ">
-			<font face="Times New Roman, serif">{{$attorneyHolders['state']}}</font>
+			<font face="Times New Roman, serif">{{ucwords(trim(strtolower($attorneyHolders['state'])))}}</font>
 		</font>
 
 	@else
@@ -154,27 +148,27 @@ The contact information for my agent is as follows:</font>
 	<font face="Times New Roman, serif">&nbsp;</font>
 </p>
 
-<p style="margin-bottom: 0in; line-height: 100%">
-	<font face="Times New Roman, serif">Primary
-	Agent’s Telephone Number:</font>
+	<p style="margin-bottom: 0in; line-height: 100%">
+		<font face="Times New Roman, serif">Primary
+		Agent’s Telephone Number:</font>
 
-	@if(array_key_exists('phone', $attorneyHolders) && strlen($attorneyHolders['phone']) > 0)
-	<font color=" ">
-		<font face="Times New Roman, serif"> {{$attorneyHolders['phone']}}</font>
-	</font>
+		@if(array_key_exists('phone', $attorneyHolders) && strlen($attorneyHolders['phone']) > 0)
+		<font color=" ">
+			<font face="Times New Roman, serif"> {{$attorneyHolders['phone']}}</font>
+		</font>
 
-	@else
+		@else
 
-	<font face="Times New Roman, serif">__________________</font>
+		<font face="Times New Roman, serif">__________________</font>
 
-	@endif
+		@endif
 
-	<font face="Times New Roman, serif">&nbsp;</font>
-</p>
+		<font face="Times New Roman, serif">&nbsp;</font>
+	</p>
 
-<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
+	<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-</p>
+	</p>
 
 
 
@@ -186,9 +180,9 @@ The contact information for my agent is as follows:</font>
 
 		<font color=" ">
 			@if(strtolower($attorneyBackup['relationship']) == 'other')
-				<span color=" ">{{$attorneyBackup['other_relationship']}}</span>
+				<span color=" ">{{ucwords(trim(strtolower($attorneyBackup['other_relationship'])))}}</span>
 			@else
-				<span color=" ">{{$attorneyBackup['relationship']}}</span>
+				<span color=" ">{{ucwords(trim(strtolower($attorneyBackup['relationship'])))}}</span>
 			@endif
 		</font>
 
@@ -197,7 +191,7 @@ The contact information for my agent is as follows:</font>
 		</font>
 
 		<font color=" ">
-			<font face="Times New Roman, serif">{{ucwords($attorneyBackup['fullname'])}}</font>
+			<font face="Times New Roman, serif">{{ucwords(trim(strtolower($attorneyBackup['fullname'])))}}</font>
 		</font>
 
 		<font face="Times New Roman, serif">, as
@@ -215,7 +209,7 @@ The contact information for my agent is as follows:</font>
 		of Successor Agent: </font>
 
 		<font color=" ">
-			<font face="Times New Roman, serif">{{ucwords($attorneyBackup['fullname'])}}</font>
+			<font face="Times New Roman, serif">{{ucwords(trim(strtolower($attorneyBackup['fullname'])))}}</font>
 		</font>
 
 		</p>
@@ -228,24 +222,22 @@ The contact information for my agent is as follows:</font>
 			@if(array_key_exists('address',$attorneyBackup) && strlen($attorneyBackup['address']) > 0)
 
 				<font color=" ">
-					<font face="Times New Roman, serif"> {{$attorneyBackup['address']}}</font>
+					<font face="Times New Roman, serif"> {{ucwords(trim(strtolower($attorneyBackup['address'])))}},</font>
 				</font>
 
 				<font color=" ">
-					<font face="Times New Roman, serif">,</font>
+					<font face="Times New Roman, serif"></font>
 				</font>
 
 				<font color=" ">
-					<font face="Times New Roman, serif"> {{$attorneyBackup['city']}}</font>
+					<font face="Times New Roman, serif"> {{ucwords(trim(strtolower($attorneyBackup['city'])))}},</font>
 				</font>
 
-				<font face="Times New Roman, serif">, </font>
+				<font face="Times New Roman, serif"> </font>
 
 				<font color=" ">
-					<font face="Times New Roman, serif">{{$attorneyBackup['state']}}</font>
-
+					<font face="Times New Roman, serif">{{ucwords(trim(strtolower($attorneyBackup['state'])))}}</font>
 				</font>
-
 			@else
 
 				<font face="Times New Roman, serif">___________________________________________</font>

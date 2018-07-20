@@ -23,7 +23,7 @@
 		@if($attorneyPowers['isDurable'] == 1)
 			Durable
 		@endif
-		Power of Attorney for Management of Finances, Property, and Personal Affairs of <br>{{$tellUsAboutYou['fullname']}}<br>
+		Power of Attorney for Management of Finances, Property, and Personal Affairs of <br>{{ucwords(strtolower($tellUsAboutYou['fullname']))}}<br>
 	</div>
 </div>
 <p align="center" style="margin-bottom: 0.06in; ">
@@ -60,29 +60,29 @@
 	<span style="font-family:'Times New Roman, serif';">I,</span>
 	<span color="#0000ff">
 		<span style="font-family:'Times New Roman, serif';">
-			<b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>
+			<b>{{strtoupper($tellUsAboutYou['fullname'])}},</b>
 		</span>
 	</span>
 
-	<span style="font-family:'Times New Roman, serif';">, of </span>
+	<span style="font-family:'Times New Roman, serif';"> of </span>
 
 	<span color="#0433ff">
-		<span style="font-family:'Times New Roman, serif';">{{$tellUsAboutYou['address']}}</span>
+		<span style="font-family:'Times New Roman, serif';">{{$tellUsAboutYou['address']}},</span>
 	</span>
 
-	<span style="font-family:'Times New Roman, serif';">, </span>
+	<span style="font-family:'Times New Roman, serif';"> </span>
 
 	<span color="#0433ff">
-		<span style="font-family:'Times New Roman, serif';">{{ucwords($tellUsAboutYou['city'])}}</span>
+		<span style="font-family:'Times New Roman, serif';">{{ucwords($tellUsAboutYou['city'])}},</span>
 	</span>
 
-	<span style="font-family:'Times New Roman, serif';">, </span>
+	<span style="font-family:'Times New Roman, serif';"> </span>
 
 	<span color="#0433ff">
-		<span style="font-family:'Times New Roman, serif';">{{ucwords($tellUsAboutYou['state'])}}</span>
+		<span style="font-family:'Times New Roman, serif';">{{ucwords($tellUsAboutYou['state'])}},</span>
 	</span>
 
-	<span style="font-family:'Times New Roman, serif';"> , intend to create a </span>
+	<span style="font-family:'Times New Roman, serif';"> intend to create a </span>
 
 	@if($attorneyPowers['isDurable'] == 1)
 
@@ -289,35 +289,27 @@
 
 	<span color="#0433ff">
 		@if(strtolower($attorneyHolders['relationship']) == 'other')
-			<span style="font-family:'Times New Roman, serif';">{{ucwords(strtolower($attorneyHolders['other_relationship']))}}</span>
+			<span style="font-family:'Times New Roman, serif';">{{ucwords(strtolower($attorneyHolders['other_relationship']))}},</span>
 		@else
-			<span style="font-family:'Times New Roman, serif';">{{ucwords(strtolower($attorneyHolders['relationship']))}}</span>
+			<span style="font-family:'Times New Roman, serif';">{{ucwords(strtolower($attorneyHolders['relationship']))}},</span>
 		@endif
 	</span>
 
-	<span color="#000000">
-		<span style="font-family:'Times New Roman, serif';">, </span>
-	</span>
-
 	<span color="#0433ff">
-		<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyHolders['fullname'])}}</span>
+		<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyHolders['fullname'])}},</span>
 	</span>
 
 	<span color="#000000">
-		<span style="font-family:'Times New Roman, serif';">, of </span>
+		<span style="font-family:'Times New Roman, serif';">of</span>
 	</span>
 
 	<span color="#0000ff">
-		<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyHolders['address'])}}</span>
+		<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyHolders['address'])}},</span>
 	</span>
-
-	<span style="font-family:'Times New Roman, serif';">, </span>
 
 	<span color="#0000ff">
-		<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyHolders['city'])}}</span>
+		<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyHolders['city'])}},</span>
 	</span>
-
-	<span style="font-family:'Times New Roman, serif';">, </span>
 
 	<span color="#0000ff">
 		<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyHolders['state'])}}</span>
@@ -330,13 +322,14 @@
 	</span>
 
 	<span color="#0433ff">
-		<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyHolders['phone'])}}</span>
+		<span style="font-family:'Times New Roman, serif';">{{ucwords(trim($attorneyHolders['phone']))}}</span>
+		<span style="font-family:'Times New Roman, serif';">),
+		as my Attorney-in-Fact (hereinafter referred to in this Power of
+		Attorney as “my agent”) to have all of the powers hereinafter set
+		forth.</span>
 	</span>
 
-	<span color="#000000"><span style="font-family:'Times New Roman, serif';">),
-	as my Attorney-in-Fact (hereinafter referred to in this Power of
-	Attorney as “my agent”) to have all of the powers hereinafter set
-	forth.</span></span></p>
+	</p>
 	<p align="justify" style="margin-bottom: 0in; "><br/>
 
 	</p>
@@ -347,12 +340,12 @@
 	<p align="justify" style="margin-bottom: 0in; ">
 		<span color="#000000">
 			<span style="font-family:'Times New Roman, serif';">
-				<b>Alternate Agent</b>
+				<b>Alternate Agent.</b>
 			</span>
 		</span>
 
 		<span color="#000000">
-			<span style="font-family:'Times New Roman, serif';">. If said </span>
+			<span style="font-family:'Times New Roman, serif';">If said </span>
 		</span>
 
 		<span color="#0433ff">
@@ -366,14 +359,14 @@
 
 		<span color="#0433ff">
 			@if(strtolower($attorneyBackup['relationship']) == 'other')
-				<span style="font-family:'Times New Roman, serif';">{{$attorneyBackup['other_relationship']}}</span>
+				<span style="font-family:'Times New Roman, serif';">{{$attorneyBackup['other_relationship']}},</span>
 			@else
-				<span style="font-family:'Times New Roman, serif';">{{$attorneyBackup['relationship']}}</span>
+				<span style="font-family:'Times New Roman, serif';">{{$attorneyBackup['relationship']}},</span>
 			@endif
 		</span>
 
 		<span color="#000000">
-			<span style="font-family:'Times New Roman, serif';">, </span>
+			<span style="font-family:'Times New Roman, serif';"> </span>
 		</span>
 
 		<span color="#0433ff">
@@ -385,19 +378,19 @@
 		</span>
 
 		<span color="#0000ff">
-			<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyBackup['address'])}}</span>
+			<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyBackup['address'])}},</span>
 		</span>
 
-		<span style="font-family:'Times New Roman, serif';">, </span>
+		<span style="font-family:'Times New Roman, serif';"> </span>
 
 		<span color="#0000ff">
-			<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyBackup['city'])}}</span>
+			<span style="font-family:'Times New Roman, serif';">{{ucwords(strtolower($attorneyBackup['city']))}},</span>
 		</span>
 
-		<span style="font-family:'Times New Roman, serif';">, </span>
+		<span style="font-family:'Times New Roman, serif';"> </span>
 
 		<span color="#0000ff">
-			<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyBackup['state'])}}</span>
+			<span style="font-family:'Times New Roman, serif';">{{ucwords(strtolower($attorneyBackup['state']))}}</span>
 		</span>
 
 		<span color="#000000">
@@ -406,10 +399,7 @@
 		</span>
 
 		<span color="#0433ff">
-			<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyBackup['phone'])}}</span>
-		</span>
-
-		<span color="#000000">
+			<span style="font-family:'Times New Roman, serif';">{{ucwords(trim($attorneyBackup['phone']))}}</span>
 			<span style="font-family:'Times New Roman, serif';">)
 				as my alternate Agent to have all of the powers hereinafter set
 				forth.&nbsp;</span>
@@ -475,9 +465,9 @@
 	<li>
 		<p align="justify" style="margin-bottom: 0in;  margin-top: 0;">
 		<span style="font-family:'Times New Roman, serif';">
-			<u>Real Property</u>
+			<u>Real Property.</u>
 		</span>
-		<span style="font-family:'Times New Roman, serif';">.
+		<span style="font-family:'Times New Roman, serif';">
 		 To take any actions for the management or maintenance of any real
 		property in which I own an interest when this Power is executed, or
 		in which I later acquire an interest, including the power to
@@ -708,25 +698,25 @@
 	Assets</u></span><span style="font-family:'Times New Roman, serif';">. To take any
 	actions in connection with any and all forms of electronic
 	communications and/or digital assets in which I have an interest when
-	this Power is executed, or in which I later acquire an interest</span>
+	this Power is executed, or in which I later acquire an interest,</span>
 
 	@if(strtolower($state['name']) == 'oregon')
-		<span style="font-family:'Times New Roman, serif';">,
+		<span style="font-family:'Times New Roman, serif';">
 		including the power to access, continue, modify, or terminate
 		existing accounts; create or change any “passwords” and/or “user
 		identification profiles”. “Digital asset” means an electronic
 		record in which an individual has a right or interest. “Digital
 		asset” does not include an underlying asset or liability unless the
-		asset or liability is itself an electronic record</span>
+		asset or liability is itself an electronic record.</span>
 	@else
 
 		<span style="font-family:'Times New Roman, serif';">
 		pursuant to the Revised Uniform Fiduciary Access to Digital Assets
-		Act (2015), Chapter 19 ORS</span>
+		Act (2015), Chapter 19 ORS.</span>
 
 	@endif
 
-	<span style="font-family:'Times New Roman, serif';">.</span></p>
+	</p>
 
 
 
@@ -925,9 +915,9 @@
 
 
 	@if(array_key_exists('isAuthorizeToMakeGift', $attorneyPowers) && $attorneyPowers['isAuthorizeToMakeGift'] == 1)
-
-		<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
-
+	<div>
+		<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in;">
+			<span style="page-break-after: always;"></span>
 			@if(array_key_exists('isAuthorizeToMakeGift', $attorneyPowers) && $attorneyPowers['isAuthorizeToMakeGift'] == 1
 				&& array_key_exists('isAuthorisedToOperateBusiness', $attorneyPowers) && $attorneyPowers['isAuthorisedToOperateBusiness'] == 1)
 
@@ -936,7 +926,7 @@
 			@elseif(array_key_exists('isAuthorizeToMakeGift', $attorneyPowers) && $attorneyPowers['isAuthorizeToMakeGift'] == 1
 				&& (!array_key_exists('isAuthorisedToOperateBusiness', $attorneyPowers) || $attorneyPowers['isAuthorisedToOperateBusiness'] == 0))
 
-			<span color="#000000">
+			<span style="" color="#000000">
 				<span style="font-family:'Times New Roman, serif';">(15)	</span>
 			</span>
 
@@ -944,9 +934,9 @@
 
 		<span style="font-family:'Times New Roman, serif';"></span>
 
-		<span style="font-family:'Times New Roman, serif';"><u>Gifts</u></span>
+		<span style="font-family:'Times New Roman, serif';"><u>Gifts.</u></span>
 
-		<span style="font-family:'Times New Roman, serif';">.
+		<span style="font-family:'Times New Roman, serif';">
 		If I have initialed below, I grant my Agent the authority and power
 		to make gifts, grants, or other transfers without consideration, of
 		cash or other property, including the power to forgive indebtedness
@@ -995,7 +985,8 @@
 		free of federal gift tax. The limitations in the preceding sentence
 		shall not apply to any gifts which incur no federal gift tax, such
 		as, for example, gifts that qualify for the unlimited federal gift
-		tax marital deduction or charitable deduction.</span></p>
+		tax marital deduction or charitable deduction.</span>
+		</p>
 
 			@if(strtolower($state['name']) == 'arizona')
 
@@ -1041,12 +1032,13 @@
 
 			<p style="margin-left: 0.38in; margin-bottom: 0in; ">
 			<span style="font-family:'Times New Roman, serif';">_______________</span></p>
-			<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
-			<br/>
+				<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
+				<br/>
 
-			</p>
+				</p>
 
 			@endif
+		</div>
 		@endif
 
 
@@ -1064,8 +1056,8 @@
 		<span style="font-family:'Times New Roman, serif';">_________________________________________________________________________________________</span><br>
 		<span style="font-family:'Times New Roman, serif';">_________________________________________________________________________________________</span><br>
 		<span style="font-family:'Times New Roman, serif';">_________________________________________________________________________________________</span><br>
-		<span style="font-family:'Times New Roman, serif';">___________________________________________________</span><br>
-		<span style="font-family:'Times New Roman, serif';">.</span></p>
+		<span style="font-family:'Times New Roman, serif';">___________________________________________________ .</span><br>
+	</p>
 
 	<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><b>Inspection
 	and Disclosure of Information Relating to My Physical or Mental
@@ -1337,9 +1329,7 @@
 	any reason, such invalidity shall not affect any of the other
 	provisions of this Power, and all invalid provisions shall be wholly
 	disregarded.</span></p>
-	<p align="justify" style="margin-bottom: 0in; "><br/>
-
-	</p>
+	
 	<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><b>Governing
 	Law</b></span><span style="font-family:'Times New Roman, serif';">. All questions
 	pertaining to validity, interpretation, and administration of this
@@ -1361,10 +1351,9 @@
 
 	@endif
 	<span color="#0433ff">
-		<span style="font-family:'Times New Roman, serif';">{{$state['name']}}</span>
+		<span style="font-family:'Times New Roman, serif';">{{$state['name']}}.</span>
 	</span>
-
-	<span style="font-family:'Times New Roman, serif';">.</span></p>
+	</p>
 
 
 	<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><b>Principal
@@ -1401,14 +1390,12 @@
 	@if(strtolower($state['name']) == 'massachusetts')
 
 		<p align="justify" style="margin-bottom: 0.05in;  orphans: 0; widows: 0">
-		<span style="font-family:'Times New Roman, serif';">IN WITNESS WHEREOF, I, </span>
+		<span style="font-family:'Times New Roman, serif';">IN WITNESS WHEREOF, I, {{strtoupper($tellUsAboutYou['fullname'])}},</span>
 
-		<span color="#0000ff">
-			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
-		</span>
-
-		<span style="font-family:'Times New Roman, serif';">,
-		the principal, sign my name to this instrument on this </span><span style="font-family:'Times New Roman, serif';">_________________________</span><span style="font-family:'Times New Roman, serif';">
+		<span style="font-family:'Times New Roman, serif';">
+		the principal, sign my name to this instrument on this </span>
+		<span style="font-family:'Times New Roman, serif';">_________________________</span>
+		<span style="font-family:'Times New Roman, serif';">
 		day of </span>
 		</p>
 
@@ -1439,37 +1426,24 @@
 
 
 		<span color="#0433ff">
-			<span style="font-family:'Times New Roman, serif';">{{$tellUsAboutYou['address']}}</span>
+			<span style="font-family:'Times New Roman, serif';">{{$tellUsAboutYou['address']}},</span>
 		</span>
 		</p>
 
 		<p align="justify" style="margin-bottom: 0in; ">
-			<span color="#000000">
-				<span style="font-family:'Times New Roman, serif';">«</span>
+
+			<span color="#0433ff">
+				<span style="font-family:'Times New Roman, serif';">{{ucwords(strtolower($tellUsAboutYou['city']))}}</span>
 			</span>
 
 			<span color="#0433ff">
-				<span style="font-family:'Times New Roman, serif';">{{ucwords($tellUsAboutYou['city'])}}</span>
-			</span>
-
-			<span color="#000000">
-				<span style="font-family:'Times New Roman, serif';">, </span>
+				<span style="font-family:'Times New Roman, serif';"> {{ucwords(strtolower($tellUsAboutYou['state']))}}</span>
 			</span>
 
 			<span color="#0433ff">
-				<span style="font-family:'Times New Roman, serif';">{{ucwords($tellUsAboutYou['state'])}}</span>
+				<span style="font-family:'Times New Roman, serif';"> {{ucwords($tellUsAboutYou['zip'])}}</span>
 			</span>
-
-			<span color="#000000">
-				<span style="font-family:'Times New Roman, serif';"></span>
-			</span>
-
-			<span color="#0433ff">
-				<span style="font-family:'Times New Roman, serif';">{{ucwords($tellUsAboutYou['zip'])}}</span>
-			</span>
-			<span color="#000000">
-				<span style="font-family:'Times New Roman, serif';">»</span>
-			</span>
+			
 		</p>
 
 
@@ -1481,10 +1455,10 @@
 		<span style="font-family:'Times New Roman, serif';"></span>
 
 		<span color="#0000ff">
-			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
 		</span>
 
-		<span style="font-family:'Times New Roman, serif';">,
+		<span style="font-family:'Times New Roman, serif';">
 		that </span>
 		<span color="#0433ff">
 			<span style="font-family:'Times New Roman, serif';">{{$genderTxt3}}</span>
@@ -1507,10 +1481,10 @@
 		Attorney as witness in the presence of </span>
 
 		<span color="#0000ff">
-			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
 		</span>
 
-		<span style="font-family:'Times New Roman, serif';">,
+		<span style="font-family:'Times New Roman, serif';">
 		and that to the best of our knowledge </span>
 
 		<span color="#0433ff">
@@ -1547,10 +1521,6 @@
 		day of </span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">____________________________</span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
 		</span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">____________________________</span></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
 		before me, the undersigned notary public, personally appeared </span></span></span>
-
-		<span style="font-family:'Times New Roman, serif';">
-			<span size="2" style="font-size: 9pt">«</span>
-		</span>
 
 		<span color="#0000ff">
 			<span style="font-family:'Times New Roman, serif';">
@@ -1590,10 +1560,10 @@
 		<p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
 		<span style="font-family:'Times New Roman, serif';">I, </span>
 		<span color="#0000ff">
-			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
 		</span>
 
-		<span style="font-family:'Times New Roman, serif';">,
+		<span style="font-family:'Times New Roman, serif';">
 		the principal, sign my name to this power of attorney this </span><span style="font-family:'Times New Roman, serif';">________________________________</span><span style="font-family:'Times New Roman, serif';">
 		day of </span><span style="font-family:'Times New Roman, serif';">________________________</span><span style="font-family:'Times New Roman, serif';">,
 		</span><span style="font-family:'Times New Roman, serif';">_______________________________</span><span style="font-family:'Times New Roman, serif';">
@@ -1616,10 +1586,10 @@
 
 
 		<span color="#0000ff">
-			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
 		</span>
 
-		<span style="font-family:'Times New Roman, serif';">,
+		<span style="font-family:'Times New Roman, serif';">
 		Principal</span></p>
 		<p align="justify" style="margin-top: 0.04in; margin-bottom: 0in; ">
 
@@ -1635,23 +1605,15 @@
 				<span style="font-family:'Times New Roman, serif';"></span>
 			</span>
 			<span color="#0433ff">
-				<span style="font-family:'Times New Roman, serif';">{{ucwords($tellUsAboutYou['city'])}}</span>
-			</span>
-
-			<span color="#000000">
-				<span style="font-family:'Times New Roman, serif';">, </span>
+				<span style="font-family:'Times New Roman, serif';">{{ucwords(strtolower($tellUsAboutYou['city']))}},</span>
 			</span>
 
 			<span color="#0433ff">
-				<span style="font-family:'Times New Roman, serif';">{{ucwords($tellUsAboutYou['state'])}}</span>
-			</span>
-
-			<span color="#000000">
-				<span style="font-family:'Times New Roman, serif';"> </span>
+				<span style="font-family:'Times New Roman, serif';">{{ucwords(strtolower($tellUsAboutYou['state']))}}</span>
 			</span>
 
 			<span color="#0433ff">
-				<span style="font-family:'Times New Roman, serif';">{{ucwords($tellUsAboutYou['zip'])}}</span>
+				<span style="font-family:'Times New Roman, serif';"> {{ucwords(strtolower($tellUsAboutYou['zip']))}}</span>
 			</span>
 
 			<span color="#000000">
@@ -1719,17 +1681,13 @@
 			<span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">Subscribed,
 			sworn to and acknowledged before me by </span></span>
 
-			<span style="font-family:'Times New Roman, serif';">
-				<span size="2" style="font-size: 9pt">«</span>
-			</span>
-
 			<span color="#0000ff">
 				<span style="font-family:'Times New Roman, serif';">
-					<span size="2" style="font-size: 9pt">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+					<span size="2" style="font-size: 9pt">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
 				</span>
 			</span>
 
-			<span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">,
+			<span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">
 			the principal, and subscribed and sworn to before me by </span></span>
 			</p>
 
@@ -1769,10 +1727,10 @@
 
 
 		<span color="#0000ff">
-			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
 		</span>
 
-		<span style="font-family:'Times New Roman, serif';">,
+		<span style="font-family:'Times New Roman, serif';">
 		the principal, sign my name to this power of attorney and do hereby
 		declare to the undersigned witnesses that I sign and execute this
 		instrument as my Power of Attorney and that I sign it willingly (or
@@ -1809,11 +1767,11 @@
 		<p align="justify" style="margin-bottom: 0in; ">
 
 			<span color="#0432ff">
-				<span style="font-family:'Times New Roman, serif';">{{$tellUsAboutYou['city']}}</span>
+				<span style="font-family:'Times New Roman, serif';">{{ucwords(strtolower($tellUsAboutYou['city']))}}</span>
 			</span>
 
 		<span color="#0432ff">
-			<span style="font-family:'Times New Roman, serif';">{{$tellUsAboutYou['state']}}</span>
+			<span style="font-family:'Times New Roman, serif';">{{ucwords(strtolower($tellUsAboutYou['state']))}}</span>
 		</span>
 
 		<span color="#0432ff">
@@ -1825,7 +1783,7 @@
 		</p>
 
 
-		<p align="justify" style="margin-bottom: 0in; ">
+		<p align="justify" style="margin-bottom: 0in;">
 			<span color="#0432ff">
 				<span style="font-family:'Times New Roman, serif';">{{$tellUsAboutYou['phone']}}</span>
 			</span>
@@ -1839,10 +1797,10 @@
 		do hereby declare that </span>
 
 		<span color="#0000ff">
-			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
 		</span>
 
-		<span style="font-family:'Times New Roman, serif';">,
+		<span style="font-family:'Times New Roman, serif';">
 		the principal, signs and executes this instrument as </span>
 
 		<span color="#0433ff">
@@ -1899,10 +1857,10 @@
 		sworn and acknowledged before me by </span></span>
 
 		<span color="#0000ff">
-			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+			<span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
 		</span>
 
-		<span color="#000000"><span style="font-family:'Times New Roman, serif';">,
+		<span color="#000000"><span style="font-family:'Times New Roman, serif';">
 		the principal, and _________________________________________, as
 		witness, and _____________________________________, as witness, who
 		personally appeared on this &nbsp;_________ day of
