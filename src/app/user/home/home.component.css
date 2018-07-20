@@ -42,6 +42,12 @@
     text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
 }
 
+.drawerGetStarted{
+    margin-top: 35px;
+    display: inline-block;
+    width: 100%;
+}
+
 @media screen and (max-width:1200px){
     .get_start_pkg_btn{
         width: 202px;
