@@ -40,13 +40,13 @@ class NewsletterController extends Controller
                       if ($res == false) {
                         return response()->json([
                             'status'  => false,
-                            'message' => 'This email ID is already subscribed. Use another email ID to subscribe our newsletter !',
+                            'message' => 'This email ID is already subscribed. Use another email ID to subscribe our newsletters !',
                             'data'    => []
-                        ], 200);
+                        ], 400);
                       }
                       return response()->json([
                           'status' => true,
-                          'message' => 'Thanks for subscribe our newslatter ',
+                          'message' => 'Thanks for subscribe our newslatters ',
                           'data' => ['subscriberDetails' => $createSubscriber]
                       ], 200);
                       $this->sendEmailToNewsletterSubscriber($createSubscriber->email);
@@ -70,7 +70,7 @@ class NewsletterController extends Controller
                     'status'  => false,
                     'message' => 'This email ID is already subscribed. Use another email ID to subscribe our newsletter !',
                     'data'    => []
-                ], 200);
+                ], 400);
             }
         }catch (Exception $e) {
             return response()->json([
