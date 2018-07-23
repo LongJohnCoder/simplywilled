@@ -75,12 +75,18 @@
         <h2 class="subscribe_text_main"><span class="subscribe_text">SUBSCRIBE</span></h2>
         <form novalidate [formGroup]="subscriberEmailForm" (ngSubmit)="onSubmit()">
           <div class="subscribe_form_main">
-              <input type="email" class="subscribe_mail" formControlName="subscriberEmail" placeholder="Your email address">
+
               <div class="form-control-feedback"
                    *ngIf="subscriberEmail.errors && (subscriberEmail.dirty || subscriberEmail.touched)">
-                  <p *ngIf="subscriberEmail.errors">The email address must contain at least the @ character</p>
+                  <span class="formErrorMsg" *ngIf="subscriberEmail.errors">This is not a valid email id!</span>
               </div>
-            <input type="submit" class="btn-green" value="Subscribe">
+              <div class="form-control-feedback"
+                   *ngIf="respType !== null && respType !== undefined">
+                  <span class="formSuccessMsg" *ngIf="respType === 'success'">{{respMsg}}</span>
+                  <span class="formErrorMsg" *ngIf="respType === 'error'">{{respMsg}}</span>
+              </div>
+              <input type="email" class="subscribe_mail" formControlName="subscriberEmail" placeholder="Your email address">
+            <input type="submit" class="btn-green" [disabled]="subscriberEmail.errors" [ngStyle]="{'opacity': !subscriberEmail.errors ? '1' : '0.5' , 'cursor': !subscriberEmail.errors ? '' : 'default'}" value="Subscribe">
           </div>
         </form>
         <h2 class="subscribe_text_main"><span class="subscribe_text">CATEGORIES</span></h2>

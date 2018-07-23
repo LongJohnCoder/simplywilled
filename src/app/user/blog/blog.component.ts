@@ -24,6 +24,8 @@ export class BlogComponent implements OnInit {
     loader: boolean;
     baseURL = environment.base_url;
     queryString: string;
+    respType: string;
+    respMsg: string;
 
    constructor(
        private blogService: BlogService,
@@ -97,7 +99,7 @@ export class BlogComponent implements OnInit {
         this.subscriberEmailForm = new FormControl();
         this.subscriberEmail = new FormControl('', [
             Validators.required,
-            Validators.pattern('[^ @]*@[^ @]*')
+            Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,3}$')
         ]);
     }
 
@@ -111,12 +113,22 @@ export class BlogComponent implements OnInit {
         if (this.subscriberEmailForm.valid) {
             this.blogService.subscribeEmailNewsletter(this.subscriberEmailForm.value).subscribe(
                 (data: any) => {
-                    if (data.status = 'true' ) {
-                        alert(data.message);
+                    // if (data.status = 'true' ) {
+                    //     alert(data.message);
+                        this.respType = 'success';
+                        this.respMsg = data.message;
                         this.subscriberEmailForm.reset();
-                    }
+                    // }
+                }, (error: any) => {
+                    this.respType = 'error';
+                    this.respMsg = error.error.message;
+
                 }
             );
+            let curr = this;
+            setTimeout(function () {
+                curr.respType = null;
+            }, 6000);
         }
     }
 

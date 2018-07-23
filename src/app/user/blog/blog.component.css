@@ -28,6 +28,9 @@
     text-align: center;
     width: 90%;
 }
+.btn-green{
+    cursor: pointer;
+}
 .subscribe_form_main .btn-green{
     width: 100%;
     font-size: 18px;
@@ -79,6 +82,22 @@
     color: #fff;
     cursor: pointer;
     vertical-align: bottom;
+}
+
+.formErrorMsg{
+    margin-bottom: 5px;
+}
+
+.formSuccessMsg {
+    margin-bottom: 5px;
+    width: 100%;
+    display: inline-block;
+    background-color: #42A82D;
+    color: #fff;
+    padding: 5px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 5px;
 }
 
 @media screen and (max-width:1310px){
