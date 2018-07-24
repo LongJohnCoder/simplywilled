@@ -35,10 +35,10 @@ const routes: Routes = [
         { path: 'privacy-policy', pathMatch: 'full', component: PrivacyPolicyComponent },
         { path: 'contact-us', pathMatch: 'full', component: ContactUsComponent },
         { path: 'fiduciary/:type/:token', pathMatch: 'full', component: FiduciaryComponent }
-        
-        
+
+
         // tslint:disable-next-line:max-line-length
-        
+
    ]},
     {
       path: 'dashboard',
@@ -48,7 +48,7 @@ const routes: Routes = [
     },
     {path: '', component: FullLayoutComponent, data: { title: 'Home' }, children: [{path: '**', component: NotFoundComponent}]}
 ];
-console.log('user-routing-module is called');
+
 @NgModule({
   imports: [RouterModule.forChild(routes), CommonModule],
   exports: [RouterModule]

@@ -1,15 +1,16 @@
-import {Component, OnInit, NgModule} from '@angular/core';
+import {Component, OnInit, NgModule, OnDestroy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {BlogService} from '../blog.service';
 import {FormControl, Validators, FormGroup} from '@angular/forms';
 import {environment} from '../../../../environments/environment';
+import {Meta} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-blogdetails',
     templateUrl: './blogdetails.component.html',
     styleUrls: ['./blogdetails.component.css']
 })
-export class BlogdetailsComponent implements OnInit {
+export class BlogdetailsComponent implements OnInit, OnDestroy {
     commentForm: any;
     blogId: FormControl;
     name: FormControl;
@@ -17,14 +18,16 @@ export class BlogdetailsComponent implements OnInit {
     message: FormControl;
     blogDetails: any;
     imageLink: string;
-    BlogId:any;
-    createBlogCommentMessage:string;
+    BlogId: any;
+    createBlogCommentMessage: string;
     baseURL = environment.base_url;
     loaderrrr: boolean;
 
     constructor(private router: Router,
                 private route: ActivatedRoute,
-                private BlogService: BlogService) {
+                private BlogService: BlogService,
+                private meta: Meta
+                ) {
     }
 
     ngOnInit() {
@@ -42,6 +45,13 @@ export class BlogdetailsComponent implements OnInit {
                 this.imageLink = data.data.imageLink;
                 this.BlogId = data.data.blog.id;
                 this.loaderrrr = false;
+                if (data.status !== undefined && data.status) {
+                  this.meta.addTags([
+                    {name: 'description', content: data.data.blog.meta_description},
+                    {name: 'keywords', content: data.data.blog.meta_keywords},
+                    {name: 'og:image', content: this.imageLink + data.data.blog.image}
+                  ]);
+                }
             }
         );
     }
@@ -81,8 +91,15 @@ export class BlogdetailsComponent implements OnInit {
                         alert(this.createBlogCommentMessage);
                     }
                 }
-            )
+            );
         }
     }
 
+    ngOnDestroy() {
+      if (this.meta !== undefined) {
+        this.meta.removeTag('name="description"');
+        this.meta.removeTag('name="keywords"');
+        this.meta.removeTag('name="og:image"');
+      }
+    }
 }

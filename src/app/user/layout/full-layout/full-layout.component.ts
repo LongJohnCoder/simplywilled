@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserAuthService} from '../../user-auth/user-auth.service';
 import {Router, NavigationEnd, ActivatedRoute} from '@angular/router';
 import {environment} from '../../../../environments/environment';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-full-layout',
@@ -19,7 +20,8 @@ export class FullLayoutComponent implements OnInit {
   blogSearchQuery: boolean;
 
   constructor( private authService: UserAuthService, private router: Router,
-               private route: ActivatedRoute
+               private route: ActivatedRoute,
+               private title: Title
                ) {
     router.events
       .filter(event => event instanceof NavigationEnd)
@@ -30,6 +32,11 @@ export class FullLayoutComponent implements OnInit {
           window.scroll(0, h);
         }
         this.blogSearch = this.route.snapshot.queryParamMap.get('q');
+        if (event.urlAfterRedirects.includes('/blogdetails/')) {
+          this.title.setTitle('Selecting a Good Probate Lawyer - Antonoplos & Associates Attorneys At Law');
+        } else {
+          this.title.setTitle('SimplyWilled Online Estate Planning Made Simple');
+        }
       });
   }
 
