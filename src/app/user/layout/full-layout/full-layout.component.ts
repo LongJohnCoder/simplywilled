@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserAuthService} from '../../user-auth/user-auth.service';
 import {Router, NavigationEnd, ActivatedRoute} from '@angular/router';
 import {environment} from '../../../../environments/environment';
 import {Title} from '@angular/platform-browser';
+import {Subscription} from 'rxjs/Subscription';
+import {BlogService} from '../../blog/blog.service';
 
 @Component({
   selector: 'app-full-layout',
   templateUrl: './full-layout.component.html',
   styleUrls: ['./full-layout.component.css']
 })
-export class FullLayoutComponent implements OnInit {
+export class FullLayoutComponent implements OnInit, OnDestroy {
 
   isLogIn: boolean;
   menutogle: boolean;
@@ -18,12 +20,14 @@ export class FullLayoutComponent implements OnInit {
   baseURL = environment.base_url;
   blogSearch: string;
   blogSearchQuery: boolean;
+  routerSubscription: Subscription;
 
   constructor( private authService: UserAuthService, private router: Router,
                private route: ActivatedRoute,
-               private title: Title
+               private title: Title,
+               private blogService: BlogService
                ) {
-    router.events
+   this.routerSubscription = router.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
         window.scroll(0, 0);
@@ -32,9 +36,7 @@ export class FullLayoutComponent implements OnInit {
           window.scroll(0, h);
         }
         this.blogSearch = this.route.snapshot.queryParamMap.get('q');
-        if (event.urlAfterRedirects.includes('/blogdetails/')) {
-          this.title.setTitle('Selecting a Good Probate Lawyer - Antonoplos & Associates Attorneys At Law');
-        } else {
+        if (!event.urlAfterRedirects.includes('/blogdetails/')) {
           this.title.setTitle('SimplyWilled Online Estate Planning Made Simple');
         }
       });
@@ -112,4 +114,13 @@ export class FullLayoutComponent implements OnInit {
             this.blogSearchSubmit();
         }
     }
+
+  /**
+   * When the component is destroyed
+   */
+  ngOnDestroy() {
+      if (this.routerSubscription !== undefined) {
+        this.routerSubscription.unsubscribe();
+      }
+   }
 }

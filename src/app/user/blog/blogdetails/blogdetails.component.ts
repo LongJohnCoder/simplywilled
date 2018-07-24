@@ -3,7 +3,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {BlogService} from '../blog.service';
 import {FormControl, Validators, FormGroup} from '@angular/forms';
 import {environment} from '../../../../environments/environment';
-import {Meta} from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-blogdetails',
@@ -26,7 +26,8 @@ export class BlogdetailsComponent implements OnInit, OnDestroy {
     constructor(private router: Router,
                 private route: ActivatedRoute,
                 private BlogService: BlogService,
-                private meta: Meta
+                private meta: Meta,
+                private title: Title,
                 ) {
     }
 
@@ -48,9 +49,9 @@ export class BlogdetailsComponent implements OnInit, OnDestroy {
                 if (data.status !== undefined && data.status) {
                   this.meta.addTags([
                     {name: 'description', content: data.data.blog.meta_description},
-                    {name: 'keywords', content: data.data.blog.meta_keywords},
-                    {name: 'og:image', content: this.imageLink + data.data.blog.image}
+                    {name: 'keywords', content: data.data.blog.meta_keywords}
                   ]);
+                  this.title.setTitle(data.data.blog.title);
                 }
             }
         );
@@ -99,7 +100,6 @@ export class BlogdetailsComponent implements OnInit, OnDestroy {
       if (this.meta !== undefined) {
         this.meta.removeTag('name="description"');
         this.meta.removeTag('name="keywords"');
-        this.meta.removeTag('name="og:image"');
       }
     }
 }
