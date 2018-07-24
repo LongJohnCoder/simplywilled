@@ -306,8 +306,8 @@ class PackageController extends Controller
             ->setInvoiceNumber(uniqid());
 
         $redirectUrls = Paypalpayment::redirectUrls();
-        $redirectUrls->setReturnUrl(url("/dashboard/packages/paypal-success"))
-            ->setCancelUrl(url("/dashboard/packages/paypal-failed"));
+        $redirectUrls->setReturnUrl(url("/dashboard/packages/payment-success"))
+            ->setCancelUrl(url("/dashboard/packages/payment-failed"));
 
         $payment = Paypalpayment::payment();
 
@@ -431,7 +431,7 @@ class PackageController extends Controller
                     $mail->to(strtolower($mailData['email']), $mailData['userName'])->subject('You have purchased '.$mailData['pkgName'].'!');
             });
           } catch (\Exception $e) {
-            \Log::info('type: error,'.' res: '.$e->getMessage().', line:'.$getLine());
+            \Log::info('type: error,'.' res: '.$e->getMessage().', line:'.$e->getLine());
           }
           // $cartStack = $this->cartStackSubmit($user->email, $userPackage->amount);
 
@@ -607,7 +607,7 @@ class PackageController extends Controller
           $CVV2           = $request->cvv2;
           $FIRSTNAME      = $request->cardFirstName;
           $LASTNAME       = $request->cardLastName;
-          $STREET         = $request->address1 . $request->has('address2') ? ', '.$request->address2 : '';
+          $STREET         = $request->address1;
           $CITY           = $request->city;
           $STATE          = $request->state;
           $ZIP            = $request->zip;
@@ -630,7 +630,7 @@ class PackageController extends Controller
           // $ZIP            = '14305';
           $COUNTRYCODE    = 'US';
 
-          $pfHostAddr = 'https://api-3t.sandbox.paypal.com/nvp';
+          $pfHostAddr = config('paypal_direct.host');
 
           $postData = 'VERSION=56.0&COUNTRYCODE='.$COUNTRYCODE.'&SIGNATURE='.$SIGNATURE.'&USER='.$USER.'&PWD='.$PWD.
                       '&METHOD='.$METHOD.'&PAYMENTACTION='.$PAYMENTACTION.'&IPADDRESS='.$IPADDRESS.'&AMT='.$AMT.'&ACCT='.$ACCT.'&EXPDATE='.$EXPDATE.'&CVV2='.$CVV2.'&FIRSTNAME='.$FIRSTNAME.'&LASTNAME='.$LASTNAME.'&STREET='.$STREET.'&CITY='.$CITY.'&STATE='.$STATE.'&ZIP='.$ZIP;
@@ -789,7 +789,7 @@ class PackageController extends Controller
             'message' => 'Unknown Package',
           ], 400);
         }
-        
+
         if ($checkUserPackage) {
           return response()->json([
             'status' => true,
