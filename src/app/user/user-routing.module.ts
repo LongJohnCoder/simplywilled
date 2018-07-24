@@ -27,7 +27,7 @@ const routes: Routes = [
         { path: 'about-us', pathMatch: 'full', component: AboutUsComponent },
         { path: 'faq', pathMatch: 'full', component: FaqComponent },
         { path: 'blog', pathMatch: 'full', component: BlogComponent },
-        { path: 'blogdetails/:slug', pathMatch: 'full', component: BlogdetailsComponent },
+        { path: 'blog/:slug', pathMatch: 'full', component: BlogdetailsComponent },
         { path: 'category/:slug', pathMatch: 'full', component: BlogCategoryComponent },
         // { path: 'faq', canActivate: [ NotUserAuthGuard ], loadChildren: './faq/user-login/user-login.module#UserLoginModule' },
         { path: 'terms-of-use', pathMatch: 'full', component: TermsOfUseComponent },

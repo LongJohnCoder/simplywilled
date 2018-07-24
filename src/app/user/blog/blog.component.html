@@ -34,7 +34,7 @@
         <ul class="trending_ul">
           <li *ngIf="totalBlog === 0">No posts found !</li>
           <li *ngFor="let blog of blogList | paginate: { itemsPerPage: 10, currentPage: p, totalItems: totalBlog}">
-              <a routerLink="/blogdetails/{{blog.slug}}" class="trending_img"><img src="{{imageLink}}{{blog.image}}" alt="{{blog.image}}"></a>
+              <a routerLink="/blog/{{blog.slug}}" class="trending_img"><img src="{{imageLink}}{{blog.image}}" alt="{{blog.image}}"></a>
             <h1 class="news_heading">{{blog.title}}</h1>
             <ul class="trending_sub_left_ul">
               <li>
@@ -50,16 +50,16 @@
             </ul>
             <ul class="trending_right_ul">
               <li><a href="javascript:void(0)">Share:</a></li>
-              <li><a href="https://twitter.com/share?url={{baseURL}}blogdetails/{{blog.slug}}" target="_blank" title="Twitter"><img src="../../../../assets/images/twitter-icon.png"></a></li>
-              <li><a href="http://www.facebook.com/sharer.php?u={{baseURL}}blogdetails/{{blog.slug}}" target="_blank" title="Facebook"><img src="../../../../assets/images/facebook-icon.png"></a></li>
-              <li><a href="https://plus.google.com/share?url={{baseURL}}blogdetails/{{blog.slug}}" target="_blank" title="Google-plus"><img src="../../../../assets/images/gplus-icon.png"></a></li>
-              <li><a href="http://pinterest.com/pin/create/button/?url={{baseURL}}blogdetails/{{blog.slug}}" target="_blank" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i>
+              <li><a href="https://twitter.com/share?url={{baseURL}}blog/{{blog.slug}}" target="_blank" title="Twitter"><img src="../../../../assets/images/twitter-icon.png"></a></li>
+              <li><a href="http://www.facebook.com/sharer.php?u={{baseURL}}blog/{{blog.slug}}" target="_blank" title="Facebook"><img src="../../../../assets/images/facebook-icon.png"></a></li>
+              <li><a href="https://plus.google.com/share?url={{baseURL}}blog/{{blog.slug}}" target="_blank" title="Google-plus"><img src="../../../../assets/images/gplus-icon.png"></a></li>
+              <li><a href="http://pinterest.com/pin/create/button/?url={{baseURL}}blog/{{blog.slug}}" target="_blank" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i>
               </a></li>
-              <li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{baseURL}}blogdetails/{{blog.slug}}" target="_blank" title="Linkedin"><img src="../../../../assets/images/linkedin-icon.png"></a></li>
+              <li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{baseURL}}blog/{{blog.slug}}" target="_blank" title="Linkedin"><img src="../../../../assets/images/linkedin-icon.png"></a></li>
             </ul>
               <p class="legal_requirement" *ngIf="blog.excerpt !== null">{{blog.excerpt}}</p>
             <p class="legal_requirement" *ngIf="blog.excerpt === null" innerHTML="{{ blog.body | slice:0:650 }}"></p>
-            <a class="btn-green" routerLink="/blogdetails/{{blog.slug}}" ><img src="../../../../assets/images/arrow-right.png"> Read More</a>
+            <a class="btn-green" routerLink="/blog/{{blog.slug}}" ><img src="../../../../assets/images/arrow-right.png"> Read More</a>
           </li>
         </ul>
               <pagination-controls class="older_post_text"
@@ -98,9 +98,9 @@
         <ul class="post_ul">
             <li *ngIf="!popularBlogPost.length">No popular post found !</li>
           <li *ngFor="let popularPost of popularBlogPost">
-            <a routerLink="/blogdetails/{{popularPost.slug}}" class="post_img"><img src="{{imageLink}}{{popularPost.image}}"></a>
+            <a routerLink="/blog/{{popularPost.slug}}" class="post_img"><img src="{{imageLink}}{{popularPost.image}}"></a>
             <div class="post_right_main">
-              <a routerLink="/blogdetails/{{popularPost.slug}}" class="post_heading">{{popularPost.title}}</a>
+              <a routerLink="/blog/{{popularPost.slug}}" class="post_heading">{{popularPost.title}}</a>
               <h4 class="healthcare_text">{{popularPost.categoryNames}}</h4>
             </div>
           </li>
@@ -110,9 +110,9 @@
           <ul class="post_ul">
               <li *ngIf="!recentBlogPost.length">No recent post found !</li>
               <li *ngFor="let popularPost of recentBlogPost">
-                  <a routerLink="/blogdetails/{{popularPost.slug}}" class="post_img"><img src="{{imageLink}}{{popularPost.image}}"></a>
+                  <a routerLink="/blog/{{popularPost.slug}}" class="post_img"><img src="{{imageLink}}{{popularPost.image}}"></a>
                   <div class="post_right_main">
-                      <a routerLink="/blogdetails/{{popularPost.slug}}" class="post_heading">{{popularPost.title}}</a>
+                      <a routerLink="/blog/{{popularPost.slug}}" class="post_heading">{{popularPost.title}}</a>
                       <h4 class="healthcare_text">{{popularPost.categoryNames}}</h4>
                   </div>
               </li>
