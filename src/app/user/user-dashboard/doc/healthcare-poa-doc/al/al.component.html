@@ -256,8 +256,8 @@
             </p>
             <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span color="#0000ff"><span color="#000000">I
               hereby appoint my
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation !== 'Other'"> {{userDetails.healthFinance.relation}},</span>
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation === 'Other'"> {{userDetails.healthFinance.relationOther}},</span> <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null">{{userDetails.healthFinance.fullname}},</span> of
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation !== 'Other'"> {{userDetails.healthFinance.relation | titlecase}},</span>
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation === 'Other'"> {{userDetails.healthFinance.relationOther | titlecase}},</span> <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null">{{userDetails.healthFinance.fullname  | titlecase}},</span> of
               <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address}}</span>in<span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.city}},</span>
               <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.state}},</span>
               <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.zip}},</span>   (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.phone}} </span>), as my proxy to make medical or
@@ -507,13 +507,13 @@
             <p align="center" style="text-indent: -0.25in; margin-top: 0.25in; margin-bottom: 0.17in; line-height: 0.23in">
               <span style="font-size: 13pt"><b>Section 6. SIGNATURE OF
                 PROXY</b></span></p>
-            <p style="margin-bottom: 0in; line-height: 115%">I,<span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.fullname}},</span> am willing to serve as the health care proxy.</p>
+            <p style="margin-bottom: 0in; line-height: 115%">I,<span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.fullname | titlecase}},</span> am willing to serve as the health care proxy.</p>
             <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
 
             </p>
             <p style="margin-bottom: 0in; line-height: 115%">Dated:
               ____________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______________________________________</p>
-            <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"><span color="#0000ff"><b><span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{userDetails.healthFinance.fullname}}</span> </b></span></p>
+            <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"><span color="#0000ff"><b><span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{userDetails.healthFinance.fullname | titlecase}}</span> </b></span></p>
 
             <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'true'">
               <!--<p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span color="#008000"><span >«</span>IF
@@ -521,13 +521,13 @@
               <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
 
               </p>
-              <p style="margin-bottom: 0in; line-height: 115%">I,  <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupFullname}},</span> am willing to serve as the health care proxy.</p>
+              <p style="margin-bottom: 0in; line-height: 115%">I,  <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupFullname | titlecase}},</span> am willing to serve as the health care proxy.</p>
               <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
 
               </p>
               <p style="margin-bottom: 0in; line-height: 115%">Dated:
                 ____________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______________________________________</p>
-              <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"> <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{userDetails.healthFinance.backupFullname}} </b></span><!--<span color="#0000ff"><b><span >«</span>
+              <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"> <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{userDetails.healthFinance.backupFullname | titlecase}} </b></span><!--<span color="#0000ff"><b><span >«</span>
               Rx Agent #2<span >»</span><span >«</span><span color="#008000">END
                 IF</span><span >»</span></b></span>--></p>
             </span>
