@@ -129,10 +129,10 @@
             <p align="center" style="margin-bottom: 0.13in; line-height: 115%"><b>POWER
               OF ATTORNEY FOR HEALTH CARE</b></p>
             <p style="margin-bottom: 0in; line-height: 115%">1.1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>DESIGNATION
-              OF AGENT</b>. I designate my<span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation !== 'Other'"> {{userDetails.healthFinance.relation}},</span>
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation === 'Other'"> {{userDetails.healthFinance.relationOther}},</span> <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.fullname}},</span>
-              of <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address}} </span> in <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.city}},</span>
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.state}}, </span>
+              OF AGENT</b>. I designate my<span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation !== 'Other'"> {{userDetails.healthFinance.relation | titlecase}},</span>
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation === 'Other'"> {{userDetails.healthFinance.relationOther | titlecase}},</span> <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.fullname | titlecase}},</span>
+              of <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address}} </span> in <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.city | titlecase }},</span>
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.state | titlecase }}, </span>
               <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.zip}}, </span> (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.phone}} </span>), as my agent to make health care
               decisions for me.</p>
             <p style="margin-bottom: 0in; line-height: 115%">
@@ -143,12 +143,12 @@
                 Rx Alternate Agents?<span >»</span></span></p>-->
               <p style="margin-bottom: 0in; line-height: 115%" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'true'">If I revoke my
                 agent’s authority or if my agent is not willing, able or reasonably
-                available to make a health care decision for me, I designate my <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation !== 'Other'"> {{userDetails.healthFinance.backupRelation}},</span>
-                <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation === 'Other'"> {{userDetails.healthFinance.backupRelationOther}},</span>
-                <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupFullname}},</span>
+                available to make a health care decision for me, I designate my <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation !== 'Other'"> {{userDetails.healthFinance.backupRelation | titlecase }},</span>
+                <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation === 'Other'"> {{userDetails.healthFinance.backupRelationOther | titlecase}},</span>
+                <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupFullname | titlecase}},</span>
                 of  <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupAddress}} </span> in
-                <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupCity}},</span>
-                <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupState}}, </span>
+                <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupCity | titlecase }},</span>
+                <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupState | titlecase }}, </span>
                 <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupZip}}, </span> (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupphone}} </span>), as my
                 alternate agent.</p>
              <!-- <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span color="#008f00"><span >«</span>END
@@ -541,8 +541,8 @@
             <p style="margin-bottom: 0in; line-height: 115%">«<span color="#0432ff">Address2</span>»</p>
             <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span color="#008f00"><span >«</span>END
               IF<span >»</span></span></p>-->
-            <p style="margin-bottom: 0in; line-height: 115%"  ><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null">{{userDetails.tellUsAboutYou.city}},
-            </span><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null">{{userDetails.tellUsAboutYou.state}},</span> <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.zip !== null">{{userDetails.tellUsAboutYou.zip}},</span></p>
+            <p style="margin-bottom: 0in; line-height: 115%"  ><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null">{{userDetails.tellUsAboutYou.city | titlecase}},
+            </span><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null">{{userDetails.tellUsAboutYou.state | titlecase}},</span> <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.zip !== null">{{userDetails.tellUsAboutYou.zip}},</span></p>
             <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.phone !== null">{{userDetails.tellUsAboutYou.phone}},</span></p>
             <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
 

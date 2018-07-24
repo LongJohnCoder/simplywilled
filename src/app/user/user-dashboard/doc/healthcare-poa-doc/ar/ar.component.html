@@ -226,7 +226,6 @@
                 FIRST NAME<span >» «</span>CLIENT MIDDLE NAME<span >»
                   «</span>CLIENT LAST NAME<span >»</span></b></span></p>-->
             <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-            <p style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 115%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </p>
             <!-- <p style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 115%">
                <span color="#0000ff"><span >    <b>«</span>CLIENT
                  FIRST NAME<span >» «</span>CLIENT MIDDLE NAME<span >»
@@ -238,8 +237,8 @@
                  Address2 )<span >»«</span><span color="#0000ff">Address2</span><span >»«</span>END
                  IF<span >»</span></span></p>-->
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null">{{userDetails.tellUsAboutYou.city}} ,</span>
-              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null">{{userDetails.tellUsAboutYou.state}}</span></span></span></span></span></p>
+              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null">{{userDetails.tellUsAboutYou.city | titlecase}} ,</span>
+              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null">{{userDetails.tellUsAboutYou.state | titlecase }}</span></span></span></span></span></p>
             <p style="margin-bottom: 0in; line-height: 115%">
 
             </p>
@@ -271,14 +270,14 @@
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >I
               declare that <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}}, </span>the declarant, appeared to execute the
               Declaration willingly and free from duress. <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.gender !== null"> {{userDetails.tellUsAboutYou.gender === 'M' ? 'He' : 'She'}} </span> signed (or asked another to sign for
-              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.gender !== null"> {{userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she'}} </span>) this
+              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.gender !== null"> {{userDetails.tellUsAboutYou.gender === 'M' ? 'his' : 'her'}} </span>) this
               Declaration in my presence. I am of eighteen years of age or older, I
               am not designated as the declarant’s health care agent or alternate
               health care agent, I am not the declarant’s doctor, I am not the
               administrator or employee of a health care facility in which the
               declarant is receiving care, nor am I related to the declarant by
               marriage, blood or adoption and, to the best of my knowledge, I am
-              not entitled to any part of the declarant 's estate upon <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.gender !== null"> {{userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she'}} </span>
+              not entitled to any part of the declarant 's estate upon <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.gender !== null"> {{userDetails.tellUsAboutYou.gender === 'M' ? 'his' : 'her'}} </span>
               death under a will now existing or by
               operation of law.</span></span></span></span></span></p>
             <p style="margin-bottom: 0in; line-height: 115%">
@@ -355,21 +354,21 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >I,
               <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</span>
-              hereby designate and appoint my <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation !== 'Other'"> {{userDetails.healthFinance.relation}},</span>
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation === 'Other'"> {{userDetails.healthFinance.relationOther}},</span> </span> <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.fullname}},</span>
-                of <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address}} </span> in <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.city}},</span>
-                <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.state}}, </span>
+              hereby designate and appoint my <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation !== 'Other'"> {{userDetails.healthFinance.relation | titlecase}},</span>
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation === 'Other'"> {{userDetails.healthFinance.relationOther | titlecase}},</span> </span> <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.fullname | titlecase}},</span>
+                of <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address}} </span> in <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.city | titlecase}},</span>
+                <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.state | titlecase}}, </span>
               <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.zip}}, </span> (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.phone}} </span>), as my true and lawful health care agent
               and attorney-in-fact (hereinafter, my “agent”), to make decisions
               regarding my health care during periods when my health care provider
               has determined that I lack capacity to decide for myself.<span  *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'true'">
               If my agent is not able, available,
-              or willing to make health care decisions for me, I appoint my <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation !== 'Other'"> {{userDetails.healthFinance.backupRelation}},</span>
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation === 'Other'"> {{userDetails.healthFinance.backupRelationOther}},</span>
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupFullname}},</span>
+              or willing to make health care decisions for me, I appoint my <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation !== 'Other'"> {{userDetails.healthFinance.backupRelation | titlecase}},</span>
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation === 'Other'"> {{userDetails.healthFinance.backupRelationOther | titlecase}},</span>
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupFullname | titlecase}},</span>
               of  <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupAddress}}, </span> in
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupCity}},</span>
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupState}}, </span>
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupCity | titlecase}},</span>
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupState | titlecase}}, </span>
               <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupZip}}, </span> (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupphone}} </span>), as my successor agent, with all of the
               rights and powers and authority herein stated. </span></span></span></span></span>
             </p>
@@ -730,7 +729,7 @@
           <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
             <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
                 <div>Declaration and Durable Power of Attorney of</div> 
-                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+                <div>{{userDetails.tellUsAboutYou.fullname | titlecase}}</div>
             </div>
             <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
                 <div>Declaration and Durable Power of Attorney of</div> 
