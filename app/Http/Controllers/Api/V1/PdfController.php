@@ -189,7 +189,7 @@ class PdfController extends Controller
             }
             $gifts = $giftsArr;
            
-            $filename = 'will-template.pdf';
+            $filename = 'lastWill.pdf';
             
             $data = [
                 'tellUsAboutYou' => $tellUsAboutYou,
@@ -803,7 +803,7 @@ class PdfController extends Controller
                 }
             }
             $gifts = $giftsArr;
-            $filename = 'will-template.pdf';
+            $filename = 'lastWill.pdf';
             
             $arr = [
                 'tellUsAboutYou' => $tellUsAboutYou,
@@ -831,11 +831,11 @@ class PdfController extends Controller
             $pdf = PDF::loadView('pdf.last_will_and_testament', $arr);
 
             Mail::send('new_emails.pdf.lastWill',$arr,
-                    function($mail) use ($arr, $pdf) {
+                    function($mail) use ($arr, $pdf, $filename) {
                         $mail->from(trim(config('settings.email')), 'Simplywilled');
                         $mail->to(trim(strtolower($arr['tellUsAboutYou']['email'])), $arr['tellUsAboutYou']['fullname'])
                                 ->subject('Check your Last Will Docs')
-                                ->attachData($pdf->output(), 'LastWill.pdf');
+                                ->attachData($pdf->output(), $filename);
                 }
             );
 
