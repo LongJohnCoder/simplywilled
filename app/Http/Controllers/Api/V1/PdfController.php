@@ -359,7 +359,7 @@ class PdfController extends Controller
             $personalRepresentative = $totalData['data']['personalRepresentative'];
             $finalArrangements = $totalData['data']['finalArrangements'];
 
-            $filename = 'finanalDisposition.pdf';
+            $filename = 'finalDisposition.pdf';
             if ($tellUsAboutYou['gender'] == 'F') {
                 $genderTxt  = 'her';
                 $genderTxt2 = 'herself';
@@ -956,7 +956,7 @@ class PdfController extends Controller
             $state = $totalData['data']['state'];
             $personalRepresentative = $totalData['data']['personalRepresentative'];
             $finalArrangements = $totalData['data']['finalArrangements'];
-            $filename = 'finanalDisposition.pdf';
+            $filename = 'finalDisposition.pdf';
             
             if ($tellUsAboutYou['gender'] == 'F') {
                 $genderTxt  = 'her';
