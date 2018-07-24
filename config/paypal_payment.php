@@ -2,7 +2,7 @@
 
 return [
     # Define your application mode here
-    'mode' => 'sandbox',
+    'mode' => env('PAYPAL_MODE', ''),
 
     # Account credentials from developer portal
     'account' => [
