@@ -19,6 +19,8 @@
 	$beneRelation = $toSingleBeneficiary['gender'] == 'M' ? 'his' : 'her';
 
 	$beneRelation2 = $toSingleBeneficiary['gender'] == 'M' ? 'he' : 'she';
+
+	$beneRelation3 = $toSingleBeneficiary['gender'] == 'M' ? 'his' : 'her';
 @endphp
 
 
@@ -97,7 +99,7 @@
 				<p style="padding-bottom:20px;">
 					@if($tellUsAboutYou['marital_status'] == "M")
 
-						<span style="font-weight:bold;">B. Marital Status.</span> I am legally married to {{strtoupper($tellUsAboutYou['partner_fullname'])}} and all references to “my spouse” or to {{'"'.ucwords(strtolower(trim($tellUsAboutYou['partner_firstname']))).'"'}} shall be to {{$gender4Txt}}.
+						<span style="font-weight:bold;">B. Marital Status.</span> I am legally married to {{ucwords(strtolower(trim($tellUsAboutYou['partner_fullname'])))}} and all references to “my spouse” or to {{'"'.ucwords(strtolower(trim($tellUsAboutYou['partner_firstname']))).'"'}} shall be to {{$gender4Txt}}.
 
 					@elseif($tellUsAboutYou['marital_status'] == "R")
 
@@ -110,8 +112,7 @@
 						@else
 							State of {{$state}})
 						@endif
-
-						 	with {{strtoupper($tellUsAboutYou['partner_fullname'])}} and all references to “my partner” or to {{'"'.ucwords(strtolower($tellUsAboutYou['partner_firstname'])).'"'}} shall be to {{$$gender4Txt}}
+						 	with {{strtoupper($tellUsAboutYou['partner_fullname'])}} and all references to “my partner” or to {{'"'.ucwords(strtolower($tellUsAboutYou['partner_firstname'])).'"'}} shall be to {{$gender4Txt}}.
 
 					@elseif($tellUsAboutYou['marital_status'] == "D")
 
@@ -145,7 +146,8 @@
 						<span style="font-weight:bold;">C. Children.</span> I have {{$countChild}} children now living; their names and dates of birth are:
 						<br>
 						@foreach($children as $child)
-							<span style="margin-left: 175px;">{{strtoupper($child['fullname'])}}, born {{date('F d, Y', strtotime($child['dob']))}}</span><br>
+							<span style="margin-left: 175px;">{{strtoupper($child['fullname'])}}, born {{date('F d, Y', strtotime($child['dob']))}}</span>
+							<br>
 						@endforeach
 
 					@endif
@@ -213,7 +215,7 @@
 						{{$guardian['relationship_with']}},
 					@endif
 
-					{{strtoupper($guardian['fullname'])}} of {{$guardian['address']}}, {{ucwords($guardian['city'])}}, {{ucwords($guardian['state'])}} {{$guardian['zip']}}, as Guardian of the person and Conservator of the estate of any minor child of mine.
+					{{ucwords(strtolower(trim($guardian['fullname'])))}} of {{ucwords($guardian['address'])}}, {{ucwords($guardian['city'])}}, {{ucwords($guardian['state'])}} {{$guardian['zip']}}, as Guardian of the person and Conservator of the estate of any minor child of mine.
 
 					@if($backupGuardian)
 						If said nominee fails to qualify or ceases to act, I nominate my
@@ -224,7 +226,7 @@
 							{{ucwords($backupGuardian['relationship_with'])}}
 						@endif
 
-						{{strtoupper($backupGuardian['fullname'])}} of {{$backupGuardian['address']}}, {{ucwords($backupGuardian['city'])}}, {{ucwords($backupGuardian['state'])}} {{$backupGuardian['zip']}}, as the successor Guardian and/or Conservator for any minor child of mine.
+						{{ucwords(strtolower(trim($backupGuardian['fullname'])))}} of {{ucwords($backupGuardian['address'])}}, {{ucwords($backupGuardian['city'])}}, {{ucwords($backupGuardian['state'])}} {{$backupGuardian['zip']}}, as the successor Guardian and/or Conservator for any minor child of mine.
 					</p>
 					@endif
 				@endif
@@ -248,23 +250,23 @@
 
 						@if($provideYourLovedOnes['is_tangible_property_distribute'] == 2)
 							@if($tellUsAboutYou['marital_status'] == "M")
-								to my spouse
+								to my spouse.
 							@elseif($tellUsAboutYou['marital_status'] == "D")
-								to my partner
+								to my partner.
 							@endif
 
 
 						@elseif($provideYourLovedOnes['is_tangible_property_distribute'] == 1)
 
 							@if($tellUsAboutYou['children'] > 1)
-								to my surviving children in equal shares
+								to my surviving children in equal shares.
 							@elseif($tellUsAboutYou['children'] == 1)
-								to my child
+								to my child.
 							@endif
 
 
 						@elseif($provideYourLovedOnes['is_tangible_property_distribute'] == 3)
-							with the residue of my Estate
+							with the residue of my Estate.
 
 
 
@@ -273,7 +275,9 @@
 							as follows: {{$provideYourLovedOnes['tangible_property_distribute']}}
 
 						@endif
+					</p>
 
+					<p style="padding-bottom:20px;">
 						I direct that all costs of safeguarding, insuring, storing and delivering my tangible personal property to the beneficiaries entitled thereto be paid out of my Estate as an expense of administration. If a beneficiary designated in this provision does not survive me, my tangible personal property shall be distributed with the residue of my estate.
 					</p>
 
@@ -314,15 +318,18 @@
 
 								@if($toMultipleBeneficiary['isEstateIntoEqualShares'] == 'Yes')
 									@foreach($toMultipleBeneficiary['beneficiaryYes'] as $key => $eachBeneficiary)
-										<span>one share shall be distributed to my {{$eachBeneficiary['beneficiaryRelationship']}} {{$eachBeneficiary['beneficiaryFullName']}}</span>
+										<span>one share shall be distributed to my {{ucwords(strtolower(trim($eachBeneficiary['beneficiaryRelationship'])))}} {{ucwords(strtolower(trim($eachBeneficiary['beneficiaryFullName'])))}}.</span>
 
 									@endforeach
-									If any named residuary beneficiary shall not be living at my death, such beneficiary’s share shall be distributed
+									<p>
+										If any named residuary beneficiary shall not be living at my death, such beneficiary’s share shall be distributed
 
-									@if($toMultipleBeneficiary['deceasedBeneficiaryShareToKids'] == "Yes")
-										to his or her then-living issue, {{$stateTxt}} provided, however, if such deceased beneficiary is not survived by issue, the deceased beneficiary’s share shall be added
-									@endif
-									equally to the other shares.
+										@if($toMultipleBeneficiary['deceasedBeneficiaryShareToKids'] == "Yes")
+											to his or her then-living issue, {{$stateTxt}} provided, however, if such deceased beneficiary is not survived by issue, the deceased beneficiary’s share shall be added
+										@endif
+										equally to the other shares.	
+									</p>
+									
 								@endif
 							</p>
 							@endif
@@ -372,22 +379,22 @@
 
 							@if(isset($toSingleBeneficiary))
 								@if(strtolower($toSingleBeneficiary['relationship']) == 'other')
-									to my {{$toSingleBeneficiary['otherRelationship']}}
+									to my {{ucwords(strtolower(trim($toSingleBeneficiary['otherRelationship'])))}}
 								@else
-									to my {{$toSingleBeneficiary['relationship']}}
+									to my {{ucwords(strtolower(trim($toSingleBeneficiary['relationship'])))}}
 								@endif
 							@endif
 
-							{{$toSingleBeneficiary['fullName']}}. If {{$beneRelation2}} is not living at the time of distribution,
+							{{ucwords(strtolower(trim($toSingleBeneficiary['fullName'])))}}. If {{$beneRelation2}} is not living at the time of distribution,
 
 							@if(isset($toSingleBeneficiary['ifPassesbeforeyou']))
 
 								{{-- Distribute to beneficicary's issue --}}
 								@if($toSingleBeneficiary['ifPassesbeforeyou'] == 1)
-								this gift shall be distributed to  {{$gender2Txt}} then-living issue, {{$stateTxt}}
+								this gift shall be distributed to  {{$beneRelation3}} then-living issue, {{$stateTxt}}
 
 								{{-- Distribute to rest of my heirs --}}
-								however, if {{$gender2Txt}} is not survived by issue, then to my heirs at law.
+								however, if {{$beneRelation2}} is not survived by issue, then to my heirs at law.
 								@elseif($toSingleBeneficiary['ifPassesbeforeyou'] == 2)
 								to my heirs at law.
 
@@ -414,7 +421,7 @@
 								@if(isset($provideYourLovedOnes) && $provideYourLovedOnes['residue_to_partner_first'] == 1)
 									to my {{$partnerOrSpouse}}, and if my {{$partnerOrSpouse}} predeceases me, then
 								@endif
-								in the following manner: {{$toSingleBeneficiary['someotherway']}}
+								in the following manner: {{$estateDistributeSomeOtherWay}}
 							</p>
 						@endif
 

@@ -155,6 +155,14 @@ class PdfController extends Controller
             $contingentBeneficiary = $totalData['data']['contingentBeneficiary'];
             $disinherit  = $totalData['data']['disinherit'];
             $custGiftsArr = $totalData['data']['custGiftsArr'];
+            $estateDistributeSomeOtherWay = json_decode($estateDistribute['some_other_way'], true);
+            $estateDistributeSomeOtherWay = $estateDistributeSomeOtherWay !== null 
+                                            && array_key_exists(0, $estateDistributeSomeOtherWay) ? $estateDistributeSomeOtherWay[0] : null;
+            $estateDistributeSomeOtherWay = $estateDistributeSomeOtherWay !== null 
+                                            && array_key_exists('someOtherWayText', $estateDistributeSomeOtherWay) 
+                                            ? $estateDistributeSomeOtherWay['someOtherWayText'] 
+                                            : null;
+            //dd($estateDistributeSomeOtherWay);
             //dd($toMultipleBeneficiary['beneficiaryYes'][0]);
 
             // foreach($toMultipleBeneficiary['beneficiaryYes'] as $key => $eachBeneficiary) {
@@ -181,7 +189,7 @@ class PdfController extends Controller
             }
             $gifts = $giftsArr;
            
-            $filename = 'will-template.pdf';
+            $filename = 'lastWill.pdf';
             
             $data = [
                 'tellUsAboutYou' => $tellUsAboutYou,
@@ -202,7 +210,8 @@ class PdfController extends Controller
                 'gifts' => $gifts,
                 'contingentBeneficiary' => $contingentBeneficiary,
                 'disinherit'    => $disinherit,
-                'custGiftsArr'   => $custGiftsArr
+                'custGiftsArr'   => $custGiftsArr,
+                'estateDistributeSomeOtherWay' => $estateDistributeSomeOtherWay
             ];
             
             if(!is_dir(public_path().'/'.PATH)) {
@@ -768,6 +777,13 @@ class PdfController extends Controller
             $contingentBeneficiary = $totalData['data']['contingentBeneficiary'];
             $disinherit  = $totalData['data']['disinherit'];
             $custGiftsArr = $totalData['data']['custGiftsArr'];
+            $estateDistributeSomeOtherWay = json_decode($estateDistribute['some_other_way'], true);
+            $estateDistributeSomeOtherWay = $estateDistributeSomeOtherWay !== null 
+                                            && array_key_exists(0, $estateDistributeSomeOtherWay) ? $estateDistributeSomeOtherWay[0] : null;
+            $estateDistributeSomeOtherWay = $estateDistributeSomeOtherWay !== null 
+                                            && array_key_exists('someOtherWayText', $estateDistributeSomeOtherWay) 
+                                            ? $estateDistributeSomeOtherWay['someOtherWayText'] 
+                                            : null;
 
             $giftsArr = [];
             foreach ( $gifts as $key => $gift ) {
@@ -787,7 +803,7 @@ class PdfController extends Controller
                 }
             }
             $gifts = $giftsArr;
-            $filename = 'will-template.pdf';
+            $filename = 'lastWill.pdf';
             
             $arr = [
                 'tellUsAboutYou' => $tellUsAboutYou,
@@ -808,17 +824,18 @@ class PdfController extends Controller
                 'gifts' => $gifts,
                 'contingentBeneficiary' => $contingentBeneficiary,
                 'disinherit'    => $disinherit,
-                'custGiftsArr'   => $custGiftsArr
+                'custGiftsArr'   => $custGiftsArr,
+                'estateDistributeSomeOtherWay' => $estateDistributeSomeOtherWay
             ];
 
             $pdf = PDF::loadView('pdf.last_will_and_testament', $arr);
 
             Mail::send('new_emails.pdf.lastWill',$arr,
-                    function($mail) use ($arr, $pdf) {
+                    function($mail) use ($arr, $pdf, $filename) {
                         $mail->from(trim(config('settings.email')), 'Simplywilled');
                         $mail->to(trim(strtolower($arr['tellUsAboutYou']['email'])), $arr['tellUsAboutYou']['fullname'])
                                 ->subject('Check your Last Will Docs')
-                                ->attachData($pdf->output(), 'LastWill.pdf');
+                                ->attachData($pdf->output(), $filename);
                 }
             );
 
