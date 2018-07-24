@@ -17,6 +17,7 @@ export class DisinheritComponent implements OnInit {
     errorMessage: any;
     fullUserInfo: any;
     loading = true;
+    warningFlag = false;
   /**Constructor call*/
   constructor( private authService: UserAuthService,
                private userService: UserService,
@@ -98,7 +99,7 @@ export class DisinheritComponent implements OnInit {
                 this.disinheritForm.get('relationship').setValue(this.fullUserInfo.relationship !== null && this.fullUserInfo.relationship !== undefined ? this.fullUserInfo.relationship : '');
                 this.disinheritForm.get('other_relationship').setValue(this.fullUserInfo.other_relationship !== null && this.fullUserInfo.other_relationship !== undefined ? this.fullUserInfo.other_relationship : '');
                 this.disinheritForm.get('gender').setValue(this.fullUserInfo.gender !== null && this.fullUserInfo.gender !== undefined ?  this.fullUserInfo.gender : '');
-                this.addRemoveOprions();
+                this.addRemoveOprions(this.fullUserInfo.relationship);
             },
             (error: any) => {
                 console.log(error.error);
@@ -128,7 +129,12 @@ export class DisinheritComponent implements OnInit {
     /**
      *Function to add remove form action depending on the disinherit values
      */
-    addRemoveOprions() {
+    addRemoveOprions(value: string) {
+        if (value === 'Wife' || value === 'Husband') {
+          this.warningFlag = true;
+        } else {
+          this.warningFlag = false;
+        }
         if (this.disinheritForm.value.disinherit === '1') {
                 // add validation to rest of the sections
             this.disinheritForm.get(`fullname`).setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);

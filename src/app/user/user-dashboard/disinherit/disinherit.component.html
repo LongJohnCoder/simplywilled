@@ -46,7 +46,7 @@
       </div>
       <div class="form-group">
         <label>Disinherited Individual’s relationship to you:</label>
-        <select formControlName="relationship"  class="form-control" (change)="addRemoveOprions()">
+        <select formControlName="relationship"  class="form-control" #relationDD (change)="addRemoveOprions(relationDD.value)">
           <option value="">Select Relationship</option>
           <option value="Wife">Wife</option>
           <option value="Husband">Husband</option>
@@ -100,9 +100,15 @@
         </div>
       </div>
 
+      <div class="form-group" *ngIf="warningFlag">
+        <div class="warning_txt">
+          Warning this may not be enforceable, if you wish to disinherit your spouse please contact an attorney.
+        </div>
+      </div>
+
       <div class="form-footer">
         <button type="button" class="btn common-button btn-grey pull-left"  routerLink="/dashboard/contingent-beneficiaries">Go Back</button>
-        <button class="btn common-button btn-complete" type="submit" >Continue</button>
+        <button class="btn common-button btn-complete" type="submit" [disabled]="warningFlag">Continue</button>
       </div>
     </form>
   </div>
