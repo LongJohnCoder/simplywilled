@@ -18,4 +18,11 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    #Redirect
+    Redirect /sign-up /register
+    Redirect /ask-the-owl /faq
+    Redirect /pricing /
+    Redirect /login /sign-in
+    Redirect /trending-news /blog
 </IfModule>
