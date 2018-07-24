@@ -314,9 +314,9 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     this.signingInstructionSubscription = this.globalPDFService.willTemplate(token).subscribe(
       (response: any) => {
         if (response.status) {
-          this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'will-template.pdf').subscribe(
+          this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'lastWill.pdf').subscribe(
             value => {
-              saveAs(value, 'last-will-and-testament.pdf');
+              saveAs(value, 'lastWill.pdf');
             }
           );
         }
@@ -333,7 +333,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     this.printSubscription = this.globalPDFService.willTemplate(token).subscribe(
       (response: any) => {
         if (response.status) {
-          const src = this.globalPDFService.printFile(userId, 'will-template.pdf');
+          const src = this.globalPDFService.printFile(userId, 'lastWill.pdf');
           const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
           if (win !== null) {
             win.document.write('<iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
