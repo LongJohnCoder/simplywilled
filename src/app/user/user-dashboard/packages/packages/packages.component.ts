@@ -1,6 +1,7 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import {PackagesService} from '../packages.service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-packages',
@@ -26,6 +27,7 @@ export class PackagesComponent implements OnInit {
   constructor(
       private packageService: PackagesService,
       private modalService: BsModalService,
+      private router: Router,
 
   ) { }
 
@@ -134,7 +136,9 @@ export class PackagesComponent implements OnInit {
               'package': this.data,
               'userID': this.userId
           };
-          this.paymentPageDisplay = true;
+          localStorage.setItem('pkgInfo', JSON.stringify(this.paymentData));
+          this.router.navigate(['/dashboard/packages/checkout']);
+          // this.paymentPageDisplay = true;
       }
     }
 

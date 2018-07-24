@@ -13,8 +13,11 @@ declare var dataLayer: any;
   styleUrls: ['./thank-you.component.css']
 })
 export class ThankYouComponent implements OnInit, OnDestroy {
-  @Input() data: any;
-  @Input() package_name: string;
+  // @Input() data: any;
+  // @Input() package_name: string;
+
+    data: any;
+    package_name: string;
 
     countDown;
     count = 10;
@@ -22,7 +25,15 @@ export class ThankYouComponent implements OnInit, OnDestroy {
   constructor(
       private router: Router,
       private userService: UserService
-  ) {}
+  ) {
+      const store = JSON.parse(localStorage.getItem('pkgInfo'));
+      this.data = store.data;
+      this.package_name = store.package_name;
+
+      const storeContent = JSON.parse(localStorage.getItem('loggedInUser'));
+      storeContent.token = store.token;
+      localStorage.setItem('loggedInUser', JSON.stringify(storeContent));
+  }
 
   ngOnInit() {
       // console.log(this.data);

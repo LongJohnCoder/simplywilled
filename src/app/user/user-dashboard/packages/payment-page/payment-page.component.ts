@@ -17,7 +17,8 @@ export class PaymentPageComponent implements OnInit  {
   //   'Pragma': 'no-cache',
   //   'Expires': 'Sat, 01 Jan 2000 00:00:00 GMT'
   // });
-  @Input() paymentData: any;
+  // @Input() paymentData: any;
+    paymentData: any;
     respType: boolean;
     respMsg: string;
     data: any;
@@ -38,9 +39,11 @@ export class PaymentPageComponent implements OnInit  {
     constructor(
       private packageService: PackagesService,
       private modalService: BsModalService,
-      private router: Router,
+      private router: Router
 
-    ) { }
+    ) {
+        this.paymentData = JSON.parse(localStorage.getItem('pkgInfo'));
+    }
 
   ngOnInit() {
         this.cardLength = '0000 0000 0000 0000';
@@ -197,11 +200,14 @@ export class PaymentPageComponent implements OnInit  {
                     // this.respMsg = resp.message;
                     this.data = resp.data.payment;
                     this.package_name = resp.data.package_name;
-                    const store = JSON.parse(localStorage.getItem('loggedInUser'));
-                    store.token = resp.data.jwtToken;
-                    localStorage.setItem('loggedInUser', JSON.stringify(store));
+                    // const store = JSON.parse(localStorage.getItem('loggedInUser'));
+                    // store.token = resp.data.jwtToken;
+                    // localStorage.setItem('loggedInUser', JSON.stringify(store));
                     this.thankYou = true;
                     this.respType = true;
+                    const pkgInfo = {'data': this.data, 'package_name': this.package_name, 'token': resp.data.jwtToken};
+                    localStorage.setItem('pkgInfo', JSON.stringify(pkgInfo));
+                    this.router.navigate(['/dashboard/packages/thank-you']);
                     this.loader = false;
                     // setTimeout(function () {
                     //     document.location.href = '/dashboard';

@@ -8,6 +8,7 @@ import {UserUnPaidGuard} from './user-unpaid.guard';
 import {SigningInstructionsDocComponent} from './doc/signing-instructions-doc/signing-instructions-doc.component';
 import {FinalDispositionDocComponent} from './doc/final-disposition-doc/final-disposition-doc.component';
 import {SubscribedPackageComponent} from './subscribed-package/subscribed-package.component';
+// import {PaymentPageComponent} from './packages/payment-page/payment-page.component';
 
 const routes: Routes = [
       {
@@ -102,6 +103,11 @@ const routes: Routes = [
                 canActivate: [UserUnPaidGuard],
               loadChildren: './packages/packages.module#PackagesModule'
             },
+            // {
+            //     path: 'checkout',
+            //     canActivate: [UserUnPaidGuard],
+            //     component: PaymentPageComponent
+            // },
             {
               path: 'protect-your-finances-details',
                 canActivate: [ UserPaidGuard ],

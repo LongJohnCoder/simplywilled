@@ -2896,6 +2896,10 @@ app-paypal-success, app-payment-page, app-packages{
     width: 100%;
 }
 
+app-thank-you{
+    width: 100%;
+}
+
 .questions{
   width: 100%;
   float: left;

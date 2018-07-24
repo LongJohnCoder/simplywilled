@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {PackagesService} from '../packages.service';
 import {timer} from 'rxjs/observable/timer';
 import {map, take} from 'rxjs/operators';
@@ -18,7 +18,8 @@ export class PaypalSuccessComponent implements OnInit {
     package_name: string;
   constructor(
       private activatedRoute: ActivatedRoute,
-      private packagesService: PackagesService
+      private packagesService: PackagesService,
+      private router: Router
   ) {
 
       this.respType = false;
@@ -33,9 +34,13 @@ export class PaypalSuccessComponent implements OnInit {
                 // console.log(this.data);
                 this.thankYou = true;
                 this.respType = true;
-                const storeContent = JSON.parse(localStorage.getItem('loggedInUser'));
-                storeContent.token = this.jwtToken;
-                localStorage.setItem('loggedInUser', JSON.stringify(storeContent));
+                  const pkgInfo = {'data': this.data, 'package_name': this.package_name, 'token': this.jwtToken};
+                  localStorage.setItem('pkgInfo', JSON.stringify(pkgInfo));
+                  this.router.navigate(['/dashboard/packages/thank-you']);
+
+                // const storeContent = JSON.parse(localStorage.getItem('loggedInUser'));
+                // storeContent.token = this.jwtToken;
+                // localStorage.setItem('loggedInUser', JSON.stringify(storeContent));
               }, (err: any) => {
                 this.respMsg = err.error.error;
                 this.respType = true;
