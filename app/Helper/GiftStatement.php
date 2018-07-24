@@ -94,7 +94,7 @@
 					//generating related variables ends
 
 					//generating statement
-					$statement .= "The sum of $" . (int)$amount . " shall be distributed to My " . ucwords(strtolower($relationName)) . " , " 
+					$statement .= "The sum of $" . (int)$amount . " shall be distributed to My " . ucwords(strtolower($relationName)) . ", " 
 									. ucwords(strtolower($beneficiaryName)) . ". If " . $salutation1 . " is not living at the time of distribution ";
 
 					if($passedBy) {
@@ -304,7 +304,7 @@
 								* BUSINESS DETAILS FOR REAL PROPERTY :
 								* 
 								* FIELDS CONCERNED :
-								* passed_by : ,
+								* passed_by :,
 								* organization_name : 'organisation name',
 								* organization_address : 'organisation address',
 								* beneficiary : _si : (single beneficiary), _mu : (multiple beneficiary)
