@@ -48,7 +48,7 @@
   @if(!empty($blogs))
     @foreach($blogs as $blog)
       <url>
-        <loc>{{url('/')}}/blogdetails/{{$blog->slug}}</loc>
+        <loc>{{url('/')}}/blog/{{$blog->slug}}</loc>
         <lastmod>{{$blog->updated_at->format('Y-m-d\TH:i:s')}}+00:00</lastmod>
         <priority>{{$blog->featured == 0 ? 0.7 : 0.8}}</priority>
       </url>
