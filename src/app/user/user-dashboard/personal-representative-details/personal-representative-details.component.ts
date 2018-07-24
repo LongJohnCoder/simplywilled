@@ -110,21 +110,30 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
     createForm(isBackupPersonalRepresentative = null, guardian = null, backupGuardian = null) {
         this.personalRepresentativeDetailsForm = this.fb.group({
             isPersonalRepresentative: ['Yes', Validators.required],
+            // tslint:disable-next-line:max-line-length
             isBackupPersonalRepresentative: [isBackupPersonalRepresentative !== null ? isBackupPersonalRepresentative : 'No', Validators.required],
             personalRepresentative: this.fb.array([
               this.fb.group({
                     user_id: new FormControl(this.authService.getUser()['id'], [Validators.required]),
+                    // tslint:disable-next-line:max-line-length
                     fullname: new FormControl(  guardian !== null && guardian.fullname !== null ?  guardian.fullname : '', [Validators.required,  Validators.pattern(/\s+(?=\S{2})/)]),
+                    // tslint:disable-next-line:max-line-length
                     relationship_with: new FormControl(guardian !== null && guardian.relationship_with !== null ?  guardian.relationship_with : '', [Validators.required]),
+                    // tslint:disable-next-line:max-line-length
                     relationship_other: new FormControl(guardian !== null && guardian.relationship_other !== null ?  (guardian !== null && guardian.relationship_with === 'Other' ? guardian.relationship_other : '') : '', guardian !== null && guardian.relationship_with === 'Other' ? [Validators.required] : []),
+                    // tslint:disable-next-line:max-line-length
                     address: new FormControl(guardian !== null && guardian.address !== null ?  guardian.address : '', [Validators.required]),
                     country: new FormControl('United States', [Validators.required]),
+                    // tslint:disable-next-line:max-line-length
                     phone:  new FormControl(guardian !== null && guardian.phone !== null && guardian.phone !== undefined ?  guardian.phone : '', [Validators.required, Validators.pattern(/^\d{10}$/)]),
                     city: new FormControl(guardian !== null && guardian.city !== null ?  guardian.city : '', [Validators.required]),
                     state: new FormControl(guardian !== null && guardian.state !== null ?  guardian.state : '', [Validators.required]),
+                    // tslint:disable-next-line:max-line-length
                     zip: new FormControl(guardian !== null && guardian.zip !== null ?  guardian.zip : '', [Validators.required, Validators.pattern(/^\d{5}$/)]),
+                    // tslint:disable-next-line:max-line-length
                     email_notification: new FormControl(guardian !== null && guardian.email_notification !== null ?  guardian.email_notification : '0', [Validators.required]),
                     email: new FormControl(guardian !== null && guardian.email !== null ?  guardian.email : '', ),
+                    // tslint:disable-next-line:max-line-length
                     is_backuprepresentative: new FormControl(guardian !== null && guardian.is_backuprepresentative !== null ?  guardian.is_backuprepresentative : '0'),
                 }
               )
@@ -133,16 +142,21 @@ export class PersonalRepresentativeDetailsComponent implements OnInit, OnDestroy
               this.fb.group({
                   user_id: this.authService.getUser()['id'],
                   fullname: [backupGuardian !== null && backupGuardian.fullname !== null ?  backupGuardian.fullname : ''],
+                  // tslint:disable-next-line:max-line-length
                   relationship_with: [backupGuardian !== null && backupGuardian.relationship_with !== null ?  backupGuardian.relationship_with : ''],
+                  // tslint:disable-next-line:max-line-length
                   relationship_other: new FormControl(backupGuardian !== null && backupGuardian.relationship_other !== null ?  ( backupGuardian !== null && backupGuardian.relationship_with === 'Other' ? backupGuardian.relationship_other : '') : ''),
                   address: [backupGuardian !== null && backupGuardian.address !== null ?  backupGuardian.address : ''],
                   country: ['United States'],
+                  // tslint:disable-next-line:max-line-length
                   phone:  new FormControl(backupGuardian !== null && backupGuardian.phone !== null && backupGuardian.phone !== undefined ?  backupGuardian.phone : ''),
                   city: [backupGuardian !== null && backupGuardian.city !== null ?  backupGuardian.city : ''],
                   state: [backupGuardian !== null && backupGuardian.state !== null ?  backupGuardian.state : ''],
                   zip: [backupGuardian !== null && backupGuardian.zip !== null ?  backupGuardian.zip : ''],
+                  // tslint:disable-next-line:max-line-length
                   email_notification: [backupGuardian !== null && backupGuardian.email_notification !== null ?  backupGuardian.email_notification : '0'],
                   email: [backupGuardian !== null && backupGuardian.email !== null ?  backupGuardian.email : ''],
+                  // tslint:disable-next-line:max-line-length
                   is_backuprepresentative: [backupGuardian !== null && backupGuardian.is_backuprepresentative !== null ?  backupGuardian.is_backuprepresentative : '1']
                 }
               )

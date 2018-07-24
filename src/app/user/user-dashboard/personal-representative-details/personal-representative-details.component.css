@@ -721,6 +721,38 @@ select.form-control{
     margin: 0;
 }
 
+
+.main-content .valid.form-control{
+    border-color: #42A82D;
+    color: #42A82D;
+}
+
+.main-content .icon-valid {
+    position: absolute;
+    top: 46px;
+    right: 39px;
+    background: #42A82D;
+    color: #fff;
+    height: 22px;
+    width: 22px;
+    text-align: center;
+    line-height: 22px;
+    border-radius: 50%;
+}
+
+.main-content .icon-invalid {
+    position: absolute;
+    top: 46px;
+    right: 44px;
+    background: #ff5959;
+    color: #fff;
+    height: 22px;
+    width: 22px;
+    text-align: center;
+    line-height: 22px;
+    border-radius: 50%;
+}
+
 @media screen and (min-width: 992px) and (max-width: 1199px){
     .sidebar h1 {
         font-size: 27px;

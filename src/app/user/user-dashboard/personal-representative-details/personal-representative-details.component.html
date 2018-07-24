@@ -22,15 +22,25 @@
                 <div *ngFor="let item of personalRepresentativeDetailsForm['controls'].personalRepresentative['controls']; let i=index">
               <!--<div *ngFor="let item of personalRepresentativeDetailsForm.get('personalRepresentative'); let i=index">-->
                     <div [formGroupName]="i">
+                        
                         <div class="form-group">
                             <label>Personal Representative's Full Legal Name: </label>
-                            <input type="text" class="form-control" placeholder="Full legal name"
-                                   formControlName="fullname">
-                            <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').dirty && personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').touched">
+                            <!-- [ngClass]="{'valid' : personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').errors == null}" -->
+                            <input type="text" class="form-control" placeholder="Full legal name" formControlName="fullname">
+                            <!-- <i *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').errors == null" class="fa fa-check icon-valid"></i>
+
+                            <i *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').dirty 
+                            && personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').touched 
+                            && personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').errors != null" class="fa fa-check icon-invalid"></i> -->
+                            
+                            <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').dirty 
+                            && personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').touched
+                            && personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').errors != null">
                                 <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').hasError('required')" class="error_txt"> Please enter a properly capitalized legal name</span>
                                 <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.fullname').hasError('pattern')" class="error_txt"> Please enter a properly capitalized legal name</span>
                             </span>
                         </div>
+                        
                         <div class="form-group ">
                             <label>Personal Representative's relationship to you: </label>
                             <select class="form-control" formControlName="relationship_with" #relationship_with (change)="changeRelationshipValidation(relationship_with.value)">
@@ -53,13 +63,13 @@
                                   <span class="error_txt" *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_with').hasError('required')">Please fill up this field.</span>
                              </span>
                         </div>
-                      <div class="form-group " *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_with').value === 'Other'">
-                        <label>Mention your relationship: </label>
-                        <input class="form-control" formControlName="relationship_other">
-                        <span *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_other').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_other').touched">
-                                  <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_other').hasError('required')" class="error_txt">Please fill up this field.</span>
-                            </span>
-                      </div>
+                        <div class="form-group " *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_with').value === 'Other'">
+                            <label>Mention your relationship: </label>
+                            <input class="form-control" formControlName="relationship_other">
+                            <span *ngIf="!personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_other').valid && personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_other').touched">
+                                    <span *ngIf="personalRepresentativeDetailsForm.get('personalRepresentative.0.relationship_other').hasError('required')" class="error_txt">Please fill up this field.</span>
+                                </span>
+                        </div>
                         <div class="form-group">
                             <label>Personal Representative's Address: </label>
                             <input type="text" class="form-control" placeholder="Address Line 1"

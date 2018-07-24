@@ -1,3 +1,4 @@
+import { States } from './../../shared/models/states.model';
 import { UserService } from './../../user.service';
 import { Component, OnInit } from '@angular/core';
 import {MedicalEmergencyService} from './medical-emergency.service';
@@ -22,6 +23,7 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
   toggleWillBackupInform: boolean;
   loading = true;
   toolTipMessageList: any;
+  states = States;
 
   constructor(
       private medicalEmergencyService: MedicalEmergencyService,

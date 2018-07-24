@@ -1,3 +1,4 @@
+import { States } from './../../../shared/models/states.model';
 import { GlobalTourComponent } from './../../global-tour/global-tour.component';
 import { GlobalTooltipComponent } from './../../global-tooltip/global-tooltip.component';
 import {Component, OnDestroy, OnInit} from '@angular/core';
@@ -38,6 +39,7 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
 
   stepNumber: number;
   tourSub: Subscription;
+  states: any;
 
   /**Constructor call*/
   constructor(
@@ -49,7 +51,7 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
   ) {
       this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
       this.progressbarService.changeWidth({width: 0});
-
+      this.states = States;
       this.toolTipMessageList = {
       'name' : [{
           'q' : 'What is my full legal name?',
@@ -123,7 +125,7 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
       this.years.push(String(i));
     }
     for (let i = 1; i <= 31 ; i++) {
-      let day = (i / 10) < 1 ? '0' + String(i) : String(i);
+      const day = (i / 10) < 1 ? '0' + String(i) : String(i);
       this.days.push(day);
     }
     // this.tourStapes = +localStorage.getItem('tourStapes');
@@ -135,39 +137,15 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
     } , 300);
   }
 
-  // ngOnChanges() {
-  //   this.tourSubscription = this.userService.tour.subscribe(
-  //     (currentVal: number) => {
-  //       if (currentVal !== this.tourStapes) {
-  //         this.tourStapes = currentVal;
-  //         console.log('data eceived :',this.tourStapes);
-  //       }
-  //     }
-  //   );
-  // }
-
-  // nextStep(){
-  //   this.tourStapes = this.tourStapes + 1;
-  //   this.userService.changeTourType(this.tourStapes);
-  //   console.log('afterClick',this.tourStapes);
-  // }
-  // prevStep(){
-  //   this.tourStapes = this.tourStapes - 1;
-  //   this.userService.changeTourType(this.tourStapes);
-  // }
-  // closeTour(){
-  //   this.tourStapes = 0;
-  //   this.userService.changeTourType(this.tourStapes);
-  // }
-
-  changeTourState(type: string){
+  changeTourState(type: string) {
     this.userService.changeStepNumber(type);
   }
+
   /**When the form submits*/
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.loading = true;
-      let formData = form.value;
+      const formData = form.value;
       formData.dob = formData.year + '-' + formData.month + '-' + formData.day ;
       formData.partner_dob = formData.spouseYear + '-' + formData.spouseMonth + '-' + formData.spouseDay ;
       formData.user_id = this.user.id ;
@@ -182,7 +160,8 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
         },
         (error: any) => {
           this.errors.errorFlag = true;
-          for (let prop in error.error.message) {
+          // tslint:disable-next-line:forin
+          for (const prop in error.error.message) {
             this.errors.errorMessage = error.error.message[prop];
             break;
           }

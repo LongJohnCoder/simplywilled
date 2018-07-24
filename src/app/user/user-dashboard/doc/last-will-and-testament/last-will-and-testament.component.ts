@@ -92,7 +92,8 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   petNames = [];
   estateDistribute = {
     _sb: null,
-    _mb: null
+    _mb: null,
+    estateDistributeSomeOtherWay: null
   };
   point1: string;
   point2: string;
@@ -211,13 +212,24 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
               _sb: response.data.estateDistribute.to_a_single_beneficiary !== null && response.data.estateDistribute.to_a_single_beneficiary !== undefined ? JSON.parse(response.data.estateDistribute.to_a_single_beneficiary)[0] : null,
               // tslint:disable-next-line:max-line-length
               _mb: response.data.estateDistribute.to_multiple_beneficiary !== null && response.data.estateDistribute.to_multiple_beneficiary !== undefined ? JSON.parse(response.data.estateDistribute.to_multiple_beneficiary)[0] : null,
+              // tslint:disable-next-line:max-line-length
+              estateDistributeSomeOtherWay: response.data.estateDistribute.some_other_way !== null && response.data.estateDistribute.some_other_way !== undefined ? JSON.parse(response.data.estateDistribute.some_other_way)[0] : null,
             } ;
+
+            // tslint:disable-next-line:max-line-length
+            this.estateDistribute.estateDistributeSomeOtherWay = this.estateDistribute.estateDistributeSomeOtherWay !== null
+                                                                    // tslint:disable-next-line:max-line-length
+                                                                    && this.estateDistribute.estateDistributeSomeOtherWay.someOtherWayText !== undefined
+                                                                    ? this.estateDistribute.estateDistributeSomeOtherWay.someOtherWayText
+                                                                    : null;
           }
 
           // console.log(this.giftStatements.pageLength.length);
           // console.log('childrens : ', this.userDetails.children);
           // console.log(this.estateDistribute);
         }
+
+        console.log('estate distribute: ', this.estateDistribute);
       }
     );
   }
