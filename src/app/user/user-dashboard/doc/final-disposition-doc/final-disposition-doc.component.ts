@@ -163,9 +163,9 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
     this.signingInstructionSubscription = this.globalPDFService.finalDisposition(token).subscribe(
       (response: any) => {
         if (response.status) {
-          this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'finanalDisposition.pdf').subscribe(
+          this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'finalDisposition.pdf').subscribe(
             value => {
-              saveAs(value, 'finanalDisposition.pdf');
+              saveAs(value, 'finalDisposition.pdf');
             }
           );
         }
@@ -182,13 +182,13 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
     this.printSubscription = this.globalPDFService.finalDisposition(token).subscribe(
       (response: any) => {
         if (response.status) {
-          let src = this.globalPDFService.printFile(userId, 'finanalDisposition.pdf');
+          let src = this.globalPDFService.printFile(userId, 'finalDisposition.pdf');
           const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
           if (win !== null) {
             win.document.write('<iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
             win.focus();
           }
-        /*  let src = this.globalPDFService.printFile(userId, 'finanalDisposition.pdf');
+        /*  let src = this.globalPDFService.printFile(userId, 'finalDisposition.pdf');
           console.log(src);
           let newwindow = window.open('', 'blank');
           let obj = newwindow.document.createElement('iframe');
