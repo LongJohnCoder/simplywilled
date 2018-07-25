@@ -9,6 +9,11 @@
         <link rel="icon" type="image/x-icon" href="favicon.ico">
         <script>
             dataLayer = [];
+            <!-- UserID tracking -->
+            var userData = localStorage.getItem("loggedInUser");
+            userData = JSON.parse(userData);
+            if(userData !== undefined && userData !== null && userData.status !== undefined && userData.status) dataLayer.push({'userId' : userData.user.id});
+            <!-- End -->
         </script>
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -18,13 +23,6 @@
         })(window,document,'script','dataLayer','GTM-TMNXF84');</script>
         <!-- End Google Tag Manager -->
         <script data-siteid="k5FdWlhK" src="https://api.cartstack.com/js/customer-tracking/simplywilled.com_c7ee603371301b0bd028e8f19a535557.js" type="text/javascript"></script>
-        <!-- UserID tracking -->
-        <script>
-            var userData = localStorage.getItem("loggedInUser");
-            userData = JSON.parse(userData);
-            if(userData !== undefined && userData !== null && userData.status !== undefined && userData.status) ga('set', 'userId', userData.user.id);
-        </script>
-        <!-- End -->
     </head>
     <body>
         <!-- Google Tag Manager (noscript) -->
