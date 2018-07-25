@@ -75,7 +75,7 @@ export class ThankYouComponent implements OnInit, OnDestroy {
         (time) => {
             this.count = time;
             if (this.count === 0) {
-                this.router.navigate(['/dashboard/will']);
+                // this.router.navigate(['/dashboard/will']);
             }
         }
     );

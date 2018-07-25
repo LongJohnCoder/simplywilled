@@ -36,6 +36,7 @@ export class BlogdetailsComponent implements OnInit, OnDestroy {
         this.getBlogDetails();
         this.createFormControls();
         this.createForm();
+        this.meta.updateTag({name: 'abc', content: '2131321112'});
     }
 
     getBlogDetails() {
