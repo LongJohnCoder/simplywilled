@@ -98,23 +98,23 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I,
               <b>
-                <span style="text-transform: capitalize" >{{$tellUsAboutYou['fullname']}},</span>
+                <span style="text-transform: capitalize" >{{strtoupper(trim($tellUsAboutYou['fullname']))}},</span>
               </b>
               of
-              <span style="text-transform: capitalize" >{{$tellUsAboutYou['address']}},</span>
-              <span style="text-transform: capitalize" >{{$tellUsAboutYou['city']}},</span>
-              <span style="text-transform: capitalize" >{{$tellUsAboutYou['state']}},</span> hereby appoint my
+              <span style="text-transform: capitalize" >{{ucwords(strtolower(trim($tellUsAboutYou['address'])))}},</span>
+              <span style="text-transform: capitalize" >{{ucwords(strtolower(trim($tellUsAboutYou['city'])))}},</span>
+              <span style="text-transform: capitalize" >{{ucwords(strtolower(trim($tellUsAboutYou['state'])))}},</span> hereby appoint my
                 @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
-                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
+                    <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower(trim($healthFinance['relationOther'])))}},</span>
                 @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
-                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
+                    <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower(trim($healthFinance['relation'])))}},</span>
                 @endif
-                ,
-                <span style="text-transform: capitalize" > {{$healthFinance['fullname']}}, </span> of
-                <span style="text-transform: capitalize" > {{$healthFinance['address']}},</span>  in
-                <span style="text-transform: capitalize" > {{$healthFinance['city']}}, </span>
-                <span style="text-transform: capitalize" > {{$healthFinance['state']}}, </span>
-                <span style="text-transform: capitalize" > {{$healthFinance['zip']}}, </span>
+                
+                <span style="text-transform: capitalize" > {{ucwords(strtolower(trim($healthFinance['fullname'])))}}, </span> of
+                <span style="text-transform: capitalize" > {{ucwords(strtolower(trim($healthFinance['address'])))}},</span>  in
+                <span style="text-transform: capitalize" > {{ucwords(strtolower(trim($healthFinance['city'])))}}, </span>
+                <span style="text-transform: capitalize" > {{ucwords(strtolower(trim($healthFinance['state'])))}}, </span>
+                <span style="text-transform: capitalize" > {{ucwords(strtolower(trim($healthFinance['zip'])))}}, </span>
                 (Tel: <span > {{$healthFinance['phone']}} </span> )
                 as my attorney in fact to make
                 health care decisions for me if I become unable to make my own
@@ -125,28 +125,31 @@
                 forms necessary to carry out these decisions.</span></span></span></span></span>
             </p>
 
-            <p style="margin-bottom: 0in; line-height: 115%"  *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'true'">
-                If the person named above as my attorney in fact is not available or becomes ineligible
-                to act, or if I revoke that person’s appointment or authority to
-                act, then I appoint my
-                @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
-                    <span>{{$healthFinance['backupRelation']}},</span>
-                @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
-                    <span>{{$healthFinance['backupRelation']}},</span>
-                @endif
+            @if(isset($healthFinance) && $healthFinance['anyBackupAgent'] == 'true')
+              <p style="margin-bottom: 0in; line-height: 115%">
+                  If the person named above as my attorney in fact is not available or becomes ineligible
+                  to act, or if I revoke that person’s appointment or authority to
+                  act, then I appoint my
+                  @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
+                      <span>{{ucwords(strtolower(trim($healthFinance['backupRelation'])))}},</span>
+                  @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
+                      <span>{{ucwords(strtolower(trim($healthFinance['backupRelation'])))}},</span>
+                  @endif
 
-                <span style="text-transform: capitalize" > {{$healthFinance['backupFullname']}}, </span> of
-                <span style="text-transform: capitalize" > {{$healthFinance['backupAddress']}}, </span> in
-                <span style="text-transform: capitalize" > {{$healthFinance['backupCity']}}, </span>
-                <span style="text-transform: capitalize" > {{$healthFinance['backupState']}}, </span>
-                <span style="text-transform: capitalize" > {{$healthFinance['backupZip']}}, </span>
-                (Tel: <span > {{$healthFinance['backupphone']}} </span> ),
-                as my alternate attorney in fact to
-                make health care decisions for me if I become unable to make my own
-                health-care decisions.
-            </p>
+                  <span style="text-transform: capitalize" > {{ucwords(strtolower(trim($healthFinance['backupFullname'])))}}, </span> of
+                  <span style="text-transform: capitalize" > {{ucwords(strtolower(trim($healthFinance['backupAddress'])))}}, </span> in
+                  <span style="text-transform: capitalize" > {{ucwords(strtolower(trim($healthFinance['backupCity'])))}}, </span>
+                  <span style="text-transform: capitalize" > {{ucwords(strtolower(trim($healthFinance['backupState'])))}}, </span>
+                  <span style="text-transform: capitalize" > {{$healthFinance['backupZip']}}, </span>
+                  (Tel: <span> {{$healthFinance['backupphone']}} </span> ),
+                  as my alternate attorney in fact to
+                  make health care decisions for me if I become unable to make my own
+                  health-care decisions.
+              </p>
+            @endif
 
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
+
             </p>
             <p style="margin-bottom: 0in; line-height: 115%">With this document,
                 I intend to create a power of attorney for health care, which shall
@@ -408,7 +411,7 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I,
       <b>
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}},</span>
+        <span style="text-transform: capitalize">{{strtoupper(trim($tellUsAboutYou['fullname']))}},</span>
       </b>
       being of sound mind, willfully and voluntarily make known my desire
       that my dying shall not be artificially prolonged under the
@@ -462,7 +465,7 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">_______________________________________</span></span></span></span></span></p>
             <p style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 115%">
-                <span style="text-transform: capitalize" >{{$tellUsAboutYou['fullname']}}</span>
+                <span style="text-transform: capitalize" >{{strtoupper(trim($tellUsAboutYou['fullname']))}}</span>
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="text-transform: capitalize" >{{$tellUsAboutYou['address']}},</span>

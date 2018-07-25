@@ -124,7 +124,7 @@
 	<font face="Times New Roman, serif"> [</font>
 
 	<font color=" ">
-		<font face="Times New Roman, serif"> $attorneyHolders['address']</font>
+		<font face="Times New Roman, serif">{{$attorneyHolders['address']}}</font>
 	</font>
 
 	<font face="Times New Roman, serif">, </font>
@@ -849,7 +849,7 @@
 	<p align="justify" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
 	<font face="Times New Roman, serif">	______________________________________</font></p>
 	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-	<font face="Times New Roman, serif">					</font><font face="Times New Roman, serif"><b>«</b></font><font color=" "><font face="Times New Roman, serif">
+	<font face="Times New Roman, serif">					</font><font face="Times New Roman, serif"><b></b></font><font color=" "><font face="Times New Roman, serif">
 		<b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>
 	</p>
 

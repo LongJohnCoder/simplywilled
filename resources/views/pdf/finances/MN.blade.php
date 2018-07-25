@@ -106,7 +106,7 @@
 
 			<font color="">
 				<font face="Times New Roman, serif">
-					<font size="2" style="font-size: 11pt">{{$attorneyHolders['fullname']}}</font>
+					<font size="2" style="font-size: 11pt">{{ucwords($attorneyHolders['fullname'])}}</font>
 				</font>
 			</font>
 

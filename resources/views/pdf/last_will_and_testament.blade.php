@@ -87,7 +87,7 @@
 				<p style="font-size:24px; font-weight:bold; padding:20px 0 10px 0; text-align:center;">ARTICLE I: INTRODUCTION</p>
 				<p style="padding-bottom:20px;">
 				<span style="font-weight:bold;">A. Domicile.</span> I am a resident of and domiciled in the
-					@if($state == "District Of Columbia")
+					@if($state == "District of Columbia")
 						District of Columbia.
 					@elseif($state =="Massachusetts" || $state == "Virginia" || $state == "Kentucky" || $state == "Pennsylvania")
 						Commonwealth of {{$state}}.
@@ -105,7 +105,7 @@
 
 						<span style="font-weight:bold;">B. Marital Status.</span> I am in a long-term relationship (as a registered Domestic Couple under the laws of the
 
-						@if($state == "District Of Columbia")
+						@if($state == "District of Columbia")
 							District of Columbia)
 						@elseif($state =="Massachusetts" || $state == "Virginia" || $state == "Kentucky" || $state == "Pennsylvania")
 							CONTAINS Commonwealth of {{$state}}
@@ -239,7 +239,7 @@
 
 				<p style="font-size:24px; font-weight:bold; padding:20px 0 10px 0; text-align:center;">ARTICLE III: DISTRIBUTIONS</p>
 				<div class="divCount">
-					
+
 					<p style="padding-bottom:20px;">
 						<span style="font-weight:bold;"><span class="divNumber"></span>. Payment of Estate Expenses.</span> My {{$executor_title}} may pay from my Estate all debts which are then due and enforceable against my Estate, the expenses of my last illness, the expenses of my final disposition without the necessity of prior court approval, the expenses of administering my Estate, and all death taxes and governmental charges imposed upon and made payable from my Estate under the laws of the United States or of any state or country by reason of my death.
 					</p>
@@ -272,7 +272,7 @@
 
 						@elseif($provideYourLovedOnes['is_tangible_property_distribute'] == 4)
 
-							as follows: {{$provideYourLovedOnes['tangible_property_distribute']}}
+							as follows: <br>{{$provideYourLovedOnes['tangible_property_distribute']}}
 
 						@endif
 					</p>
@@ -284,7 +284,7 @@
 					<p style="padding-bottom:20px;">
 						<span style="font-weight:bold;"><span class="divNumber"></span>. Confirmation of Joint Tenancy.</span> I hereby confirm that all of my interest in any jointly titled assets held in my name with any other person or persons as “Joint Tenants” or as “Joint Tenants with Rights of Survivorship” shall pass to said co-tenant(s) if I predecease said co-tenant(s).
 					</p>
-	
+
 					<p style="padding-bottom:20px;">
 						<span style="font-weight:bold;"><span class="divNumber"></span>. Specific Distributions.</span>
 
@@ -327,9 +327,9 @@
 										@if($toMultipleBeneficiary['deceasedBeneficiaryShareToKids'] == "Yes")
 											to his or her then-living issue, {{$stateTxt}} provided, however, if such deceased beneficiary is not survived by issue, the deceased beneficiary’s share shall be added
 										@endif
-										equally to the other shares.	
+										equally to the other shares.
 									</p>
-									
+
 								@endif
 							</p>
 							@endif
@@ -349,7 +349,7 @@
 
 								in the following manner:
 
-								
+
 								@foreach($toMultipleBeneficiary['beneficiaryNo'] as $key => $eachBeneficiary)
 									<div>
 										<span>{{$eachBeneficiary['beneficiaryNoPercentageToEstate']}} % shall be distributed to my {{ucwords(trim(strtolower($eachBeneficiary['beneficiaryNoRelationship'])))}} {{ucwords(trim(strtolower($eachBeneficiary['beneficiaryNoFullName'])))}}</span>
@@ -360,7 +360,7 @@
 									to his or her then-living issue, {{$stateTxt}} provided, however, if such deceased beneficiary is not survived by issue, the deceased beneficiary’s share shall be added
 								@endif
 								equally to the other shares.
-								
+
 							</p>
 							@endif
 
@@ -463,13 +463,13 @@
 									{{ucwords(strtolower($backupPetGuardian['fullname']))}} of {{$backupPetGuardian['address']}}, {{ucwords(strtolower($backupPetGuardian['city']))}}, {{ucwords(strtolower($backupPetGuardian['state']))}}, {{$backupPetGuardian['zip']}}, as alternate Pet Caretaker for my pets.
 								@endif
 
-								If said 
+								If said
 								@if($backupPetGuardian != null)
 									Pet Caretakers are
 								@else
 									Pet Caretaker is
 								@endif
-								unavailable or unwilling to accept and care for my pets, I direct that my {{ucwords(strtolower($executor_title))}} use his or her best discretion to select an appropriate caregiver to accept and care for my pets.  
+								unavailable or unwilling to accept and care for my pets, I direct that my {{ucwords(strtolower($executor_title))}} use his or her best discretion to select an appropriate caregiver to accept and care for my pets.
 							</p>
 						</div>
 						<div>
@@ -492,7 +492,7 @@
 								{{$toMultipleBeneficiary['whoServeAsTrusteeAccount']}}
 							@endif
 
-							
+
 							as the custodian until the beneficiary reaches the age of {{$toMultipleBeneficiary['whatAgeMinorShareDistributed']}}, and no earlier, unless required by applicable law.
 						</p>
 					@endif
@@ -500,7 +500,7 @@
 					@if(isset($contingentBeneficiary) && $contingentBeneficiary['is_contingent_beneficiary'] == 1)
 						<p>
 							<b><span class="divNumber"></span>. Contingent Disposition of My Estate.</b>  If I have no living beneficiaries or issue prior to the distribution of the entirety of my estate, I give the undistributed portion of my estate to my heirs at law, their distributions to be determined according to the laws of the
-							@if(strtolower($state) == "district of columbia")
+							@if(strtolower($state) == "District of Columbia")
 								{{$state}}
 							@elseif(strtolower($state) == "Massachusetts" || strtolower($state) == "Virginia" || strtolower($state) == "Kentucky" || strtolower($state) == "Pennsylvania")
 								Commonwealth of {{$state}}
@@ -523,14 +523,12 @@
 						</p>
 					@endif
 
-				</div>				
-
-			</div>
-
-			<div class="article-4">
+				</div>
 
 
-				<p style="font-size:24px; font-weight:bold; padding:20px 0 10px 0; text-align:center;">ARTICLE IV: FIDUCIARY POWERS</p>
+
+
+				<p style="font-size:24px; font-weight:bold; padding:20px 0 10px 0; page-break-before: always; text-align:center;">ARTICLE IV: FIDUCIARY POWERS</p>
 
 				<p style="padding-bottom20px;">
 					<span style="font-weight:bold;">A. General Powers.</span> I intend that my {{$executor_title}} shall have broad and reasonable discretion in the administration and settlement of my estate. In addition to all powers conferred on my {{$executor_title}} by law, and any powers enumerated elsewhere in this Will, and subject to any limitations specifically stated in this Will, my {{$executor_title}} shall have the power to take the following actions without the necessity of court approval:
@@ -588,7 +586,7 @@
 						<b>(22)</b> To continue to hold, operate, sell, purchase, acquire, invest in, or liquidate any farming or ranching property, or any interest that I or my estate may own in farming or ranching property, at any time, on any terms, and in any manner as my {{$executor_title}} deems advisable and in the best interests of my estate.
 					</span>
 					@endif
-					
+
 				</p>
 
 				<p style="padding-bottom:20px;">
@@ -610,7 +608,7 @@
 				<p style="padding-bottom:20px;">
 					<span style="font-weight:bold;">D. Digital Assets.</span> My {{$executor_title}} shall have the power to access, manage, and control all of my digital assets at my death, including email accounts and social media.
 
-					@if($tellUsAboutYou['state'] == "Oregon")
+					@if($tellUsAboutYou['state'] != "Oregon")
 					“Digital asset” means an electronic record in which an individual has a right or interest. “Digital asset” does not include an underlying asset or liability unless the asset or liability is itself an electronic record.
 					@else
 					pursuant to the Revised Uniform Fiduciary Access to Digital Assets Act (2015), Chapter 19 ORS.
@@ -643,24 +641,22 @@
 					@endif
 				</p>
 
-			</div>
 
-			<div class="article-5">
 
-				<p style="font-size:24px; font-weight:bold; padding:20px 0 10px 0; text-align:center;">ARTICLE V: GENERAL PROVISIONS</p>
+				<p style="font-size:24px; font-weight:bold; page-break-before: always; padding:20px 0 10px 0; text-align:center;">ARTICLE V: GENERAL PROVISIONS</p>
 
-				<p style="padding-bottom:20px;">
+				<p style="padding-bottom:15px;">
 				<span style="font-weight:bold;">A. Captions.</span> All captions and headings are for convenience of reference only and shall be disregarded in determining the meaning and effect of the provisions of this Will.
 				</p>
 
-				<p style="padding-bottom:20px;">
+				<p style="padding-bottom:15px;">
 				<span style="font-weight:bold;">B. Savings Clause.</span> If a Court of competent jurisdiction invalidates any portion of any provision this Will, that portion shall be disregarded without invalidation of the whole of the Will. To the extent possible, the remainder of the provision shall be construed as if the invalid portion had not been included, and the whole of the Will will remain in full force and effect.
 				</p>
 
-				<p style="padding-bottom:20px;">
+				<p style="padding-bottom:15px;">
 				<span style="font-weight:bold;">C. Governing Law.</span> All questions concerning the validity and interpretation of this Will shall be governed by the laws of
 
-					@if($tellUsAboutYou['state'] == "District Of Columbia")
+					@if($tellUsAboutYou['state'] == "District of Columbia")
 						District of Columbia
 					@elseif($tellUsAboutYou['state'] == "Massachusetts" || $tellUsAboutYou['state'] == "Virginia" || $tellUsAboutYou['state'] == "Kentucky" || 	$tellUsAboutYou['state'] == "Pennsylvania")
 						the Commonwealth of {{$tellUsAboutYou['state']}}
@@ -670,7 +666,7 @@
 					 in effect at the date of execution of this Will.
 				</p>
 
-				<p style="padding-bottom:20px;">
+				<p style="padding-bottom:15px;">
 				<span style="font-weight:bold;">D. No Contest.</span>
 					@if($tellUsAboutYou['state'] != "California")
 						To the extent permitted under the laws of the
@@ -692,23 +688,21 @@
 				</p>
 
 				@if($tellUsAboutYou['marital_status'] == "M" || $tellUsAboutYou['marital_status'] == "R")
-				<p style="padding-bottom:20px;">
+				<p style="padding-bottom:15px;">
 				<span style="font-weight:bold;">E. Simultaneous Death.</span> In the event I die under circumstances in which it cannot be readily ascertained as to whether I or my {{$partnerOrSpouse}} died first, then it shall be conclusively presumed for the purposes of this Will that my {{$partnerOrSpouse}} predeceased me, and my {{$partnerOrSpouse}}'s bequests hereunder shall be deemed to have lapsed and shall be distributed with the residue of my Estate.
 				</p>
 				@endif
 
 
 				@if($tellUsAboutYou['state'] == "New Mexico")
-				<p style="padding-bottom:20px;">
+				<p style="padding-bottom:15px;">
 				<span style="font-weight:bold;">F. Definition of “Issue”.</span> At my death, my "heirs" or “issue” shall include only individuals who are born at the time of my death (or within ten (10) months thereafter) and not those conceived later through assisted reproduction or as a gestational child, as those terms are defined and used in Sections 45-2-115 and 45-2-121, NMSA 1978, as amended and as they may be further amended. The purpose of this exclusion is to override the forty-five (45) month time period for delayed vesting of interests which might otherwise apply when administering my Estate, pursuant to applicable sections of the Uniform Probate Code including but not limited to §45- 2-120 NMSA 1978.
 				</p>
 				@endif
 
-			</div>
 
-			<div class="doc-sign">
 
-				<P style="padding:20px 0; font-weight:bold; text-align:center;">[signature and attestation pages follow]</P>
+				<P style="padding:20px 0; font-weight:bold; page-break-before: always; text-align:center;">[signature and attestation pages follow]</P>
 
 				<p style="padding-bottom:20px;"><b>IN WITNESS WHEREOF,</b> I have on this _____ day of ____________________________, __________, signed, sealed, published and declared the foregoing instrument as and for my Last Will and Testament, in the presence of each and all of the subscribing witnesses, each of whom I have requested, in the presence of each of the others, to subscribe his or her name as an attesting witness, in my presence and in the presence of the others. I am of legal age, of sound mind, and under no constraint or undue influence.<p>
 

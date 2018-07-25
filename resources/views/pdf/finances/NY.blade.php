@@ -407,7 +407,7 @@ Gifts Rider.</span></p>
 
 
 
-	<p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; page-break-before: always; margin-top: 0.13in; margin-bottom: 0.06in; line-height: 100%">
+	<p align="justify" style="margin-bottom: 0.06in; line-height: 100%; page-break-before: always;">
 	<span face="Times New Roman, serif"><b>2.	</b></span>
 
 
@@ -450,7 +450,7 @@ Gifts Rider.</span></p>
 	caring for myself or am able to manage my person or property.</span>
 	</p>
 
-	<p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+	<p align="justify" style="margin-bottom: 0.06in; line-height: 100%;">
 	<span face="Times New Roman, serif">2.	My agent has the power and
 	authority to request, review, and receive, to the extent I could do
 	so individually, any information, verbal or written, regarding my
@@ -479,7 +479,7 @@ Gifts Rider.</span></p>
 	<br/>
 
 	</p>
-	<p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+	<p align="justify" style="margin-bottom: 0.06in; line-height: 100%;">
 	<span face="Times New Roman, serif">3.	My agent has the power and
 	authority to access, continue, modify, maintain, terminate, or take
 	any other action in connection with any of my digital accounts,
@@ -489,16 +489,16 @@ Gifts Rider.</span></p>
 	<br/>
 
 	</p>
-	<p align="justify" style="margin-left: 0.38in; text-indent: -0.38in; margin-bottom: 0in; line-height: 100%">
+	<p align="justify" style="margin-bottom: 0.06in; line-height: 100%;">
 	<span face="Times New Roman, serif">4.	In addition, I make the
 	following additional modifications:</span></p>
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+	<p align="justify" style="margin-bottom: 0.06in; line-height: 100%;">
 	<span face="Times New Roman, serif">________________________________________________________________________</span></p>
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+	<p align="justify" style="margin-bottom: 0.06in; line-height: 100%;">
 	<span face="Times New Roman, serif">________________________________________________________________________</span></p>
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
+	<p align="justify" style="margin-bottom: 0.06in; line-height: 100%;">
 	<span face="Times New Roman, serif">________________________________________________________________________</span></p>
-	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.13in; line-height: 100%">
+	<p align="justify" style="margin-bottom: 0.06in; line-height: 100%;">
 	<span face="Times New Roman, serif">________________________________________________________________________</span></p>
 
 	<p style="margin-bottom: 0.09in; page-break-before: always; line-height: 100%"><span face="Times New Roman, serif"><b>CERTAIN
@@ -595,7 +595,7 @@ Gifts Rider.</span></p>
 
 	<p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
 	<span face="Times New Roman, serif">_______________________________________</span></p>
-	<p align="justify" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+	<p align="justify" style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
 
 	<span color="">
 		<span face="Times New Roman, serif">
@@ -851,7 +851,7 @@ Gifts Rider.</span></p>
 	before me, the undersigned, personally appeared,</span></span>
 
 	@if($financialPowerOfAttorney['is_backupattorney'] == 1)
-		<span color="">
+		<span color="" size="2" style="font-size: 9pt">
 			<span face="Times New Roman, serif">{{ucwords(strtolower($attorneyBackup['fullname']))}},</span>
 		</span>
 	@else

@@ -284,41 +284,51 @@
 
 	<p align="justify" style="margin-bottom: 0in; ">
 		<span color="#000000"><span style="font-family:'Times New Roman, serif';"><b>Designation
-	of Agent</b></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">.
-	I hereby designate and appoint </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">my</span></span>
+		of Agent</b></span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">.
+		I hereby designate and appoint </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif';">my</span></span>
 
-	<span color="#0433ff">
-		@if(strtolower($attorneyHolders['relationship']) == 'other')
-			<span style="font-family:'Times New Roman, serif';">{{ucwords(strtolower($attorneyHolders['other_relationship']))}},</span>
-		@else
-			<span style="font-family:'Times New Roman, serif';">{{ucwords(strtolower($attorneyHolders['relationship']))}},</span>
-		@endif
-	</span>
+		<span color="#0433ff">
+			@if(strtolower($attorneyHolders['relationship']) == 'other')
+				<span style="font-family:'Times New Roman, serif';">{{ucwords(strtolower($attorneyHolders['other_relationship']))}},</span>
+			@else
+				<span style="font-family:'Times New Roman, serif';">{{ucwords(strtolower($attorneyHolders['relationship']))}},</span>
+			@endif
+		</span>
 
-	<span color="#0433ff">
-		<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyHolders['fullname'])}},</span>
-	</span>
+		<span color="#0433ff">
+			<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyHolders['fullname'])}},</span>
+		</span>
 
-	<span color="#000000">
-		<span style="font-family:'Times New Roman, serif';">of</span>
-	</span>
+		<span color="#000000">
+			<span style="font-family:'Times New Roman, serif';">of</span>
+		</span>
 
-	<span color="#0000ff">
-		<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyHolders['address'])}},</span>
-	</span>
+		<span color="#0000ff">
+			<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyHolders['address'])}},</span>
+		</span>
 
-	<span color="#0000ff">
-		<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyHolders['city'])}},</span>
-	</span>
+		<span color="#0000ff">
+			<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyHolders['city'])}},</span>
+		</span>
 
-	<span color="#0000ff">
-		<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyHolders['state'])}}</span>
-	</span>
+		<span color="#0000ff">
+			<span style="font-family:'Times New Roman, serif';">{{ucwords($attorneyHolders['state'])}}</span>
+		</span>
 
+		<span style="font-family:'Times New Roman, serif';">(Tel:  </span>
+		</span>
+
+		<span color="#0433ff">
+			<span style="font-family:'Times New Roman, serif';">{{ucwords(trim($attorneyHolders['phone']))}}</span>
+			<span style="font-family:'Times New Roman, serif';">),
+			as my Attorney-in-Fact (hereinafter referred to in this Power of
+			Attorney as “my agent”) to have all of the powers hereinafter set
+			forth.</span>
+		</span>
 	</p>
 
-	<p align="justify" style="margin-bottom: 0in; "><span color="#000000">
-	<span style="font-family:'Times New Roman, serif';">(Tel:  </span>
+	{{--<p align="justify" style="margin-bottom: 0in; ">--}}{{--<span color="#000000">--}}
+	{{--<span style="font-family:'Times New Roman, serif';">(Tel:  </span>
 	</span>
 
 	<span color="#0433ff">
@@ -327,9 +337,9 @@
 		as my Attorney-in-Fact (hereinafter referred to in this Power of
 		Attorney as “my agent”) to have all of the powers hereinafter set
 		forth.</span>
-	</span>
+	</span>--}}
 
-	</p>
+	{{--</p>--}}
 	<p align="justify" style="margin-bottom: 0in; "><br/>
 
 	</p>
@@ -461,9 +471,10 @@
 	</p>
 
 
-	<ol>
-	<li>
-		<p align="justify" style="margin-bottom: 0in;  margin-top: 0;">
+	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
+	{{--<li>--}}
+		<span style="font-family:'Times New Roman, serif';">(1)	</span>
+		{{--<p align="justify" style="margin-bottom: 0in;  margin-top: 0;">--}}
 		<span style="font-family:'Times New Roman, serif';">
 			<u>Real Property.</u>
 		</span>
@@ -488,18 +499,17 @@
 		otherwise, any and all assignments, transfers, deeds, papers,
 		documents or instruments which my Agent shall deem necessary in
 		connection therewith.  My agent shall have no authority to change
-		the form of title in which property is held.</span></p>
-	</li>
-	</ol>
+		the form of title in which property is held.</span>{{--</p>--}}
+	</p>
 
 
 	<p align="justify" style="margin-bottom: 0in; page-break-before: always">
 	</p>
 
 
-	<ol start="2">
-		<li>
-		<p align="justify" style="margin-bottom: 0in; margin-top: 0; ">
+	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
+		<span style="font-family:'Times New Roman, serif';">(2)	</span>
+		{{--<p align="justify" style="margin-bottom: 0in; margin-top: 0; ">--}}
 		<span style="font-family:'Times New Roman, serif';"><u>Personal Property</u></span><span style="font-family:'Times New Roman, serif';">.
 		 To take any actions for the management or maintenance of any
 		personal property in which I own an interest when this Power is
@@ -520,9 +530,8 @@
 		credit arrangements, as my Agent shall deem proper; and to execute,
 		acknowledge and deliver, under seal or otherwise, any and all
 		assignments, transfers, titles, papers, documents or instruments
-		which my Agent shall deem necessary in connection therewith.</span></p>
-		</li>
-	</ol>
+		which my Agent shall deem necessary in connection therewith.</span>{{--</p>--}}
+	</p>
 	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
 	<br/>
 
@@ -700,7 +709,7 @@
 	communications and/or digital assets in which I have an interest when
 	this Power is executed, or in which I later acquire an interest,</span>
 
-	@if(strtolower($state['name']) == 'oregon')
+	@if(strtolower($state['name']) != 'oregon')
 		<span style="font-family:'Times New Roman, serif';">
 		including the power to access, continue, modify, or terminate
 		existing accounts; create or change any “passwords” and/or “user
@@ -1960,11 +1969,11 @@
 		<span style="font-family:'Times New Roman, serif';">(1) act so as to create a
 		conflict of interest that is inconsistent with the other principles
 		in this Notice to Agent;</span></p>
-		<p align="justify" style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif';">	(2)
+		<p align="justify" style="margin-left: 0.5in; margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif';">	(2)
 		do any act beyond the authority granted in this power of attorney;</span></p>
-		<p align="justify" style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif';">	(3)
+		<p align="justify" style="margin-left: 0.5in; margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif';">	(3)
 		commingle the principal's funds with your funds;</span></p>
-		<p align="justify" style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif';">	(4)
+		<p align="justify" style="margin-left: 0.5in; margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif';">	(4)
 		borrow funds or other property from the principal, unless otherwise
 		authorized; or,</span></p>
 		<p align="justify" style="margin-left: 0.5in; margin-bottom: 0.09in; ">
@@ -1988,11 +1997,11 @@
 
 		<span style="font-family:'Times New Roman, serif';">by
 		(Your Name) as Agent”</span></p>
-		<p align="justify" style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif';">The
+		{{--<p align="justify" style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif';">The
 		meaning of the powers granted to you is contained in Section 3&#8209;4
 		of the Illinois Power of Attorney Act, which is incorporated by
 		reference into the body of the power of attorney for property
-		document.</span></p>
+		document.</span></p>--}}
 		<p align="justify" style="margin-bottom: 0.09in; "><span style="font-family:'Times New Roman, serif';">If
 		you violate your duties as agent or act outside the authority granted
 		to you, you may be liable for any damages, including attorney's fees

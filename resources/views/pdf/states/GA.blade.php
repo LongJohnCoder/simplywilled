@@ -45,7 +45,7 @@
 
                 </p> -->
                 <p class="western" style="margin-bottom: 0in; ">
-                    <span>Date of Birth: {{date('jS M, Y', strtotime($tellUsAboutYou['dob']))}}</p>
+                    <span>Date of Birth: {{date('m/d/Y', strtotime($tellUsAboutYou['dob']))}}</p>
                 <!-- <p class="western" style="margin-bottom: 0in; ">
                     <br/>
 
@@ -136,7 +136,20 @@
                 <p class="western" style="margin-left: 1.13in; text-indent: -1.13in; margin-bottom: 0in; ">
                     <span>Name:	{{ucwords($healthFinance['fullname'])}}</span></p>
                 <p class="western" style="margin-left: 1.13in; text-indent: -1.13in; margin-bottom: 0in; ">
-                    <span>Relationship:	{{ucwords($healthFinance['relation'])}}</span></p>
+                    @if( array_key_exists('relation', $healthFinance) && $healthFinance['relation'] == 'Other')
+                        @if(array_key_exists('relationOther', $healthFinance) && strlen(trim($healthFinance['relationOther'])) > 0)
+                            <span>Relationship:	{{ucwords($healthFinance['relationOther'])}}</span>
+                        @else
+                            <span>Relationship: ________________</span>
+                        @endif
+                    @else
+                        @if(array_key_exists('relation', $healthFinance) && strlen(trim($healthFinance['relation'])) > 0)
+                            <span>Relationship: {{ucwords($healthFinance['relation'])}}</span>
+                        @else
+                            <span>Relationship: ________________</span>
+                        @endif
+                    @endif
+                </p>
                 <p class="western" style="margin-left: 1.13in; text-indent: -1.13in; margin-bottom: 0in; ">
                     <span>Address: {{ucwords($healthFinance['address'])}}</span></p>
                 <p class="western" style="margin-bottom: 0in; ">
@@ -158,10 +171,24 @@
                         <br/>
 
                     </p> -->
+                    <p class="western" style="margin-left: 1.13in; text-indent: -1.13in; margin-bottom: 0in;">
+                        <span>Name:	{{ucwords($healthFinance['backupFullname'])}}</span>
+                    </p>
                     <p class="western" style="margin-left: 1.13in; text-indent: -1.13in; margin-bottom: 0in; ">
-                        <span>Name:	{{ucwords($healthFinance['backupFullname'])}}</span></p>
-                    <p class="western" style="margin-left: 1.13in; text-indent: -1.13in; margin-bottom: 0in; ">
-                        <span>Relationship:	{{ucwords($healthFinance['backupRelation'])}}</span></p>
+                        @if( array_key_exists('backupRelation', $healthFinance) && $healthFinance['backupRelation'] == 'Other')
+                            @if(array_key_exists('backupRelationOther', $healthFinance) && strlen(trim($healthFinance['backupRelationOther'])) > 0)
+                                <span>Relationship: {{ucwords($healthFinance['backupRelationOther'])}}</span>
+                            @else
+                                <span>Relationship: ________________</span>
+                            @endif
+                        @else
+                            @if(array_key_exists('backupRelation', $healthFinance) && strlen(trim($healthFinance['backupRelation'])) > 0)
+                                <span>Relationship: {{ucwords($healthFinance['backupRelation'])}}</span>
+                            @else
+                                <span>Relationship: ________________</span>
+                            @endif
+                        @endif
+                    </p>
                     <p class="western" style="margin-left: 1.13in; text-indent: -1.13in; margin-bottom: 0in; ">
                         <span>Address: {{ucwords($healthFinance['backupAddress'])}}</span></p>
                     <p class="western" style="margin-bottom: 0in; "><span>{{ucwords($healthFinance['backupCity'])}}, {{ucwords($healthFinance['backupState'])}}, {{ucwords($healthFinance['backupZip'])}}</span></p>
