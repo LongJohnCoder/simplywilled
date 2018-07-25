@@ -27,8 +27,11 @@ export class FlComponent implements OnInit, OnChanges {
   };
   loading = true;
 
-  genderTxt = '';
+  genderTxt = null;
   settlorGenderTxt = '';
+  genderTxt2 = null;
+  genderTxt3 = null;
+  genderTxt4 = null;
 
 
   totalPages: number;
@@ -68,8 +71,14 @@ export class FlComponent implements OnInit, OnChanges {
 
       if (this.userDetails !== undefined && this.userDetails.tellUsAboutYou !== null && this.userDetails.tellUsAboutYou.gender !== null) {
         this.genderTxt = this.userDetails.tellUsAboutYou.gender === 'M' ? 'him' : 'her';
+        this.genderTxt2 = this.userDetails.tellUsAboutYou.gender === 'M' ? 'himself' : 'herself';
+        this.genderTxt3 = this.userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she';
+        this.genderTxt4 = this.userDetails.tellUsAboutYou.gender === 'M' ? 'his' : 'her';
       } else {
-        this.genderTxt = '_____';
+        this.genderTxt = 'him/her';
+        this.genderTxt2 = 'himself/herself';
+        this.genderTxt3 = 'he/she';
+        this.genderTxt4 = 'his/her';
       }
 
       this.loading = false;
