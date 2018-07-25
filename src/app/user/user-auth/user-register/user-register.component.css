@@ -9,3 +9,20 @@ a:hover{
     color:#373737;
     text-decoration: underline;
 }
+
+p.termsAccept {
+    font-size: 14px;
+    display: inline-block;
+    margin: 10px 0 0 0;
+}
+.termsAccept input[type="checkbox"] {
+    float: left;
+    margin: 4px 5px 0 0;
+}
+p.termsAccept span {
+    display: inline;
+}
+p.termsAccept span a {
+    color: #136ba5 !important;
+    cursor: pointer;
+}

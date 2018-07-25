@@ -59,6 +59,9 @@
                  required
                  #confirm="ngModel" validateEqual="password" minlength="6">
 
+        <p class="termsAccept"><input type="checkbox" [checked]="termsCheck" (change)="termsCheck = !termsCheck">
+            <span>I agree to the <a routerLink="/terms-of-service">Terms of Service</a> and <a routerLink="/privacy-policy">Privacy Policy.</a></span></p>
+
           <span class="alert-danger"
                 *ngIf="confirm.errors && (confirm.dirty || confirm.touched)">
                 <p *ngIf="confirm.errors?.required" class="formErrorMsg">Confirm Password is required</p>
@@ -77,7 +80,7 @@
               <a routerLink="/forget-password" class="already_account">Forgot your password?</a>
             </div>
             <!--<a class="login_btn"><i class="fa fa-chevron-right" aria-hidden="true"></i> Login</a>-->
-            <button value="Continue" [disabled]="form.invalid" class="login_btn"> <i class="fa fa-chevron-right" aria-hidden="true"></i>Register</button>
+            <button value="Continue" [disabled]="form.invalid || !termsCheck" class="login_btn"> <i class="fa fa-chevron-right" aria-hidden="true"></i>Register</button>
           </div>
         </form>
       </div>

@@ -17,13 +17,14 @@ export class UserRegisterComponent implements OnInit {
   responseReceived: boolean;
   setRequestStatus: boolean;
   setResponseMsg: string;
-
+  termsCheck: boolean;
 
   ngOnInit() {
     this.showLoader =  false;
     this.responseReceived = false;
     this.setRequestStatus = false;
     this.setResponseMsg = '';
+    this.termsCheck = false;
   }
 
   /**
@@ -62,4 +63,8 @@ export class UserRegisterComponent implements OnInit {
     );
   }
 
+  termsCondition() {
+    console.log(123);
+    console.log(this.termsCheck);
+  }
 }
