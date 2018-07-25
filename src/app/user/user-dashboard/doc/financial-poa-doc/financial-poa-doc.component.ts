@@ -285,7 +285,7 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
         if (response.status) {
           this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'financialPOA.pdf').subscribe(
             value => {
-              saveAs(value, 'financialPOA.pdf');
+              saveAs(value, 'financial-power-of-attorney.pdf');
             }
           );
         }
@@ -296,16 +296,17 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
 
   /**Downloads the pdf*/
   printPDF() {
-    this.loading = true;
+      const win =  window.open();
+      this.loading = true;
     const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
     const userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     this.printSubscription = this.globalPDFService.financialpoaPDF(token).subscribe(
       (response: any) => {
         if (response.status) {
           const src = this.globalPDFService.printFile(userId, 'financialPOA.pdf');
-          const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
+          // const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
           if (win !== null) {
-            win.document.write('<iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
+            win.document.write('<title>Financial Power of Attorney</title><iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
             win.focus();
           }
         }

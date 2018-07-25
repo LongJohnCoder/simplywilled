@@ -316,7 +316,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
         if (response.status) {
           this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'lastWill.pdf').subscribe(
             value => {
-              saveAs(value, 'lastWill.pdf');
+              saveAs(value, 'last-will.pdf');
             }
           );
         }
@@ -327,16 +327,17 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
 
   /**Downloads the pdf*/
   printPDF() {
-    this.loading = true;
+      const win =  window.open();
+      this.loading = true;
     const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
     const userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     this.printSubscription = this.globalPDFService.willTemplate(token).subscribe(
       (response: any) => {
         if (response.status) {
           const src = this.globalPDFService.printFile(userId, 'lastWill.pdf');
-          const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
+          // const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
           if (win !== null) {
-            win.document.write('<iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
+            win.document.write('<title>Last Will</title><iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
             win.focus();
           }
         }

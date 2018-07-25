@@ -435,7 +435,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
         if (response.status) {
           this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'healthCarePOA.pdf').subscribe(
             value => {
-              saveAs(value, 'healthCarePOA.pdf');
+              saveAs(value, 'healthCare-power-of-attorney.pdf');
             }, (err) => {this.loading = false; },
             () => { this.loading = false; }
           );
@@ -447,16 +447,17 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
 
   /**Downloads the pdf*/
   printPDF() {
-    this.loading = true;
+      const win =  window.open();
+      this.loading = true;
     const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
     const userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     this.printSubscription = this.globalPDFService.healthcarepoa(token).subscribe(
       (response: any) => {
         if (response.status) {
           const src = this.globalPDFService.printFile(userId, 'healthCarePOA.pdf');
-          const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
+          // const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
           if (win !== null) {
-            win.document.write('<iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
+            win.document.write('<title>Healthcare Power of Attorney</title><iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
             win.focus();
           }
         }

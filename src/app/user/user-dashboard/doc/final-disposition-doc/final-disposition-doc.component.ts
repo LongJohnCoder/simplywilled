@@ -165,7 +165,7 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
         if (response.status) {
           this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'finalDisposition.pdf').subscribe(
             value => {
-              saveAs(value, 'finalDisposition.pdf');
+              saveAs(value, 'final-disposition.pdf');
             }
           );
         }
@@ -176,6 +176,7 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
 
   /**Downloads the pdf*/
   printPDF() {
+      const win =  window.open();
     this.loading = true;
     let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
     let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
@@ -183,9 +184,9 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
       (response: any) => {
         if (response.status) {
           let src = this.globalPDFService.printFile(userId, 'finalDisposition.pdf');
-          const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
+          // const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
           if (win !== null) {
-            win.document.write('<iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
+            win.document.write('<title>Final Disposition</title><iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
             win.focus();
           }
         /*  let src = this.globalPDFService.printFile(userId, 'finalDisposition.pdf');

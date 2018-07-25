@@ -161,7 +161,7 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
         if (response.status) {
           this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'finalSigningInstructions.pdf').subscribe(
             value => {
-              saveAs(value, 'finalSigningInstructions.pdf');
+              saveAs(value, 'signing-instructions.pdf');
             }
           );
         }
@@ -178,16 +178,17 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
 
   /**Downloads the pdf*/
   printPDF() {
-    this.loading = true;
+      const win =  window.open();
+      this.loading = true;
     let token = JSON.parse(localStorage.getItem('loggedInUser')).token;
     let userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
     this.printSubscription = this.globalPDFService.signingInstructions(token).subscribe(
       (response: any) => {
         if (response.status) {
             let src = this.globalPDFService.printFile(userId, 'finalSigningInstructions.pdf');
-            const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
+            // const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
             if (win !== null) {
-              win.document.write('<iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
+              win.document.write('<title>Signing Instructions</title><iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
               /*let obj = newwindow.document.createElement('iframe');
               obj.style.height = '100%';
               obj.style.width = '100%';
