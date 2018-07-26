@@ -69,6 +69,9 @@ export class ThankYouComponent implements OnInit, OnDestroy {
             'quantity': 1
         }]
     });
+    
+    dataLayer.push({'event': 'purchased'});
+    
     /* end  */
     this.countDown = Observable.interval(1000).map((tick) => --this.count).share();
     this.timerSubscription = this.countDown.subscribe(

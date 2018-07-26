@@ -11,7 +11,7 @@
             <!-- UserID tracking -->
             var userData = localStorage.getItem("loggedInUser");
             userData = JSON.parse(userData);
-            if(userData !== undefined && userData !== null && userData.status !== undefined && userData.status) dataLayer.push({'userId' : userData.user.id});
+            if(userData !== undefined && userData !== null && userData.status !== undefined && userData.status) dataLayer.push({'event':'setUserId', 'userId': userData.user.id});
             <!-- End -->
         </script>
         <!-- Google Tag Manager -->
