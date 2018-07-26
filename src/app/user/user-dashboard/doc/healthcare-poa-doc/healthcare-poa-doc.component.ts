@@ -420,6 +420,11 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
       (error: any) => {
         console.log(error);
         this.loading = false;
+        if (error.error.error === 'Token is not provided.') {
+          this.router.navigate(['/']);
+        } else {
+          console.log('reached here');
+        }
       }, () => { this.loading = false; }
     );
   }
@@ -427,44 +432,77 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   /**Downloads the pdf*/
   downloadPdf() {
     this.loading = true;
-    const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
-    const userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
-    this.loading = true;
-    this.signingInstructionSubscription = this.globalPDFService.healthcarepoa(token).subscribe(
-      (response: any) => {
-        if (response.status) {
-          this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'healthCarePOA.pdf').subscribe(
-            value => {
-              saveAs(value, 'healthCare-power-of-attorney.pdf');
-            }, (err) => {this.loading = false; },
-            () => { this.loading = false; }
-          );
-        }
-      }, (error) => { console.log(error); this.loading = false; },
-      () => { this.loading = false; }
-    );
+    if (localStorage.getItem('loggedInUser') === undefined || localStorage.getItem('loggedInUser') === null) {
+      this.router.navigate(['/']);
+    } else {
+      const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+      const userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+      this.loading = true;
+      this.signingInstructionSubscription = this.globalPDFService.healthcarepoa(token).subscribe(
+        (response: any) => {
+          if (response.status) {
+            this.downloadSubscription = this.globalPDFService.downloadFile(userId, 'healthCarePOA.pdf').subscribe(
+              value => {
+                saveAs(value, 'healthCare-power-of-attorney.pdf');
+              }, (err) => {
+                this.loading = false;
+                console.log(err.error.error);
+                if (err.error.error === 'Token is not provided.') {
+                  this.router.navigate(['/']);
+                } else {
+                  console.log('reached here');
+                }
+              },
+              () => { this.loading = false; }
+            );
+          }
+        }, (error) => {
+          console.log(error);
+          this.loading = false;
+          if (error.error.error === 'Token is not provided.') {
+            this.router.navigate(['/']);
+          } else {
+            console.log('reached here');
+          }
+        },
+        () => { this.loading = false; }
+      );
+    }
   }
 
   /**Downloads the pdf*/
   printPDF() {
-      const win =  window.open();
-      this.loading = true;
-    const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
-    const userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
-    this.printSubscription = this.globalPDFService.healthcarepoa(token).subscribe(
-      (response: any) => {
-        if (response.status) {
-          const src = this.globalPDFService.printFile(userId, 'healthCarePOA.pdf');
-          // const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
-          if (win !== null) {
-            win.document.write('<title>Healthcare Power of Attorney</title><iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
-            win.focus();
+    const win =  window.open();
+    this.loading = true;
+    if (localStorage.getItem('loggedInUser') === undefined || localStorage.getItem('loggedInUser') === null) {
+      this.router.navigate(['/']);
+    } else {
+      const token = JSON.parse(localStorage.getItem('loggedInUser')).token;
+      const userId = JSON.parse(localStorage.getItem('loggedInUser')).user.id;
+      this.printSubscription = this.globalPDFService.healthcarepoa(token).subscribe(
+        (response: any) => {
+          if (response.status) {
+            const src = this.globalPDFService.printFile(userId, 'healthCarePOA.pdf');
+            // const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
+            if (win !== null) {
+              // tslint:disable-next-line:max-line-length
+              win.document.write('<title>Healthcare Power of Attorney</title><iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
+              win.focus();
+            }
           }
+        }, (error) => {
+          console.log(error);
+          this.loading = false;
+          if (error.error.error === 'Token is not provided.') {
+            this.router.navigate(['/']);
+          } else {
+            console.log('reached here');
+          }
+        },
+        () => {
+          this.loading = false;
         }
-      }, (error) => { console.log(error); this.loading = false; },
-      () => {
-        this.loading = false;
-      }
-    );
+      );
+    }
   }
 }
