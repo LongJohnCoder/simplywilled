@@ -4,6 +4,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { UserService } from '../../user.service';
 import { Router } from '@angular/router';
 
+declare var dataLayer: any;
+
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',
@@ -37,14 +39,14 @@ export class UserRegisterComponent implements OnInit {
     .subscribe(
       ( response: any ) => {
         this.showLoader = false;
-        if (response.status) {
-          localStorage.setItem( 'loggedInUser', JSON.stringify(response) );
-          localStorage.setItem('_loggedInToken', response.token);
-          this.router.navigate(['/dashboard']);
+        if (response !== undefined && response.status !== undefined && response.status) {
+            dataLayer.push({'event':'registered', 'userId': response.user.id});  
+            localStorage.setItem( 'loggedInUser', JSON.stringify(response) );
+            localStorage.setItem('_loggedInToken', response.token);
+            this.router.navigate(['/dashboard']);
         } else {
-
-          this.setRequestStatus = false;
-          this.setResponseMsg = 'Some error occured';
+            this.setRequestStatus = false;
+            this.setResponseMsg = 'Some error occured';
         }
       },
       ( error: HttpErrorResponse ) => {
