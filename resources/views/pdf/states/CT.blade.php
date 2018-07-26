@@ -76,27 +76,22 @@
     </p>
     <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
         <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I,
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>,
-        appoint my
+        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>,
+        appoint my @if(strtolower($healthFinance['relation']) == 'other') <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}}, </span>
+    		@else
+    			<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relation']))}},</span>
+    		@endif
+
+        <span style="text-transform: capitalize">{{$healthFinance['fullname']}}</span> of
 
 
-        @if(strtolower($healthFinance['relation']) == 'other')
-			<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}}, </span>
-		@else
-			<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relation']))}}, </span>
-		@endif
-
-
-        <span style="text-transform: capitalize"> {{$healthFinance['fullname']}} </span> of
-
-
-        <span style="text-transform: capitalize"> {{$healthFinance['address']}} </span> in
+        <span style="text-transform: capitalize"> {{$healthFinance['address']}}</span> in
 
         <span style="text-transform: capitalize"> {{$healthFinance['city']}},</span>
 
-        <span style="text-transform: capitalize"> {{$healthFinance['state']}},</span>
+        <span style="text-transform: capitalize"> {{$healthFinance['state']}}</span>
 
-        <span style="text-transform: capitalize"> {{$healthFinance['zip']}},</span>
+        <span style="text-transform: capitalize"> {{$healthFinance['zip']}}</span>
 
 
         (Tel: <span> {{$healthFinance['phone']}} </span> ), as my health care representative. If my
@@ -149,24 +144,23 @@
 
                 <span style="text-transform: capitalize">
                 	@if(strtolower($healthFinance['backupRelation']) == 'other')
-		            	<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupRelationOther']))}}, </span>
+		            	<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupRelationOther']))}},</span>
 		          	@else
-		            	<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupRelation']))}}, </span>
+		            	<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupRelation']))}},</span>
 		          	@endif
                 </span>
 
-                <span style="text-transform: capitalize"> {{$healthFinance['backupFullname']}}, </span> of
+                <span style="text-transform: capitalize">{{$healthFinance['backupFullname']}},</span> of
 
-                <span style="text-transform: capitalize"> {{$healthFinance['backupAddress']}} </span> in
+                <span style="text-transform: capitalize"> {{$healthFinance['backupAddress']}}</span> in
 
                 <span style="text-transform: capitalize"> {{$healthFinance['backupCity']}},</span>
 
-                <span style="text-transform: capitalize"> {{$healthFinance['backupState']}},</span>
+                <span style="text-transform: capitalize"> {{$healthFinance['backupState']}}</span>
 
-                <span style="text-transform: capitalize"> {{$healthFinance['backupZip']}},</span>
+                <span style="text-transform: capitalize"> {{$healthFinance['backupZip']}}</span>
 
-                (Tel: <span> {{$healthFinance['backupphone']}} </span> ), as my
-                alternate health care representative.
+                (Tel: <span> {{$healthFinance['backupphone']}} </span> ) as my alternate health care representative.
               </span>
             </span>
           </span>
@@ -260,7 +254,7 @@
 
     <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">I,
-      <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>,
+      <span>{{strtoupper($tellUsAboutYou['fullname'])}}</span>,
       the author of this document, request that, if my condition is deemed
       terminal or if I am determined to be permanently unconscious, I be
       allowed to die and not be kept alive through life support systems.</span></span></span></span></span></p>
@@ -580,7 +574,7 @@
     <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">_______________________________________<span style="text-decoration: none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:
       </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></p>
     <p style="margin-bottom: 0.08in; line-height: 115%">
-      <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+      <span>{{strtoupper($tellUsAboutYou['fullname'])}}</span>
     </p>
     <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 <br>
@@ -589,7 +583,7 @@
     <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Subscribed
       and sworn to before me by <b>
-          <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>,
+          <span>{{strtoupper($tellUsAboutYou['fullname'])}}</span>,
       </b> on this <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>day
       of <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>,
       <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     </u>.</span></span></span></span></span></p>
@@ -657,7 +651,7 @@
     <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">This
       document was signed in our presence by <b>
-          <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>,
+          <span>{{strtoupper($tellUsAboutYou['fullname'])}}</span>,
       </b>the author of this document, who
       appeared to be eighteen years of age or older, of sound mind and able
       to understand the nature and consequences of health care decisions at

@@ -19,7 +19,7 @@
   </script>
   <div id="footer">
     <div style="">
-      Advance Health Care Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
+      Designation of Health Care Surrogate and Living Will of  <br>{{$tellUsAboutYou['fullname']}}<br>
     </div>
   </div>
 <div>
@@ -34,7 +34,7 @@
       <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <span style="font-family: 'Times New Roman', serif">I,
 
-        <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}}</b></span>
+        <span style="font:font-family;"><b>{{strtoupper($tellUsAboutYou['fullname'])}}</b></span>
         designate as my health care surrogate under S. 765.202, Florida Statutes:
 
       </span></p>
@@ -47,7 +47,7 @@
           <span  style="font-size: 9pt"><span ><span  style="font-size: 12pt">Name:</span></span><span ><span  style="font-size: 12pt">
 
           </span> </span>
-          <span  style="font-size: 12pt">{{strtoupper($healthFinance['fullname'])}},</span>
+          <span  style="font-size: 12pt">{{ucwords($healthFinance['fullname'])}},</span>
 
           </span>
           </span>
@@ -65,10 +65,10 @@
             </span>
             <span style="font-size: 12pt">{{$healthFinance['address']}} </span>
           </span>
+          <br>
+          <span style="font-size: 12pt">{{ucwords($healthFinance['city'])}}, </span>
 
-          <span style="font-size: 12pt">{{$healthFinance['city']}}, </span>
-
-          <span style="font-size: 12pt">{{$healthFinance['state']}}, </span>
+          <span style="font-size: 12pt">{{ucwords($healthFinance['state'])}} </span>
 
           <span style="font-size: 12pt">{{$healthFinance['zip']}}</span>
 
@@ -104,7 +104,7 @@
 		</span>
 		</p>
 
-		<p align="justify" style="margin-left: 0.38in; margin-bottom: 0.03in; ">
+		<p align="justify" style="">
 		<span>
 		<span style="font-family: 'Times New Roman', serif">
 		  <span  style="font-size: 9pt">
@@ -117,14 +117,14 @@
 		      </span>
 		    </span>
 
-		    <span style="font-size: 12pt">{{strtoupper($healthFinance['backupFullname'])}}</span>
+		    <span style="font-size: 12pt">{{ucwords($healthFinance['backupFullname'])}}</span>
 
 		  </span>
 		</span>
 		</span>
 		</p>
 
-	    <p align="justify" style="margin-left: 0.38in; margin-bottom: 0.03in; ">
+	    <p align="justify" style="">
 	      <span>
 	        <span style="font-family: 'Times New Roman', serif">
 	          <span  style="font-size: 9pt">
@@ -145,11 +145,11 @@
 	      <span style="font-family: 'Times New Roman', serif">
 	      </span>
 	      <span>
-	        <span style="font-size: 12pt">{{$healthFinance['backupCity']}},</span>
+	        <span style="font-size: 12pt">{{ucwords($healthFinance['backupCity'])}},</span>
 	      </span>
 
 	      <span>
-	        <span style="font-family: 'Times New Roman', serif">{{$healthFinance['backupState']}},</span>
+	        <span style="font-family: 'Times New Roman', serif">{{ucwords($healthFinance['backupState'])}}</span>
 	      </span>
 
 	      <span>
@@ -158,7 +158,7 @@
 	      </span>
 	    </p>
 
-    	<p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
+    	<p align="justify" style="margin-bottom: 0in; ">
       	<span>
         <span style="font-family: 'Times New Roman', serif">
           <span  style="font-size: 9pt">
@@ -334,7 +334,7 @@
             <span>
               <span style="font-family: 'Times New Roman', serif">
                 <b>
-                    {{$tellUsAboutYou['fullname']}}
+                    {{strtoupper($tellUsAboutYou['fullname'])}}
                 </b>
               </span>
             </span>
@@ -352,8 +352,9 @@
             	<span style="font-family: 'Times New Roman', serif">
             		<span size="1" style="font-size: 8pt">
             			<span></span>
-            			<span  style="font-size: 12pt">City</span>
-            			<span  style="font-size: 12pt">State:FL</span>
+                  
+            			<span  style="font-size: 12pt">{{ucwords(strtolower($tellUsAboutYou['city']))}},</span>
+            			<span  style="font-size: 12pt">State:{{strtoupper($state['abr'])}}</span>
             			<span>
             				<span  style="font-size: 12pt"></span>
             			</span>
@@ -373,17 +374,13 @@
 
             <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">We,
             the witnesses hereunder, certify that each of us is 18 years of age
-            or older and each personally witnessed </span></span>
+            or older and each personally witnessed</span></span>
             <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt"></span></span>
 
-            <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}},</b></span>
-
-
-            <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">
-            </span></span>
+            <span style="font:font-family;"><b>{{strtoupper($tellUsAboutYou['fullname'])}},</b></span>
 
             <span style="letter-spacing: 0.1pt"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">the
-            principal, </span></span></span>
+            principal,</span></span></span>
 
             <span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">sign
             or direct the signing of this Designation; that we are acquainted
@@ -399,7 +396,7 @@
             under any will or codicil of the principal; that we are not directly
             financially responsible for </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">{{$genderTxt}}</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">
             medical care; and that we are not agents of any health care facility
-            in which </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">{{$genderTxt}}</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">
+            in which </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">{{$genderTxt3}}</span></span></span><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 11pt">
             may be a patient at the time of signing this Designation.</span></span></p>
             <p align="justify" style="margin-bottom: 0in; ">
 
@@ -485,7 +482,7 @@
 
 
           <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
-              <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}}</b></span>
+              <span style="font:font-family;"><b>{{strtoupper($tellUsAboutYou['fullname'])}}</b></span>
           </p>
 
           <p style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif">We,
@@ -494,7 +491,7 @@
           the witnesses, have been sworn by the officer signing below, and
           declare to that officer on our oaths that </span><span ><span style="font-family: 'Times New Roman', serif"></span></span>
 
-          <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}},</b></span>
+          <span style="font:font-family;"><b>{{strtoupper($tellUsAboutYou['fullname'])}},</b></span>
 
 
 
@@ -598,10 +595,7 @@
           </p>
 
           <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
-          <span style="letter-spacing: 0.3pt"><span style="font-family: 'Times New Roman', serif">I,</span></span><span face="Times, serif"><span  style="font-size: 9pt"><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 12pt">
-          </span></span></span></span><span style="font-family: 'Times New Roman', serif"></span>
-
-          <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}},</b></span>
+          <span style="letter-spacing: 0.3pt"><span style="font-family: 'Times New Roman', serif">I, </span></span><span style="font:font-family;"><b>{{strtoupper($tellUsAboutYou['fullname'])}},</b></span>
 
 
 
@@ -706,7 +700,7 @@
 
           <span style="font-family: 'Times New Roman', serif"><b></b></span>
 
-          <span style="font:font-family;"><b>{{$tellUsAboutYou['fullname']}}</b></span>
+          <span style="font:font-family;"><b>{{strtoupper($tellUsAboutYou['fullname'])}}</b></span>
 
 
           <span style="font-family: 'Times New Roman', serif"></span>
@@ -721,7 +715,7 @@
           certify that each of us is 18 years of age or older and each
           personally witnessed </span>
 
-          <span>{{$tellUsAboutYou['fullname']}},</span>
+          <span>{{strtoupper($tellUsAboutYou['fullname'])}},</span>
 
           <span style="font-family: 'Times New Roman', serif"></span><span style="letter-spacing: 0.1pt"><span style="font-family: 'Times New Roman', serif">
           the declarant, </span></span><span style="font-family: 'Times New Roman', serif">sign
@@ -759,7 +753,7 @@
           medical care; and that we are not agents of any health care facility
           in which </span><span>
 
-          <span style="font-family: 'Times New Roman', serif">{{$genderTxt}}</span>
+          <span style="font-family: 'Times New Roman', serif">{{$genderTxt3}}</span>
 
           </span><span style="font-family: 'Times New Roman', serif">
           may be a patient at the time of signing this directive.</span></p>
@@ -839,7 +833,7 @@
           <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
           <span style="font-family: 'Times New Roman', serif">I, </span><span style="font-family: 'Times New Roman', serif"></span>
 
-          <span>{{$tellUsAboutYou['fullname']}},</span>
+          <span>{{strtoupper($tellUsAboutYou['fullname'])}},</span>
 
 
           <span style="font-family: 'Times New Roman', serif"></span>
@@ -853,7 +847,7 @@
           </p>
           <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="font-size: 9pt"><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">______________________________________</span></span></span></p>
           <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
-              <span>{{$tellUsAboutYou['fullname']}}</span>
+              <span>{{strtoupper($tellUsAboutYou['fullname'])}}</span>
           </p>
           <p align="justify" style="margin-bottom: 0in; ">
 
@@ -870,7 +864,7 @@
           the witnesses, have been sworn by the officer signing below, and
           declare to that officer on our oaths that </span><span style="font-family: 'Times New Roman', serif"></span>
 
-          <span>{{$tellUsAboutYou['fullname']}},</span>
+          <span>{{strtoupper($tellUsAboutYou['fullname'])}},</span>
 
 
           <span style="font-family: 'Times New Roman', serif"></span><span style="font-family: 'Times New Roman', serif">
@@ -889,7 +883,6 @@
             <p align="justify" style="margin-left: 0.38in; margin-top: 0.03in; margin-bottom: 0.03in; ">
 
             <br>
-
             </p>
             <p align="justify" style="margin-top: 0.03in; margin-bottom: 0.03in; ">
             <span style="font-family: 'Times New Roman', serif"><span  style=""><span  style="">____________________________________</span></span></span></p>

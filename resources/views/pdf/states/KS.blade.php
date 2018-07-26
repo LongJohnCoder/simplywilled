@@ -48,7 +48,7 @@
             </p>
             <p style="margin-bottom: 0in; text-align:center; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 @if(isset($tellUsAboutYou) && array_key_exists('address',$tellUsAboutYou) && !is_null($tellUsAboutYou['address']))
-                    <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}}</span>
+                    <span style="font-family:'Times New Roman, serif'" >{{ucwords($tellUsAboutYou['address'])}}</span>
                 @else
                     <span>_________________________________________________________________
                     ___________________________________________________________________________________________
@@ -58,30 +58,30 @@
 
             <p style="margin-bottom: 0in; text-align:center; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 @if(isset($tellUsAboutYou) && array_key_exists('city',$tellUsAboutYou) && !is_null($tellUsAboutYou['city']))
-                    <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}},</span>
+                    <span style="text-transform: capitalize">{{ucwords($tellUsAboutYou['city'])}},</span>
                 @else
-                    <span style="text-transform: capitalize">(city)_____________,</span>
+                    <span style="text-transform: capitalize">_____________,</span>
                     <span >, </span>
                 @endif
 
 
                 @if(isset($tellUsAboutYou) && array_key_exists('state',$tellUsAboutYou) && !is_null($tellUsAboutYou['state']))
-                    <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}},</span>
+                    <span style="text-transform: capitalize">{{ucwords($tellUsAboutYou['state'])}} </span>
                 @else
-                    <span style="text-transform: capitalize">(state)_____________,</span>
+                    <span style="text-transform: capitalize">______________ </span>
                 @endif
 
                 @if(isset($tellUsAboutYou) && array_key_exists('zip',$tellUsAboutYou) && !is_null($tellUsAboutYou['zip']))
                     <span style="text-transform: capitalize">{{$tellUsAboutYou['zip']}}</span>
                 @else
-                    <span style="text-transform: capitalize">(zip)_____________</span>
+                    <span style="text-transform: capitalize">_____________</span>
                 @endif
             </p>
             <p  style="text-align:center;margin-bottom: 0in; line-height: 115%"><span color="#0432ff"><span >
                 @if(isset($tellUsAboutYou) && array_key_exists('phone',$tellUsAboutYou) && !is_null($tellUsAboutYou['phone']))
                     <span style="text-transform: capitalize">{{$tellUsAboutYou['phone']}}</span>
                 @else
-                    <span style="text-transform: capitalize">(phone)_____________</span>
+                    <span style="text-transform: capitalize">_____________</span>
                 @endif
 
             </span></span></p>
@@ -99,9 +99,9 @@
                 <span color="#0432ff">
                     <span><b>{{$healthFinance['fullname']}}</b></span>
                     @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
-                        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
+                        <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}}</span>
                     @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
-                        <span style="font-family:'Times New Roman, serif'">(my {{$healthFinance['relation']}})</span>
+                        <span style="font-family:'Times New Roman, serif'">(my {{ucwords(strtolower($healthFinance['relation']))}})</span>
                     @else
                         <span>(relation)______________</span>
                     @endif
@@ -120,15 +120,15 @@
       <span color="#0000ff">
         <span >
             @if(isset($healthFinance) && array_key_exists('city',$healthFinance) && !is_null($healthFinance['city']))
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['city']}}, </span>
+                <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['city'])}}, </span>
             @else
                 <span>(city)__________________, </span>
             @endif
 
             @if(isset($healthFinance) && array_key_exists('state',$healthFinance) && !is_null($healthFinance['state']))
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['state']}}, </span>
+                <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['state'])}} </span>
             @else
-                <span>(state)__________________, </span>
+                <span>(state)__________________ </span>
             @endif
 
             @if(isset($healthFinance) && array_key_exists('zip',$healthFinance) && !is_null($healthFinance['zip']))
@@ -156,21 +156,26 @@
 
             </p>
 
+
+            
+            @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == 'true')
+
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >If
-      the above person should be unable to perform in this capacity due to
-      death, disability, disqualification, or incapacity, then I appoint
-      the following person as my attorney-in-fact:</span></span></span></span></span></p>
+              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >If
+              the above person should be unable to perform in this capacity due to
+              death, disability, disqualification, or incapacity, then I appoint
+              the following person as my attorney-in-fact:</span></span></span></span></span>
+            </p>
             <p style="margin-bottom: 0in; line-height: 115%">
 
             </p>
-            @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == 'true')
+
             <p  style="text-align:center;margin-bottom: 0in; line-height: 115%">
               <span color="#0432ff">
                 <span >
                   <b>
                       @if(isset($healthFinance) && array_key_exists('backupFullname',$healthFinance) && !is_null($healthFinance['backupFullname']))
-                          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}}</span>
+                          <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupFullname']))}}</span>
                       @else
                           <span style="font-family:'Times New Roman, serif'">_____________________________</span>
                       @endif
@@ -179,13 +184,13 @@
                 <span >(my
                     @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
                         @if(strlen(trim($healthFinance['backupRelationOther'])) > 0)
-                            <span>{{$healthFinance['backupRelationOther']}}</span>
+                            <span>{{ucwords(strtolower($healthFinance['backupRelationOther']))}}</span>
                         @else
                             <span>(relation) ________________ </span>
                         @endif
                     @else
                         @if(strlen(trim($healthFinance['backupRelation'])) > 0)
-                            <span>{{$healthFinance['backupRelation']}}</span>
+                            <span>{{ucwords(strtolower($healthFinance['backupRelation']))}}</span>
                         @else
                             <span>(relation) ________________ </span>
                         @endif
@@ -199,7 +204,7 @@
               <span color="#0432ff">
                 <span >
                      @if(isset($healthFinance) && array_key_exists('backupAddress',$healthFinance) && !is_null($healthFinance['backupAddress']))
-                        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupAddress']}}, </span>
+                        <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['backupAddress'])}}, </span>
                     @else
                         <span>
                             _________________________________________________________________
@@ -214,15 +219,15 @@
               <span color="#0000ff">
                 <span >
                     @if(isset($healthFinance) && array_key_exists('backupCity',$healthFinance) && !is_null($healthFinance['backupCity']))
-                        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupCity']}}, </span>
+                        <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupCity']))}}, </span>
                     @else
                         <span>(city)__________________, </span>
                     @endif
 
                     @if(isset($healthFinance) && array_key_exists('backupState',$healthFinance) && !is_null($healthFinance['backupState']))
-                        <span style="font-family:'Times New Roman, serif'" >{{$healthFinance['backupState']}}, </span>
+                        <span style="font-family:'Times New Roman, serif'" >{{ucwords(strtolower($healthFinance['backupState']))}} </span>
                     @else
-                        <span>(state)__________________, </span>
+                        <span>(state)__________________ </span>
                     @endif
 
                     @if(isset($healthFinance) && array_key_exists('backupZip',$healthFinance) && !is_null($healthFinance['backupZip']))
@@ -594,9 +599,9 @@
 
             </p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%"><span style="text-decoration: none">DECLARATION
-      made this </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span style="text-decoration: none">
-      day of </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span style="text-decoration: none">,
-      </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span style="text-decoration: none">.</span></p>
+      made this </span><span>_________________________</span><span style="text-decoration: none">
+      day of </span><span>____________________</span><span style="text-decoration: none">,
+      </span><span>____________________</span><span style="text-decoration: none">.</span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 115%">
 
             </p>
@@ -614,17 +619,17 @@
 
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >If
-      at any time I should have an incurable injury, disease, or illness
-      certified to be a terminal condition by two physicians who have
-      personally examined me, one of whom shall be my attending physician,
-      and the physicians have determined that my death will occur whether
-      or not life-sustaining procedures are utilized and where the
-      application of life-sustaining procedures would serve only to
-      artificially prolong the dying process, I direct that such procedures
-      be withheld or withdrawn, and that I be permitted to die naturally
-      with only the administration of medication or the performance of any
-      medical procedure deemed necessary to provide me with comfort care.</span></span></span></span></span></p>
+      <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff">
+        <span >If at any time I should have an incurable injury, disease, or illness
+          certified to be a terminal condition by two physicians who have
+          personally examined me, one of whom shall be my attending physician,
+          and the physicians have determined that my death will occur whether
+          or not life-sustaining procedures are utilized and where the
+          application of life-sustaining procedures would serve only to
+          artificially prolong the dying process, I direct that such procedures
+          be withheld or withdrawn, and that I be permitted to die naturally
+          with only the administration of medication or the performance of any
+          medical procedure deemed necessary to provide me with comfort care.</span></span></span></span></span></p>
             <p  style="text-align:justify;margin-left: 0.38in; margin-bottom: 0in; line-height: 115%">
 
 

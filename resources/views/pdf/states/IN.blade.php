@@ -43,25 +43,21 @@
         <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
       </b>
       of
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['address']}},</span>
-        <span style="text-transform: capitalize" >{{$tellUsAboutYou['city']}},</span>
-        <span style="text-transform: capitalize" >{{$tellUsAboutYou['state']}}</span>
+        <span style="text-transform: capitalize">{{ucwords($tellUsAboutYou['address'])}},</span>
+        <span style="text-transform: capitalize" >{{ucwords(strtolower($tellUsAboutYou['city']))}},</span>
+        <span style="text-transform: capitalize" >{{ucwords($tellUsAboutYou['state'])}}</span>
           being at least eighteen (18) years of age, of sound mind, and capable
           of consenting to my health care, hereby appoint my
             @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
-
-                  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
-
+                  <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}},</span>
             @else
-                  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
-
+                  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}},</span>
             @endif
-            <span>,</span>
-            <span style="text-transform: capitalize" > {{$healthFinance['fullname']}}, </span> of
-            <span style="text-transform: capitalize" > {{$healthFinance['address']}}, </span> in
-            <span style="text-transform: capitalize" > {{$healthFinance['city']}},
-            <span style="text-transform: capitalize" > {{$healthFinance['state']}}</span>,
-            <span style="text-transform: capitalize" > {{$healthFinance['zip']}}, </span>
+            <span> {{ucwords($healthFinance['fullname'])}}, </span> of
+            <span> {{ucwords($healthFinance['address'])}}, </span> in
+            <span> {{ucwords(strtolower($healthFinance['city']))}},
+            <span> {{ucwords($healthFinance['state'])}}</span>
+            <span> {{$healthFinance['zip']}}, </span>
             (Tel: <span > {{$healthFinance['phone']}} </span> ), as my lawful health care representative
       (agent) to make health care decisions on my behalf whenever I am
       incapable of making my own health care decisions. </span></span>
@@ -78,7 +74,7 @@
                 @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
 
                   @if(strlen(trim($healthFinance['backupRelationOther'])) > 0)
-                    <span>{{$healthFinance['backupRelationOther']}},</span>
+                    <span>{{ucwords(strtolower($healthFinance['backupRelationOther']))}},</span>
                   @else
                     <span>_____________________,</span>
                   @endif
@@ -86,17 +82,17 @@
                 @else
 
                   @if(strlen(trim($healthFinance['backupRelation'])) > 0)
-                    <span>{{$healthFinance['backupRelation']}},</span>
+                    <span>{{ucwords(strtolower($healthFinance['backupRelation']))}},</span>
                   @else
                     <span>_____________________,</span>
                   @endif
                     <span>(relation)______________,</span>
                 @endif
-              <span style="text-transform: capitalize" > {{$healthFinance['backupFullname']}}, </span>  of
-              <span style="text-transform: capitalize" > {{$healthFinance['backupAddress']}}, </span> in
-              <span style="text-transform: capitalize" > {{$healthFinance['backupCity']}}, </span>
-              <span style="text-transform: capitalize" > {{$healthFinance['backupState']}}, </span>
-              <span style="text-transform: capitalize" > {{$healthFinance['backupZip']}}, </span>
+              <span> {{ucwords($healthFinance['backupFullname'])}}, </span>  of
+              <span> {{ucwords($healthFinance['backupAddress'])}}, </span> in
+              <span> {{ucwords(strtolower($healthFinance['backupCity']))}}, </span>
+              <span> {{ucwords($healthFinance['backupState'])}} </span>
+              <span> {{$healthFinance['backupZip']}}, </span>
               (Tel: <span > {{$healthFinance['backupphone']}} </span> ), as my alternate attorney-in-fact to make
               the health care decisions for me as authorized in this document.&nbsp;</span>
             </p>
@@ -206,7 +202,14 @@
             <p  style="text-align:left;margin-bottom: 0in; line-height: 115%">
 
             </p>
-            <p style="margin-bottom: 0in; line-height: 0.25in">________________________________________<span  style="font-size: 12pt"><span style="text-decoration: none">.</span></span></p>
+            <p style="margin-bottom: 0in; line-height: 0.25in">______________________________________________________
+              _____________________________________________________________________________
+              _____________________________________________________________________________
+              _____________________________________________________________________________
+              _____________________________________________________________________________
+              _____________________________________________________________________________
+              _____________________________________________________________________________
+              <span  style="font-size: 12pt"><span style="text-decoration: none">.</span></span></p>
             <p  style="text-align:left;margin-bottom: 0in; line-height: 115%"><i>(Attach
                     additional pages as needed).</i></p>
 

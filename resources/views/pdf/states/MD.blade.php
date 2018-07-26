@@ -53,7 +53,7 @@
 
         <span color="#0000ff">
           <span face="Times New Roman, serif">
-              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+              <b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>
           </span>
         </span>
 
@@ -107,107 +107,21 @@
 
         <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
         <span color="#000000"><span face="Times New Roman, serif"><b>Selection
-        of Primary Agent.  </b></span></span><span color="#000000"><span face="Times New Roman, serif">I,
-        </span></span><span face="Times New Roman, serif"><b></b></span>
-
-        <span color="#0000ff">
-          <span face="Times New Roman, serif">
-              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}},</b>
-          </span>
-        </span>
-
-
-
-        <span face="Times New Roman, serif"><b></b></span><span color="#000000"><span face="Times New Roman, serif">
-        of </span></span>
-        <span color="#0433ff">
-            <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}},</span>
-        </span>
-
-          <span color="#000000"><span face="Times New Roman, serif">
-        </span></span>
-
-        <!-- <span face="Times New Roman, serif">IF ANSWERED(
-        Address2 )</span>
-        <span color="#000000"><span face="Times New Roman, serif"></span></span>
-
-        <span color="#0433ff"><span face="Times New Roman, serif">Address2</span></span>
-
-        <span color="#000000"><span face="Times New Roman, serif">,
-        </span></span><span face="Times New Roman, serif">END IF</span> -->
-
-
-
-        <span color="#000000"><span face="Times New Roman, serif"></span></span>
-
-        <span color="#0433ff">
-            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}},</span>
-        </span>
-
-        <span color="#0433ff">
-            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}},</span>
-        </span>
-
-        <span color="#000000">
-          <span face="Times New Roman, serif"> hereby appoint my </span>
-        </span>
-
-
-
-        <span color="#0433ff">
+        of Primary Agent.  </b></span></span><span color="#000000"><span face="Times New Roman, serif">I,</span></span><span face="Times New Roman, serif"><b></b></span><span color="#0000ff">
+          <span face="Times New Roman, serif"><b>{{strtoupper($tellUsAboutYou['fullname'])}},</b>
+          </span> </span><span face="Times New Roman, serif"><b></b></span><span color="#000000"><span face="Times New Roman, serif">of</span></span>
+          <span color="#0433ff"><span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}},</span></span>
+        <span color="#0433ff"><span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{ucwords($tellUsAboutYou['city'])}},</span>
+        </span><span color="#0433ff"><span style="font-family:'Times New Roman, serif'">{{ucwords($tellUsAboutYou['state'])}} hereby appoint my</span>
+        </span><span color="#0433ff">
         	@if(strtolower($healthFinance['relation']) == 'other')
-            	<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}},</span>
+            	<span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['relationOther'])}},</span>
             @else
-            	<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}},</span>
+            	<span style="font-family:'Times New Roman, serif'" >{{ucwords($healthFinance['relation'])}},</span>
             @endif
+        </span><span color="#0433ff">
+            <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['fullname'])}} of {{$healthFinance['address']}}, in {{ucwords($healthFinance['city'])}}, {{ucwords($healthFinance['state'])}} {{$healthFinance['zip']}} (Tel: {{$healthFinance['phone']}}) as my agent to make health care decisions for me.</span>
         </span>
-
-        <span color="#000000">
-          <span face="Times New Roman, serif"> </span>
-        </span>
-
-        <span color="#0433ff">
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}},</span>
-        </span>
-
-        <span color="#000000">
-          <span face="Times New Roman, serif"> of </span>
-        </span>
-
-        <span color="#0433ff">
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['address']}}, </span>
-        </span>
-
-        <span face="Times New Roman, serif">in </span>
-
-        <span color="#0000ff">
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['city']}}, </span>
-        </span>
-
-        <span face="Times New Roman, serif"> </span>
-
-        <span color="#0000ff">
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['state']}}, </span>
-        </span>
-
-        <span color="#0000ff">
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['zip']}}, </span>
-        </span>
-
-        <span color="#000000">
-          <span face="Times New Roman, serif">
-        (Tel: </span>
-        </span>
-
-        <span color="#0433ff">
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['phone']}}</span>
-        </span>
-
-        <span color="#000000">
-          <span face="Times New Roman, serif">) as my agent to make health care decisions for me.</span>
-        </span>
-        </p>
-
         <p align="justify" style="margin-bottom: 0in; "><br/>
 
         </p>
@@ -223,66 +137,17 @@
 
                     <p align="justify" style="margin-bottom: 0in; ">
                       <span face="Times New Roman, serif">
-                        <b>Selection of Backup Agent.   </b>
+                        <b>Selection of Backup Agent.</b>
                       </span>
-                      <span face="Times New Roman, serif">If my primary agent cannot be contacted in time or for any reason is
-                    unavailable or unable or unwilling to act as my agent, then I select
-                      </span>
-
-                      <span color="#000000">
-                        <span face="Times New Roman, serif">my </span>
-                      </span>
-
-                      <span color="#0433ff">
+                      <span face="Times New Roman, serif">If my primary agent cannot be contacted in time or for any reason is unavailable or unable or unwilling to act as my agent, then I select my </span><span color="#0433ff">
                       	@if(strtolower($healthFinance['backupRelation']) == 'other')
-	                    	<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}}</span>
+	                    	<span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['backupRelationOther'])}},</span>
 	                    @else
-	                    	<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}</span>
+	                    	<span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['backupRelation'])}},</span>
 	                    @endif
                       </span>
-
-                      <span color="#000000">
-                        <span face="Times New Roman, serif">, </span>
-                      </span>
-
                       <span color="#0433ff">
-                          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}},</span>
-                      </span>
-
-                      <span color="#000000">
-                        <span face="Times New Roman, serif"> of </span>
-                      </span>
-
-                      <span color="#0433ff">
-                          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupAddress']}}, </span>
-                      </span>
-
-                      <span face="Times New Roman, serif">in </span>
-
-                      <span color="#0000ff">
-                          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupCity']}}, </span>
-                      </span>
-
-                      <span face="Times New Roman, serif"> </span>
-
-                      <span color="#0000ff">
-                          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupState']}}, </span>
-                      </span>
-
-                      <span color="#0000ff">
-                          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}}, </span>
-                      </span>
-
-                      <span color="#000000">
-                        <span face="Times New Roman, serif">(Tel: </span>
-                      </span>
-
-                      <span color="#0433ff">
-                          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupphone']}}</span>
-                      </span>
-
-                      <span color="#000000">
-                        <span face="Times New Roman, serif">), as my alternate agent to make health care decisions for me.</span>
+                          <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['backupFullname'])}} of {{$healthFinance['backupAddress']}} in {{ucwords($healthFinance['backupCity'])}}, {{ucwords($healthFinance['backupState'])}} {{$healthFinance['backupZip']}} (Tel: {{$healthFinance['backupphone']}} ), as my alternate agent to make health care decisions for me.</span>
                       </span>
                     </p>
                     <p align="justify" style="margin-left: 0.38in; margin-bottom: 0in; ">
@@ -912,13 +777,13 @@
 
           <p style="margin-bottom: 0in; ">
             <span color="#0432ff">
-                <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}},</span>
+                <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{ucwords($tellUsAboutYou['city'])}},</span>
             </span>
 
             <span face="Times New Roman, serif"> </span>
 
             <span color="#0432ff">
-                <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}},</span>&nbsp;
+                <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{ucwords($tellUsAboutYou['state'])}},</span>&nbsp;
             </span>
 
             <span face="Times New Roman, serif"> </span>
@@ -952,7 +817,7 @@
           by </span>
 
           <span color="#0000ff">
-              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}},</b>
+              <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</b>
           </span>
 
           <span style="letter-spacing: 0.1pt"><span face="Times New Roman, serif">
@@ -1034,7 +899,7 @@
           </span></span>
 
           <span color="#0000ff">
-              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}},</b>
+              <b>{{strtoupper($tellUsAboutYou['fullname'])}},</b>
           </span>
 
           <span style="letter-spacing: 0.1pt"><span face="Times New Roman, serif">
@@ -1064,7 +929,7 @@
           the person's estate upon </span>
 
           <span color="#0433ff">
-              <span *ngIf="genderTxt3 !== null" face="Times New Roman, serif">{{$genderTxt3}}</span>
+              <span *ngIf="genderTxt3 !== null" face="Times New Roman, serif">{{$genderTxt}}</span>
               <span *ngIf="genderTxt3 === null" face="Times New Roman, serif">he/she</span>
           </span>
 

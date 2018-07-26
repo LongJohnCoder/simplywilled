@@ -51,7 +51,7 @@
           <p align="center" style="text-indent: -0.25in; margin-top: 0.25in; margin-bottom: 0.17in; line-height: 0.23in">
               <span style="font-size: 13pt"><b>Section 1. LIVING WILL</b></span></p>
           <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span style="font-size: 12pt"><span style="background: #ffffff"><span >I,
+              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span style="font-size: 12pt"><span style="background: #ffffff"><span><span style="display:inline-block; padding-left:40px;"></span>I,
               <span> {{strtoupper($tellUsAboutYou['fullname'])}}, </span>
               being of sound mind and at least 19 years old, would like to make the
               following wishes known. I direct that my family, my doctors and
@@ -233,14 +233,14 @@
           <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
 
           </p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><i>________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I
+          <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><i>________ I
                   <b>do not</b> want to name a health care proxy (If you check this
                   answer go to section 3).</i></p>
           <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
 
           </p>
           <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-            <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I
+            <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">________ I
             <b>do</b> want the person listed below to be my health care proxy. I
             have talked with this person about my wishes. </span></span></span></span></span>
           </p>
@@ -307,7 +307,7 @@
 
           </p>
           <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-            <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I
+            <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">________ I
             want my health care proxy to follow only the directions as listed on
             this form. </span></span></span></span></span>
           </p>
@@ -318,12 +318,12 @@
   <div>
       <div>
           <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-            <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span style="font-size: 12pt"><span style="background: #ffffff"><span >________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I
+            <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span style="font-size: 12pt"><span style="background: #ffffff"><span >________ I
             want my health care proxy to follow my directions as listed on this
             form and to make any decisions about things I have not covered in the
             form.</span></span></span></span></span></p>
           <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-            <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span style="font-size: 12pt"><span style="background: #ffffff"><span >________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I
+            <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span style="font-size: 12pt"><span style="background: #ffffff"><span >________ I
             want my health care proxy to make the final decision, even though it
             could mean doing something different from what I have listed on this
             form.</span></span></span></span></span></p>
@@ -445,15 +445,15 @@
 
           </p>
           <p style="margin-bottom: 0in; line-height: 115%">_______________________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;____________________________________</p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span style="font-size: 9pt">WITNESS
+          <p align="justify" style="margin: 0in; line-height: 0.2in"><span style="font-size: 9pt">WITNESS
             1 [signature – please print name under this line]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[street
             address]</span></p>
           <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
 
           </p>
-          <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+          <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-left:335px;">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span style="font-size: 12pt"><span style="background: #ffffff"><span >____________________________________</span></span></span></span></span></p>
-          <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"><span style="font-size: 9pt">[city,
+          <p style="text-indent: 0.5in; margin: 0in; line-height: 115%; margin-left:290px;"><span style="font-size: 9pt">[city,
             state]</span></p>
           <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
 
@@ -462,15 +462,15 @@
 
           </p>
           <p style="margin-bottom: 0in; line-height: 115%">_______________________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;____________________________________</p>
-          <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span style="font-size: 9pt">WITNESS
+          <p align="justify" style="margin: 0in; line-height: 0.2in"><span style="font-size: 9pt">WITNESS
             2 [signature – please print name under this line]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[street
             address]</span></p>
           <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
 
           </p>
-          <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+          <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-left:335px;">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span style="font-size: 12pt"><span style="background: #ffffff"><span >____________________________________</span></span></span></span></span></p>
-          <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"><span style="font-size: 9pt">[city,
+          <p style="text-indent: 0.5in; margin: 0in; line-height: 115%; margin-left:290px;"><span style="font-size: 9pt">[city,
             state]</span></p>
           <p align="center" style="text-indent: -0.25in; margin-top: 0.25in; margin-bottom: 0.17in; line-height: 0.23in">
             <span style="font-size: 13pt"><b>Section 6. SIGNATURE OF

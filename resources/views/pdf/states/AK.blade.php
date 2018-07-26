@@ -1026,15 +1026,15 @@
       <span face="TimesNewRomanPSMT, serif"><span style="text-decoration: none">DATE
       </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span
                   style="text-decoration: none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></p>
-            <p align="left" style="margin-bottom: 0in; line-height: 115%;"><span face="TimesNewRomanPSMT, serif">_____________________________________________________
+            <p align="left" style="margin-bottom: 0in; line-height: 115%;"><span face="TimesNewRomanPSMT, serif">_____________________________________________________<br>
 
       (signature of WITNESS 1) </span>
             </p>
-            <p align="left" style="margin-bottom: 0in; line-height: 115%;"><span face="TimesNewRomanPSMT, serif">_____________________________________________________
+            <p align="left" style="margin-bottom: 0in; line-height: 115%;"><span face="TimesNewRomanPSMT, serif">_____________________________________________________<br>
 
       (printed name of witness) </span>
             </p>
-            <p align="left" style="margin-bottom: 0in; line-height: 115%;"><span face="TimesNewRomanPSMT, serif">_____________________________________________________
+            <p align="left" style="margin-bottom: 0in; line-height: 115%;"><span face="TimesNewRomanPSMT, serif">_____________________________________________________<br>
 
       (address) (city) (state) (zip code) </span>
             </p>
@@ -1065,15 +1065,15 @@
       <span face="TimesNewRomanPSMT, serif"><span style="text-decoration: none">DATE
       </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span
                   style="text-decoration: none">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></p>
-            <p align="left" style="margin-bottom: 0in; line-height: 115%;"><span face="TimesNewRomanPSMT, serif">________________________________________________________
+            <p align="left" style="margin-bottom: 0in; line-height: 115%;"><span face="TimesNewRomanPSMT, serif">________________________________________________________<br>
 
       (signature of WITNESS 2) </span>
             </p>
-            <p align="left" style="margin-bottom: 0in; line-height: 115%;"><span face="TimesNewRomanPSMT, serif">________________________________________________________
+            <p align="left" style="margin-bottom: 0in; line-height: 115%;"><span face="TimesNewRomanPSMT, serif">________________________________________________________<br>
 
       (printed name of witness) </span>
             </p>
-            <p align="left" style="margin-bottom: 0in; line-height: 115%;"><span face="TimesNewRomanPSMT, serif">________________________________________________________
+            <p align="left" style="margin-bottom: 0in; line-height: 115%;"><span face="TimesNewRomanPSMT, serif">________________________________________________________<br>
 
       (address) (city) (state) (zip code) </span>
             </p>

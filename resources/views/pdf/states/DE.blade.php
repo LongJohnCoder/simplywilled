@@ -32,7 +32,7 @@
     <p  style="margin-bottom: 0.25in;  text-align:center;"><span size="4" style="font-size: 13pt"><span size="4" style="font-size: 16pt"><b>of</b></span></span></p>
     <p class="western"  style="margin-bottom: 0.08in;  text-align: center;">
       <b>
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+        <span>{{strtoupper($tellUsAboutYou['fullname'])}}</span>
         </b></p>
     <p  style="margin-bottom: 0.19in; "><br/>
       <br/>
@@ -132,28 +132,25 @@
     </p>
     <p  style="margin-bottom: 0in; "><span ><span size="2"><span ><span size="3" style="font-size: 12pt"><b>A.
       DESIGNATION OF AGENT</b></span></span><span ><span size="3" style="font-size: 12pt">:
-      I designate my </span></span>
+      I designate my</span></span>
 
       <span>
       	@if(strtolower($healthFinance['relation']) == 'other')
-			<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}}, </span>
+			<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}},</span>
 		@else
-			<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relation']))}}, </span>
-		@endif
-      </span>
-
-      <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['fullname']}}, </span> of
+			<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relation']))}},</span>
+		@endif </span><span size="3" style="font-size: 12pt;text-transform: capitalize"> {{ucwords($healthFinance['fullname'])}},</span> of
 
 
-      <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['address']}} </span> in
+      <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['address']}}</span> in
 
 
 
       <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['city']}},</span>
 
-      <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['state']}}, </span>
+      <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['state']}}</span>
 
-      <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['zip']}}, </span>
+      <span size="3" style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['zip']}}</span>
 
 
       (Tel: <span> {{$healthFinance['phone']}} </span> ),
@@ -173,15 +170,15 @@
 	    	<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupRelation']))}}, </span>
 	  	@endif
 
-      <span style="font-size: 12pt;text-transform: capitalize"> {{strtoupper($healthFinance['backupFullname'])}} </span> of
+      <span style="font-size: 12pt;text-transform: capitalize">{{ucwords($healthFinance['backupFullname'])}}</span> of
 
-      <span style="font-size: 12pt;text-transform: capitalize"> {{strtoupper($healthFinance['backupAddress'])}} </span> in
+      <span style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['backupAddress']}} </span> in
 
-      <span style="font-size: 12pt;text-transform: capitalize"> {{strtoupper($healthFinance['backupCity'])}},</span>
+      <span style="font-size: 12pt;text-transform: capitalize"> {{ucwords($healthFinance['backupCity'])}},</span>
 
-      <span style="font-size: 12pt;text-transform: capitalize"> {{strtoupper($healthFinance['backupState'])}}, </span>
+      <span style="font-size: 12pt;text-transform: capitalize"> {{ucwords($healthFinance['backupState'])}}</span>
 
-      <span style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['backupZip']}}, </span>
+      <span style="font-size: 12pt;text-transform: capitalize"> {{$healthFinance['backupZip']}}</span>
 
       <span style="font-size: 12pt;"> (Tel: <span> {{$healthFinance['backupphone']}} </span> ),
 
@@ -928,7 +925,7 @@
     </p>
     <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <b>
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
       </b>
   	</p>
 
@@ -940,12 +937,12 @@
     <span>
     <span size="2">
 
-        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['city'])}}</span> ,
+        <span style="text-transform: capitalize">{{ucwords($tellUsAboutYou['city'])}}</span> ,
 
 
-        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['state'])}}</span>
+        <span style="text-transform: capitalize">{{ucwords($tellUsAboutYou['state'])}}</span>
 
-        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['zip'])}}</span>
+        <span style="text-transform: capitalize">{{$tellUsAboutYou['zip']}}</span>
 
     </span></span></p>
 
@@ -1026,35 +1023,13 @@
       <span size="4" style="font-size: 14pt"><b>STATEMENT OF WITNESSES</b></span></p>
 
     <p  style="margin-bottom: 0.03in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">SIGNED
-      AND DECLARED by the above-named declarant as and for </span>
+      AND DECLARED by the above-named declarant as and for</span>
 
       <span>
       	<span size="3" style="font-size: 12pt">
-      		<span>{{$genderTxt4}}</span>
+      		<span>{{$genderTxt4}} written declaration under 16 Del. C. §§2502, 2503, in our presence, who in {{$genderTxt4}} presence, at {{$genderTxt4}} request, and in the presence of each other, have hereunto subscribed our names as witnesses, and state:</span>
       	</span>
       </span>
-
-      <span size="3" style="font-size: 12pt">
-      written declaration under 16 Del. C. §§2502, 2503, in our presence,
-      who in </span>
-
-      <span>
-      	<span size="3" style="font-size: 12pt">
-      		<span>{{$genderTxt4}}</span>
-      	</span>
-      </span>
-
-      <span size="3" style="font-size: 12pt"> presence, at </span>
-
-      <span>
-      	<span size="3" style="font-size: 12pt">
-      		<span>{{$genderTxt4}}</span>
-      	</span>
-      </span>
-
-      <span size="3" style="font-size: 12pt">
-      request, and in the presence of each other, have hereunto subscribed
-      our names as witnesses, and state:</span>
   		</span>
   		</p>
 

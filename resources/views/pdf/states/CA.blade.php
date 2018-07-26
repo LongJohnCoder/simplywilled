@@ -141,7 +141,7 @@
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >By
               this document, I,
 
-              <span>{{$tellUsAboutYou['fullname']}} </span>
+              <span>{{strtoupper($tellUsAboutYou['fullname'])}} </span>
               intend to create an Advance Health Care Directive (the “Directive”)
               under Division 4.7 – Part 2 of the California Probate Code. This
               Directive shall not be affected by my subsequent incapacity.</span></span></span></span></span></p>
@@ -575,7 +575,7 @@
             </p>
 
             <p style="margin-bottom: 0.08in; line-height: 115%">
-              <b>{{$tellUsAboutYou['fullname']}}</b>
+              <b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>
             </p>
 
             <p style="margin-bottom: 0in; line-height: 115%">
@@ -583,11 +583,11 @@
             </p>
 
             <p style="margin-bottom: 0in; line-height: 115%">
-            	<span>{{$tellUsAboutYou['city']}},
+            	<span>{{ucwords($tellUsAboutYou['city'])}},
             </span>
 
             <span>
-            	{{$tellUsAboutYou['state']}},
+            	{{ucwords($tellUsAboutYou['state'])}}
             </span>
 
             <span>
@@ -637,7 +637,7 @@
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >I
               declare under penalty of perjury under the laws of California (1)
               that
-              <span> {{$tellUsAboutYou['fullname']}} </span>,
+              <span>{{strtoupper($tellUsAboutYou['fullname'])}}, </span>
               the individual who signed or acknowledged this advance health care
               directive is personally known to me (or that
               <span> {{$genderTxt4}} </span> identity was proven to me by convincing
@@ -656,13 +656,7 @@
               the laws of California that I am not related to the individual
               executing this advance health care directive document by blood,
               marriage or adoption and, to the best of my knowledge, I am not
-              entitled to any part of the individual’s estate upon
-
-              <span>
-              	<b> {{$genderTxt4}} </b>
-              </span>
-              death under a will now existing or
-              by operation of law.
+              entitled to any part of the individual’s estate upon <span><b>{{$genderTxt4}}</b></span> death under a will now existing or by operation of law.
           		</b>
           	</span> </span> </span> </span> </span> </p>
 
