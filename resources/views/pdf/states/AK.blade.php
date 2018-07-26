@@ -22,7 +22,7 @@
   </script>
   <div id="footer">
     <div style="">
-      Living Will and Health Care Proxy by <br>{{$tellUsAboutYou['fullname']}}<br>
+      Durable Health Care Power by <br>{{$tellUsAboutYou['fullname']}}<br>
     </div>
   </div>
 <div class="docContainer" id="doc" style="text-align: justify">
@@ -228,13 +228,11 @@
             <p align="center" style="margin-top: 0.08in; margin-bottom: 0.08in; line-height: 115%;"></p>
             <p style="font-family: Times New Roman, serif;margin-bottom: 0in; line-height: 115%;"><span style="font-size: 11pt"><span style="font-size: 13pt"><b>(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DESIGNATION
       OF AGENT.</b></span><b> </b>I designate my
-        @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] == 'Other')
-            <span>{{$healthFinance['relation']}},</span>
-        @elseif(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
-            <span>{{$healthFinance['relation']}},</span>
+        @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] == 'Other')<span>{{ucwords($healthFinance['relationOther']) }},</span>
+        @elseif(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')<span>{{ucwords($healthFinance['relation'])}},</span>
         @endif
-      <span> {{$healthFinance['fullname']}},</span>
-      of <span> {{$healthFinance['address']}},</span> (Tel: <span> {{$healthFinance['phone']}} </span>), as my agent to make health care
+      <span>{{ucwords($healthFinance['fullname'])}}</span>
+      of <span>{{$healthFinance['address']}}</span> (Tel: <span> {{$healthFinance['phone']}} </span>), as my agent to make health care
       decisions for me. </span>
             </p>
             <p style="margin-bottom: 0in; line-height: 115%;"></p>
@@ -951,12 +949,12 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%;">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif;"><span style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">_______________________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOB:
       <span><b>{{date('jS M, Y', strtotime($tellUsAboutYou['dob']))}}</b></span></span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; line-height: 115%;"><span> {{$tellUsAboutYou['fullname']}} </span></p>
+            <p style="margin-bottom: 0in; line-height: 115%;"><span> {{strtoupper($tellUsAboutYou['fullname'])}} </span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%;" >
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif;"><span style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000"><span color="#0000ff">{{$tellUsAboutYou['address']}}</span></span></span></span></span></span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%;">
-                    <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif;"><span style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000"><span>{{$tellUsAboutYou['city']}},</span>
-                      <span>{{$tellUsAboutYou['state']}}</span></span></span></span></span></span></p>
+                    <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif;"><span style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000"><span>{{ucwords($tellUsAboutYou['city'])}},</span>
+                      <span>{{ucwords($tellUsAboutYou['state'])}}</span></span></span></span></span></span></p>
 
             <p style="margin-bottom: 0in; line-height: 115%;">
 
@@ -1113,7 +1111,7 @@
         <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>,
         <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>,
         before me appeared
-          <span> {{$tellUsAboutYou['fullname']}},</span>
+          <span> {{strtoupper($tellUsAboutYou['fullname'])}},</span>
         personally known to me (or proved to me on
         the basis of satisfactory evidence) to be the person whose name is
         subscribed to this instrument, and acknowledged that the person

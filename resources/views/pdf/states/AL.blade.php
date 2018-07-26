@@ -52,7 +52,7 @@
               <span style="font-size: 13pt"><b>Section 1. LIVING WILL</b></span></p>
           <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span style="font-size: 12pt"><span style="background: #ffffff"><span >I,
-              <span> {{$tellUsAboutYou['fullname']}}, </span>
+              <span> {{strtoupper($tellUsAboutYou['fullname'])}}, </span>
               being of sound mind and at least 19 years old, would like to make the
               following wishes known. I direct that my family, my doctors and
               health care workers, and all others follow the directions I am
@@ -250,14 +250,14 @@
           <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span color="#0000ff"><span color="#000000">I
             hereby appoint my
               @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
-                  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}},</span>
+                  <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['relationOther'])}},</span>
               @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
-                  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}},</span>
+                  <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['relation'])}},</span>
               @endif
-            <span> {{$healthFinance['fullname']}} </span> of
-            <span> {{$healthFinance['address']}} </span> in <span> {{$healthFinance['city']}},</span>
-            <span> {{$healthFinance['state']}},</span>
-            <span> {{$healthFinance['zip']}},</span>   (Tel: <span> {{$healthFinance['phone']}} </span>), as my proxy to make medical or
+            <span> {{ucwords($healthFinance['fullname'])}} </span> of
+            <span> {{$healthFinance['address']}} </span> in <span> {{ucwords($healthFinance['city'])}},</span>
+            <span> {{ucwords($healthFinance['state'])}}</span>
+            <span> {{$healthFinance['zip']}}</span>   (Tel: <span> {{$healthFinance['phone']}} </span>), as my proxy to make medical or
               other health care decisions for me. </span></span>
           </p>
           <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
@@ -270,14 +270,14 @@
               I revoke this appointment or authority to act as my proxy, then I
               designate and appoint my
               @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
-                  <span>{{$healthFinance['backupRelation']}},</span>
+                  <span>{{ucwords($healthFinance['backupRelationOther'])}},</span>
               @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
-                  <span>{{$healthFinance['backupRelation']}},</span>
+                  <span>{{ucwords($healthFinance['backupRelation'])}},</span>
               @endif
-              <span> {{$healthFinance['backupFullname']}},</span>
-              of <span> {{$healthFinance['backupAddress']}} </span> in <span> {{$healthFinance['backupCity']}},</span>
-              <span> {{$healthFinance['backupState']}},</span>
-              <span> {{$healthFinance['backupZip']}},</span> (Tel: <span> {{$healthFinance['backupphone']}} </span>), as my proxy to make medical or other
+              <span> {{ucwords($healthFinance['backupFullname'])}},</span>
+              of <span> {{$healthFinance['backupAddress']}} </span> in <span> {{ucwords($healthFinance['backupCity'])}},</span>
+              <span> {{ucwords($healthFinance['backupState'])}}</span>
+              <span> {{$healthFinance['backupZip']}}</span> (Tel: <span> {{$healthFinance['backupphone']}} </span>), as my proxy to make medical or other
               health care decisions for me.
           </p>
           <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
@@ -421,7 +421,7 @@
           </p>
           <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
             <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span style="font-size: 12pt"><span style="background: #ffffff">
-              <span><b>{{array_key_exists('dob',$tellUsAboutYou) && !is_null($tellUsAboutYou['dob']) ? date('jS M, Y', strtotime($tellUsAboutYou['dob'])) : '__________________________________' }}</b></span>
+              <span>My Birthdate: <b>{{array_key_exists('dob',$tellUsAboutYou) && !is_null($tellUsAboutYou['dob']) ? date('jS M, Y', strtotime($tellUsAboutYou['dob'])) : '__________________________________' }}</b></span>
               {{--<span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.dob === null"><b>__________________________________</b></span>--}}
             </span></span></span></span>
           </p>
@@ -475,13 +475,13 @@
           <p align="center" style="text-indent: -0.25in; margin-top: 0.25in; margin-bottom: 0.17in; line-height: 0.23in">
             <span style="font-size: 13pt"><b>Section 6. SIGNATURE OF
               PROXY</b></span></p>
-          <p style="margin-bottom: 0in; line-height: 115%">I,<span> {{$healthFinance['fullname']}},</span> am willing to serve as the health care proxy.</p>
+          <p style="margin-bottom: 0in; line-height: 115%">I,<span> {{ucwords($healthFinance['fullname'])}},</span> am willing to serve as the health care proxy.</p>
           <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
 
           </p>
           <p style="margin-bottom: 0in; line-height: 115%">Dated:
               ____________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______________________________________</p>
-          <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"><span color="#0000ff"><b><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$healthFinance['fullname']}}</span> </b></span></p>
+          <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"><span color="#0000ff"><b><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ucwords($healthFinance['fullname'])}}</span> </b></span></p>
           <br>
           @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == true)
               <span>
@@ -489,13 +489,13 @@
                 <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
 
                 </p>
-                <p style="margin-bottom: 0in; line-height: 115%">I,  <span > {{$healthFinance['backupFullname']}},</span> am willing to serve as the health care proxy.</p>
+                <p style="margin-bottom: 0in; line-height: 115%">I,  <span > {{ucwords($healthFinance['backupFullname'])}},</span> am willing to serve as the health care proxy.</p>
                 <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
 
                 </p>
                 <p style="margin-bottom: 0in; line-height: 115%">Dated:
                   ____________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______________________________________</p>
-                <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"> <span><b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$healthFinance['backupFullname']}} </b></span></p>
+                <p style="text-indent: 0.5in; margin-bottom: 0in; line-height: 115%"> <span><b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ucwords($healthFinance['backupFullname'])}} </b></span></p>
               </span>
            @endif
       </div>

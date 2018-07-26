@@ -254,9 +254,9 @@
       <span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">my
       </span><span size="3" style="font-size: 12pt">
             @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
-              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}},</span>
+              <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['relationOther'])}},</span>
             @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
-              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}},</span>
+              <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['relation'])}},</span>
             @endif
         <span style="text-transform: capitalize" > {{$healthFinance['fullname']}} </span>
       </span></span></span></p>
@@ -275,13 +275,13 @@
             </p>
             <p  style="text-align:justify;margin-left: 1.81in; text-indent: -1.31in; margin-bottom: 0.03in; ">
       <span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">
-        <span style="text-transform: capitalize"> {{$healthFinance['address']}} </span>
+        <span style="text-transform: capitalize"> {{ucwords($healthFinance['address'])}} </span>
       </span></span></span>
             </p>
             <p  style="text-align:justify;margin-left: 1.81in; text-indent: -1.31in; margin-bottom: 0.03in; ">
       <span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">
-        <span style="text-transform: capitalize" > {{$healthFinance['city']}},
-        <span style="text-transform: capitalize" > {{$healthFinance['state']}}, </span>
+        <span style="text-transform: capitalize" > {{ucwords(strtolower($healthFinance['city']))}},
+        <span style="text-transform: capitalize" > {{ucwords($healthFinance['state'])}}, </span>
         <span style="text-transform: capitalize" > {{$healthFinance['zip']}}</span>
       </span></span></span></span></p>
             <p  style="text-align:justify;margin-left: 1.81in; text-indent: -1.31in; margin-bottom: 0.03in; ">
@@ -537,11 +537,11 @@ Release Authority</span></span><span size="3" style="font-size: 12pt">.
       <span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">my
       </span><span size="3" style="font-size: 12pt">
          @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
-              <span>{{$healthFinance['backupRelation']}},</span>
+              <span>{{ucwords($healthFinance['backupRelationOther'])}},</span>
          @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
-              <span>{{$healthFinance['backupRelation']}},</span>
+              <span>{{ucwords($healthFinance['backupRelation'])}},</span>
          @endif
-         <span style="text-transform: capitalize" > {{$healthFinance['backupFullname']}} </span>
+         <span style="text-transform: capitalize" > {{ucwords($healthFinance['backupFullname'])}} </span>
       </span></span></span></p>
                 <p  style="text-align:justify;margin-left: 0.19in; text-indent: 0.31in; margin-bottom: 0.03in; ">
 
@@ -565,7 +565,7 @@ Release Authority</span></span><span size="3" style="font-size: 12pt">.
       <span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">
          in
       <span style="text-transform: capitalize" > {{$healthFinance['backupCity']}},</span>
-      <span style="text-transform: capitalize" > {{$healthFinance['backupState']}},</span>
+      <span style="text-transform: capitalize" > {{$healthFinance['backupState']}} </span>
       <span style="text-transform: capitalize" > {{$healthFinance['backupZip']}} </span>
       </span></span></span></p>
                 <p  style="text-align:justify;margin-left: 1.81in; text-indent: -1.31in; margin-bottom: 0.03in; ">
@@ -606,11 +606,21 @@ Release Authority</span></span><span size="3" style="font-size: 12pt">.
         <div class="docPageInner"
              style="">
 
-            <p  style="text-align:justify;margin-bottom: 0.09in; "><span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>{{$healthFinance['anyBackupAgent'] == 'true' ? '8.' : '7.' }}</b></span><b>
-      Prior Designations Revoked.</b></span></span></p>
+            <p  style="text-align:justify;margin-bottom: 0.09in; ">
+              <span style="font-family:Times New Roman, serif">
+                <span size="2" style="font-size: 12pt">
+                  <span size="3">
+                    <b>{{$healthFinance['anyBackupAgent'] == 'true' ? '8.' : '7.' }}</b>
+                  </span>
+
+                  <b>Prior Designations Revoked.</b>
+                </span>
+              </span>
+            </p>
+
             <p  style="text-align:justify;text-indent: 0.38in; margin-bottom: 0in; ">
-      <span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
-        revoke any prior durable power of attorney for health care.</span></span></span></p>
+              <span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
+                revoke any prior durable power of attorney for health care.</span></span></span></p>
             <p  style="text-align:justify;margin-bottom: 0in; ">
 
             </p>
@@ -640,8 +650,8 @@ Release Authority</span></span><span size="3" style="font-size: 12pt">.
             <p  style="text-align:justify;margin-bottom: 0in; ">
 
             </p>
-            <p  style="text-align:justify;margin-bottom: 0in; "><span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt"><u>					</u></span></span><span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt">		</span></span><span style="font-family:Times New Roman, serif"><b>
-      DATE:  </b></span><span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt"><u>			</u></span></span><span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt">
+            <p  style="text-align:justify;margin-bottom: 0in; "><span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt"><span>________________________</span></span></span><span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt">		</span></span><span style="font-family:Times New Roman, serif"><b>
+      DATE:  </b></span><span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt"><span>_______________________</span></span></span><span style="font-family:Times New Roman, serif"><span size="2" style="font-size: 9pt">
     </span></span>
             </p>
             <p  style="text-align:justify;margin-bottom: 0.08in;  orphans: 0; widows: 0">
@@ -661,7 +671,7 @@ Release Authority</span></span><span size="3" style="font-size: 12pt">.
             <p  style="text-align:justify;margin-bottom: 0in; ">
       <span style="font-family:Times New Roman, serif">
         <span style="text-transform: capitalize" >{{$tellUsAboutYou['city']}},</span>
-        <span style="text-transform: capitalize" >{{$tellUsAboutYou['state']}},</span>
+        <span style="text-transform: capitalize" >{{$tellUsAboutYou['state']}} </span>
         <span style="text-transform: capitalize" >{{$tellUsAboutYou['zip']}}</span>
       </span>
             </p>

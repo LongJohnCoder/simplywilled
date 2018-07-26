@@ -438,17 +438,17 @@
             <p  style="text-align:justify;margin-left: 1.49in; text-indent: -1.49in; margin-bottom: 0.08in;  orphans: 0; widows: 0">
         <span color="#000000">    <span style="font-family:Times New Roman, serif">My
             name: 		</span></span><span style="font-family:Times New Roman, serif">
-                <span style="text-transform: capitalize" >{{$tellUsAboutYou['fullname']}}</span>
+                <span style="text-transform: capitalize" >{{strtoupper($tellUsAboutYou['fullname'])}}</span>
         </span></p>
             <p  style="text-align:justify;margin-left: 1.49in; text-indent: -1.31in; margin-bottom: 0in; ">
       <span style="font-family:Times New Roman, serif">My address:
-        <span style="text-transform: capitalize" >{{$tellUsAboutYou['address']}}</span>,
+        <span style="text-transform: capitalize" >{{ucwords($tellUsAboutYou['address'])}}</span>,
       </span>
             </p>
             <p  style="text-align:justify;margin-left: 1.49in; margin-bottom: 0in; ">
       <span style="font-family:Times New Roman, serif">
-        <span style="text-transform: capitalize" >{{$tellUsAboutYou['city']}}</span>,
-        <span style="text-transform: capitalize" >{{$tellUsAboutYou['state']}}</span>,
+        <span style="text-transform: capitalize" >{{ucwords(strtolower($tellUsAboutYou['city']))}},</span>
+        <span style="text-transform: capitalize" >{{ucwords(strtolower($tellUsAboutYou['state']))}} </span>
         <span style="text-transform: capitalize" >{{$tellUsAboutYou['zip']}}</span>
       </span></p>
             <p  style="text-align:justify;margin-bottom: 0.06in; ">
@@ -468,20 +468,20 @@
             <p  style="text-align:justify;margin-left: 0.19in; margin-bottom: 0.06in; ">
               <span style="font-family:Times New Roman, serif">(Agent name):			my
                   @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
-                      <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}},</span>
+                      <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}},</span>
                   @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
-                      <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}},</span>
+                      <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relation']))}},</span>
                   @endif
-                  <span style="text-transform: capitalize" > {{$healthFinance['fullname']}} </span>
+                  <span style="text-transform: capitalize" > {{ucwords($healthFinance['fullname'])}} </span>
               </span></p>
             <p  style="text-align:justify;margin-left: 1.31in; text-indent: -1.13in; margin-bottom: 0.06in; ">
               <span style="font-family:Times New Roman, serif">(Agent address):
-                <span style="text-transform: capitalize" > {{$healthFinance['address']}} </span>
+                <span style="text-transform: capitalize" > {{ucwords($healthFinance['address'])}} </span>
               </span>
             </p>
             <p style="margin-left: 2.5in; margin-bottom: 0in; "><span style="font-family:Times New Roman, serif">
-              <span style="text-transform: capitalize" > {{$healthFinance['city']}}, </span>
-                <span style="text-transform: capitalize" > {{$healthFinance['state']}}, </span>
+              <span style="text-transform: capitalize" > {{ucwords(strtolower($healthFinance['city']))}}, </span>
+                <span style="text-transform: capitalize" > {{ucwords(strtolower($healthFinance['state']))}} </span>
                 <span style="text-transform: capitalize" > {{$healthFinance['zip']}} </span>
               </span>
             </p>
@@ -504,7 +504,7 @@
             <!--<p  style="text-align:justify;margin-bottom: 0in; "><span color="#000000"><span style="font-family:Times New Roman, serif">«</span></span><span color="#008f00"><span style="font-family:Times New Roman, serif">IF
               Rx Alternate Agents?</span></span><span color="#000000"><span style="font-family:Times New Roman, serif">
               »</span></span></p>-->
-            @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == true)
+            @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == 'true')
             <div >
                 <p  style="text-align:justify;margin-bottom: 0.06in; "><span style="font-family:Times New Roman, serif"><b>SUCCESSOR
                      HEALTH CARE AGENT(S) (optional):</b></span></p>
@@ -518,21 +518,21 @@
                 <p  style="text-align:justify;margin-left: 0.19in; margin-bottom: 0.06in; ">
                     <span style="font-family:Times New Roman, serif">(Successor Agent name):		my
                         @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
-                            <span>{{$healthFinance['backupRelation']}},</span>
+                            <span>{{ucwords(strtolower($healthFinance['backupRelationOther']))}},</span>
                         @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
-                            <span>{{$healthFinance['backupRelation']}},</span>
+                            <span>{{ucwords(strtolower($healthFinance['backupRelation']))}},</span>
                         @endif
-                      <span style="text-transform: capitalize" > {{$healthFinance['backupFullname']}} </span>
+                      <span style="text-transform: capitalize" > {{ucwords($healthFinance['backupFullname'])}} </span>
                     </span></p>
                 <p  style="text-align:justify;margin-left: 1.31in; text-indent: -1.13in; margin-bottom: 0.06in; ">
                     <span style="font-family:Times New Roman, serif">(Successor Agent address):
-                      <span style="text-transform: capitalize" > {{$healthFinance['backupAddress']}} </span>
+                      <span style="text-transform: capitalize" > {{ucwords($healthFinance['backupAddress'])}} </span>
                     </span>
                 </p>
                 <p style="margin-left: 2.5in; margin-bottom: 0in; ">
                     <span style="font-family:Times New Roman, serif">
-                      <span style="text-transform: capitalize" > {{$healthFinance['backupCity']}}, </span>
-                      <span style="text-transform: capitalize" > {{$healthFinance['backupState']}}, </span>
+                      <span style="text-transform: capitalize" > {{ucwords(strtolower($healthFinance['backupCity']))}}, </span>
+                      <span style="text-transform: capitalize" > {{ucwords(strtolower($healthFinance['backupState']))}} </span>
                       <span style="text-transform: capitalize" > {{$healthFinance['backupZip']}} </span>
                     </span>
                 </p>
@@ -693,7 +693,7 @@
         signature:	________________________________________________</span></p>
             <p  style="text-align:justify;margin-bottom: 0.08in;  orphans: 0; widows: 0">
                 <span color="#000000"><span style="font-family:Times New Roman, serif">		</span></span><span style="font-family:Times New Roman, serif"><b>
-                    <span style="text-transform: capitalize" >{{$tellUsAboutYou['fullname']}}</span>
+                    <span style="text-transform: capitalize" >{{strtoupper($tellUsAboutYou['fullname'])}}</span>
               </b></span></p>
             <p  style="text-align:justify;margin-bottom: 0.13in; "><span color="#000000"><span style="font-family:Times New Roman, serif">Today’s
       date:	</span></span><span style="font-family:Times New Roman, serif">________________________________________________</span></p>

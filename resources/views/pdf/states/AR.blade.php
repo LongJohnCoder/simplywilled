@@ -185,9 +185,9 @@
                 </p>
                 <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
                     Signature: _______________________________________</p>
-                <p class="western" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+                <p class="western" style="margin-left: 0.5in; line-height: 100%; orphans: 0; widows: 0">
                     <b></b>
-                    <span><b>{{ucwords($tellUsAboutYou['fullname'])}}</b></span>
+                    <span><b>{{strtoupper($tellUsAboutYou['fullname'])}}</b></span>
                     <b></b>
                     <!-- <span><b>{{$tellUsAboutYou['middlename']}}</b></span>
                     <b></b>
@@ -218,7 +218,7 @@
                     <span size="4" style="font-size: 14pt"><b>STATEMENT OF WITNESSES</b></span></p>
                 <p class="western" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
                     I declare that
-                    <span>{{ucwords($tellUsAboutYou['fullname'])}},</span>
+                    <span>{{strtoupper($tellUsAboutYou['fullname'])}},</span>
                     <!-- <span>{{$tellUsAboutYou['middlename']}}</span> -->
                     <!-- <span>{{$tellUsAboutYou['lastname']}}</span> -->
                     <span style="letter-spacing: 0.1pt"></span> the declarant, appeared to execute the Declaration willingly and free from duress. <span style="letter-spacing: 0.1pt"></span>
@@ -294,9 +294,9 @@
 
                 </p> -->
                 <p class="western" style="margin-bottom: 0in; line-height: 100%">
-                    I, <span>{{ucwords($tellUsAboutYou['fullname'])}}</span>, hereby designate and appoint my {{strtolower($healthFinance['relation'])}}, {{ucwords($healthFinance['fullname'])}}, of {{ucwords($healthFinance['address'])}} in {{ucwords($healthFinance['city'])}},  {{ucwords($healthFinance['state'])}}, {{$healthFinance['zip']}}, (Tel: {{$healthFinance['phone']}}), as my true and lawful health care agent and attorney-in-fact (hereinafter, my “agent”), to make decisions regarding my health care during periods when my health care provider has determined that I lack capacity to decide for myself.
+                    I, <span>{{strtoupper($tellUsAboutYou['fullname'])}}</span>, hereby designate and appoint my {{$healthFinance['relationOther'] ? ucwords($healthFinance['relationOther']) : ucwords($healthFinance['relation'])}}, {{ucwords($healthFinance['fullname'])}}, of {{ucwords($healthFinance['address'])}} in {{ucwords($healthFinance['city'])}},  {{ucwords($healthFinance['state'])}}, {{$healthFinance['zip']}}, (Tel: {{$healthFinance['phone']}}), as my true and lawful health care agent and attorney-in-fact (hereinafter, my “agent”), to make decisions regarding my health care during periods when my health care provider has determined that I lack capacity to decide for myself.
                     @if($healthFinance['anyBackupAgent'] == 'true')
-                      If my agent is not able, available, or willing to make health care decisions for me, I appoint my {{strtolower($healthFinance['backupRelation'])}}, {{ucwords($healthFinance['backupFullname'])}}, of {{ucwords($healthFinance['backupAddress'])}} in {{ucwords($healthFinance['backupCity'])}}, {{ucwords($healthFinance['backupState'])}}, {{$healthFinance['backupZip']}}, (Tel: {{$healthFinance['backupphone']}})), as my successor agent, with all of the rights and powers and authority herein stated.
+                      If my agent is not able, available, or willing to make health care decisions for me, I appoint my {{strtoupper($healthFinance['backupRelation'])}}, {{ucwords($healthFinance['backupFullname'])}}, of {{ucwords($healthFinance['backupAddress'])}} in {{ucwords($healthFinance['backupCity'])}}, {{ucwords($healthFinance['backupState'])}} {{$healthFinance['backupZip']}} (Tel: {{$healthFinance['backupphone']}})), as my successor agent, with all of the rights and powers and authority herein stated.
                     @endif
                 </p>
                 <!-- <p class="western" style="margin-bottom: 0in; line-height: 100%">
@@ -438,7 +438,7 @@
                 <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
                     Signature: _______________________________________</p>
                 <p class="western" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-                    {{ucwords($tellUsAboutYou['fullname'])}}</p>
+                    <b>{{strtoupper($tellUsAboutYou['fullname'])}}</b></p>
                 <p class="western" style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
                     {{ucwords($tellUsAboutYou['address'])}}</p>
                 <!-- <p class="western" style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
@@ -478,7 +478,7 @@
 
                 </p>
                 <p class="western" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-                    <span size="2" style="font-size: 10pt">I am a Notary Public in and for the State of Arkansas. The person who signed this instrument is personally known to me (or proved to me on the basis of satisfactory evidence) to be the individual, {{ucwords($tellUsAboutYou['fullname'])}}. The individual personally appeared before me and signed above or acknowledged the signature above as his or her own on the ____ day of ____________, ________. I declare under penalty of perjury that the individual appears to be of sound mind and under no duress, fraud, or undue influence. </span>
+                    <span size="2" style="font-size: 10pt">I am a Notary Public in and for the State of Arkansas. The person who signed this instrument is personally known to me (or proved to me on the basis of satisfactory evidence) to be the individual, {{strtoupper($tellUsAboutYou['fullname'])}}. The individual personally appeared before me and signed above or acknowledged the signature above as his or her own on the ____ day of ____________, ________. I declare under penalty of perjury that the individual appears to be of sound mind and under no duress, fraud, or undue influence. </span>
                 </p>
                 <p class="western" style="margin-bottom: 0in; line-height: 100%">
                     <span size="2" style="font-size: 10pt">My commission expires: ________________ </span>
@@ -517,7 +517,7 @@
                     <span size="4" style="font-size: 14pt"><b>STATEMENT OF WITNESSES</b></span></p>
                 <p class="western" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
                     <a name="_GoBack"></a>
-                    We the undersigned, do hereby certify that the Declarant, {{ucwords($tellUsAboutYou['fullname'])}}, </span>subscribed this Durable Power of Attorney for Health Care in our presence, and we, at his/her request, in his/her presence, and in the presence of each other, signed as attesting witnesses, and we do further certify that the Declarant appeared to be eighteen years of age or older, of sound mind, and acting without undue influence, fraud, or restraint and that his or her signature was voluntary. I am a competent adult who is not named as the agent. I witnessed the declarant’s signature on this form. I am not related to the declarant by blood, marriage, or adoption and I would not be entitled to any portion of the declarant’s estate upon his or her death under any existing will or codicil or by operation of law. I witnessed the declarant’s signature on this form.</p>
+                    We the undersigned, do hereby certify that the Declarant, {{strtoupper($tellUsAboutYou['fullname'])}}, </span>subscribed this Durable Power of Attorney for Health Care in our presence, and we, at his/her request, in his/her presence, and in the presence of each other, signed as attesting witnesses, and we do further certify that the Declarant appeared to be eighteen years of age or older, of sound mind, and acting without undue influence, fraud, or restraint and that his or her signature was voluntary. I am a competent adult who is not named as the agent. I witnessed the declarant’s signature on this form. I am not related to the declarant by blood, marriage, or adoption and I would not be entitled to any portion of the declarant’s estate upon his or her death under any existing will or codicil or by operation of law. I witnessed the declarant’s signature on this form.</p>
                 <!-- <p class="western" style="margin-bottom: 0in; line-height: 100%">
                     <br/>
 

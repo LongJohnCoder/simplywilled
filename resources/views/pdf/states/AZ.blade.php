@@ -74,7 +74,7 @@
         </p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">My Date of Birth: 	</span>
-        <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{date('jS M, Y', strtotime($tellUsAboutYou['dob']))}}</span>
+        <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{date('F j, Y', strtotime($tellUsAboutYou['dob']))}}</span>
 
         </p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
@@ -589,95 +589,8 @@
       <span style="font-family:'Times New Roman, serif'"><b>Witness Verification</b></span><span style="font-family:'Times New Roman, serif'">:
         I believe that this Durable Health Care Power of Attorney accurately
         expresses the wishes communicated to me by </span>
+        <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}. {{ucwords($genderTxt3)}} intends to adopt this Durable Health Care Power of Attorney at this time. {{ucwords($genderTxt3)}} is physically unable to sign or mark this document at this time. I verify that {{$genderTxt3}} directly indicated to me that the Durable Health Care Power of Attorney expresses {{$genderTxt4}} wishes and that {{$genderTxt4}} intends to adopt the Durable Health Care Power of Attorney at this time. I further affirm that {{$genderTxt3}} appears to be of sound mind and not under duress, fraud, or undue influence. {{ucwords($genderTxt3)}} is not related to me by blood, marriage, or adoption and is not a person for whom I directly provide care in a professional capacity. I have not been appointed as the representative to make medical decisions on {{$genderTxt4}} behalf.</span>
 
-        <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}.</span>
-
-        <span style="font-family:'Times New Roman, serif'">
-        </span>
-
-        <span>
-        	<span style="font-family:'Times New Roman, serif'">
-          		<span>{{ucwords($genderTxt3)}}</span>
-        	</span>
-        </span>
-
-        <span style="font-family:'Times New Roman, serif'">
-        intends to adopt this Durable Health Care Power of Attorney at this
-        time. </span>
-
-        <span>
-        	<span style="font-family:'Times New Roman, serif'">
-          		<span>{{ucwords($genderTxt3)}}</span>
-        	</span>
-        </span>
-
-        <span style="font-family:'Times New Roman, serif'"> is physically unable to sign or mark this document at this time. I
-        verify that </span>
-
-        <span>
-        	<span style="font-family:'Times New Roman, serif'">
-          		<span>{{$genderTxt3}}</span>
-        	</span>
-        </span>
-
-        <span style="font-family:'Times New Roman, serif'">
-        directly indicated to me that the Durable Health Care Power of
-        Attorney expresses </span>
-
-        <span>
-        	<span style="font-family:'Times New Roman, serif'">
-          		<span>{{$genderTxt4}}</span>
-        	</span>
-        </span>
-
-        <span style="font-family:'Times New Roman, serif'">
-        wishes and that </span>
-
-        <span>
-        	<span style="font-family:'Times New Roman, serif'">
-          		<span>{{$genderTxt4}}</span>
-        	</span>
-        </span>
-
-        <span style="font-family:'Times New Roman, serif'">
-        intends to adopt the Durable Health Care Power of Attorney at this
-        time. I further affirm that </span>
-
-        <span>
-        	<span style="font-family:'Times New Roman, serif'">
-          		<span>{{$genderTxt3}}</span>
-        	</span>
-        </span>
-
-        <span style="font-family:'Times New Roman, serif'">
-        appears to be of sound mind and not under duress, fraud, or undue
-        influence. </span>
-
-        <span>
-        	<span style="font-family:'Times New Roman, serif'">
-          		<span>{{ucwords($genderTxt3)}}</span>
-        	</span>
-        </span>
-
-        <span style="font-family:'Times New Roman, serif'">
-        is not related to me by blood, marriage, or adoption and is not a
-        person for whom I directly provide care in a professional capacity. I
-        have not been appointed as the representative to make medical
-        decisions on </span>
-
-        <span>
-        	<span style="font-family:'Times New Roman, serif'">
-          		<span>{{$genderTxt4}}</span>
-        	</span>
-        </span>
-
-        <span style="font-family:'Times New Roman, serif'">
-        behalf.</span></p>
-    <p  style="margin-top: 0.13in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <br/>
-      <br/>
-
-    </p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">Witness Signature: </span><span style="font-family:'Times New Roman, serif'">__________________________________</span><span style="font-family:'Times New Roman, serif'">  Date: </span><span style="font-family:'Times New Roman, serif'">____________________</span></p>
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
@@ -749,7 +662,7 @@
       <li>
       <p  style="margin-top: 0.08in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'">I am not entitled to any portion
-        of this person's estate upon</span><span ><span style="font-family:'Times New Roman, serif'">{{$genderTxt4}}</span></span><span style="font-family:'Times New Roman, serif'">
+        of this person's estate upon </span><span ><span style="font-family:'Times New Roman, serif'">{{$genderTxt4}}</span></span><span style="font-family:'Times New Roman, serif'">
         death under a will or by operation of law.</span></p>
       </li>
       <p  style="margin-top: 0.08in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
@@ -2115,90 +2028,14 @@
     </p>
     <p  style="margin-bottom: 0in; line-height: 100%"><a name="_GoBack"></a>
       <span style="font-family:'Times New Roman, serif'">The undersigned, being a Notary
-      Public certified in Arizona, declares that </span>
-      <span>
-
-
-      <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
-
-
-      <span style="font-family:'Times New Roman, serif'">
+      Public certified in Arizona, declares that {{strtoupper($tellUsAboutYou['fullname'])}},
       the person making this Durable Mental Health Care Power of Attorney,
       has dated and signed or marked it in my presence and appears to me to
       be of sound mind and free from duress. I further declare I am not
-      related to </span>
-
-      <span>
-      	<span style="font-family:'Times New Roman, serif'">
-      		<span>{{$genderTxt}},</span>
-      	</span>
-      </span>
-
-      <span style="font-family:'Times New Roman, serif'">
-      by blood, marriage or adoption, or a person designated to make
-      medical decisions on </span>
-
-      <span>
-      	<span style="font-family:'Times New Roman, serif'">
-
-        <span>{{$genderTxt4}}</span>
-
-      	</span>
-      </span>
-
-      <span style="font-family:'Times New Roman, serif'">
-      behalf. I am not directly involved in providing care as a
-      professional to </span>
-
-      <span>
-      	<span style="font-family:'Times New Roman, serif'">
-        <span>{{$genderTxt4}}.</span>
-      	</span>
-      </span>
-
-      <span style="font-family:'Times New Roman, serif'">
-      I am not entitled to any part of </span>
-
-      <span>
-      	<span style="font-family:'Times New Roman, serif'">
-        <span>{{$genderTxt}}</span>
-      	</span>
-      </span>
-
-      <span style="font-family:'Times New Roman, serif'">
-      estate under a will now existing or by operation of law.  In the
+      related to {{$genderTxt}}, by blood, marriage or adoption, or a person designated to makemedical decisions on {{$genderTxt4}} behalf. I am not directly involved in providing care as a professional to {{$genderTxt4}}. I am not entitled to any part of {{$genderTxt}} estate under a will now existing or by operation of law.  In the
       event the person acknowledging this Durable Mental Health Care Power
       of Attorney is physically unable to sign or mark this document, I
-      verify that </span>
-
-      <span>
-      	<span style="font-family:'Times New Roman, serif'">
-        <span>{{$genderTxt3}}</span>
-      	</span>
-      </span>
-
-      <span style="font-family:'Times New Roman, serif'">
-      directly indicated to me that the Durable Mental Health Care Power of
-      Attorney expresses </span>
-
-      <span>
-      	<span style="font-family:'Times New Roman, serif'">
-         <span>{{$genderTxt4}}</span>
-      	</span>
-      </span>
-
-      <span style="font-family:'Times New Roman, serif'">
-      wishes and that </span>
-
-      <span>
-      	<span style="font-family:'Times New Roman, serif'">
-          <span>{{$genderTxt3}}</span>
-      	</span>
-      </span>
-
-      <span style="font-family:'Times New Roman, serif'">
-      intends to adopt the Durable Mental Health Care Power of Attorney at
-          this time.</span>
+      verify that {{$genderTxt3}} directly indicated to me that the Durable Mental Health Care Power of Attorney expresses {{$genderTxt4}} wishes and that {{$genderTxt3}} intends to adopt the Durable Mental Health Care Power of Attorney at this time.
       </span>
   	</p>
 
