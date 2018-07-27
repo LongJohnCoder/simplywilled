@@ -31,7 +31,10 @@ export class AuthInterceptor implements HttpInterceptor {
       ( err: any ) => {
         if ( err instanceof HttpErrorResponse ) {
           if ( err.status === 401) {
-
+            localStorage.removeItem( 'loggedInUser' );
+            this.router.navigate( [ '/sign-in' ] );
+          // tslint:disable-next-line:max-line-length
+          } else if (err.error !== undefined && err.error !== null && err.error.error !== undefined && err.error.error !== null && err.error.error === 'Token is not provided.') {
             localStorage.removeItem( 'loggedInUser' );
             this.router.navigate( [ '/sign-in' ] );
           }

@@ -182,9 +182,8 @@
         HAMPSHIRE</b></span></span></span></p>
         <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span size="4" style="font-size: 16pt"><b>ADVANCE
         DIRECTIVE</b></span></span></span></p>
-        <p  style="margin-bottom: 0.06in; "><br/>
-        <br/>
-
+        <p  style="margin-bottom: 0.12in; ">
+        
         </p>
         <p  style="margin-bottom: 0.06in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt">NOTE:
         This form has two sections</span></span></span></p>
@@ -198,7 +197,7 @@
 
         <span>
           <span style="font-family:'Times New Roman, serif'">
-              <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b>
+              <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname | uppercase}}</b>
               <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
           </span>
         </span>
@@ -208,18 +207,18 @@
         <span><span style="font-family:'Times New Roman, serif'">,
         hereby appoint my </span></span>
         <span>
-            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther}}</span>
-            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation}}</span>
+            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther | titlecase}}</span>
+            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation | titlecase}}</span>
             <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">______________</span>
         </span>
 
         <span>
-            <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.fullname.length > 0" style="font-family:'Times New Roman, serif'">{{userDetails.healthFinance.fullname}}</span>
+            <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.fullname.length > 0" style="font-family:'Times New Roman, serif'">{{userDetails.healthFinance.fullname | titlecase}}</span>
             <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" style="font-family:'Times New Roman, serif'">(fullname)_____________________________</span>
         </span>
 
         <span>
-            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.address !== null">{{userDetails.healthFinance.address}}, </span>
+            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.address !== null">{{userDetails.healthFinance.address | titlecase}}, </span>
             <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(address)_________________________________________________________________
               _______________________________________________________________________________,
             </span>
@@ -228,18 +227,18 @@
         <span style="font-family:'Times New Roman, serif'">in </span>
 
         <span>
-            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.city !== null">{{userDetails.healthFinance.city}}, </span>
+            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.city !== null">{{userDetails.healthFinance.city | titlecase}}, </span>
             <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(city)__________________, </span>
         </span>
 
         <span>
-            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.state !== null">{{userDetails.healthFinance.state}}, </span>
-            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(state)__________________, </span>
+            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.state !== null">{{userDetails.healthFinance.state | titlecase}} </span>
+            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(state)__________________ </span>
         </span>
 
         <span>
-            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.zip !== null">{{userDetails.healthFinance.zip}}, </span>
-            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(zip)__________________, </span>
+            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.zip !== null">{{userDetails.healthFinance.zip}} </span>
+            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(zip)__________________ </span>
         </span>
 
         <span>
@@ -257,7 +256,7 @@
         law.  This durable power of attorney for health care shall take
         effect in the event I lack the capacity to make my own health care
         decisions.</span></span></p>
-        <p  style="margin-bottom: 0in; "><br/>
+        <p  style="margin-bottom: 0.03in; ">
 
         </p>
 
@@ -274,81 +273,69 @@
                 <span size="3" style="font-size: 12pt">my </span>
               </span>
 
+              
+                <span style="font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation == 'Other'">{{userDetails.healthFinance.backupRelationOther | titlecase}}, </span>
+                <span style="font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation != 'Other'">{{userDetails.healthFinance.backupRelation | titlecase}}, </span>
+                <span style="font-size: 12pt" *ngIf="userDetails === undefined && userDetails.healthFinance === null">______________, </span>
+            
+
               <span>
-                  <span>
-                      <span size="3" style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation == 'Other'">{{userDetails.healthFinance.backupRelationOther}}</span>
-                      <span size="3" style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation != 'Other'">{{userDetails.healthFinance.backupRelation}}</span>
-                      <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">______________</span>
-                  </span>
+                  <span style="font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupFullname.length > 0">{{userDetails.healthFinance.backupFullname | titlecase}}, </span>
+                  <span style="font-size: 12pt" *ngIf="userDetails === undefined && userDetails.healthFinance === null">_____________________________,</span>
               </span>
 
               <span>
-                <span size="3" style="font-size: 12pt">, </span>
+                <span style="font-size: 12pt"> of </span>
               </span>
 
-              <span>
-                  <span size="3" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupFullname.length > 0" style="font-family:'Times New Roman, serif'">{{userDetails.healthFinance.backupFullname}}</span>
-                  <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" style="font-family:'Times New Roman, serif'">_____________________________</span>
-              </span>
+             
+            <span style="font-size: 12pt" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupAddress !== null">{{userDetails.healthFinance.backupAddress | titlecase}}, </span>
+            <span style="font-size: 12pt" *ngIf="userDetails === undefined && userDetails.healthFinance === null">(address)_________________________________________________________________
+            _______________________________________________________________________________,
+            </span>
+              
 
-              <span>
-                <span size="3" style="font-size: 12pt"> of </span>
-              </span>
 
-              <span>
-                  <span size="3" style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupAddress !== null">{{userDetails.healthFinance.backupAddress}}, </span>
-                  <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(address)_________________________________________________________________
-                    _______________________________________________________________________________,
-                  </span>
-              </span>
+              <span style="font-size: 12pt">in </span>
 
-              <span>
-                <span size="3" style="font-size: 12pt"> </span>
-              </span>
-
-              <span size="3" style="font-size: 12pt">in </span>
-
-              <span>
-                  <span size="3" style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupCity !== null">{{userDetails.healthFinance.backupCity}}, </span>
+              <span style="font-size: 12pt">
+                  <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupCity !== null">{{userDetails.healthFinance.backupCity | titlecase}}, </span>
                   <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(city)__________________, </span>
               </span>
 
-              <span size="3" style="font-size: 12pt">, </span>
+              <span style="font-size: 12pt">
+                  <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupState !== null">{{userDetails.healthFinance.backupState | titlecase}} </span>
+                  <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(state)__________________ </span>
+              </span>
 
-              <span>
-                  <span size="3" style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupState !== null">{{userDetails.healthFinance.backupState}}, </span>
-                  <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(state)__________________, </span>
+              <span style="font-size: 12pt">
+                  <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupZip !== null">{{userDetails.healthFinance.backupZip}} </span>
+                  <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(zip)__________________ </span>
               </span>
 
               <span>
-                  <span size="3" style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupZip !== null">{{userDetails.healthFinance.backupZip}}, </span>
-                  <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(zip)__________________, </span>
-              </span>
-
-              <span>
-                <span size="3" style="font-size: 12pt">
+                <span style="font-size: 12pt">
                 (Tel: </span>
               </span>
-              <span>
-                  <span size="3" style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupphone !== null">{{userDetails.healthFinance.backupphone}}</span>
-                  <span size="3" *ngIf="userDetails === undefined && userDetails.healthFinance === null">(phone)__________________</span>
+              <span style="font-size: 12pt">
+                  <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupphone !== null">{{userDetails.healthFinance.backupphone}}</span>
+                  <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(phone)__________________</span>
               </span>
 
               <span>
-                <span size="3" style="font-size: 12pt">) </span>
+                <span style="font-size: 12pt">) </span>
               </span>
 
-              <span size="3" style="font-size: 12pt">as my alternate agent.</span>
+              <span style="font-size: 12pt">as my alternate agent.</span>
 
-              <span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
+              <span style="font-size: 12pt">&nbsp;</span></span></span></p>
 
+              <p  style="margin-top: 0.06in; margin-bottom: 0.13in; ">
+
+              </p>
         </div>
 
-        <p  style="margin-top: 0.06in; margin-bottom: 0.13in; ">
-        <br/>
-        <br/>
-
-        </p>
+        
         <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">When
         making health care decisions for me, my agent should think about what
         action would be consistent with past conversations we have had, my
@@ -619,9 +606,17 @@
 
         </p>
         <p  style="text-indent: 0.38in; margin-bottom: 0in; ">
-        <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Agent:
-        </span><span ><span size="3" style="font-size: 12pt">Rx
-        Agent #1</span></span><span size="3" style="font-size: 12pt"></span></span></span></p>
+            <span style="font-family:'Times New Roman, serif'">
+                <span size="2" style="font-size: 9pt">
+                    <span size="3" style="font-size: 12pt">Agent:</span>
+                    <span>
+                        <span size="3" style="font-size: 12pt" *ngIf="userDetails !== undefined && userDetails !== null && userDetails.healthFinance !== undefined">{{userDetails.healthFinance.fullname | titlecase}}</span>
+                        <span size="3" style="font-size: 12pt" *ngIf="userDetails === undefined || userDetails === null || userDetails.healthFinance === undefined">(agent 1) ______________________</span>
+                    </span>
+                    <span size="3" style="font-size: 12pt"></span>
+                </span>
+            </span>
+        </p>
         <p  style="text-indent: 0.38in; margin-bottom: 0in; ">
         <br/>
 
@@ -638,9 +633,9 @@
 
         </p>
         <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Signed
-        this </span></span><span ><span size="3" style="font-size: 12pt"><u>		</u></span></span><span ><span size="3" style="font-size: 12pt">
-        day of </span></span><span ><span size="3" style="font-size: 12pt"><u>				</u></span></span><span ><span size="3" style="font-size: 12pt">,
-        </span></span><span ><span size="3" style="font-size: 12pt"><u>	</u></span></span><span ><span size="3" style="font-size: 12pt">.</span></span></span></span></span></p>
+        this </span></span><span ><span size="3" style="font-size: 12pt"><u>______________</u></span></span><span ><span size="3" style="font-size: 12pt">
+        day of </span></span><span ><span size="3" style="font-size: 12pt"><u>________________</u></span></span><span ><span size="3" style="font-size: 12pt">,
+        </span></span><span ><span size="3" style="font-size: 12pt"><u>______</u></span></span><span ><span size="3" style="font-size: 12pt">.</span></span></span></span></span></p>
         <p  style="margin-bottom: 0in; "><br/>
 
         </p>
@@ -1038,7 +1033,7 @@
         <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">					)
         ss.</span></span></span></p>
         <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">COUNTY
-        OF </span><span size="3" style="font-size: 12pt"><u>			</u></span><span size="3" style="font-size: 12pt">	)</span></span></span></p>
+        OF </span><span size="3" style="font-size: 12pt"><u>_________________</u></span><span size="3" style="font-size: 12pt">	)</span></span></span></p>
         <p  style="margin-bottom: 0in; "><br/>
 
         </p>
@@ -1047,9 +1042,9 @@
         </p>
         <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'">The foregoing durable power of
-        attorney for health care was acknowledged before me this </span><span style="font-family:'Times New Roman, serif'"><u>	</u></span><span style="font-family:'Times New Roman, serif'">
-        day of </span><span style="font-family:'Times New Roman, serif'"><u>					</u></span><span style="font-family:'Times New Roman, serif'">,
-        </span><span style="font-family:'Times New Roman, serif'"><u>		</u></span><span style="font-family:'Times New Roman, serif'">,
+        attorney for health care was acknowledged before me this </span><span style="font-family:'Times New Roman, serif'"><u>______</u></span><span style="font-family:'Times New Roman, serif'">
+        day of </span><span style="font-family:'Times New Roman, serif'"><u>_____________________</u></span><span style="font-family:'Times New Roman, serif'">,
+        </span><span style="font-family:'Times New Roman, serif'"><u>______________</u></span><span style="font-family:'Times New Roman, serif'">,
         by </span>
 
         <span>
