@@ -46,7 +46,7 @@
             <p  style="text-align:center;margin-bottom: 0.06in; line-height: 0.23in">
               <span style="font-size: 13pt"><b>(date of birth:
                 @if(isset($tellUsAboutYou) && array_key_exists('dob',$tellUsAboutYou) && !is_null($tellUsAboutYou['dob']))
-                    {{date('jS M, Y', strtotime($tellUsAboutYou['dob']))}}
+                    {{date('F d, Y', strtotime($tellUsAboutYou['dob']))}}
                 @else
                     ________________________________
                 @endif)</b>
@@ -102,21 +102,21 @@
       @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
 
           @if(strlen(trim($healthFinance['relationOther'])) > 0)
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}},</span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}},</span>
           @else
-            <span style="font-family:'Times New Roman, serif'">(relation) _______________,</span>
+            <span style="font-family:'Times New Roman, serif'"> _______________,</span>
           @endif
       @else
           @if(strlen(trim($healthFinance['relation'])) > 0)
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}},</span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relation']))}},</span>
           @else
-            <span style="font-family:'Times New Roman, serif'">(relation) _______________,</span>
+            <span style="font-family:'Times New Roman, serif'"> _______________,</span>
           @endif
       @endif
       <span > </span>
 
       @if(isset($healthFinance) && array_key_exists('fullname',$healthFinance) && !is_null($healthFinance['fullname']))
-          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}},</span>
+          <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['fullname']))}},</span>
       @else
           <span style="font-family:'Times New Roman, serif'">_____________________________,</span>
       @endif
@@ -133,21 +133,21 @@
 
 
       @if(isset($healthFinance) && array_key_exists('city',$healthFinance) && !is_null($healthFinance['city']))
-          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['city']}}, </span>
+          <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['city']))}}, </span>
       @else
-          <span>(city)__________________, </span>
+          <span>__________________, </span>
       @endif
 
       @if(isset($healthFinance) && array_key_exists('state',$healthFinance) && !is_null($healthFinance['state']))
-          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['state']}}, </span>
+          <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['state']))}} </span>
       @else
-          <span>(state)__________________, </span>
+          <span> __________________ </span>
       @endif
 
       @if(isset($healthFinance) && array_key_exists('zip',$healthFinance) && !is_null($healthFinance['zip']))
-          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['zip']}}, </span>
+          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['zip']}} </span>
       @else
-          <span >(zip)__________________, </span>
+          <span> __________________ </span>
       @endif
 
       <span >
@@ -174,13 +174,13 @@
               @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
 
                   @if(strlen(trim($healthFinance['backupRelationOther'])) > 0)
-                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}},</span>
+                    <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupRelationOther']))}},</span>
                   @else
                     <span style="font-family:'Times New Roman, serif'">(relation) _______________,</span>
                   @endif
               @else
                   @if(strlen(trim($healthFinance['backupRelation'])) > 0)
-                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}},</span>
+                    <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupRelation']))}},</span>
                   @else
                     <span style="font-family:'Times New Roman, serif'">(relation) _______________,</span>
                   @endif
@@ -190,14 +190,14 @@
               <span> </span>
 
               @if(isset($healthFinance) && array_key_exists('backupFullname',$healthFinance) && !is_null($healthFinance['backupFullname']))
-                  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}},</span>
+                  <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupFullname']))}},</span>
               @else
                   <span style="font-family:'Times New Roman, serif'">_____________________________,</span>
               @endif
               <span > of </span>
 
               @if(isset($healthFinance) && array_key_exists('backupAddress',$healthFinance) && !is_null($healthFinance['backupAddress']))
-                  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupAddress']}}, </span>
+                  <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['backupAddress'])}}, </span>
               @else
                   <span>
                         _________________________________________________________________
@@ -206,24 +206,24 @@
               @endif
 
               @if(isset($healthFinance) && array_key_exists('backupCity',$healthFinance) && !is_null($healthFinance['backupCity']))
-                  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupCity']}}, </span>
+                  <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupCity']))}}, </span>
               @else
-                  <span>(city)__________________, </span>
+                  <span>__________________, </span>
               @endif
 
               @if(isset($healthFinance) && array_key_exists('backupState',$healthFinance) && !is_null($healthFinance['backupState']))
-                  <span style="font-family:'Times New Roman, serif'" >{{$healthFinance['backupState']}}, </span>
+                  <span style="font-family:'Times New Roman, serif'" >{{ucwords(strtolower($healthFinance['backupState']))}} </span>
               @else
-                  <span>(state)__________________, </span>
+                  <span>__________________ </span>
               @endif
 
               @if(isset($healthFinance) && array_key_exists('backupZip',$healthFinance) && !is_null($healthFinance['backupZip']))
-                  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}}, </span>
+                  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}} </span>
               @else
-                  <span>(zip)__________________, </span>
+                  <span>__________________ </span>
               @endif
 
-              <span >
+              <span>
               (Tel: </span>
 
                   @if(isset($healthFinance) && array_key_exists('backupphone',$healthFinance) && !is_null($healthFinance['backupphone']))
@@ -235,14 +235,14 @@
 
               <span  style="font-size: 12pt">),</span>
               as my alternate health care surrogate.</span></span></span></span></span></p>
+              <p style="margin-left: 0.38in; margin-top: 0.06in; margin-bottom: 0in; line-height: 115%">
+
+              </p>
+              <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
+                <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Any
+                prior designation is revoked.</span></span></span></span></span></p>
+              
             @endif
-            <p style="margin-left: 0.38in; margin-top: 0.06in; margin-bottom: 0in; line-height: 115%">
-
-
-            </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">Any
-              prior designation is revoked.</span></span></span></span></span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
 
             </p>
@@ -256,8 +256,7 @@
 
             <p  style="text-align:center;margin-bottom: 0in; border: 1.00pt solid #000001; padding: 0.01in 0.06in; line-height: 115%; page-break-before: always">
                 <b>LIVING WILL DIRECTIVE</b></p>
-            <p  style="text-align:center;margin-top: 0.13in; margin-bottom: 0.06in; line-height: 115%">
-                <span color="#ffffff"><b>LIVING WILL DIRECTIVE</b></span></p>
+            
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
       <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">If
       I do not designate a surrogate, the following are my directions to my
@@ -525,9 +524,9 @@
         <div class="docPageInner">
 
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in"><span style="text-decoration: none">Signed
-      this </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span style="text-decoration: none">
-      day of </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span style="text-decoration: none">,
-      </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.</u></p>
+      this </span><span>_______________</span><span style="text-decoration: none">
+      day of </span><span>__________________</span><span style="text-decoration: none">, 
+      </span><span>_________________ .</span></p>
             <p  style="text-align:justify;margin-bottom: 0in; line-height: 0.2in">
 
             </p>
@@ -639,8 +638,8 @@
             </p>
             <p style="margin-bottom: 0.25in; line-height: 115%"><span style="text-decoration: none">Done
       this </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span style="text-decoration: none">
-      day of </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span style="text-decoration: none">,
-      </span><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><span style="text-decoration: none">.</span></p>
+      day of </span><span>_______________</span><span style="text-decoration: none">, 
+      </span><span>_________________</span><span style="text-decoration: none">.</span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">______________________________________</span></span></span></span></span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%; margin-top: 0;">

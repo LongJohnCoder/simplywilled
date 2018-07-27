@@ -21,7 +21,7 @@
   </script>
   <div id="footer">
     <div style="">
-      Advance Health-Care Directive of <br>{{$healthFinance['fullname']}}<br>
+      Health Care Directive by <br>{{$healthFinance['fullname']}}<br>
     </div>
   </div>
 

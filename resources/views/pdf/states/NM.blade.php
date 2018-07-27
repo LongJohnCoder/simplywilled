@@ -138,7 +138,7 @@
 
 	        <span>
 	          <span style="font-family:'Times New Roman, serif'">
-	              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}},</b>
+	              <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</b>
 	          </span>
 	        </span>
 
@@ -148,20 +148,11 @@
 	        </span>
 
 	        <span>
-	            <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}},</span>
+	            <span style="font-family:'Times New Roman, serif'" >{{ucwords($tellUsAboutYou['address'])}},</span>
 	        </span>
 
-	        <!-- <span style="font-family:'Times New Roman, serif'">IF ANSWERED(
-	        Address2 )</span>
-
 	        <span>
-	          <span style="font-family:'Times New Roman, serif'">Address2</span>
-	        </span>
-
-	        <span style="font-family:'Times New Roman, serif'">END IF</span> -->
-
-	        <span>
-	            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}},</span>
+	            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($tellUsAboutYou['city']))}},</span>
 	        </span>
 
 	        <span>
@@ -169,11 +160,11 @@
 	        </span>
 
 	        <span>
-	            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}},</span>&nbsp;
+	            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($tellUsAboutYou['state']))}} </span>
 	        </span>
 
 	        <span>
-	            <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['zip']}},</span>
+	            <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['zip']}} </span>
 	        </span>
 
 	        <span>
@@ -182,14 +173,14 @@
 
 	        <span>
 	        	@if(strtolower($healthFinance['relation']) == 'other')
-	            	<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}},</span>
+	            	<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}},</span>
 	            @else
-	            	<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}},</span>
+	            	<span style="font-family:'Times New Roman, serif'" >{{ucwords(strtolower($healthFinance['relation']))}},</span>
 	            @endif
 	        </span>
 
 	        <span>
-	            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}},</span>
+	            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['fullname']))}},</span>
 	        </span>
 
 	        <span>
@@ -197,20 +188,20 @@
 	        </span>
 
 	        <span>
-	            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['address']}},</span>
+	            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['address']))}},</span>
 	        </span>
 
 	        <span style="font-family:'Times New Roman, serif'">in </span>
 	        <span>
-	            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['city']}},</span>
+	            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['city']))}},</span>
 	        </span>
 
 	        <span>
-	            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['state']}},</span>
+	            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['state']))}} </span>
 	        </span>
 
 	        <span>
-	            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['zip']}},</span>
+	            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['zip']}} </span>
 
 	        </span>
 
@@ -220,26 +211,12 @@
 	        </span>
 
 	        <span>
-	            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['phone']}}</span>
+	            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['phone']}})</span>
 	        </span>
 
-	        <span>
-	          <span style="font-family:'Times New Roman, serif'">)</span>
-	        </span>
+	        <span size="3" style="font-size: 12pt"> as my agent to make health care decisions for me.</span>
 
-	        <span>
-	          <span face="Times, serif">
-	            <span size="2" style="font-size: 9pt">
-	              <span style="font-family:'Times New Roman, serif'">
-	                <span size="3" style="font-size: 12pt">as my </span>
-	              </span>
-	            </span>
-	          </span>
-	        </span>
-
-	        <span>
-	          <span style="font-family:'Times New Roman, serif'">agent to make health care decisions for me.</span>
-	        </span>
+	        
 	        </p>
 
 	        <p  style="margin-bottom: 0in; "><br/>
@@ -259,34 +236,33 @@
 	                <span>
 
 	                	@if(strtolower($healthFinance['backupRelation']) == 'other')
-	                    	<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}},</span>
+	                    	<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupRelationOther']))}},</span>
 	                    @else
-	                    	<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}},</span>
+	                    	<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupRelation']))}},</span>
 	                    @endif
 	                </span>
 
 	                <span>
-	                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}},</span>
+	                    <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupFullname']))}},</span>
 	                </span>
 	                <span size="3" style="font-size: 12pt"> of</span>
 
 	                <span>
-	                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupAddress']}},</span>
+	                    <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['backupAddress'])}}, </span>
 	                </span>
 
-	                <span size="3" style="font-size: 12pt"> in </span>
+	                <span size="3" style="font-size: 12pt">in </span>
 
 	                <span>
-	                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupCity']}},</span>
-	                </span>
-
-	                <span size="3" style="font-size: 12pt">, </span>
-	                <span>
-	                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupState']}},</span>
+	                    <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupCity']))}}, </span>
 	                </span>
 
 	                <span>
-	                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}},</span>
+	                    <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupState']))}} </span>
+	                </span>
+
+	                <span>
+	                    <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}} </span>
 	                </span>
 
 	                <span size="3" style="font-size: 12pt">
@@ -301,14 +277,12 @@
 	              authorized in this document.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
 
 	        </div>
-	        @endif
-
-
-
-
 	        <p  style="margin-bottom: 0in; "><br/>
 
 	        </p>
+	        @endif
+
+	        
 	        <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">2.</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt"><b>AGENT’S
 	        AUTHORITY: </b></span><span size="3" style="font-size: 12pt">My agent
 	        is authorized to to obtain and review medical records, reports and
@@ -633,7 +607,7 @@
 	        <span style="font-family:'Times New Roman, serif'"></span>
 	        <span>
 	          <span style="font-family:'Times New Roman, serif'">
-	              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+	              <b style="text-transform: capitalize; padding-left: 70px;">{{strtoupper($tellUsAboutYou['fullname'])}}</b>
 	          </span>
 	        </span>
 
@@ -659,18 +633,21 @@
 	          <span style="font-family:'Times New Roman, serif'">
 	            <span size="2" style="font-size: 9pt">
 	              <span size="3" style="font-size: 12pt">
-	                  <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}},</span>
+	                  <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($tellUsAboutYou['city']))}},</span>
 	              </span>
 
 	              <span size="3" style="font-size: 12pt">
-	                  <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}},</span>&nbsp;
+	                  <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($tellUsAboutYou['state']))}} </span>
 	              </span>
 
 	              <span size="3" style="font-size: 12pt">
-	                  <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['zip']}}, </span>
+	                  <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['zip']}} </span>
 	              </span>
 
-	              <span ><span size="3" style="font-size: 12pt"></span></span></span></span></span></p>
+	          	</span>
+	          </span>
+	      	</span>
+	      	</p>
 
 	        <p  style="margin-left: 2.44in; margin-bottom: 0in; ">
 	        <br/>

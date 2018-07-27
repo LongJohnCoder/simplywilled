@@ -36,67 +36,30 @@
 
         <p class="western" align="justify" style="margin-bottom: 0in; ">
         <span color="#000000">1.</span><span color="#000000">	</span><span color="#000000">I,
-        </span>
-
-        <span color="#0000ff">
-            <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</b>
-        </span>
-
-        <span color="#000000"> hereby appoint my </span>
-
+        </span><span color="#0000ff"><b>{{strtoupper($tellUsAboutYou['fullname'])}},</b></span>
+        <span color="#000000">hereby appoint my</span>
         @if(strtolower($healthFinance['relation']) == 'other')
             @if(strlen(trim($healthFinance['relationOther'])) > 0)
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
+                <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['relationOther'])}},</span>
             @else
                 <span style="font-family:'Times New Roman, serif'">(relation) __________________,</span>
             @endif
 		@else
             @if(strlen(trim($healthFinance['relation'])) > 0)
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}, </span>
+                <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['relation'])}},</span>
             @else
                 <span style="font-family:'Times New Roman, serif'">(relation) __________________,</span>
             @endif
 		@endif
-
-        <span color="#000000"> </span>
-        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}},</span>
-
-
-        <span color="#000000"> of </span>
-
-        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['address']}}, </span>
-
-        <span color="#000000"> </span>in
-
-        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['city']}}, </span>
-
-
-        <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}}</span>
-
-
-        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['zip']}}, </span>
-
-
+        <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['fullname'])}},</span>
+        <span color="#000000">of</span>
+        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['address']}}, in</span>
+        <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['city'])}}, {{ucwords($tellUsAboutYou['state'])}}</span>
+        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['zip']}}</span>
         <span color="#000000">(Tel: </span>
-
         <span style="font-family:'Times New Roman, serif'">{{$healthFinance['phone']}}</span>
-
-        <span color="#000000">),
-
+        <span color="#000000">), as my agent to make health care decisions for me as authorized in this document.
         </span>
-
-        <span color="#000000">
-          <span face="Times, serif">
-            <span size="2" style="font-size: 9pt">
-              <span face="Times New Roman, serif">
-                <span size="3" style="font-size: 12pt">as </span>
-              </span>
-            </span>
-          </span>
-        </span>
-
-        <span color="#000000">my agent to make health care decisions for me as authorized in this document.</span></p>
-
 
         <!-- if backup agent-->
         @if($healthFinance['anyBackupAgent'] == 'true')
@@ -105,64 +68,38 @@
 	              If said agent is not available or becomes ineligible to act, or if I
 	              revoke this appointment or authority to act as my agent, then I
 	              designate
-	              <span color="#000000">my </span>
+	              <span color="#000000">my</span>
 
 	              @if(strtolower($healthFinance['backupRelation']) == 'other')
                     @if(strlen(trim($healthFinance['backupRelationOther'])) > 0)
-	                   <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}}, </span>
+	                   <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['backupRelationOther'])}},</span>
                     @else
                         <span>(relation) ____________________,</span>
                     @endif
 	              @else
                     @if(strlen(trim($healthFinance['backupRelation'])) > 0)
-                       <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
+                       <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['backupRelation'])}},</span>
                     @else
                         <span>(relation) ____________________,</span>
                     @endif
 	              @endif
+                  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}},</span>
 
-	              <span color="#000000"> </span>
+	              <span color="#000000">of</span>
 
-	              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}},</span>
+	              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupAddress']}}</span>
 
-	              <span color="#000000"> of </span>
-
-	              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupAddress']}}, </span>
-
-	              <span>in </span>
+	              <span>in</span>
 	              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupCity']}}, </span>
 
-	              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupState']}}, </span>
+	              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupState']}}</span>
 
-				  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}}, </span>
+				  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}}</span>
 
               <span size="2" style="font-size: 9pt">
-                <span size="3" style="font-size: 12pt">(Tel: </span>
+                <span size="3" style="font-size: 12pt">(Tel: {{$healthFinance['backupphone']}}), as my alternate agent to make health care decisions for me as authorized in this document.</span>
               </span>
-
-              <span color="#0433ff">
-                  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupphone']}}</span>
-              </span>
-
-              <span color="#000000">
-                <span size="3" style="font-size: 12pt">), </span>
-              </span>
-
-				<span color="#000000">
-        			<span face="Times, serif">
-        				<span size="2" style="font-size: 9pt">
-        					<span face="Times New Roman, serif">
-        						<span size="3" style="font-size: 12pt">as</span>
-        					</span>
-        				</span>
-        			</span>
-				</span>
-
-          		<span color="#000000">
-          			<span size="3" style="font-size: 12pt">my alternate agent to make health care decisions for me as authorized in
-              this document.</span>
-          		</span>
-          	</span></p>
+          	</p>
 
         @endif
 
@@ -462,8 +399,8 @@
 
             </span></span></p>
 						<p>
-							<span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['city']}},</span>
-							<span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['state']}},</span>
+							<span style="font-family:'Times New Roman, serif'" >{{ucwords($tellUsAboutYou['city'])}},</span>
+							<span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['state']}}</span>
 							<span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['zip']}}</span>
 						</p>
 
@@ -501,39 +438,10 @@
 
 
           <p class="western" align="justify" style="margin-bottom: 0.08in; ; orphans: 0; widows: 0">
-          We, the witnesses who sign below, each declare in the presence of
-
-          <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
-
-          <span color="#0000ff"> </span>
-
-          that neither of us has been named as Agent or alternate Agent in this
-          Health Care Proxy and neither of us is related to
-
-          <span color="#0433ff">{{$genderTxt}}</span>
-
-          by blood or marriage. We further declare
-          that the Principal signed this instrument as
-
-          <span color="#0433ff">{{$genderTxt4}}</span>
-
-          Health Care Proxy in the presence of each
-          of us, that
-
-          <span color="#0433ff">{{$genderTxt3}}</span>
-
-          signed it willingly, that each of us signs this Health Care Proxy as
-          witness in the presence of
-
-          <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>, and that to the
-          best of our knowledge
-
-
-          <span color="#0433ff">{{$genderTxt3}}</span> is eighteen (18) years of age or over, of
-          sound mind and under no constraint or undue influence.</p>
-          <p align="justify" style="margin-bottom: 0in; "><br/>
-
-          </p>
+          We, the witnesses who sign below, each declare in the presence of {{strtoupper($tellUsAboutYou['fullname'])}}, that neither of us has been named as Agent or alternate Agent in this Health Care Proxy and neither of us is related to
+          <span color="#0433ff">{{$genderTxt}}</span> by blood or marriage. We further declare
+          that the Principal signed this instrument as <span color="#0433ff">{{$genderTxt4}} </span>Health Care Proxy in the presence of each of us, that <span color="#0433ff">{{$genderTxt3}}</span> signed it willingly, that each of us signs this Health Care Proxy as witness in the presence of <span>{{strtoupper($tellUsAboutYou['fullname'])}}</span>, and that to the
+          best of our knowledge <span color="#0433ff">{{$genderTxt3}}</span> is eighteen (18) years of age or over, of sound mind and under no constraint or undue influence.</p>
           <p align="left" style="margin-bottom: 0in; "><span size="1" style="font-size: 7pt"><span size="2" style="font-size: 10pt"><b>WITNESS
           1</b></span><span size="2" style="font-size: 10pt">:
           ________________________________	Dated: ___________________</span></span></p>

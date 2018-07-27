@@ -811,6 +811,8 @@ Route::group(['prefix' => 'v1'], function() {
                 'uses' => 'Api\V1\PackageController@paypalPackageSuccess',
                 'as' => 'api.v1.paypalPackageSuccess.post'
             ]);
+
+
             /**
              * Route for failed paypal payment
              */
@@ -859,6 +861,14 @@ Route::group(['prefix' => 'v1'], function() {
         ]);
     });
 });
+
+/**
+ * Route for success paypal payment
+ */
+Route::get('paypal-payment-processing', [
+    'uses' => 'Api\V1\PackageController@paypalPaymentProcessing',
+    'as' => 'api.v1.paypalPaymentProcessing.get'
+]);
 
 /**
 * Generate sitemap.xml

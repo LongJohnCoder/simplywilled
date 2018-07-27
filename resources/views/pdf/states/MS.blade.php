@@ -137,82 +137,37 @@
 
 
 
-        </span><span >I, </span><b>
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-
-        </b><span >, designate my
+        </span><span >I, <b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>, designate my</span><span>
 
         <span size="3" style="font-size: 12pt">
 			@if(strtolower($healthFinance['relation']) == 'other')
-				<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
+				<span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['relationOther'])}}, </span>
 			@else
-				<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}}, </span>
+				<span style="font-family:'Times New Roman, serif'" >{{ucwords($healthFinance['relation'])}}, </span>
 			@endif
-		</span>
-
-        <span style="text-transform: capitalize"> {{$healthFinance['fullname']}} </span> of
-
-
-        <span style="text-transform: capitalize"> {{$healthFinance['address']}} </span> in
-
-        <span style="text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
-
-        <span style="text-transform: capitalize"> {{$healthFinance['state']}} </span>
-
-        <span style="text-transform: capitalize"> {{$healthFinance['zip']}} </span>
-
-        (Tel: <span> {{$healthFinance['phone']}} </span> ),
-        as my agent to make health care decisions for me.</span></p>
-    <p  style="margin-bottom: 0in; "><br/>
-
-    </p>
+		</span><span>{{$healthFinance['fullname']}} of {{$healthFinance['address']}} {{ucwords(strtolower($healthFinance['city']))}}, {{ucwords(strtolower($healthFinance['state']))}} {{$healthFinance['zip']}} (Tel: <span> {{$healthFinance['phone']}} </span> ), as my agent to make health care decisions for me.</span></p>
 
    @if($healthFinance['anyBackupAgent'] === 'true')
     <p  style="margin-bottom: 0in; ">
-    	<span size="2" style="font-size: 9pt">
+    	<span size="2">
     		<span size="3" style="font-size: 12pt"><b>ALTERNATE
         AGENT</b></span>
-        	<span size="3" style="font-size: 12pt">.</span>
-
-        	<span size="3" style="font-size: 12pt">&nbsp;
-        </span>
-
-        	<span size="3" style="font-size: 12pt">If said agent is not
+  
+          <span size="3" style="font-size: 12pt">If said agent is not
         available or becomes ineligible to act, or if I revoke this
-        appointment or authority to act, then I designate </span>
-
-        <span ><span size="3" style="font-size: 12pt">my
-        </span></span>
-
-
+        appointment or authority to act, then I designate my</span>
 
         <span size="3" style="font-size: 12pt">
-			@if(strtolower($healthFinance['backupRelation'] == 'other'))
-									<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}}, </span>
-								@else
-									<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
-								@endif
-    	</span>
-
-        <span size="3" style="text-transform: capitalize;font-size: 12pt;font-size: 12pt"> {{$healthFinance['backupFullname']}} </span> of
-
-        <span size="3" style="text-transform: capitalize;font-size: 12pt"> {{$healthFinance['backupAddress']}} </span> in
-
-        <span size="3" style="text-transform: capitalize;font-size: 12pt"> {{$healthFinance['backupCity']}} ,</span>
-
-        <span size="3" style="text-transform: capitalize;font-size: 12pt"> {{$healthFinance['backupState']}} </span>
-
-        <span size="3" style="text-transform: capitalize;font-size: 12pt"> {{$healthFinance['backupZip']}} </span>
-
-
-      	<span style="text-transform: capitalize;font-size: 12pt"> (Tel: <span size="3"> {{$healthFinance['backupphone']}} </span> ,</span>
-
-        <span size="3" style="font-size: 12pt">as my alternate
-        agent to make health care decisions for me.</span>
-
-        <span size="3" style="font-size: 12pt">&nbsp;</span></span></p>
-    @endif
-
+        @if(strtolower($healthFinance['backupRelation'] == 'other'))
+        	<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}}, </span>
+        @else
+        	<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
+        @endif
+    	 </span>
+       {{$healthFinance['backupFullname']}} of {{$healthFinance['backupAddress']}} in {{$healthFinance['backupCity']}}, {{$healthFinance['backupState']}} {{$healthFinance['backupZip']}} (Tel: {{$healthFinance['backupphone']}}), as my alternate
+        agent to make health care decisions for me.
+        </span></p>
+       @endif
 
 
     <p  style="margin-bottom: 0.09in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">(2)	</span><span size="3" style="font-size: 12pt"><b>AUTHORITY</b></span><span size="3" style="font-size: 12pt">.</span><span size="3" style="font-size: 12pt">&nbsp;
@@ -545,25 +500,25 @@
       <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></p>
     <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <b>
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+        <span>{{strtoupper($tellUsAboutYou['fullname'])}}</span>
 
         </b>
     </p>
 
-    <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">My
+    <p  style="margin-bottom: 0in; "><span size="2"><span size="3" style="font-size: 12pt">My
       Address: </span>
 
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['address']}}</span>
+        <span>{{$tellUsAboutYou['address']}}</span>
       <span size="3" style="font-size: 12pt">,</span>
 
       <span>
       	<span size="3" style="font-size: 12pt">
         <!--City-->
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
+        <span style="text-transform: capitalize">{{ucwords(strtolower($tellUsAboutYou['city']))}}</span>
       </span></span><span size="3" style="font-size: 12pt">,
       </span><span ><span size="3" style="font-size: 12pt">
         <!--State-->
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>
+        <span style="text-transform: capitalize">{{ucwords(strtolower($tellUsAboutYou['state']))}}</span>
 
       </span></span><span size="3" style="font-size: 12pt"></span></span></p>
     <p  style="margin-bottom: 0in; "><br/>
@@ -572,7 +527,7 @@
 
     <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">STATE
       OF MISSISSIPPI</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">)</span></span></p>
-    <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">				</span><span size="3" style="font-size: 12pt">)
+    <p  style="margin-bottom: 0in; "><span size="2"><span size="3" style="font-size: 12pt">				</span><span size="3" style="font-size: 12pt">)
         ss.</span><span size="3" style="font-size: 12pt">&nbsp;</span></span></p>
     <p  style="margin-bottom: 0in; "><span ><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">COUNTY
         OF ___________  )</span></span></span></span></p>
@@ -582,7 +537,7 @@
     <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       On this _________ day of __________________________________, _____________________ before me, the
       undersigned, appeared <b>
-      <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+      <span>{{strtoupper($tellUsAboutYou['fullname'])}}</span>
 
       </b>, personally known to me (or proved to me on
       the basis of satisfactory evidence) to be the person whose name is
@@ -623,7 +578,7 @@
     <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0"><a name="_GoBack"></a>
       I declare under penalty of false swearing pursuant to Section
       97-9-61, Mississippi Code of 1972, that <b>
-      <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+      <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])  }}</span>
 
       </b><span style="letter-spacing: 0.1pt">,
       </span>the principal, is personally known to me, that <span>

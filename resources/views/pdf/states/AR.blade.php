@@ -145,7 +145,7 @@
                     <br/>
 
                 </p> -->
-                <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+                <p class="western" style="margin-bottom: 0in; orphans: 0; widows: 0">
                     I direct my attending physician, to follow the instructions of the health care agent then-acting under the Durable Power of Attorney for Health Care which I have executed concurrently herewith, whom I appoint as my Health Care Proxy to make medical treatment decisions on my behalf, including whether life-sustaining treatment should be withheld or withdrawn.</p>
                 <!-- <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
                     <br/>

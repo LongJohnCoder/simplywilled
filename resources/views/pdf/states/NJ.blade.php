@@ -67,50 +67,45 @@
             <span style="font-family:'Times New Roman, serif'">I, </span>
             <span style="font-family:'Times New Roman, serif'"> </span>
 
+        <span>
+          <span style="font-family:'Times New Roman, serif'">
+              <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</b>
+
+          </span>
+
+          <span style="font-family:'Times New Roman, serif'"> hereby designate
+          and appoint my </span>
+
+          <span>
+              	@if(strtolower($healthFinance['relation']) == 'other')
+					<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}}, </span>
+				@else
+					<span style="font-family:'Times New Roman, serif'" >{{ucwords(strtolower($healthFinance['relation']))}}, </span>
+				@endif
+          </span>
+
+          <span>
+              <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['fullname']))}},</span>
+          </span>
+
+            <span style="font-family:'Times New Roman, serif'"> of </span>
+
             <span>
-              <span style="font-family:'Times New Roman, serif'">
-                  <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
-
-              </span>
-
-              <span style="font-family:'Times New Roman, serif'">, hereby designate
-              and appoint my </span>
-
-              <span>
-                  	@if(strtolower($healthFinance['relation']) == 'other')
-						<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
-					@else
-						<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}}, </span>
-					@endif
-              </span>
-
-              <span>
-                  <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}}</span>
-
-              </span>
-
-            <span style="font-family:'Times New Roman, serif'">, of </span>
-
-            <span>
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['address']}}, </span>
+                <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['address'])}}, </span>
             </span>
 
             <span style="font-family:'Times New Roman, serif'"> in </span>
 
             <span>
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['city']}}, </span>
+                <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['city']))}}, </span>
             </span>
 
-            <span style="font-family:'Times New Roman, serif'">, </span>
-
             <span>
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['state']}}, </span>
+                <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['state']))}} </span>
             </span>
 
-            <span style="font-family:'Times New Roman, serif'"> </span>
-
             <span>
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['zip']}}, </span>
+                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['zip']}} </span>
             </span>
 
             <span style="font-family:'Times New Roman, serif'"> (Tel: </span>
@@ -131,7 +126,6 @@
               my representative is authorized to make decisions in my best
               interest, based on what is known of my wishes.</span>
 
-
             </span>
           </span>
           </p>
@@ -142,52 +136,46 @@
         	@if($healthFinance['anyBackupAgent'] == 'true')
                 <p style="margin-bottom: 0in; ">
 
-                  <span size="2" style="font-size: 9pt">
-                    <span size="3" style="font-size: 12pt">If said representative is not available or becomes ineligible to act, or
-                      if I revoke this appointment or authority to act as my
-                      representative, then I designate my </span>
-						<span>
-						@if(strtolower($healthFinance['backupRelation']) == 'other')
-							<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}}, </span>
-						@else
-							<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
-						@endif
-						</span>
-
-                    <span size="3" style="font-size: 12pt">, </span>
+                <span size="2" style="font-size: 9pt">
+                <span size="3" style="font-size: 12pt">If said representative is not available or becomes ineligible to act, or
+                  if I revoke this appointment or authority to act as my
+                  representative, then I designate my </span>
+					<span>
+					@if(strtolower($healthFinance['backupRelation']) == 'other')
+						<span style="font-family:'Times New Roman, serif'; font-size: 12pt;">{{ucwords(strtolower($healthFinance['backupRelationOther']))}}, </span>
+					@else
+						<span style="font-family:'Times New Roman, serif'; font-size: 12pt;">{{ucwords(strtolower($healthFinance['backupRelation']))}}, </span>
+					@endif
+					</span>
 
                     <span>
-                        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}}</span>
+                        <span style="font-family:'Times New Roman, serif'; font-size: 12pt;">{{ucwords(strtolower($healthFinance['backupFullname']))}},</span>
                     </span>
 
-                    <span size="3" style="font-size: 12pt">, of </span>
+                    <span size="3" style="font-size: 12pt"> of </span>
 
                     <span>
-                        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupAddress']}}, </span>
+                        <span style="font-family:'Times New Roman, serif'; font-size: 12pt;">{{ucwords($healthFinance['backupAddress'])}}, </span>
                     </span>
 
                     <span size="3" style="font-size: 12pt"> in </span>
 
                     <span>
-                        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupCity']}}, </span>
-
+                        <span style="font-family:'Times New Roman, serif'; font-size: 12pt;">{{ucwords(strtolower($healthFinance['backupCity']))}}, </span>
                     </span>
 
-                    <span size="3" style="font-size: 12pt">, </span>
                     <span>
-                        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupState']}}, </span>
+                        <span style="font-family:'Times New Roman, serif'; font-size: 12pt;">{{ucwords(strtolower($healthFinance['backupState']))}} </span>
                     </span>
 
-                    <span size="3" style="font-size: 12pt"> </span>
-
                     <span>
-                        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}}, </span>
+                        <span style="font-family:'Times New Roman, serif'; font-size: 12pt;">{{$healthFinance['backupZip']}} </span>
                     </span>
 
                     <span size="3" style="font-size: 12pt">(Tel: </span>
 
                     <span>
-                        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupphone']}}</span>
+                        <span style="font-family:'Times New Roman, serif'; font-size: 12pt;">{{$healthFinance['backupphone']}}</span>
                     </span>
 
                     <span size="3" style="font-size: 12pt">), as my alternate representative to make health care decisions for me
@@ -206,19 +194,6 @@
         it, this proxy shall remain in effect indefinitely.  I revoke any
         prior advance health care directive and any prior health care proxy.&nbsp;</p>
     </div>
-
-    {{--
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
-      Page 1 of 9
-    </div>
-
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Advance Health Care Directive CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 1 of 9
-    </div>
-    --}}
 </div>
 
 
@@ -304,19 +279,6 @@
         and shall expire only in the event that I revoke the authority in
         writing and deliver it to my health care provider;</span></span></p>
     </div>
-
-    {{--
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
-      Page 2 of 9
-    </div>
-
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Advance Health Care Directive CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 2 of 9
-    </div>
-    --}}
 </div>
 
 
@@ -404,55 +366,42 @@
         care decisions. In these circumstances, those caring for me will need
         direction concerning my care and they will require information about
         my values and health care wishes. In order to provide the guidance
-        and authority needed to make decisions on my behalf:</p>
+        and authority needed to make decisions on my behalf:</p><br>
 
-        <ol type="A">
-        <li>
+        
         <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0; margin-top: 0;">
-        <span face="Calibri, serif">
-          <span style="font-family:'Times New Roman, serif'">I,</span>
-          <span style="font-family:'Times New Roman, serif'"></span>
-
-          <span>
-
-            <span style="font-family:'Times New Roman, serif'">
-                <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+            <span size="2" style="font-size: 9pt">
+                <span size="3" style="font-size: 12pt">A) </span>
             </span>
 
-            <span style="font-family:'Times New Roman, serif'">hereby declare and
-            make known to my family, physician, and others, my instructions and
-            wishes for my future health care. I direct that all health care
-            decisions, including decisions to accept or refuse any treatment,
-            service or procedure used to diagnose, treat or care for my physical
-            or mental condition and decisions to provide, withhold or withdraw
-            life-sustaining measures, be made in accordance with my wishes as
-            expressed in this document. This instruction directive shall take
-            effect in the event I become unable to make my own health care
-            decisions, as determined by the physician who has primary
-            responsibility for my care, and any necessary confirming
-            determinations. I direct that this document become part of my
-            permanent medical records.</span>
-          </span>
-        </span>
+            <span face="Calibri, serif">
+              <span style="font-family:'Times New Roman, serif'">I,</span>
+              <span style="font-family:'Times New Roman, serif'"></span>
+
+              <span>
+
+                <span style="font-family:'Times New Roman, serif'">
+                    <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</b>
+                </span>
+
+                <span style="font-family:'Times New Roman, serif'">hereby declare and
+                make known to my family, physician, and others, my instructions and
+                wishes for my future health care. I direct that all health care
+                decisions, including decisions to accept or refuse any treatment,
+                service or procedure used to diagnose, treat or care for my physical
+                or mental condition and decisions to provide, withhold or withdraw
+                life-sustaining measures, be made in accordance with my wishes as
+                expressed in this document. This instruction directive shall take
+                effect in the event I become unable to make my own health care
+                decisions, as determined by the physician who has primary
+                responsibility for my care, and any necessary confirming
+                determinations. I direct that this document become part of my
+                permanent medical records.</span>
+              </span>
+            </span>
         </p>
-          </li>
-          </ol>
-
 
     </div>
-
-    {{--
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
-      Page 3 of 9
-    </div>
-
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Advance Health Care Directive CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 3 of 9
-    </div>
-    --}}
 </div>
 
 
@@ -487,16 +436,14 @@
       <p  style="margin-bottom: 0in; "><br/>
 
       </p>
-      <ol type="A" start="2">
-      <li>
+      
       <p  style="margin-bottom: 0in; ">
-      <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>GENERAL
+      <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">B) <b>GENERAL
       INSTRUCTIONS: </b></span><span size="3" style="font-size: 12pt"> </span><span size="3" style="font-size: 12pt">To
       inform those responsible for my care of my specific wishes, I make
       the following statement of personal views regarding my health care: </span></span>
       </p>
-      </li>
-      </ol>
+      
 
       <p  style="margin-bottom: 0in; "><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>Initial
       ONE of the following two statements with which you agree:</b></span></span></p>
@@ -549,18 +496,6 @@
       </li>
       </ol>
   </div>
-  {{--
-  <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
-      Page 4 of 9
-    </div>
-
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Advance Health Care Directive CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 4 of 9
-    </div>
-    --}}
 </div>
 
 
@@ -653,19 +588,6 @@
         </span></span>
         </p>
     </div>
-
-    {{--
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
-      Page 5 of 9
-    </div>
-
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Advance Health Care Directive CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 5 of 9
-    </div>
-    --}}
 </div>
 
 
@@ -690,10 +612,9 @@
         <p  style="margin-bottom: 0in; "><br/>
 
         </p>
-        <ol type="A" start="3">
-        <li>
+        
         <p  style="margin-bottom: 0in; ">
-        <span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'"><b>SPECIFIC
+        <span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">C) <b>SPECIFIC
         INSTRUCTIONS: Artificially Provided Fluids and Nutrition;
         Cardiopulmonary Resuscitation (CPR).</b></span><span style="font-family:'Times New Roman, serif'">
         </span><span style="font-family:'Times New Roman, serif'"><i>Previously above, you
@@ -703,8 +624,7 @@
         nutrition and cardiopulmonary resuscitation.</i></span><span style="font-family:'Times New Roman, serif'">
         </span></span>
         </p>
-        </li>
-        </ol>
+        
         <p class="western" style="margin-left: 0.25in; margin-bottom: 0in; ">
         <br/>
 
@@ -757,19 +677,6 @@
         (ii) be provided to preserve my life, unless medically inappropriate
         or futile</span></span></p>
     </div>
-
-    {{--
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
-      Page 6 of 9
-    </div>
-
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Advance Health Care Directive CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 6 of 9
-    </div>
-    --}}
 </div>
 
 
@@ -846,18 +753,6 @@
         provide instructions for any limitations or special uses.) </i>
         </p>
     </div>
-
-    {{--
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
-      Page 7 of 9
-    </div>
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Advance Health Care Directive CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 7 of 9
-    </div>
-    --}}
 </div>
 
 
@@ -946,13 +841,13 @@
         <span ><span size="3" style="font-size: 12pt">_______________________________________</span></span></p>
         <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
           <span>
-              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+              <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</b>
           </span>
         </p>
         <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
         <span>
           <span>
-              <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}}</span>
+              <span style="font-family:'Times New Roman, serif'" >{{ucwords($tellUsAboutYou['address'])}}</span>
           </span>
         </span>
         </p>
@@ -962,30 +857,18 @@
         <p style="margin-left: 0.5in; margin-bottom: 0in; ">
         <span><span><span ><span size="3" style="font-size: 12pt"></span></span>
 
-        <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}}</span>
+        <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($tellUsAboutYou['city']))}}</span>
 
 
-        <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}}</span>&nbsp;
+        <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($tellUsAboutYou['state']))}}</span>
 
-        <span ><span size="3" style="font-size: 12pt"></span></span><span ><span size="3" style="font-size: 12pt">&nbsp;
+        <span><span size="3" style="font-size: 12pt"></span></span><span><span size="3" style="font-size: 12pt">
         </span></span><span ><span size="3" style="font-size: 12pt"></span></span>
 
         <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['zip']}}, </span>
 
-        <span ><span size="3" style="font-size: 12pt"></span></span></span></span></p>
+        <span><span size="3" style="font-size: 12pt"></span></span></span></span></p>
     </div>
-    {{--
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
-      Page 8 of 9
-    </div>
-
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Advance Health Care Directive CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 8 of 9
-    </div>
-    --}}
   </div>
 
 
@@ -1000,7 +883,7 @@
         <span >I declare that </span><b></b>
 
         <span>
-            <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+            <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</b>
 
         </span>
 
@@ -1075,19 +958,6 @@
         <p class="western"  style="margin-bottom: 0.06in; ">
         <span >	[city, state]</span></p>
     </div>
-
-    {{--
-    <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-    style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    Advance Health Care Directive <span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname}}</span><br>
-      Page 9 of 9
-    </div>
-
-    <div *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-      Advance Health Care Directive CLIENT FIRST NAME CLIENT MIDDLE NAME CLIENT LAST NAME<br>
-      Page 9 of 9
-    </div>
-    --}}
   </div>
 </div>
 

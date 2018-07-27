@@ -26,6 +26,12 @@ use Paypalpayment;
 use App\Models\Coupon;
 use App\Models\UserPackage;
 use App\TellUsAboutYou;
+use PayPal\Api\ExecutePayment;
+use PayPal\Api\Payment;
+use PayPal\Api\PaymentExecution;
+use PayPal\Rest\ApiContext;
+use PayPal\Auth\OAuthTokenCredential;
+use Illuminate\Support\Facades\Redirect;
 
 class PackageController extends Controller
 {
@@ -306,7 +312,7 @@ class PackageController extends Controller
             ->setInvoiceNumber(uniqid());
 
         $redirectUrls = Paypalpayment::redirectUrls();
-        $redirectUrls->setReturnUrl(url("/dashboard/packages/payment-success"))
+        $redirectUrls->setReturnUrl(url("/api/paypal-payment-processing"))
             ->setCancelUrl(url("/dashboard/packages/payment-failed"));
 
         $payment = Paypalpayment::payment();
@@ -318,6 +324,7 @@ class PackageController extends Controller
 
         try {
             $payment->create(Paypalpayment::apiContext());
+            \Log::info('pre payment : '.print_r($payment, true));
         } catch (PPConnectionException $ex) {
             return response()->json([
               'status' => false,
@@ -394,7 +401,9 @@ class PackageController extends Controller
         $userPackage = UserPackage::where('payment_token', $paymentID)->first();
         if ($userPackage) {
           try {
+            \Log::info(' paypal success : payment - id : => '.$paymentID.'\n'.'paypal -->> '.print_r(Paypalpayment::apiContext(), true));
             $payment = Paypalpayment::getById($paymentID, Paypalpayment::apiContext());
+            \Log::info(' paypal : after payment => '. print_r($payment, true));
           } catch (PPConnectionException $ex) {
             return response()->json([
               'status' => false,
@@ -929,6 +938,88 @@ class PackageController extends Controller
         \Log::info('CartStack submit failed for '.$email.' amount: '.$amount.' message=>'.$e->getMessage());
       }
 
+
+    }
+
+
+    public function paypalPaymentProcessing()
+    {
+      try {
+        $paymentID = $_GET['paymentId'];
+        $PayerID = $_GET['PayerID'];
+
+        $apiContext = Paypalpayment::apiContext();
+        $payment = Payment::get($paymentID, $apiContext);
+        $execution = new PaymentExecution();
+        $execution->setPayerId($PayerID);
+        $result = $payment->execute($execution, $apiContext);
+        $obj = json_decode($payment);
+        \Log::info('log resp paypal execute=> '.$payment);
+
+        if ($obj->transactions[0]->related_resources[0]->sale->state == 'completed') {
+          $userPackage = UserPackage::where('payment_token', $paymentID)->first();
+
+          $userPackage->payment_response = json_encode($obj);
+          $userPackage->payment_token = $obj->transactions[0]->related_resources[0]->sale->id;
+          $userPackage->payment_status = '2';
+          $userPackage->status = '1';
+          $userPackage->save();
+
+          $user = User::find($userPackage->user_id);
+          $user->package = $userPackage->package_id;
+          $user->save();
+          $user = User::find($userPackage->user_id);
+          $customClaims = ['package' => $user->package];
+          $token = JWTAuth::fromUser($user, $customClaims);
+
+          try {
+            $mailData = [
+              'userName' => $user->name,
+              'transactionID' => $userPackage->token,
+              'pkgName' => $userPackage->package->name,
+              'amount' => $userPackage->amount,
+              'paymentStatus' => 'Success',
+              'paymentDate' => date('jS M, Y', strtotime($userPackage->created_at)),
+              'email' => $user->email
+            ];
+            Mail::send('emails.payment',$mailData, function($mail) use($mailData){
+                    $mail->from(config('settings.email'), 'Simplywilled Payment Confirmation');
+                    $mail->to(strtolower($mailData['email']), $mailData['userName'])->subject('You have purchased '.$mailData['pkgName'].'!');
+            });
+          } catch (\Exception $e) {
+            \Log::info('type: error,'.' res: '.$e->getMessage().', line:'.$e->getLine());
+          }
+          // $cartStack = $this->cartStackSubmit($user->email, $userPackage->amount);
+          $base = url('/') == 'http://127.0.0.1:8000' ? 'http://localhost:4200' : url('/');
+          $url = $base .'/dashboard/packages/thank-you?payment_token='.$userPackage->payment_token.'&amount='.$userPackage->amount.'&package_name='.$userPackage->package->name.'&payment_status='.$userPackage->payment_status.'&updated_at='.$user->updated_at.'&token='.$token;
+          return Redirect::to($url);
+          // return response()->json([
+          //   'status'=> true,
+          //   'message'=> 'Payment done',
+          //   'data'=> [
+          //     'jwtToken' => $token,
+          //     'payment' => $userPackage,
+          //     'package_name' => $userPackage->package->name
+          //   ]
+          // ], 200);
+        } else {
+          $base = url('/') == 'http://127.0.0.1:8000' ? 'http://localhost:4200' : url('/');
+          $url = $base .'/dashboard/packages/payment-failed';
+          return Redirect::to($url);
+          // return response()->json([
+          //   'status'=> false,
+          //   'error'=> 'Payment not done. Please contact with site adminstrator',
+          // ], 400);
+        }
+      } catch (\Exception $e) {
+        $base = url('/') == 'http://127.0.0.1:8000' ? 'http://localhost:4200' : url('/');
+        $url = $base .'/dashboard/packages/payment-failed';
+        return Redirect::to($url);
+        // return response()->json([
+        //   'status'=> false,
+        //   'error'=> $e->getMessage().'  Please contact with site adminstrator',
+        // ], 500);
+      }
 
     }
 }

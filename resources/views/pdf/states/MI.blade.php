@@ -170,24 +170,24 @@
           </p>
           <p class="western" align="center" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
           <span color="#0000ff">
-              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}}</span>
+              <span style="font-family:'Times New Roman, serif'">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
           </span>
           </p>
 
           <p class="western" align="center" style="margin-bottom: 0in; ">
-              <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}}</span>
+              <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['address']}}</span>
 
           <p class="western" align="center" style="margin-bottom: 0in; ">
-              <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}}</span>
+              <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($tellUsAboutYou['city']))}},</span>
 
-              <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}}</span>&nbsp;
+              <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($tellUsAboutYou['state']))}}</span>&nbsp;
 
-              <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['zip']}}, </span>
+              <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['zip']}}</span>
 
           <p align="center" style="margin-bottom: 0in; ">
-            <span size="2" style="font-size: 9pt">
+            <span size="2">
               <span color="#0432ff">
-                  <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['phone']}}, </span>
+                  <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['phone']}}</span>
               </span>
             </span>
           </p>
@@ -199,44 +199,35 @@
 
           </p>
           <p class="western" align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
-          I, <span color="#0000ff">
-              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+          I,<span color="#0000ff">
+              <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b><span>, of {{$tellUsAboutYou['address']}}, {{ucwords(strtolower($tellUsAboutYou['city']))}}, {{ucwords(strtolower($tellUsAboutYou['state']))}}, am of sound mind, and I voluntarily make this designation.</span>
           </span>
-          , of
 
-          <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}}</span>
-
-              <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}}</span>
-
-              <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}}</span>&nbsp;
-          , am of sound mind, and I
-          voluntarily make this designation.</p>
+           </p>
           <p align="justify" style="margin-bottom: 0in; "><br/>
 
           </p>
 
           <p class="western" align="justify" style="margin-bottom: 0in; ">
 
-          <span color="#000000">I designate my </span>
+          <span color="#000000">I designate my</span>
 
            	@if(strtolower($healthFinance['relation']) == 'other')
-      				<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
+      				<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}},</span>
       			@else
-      				<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}}, </span>
+      				<span style="font-family:'Times New Roman, serif'" >{{ucwords(strtolower($healthFinance['relation']))}},</span>
       			@endif
 
-          <span color="#000000">, </span>
+          <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['fullname']))}}</span>
 
-          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}}</span>
-
-          <span color="#000000"> of </span>
+          <span color="#000000">of</span>
           <span style="font-family:'Times New Roman, serif'">{{$healthFinance['address']}}, </span>
 
-          <span color="#000000"> </span>in
-          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['city']}}, </span>
+          <span color="#000000"></span>in
+          <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['city']))}}, </span>
 
 
-          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['state']}}, </span>
+          <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['state']))}}, </span>
 
 
           <span style="font-family:'Times New Roman, serif'">{{$healthFinance['zip']}}, </span>
@@ -263,12 +254,12 @@
               my
 
               @if(strtolower($healthFinance['backupRelation']) == 'other')
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}}, </span>
+                <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['backupRelationOther'])}}, </span>
               @else
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
+                <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['backupRelation'])}}, </span>
               @endif
 
-              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}}</span>
+              <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['backupFullname'])}}</span>
 
               of
 
@@ -276,9 +267,9 @@
 
               in
 
-              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupCity']}}, </span>
+              <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupCity']))}}, </span>
 
-              <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupState']}}, </span>
+              <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupState']))}}</span>
 
               <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}}, </span>
 
@@ -320,10 +311,7 @@
           examination by a doctor, licensed psychologist or other medical
           professional. A determination of my inability to make decisions or
           provide informed consent for mental health treatment will be made by:</p>
-          <p class="western" align="justify" style="margin-left: 0.5in; margin-bottom: 0in; ">
-          <br/>
-
-          </p>
+          
 
           <p class="western" align="justify" style="margin-bottom: 0in; ">
           In making decisions, my patient advocate shall try to follow my
@@ -333,19 +321,14 @@
           refuse treatment on my behalf, arrange medical and personal services
           for me, and pay for such services with my funds.
           </p>
-          <p class="western" align="justify" style="margin-bottom: 0in; ">
-
-          </p>
+          
           <p class="western" align="justify" style="margin-bottom: 0in; ">
           In making decisions, my patient advocate shall have access to any of
           my medical records to which I have a right, as well as my birth
           certificate and other legal documents needed to apply for Medicare,
           Medicaid or other government programs.
           </p>
-          <p class="western" align="justify" style="margin-bottom: 0in; ">
-          <br/>
 
-          </p>
           <p class="western" align="justify" style="margin-bottom: 0in; ">
           I may change my mind at any time by communicating in any manner that
           this designation does not reflect my wishes. It is my intent that no
@@ -691,9 +674,9 @@
 
 
         <p class="western" style="text-indent: 0.5in; margin-bottom: 0in; ">
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}}</span>
+            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null" style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($tellUsAboutYou['city']))}}</span>
 
-            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}}</span>&nbsp;
+            <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($tellUsAboutYou['state']))}}</span>&nbsp;
 
             <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['zip']}}, </span>
 
@@ -978,7 +961,7 @@
       <p class="western" align="justify" style="margin-left: 0.5in; margin-bottom: 0.08in;  orphans: 0; widows: 0">
 
       <span color="#0000ff">
-          <span style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['fullname']}}, </span>
+          <span style="font-family:'Times New Roman, serif'">{{strtoupper($tellUsAboutYou['fullname'])}}, </span>
       </span>
       </p>
 

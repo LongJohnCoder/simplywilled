@@ -29,16 +29,16 @@
         <div class="docPage">
           <div class="docPageInner">
             <p align="center" style="margin-bottom: 0in; line-height: 0.28in; page-break-before: auto; page-break-after: auto">
-              <span  style="font-size: 17pt"><b>COLORADO MEDICAL DURABLE</b></span></p>
-            <p align="center" style="margin-bottom: 0in; line-height: 0.28in"><span  style="font-size: 17pt"><b>POWER
+              <span  style="font-size: 16pt"><b>COLORADO MEDICAL DURABLE</b></span></p>
+            <p align="center" style="margin-bottom: 0in; line-height: 0.28in"><span  style="font-size: 16pt"><b>POWER
               OF ATTORNEY FOR HEALTH CARE </b></span>
             </p>
 
-            <p align="center" style="margin-bottom: 0in; line-height: 0.28in"><span  style="font-size: 17pt"><b>AND
+            <p align="center" style="margin-bottom: 0in; line-height: 0.28in"><span  style="font-size: 16pt"><b>AND
               ADVANCE DIRECTIVE FOR </b></span>
             </p>
 
-            <p align="center" style="margin-bottom: 0in; line-height: 0.28in"><span  style="font-size: 17pt"><b>MEDICAL
+            <p align="center" style="margin-bottom: 0in; line-height: 0.28in"><span  style="font-size: 16pt"><b>MEDICAL
               / SURGICAL TREATMENT</b></span></p>
             <p align="center" style="margin-bottom: 0.13in; line-height: 0.33in">————————————</p>
             <p align="center" style="margin-bottom: 0in; line-height: 0.23in"><span  style="font-size: 13pt"><b>PART
@@ -130,7 +130,7 @@
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">________________________________________________________________________</span></span></span></span></span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span color="#000000">________________________________________________________________________</span></span></span></span></span></p>
-            <p align="center" style="margin-bottom: 0in; line-height: 115%"><i>(Add
+            <p align="center" style="margin-bottom: 0in; line-height: 115%;"><i>(Add
               additional sheets if necessary.)</i></p>
             <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
 
@@ -289,9 +289,9 @@
             <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <ol type="A">
+            <ol style="list-style: none;">
               <li>
-              <p style="margin-bottom: 0in; line-height: 115%"><b>LIFE
+              <p style="margin-bottom: 0in; line-height: 115%; margin-top:0;"><b>LIFE
                 SUSTAINING PROCEDURES – I direct that, in accordance with Colorado
                 law, life-sustaining procedures shall be: <i>(initial only the
                   option that applies)</i></b></p>
