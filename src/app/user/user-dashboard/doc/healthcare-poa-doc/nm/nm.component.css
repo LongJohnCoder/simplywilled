@@ -23,3 +23,7 @@ min-height: 400px;
 .docPage{
 height: auto !important;
 }
+.docContainer{
+    width: 700px;
+    margin: 0 auto;
+}
