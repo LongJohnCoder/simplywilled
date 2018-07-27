@@ -12,6 +12,11 @@ p, span {
     min-height: 400px;
 }
 
+.docContainer{
+  width: 700px;
+  margin: 0 auto;
+}
+
 .pageCount{
     counter-reset: index;
   }
