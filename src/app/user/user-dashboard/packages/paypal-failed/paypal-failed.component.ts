@@ -12,7 +12,7 @@ export class PaypalFailedComponent implements OnInit {
 
   ngOnInit() {
       this.respType = true;
-      this.respMsg = 'Payment not done, Please try again later.';
+      this.respMsg = 'Payment not done, Please contact with administrator.';
   }
 
 }

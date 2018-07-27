@@ -32,7 +32,7 @@
     </li>
     <li>
       <p>Payment Date</p>
-      <p>{{ data != null && data.updated_at != null ?  data.updated_at : '' | date}}</p>
+      <p>{{ data != null && data.updated_at != null ?  (data.updated_at | date: 'longDate') : ''}}</p>
     </li>
   </ul>
 </div>

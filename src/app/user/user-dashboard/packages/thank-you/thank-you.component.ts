@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, OnDestroy} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Subscription} from 'rxjs/Subscription';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { UserService } from '../../../user.service';
 
 declare function cartstack_updatecart(e): any;
@@ -24,15 +24,28 @@ export class ThankYouComponent implements OnInit, OnDestroy {
     timerSubscription: Subscription;
   constructor(
       private router: Router,
+      private activatedRoute: ActivatedRoute,
       private userService: UserService
   ) {
-      const store = JSON.parse(localStorage.getItem('pkgInfo'));
-      this.data = store.data;
-      this.package_name = store.package_name;
+      this.activatedRoute.queryParams.subscribe(params => {
+          const tokenn = params['token'];
+          if (tokenn === undefined || tokenn === null) {
+              const store = JSON.parse(localStorage.getItem('pkgInfo'));
+              this.data = store.data;
+              this.package_name = store.package_name;
 
-      const storeContent = JSON.parse(localStorage.getItem('loggedInUser'));
-      storeContent.token = store.token;
-      localStorage.setItem('loggedInUser', JSON.stringify(storeContent));
+              const storeContent = JSON.parse(localStorage.getItem('loggedInUser'));
+              storeContent.token = store.token;
+              localStorage.setItem('loggedInUser', JSON.stringify(storeContent));
+          } else {
+              this.data = params;
+              this.package_name = params['package_name'];
+
+              const storeContent = JSON.parse(localStorage.getItem('loggedInUser'));
+              storeContent.token = params['token'];
+              localStorage.setItem('loggedInUser', JSON.stringify(storeContent));
+          }
+      });
   }
 
   ngOnInit() {
