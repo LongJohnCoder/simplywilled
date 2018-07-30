@@ -136,4 +136,36 @@ class DashboardController extends Controller
         ], 500);
       }
     }
+
+    /**
+    * Delete a user
+    * @params Request
+    * @return \Illuminate\Http\Response
+    */
+    public function userDelete(Request $request)
+    {
+      try {
+        $user = User::find($request->user_id);
+        if ($user) {
+          $user->delete();
+          return response()->json([
+             'status'       => true,
+             'message'      => 'User deleted successfully',
+             'data'         => null
+          ], 200);
+        } else {
+          return response()->json([
+             'status'       => false,
+             'message'      => 'User not found',
+             'data'         => null
+          ], 400);
+        }
+      } catch (\Exception $e) {
+        return response()->json([
+           'status'       => false,
+           'message'      => $e->getMessage().' Line : '.$e->getLine(),
+           'data'         => null
+        ], 500);
+      }
+    }
 }

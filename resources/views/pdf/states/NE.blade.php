@@ -40,63 +40,23 @@
       appoint my
       	<span size="3" style="font-size: 12pt">
 			@if(strtolower($healthFinance['relation']) == 'other')
-				<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
+				<span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['relationOther'])}},</span>
 			@else
-				<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}}, </span>
+				<span style="font-family:'Times New Roman, serif'" >{{ucwords($healthFinance['relation'])}},</span>
 			@endif
-		</span>
-
-
-      <span style="text-transform: capitalize"> {{$healthFinance['fullname']}} </span> of
-
-
-      <span style="text-transform: capitalize"> {{$healthFinance['address']}} </span> in
-
-
-      <span style="text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
-
-
-      <span style="text-transform: capitalize"> {{$healthFinance['state']}} </span>
-
-
-      <span style="text-transform: capitalize"> {{$healthFinance['zip']}} </span>
-
-      (Tel: <span> {{$healthFinance['phone']}} </span> as my attorney-in-fact for health care.
-
-
-
+		</span><span style="text-transform: capitalize">{{$healthFinance['fullname']}} of {{$healthFinance['address']}} in {{ucwords(strtolower($healthFinance['city']))}}, {{ucwords(strtolower($healthFinance['state']))}} {{$healthFinance['zip']}} (Tel: <span> {{$healthFinance['phone']}} </span> as my attorney-in-fact for health care.</span>
       @if($healthFinance['anyBackupAgent'] === 'true')
       <span>
       If said agent is
       unable, unwilling or unavailable to act, or if I revoke this
-      appointment or authority to act, then I designate
+      appointment or authority to act, then I designate my
   		</span>
-      <span>
-      	<span>
-      		<span style="font-family:'Times New Roman, serif'">my</span>
-      	</span>
-      </span>
-
-
 		@if(strtolower($healthFinance['backupRelation'] == 'other'))
 			<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}}, </span>
 		@else
 			<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
 		@endif
-
-
-      <span style="text-transform: capitalize"> {{$healthFinance['backupFullname']}} </span> of
-
-      <span style="text-transform: capitalize"> {{$healthFinance['backupAddress']}} </span> in
-
-      <span style="text-transform: capitalize"> {{$healthFinance['backupCity']}} ,</span>
-
-      <span style="text-transform: capitalize"> {{$healthFinance['backupState']}} </span>
-
-      <span style="text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
-
-      (Tel: <span> {{$healthFinance['backupphone']}} </span> ),
-
+      <span style="text-transform: capitalize">{{$healthFinance['backupFullname']}} of {{$healthFinance['backupAddress']}} in {{$healthFinance['backupCity']}}, {{$healthFinance['backupState']}} {{$healthFinance['backupZip']}} (Tel: <span> {{$healthFinance['backupphone']}} </span> ),</span> 
       @endif
    		</span>
 
@@ -258,7 +218,7 @@
     <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <span ><span style="font-family:'Times New Roman, serif'"><b>(signature)
       </b></span></span><span style="font-family:'Times New Roman, serif'"><b>
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
 
       </b>
   	</span>
@@ -287,21 +247,15 @@
     <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">On this ______ day of </span><span style="font-family:'Times New Roman, serif'">_______________________</span><span style="font-family:'Times New Roman, serif'">,
     </span><span style="font-family:'Times New Roman, serif'">__________________</span><span style="font-family:'Times New Roman, serif'">,
-    before me, a notary public, personally came </span>
-
-
-    <span style="font-family:'Times New Roman, serif'">
-
-    <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-    </span><span style="font-family:'Times New Roman, serif'">,
+    before me, a notary public, personally came</span><span style="font-family:'Times New Roman, serif'"> <span>{{strtoupper($tellUsAboutYou['fullname'])}},</span>
+    </span><span style="font-family:'Times New Roman, serif'">
     personally to me known to be the identical person whose name is
     affixed to the above power of attorney for health care as principal,
     and I declare that </span>
     <span><span style="font-family:'Times New Roman, serif'"><span>{{$genderTxt3}}</span>
     </span></span>
 
-    <span style="font-family:'Times New Roman, serif'">»
-    appears in sound mind and not under duress or undue influence, that
+    <span style="font-family:'Times New Roman, serif'">appears in sound mind and not under duress or undue influence, that
     </span>
     <span>
     	<span style="font-family:'Times New Roman, serif'">
@@ -343,22 +297,13 @@
       <span style="font-family:'Times New Roman, serif'">We declare that the principal,
       </span><span style="font-family:'Times New Roman, serif'">
 
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-
-      ,</span><span style="font-family:'Times New Roman, serif'">
-      is personally known to us, that the principal signed or acknowledged
-      </span>
-
+        <span>{{strtoupper($tellUsAboutYou['fullname'])}}, is personally known to us, that the principal signed or acknowledged</span></span>
       <span>
       	<span size="3" style="font-size: 12pt">{{$genderTxt4}}</span>
       </span>
 
-      <span style="font-family:'Times New Roman, serif'">»
-      signature on this power of attorney for health care in our presence,
-      that the principal appears to be of sound mind and not under duress
-      or undue influence, and that neither of us nor the principal’s
-      attending physician is the person appointed as attorney in fact by
-      this document.</span></p>
+      <span style="font-family:'Times New Roman, serif'">signature on this power of attorney for health care in our presence,that the principal appears to be of sound mind and not under duress
+      or undue influence, and that neither of us nor the principal’s attending physician is the person appointed as attorney in fact by this document.</span></p>
 
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Witnessed
       by:</span></span></span></p>
@@ -480,31 +425,29 @@
     </p>
     <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></span></p>
-    <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
+    <p  style="margin-bottom: 0.08in; margin-left: 0.5in;  orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><b>
-          <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+          <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
         </b>
     	</span>
     	</p>
-    <p  style="text-indent: 0.5in; margin-bottom: 0in; ">
+    <p  style="text-indent: 0.5in; margin-bottom: 0in;">
       <span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"></span></span><span ><span size="3" style="font-size: 12pt">
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['address']}}</span>
+        <span style="text-transform: capitalize">{{$tellUsAboutYou['address']}},</span>
 
-      </span></span><span ><span size="3" style="font-size: 12pt">,
-      </span></span></span></span></span>
+      </span></span><span ></span></span></span></span>
     </p>
 
     <p  style="text-indent: 0.5in; margin-bottom: 0in; ">
       <span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt"></span></span><span ><span size="3" style="font-size: 12pt">
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
+        <span style="text-transform: capitalize">{{ucwords(strtolower($tellUsAboutYou['city']))}},</span>
       </span>
   	</span>
 
-      <span><span size="3" style="font-size: 12pt">,
-      </span></span><span ><span size="3" style="font-size: 12pt">
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>
+      <span></span><span ><span size="3" style="font-size: 12pt">
+        <span style="text-transform: capitalize">{{ucwords(strtolower($tellUsAboutYou['state']))}}.</span>
 
-      </span></span><span ><span size="3" style="font-size: 12pt">.</span></span></span></span></span></p>
+      </span></span><span ></span></span></span></span></p>
 
 
     <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">STATE
@@ -517,7 +460,7 @@
 
     <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">The declarant </span><span style="font-family:'Times New Roman, serif'">
-      <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+      <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
     </span></p>
     <p style="margin-bottom: 0in; "> <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">voluntarily
         signed this writing in my presence.</span></span></span></p>
@@ -538,10 +481,9 @@
     </p>
     <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0"><a name="_GoBack"></a>
       <span style="font-family:'Times New Roman, serif'">The declarant </span><span style="font-family:'Times New Roman, serif'">
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
 
-      </span><span style="font-family:'Times New Roman, serif'">
-        voluntarily signed this writing in my presence.</span></p>
+      </span><span style="font-family:'Times New Roman, serif'">voluntarily signed this writing in my presence.</span></p>
     <p  style="margin-bottom: 0in; "><br/>
 
     </p>

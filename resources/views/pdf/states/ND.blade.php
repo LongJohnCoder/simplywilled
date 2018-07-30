@@ -37,8 +37,8 @@
 
     <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       I, <span style="font-family:'Times New Roman, serif'"><b>
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-        </b></span>,
+        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}, </span>
+        </b></span>
       understand this document allows me to do ONE OR ALL of the following:</p>
 
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>PART
@@ -92,16 +92,16 @@
 		<span>
 			<span size="3" style="font-size: 12pt">
 				@if(strtolower($healthFinance['relation']) == 'other')
-					<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
+					<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}}, </span>
 				@else
-					<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}}, </span>
+					<span style="font-family:'Times New Roman, serif'" >{{ucwords(strtolower($healthFinance['relation']))}}, </span>
 				@endif
 			</span>
 		</span>
 
 
 
-      <span style="text-transform: capitalize">{{$healthFinance['fullname']}}</span> to
+      <span style="text-transform: capitalize">{{ucwords(strtolower($healthFinance['fullname']))}}</span> to
       make health care decisions for me. This person is called my health
       care agent.</span></span></span></p>
 
@@ -132,9 +132,9 @@
 
       	<span size="3" style="font-size: 12pt">
 
-        	<span style="text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
+        	<span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['city']))}}, </span>
 
-        	<span style="text-transform: capitalize"> {{$healthFinance['state']}} </span>
+        	<span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['state']))}} </span>
 
         	<span style="text-transform: capitalize"> {{$healthFinance['zip']}} </span>
 
@@ -164,14 +164,14 @@
 
     	<span size="3" style="font-size: 12pt">
 			@if(strtolower($healthFinance['backupRelation'] == 'other'))
-									<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}}, </span>
+									<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupRelationOther']))}}, </span>
 								@else
-									<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
+									<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupRelation']))}}, </span>
 								@endif
     	</span>
 
 
-        <span style="text-transform: capitalize"> {{$healthFinance['fullname']}} </span>
+        <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['fullname']))}} </span>
         to make health care decisions for me. This person is my alternate health
         care agent.</span></span></span>
        </p>
@@ -215,9 +215,9 @@
           				<span size="3" style="font-size: 12pt">	</span>
           			</span>
           			<span size="3" style="font-size: 12pt">
-			            <span style="text-transform: capitalize">{{$healthFinance['backupCity']}} ,</span>
+			            <span style="text-transform: capitalize">{{ucwords(strtolower($healthFinance['backupCity']))}}, </span>
 
-			            <span style="text-transform: capitalize">{{$healthFinance['backupState']}} ,</span>
+			            <span style="text-transform: capitalize">{{ucwords(strtolower($healthFinance['backupState']))}} </span>
 
 			            <span style="text-transform: capitalize">{{$healthFinance['backupZip']}} </span>
 
@@ -736,7 +736,7 @@
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></span></p>
     <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
 	    <span style="font-family:'Times New Roman, serif'"><b>
-	        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+	        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
 
 	        </b>
 	    </span>
@@ -825,7 +825,7 @@
       day of </span><span style="font-family:'Times New Roman, serif'">_____________________</span><span style="font-family:'Times New Roman, serif'">,
       </span><span style="font-family:'Times New Roman, serif'">_______________</span><span style="font-family:'Times New Roman, serif'">,
       </span><span style="font-family:'Times New Roman, serif'">
-      <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+      <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
 
       </span>
 
@@ -885,7 +885,7 @@
         day of </span><span style="font-family:'Times New Roman, serif'">______________________</span><span style="font-family:'Times New Roman, serif'">,
         </span><span style="font-family:'Times New Roman, serif'">________________</span><span style="font-family:'Times New Roman, serif'">,
         </span><span style="font-family:'Times New Roman, serif'">
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
 
 
         </span><span style="font-family:'Times New Roman, serif'">acknowledged </span>
@@ -946,7 +946,7 @@
       </span>
 
       <span style="font-family:'Times New Roman, serif'">
-      	<span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+      	<span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
       </span>
 
       <span style="font-family:'Times New Roman, serif'">
@@ -1084,7 +1084,7 @@ IF</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></
     <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
 	    <span style="font-family:'Times New Roman, serif'">
 	    	<b>
-	        	<span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+	        	<span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
 	        </b>
 	    </span>
 	</p>

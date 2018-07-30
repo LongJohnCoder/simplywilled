@@ -256,12 +256,7 @@
 
 
         </div>
-        {{--
-        <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Proxy of <br>{{userDetails.tellUsAboutYou.fullname}} <br></span>
-          Page 1 of 5
-        </div>
-        --}}
+        
       </div>
       <!-- Page 1 -->
 
@@ -272,35 +267,31 @@
             <span ><span style="font-family:'Times New Roman, serif'">1.</span></span><span ><span style="font-family:'Times New Roman, serif'">  </span></span><span ><span style="font-family:'Times New Roman, serif'">I,
               </span></span><span style="font-family:'Times New Roman, serif'"><b>
 
-                <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+                <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}, </span>
 
-                <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
-              </b></span><span ><span style="font-family:'Times New Roman, serif'">,
+                
+              </b></span><span ><span style="font-family:'Times New Roman, serif'">
               hereby my
 
               @if(strtolower($healthFinance['relation']) == 'other')
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
+                <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}}, </span>
               @else
-                <span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}}, </span>
+                <span style="font-family:'Times New Roman, serif'" >{{ucwords(strtolower($healthFinance['relation']))}}, </span>
               @endif
 
-              <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
-
-              <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['fullname']}} </span>
+              <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{ucwords(strtolower($healthFinance['fullname']))}} </span>
 
               <span>of ,</span>
 
-              <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['address']}} </span> in
+              <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{strtolower(ucwords($healthFinance['address']))}} </span> in
 
-              <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
+              <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{ucwords(strtolower($healthFinance['city']))}} ,</span>
 
-              <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['state']}} </span>
-
-              <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
+              <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{ucwords(strtolower($healthFinance['state']))}} </span>
 
               <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['zip']}} </span>
 
-              <span> _______________________ </span>
+              
               (Tel: <span> {{$healthFinance['phone']}} </span> ),
 
 
@@ -315,33 +306,30 @@
 
             <span style="font-family:'Times New Roman, serif'">
 
-              <span size="2" style="font-size: 9pt">
+              <span size="2" style="font-size: 9pt">                
 
-                <span size="3" style="font-size: 12pt">2.</span>
+                  @if($healthFinance['anyBackupAgent'] == 'true')
+                  <span size="3" style="font-size: 12pt">2.</span>
 
                   <span size="3" style="font-size: 12pt">  </span>
-
-                  <span size="3" style="font-size: 12pt">If
+                    <span size="3" style="font-size: 12pt">If
                   the person I appoint is unwilling or unavailable to act as my health
-                  care agent, then I appoint </span>
-
-                  @if($healthFinance['anyBackupAgent'])
-                    <span size="3" style="font-size: 12pt">my
+                  care agent, then I appoint my
 
                       @if(strtolower($healthFinance['backupRelation']) == 'other')
-                        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}}, </span>
+                        <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupRelationOther']))}}, </span>
                       @else
-                        <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
+                        <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupRelation']))}}, </span>
                       @endif
 
-                      <span style="text-transform: capitalize"> {{$healthFinance['backupFullname']}}, </span>of
+                      <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['backupFullname']))}}, </span>of
 
-                      <span style="text-transform: capitalize"> {{$healthFinance['backupAddress']}} </span>in
+                      <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['backupAddress']))}} </span>in
 
-                      <span style="text-transform: capitalize"> {{$healthFinance['backupCity']}} ,</span>
+                      <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['backupCity']))}}, </span>
 
 
-                      <span style="text-transform: capitalize"> {{$healthFinance['backupState']}} </span>
+                      <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['backupState']))}} </span>
 
                       <span style="text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
 
@@ -358,15 +346,14 @@
               <div *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'false'">
 
 
-                <p  style="margin-bottom: 0in; line-height: 100%">
+                <p style="margin-bottom: 0in; line-height: 100%">
                   <span style="font-family:'Times New Roman, serif'">
                     <span size="2" style="font-size: 9pt">
-                    <span size="3" style="font-size: 12pt">2.</span>
-                    <span size="3" style="font-size: 12pt"> </span>
-                      <span size="3" style="font-size: 12pt">
-                        <span size="3" style="font-size: 12pt">&nbsp;</span>
-                        <span size="3" style="font-size: 12pt" >The following person as my alternate agent to make health care decisions for me as authorized in this   document:</span>
-                      </span>
+                      <span size="3" style="font-size: 12pt">2.</span>
+                      <span size="3" style="font-size: 12pt"> </span>
+                      <span size="3" style="font-size: 12pt"><span size="3" style="font-size: 12pt" >If
+                  the person I appoint is unwilling or unavailable to act as my health
+                  care agent, then I appoint the following person as my alternate agent to make health care decisions for me as authorized in this document:</span></span>
                     </span>
                   </span>
                 </p>
@@ -415,8 +402,7 @@
               </div>
 
             @endif
-          <!--<p  style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">«</span></span><span size="3" style="font-size: 12pt">END
-        IF</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></span></span></p>-->
+          
           <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
           </p>
@@ -464,12 +450,7 @@
           <p  style="margin-bottom: 0in; line-height: 100%; text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="1" style="font-size: 7pt"><span size="3" style="font-size: 12pt"><i>(Add
         additional sheets if necessary.)</i></span></span></span></p>
         </div>
-        {{--
-        <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Proxy of <br>{{userDetails.tellUsAboutYou.fullname}} <br></span>
-          Page 2 of 5
-        </div>
-        --}}
+        
       </div>
       <!-- !Page 2 -->
 
@@ -653,7 +634,7 @@
             <span style="font-family:'Times New Roman, serif'"><b>
 
 
-              <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+              <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
 
               <!--«</b></span><span ><span style="font-family:'Times New Roman, serif'"><b>CLIENT
         FIRST NAME</b></span></span><span style="font-family:'Times New Roman, serif'"><b>»
@@ -675,14 +656,6 @@
               </span>
             </span>
           </p>
-          <!--<p  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-        <span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">«</span></span><span size="3" style="font-size: 12pt">IF
-        ANSWERED( Address2 )</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></span></span></p>-->
-          <!--<p  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-            <span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">«</span></span><span size="3" style="font-size: 12pt">Address2</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></span></span></p>
-          <p  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-        <span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">«</span></span><span size="3" style="font-size: 12pt">END
-        IF</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></span></span></p>-->
           <p  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
             <span>
               <span style="font-family:'Times New Roman, serif'">
@@ -702,12 +675,7 @@
             </span>
           </p>
         </div>
-        {{--
-        <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Proxy of <br>{{userDetails.tellUsAboutYou.fullname}} <br></span>
-          Page 4 of 5
-        </div>
-        --}}
+        
       </div>
       <!-- !Page 4 -->
 
@@ -723,16 +691,13 @@
           </p>
           <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0"><a name="_GoBack"></a>
             <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
-        declare that </span></span></span>
-        <span style="font-family:'Times New Roman, serif'">
-          <b>
-            <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-          </b>
-        </span>
+        declare that <b>
+            <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
+          </b></span></span></span>
 
         <span style="font-family:'Times New Roman, serif'">
           <span size="2" style="font-size: 9pt">
-            <span size="3" style="font-size: 12pt">, the person who signed this document</span>
+            <span size="3" style="font-size: 12pt"> the person who signed this document</span>
           </span>
         </span>
 

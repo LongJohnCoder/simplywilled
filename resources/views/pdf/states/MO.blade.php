@@ -44,42 +44,15 @@
       HEALTH CARE DIRECTIVE OF</b></span></span></p>
     <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0; text-align:center;">
       <span style="font-family:'Times New Roman, serif'"><span size="3" style="font-size: 13pt"><b>
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+        <span>{{strtoupper($tellUsAboutYou['fullname'])}}</span>
 
       </b></span></span></p>
-    <p  style="margin-bottom: 0in;  text-align:center;">
-    	<span>
-    		<span style="font-family:'Times New Roman, serif'"></span>
-    	</span>
-
+      <p  style="margin-bottom: 0in;  text-align:center;">
     	<span>
     		<span style="font-family:'Times New Roman, serif'">
-      			<span style="text-transform: capitalize">{{$tellUsAboutYou['address']}}</span>
+      			<span style="text-transform: capitalize">{{$tellUsAboutYou['address']}}, {{ucwords(strtolower($tellUsAboutYou['city']))}}, {{ucwords(strtolower($tellUsAboutYou['state']))}}</span>
     		</span>
     	</span>
-    	<span>
-    		<span style="font-family:'Times New Roman, serif'">,</span>
-    	</span>
-
-        <span>
-        	<span style="font-family:'Times New Roman, serif'">
-        		<span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
-      		</span>
-      	</span>
-
-      	<span>
-      		<span style="font-family:'Times New Roman, serif'">,</span>
-      	</span>
-
-      	<span>
-      		<span style="font-family:'Times New Roman, serif'">
-      			<span style="text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>
-      		</span>
-      	</span>
-
-      	<span>
-      		<span style="font-family:'Times New Roman, serif'"></span>
-      	</span>
       </p>
 
 
@@ -99,37 +72,17 @@
       </span></span><span ><span style="font-family:'Times New Roman, serif'"><b>Selection
       of Agent</b></span></span><span ><span style="font-family:'Times New Roman, serif'">.
       I, </span></span><span style="font-family:'Times New Roman, serif'"><b>
-      <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+      <span>{{strtoupper($tellUsAboutYou['fullname'])}},</span>
 
-      </b></span><span ><span style="font-family:'Times New Roman, serif'">,
-      currently a resident of </span></span><span ><span style="font-family:'Times New Roman, serif'">________________</span></span><span ><span style="font-family:'Times New Roman, serif'">County,
-      Missouri, appoint my </span></span>
-
-		<span size="3" style="font-size: 12pt">
+      </b></span><span ><span style="font-family:'Times New Roman, serif'">currently a resident of </span></span><span ><span style="font-family:'Times New Roman, serif'">________________</span></span><span ><span style="font-family:'Times New Roman, serif'">County,
+      Missouri, appoint my</span></span><span size="3" style="font-size: 12pt">
 			@if(strtolower($healthFinance['relation']) == 'other')
-				<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
+				<span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}},</span>
 			@else
-				<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}}, </span>
+				<span style="font-family:'Times New Roman, serif'" >{{ucwords(strtolower($healthFinance['relation']))}},</span>
 			@endif
-		</span>
-
-      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['fullname']}} </span> of
-
-
-      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['address']}} </span> in
-
-
-      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
-
-      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['state']}} </span>,
-
-      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['zip']}} </span>
-
-      <span style="font-family:'Times New Roman, serif'">(Tel: <span> {{$healthFinance['phone']}} </span> )
-        as my TRUE AND LAWFUL attorney-in-fact (“Agent”&quot;).</span></p>
-
-
-
+		</span><span style="font-family:'Times New Roman, serif';"> {{ucwords($healthFinance['fullname'])}} </span>of <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['address']}} </span>in <span style="font-family:'Times New Roman, serif';"> {{ucwords(strtolower($healthFinance['city']))}},</span> <span style="font-family:'Times New Roman, serif';"> {{ucwords(strtolower($healthFinance['state']))}} </span><span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['zip']}} (Tel: <span> {{$healthFinance['phone']}} </span> ) as my TRUE AND LAWFUL attorney-in-fact (“Agent”&quot;).</span>
+      </p>
 
     <p style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">2.
       </span><span style="font-family:'Times New Roman, serif'"><b>Alternate Agent</b></span><span style="font-family:'Times New Roman, serif'">.
@@ -141,32 +94,26 @@
       <span style="font-family:'Times New Roman, serif'">If
       my Agent resigns or is not able or available to make health care
       decisions for me, or if an Agent named by me is divorced from me or
-      is my spouse and legally separated from me, I appoint my </span>
+      is my spouse and legally separated from me, I appoint my</span>
 
-		<span size="3" style="font-size: 12pt">
-			@if(strtolower($healthFinance['backupRelation'] == 'other'))
-									<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}}, </span>
-								@else
-									<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
-								@endif
-		</span>
-
-
-      	<span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupFullname']}} </span> of
+  		<span size="3" style="font-size: 12pt">
+  			@if(strtolower($healthFinance['backupRelation'] == 'other'))
+  				<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}},</span>
+  			@else
+  				<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}},</span>
+  			@endif
+  		</span><span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupFullname']}} </span> of
 
       	<span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupAddress']}} </span> in
 
-      	<span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupCity']}} ,</span>
+      	<span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{ucwords(strtolower($healthFinance['backupCity']))}},</span>
 
-      	<span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupState']}} </span>
+      	<span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{ucwords(strtolower($healthFinance['backupState']))}}</span>
 
-      	<span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
+      	<span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupZip']}}</span>
 
-      	<span style="font-family:'Times New Roman, serif'">(Tel: <span> {{$healthFinance['backupphone']}} </span> ),
-      	to serve as my alternate Agent and to have the same powers as my
-        Agent.<!--</span>--></span>
+      	<span style="font-family:'Times New Roman, serif'">(Tel: <span> {{$healthFinance['backupphone']}} </span> ), to serve as my alternate Agent and to have the same powers as my Agent.<!--</span>--></span>
         @endif
-
 
         @if($healthFinance['anyBackupAgent'] == 'false')
         <span style="font-family:'Times New Roman, serif'">
@@ -190,10 +137,7 @@
   		</span>
 
       </span>
-    </p>
-
-
-
+    </p>  
 
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">3.
       </span><span style="font-family:'Times New Roman, serif'"><b>Durability</b></span><span style="font-family:'Times New Roman, serif'">.
@@ -543,9 +487,9 @@
 
     <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'">_______________________________________</span></p>
-    <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
+    <p  style="margin-bottom: 0.08in; margin-left: 0.5in; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><b>
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+        <span>{{strtoupper($tellUsAboutYou['fullname'])}}</span>
 
       </b>
   	  </span>
@@ -571,7 +515,7 @@
         before me, personally </span><span style="font-family:'Times New Roman, serif'">
 
 
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+        <span>{{strtoupper($tellUsAboutYou['fullname'])}}</span>
 
         </span><span style="font-family:'Times New Roman, serif'">,
         to me known to be the person described in and who executed the
@@ -579,20 +523,10 @@
 
         <span>
         	<span style="font-family:'Times New Roman, serif'">
-        		<span>{{$genderTxt4}}</span>
+        		<span>{{$genderTxt4}} executed the same as {{$genderTxt4}} free act and deed.</span>
         	</span>
         </span>
-
-        <span style="font-family:'Times New Roman, serif'">
-        executed the same as </span>
-
-        <span>
-        	<span style="font-family:'Times New Roman, serif'">
-        		<span>{{$genderTxt4}}</span>
-        	</span>
-        </span>
-        <span style="font-family:'Times New Roman, serif'">
-        free act and deed.</span></p>
+        </p>
     <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><b>IN
       WITNESS WHEREOF</b></span><span style="font-family:'Times New Roman, serif'">, I
       have hereunto set my hand and affixed my official seal in the County

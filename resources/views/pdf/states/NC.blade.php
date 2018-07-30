@@ -130,10 +130,10 @@
 
       	<span style="font-family:'Times New Roman, serif'">
       		<b>
-        		<span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+        		<span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}, </span>
         	</b>
     	</span>
-    	<span style="font-family:'Times New Roman, serif'">,
+    	<span style="font-family:'Times New Roman, serif'">
           being of sound mind, hereby appoint the following person as my health
           care agent to act for me and in my name (in any way I could act in
           person) to make health care decisions for me as authorized in this
@@ -144,8 +144,7 @@
     <p  style="margin-bottom: 0in; "><br/>
 
     </p>
-    <ol type="A" style="margin-left: 50px;">
-      <li>
+    
       <p  style="margin-bottom: 0in; ">
 	<span ><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt">
 
@@ -156,22 +155,16 @@
         </span>
 
         <span>
-        	<span size="3" style="font-size: 12pt">	(my</span>
-        </span>
-
-        <span>
         	<span size="3" style="font-size: 12pt">
-    			@if(strtolower($healthFinance['relation']) == 'other')
-					<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}, </span>
-				@else
-					<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}}, </span>
-				@endif
+      			@if(strtolower($healthFinance['relation']) == 'other')
+  					 <span style="font-family:'Times New Roman, serif'">(my {{ucwords(strtolower($healthFinance['relationOther']))}}), </span>
+  				  @else
+  					 <span style="font-family:'Times New Roman, serif'" >(my {{ucwords(strtolower($healthFinance['relation']))}}), </span>
+  				  @endif
         	</span>
         </span>
-
     	</span></span></span></p>
-      </li>
-    </ol>
+      
     <p  style="margin-left: 0.75in; margin-bottom: 0in; ">
 	<span>
 		<span style="font-family:'Times New Roman, serif'">
@@ -208,10 +201,10 @@
 
 			<span size="3" style="font-size: 12pt">
 
-				<span style="text-transform: capitalize">{{$healthFinance['city']}} ,</span>
+				<span style="text-transform: capitalize">{{ucwords(strtolower($healthFinance['city']))}}, </span>
 
 
-				<span style="text-transform: capitalize"> {{$healthFinance['state']}} </span>
+				<span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['state']))}} </span>
 
 				<span style="text-transform: capitalize"> {{$healthFinance['zip']}} </span>
 			</span>
@@ -225,8 +218,8 @@
     @if($healthFinance['anyBackupAgent'] === 'true')
 
 
-    <ol type="A" start="2" style="margin-left: 50px;">
-      <li>
+    
+      
       <p  style="margin-bottom: 0in; ">
 	    <span>
 	    	<span style="font-family:'Times New Roman, serif'">
@@ -236,23 +229,19 @@
 
 	    			<span>
 	    				<span size="3" style="font-size: 12pt">Name:
-	    					<span style="text-transform: capitalize"> {{$healthFinance['backupFullname']}} </span>
+	    					<span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['backupFullname']))}} </span>
         				</span>
-        			</span>
-
-        			<span>
-        				<span size="3" style="font-size: 12pt">	(my</span>
         			</span>
 
         			<span>
         				<span size="3" style="font-size: 12pt">
       						<span style="text-transform: capitalize">
-								@if(strtolower($healthFinance['backupRelation'] == 'other'))
-									<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}}, </span>
-								@else
-									<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
-								@endif
-							</span>
+    								@if(strtolower($healthFinance['backupRelation'] == 'other'))
+    									<span style="font-family:'Times New Roman, serif'">(my {{ucwords(strtolower($healthFinance['backupRelationOther']))}}), </span>
+    								@else
+    									<span style="font-family:'Times New Roman, serif'">(my {{ucwords(strtolower($healthFinance['backupRelation']))}}), </span>
+    								@endif
+							     </span>
         				</span>
         			</span>
 
@@ -260,8 +249,8 @@
         	</span>
         </span>
     	</p>
-      </li>
-    </ol>
+      
+    
 
 
     <p  style="margin-left: 0.75in; margin-bottom: 0in; ">
@@ -301,9 +290,9 @@
       			</span>
 
       			<span size="3" style="font-size: 12pt">
-      				<span style="text-transform: capitalize"> {{$healthFinance['backupCity']}} ,</span>
+      				<span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['backupCity']))}}, </span>
 
-      				<span style="text-transform: capitalize"> {{$healthFinance['backupState']}}, </span>
+      				<span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['backupState']))}} </span>
 
       				<span style="text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
       			</span>
@@ -653,13 +642,6 @@ Concerning Health Care Decisions</span></u></span><span style="letter-spacing: -
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span style="letter-spacing: 0.1pt"><span size="3" style="font-size: 12pt"><u><b>NOTE:
       DO NOT initial unless you insert a limitation</b></u></span></span></span></span></p>
   </div>
-
-  {{--
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Living Will of <br> {{userDetails.tellUsAboutYou.fullname}} <br> </span>
-    Page 5 of 14
-  </div>
-  --}}
 </div>
 <!-- Page 5 -->
 
@@ -742,13 +724,6 @@ Concerning Health Care Decisions</span></u></span><span style="letter-spacing: -
       NO AUTHORITY FOR ORGAN DONATION IS GRANTED IN THIS INSTRUMENT WITHOUT
       YOUR INITIALS.</b></span></span></span></p>
   </div>
-
-  {{--
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Living Will of <br> {{userDetails.tellUsAboutYou.fullname}} <br> </span>
-    Page 6 of 14
-  </div>
-  --}}
 </div>
 <!-- Page 6 -->
 
@@ -858,13 +833,6 @@ Concerning Health Care Decisions</span></u></span><span style="letter-spacing: -
       </li>
     </ol>
   </div>
-
-  {{--
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Living Will of <br> {{userDetails.tellUsAboutYou.fullname}} <br> </span>
-    Page 7 of 14
-  </div>
-  --}}
 </div>
 <!-- Page 7 -->
 
@@ -885,7 +853,7 @@ Concerning Health Care Decisions</span></u></span><span style="letter-spacing: -
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></span></p>
     <p  style="margin-bottom: 0.08in; orphans: 0; widows: 0; margin-top: 0; padding-left: 50px;">
       <span style="font-family:'Times New Roman, serif'"><b>
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
 
        </b>
    		</span>
@@ -901,10 +869,10 @@ Concerning Health Care Decisions</span></u></span><span style="letter-spacing: -
       hereby state that the principal, </span></span></span>
 
       <span style="font-family:'Times New Roman, serif'">
-      	<span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+      	<span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}, </span>
       </span>
 
-      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">,
+      <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">
       being of sound mind, signed </span></span></span><span style="font-family:'Times New Roman, serif'">(or
       directed another to sign on the principal's behalf) </span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">the
       foregoing health care power of attorney in my presence, and that I am
@@ -955,13 +923,6 @@ Concerning Health Care Decisions</span></u></span><span style="letter-spacing: -
     <p class="western" align="justify" style="margin-bottom: 0.06in; padding-left: 350px; margin-top: 0;">
       <span style="padding-left: 40px;">								[city, state, zip]</span></p>
   </div>
-
-  {{--
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Living Will of <br> {{userDetails.tellUsAboutYou.fullname}} <br> </span>
-    Page 8 of 14
-  </div>
-  --}}
 </div>
 <!-- Page 8 -->
 
@@ -987,7 +948,7 @@ to (or affirmed) and subscribed before me this </span><span size="3" style="font
 day of </span><span size="3" style="font-size: 12pt">_______________________</span><span size="3" style="font-size: 12pt">,</span></span></span></p>
     <p  style="margin-bottom: 0.08in; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">by </span><span style="font-family:'Times New Roman, serif'">
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
         </span>
 
         <span style="font-family:'Times New Roman, serif'">;
@@ -1005,11 +966,6 @@ Seal)</i></span></span></span></p><br>My
       commission expires:  ______________________
 
   </div>
-  {{--
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Living Will of <br> {{userDetails.tellUsAboutYou.fullname}} <br> </span>
-    Page 9 of 14
-  </div> --}}
 </div>
 <!-- Page 9 -->
 
@@ -1079,9 +1035,9 @@ DEATH (&quot;LIVING WILL&quot;)</b></span></span></span></p>
       Desire for a Natural Death</b></span></span></span></p>
     <p  style="margin-bottom: 0.08in; orphans: 0; widows: 0">
       I, <span style="font-family:'Times New Roman, serif'">
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}, </span>
 
-          </span>,
+          </span>
           being of sound mind, desire that, as specified below, my life not be
           prolonged by life-prolonging measures:</p>
     <p  style="margin-top: 0.13in; margin-bottom: 0.09in; ">
@@ -1110,13 +1066,6 @@ DEATH (&quot;LIVING WILL&quot;)</b></span></span></span></p>
       </span><span style="letter-spacing: -0.1pt"><span size="3" style="font-size: 12pt">within
       a relatively short period of time.</span></span></span></span></p><br><br>
   </div>
-
-  {{--
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Living Will of <br> {{userDetails.tellUsAboutYou.fullname}} <br> </span>
-    Page 10 of 14
-  </div>
-  --}}
 </div>
 <!-- Page 10 -->
 
@@ -1224,13 +1173,6 @@ DEATH (&quot;LIVING WILL&quot;)</b></span></span></span></p>
     dignity is maintained, even though </span></span><span size="3" style="font-size: 12pt">this
     care may hasten my death.</span></span></span></p>
   </div>
-
-  {{--
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Living Will of <br> {{userDetails.tellUsAboutYou.fullname}} <br> </span>
-    Page 11 of 14
-  </div>
-  --}}
 </div>
 <!-- Page 11 -->
 
@@ -1333,17 +1275,10 @@ DEATH (&quot;LIVING WILL&quot;)</b></span></span></span></p>
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></span></p>
     <p  style="margin-bottom: 0.08in; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><b>
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-        </b></span><span ><span style="font-family:'Times New Roman, serif'"><b>,
+        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}, </span>
+        </b></span><span ><span style="font-family:'Times New Roman, serif'"><b>
         Declarant</b></span></span></p>
   </div>
-
-  {{--
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Living Will of <br> {{userDetails.tellUsAboutYou.fullname}} <br> </span>
-    Page 12 of 14
-  </div>
-  --}}
 </div>
 <!-- Page 12 -->
 
@@ -1354,14 +1289,14 @@ DEATH (&quot;LIVING WILL&quot;)</b></span></span></span></p>
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       hereby state that the declarant, </span></span></span><span style="font-family:'Times New Roman, serif'"><b>
 
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}, </span>
 
 
       </b></span>
 
       <span style="font-family:'Times New Roman, serif'">
       	<span size="2" style="font-size: 9pt">
-      		<span size="3" style="font-size: 12pt">,
+      		<span size="3" style="font-size: 12pt">
       being of sound mind, signed </span>
   		</span>
   		</span>(or directed another
@@ -1419,14 +1354,6 @@ DEATH (&quot;LIVING WILL&quot;)</b></span></span></span></p>
     <p class="western" align="justify" style="margin-bottom: 0.06in; padding-left: 350px;">
       <span style="padding-left: 40px;">								[city, state, zip]</span></p><br>
   </div>
-
-  {{--
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Living Will of <br> {{userDetails.tellUsAboutYou.fullname}} <br> </span>
-    Page 13 of 14
-  </div>
-  --}}
-
 </div>
 <!-- Page 13 -->
 
@@ -1452,7 +1379,7 @@ ___________________)</span></span></span></span></span></p>
     day of </span><span size="3" style="font-size: 12pt">_________________</span><span size="3" style="font-size: 12pt">,</span></span></span></p>
     <p  style="margin-bottom: 0.08in; orphans: 0; widows: 0"><a name="_GoBack"></a>
       by <span style="font-family:'Times New Roman, serif'"><b>
-        <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
+        <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
         </b></span>;
       _______________________________________ (witness) ; and,
     </p>
@@ -1471,13 +1398,6 @@ ___________________)</span></span></span></span></span></p>
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">My
       commission expires:  ______________________</span></span></span></p>
   </div>
-
-  {{--
-  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-    <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Health Care Power of Attorney and Living Will of <br> {{userDetails.tellUsAboutYou.fullname}} <br> </span>
-    Page 14 of 14
-  </div>
-  --}}
 </div>
 <!-- Page 14 -->
 
