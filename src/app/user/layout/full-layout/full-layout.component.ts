@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, AfterViewChecked} from '@angular/core';
 import {UserAuthService} from '../../user-auth/user-auth.service';
 import {Router, NavigationEnd, ActivatedRoute} from '@angular/router';
 import {environment} from '../../../../environments/environment';
@@ -154,9 +154,16 @@ export class FullLayoutComponent implements OnInit, OnDestroy {
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
-  ngAfterViewInit() {
-    this.pageLoad = false;
-    console.log('Loaded');
+  // ngAfterViewInit() {
+  //   this.pageLoad = false;
+  //   console.log('Loaded');
+  // }
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngAfterViewChecked() {
+    setTimeout(() => {
+      this.pageLoad = false;
+    }, 200);
   }
 
   sitemapOpen() {
