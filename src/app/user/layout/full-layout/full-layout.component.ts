@@ -153,10 +153,9 @@ export class FullLayoutComponent implements OnInit, OnDestroy {
     this.menutogle = !this.menutogle;
   }
 
-  ngAfterViewInit(){
-    setTimeout(() => {
-      this.pageLoad = false;
-    }, 3000)
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngAfterViewInit() {
+    this.pageLoad = false;
     console.log('Loaded');
   }
 
