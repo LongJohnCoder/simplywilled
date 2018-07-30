@@ -13,7 +13,7 @@ import 'datatables.net-bs4';
 export class BlogsComponent implements OnInit {
   blogList:any[] = [];
   blogCount:number = 0;
-  public modalRef : BsModalRef;
+    public modalRef: BsModalRef;
   blogData:any;
   delBlogId:number;
   delBlogStatus: false;

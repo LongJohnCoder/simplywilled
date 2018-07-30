@@ -19,4 +19,8 @@ export class UsersService {
         return this.http.post(environment.API_URL + 'admin-panel/users-list-Pagination', body);
     }
 
+    deleteUser(body: any): Observable<any> {
+        return this.http.post(environment.API_URL + 'admin-panel/user-delete', body);
+    }
+
 }

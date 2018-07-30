@@ -28,31 +28,31 @@
     margin: 2px;
     color: #fff;
 }
-.modal-body{
-    border-bottom: 1px solid #eee;
-    margin: 0 10px;
-}
-.modal-body h4{
-    font-size: 20px;
-}
-.modal-content {
-    max-width: 800px !important;
-}
-.deleteBlogHead{
-    border-bottom: 0;
-}
-.deleteBlogHead h3{
-    text-align: center;
-    padding: 30px 0;
-    width: 100%;
-    transition: all 0.5s ease 0s;
-}
-.deleteBlogFoot {
-    text-align: center;
-    transition: all 0.5s ease 0s;
-    height: 71px;
-    opacity: 1;
-}
+/*.modal-body{*/
+    /*border-bottom: 1px solid #eee;*/
+    /*margin: 0 10px;*/
+/*}*/
+/*.modal-body h4{*/
+    /*font-size: 20px;*/
+/*}*/
+/*.modal-content {*/
+    /*max-width: 800px !important;*/
+/*}*/
+/*.deleteBlogHead{*/
+    /*border-bottom: 0;*/
+/*}*/
+/*.deleteBlogHead h3{*/
+    /*text-align: center;*/
+    /*padding: 30px 0;*/
+    /*width: 100%;*/
+    /*transition: all 0.5s ease 0s;*/
+/*}*/
+/*.deleteBlogFoot {*/
+    /*text-align: center;*/
+    /*transition: all 0.5s ease 0s;*/
+    /*height: 71px;*/
+    /*opacity: 1;*/
+/*}*/
 .hide{
     height: 0;
     opacity: 0;
