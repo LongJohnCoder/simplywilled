@@ -10,6 +10,7 @@ import { UserAuthService } from '../../../user-auth/user-auth.service';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/throttleTime';
 import 'rxjs/add/operator/debounceTime';
+import {environment} from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-healthcare-poa-doc',
@@ -174,6 +175,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     private router: Router,
     private ref: ChangeDetectorRef
   ) {
+    console.log('mode : ', environment.production);
     // ref.detach();
     // setInterval(() => {
     //   this.ref.detectChanges();

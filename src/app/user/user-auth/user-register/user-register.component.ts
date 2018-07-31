@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserService } from '../../user.service';
 import { Router } from '@angular/router';
+import {environment} from '../../../../environments/environment';
 
 declare var dataLayer: any;
 
@@ -40,10 +41,14 @@ export class UserRegisterComponent implements OnInit {
       ( response: any ) => {
         this.showLoader = false;
         if (response !== undefined && response.status !== undefined && response.status) {
-            dataLayer.push({'event':'registered', 'userId': response.user.id});  
-            localStorage.setItem( 'loggedInUser', JSON.stringify(response) );
-            localStorage.setItem('_loggedInToken', response.token);
-            this.router.navigate(['/dashboard']);
+
+          console.log('mode: ', environment.production);
+          if (environment.production) {
+            dataLayer.push({'event':'registered', 'userId': response.user.id});
+          }
+          localStorage.setItem( 'loggedInUser', JSON.stringify(response) );
+          localStorage.setItem('_loggedInToken', response.token);
+          this.router.navigate(['/dashboard']);
         } else {
             this.setRequestStatus = false;
             this.setResponseMsg = 'Some error occured';

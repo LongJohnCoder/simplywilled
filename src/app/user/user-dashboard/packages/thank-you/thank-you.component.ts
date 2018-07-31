@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router} from '@angular/router';
 import { UserService } from '../../../user.service';
+import {environment} from '../../../../../environments/environment';
 
 declare function cartstack_updatecart(e): any;
 declare var dataLayer: any;
@@ -61,29 +62,32 @@ export class ThankYouComponent implements OnInit, OnDestroy {
   initialize() {
     window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
     /* for cartstack api  */
-    const _cartstack_update = [];
-    _cartstack_update.push(['setSiteID', 'k5FdWlhK']);
-    _cartstack_update.push(['setAPI', 'confirmation']);
-    _cartstack_update.push(['setCartTotal', this.data != null && this.data.amount != null ? this.data.amount : null]);
-    cartstack_updatecart(_cartstack_update);
-    // localStorage.setItem('newUser', '1');
-    /* end */
-    /* google tagmanager datalayer settings  */
-    dataLayer.push({
-        'transactionId': this.data != null && this.data.payment_token != null ? this.data.payment_token : '',
-        'transactionAffiliation': 'Simply Willed',
-        'transactionTotal': this.data != null && this.data.amount != null ? this.data.amount : null,
-        'transactionTax': 0,
-        'transactionShipping': 0,
-        'transactionProducts': [{
-            'sku': '1234',
-            'name': this.package_name != null ? this.package_name : '',
-            'price': this.data != null && this.data.amount != null ? this.data.amount : null,
-            'quantity': 1
-        }]
-    });
-    
-    dataLayer.push({'event': 'purchased'});
+
+    console.log('mode :: ', environment.production);
+    if (environment.production) {
+        const _cartstack_update = [];
+        _cartstack_update.push(['setSiteID', 'k5FdWlhK']);
+        _cartstack_update.push(['setAPI', 'confirmation']);
+        _cartstack_update.push(['setCartTotal', this.data != null && this.data.amount != null ? this.data.amount : null]);
+        cartstack_updatecart(_cartstack_update);
+        // localStorage.setItem('newUser', '1');
+        /* end */
+        /* google tagmanager datalayer settings  */
+        dataLayer.push({
+            'transactionId': this.data != null && this.data.payment_token != null ? this.data.payment_token : '',
+            'transactionAffiliation': 'Simply Willed',
+            'transactionTotal': this.data != null && this.data.amount != null ? this.data.amount : null,
+            'transactionTax': 0,
+            'transactionShipping': 0,
+            'transactionProducts': [{
+                'sku': '1234',
+                'name': this.package_name != null ? this.package_name : '',
+                'price': this.data != null && this.data.amount != null ? this.data.amount : null,
+                'quantity': 1
+            }]
+        });
+        dataLayer.push({'event': 'purchased'});
+    }
     
     /* end  */
     this.countDown = Observable.interval(1000).map((tick) => --this.count).share();
