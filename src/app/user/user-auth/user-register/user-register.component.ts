@@ -42,8 +42,8 @@ export class UserRegisterComponent implements OnInit {
         this.showLoader = false;
         if (response !== undefined && response.status !== undefined && response.status) {
 
-          console.log('mode: ', environment.production);
-          if (environment.production) {
+          console.log('mode: ', environment.prod);
+          if (environment.prod) {
             dataLayer.push({'event':'registered', 'userId': response.user.id});
           }
           localStorage.setItem( 'loggedInUser', JSON.stringify(response) );

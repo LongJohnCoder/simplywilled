@@ -63,8 +63,8 @@ export class ThankYouComponent implements OnInit, OnDestroy {
     window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
     /* for cartstack api  */
 
-    console.log('mode :: ', environment.production);
-    if (environment.production) {
+    console.log('mode :: ', environment.prod);
+    if (environment.prod) {
         const _cartstack_update = [];
         _cartstack_update.push(['setSiteID', 'k5FdWlhK']);
         _cartstack_update.push(['setAPI', 'confirmation']);
