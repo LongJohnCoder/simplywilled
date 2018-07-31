@@ -265,8 +265,6 @@
       communicates it to your attending physician.</p>
     <p class="western"  style="margin-bottom: 0.06in; ">
       <br/>
-      <br/>
-
     </p>
     <p class="western"  style="margin-bottom: 0.06in; ">
       If you execute this document and create a valid Durable Power of
@@ -275,8 +273,6 @@
       you indicate otherwise in this document.</p>
     <p class="western"  style="margin-bottom: 0.06in; ">
       <br/>
-      <br/>
-
     </p>
     <p class="western"  style="margin-bottom: 0.06in; ">
       This document is not valid as a Durable Power of Attorney for Health
@@ -489,43 +485,41 @@
       <br/>
 
     </p>
-    <ol>
-      <li>
-        <p  style="margin-bottom: 0in; ">
-          <span face="Calibri, serif"><span face="Times New Roman, serif"><b>Naming
-          of My Agent</b></span><span face="Times New Roman, serif">. I
-          designate my </span><span ><span face="Times New Roman, serif">
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation !== 'Other'"> {{userDetails.healthFinance.relation !== null && userDetails.healthFinance.relation !== undefined ? (userDetails.healthFinance.relation | titlecase) : '_______________________'}}, </span>
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation === 'Other'"> {{userDetails.healthFinance.relationOther !== null && userDetails.healthFinance.relationOther !== undefined ? (userDetails.healthFinance.relationOther | titlecase) : '_______________________'}}, </span>
+    
+    <p  style="margin-bottom: 0in; ">
+      <span face="Calibri, serif"><span face="Times New Roman, serif"><b>(1)  Naming
+      of My Agent</b></span><span face="Times New Roman, serif">. I
+      designate my </span><span ><span face="Times New Roman, serif">
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation !== 'Other'"> {{userDetails.healthFinance.relation !== null && userDetails.healthFinance.relation !== undefined ? (userDetails.healthFinance.relation | titlecase) : '_______________________'}}, </span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation === 'Other'"> {{userDetails.healthFinance.relationOther !== null && userDetails.healthFinance.relationOther !== undefined ? (userDetails.healthFinance.relationOther | titlecase) : '_______________________'}}, </span>
+        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________, </span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.fullname !== null && userDetails.healthFinance.fullname !== undefined ? (userDetails.healthFinance.fullname | titlecase) : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> of
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address !== null && userDetails.healthFinance.address !== undefined ? (userDetails.healthFinance.address | titlecase) : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> in
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.city !== null && userDetails.healthFinance.city !== undefined ? (userDetails.healthFinance.city | titlecase) : '_______________________'}}, </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________, </span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.state !== null && userDetails.healthFinance.state !== undefined ? (userDetails.healthFinance.state | titlecase) : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.zip !== null && userDetails.healthFinance.zip !== undefined ? userDetails.healthFinance.zip : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>
+        (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.phone !== null && userDetails.healthFinance.phone !== undefined ? userDetails.healthFinance.phone : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> )
+        
+      as my agent to make health-care decisions for me.</span></span>
+        <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'true'">
+        <span ><span face="Times New Roman, serif">
+            If I revoke my agent’s authority or if my agent is not willing,
+          able, or reasonably available to make health-care decisions for me,
+          I designate </span></span><span face="Times New Roman, serif">my </span><span >
+            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation !== 'Other'"> {{userDetails.healthFinance.backupRelation !== null && userDetails.healthFinance.backupRelation !== undefined ? userDetails.healthFinance.backupRelation : '_______________________'}}, </span>
+            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation === 'Other'"> {{userDetails.healthFinance.backupRelationOther !== null && userDetails.healthFinance.backupRelationOther !== undefined ? userDetails.healthFinance.backupRelationOther : '_______________________'}}, </span>
             <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________, </span>
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.fullname !== null && userDetails.healthFinance.fullname !== undefined ? (userDetails.healthFinance.fullname | titlecase) : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> of
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address !== null && userDetails.healthFinance.address !== undefined ? (userDetails.healthFinance.address | titlecase) : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> in
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.city !== null && userDetails.healthFinance.city !== undefined ? (userDetails.healthFinance.city | titlecase) : '_______________________'}} ,</span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.state !== null && userDetails.healthFinance.state !== undefined ? (userDetails.healthFinance.state | titlecase) : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.zip !== null && userDetails.healthFinance.zip !== undefined ? userDetails.healthFinance.zip : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>
-            (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.phone !== null && userDetails.healthFinance.phone !== undefined ? userDetails.healthFinance.phone : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> )
-            
-          as my agent to make health-care decisions for me.</span></span>
-            <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'true'">
-            <span ><span face="Times New Roman, serif">
-               If I revoke my agent’s authority or if my agent is not willing,
-              able, or reasonably available to make health-care decisions for me,
-              I designate </span></span><span face="Times New Roman, serif">my </span><span >
-               <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation !== 'Other'"> {{userDetails.healthFinance.backupRelation !== null && userDetails.healthFinance.backupRelation !== undefined ? userDetails.healthFinance.backupRelation : '_______________________'}}, </span>
-                <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation === 'Other'"> {{userDetails.healthFinance.backupRelationOther !== null && userDetails.healthFinance.backupRelationOther !== undefined ? userDetails.healthFinance.backupRelationOther : '_______________________'}}, </span>
-                <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________, </span>
-                <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupFullname !== null && userDetails.healthFinance.backupFullname !== undefined ? userDetails.healthFinance.backupFullname : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> of
-                <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupAddress !== null && userDetails.healthFinance.backupAddress !== undefined ? userDetails.healthFinance.backupAddress : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> in
-                <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupCity !== null && userDetails.healthFinance.backupCity !== undefined ? userDetails.healthFinance.backupCity : '_______________________'}}, </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________, </span>
-                <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupState !== null && userDetails.healthFinance.backupState !== undefined ? userDetails.healthFinance.backupState : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>
-                <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupZip !== null && userDetails.healthFinance.backupZip !== undefined ? userDetails.healthFinance.backupZip : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>
-                (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupphone !== null && userDetails.healthFinance.backupphone !== undefined ? userDetails.healthFinance.backupphone : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> )
-              as my alternate agent to make health-care decisions for me.
-              </span></span>
-          </span>
-        </p>
-      </li>
-    </ol>
+            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupFullname !== null && userDetails.healthFinance.backupFullname !== undefined ? userDetails.healthFinance.backupFullname : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> of
+            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupAddress !== null && userDetails.healthFinance.backupAddress !== undefined ? userDetails.healthFinance.backupAddress : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> in
+            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupCity !== null && userDetails.healthFinance.backupCity !== undefined ? userDetails.healthFinance.backupCity : '_______________________'}}, </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________, </span>
+            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupState !== null && userDetails.healthFinance.backupState !== undefined ? userDetails.healthFinance.backupState : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>
+            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupZip !== null && userDetails.healthFinance.backupZip !== undefined ? userDetails.healthFinance.backupZip : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>
+            (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupphone !== null && userDetails.healthFinance.backupphone !== undefined ? userDetails.healthFinance.backupphone : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> )
+          as my alternate agent to make health-care decisions for me.
+          </span></span>
+      </span>
+    </p>
+      
     <p class="western" style="margin-bottom: 0in; "><br/>
 
     </p>
@@ -745,13 +739,14 @@ additional pages if needed).</span></span></p>
       <br/>
 
     </p>
-    <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; ">
+    <p class="western"  style="margin-left: 0.02in; margin-bottom: 0in; ">
       _______________________________________</p>
     <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <b>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | uppercase) : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
-        <!--«</b><span ><b>CLIENT FIRST NAME</b></span><b>»--></b><span >,</span></p>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | uppercase) : '_______________________'}}, </span>
+        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________, </span>
+      </b>
+    </p>
     <p class="western"  style="margin-left: 0.5in; margin-bottom: 0.13in; ">
       Principal</p>
     <p class="western" align="center" style="margin-bottom: 0.06in; ">
@@ -794,13 +789,13 @@ additional pages if needed).</span></span></p>
       <span ><span size="2" style="font-size: 11pt">COUNTY
       OF ________________	ss.</span></span></p>
     <p class="western" style="margin-bottom: 0in; "><span size="2" style="font-size: 10pt">On
-      this </span><span size="2" style="font-size: 10pt"><u>		</u></span><span size="2" style="font-size: 10pt">
-      day of </span><span size="2" style="font-size: 10pt"><u>			</u></span><span size="2" style="font-size: 10pt">,
-      </span><span size="2" style="font-size: 10pt"><u>		</u></span><span size="2" style="font-size: 10pt">,
+      this </span><span size="2" style="font-size: 10pt"><u>_____</u></span><span size="2" style="font-size: 10pt">
+      day of </span><span size="2" style="font-size: 10pt"><u>_________</u></span><span size="2" style="font-size: 10pt">,
+      </span><span size="2" style="font-size: 10pt"><u>_____</u></span><span size="2" style="font-size: 10pt">,
       before me, the undersigned notary public, personally appeared </span><span ><span size="2" style="font-size: 10pt"></span></span>
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | uppercase) : '_______________________'}}</span>
-      <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
-      <span size="2" style="font-size: 10pt">,
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | uppercase) : '_______________________'}}, </span>
+      <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________, </span>
+      <span size="2" style="font-size: 10pt">
       principal of the above Health Care Power</span><span size="2" style="font-size: 10pt"><span style="letter-spacing: -0.1pt">
       </span></span><span size="2" style="font-size: 10pt">of</span><span size="2" style="font-size: 10pt"><span style="letter-spacing: -0.1pt">
       </span></span><span size="2" style="font-size: 10pt">Attorney, and
@@ -1026,10 +1021,9 @@ additional pages if needed).</span></span></p>
     </p>
     <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       I, <b>
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | uppercase) : '_______________________'}}</span>
-      <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
-      <!--«</b><span ><b>CLIENT FULL NAME</b></span><b>»-->
-    </b>,
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | uppercase) : '_______________________'}}, </span>
+      <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________, </span>
+    </b>
       of  <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? (userDetails.tellUsAboutYou.address | titlecase) : '_______________________'}}, </span>
       <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________, </span>
       <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? (userDetails.tellUsAboutYou.city | titlecase) : '_______________________'}}, </span>
@@ -1372,12 +1366,12 @@ additional pages if needed).</span></span></p>
       the Ohio Bureau of Motor Vehicles to ensure that your wishes will be
       honored. (<i>Check the box that applies</i>).</p>
     <p class="western"  style="text-indent: 0.5in; margin-bottom: 0.09in; ">
-      <span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="6" style="font-size: 24pt">□</span></span></span>  <span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">I
+      <span face="Times New Roman, serif"><span size="5" style="font-size: 12pt"><span size="6" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 0.15in">□&nbsp;</span></span></span>  <span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">I
       wish to make an anatomical gift.</span></span></span></p>
     <p class="western"  style="text-indent: 0.5in; margin-bottom: 0.09in; ">
       <span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt"><b>OR</b></span></span></span></p>
     <p class="western"  style="text-indent: 0.5in; margin-bottom: 0.09in; ">
-      <span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="6" style="font-size: 24pt">□</span></span></span> <span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">I
+      <span face="Times New Roman, serif"><span size="5" style="font-size: 12pt"><span size="6" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 0.15in">□&nbsp;</span></span></span> <span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">I
       </span></span></span><span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt"><i>do
       not </i></span></span></span><span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">wish
       to make an anatomical gift.</span></span></span></p>
@@ -1392,7 +1386,7 @@ additional pages if needed).</span></span></p>
     <p class="western"  style="text-indent: 0.5in; margin-bottom: 0in; line-height: 0.15in">
       <b>OR</b></p>
     <p class="western"  style="text-indent: 0.5in; margin-bottom: 0in; line-height: 0.15in">
-      <span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="6" style="font-size: 24pt">□</span></span></span>  <span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">Only
+      <span face="Times New Roman, serif"><span size="5" style="font-size: 12pt"><span size="6" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 0.15in">□</span></span></span>  <span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">Only
       the following organs: </span></span></span><span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">___________________</span></span></span></p>
     <p class="western"  style="margin-bottom: 0in; line-height: 0.15in">
       <br/>
@@ -1407,19 +1401,20 @@ additional pages if needed).</span></span></p>
       that my organs indicated above may be donated upon my death for the
       following purposes authorized by law:</p>
     <p class="western"  style="text-indent: 0.5in; margin-bottom: 0in; line-height: 0.15in">
-      <span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="6" style="font-size: 24pt">□</span></span></span>&nbsp; All purposes</p>
+      <span face="Times New Roman, serif"><span size="5" style="font-size: 12pt"><span size="6" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 0.15in">□</span></span></span>&nbsp; All purposes</p>
     <p class="western"  style="margin-bottom: 0in; line-height: 0.15in">
       <br/>
 
     </p>
     <p class="western"  style="text-indent: 0.5in; margin-bottom: 0in; line-height: 0.15in">
       <b>OR</b></p>
+      <br>
     <p class="western"  style="text-indent: 0.5in; margin-bottom: 0in; line-height: 0.15in">
-      <span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="6" style="font-size: 24pt">□</span></span></span> <span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">Only
+      <span face="Times New Roman, serif"><span size="5" style="font-size: 12pt"><span size="6" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 0.15in">□</span></span></span> <span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">Only
       for the following purposes: </span></span></span><span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt"><i>(check
-      all that apply</i></span></span></span><span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">)</span></span></span></p>
+      all that apply</i></span></span></span><span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="3" style="font-size: 12pt">)</span></span></span></p><br>
     <p class="western"  style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 0.15in">
-      <span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="6" style="font-size: 24pt">□</span></span></span>&nbsp; transplantation	<span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="6" style="font-size: 24pt">□</span></span></span>therapy	<span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="6" style="font-size: 24pt">□</span></span></span>research	<span face="Times New Roman, serif"><span size="5" style="font-size: 18pt"><span size="6" style="font-size: 24pt">□</span></span></span>education.</p>
+      <span face="Times New Roman, serif"><span size="5" style="font-size: 12pt"><span size="6" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 0.15in">□</span></span></span>&nbsp; transplantation&nbsp;&nbsp;&nbsp;	<span face="Times New Roman, serif"><span size="5" style="font-size: 12pt"><span size="6" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 0.15in">□&nbsp;</span></span></span>therapy&nbsp;&nbsp;&nbsp;	<span face="Times New Roman, serif"><span size="5" style="font-size: 12pt"><span size="6" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 0.15in">□&nbsp;</span></span></span>research&nbsp;&nbsp;&nbsp;	<span face="Times New Roman, serif"><span size="5" style="font-size: 12pt"><span size="6" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 0.15in">□&nbsp;</span></span></span>education.</p>
     <p class="western"  style="margin-bottom: 0in; ">
       <br/>
 
