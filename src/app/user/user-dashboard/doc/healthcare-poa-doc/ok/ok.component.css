@@ -40,3 +40,7 @@ min-height: 400px;
 .docPage{
 height: auto !important;
 }
+
+*p{
+    line-height: 150%;
+}
