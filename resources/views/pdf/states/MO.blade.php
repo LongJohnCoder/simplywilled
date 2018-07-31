@@ -156,7 +156,7 @@
 
     </p>
 
-    <p  style="margin-bottom: 0in;  text-align:center;"><span class="checkBox"></span>
+    <p  style="margin-bottom: 0in;  text-align:center; padding-left:200px;"><span class="checkBox"></span>
       <span style="font-family:'Times New Roman, serif'; display: inline-block;"> one physician 	</span><span style="font-family:'Times New Roman, serif'; display: inline-block; padding: 0 20px;"><b>OR</b></span><span style="font-family:'Times New Roman, serif'">
       </span>
 

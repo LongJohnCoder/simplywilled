@@ -157,17 +157,7 @@
     care. If your health care wishes change, tell your physician and
     write a new advance health care directive to replace your old one. </span><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></p>
         </div>
-        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power of Attorney and Living Will of {{$tellUsAboutYou['fullname']}}<br>
-                Page 1 of 8
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power of Attorney and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 1 of 8
-            </div>
-        @endif -->
+        
     </div>
     <!-- Page 1-->
 
@@ -233,17 +223,7 @@
       medical care applied aggressively in these situations or would you
       consider such aggressive medical care burdensome and undesirable?</span></span></span></p>
         </div>
-        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power of Attorney and Living Will of {{$tellUsAboutYou['fullname']}}<br>
-                Page 2 of 8
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power of Attorney and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 2 of 8
-            </div>
-        @endif -->
+        
     </div>
     <!-- Page 2-->
 
@@ -302,35 +282,33 @@
             <p  style="margin-bottom: 0.08in; ; orphans: 0; widows: 0">
                 <span face="Times New Roman, serif">I,</span><span face="Times New Roman, serif">
                 @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                    <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+                    <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}, </b>
                 @else
-                    <b>________________________________</b>
-                @endif,
+                    <b>________________________________, </b>
+                @endif
             of
                 @if(isset($tellUsAboutYou) && array_key_exists('address',$tellUsAboutYou) && !is_null($tellUsAboutYou['address']))
-                    <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}}</span>
+                    <span style="font-family:'Times New Roman, serif'" >{{ucwords($tellUsAboutYou['address'])}}, </span>
                 @else
                     <span>_________________________________________________________________
                 ___________________________________________________________________________________________
-                _________________________________________________________________________________</span>
+                _________________________________________________________________________________, </span>
                 @endif
-                <span >, </span>
 
 
                 @if(isset($tellUsAboutYou) && array_key_exists('city',$tellUsAboutYou) && !is_null($tellUsAboutYou['city']))
-                    <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
+                    <span style="text-transform: capitalize">{{ucwords(strtolower($tellUsAboutYou['city']))}}, </span>
                 @else
                     <span style="text-transform: capitalize">(city)_____________</span>
 
                 @endif
-                <span >, </span>
+                
 
                 @if(isset($tellUsAboutYou) && array_key_exists('state',$tellUsAboutYou) && !is_null($tellUsAboutYou['state']))
-                    <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>
+                    <span style="text-transform: capitalize">{{ucwords(strtolower($tellUsAboutYou['state']))}}, </span>
                 @else
-                    <span style="text-transform: capitalize">(state)_____________</span>
-                @endif
-                <span >, </span>
+                    <span style="text-transform: capitalize">(state)_____________, </span>
+                @endif 
       </span>
                 <span face="Times New Roman, serif">appoint the
       person named below to be my health care agent to make health and
@@ -352,17 +330,6 @@
       entity may be re-disclosed and may no longer be subject to the
       privacy rules provided by 45 C.F.R. Pt. 164.</span></span></span></p>
         </div>
-       <!--  @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power of Attorney and Living Will of {{$tellUsAboutYou['fullname']}}<br>
-                Page 3 of 8
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power of Attorney and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 3 of 8
-            </div>
-        @endif -->
     </div>
     <!-- Page 3-->
 
@@ -417,23 +384,23 @@
             <p  style="margin-bottom: 0in; "><span ><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span ><span size="3" style="font-family:'Times New Roman, serif';font-size: 12pt">I
       appoint my
         @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}}, </span>
         @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relation']))}}, </span>
         @else
             <span>(relation)______________</span>
         @endif
-        <span >, </span>
+        
 
         @if(isset($healthFinance) && array_key_exists('fullname',$healthFinance) && !is_null($healthFinance['fullname']))
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}}</span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['fullname']))}}, </span>
         @else
-            <span style="font-family:'Times New Roman, serif'">_____________________________</span>
+            <span style="font-family:'Times New Roman, serif'">_____________________________, </span>
         @endif
-        <span >, of </span>
+        <span> of </span>
 
         @if(isset($healthFinance) && array_key_exists('address',$healthFinance) && !is_null($healthFinance['address']))
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['address']}}, </span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['address'])}}, </span>
         @else
             <span>
                 _________________________________________________________________
@@ -443,15 +410,15 @@
 
 
         @if(isset($healthFinance) && array_key_exists('city',$healthFinance) && !is_null($healthFinance['city']))
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['city']}}, </span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['city']))}}, </span>
         @else
             <span>(city)__________________, </span>
         @endif
 
         @if(isset($healthFinance) && array_key_exists('state',$healthFinance) && !is_null($healthFinance['state']))
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['state']}}, </span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['state']))}} </span>
         @else
-            <span>(state)__________________, </span>
+            <span>(state)__________________ </span>
         @endif
 
         @if(isset($healthFinance) && array_key_exists('zip',$healthFinance) && !is_null($healthFinance['zip']))
@@ -472,8 +439,7 @@
         </span>
       <span style="font-family: 'Times New Roman; serif'"> as my Agent to make medical treatment decisions for me</span>.
       <span style="font-family: 'Times New Roman; serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'true'"> During such time as co-Agents are acting, only one signature shall be
-      required</span></span></span><!--<span size="3" style="font-size: 12pt">END
-      IF</span>--><span ><span size="3" style="font-size: 12pt">.</span></span><span ><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></span></span></p>
+      required</span></span></span><span ><span size="3" style="font-size: 12pt">.</span></span><span ><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></span></span></p>
 
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">IF
       YOU DO NOT NAME A HEALTH CARE AGENT, HEALTH CARE PROVIDERS WILL ASK
@@ -483,29 +449,28 @@
       YOUR HEALTH CARE AGENT, UNLESS RELATED TO YOU BY BLOOD, MARRIAGE OR
       ADOPTION.</span></span></span></p>
 
-            @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == true)
+            @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == 'true')
             <p style="margin-bottom: 0in; "><span face="Times New Roman, serif">If
       my Agent is not available or if my health care agent is my spouse and
       an action for divorce is filed by either of us after the date of this
       document, I appoint my
             @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
-                <span>{{$healthFinance['backupRelation']}}</span>
+                <span>{{ucwords(strtolower($healthFinance['backupRelationOther']))}}, </span>
             @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
-                <span>{{$healthFinance['backupRelation']}}</span>
+                <span>{{ucwords(strtolower($healthFinance['backupRelation']))}}, </span>
             @else
                 <span>(relation)______________</span>
             @endif
-            <span>, </span>
 
             @if(isset($healthFinance) && array_key_exists('backupFullname',$healthFinance) && !is_null($healthFinance['backupFullname']))
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}}</span>
+                <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupFullname']))}}, </span>
             @else
-                <span style="font-family:'Times New Roman, serif'">_____________________________</span>
+                <span style="font-family:'Times New Roman, serif'">_____________________________, </span>
             @endif
-            <span >, of </span>
+            <span> of </span>
 
             @if(isset($healthFinance) && array_key_exists('backupAddress',$healthFinance) && !is_null($healthFinance['backupAddress']))
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupAddress']}}, </span>
+                <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupAddress']))}}, </span>
             @else
                 <span>
                     _________________________________________________________________
@@ -514,21 +479,21 @@
             @endif
 
             @if(isset($healthFinance) && array_key_exists('backupCity',$healthFinance) && !is_null($healthFinance['backupCity']))
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupCity']}}, </span>
+                <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupCity']))}}, </span>
             @else
                 <span>(city)__________________, </span>
             @endif
 
             @if(isset($healthFinance) && array_key_exists('backupState',$healthFinance) && !is_null($healthFinance['backupState']))
-                <span style="font-family:'Times New Roman, serif'" >{{$healthFinance['backupState']}}, </span>
+                <span style="font-family:'Times New Roman, serif'" >{{ucwords(strtolower($healthFinance['backupState']))}} </span>
             @else
-                <span>(state)__________________, </span>
+                <span>(state)__________________ </span>
             @endif
 
             @if(isset($healthFinance) && array_key_exists('backupZip',$healthFinance) && !is_null($healthFinance['backupZip']))
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}}, </span>
+                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}} </span>
             @else
-                <span>(zip)__________________, </span>
+                <span>(zip)__________________ </span>
             @endif
 
             <span >
@@ -544,20 +509,9 @@
             <span  style="font-size: 12pt">),</span>
             as my alternative Agent to make medical treatment decisions for me.</span></p>
             @endif
-            <!--<p  style="margin-bottom: 0in; "><span ><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span ><span size="3" style="font-size: 12pt">«</span></span><span size="3" style="font-size: 12pt">END
-              IF</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></span></span></p>-->
+            
         </div>
-        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power of Attorney and Living Will of {{$tellUsAboutYou['fullname']}}<br>
-                Page 4 of 8
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power of Attorney and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 4 of 8
-            </div>
-        @endif -->
+        
     </div>
     <!-- Page 4-->
 
@@ -633,17 +587,7 @@
       when I lack the capacity to understand, make, or communicate my
       treatment decisions:</span></span></span></p>
         </div>
-        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power of Attorney and Living Will of {{$tellUsAboutYou['fullname']}}<br>
-                Page 4 of 8
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power of Attorney and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 4 of 8
-            </div>
-        @endif -->
+        
     </div>
     <!-- Page 5-->
 
@@ -724,17 +668,7 @@
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">_____</span><span size="3" style="font-size: 12pt">	</span><span size="3" style="font-size: 12pt">I
     do not want tube feedings to be given.</span></span></span></p>
         </div>
-        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power of Attorney and Living Will of {{$tellUsAboutYou['fullname']}}<br>
-                Page 6 of 8
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power of Attorney and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 6 of 8
-            </div>
-        @endif -->
+        
     </div>
     <!-- Page 6-->
 
@@ -813,17 +747,7 @@
       do not consent to donate my organs or tissues at the time of my
       death.</span></span></span></p>
         </div>
-        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power of Attorney and Living Will of {{$tellUsAboutYou['fullname']}}<br>
-                Page 7 of 8
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power of Attorney and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 7 of 8
-            </div>
-        @endif -->
+        
     </div>
     <!-- Page 7-->
 
@@ -846,7 +770,7 @@
             <p  style="margin-bottom: 0.08in; ; orphans: 0; widows: 0; margin-top: 0;">
       <span face="Times New Roman, serif"><b>
             @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                {{$tellUsAboutYou['fullname']}}
+                {{strtoupper($tellUsAboutYou['fullname'])}}
             @else
                 ________________________________
             @endif
@@ -913,17 +837,7 @@
             <p  style="margin-bottom: 0in; "><span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt">Notary
       Public						My commission expires</span></span></span></p>
         </div>
-        <!-- @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power of Attorney and Living Will of {{$tellUsAboutYou['fullname']}}<br>
-                Page 8 of 8
-            </div>
-        @else
-            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Durable Health Care Power of Attorney and Living Will of «CLIENT FIRST NAME» «CLIENT MIDDLE NAME» «CLIENT LAST NAME»<br>
-                Page 8 of 8
-            </div>
-        @endif -->
+        
     </div>
     <!-- Page 8-->
 

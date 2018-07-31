@@ -387,7 +387,7 @@
 
 
 		<div class="docPage" style="margin: 0; box-sizing: border-box; padding: 0px;">
-			<div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+			<div class="docPageInner" style="box-sizing: border-box; height: 875px; page-break-after:always;">
 				<p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><b>5.	DURATION.</b></span></p>
 				<p  style="text-indent: 0.38in; margin-bottom: 0in; ">
 				<span style="font-family:'Times New Roman, serif'">I understand that this Power of
@@ -452,12 +452,12 @@
 				<p align="right" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">_________</span></p>
 				<p align="right" style="margin-bottom: 0in; margin-top: 0;"><span style="font-family:'Times New Roman, serif'">Initials</span></p>
 			</div>
-			<br>
+			
 		</div>
 
 
 		<div class="docPage" style="margin: 0; box-sizing: border-box; padding: 0px;">
-			<div class="docPageInner" style="box-sizing: border-box; height: 875px; ">
+			<div class="docPageInner" style="box-sizing: border-box; height: 875px; page-break-after:always;">
 				<p  style="margin-left: 1in; margin-bottom: 0in;">
 				<span style="font-family:'Times New Roman, serif'">(e)	I do not</span><span style="font-family:'Times New Roman, serif'"><b>
 				</b></span><span style="font-family:'Times New Roman, serif'">desire treatment to be

@@ -3,36 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Untitled Document</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        /*body{
-            margin: 0;
-            padding: 0;
-            font-family: Garamond;
-        }
-
-
-        .docContainer{
-            width: 700px;
-            margin: 0 auto;
-        }
-        .docPage{
-            width: 700px !important;
-            height: 991px!important;
-            background: #fff;
-            box-shadow: 0 0 7px rgba(0,0,0,0.3);
-            margin: 20px 0;
-            box-sizing: border-box;
-            padding: 40px;
-        }*/
-
-
-
-
-    </style>
+    
     <style>
   	#footer { position: fixed; left: 0px; bottom: -80px; right: 0px; height: 150px;
   	text-align: center; font-size: 12px; font-family: Times New Roman, serif; border-top: 1px solid #000;
@@ -58,7 +29,7 @@
 <div class="docContainer" id="doc">
     <!-- Page 1-->
     <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+        <div class="docPageInner" style="box-sizing: border-box;">
             <p  style="margin-bottom: 0.13in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 16pt"><b>OKLAHOMA
     ADVANCE DIRECTIVE FOR HEALTH CARE</b></span></span></p>
             <p  style="margin-bottom: 0in; "><br/>
@@ -119,25 +90,18 @@
       artificially administered nutrition and hydration</span></p>
             <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><b>(Initial
       if applicable)</b></span></p>
-            <p  style="margin-left: 0.75in; text-indent: -0.75in; margin-bottom: 0in; ">
-                <br/>
-
-            </p>
+            
             <p  style="margin-left: 0.75in; text-indent: -0.75in; margin-bottom: 0in; ">
       <span style="font-family:'Times New Roman, serif'">_______ See my more specific
       instructions in paragraph (4). </span>
             </p>
         </div>
-       {{-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Advance Directive for Health Care of <br> {{userDetails.tellUsAboutYou.fullname}} <br></span>
-            Page 1 of 6
-        </div>--}}
     </div>
     <!-- Page 1-->
 
     <!-- Page 2-->
     <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+        <div class="docPageInner" style="box-sizing: border-box;">
             <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'">(2)	If
       I am persistently unconscious, that is, I have an irreversible
       condition, as determined by my attending physician and another
@@ -215,16 +179,12 @@
       instructions in Paragraph (4) below. </span>
             </p>
         </div>
-       {{-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Advance Directive for Health Care of <br> {{userDetails.tellUsAboutYou.fullname}} <br></span>
-            Page 2 of 6
-        </div>--}}
     </div>
     <!-- Page 2-->
 
     <!-- Page 3-->
     <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+        <div class="docPageInner" style="box-sizing: border-box;">
             <p  style="margin-bottom: 0.06in; ">
                 <span style="font-family:'Times New Roman, serif'">(4)	OTHER. Here you may:</span></p>
             <p  style="margin-left: 1in; margin-bottom: 0.09in; ">
@@ -271,34 +231,34 @@
         @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
             <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
         @endif
-            <span style="font-family:'Times New Roman, serif';text-transform: capitalize" > {{$healthFinance['fullname']}} </span> , of
-            <span style="font-family:'Times New Roman, serif';text-transform: capitalize" > {{$healthFinance['address']}} </span> , in
-            <span style="font-family:'Times New Roman, serif';text-transform: capitalize" > {{$healthFinance['city']}} , </span>
-            <span style="font-family:'Times New Roman, serif';text-transform: capitalize" > {{$healthFinance['state']}} </span>
+            <span style="font-family:'Times New Roman, serif';text-transform: capitalize" > {{ucwords($healthFinance['fullname'])}} </span> of
+            <span style="font-family:'Times New Roman, serif';text-transform: capitalize" > {{ucwords($healthFinance['address'])}} </span> in
+            <span style="font-family:'Times New Roman, serif';text-transform: capitalize" > {{ucwords(strtolower($healthFinance['city']))}}, </span>
+            <span style="font-family:'Times New Roman, serif';text-transform: capitalize" > {{ucwords(strtolower($healthFinance['state']))}} </span>
             <span style="font-family:'Times New Roman, serif';text-transform: capitalize" > {{$healthFinance['zip']}} </span>
             <span style="font-family:'Times New Roman, serif';">(Tel: <span > {{$healthFinance['phone']}} </span> ),</span>
             <span style="font-family:'Times New Roman, serif';"> whom I appoint as my health care proxy to make health care decisions
             for me as authorized in this document.</span>
 
-            @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == true)
+            @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == 'true')
             <span>
-                  <span ><span style="font-family:'Times New Roman, serif'">
+                  <span><span style="font-family:'Times New Roman, serif'">
                   </span></span><span style="font-family:'Times New Roman, serif'">If my health care
                   proxy is or becomes unable or unwilling to serve, I appoint my
                     @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
-                        <span>{{$healthFinance['backupRelation']}}</span>
+                        <span>{{ucwords(strtolower($healthFinance['backupRelationOther']))}}</span>
                     @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
-                        <span>{{$healthFinance['backupRelation']}}</span>
+                        <span>{{ucwords(strtolower($healthFinance['backupRelation']))}}</span>
                     @else
                         <span>(relation)______________</span>
                     @endif
-                  <span style="text-transform: capitalize" > {{$healthFinance['backupFullname']}} </span>  of
-                  <span style="text-transform: capitalize" > {{$healthFinance['backupAddress']}} </span>  in
-                  <span style="text-transform: capitalize" > {{$healthFinance['backupCity']}} </span>,
-                  <span style="text-transform: capitalize" > {{$healthFinance['backupState']}} </span>
+                  <span style="text-transform: capitalize" > {{ucwords($healthFinance['backupFullname'])}} </span>  of
+                  <span style="text-transform: capitalize" > {{ucwords($healthFinance['backupAddress'])}} </span>  in
+                  <span style="text-transform: capitalize" > {{ucwords(strtolower($healthFinance['backupCity']))}}, </span>
+                  <span style="text-transform: capitalize" > {{ucwords(strtolower($healthFinance['backupState']))}} </span>
                   <span style="text-transform: capitalize" > {{$healthFinance['backupZip']}} </span>
                   <span style="font-family:'Times New Roman, serif';"> (Tel: <span > {{$healthFinance['backupphone']}} </span> ),</span>
-                  as my alternate health care proxy with the same authority.  </span><span ></span>
+                  as my alternate health care proxy with the same authority.  </span><span></span>
             </span>
             @endif
             </p>
@@ -321,17 +281,13 @@
       I fail to designate a health care proxy in this section, I am
       deliberately declining to designate a health care proxy.</span></span></p>
         </div>
-      {{--  <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Advance Directive for Health Care of <br> {{userDetails.tellUsAboutYou.fullname}} <br></span>
-            Page 3 of 6
-        </div>--}}
     </div>
     <!-- Page 3-->
 
 
     <!-- Page 4-->
     <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+        <div class="docPageInner" style="box-sizing: border-box;">
             <p  style="margin-bottom: 0.13in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 14pt"><b>III.
       ANATOMICAL GIFTS</b></span></span></p>
             <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'">	Pursuant
@@ -355,26 +311,21 @@
       functions or irreversible cessation of all functions of the entire
       brain, including the brain stem. I specifically donate:</span></p>
             <p  style="margin-bottom: 0.06in; "><br/>
-                <br/>
 
             </p>
             <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><b>(Initial
       your choice)</b></span></p>
             <p  style="margin-left: 0.38in; margin-top: 0.01in; margin-bottom: 0.06in; ">
-                <br/>
-
             </p>
             <p  style="margin-left: 0.38in; margin-top: 0.01in; margin-bottom: 0.06in; ">
                 <span style="font-family:'Times New Roman, serif'">_______ My entire body; </span>
             </p>
             <p  style="margin-left: 0.38in; margin-top: 0.01in; margin-bottom: 0.06in; ">
-                <br/>
 
             </p>
             <p  style="margin-left: 0.38in; margin-top: 0.01in; margin-bottom: 0.06in; ">
                 <span style="font-family:'Times New Roman, serif'"><u><b>OR</b></u></span></p>
             <p  style="margin-left: 0.38in; margin-bottom: 0.06in; ">
-                <br/>
 
             </p>
             <p  style="margin-left: 0.38in; margin-bottom: 0.06in; ">
@@ -382,7 +333,6 @@
       parts: </span>
             </p>
             <p  style="margin-left: 0.38in; margin-bottom: 0.06in; ">
-                <br/>
 
             </p>
             <p  style="margin-top: 0.01in; margin-bottom: 0.06in; ">
@@ -419,17 +369,13 @@
       artificially administered hydration and/or nutrition shall be
       withheld or withdrawn.</span></p>
         </div>
-       {{-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Advance Directive for Health Care of <br> {{userDetails.tellUsAboutYou.fullname}} <br></span>
-            Page 4 of 6
-        </div>--}}
     </div>
     <!-- Page 4-->
 
 
     <!-- Page 5-->
     <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
+        <div class="docPageInner" style="box-sizing: border-box;">
             <p  style="margin-bottom: 0.13in; "><span ><span style="font-family:'Times New Roman, serif'">d.	&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span style="font-family:'Times New Roman, serif'">In
       the absence of my ability to give directions regarding the use of
       life-sustaining procedures, it is my intention that this advance
@@ -461,29 +407,23 @@
       agent named herein, pursuant to the Health Insurance Portability and
       Accountability Act of 1996 (HIPAA), Public Law 104-191, as amended,
       and applicable regulations.</span></p>
-            <p  style="margin-bottom: 0.13in; "><br/>
-                <br/>
+            <p  style="margin-bottom: 0.13in; ">
 
             </p>
-            <p  style="margin-bottom: 0in; "><br/>
-
-            </p>
+            
             <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'">Signed
       this </span></span><span ><span style="font-family:'Times New Roman, serif'">____________</span></span><span ><span style="font-family:'Times New Roman, serif'">
       day of </span></span><span ><span style="font-family:'Times New Roman, serif'">_____________________________</span></span><span ><span style="font-family:'Times New Roman, serif'">,
       </span></span><span ><span style="font-family:'Times New Roman, serif'">________________</span></span><span ><span style="font-family:'Times New Roman, serif'">.</span></span></p>
-            <p  style="margin-bottom: 0in; "><br/>
+            <p  style="margin-bottom: 0in; ">
 
             </p>
-            <p  style="margin-bottom: 0in; "><br/>
-
-            </p>
+            
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">	_______________________________________</span></p>
             <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
                 <span ><span style="font-family:'Times New Roman, serif'">	</span></span><span style="font-family:'Times New Roman, serif'"><b>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{$tellUsAboutYou['fullname']}}</span>
-                        <!--«</b></span><span ><span style="font-family:'Times New Roman, serif'"><b>CLIENT
-                        FIRST NAME</b></span></span><span style="font-family:'Times New Roman, serif'"><b>»--></b></span></p>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+                        </b></span></p>
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'">	Declarant/Principal</span></p>
             <p  style="margin-bottom: 0in; "><br/>
 
@@ -491,45 +431,27 @@
             <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'">	</span></span><span ><span style="font-family:'Times New Roman, serif'">____________________________</span></span><span style="font-family:'Times New Roman, serif'">
     County, Oklahoma</span></p>
             <p  style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'">
-        <span style="text-transform: capitalize" >{{$tellUsAboutYou['dob']}}</span>
-                        <!--«</span></span><span ><span style="font-family:'Times New Roman, serif'">Client
-                        DOB</span></span><span ><span style="font-family:'Times New Roman, serif'">»--></span></span></p>
-            <p  style="margin-bottom: 0in; "><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; "><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; "><br/>
-
-            </p>
+        <span style="text-transform: capitalize">{{date('F j, Y', strtotime($tellUsAboutYou['dob']))}}</span>
+                        </span></span></p>
+            
+            
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><b>[Be
     certain to sign this Directive in the presence of two witnesses, who
     are 18 years of age or older, are not related to you, are not your
     agent or successor agent named herein, and who will not inherit from
     you.  Be certain your witnesses sign their names on the next page].</b></span></p>
+    <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><b>This
+    advance directive was signed in my presence.</b></span></p>
         </div>
-     {{--   <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Advance Directive for Health Care of <br> {{userDetails.tellUsAboutYou.fullname}} <br></span>
-            Page 5 of 6
-        </div>--}}
     </div>
     <!-- Page 5-->
 
     <!-- Page 6-->
     <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
-        <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
-            <p  style="margin-bottom: 0in;  text-align:center;"><span style="font-family:'Times New Roman, serif'"><b>This
-    advance directive was signed in my presence.</b></span></p>
-            <p  style="margin-bottom: 0in; "><br/>
-
-            </p>
-            <p  style="margin-bottom: 0in; "><br/>
-
-            </p>
-            <p style="margin-bottom: 0in; "><br/>
-
-            </p>
+        <div class="docPageInner" style="box-sizing: border-box;">
+            
+            
+            
             <p style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'"><b>WITNESS
       1</b></span></span><span ><span style="font-family:'Times New Roman, serif'">:
       ________________________________	Dated: ___________________</span></span></p>
@@ -567,10 +489,6 @@
             <p  style="margin-bottom: 0.06in; "><span ><span style="font-family:'Times New Roman, serif'">	[city,
     state]</span></span></p>
         </div>
-       {{-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-            <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined">Advance Directive for Health Care of <br> {{userDetails.tellUsAboutYou.fullname}} <br></span>
-            Page 6 of 6
-        </div>--}}
     </div>
     <!-- Page 6-->
 

@@ -98,10 +98,6 @@
             that you will regain the capacity to make informed health care
             decisions for yourself.</p>
         </div>
-        <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care and Living Will of <br> {{$tellUsAboutYou['fullname']}} <br> </span>
-          Page 1 of 16
-        </div> -->
       </div>
       <!-- Page 1-->
       <!-- Page 2-->
@@ -159,10 +155,6 @@
               NUTRITION OR HYDRATION WILL NOT OR NO LONGER WILL SERVE TO PROVIDE
               COMFORT TO YOU OR ALLEVIATE YOUR PAIN.</b></p>
         </div>
-        <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care and Living Will of <br> {{$tellUsAboutYou['fullname']}} <br> </span>
-          Page 2 of 16
-        </div> -->
       </div>
       <!-- Page 2-->
       <!-- Page 3-->
@@ -225,10 +217,6 @@
             a competent adult and you and the employee or agent are members of
             the same religious order.</p>
         </div>
-        <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care and Living Will of <br> {{$tellUsAboutYou['fullname']}} <br> </span>
-          Page 3 of 16
-        </div> -->
       </div>
       <!-- Page 3-->
       <!-- Page 4 -->
@@ -305,10 +293,6 @@
             If there is anything in this document that you do not understand, you
             should ask your lawyer to explain it to you.</p>
         </div>
-        <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care and Living Will of <br> {{$tellUsAboutYou['fullname']}} <br> </span>
-          Page 4 of 16
-        </div> -->
       </div>
       <!-- Page 4-->
       <!-- Page 5 -->
@@ -325,8 +309,8 @@
             ————————————</p>
           <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
             I, <b>
-            <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-            </b>,
+            <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</span>
+            </b>
             of
             <span style="text-transform: capitalize">{{$tellUsAboutYou['address']}}</span>,
             <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>,
@@ -342,8 +326,8 @@
             shall not be affected by my disability or incompetence or lapse of
             time.
           </p>
-          <p class="western" style="margin-bottom: 0.13in; "><br/>
-            <br/>
+          <p class="western" style="margin-bottom: 0.15in; "><br/>
+            
 
           </p>
           <p class="western" align="center" style="margin-bottom: 0.09in;  text-align:center;">
@@ -391,10 +375,6 @@
             to give informed consent, or withdrawing informed consent to health
             care.</p>
         </div>
-        <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care and Living Will of <br> {{$tellUsAboutYou['fullname']}} <br> </span>
-          Page 5 of 16
-        </div> -->
       </div>
       <!-- Page 5-->
       <!-- Page 6-->
@@ -453,42 +433,38 @@
             <br/>
 
           </p>
-          <ol>
-            <li>
-              <p  style="margin-bottom: 0in; margin-top: 0;">
-                <span face="Calibri, serif"><span face="Times New Roman, serif"><b>Naming
-                of My Agent</b></span><span face="Times New Roman, serif">. I
-                designate my </span><span ><span face="Times New Roman, serif">
-                  <span style="text-transform: capitalize"> {{$healthFinance['relation'] == 'Other' ? $healthFinance['relationOther'] : $healthFinance['relation']}} ,</span>
-                  <span style="text-transform: capitalize"> {{$healthFinance['fullname']}} </span>, of
-                  <span style="text-transform: capitalize"> {{$healthFinance['address']}} </span>, in
-                  <span style="text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
-                  <span style="text-transform: capitalize"> {{$healthFinance['state']}} </span>
-                  <span style="text-transform: capitalize"> {{$healthFinance['zip']}} </span>
-                  (Tel: <span> {{$healthFinance['phone']}} </span>)
-                as my agent to make health-care decisions for me.</span></span>
-                @if($healthFinance['anyBackupAgent'] == 'true')
-                    <span>
-                    <span ><span face="Times New Roman, serif">
-                       If I revoke my agent’s authority or if my agent is not willing,
-                      able, or reasonably available to make health-care decisions for me,
-                      I designate </span></span><span face="Times New Roman, serif">my </span><span >
-                       <span style="text-transform: capitalize"> {{$healthFinance['backupRelation'] == 'Other' ? $healthFinance['backupRelationOther'] : $healthFinance['backupRelation']}} ,</span>
-                        <span style="text-transform: capitalize"> {{$healthFinance['backupFullname']}} </span> of
-                        <span style="text-transform: capitalize"> {{$healthFinance['backupAddress']}} </span> in
-                        <span style="text-transform: capitalize"> {{$healthFinance['backupCity']}} ,</span>
-                        <span style="text-transform: capitalize"> {{$healthFinance['backupState']}} </span>
-                        <span style="text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
-                        (Tel: <span> {{$healthFinance['backupphone']}} </span> )
-                      as my alternate agent to make health-care decisions for me.
-                      </span></span>
-                @endif
-
-                </span>
-              </p>
-            </li>
-          </ol>
-
+          
+          <p  style="margin-bottom: 0in; margin-top: 0;">
+            <span face="Calibri, serif"><span face="Times New Roman, serif"><b>(1)  Naming
+            of My Agent</b></span><span face="Times New Roman, serif">. I
+            designate my </span><span ><span face="Times New Roman, serif">
+              <span style="text-transform: capitalize"> {{$healthFinance['relation'] == 'Other' ? ucwords(strtolower($healthFinance['relationOther'])) : ucwords(strtolower($healthFinance['relation']))}}, </span>
+              <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['fullname']))}}, </span>of
+              <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['address']))}},  </span>in
+              <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['city']))}}, </span>
+              <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['state']))}} </span>
+              <span style="text-transform: capitalize"> {{$healthFinance['zip']}} </span>
+              (Tel: <span> {{$healthFinance['phone']}} </span>)
+              as my agent to make health-care decisions for me.</span></span>
+              @if($healthFinance['anyBackupAgent'] == 'true')
+                  <span>
+                  <span ><span face="Times New Roman, serif">
+                     If I revoke my agent’s authority or if my agent is not willing,
+                    able, or reasonably available to make health-care decisions for me,
+                    I designate </span></span><span face="Times New Roman, serif">my </span><span >
+                     <span style="text-transform: capitalize"> {{$healthFinance['backupRelation'] == 'Other' ? ucwords(strtolower($healthFinance['backupRelationOther'])) : ucwords(strtolower($healthFinance['backupRelation']))}}, </span>
+                      <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['backupFullname']))}} </span> of
+                      <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['backupAddress']))}} </span> in
+                      <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['backupCity']))}}, </span>
+                      <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['backupState']))}} </span>
+                      <span style="text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
+                      (Tel: <span> {{$healthFinance['backupphone']}} </span> )
+                    as my alternate agent to make health-care decisions for me.
+                    </span></span>
+              @endif
+            </span>
+          </p>
+            
           <p class="western"  style="margin-bottom: 0in; ">
             <b>(2)	Agent’s Authority.  </b>My agent is authorized to make all
             health-care decisions for me.
@@ -512,10 +488,6 @@
             </ul>
           </ul>
         </div>
-        <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care and Living Will of <br> {{$tellUsAboutYou['fullname']}} <br> </span>
-          Page 6 of 16
-        </div> -->
       </div>
       <!-- Page 6-->
       <!-- Page 7-->
@@ -603,10 +575,6 @@
           <p class="western"  style="margin-left: 0.88in; text-indent: 0.13in; margin-bottom: 0.13in; margin-top: 0;">
             (Add additional pages if needed).</p>
         </div>
-        <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care and Living Will of <br> {{$tellUsAboutYou['fullname']}} <br> </span>
-          Page 7 of 16
-        </div> -->
       </div>
       <!-- Page 7 -->
       <!-- Page 8-->
@@ -664,12 +632,13 @@
             <br/>
 
           </p>
-          <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; ">
+          <p class="western"  style="margin-left: 0.00in; margin-bottom: 0in; ">
             _______________________________________</p>
           <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
             <b>
-              <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-              <!--«</b><span ><b>CLIENT FIRST NAME</b></span><b>»--></b><span >,</span></p>
+              <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}, </span>
+            </b>
+          </p>
           <p class="western"  style="margin-left: 0.5in; margin-bottom: 0.13in; ">
             Principal</p>
           <p class="western" align="center" style="margin-bottom: 0.06in; ">
@@ -684,10 +653,6 @@
 
           </p>
         </div>
-        <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care and Living Will of <br> {{$tellUsAboutYou['fullname']}} <br> </span>
-          Page 8 of 16
-        </div> -->
       </div>
       <!-- Page 8 -->
       <!-- Page 9 -->
@@ -702,12 +667,12 @@
             <span ><span size="2" style="font-size: 11pt">COUNTY
             OF ________________	ss.</span></span></p>
           <p class="western" style="margin-bottom: 0in; "><span size="2" style="font-size: 10pt">On
-            this </span><span size="2" style="font-size: 10pt"><u>		</u></span><span size="2" style="font-size: 10pt">
-            day of </span><span size="2" style="font-size: 10pt"><u>			</u></span><span size="2" style="font-size: 10pt">,
-            </span><span size="2" style="font-size: 10pt"><u>		</u></span><span size="2" style="font-size: 10pt">,
+            this </span><span size="2" style="font-size: 10pt"><span>________</span></span><span size="2" style="font-size: 10pt">
+            day of </span><span size="2" style="font-size: 10pt"><span>____________</span></span><span size="2" style="font-size: 10pt">,
+            </span><span size="2" style="font-size: 10pt"><span>________</span></span><span size="2" style="font-size: 10pt">,
             before me, the undersigned notary public, personally appeared </span><span ><span size="2" style="font-size: 10pt"></span></span>
-            <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-            <span size="2" style="font-size: 10pt">,
+            <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}, </span>
+            <span size="2" style="font-size: 10pt">
             principal of the above Health Care Power</span><span size="2" style="font-size: 10pt"><span style="letter-spacing: -0.1pt">
             </span></span><span size="2" style="font-size: 10pt">of</span><span size="2" style="font-size: 10pt"><span style="letter-spacing: -0.1pt">
             </span></span><span size="2" style="font-size: 10pt">Attorney, and
@@ -748,7 +713,7 @@
             nursing home where you are receiving care.]</span></p>
 
           <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
-            I hereby state that the Declarant, <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>, signed the above
+            I hereby state that the Declarant, <span>{{strtoupper($tellUsAboutYou['fullname'])}}, </span>signed the above
             declaration in my presence and that I am not related to the declarant
             by blood, marriage, or adoption, I am not the attending physician of
             the Declarant and I am not the administrator of a nursing home where
@@ -789,10 +754,6 @@
             address]<span style="padding-left: 280px;"></span>[city, state]</span></span></p>
 
         </div>
-        <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care and Living Will of <br> {{$tellUsAboutYou['fullname']}} <br> </span>
-          Page 9 of 16
-        </div> -->
       </div>
       <!-- Page 9 -->
       <!-- Page 10 -->
@@ -869,10 +830,6 @@
               DOCUMENT, YOU MAY WISH TO CONSULT A LAWYER.</p><br>
           </div>
         </div>
-        <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care and Living Will of <br> {{$tellUsAboutYou['fullname']}} <br> </span>
-          Page 10 of 16
-        </div> -->
       </div>
       <!-- Page 10 -->
       <!-- Page 11 -->
@@ -890,13 +847,12 @@
           </p>
           <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
             I, <b>
-            <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-            <!--«</b><span ><b>CLIENT FULL NAME</b></span><b>»-->
-          </b>,
-            of  <span style="text-transform: capitalize">{{$tellUsAboutYou['address']}}</span>,
-            <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>,
-            <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>
-            <span style="text-transform: capitalize">{{$tellUsAboutYou['zip']}}</span>,
+            <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}, </span>
+          </b>
+            of  <span style="text-transform: capitalize">{{ucwords($tellUsAboutYou['address'])}}, </span>
+            <span style="text-transform: capitalize">{{ucwords(strtolower($tellUsAboutYou['city']))}}, </span>
+            <span style="text-transform: capitalize">{{ucwords(strtolower($tellUsAboutYou['state']))}}</span>
+            <span style="text-transform: capitalize">{{$tellUsAboutYou['zip']}}, </span>
             (the “Declarant”), state that this is my Ohio Living Will
             Declaration. I am of sound mind and not under or subject to duress,
             fraud or undue influence. I am a competent adult who understands and
@@ -976,10 +932,6 @@
             occur within a relatively short time if I do not receive
             life-sustaining treatment.</span></p>
         </div>
-        <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care and Living Will of <br> {{$tellUsAboutYou['fullname']}} <br> </span>
-          Page 11 of 16
-        </div> -->
       </div>
       <!-- Page 11 -->
 
@@ -1059,99 +1011,83 @@
           <p class="western" style="margin-left: 0.38in; margin-bottom: 0in; ">
             <i>(Attach additional pages as needed).</i></p>
         </div>
-        <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care and Living Will of <br> {{$tellUsAboutYou['fullname']}} <br> </span>
-          Page 12 of 16
-        </div> -->
       </div>
       <!-- Page 12 -->
       <!-- Page 13 -->
       <div>
         <div style="page-break-after: always;">
-          <p class="western"  style="margin-bottom: 0.03in; ">
-            <i><b>Notifications</b></i><b>.</b>  <i>[Note: You do not need to
-            name anyone. If no one is named, the law requires your attending
-            physician to make a reasonable effort to notify one of the following
-            persons in the order named: your guardian, your spouse, your adult
-            children who are available, your parents, or a majority of your adult
-            siblings who are available.]</i></p>
-          <p class="western"  style="margin-bottom: 0.09in; ">
-            <br/>
-            <br/>
+            <p class="western"  style="margin-bottom: 0.03in; ">
+              <i><b>Notifications</b></i><b>.</b>  <i>[Note: You do not need to
+              name anyone. If no one is named, the law requires your attending
+              physician to make a reasonable effort to notify one of the following
+              persons in the order named: your guardian, your spouse, your adult
+              children who are available, your parents, or a majority of your adult
+              siblings who are available.]</i></p>
+            <p class="western"  style="margin-bottom: 0.09in; ">
+              <br/>
 
-          </p>
-          <p class="western"  style="margin-bottom: 0.09in; ">
-            In the event my attending physician determines that life-sustaining
-            treatment should be withheld or withdrawn, my physician shall make a
-            reasonable effort to notify one of the persons named below, in the
-            following order of priority:
-          </p>
-          <p class="western"  style="margin-bottom: 0.09in; ">
+            </p>
+            <p class="western"  style="margin-bottom: 0.09in; ">
+              In the event my attending physician determines that life-sustaining
+              treatment should be withheld or withdrawn, my physician shall make a
+              reasonable effort to notify one of the persons named below, in the
+              following order of priority:
+            </p>
+            <p class="western"  style="margin-bottom: 0.09in; ">
             Please Contact:</p>
-          <p class="western"  style="margin-left: 0.63in; text-indent: 0.38in; margin-bottom: 0in; ">
-            <span ><!--«</span><span > Rx Agent #1</span><span >»-->
-              <span style="text-transform: capitalize"> {{$healthFinance['fullname']}} </span>
+            <p class="western"  style="margin-left: 0.63in; text-indent: 0.38in; margin-bottom: 0in; ">
+            <span>
+              <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['fullname']))}} </span>
             (my
-              <span style="text-transform: capitalize"> {{$healthFinance['relation'] == 'Other' ? $healthFinance['relationOther'] : $healthFinance['relation']}} </span>
-              <!--«</span><span >Rx Agent #1 Relationship</span><span >
-            »-->)</span></p>
-          <p class="western"  style="margin-left: 0.63in; text-indent: 0.38in; margin-bottom: 0in; ">
-            <span >
-               <span style="text-transform: capitalize"> {{$healthFinance['address']}} </span>
-              <!--«</span><span > Rx Agent #1
-            Address</span><span >»-->
-            </span></p>
-          <p class="western"  style="margin-left: 0.63in; text-indent: 0.38in; margin-bottom: 0in; ">
-            <span style="text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
-            <span style="text-transform: capitalize"> {{$healthFinance['state']}} </span>
-            <span style="text-transform: capitalize"> {{$healthFinance['zip']}} </span>
-            <!--« <span >Rx Agent #1 City</span>», «<span >Rx
-            Agent #1 State</span>» «<span > Rx Agent #1 Zip</span>»-->
-          </p>
-          <p class="western"  style="margin-left: 0.63in; text-indent: 0.38in; margin-bottom: 0in; ">
-            <span >
-              <span> {{$healthFinance['phone']}} </span>
-              <!--«</span><span > Rx Agent #1
-            Telephone</span><span >»--></span></p>
-          <p class="western"  style="margin-left: 0.38in; margin-top: 0.06in; margin-bottom: 0in; ">
-            <br/>
+              <span style="text-transform: capitalize"> {{$healthFinance['relation'] == 'Other' ? ucwords(strtolower($healthFinance['relationOther'])) : ucwords(strtolower($healthFinance['relation']))}}) </span>
+              </span></p>
+            <p class="western"  style="margin-left: 0.63in; text-indent: 0.38in; margin-bottom: 0in; ">
+              <span >
+                 <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['address']))}} </span>
+              </span>
+            </p>
+            <p class="western"  style="margin-left: 0.63in; text-indent: 0.38in; margin-bottom: 0in; ">
+              <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['city']))}}, </span>
+              <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['state']))}} </span>
+              <span style="text-transform: capitalize"> {{$healthFinance['zip']}} </span>
+            </p>
+            <p class="western"  style="margin-left: 0.63in; text-indent: 0.38in; margin-bottom: 0in; ">
+              <span>
+                <span> {{$healthFinance['phone']}} </span>
+              </span>
+            </p>
+            <p class="western"  style="margin-left: 0.38in; margin-top: 0.06in; margin-bottom: 0in; ">
+              <br/>
 
-          </p>
-         <!-- <p class="western"  style="margin-left: 0.38in; margin-top: 0.06in; margin-bottom: 0in; ">
-            <span >«</span><span > IF Rx Alternate
-            Agents?</span><span > »</span></p>-->
-          @if($healthFinance['anyBackupAgent'] == 'true')
+            </p>
+         
+            @if($healthFinance['anyBackupAgent'] == 'true')
               <div>
               <p class="western"  style="margin-left: 0.63in; text-indent: 0.38in; margin-bottom: 0in; ">
                 <span >
                   <span style="text-transform: capitalize"> {{$healthFinance['backupFullname']}} </span>
-                  <!--«</span><span > Rx Agent #2</span><span >»-->
-                (my
-                  <span style="text-transform: capitalize"> {{$healthFinance['backupRelation'] == 'Other' ? $healthFinance['backupRelationOther'] : $healthFinance['backupRelation']}} </span>
-                  <!--«</span><span >Rx Agent #2 Relationship</span><span >
-                »-->)</span></p>
-              <p class="western"  style="margin-left: 0.63in; text-indent: 0.38in; margin-bottom: 0in; ">
-                <span >
-                  <span style="text-transform: capitalize"> {{$healthFinance['backupAddress']}} </span>
-                  <!--«</span><span > Rx Agent #2
-                Address</span><span >»--></span></p>
-              <p class="western"  style="margin-left: 0.63in; text-indent: 0.38in; margin-bottom: 0in; ">
-                <span style="text-transform: capitalize"> {{$healthFinance['backupCity']}} ,</span>
-                <span style="text-transform: capitalize"> {{$healthFinance['backupState']}} </span>
-                <span style="text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
-          <!--      « <span >Rx Agent #2 City</span>», «<span >Rx
-                Agent #2 State</span>» «<span > Rx Agent #2 Zip</span>»-->
+                (my<span style="text-transform: capitalize"> {{$healthFinance['backupRelation'] == 'Other' ? ucwords(strtolower($healthFinance['backupRelationOther'])) : ucwords(strtolower($healthFinance['backupRelation']))}}) </span>
+                </span>
               </p>
               <p class="western"  style="margin-left: 0.63in; text-indent: 0.38in; margin-bottom: 0in; ">
-                <span >
+                <span>
+                  <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['backupAddress']))}} </span>
+                </span>
+              </p>
+              <p class="western"  style="margin-left: 0.63in; text-indent: 0.38in; margin-bottom: 0in; ">
+                <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['backupCity']))}}, </span>
+                <span style="text-transform: capitalize"> {{ucwords(strtolower($healthFinance['backupState']))}} </span>
+                <span style="text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
+              </p>
+              <p class="western"  style="margin-left: 0.63in; text-indent: 0.38in; margin-bottom: 0in; ">
+                <span>
                   <span> {{$healthFinance['backupphone']}} </span>
-                  <!--«</span><span > Rx Agent #2
-                Telephone</span><span >»--></span></p>
+                </span>
+              </p>
               </div>
-          @endif
+            @endif
 
-         <!-- <p class="western"  style="margin-left: 0.38in; margin-top: 0.06in; margin-bottom: 0in; ">
-            <span >«</span><span >END IF</span><span >»</span></p>-->
+         
           <p class="western"  style="margin-left: 0.38in; margin-top: 0.06in; margin-bottom: 0in; line-height: 150%">
             <span >		NAME: </span><span >_____________________________________________</span></p>
           <p class="western"  style="margin-left: 0.38in; margin-top: 0.06in; margin-bottom: 0in; line-height: 150%">
@@ -1169,10 +1105,6 @@
           <p class="western"  style="margin-left: 0.38in; margin-top: 0.06in; margin-bottom: 0in; line-height: 150%">
             <span >		TELEPHONE: </span><span >_____________________________________________</span></p>
         </div>
-        <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care and Living Will of <br> {{$tellUsAboutYou['fullname']}} <br> </span>
-          Page 13 of 16
-        </div> -->
       </div>
       <!-- Page 13 -->
 
@@ -1252,10 +1184,6 @@
             person may rely on a copy of this document.
           </p>
         </div>
-        <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care and Living Will of <br> {{$tellUsAboutYou['fullname']}} <br> </span>
-          Page 14 of 16
-        </div> -->
       </div>
       <!-- Page 14 -->
 
@@ -1268,9 +1196,8 @@
             that this document be honored in any jurisdiction to the extent
             allowed by law.
           </p>
-          <p class="western"  style="margin-bottom: 0in; ">
+          <p class="western"  style="margin-bottom: 0in;">
             <br/>
-
           </p>
 
           <p class="western"  style="margin-bottom: 0.13in; ">
@@ -1296,10 +1223,9 @@
             _______________________________________</p>
           <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
             <b>
-              <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-              <!--«</b><span ><b>CLIENT FIRST NAME</b></span><b>»
-            «</b><span ><b>CLIENT MIDDLE NAME</b></span><b>»
-            «</b><span ><b>CLIENT LAST NAME</b></span><b>»--></b></p>
+              <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+            </b>
+          </p>
           <p class="western"  style="margin-left: 0.5in; margin-bottom: 0.13in; ">
             Principal/Declarant</p>
           
@@ -1320,10 +1246,6 @@
             WHEN YOU SIGN, OR ACKNOWLEDGED BY THE DECLARANT BEFORE A NOTARY
             PUBLIC TO BE VALID.</b></p>
         </div>
-        <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care and Living Will of <br> {{$tellUsAboutYou['fullname']}} <br> </span>
-          Page 15 of 16
-        </div> -->
       </div>
       <!-- Page 15 -->
 
@@ -1332,8 +1254,7 @@
         <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
           <p class="western" align="center" style="margin-bottom: 0.09in;  text-align:center;">
             <b>Option 1:  NOTARY ACKNOWLEDGMENT</b></p>
-          <p class="western"  style="margin-bottom: 0in; ">
-            <br/>
+          <p class="western"  style="margin-bottom: 0.09in; ">
 
           </p>
           <p class="western"  style="margin-bottom: 0in; ">
@@ -1347,13 +1268,8 @@
             day of </span><span size="2" style="font-size: 11pt">_______________________________</span><span size="2" style="font-size: 11pt">,
             </span><span size="2" style="font-size: 11pt">____________________</span><span size="2" style="font-size: 11pt">,
             before me, the undersigned notary public, personally appeared </span><span size="2" style="font-size: 11pt"><b>
-              <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>
-            <!--«</b></span><span ><span size="2" style="font-size: 11pt"><b>CLIENT
-            FIRST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»
-            «</b></span><span ><span size="2" style="font-size: 11pt"><b>CLIENT
-            MIDDLE NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»
-            «</b></span><span ><span size="2" style="font-size: 11pt"><b>CLIENT
-            LAST NAME</b></span></span><span size="2" style="font-size: 11pt"><b>»--></b></span><span size="2" style="font-size: 11pt">,
+              <span style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}, </span>
+            </b></span><span size="2" style="font-size: 11pt">
             Declarant of the above Living Will Declaration, and who has
             acknowledged that </span><span ><span size="2" style="font-size: 11pt"><span>{{$tellUsAboutYou['gender'] == 'M' ? 'he' : 'she'}}</span></span></span><span size="2" style="font-size: 11pt">
             executed the same for the purposes expressed therein. I attest that
@@ -1376,9 +1292,7 @@
               nursing home.]</i></p>
 
           <p class="western"  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
-            I attest that the Declarant, <!--«<span >CLIENT FIRST
-            NAME</span>» «<span >CLIENT MIDDLE NAME</span>»
-            «<span >CLIENT LAST NAME</span>»-->  <span style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</span>, signed or
+            I attest that the Declarant,<span style="text-transform: capitalize"> {{strtoupper($tellUsAboutYou['fullname'])}}, </span>signed or
             acknowledged this Living Will Declaration in my presence, and that
             the Declarant appears to be of sound mind and not under or subject to
             duress, fraud or undue influence.  I further attest that I am not an
@@ -1425,10 +1339,6 @@
           <span ><span size="2" style="font-size: 10pt">____________________________________ <span style="padding-left: 80px;"></span>____________________________________<br>[street
           address]<span style="padding-left: 280px;"></span>[city, state]</span></span></p>
         </div>
-        <!-- <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-          <span style="text-transform: capitalize"> Durable Power of Attorney for Health Care and Living Will of <br> {{$tellUsAboutYou['fullname']}} <br> </span>
-          Page 16 of 16
-        </div> -->
       </div>
       <!-- Page 16 -->
     </div>

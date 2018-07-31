@@ -645,7 +645,7 @@
 </div>
 
 <div>
-  <div style="page-break-after: always;">
+  <div style="">
 
     <p align="justify" style="text-indent: 0.5in; margin-bottom: 0in;">
         <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
@@ -965,7 +965,7 @@
       </span>
       </p>
 
-      <p align="justify" style="margin-bottom: 0in; "><br/>
+      <p align="justify" style="margin-bottom: 0in; page-break-after:always;"><br/>
 
       </p>
       <p align="center" style="margin-bottom: 0.13in; "><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt"><b>STATEMENT
