@@ -34,6 +34,7 @@ import {PackagesService} from './user-dashboard/packages/packages.service';
 import { FiduciaryComponent } from './fiduciary/fiduciary.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -62,7 +63,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BlogdetailsComponent,
     BlogCategoryComponent,
     FiduciaryComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    // CapitalizePipe
   ],
   providers: [
     ProtectYourFinancesService,

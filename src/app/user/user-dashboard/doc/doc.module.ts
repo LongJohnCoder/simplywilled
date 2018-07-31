@@ -66,6 +66,7 @@ import { MnPoaComponent } from './financial-poa-doc/mn-poa/mn-poa.component';
 import { NyPoaComponent } from './financial-poa-doc/ny-poa/ny-poa.component';
 import { UniformPoaComponent } from './financial-poa-doc/uniform-poa/uniform-poa.component';
 import { NonuniformPoaComponent } from './financial-poa-doc/nonuniform-poa/nonuniform-poa.component';
+import { CapitalizePipe } from '../../../custom-pipes/capitalize.pipe';
 
 @NgModule({
   imports: [
@@ -137,6 +138,7 @@ import { NonuniformPoaComponent } from './financial-poa-doc/nonuniform-poa/nonun
     NyPoaComponent,
     UniformPoaComponent,
     NonuniformPoaComponent,
+    CapitalizePipe
   ]
 })
 export class DocModule { }
