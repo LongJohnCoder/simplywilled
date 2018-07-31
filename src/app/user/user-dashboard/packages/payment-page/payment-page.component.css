@@ -652,6 +652,16 @@ select.form-control{
     font-family: 'OpenSans';
 }
 
+.packagesRightPanel.responsive{
+    margin-bottom: 15px;
+    display: none;
+}
+
+.macfee{
+    float: none;
+    margin-right: 10px;
+}
+
 @media screen and (max-width:1199px){
     .main-content.tellusaboutyou{
         width: 720px;
@@ -702,6 +712,12 @@ select.form-control{
     }
     .main-content.paymentSuccess{
         margin-right: 9px;
+    }
+    .packagesRightPanel{
+        display: none;
+    }
+    .packagesRightPanel.responsive, .packagesRightPanel.howItWorks{
+        display: block;
     }
 }
 

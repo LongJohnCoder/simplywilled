@@ -12,6 +12,15 @@
 </div>
 
 <div class="col-xs-12" *ngIf="!respType">
+    <div class="packagesRightPanel responsive">
+        <h2>Order Summary</h2>
+        <div class="packageLogo">
+          <img src="../../../../../../assets/images/single-pkg-book.png" alt="">
+        </div>
+        <div class="packageName realPrice">{{paymentData.package.name}} <span>${{paymentData.package.amount}}</span></div>
+        <div class="packageName discount">Discount Savings <span>- ${{paymentData.discountAmount}}</span></div>
+        <div class="packageName totalOrder">Order Total <span>${{paymentData.package.amount - paymentData.discountAmount}}</span></div>
+      </div>
   <div class="main-content tellusaboutyou" >
     <h2>Complete your order</h2>
     <hr>
