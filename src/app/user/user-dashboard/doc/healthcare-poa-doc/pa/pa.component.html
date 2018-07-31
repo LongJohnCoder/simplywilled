@@ -266,27 +266,18 @@
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif">I,</span><span face="Times New Roman, serif">
         <b>
-          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
-          <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
-        </b>,
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | uppercase) : '_______________________'}}, </span>
+          <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________, </span>
+        </b>
         of
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? userDetails.tellUsAboutYou.address : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>,
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? userDetails.tellUsAboutYou.city : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>,
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? userDetails.tellUsAboutYou.state : '_______________________'}}</span>
-        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>,
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.address !== null && userDetails.tellUsAboutYou.address !== undefined ? (userDetails.tellUsAboutYou.address | capitalize) : '_______________________'}}, </span>
+        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________, </span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.city !== null && userDetails.tellUsAboutYou.city !== undefined ? (userDetails.tellUsAboutYou.city | titlecase) : '_______________________'}}, </span>
+        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________, </span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.state !== null && userDetails.tellUsAboutYou.state !== undefined ? (userDetails.tellUsAboutYou.state | titlecase) : '_______________________'}}</span>
+        <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
       </span>
-      <!--<b>
-      «</b></span><span ><span face="Times New Roman, serif"><b>CLIENT
-      FULL NAME»</b></span></span><span face="Times New Roman, serif">,
-      of «</span><span ><span face="Times New Roman, serif">Address1</span></span><span face="Times New Roman, serif">»,
-      «</span><span ><span face="Times New Roman, serif">IF
-      ANSWERED( Address2 )</span></span><span face="Times New Roman, serif">»«</span><span ><span face="Times New Roman, serif">Address2</span></span><span face="Times New Roman, serif">»,
-      «</span><span ><span face="Times New Roman, serif">END
-      IF</span></span><span face="Times New Roman, serif">»«</span><span ><span face="Times New Roman, serif">City</span></span><span face="Times New Roman, serif">»,
-      «</span><span ><span face="Times New Roman, serif">State</span></span><span face="Times New Roman, serif">»,</span><span face="Times New Roman, serif"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">
-      </span></span></span>--><span face="Times New Roman, serif">appoint the
+      <span face="Times New Roman, serif">appoint the
       person named below to be my health care agent to make health and
       personal care decisions for me.</span></p>
     <p  style="margin-bottom: 0in; line-height: 100%"><br/>
@@ -372,37 +363,26 @@
     <p  style="margin-left: 0.19in; text-indent: -0.19in; margin-top: 0.19in; margin-bottom: 0.13in; line-height: 100%; text-align:center;">
       <span face="Times New Roman, serif"><span size="2" style="font-size: 10pt"><span size="3" style="font-size: 12pt"><b>APPOINTMENT
       OF HEALTH CARE AGENT</b></span></span></span></p>
-    <p  style="margin-bottom: 0in; line-height: 100%"><span ><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span ><span size="3" style="font-family:'Times New Roman, serif';font-size: 12pt">I
+    <p  style="margin-bottom: 0in; line-height: 100%">
+      <span>
+        <span face="Times New Roman, serif">
+          <span size="1" style="font-size: 8pt">
+            <span>
+              <span size="3" style="font-family:'Times New Roman, serif';font-size: 12pt">I
       appoint my
-       <span style="font-family:'Times New Roman, serif';font-size: 12pt;text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation !== 'Other'"> {{userDetails.healthFinance.relation !== null && userDetails.healthFinance.relation !== undefined ? userDetails.healthFinance.relation : '_______________________'}} ,</span>
-        <span style="font-family:'Times New Roman, serif';font-size: 12pt;text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation === 'Other'"> {{userDetails.healthFinance.relationOther !== null && userDetails.healthFinance.relationOther !== undefined ? userDetails.healthFinance.relationOther : '_______________________'}} ,</span>
-        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
-        <span style="font-family:'Times New Roman, serif';font-size: 12pt;text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.fullname !== null && userDetails.healthFinance.fullname !== undefined ? userDetails.healthFinance.fullname : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span> of
-        <span style="font-family:'Times New Roman, serif';font-size: 12pt;text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address !== null && userDetails.healthFinance.address !== undefined ? userDetails.healthFinance.address : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span> in
-        <span style="font-family:'Times New Roman, serif';font-size: 12pt;text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.city !== null && userDetails.healthFinance.city !== undefined ? userDetails.healthFinance.city : '_______________________'}} ,</span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
-        <span style="font-family:'Times New Roman, serif';font-size: 12pt;text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.state !== null && userDetails.healthFinance.state !== undefined ? userDetails.healthFinance.state : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
+       <span style="font-family:'Times New Roman, serif';font-size: 12pt;text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation !== 'Other'"> {{userDetails.healthFinance.relation !== null && userDetails.healthFinance.relation !== undefined ? (userDetails.healthFinance.relation | titlecase) : '_______________________'}}, </span>
+        <span style="font-family:'Times New Roman, serif';font-size: 12pt;text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation === 'Other'"> {{userDetails.healthFinance.relationOther !== null && userDetails.healthFinance.relationOther !== undefined ? (userDetails.healthFinance.relationOther | titlecase) : '_______________________'}}, </span>
+        <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________, </span>
+        <span style="font-family:'Times New Roman, serif';font-size: 12pt;text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.fullname !== null && userDetails.healthFinance.fullname !== undefined ? (userDetails.healthFinance.fullname | titlecase) : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> of
+        <span style="font-family:'Times New Roman, serif';font-size: 12pt;text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address !== null && userDetails.healthFinance.address !== undefined ? (userDetails.healthFinance.address | capitalize) : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> in
+        <span style="font-family:'Times New Roman, serif';font-size: 12pt;text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.city !== null && userDetails.healthFinance.city !== undefined ? (userDetails.healthFinance.city | titlecase) : '_______________________'}}, </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________, </span>
+        <span style="font-family:'Times New Roman, serif';font-size: 12pt;text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.state !== null && userDetails.healthFinance.state !== undefined ? (userDetails.healthFinance.state | titlecase) : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>
         <span style="font-family:'Times New Roman, serif';font-size: 12pt;text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.zip !== null && userDetails.healthFinance.zip !== undefined ? userDetails.healthFinance.zip : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>
         <span style="font-family:'Times New Roman, serif';"> (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.phone !== null && userDetails.healthFinance.phone !== undefined ? userDetails.healthFinance.phone : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> ),</span>
-      <!--«</span></span><span ><span size="3" style="font-size: 12pt">Rx
-      Agent #1 Relationship</span></span><span ><span size="3" style="font-size: 12pt">»,
-      «</span></span><span ><span size="3" style="font-size: 12pt">Rx
-      Agent #1</span></span><span ><span size="3" style="font-size: 12pt">»,
-      of «</span></span><span ><span size="3" style="font-size: 12pt">Rx
-      Agent #1 Address</span></span><span ><span size="3" style="font-size: 12pt">»
-      </span></span><span size="3" style="font-size: 12pt">«</span><span ><span size="3" style="font-size: 12pt">Rx
-      Agent #1 City</span></span><span size="3" style="font-size: 12pt">»,
-      «</span><span ><span size="3" style="font-size: 12pt">Rx
-      Agent #1 State</span></span><span size="3" style="font-size: 12pt">»
-      «</span><span ><span size="3" style="font-size: 12pt">
-      Rx Agent #1 Zip</span></span><span size="3" style="font-size: 12pt">»</span><span ><span size="3" style="font-size: 12pt">
-      (Tel: «</span></span><span ><span size="3" style="font-size: 12pt">Rx
-      Agent #1 Telephone</span></span><span ><span size="3" style="font-size: 12pt">»)-->
-      <span style="font-family: 'Times New Roman; serif'"> as my Agent to make medical treatment decisions for me</span>.<!--«</span></span><span size="3" style="font-size: 12pt">END
-      IF</span><span ><span size="3" style="font-size: 12pt">»--><!--«</span></span><span size="3" style="font-size: 12pt">IF
-      Rx Joint?</span><span ><span size="3" style="font-size: 12pt">».-->
+      
+      <span style="font-family: 'Times New Roman; serif'"> as my Agent to make medical treatment decisions for me</span>.
       <span style="font-family: 'Times New Roman; serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'true'"> During such time as co-Agents are acting, only one signature shall be
-      required</span></span></span><!--<span size="3" style="font-size: 12pt">END
-      IF</span>--><span ><span size="3" style="font-size: 12pt">.</span></span><span ><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></span></span></p>
+      required</span></span></span><span ><span size="3" style="font-size: 12pt"></span></span><span ><span size="3" style="font-size: 12pt">&nbsp;</span></span></span></span></span></p>
     <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
@@ -416,36 +396,23 @@
     <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
     </p>
-   <!-- <p  style="margin-bottom: 0in; line-height: 100%"><span ><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span ><span size="3" style="font-size: 12pt">«</span></span><span size="3" style="font-size: 12pt">
-      IF Rx Alternate Agents?</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></span></span></p>-->
+   
     <p style="margin-bottom: 0in; line-height: 100%"><span face="Times New Roman, serif">If
       my Agent is not available or if my health care agent is my spouse and
       an action for divorce is filed by either of us after the date of this
       document, I appoint my
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation !== 'Other'"> {{userDetails.healthFinance.backupRelation !== null && userDetails.healthFinance.backupRelation !== undefined ? userDetails.healthFinance.backupRelation : '_______________________'}} ,</span>
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation === 'Other'"> {{userDetails.healthFinance.backupRelationOther !== null && userDetails.healthFinance.backupRelationOther !== undefined ? userDetails.healthFinance.backupRelationOther : '_______________________'}} ,</span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation !== 'Other'"> {{userDetails.healthFinance.backupRelation !== null && userDetails.healthFinance.backupRelation !== undefined ? (userDetails.healthFinance.backupRelation | titlecase) : '_______________________'}}, </span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation === 'Other'"> {{userDetails.healthFinance.backupRelationOther !== null && userDetails.healthFinance.backupRelationOther !== undefined ? (userDetails.healthFinance.backupRelationOther | titlecase) : '_______________________'}}, </span>
       <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupFullname !== null && userDetails.healthFinance.backupFullname !== undefined ? userDetails.healthFinance.backupFullname : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> of
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupAddress !== null && userDetails.healthFinance.backupAddress !== undefined ? userDetails.healthFinance.backupAddress : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> in
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupCity !== null && userDetails.healthFinance.backupCity !== undefined ? userDetails.healthFinance.backupCity : '_______________________'}} ,</span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
-      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupState !== null && userDetails.healthFinance.backupState !== undefined ? userDetails.healthFinance.backupState : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ ,</span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupFullname !== null && userDetails.healthFinance.backupFullname !== undefined ? (userDetails.healthFinance.backupFullname | titlecase) : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> of
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupAddress !== null && userDetails.healthFinance.backupAddress !== undefined ? (userDetails.healthFinance.backupAddress | capitalize) : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> in
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupCity !== null && userDetails.healthFinance.backupCity !== undefined ? (userDetails.healthFinance.backupCity | titlecase) : '_______________________'}}, </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________, </span>
+      <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupState !== null && userDetails.healthFinance.backupState !== undefined ? (userDetails.healthFinance.backupState | titlecase) : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>
       <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupZip !== null && userDetails.healthFinance.backupZip !== undefined ? userDetails.healthFinance.backupZip : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span>
       (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupphone !== null && userDetails.healthFinance.backupphone !== undefined ? userDetails.healthFinance.backupphone : '_______________________'}} </span> <span *ngIf="userDetails === undefined && userDetails.healthFinance === null"> _______________________ </span> ),
-      <!-- «</span><span ><span face="Times New Roman, serif">Rx
-      Agent #2 Relationship</span></span><span face="Times New Roman, serif">»,
-      «</span><span ><span face="Times New Roman, serif">Rx
-      Agent #2</span></span><span face="Times New Roman, serif">», of «</span><span ><span face="Times New Roman, serif">Rx
-      Agent #2 Address</span></span><span face="Times New Roman, serif">»
-      «</span><span ><span face="Times New Roman, serif">Rx
-      Agent #2 City</span></span><span face="Times New Roman, serif">»,
-      «</span><span ><span face="Times New Roman, serif">Rx
-      Agent #2 State</span></span><span face="Times New Roman, serif">» «</span><span ><span face="Times New Roman, serif">
-      Rx Agent #2 Zip</span></span><span face="Times New Roman, serif">»
-      (Tel: «</span><span ><span face="Times New Roman, serif">Rx
-      Agent #2 Telephone</span></span><span face="Times New Roman, serif">»),-->
+      
       as my alternative Agent to make medical treatment decisions for me.</span></p>
-    <!--<p  style="margin-bottom: 0in; line-height: 100%"><span ><span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span ><span size="3" style="font-size: 12pt">«</span></span><span size="3" style="font-size: 12pt">END
-      IF</span><span ><span size="3" style="font-size: 12pt">»</span></span></span></span></span></p>-->
+    
   </div>
   <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
       <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
@@ -807,14 +774,9 @@
       <span face="Times New Roman, serif"><span size="1" style="font-size: 8pt"><span size="3" style="font-size: 12pt">__________________________________________</span></span></span></p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span face="Times New Roman, serif"><b>
-         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname : '_______________________'}}</span>
+         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | uppercase) : '_______________________'}}</span>
          <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">_______________________</span>
-        <!--«</b></span><span ><span face="Times New Roman, serif"><b>CLIENT
-      FIRST NAME</b></span></span><span face="Times New Roman, serif"><b>»
-      «</b></span><span ><span face="Times New Roman, serif"><b>CLIENT
-      MIDDLE NAME</b></span></span><span face="Times New Roman, serif"><b>»
-      «</b></span><span ><span face="Times New Roman, serif"><b>CLIENT
-      LAST NAME</b></span></span><span face="Times New Roman, serif"><b>»-->
+        
       </b></span></p>
     <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
