@@ -31,6 +31,7 @@ export class FullLayoutComponent implements OnInit, OnDestroy {
    this.routerSubscription = router.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
+        this.menutogle = false;
         window.scroll(0, 0);
         if(event.urlAfterRedirects == '/about-us?id=our-team'){
           let h:any = document.getElementById('ourTeam').offsetTop;
