@@ -37,38 +37,9 @@ padding-top: 5px;
       Care Plan must be signed and either witnessed or notarized.</i></span></p>
 
       <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">I, </span><span style="font-family:'Times New Roman, serif'"><b></b></span>
-
-      <span color="#0000ff">
-        <span style="font-family:'Times New Roman, serif'">
-          <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}},</b>
-        </span>
-      </span>
-
-
-      <span style="font-family:'Times New Roman, serif'">
-      of </span>
-
-      <span color="#0433ff">
-        <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}},</span>
-      </span>
-
-
-      <span color="#0433ff">
-        <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['city']}},</span>
-      </span>
-
-
-      <span color="#0433ff">
-        <span style="text-transform: capitalize" style="font-family:'Times New Roman, serif'">{{$tellUsAboutYou['state']}},</span>
-      </span>
-
-      <span style="font-family:'Times New Roman, serif'">
-      hereby give these advance instructions on how I want to be treated by
-      my doctors and other health care providers when I can no longer make
-      those treatment decisions myself.</span></p>
-
-
+      <span style="font-family:'Times New Roman, serif'">I,</span><span style="font-family:'Times New Roman, serif'"><b> {{strtoupper($tellUsAboutYou['fullname'])}}</b>, of {{$tellUsAboutYou['address']}}, {{ucwords(strtolower($tellUsAboutYou['city']))}}, {{ucwords(strtolower($tellUsAboutYou['state']))}}, hereby give these advance instructions on how I want to be treated by my doctors and other health care providers when I can no longer make
+      those treatment decisions myself.</span>
+      </p>
 
       <p  style="margin-bottom: 0.09in; line-height: 70%"><span style="font-family:'Times New Roman, serif'"><b>AGENT:&nbsp;
         </b></span><span style="font-family:'Times New Roman, serif'">I want the following
@@ -81,7 +52,7 @@ padding-top: 5px;
         </span>
 
         <span color="#0433ff">
-          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}}</span>
+          <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['fullname']))}}</span>
         </span>
 
 
@@ -91,16 +62,13 @@ padding-top: 5px;
         <span color="#000000"><span style="font-family:'Times New Roman, serif'">Relation:</span></span>
 
         <span color="#0433ff">
-
-
           @if(strtolower($healthFinance['relation']) == 'other')
-<span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}} </span>
-@else
-<span style="font-family:'Times New Roman, serif'" >{{$healthFinance['relation']}} </span>
-@endif
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}} </span>
+            @else
+            <span style="font-family:'Times New Roman, serif'" >{{ucwords(strtolower($healthFinance['relation']))}} </span>
+            @endif
 
         </span>
-        <span color="#000000"><span style="font-family:'Times New Roman, serif'"></span></span>
       </p>
 
       <p  style="margin-left: 0.38in; text-indent: 0.13in; margin-bottom: 0in; line-height: 70%">
@@ -120,28 +88,17 @@ padding-top: 5px;
         <span color="#000000"><span style="font-family:'Times New Roman, serif'"></span></span>
       </p>
 
-      <p style="margin-bottom: 0in; line-height: 70%">
+      <p style="margin-left: 0.5in; margin-bottom: 0in; line-height: 70%">
         <span color="#000000"><span style="font-family:'Times New Roman, serif'"></span></span>
 
         <span color="#0000ff">
-          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['city']}}, </span>
+          <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['city']))}}, {{ucwords(strtolower($healthFinance['state']))}}, {{$healthFinance['zip']}}</span>
         </span>
-
-        <span color="#0000ff">
-          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['state']}}, </span>
-        </span>
-
-      <span style="font-family:'Times New Roman, serif'"></span>
-        <span color="#0000ff">
-          <span style="font-family:'Times New Roman, serif'">{{$healthFinance['zip']}} </span>
-        </span>
-        <span style="font-family:'Times New Roman, serif'"></span>
       </p>
-
 
       @if($healthFinance['anyBackupAgent'] == 'true')
 
-      <p  style="margin-bottom: 0.09in; line-height: 70%">
+      <p  style="margin-bottom: 0.3in; line-height: 90%">
         <span style="font-family:'Times New Roman, serif'">
           <b>ALTERNATE AGENT:&nbsp; </b>
         </span>
@@ -157,11 +114,7 @@ padding-top: 5px;
           </span>
 
           <span color="#0433ff">
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}}</span>
-          </span>
-
-          <span color="#000000">
-            <span style="font-family:'Times New Roman, serif'"></span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupFullname']))}}</span>
           </span>
         </p>
 
@@ -171,11 +124,11 @@ padding-top: 5px;
           <span color="#0433ff">
             <span>
             </span>
-@if(strtolower($healthFinance['backupRelation']) == 'other')
-<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelationOther']}}, </span>
-@else
-<span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupRelation']}}, </span>
-@endif
+            @if(strtolower($healthFinance['backupRelation']) == 'other')
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupRelationOther']))}}, </span>
+            @else
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupRelation']))}}, </span>
+            @endif
           </span>
           <span color="#000000"><span style="font-family:'Times New Roman, serif'"></span></span>
         </p>
@@ -198,28 +151,13 @@ padding-top: 5px;
           <span color="#000000"><span style="font-family:'Times New Roman, serif'"></span></span>
         </p>
 
-        <p style="margin-bottom: 0in; line-height: 70%">
+        <p style="text-indent: 0.38in; margin-bottom: 0in; line-height: 70%">
           <span color="#000000"><span style="font-family:'Times New Roman, serif'"></span></span>
 
           <span color="#0000ff">
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupCity']}}, </span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupCity']))}}, {{ucwords(strtolower($healthFinance['backupState']))}} {{$healthFinance['backupZip']}}</span>
           </span>
-
-
-          <span color="#0000ff">
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupState']}}, </span>
-          </span>
-
-        <span style="font-family:'Times New Roman, serif'"></span>
-
-          <span color="#0000ff">
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupZip']}} </span>
-          </span>
-
-          <span style="font-family:'Times New Roman, serif'"></span>
         </p>
-        <p  style="margin-bottom: 0in; line-height: 70%">
-
       @endif
 
       <p  style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><b>QUALITY
@@ -250,7 +188,7 @@ padding-top: 5px;
 
 
   <div>
-    <div>
+    <div style="page-break-after: always;">
       <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 0.15in">
         <span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span> <span style="font-family:'Times New Roman, serif'"><b>End-Stage Illnesses: </b></span><span style="font-family:'Times New Roman, serif'">I
         have an illness that has reached its final stages in spite of full
@@ -271,7 +209,7 @@ padding-top: 5px;
         NOT want the treatment.</b></span>
       </p>
 
-			<table cellpadding="0" cellspacing="0" style="margin: 20px 0 20px 50px;">
+			<table cellpadding="0" cellspacing="0" style="margin: 20px 0 20px 5px;">
 			   <tr valign="top">
 			      <td width="" style="border: 1px solid #000; padding: 0 20px;">
 
@@ -284,7 +222,7 @@ padding-top: 5px;
 			      <td width="" style="border: none; padding: 0in; border-left: 1px solid #000; border-bottom: 1px solid #000;">
 							<p  style="margin-left: 0.19in; margin-bottom: 0in">
 							<span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span><span style="font-family:'Times New Roman, serif'"></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span></span></p>
-							<p  style="margin-left: 0.19in"><span style="font-family:'Times New Roman, serif'">Yes No</span></p>
+							<p  style="margin-left: 0.19in; padding-right: 10px;"><span style="font-family:'Times New Roman, serif'">Yes &nbsp;No</span></p>
 			      </td>
 			      <td width="" style="border: none; padding-left: 20px; border: 1px solid #000; border-top: 0;">
 							<p ><span style="font-family:'Times New Roman, serif'"><u><b>CPR
@@ -302,7 +240,7 @@ padding-top: 5px;
 			      <td width="" style="border: none; padding: 0in; border-left: 1px solid #000; border-bottom: 1px solid #000;">
 							<p  style="margin-left: 0.19in; margin-bottom: 0in">
 				      <span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span><span style="font-family:'Times New Roman, serif'"></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span></span></p>
-				      <p  style="margin-left: 0.19in"><span style="font-family:'Times New Roman, serif'">Yes No</span></p>
+				      <p  style="margin-left: 0.19in"><span style="font-family:'Times New Roman, serif'; padding-right: 10px;">Yes &nbsp;No</span></p>
 			      </td>
 						<td width="" style="border: none; padding-left: 20px; border: 1px solid #000; border-top: 0;">
 
@@ -318,7 +256,7 @@ padding-top: 5px;
 			      <td width="" style="border: none; padding: 0in; border-left: 1px solid #000; border-bottom: 1px solid #000;">
 							<p  style="margin-left: 0.19in; margin-bottom: 0in">
 							<span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span><span style="font-family:'Times New Roman, serif'"></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span></span></p>
-							<p  style="margin-left: 0.19in"><span style="font-family:'Times New Roman, serif'">Yes No</span></p>
+							<p  style="margin-left: 0.19in"><span style="font-family:'Times New Roman, serif'; padding-right: 10px;">Yes &nbsp;No</span></p>
 			      </td>
 						<td width="" style="border: none; padding-left: 20px; border: 1px solid #000; border-top: 0;">
 
@@ -333,7 +271,7 @@ padding-top: 5px;
 			      <td width="" style="border: none; padding: 0in; border-left: 1px solid #000; border-bottom: 1px solid #000;">
 							<p  style="margin-left: 0.19in; margin-bottom: 0in">
 							<span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span><span style="font-family:'Times New Roman, serif'"></span><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 18pt"><span style="display:inline-block; width:10px; height:10px; border:1px solid #000; margin:0 5px;"></span></span></span></p>
-							<p  style="margin-left: 0.19in"><span style="font-family:'Times New Roman, serif'">Yes No</span></p>
+							<p  style="margin-left: 0.19in"><span style="font-family:'Times New Roman, serif'; padding-right: 10px;">Yes &nbsp;No</span></p>
 			      </td>
 						<td width="" style="border: none; padding-left: 20px; border: 1px solid #000; border-top: 0;">
 
@@ -379,8 +317,8 @@ padding-top: 5px;
 
 
   <div>
-    <div>
-      <p  style="margin-bottom: 0.06in; line-height: 100%; text-align: center; page-break-before: always;">
+    <div style="page-break-after: always;">
+      <p  style="margin-bottom: 0.06in; line-height: 100%; text-align: center;">
       <span style="font-family:'Times New Roman, serif'"><u><b>SIGNATURE</b></u></span></p>
       <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Your
       signature should either be witnessed by two competent adults or
@@ -396,12 +334,13 @@ padding-top: 5px;
 
       <span color="#0000ff">
       <span style="font-family:'Times New Roman, serif'">
-      <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+      <b>______________________________________</b><br>
+      <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</b>,
       </span>
       </span>
 
       <span color="#000000">
-      <span style="font-family:'Times New Roman, serif'">,</span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif'">
+      <span style="font-family:'Times New Roman, serif'"></span></span><span color="#0433ff"><span style="font-family:'Times New Roman, serif'">
       </span></span>
       </p>
       <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Declarant</span></p>
@@ -410,6 +349,14 @@ padding-top: 5px;
       </p>
       <p  style="margin-bottom: 0in; line-height: 100%"><span color="#000000"><span style="font-family:'Times New Roman, serif'">DATE:
       </span></span><span color="#000000"><span style="font-family:'Times New Roman, serif'">  _____________________________  </span></span></p>
+
+      <p  style="margin-bottom: 0.06in; line-height: 100%; text-align: center;">
+        <span style="font-family:'Times New Roman, serif'"><u><b>DECLARATION OF WITNESSES</b></u></span></p>
+      <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">I am a competent adult who is not named as the agent. I witnessed the Declarant’s signature on this form.  I am not related to the Declarant by blood, marriage, or adoption and I would not be entitled to any portion of the Declarant’s estate upon {{$tellUsAboutYou['gender'] !== null ? ($tellUsAboutYou['gender'] === 'M' ? 'his': 'her') : '(his/her)__________'}} death under any existing will or codicil or by operation of law. </span></p>
+      <p  style="margin-bottom: 0.13in; line-height: 100%"><br/>
+      <br/>
+
+      </p>
             <p class="western" style="margin-bottom: 0in; line-height: 100%"><span ><b>WITNESS
       1</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">Dated:
       </span><span >  ______________________  </span></p>
@@ -459,36 +406,14 @@ padding-top: 5px;
         <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
         </p>
-        <p  style="page-break-before: always; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+        <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'">I am a Notary Public in and for
-        the State and County named above. </span>
+        the State and County named above. <b style="text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}},</b></span>
 
-        <span color="#0000ff">
-        <span style="font-family:'Times New Roman, serif'">
-        <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}},</b>
-        </span>
-        </span>
-
-
-        <span style="font-family:'Times New Roman, serif'"> the person who signed this instrument, is personally known to me (or
-        proved to me on the basis of satisfactory evidence) to be the person
-        who signed as the “Declarant”. The Declarant personally appeared
-        before me and signed above or acknowledged the signature above as
-        </span>
-
-        <span color="#0433ff">
-        <span style="font-family:'Times New Roman, serif'">{{$genderTxt4}}</span>
-        </span>
-
-        <span style="font-family:'Times New Roman, serif'">
-        own. I declare under penalty of perjury that the Declarant appears to
-        be of sound mind and under no duress, fraud, or undue influence.</span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
+        <span style="font-family:'Times New Roman, serif'">the person who signed this instrument, is personally known to me (or proved to me on the basis of satisfactory evidence) to be the person
+        who signed as the “Declarant”. The Declarant personally appeared before me and signed above or acknowledged the signature above as {{$genderTxt4}} own. I declare under penalty of perjury that the Declarant appears to be of sound mind and under no duress, fraud, or undue influence.
+        </span></p>
+        
         <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">______________________________________</span></p>
         <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"></span><span style="font-family:'Times New Roman, serif'"><b>NOTARY
         PUBLIC</b></span></p>
@@ -501,22 +426,6 @@ padding-top: 5px;
 
         </p>
         <p  style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
-
-        </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
-
-        </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
-
-        </p>
-        <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>
-        <br/>
 
         </p>
         <p  style="margin-bottom: 0.06in; line-height: 100%"><br/>

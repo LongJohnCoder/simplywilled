@@ -345,7 +345,7 @@
 		</p>
 		<ul>
 		<li>
-		<p  style="margin-bottom: 0.13in; ">
+		<p  style="margin-bottom: 0.13in; margin-top:0;">
 		<span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">If
 		I initial this box </span><span size="3" style="font-size: 12pt"><b>[____]</b></span><span size="3" style="font-size: 12pt">,
 		my agent’s authority to make health care decisions for me takes

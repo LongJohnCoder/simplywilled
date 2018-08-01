@@ -93,12 +93,11 @@
             <p style="margin-bottom: 0in; "><span ><span style="font-family:'Times New Roman, serif'">I,
       </span></span><span style="font-family:'Times New Roman, serif'">
           @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-            <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+            <b>{{strtoupper($tellUsAboutYou['fullname'])}},</b>
           @else
-            <b>________________________________</b>
+            <b>________________________________,</b>
           @endif
-      </span><span ><span style="font-family:'Times New Roman, serif'">,
-      of
+      </span><span ><span style="font-family:'Times New Roman, serif'">of
         @if(isset($tellUsAboutYou) && array_key_exists('address',$tellUsAboutYou) && !is_null($tellUsAboutYou['address']))
             <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}}</span>
         @else
@@ -108,44 +107,41 @@
         @endif
 
         @if(isset($tellUsAboutYou) && array_key_exists('city',$tellUsAboutYou) && !is_null($tellUsAboutYou['city']))
-            <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
+            <span>{{ucwords(strtolower($tellUsAboutYou['city']))}},</span>
         @else
-            <span style="text-transform: capitalize">(city)_____________</span>
+            <span style="text-transform: capitalize">(city)_____________,</span>
         @endif
-        <span >, </span>
 
         @if(isset($tellUsAboutYou) && array_key_exists('state',$tellUsAboutYou) && !is_null($tellUsAboutYou['state']))
-            <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>
+            <span>{{ucwords(strtolower($tellUsAboutYou['state']))}},</span>
         @else
-            <span style="text-transform: capitalize">(state)_____________</span>
+            <span style="text-transform: capitalize">(state)_____________,</span>
         @endif
-        <span >, </span> being an adult of sound mind, hereby appoint my
+        being an adult of sound mind, hereby appoint my
         @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
             @if(strlen(trim($healthFinance['relationOther'])) > 0)
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
+                <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}},</span>
             @else
-                <span style="font-family:'Times New Roman, serif'">__________________</span>
+                <span style="font-family:'Times New Roman, serif'">__________________,</span>
             @endif
         @elseif (isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
             @if(strlen(trim($healthFinance['relation'])) > 0)
-                <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
+                <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relation']))}},</span>
             @else
-                <span style="font-family:'Times New Roman, serif'">__________________</span>
+                <span style="font-family:'Times New Roman, serif'">__________________,/span>
             @endif
         @else
-            <span>(relation)______________</span>
+            <span>(relation)______________,</span>
         @endif
-        <span >, </span>
 
         @if(isset($healthFinance) && array_key_exists('fullname',$healthFinance) && !is_null($healthFinance['fullname']))
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}}</span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['fullname']))}}, of</span>
         @else
-            <span style="font-family:'Times New Roman, serif'">_____________________________</span>
+            <span style="font-family:'Times New Roman, serif'">_____________________________, of</span>
         @endif
-        <span >, of </span>
 
         @if(isset($healthFinance) && array_key_exists('address',$healthFinance) && !is_null($healthFinance['address']))
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['address']}}, </span>
+            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['address']}},</span>
         @else
             <span>
                 _________________________________________________________________
@@ -155,21 +151,21 @@
 
 
         @if(isset($healthFinance) && array_key_exists('city',$healthFinance) && !is_null($healthFinance['city']))
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['city']}}, </span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['city']))}},</span>
         @else
-            <span>(city)__________________, </span>
+            <span>(city)__________________,</span>
         @endif
 
         @if(isset($healthFinance) && array_key_exists('state',$healthFinance) && !is_null($healthFinance['state']))
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['state']}}, </span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['state']))}},</span>
         @else
-            <span>(state)__________________, </span>
+            <span>(state)__________________,</span>
         @endif
 
         @if(isset($healthFinance) && array_key_exists('zip',$healthFinance) && !is_null($healthFinance['zip']))
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['zip']}}, </span>
+            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['zip']}},</span>
         @else
-            <span >(zip)__________________, </span>
+            <span >(zip)__________________,</span>
         @endif
 
         <span >
@@ -190,28 +186,26 @@
 
         @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
             @if(strlen(trim($healthFinance['backupRelationOther'])) > 0)
-                <span>{{$healthFinance['backupRelationOther']}}</span>
+                <span>{{ucwords($healthFinance['backupRelationOther'])}},</span>
             @else
-                <span>(relation) __________________</span>
+                <span>(relation) __________________,</span>
             @endif
         @else
             @if(strlen(trim($healthFinance['backupRelation'])) > 0)
-                <span>{{$healthFinance['backupRelation']}}</span>
+                <span>{{ucwords($healthFinance['backupRelation'])}},</span>
             @else
-                <span>(relation) _________________</span>
+                <span>(relation) _________________,</span>
             @endif
         @endif
-        <span>, </span>
 
         @if(isset($healthFinance) && array_key_exists('backupFullname',$healthFinance) && !is_null($healthFinance['backupFullname']))
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupFullname']}}</span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords($healthFinance['backupFullname'])}}, of</span>
         @else
-            <span style="font-family:'Times New Roman, serif'">_____________________________</span>
+            <span style="font-family:'Times New Roman, serif'">_____________________________, of</span>
         @endif
-        <span >, of </span>
-
+        
         @if(isset($healthFinance) && array_key_exists('backupAddress',$healthFinance) && !is_null($healthFinance['backupAddress']))
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupAddress']}}, </span>
+            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupAddress']}},</span>
         @else
             <span>
                 _________________________________________________________________
@@ -220,13 +214,13 @@
         @endif
 
         @if(isset($healthFinance) && array_key_exists('backupCity',$healthFinance) && !is_null($healthFinance['backupCity']))
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['backupCity']}}, </span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['backupCity']))}},</span>
         @else
-            <span>(city)__________________, </span>
+            <span>(city)__________________,</span>
         @endif
 
         @if(isset($healthFinance) && array_key_exists('backupState',$healthFinance) && !is_null($healthFinance['backupState']))
-            <span style="font-family:'Times New Roman, serif'" >{{$healthFinance['backupState']}}, </span>
+            <span style="font-family:'Times New Roman, serif'" >{{ucwords(strtolower($healthFinance['backupState']))}}, </span>
         @else
             <span>(state)__________________, </span>
         @endif
@@ -292,9 +286,7 @@
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Address:	</span></span><span ><span size="3" style="font-size: 12pt">_________________________________</span></span></span></span></p>
             <p  style="margin-left: 1in; margin-bottom: 0in; line-height: 150%">
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span ><span size="3" style="font-size: 12pt">Telephone:	</span></span><span ><span size="3" style="font-size: 12pt">_________________________________</span></span></span></span></p>
-            <p  style="margin-left: 0.38in; margin-bottom: 0in; ">
-
-
+            <p  style="margin-left: 0.38in; margin-bottom: 0in;">
             </p>
         </div>
       @endif
@@ -327,7 +319,7 @@
       that would be in my best interests. </span>
             </p>
 
-            <p  style="margin-bottom: 0in; "><span face="Times, serif">I
+            <p  style="margin-bottom: 0in; page-break-before: always;"><span face="Times, serif">I
       give the following instructions to help guide my agent (or any
       successor agent): </span><span face="Times, serif"><i>(You may write
       additional instructions or limitations below.)</i></span></p>
@@ -339,7 +331,7 @@
             <p  style="margin-bottom: 0in; line-height: 120%"><span face="Times, serif">____________________________________________________________________________</span></p>
             <p style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><i>(Attach
       additional pages if needed).</i></span></span></span></p>
-            <p style="margin-bottom: 0in; page-break-before: always;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Subject
+            <p style="margin-bottom: 0in;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Subject
       to any limitations in this document, my attorney in fact has the
       power and authority to do all of the following:</span></span></span></p>
 
@@ -382,7 +374,7 @@
       any necessary waiver or release from liability required by a hospital
       or physician.</span></span></span></p>
 
-            <p  style="margin-bottom: 0in;  text-align: center;">
+            <p  style="margin-bottom: 0in;  text-align: center; page-break-before: always;">
       <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>NOTICE
       TO PERSON MAKING A DURABLE POWER OF ATTORNEY</b></span></span></span></p>
             <p  style="margin-bottom: 0in;  text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>FOR
@@ -403,17 +395,17 @@
 
             </p>
 
-            <p  style="margin-bottom: 0in; page-break-before: always; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>SIGNATURE
+            <p  style="margin-bottom: 0in; text-align: center;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>SIGNATURE
       AND ACKNOWLEDGEMENT</b></span></span></span></p>
 
 
             <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
                 <span style="font-family:'Times New Roman, serif'">I, </span><span style="font-family:'Times New Roman, serif'">
                     @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                        <b>{{$tellUsAboutYou['fullname']}}</b>
+                        <b>{{strtoupper($tellUsAboutYou['fullname'])}},</b>
                     @else
-                        <b>(fullname)________________________________</b>
-                    @endif,
+                        <b>(fullname)________________________________,</b>
+                    @endif
                 </span><span style="font-family:'Times New Roman, serif'">the
                   principal, sign my name to this instrument on this </span><span style="font-family:'Times New Roman, serif'">____________</span><span style="font-family:'Times New Roman, serif'">
                   day of </span><span style="font-family:'Times New Roman, serif'">__________________</span><span style="font-family:'Times New Roman, serif'">,
@@ -427,10 +419,10 @@
 
             <p  style="margin-left: 0.5in; margin-bottom: 0in; ">
                 <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">_______________________________________</span></span></span></p>
-            <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
+            <p  style="margin-bottom: 0.08in; margin-left: 0.5in;  orphans: 0; widows: 0">
           <span style="font-family:'Times New Roman, serif'"><b>
               @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                  <span>{{$tellUsAboutYou['fullname']}}</span>
+                  <span>{{strtoupper($tellUsAboutYou['fullname'])}}</span>
               @else
                   <span>(fullname)________________________________</span>
               @endif
@@ -456,14 +448,13 @@
             </p>
             <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">Subscribed, sworn to and
-      acknowledged before me by </span><span style="font-family:'Times New Roman, serif'">
+      acknowledged before me by</span><span style="font-family:'Times New Roman, serif'">
             @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                <span>{{$tellUsAboutYou['fullname']}}</span>
+                <span>{{strtoupper($tellUsAboutYou['fullname'])}},</span>
             @else
-                <span>(fullname)________________________________</span>
+                <span>(fullname)________________________________,</span>
             @endif
-            </span><span style="font-family:'Times New Roman, serif'">,
-      the principal, this </span><span style="font-family:'Times New Roman, serif'">_______</span><span style="font-family:'Times New Roman, serif'">
+            </span><span style="font-family:'Times New Roman, serif'">the principal, this </span><span style="font-family:'Times New Roman, serif'">_______</span><span style="font-family:'Times New Roman, serif'">
       day of </span><span style="font-family:'Times New Roman, serif'">___________________</span><span style="font-family:'Times New Roman, serif'">,
       </span><span style="font-family:'Times New Roman, serif'">________________________</span><span style="font-family:'Times New Roman, serif'">.</span></p>
 
@@ -481,15 +472,12 @@
       OF WITNESSES (REQUIRED)</b></span></span></span></p>
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">I
       declare that the person who signed or acknowledged this Durable Power
-      of Attorney for Health Care is personally known to me, that </span><span ><span size="3" style="font-size: 12pt">{{--<span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she' ): 'he' }}</span>--}}
+      of Attorney for Health Care is personally known to me, that</span><span ><span size="3" style="font-size: 12pt">{{--<span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she' ): 'he' }}</span>--}}
         <span>{{isset($tellUsAboutYou) && array_key_exists('gender',$tellUsAboutYou) && !is_null($tellUsAboutYou['gender']) && $tellUsAboutYou['gender'] == 'M' ? 'he' : (isset($tellUsAboutYou) && array_key_exists('gender',$tellUsAboutYou) && !is_null($tellUsAboutYou['gender']) && $tellUsAboutYou['gender'] == 'F' ? 'she' : 'he/she')}}</span>
-      </span></span><span size="3" style="font-size: 12pt">
-      signed or acknowledged this durable power of attorney in my presence,
-      and that </span><span ><span size="3" style="font-size: 12pt">{{--<span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she' ): 'he' }}</span>--}}
+      </span></span><span size="3" style="font-size: 12pt">signed or acknowledged this durable power of attorney in my presence,
+      and that</span><span ><span size="3" style="font-size: 12pt">{{--<span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.gender !== null && userDetails.tellUsAboutYou.gender !== undefined ? (userDetails.tellUsAboutYou.gender === 'M' ? 'he' : 'she' ): 'he' }}</span>--}}
         <span>{{isset($tellUsAboutYou) && array_key_exists('gender',$tellUsAboutYou) && !is_null($tellUsAboutYou['gender']) && $tellUsAboutYou['gender'] == 'M' ? 'he' : (isset($tellUsAboutYou) && array_key_exists('gender',$tellUsAboutYou) && !is_null($tellUsAboutYou['gender']) && $tellUsAboutYou['gender'] == 'F' ? 'she' : 'he/she')}}</span>
-      </span></span><span size="3" style="font-size: 12pt">
-      appears to be of sound mind and under no duress, fraud, or undue
-      influence.</span></span></span></p>
+      </span></span><span size="3" style="font-size: 12pt">appears to be of sound mind and under no duress, fraud, or undue influence.</span></span></span></p>
             <p  style="margin-bottom: 0in; "><br/>
 
             </p>
@@ -564,16 +552,11 @@
       MY FAMILY, PHYSICIANS, AND ALL THOSE CONCERNED WITH MY CARE:</b></span></span></span></p>
 
             <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
-                <span style="font-family:'Times New Roman, serif'">I, </span><span style="font-family:'Times New Roman, serif'"><b>
-            @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                <span>{{$tellUsAboutYou['fullname']}}</span>
+                <span style="font-family:'Times New Roman, serif'">I, </span><span style="font-family:'Times New Roman, serif'"><b>@if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))<span>{{strtoupper($tellUsAboutYou['fullname'])}},</span>
             @else
-                <span>(fullname)________________________________</span>
+                <span>(fullname)________________________________,</span>
             @endif
-    </b></span><span style="font-family:'Times New Roman, serif'">,</span><span style="font-family:'Times New Roman, serif'">
-      direct you to follow my wishes for care if I am in a terminal
-      condition, my death is imminent, and I am unable to communicate my
-      decisions about my medical care.</span></p>
+    </b></span><span style="font-family:'Times New Roman, serif'">direct you to follow my wishes for care if I am in a terminal condition, my death is imminent, and I am unable to communicate my decisions about my medical care.</span></p>
 
             <p  style="margin-bottom: 0.06in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>LIFE-SUSTAINING
     TREATMENT.</b></span><span size="3" style="font-size: 12pt"> With
@@ -721,7 +704,7 @@
             <p  style="margin-bottom: 0.08in;  orphans: 0; widows: 0; margin-top: 0;">
       <span style="font-family:'Times New Roman, serif'"><b>
       @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-          <span>{{$tellUsAboutYou['fullname']}}</span>
+          <span>{{strtoupper($tellUsAboutYou['fullname'])}}</span>
       @else
           <span>(fullname)________________________________</span>
       @endif
@@ -738,23 +721,18 @@
         </span></span><span style="font-family:'Times New Roman, serif'"></span></p>
             <p  style="margin-bottom: 0in; margin-top: 0;"><span style="font-family:'Times New Roman, serif'"></span><span color="#0432ff"><span style="font-family:'Times New Roman, serif'">
             @if(isset($tellUsAboutYou) && array_key_exists('city',$tellUsAboutYou) && !is_null($tellUsAboutYou['city']))
-                <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
+                <span style="text-transform: capitalize">{{ucwords(strtolower($tellUsAboutYou['city']))}},</span>
             @else
-                <span style="text-transform: capitalize">(city)_____________</span>
-                <span >, </span>
+                <span style="text-transform: capitalize">(city)_____________,</span>
             @endif
-        </span></span><span style="font-family:'Times New Roman, serif'">,
-        </span><span color="#0432ff"><span style="font-family:'Times New Roman, serif'">
+        </span></span><span color="#0432ff"><span style="font-family:'Times New Roman, serif'">
                 @if(isset($tellUsAboutYou) && array_key_exists('state',$tellUsAboutYou) && !is_null($tellUsAboutYou['state']))
-                    <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>
+                    <span style="text-transform: capitalize">{{ucwords(strtolower($tellUsAboutYou['state']))}},</span>
                 @else
-                    <span style="text-transform: capitalize">(state)_____________</span>
-                    <span >, </span>
-                @endif
-        </span></span><span style="font-family:'Times New Roman, serif'">
-            </span><span color="#0432ff"><span style="font-family:'Times New Roman, serif'">
-                  @if(isset($tellUsAboutYou) && array_key_exists('zip',$tellUsAboutYou) && !is_null($tellUsAboutYou['zip']))
-                    <span style="text-transform: capitalize">{{$tellUsAboutYou['zip']}}</span>
+                    <span style="text-transform: capitalize">(state)_____________,</span>
+                    
+                @endif</span></span><span color="#0432ff"><span style="font-family:'Times New Roman, serif'">
+                  @if(isset($tellUsAboutYou) && array_key_exists('zip',$tellUsAboutYou) && !is_null($tellUsAboutYou['zip']))<span style="text-transform: capitalize">{{$tellUsAboutYou['zip']}}</span>
                   @else
                     <span style="text-transform: capitalize">(zip)_____________</span>
                   @endif
@@ -770,8 +748,7 @@
             <p  style="margin-bottom: 0in;  text-align: center; line-height: 18px;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 12pt"><b>WITNESS
       STATEMENTS</b></span></span></span></p>
 
-            <p  style="margin-bottom: 0in; line-height: 18px;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">The
-      declarant voluntarily signed this document in my presence.</span></span></span></p>
+            <p  style="margin-bottom: 0in; line-height: 18px;"><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">The declarant voluntarily signed this document in my presence.</span></span></span></p>
 
             <p class="western" style="margin-bottom: 0in; line-height: 10px;"><span ><b>WITNESS
       1</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
@@ -818,8 +795,7 @@
       OF ________________</span></span><span ><span size="2" style="font-size: 10pt">	</span></span><span ><span size="2" style="font-size: 10pt">)</span></span></span></span></span></p>
 
             <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="2" style="font-size: 10pt">Subscribed,
-      sworn to and acknowledged before me by </span><span ><span size="2" style="font-size: 10pt">{{$tellUsAboutYou['fullname']}}</span></span><span size="2" style="font-size: 10pt">, the
-      principal, this </span><span size="2" style="font-size: 10pt">_____</span><span size="2" style="font-size: 10pt">
+      sworn to and acknowledged before me by </span><span ><span size="2" style="font-size: 10pt">{{strtoupper($tellUsAboutYou['fullname'])}}</span></span><span size="2" style="font-size: 10pt">, the principal, this </span><span size="2" style="font-size: 10pt">_____</span><span size="2" style="font-size: 10pt">
       day of </span><span size="2" style="font-size: 10pt">________________</span><span size="2" style="font-size: 10pt">,
       </span><span size="2" style="font-size: 10pt">________________________</span><span size="2" style="font-size: 10pt">.</span></span></span></p>
 

@@ -152,17 +152,17 @@
 
         <ul style="margin-left: 30px;">
         <li>
-        <p  style="margin-bottom: 0.03in; ">
+        <p  style="margin-bottom: 0.03in; margin-top:0;">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">The
         person you have designated as your health care agent;</span></span></span></p>
         </li>
         <li>
-        <p  style="margin-bottom: 0.03in; ">
+        <p  style="margin-bottom: 0.03in; margin-top:0;">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Your
         spouse or heir at law; or,</span></span></span></p>
         </li>
         <li>
-        <p  style="margin-bottom: 0.06in; ">
+        <p  style="margin-bottom: 0.06in; margin-top:0;">
         <span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">Your
         attending physician or ARNP, or person acting under the direction or
         control of the attending physician or ARNP;</span></span></span></p>
@@ -860,7 +860,7 @@
         <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt; display: inline-block; padding-left: 185px;">					)
         ss.</span></span></span></p>
         <p  style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt">COUNTY
-        OF </span><span size="3" style="font-size: 12pt"><______________________</span><span size="3" style="font-size: 12pt">	)</span></span></span></p>
+        OF </span><span size="3" style="font-size: 12pt">______________________</span><span size="3" style="font-size: 12pt">	)</span></span></span></p>
         <p  style="margin-bottom: 0in; "><br/>
 
         </p>

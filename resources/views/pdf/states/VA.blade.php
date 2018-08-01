@@ -21,7 +21,7 @@
   </script>
   <div id="footer">
     <div style="">
-      Advance Directive of <br>{{$tellUsAboutYou['fullname']}}<br>
+      Advance Directive of <br>{{ucwords(strtolower($tellUsAboutYou['fullname']))}}<br>
     </div>
   </div>
 <div style="text-align: justify;">
@@ -42,7 +42,7 @@
            {{-- <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname}} , </b>
             <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________ , </b>--}}
             @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+                <b style="text-transform: capitalize">{{strtoupper(strtolower($tellUsAboutYou['fullname']))}}</b>
             @else
                 <b>________________________________</b>
             @endif
@@ -60,26 +60,26 @@
             <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.state}}, </span>&nbsp;
             <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="font-family:'Times New Roman, serif'">(state)_____________________, </span>--}}
             @if(isset($tellUsAboutYou) && array_key_exists('address',$tellUsAboutYou) && !is_null($tellUsAboutYou['address']))
-                <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}}</span>
+                <span style="font-family:'Times New Roman, serif'" >{{$tellUsAboutYou['address']}},</span>
             @else
                 <span>_________________________________________________________________
                     ___________________________________________________________________________________________
-                    _________________________________________________________________________________</span>
+                    _________________________________________________________________________________,</span>
             @endif
 
             @if(isset($tellUsAboutYou) && array_key_exists('city',$tellUsAboutYou) && !is_null($tellUsAboutYou['city']))
-                <span style="text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
+                <span style="text-transform: capitalize">{{ucwords(strtolower($tellUsAboutYou['city']))}},</span>
             @else
-                <span style="text-transform: capitalize">(city)_____________</span>
+                <span style="text-transform: capitalize">(city)_____________,</span>
             @endif
-            <span >, </span>
+            <span ></span>
 
             @if(isset($tellUsAboutYou) && array_key_exists('state',$tellUsAboutYou) && !is_null($tellUsAboutYou['state']))
-                <span style="text-transform: capitalize">{{$tellUsAboutYou['state']}}</span>
+                <span style="text-transform: capitalize">{{ucwords(strtolower($tellUsAboutYou['state']))}}</span>
             @else
                 <span style="text-transform: capitalize">(state)_____________</span>
             @endif
-            , {{$tellUsAboutYou['state']}}
+
             willfully and voluntarily
             make known my wishes in the event that I am incapable of making an
             informed decision about my health care, as follows:</p>
@@ -143,20 +143,20 @@
         <span><span  style="font-size: 12pt">),--}}
 
         @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation'])  && $healthFinance['relation'] == 'Other')
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relationOther']}}</span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['relationOther']))}},</span>
         @elseif (isset($tellUsAboutYou) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}}</span>
+            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['relation']}},</span>
         @else
-            <span>(relation)______________</span>
+            <span>(relation)______________,</span>
         @endif
         <span > </span>
 
         @if(isset($healthFinance) && array_key_exists('fullname',$healthFinance) && !is_null($healthFinance['fullname']))
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['fullname']}}</span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['fullname']))}},</span>
         @else
-            <span style="font-family:'Times New Roman, serif'">_____________________________</span>
+            <span style="font-family:'Times New Roman, serif'">_____________________________,</span>
         @endif
-        <span >, of </span>
+        <span >of </span>
 
         @if(isset($healthFinance) && array_key_exists('address',$healthFinance) && !is_null($healthFinance['address']))
             <span style="font-family:'Times New Roman, serif'">{{$healthFinance['address']}}, </span>
@@ -168,15 +168,15 @@
 
 
         @if(isset($healthFinance) && array_key_exists('city',$healthFinance) && !is_null($healthFinance['city']))
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['city']}}, </span>
+            <span style="font-family:'Times New Roman, serif'">{{ucwords(strtolower($healthFinance['city']))}}, </span>
         @else
             <span>(city)__________________, </span>
         @endif
 
         @if(isset($healthFinance) && array_key_exists('state',$healthFinance) && !is_null($healthFinance['state']))
-            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['state']}}, </span>
+            <span style="font-family:'Times New Roman, serif'">{{$healthFinance['state']}}</span>
         @else
-            <span>(state)__________________, </span>
+            <span>(state)__________________</span>
         @endif
 
         @if(isset($healthFinance) && array_key_exists('zip',$healthFinance) && !is_null($healthFinance['zip']))
@@ -224,6 +224,8 @@
                 the primary agent named above is not reasonably available or is
                 unable or unwilling to act as my agent, then I appoint as successor
                 agent my </span><span><span  style="font-size: 12pt"></span></span>
+
+                <span style="font-size: 12pt">{{$healthFinance['backupRelation'] == 'Other' ? ucwords(strtolower($healthFinance['backupRelationOther'])) : $healthFinance['backupRelation']}}, {{ucwords(strtolower($healthFinance['backupFullname']))}}, of {{$healthFinance['backupAddress']}}, {{ucwords(strtolower($healthFinance['backupCity']))}}, {{ucwords(strtolower($healthFinance['backupState']))}} {{ucwords(strtolower($healthFinance['backupZip']))}}, (Tel: {{ucwords(strtolower($healthFinance['backupphone']))}}),</span>
 
                 {{--<span>
                     <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation == 'Other'">{{userDetails.healthFinance.backupRelationOther}}</span>
@@ -744,7 +746,7 @@
 
         <span>
             @if(isset($tellUsAboutYou) && array_key_exists('fullname',$tellUsAboutYou) && !is_null($tellUsAboutYou['fullname']))
-                <b style="text-transform: capitalize">{{$tellUsAboutYou['fullname']}}</b>
+                <b style="text-transform: capitalize">{{strtoupper(strtolower($tellUsAboutYou['fullname']))}}</b>
             @else
                 <b>________________________________</b>
             @endif

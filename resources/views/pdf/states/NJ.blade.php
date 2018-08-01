@@ -232,17 +232,20 @@
         INSTRUCTIONS: (If you have any additional specific instructions
         concerning your care you may use the space below or attach an
         additional statement.)</b></span><span style="font-family:'Times New Roman, serif'">
-        ______________________________________________________________________ ______________________________________________________________________ ______________________________________________________________________</span></span></p>
+        ______________________________________________________________________ ______________________________________________________________________ ______________________________________________________________________
+        <br><br>
+        ______________________________________________________________________ ______________________________________________________________________ ______________________________________________________________________
+    </span></span></p>
         </li>
         </ol>
-        <p style="margin-bottom: 0in; "><span face="Calibri, serif"><span style="font-family:'Times New Roman, serif'">______________________________________________________________________ ______________________________________________________________________ ______________________________________________________________________</span></span></p>
+        
         <p  style="margin-bottom: 0.09in; "><br/>
         <br/>
 
         </p>
         <ol type="A" start="4">
         <li>
-        <p  style="margin-bottom: 0in; ">
+        <p  style="margin-bottom: 0in; margin-top:0;">
         <span size="2" style="font-size: 9pt"><span size="3" style="font-size: 12pt"><b>HIPAA
         WAIVER AND MEDICAL RECORDS RELEASE.</b></span><span size="3" style="font-size: 12pt">
         In addition to the above-described powers, my health care
