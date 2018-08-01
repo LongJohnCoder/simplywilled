@@ -59,10 +59,7 @@
                  required
                  #confirm="ngModel" validateEqual="password" minlength="6">
 
-        <p class="termsAccept"><input type="checkbox" [checked]="termsCheck" (change)="termsCheck = !termsCheck">
-            <span>I agree to the <a routerLink="/terms-of-service">Terms of Service</a> and <a routerLink="/privacy-policy">Privacy Policy.</a></span></p>
-
-          <span class="alert-danger"
+        <span class="alert-danger"
                 *ngIf="confirm.errors && (confirm.dirty || confirm.touched)">
                 <p *ngIf="confirm.errors?.required" class="formErrorMsg">Confirm Password is required</p>
                 <p *ngIf="confirm.errors?.minlength" class="formErrorMsg">Confirm Password should be minimum 6!</p>
@@ -70,6 +67,15 @@
           <span *ngIf="confirm.invalid && (confirm.dirty || confirm.touched)" class="text-danger">
               <p class="formErrorMsg">Confirm Password should be same as password!</p>
           </span>
+
+        <p class="termsAccept termError">
+            <span class="checkBG">
+                <input type="checkbox" [checked]="termsCheck" (change)="termsCheck = !termsCheck">
+            </span>
+            <span>I agree to the <a routerLink="/terms-of-service">Terms of Service</a> and <a routerLink="/privacy-policy">Privacy Policy.</a></span>
+        </p>
+
+          
 
           <div class="loader_parent" id="response_loader">
             <span class="loader"></span>

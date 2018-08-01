@@ -21,8 +21,53 @@ p.termsAccept {
 }
 p.termsAccept span {
     display: inline;
+    font-size: 18px;
 }
 p.termsAccept span a {
     color: #136ba5 !important;
     cursor: pointer;
+}
+p.termsAccept span.checkBG{
+    /* display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    border: 1px solid #666;
+    background: #ccc;
+    color: #666; */
+}
+.checkBG input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+}
+.termsAccept.termError{
+    border: 3px solid #ff0000;
+    padding: 0px 10px;
+    border-radius: 5px;
+    width: 100%
+}
+
+@media screen and (max-width:1273px){
+    p.termsAccept span {
+        font-size: 17px;
+    }
+    .termsAccept.termError{
+        padding: 5px 10px;
+    }
+}
+
+@media screen and (max-width:1222px){
+    p.termsAccept span {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width:1025px){
+    p.termsAccept span {
+        font-size: 14px;
+    }
+    .checkBG input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+    }
 }
