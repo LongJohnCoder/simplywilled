@@ -64,8 +64,8 @@
             <span style="font-family:'Times New Roman, serif'">Address:	</span>
             
             <span>
-                <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.city}}</span>
-                <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(city)_____________</span>
+                <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.city | titlecase}},</span>
+                <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(city)_____________,</span>
             </span>
             
             <span>
@@ -93,7 +93,7 @@
           <p align="justify" style="margin-bottom: 0in; padding: 0.01in 0.06in; line-height: 100%">
             <span style="font-family:'Times New Roman, serif'">Date of Birth:	</span>
             <span>
-                <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.dob !== null">{{userDetails.tellUsAboutYou.dob}} </span>
+                <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.dob !== null">{{userDetails.tellUsAboutYou.dob | date}} </span>
                 <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(dob)__________________ </span>
             </span>
           </p>
@@ -137,7 +137,7 @@
           <span ><span style="font-family:'Times New Roman, serif'">Name:		</span></span>
           
           <span>
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.fullname.length > 0" style="font-family:'Times New Roman, serif'">{{userDetails.healthFinance.fullname}}</span>
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.fullname.length > 0" style="font-family:'Times New Roman, serif'">{{userDetails.healthFinance.fullname | titlecase}}</span>
               <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" style="font-family:'Times New Roman, serif'">(fullname)_____________________________</span>
           </span>
         </p>
@@ -148,7 +148,7 @@
         </span>
         
         <span>
-            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther}}</span>
+            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther | titlecase}}</span>
             <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation}}</span>
             <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">______________</span>
         </span>
@@ -178,10 +178,10 @@
             </span>
         </span>
         </p>
-        <p style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+        <p style="margin-bottom: 0in; line-height: 100%">
         <span>
-            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.city !== null">{{userDetails.healthFinance.city}} </span>
-            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(city)__________________ </span>
+            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.city !== null">{{userDetails.healthFinance.city | titlecase}},</span>
+            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(city)__________________,</span>
         </span>
         
         <span>
@@ -200,7 +200,7 @@
     <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
       <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
           <div>Medical Power of Attorney and Living Will Directive of </div> 
-          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+          <div>{{userDetails.tellUsAboutYou.fullname | titlecase}}</div>
       </div>
       <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
           <div>Medical Power of Attorney and Living Will Directive of </div> 
@@ -234,7 +234,7 @@
                   </span>
                   
                   <span>
-                      <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupFullname.length > 0" style="font-family:'Times New Roman, serif'">{{userDetails.healthFinance.backupFullname}}</span>
+                      <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupFullname.length > 0" style="font-family:'Times New Roman, serif'">{{userDetails.healthFinance.backupFullname | titlecase}}</span>
                       <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" style="font-family:'Times New Roman, serif'">_____________________________</span>
                   </span>
                 </p>
@@ -246,7 +246,7 @@
                 </span>
                 
                 <span>
-                    <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation == 'Other'">{{userDetails.healthFinance.backupRelationOther}}</span>
+                    <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation == 'Other'">{{userDetails.healthFinance.backupRelationOther | titlecase}}</span>
                     <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation != 'Other'">{{userDetails.healthFinance.backupRelation}}</span>
                     <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">______________</span>
                 </span>
@@ -285,8 +285,8 @@
                 </span>
                 
                 <span>
-                    <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupCity !== null">{{userDetails.healthFinance.backupCity}} </span>
-                    <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(city)__________________ </span>
+                    <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupCity !== null">{{userDetails.healthFinance.backupCity | titlecase}},</span>
+                    <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(city)__________________,</span>
                 </span>
                 
                 <span>
@@ -332,7 +332,7 @@
         </p>
         <ul style="margin-left: 60px;">
         <li>
-        <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Consent
+        <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">&#8226; Consent
         to, refuse, or withdraw any health care. This may include care to
         prolong my life such as food and fluids by tube, use of antibiotics,
         CPR (cardiopulmonary resuscitation), and dialysis, and mental health
@@ -342,17 +342,17 @@
         </p>
         </li>
         <li>
-        <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Hire
+        <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">&#8226; Hire
         and fire health care providers. </span>
         </p>
         </li>
         <li>
-        <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Ask
+        <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">&#8226; Ask
         questions and get answers from health care providers. </span>
         </p>
         </li>
         <li>
-        <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Consent
+        <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">&#8226; Consent
         to admission or transfer to a health care provider or health care
         facility, including a mental health facility, subject to any limits
         in paragraphs E or F of Part I. </span>
@@ -360,12 +360,12 @@
         </li>
         
         <li>
-        <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Get
+        <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">&#8226; Get
         copies of my medical records. </span>
         </p>
         </li>
         <li>
-        <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Ask
+        <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">&#8226; Ask
         for consultations or second opinions. </span>
         </p>
         </li>
@@ -381,7 +381,7 @@
     <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
       <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
           <div>Medical Power of Attorney and Living Will Directive of </div> 
-          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+          <div>{{userDetails.tellUsAboutYou.fullname | titlecase}}</div>
       </div>
       <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
           <div>Medical Power of Attorney and Living Will Directive of </div> 
@@ -412,21 +412,14 @@
 
         </p>
         <p style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">_____YES
-        _____NO	Get copies of my medical records at any time, even when I </span>
-        </p>
-        <p style="text-indent: 2in; margin-bottom: 0.06in; line-height: 100%">
-        <span style="font-family:'Times New Roman, serif'">can speak for myself.</span></p>
+        _____NO	Get copies of my medical records at any time, even when I can speak for myself.</span></p>
         <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
         </p>
         <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">_____YES
         _____NO	Admit me to a licensed health care facility, such as a
-        hospital, </span>
-        </p>
-        <p style="text-indent: 2in; margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">nursing
-        home, assisted  living, or other facility for long-term </span>
-        </p>
-        <p style="text-indent: 2in; margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">placement
+        hospital, nursing
+        home, assisted  living, or other facility for long-term placement
         other than convalescent or recuperative care.&nbsp;</span></p>
         <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
@@ -461,13 +454,8 @@
         </p>
         <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">_____YES
         _____NO	I, being of sound mind and not acting under duress, fraud,
-        or other </span>
-        </p>
-        <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">				undue
-        influence, do&nbsp;hereby nominate my agent, or, if my agent is </span>
-        </p>
-        <p align="justify" style="margin-left: 2in; margin-bottom: 0in; line-height: 100%">
-        <span style="font-family:'Times New Roman, serif'">unable or unwilling to serve, I
+        or other undue
+        influence, do&nbsp;hereby nominate my agent, or, if my agent is unable or unwilling to serve, I
         nominate my alternate agent to serve as my guardian in the event
         that, after the date of this instrument, I become incapacitated.&nbsp;</span></p>
         <p style="margin-bottom: 0.06in; line-height: 100%"><br/>
@@ -481,10 +469,7 @@
         </p>
         <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">_____YES
         _____NO	I authorize my agent to consent to my participation in
-        medical </span>
-        </p>
-        <p align="justify" style="margin-left: 2in; margin-bottom: 0in; line-height: 100%">
-        <span style="font-family:'Times New Roman, serif'">research or clinical trials, even
+        medical research or clinical trials, even
         if I will not benefit from the results.&nbsp;</span></p>
         <p style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><b>I.
         Organ Donation:</b></span></p>
@@ -492,17 +477,14 @@
 
         </p>
         <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">_____YES
-        _____NO	If I have not otherwise agreed to organ donation, my agent </span>
-        </p>
-        <p align="justify" style="margin-left: 2in; margin-bottom: 0in; line-height: 100%">
-        <span style="font-family:'Times New Roman, serif'">may consent to the donation of my
+        _____NO	If I have not otherwise agreed to organ donation, my agent may consent to the donation of my
         organs for the purpose of organ transplantation.&nbsp;</span></p>
       <br>
     </div>
     <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
       <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
           <div>Medical Power of Attorney and Living Will Directive of </div> 
-          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+          <div>{{userDetails.tellUsAboutYou.fullname | titlecase}}</div>
       </div>
       <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
           <div>Medical Power of Attorney and Living Will Directive of </div> 
@@ -554,8 +536,8 @@
 
         </p>
         <p style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><b>Additional
-        comments:  </b></span><span style="font-family:'Times New Roman, serif'"><u>__________________________________________________________</u></span></p>
-        <p style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><u>_____________________________________________________________________________</u></span><span style="font-family:'Times New Roman, serif'"><b>	</b></span></p>
+        comments:  </b></span><span style="font-family:'Times New Roman, serif'">__________________________________________________________</span></p>
+        <p style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">_____________________________________________________________________________</span><span style="font-family:'Times New Roman, serif'"><b>	</b></span></p>
         <p style="margin-bottom: 0.09in; line-height: 100%"><br/>
         <br/>
 
@@ -575,9 +557,9 @@
 
         </p>
         <p style="margin-bottom: 0.06in; line-height: 100%"><span style="font-family:'Times New Roman, serif'"><b>Additional
-        comments:  </b></span><span style="font-family:'Times New Roman, serif'"><u>__________________________________________________________</u></span></p>
+        comments:  </b></span><span style="font-family:'Times New Roman, serif'">__________________________________________________________</span></p>
         <p style="margin-bottom: 0.06in; line-height: 100%">
-        <span style="font-family:'Times New Roman, serif'"><u>______________________________________________________________________________</u></span></p>
+        <span style="font-family:'Times New Roman, serif'">______________________________________________________________________________</span></p>
         <p style="margin-left: 0.75in; margin-bottom: 0.06in; line-height: 100%">
         <br/>
         <br/>
@@ -614,7 +596,7 @@
     <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
       <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
           <div>Medical Power of Attorney and Living Will Directive of </div> 
-          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+          <div>{{userDetails.tellUsAboutYou.fullname | titlecase}}</div>
       </div>
       <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
           <div>Medical Power of Attorney and Living Will Directive of </div> 
@@ -712,7 +694,7 @@
     <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
       <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
           <div>Medical Power of Attorney and Living Will Directive of </div> 
-          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+          <div>{{userDetails.tellUsAboutYou.fullname | titlecase}}</div>
       </div>
       <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
           <div>Medical Power of Attorney and Living Will Directive of </div> 
@@ -809,7 +791,7 @@
     <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
       <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
           <div>Medical Power of Attorney and Living Will Directive of </div> 
-          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+          <div>{{userDetails.tellUsAboutYou.fullname | titlecase}}</div>
       </div>
       <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
           <div>Medical Power of Attorney and Living Will Directive of </div> 
@@ -897,7 +879,7 @@
     <div style="text-align: center; padding-top: 10px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
       <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
           <div>Medical Power of Attorney and Living Will Directive of </div> 
-          <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+          <div>{{userDetails.tellUsAboutYou.fullname | titlecase                     }}</div>
       </div>
       <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
           <div>Medical Power of Attorney and Living Will Directive of </div> 
