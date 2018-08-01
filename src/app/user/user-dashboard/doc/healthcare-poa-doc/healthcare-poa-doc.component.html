@@ -13,7 +13,7 @@
 <div class="main-content" *ngIf="!loading">
   <h2 class="docHeading">HEALTHCARE POWER OF ATTORNEY</h2>
   <div class="thumbContainer" #thumbContainer>
-    <ul [ngStyle]="{'width.px' : liCount}">
+    <ul #thumbFilm [ngStyle]="{'width.px' : liCount}">
       <li *ngFor="let thumb of docThumbImg; let i = index" (click)="scrollDoc(i, $event)" [ngClass]="{'active' : thumbIndex === i + 1}"><p><img src="{{thumb}}" alt=""></p></li>
     </ul>
   </div>

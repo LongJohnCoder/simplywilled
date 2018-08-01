@@ -18,6 +18,9 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   docBox: any;
   @ViewChild('thumbContainer')
   thumbContainer: any;
+  @ViewChild('thumbFilm')
+  thumbFilm: any;
+
   progressSubscription: Subscription;
   thumbIndex: number;
   scrollHeight: number;
@@ -225,22 +228,17 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     console.log('life cycle financial-poa-doc --ngOnChanges');
   }
 
-  scrollDoc(index: number) {
-    this.scrollHeight = 991 * index;
-    this.docBox.nativeElement.scrollTop = this.scrollHeight;
-    this.thumbIndex = index;
-    console.log('i am here:', this.thumbIndex);
+  scrollDoc(index: number, e: any) {
+    const resp = this.globalPDFService.getScrollThumbEvent(index, this.heightArr, this.docBox, this.thumbFilm);
+    this.docBox.nativeElement.scrollTop = resp.scrollTop;
+    this.thumbContainer.nativeElement.scrollLeft = resp.scrollLeft;
   }
 
   getScroll(scrollVal: number, e: any) {
-    if (this.heightArr === undefined || this.heightArr === null || this.heightArr.length === 0) {
-      return;
-    }
-    this.thumbIndex = this.globalPDFService.getAccurateScrollPosition(scrollVal, this.heightArr);
-    const dx = e.target.offsetWidth + (this.docThumbImg.length * 7);
-    const u = dx / this.docThumbImg.length;
-    this.thumbContainer.nativeElement.scrollLeft = u * (this.thumbIndex - 1);
-    console.log(this.thumbIndex);
+    // tslint:disable-next-line:max-line-length
+    const resp = this.globalPDFService.getScrollEvent(scrollVal, this.heightArr, this.docThumbImg, this.docBox, this.thumbFilm);
+    this.thumbContainer.nativeElement.scrollLeft = resp.scrollLeft;
+    this.thumbIndex = resp.thumbIndex;
   }
 
   /**Get the user details*/
@@ -306,6 +304,7 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
           const src = this.globalPDFService.printFile(userId, 'financialPOA.pdf');
           // const win = window.open('about:blank', 'Document', 'toolbar=no,width=1000');
           if (win !== null) {
+            // tslint:disable-next-line:max-line-length
             win.document.write('<title>Financial Power of Attorney</title><iframe src=" ' + src + '  " width="100%" height="100%"></iframe>');
             win.focus();
           }

@@ -23,8 +23,10 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   @ViewChild('docBox')
   docBox: any;
   @ViewChild('thumbContainer')
-
   thumbContainer: any;
+  @ViewChild('thumbFilm')
+  thumbFilm: any;
+
   progressSubscription: Subscription;
   thumbIndex: number;
   scrollHeight: number;
@@ -272,23 +274,17 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     this.userService.changeStepNumber(type);
   }
 
-  scrollDoc(index: number) {
-    this.scrollHeight = 991 * index;
-    this.docBox.nativeElement.scrollTop = this.scrollHeight;
-    this.thumbIndex = index;
-    // this.thumbContainer.nativeElement.scrollLeft(100);
-    // this.docBox.nativeElement.style.transition = 'top .8s cubic-bezier(0.77, 0, 0.175, 1)';
+  scrollDoc(index: number, e: any) {
+    const resp = this.globalPDFService.getScrollThumbEvent(index, this.heightArr, this.docBox, this.thumbFilm);
+    this.docBox.nativeElement.scrollTop = resp.scrollTop;
+    this.thumbContainer.nativeElement.scrollLeft = resp.scrollLeft;
   }
 
   getScroll(scrollVal: number, e: any) {
-    if (this.heightArr === undefined || this.heightArr === null || this.heightArr.length === 0) {
-      return;
-    }
-    this.thumbIndex = this.globalPDFService.getAccurateScrollPosition(scrollVal, this.heightArr);
-    console.log('thumb index : ', this.thumbIndex, ' scrollVal : ', scrollVal, ' heightArr : ', this.heightArr);
-    const dx = e.target.offsetWidth + (this.docThumbImg.length * 7);
-    const u = dx / this.docThumbImg.length;
-    this.thumbContainer.nativeElement.scrollLeft = u * (this.thumbIndex - 1);
+    // tslint:disable-next-line:max-line-length
+    const resp = this.globalPDFService.getScrollEvent(scrollVal, this.heightArr, this.docThumbImg, this.docBox, this.thumbFilm);
+    this.thumbContainer.nativeElement.scrollLeft = resp.scrollLeft;
+    this.thumbIndex = resp.thumbIndex;
   }
 
   /**Get the user details*/

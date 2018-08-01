@@ -153,20 +153,67 @@ export class GlobalPdfService {
     };
   }
 
-  getScrollEvent(scrollVal: number, heightArr: Array<number>, docThumbImg: Array<string>, e: any): any {
+  // getScrollEvent(scrollVal: number, heightArr: Array<number>, docThumbImg: Array<string>, e: any): any {
+  //   if (heightArr === undefined || heightArr === null || heightArr.length === 0) {
+  //     console.log('srcoll : ',  scrollVal, heightArr);
+  //     return;
+  //   }
+  //   const thumbIndex = this.getAccurateScrollPosition(scrollVal, heightArr);
+  //   const dx = e.target.offsetWidth + (docThumbImg.length * 7);
+  //   const u = dx / docThumbImg.length;
+  //   const scrollLeft = u * (thumbIndex - 1);
+  //   console.log('srcoll : ', thumbIndex, scrollVal, heightArr, 'scroll left: ', scrollLeft);
+  //   // thumbContainer.nativeElement.scrollLeft = u * (thumbIndex - 1);
+  //   return {
+  //     'scrollLeft': scrollLeft,
+  //     'thumbIndex': thumbIndex
+  //   };
+  // }
+
+  getScrollPosition(scrollVal: number = 0, index: number = null, heightArr: Array<number>, totalScroll): any {
+    if (index === null) {
+      index = this.getAccurateScrollPosition(scrollVal, heightArr) - 1;
+    }
+    const length = heightArr.length;
+    const u = totalScroll / (length - 1);
+    let scrollLeft = u * index;
+    const buffer = 100;
+    if (scrollLeft - 0 <= buffer) {
+      scrollLeft = 0;
+    } else if (totalScroll - scrollLeft <= buffer) {
+      scrollLeft = totalScroll;
+    }
+    return {
+      'scrollLeft': scrollLeft,
+      'index': index + 1
+    };
+  }
+
+  getScrollEvent(scrollVal: number, heightArr: Array<number>, docThumbImg: Array<string>, docBox, thumbFilm): any {
     if (heightArr === undefined || heightArr === null || heightArr.length === 0) {
       console.log('srcoll : ',  scrollVal, heightArr);
       return;
     }
-    const thumbIndex = this.getAccurateScrollPosition(scrollVal, heightArr);
-    const dx = e.target.offsetWidth + (docThumbImg.length * 7);
-    const u = dx / docThumbImg.length;
-    const scrollLeft = u * (thumbIndex - 1);
-    console.log('srcoll : ', thumbIndex, scrollVal, heightArr, 'scroll left: ', scrollLeft);
-    // thumbContainer.nativeElement.scrollLeft = u * (thumbIndex - 1);
+    const totalScroll = Math.abs(docBox.nativeElement.offsetWidth - thumbFilm.nativeElement.offsetWidth);
+    const resp = this.getScrollPosition(scrollVal, null, heightArr, totalScroll);
     return {
-      'scrollLeft': scrollLeft,
-      'thumbIndex': thumbIndex
+      'scrollLeft': resp.scrollLeft,
+      'thumbIndex': resp.index
+    };
+  }
+
+  getScrollThumbEvent(index: number, heightArr: Array<number>, docBox: any, thumbFilm: any): any {
+    console.log(index);
+    if (heightArr === undefined || heightArr === null || heightArr.length === 0 || heightArr[index] === undefined) {
+      console.log('srcoll : ',  index, heightArr);
+      return;
+    }
+    const totalScroll = Math.abs(docBox.nativeElement.offsetWidth - thumbFilm.nativeElement.offsetWidth);
+    const resp = this.getScrollPosition(null, index , heightArr, totalScroll);
+    const scrollTop = heightArr[index];
+    return {
+      'scrollLeft': resp.scrollLeft,
+      'scrollTop': scrollTop
     };
   }
 

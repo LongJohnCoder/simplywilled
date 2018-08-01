@@ -12,8 +12,8 @@
 
 <div class="main-content" style="text-align: justify"  *ngIf="!loading">
   <h2 class="docHeading">Final Disposition Authorization and Instructions</h2>
-  <div class="thumbContainer">
-    <ul>
+  <div class="thumbContainer" #thumbContainer>
+    <ul #thumbFilm>
       <li *ngFor="let thumb of docThumbImg; let i = index" (click)="scrollDoc(i)" [ngClass]="{'active' : thumbIndex == i}"><p><img src="{{thumb}}" alt=""></p></li>
       <!--<li (click)="scrollDoc(x)"><p><img src="../../../../../assets/images/doc1-thumb2.png" alt=""></p></li>-->
     </ul>

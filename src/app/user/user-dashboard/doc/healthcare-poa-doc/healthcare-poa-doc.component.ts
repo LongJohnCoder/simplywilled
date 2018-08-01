@@ -11,6 +11,7 @@ import { Location } from '@angular/common';
 import 'rxjs/add/operator/throttleTime';
 import 'rxjs/add/operator/debounceTime';
 import {environment} from '../../../../../environments/environment';
+// import {trigger, transition, style, animate, query, stagger, state} from '@angular/animations';
 
 @Component({
   selector: 'app-healthcare-poa-doc',
@@ -24,6 +25,9 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   docBox: any;
   @ViewChild('thumbContainer')
   thumbContainer: any;
+  @ViewChild('thumbFilm')
+  thumbFilm: any;
+
   progressSubscription: Subscription;
   thumbIndex: number;
   scrollHeight: number;
@@ -361,17 +365,14 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   }
 
   scrollDoc(index: number, e: any) {
-    console.log(e);
-    this.scrollHeight = 1011 * index;
-    this.docBox.nativeElement.scrollTop = this.scrollHeight;
-    this.thumbIndex = index;
-    // this.thumbContainer.nativeElement.scrollLeft(100);
-    // this.docBox.nativeElement.style.transition = 'top .8s cubic-bezier(0.77, 0, 0.175, 1)';
+    const resp = this.globalPDFService.getScrollThumbEvent(index, this.heightArr, this.docBox, this.thumbFilm);
+    this.docBox.nativeElement.scrollTop = resp.scrollTop;
+    this.thumbContainer.nativeElement.scrollLeft = resp.scrollLeft;
   }
 
   getScroll(scrollVal: number, e: any) {
     // tslint:disable-next-line:max-line-length
-    const resp = this.globalPDFService.getScrollEvent(scrollVal, this.heightArr, this.docThumbImg, e);
+    const resp = this.globalPDFService.getScrollEvent(scrollVal, this.heightArr, this.docThumbImg, this.docBox, this.thumbFilm);
     this.thumbContainer.nativeElement.scrollLeft = resp.scrollLeft;
     this.thumbIndex = resp.thumbIndex;
   }
