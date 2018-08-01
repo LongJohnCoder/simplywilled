@@ -3,6 +3,10 @@
     margin: 0 auto;
 }
 
+li{
+    list-style-type: inherit;
+}
+
 .docPage{
     width: 700px !important;
     height: auto !important;
