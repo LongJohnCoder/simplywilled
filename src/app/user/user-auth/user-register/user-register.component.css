@@ -47,6 +47,14 @@ p.termsAccept span.checkBG{
     width: 100%
 }
 
+h1.login_text span{
+    font-size: 18px;
+    display: block;
+    font-family: "OpenSans";
+    line-height: initial;
+    padding-top: 14px;
+}
+
 @media screen and (max-width:1273px){
     p.termsAccept span {
         font-size: 17px;

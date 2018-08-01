@@ -14,8 +14,8 @@
   <div class="wrapper">
     <div class="confirm_right">
       <div class="confirmed_form_top">
-        <h1 class="form_heading">Let’s get started</h1>
-        <p class="form_pera">SimplyWilled.com is the easiest way to make your last will online. Sign up below to get started.</p>
+        <h1 class="form_heading">Start My Will</h1>
+        <p class="form_pera">Create an account so you can save your work</p>
       </div>
 
       <div class="confirmed_form_white_sec">
@@ -37,8 +37,8 @@
                  required
                  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$"
                  #email="ngModel">
-          <span class="alert-danger"
-                *ngIf="email.errors && (email.dirty || email.touched)">
+          <span
+                [ngStyle]="{'display':validFlag === false ? 'none' : 'block' }">
                 <p *ngIf="email.errors?.required" class="formErrorMsg">Email is required</p>
                 <p *ngIf="email.errors?.pattern" class="formErrorMsg">Email is not correct!</p>
           </span>
@@ -48,8 +48,8 @@
                  required
                  #password="ngModel" minlength="6">
 
-          <span class="alert-danger"
-                *ngIf="password.errors && (password.dirty || password.touched)">
+          <span
+                [ngStyle]="{'display':validFlag === false ? 'none' : 'block' }">
                 <p *ngIf="password.errors?.required" class="formErrorMsg">Password is required</p>
                 <p *ngIf="password.errors?.minlength" class="formErrorMsg">Password should be minimum 6!</p>
           </span>
@@ -59,16 +59,16 @@
                  required
                  #confirm="ngModel" validateEqual="password" minlength="6">
 
-        <span class="alert-danger"
-                *ngIf="confirm.errors && (confirm.dirty || confirm.touched)">
+        <span
+                [ngStyle]="{'display':validFlag === false ? 'none' : 'block' }">
                 <p *ngIf="confirm.errors?.required" class="formErrorMsg">Confirm Password is required</p>
                 <p *ngIf="confirm.errors?.minlength" class="formErrorMsg">Confirm Password should be minimum 6!</p>
           </span>
-          <span *ngIf="confirm.invalid && (confirm.dirty || confirm.touched)" class="text-danger">
-              <p class="formErrorMsg">Confirm Password should be same as password!</p>
+          <span class="text-danger" [ngStyle]="{'display':validFlag === false ? 'none' : 'block' }">
+              <p *ngIf="confirm.invalid" class="formErrorMsg">Confirm Password should be same as password!</p>
           </span>
 
-        <p class="termsAccept termError">
+        <p class="termsAccept " [ngClass]="(validFlag === false) || (termsCheck === true) ? '' : 'termError'">
             <span class="checkBG">
                 <input type="checkbox" [checked]="termsCheck" (change)="termsCheck = !termsCheck">
             </span>
@@ -86,13 +86,15 @@
               <a routerLink="/forget-password" class="already_account">Forgot your password?</a>
             </div>
             <!--<a class="login_btn"><i class="fa fa-chevron-right" aria-hidden="true"></i> Login</a>-->
-            <button value="Continue" [disabled]="form.invalid || !termsCheck" class="login_btn"> <i class="fa fa-chevron-right" aria-hidden="true"></i>Register</button>
+            <button value="Continue" class="login_btn"> <i class="fa fa-chevron-right" aria-hidden="true"></i>Register</button>
           </div>
         </form>
       </div>
     </div>
     <div class="confirm_left">
-        <h1 class="login_text">Create your account.</h1>
+        <h1 class="login_text">Let's get started
+            <span>SimplyWilled is the easiest way to make your last will online</span>
+        </h1>
 
 
         <ul class="protect_loved_ul2">

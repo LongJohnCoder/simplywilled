@@ -15,7 +15,7 @@ declare var dataLayer: any;
 export class UserRegisterComponent implements OnInit {
 
   constructor( private userService: UserService , private router: Router) { }
-
+  validFlag: boolean = false;
   showLoader: boolean;
   responseReceived: boolean;
   setRequestStatus: boolean;
@@ -27,7 +27,7 @@ export class UserRegisterComponent implements OnInit {
     this.responseReceived = false;
     this.setRequestStatus = false;
     this.setResponseMsg = '';
-    this.termsCheck = false;
+    this.termsCheck = true;
   }
 
   /**
@@ -35,39 +35,44 @@ export class UserRegisterComponent implements OnInit {
    * @param {NgForm} formRegister
    */
   onSubmit( formRegister: NgForm ) {
-    this.showLoader = true;
-    this.userService.register( formRegister.value )
-    .subscribe(
-      ( response: any ) => {
-        this.showLoader = false;
-        if (response !== undefined && response.status !== undefined && response.status) {
+    console.log(formRegister.valid);
+    if (formRegister.valid === false) {
+      this.validFlag = true;
+    } else {
+      this.showLoader = true;
+      this.userService.register( formRegister.value )
+      .subscribe(
+        ( response: any ) => {
+          this.showLoader = false;
+          if (response !== undefined && response.status !== undefined && response.status) {
 
-          console.log('mode: ', environment.prod);
-          if (environment.prod) {
-            dataLayer.push({'event':'registered', 'userId': response.user.id});
+            console.log('mode: ', environment.prod);
+            if (environment.prod) {
+              dataLayer.push({'event':'registered', 'userId': response.user.id});
+            }
+            localStorage.setItem( 'loggedInUser', JSON.stringify(response) );
+            localStorage.setItem('_loggedInToken', response.token);
+            this.router.navigate(['/dashboard']);
+          } else {
+              this.setRequestStatus = false;
+              this.setResponseMsg = 'Some error occured';
           }
-          localStorage.setItem( 'loggedInUser', JSON.stringify(response) );
-          localStorage.setItem('_loggedInToken', response.token);
-          this.router.navigate(['/dashboard']);
-        } else {
-            this.setRequestStatus = false;
-            this.setResponseMsg = 'Some error occured';
-        }
-      },
-      ( error: HttpErrorResponse ) => {
-        this.setRequestStatus = false;
-        this.setResponseMsg = error.error.error;
-        this.showLoader = false;
-        this.responseReceived = true;
-        setTimeout( () => {
-          this.responseReceived = false;
-        }, 5000);
-      },
-      () => {
+        },
+        ( error: HttpErrorResponse ) => {
+          this.setRequestStatus = false;
+          this.setResponseMsg = error.error.error;
+          this.showLoader = false;
+          this.responseReceived = true;
+          setTimeout( () => {
+            this.responseReceived = false;
+          }, 5000);
+        },
+        () => {
 
-        formRegister.reset();
-      }
-    );
+          formRegister.reset();
+        }
+      );
+    }
   }
 
   termsCondition() {
