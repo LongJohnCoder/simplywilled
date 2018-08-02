@@ -20,34 +20,47 @@
   </div>
   <div class="docViewBox">
     <div class="docView" #docBox (scroll)="getScroll(docBox.scrollTop)">
+      
+      
       <div class="docContainer">
+        <div class="pageCount">
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
           <div id="doc" class="docPageInner"
                style=" height: 890px;">
             <h1 style="font-size: 28px; text-align: center; margin: 50px 0 30px; ">Final Disposition Authorization and Instructions</h1>
             <p style="font-size: 15px; margin: 0 0 15px; text-align: justify; ">
-              I, <span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname === undefined ? '___________________________________' : userDetails.tellUsAboutYou.fullname.toUpperCase()}},</span> of <span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.address}}, </span><span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.city}}, </span> <span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.state}}, </span>
+              I, <span > {{userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname === undefined ? '___________________________________' : userDetails.tellUsAboutYou.fullname.toUpperCase()}},</span> of <span> {{userDetails.tellUsAboutYou.address}}, </span><span > {{userDetails.tellUsAboutYou.city | titlecase}}, </span> <span > {{userDetails.tellUsAboutYou.state | titlecase}}, </span>
               being of sound mind, willfully and voluntarily make known by this document
-              <span *ngIf="userDetails.tellUsAboutYou.state === 'New Jersey'">my desires concerning, upon my death, the final disposition of my remains</span>
-              <span *ngIf="userDetails.tellUsAboutYou.state !== 'New Jersey'">my desire that, upon my death, the final disposition of my remains be under the control of my</span>
-                <span *ngIf="userDetails.tellUsAboutYou.state === 'Wisconsin'">representative under the requirements of §154.30, Wisconsin Statutes</span>
-                <span *ngIf="userDetails.tellUsAboutYou.state === 'Michigan'">funeral representative pursuant to §700.3206, MCL</span>
-                <span *ngIf="userDetails.tellUsAboutYou.state !== 'Wisconsin' && userDetails.tellUsAboutYou.state !== 'Michigan'">representative</span>
+              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                  <span *ngIf="userDetails.tellUsAboutYou.state === 'New Jersey'">my desires concerning, upon my death, the final disposition of my remains</span>
+              </span>
+              
+              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                  <span *ngIf="userDetails.tellUsAboutYou.state !== 'New Jersey'">my desire that, upon my death, the final disposition of my remains be under the control of my</span>
+              </span>
+              
+              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                  <span *ngIf="userDetails.tellUsAboutYou.state === 'Wisconsin'">representative under the requirements of §154.30, Wisconsin Statutes</span>
+              </span>
+              
+              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                  <span *ngIf="userDetails.tellUsAboutYou.state === 'Michigan'">funeral representative pursuant to §700.3206, MCL</span>
+              </span>
+                
+              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                  <span *ngIf="userDetails.tellUsAboutYou.state !== 'Wisconsin' && userDetails.tellUsAboutYou.state !== 'Michigan'">representative</span>
+              </span>
+                
               named in this document. All decisions made by my representative with respect to my funeral and the final disposition of my remains shall be binding and, for the guidance of my representative, I am making my wishes known as follows:
 
             </p>
 
-            <!--<p style="font-size: 15px; margin: 0 0 15px; ">
-
-              <span  *ngIf="userDetails.finalArrangements.type === '1'">cremated</span>
-              <span  *ngIf="userDetails.finalArrangements.type === '0'">buried</span>.
-            </p>-->
-            <p style="font-size: 15px; margin: 0 0 15px; ">
+            <p *ngIf="userDetails !== undefined && userDetails.finalArrangements !== undefined && userDetails.finalArrangements !== null && userDetails.finalArrangements.type !== undefined" style="font-size: 15px; margin: 0 0 15px;">
               <span  *ngIf="userDetails.finalArrangements.type === '1'">
 
-                1. I wish to be cremated. I would like my ashes to be managed and disposed of in the following manner: <span *ngIf="userDetails.finalArrangements.ashes !== null && userDetails.finalArrangements.ashes !== undefined"> {{userDetails.finalArrangements.ashes}}.</span>
+                1. I wish to be cremated. I would like my ashes to be managed and disposed of in the following manner: <span *ngIf="userDetails.finalArrangements.ashes !== undefined && userDetails.finalArrangements.ashes !== null"> {{userDetails.finalArrangements.ashes}}.</span>
 
-                <span *ngIf="userDetails.finalArrangements.ashes === null && userDetails.finalArrangements.ashes === undefined">: __________________________________________________
+                <span *ngIf="userDetails.finalArrangements.ashes === undefined || userDetails.finalArrangements.ashes === null">: __________________________________________________
                 __________________________________________________________________________________
                 __________________________________________________________________________________
                 __________________________________________________________________________________
@@ -56,9 +69,9 @@
               </span>
               <span  *ngIf="userDetails.finalArrangements.type === '0'">
 
-                1. I wish to be buried. I would like my remains interred <span *ngIf="userDetails.finalArrangements.ashes !== null && userDetails.finalArrangements.ashes !== undefined"> {{userDetails.finalArrangements.ashes}}.</span>
+                1. I wish to be buried. I would like my remains interred <span *ngIf="userDetails.finalArrangements.ashes !== undefined && userDetails.finalArrangements.ashes !== null"> {{userDetails.finalArrangements.ashes}}.</span>
 
-                <span *ngIf="userDetails.finalArrangements.ashes === null && userDetails.finalArrangements.ashes === undefined">: ___________________________________________
+                <span *ngIf="userDetails.finalArrangements.ashes === undefined || userDetails.finalArrangements.ashes === null">: ___________________________________________
                 __________________________________________________________________________________
                 __________________________________________________________________________________
                 __________________________________________________________________________________
@@ -67,9 +80,9 @@
               </span>
               <span  *ngIf="userDetails.finalArrangements.type === '2'">
 
-                1. I wish for my representative to control and dispose of my remains in the following manner: <span *ngIf="userDetails.finalArrangements.some_other_way !== null && userDetails.finalArrangements.some_other_way !== undefined"> {{userDetails.finalArrangements.some_other_way}}.</span>
+                1. I wish for my representative to control and dispose of my remains in the following manner: <span *ngIf="userDetails !== undefined && userDetails.finalArrangements !== null && userDetails.finalArrangements.ashes !== undefined && userDetails.finalArrangements.ashes !== null"> {{userDetails.finalArrangements.some_other_way}}.</span>
 
-                <span *ngIf="userDetails.finalArrangements.some_other_way === null && userDetails.finalArrangements.some_other_way === undefined">: ___________________________________________
+                <span *ngIf="userDetails.finalArrangements.some_other_way === undefined || userDetails.finalArrangements.some_other_way === null">: ___________________________________________
                 __________________________________________________________________________________
                 __________________________________________________________________________________
                 __________________________________________________________________________________
@@ -78,10 +91,10 @@
                 </span>
               </span>
             </p>
-            <p style="font-size: 15px; margin: 0 0 15px; ">
-              2. I have made pre-arrangements at <span *ngIf="userDetails.finalArrangements.arrangements !== null && userDetails.finalArrangements.arrangements !== undefined"> {{userDetails.finalArrangements.arrangements}}.</span>
+            <p style="font-size: 15px; margin: 0 0 15px;" *ngIf="userDetails !== undefined && userDetails.finalArrangements !== undefined && userDetails.finalArrangements !== null">
+              2. I have made pre-arrangements at <span *ngIf="userDetails.finalArrangements.arrangements !== undefined && userDetails.finalArrangements.arrangements !== null"> {{userDetails.finalArrangements.arrangements}}.</span>
 
-                <span *ngIf="userDetails.finalArrangements.arrangements === null || userDetails.finalArrangements.arrangements === undefined">: ______________________________________
+                <span *ngIf="userDetails.finalArrangements.arrangements === undefined || userDetails.finalArrangements.arrangements === null">: ______________________________________
                 __________________________________________________________________________________
                 __________________________________________________________________________________
                 __________________________________________________________________________________
@@ -172,10 +185,19 @@
             </p>
 
           </div>
-            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-                 style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Final Disposition of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-                Page 1 of 3
+            
+            <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+              <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                  <div>Final Disposition of </div>
+                  <div>{{userDetails.tellUsAboutYou.fullname | titlecase}}</div>    
+              </div>
+              <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                  <div>Final Disposition of </div>
+                  <div>(CLIENT FULL NAME)</div>
+              </div>
+              <span>
+                Page <span class="pageNumber"></span> of {{totalPages}}
+              </span>
             </div>
         </div>
 
@@ -189,16 +211,31 @@
 
               <p style="font-size: 15px; margin: 0 0 15px; ">Signed: _________________________________________</p>
 
-              <span style="font-size: 15px; margin: 0 0 15px; text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname === undefined ? '___________________________________' : userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span>
+              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <span style="font-size: 15px; margin: 0 0 15px; text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname === undefined ? '___________________________________' : userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span>
+              </span>
 
-              <p style="font-size: 15px; margin: 0 0 15px; text-transform: capitalize">{{userDetails.tellUsAboutYou.address}}</p>
+              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <p style="font-size: 15px; margin: 0 0 15px; text-transform: capitalize">{{userDetails.tellUsAboutYou.address}}</p>
+              </span>
 
-              <p style="font-size: 15px; margin: 0 0 15px; text-transform: capitalize"><span>{{userDetails.tellUsAboutYou.city}},</span> <span>{{userDetails.tellUsAboutYou.state}}, <span>{{userDetails.tellUsAboutYou.zip}}</span></span></p>
-
-              <p style="font-size: 15px; margin: 0 0 15px; ">{{userDetails.tellUsAboutYou.phone}}</p>
-
+              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <p style="font-size: 15px; margin: 0 0 15px; text-transform: capitalize"><span>{{userDetails.tellUsAboutYou.city}},</span> <span>{{userDetails.tellUsAboutYou.state}}, <span>{{userDetails.tellUsAboutYou.zip}}</span></span></p>
+              </span>
+              
+              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <p style="font-size: 15px; margin: 0 0 15px; ">{{userDetails.tellUsAboutYou.phone}}</p>
+              </span>
+              
               <p style="font-size: 15px; text-align: justify; margin: 0 0 15px; ">
-                By my signature below, I attest that <span style="text-transform: uppercase;text-transform: capitalize"> {{userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname === undefined ? '___________________________________' : userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>, the person who signed this document, did so or acknowledged signing this document in my presence and that {{userDetails.tellUsAboutYou.gender !== null ? (userDetails.tellUsAboutYou.gender === 'Male' ? 'he' : 'she') : 'he' }} appears to be of sound mind and not subject to duress, fraud, or undue influence. I further attest that I am not the representative or the successor representative appointed under this document, that I am at least eighteen (18) years of age, and that I am not related to the person who signed this document by blood, marriage, or adoption<span *ngIf="userDetails.tellUsAboutYou.state === 'Michigan'">, nor am I a prohibited witness pursuant to §700.3206(2)(b)(i), MCL</span>.
+                <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                  By my signature below, I attest that <span style="text-transform: uppercase;text-transform: capitalize"> 
+                    {{userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname === undefined 
+                      ? '___________________________________' 
+                      : userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
+                      
+                      , the person who signed this document, did so or acknowledged signing this document in my presence and that {{userDetails.tellUsAboutYou.gender !== null ? (userDetails.tellUsAboutYou.gender === 'Male' ? 'he' : 'she') : 'he' }} appears to be of sound mind and not subject to duress, fraud, or undue influence. I further attest that I am not the representative or the successor representative appointed under this document, that I am at least eighteen (18) years of age, and that I am not related to the person who signed this document by blood, marriage, or adoption<span *ngIf="userDetails.tellUsAboutYou.state === 'Michigan'">, nor am I a prohibited witness pursuant to §700.3206(2)(b)(i), MCL</span>.
+                </span>
                 <br>
                 <span style="float: left; text-align: left; width: 100%; padding: 32px 0;">
                 <span style="width: 48%; float: left;">
@@ -227,7 +264,7 @@
 
                   <span>COUNTY OF ________________ )</span><br><br>
 
-                  <span>Subscribed, sworn and acknowledged before me by <span style="text-transform: uppercase;"> {{userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname === undefined ? '___________________________________' : userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span> and _________________, as witness, and _________________, as witness, who personally appeared on this _________ day of _________________, _______, and who are personally known to me or who have produced satisfactory photo identification, and whose names are signed to the foregoing instrument.
+                  <span>Subscribed, sworn and acknowledged before me by <span > {{userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname === undefined ? '___________________________________' : userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span> and _________________, as witness, and _________________, as witness, who personally appeared on this _________ day of _________________, _______, and who are personally known to me or who have produced satisfactory photo identification, and whose names are signed to the foregoing instrument.
 
                     <br>______________________________________ (Seal, if any)
 
@@ -237,10 +274,18 @@
               </p>
 
           </div>
-            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-                 style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Final Disposition of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-                Page 2 of 3
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+              <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                  <div>Final Disposition of </div>
+                  <div>{{userDetails.tellUsAboutYou.fullname | titlecase}}</div>    
+              </div>
+              <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                  <div>Final Disposition of </div>
+                  <div>(CLIENT FULL NAME)</div>
+              </div>
+              <span>
+                Page <span class="pageNumber"></span> of {{totalPages}}
+              </span>
             </div>
         </div>
         <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;" *ngIf="userDetails.tellUsAboutYou.state === 'Wisconsin' || userDetails.tellUsAboutYou.state === 'Michigan'">
@@ -297,12 +342,21 @@
               </span>
             </p>
           </div>
-            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"
-                 style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif;">
-                Final Disposition of <br><span style="text-transform: capitalize">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span><br>
-                Page 3 of 3
+          <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
+            <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
+                <div>Final Disposition of </div>
+                <div>{{userDetails.tellUsAboutYou.fullname | titlecase}}</div>    
             </div>
+            <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
+                <div>Final Disposition of </div>
+                <div>(CLIENT FULL NAME)</div>
+            </div>
+            <span>
+              Page <span class="pageNumber"></span> of {{totalPages}}
+            </span>
+          </div>
         </div>
+      </div>
       </div>
     </div>
   </div>

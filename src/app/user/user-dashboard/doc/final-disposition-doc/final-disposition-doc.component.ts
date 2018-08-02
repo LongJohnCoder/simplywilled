@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild, DoCheck} from '@angular/core';
 import {UserAuthService} from '../../../user-auth/user-auth.service';
 import {Subscription} from 'rxjs/Subscription';
 import {FinalDispositionPdfService} from '../services/final-disposition-pdf.service';
@@ -13,7 +13,7 @@ import { saveAs } from 'file-saver/FileSaver';
   templateUrl: './final-disposition-doc.component.html',
   styleUrls: ['./final-disposition-doc.component.css']
 })
-export class FinalDispositionDocComponent implements OnInit, OnDestroy {
+export class FinalDispositionDocComponent implements OnInit, OnDestroy, DoCheck {
 
   @ViewChild('docBox')
   docBox: any;
@@ -48,6 +48,7 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
   downloadSubscription: Subscription;
   printSubscription: Subscription;
   count: number;
+  totalPages: number;
 
   /**Constructor call*/
   constructor(
@@ -85,6 +86,15 @@ export class FinalDispositionDocComponent implements OnInit, OnDestroy {
     } else {
       this.thumbIndex = 0;
     }
+  }
+
+  ngDoCheck() {
+    const x = this.globalPDFService.getDynamicPages();
+    this.totalPages = x.totalPages;
+    // this.globalPDFService.fcpoaPages({
+    //   'pages' : x.totalPages,
+    //   'heightArr' : x.heightArr
+    // });
   }
 
   /**Get the user details*/

@@ -473,6 +473,16 @@ p.ctl { font-family: "Times New Roman" }
   padding-left: 5px;
 }
 
+.pageCount{
+  counter-reset: index;
+}
+.pageNumber{
+  counter-increment: index;
+}
+.pageNumber:after{
+  content: counter(index);
+}
+
 @media screen and (max-width: 1199px){
   .main-content{
     width: 720px;
