@@ -295,7 +295,7 @@
         </p>
         <ul style="margin-left: 60px;">
         <li>
-        <p style="margin-bottom: 0in; margin-top: 0; line-height: 100%"><span style="font-family:'Times New Roman, serif';">Consent
+        <p style="margin-bottom: 0in; margin-top: 0; line-height: 150%"><span style="font-family:'Times New Roman, serif';">Consent
         to, refuse, or withdraw any health care. This may include care to
         prolong my life such as food and fluids by tube, use of antibiotics,
         CPR (cardiopulmonary resuscitation), and dialysis, and mental health
@@ -305,17 +305,17 @@
         </p>
         </li>
         <li>
-        <p style="margin-bottom: 0in; margin-top: 0; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Hire
+        <p style="margin-bottom: 0in; margin-top: 0; line-height: 150%"><span style="font-family:'Times New Roman, serif'">Hire
         and fire health care providers. </span>
         </p>
         </li>
         <li>
-        <p style="margin-bottom: 0in; margin-top: 0; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Ask
+        <p style="margin-bottom: 0in; margin-top: 0; line-height: 150%"><span style="font-family:'Times New Roman, serif'">Ask
         questions and get answers from health care providers. </span>
         </p>
         </li>
         <li>
-        <p style="margin-bottom: 0in; margin-top: 0; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Consent
+        <p style="margin-bottom: 0in; margin-top: 0; line-height: 150%"><span style="font-family:'Times New Roman, serif'">Consent
         to admission or transfer to a health care provider or health care
         facility, including a mental health facility, subject to any limits
         in paragraphs E or F of Part I. </span>
@@ -323,12 +323,12 @@
         </li>
 
         <li>
-        <p style="margin-bottom: 0in; margin-top: 0; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Get
+        <p style="margin-bottom: 0in; margin-top: 0; line-height: 150%"><span style="font-family:'Times New Roman, serif'">Get
         copies of my medical records. </span>
         </p>
         </li>
         <li>
-        <p style="margin-bottom: 0in; margin-top: 0; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Ask
+        <p style="margin-bottom: 0in; margin-top: 0; line-height: 150%"><span style="font-family:'Times New Roman, serif'">Ask
         for consultations or second opinions. </span>
         </p>
         </li>
@@ -344,7 +344,7 @@
   </div>
 
 
-  <div>
+  <div style="page-break-after: always;">
     <div>
       <p style="margin-left: 0.13in; text-indent: -0.13in; margin-bottom: 0.03in; line-height: 100%; page-break-before: always">
         <span style="font-family:'Times New Roman, serif'"><b>E. Other Authority. </b></span>
@@ -403,7 +403,7 @@
         _____NO	I authorize my agent to consent to my participation in
         medical research or clinical trials, even
         if I will not benefit from the results.&nbsp;</span></p>
-        <p style="margin-bottom: 0.06in; line-height: 100%; page-break-before: always;"><span style="font-family:'Times New Roman, serif'"><b>I.
+        <p style="margin-bottom: 0.06in; line-height: 100%; "><span style="font-family:'Times New Roman, serif'"><b>I.
         Organ Donation:</b></span></p>
         <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">_____YES
         _____NO	If I have not otherwise agreed to organ donation, my agent may consent to the donation of my

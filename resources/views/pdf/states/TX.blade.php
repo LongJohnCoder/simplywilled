@@ -93,7 +93,7 @@
   </div>
 
 
-  <div>
+  <div style="page-break-after: always;">
     <div>
       <p  style="margin-bottom: 0.17in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Even
         after you have signed this document, you have the right to make
@@ -156,7 +156,7 @@
   </div>
 
 
-  <div>
+  <div style="page-break-after: always;">
     <div>
       <p align="center" style="margin-bottom: 0.19in; line-height: 100%; text-align: center;">
         <span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 14pt"><b>MEDICAL
@@ -306,16 +306,12 @@
             <span color="#000000"><span style="font-family:'Times New Roman, serif'"></span></span>
       @endif
 
-      <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-      <br/>
-
-        </p>
         <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
         </p>
         <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">The
         original of this document is kept at: <br/>
-        </span><br/>
+        </span>
 
         </p>
         <p style="text-indent: 0.38in; margin-bottom: 0in; line-height: 150%">
@@ -351,11 +347,7 @@
         <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
         </p>
-        <p  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
-        <br/>
-
-        </p>
-        <p style="margin-bottom: 0.09in; line-height: 100%; page-break-before: always;"><span style="font-family:'Times New Roman, serif'"><b>HIPAA
+        <p style="margin-bottom: 0.09in; line-height: 100%;"><span style="font-family:'Times New Roman, serif'"><b>HIPAA
         WAIVER AND MEDICAL RECORDS RELEASE.</b></span></p>
         <p  style="margin-bottom: 0.09in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">To
         request, review, and receive any information, verbal or written,
@@ -385,7 +377,7 @@
   </div>
 
 
-  <div>
+  <div style="page-break-after: always;">
     <div>
       <p  style="margin-left: 0.38in; margin-bottom: 0.09in; line-height: 100%">
         <span style="font-family:'Times New Roman, serif'">(a)	To execute on my behalf any
@@ -539,7 +531,7 @@
   </div>
 
 
-  <div>
+  <div style="page-break-after: always;">
     <div>
       <p  style="margin-bottom: 0.09in; line-height: 100%; page-break-before: always">
         <span style="font-family:'Times New Roman, serif'"><u>STATEMENT OF FIRST WITNESS</u></span><span style="font-family:'Times New Roman, serif'">:</span></p>
@@ -596,9 +588,9 @@
   </div>
 
 
-  <div>
+  <div style="page-break-after: always;">
     <div>
-      <p align="center" style="margin-bottom: 0in; line-height: 100%; text-align: center; page-break-before: always">
+      <p align="center" style="margin-bottom: 0in; line-height: 100%; text-align: center;">
         <span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 14pt"><b>DIRECTIVE
         TO PHYSICIANS AND FAMILY</b></span></span><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 14pt">
         </span></span><span style="font-family:'Times New Roman, serif'"><span size="4" style="font-size: 14pt"><b>OR
@@ -670,7 +662,7 @@
   </div>
 
 
-  <div>
+  <div style="page-break-after: always;">
     <div>
       <p  style="margin-left: 0.44in; text-indent: -0.44in; margin-bottom: 0in; line-height: 100%">
         <span style="font-family:'Times New Roman, serif'">_______ I request that I be kept
@@ -707,14 +699,12 @@
         </p>
         <p style="text-indent: 0.38in; margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%">
         <br/>
-        <br/>
 
         </p>
         <p style="text-indent: 0.38in; margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%">
         <span style="font-family:'Times New Roman, serif'">(</span><span style="font-family:'Times New Roman, serif'"><u>INITIAL</u></span><span style="font-family:'Times New Roman, serif'">
         all options that apply)</span></p>
         <p style="text-indent: 0.38in; margin-top: 0.06in; margin-bottom: 0.06in; line-height: 100%">
-        <br/>
         <br/>
 
         </p>
@@ -748,18 +738,15 @@
 
         </p>
         <p  style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0in; line-height: 100%">
-        <span style="font-family:'Times New Roman, serif'">	</span><span style="font-family:'Times New Roman, serif'"><u>																																																																																			</u></span><span style="font-family:'Times New Roman, serif'">.</span></p>
+        <span style="font-family:'Times New Roman, serif'">	</span><span style="font-family:'Times New Roman, serif'">______________________________</span><span style="font-family:'Times New Roman, serif'">.</span></p>
         <p  style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0in; line-height: 100%">
         <span style="font-family:'Times New Roman, serif'">	</span><span style="font-family:'Times New Roman, serif'"><span size="2" style="font-size: 10pt"><i>(Attach
         additional pages if needed).</i></span></span></p>
-        <p  style="margin-left: 0.94in; text-indent: -0.56in; margin-bottom: 0in; line-height: 100%">
-        <br/>
 
-        </p>
         <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
         </p>
-        <p  style="margin-bottom: 0in; line-height: 100%; page-break-before: always;"><span style="font-family:'Times New Roman, serif'">After
+        <p  style="margin-bottom: 0in; line-height: 100%;"><span style="font-family:'Times New Roman, serif'">After
         signing this directive, if my representative or I elect hospice care,
         I understand and agree that only those treatments needed to keep me
         comfortable would be provided and I would not be given available
@@ -769,7 +756,7 @@
   </div>
 
 
-  <div>
+  <div style="page-break-after: always;">
     <div>
       <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">If
         my agents designated in my Medical Power of Attorney executed
@@ -783,12 +770,12 @@
         law this directive has no effect if I have been diagnosed as
         pregnant. This directive will remain in effect until I revoke it. No
         other person may do so.</span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p  style="margin-bottom: 0in; line-height: 100%">
 
         </p>
         <p  style="margin-left: 4in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
         <span style="font-family:'Times New Roman, serif'">Date: </span><span style="font-family:'Times New Roman, serif'">__________________</span></p>
-        <p  style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p  style="margin-bottom: 0in; line-height: 100%">
 
         </p>
         <p  style="margin-left: 0.0in; margin-bottom: 0in; line-height: 100%">
@@ -817,7 +804,7 @@
           </span>
         </p>
 
-        <p align="center" style="margin-bottom: 0.13in; line-height: 100%; page-break-before: always; text-align: center;"><span style="font-family:'Times New Roman, serif'"><b>STATEMENT
+        <p align="center" style="margin-bottom: 0.13in; line-height: 100%; text-align: center;"><span style="font-family:'Times New Roman, serif'"><b>STATEMENT
         OF WITNESSES</b></span></p>
         <p  style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Two
         competent adult witnesses must sign below, acknowledging the
@@ -836,45 +823,40 @@
         <p  style="margin-bottom: 0in; line-height: 100%"><br/>
 
         </p>
-        <p style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
               <p class="western" style="margin-bottom: 0in; line-height: 100%"><span ><b>WITNESS
         1</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
         </span><span >______________________</span></p>
-        <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
+        <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%; margin-top:0;">
         <span style="padding-left: 50px;">[signature]</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
         <span >____________________________</span><span >		</span><span style="padding-left: 122px;">______________________</span></p>
-        <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+        <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; margin-top:0;">
         <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:25px 0 0 350px;">
         <span >							</span><span >______________________</span></p>
-        <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
+        <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px; margin-top:0;">
         <span style="padding-left: 40px;">								[city, state, zip]</span></p>
 				<br>
         <p class="western" style="margin-bottom: 0in; line-height: 100%"><span ><b>WITNESS
         2</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
         </span><span >______________________</span></p>
-        <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%">
+        <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; line-height: 100%; margin-top:0;">
         <span style="padding-left: 50px;">[signature]</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-top: 15px;">
         <span >____________________________</span><span >		</span><span style="padding-left: 122px;">______________________</span></p>
-        <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%">
+        <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; margin-top:0;">
         <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
         <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding:25px 0 0 350px;">
         <span >							</span><span >______________________</span></p>
-        <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px;">
+        <p class="western" align="justify" style="margin-bottom: 0.06in; line-height: 100%; padding-left: 350px; margin-top:0;">
         <span style="padding-left: 40px;">								[city, state, zip]</span></p>
     </div>
-
-
   </div>
 
 
   <div>
     <div>
-      <p align="center" style="margin-top: 0.19in; margin-bottom: 0.09in; line-height: 100%; text-align: center; page-break-before: always">
+      <p align="center" style="margin-top: 0.19in; margin-bottom: 0.09in; line-height: 100%; text-align: center;">
         <span style="font-family:'Times New Roman, serif'"><b>DEFINITIONS:</b></span></p>
 
         <p  style="margin-bottom: 0.09in; line-height: 100%">“<span style="font-family:'Times New Roman, serif'"><b>ARTIFICIAL
