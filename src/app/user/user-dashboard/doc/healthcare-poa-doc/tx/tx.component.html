@@ -175,7 +175,7 @@
         <span color="#0000ff">
           <span style="font-family:'Times New Roman, serif'">
               <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</b>
-              <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________,</b>
+              <b *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">(fullname)________________________________,</b>
           </span>
         </span>
 
@@ -186,14 +186,14 @@
 
         <span color="#0433ff">
             <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.address !== null" style="font-family:'Times New Roman, serif'" >{{userDetails.tellUsAboutYou.address}},</span>
-            <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(address)_________________________________________________________________
+            <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">(address)_________________________________________________________________
               ___________________________________________________________________________________________
             _________________________________________________________________________________,</span>
         </span>
 
         <span color="#0433ff">
             <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.city | titlecase}},</span>
-            <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(city)_____________,</span>
+            <span style="text-transform: capitalize" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">(city)_____________,</span>
         </span>
 
         <span color="#000000">
@@ -202,12 +202,12 @@
 
         <span color="#0433ff">
             <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.state | titlecase}}</span>
-            <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="font-family:'Times New Roman, serif'">(state)_____________________</span>
+            <span style="text-transform: capitalize" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null" style="font-family:'Times New Roman, serif'">(state)_____________________</span>
         </span>
 
         <span color="#0433ff">
             <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.zip !== null">{{userDetails.tellUsAboutYou.zip}}</span>
-            <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(zip)__________________ </span>
+            <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">(zip)__________________ </span>
         </span>
 
         <span color="#000000">
@@ -218,12 +218,12 @@
         <span color="#0433ff">
             <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther | titlecase}},</span>
             <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation | titlecase}},</span>
-            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">______________,</span>
+            <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">______________,</span>
         </span>
 
         <span color="#0433ff">
             <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.fullname.length > 0" style="font-family:'Times New Roman, serif'">{{userDetails.healthFinance.fullname | titlecase}},</span>
-            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" style="font-family:'Times New Roman, serif'">(fullname)_____________________________,</span>
+            <span *ngIf="userDetails === undefined || userDetails.healthFinance === null" style="font-family:'Times New Roman, serif'">(fullname)_____________________________,</span>
         </span>
 
         <span color="#000000"><span style="font-family:'Times New Roman, serif'">
@@ -232,7 +232,7 @@
 
         <span color="#0433ff">
             <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.address !== null">{{userDetails.healthFinance.address}},</span>
-            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(address)_________________________________________________________________
+            <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(address)_________________________________________________________________
               _______________________________________________________________________________, 
             </span>
         </span>
@@ -244,19 +244,19 @@
 
         <span color="#0000ff">
             <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.city !== null">{{userDetails.healthFinance.city | titlecase}},</span>
-            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(city)__________________,</span>
+            <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(city)__________________,</span>
         </span>
 
         <span style="font-family:'Times New Roman, serif'"> </span>
 
         <span color="#0000ff">
             <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.state !== null">{{userDetails.healthFinance.state | titlecase}}</span>
-            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(state)__________________</span>
+            <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(state)__________________</span>
         </span>
 
         <span color="#0000ff">
             <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.zip !== null">{{userDetails.healthFinance.zip}},</span>
-            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(zip)__________________, </span>
+            <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(zip)__________________, </span>
         </span>
 
         <span color="#000000">
@@ -265,7 +265,7 @@
 
         <span color="#0433ff">
             <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.phone !== null">{{userDetails.healthFinance.phone}}</span>
-            <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">__________________</span>
+            <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">__________________</span>
         </span>
 
         <span color="#000000">
@@ -320,44 +320,44 @@
         <span color="#0433ff">
                     <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation == 'Other'">{{userDetails.healthFinance.backupRelationOther | titlecase}},</span>
                     <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation != 'Other'">{{userDetails.healthFinance.backupRelation | titlecase}},</span>
-                    <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">______________,</span>
+                    <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">______________,</span>
                 </span>
         <span color="#0433ff">
                     <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupFullname.length > 0" style="font-family:'Times New Roman, serif'">{{userDetails.healthFinance.backupFullname | titlecase}},</span>
-                    <span *ngIf="userDetails === undefined && userDetails.healthFinance === null" style="font-family:'Times New Roman, serif'">_____________________________,</span>
+                    <span *ngIf="userDetails === undefined || userDetails.healthFinance === null" style="font-family:'Times New Roman, serif'">_____________________________,</span>
                 </span>
 
         <span style="font-family:'Times New Roman, serif'"> of </span>
 
         <span color="#0433ff">
                     <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupAddress !== null">{{userDetails.healthFinance.backupAddress}},</span>
-                    <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(address)_________________________________________________________________
+                    <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(address)_________________________________________________________________
                       _______________________________________________________________________________, 
                     </span>
                 </span>
 
         <span color="#0000ff">
                     <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupCity !== null">{{userDetails.healthFinance.backupCity | titlecase}},</span>
-                    <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(city)__________________, </span>
+                    <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(city)__________________, </span>
                 </span>
 
         <span style="font-family:'Times New Roman, serif'"> </span>
 
         <span color="#0000ff">
                     <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupState !== null">{{userDetails.healthFinance.backupState | titlecase}}</span>
-                    <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(state)__________________, </span>
+                    <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(state)__________________, </span>
                 </span>
 
         <span color="#0000ff">
                     <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupZip !== null">{{userDetails.healthFinance.backupZip}}</span>
-                    <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(zip)__________________, </span>
+                    <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(zip)__________________, </span>
                 </span>
 
         <span style="font-family:'Times New Roman, serif'">(Tel: </span>
 
         <span color="#0433ff">
                     <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupphone !== null">{{userDetails.healthFinance.backupphone}}</span>
-                    <span *ngIf="userDetails === undefined && userDetails.healthFinance === null">(phone)__________________</span>
+                    <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(phone)__________________</span>
                 </span>
 
         <span style="font-family:'Times New Roman, serif'">), as my alternate agent to make any and all health care decisions for
@@ -688,7 +688,7 @@
         <span color="#0000ff">
           <span style="font-family:'Times New Roman, serif'">
               <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b>
-              <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
+              <b *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
           </span>
         </span>
 
@@ -720,7 +720,7 @@
         <span color="#0000ff">
           <span style="font-family:'Times New Roman, serif'">
               <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</b>
-              <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________,</b>
+              <b *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">(fullname)________________________________,</b>
           </span>
         </span>
 
@@ -900,7 +900,7 @@
         <span color="#0000ff">
           <span style="font-family:'Times New Roman, serif'">
               <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</b>
-              <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________,</b>
+              <b *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">(fullname)________________________________,</b>
           </span>
         </span>
 
@@ -929,22 +929,22 @@
 
         <span color="#0433ff">
             <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.address !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.address}},</span>
-            <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(Address)_____________,</span>
+            <span style="text-transform: capitalize" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">(Address)_____________,</span>
         </span>
 
         <span color="#0433ff">
             <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.city | titlecase}},</span>
-            <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(city)_____________,</span>
+            <span style="text-transform: capitalize" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">(city)_____________,</span>
         </span>
 
         <span color="#0433ff">
             <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.state | titlecase}},</span>
-            <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="font-family:'Times New Roman, serif'">(state)_____________________,</span>
+            <span style="text-transform: capitalize" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null" style="font-family:'Times New Roman, serif'">(state)_____________________,</span>
         </span>
 
         <span color="#0433ff">
             <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.zip !== null">{{userDetails.tellUsAboutYou.zip}},</span>
-            <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(zip)__________________, </span>
+            <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">(zip)__________________, </span>
         </span>
 
         <span style="font-family:'Times New Roman, serif'">
@@ -1130,7 +1130,7 @@
         <span color="#0000ff">
             <span style="font-family:'Times New Roman, serif'">
                 <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b>
-                <b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
+                <b *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">(fullname)________________________________</b>
             </span>
           </span>
       </p>
@@ -1140,7 +1140,7 @@
 
         <span color="#0433ff">
             <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.address !== null" style="font-family:'Times New Roman, serif'" >{{userDetails.tellUsAboutYou.address}}</span>
-            <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(address)_________________________________________________________________
+            <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">(address)_________________________________________________________________
               ___________________________________________________________________________________________
             _________________________________________________________________________________</span>
         </span>
@@ -1161,17 +1161,17 @@
       <p  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
           <span color="#0433ff">
               <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.city | titlecase}}</span>
-              <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(city)_____________</span>
+              <span style="text-transform: capitalize" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">(city)_____________</span>
           </span>
 
         <span color="#0433ff">
               <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null" style="font-family:'Times New Roman, serif'">{{userDetails.tellUsAboutYou.state | titlecase}}</span>&nbsp;
-              <span style="text-transform: capitalize" *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="font-family:'Times New Roman, serif'">(state)_____________________</span>
+              <span style="text-transform: capitalize" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null" style="font-family:'Times New Roman, serif'">(state)_____________________</span>
           </span>
 
         <span color="#0433ff">
               <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.zip !== null">{{userDetails.tellUsAboutYou.zip}}</span>
-              <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(zip)__________________</span>
+              <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">(zip)__________________</span>
           </span>
       </p>
 
