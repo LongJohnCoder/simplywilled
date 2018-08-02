@@ -791,6 +791,7 @@
               <div class="docPage" style="margin: 20px 0; box-sizing: border-box; padding: 40px;">
                   <div class="docPageInner" style="box-sizing: border-box; height: 875px;">
       
+                    <div>
                     <div *ngIf="userDetails !== undefined && userDetails.estateDistribute !== null && userDetails.estateDistribute.distribute_type === '2' && estateDistribute._mb !== null">
                       <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="estateDistribute._mb !== null && estateDistribute._mb.isEstateIntoEqualShares === 'Yes'">
                         <span style="font-family:'EB Garamond, serif'"><b><span class='divNumber'></span>.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Residuary
@@ -863,7 +864,7 @@
                       </p>
                     
                       <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%"  *ngIf="estateDistribute._mb !== null && estateDistribute._mb.isEstateIntoEqualShares !== 'Yes'">
-                        <span style="font-family:'EB Garamond, serif'"><b>E.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Residuary
+                        <span style="font-family:'EB Garamond, serif'"><b><span class='divNumber'></span>.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Residuary
                         Estate.  </b></span><span style="font-family:'EB Garamond, serif'"> I direct that my
                         </span><span ><span style="font-family:'EB Garamond, serif'">
                           <span *ngIf="userDetails !== undefined && userDetails.state !== null">
@@ -963,10 +964,10 @@
                         other shares.</span><span ><span style="font-family:'EB Garamond, serif'">
                         </span></span><span style="font-family:'EB Garamond, serif'"></span></p>
                     </div>
+                    </div>
       
-      
-                    
-                    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.estateDistribute !== null && userDetails.estateDistribute.distribute_type === '1'">
+                    <div>
+                    <div class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.estateDistribute !== null && userDetails.estateDistribute.distribute_type === '1'">
                       <span style="font-family:'EB Garamond, serif'"><b><span class='divNumber'></span>.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Residuary
                       Estate.  </b></span><span style="font-family:'EB Garamond, serif'">I direct that my
                       </span><span ><span style="font-family:'EB Garamond, serif'">
@@ -1048,12 +1049,12 @@
                         following manner: {{estateDistribute._sb.someotherway !== null && estateDistribute._sb.someotherway !== undefined ? estateDistribute._sb.someotherway : ''}}</span>
                         </span>
                       </span>
-                    </p>
-                  
+                    </div>
+                    </div>
                     
       
-      
-                    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.estateDistribute !== null && userDetails.estateDistribute.distribute_type === '3'">
+                    <div>
+                    <div class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.estateDistribute !== null && userDetails.estateDistribute.distribute_type === '3'">
                       <span style="font-family:'EB Garamond, serif'"><b><span class='divNumber'></span>.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Residuary
                       Estate.  </b></span><span style="font-family:'EB Garamond, serif'">I direct that my
                       </span><span ><span style="font-family:'EB Garamond, serif'">
@@ -1080,9 +1081,11 @@
                       </span></span><span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">
                       </span></span></span><span style="font-family:'EB Garamond, serif'"> to my to my heirs
                       at law. </span>
-                    </p>
-                  
-                    <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.estateDistribute !== null && userDetails.estateDistribute.distribute_type === '4'">
+                    </div>
+                    </div>
+
+                    <div>
+                    <div class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.estateDistribute !== null && userDetails.estateDistribute.distribute_type === '4'">
                       <span style="font-family:'EB Garamond, serif'"><b><span class='divNumber'></span>.</b></span><span style="font-family:'EB Garamond, serif'">	</span><span style="font-family:'EB Garamond, serif'"><b>Residuary
                       Estate.  </b></span><span style="font-family:'EB Garamond, serif'">I direct that my
                       </span><span ><span style="font-family:'EB Garamond, serif'">
@@ -1107,8 +1110,8 @@
                         <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">
                       </span></span></span><span style="font-family:'EB Garamond, serif'"> in the following
                       manner: {{estateDistribute.estateDistributeSomeOtherWay}}</span>
-                    </p>
-                    
+                    </div>
+                    </div>
                     
                     <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
                       <br/>
