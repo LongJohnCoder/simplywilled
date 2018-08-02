@@ -56,6 +56,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       private referAFriendService: ReferFriendService,
       private progressbarService: ProgressbarService
     ) {
+      
       this.createForm();
       this.progressbarService.changeWidth({width: 0});
       this.progressBarSubscription = this.progressbarService.currentMessage.subscribe(
@@ -66,7 +67,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.routerSubscription = router.events
         .filter(event => event instanceof NavigationEnd)
         .subscribe((event: NavigationEnd) => {
-          // window.scroll(0, 0);
+           window.scroll(0, 0);
           if (event.urlAfterRedirects.includes('/dashboard/packages')) {
             this.showLeft = false;
             this.showProgressBar = false;

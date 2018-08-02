@@ -15,6 +15,7 @@ import {ProgressbarService} from '../../shared/services/progressbar.service';
 })
 export class MainDashboardComponent implements OnInit, OnDestroy {
   /**Variable declartion*/
+  routerSubscription: Subscription;
   subscription: Subscription;
   userDetails: any = [];
   step1Data: any = {};
@@ -37,7 +38,9 @@ export class MainDashboardComponent implements OnInit, OnDestroy {
               private medicalEmergencyService: MedicalEmergencyService,
               private userService: UserService,
               private progressbarService: ProgressbarService,
-              private userAuth: UserAuthService) { }
+              private userAuth: UserAuthService) {
+
+              }
 
   /**When the component initialises*/
   ngOnInit() {
