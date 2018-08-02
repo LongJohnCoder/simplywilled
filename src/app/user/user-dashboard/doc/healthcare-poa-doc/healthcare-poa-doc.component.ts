@@ -368,6 +368,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     const resp = this.globalPDFService.getScrollThumbEvent(index, this.heightArr, this.docBox, this.thumbFilm);
     this.docBox.nativeElement.scrollTop = resp.scrollTop;
     this.thumbContainer.nativeElement.scrollLeft = resp.scrollLeft;
+    this.thumbIndex = index + 1;
   }
 
   getScroll(scrollVal: number, e: any) {

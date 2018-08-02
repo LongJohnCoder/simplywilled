@@ -185,7 +185,7 @@ export class GlobalPdfService {
     }
     return {
       'scrollLeft': scrollLeft,
-      'index': index + 1
+      'index': (index + 1)
     };
   }
 
