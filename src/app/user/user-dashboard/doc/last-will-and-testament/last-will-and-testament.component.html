@@ -328,7 +328,7 @@ accounts and social media<div class="pageLoader" *ngIf="loading">
               <p class="western"  style="margin-bottom: 0in; line-height: 100%; padding-left: 50px;" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.children > 1 && userDetails.tellUsAboutYou.deceased_children === '1'">
                 <span>
                   <span *ngFor="let dcName of deceasedChildrenNames" style="font-family:'EB Garamond, serif'"> 
-                    <span>{{dcName.toUpperCase()}}</span>
+                    <span>{{dcName | uppercase}}</span>
                     <br>
                   </span>
                 </span>  
@@ -932,8 +932,8 @@ accounts and social media<div class="pageLoader" *ngIf="loading">
                         </span>
                       </p>
                       
-                      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                        <br/>
+                      <p class="western" align="justify" style="margin-bottom: 0.23in; line-height: 100%">
+                        
       
                       </p>
                       <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="estateDistribute._mb !== null && estateDistribute._mb.isEstateIntoEqualShares !== 'Yes'">
@@ -1097,7 +1097,7 @@ accounts and social media<div class="pageLoader" *ngIf="loading">
                       <span *ngIf="userDetails !== undefined && userDetails.provideYourLovedOnes !== null && userDetails.provideYourLovedOnes.residue_to_partner_first === '1'">
                       <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span>
                         <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.marital_status === 'R'">
-                          <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> to my
+                          <span><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"> to my
                             partner, and if my partner predeceases me, then </span>
                         </span>
       
@@ -1123,7 +1123,7 @@ accounts and social media<div class="pageLoader" *ngIf="loading">
                       standard of care, maintenance, and comfort as I provided my pets
                       during my lifetime.  My pets now living are: </span>
                       </p>
-                      <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+                      <p class="western" style="margin-bottom: 0.20in; line-height: 100%">
       
                       </p>
                       
@@ -1150,8 +1150,8 @@ accounts and social media<div class="pageLoader" *ngIf="loading">
                       </span>
                       </p>
                       
-                      <p class="western"  style="margin-left: 0.5in; margin-bottom: 0in; line-height: 100%">
-                        <br/>
+                      <p class="western"  style="margin-left: 0.5in; margin-bottom: 0.20in; line-height: 100%">
+                        
       
                       </p>
                       <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
@@ -1215,11 +1215,9 @@ accounts and social media<div class="pageLoader" *ngIf="loading">
                       use his or her best discretion to select an appropriate caregiver to
                       accept and care for my pets.  </span>
                       </p>
-                      <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-      
-                      </p>
-                      <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%">
-                        <br/>
+                      
+                      <p class="western" align="justify" style="margin-bottom: 0.15in; line-height: 100%">
+                        
       
                       </p>
                       <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.leaveMoney === 1">
@@ -1240,11 +1238,9 @@ accounts and social media<div class="pageLoader" *ngIf="loading">
                           <span *ngIf="userDetails.estateDistribute.distribute_type == 2 && userDetails.toMultipleBeneficiary.minorBeneficiaryShareToBeHeldInTrust == 'Yes'">
                               <p class="western" align="justify" style="margin-bottom: 0in; line-height: 100%" *ngIf="userDetails !== undefined && userDetails.estateDistribute !== null && userDetails.estateDistribute.distribute_type === '2' && estateDistribute._mb !== null && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust !== undefined && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust === 'Yes'">
                                   <span style="font-family:'EB Garamond, serif'"></span>
-                                  <span *ngIf="userDetails.tellUsAboutYou.has_pet === 0 && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust === 'Yes'">
-                                <span ><span style="font-family:'EB Garamond, serif'">
-                                </span></span><span style="font-family:'EB Garamond, serif'"><b>F.</b></span></span>
+                                  
                                   <span *ngIf="userDetails.tellUsAboutYou.has_pet === 1 && estateDistribute._mb.minorBeneficiaryShareToBeHeldInTrust === 'Yes'">
-                                <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b>G.</b></span></span><span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">
+                                <span ><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"></span></span><span style="font-family:'EB Garamond, serif'"></span><span ><span style="font-family:'EB Garamond, serif'">
                                 </span></span><span style="font-family:'EB Garamond, serif'"></span><span style="font-family:'EB Garamond, serif'"><b><span class='divNumber'></span>. Distributions
                                 to Minor Beneficiaries. </b></span><span style="font-family:'EB Garamond, serif'">
                                 If any beneficiary provided for herein has not yet attained the age
