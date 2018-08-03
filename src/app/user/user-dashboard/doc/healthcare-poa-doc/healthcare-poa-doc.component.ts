@@ -168,6 +168,7 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
 
   pdfData: any;
   globalPDFSubscription: Subscription;
+  statesID: string;
 
   testVal = 2;
   /**Constructor call*/
@@ -383,6 +384,22 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
       (response: any ) => {
         // tslint:disable-next-line:max-line-length
         this.userDetails.firstname = response.data[0] !== null && response.data[0].data != null && response.data[0].data.userInfo !== null && response.data[0].data.userInfo.firstname !== null ? response.data[0].data.userInfo.firstname : '_____________';
+        // tslint:disable-next-line:max-line-length
+        this.statesID = response.data[0].data === null || response.data[0].data.userInfo.state === null || response.data[0].data.userInfo.state === undefined ? null : response.data[0].data.userInfo.state;
+        console.log('state id', this.statesID);
+        if (this.statesID === null || this.statesID === undefined) {
+          const confirmCheck = confirm('Please select state first');
+          if (confirmCheck === true) {
+            this.router.navigate(['/dashboard/will']);
+          } else {
+            this.router.navigate(['/dashboard']);
+          }
+        }
+        // console.log('this user=====>', response.data[0].data.userInfo.state);
+        // const stateId = response.data[0].data.userInfo.state;
+        // if (stateId === null || stateId === undefined) {
+        //   // alert('Please choose state first');
+        // }
       },
       (error: any) => {
         console.log(error);

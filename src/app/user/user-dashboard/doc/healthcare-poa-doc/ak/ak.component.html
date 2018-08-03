@@ -229,12 +229,12 @@
       style="font-size: 17pt"><b>FOR
       HEALTH CARE DECISIONS</b></span></p>
     <p align="center" style="margin-top: 0.08in; margin-bottom: 0.08in; line-height: 115%"></p>
-    <p style="font-family: Times New Roman, serif;margin-bottom: 0in; line-height: 115%"><span style="font-size: 11pt"><span style="font-size: 13pt"><b>(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DESIGNATION
+    <p style="font-family: Times New Roman, serif;margin-bottom: 0in; line-height: 115%; text-align: left;"><span style="font-size: 11pt"><span style="font-size: 13pt"><b>(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DESIGNATION
       OF AGENT.</b></span><b> </b>I designate my
       <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation !== 'Other'"> {{userDetails.healthFinance.relation | titlecase}},</span>
+      <span *ngIf="userDetails == undefined || userDetails.healthFinance === null">________________________(Relation),</span>
       <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation === 'Other'"> {{userDetails.healthFinance.relationOther | titlecase}},</span> 
-      <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.fullname | titlecase}}</span>
-      of <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address}} </span> (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.phone}} </span>), as my agent to make health care
+      <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.fullname | titlecase}}</span><span *ngIf="userDetails == undefined || userDetails.healthFinance === null">________________________(Agent)</span> of <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address}} </span><span *ngIf="userDetails == undefined || userDetails.healthFinance === null">_________________________(Address)</span> (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.phone}} </span><span *ngIf="userDetails == undefined || userDetails.healthFinance === null">________________________(Telephone)</span>), as my agent to make health care
       decisions for me. </span>
     </p>
     <br>

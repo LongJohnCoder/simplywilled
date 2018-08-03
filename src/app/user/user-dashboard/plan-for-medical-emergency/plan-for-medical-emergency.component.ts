@@ -150,7 +150,7 @@ export class PlanForMedicalEmergencyComponent implements OnInit {
                     this.medicalAgent.backupState = response.data.healthFinance.backupState !== null ? response.data.healthFinance.backupState : '';
                     this.medicalAgent.backupZip = response.data.healthFinance.backupZip;
                     this.medicalAgent.backupCountry = response.data.healthFinance.backupCountry === null ? 'United States' : response.data.healthFinance.backupCountry;
-                    this.medicalAgent.willInformBackup = response.data.healthFinance.willInformBackup;
+                    this.medicalAgent.willInformBackup = response.data.healthFinance.willInformBackup === null ? false : true;
                     this.medicalAgent.emailOfBackupAgent = response.data.healthFinance.emailOfBackupAgent;
                     this.medicalAgent.backupphone = response.data.healthFinance.backupphone;
 

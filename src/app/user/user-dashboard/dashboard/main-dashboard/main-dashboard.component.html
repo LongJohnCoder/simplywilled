@@ -11,7 +11,8 @@
 </div>
 
 <div class="main-content" *ngIf="!loading">
-  <h2>{{step1Data?.data?.userInfo?.fullname}}'s Dashboard</h2>
+  <h2 *ngIf="step1Data?.data?.userInfo?.fullname === null || step1Data?.data?.userInfo?.fullname === undefined">Yours Dashboard</h2>
+  <h2 *ngIf="step1Data?.data?.userInfo?.fullname !== null && step1Data?.data?.userInfo?.fullname !== undefined">{{step1Data?.data?.userInfo?.fullname | titlecase}}'s Dashboard</h2>
   <p><strong>Instructions:</strong> Complete our simple interview process to <br> protect your assets and provide for your loved ones.</p>
   <ul class="single_ul">
     <li>

@@ -6,6 +6,7 @@ import {UserAuthService} from '../../../user-auth/user-auth.service';
 import {Location} from '@angular/common';
 import {GlobalPdfService} from '../services/global-pdf.service';
 import { saveAs } from 'file-saver/FileSaver';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-financial-poa-doc',
@@ -72,6 +73,7 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   signingInstructionSubscription: Subscription;
   downloadSubscription: Subscription;
   printSubscription: Subscription;
+  statesID: string;
 
   constructor(
     private globalPDFService: GlobalPdfService,
@@ -80,7 +82,8 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     private progressbarService: ProgressbarService,
     private location: Location,
     private ref: ChangeDetectorRef,
-    private zone: NgZone
+    private zone: NgZone,
+    private router: Router,
   ) {
     // ref.detach();
     // setInterval(() => {
@@ -254,6 +257,17 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
       (response: any ) => {
         // tslint:disable-next-line:max-line-length
         this.userDetails.firstname = response.data[0] !== null && response.data[0].data != null && response.data[0].data.userInfo !== null && response.data[0].data.userInfo.firstname !== null ? response.data[0].data.userInfo.firstname : '_____________';
+        // tslint:disable-next-line:max-line-length
+        this.statesID = response.data[0].data === null || response.data[0].data.userInfo.state === null || response.data[0].data.userInfo.state === undefined ? null : response.data[0].data.userInfo.state;
+        console.log('state id', this.statesID);
+        if (this.statesID === null || this.statesID === undefined) {
+          const confirmCheck = confirm('Please select state first');
+          if (confirmCheck === true) {
+            this.router.navigate(['/dashboard/will']);
+          } else {
+            this.router.navigate(['/dashboard']);
+          }
+        }
       },
       (error: any) => {
         console.log(error);
