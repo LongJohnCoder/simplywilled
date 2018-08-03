@@ -39,7 +39,9 @@
 
         </ul>
           <div class='col-md-12 blogContainer' [innerHTML]="blogDetails.body"> </div>
+          <span class="col-md-12 blogContainer single_post"><a [routerLink]="['/register']"><img src="../../../../assets/images/advertise.jpg" alt="Coupon"></a></span>
       </div>
+        
       <h3 class="comments_text" *ngIf="blogDetails?.get_comments.length == 0">No Comments</h3>
       <div *ngIf="blogDetails?.get_comments.length != 0" class="blogCommentSec">
         <h2>Comments</h2>
