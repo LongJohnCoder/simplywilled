@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild, OnChanges, DoCheck, AfterViewChecked, ChangeDetectorRef} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild, OnChanges, DoCheck, AfterViewChecked, ChangeDetectorRef, NgZone} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {UserService} from '../../../user.service';
 import {ProgressbarService} from '../../shared/services/progressbar.service';
@@ -79,7 +79,8 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     private userAuth: UserAuthService,
     private progressbarService: ProgressbarService,
     private location: Location,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private zone: NgZone
   ) {
     // ref.detach();
     // setInterval(() => {
@@ -233,14 +234,18 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     const resp = this.globalPDFService.getScrollThumbEvent(index, this.heightArr, this.docBox, this.thumbFilm);
     this.docBox.nativeElement.scrollTop = resp.scrollTop;
     this.thumbContainer.nativeElement.scrollLeft = resp.scrollLeft;
-    this.thumbIndex = index + 1;
+    this.zone.run(() => {
+      this.thumbIndex = index + 1;
+    });
   }
 
   getScroll(scrollVal: number, e: any) {
     // tslint:disable-next-line:max-line-length
     const resp = this.globalPDFService.getScrollEvent(scrollVal, this.heightArr, this.docThumbImg, this.docBox, this.thumbFilm);
     this.thumbContainer.nativeElement.scrollLeft = resp.scrollLeft;
-    this.thumbIndex = resp.thumbIndex;
+    this.zone.run(() => {
+      this.thumbIndex = resp.thumbIndex;
+    });
   }
 
   /**Get the user details*/

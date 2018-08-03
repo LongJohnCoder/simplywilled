@@ -1,10 +1,10 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import * as html2canvas from "html2canvas";
+import {Component, OnDestroy, OnInit, ViewChild, NgZone} from '@angular/core';
+import * as html2canvas from 'html2canvas';
 // import * as jsPdf from 'jspdf';
-import {UserService} from "../../../user.service";
-import {Subscription} from "rxjs/Subscription";
-import {UserAuthService} from "../../../user-auth/user-auth.service";
-import {ProgressbarService} from "../../shared/services/progressbar.service";
+import {UserService} from '../../../user.service';
+import {Subscription} from 'rxjs/Subscription';
+import {UserAuthService} from '../../../user-auth/user-auth.service';
+import {ProgressbarService} from '../../shared/services/progressbar.service';
 import {Location} from '@angular/common';
 import {GlobalPdfService} from '../services/global-pdf.service';
 // import 'jspdf-autotable' as JA from 'jspdf-autotable';
@@ -59,7 +59,8 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
       private userAuth: UserAuthService,
       private progressbarService: ProgressbarService,
       private location: Location,
-      private globalPdfService: GlobalPdfService
+      private globalPdfService: GlobalPdfService,
+      private zone: NgZone
     ) {
     this.loggedInUser = this.userAuth.getUser();
     this.getUserDetails();
@@ -70,7 +71,9 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
           this.progressBar = {
             finalArrangements: progress.data !== null && progress.data.final_arrangements !== undefined && progress.data.final_arrangements,
             healthFinance: progress.data !== null && progress.data.health_finance !== undefined && progress.data.health_finance,
+            // tslint:disable-next-line:max-line-length
             protectYourFinance: progress.data !== null && progress.data.protect_your_finance !== undefined && progress.data.protect_your_finance,
+            // tslint:disable-next-line:max-line-length
             provideYourLovedOnes: progress.data !== null && progress.data.provide_your_loved_ones !== undefined && progress.data.provide_your_loved_ones,
             tellUsAboutYou: progress.data !== null && progress.data.tell_us_about_you !== undefined && progress.data.tell_us_about_you
           };
@@ -125,14 +128,17 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
 
   getScroll(scrollVal: number) {
     if (scrollVal >=  991) {
-      this.thumbIndex = scrollVal !== 0 ? Math.floor(scrollVal / 991) : 0;
+      this.zone.run(() => {
+        this.thumbIndex = scrollVal !== 0 ? Math.floor(scrollVal / 991) : 0;
+      });
     } else {
-      this.thumbIndex = 0;
+      this.zone.run(() => {
+        this.thumbIndex = 0;
+      });
     }
     if (this.thumbIndex >= 4) {
       this.thumbContainer.nativeElement.scrollLeft = this.thumbIndex * 31;
     }
-
   }
 
   changeTourState(type: string){
@@ -143,6 +149,7 @@ export class SigningInstructionsDocComponent implements OnInit, OnDestroy {
   getUserDetails() {
     this.getUserDetailsSubscription = this.userService.getUserDetails(this.loggedInUser.id).subscribe(
       (response: any ) => {
+        // tslint:disable-next-line:max-line-length
         this.userDetails.firstname = response.data[0] !== null && response.data[0].data != null && response.data[0].data.userInfo !== null && response.data[0].data.userInfo.firstname !== null ? response.data[0].data.userInfo.firstname : '_____________';
       },
       (error: any) => {

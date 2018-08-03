@@ -196,6 +196,7 @@ export class GlobalPdfService {
     }
     const totalScroll = Math.abs(docBox.nativeElement.offsetWidth - thumbFilm.nativeElement.offsetWidth);
     const resp = this.getScrollPosition(scrollVal, null, heightArr, totalScroll);
+    // console.log(resp);
     return {
       'scrollLeft': resp.scrollLeft,
       'thumbIndex': resp.index
