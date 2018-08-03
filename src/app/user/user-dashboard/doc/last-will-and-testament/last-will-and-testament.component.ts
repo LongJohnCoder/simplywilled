@@ -237,6 +237,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     for (let i = 0 ; i < this.heightArr.length ; i++) {
       this.docThumbImg.push('../../../../../assets/images/doc1-thumb2.png');
     }
+    this.liCount = this.docThumbImg.length * 114;
   }
 
   /**Sets the progress count**/

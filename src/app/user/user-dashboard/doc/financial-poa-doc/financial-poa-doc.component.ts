@@ -34,11 +34,6 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     '../../../../../assets/images/doc1-thumb2.png',
     '../../../../../assets/images/doc1-thumb2.png',
     '../../../../../assets/images/doc1-thumb2.png',
-    '../../../../../assets/images/doc1-thumb2.png',
-    '../../../../../assets/images/doc1-thumb2.png',
-    '../../../../../assets/images/doc1-thumb2.png',
-    '../../../../../assets/images/doc1-thumb2.png',
-    '../../../../../assets/images/doc1-thumb2.png',
     '../../../../../assets/images/doc1-thumb2.png'
   ];
   liCount: number;
