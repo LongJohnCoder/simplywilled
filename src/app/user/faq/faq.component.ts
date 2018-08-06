@@ -51,7 +51,7 @@ export class FaqComponent implements OnInit {
                 const ch = this;
                 setTimeout(function () {
                     ch.loader = false;
-                }, 2000);
+                }, 500);
 
             }
         );
