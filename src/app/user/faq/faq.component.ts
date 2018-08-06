@@ -18,6 +18,7 @@ export class FaqComponent implements OnInit {
     innerCounterSm: number; // a common counter used to index the faq data per categories -- for mobile
     searchParam: string;
     searchFaqQstn : string = '';
+    loader: boolean = false;
     filtrRes: any[];
     constructor(
         private faqService: FaqService,
@@ -26,10 +27,12 @@ export class FaqComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.loader = true;
         this.searchFaqQstn = this._route.snapshot.queryParamMap['params'].query;
         this.searchParam  = this.searchFaqQstn;
         console.log(this.searchParam);
         this.getFaqCategories();
+        this.loader = false;
     }
 
     /* *
@@ -47,6 +50,7 @@ export class FaqComponent implements OnInit {
                 // console.log('faq data',this.faqData);
             }
         );
+
         // console.log(this.faqDetails.values());
     }
 
