@@ -18,12 +18,15 @@ export class FaqComponent implements OnInit {
     innerCounterSm: number; // a common counter used to index the faq data per categories -- for mobile
     searchParam: string;
     searchFaqQstn : string = '';
+    loader: boolean = false;
     filtrRes: any[];
     constructor(
         private faqService: FaqService,
         private router: Router,
         private _route: ActivatedRoute,
-    ) { }
+    ) {
+        this.loader = true;
+    }
 
     ngOnInit() {
         this.searchFaqQstn = this._route.snapshot.queryParamMap['params'].query;
@@ -45,8 +48,14 @@ export class FaqComponent implements OnInit {
                 this.faqData      = data.data;
                 this.faqDetails   = this.getQuestions(this.faqData,0);
                 // console.log('faq data',this.faqData);
+                const ch = this;
+                setTimeout(function () {
+                    ch.loader = false;
+                }, 500);
+
             }
         );
+
         // console.log(this.faqDetails.values());
     }
 

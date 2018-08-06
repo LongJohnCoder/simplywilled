@@ -95,7 +95,7 @@
           <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
             <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
                 <div>Declaration and Durable Power of Attorney of</div> 
-                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+                <div>{{userDetails.tellUsAboutYou.fullname | titlecase}}</div>    
             </div>
             <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
                 <div>Declaration and Durable Power of Attorney of</div> 
@@ -191,7 +191,7 @@
           <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
             <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
                 <div>Declaration and Durable Power of Attorney of</div> 
-                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+                <div>{{userDetails.tellUsAboutYou.fullname | titlecase}}</div>    
             </div>
             <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
                 <div>Declaration and Durable Power of Attorney of</div> 
@@ -221,49 +221,19 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >Signature:
                 <u>_______________________________________</u></span></span></span></span></span></p>
-            <!--<p style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 115%">
-              <span color="#0000ff"><span >    <b>«</span>CLIENT
-                FIRST NAME<span >» «</span>CLIENT MIDDLE NAME<span >»
-                  «</span>CLIENT LAST NAME<span >»</span></b></span></p>-->
+            
             <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-            <!-- <p style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 115%">
-               <span color="#0000ff"><span >    <b>«</span>CLIENT
-                 FIRST NAME<span >» «</span>CLIENT MIDDLE NAME<span >»
-                   «</span>CLIENT LAST NAME<span >»</span></b></span></p>-->
+            
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.address !== null">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff">{{userDetails.tellUsAboutYou.address}}</span></span></span></span></p>
-            <!-- <p style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 115%">
-               <span color="#008000"><span >«</span>IF ANSWERED(
-                 Address2 )<span >»«</span><span color="#0000ff">Address2</span><span >»«</span>END
-                 IF<span >»</span></span></p>-->
+            
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null">{{userDetails.tellUsAboutYou.city | titlecase}} ,</span>
+              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null">{{userDetails.tellUsAboutYou.city | titlecase}}, </span>
               <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null">{{userDetails.tellUsAboutYou.state | titlecase }}</span></span></span></span></span></p>
             <p style="margin-bottom: 0in; line-height: 115%">
 
             </p>
-            <!--<p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >«<span color="#0000ff">Address1</span>»</span></span></span></span></span></p>
-            <p style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 115%">
-              <span color="#008000"><span >«</span>IF ANSWERED(
-                Address2 )<span >»«</span><span color="#0000ff">Address2</span><span >»«</span>END
-                IF<span >»</span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >«<span color="#0000ff">City</span>»,
-              «<span color="#0000ff">State</span>»</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; line-height: 115%">
-
-            </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >Date:
-              <u>_______________________________________</u></span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; line-height: 115%">
-
-            </p>
-            <p align="center" style="margin-bottom: 0.17in; line-height: 115%">
-
-
-            </p>-->
+            
             <p align="center" style="margin-bottom: 0.17in; line-height: 0.23in"><span  style="font-size: 13pt"><b>STATEMENT
               OF WITNESSES</b></span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
@@ -327,7 +297,7 @@
           <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
             <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
                 <div>Declaration and Durable Power of Attorney of</div> 
-                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+                <div>{{userDetails.tellUsAboutYou.fullname | titlecase}}</div>    
             </div>
             <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
                 <div>Declaration and Durable Power of Attorney of</div> 
@@ -352,24 +322,75 @@
 
             </p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >I,
-              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</span>
-              hereby designate and appoint my <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation !== 'Other'"> {{userDetails.healthFinance.relation | titlecase}},</span>
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation === 'Other'"> {{userDetails.healthFinance.relationOther | titlecase}},</span> </span> <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.fullname | titlecase}},</span>
-                of <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address}} </span> in <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.city | titlecase}},</span>
-                <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.state | titlecase}} </span>
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.zip}} </span> (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.phone}} </span>), as my true and lawful health care agent
+              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff">
+                <span >I,
+                  <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</span>
+                  <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">(fullname) ____________________,</span>
+                  hereby designate and appoint my 
+                  
+                  <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation !== 'Other'"> {{userDetails.healthFinance.relation.trim().length > 0 ? (userDetails.healthFinance.relation | titlecase) : '(relation) _________________'}},</span>
+                  <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation === 'Other'"> {{userDetails.healthFinance.relationOther.trim().length > 0 ? (userDetails.healthFinance.relationOther | titlecase) : '(relation) __________________'}},</span> 
+                  <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(relation) ____________________</span>
+                
+                </span> 
+              
+              
+              
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.fullname | titlecase}},</span>
+              <span *ngIf="userDetails === undefined || userDetails.healthFinance === null"> (fullname) _______________________,</span>
+
+              of 
+              
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address}} </span> 
+              <span *ngIf="userDetails === undefined || userDetails.healthFinance === null"> (address) ___________________________________,</span>
+
+              in 
+              
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.city | titlecase}},</span>
+              <span *ngIf="userDetails === undefined || userDetails.healthFinance === null"> (city) _______________,</span>
+
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.state | titlecase}} </span>
+              <span *ngIf="userDetails === undefined || userDetails.healthFinance === null"> (state) ______________</span>
+              
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.zip}} </span> 
+              <span *ngIf="userDetails === undefined || userDetails.healthFinance === null"> (zip) _______________</span>
+              
+              (Tel: 
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.phone}} </span>
+              <span *ngIf="userDetails === undefined || userDetails.healthFinance === null"> ___________________</span>
+              ), as my true and lawful health care agent
               and attorney-in-fact (hereinafter, my “agent”), to make decisions
               regarding my health care during periods when my health care provider
               has determined that I lack capacity to decide for myself.<span  *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.anyBackupAgent === 'true'">
               If my agent is not able, available,
-              or willing to make health care decisions for me, I appoint my <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation !== 'Other'"> {{userDetails.healthFinance.backupRelation | titlecase}},</span>
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation === 'Other'"> {{userDetails.healthFinance.backupRelationOther | titlecase}},</span>
+              or willing to make health care decisions for me, I appoint my 
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation !== 'Other'"> {{userDetails.healthFinance.backupRelation.trim().length > 0 ? (userDetails.healthFinance.backupRelation | titlecase) : '(relation) ________________'}},</span>
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation === 'Other'"> {{userDetails.healthFinance.backupRelationOther.trim().length > 0 ? (userDetails.healthFinance.backupRelationOther | titlecase) : '(relation) _________________'}},</span>
+              <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(relation) _____________________</span>
+              
+              
               <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupFullname | titlecase}},</span>
-              of  <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupAddress}}, </span> in
+              <span *ngIf="userDetails === undefined || userDetails.healthFinance === null"> (fullname) _______________________</span>
+              of  
+              
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupAddress}}, </span> 
+              <span *ngIf="userDetails === undefined || userDetails.healthFinance === null"> (address) _______________________</span>
+              
+              in
+              
               <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupCity | titlecase}},</span>
+              <span *ngIf="userDetails === undefined || userDetails.healthFinance === null"> (city) _______________________</span>
+
               <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupState | titlecase}} </span>
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupZip}} </span> (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupphone}} </span>), as my successor agent, with all of the
+              <span *ngIf="userDetails === undefined || userDetails.healthFinance === null"> (state) _______________________</span>
+
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupZip}} </span> 
+              <span *ngIf="userDetails === undefined || userDetails.healthFinance === null"> (zip) _______________________</span>
+
+              (Tel: 
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.backupphone}} </span>
+              <span *ngIf="userDetails === undefined || userDetails.healthFinance === null"> _______________________</span>
+              ), as my successor agent, with all of the
               rights and powers and authority herein stated. </span></span></span></span></span>
             </p>
             <p style="margin-bottom: 0in; line-height: 115%">
@@ -448,7 +469,7 @@
           <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
             <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
                 <div>Declaration and Durable Power of Attorney of</div> 
-                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+                <div>{{userDetails.tellUsAboutYou.fullname | titlecase}}</div>    
             </div>
             <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
                 <div>Declaration and Durable Power of Attorney of</div> 
@@ -529,7 +550,7 @@
           <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
             <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
                 <div>Declaration and Durable Power of Attorney of</div> 
-                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+                <div>{{userDetails.tellUsAboutYou.fullname | titlecase}}</div>    
             </div>
             <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
                 <div>Declaration and Durable Power of Attorney of</div> 
@@ -561,18 +582,12 @@
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >Signature:
               <u>_______________________________________</u></span></span></span></span></span></p>
               <p style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 115%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </p>
-           <!-- <p style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 115%">
-              <span color="#0000ff"><span >    <b>«</span>CLIENT
-                FIRST NAME<span >» «</span>CLIENT MIDDLE NAME<span >»
-                  «</span>CLIENT LAST NAME<span >»</span></b></span></p>-->
+           
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.address !== null">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff">{{userDetails.tellUsAboutYou.address}}</span></span></span></span></p>
-           <!-- <p style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 115%">
-              <span color="#008000"><span >«</span>IF ANSWERED(
-                Address2 )<span >»«</span><span color="#0000ff">Address2</span><span >»«</span>END
-                IF<span >»</span></span></p>-->
+           
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null">{{userDetails.tellUsAboutYou.city | titlecase}} ,</span>
+              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null">{{userDetails.tellUsAboutYou.city | titlecase}}, </span>
               <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null">{{userDetails.tellUsAboutYou.state | titlecase}}</span></span></span></span></span></p>
             <p style="margin-bottom: 0in; line-height: 115%">
 
@@ -608,7 +623,7 @@
               
               <span>
                   <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}}. </span>
-                  <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________.</span>
+                  <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">(fullname) _______________________.</span>
               </span> The individual personally appeared before
               me and signed above or acknowledged the signature above as his or her
               own on the ____ day of ____________, ________. I declare under
@@ -640,7 +655,7 @@
           <div style="text-align: center; padding-top: 5px; border-top: 1px solid #000; font-size: 12px; font-family: Times New Roman, serif; margin-top: 20px;">
             <div *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">
                 <div>Declaration and Durable Power of Attorney of</div> 
-                <div>{{userDetails.tellUsAboutYou.fullname}}</div>    
+                <div>{{userDetails.tellUsAboutYou.fullname | titlecase}}</div>    
             </div>
             <div *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">
                 <div>Declaration and Durable Power of Attorney of</div> 
@@ -662,7 +677,10 @@
               <span  style="font-size: 13pt"><b>STATEMENT OF WITNESSES</b></span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >We
-              the undersigned, do hereby certify that the Declarant, <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}}, </span> subscribed this
+              the undersigned, do hereby certify that the Declarant, 
+              <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}}, </span> 
+              <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null"> (fullname) _______________________</span>
+              subscribed this
               Durable Power of Attorney for Health Care in our presence, and we, at
               his/her request, in his/her presence, and in the presence of each
               other, signed as attesting witnesses, and we do further certify that

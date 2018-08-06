@@ -30,9 +30,7 @@
         <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null"  >{{userDetails.tellUsAboutYou.state}} </span>&nbsp;
         <span style="text-transform: capitalize" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null"  >(state)_____________________ </span>
 
-        <!--<span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.zip !== null"  >{{userDetails.tellUsAboutYou.zip}} </span>&nbsp;-->
-        <!--<span style="text-transform: capitalize" *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null"  >(zip)_____________________ </span>-->
-
+        
         willfully and voluntarily
         make known my wishes in the event that I am incapable of making an
         informed decision about my health care, as follows:</p>
@@ -49,13 +47,13 @@
         <span ><span><span><span>I
         hereby appoint my </span></span>
         <span>
-            <span  *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther | titlecase}}</span>
-            <span  *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation | titlecase}}</span>
-            <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(relation)______________,</span>
+            <span  *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther.trim().length > 0 ? (userDetails.healthFinance.relationOther | titlecase) : '(relation) _______________'}}</span>
+            <span  *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation.trim().length > 0 ? (userDetails.healthFinance.relation | titlecase) : '(relation) _________________'}}</span>
+            <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(relation) ________________,</span>
         </span>
 
         <span>
-            <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.fullname.length > 0"  >{{userDetails.healthFinance.fullname}},</span>
+            <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.fullname.length > 0">{{userDetails.healthFinance.fullname}},</span>
             <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(fullname)_____________________________,</span>
         </span>
 
@@ -112,11 +110,11 @@
                 agent my </span><span><span></span></span>
 
                 <span>
-                    <span   *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation == 'Other'">{{userDetails.healthFinance.backupRelationOther | titlecase}},</span>
+                    <span   *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation == 'Other'">{{userDetails.healthFinance.backupRelationOther.trim().length > 0 ? (userDetails.healthFinance.backupRelationOther | titlecase) : '(relation) _________________'}},</span>
 
-                    <span   *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation != 'Other'">{{userDetails.healthFinance.backupRelation | titlecase}},</span>
+                    <span   *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation != 'Other'">{{userDetails.healthFinance.backupRelation.trim().length > 0 ? (userDetails.healthFinance.backupRelation | titlecase) : '(relation) ________________'}},</span>
 
-                    <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(relation)______________,</span>
+                    <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(relation) ________________,</span>
                 </span>
 
                 <span>
@@ -124,7 +122,9 @@
                     <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(fullname)_____________________________,</span>
                 </span>
 
-                <span><span> of </span></span>
+                <span>
+                  <span> of </span>
+                </span>
 
                 <span>
                     <span   *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupAddress !== null">{{userDetails.healthFinance.backupAddress}}, </span>
@@ -132,9 +132,6 @@
                       _______________________________________________________________________________,
                     </span>
                 </span>
-
-                <span><span>
-                </span></span>
 
                 <span></span><span >
                     <span   *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupCity !== null">{{userDetails.healthFinance.backupCity}}, </span>

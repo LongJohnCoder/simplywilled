@@ -1,7 +1,7 @@
+import { Component, OnDestroy, OnInit, ViewChild, DoCheck, AfterContentInit, NgZone, ChangeDetectorRef } from '@angular/core';
 import { saveAs } from 'file-saver/FileSaver';
 import { Router } from '@angular/router';
 // tslint:disable-next-line:max-line-length
-import { Component, OnDestroy, OnInit, ViewChild, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 import { GlobalPdfService } from '../services/global-pdf.service';
 import { Subscription } from 'rxjs/Subscription';
 import { UserService } from '../../../user.service';
@@ -168,7 +168,9 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
 
   pdfData: any;
   globalPDFSubscription: Subscription;
+  statesID: string;
 
+  testVal = 2;
   /**Constructor call*/
   constructor(
     private globalPDFService: GlobalPdfService,
@@ -177,13 +179,16 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     private progressbarService: ProgressbarService,
     private location: Location,
     private router: Router,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private zone: NgZone
   ) {
     console.log('mode : ', environment.production);
-    // ref.detach();
-    // setInterval(() => {
-    //   this.ref.detectChanges();
-    // }, 2000);
+
+
+    setTimeout(() => {
+      this.testVal = this.testVal + 1;
+    }, 4000);
+
     this.loggedInUser = this.userAuth.getUser();
     this.getUserDetails();
     const token = this.parseToken();
@@ -247,33 +252,6 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
     this.initialize();
   }
 
-  // tslint:disable-next-line:use-life-cycle-interface
-  ngDoCheck() {
-    // console.log('called - ngDoCheck - hcpoa');
-    // this.initialize();
-  }
-
-  // tslint:disable-next-line:use-life-cycle-interface
-  ngAfterContentInit() {
-    // console.log('called - ngAfterContentInit - hcpoa');
-  }
-
-  // tslint:disable-next-line:use-life-cycle-interface
-  ngAfterContentChecked() {
-    // console.log('called - ngAfterContentChecked - hcpoa');
-    // this.initialize();
-  }
-
-  // tslint:disable-next-line:use-life-cycle-interface
-  ngAfterViewInit() {
-    // console.log('called - ngAfterViewInit - hcpoa');
-    // this.initialize();
-  }
-
-  // tslint:disable-next-line:use-life-cycle-interface
-  ngAfterViewChecked() {
-    // console.log('called - ngAfterViewInit - hcpoa');
-  }
 
   initialize() {
     console.log('calling initialize');
@@ -365,17 +343,23 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
   }
 
   scrollDoc(index: number, e: any) {
+    // console.log('index: ', index);
     const resp = this.globalPDFService.getScrollThumbEvent(index, this.heightArr, this.docBox, this.thumbFilm);
     this.docBox.nativeElement.scrollTop = resp.scrollTop;
     this.thumbContainer.nativeElement.scrollLeft = resp.scrollLeft;
-    this.thumbIndex = index + 1;
+    this.zone.run(() => {
+      this.thumbIndex = index + 1;
+    });
   }
 
   getScroll(scrollVal: number, e: any) {
     // tslint:disable-next-line:max-line-length
     const resp = this.globalPDFService.getScrollEvent(scrollVal, this.heightArr, this.docThumbImg, this.docBox, this.thumbFilm);
     this.thumbContainer.nativeElement.scrollLeft = resp.scrollLeft;
-    this.thumbIndex = resp.thumbIndex;
+    // console.log('resp.thumbIndex = ', this.thumbIndex);
+    this.zone.run(() => {
+      this.thumbIndex = resp.thumbIndex;
+    });
   }
 
   debounce(fn, delay) {
@@ -400,6 +384,22 @@ export class HealthcarePoaDocComponent implements OnInit, OnDestroy {
       (response: any ) => {
         // tslint:disable-next-line:max-line-length
         this.userDetails.firstname = response.data[0] !== null && response.data[0].data != null && response.data[0].data.userInfo !== null && response.data[0].data.userInfo.firstname !== null ? response.data[0].data.userInfo.firstname : '_____________';
+        // tslint:disable-next-line:max-line-length
+        this.statesID = response.data[0].data === null || response.data[0].data.userInfo.state === null || response.data[0].data.userInfo.state === undefined ? null : response.data[0].data.userInfo.state;
+        console.log('state id', this.statesID);
+        if (this.statesID === null || this.statesID === undefined) {
+          const confirmCheck = confirm('Please select state first');
+          if (confirmCheck === true) {
+            this.router.navigate(['/dashboard/will']);
+          } else {
+            this.router.navigate(['/dashboard']);
+          }
+        }
+        // console.log('this user=====>', response.data[0].data.userInfo.state);
+        // const stateId = response.data[0].data.userInfo.state;
+        // if (stateId === null || stateId === undefined) {
+        //   // alert('Please choose state first');
+        // }
       },
       (error: any) => {
         console.log(error);

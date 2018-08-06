@@ -158,7 +158,7 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
       'gift_to': new FormControl(data === null ? '' : data.gift_to , [Validators.required]),
       'organization_name': new FormControl(data === null ? '' : data.organization_name),
       'organization_address': new FormControl(data === null ? '' : data.organization_address),
-      'multiple_beneficiaries': this._fb.array([this.createMultipleBeneficiaryForm()]),
+      'multiple_beneficiaries': this._fb.array([this.createMultipleBeneficiaryForm(), this.createMultipleBeneficiaryForm()]),
       'beneficiary': new FormControl(data === null ? '' : data.beneficiary),
       'beneficiary_legal_name': new FormControl(data === null ? '' : data.beneficiary_legal_name),
       'beneficiary_legal_relation': new FormControl(data === null ? '' : (data.beneficiary_legal_relation === null ? '' : data.beneficiary_legal_relation)),
@@ -175,7 +175,7 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
   /**Initialises the multiple beneficiary forms*/
   createMultipleBeneficiaryForm() {
     return this._fb.group({
-      'multiple_beneficiary_name': new FormControl( '', [Validators.required]),
+      'multiple_beneficiary_name': new FormControl( '', [Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]),
       'multiple_beneficiary_relationship': new FormControl('', [Validators.required]),
     });
   }
@@ -497,7 +497,10 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
   checkValidation(formArray) {
     console.log(formArray);
     for (let item of formArray) {
-      if (item.controls['multiple_beneficiary_name'].hasError('required') || item.controls['multiple_beneficiary_relationship'].hasError('required')) {
+      if (item.controls['multiple_beneficiary_name'].hasError('required') ||
+          item.controls['multiple_beneficiary_relationship'].hasError('required') ||
+          item.controls['multiple_beneficiary_name'].hasError('pattern')
+      ) {
         this.flags.setValidationFlag = true;
         break;
       }
@@ -526,7 +529,7 @@ export class BusinessInterestComponent implements OnInit, OnDestroy {
   /**Set validation for form array*/
   setValidation(formArray) {
     for (let item of formArray) {
-      item.controls['multiple_beneficiary_name'].setValidators([Validators.required]);
+      item.controls['multiple_beneficiary_name'].setValidators([Validators.required, Validators.pattern(/\s+(?=\S{2})/ )]);
       item.controls['multiple_beneficiary_relationship'].setValidators([Validators.required]);
       item.controls['multiple_beneficiary_name'].updateValueAndValidity();
       item.controls['multiple_beneficiary_relationship'].updateValueAndValidity();

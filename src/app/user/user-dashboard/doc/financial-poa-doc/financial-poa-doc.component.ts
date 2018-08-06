@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild, OnChanges, DoCheck, AfterViewChecked, ChangeDetectorRef} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild, OnChanges, DoCheck, AfterViewChecked, ChangeDetectorRef, NgZone} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {UserService} from '../../../user.service';
 import {ProgressbarService} from '../../shared/services/progressbar.service';
@@ -6,6 +6,7 @@ import {UserAuthService} from '../../../user-auth/user-auth.service';
 import {Location} from '@angular/common';
 import {GlobalPdfService} from '../services/global-pdf.service';
 import { saveAs } from 'file-saver/FileSaver';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-financial-poa-doc',
@@ -30,11 +31,6 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     firstname: ''
   };
   docThumbImg = [
-    '../../../../../assets/images/doc1-thumb2.png',
-    '../../../../../assets/images/doc1-thumb2.png',
-    '../../../../../assets/images/doc1-thumb2.png',
-    '../../../../../assets/images/doc1-thumb2.png',
-    '../../../../../assets/images/doc1-thumb2.png',
     '../../../../../assets/images/doc1-thumb2.png',
     '../../../../../assets/images/doc1-thumb2.png',
     '../../../../../assets/images/doc1-thumb2.png',
@@ -72,6 +68,7 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
   signingInstructionSubscription: Subscription;
   downloadSubscription: Subscription;
   printSubscription: Subscription;
+  statesID: string;
 
   constructor(
     private globalPDFService: GlobalPdfService,
@@ -79,7 +76,9 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     private userAuth: UserAuthService,
     private progressbarService: ProgressbarService,
     private location: Location,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private zone: NgZone,
+    private router: Router,
   ) {
     // ref.detach();
     // setInterval(() => {
@@ -233,14 +232,18 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
     const resp = this.globalPDFService.getScrollThumbEvent(index, this.heightArr, this.docBox, this.thumbFilm);
     this.docBox.nativeElement.scrollTop = resp.scrollTop;
     this.thumbContainer.nativeElement.scrollLeft = resp.scrollLeft;
-    this.thumbIndex = index + 1;
+    this.zone.run(() => {
+      this.thumbIndex = index + 1;
+    });
   }
 
   getScroll(scrollVal: number, e: any) {
     // tslint:disable-next-line:max-line-length
     const resp = this.globalPDFService.getScrollEvent(scrollVal, this.heightArr, this.docThumbImg, this.docBox, this.thumbFilm);
     this.thumbContainer.nativeElement.scrollLeft = resp.scrollLeft;
-    this.thumbIndex = resp.thumbIndex;
+    this.zone.run(() => {
+      this.thumbIndex = resp.thumbIndex;
+    });
   }
 
   /**Get the user details*/
@@ -249,6 +252,17 @@ export class FinancialPoaDocComponent implements OnInit, OnDestroy {
       (response: any ) => {
         // tslint:disable-next-line:max-line-length
         this.userDetails.firstname = response.data[0] !== null && response.data[0].data != null && response.data[0].data.userInfo !== null && response.data[0].data.userInfo.firstname !== null ? response.data[0].data.userInfo.firstname : '_____________';
+        // tslint:disable-next-line:max-line-length
+        this.statesID = response.data[0].data === null || response.data[0].data.userInfo.state === null || response.data[0].data.userInfo.state === undefined ? null : response.data[0].data.userInfo.state;
+        console.log('state id', this.statesID);
+        if (this.statesID === null || this.statesID === undefined) {
+          const confirmCheck = confirm('Please select state first');
+          if (confirmCheck === true) {
+            this.router.navigate(['/dashboard/will']);
+          } else {
+            this.router.navigate(['/dashboard']);
+          }
+        }
       },
       (error: any) => {
         console.log(error);

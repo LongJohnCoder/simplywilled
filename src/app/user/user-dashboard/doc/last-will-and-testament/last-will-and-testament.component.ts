@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild, DoCheck} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild, DoCheck, NgZone} from '@angular/core';
 import * as html2canvas from 'html2canvas';
 import {UserService} from '../../../user.service';
 import {Subscription} from 'rxjs/Subscription';
@@ -42,16 +42,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
   deceasedChildrenNames = '';
   docThumbImg: Array<any> = [
     '../../../../../assets/images/doc1-thumb1.png',
-    '../../../../../assets/images/doc1-thumb2.png',
-    '../../../../../assets/images/doc1-thumb1.png',
-    '../../../../../assets/images/doc1-thumb2.png',
-    '../../../../../assets/images/doc1-thumb1.png',
-    '../../../../../assets/images/doc1-thumb2.png',
-    '../../../../../assets/images/doc1-thumb1.png',
-    '../../../../../assets/images/doc1-thumb2.png',
-    '../../../../../assets/images/doc1-thumb1.png',
-    '../../../../../assets/images/doc1-thumb2.png',
-    '../../../../../assets/images/doc1-thumb1.png',
+    '../../../../../assets/images/doc1-thumb2.png'
   ];
   liCount: number;
   progressBar = {
@@ -110,7 +101,8 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
       private userService: UserService,
       private userAuth: UserAuthService,
       private progressbarService: ProgressbarService,
-      private location: Location
+      private location: Location,
+      private zone: NgZone
     ) {
     this.tourSub = this.userService.stepNumForTourGuide.subscribe(value => {
       this.stepNumber = value;
@@ -196,7 +188,7 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
 
             for (let i = 0; i < Math.ceil(this.giftStatements.otherpages.length / 5); i++) {
               this.giftStatements.pageLength.push(i);
-              this.docThumbImg.push( '../../../../../assets/images/doc1-thumb1.png');
+              // this.docThumbImg.push( '../../../../../assets/images/doc1-thumb1.png');
             }
             this.liCount = this.docThumbImg.length * 114;
              // console.log(this.giftStatements);
@@ -241,6 +233,11 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     const x = this.globalPDFService.getDynamicPages();
     this.totalPages = x.totalPages;
     this.heightArr = x.heightArr;
+    this.docThumbImg = [];
+    for (let i = 0 ; i < this.heightArr.length ; i++) {
+      this.docThumbImg.push('../../../../../assets/images/doc1-thumb2.png');
+    }
+    this.liCount = this.docThumbImg.length * 114;
   }
 
   /**Sets the progress count**/
@@ -266,11 +263,11 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.docScrolled = 0;
-    this.thumbIndex = 0;
+    this.thumbIndex = 1;
     // this.liCount = this.docThumbImg.length * 114;
   }
 
-  changeTourState(type: string){
+  changeTourState(type: string) {
     this.userService.changeStepNumber(type);
   }
 
@@ -278,14 +275,18 @@ export class LastWillAndTestamentComponent implements OnInit, OnDestroy {
     const resp = this.globalPDFService.getScrollThumbEvent(index, this.heightArr, this.docBox, this.thumbFilm);
     this.docBox.nativeElement.scrollTop = resp.scrollTop;
     this.thumbContainer.nativeElement.scrollLeft = resp.scrollLeft;
-    this.thumbIndex = index + 1;
+    this.zone.run(() => {
+      this.thumbIndex = index + 1;
+    });
   }
 
   getScroll(scrollVal: number, e: any) {
     // tslint:disable-next-line:max-line-length
     const resp = this.globalPDFService.getScrollEvent(scrollVal, this.heightArr, this.docThumbImg, this.docBox, this.thumbFilm);
     this.thumbContainer.nativeElement.scrollLeft = resp.scrollLeft;
-    this.thumbIndex = resp.thumbIndex;
+    this.zone.run(() => {
+      this.thumbIndex = resp.thumbIndex;
+    });
   }
 
   /**Get the user details*/

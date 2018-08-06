@@ -27,8 +27,7 @@
               <span style="font-size: 13pt"><b>Section 1. LIVING WILL</b></span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span style="font-size: 12pt"><span style="background: #ffffff"><span style="padding-left: 30px;">I,
-                <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</span>
-                being of sound mind and at least 19 years old, would like to make the
+                <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</span> being of sound mind and at least 19 years old, would like to make the
                 following wishes known. I direct that my family, my doctors and
                 health care workers, and all others follow the directions I am
                 writing down. I know that at any time I can change my mind about
@@ -254,13 +253,15 @@
             <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">
 
             </p>
-            <p align="justify" style="margin-bottom: 0in; line-height: 0.2in"><span color="#0000ff"><span color="#000000">I
+            <p style="margin-bottom: 0in; line-height: 0.2in; text-align: left;"><span color="#0000ff"><span color="#000000">I
               hereby appoint my
               <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation !== 'Other'"> {{userDetails.healthFinance.relation | titlecase}},</span>
+              <span *ngIf="userDetails == undefined || userDetails.healthFinance === null"> _______________________________(Relationship),</span> <span *ngIf="userDetails == undefined || userDetails.healthFinance === null">_______________________________(Agent),</span>
               <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation === 'Other'"> {{userDetails.healthFinance.relationOther | titlecase}},</span> <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null">{{userDetails.healthFinance.fullname  | titlecase}},</span> of
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address}} </span>in<span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.city | titlecase}},</span>
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.state | titlecase}}</span>
-              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.zip}}</span>   (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.phone}} </span>), as my proxy to make medical or
+              <span *ngIf="userDetails == undefined || userDetails.healthFinance === null">____________________(Address),</span>
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.address}} </span>in<span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.city | titlecase}},</span><span *ngIf="userDetails == undefined || userDetails.healthFinance === null"> _______________________________(City),</span>
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.state | titlecase}}</span><span *ngIf="userDetails == undefined || userDetails.healthFinance === null">_______________________________(State),</span>
+              <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.zip}}</span> (Tel: <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null"> {{userDetails.healthFinance.phone}} </span><span *ngIf="userDetails == undefined || userDetails.healthFinance === null"> _______________________________(Telephone)</span>), as my proxy to make medical or
                 other health care decisions for me. </span></span>
             </p>
             <p align="justify" style="margin-bottom: 0in; line-height: 0.2in">

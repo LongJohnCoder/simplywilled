@@ -362,7 +362,7 @@
                     {{userDetails.tellUsAboutYou.fullname.toUpperCase()}}
                 </b>
               </span>
-              <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="font-family: 'Times New Roman', serif">
+              <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null" style="font-family: 'Times New Roman', serif">
                   ______________________________________
                 </span>
             </span>
@@ -400,7 +400,7 @@
             <span style="font-family: 'Times New Roman', serif"><span  style=""></span></span>
             
             <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0" style="font:font-family;"><b>{{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</b></span>
-            <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null && (userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname.length == 0)" style="font:font-family;"><b>________________________,</b></span>
+            <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null && (userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname.length == 0)" style="font:font-family;"><b>________________________,</b></span>
 
             <span style="font-family: 'Times New Roman', serif"><span  style="">
             </span></span>
@@ -525,7 +525,7 @@
           
           <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
               <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0" style="font:font-family;"><b>{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</b></span>
-              <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null" style="font:font-family;"><b>________________________</b></span>
+              <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null" style="font:font-family;"><b>________________________</b></span>
           </p>
           
           <p align="justify" style="margin-bottom: 0in; ">
@@ -541,7 +541,7 @@
           declare to that officer on our oaths that </span><span ><span style="font-family: 'Times New Roman', serif"></span></span>
           
           <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0" style="font:font-family;"><b>{{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</b></span>
-          <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null && (userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname.length == 0)" style="font:font-family;"><b>________________________,</b></span>
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null && (userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname.length == 0)" style="font:font-family;"><b>________________________,</b></span>
 
           
           <span style="font-family: 'Times New Roman', serif">
@@ -597,7 +597,7 @@
           </p>
           <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style="">Acknowledged
           and subscribed before me by <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0"  >{{userDetails.tellUsAboutYou.fullname | uppercase}},</span>
-          <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null"  >__________________________,</span>
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null"  >__________________________,</span>
           the principal, who is personally known to me or who has produced
           satisfactory photo identification, to wit:
           ________________________________, and sworn to and subscribed before
@@ -664,7 +664,7 @@
           </span></span></span></span><span style="font-family: 'Times New Roman', serif"></span>
           
           <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0" style="font:font-family;"><b>{{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</b></span>
-          <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null && (userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname.length == 0)" style="font:font-family;"><b>________________________,</b></span>
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null && (userDetails.tellUsAboutYou.fullname === null || userDetails.tellUsAboutYou.fullname.length == 0)" style="font:font-family;"><b>________________________,</b></span>
 
             
             <span face="Times, serif"><span  style=""><span style="font-family: 'Times New Roman', serif"><span  ></span></span></span></span><span style="letter-spacing: 0.3pt"><span style="font-family: 'Times New Roman', serif">
@@ -800,7 +800,7 @@
           personally witnessed </span>
           
           <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</span>
-          <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">___________________________,</span>
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">___________________________,</span>
           
           <span style="font-family: 'Times New Roman', serif"></span><span style="letter-spacing: 0.1pt"><span style="font-family: 'Times New Roman', serif">
           the declarant, </span></span><span style="font-family: 'Times New Roman', serif">sign
@@ -911,7 +911,7 @@
           <span style="font-family: 'Times New Roman', serif">I, </span><span style="font-family: 'Times New Roman', serif"></span>
           
           <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</span>
-          <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">___________________________,</span>
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">___________________________,</span>
           
           <span style="font-family: 'Times New Roman', serif"></span>
           
@@ -925,7 +925,7 @@
           <p align="justify" style="margin-bottom: 0in; "><span style="font-family: 'Times New Roman', serif"><span  style=""><span  >	</span><span  >______________________________________</span></span></span></p>
           <p align="justify" style="margin-bottom: 0.08in;  orphans: 0; widows: 0">
               <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}}</span>
-              <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">___________________________</span>             
+              <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">___________________________</span>             
           </p>
           <p align="justify" style="margin-bottom: 0in; ">
           
@@ -943,7 +943,7 @@
           declare to that officer on our oaths that </span><span style="font-family: 'Times New Roman', serif"></span>
           
           <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</span>
-          <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">___________________________</span>         
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">___________________________</span>         
           
           <span style="font-family: 'Times New Roman', serif"></span><span style="font-family: 'Times New Roman', serif">
           the declarant, signed this Declaration in our presence, and that we
@@ -998,7 +998,7 @@
           and subscribed before me by </span></span><span ><span style="font-family: 'Times New Roman', serif"><span  style=""></span></span></span>
           
           <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname.length > 0">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</span>
-          <span *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">___________________________</span>         
+          <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">___________________________</span>         
           
           
           

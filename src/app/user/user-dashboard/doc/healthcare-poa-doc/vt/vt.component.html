@@ -197,11 +197,9 @@
         </p>
         <p class="western"  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
             <span> Relation: </span>
-
-            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther | titlecase}}</span>
-          <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation | titlecase}}</span>
-          <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(relation)______________</span>
-        
+            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther.trim().length > 0 ? (userDetails.healthFinance.relationOther | titlecase) : ' ______________'}}</span>
+            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation.trim().length > 0 ? (userDetails.healthFinance.relation | titlecase) : '__________________'}}</span>
+            <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">________________</span>
         </p>
         <p class="western"  style="margin-left: 0.38in; margin-bottom: 0in; line-height: 100%">
           <span >Phone #: </span>
