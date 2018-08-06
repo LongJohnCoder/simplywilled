@@ -24,7 +24,9 @@ export class FaqComponent implements OnInit {
         private faqService: FaqService,
         private router: Router,
         private _route: ActivatedRoute,
-    ) { }
+    ) {
+        this.loader = true;
+    }
 
     ngOnInit() {
         this.searchFaqQstn = this._route.snapshot.queryParamMap['params'].query;
@@ -43,7 +45,6 @@ export class FaqComponent implements OnInit {
           });
         this.faqService.getFaqCategories(this.searchFaqQstn).subscribe(
             (data: any) => {
-                this.loader = true;
                 this.faqData      = data.data;
                 this.faqDetails   = this.getQuestions(this.faqData,0);
                 // console.log('faq data',this.faqData);
