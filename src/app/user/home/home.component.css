@@ -48,6 +48,10 @@
     width: 100%;
 }
 
+.index_banner p{
+  padding-bottom: 20px;
+}
+
 @media screen and (max-width:1200px){
     .get_start_pkg_btn{
         width: 202px;

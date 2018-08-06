@@ -82,6 +82,14 @@
 .btn-complete.false{
   filter: grayscale(100%);
 }
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .main-content{
+    max-width: 857px;
+    width: auto;
+  }
+}
+
 @media screen and (min-width: 992px) and (max-width: 1199px){
     .common-button {
         font-size: 12px;
@@ -89,6 +97,13 @@
     .btn-dashboard {
         padding: 10px 0 10px 30px;
     }
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  @media screen and (max-width: 1199px){
+    .main-content{
+      max-width: 720px;
+    }
+  }
 }
 @media screen and (max-width: 991px){
     .sidebar h1 {
@@ -107,6 +122,13 @@
     .tell_us_about_left {
         width: 100%;
     }
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  @media screen and (max-width: 991px){
+    .main-content{
+      max-width: 480px;
+    }
+  }
 }
 @media screen and (max-width: 767px){
     .logo {
