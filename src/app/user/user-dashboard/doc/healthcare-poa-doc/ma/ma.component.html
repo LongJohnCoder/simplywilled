@@ -18,8 +18,8 @@
             <b style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null">{{userDetails.tellUsAboutYou.fullname.toUpperCase()}},</b><b *ngIf="userDetails === undefined && userDetails.tellUsAboutYou === null">(fullname)________________________________,</b>
         </span>
         <span color="#000000"> hereby appoint my </span>
-        <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther.trim().length() > 0 ? (userDetails.healthFinance.relationOther | titlecase) : '(relation) _______________'}},</span>
-        <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation.trim().length() > 0 ? (userDetails.healthFinance.relation | titlecase) : '(relation) _______________'}},</span>
+        <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther.trim().length > 0 ? (userDetails.healthFinance.relationOther | titlecase) : '(relation) _______________'}},</span>
+        <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation.trim().length > 0 ? (userDetails.healthFinance.relation | titlecase) : '(relation) _______________'}},</span>
         <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(relation) ______________,</span>
         
         <span color="#000000"></span>

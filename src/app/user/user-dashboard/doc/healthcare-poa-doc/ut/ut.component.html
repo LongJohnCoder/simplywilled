@@ -148,9 +148,9 @@
         </span>
         
         <span>
-            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther | titlecase}}</span>
-            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation}}</span>
-            <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">______________</span>
+            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther.trim().length > 0 ? (userDetails.healthFinance.relationOther | titlecase) : '(relation) ________________'}}</span>
+            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation.trim().length > 0 ? (userDetails.healthFinance.relation | titlecase) : '(relation) ______________' }}</span>
+            <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(relation) ________________</span>
         </span>
         
         </p>
@@ -246,8 +246,8 @@
                 </span>
                 
                 <span>
-                    <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation == 'Other'">{{userDetails.healthFinance.backupRelationOther | titlecase}}</span>
-                    <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation != 'Other'">{{userDetails.healthFinance.backupRelation}}</span>
+                    <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation == 'Other'">{{userDetails.healthFinance.backupRelationOther.trim().length > 0 ? (userDetails.healthFinance.backupRelationOther | titlecase) : '____________'}}</span>
+                    <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation != 'Other'">{{userDetails.healthFinance.backupRelation.trim().length > 0 ? (userDetails.healthFinance.backupRelation | titlecase) : '_______________'}}</span>
                     <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">______________</span>
                 </span>
                 
@@ -305,20 +305,6 @@
                   <br/>
           
                   </p>
-                  <!--<p align="justify" style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">-->
-                  <!--<span style="font-family:'Times New Roman, serif'">Name:&nbsp;	</span><span style="font-family:'Times New Roman, serif'"><u>_________________________</u></span></p>-->
-                  <!--<p align="justify" style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">-->
-                  <!--<span style="font-family:'Times New Roman, serif'">Relation:&nbsp;</span><span style="font-family:'Times New Roman, serif'"><u>_________________________</u></span></p>-->
-                  <!--<p align="justify" style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">-->
-                  <!--<span style="font-family:'Times New Roman, serif'">Phone #:&nbsp;</span><span style="font-family:'Times New Roman, serif'"><u>_________________________</u></span></p>-->
-                  <!--<p align="justify" style="text-indent: 0.38in; margin-bottom: 0in; line-height: 100%">-->
-                  <!--<span style="font-family:'Times New Roman, serif'">Address:&nbsp;</span><span style="font-family:'Times New Roman, serif'"><u>_________________________</u></span></p>-->
-                  <!--<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span ><span style="font-family:'Times New Roman, serif'"></span></span>-->
-                  <!--<span></span>-->
-                  <!--<span><span style="font-family:'Times New Roman, serif'"></span></span></p>-->
-                  <!--<p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>-->
-          <!---->
-                  <!--</p>-->
         </div>  
         
         

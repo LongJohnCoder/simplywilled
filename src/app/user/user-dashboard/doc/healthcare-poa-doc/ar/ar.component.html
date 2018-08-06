@@ -221,49 +221,19 @@
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
                 <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >Signature:
                 <u>_______________________________________</u></span></span></span></span></span></p>
-            <!--<p style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 115%">
-              <span color="#0000ff"><span >    <b>«</span>CLIENT
-                FIRST NAME<span >» «</span>CLIENT MIDDLE NAME<span >»
-                  «</span>CLIENT LAST NAME<span >»</span></b></span></p>-->
+            
             <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </span>
-            <!-- <p style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 115%">
-               <span color="#0000ff"><span >    <b>«</span>CLIENT
-                 FIRST NAME<span >» «</span>CLIENT MIDDLE NAME<span >»
-                   «</span>CLIENT LAST NAME<span >»</span></b></span></p>-->
+            
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.address !== null">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff">{{userDetails.tellUsAboutYou.address}}</span></span></span></span></p>
-            <!-- <p style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 115%">
-               <span color="#008000"><span >«</span>IF ANSWERED(
-                 Address2 )<span >»«</span><span color="#0000ff">Address2</span><span >»«</span>END
-                 IF<span >»</span></span></p>-->
+            
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null">{{userDetails.tellUsAboutYou.city | titlecase}} ,</span>
+              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null">{{userDetails.tellUsAboutYou.city | titlecase}}, </span>
               <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null">{{userDetails.tellUsAboutYou.state | titlecase }}</span></span></span></span></span></p>
             <p style="margin-bottom: 0in; line-height: 115%">
 
             </p>
-            <!--<p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >«<span color="#0000ff">Address1</span>»</span></span></span></span></span></p>
-            <p style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 115%">
-              <span color="#008000"><span >«</span>IF ANSWERED(
-                Address2 )<span >»«</span><span color="#0000ff">Address2</span><span >»«</span>END
-                IF<span >»</span></span></p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >«<span color="#0000ff">City</span>»,
-              «<span color="#0000ff">State</span>»</span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; line-height: 115%">
-
-            </p>
-            <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >Date:
-              <u>_______________________________________</u></span></span></span></span></span></p>
-            <p style="margin-bottom: 0in; line-height: 115%">
-
-            </p>
-            <p align="center" style="margin-bottom: 0.17in; line-height: 115%">
-
-
-            </p>-->
+            
             <p align="center" style="margin-bottom: 0.17in; line-height: 0.23in"><span  style="font-size: 13pt"><b>STATEMENT
               OF WITNESSES</b></span></p>
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
@@ -561,18 +531,12 @@
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span >Signature:
               <u>_______________________________________</u></span></span></span></span></span></p>
               <p style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 115%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.fullname !== null"> {{userDetails.tellUsAboutYou.fullname.toUpperCase()}} </p>
-           <!-- <p style="text-indent: 0.5in; margin-bottom: 0.08in; line-height: 115%">
-              <span color="#0000ff"><span >    <b>«</span>CLIENT
-                FIRST NAME<span >» «</span>CLIENT MIDDLE NAME<span >»
-                  «</span>CLIENT LAST NAME<span >»</span></b></span></p>-->
+           
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.address !== null">
               <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff">{{userDetails.tellUsAboutYou.address}}</span></span></span></span></p>
-           <!-- <p style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 115%">
-              <span color="#008000"><span >«</span>IF ANSWERED(
-                Address2 )<span >»«</span><span color="#0000ff">Address2</span><span >»«</span>END
-                IF<span >»</span></span></p>-->
+           
             <p style="margin-bottom: 0in; font-variant: normal; letter-spacing: normal; font-style: normal; line-height: 115%">
-              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null">{{userDetails.tellUsAboutYou.city | titlecase}} ,</span>
+              <span style="display: inline-block; border: none; padding: 0in"><span style="font-family:Times New Roman, serif"><span  style="font-size: 12pt"><span style="background: #ffffff"><span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.city !== null">{{userDetails.tellUsAboutYou.city | titlecase}}, </span>
               <span *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null && userDetails.tellUsAboutYou.state !== null">{{userDetails.tellUsAboutYou.state | titlecase}}</span></span></span></span></span></p>
             <p style="margin-bottom: 0in; line-height: 115%">
 

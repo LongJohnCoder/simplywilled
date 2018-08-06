@@ -64,11 +64,11 @@
       </span>
 
       <span>
-          <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther | titlecase}},</span>
+          <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther.trim().length > 0 ? (userDetails.healthFinance.relationOther | titlecase) : '(relation) _____________________'}},</span>
 
-          <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation | titlecase}},</span>
+          <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation.trim().length > 0 ? (userDetails.healthFinance.relation | titlecase) : '(relation) _____________________'}},</span>
 
-          <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">_____________,</span>
+          <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(relation) __________________,</span>
       </span>
 
       <span>
@@ -77,7 +77,7 @@
 
       <span>
           <span *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.fullname.length > 0" style="font-family:'Times New Roman, serif'">{{userDetails.healthFinance.fullname | titlecase}},</span>
-          <span *ngIf="userDetails === undefined || userDetails.healthFinance === null" style="font-family:'Times New Roman, serif'">_____________________________,</span>
+          <span *ngIf="userDetails === undefined || userDetails.healthFinance === null" style="font-family:'Times New Roman, serif'">(fullname) _____________________________,</span>
       </span>
 
       <span style="font-family:'Times New Roman, serif'"></span>
@@ -87,7 +87,7 @@
 
       <span>
           <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.address !== null">{{userDetails.healthFinance.address}}, </span>
-          <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">_________________________________________________________________
+          <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(address) _________________________________________________________________
             _______________________________________________________________________________,
           </span>
       </span>
@@ -155,11 +155,11 @@
         <span style="font-family:'Times New Roman, serif'">
       then I appoint </span>
       <span>
-          <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation == 'Other'">{{userDetails.healthFinance.backupRelationOther | titlecase}},</span>
+          <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation == 'Other'">{{userDetails.healthFinance.backupRelationOther.trim().length > 0 ? (userDetails.healthFinance.backupRelationOther | titlecase) : '(relation) ___________________'}},</span>
 
-          <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation != 'Other'">{{userDetails.healthFinance.backupRelation | titlecase}},</span>
+          <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.backupRelation != 'Other'">{{userDetails.healthFinance.backupRelation.trim().length > 0 ? (userDetails.healthFinance.backupRelation | titlecase) : '(relation) __________________'}},</span>
 
-          <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">______________,</span>
+          <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(relation) ________________,</span>
       </span>
 
       <span>

@@ -166,9 +166,9 @@
         </span>
         
         <span>
-            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther | titlecase}}, </span>
-            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation | titlecase}}, </span>
-            <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">______________, </span>
+            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation == 'Other'">{{userDetails.healthFinance.relationOther.trim().length > 0 ? (userDetails.healthFinance.relationOther | titlecase) : '(relation) ________________'}}, </span>
+            <span style="font-family:'Times New Roman, serif'" *ngIf="userDetails !== undefined && userDetails.healthFinance !== null && userDetails.healthFinance.relation != 'Other'">{{userDetails.healthFinance.relation.trim().length > 0 ? (userDetails.healthFinance.relation | titlecase) : '(relation) ________________'}}, </span>
+            <span *ngIf="userDetails === undefined || userDetails.healthFinance === null">(relation) ________________, </span>
         </span>
         
         <span>
