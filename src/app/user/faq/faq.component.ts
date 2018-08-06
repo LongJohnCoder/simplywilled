@@ -27,12 +27,10 @@ export class FaqComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.loader = true;
         this.searchFaqQstn = this._route.snapshot.queryParamMap['params'].query;
         this.searchParam  = this.searchFaqQstn;
         console.log(this.searchParam);
         this.getFaqCategories();
-        this.loader = false;
     }
 
     /* *
@@ -45,9 +43,15 @@ export class FaqComponent implements OnInit {
           });
         this.faqService.getFaqCategories(this.searchFaqQstn).subscribe(
             (data: any) => {
+                this.loader = true;
                 this.faqData      = data.data;
                 this.faqDetails   = this.getQuestions(this.faqData,0);
                 // console.log('faq data',this.faqData);
+                const ch = this;
+                setTimeout(function () {
+                    ch.loader = false;
+                }, 2000);
+
             }
         );
 
