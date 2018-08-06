@@ -301,8 +301,9 @@
                     <div class="row formRow" *ngFor="let item of realPropertyForm.get('multiple_beneficiaries').controls; let i = index;" [formGroupName] = "i">
                       <div class="threeColField"><input type="text" value="" class="form-control" formControlName="multiple_beneficiary_name" placeholder="Beneficiary's full legal name"></div>
                       <div class="threeColField"><input type="text" value="" class="form-control" formControlName="multiple_beneficiary_relationship" placeholder="Beneficiary's relationship to you"></div>
-                      <div class="threeColField" *ngIf="i > 0" (click)="removeBeneficiary(i)"><button type="button" class="btn btn btn-danger delRow"><i class="fa fa-trash"></i></button></div>
+                      <div class="threeColField" *ngIf="i > 1" (click)="removeBeneficiary(i)"><button type="button" class="btn btn btn-danger delRow"><i class="fa fa-trash"></i></button></div>
                     </div>
+
 
                     <div class="">
                       <div class="addRowBtn"><button type="button" class="btn btn btn-primary addRow" (click)="addNewRow()">+</button></div>
