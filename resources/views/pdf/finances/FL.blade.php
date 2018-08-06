@@ -20,7 +20,7 @@
 </script>
 <div id="footer">
 	<div style="">
-		Florida Durable Power of Attorney for Management of Property, and Personal Affairs of <br>{{$tellUsAboutYou['fullname']}}<br>
+		Florida Durable Power of Attorney for Management of Property, and Personal Affairs of <br>{{ucwords($tellUsAboutYou['fullname'])}}<br>
 	</div>
 </div>
 
@@ -59,30 +59,30 @@
 	That I, </font>
 	<font color=" ">
 		<font face="Times, serif">
-			<b>{{strtoupper($tellUsAboutYou['fullname'])}}</b>
+			<b>{{strtoupper($tellUsAboutYou['fullname'])}},</b>
 		</font>
 	</font>
 
-	<font face="Times, serif">,
+	<font face="Times, serif">
 	of </font>
 
 	<font color=" ">
-		<font face="Times, serif">{{$attorneyHolders['address']}}</font>
+		<font face="Times, serif">{{$tellUsAboutYou['address']}},</font>
 	</font>
 
-	<font face="Times, serif">, </font>
+	<font face="Times, serif"></font>
 
 	<font color=" ">
-		<font face="Times, serif">{{$attorneyHolders['city']}}</font>
+		<font face="Times, serif">{{ucwords($tellUsAboutYou['city'])}},</font>
 	</font>
 
-	<font face="Times, serif">, </font>
+	<font face="Times, serif"></font>
 
 	<font color=" ">
-		<font face="Times, serif">{{$attorneyHolders['state']}}</font>
+		<font face="Times, serif">{{ucwords($tellUsAboutYou['state'])}},</font>
 	</font>
 
-	<font face="Times, serif">,	intend to create a Durable Power of Attorney (herein referred to as
+	<font face="Times, serif">intend to create a Durable Power of Attorney (herein referred to as
 	“this Power”). This Power is effective immediately upon its
 	execution. THIS IS A DURABLE POWER OF ATTORNEY AND, EXCEPT AS
 	PROVIDED IN SECTION 709.08, FLORIDA STATUTES, THE AUTHORITY OF MY
@@ -109,31 +109,31 @@
 
 	<font color=" ">
 		@if(strtolower($attorneyHolders['relationship']) == 'other')
-			<span color="#0433ff">{{ucwords(strtolower($attorneyHolders['other_relationship']))}}</span>
+			<span color="#0433ff">{{ucwords(strtolower($attorneyHolders['other_relationship']))}},</span>
 		@else
-			<span color="#0433ff">{{ucwords(strtolower($attorneyHolders['relationship']))}}</span>
+			<span color="#0433ff">{{ucwords(strtolower($attorneyHolders['relationship']))}},</span>
 		@endif
 	</font>
 
-	<font face="Times New Roman, serif">, </font>
+	<font face="Times New Roman, serif"></font>
 
 	<font color=" ">
-		<font face="Times New Roman, serif">{{$attorneyHolders['fullname']}}</font>
+		<font face="Times New Roman, serif">{{ucwords(strtolower($attorneyHolders['fullname']))}}</font>
 	</font>
 
 	<font face="Times New Roman, serif"> [</font>
 
 	<font color=" ">
-		<font face="Times New Roman, serif">{{$attorneyHolders['address']}}</font>
+		<font face="Times New Roman, serif">{{$attorneyHolders['address']}},</font>
 	</font>
 
-	<font face="Times New Roman, serif">, </font>
+	<font face="Times New Roman, serif"></font>
 
 	<font color=" ">
-		<font face="Times New Roman, serif">{{$attorneyHolders['city']}}</font>
+		<font face="Times New Roman, serif">{{ucwords(strtolower($attorneyHolders['city']))}},</font>
 	</font>
 
-	<font face="Times New Roman, serif">, </font>
+	<font face="Times New Roman, serif"></font>
 
 	<font color=" ">
 		<font face="Times New Roman, serif">{{$attorneyHolders['state']}}</font>
@@ -164,7 +164,7 @@
 		<font face="Times New Roman, serif">. If said </font>
 
 		<font color=" ">
-			<font face="Times New Roman, serif">{{$attorneyHolders['fullname']}}</font>
+			<font face="Times New Roman, serif">{{ucwords(strtolower($attorneyHolders['fullname']))}}</font>
 		</font>
 
 		<font face="Times New Roman, serif"> is not
@@ -173,31 +173,31 @@
 
 	<font color=" ">
 		@if(strtolower($attorneyBackup['relationship']) == 'other')
-			<span color="#0433ff">{{$attorneyBackup['other_relationship']}}</span>
+			<span color="#0433ff">{{ucwords(strtolower($attorneyBackup['other_relationship']))}},</span>
 		@else
-			<span color="#0433ff">{{$attorneyBackup['relationship']}}</span>
+			<span color="#0433ff">{{ucwords(strtolower($attorneyBackup['relationship']))}},</span>
 		@endif
 	</font>
 
-	<font face="Times New Roman, serif">, </font>
+	<font face="Times New Roman, serif"></font>
 
 	<font color=" ">
-		<font face="Times New Roman, serif">{{$attorneyBackup['fullname']}}</font>
+		<font face="Times New Roman, serif">{{ucwords(strtolower($attorneyBackup['fullname']))}}</font>
 	</font>
 
 	<font face="Times New Roman, serif"> [</font>
 
 	<font color=" ">
-		<font face="Times New Roman, serif">{{$attorneyBackup['address']}}</font>
+		<font face="Times New Roman, serif">{{$attorneyBackup['address']}},</font>
 	</font>
 
-	<font face="Times New Roman, serif">, </font>
+	<font face="Times New Roman, serif"></font>
 
 	<font color=" ">
-		<font face="Times New Roman, serif">{{$attorneyBackup['city']}}</font>
+		<font face="Times New Roman, serif">{{ucwords(strtolower($attorneyBackup['city']))}},</font>
 	</font>
 
-	<font face="Times New Roman, serif">, </font>
+	<font face="Times New Roman, serif"></font>
 
 	<font color=" ">
 		<font face="Times New Roman, serif">{{$attorneyBackup['state']}}</font>
@@ -818,10 +818,10 @@
 	<font face="Times New Roman, serif">I, </font>
 
 	<font color=" ">
-		<font face="Times New Roman, serif">{{strtoupper($tellUsAboutYou['fullname'])}}</font>
+		<font face="Times New Roman, serif">{{strtoupper($tellUsAboutYou['fullname'])}},</font>
 	</font>
 
-	<font face="Times New Roman, serif">,
+	<font face="Times New Roman, serif">
 	</font><font face="Times New Roman, serif">declare to the officer
 	taking my acknowledgment of this instrument, and to the subscribing
 	witnesses, that I signed and executed this instrument as my Durable
@@ -874,10 +874,10 @@
 	[month], _________ [year] by </font></font>
 
 	<font color=" ">
-		<font face="Times New Roman, serif">{{strtoupper($tellUsAboutYou['fullname'])}}</font>
+		<font face="Times New Roman, serif">{{strtoupper($tellUsAboutYou['fullname'])}}.</font>
 	</font>
 
-	<font color="#000000"><font face="Times New Roman, serif">.
+	<font color="#000000"><font face="Times New Roman, serif">
 	The affiant is [choose one:] ____ personally known to me, or ____
 	produced the following identification:
 	________________________________.<br/>
@@ -907,10 +907,10 @@
 	written above, </font></font>
 
 	<font color=" ">
-		<font face="Times New Roman, serif">{{strtoupper($tellUsAboutYou['fullname'])}}</font>
+		<font face="Times New Roman, serif">{{strtoupper($tellUsAboutYou['fullname'])}},</font>
 	</font>
 
-	<font face="Times New Roman, serif">,</font><font color="#000000"><font face="Times New Roman, serif">
+	<font face="Times New Roman, serif"></font><font color="#000000"><font face="Times New Roman, serif">
 	the principal, declared to me in my presence that this instrument is
 	his general durable power of attorney and that he or she had
 	willingly signed or directed another to sign for him or her, and that

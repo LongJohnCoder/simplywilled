@@ -67,7 +67,7 @@
                                 <br><br>
                                 <strong style="font-size: 22px;">What being selected as Backup Pet Caretaker means for You:</strong>
                                 <br><br>
-                                As Backup Pet Caretaker you will be legally responsible for caring for <strong>{{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}}’s</strong> pets after their 1st choise pet caretaker. You will have physical custody of their pets and will be responsible for their well being.
+                                As Backup Pet Caretaker you will be legally responsible for caring for <strong>{{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}}’s</strong> pets after their 1st choice pet caretaker. You will have physical custody of their pets and will be responsible for their well being.
                                 <br><br>
                                 <strong style="font-size: 22px;">Confirm your responsibility:</strong>
                                 <br><br>

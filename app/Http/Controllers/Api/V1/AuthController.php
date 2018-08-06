@@ -332,7 +332,8 @@ class AuthController extends Controller {
             $response = [
                 'status'        => false,
                 'error'         => "Internal server error.",
-                "error_info"    => $exception->getMessage()
+                "error_info"    => $exception->getMessage(),
+                "error_line"    => $exception->getLine()
             ];
             $responseCode = 500;
         }

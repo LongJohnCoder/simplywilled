@@ -1022,12 +1022,12 @@
 
 			<p style="margin-left: 0.38in; margin-top: 0.06in; margin-bottom: 0in; ">
 			<span style="font-family:'Times New Roman, serif';">Initials of
-			Principal						Initials of Witness</span></p>
+			Principal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Initials of Witness</span></p>
 
 
 
 			<p style="margin-left: 0.38in; margin-bottom: 0in; ">
-			<span style="font-family:'Times New Roman, serif';">_______________						______________</span></p>
+			<span style="font-family:'Times New Roman, serif';">_______________	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ______________</span></p>
 
 			@else
 
@@ -1338,7 +1338,7 @@
 	any reason, such invalidity shall not affect any of the other
 	provisions of this Power, and all invalid provisions shall be wholly
 	disregarded.</span></p>
-	
+
 	<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><b>Governing
 	Law</b></span><span style="font-family:'Times New Roman, serif';">. All questions
 	pertaining to validity, interpretation, and administration of this
@@ -1452,7 +1452,7 @@
 			<span color="#0433ff">
 				<span style="font-family:'Times New Roman, serif';"> {{ucwords($tellUsAboutYou['zip'])}}</span>
 			</span>
-			
+
 		</p>
 
 
@@ -1663,21 +1663,18 @@
 			<p align="justify" style="margin-bottom: 0in; "><br/>
 
 			</p>
-			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">_____________________________</span><span style="font-family:'Times New Roman, serif';">	</span><span style="font-family:'Times New Roman, serif';">_________________________</span></p>
-			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">Witness
-			(Signature)				Street Address</span></p>
-			<p align="justify" style="margin-bottom: 0in; "><br/>
+			<p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><span>_____________________________</span></span><span style="font-family:'Times New Roman, serif';"> &nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-family:'Times New Roman, serif';"><span>________________</span></span></p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">Witness
+      (Signature) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Street Address</span></p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-			</p>
+      </p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';"><span>_____________________________</span></span><span style="font-family:'Times New Roman, serif';"> &nbsp;&nbsp;&nbsp;&nbsp;	</span><span style="font-family:'Times New Roman, serif';"><span>________________</span></span></p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif';">Print
+      Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; City, State, Zip</span></p>
+      <p align="justify" style="margin-bottom: 0in; line-height: 100%"><br/>
 
-			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">___________________________</span><span style="font-family:'Times New Roman, serif';">	</span><span style="font-family:'Times New Roman, serif';">__________________________________</span></p>
-
-			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';">Print
-			Name				City, State, Zip</span></p>
-
-			<p align="justify" style="margin-bottom: 0in; "><br/>
-
-			</p>
+      </p>
 			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">The
 			state of Arizona</span></span></p>
 			<p align="justify" style="margin-bottom: 0in; "><span style="font-family:'Times New Roman, serif';"><span size="2" style="font-size: 9pt">County
