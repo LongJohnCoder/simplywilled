@@ -279,11 +279,12 @@
     </div>
 
     <div class="form-group" *ngIf="referral.value === 'Other'">
+      
       <input class="form-control"
              type="text"
              name="referralOther"
              required
-             [ngModel]="userInfo !== undefined && userInfo !== null && userInfo.referral_other !== undefined ? userInfo?.referral_other  : ''"
+             [ngModel]="userInfo !== undefined && userInfo !== null ? userInfo?.referral_other  : ''"
              #referralOther='ngModel'>
       <span class="error_txt"
             *ngIf="referralOther.invalid && (referralOther.dirty || referralOther.touched)">

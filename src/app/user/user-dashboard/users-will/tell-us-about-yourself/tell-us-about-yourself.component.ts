@@ -40,6 +40,7 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
   stepNumber: number;
   tourSub: Subscription;
   states: any;
+  sourceOfInfo: ['Google Search', 'Blog Post', 'Social Media', 'Friend', 'Colleague', 'Other'];
 
   /**Constructor call*/
   constructor(
@@ -49,6 +50,7 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
       private progressbarService: ProgressbarService,
       private dashboardService: UserDashboardService
   ) {
+
       this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
       this.progressbarService.changeWidth({width: 0});
       this.states = States;
@@ -150,10 +152,13 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
       formData.partner_dob = formData.spouseYear + '-' + formData.spouseMonth + '-' + formData.spouseDay ;
       formData.user_id = this.user.id ;
       formData.step = 1;
+      formData.referral_other  = formData.referal !== 'Other' ? formData.referal : formData.referralOther;
       if ( formData.marital_status !== 'R') {
-        formData.registered_partner = '0' ;
+        formData.registered_partner = '0';
         formData.legal_married = '0';
       }
+
+      console.log('form data :', formData, formData.referral, formData.referralOther);
       this.editSubscription = this.userService.editProfile(formData).subscribe(
         (data: any) =>  {
           this.router.navigate(['/dashboard/will/2']);
