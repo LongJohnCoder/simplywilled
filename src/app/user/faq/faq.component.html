@@ -16,8 +16,8 @@
     </div> -->
     <div class="heaser_sec2_slider inner-banner">
         <div class="slider">
-            <img src="../../../../assets/images/faq-banner.png">
-            <img src="../../../../assets/images/faq-mobile-banner.png" class="mobile-banner">
+            <img src="../../../../assets/images/faq-banner.png" alt="">
+            <img src="../../../../assets/images/faq-mobile-banner.png" class="mobile-banner" alt="">
             <h1>Welcome to the SimplyWilled library, <span>your free learning resource center.</span></h1>
         </div>
     </div>
@@ -30,13 +30,13 @@
                         >
                         <!--<button class="btn-green" type='submit' ><img src="../../../../assets/images/arrow-right.png" > Ask the Owl!</button>    -->
                 </form>
-                    
+
                 <div class="accordion">
                     <div class="sidebar-left">
                         <h2>Topic</h2>
                         <ul>
-                            <li *ngFor="let faq of faqData; let i = index" 
-                                (click)="getQuestions(faqData,i)" 
+                            <li *ngFor="let faq of faqData; let i = index"
+                                (click)="getQuestions(faqData,i)"
                                 [ngClass] = "{active: counter == i}">
                                     {{ faq.name }}
                             </li>
@@ -46,10 +46,10 @@
                         <div class="each-statement" *ngFor="let eachFaq of faqDetails; let i = index" [ngClass] = "{active: innerCounter == i}">
                             <div (click)="showOrHideAnswers(eachFaq,i)" class="statement">
                                 <span class="plus">
-                                    <img src="../../../../assets/images/plus.png">
+                                    <img src="../../../../assets/images/plus.png" alt="Show">
                                 </span>
                                 <span class="minus">
-                                    <img src="../../../../assets/images/minus.png">
+                                    <img src="../../../../assets/images/minus.png" alt="Hide">
                                 </span>
                                 <p>{{eachFaq.question}}</p>
                             </div>
@@ -65,12 +65,12 @@
                     <div class="sidebar-left">
                         <h2>Topic</h2>
                         <ul>
-                            <li *ngFor="let faq of faqData; let i = index" 
-                                (click)="getQuestions(faqData,i)" 
+                            <li *ngFor="let faq of faqData; let i = index"
+                                (click)="getQuestions(faqData,i)"
                                 [ngClass] = "{active: counter == i}">
                                     <span class="faqName">{{ faq.name }} </span>
                                     <div class="open-accordion" *ngIf="faqDetails.length > 0">
-                                        <div class="each-statement"  *ngFor="let eachFaq of faqDetails; let j = index" 
+                                        <div class="each-statement"  *ngFor="let eachFaq of faqDetails; let j = index"
                                         [ngClass] = "{active: j == innerCounterSm}"
                                         (click)="showOrHideAnswers(eachFaq,j)">
                                             <div class="statement">
@@ -83,7 +83,7 @@
                                                 <p>{{eachFaq.question}} - {{innerCounter}}</p>
                                             </div>
                                             <p>{{eachFaq.answer}}</p>
-                                        </div>    
+                                        </div>
                                     </div>
                                     <div class="open-accordion" *ngIf="faqDetails.length === 0">
                                         <div class="each-statement">
@@ -100,9 +100,9 @@
                 <div class="wrapper text-center">
                     <h2>estate planning made simple & affordable.</h2>
                     <h4>Get started now and keep your loved ones safe!</h4>
-                    <button class="btn-green" type="button" routerLink="/register"><img src="../../../../assets/images/arrow-right.png"> get started</button>
+                    <button class="btn-green" type="button" routerLink="/register"><img src="../../../../assets/images/arrow-right.png" alt=""> get started</button>
                 </div>
             </div>
         </div>
     </div>
-    
+

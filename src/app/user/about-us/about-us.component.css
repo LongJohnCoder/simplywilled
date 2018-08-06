@@ -182,6 +182,11 @@ a:hover{
 .about_sec4{
     background-color: #F2F2F2;
 }
+.estate_planning_right_main h2{
+  font-size: 22px;
+  padding-bottom: 0;
+}
+
 @media screen and (max-width: 767px){
   .founderBio.showBioBox{
     width: 100%;

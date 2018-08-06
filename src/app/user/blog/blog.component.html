@@ -11,8 +11,8 @@
 </div>
 <div class="heaser_sec2_slider inner-banner">
     <div class="slider">
-        <img src="../../../../assets/images/blog-banner.png">
-        <img src="../../../../assets/images/blog-mobile-banner.png" class="mobile-banner">
+        <img src="../../../../assets/images/blog-banner.png" alt="">
+        <img src="../../../../assets/images/blog-mobile-banner.png" class="mobile-banner" alt="">
         <h1>
             Brush up on your estate planning knowledge
             <span>with these helpful articles and guides.</span>
@@ -23,10 +23,10 @@
   <div class="wrapper">
     <div class="trending_main">
         <span  *ngIf="queryString !== null && queryString !== undefined && queryString !== ''">
-            <h1 class="searchHeading">
+            <h2 class="searchHeading">
                 Search for "<i>{{queryString}}</i>"
                 <button type="button" class="clearBtn" (click)="clearBlogSearch()">Clear</button>
-            </h1>
+            </h2>
 
         </span>
 
@@ -125,7 +125,7 @@
     <div class="wrapper">
       <h1 class="about_state_planning_text">Estate Planning Made Simple &amp; Affordable.</h1>
       <h4 class="select_plan">Get started now and keep your loved ones safe!</h4>
-      <button class="btn-green" type="button" routerLink="/register"><img src="../../../../assets/images/arrow-right.png"> Get Started</button>
+      <button class="btn-green" type="button" routerLink="/register"><img src="../../../../assets/images/arrow-right.png" alt=""> Get Started</button>
     </div>
   </div>
 </div>

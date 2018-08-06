@@ -486,3 +486,6 @@ Document V3.0 stable released to dev
 
 Blog V1.0 stable released to dev
 	Added advertise image to blogdetails footer
+
+Site audit worning fixed
+	Extra h1 tag has been removed from all page and alt tag hasbeen added in the images.
