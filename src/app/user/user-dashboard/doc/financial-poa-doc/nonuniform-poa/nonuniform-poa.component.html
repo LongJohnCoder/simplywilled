@@ -144,7 +144,7 @@
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
     <span style="text-transform: capitalize"> Power of Attorney for Management of Finances, Property, and Personal Affairs of</span>
     <div>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toLowerCase() : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | titlecase) : 'CLIENT FULL NAME'}}</span>
     </div>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     <span>
@@ -301,7 +301,7 @@
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
     <span style="text-transform: capitalize"> Power of Attorney for Management of Finances, Property, and Personal Affairs of</span>
     <div>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toLowerCase() : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | titlecase) : 'CLIENT FULL NAME'}}</span>
     </div>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     <span>
@@ -393,7 +393,7 @@
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
     <span style="text-transform: capitalize"> Power of Attorney for Management of Finances, Property, and Personal Affairs of</span>
     <div>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toLowerCase() : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | titlecase) : 'CLIENT FULL NAME'}}</span>
     </div>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     <span>
@@ -521,7 +521,7 @@
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
     <span style="text-transform: capitalize"> Power of Attorney for Management of Finances, Property, and Personal Affairs of</span>
     <div>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toLowerCase() : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | titlecase) : 'CLIENT FULL NAME'}}</span>
     </div>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     <span>
@@ -639,7 +639,7 @@
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
     <span style="text-transform: capitalize"> Power of Attorney for Management of Finances, Property, and Personal Affairs of</span>
     <div>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toLowerCase() : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | titlecase) : 'CLIENT FULL NAME'}}</span>
     </div>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     <span>
@@ -745,7 +745,7 @@
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
     <span style="text-transform: capitalize"> Power of Attorney for Management of Finances, Property, and Personal Affairs of</span>
     <div>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toLowerCase() : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | titlecase) : 'CLIENT FULL NAME'}}</span>
     </div>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     <span>
@@ -844,7 +844,7 @@
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
     <span style="text-transform: capitalize"> Power of Attorney for Management of Finances, Property, and Personal Affairs of</span>
     <div>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toLowerCase() : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | titlecase) : 'CLIENT FULL NAME'}}</span>
     </div>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     <span>
@@ -990,7 +990,7 @@
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
     <span style="text-transform: capitalize"> Power of Attorney for Management of Finances, Property, and Personal Affairs of</span>
     <div>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toLowerCase() : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | titlecase) : 'CLIENT FULL NAME'}}</span>
     </div>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     <span>
@@ -1059,7 +1059,7 @@
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
     <span style="text-transform: capitalize"> Power of Attorney for Management of Finances, Property, and Personal Affairs of</span>
     <div>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toLowerCase() : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | titlecase) : 'CLIENT FULL NAME'}}</span>
     </div>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     <span>
@@ -1171,7 +1171,7 @@
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
     <span style="text-transform: capitalize"> Power of Attorney for Management of Finances, Property, and Personal Affairs of</span>
     <div>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toLowerCase() : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | titlecase) : 'CLIENT FULL NAME'}}</span>
     </div>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     <span>
@@ -1283,7 +1283,7 @@
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
     <span style="text-transform: capitalize"> Power of Attorney for Management of Finances, Property, and Personal Affairs of</span>
     <div>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toLowerCase() : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | titlecase) : 'CLIENT FULL NAME'}}</span>
     </div>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     <span>
@@ -1404,7 +1404,7 @@
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
     <span style="text-transform: capitalize"> Power of Attorney for Management of Finances, Property, and Personal Affairs of</span>
     <div>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toLowerCase() : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | titlecase) : 'CLIENT FULL NAME'}}</span>
     </div>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     <span>
@@ -1570,7 +1570,7 @@
       <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
       <span style="text-transform: capitalize"> Power of Attorney for Management of Finances, Property, and Personal Affairs of</span>
       <div>
-          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toLowerCase() : '_______________________'}}</span>
+          <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | titlecase) : 'CLIENT FULL NAME'}}</span>
       </div>
       <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     <span>
@@ -1718,7 +1718,7 @@
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
     <span style="text-transform: capitalize"> Power of Attorney for Management of Finances, Property, and Personal Affairs of</span>
     <div>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toLowerCase() : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | titlecase) : 'CLIENT FULL NAME'}}</span>
     </div>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     <span>
@@ -1938,7 +1938,7 @@
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
     <span style="text-transform: capitalize"> Power of Attorney for Management of Finances, Property, and Personal Affairs of</span>
     <div>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toLowerCase() : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | titlecase) : 'CLIENT FULL NAME'}}</span>
     </div>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     <span>
@@ -2037,7 +2037,7 @@
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
     <span style="text-transform: capitalize"> Power of Attorney for Management of Finances, Property, and Personal Affairs of</span>
     <div>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toLowerCase() : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | titlecase) : 'CLIENT FULL NAME'}}</span>
     </div>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     <span>
@@ -2141,7 +2141,7 @@
     <span *ngIf="financialPOA !== undefined && financialPOA.attorney_powers !== null && financialPOA.attorney_powers.isDurable === 1">Durable</span>
     <span style="text-transform: capitalize"> Power of Attorney for Management of Finances, Property, and Personal Affairs of</span>
     <div>
-        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? userDetails.tellUsAboutYou.fullname.toLowerCase() : '_______________________'}}</span>
+        <span style="text-transform: capitalize" *ngIf="userDetails !== undefined && userDetails.tellUsAboutYou !== null">{{userDetails.tellUsAboutYou.fullname !== null && userDetails.tellUsAboutYou.fullname !== undefined ? (userDetails.tellUsAboutYou.fullname | titlecase) : 'CLIENT FULL NAME'}}</span>
     </div>
     <span *ngIf="userDetails === undefined || userDetails.tellUsAboutYou === null">_______________________</span>
     <span>
