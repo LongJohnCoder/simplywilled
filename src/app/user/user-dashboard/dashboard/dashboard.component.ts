@@ -78,6 +78,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
         });
     }
 
+    // @HostListener('document:click', ['$event'])
+    // clickout(event) {
+    //   if (!this.eRef.nativeElement.contains(event.target)) {
+    //     this.isClicked = false;
+    //   }
+    // }
+
     /**Initialises the form**/
     createForm() {
       this.referAFriendForm = this._fb.group({
@@ -201,20 +208,29 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.referAFriendSubscription = this.referAFriendService.referAFriend(token, this.referAFriendForm.value).subscribe(
         (response: any) => {
           console.log(response);
+          this.referAFriendForm.reset();
+          this.loading = false;
           if (response.status) {
             this.message.errorMessage = '';
             this.message.successMessage = 'They’ll be notified via e-mail at the address you provided.';
+            setTimeout( () => {
+              this.message.successMessage = '';
+              this.animationState = 'out';
+            }, 3000);
           } else {
             this.message.errorMessage = response.message;
             this.message.successMessage = '';
+            setTimeout( () => {
+              this.message.errorMessage = '';
+              this.animationState = 'out';
+            }, 3000);
           }
         }, (error) => {
-          console.log(error);
-          this.message.errorMessage = 'Oops, something went wrong';
-        }, () => {
-          this.loading = false;
+          this.message.errorMessage = 'Oops, something went wrong!';
+          console.log('comming here');
           this.referAFriendForm.reset();
           setTimeout( () => {
+            this.loading = false;
             this.message.errorMessage = '';
             this.message.successMessage = '';
             this.animationState = 'out';
