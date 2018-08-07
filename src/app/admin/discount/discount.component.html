@@ -81,7 +81,7 @@
                     <td>{{item.title}}</td>
                     <!--<td>{{item.description | slice:0:30}}</td>-->
                     <td>{{item.token}}</td>
-                      <td>{{item.expired_on === '2200-12-31 00:00:00' ? 'No expire' : item.expired_on}}</td>
+                      <td>{{item.expired_on === '2200-12-31 23:59:59' ? 'No expire' : item.expired_on}}</td>
                       <td>{{item.max_user === 1 ? 'Single Use' : 'Multi Time Use'}}</td>
                       <td>{{item.max_user === 9999999 ? 'Unlimited Use' : item.max_user > 1 ? item.max_user : 1}}</td>
                     <td>{{item.flag === '1' ? '$'+item.amount : item.amount+'%'}}</td>
