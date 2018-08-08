@@ -670,9 +670,13 @@ h1, h2, h3, h4, h5, h6 {
 .back_next_btn_ul li {
   display: inline-block;
   margin-left: 25px;
+  background: linear-gradient(#53ba3c,#3fa62e);
+  border-radius: 5px;
 }
 .back_next_btn_ul li:first-child {
   margin-left: 0px;
+  background: linear-gradient(#e86a66,#d9534f);
+  border-radius: 5px;
 }
 .back_next_btn_ul li a {
   width: 110px;
