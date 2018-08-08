@@ -17,7 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { BlogService } from "./user/blog/blog.service";
 import { NgxPaginationModule } from 'ngx-pagination';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import 'zone.js';
+
 
 @NgModule({
   declarations: [
