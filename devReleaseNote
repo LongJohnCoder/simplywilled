@@ -489,3 +489,6 @@ Blog V1.0 stable released to dev
 
 Site audit worning fixed
 	Extra h1 tag has been removed from all page and alt tag hasbeen added in the images.
+
+SEO V1.0 stable released to dev
+	added meta for edge in index.html
