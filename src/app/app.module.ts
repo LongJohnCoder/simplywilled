@@ -18,7 +18,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-
 @NgModule({
   declarations: [
     AppComponent
