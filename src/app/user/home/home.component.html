@@ -416,7 +416,7 @@
 </div>
 
 <ng-template #viewVideo>
-  <div class="videoArea">
+  <div class="videoArea" *ngIf="videoFlag === true">
     <button type="button" class="close" (click)="modalRef.hide()">×</button>
     <div class="videoBox">
         <iframe width="854" height="480" src="https://www.youtube.com/embed/DsOpMzQ65DI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

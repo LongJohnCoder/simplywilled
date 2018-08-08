@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, OnDestroy } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
 import {PackagesService} from '../user-dashboard/packages/packages.service';
@@ -7,12 +7,13 @@ import {PackagesService} from '../user-dashboard/packages/packages.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   public modalRef : BsModalRef;
   public whatIncl : boolean = false;
   public whatIncl2 : boolean = false;
   data: any;
+  videoFlag = false;
 
   constructor(
     private modalService : BsModalService,
@@ -33,8 +34,9 @@ export class HomeComponent implements OnInit {
       this.getPackages();
   }
 
-  public openModal(template :  TemplateRef<any>){
-   this.modalRef = this.modalService.show(template);
+  public openModal(template:  TemplateRef<any>){
+      this.videoFlag = true;
+      this.modalRef = this.modalService.show(template);
   }
 
   ourTeam(){
@@ -74,5 +76,7 @@ export class HomeComponent implements OnInit {
         );
     }
 
-  
+    ngOnDestroy() {
+        this.videoFlag = false;
+    }
 }
