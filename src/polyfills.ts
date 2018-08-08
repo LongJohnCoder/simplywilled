@@ -88,5 +88,3 @@ import 'intl';  // Run `npm install --save intl`.
  * Need to import at least one locale-data with intl.
  */
 import 'intl/locale-data/jsonp/en';
-import 'matchmedia-polyfill';
-import 'matchmedia-polyfill/matchMedia.addListener';
