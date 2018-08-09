@@ -21,6 +21,7 @@
 /** IE9, IE10 and IE11 requires all of the following polyfills. **/
 import 'core-js/es6/symbol';
 import 'core-js/es6/object';
+import 'core-js/es7/object';
 import 'core-js/es6/function';
 import 'core-js/es6/parse-int';
 import 'core-js/es6/parse-float';
@@ -33,6 +34,15 @@ import 'core-js/es6/regexp';
 import 'core-js/es6/map';
 import 'core-js/es6/weak-map';
 import 'core-js/es6/set';
+import 'core-js/es6/typed';
+
+import 'ie-shim';
+import 'rxjs/bundles/Rx';
+import '@angular/common/bundles/common.umd';
+import '@angular/compiler/bundles/compiler.umd';
+import '@angular/platform-browser/bundles/platform-browser.umd';
+import '@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd';
+
 
 /** IE10 and IE11 requires the following for NgClass support on SVG elements */
 import 'classlist.js';  // Run `npm install --save classlist.js`.
@@ -88,3 +98,13 @@ import 'intl';  // Run `npm install --save intl`.
  * Need to import at least one locale-data with intl.
  */
 import 'intl/locale-data/jsonp/en';
+
+import 'ie9-oninput-polyfill';
+import 'angular-polyfills/dist/blob';
+import 'angular-polyfills/dist/classlist';
+import 'angular-polyfills/dist/formdata';
+import 'angular-polyfills/dist/intl';
+import 'angular-polyfills/dist/shim';
+import 'angular-polyfills/dist/typedarray';
+import 'console-polyfill';
+
