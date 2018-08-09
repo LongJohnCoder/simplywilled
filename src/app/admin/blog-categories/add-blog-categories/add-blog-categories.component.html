@@ -25,6 +25,27 @@
                                     <span *ngIf="categoryName.invalid && categoryName.touched" style="color: red;">Category Name is required</span>
 
                                 </div>
+                                <div class="form-group">
+                                    <label>Meta Title :</label>
+                                    <input class="form-control" type="text" name="categoryName"
+                                           [(ngModel)]="blogCategoryData.seo_title" #seo_title="ngModel">
+                                    <!--<span *ngIf="categoryName.invalid && categoryName.touched" style="color: red;">Category Name is required</span>-->
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Meta Description :</label>
+                                    <textarea class="form-control" name="meta_description"
+                                              [(ngModel)]="blogCategoryData.meta_description" #meta_description="ngModel"></textarea>
+                                    <!--<span *ngIf="categoryName.invalid && categoryName.touched" style="color: red;">Category Name is required</span>-->
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Meta Keywords :</label>
+                                    <textarea class="form-control" type="text" name="meta_keywords"
+                                              [(ngModel)]="blogCategoryData.meta_keywords" #meta_keywords="ngModel"></textarea>
+                                    <!--<span *ngIf="categoryName.invalid && categoryName.touched" style="color: red;">Category Name is required</span>-->
+
+                                </div>
                             </fieldset>
                             <button *ngIf="editMode" type="button" [disabled]="!createBlogCategory.form.valid" class="btn btn-primary" (click)="edit()"> {{editMode
                                 ? 'Edit' : 'Create'}} Blog Category

@@ -17,6 +17,9 @@ export class AddBlogCategoriesComponent implements OnInit {
     blogCategoryData = {
         id: 0,
         name: '',
+        seo_title: '',
+        meta_description: '',
+        meta_keywords: ''
     };
 
   constructor(private BlogService : BlogService, private router: Router, private route: ActivatedRoute,) { }
@@ -35,6 +38,9 @@ export class AddBlogCategoriesComponent implements OnInit {
     add(){
         const createBlogCategoryBody = {
             categoryName : this.blogCategoryData.name,
+            seo_title: this.blogCategoryData.seo_title,
+            meta_description: this.blogCategoryData.meta_description,
+            meta_keywords: this.blogCategoryData.meta_keywords,
         }
         this.BlogService.createBlogCategory(createBlogCategoryBody).subscribe(
             (response:any) => {
@@ -52,8 +58,11 @@ export class AddBlogCategoriesComponent implements OnInit {
         const updateBlogCategoryBody = {
             categoryName : this.blogCategoryData.name,
             categoryId : this.blogCategoryData.id,
+            seo_title: this.blogCategoryData.seo_title,
+            meta_description: this.blogCategoryData.meta_description,
+            meta_keywords: this.blogCategoryData.meta_keywords,
 
-        }
+        };
         this.BlogService.updateBlogCategory(updateBlogCategoryBody).subscribe(
             (response:any) => {
                 if(response.status = 'true'){
@@ -72,7 +81,10 @@ export class AddBlogCategoriesComponent implements OnInit {
             (data:any)=> {
                 this.blogCategoryData.id = data.data.categoryDetails.id;
                 this.blogCategoryData.name = data.data.categoryDetails.name;
+                this.blogCategoryData.seo_title = data.data.categoryDetails.seo_title;
+                this.blogCategoryData.meta_description = data.data.categoryDetails.meta_description;
+                this.blogCategoryData.meta_keywords = data.data.categoryDetails.meta_keywords;
             }
-        )
+        );
     }
 }
