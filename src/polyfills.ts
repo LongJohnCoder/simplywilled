@@ -36,13 +36,6 @@ import 'core-js/es6/weak-map';
 import 'core-js/es6/set';
 import 'core-js/es6/typed';
 
-import 'ie-shim';
-import 'rxjs/bundles/Rx';
-import '@angular/common/bundles/common.umd';
-import '@angular/compiler/bundles/compiler.umd';
-import '@angular/platform-browser/bundles/platform-browser.umd';
-import '@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd';
-
 
 /** IE10 and IE11 requires the following for NgClass support on SVG elements */
 import 'classlist.js';  // Run `npm install --save classlist.js`.
@@ -68,9 +61,9 @@ import 'core-js/es7/reflect';
  * user can disable parts of macroTask/DomEvents patch by setting following flags
  */
 
-// (window as any).__Zone_disable_requestAnimationFrame = true; // disable patch requestAnimationFrame
-// (window as any).__Zone_disable_on_property = true; // disable patch onProperty such as onclick
-// (window as any).__zone_symbol__BLACK_LISTED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames
+(window as any).__Zone_disable_requestAnimationFrame = true; // disable patch requestAnimationFrame
+(window as any).__Zone_disable_on_property = true; // disable patch onProperty such as onclick
+(window as any).__zone_symbol__BLACK_LISTED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames
 
  /*
  * in IE/Edge developer tools, the addEventListener will also be wrapped by zone.js
@@ -93,18 +86,18 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  * Date, currency, decimal and percent pipes.
  * Needed for: All but Chrome, Firefox, Edge, IE11 and Safari 10
  */
-import 'intl';  // Run `npm install --save intl`.
+// import 'intl';  // Run `npm install --save intl`.
 /**
  * Need to import at least one locale-data with intl.
  */
-import 'intl/locale-data/jsonp/en';
-
-import 'ie9-oninput-polyfill';
-import 'angular-polyfills/dist/blob';
-import 'angular-polyfills/dist/classlist';
-import 'angular-polyfills/dist/formdata';
-import 'angular-polyfills/dist/intl';
-import 'angular-polyfills/dist/shim';
-import 'angular-polyfills/dist/typedarray';
-import 'console-polyfill';
+// import 'intl/locale-data/jsonp/en';
+//
+// import 'ie9-oninput-polyfill';
+// import 'angular-polyfills/dist/blob';
+// import 'angular-polyfills/dist/classlist';
+// import 'angular-polyfills/dist/formdata';
+// import 'angular-polyfills/dist/intl';
+// import 'angular-polyfills/dist/shim';
+// import 'angular-polyfills/dist/typedarray';
+// import 'console-polyfill';
 
