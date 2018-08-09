@@ -1,4 +1,4 @@
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {MainDashboardComponent} from './dashboard/main-dashboard/main-dashboard.component';

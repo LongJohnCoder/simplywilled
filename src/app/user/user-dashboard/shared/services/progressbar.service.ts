@@ -9,6 +9,7 @@ import {environment} from '../../../../../environments/environment';
 export class ProgressbarService {
   /**Variable declaration*/
   width: Progressbar;
+  // tellUsAboutYouProgress = new BehaviorSubject( this.width );
   messageSource = new BehaviorSubject( this.width );
   currentMessage = this.messageSource.asObservable();
   constructor (private _http: HttpClient) { }
@@ -24,6 +25,41 @@ export class ProgressbarService {
 
   changeWidth(width: Progressbar) {
     this.messageSource.next(width);
+  }
+
+  checkProgress(children: number, pet: number, step: number): number {
+    console.log('children : ', children, 'pet : ', pet, 'step : ', step);
+    const hasChildren = children > 0 ? true : false;
+    const hasPet = pet > 0 ? true : false;
+    return this.changeTellUsAboutYouWidth(hasChildren, hasPet, step);
+  }
+
+  changeTellUsAboutYouWidth(hasChildren: boolean, hasPet: boolean, currentStep: number): number {
+    let baseProgress = 3;
+
+    if (hasChildren) {
+      baseProgress ++;
+    } else {
+      if (currentStep > 2) {
+        currentStep--;
+      }
+    }
+
+    if (hasPet) {
+      baseProgress ++;
+    } else {
+      if (currentStep > 4) {
+        currentStep--;
+      }
+    }
+
+    console.log(hasPet, hasChildren, currentStep, baseProgress);
+    // tslint:disable-next-line:whitespace
+    // baseProgress = (baseProgress / (currentStep > 1 ? (currentStep - 1) : (baseProgress))) * 100;
+    baseProgress = ((currentStep - 1) / baseProgress) * 100;
+    console.log(baseProgress);
+    return baseProgress;
+    // this.tellUsAboutYouProgress.next({'width': baseProgress});
   }
 
   /**Fetch overall progress*/

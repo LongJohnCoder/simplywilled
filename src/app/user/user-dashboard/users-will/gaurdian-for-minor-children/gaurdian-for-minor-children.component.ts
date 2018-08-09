@@ -219,7 +219,9 @@ export class GaurdianForMinorChildrenComponent implements OnInit, OnDestroy {
                       }
                   }
               }
-              this.progressBarService.changeWidth({width: 40});
+              // tslint:disable-next-line:max-line-length
+              const progress = this.progressBarService.checkProgress(response.data[0].data.userInfo.children, response.data[0].data.userInfo.has_pet, 3);
+              this.progressBarService.changeWidth({'width': progress});
           },
           (error: any) => {
               console.log(error.error);

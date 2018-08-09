@@ -226,12 +226,13 @@ export class YourPetComponent implements OnInit, OnDestroy {
         console.log(this.userInfo);
         let totalChildrenData = response.data[1].data;
         if (totalChildrenData.totalChildren === undefined || totalChildrenData.totalChildren === null || totalChildrenData.totalChildren === 0) {
-          this.progressBarService.changeWidth({width: 60});
           this.trackPage = true;
         } else {
-          this.progressBarService.changeWidth({width: 50});
           this.trackPage = false;
         }
+        // tslint:disable-next-line:max-line-length
+        const progress = this.progressBarService.checkProgress(response.data[0].data.userInfo.children, response.data[0].data.userInfo.has_pet, 4);
+        this.progressBarService.changeWidth({'width': progress});
       },
       (error: any) => {
         console.log(error.error);

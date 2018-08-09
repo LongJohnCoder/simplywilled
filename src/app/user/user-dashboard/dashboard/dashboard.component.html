@@ -64,7 +64,7 @@
                         <div class="progres_left">
                             <span [style.width.%]="(progressBar.width === undefined) ? 0 : progressBar.width "></span>
                         </div>
-                        <span class="progress_right">{{(progressBar.width === undefined) ? 0 : progressBar.width}}% Complete</span>
+                        <span class="progress_right">{{(progressBar.width === undefined) ? 0 : (progressBar.width | number:'1.0-2')}}% Complete</span>
                     </div>
                 </div>
             </div>

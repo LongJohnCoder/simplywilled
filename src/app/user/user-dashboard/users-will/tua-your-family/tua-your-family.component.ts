@@ -127,11 +127,10 @@ export class TuaYourFamilyComponent implements OnInit, OnDestroy {
           this.userInfo.deceasedChildreNames = response.data[1].data.deceasedChildrenNames;
           this.userInfo.childrenInformation = response.data[1].data.childrenInformation;
           this.setData(this.editFlag, this.userInfo);
-          if (this.userInfo.totalChildren === undefined || this.userInfo.totalChildren === null || this.userInfo.totalChildren === 0) {
-            this.progressBarService.changeWidth({width: 25});
-          } else {
-            this.progressBarService.changeWidth({width: 20});
-          }
+
+          // tslint:disable-next-line:max-line-length
+          const progress = this.progressBarService.checkProgress(response.data[0].data.userInfo.children, response.data[0].data.userInfo.has_pet, 2);
+          this.progressBarService.changeWidth({'width': progress});
         }
       },
       (error: any) => {

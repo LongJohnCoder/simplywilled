@@ -189,11 +189,9 @@ export class YourPetGuardiansComponent implements OnInit {
           }
         }
 
-        if (totalChildrenData.totalChildren === undefined || totalChildrenData.totalChildren === null || totalChildrenData.totalChildren === 0) {
-          this.progressBarService.changeWidth({width: 80});
-        } else {
-          this.progressBarService.changeWidth({width: 75});
-        }
+        // tslint:disable-next-line:max-line-length
+        const progress = this.progressBarService.checkProgress(response.data[0].data.userInfo.children, response.data[0].data.userInfo.has_pet, 5);
+        this.progressBarService.changeWidth({'width': progress});
       },
       (error: any) => {
         console.log(error.error);

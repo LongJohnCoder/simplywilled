@@ -52,7 +52,7 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
   ) {
 
       this.months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
-      this.progressbarService.changeWidth({width: 0});
+      
       this.states = States;
       this.toolTipMessageList = {
       'name' : [{
@@ -104,6 +104,7 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
         (response: any) => { console.log(response);
             this.dashboardService.updateUserDetails(response.data);
             if ( response.data[0].data) {
+                console.log('user info ::', response.data[0].data.userInfo);
                 this.userInfo = response.data[0].data.userInfo;
                 const dobData = this.userInfo.dob !== null ? this.userInfo.dob.split('-') : '';
                 const partnerDob = this.userInfo.partner_dob !== null ? this.userInfo.partner_dob.split('-') : '';
@@ -115,6 +116,9 @@ export class TellUsAboutYourselfComponent implements OnInit, OnDestroy {
                 this.userInfo.spouseDay = partnerDob !== '' ?  partnerDob[2] : '';
                 // tslint:disable-next-line:max-line-length
                 this.userInfo.partner_invitation = this.userInfo !== null && this.userInfo.partner_invitation !== null ? this.userInfo.partner_invitation : 0;
+                // tslint:disable-next-line:max-line-length
+                const progress = this.progressbarService.checkProgress(response.data[0].data.userInfo.children, response.data[0].data.userInfo.has_pet, 1);
+                this.progressbarService.changeWidth({'width': progress});
             }
         },
         (error: any) => {
