@@ -14,7 +14,11 @@ import { SubscribedPackageComponent } from './subscribed-package/subscribed-pack
 import {GlobalPdfService} from './doc/services/global-pdf.service';
 import { GlobalTourComponent } from './global-tour/global-tour.component';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
-
+import {MedicalEmergencyService} from './plan-for-medical-emergency/medical-emergency.service';
+import { ProtectYourFinancesService } from './protect-your-finances/services/protect-your-finances.service';
+import { UserComponent } from '../user.component';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { UserDashboardService } from './user-dashboard.service';
 
 @NgModule({
   imports: [
@@ -23,12 +27,21 @@ import { Ng2PageScrollModule } from 'ng2-page-scroll';
     // PersonalRepresentativePowerModule,
     ReactiveFormsModule,
     GlobalTourModule,
-    Ng2PageScrollModule
+    Ng2PageScrollModule,
+    TooltipModule.forRoot(),
     // GlobalTooltipModule
   ],
-  declarations: [DashboardComponent, MainDashboardComponent, SubscribedPackageComponent ],
+  declarations: [DashboardComponent, MainDashboardComponent, SubscribedPackageComponent, UserComponent ],
     providers: [
-        UserPaidGuard, UserUnPaidGuard, ProgressbarService, ReferFriendService, FinalDispositionPdfService, GlobalPdfService
+        UserPaidGuard,
+        UserUnPaidGuard,
+        ProgressbarService,
+        ReferFriendService,
+        FinalDispositionPdfService,
+        GlobalPdfService,
+        MedicalEmergencyService,
+        ProtectYourFinancesService,
+        UserDashboardService
     ]
 })
 export class UserDashboardModule { }
