@@ -1,0 +1,79 @@
+<?php
+echo '<?xml version="1.0"?>';
+?>
+	<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    	<url>
+			<loc>{{route('HomePage')}}</loc>
+			<changefreq>weekly</changefreq>
+			<priority>1.0</priority>
+		</url>
+        <url>
+			<loc>{{route('AboutUsPage')}}</loc>
+			<changefreq>weekly</changefreq>
+			<priority>1.0</priority>
+		</url>
+        <url>
+			<loc>{{route('PricingPage')}}</loc>
+			<changefreq>weekly</changefreq>
+			<priority>1.0</priority>
+		</url>
+        <url>
+			<loc>{{route('PrivacyPolicyPage')}}</loc>
+			<changefreq>weekly</changefreq>
+			<priority>1.0</priority>
+		</url>
+        <url>
+			<loc>{{route('TermsOfServicePage')}}</loc>
+			<changefreq>weekly</changefreq>
+			<priority>1.0</priority>
+		</url>
+        <url>
+			<loc>{{route('TermsOfUsePage')}}</loc>
+			<changefreq>weekly</changefreq>
+			<priority>1.0</priority>
+		</url>
+        <url>
+			<loc>{{route('AskTheOwlPage')}}</loc>
+			<changefreq>weekly</changefreq>
+			<priority>1.0</priority>
+		</url>
+        <url>
+			<loc>{{route('ContactUsPage')}}</loc>
+			<changefreq>weekly</changefreq>
+			<priority>1.0</priority>
+		</url>
+        <url>
+			<loc>{{route('TrendingNewsPage')}}</loc>
+			<changefreq>weekly</changefreq>
+			<priority>1.0</priority>
+		</url>
+		@foreach($categories as $category)
+		<url>
+			<loc>{{route('TrendingNewsCategoryPage', ['slug'=>$category->slug])}}</loc>
+			<changefreq>weekly</changefreq>
+			<priority>1.0</priority>
+		</url>
+		@endforeach
+        @foreach($blogs as $blog)
+		<url>
+			<loc>{{route('TrendingNewsDetailPage', ['slug'=>$blog->slug])}}</loc>
+			<changefreq>weekly</changefreq>
+			<priority>1.0</priority>
+		</url>
+		@endforeach
+        <url>
+			<loc>{{route('CustomerRegistrationPage')}}</loc>
+			<changefreq>weekly</changefreq>
+			<priority>1.0</priority>
+		</url>
+        <url>
+			<loc>{{route('LoginPage')}}</loc>
+			<changefreq>weekly</changefreq>
+			<priority>1.0</priority>
+		</url>
+        <url>
+			<loc>{{route('ForgotPassPage')}}</loc>
+			<changefreq>weekly</changefreq>
+			<priority>1.0</priority>
+		</url>
+	</urlset>

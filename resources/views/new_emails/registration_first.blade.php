@@ -44,8 +44,8 @@
                     </tr>
                     <tr>
                         <td>
-                          <a href="{{url('/')}}">
-                            <img src="{{url('/')}}/images/logo.jpg" alt="simplywilled.com" style="display: block;">
+                          <a href="{{env('BASE_URL')}}">
+                            <img src="{{env('BASE_URL')}}/images/logo.jpg" alt="simplywilled.com" style="display: block;">
                           </a>
                         </td>
                     </tr>
@@ -67,7 +67,7 @@
                         </td>
                         <tr>
                             <td style="padding:40px 30px; background: #f2f2f2; text-align: center;">
-                                <a href="{{url('/')}}/sign-in"><img src="{{url('/')}}/images/loginAccount.png" alt="accept"></a>
+                                <a href="{{env('BASE_URL')}}/sign-in"><img src="{{env('BASE_URL')}}/images/loginAccount.png" alt="accept"></a>
                                 <br><br>
                             </td>
                         </tr>
@@ -79,7 +79,7 @@
                                             <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-bottom:1px solid #e3e3e3; padding-bottom: 8px;">
                                                <tr>
                                                     <td style="padding-right: 10px;">
-                                                        <img src="{{url('/')}}/images/contactIcon.png" alt="">
+                                                        <img src="{{env('BASE_URL')}}/images/contactIcon.png" alt="">
                                                     </td>
                                                     <td style="font-size: 30px; color: #373737;">
                                                         1-(855) 965-1789
@@ -94,16 +94,16 @@
                                         <td>
                                             <span style="font-size: 18px; color: #373737; float: left; padding-top: 13px; margin-left: 2px;">Follow Us: </span>
                                             <a href="https://www.facebook.com/SimplyWilled" style=" float: left; padding-top: 10px; margin-left: 26px;">
-                                                <img src="{{url('/')}}/images/fd-icon.png" alt="Facebook">
+                                                <img src="{{env('BASE_URL')}}/images/fd-icon.png" alt="Facebook">
                                             </a>
                                             <a href="https://twitter.com/simplywilled" style=" float: left; padding-top: 10px; margin-left: 26px;">
-                                                <img src="{{url('/')}}/images/ttr-icon.png" alt="Twitter">
+                                                <img src="{{env('BASE_URL')}}/images/ttr-icon.png" alt="Twitter">
                                             </a>
                                             <a href="https://www.linkedin.com/company/simplywilled.com" style=" float: left; padding-top: 10px; margin-left: 26px;">
-                                                <img src="{{url('/')}}/images/in-icon.png" alt="Linkedin">
+                                                <img src="{{env('BASE_URL')}}/images/in-icon.png" alt="Linkedin">
                                             </a>
                                             <a href="https://www.instagram.com/simplywilled" style=" float: left; padding-top: 10px; margin-left: 26px;">
-                                                <img src="{{url('/')}}/images/gram-icon.png" alt="Instagram">
+                                                <img src="{{env('BASE_URL')}}/images/gram-icon.png" alt="Instagram">
                                             </a>
                                         </td>
                                     </tr>
@@ -116,17 +116,17 @@
                             <div style="text-align: center;padding: 15px 0; background: #fff;">
                               <div style="text-align: center;">
                                   <br><br>
-                                  <a href="{{url('/')}}"><img src="{{url('/')}}/images/callus.jpg" alt=""></a>
+                                  <a href="{{env('BASE_URL')}}"><img src="{{env('BASE_URL')}}/images/callus.jpg" alt=""></a>
                                   <br>
                               </div>
                               <p style="text-align: center; padding-top:15px;">
-                                  <span><a href="https://www.facebook.com/SimplyWilled"><img src="{{url('/')}}/images/fd-icon.png"></a></span>
+                                  <span><a href="https://www.facebook.com/SimplyWilled"><img src="{{env('BASE_URL')}}/images/fd-icon.png"></a></span>
                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <span ><a href="https://twitter.com/simplywilled"><img src="{{url('/')}}/images/ttr-icon.png"></a></span>
+                                  <span ><a href="https://twitter.com/simplywilled"><img src="{{env('BASE_URL')}}/images/ttr-icon.png"></a></span>
                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <span ><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{url('/')}}/images/in-icon.png"></a></span>
+                                  <span ><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{env('BASE_URL')}}/images/in-icon.png"></a></span>
                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <span ><a href="https://www.instagram.com/simplywilled"><img src="{{url('/')}}/images/gram-icon.png"></a></span>
+                                  <span ><a href="https://www.instagram.com/simplywilled"><img src="{{env('BASE_URL')}}/images/gram-icon.png"></a></span>
                                   <br><br>
                               </p>
                             </div>

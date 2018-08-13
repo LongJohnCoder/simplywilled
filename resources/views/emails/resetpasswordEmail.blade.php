@@ -43,8 +43,8 @@
                     </tr>
                     <tr>
                         <td>
-                          <a href="{{url('/')}}">
-                            <img src="{{url('/')}}/images/logo.jpg" alt="simplywilled.com" style="display: block;">
+                          <a href="{{env('BASE_URL')}}">
+                            <img src="{{env('BASE_URL')}}/images/logo.jpg" alt="simplywilled.com" style="display: block;">
                           </a>
                         </td>
                     </tr>
@@ -70,17 +70,17 @@
                         <div style="text-align: center;padding: 15px 0; background: #fff;">
                               <div style="text-align: center;">
                                   <br><br>
-                                  <a href="{{url('/')}}"><img src="{{url('/')}}/images/callus.jpg" alt=""></a>
+                                  <a href="{{env('BASE_URL')}}"><img src="{{env('BASE_URL')}}/images/callus.jpg" alt=""></a>
                                   <br>
                               </div>
                               <p style="text-align: center; padding-top:15px;">
-                                  <span><a href="https://www.facebook.com/SimplyWilled"><img src="{{url('/')}}/images/fd-icon.png"></a></span>
+                                  <span><a href="https://www.facebook.com/SimplyWilled"><img src="{{env('BASE_URL')}}/images/fd-icon.png"></a></span>
                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <span ><a href="https://twitter.com/simplywilled"><img src="{{url('/')}}/images/ttr-icon.png"></a></span>
+                                  <span ><a href="https://twitter.com/simplywilled"><img src="{{env('BASE_URL')}}/images/ttr-icon.png"></a></span>
                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <span ><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{url('/')}}/images/in-icon.png"></a></span>
+                                  <span ><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{env('BASE_URL')}}/images/in-icon.png"></a></span>
                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <span ><a href="https://www.instagram.com/simplywilled"><img src="{{url('/')}}/images/gram-icon.png"></a></span>
+                                  <span ><a href="https://www.instagram.com/simplywilled"><img src="{{env('BASE_URL')}}/images/gram-icon.png"></a></span>
                                   <br><br>
                               </p>
                             </div>

@@ -44,8 +44,8 @@
                     </tr>
                     <tr>
                         <td>
-                          <a href="{{url('/')}}">
-                            <img src="{{url('/')}}/images/logo.jpg" alt="simplywilled.com" style="display: block;">
+                          <a href="{{env('BASE_URL')}}">
+                            <img src="{{env('BASE_URL')}}/images/logo.jpg" alt="simplywilled.com" style="display: block;">
                           </a>
                         </td>
                     </tr>
@@ -63,7 +63,7 @@
                             <h1 style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">Hello {{ucwords(strtolower($name))}},</h1>
                             <p style="color: #373737; font-size: 20px; line-height: 30px;">
                                 You have been appointed as Personal Representative.<br><br>
-                                {{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}} recently joined the thousands of people who have used <a href="{{url('/')}}" target="_blank" style="color: #0a5dab;">SimplyWilled.com</a> to create their will and selected you to serve as their Personal Representative. Being selected as a Personal Representative is an important role reserved for those we trust the most. This email is being sent to you so you can let <strong>{{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}}</strong> know whether you accept or decline this honor.
+                                {{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}} recently joined the thousands of people who have used <a href="{{env('BASE_URL')}}" target="_blank" style="color: #0a5dab;">SimplyWilled.com</a> to create their will and selected you to serve as their Personal Representative. Being selected as a Personal Representative is an important role reserved for those we trust the most. This email is being sent to you so you can let <strong>{{ucwords(strtolower($firstName.' '.$middleName.' '.$lastName))}}</strong> know whether you accept or decline this honor.
                                 <br><br>
                                 <strong style="font-size: 22px;">What being selected as Primary Personal Representative means for you:</strong>
                                 <br><br>
@@ -76,9 +76,9 @@
                         </td>
                         <tr>
                             <td style="padding:40px 30px; background: #f2f2f2; text-align: center;">
-                                <a href="{{url('/')}}/fiduciary/accept/{{isset($token) ? $token : 'null'}}"><img src="{{url('/')}}/images/acceptBtn.png" alt="accept"></a>
+                                <a href="{{env('BASE_URL')}}/fiduciary/accept/{{isset($token) ? $token : 'null'}}"><img src="{{env('BASE_URL')}}/images/acceptBtn.png" alt="accept"></a>
                                 <br><br>
-                                <a href="{{url('/')}}/fiduciary/reject/{{isset($token) ? $token : 'null'}}"><img src="{{url('/')}}/images/declineBtn.png" alt="No Thank You, I Respectfully Decline"></a>
+                                <a href="{{env('BASE_URL')}}/fiduciary/reject/{{isset($token) ? $token : 'null'}}"><img src="{{env('BASE_URL')}}/images/declineBtn.png" alt="No Thank You, I Respectfully Decline"></a>
                             </td>
                         </tr>
                         <!-- <tr>
@@ -89,7 +89,7 @@
                                             <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-bottom:1px solid #e3e3e3; padding-bottom: 8px;">
                                                <tr>
                                                     <td style="padding-right: 10px;">
-                                                        <img src="{{url('/')}}/images/contactIcon.png" alt="">
+                                                        <img src="{{env('BASE_URL')}}/images/contactIcon.png" alt="">
                                                     </td>
                                                     <td style="font-size: 30px; color: #373737;">
                                                         1-(855) 965-1789
@@ -104,16 +104,16 @@
                                         <td>
                                             <span style="font-size: 18px; color: #373737; float: left; padding-top: 13px; margin-left: 2px;">Follow Us: </span>
                                             <a href="https://www.facebook.com/SimplyWilled" style=" float: left; padding-top: 10px; margin-left: 26px;">
-                                                <img src="{{url('/')}}/images/fd-icon.png" alt="Facebook">
+                                                <img src="{{env('BASE_URL')}}/images/fd-icon.png" alt="Facebook">
                                             </a>
                                             <a href="https://twitter.com/simplywilled" style=" float: left; padding-top: 10px; margin-left: 26px;">
-                                                <img src="{{url('/')}}/images/ttr-icon.png" alt="Twitter">
+                                                <img src="{{env('BASE_URL')}}/images/ttr-icon.png" alt="Twitter">
                                             </a>
                                             <a href="https://www.linkedin.com/company/simplywilled.com" style=" float: left; padding-top: 10px; margin-left: 26px;">
-                                                <img src="{{url('/')}}/images/in-icon.png" alt="Linkedin">
+                                                <img src="{{env('BASE_URL')}}/images/in-icon.png" alt="Linkedin">
                                             </a>
                                             <a href="https://www.instagram.com/simplywilled" style=" float: left; padding-top: 10px; margin-left: 26px;">
-                                                <img src="{{url('/')}}/images/gram-icon.png" alt="Instagram">
+                                                <img src="{{env('BASE_URL')}}/images/gram-icon.png" alt="Instagram">
                                             </a>
                                         </td>
                                     </tr>
@@ -126,17 +126,17 @@
                             <div style="text-align: center;padding: 15px 0; background: #fff;">
                               <div style="text-align: center;">
                                   <br><br>
-                                  <a href="{{url('/')}}"><img src="{{url('/')}}/images/callus.jpg" alt=""></a>
+                                  <a href="{{env('BASE_URL')}}"><img src="{{env('BASE_URL')}}/images/callus.jpg" alt=""></a>
                                   <br>
                               </div>
                               <p style="text-align: center; padding-top:15px;">
-                                  <span><a href="https://www.facebook.com/SimplyWilled"><img src="{{url('/')}}/images/fd-icon.png"></a></span>
+                                  <span><a href="https://www.facebook.com/SimplyWilled"><img src="{{env('BASE_URL')}}/images/fd-icon.png"></a></span>
                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <span ><a href="https://twitter.com/simplywilled"><img src="{{url('/')}}/images/ttr-icon.png"></a></span>
+                                  <span ><a href="https://twitter.com/simplywilled"><img src="{{env('BASE_URL')}}/images/ttr-icon.png"></a></span>
                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <span ><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{url('/')}}/images/in-icon.png"></a></span>
+                                  <span ><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{env('BASE_URL')}}/images/in-icon.png"></a></span>
                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <span ><a href="https://www.instagram.com/simplywilled"><img src="{{url('/')}}/images/gram-icon.png"></a></span>
+                                  <span ><a href="https://www.instagram.com/simplywilled"><img src="{{env('BASE_URL')}}/images/gram-icon.png"></a></span>
                                   <br><br>
                               </p>
                             </div>

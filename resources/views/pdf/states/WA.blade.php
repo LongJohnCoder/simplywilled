@@ -25,7 +25,7 @@
     </div>
   </div>
 <div style="text-align: justify">
-    <div>
+    <div style="page-break-after: always;">
         <div>
             <p style=" text-align: center;"><span  style="font-size: 13pt"><span style="font-family:'Times New Roman, serif'"><span size="5" style="font-size: 19pt"><span  style="font-size: 16pt"><b>W</b></span></span></span><span  style="font-size: 16pt"><b>ASHINGTON
         ADVANCE DIRECTIVE</b></span></span></p>
@@ -294,7 +294,7 @@
     </div>
 
 
-    <div >
+    <div style="page-break-after: always;">
         <div >
             <p class="western" style="margin-bottom: 0in;  ">5.
                 When making health care decisions for me, my attorney-in-fact should
@@ -308,7 +308,7 @@
                 benefits, burdens, and risks of my current circumstances and
                 treatment options.</p>
 
-            <p  style="margin-bottom: 0.09in; page-break-before: justify"><span size="2" style=" "><span  style="font-size: 12pt">6.</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">I
+            <p  style="margin-bottom: 0.09in;"><span size="2" style=" "><span  style="font-size: 12pt">6.</span><span  style="font-size: 12pt">	</span><span  style="font-size: 12pt">I
       make the following additional instructions regarding my care:</span></span></p>
             <p  style="margin-left: 0.38in; margin-bottom: 0.09in;  ">
                 <span size="2" style=" "><span  style="font-size: 12pt">________________________________________________________________________</span></span></p>
@@ -360,9 +360,9 @@
     </div>
 
 
-    <div >
+    <div style="page-break-after: always;">
         <div>
-            <p align="center" style="margin-bottom: 0in;   page-break-before: always">
+            <p align="center" style="margin-bottom: 0in;">
         <span  style="font-size: 13pt"><span  style="font-size: 14pt"><b>PART
         II: DECLARATION</b></span></span></p>
             <p  style="margin-top: 0.19in; margin-bottom: 0in;  ">
@@ -482,7 +482,7 @@
     </div>
 
 
-    <div>
+    <div style="page-break-after: always;">
         <div>
             <p  style="margin-left: 0.75in; text-indent: -0.38in; margin-bottom: 0in;  ">
         <span size="2" style=" "><span  style="font-size: 12pt">(e)</span><span  style="font-size: 12pt">	I</span><span  style="font-size: 12pt">
@@ -527,9 +527,9 @@
     </div>
 
 
-    <div >
+    <div style="page-break-after: always;">
         <div >
-            <p align="center" style="margin-bottom: 0in;   page-break-before: always">
+            <p align="center" style="margin-bottom: 0in;">
         <span size="2" style=" "><span  style="font-size: 14pt"><b>PART
         III: ORGAN DONATION</b></span></span></p>
 
@@ -595,8 +595,8 @@
     </div>
 
 
-    <div>
-        <div> <br>
+    <div style="page-break-after: always;">
+        <div>
             <p align="center" style="margin-bottom: 0in;">
         <span size="2" style=" "><span  style="font-size: 14pt"><b>PART
         IV:  EXECUTION</b></span></span></p>
@@ -609,7 +609,7 @@
 
             <p  style="margin-bottom: 0in;  "><span size="2" style=" "><span  style="font-size: 12pt">DATE:
         </span><span  style="font-size: 12pt">_________________</span><span  style="font-size: 12pt">	</span></span></p>
-            <br>
+            
             <p  style="margin-bottom: 0in;  "><span size="2" style=" "><span  style="font-size: 12pt">___________________________________</span></span></p>
             <p class="western"  style="margin-bottom: 0.08in;   orphans: 0; widows: 0">
                 <b></b>
@@ -684,8 +684,7 @@
 
         <span ><span  style="font-size: 12pt"><b></b></span></span></span></span></p>
 
-            <br>
-            <p class="western" align="center" style="margin-bottom: 0in; page-break-before: always">
+            <p class="western" align="center" style="margin-bottom: 0in;">
                 <b>WITNESS STATEMENTS</b></p>
 
             <p class="western"  style="margin-bottom: 0in;  ">
@@ -707,39 +706,37 @@
             <p class="western" style="margin-bottom: 0in;  "><span ><b>WITNESS
         1</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
         </span><span >______________________</span></p>
-            <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in;  ">
+            <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; margin-top:0;">
                 <span style="padding-left: 50px;">[signature]</span></p>
             <p class="western" align="justify" style="margin-bottom: 0.06in;   padding-top: 15px;">
                 <span >____________________________</span><span >		</span><span style="padding-left: 122px;">______________________</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in;  ">
+            <p class="western" align="justify" style="margin-bottom: 0.06in; margin-top:0;">
                 <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
             <p class="western" align="justify" style="margin-bottom: 0.06in;   padding:25px 0 0 350px;">
                 <span >							</span><span >______________________</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in;   padding-left: 350px;">
+            <p class="western" align="justify" style="margin-bottom: 0.06in; padding-left: 350px; margin-top:0;">
                 <span style="padding-left: 40px;">								[city, state, zip]</span></p>
-
-            <br>
             <p class="western" style="margin-bottom: 0in;  "><span ><b>WITNESS
         2</b></span><span >: </span><span >____________________</span><span style="padding-left: 50px;">	Dated:
         </span><span >______________________</span></p>
-            <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in;  ">
+            <p class="western" align="justify" style="text-indent: 0.5in; margin-bottom: 0.06in; margin-top:0;">
                 <span style="padding-left: 50px;">[signature]</span></p>
             <p class="western" align="justify" style="margin-bottom: 0.06in;   padding-top: 15px;">
                 <span >____________________________</span><span >		</span><span style="padding-left: 122px;">______________________</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in;  ">
+            <p class="western" align="justify" style="margin-bottom: 0.06in; margin-top:0;">
                 <span style="padding-left: 60px;">	[name printed]</span><span style="padding-left: 240px;">[street address]</span></p>
             <p class="western" align="justify" style="margin-bottom: 0.06in;   padding:25px 0 0 350px;">
                 <span >							</span><span >______________________</span></p>
-            <p class="western" align="justify" style="margin-bottom: 0.06in;   padding-left: 350px;">
+            <p class="western" align="justify" style="margin-bottom: 0.06in; padding-left: 350px; margin-top:0;">
                 <span style="padding-left: 40px;">								[city, state, zip]</span></p>
         </div>
 
     </div>
 
 
-    <div >
+    <div>
         <div >
-            <p class="western" align="center" style="margin-bottom: 0in; page-break-before: always">
+            <p class="western" align="center" style="margin-bottom: 0in;">
                 <span ><b>NOTARY ACKNOWLEDGEMENT </b></span>
             </p>
             <p class="western" align="center" style="margin-bottom: 0in;   background: #ffffff">

@@ -44,8 +44,8 @@
                     </tr>
                     <tr>
                         <td>
-                          <a href="{{url('/')}}">
-                            <img src="{{url('/')}}/images/logo.jpg" alt="simplywilled.com" style="display: block;">
+                          <a href="{{env('BASE_URL')}}">
+                            <img src="{{env('BASE_URL')}}/images/logo.jpg" alt="simplywilled.com" style="display: block;">
                           </a>
                         </td>
                     </tr>
@@ -53,12 +53,12 @@
                         <td style="padding:0 30px; background: #f2f2f2;">
                             <p style="color: #373737; font-size: 20px; line-height: 30px; padding-top: 32px; padding-bottom: 32px;">
                                 <strong style="color: #0a5dab; font-size: 30px; padding: 30px 0 20px;">Hello {{ucwords(trim(strtolower($friendFirstname)))}},</strong><br><br>
-                                {{ucwords(trim(strtolower($fullName)))}} recently joined the thousands of people who have used <a href="{{url('/')}}" target="_blank" style="font-weight: bold; color:#0a5dab;">SimplyWilled.com</a> to create their last will and testament and supporting estate plan documents.<br><br>
+                                {{ucwords(trim(strtolower($fullName)))}} recently joined the thousands of people who have used <a href="{{env('BASE_URL')}}" target="_blank" style="font-weight: bold; color:#0a5dab;">SimplyWilled.com</a> to create their last will and testament and supporting estate plan documents.<br><br>
                                 {{ucwords(trim($firstName))}} asked that we send you this email to invite you to sign up for SimplyWilled.com to get your affairs in order.
                             </p>
                             <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 20px;">
                                 <tr>
-                                    <td style="padding-right: 15px; width: 84px;" valign="top"><img src="{{url('/')}}/images/greenIcon.png" alt=""></td>
+                                    <td style="padding-right: 15px; width: 84px;" valign="top"><img src="{{env('BASE_URL')}}/images/greenIcon.png" alt=""></td>
                                     <td>
                                         <h2 style="color: #2782be; font-size: 20px; padding-bottom: 7px;">PROTECT YOUR LOVED ONES</h2>
                                         <p style="color: #373737; font-size: 14px;">Name guardians and list beneficiaries so those you love are in good hands.</p>
@@ -67,7 +67,7 @@
                             </table>
                             <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 20px;">
                                 <tr>
-                                    <td style="padding-right: 15px; width: 84px;" valign="top"><img src="{{url('/')}}/images/greenIcon.png" alt=""></td>
+                                    <td style="padding-right: 15px; width: 84px;" valign="top"><img src="{{env('BASE_URL')}}/images/greenIcon.png" alt=""></td>
                                     <td>
                                         <h2 style="color: #2782be; font-size: 20px; padding-bottom: 7px;">PROTECT YOUR ASSETS</h2>
                                         <p style="color: #373737; font-size: 14px;">Ensure the assets you’ve worked hard for pass to the ones you love.</p>
@@ -76,14 +76,14 @@
                             </table>
                             <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 20px;">
                                 <tr>
-                                    <td style="padding-right: 15px; width: 84px;" valign="top"><img src="{{url('/')}}/images/greenIcon.png" alt=""></td>
+                                    <td style="padding-right: 15px; width: 84px;" valign="top"><img src="{{env('BASE_URL')}}/images/greenIcon.png" alt=""></td>
                                     <td>
                                         <h2 style="color: #2782be; font-size: 20px; padding-bottom: 7px;">SAVE TIME & MONEY</h2>
                                         <p style="color: #373737; font-size: 14px;">It takes less than 15 minutes and you're done. Try it today and see how simple preparing your last will and testament online can be.</p>
                                     </td>
                                 </tr>
                             </table>
-                            <p style="text-align: center; padding: 18px 0 32px;"><a href="{{url('/')}}/register"><img src="{{url('/')}}/images/getStartedNew.png" alt=""></a></p>
+                            <p style="text-align: center; padding: 18px 0 32px;"><a href="{{env('BASE_URL')}}/register"><img src="{{env('BASE_URL')}}/images/getStartedNew.png" alt=""></a></p>
 
                         </td>
                         <!-- <tr>
@@ -94,7 +94,7 @@
                                             <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-bottom:1px solid #e3e3e3; padding-bottom: 8px;">
                                                <tr>
                                                     <td style="padding-right: 10px;">
-                                                        <img src="{{url('/')}}/images/contactIcon.png" alt="">
+                                                        <img src="{{env('BASE_URL')}}/images/contactIcon.png" alt="">
                                                     </td>
                                                     <td style="font-size: 30px; color: #373737;">
                                                         1-(855) 965-1789
@@ -109,16 +109,16 @@
                                         <td>
                                             <span style="font-size: 18px; color: #373737; float: left; padding-top: 13px; margin-left: 2px;">Follow Us: </span>
                                             <a href="https://www.facebook.com/SimplyWilled" style=" float: left; padding-top: 10px; margin-left: 26px;">
-                                                <img src="{{url('/')}}/images/fd-icon.png" alt="Facebook">
+                                                <img src="{{env('BASE_URL')}}/images/fd-icon.png" alt="Facebook">
                                             </a>
                                             <a href="https://twitter.com/simplywilled" style=" float: left; padding-top: 10px; margin-left: 26px;">
-                                                <img src="{{url('/')}}/images/ttr-icon.png" alt="Twitter">
+                                                <img src="{{env('BASE_URL')}}/images/ttr-icon.png" alt="Twitter">
                                             </a>
                                             <a href="https://www.linkedin.com/company/simplywilled.com" style=" float: left; padding-top: 10px; margin-left: 26px;">
-                                                <img src="{{url('/')}}/images/in-icon.png" alt="Linkedin">
+                                                <img src="{{env('BASE_URL')}}/images/in-icon.png" alt="Linkedin">
                                             </a>
                                             <a href="https://www.instagram.com/simplywilled" style=" float: left; padding-top: 10px; margin-left: 26px;">
-                                                <img src="{{url('/')}}/images/gram-icon.png" alt="Instagram">
+                                                <img src="{{env('BASE_URL')}}/images/gram-icon.png" alt="Instagram">
                                             </a>
                                         </td>
                                     </tr>
@@ -131,17 +131,17 @@
                             <div style="text-align: center;padding: 15px 0; background: #fff;">
                               <div style="text-align: center;">
                                   <br><br>
-                                  <a href="{{url('/')}}"><img src="{{url('/')}}/images/callus.jpg" alt=""></a>
+                                  <a href="{{env('BASE_URL')}}"><img src="{{env('BASE_URL')}}/images/callus.jpg" alt=""></a>
                                   <br>
                               </div>
                               <p style="text-align: center; padding-top:15px;">
-                                  <span><a href="https://www.facebook.com/SimplyWilled"><img src="{{url('/')}}/images/fd-icon.png"></a></span>
+                                  <span><a href="https://www.facebook.com/SimplyWilled"><img src="{{env('BASE_URL')}}/images/fd-icon.png"></a></span>
                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <span ><a href="https://twitter.com/simplywilled"><img src="{{url('/')}}/images/ttr-icon.png"></a></span>
+                                  <span ><a href="https://twitter.com/simplywilled"><img src="{{env('BASE_URL')}}/images/ttr-icon.png"></a></span>
                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <span ><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{url('/')}}/images/in-icon.png"></a></span>
+                                  <span ><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{env('BASE_URL')}}/images/in-icon.png"></a></span>
                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <span ><a href="https://www.instagram.com/simplywilled"><img src="{{url('/')}}/images/gram-icon.png"></a></span>
+                                  <span ><a href="https://www.instagram.com/simplywilled"><img src="{{env('BASE_URL')}}/images/gram-icon.png"></a></span>
                                   <br><br>
                               </p>
                             </div>

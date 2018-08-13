@@ -69,7 +69,7 @@
     </p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">My Name: 		</span>
-        <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
+        <span style="font-family:'Times New Roman, serif';text-transform: capitalize; padding-left:48px;">{{strtoupper($tellUsAboutYou['fullname'])}}</span>
 
         </p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
@@ -77,12 +77,12 @@
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{date('F j, Y', strtotime($tellUsAboutYou['dob']))}}</span>
 
         </p>
-    <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">My Address:         	</span>
-      <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['address']}}</span>
+    <p  style="margin-bottom: 0.08in; line-height: 100%;">
+      <span style="font-family:'Times New Roman, serif'; padding-right:33px;">My Address:         	</span>
+      <span style="font-family:'Times New Roman, serif';text-transform: capitalize;">{{$tellUsAboutYou['address']}}</span>
 
       </p>
-    <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+    <p  style="margin-bottom: 0.08in; line-height: 100%; padding-left:125px;">
       <span style="font-family:'Times New Roman, serif'">
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['city']}}</span>
 
@@ -93,11 +93,11 @@
 
         </span></p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">My Telephone:
+      <span style="font-family:'Times New Roman, serif'; padding-right:23px; display:inline-block;">My Telephone:</span>
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{$tellUsAboutYou['phone']}}</span>
 
         <!--«</span><span ><span style="font-family:'Times New Roman, serif'">Client
-      Telephone</span></span><span style="font-family:'Times New Roman, serif'">»--></span></p>
+      Telephone</span></span><span style="font-family:'Times New Roman, serif'">»--></p>
     <p  style="margin-top: 0.13in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
       <br/>
@@ -115,33 +115,30 @@
     </p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">Name:  		</span>
-      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['fullname']}} </span>
-      <!--<span ><span style="font-family:'Times New Roman, serif'">Rx
-      Agent #1</span></span><span style="font-family:'Times New Roman, serif'">»</span>--></p>
+      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{ucwords($healthFinance['fullname'])}} </span>
+    </p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">Telephone:  		</span>
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['phone']}} </span>
-      </p>
+    </p>
     <p style="margin-bottom: 0in; line-height: 100%"><span style="font-family:'Times New Roman, serif'">Address:
 		  </span>
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['address']}} </span>
 
     </p>
-    <p style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
-      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
+    <p style="margin-left: 0in; text-indent: 0.0in; margin-bottom: 0in; line-height: 100%">
+      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{ucwords($healthFinance['city'])}},</span>
 
-      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['state']}} </span>
+      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{ucwords($healthFinance['state'])}} </span>
 
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['zip']}} </span>
-
-      </p>
+    </p>
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <br/>
 
     </p>
 
-    <br>
-    @if(array_key_exists('anyBackupAgent' , $healthFinance) && $healthFinance['anyBackupAgent'] == 'true')
+    @if(array_key_exists('anyBackupAgent', $healthFinance) && $healthFinance['anyBackupAgent'] == 'true')
     <div>
       <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'"></span>
@@ -168,14 +165,15 @@
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupAddress']}} </span>
 
       </p>
-      <p style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+      <p style="margin-left: 0in; text-indent: 0.0in; margin-bottom: 0in; line-height: 100%">
 
-        <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupCity']}} ,</span>
+        <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupCity']}}, </span>
 
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupState']}} </span>
 
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
-        </p>
+      </p>
+      <br>
     </div>
     @endif
 
@@ -188,12 +186,12 @@
 <!-- Page 2-->
 <div>
   <div>
-    <p  style="margin-top: 0.13in; margin-bottom: 0.04in; line-height: 100%; orphans: 0; widows: 0">
+    <p style="margin-top: 0.13in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0"></p>
+    <p  style="margin-top: 0.13in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><b>3.	I AUTHORIZE if I am unable
       to make medical care decisions for myself:</b></span></p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
-      <br/>
-      <br/>
+      
 
     </p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
@@ -589,7 +587,7 @@
       <span style="font-family:'Times New Roman, serif'"><b>Witness Verification</b></span><span style="font-family:'Times New Roman, serif'">:
         I believe that this Durable Health Care Power of Attorney accurately
         expresses the wishes communicated to me by </span>
-        <span style="font-family:'Times New Roman, serif';text-transform: capitalize">{{strtoupper($tellUsAboutYou['fullname'])}}. {{ucwords($genderTxt3)}} intends to adopt this Durable Health Care Power of Attorney at this time. {{ucwords($genderTxt3)}} is physically unable to sign or mark this document at this time. I verify that {{$genderTxt3}} directly indicated to me that the Durable Health Care Power of Attorney expresses {{$genderTxt4}} wishes and that {{$genderTxt4}} intends to adopt the Durable Health Care Power of Attorney at this time. I further affirm that {{$genderTxt3}} appears to be of sound mind and not under duress, fraud, or undue influence. {{ucwords($genderTxt3)}} is not related to me by blood, marriage, or adoption and is not a person for whom I directly provide care in a professional capacity. I have not been appointed as the representative to make medical decisions on {{$genderTxt4}} behalf.</span>
+        <span style="font-family:'Times New Roman, serif';">{{strtoupper($tellUsAboutYou['fullname'])}}. {{ucwords($genderTxt3)}} intends to adopt this Durable Health Care Power of Attorney at this time. {{ucwords($genderTxt3)}} is physically unable to sign or mark this document at this time. I verify that {{$genderTxt3}} directly indicated to me that the Durable Health Care Power of Attorney expresses {{$genderTxt4}} wishes and that {{$genderTxt4}} intends to adopt the Durable Health Care Power of Attorney at this time. I further affirm that {{$genderTxt3}} appears to be of sound mind and not under duress, fraud, or undue influence. {{ucwords($genderTxt3)}} is not related to me by blood, marriage, or adoption and is not a person for whom I directly provide care in a professional capacity. I have not been appointed as the representative to make medical decisions on {{$genderTxt4}} behalf.</span>
 
     <p  style="margin-top: 0.17in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">Witness Signature: </span><span style="font-family:'Times New Roman, serif'">__________________________________</span><span style="font-family:'Times New Roman, serif'">  Date: </span><span style="font-family:'Times New Roman, serif'">____________________</span></p>
@@ -1577,9 +1575,9 @@
     <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['address']}} </span>
 
     </p>
-    <p style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+    <p style="margin-left: 0in; text-indent: 0.0in; margin-bottom: 0in; line-height: 100%">
 
-      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['city']}} ,</span>
+      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['city']}},</span>
 
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['state']}} </span>
 
@@ -1616,15 +1614,16 @@
       	<span style="font-family:'Times New Roman, serif'">Address: 		 	</span>
         <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupAddress']}} </span>
     </p>
-    <p style="margin-left: 1in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+    <p style="margin-left: 0in; text-indent: 0.0in; margin-bottom: 0in; line-height: 100%">
 
-      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupCity']}} ,</span>
+      <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupCity']}},</span>
 
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupState']}} </span>
 
       <span style="font-family:'Times New Roman, serif';text-transform: capitalize"> {{$healthFinance['backupZip']}} </span>
 
     </p>
+    <br>
     @endif
     </div>
 
@@ -1685,7 +1684,7 @@
       </span><span style="font-family:'Times New Roman, serif'">.	</span></p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">		</span></p>
-    <p  style="text-indent: -0.33in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+    <p  style=" margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
         <span style="font-family:'Times New Roman, serif'"><b>4.	Durable Mental health
         treatments that I expressly DO NOT AUTHORIZE if I am unable to make
         decisions for myself: </b></span><span style="font-family:'Times New Roman, serif'">(Explain
@@ -1703,7 +1702,7 @@
       <br/>
 
     </p>
-    <p  style="text-indent: -0.33in; margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
+    <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><b>5.	Revocability of this
       Durable Mental Health Care Power of Attorney:</b></span></p>
     <p  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
@@ -1721,7 +1720,7 @@
 <!-- Page 15-->
 <div>
   <div>
-    <p  style="text-indent: -0.33in; margin-top: 0.13in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
+    <p  style="margin-top: 0.13in; margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'"><b>6.	Additional information
       </b></span><span style="font-family:'Times New Roman, serif'">about my mental health
       care treatment needs (consider including mental or physical health
@@ -2018,7 +2017,7 @@
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">STATE OF ARIZONA	<span style="padding-left: 100px;"></span>)</span></p>
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
-      <span style="font-family:'Times New Roman, serif'">	<span style="padding-left: 252px;"></span>) ss. </span>
+      <span style="font-family:'Times New Roman, serif'">	<span style="padding-left: 200px; display:inline-block;"></span>) ss. </span>
     </p>
     <p  style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
       <span style="font-family:'Times New Roman, serif'">COUNTY OF  	<span style="padding-left: 157px;"></span>)</span></p>

@@ -44,7 +44,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <a href="{{url('/')}}"><img src="{{url('/')}}/images/logo.jpg" alt="simplywilled.com" style="display: block;"></a>
+                            <a href="{{env('BASE_URL')}}"><img src="{{env('BASE_URL')}}/images/logo.jpg" alt="simplywilled.com" style="display: block;"></a>
                         </td>
                     </tr>
                     <tr>
@@ -63,7 +63,7 @@
                             </p>
                            {{-- <table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-bottom: 20px;">
                                 <tr>
-                                    <td style="padding-right: 15px; width: 84px;" valign="top"><img src="{{url('/')}}/images/greenIcon.png" alt=""></td>
+                                    <td style="padding-right: 15px; width: 84px;" valign="top"><img src="{{env('BASE_URL')}}/images/greenIcon.png" alt=""></td>
                                     <td>
                                         <h2 style="color: #2782be; font-size: 20px; padding-bottom: 7px;">PROTECT YOUR LOVED ONES</h2>
                                         <p style="color: #373737; font-size: 14px;">Name guardians and list beneficiaries so those you love are in good hands.</p>
@@ -77,17 +77,17 @@
                              <div style="text-align: center;padding: 15px 0; background: #fff;">
                               <div style="text-align: center;">
                                   <br><br>
-                                  <a href="{{url('/')}}"><img src="{{url('/')}}/images/callus.jpg" alt=""></a>
+                                  <a href="{{env('BASE_URL')}}"><img src="{{env('BASE_URL')}}/images/callus.jpg" alt=""></a>
                                   <br>
                               </div>
                               <p style="text-align: center; padding-top:15px;">
-                                  <span><a href="https://www.facebook.com/SimplyWilled"><img src="{{url('/')}}/images/fd-icon.png"></a></span>
+                                  <span><a href="https://www.facebook.com/SimplyWilled"><img src="{{env('BASE_URL')}}/images/fd-icon.png"></a></span>
                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <span ><a href="https://twitter.com/simplywilled"><img src="{{url('/')}}/images/ttr-icon.png"></a></span>
+                                  <span ><a href="https://twitter.com/simplywilled"><img src="{{env('BASE_URL')}}/images/ttr-icon.png"></a></span>
                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <span ><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{url('/')}}/images/in-icon.png"></a></span>
+                                  <span ><a href="https://www.linkedin.com/company/simplywilled.com"><img  src="{{env('BASE_URL')}}/images/in-icon.png"></a></span>
                                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  <span ><a href="https://www.instagram.com/simplywilled"><img src="{{url('/')}}/images/gram-icon.png"></a></span>
+                                  <span ><a href="https://www.instagram.com/simplywilled"><img src="{{env('BASE_URL')}}/images/gram-icon.png"></a></span>
                                   <br><br>
                               </p>
                             </div> 

@@ -226,19 +226,20 @@
                         style="font-size: 17pt"><b>FOR
       HEALTH CARE DECISIONS</b></span></p>
             <p align="center" style="margin-top: 0.08in; margin-bottom: 0.08in; line-height: 115%;"></p>
-            <p style="font-family: Times New Roman, serif;margin-bottom: 0in; line-height: 115%;"><span style="font-size: 11pt"><span style="font-size: 13pt"><b>(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DESIGNATION
+            <p style="font-family: Times New Roman, serif;margin-bottom: 0in; line-height: 115%;">
+              <span style="font-size: 11pt"><span style="font-size: 13pt"><b>(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DESIGNATION
       OF AGENT.</b></span><b> </b>I designate my
-        @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] == 'Other')<span>{{ucwords($healthFinance['relationOther']) }},</span>
-        @elseif(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')<span>{{ucwords($healthFinance['relation'])}},</span>
+        @if(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] == 'Other')<span>{{ucwords(strtolower($healthFinance['relationOther'])) }},</span>
+        @elseif(isset($healthFinance) && array_key_exists('relation',$healthFinance) && !is_null($healthFinance['relation']) && $healthFinance['relation'] != 'Other')<span>{{ucwords(strtolower($healthFinance['relation']))}},</span>
         @endif
-      <span>{{ucwords($healthFinance['fullname'])}}</span>
-      of <span>{{$healthFinance['address']}}</span> (Tel: <span> {{$healthFinance['phone']}} </span>), as my agent to make health care
+      <span>{{ucwords(strtolower($healthFinance['fullname']))}}</span>
+      of <span>{{$healthFinance['address']}},</span> (Tel: <span> {{$healthFinance['phone']}} </span>), as my agent to make health care
       decisions for me. </span>
             </p>
             <p style="margin-bottom: 0in; line-height: 115%;"></p>
             <!--<p style="margin-bottom: 0in; line-height: 115%;"><span color="#008000"><span color="#000000">«</span>IF
               Rx Alternate Agent?<span color="#000000">»</span></span></p>-->
-            @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == true)
+            @if(isset($healthFinance) && array_key_exists('anyBackupAgent',$healthFinance) && !is_null($healthFinance['anyBackupAgent']) && $healthFinance['anyBackupAgent'] == 'true')
             <p style="font-family: Times New Roman, serif;margin-bottom: 0in; line-height: 115%;"><span style="font-size: 11pt"><span style="font-size: 13pt"><b>DESIGNATION
 
               OF FIRST ALTERNATE AGENT.</b></span><b>  </b>If my above-named
@@ -246,12 +247,12 @@
               ineligible to act, or if I revoke this appointment or authority to
               act, then I designate my
                 @if(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] == 'Other')
-                    <span>{{$healthFinance['backupRelation']}},</span>
+                    <span>{{ucwords(strtolower($healthFinance['backupRelationOther']))}},</span>
                 @elseif(isset($healthFinance) && array_key_exists('backupRelation',$healthFinance) && !is_null($healthFinance['backupRelation']) && $healthFinance['backupRelation'] != 'Other')
-                    <span>{{$healthFinance['backupRelation']}},</span>
+                    <span>{{ucwords(strtolower($healthFinance['backupRelation']))}},</span>
                 @endif
-              <span> {{$healthFinance['backupFullname']}} </span>
-              of <span> {{$healthFinance['backupAddress']}},</span> (Tel: <span> {{$healthFinance['backupphone']}}, </span>), as my agent to make health care
+              <span> {{ucwords(strtolower($healthFinance['backupFullname']))}} </span>
+              of <span> {{$healthFinance['backupAddress']}},</span> (Tel: <span> {{$healthFinance['backupphone']}} </span>), as my agent to make health care
               decisions for me. </span>
             </p>
             @endif

@@ -28,7 +28,7 @@
 
     <div>
         <div>
-            <p style="margin-bottom: 0.09in;  ; text-align: center;"><span size="5" style="font-size: 17pt; line-height: 30px;"><span size="4" style="font-size: 16pt"><b>WISCONSIN POWER OF ATTORNEY
+            <p style="margin-bottom: 0.09in;  text-align: center;"><span size="5" style="font-size: 17pt; line-height: 30px;"><span size="4" style="font-size: 16pt"><b>WISCONSIN POWER OF ATTORNEY
         <br>
         FOR HEALTH CARE</b></span></span></p>
             <p style="margin-top: 0.19in; margin-bottom: 0in;  ; text-align: center;">

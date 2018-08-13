@@ -49,36 +49,36 @@
         for yourself.</p>
         <ul style="margin-left: 50px;">
         <li>
-        <p class="western"  style="margin-bottom: 0.06in; line-height: 100%">
+        <p class="western"  style="margin-bottom: 0.06in; line-height: 100%; margin-top:0;">
         You have the right to give instructions about what types of health
         care you want or do not want.</p>
         </li>
         <li>
-        <p class="western"  style="margin-bottom: 0.06in; line-height: 100%">
+        <p class="western"  style="margin-bottom: 0.06in; line-height: 100%; margin-top:0;">
         You also have the right to appoint an <b>agent</b> to make health
         care decisions for you when you are unable to make them yourself.</p>
         </li>
         <li>
-        <p class="western"  style="margin-bottom: 0.06in; line-height: 100%">
+        <p class="western"  style="margin-bottom: 0.06in; line-height: 100%; margin-top:0;">
         You may do either of these by telling your family or your doctor,
         but it is generally better for you and your family if you write down
         your wishes <i><b>in advance</b></i>.</p>
         </li>
         <li>
-        <p class="western"  style="margin-bottom: 0.06in; line-height: 100%">
+        <p class="western"  style="margin-bottom: 0.06in; line-height: 100%; margin-top:0;">
         You may use this form in its entirety or you may use any part of it.
         For example, if you simply want to choose an agent in Part One, you
         may do so and go directly to Part Five to sign this in the presence
         of appropriate witnesses.&nbsp;</p>
         </li>
         <li>
-        <p class="western"  style="margin-bottom: 0.13in; line-height: 100%">
+        <p class="western"  style="margin-bottom: 0.13in; line-height: 100%; margin-top:0;">
         You may use a different form as long as it is properly signed and
         witnessed.&nbsp;</p>
         </li>
 
         <li>
-        <p class="western"  style="margin-bottom: 0.13in; line-height: 100%">
+        <p class="western"  style="margin-bottom: 0.13in; line-height: 100%; margin-top:0;">
         You can revoke or suspend your Advance Directive at any time unless
         you expressly waive your right to do so.</p>
         </li>
@@ -128,7 +128,6 @@
         <p class="western" style="margin-bottom: 0in; line-height: 100%; text-align: center;">
         <span size="4" style="font-size: 14pt"><b>Personal Information</b></span></p>
         <p class="western"  style="margin-bottom: 0in; line-height: 100%">
-        <br/>
 
         </p>
         <p class="western"  style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0; text-align: center;">
@@ -171,10 +170,7 @@
         <span style="font-family:'Times New Roman, serif'">{{$healthFinance['phone']}}, </span>
 
         </p>
-        <p class="western" style="margin-bottom: 0in; line-height: 100%; text-align: center;">
-        <br/>
-
-        </p>
+       
         <p class="western" style="margin-bottom: 0.09in; line-height: 100%; text-align: center;">
         <span size="4" style="font-size: 14pt"><b>Part One: Your Health Care
         Agent</b></span></p>
@@ -278,12 +274,8 @@
                 @endif
                   </p>
 
-        <p class="western"  style="margin-bottom: 0in; line-height: 100%">
-        <br/>
 
-        </p>
-
-        <p class="western"  style="margin-bottom: 0in; page-break-before: always; line-height: 100%">
+        <p class="western"  style="margin-bottom: 0in; line-height: 100%; margin-top:0;">
         <b>Agent’s Authority. </b>My agent has, without limitation as to
         other health care powers, the following specific powers:</p>
         <p class="western"  style="margin-left: 0.56in; text-indent: -0.19in; margin-bottom: 0.06in; line-height: 100%">
@@ -319,7 +311,7 @@
   </div>
 
 
-  <div>
+  <div style="page-break-after: always;">
     <div>
       <p class="western"  style="margin-left: 0.56in; text-indent: -0.19in; margin-bottom: 0.06in; line-height: 100%">
 
@@ -352,7 +344,7 @@
         <br/>
 
         </p>
-        <p class="western" style="margin-bottom: 0.09in; page-break-before: always; line-height: 100%; text-align: center;">
+        <p class="western" style="margin-bottom: 0.09in; line-height: 100%; text-align: center;">
         <span size="4" style="font-size: 14pt"><b>Part Two: Health Care Goals
         and Spiritual Wishes</b></span></p>
         <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
@@ -401,7 +393,7 @@
   </div>
 
 
-  <div>
+  <div style="page-break-after: always;">
     <div>
       <p class="western"  style="margin-left: 0.44in; text-indent: -0.44in; margin-bottom: 0in; line-height: 100%;">
         Additional Goals, Wishes or Beliefs I wish to express include:</p>
@@ -428,10 +420,7 @@
         <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
 
         </p>
-        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
-        <p class="western" style="margin-bottom: 0in; line-height: 100%; page-break-before: always;">If I
+        <p class="western" style="margin-bottom: 0in; line-height: 100%;">If I
         am dying it is important for me to be: <i>(check any boxes that
         apply)</i></p>
         <p align="left" style="margin-left: 0.5in; text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
@@ -453,9 +442,6 @@
         </p>
         <p class="western" style="margin-bottom: 0in; line-height: 100%"><b>My
         Spiritual Care Wishes include:</b></p>
-        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
         <p class="western" style="margin-bottom: 0in; line-height: 150%">	My
         Religion/Faith: <u>						</u></p>
         <p class="western" style="margin-bottom: 0in; line-height: 150%">	Place
@@ -464,9 +450,6 @@
         <u>							</u></p>
         <p class="western" style="margin-bottom: 0in; line-height: 150%">	Phone:
         <u>							</u></p>
-        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
-
-        </p>
         <p class="western" style="margin-bottom: 0in; line-height: 100%">The
         following items or music or readings would be a comfort to me:</p>
               <br>
@@ -486,13 +469,13 @@
 
   <div>
     <div>
-      <p class="western" style="margin-bottom: 0in; line-height: 100%; page-break-before: always; text-align: center;">
+      <p class="western" style="margin-bottom: 0in; line-height: 100%;  text-align: center;">
         <span size="4" style="font-size: 14pt"><b>Part Three:  Limitations of
         Treatment</b></span></p>
-        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p class="western" style="margin-bottom: 0in; line-height: 100%">
 
         </p>
-        <p class="western" style="margin-bottom: 0in; line-height: 100%"><br/>
+        <p class="western" style="margin-bottom: 0in; line-height: 100%">
 
         </p>
         <p class="western"  style="margin-bottom: 0in; line-height: 100%">
@@ -530,7 +513,6 @@
         <b>3. If I am unable to swallow enough food or water to stay alive:</b>
         <i>(check one box)</i></p>
         <p class="western"  style="margin-bottom: 0in; line-height: 0.19in">
-        <br/>
 
         </p>
         <p class="western"  style="margin-left: 0.88in; margin-bottom: 0in; line-height: 0.19in">
@@ -562,15 +544,11 @@
         <br/>
 
         </p>
-        <p class="western"  style="margin-bottom: 0in; line-height: 0.19in">
-        <br/>
-
-        </p>
-        <p class="western"  style="margin-bottom: 0in; page-break-before: always; line-height: 0.19in">
+        
+        <p class="western"  style="margin-bottom: 0in;line-height: 0.19in">
         <b>4. If I am terminally ill or so ill that I am unlikely to get
         better:</b> <i>(check one box)</i></p>
         <p class="western"  style="margin-bottom: 0in; line-height: 0.19in">
-        <br/>
 
         </p>
         <p class="western"  style="margin-left: 0.88in; margin-bottom: 0in; line-height: 0.19in">

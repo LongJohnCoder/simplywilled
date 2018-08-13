@@ -219,8 +219,7 @@
                 <p class="western" style="margin-bottom: 0.08in; line-height: 100%; orphans: 0; widows: 0">
                     I declare that
                     <span>{{strtoupper($tellUsAboutYou['fullname'])}},</span>
-                    <!-- <span>{{$tellUsAboutYou['middlename']}}</span> -->
-                    <!-- <span>{{$tellUsAboutYou['lastname']}}</span> -->
+                    
                     <span style="letter-spacing: 0.1pt"></span> the declarant, appeared to execute the Declaration willingly and free from duress. <span style="letter-spacing: 0.1pt"></span>
                     <span><span style="letter-spacing: 0.1pt">{{ucwords($genderTxt3)}}</span></span>
                     <span style="letter-spacing: 0.1pt"></span>
@@ -228,7 +227,7 @@
                     <span style="letter-spacing: 0.1pt"></span>
                     <span><span style="letter-spacing: 0.1pt">{{$genderTxt}}</span></span>
                     <span style="letter-spacing: 0.1pt"></span>) this Declaration in my presence.
-                    <span style="letter-spacing: 0.1pt">I am of eighteen years of age or older</span>, I am not designated as the declarant’s health care agent or alternate health care agent, I am not the declarant’s doctor, I am not the administrator or employee of a health care facility in which the declarant is receiving care, nor am I related to the declarant by marriage, blood or adoption and, to the best of my knowledge, I am not entitled to any part of the declarant 's estate upon {{$genderTxt}} death under a will now existing or by operation of law.</p>
+                    <span style="letter-spacing: 0.1pt">I am of eighteen years of age or older</span>, I am not designated as the declarant’s health care agent or alternate health care agent, I am not the declarant’s doctor, I am not the administrator or employee of a health care facility in which the declarant is receiving care, nor am I related to the declarant by marriage, blood or adoption and, to the best of my knowledge, I am not entitled to any part of the declarant's estate upon {{$genderTxt}} death under a will now existing or by operation of law.</p>
                 <!-- <p class="western" style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0">
                     <br/>
 
