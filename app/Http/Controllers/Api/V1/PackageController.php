@@ -990,7 +990,7 @@ class PackageController extends Controller
             \Log::info('type: error,'.' res: '.$e->getMessage().', line:'.$e->getLine());
           }
           // $cartStack = $this->cartStackSubmit($user->email, $userPackage->amount);
-          $base = url('/') == 'http://127.0.0.1:8000' ? 'http://localhost:4200' : url('/');
+          $base = url('/') == 'http://127.0.0.1:8000' ? 'http://localhost:4200' : env('BASE_URL');
           $url = $base .'/dashboard/packages/thank-you?payment_token='.$userPackage->payment_token.'&amount='.$userPackage->amount.'&package_name='.$userPackage->package->name.'&payment_status='.$userPackage->payment_status.'&updated_at='.$user->updated_at.'&token='.$token;
           return Redirect::to($url);
           // return response()->json([
@@ -1003,7 +1003,7 @@ class PackageController extends Controller
           //   ]
           // ], 200);
         } else {
-          $base = url('/') == 'http://127.0.0.1:8000' ? 'http://localhost:4200' : url('/');
+          $base = url('/') == 'http://127.0.0.1:8000' ? 'http://localhost:4200' : env('BASE_URL');
           $url = $base .'/dashboard/packages/payment-failed';
           return Redirect::to($url);
           // return response()->json([
@@ -1012,7 +1012,7 @@ class PackageController extends Controller
           // ], 400);
         }
       } catch (\Exception $e) {
-        $base = url('/') == 'http://127.0.0.1:8000' ? 'http://localhost:4200' : url('/');
+        $base = url('/') == 'http://127.0.0.1:8000' ? 'http://localhost:4200' : env('BASE_URL');
         $url = $base .'/dashboard/packages/payment-failed';
         return Redirect::to($url);
         // return response()->json([

@@ -493,6 +493,14 @@ Route::group(['prefix' => 'v1'], function() {
     Route::group(['prefix' => 'user'], function() {
 
         /**
+        * Route for fetching category details
+        */
+        Route::get('category-details/{slug}', [
+            'uses' => 'Api\V1\BlogController@categoryDetails',
+            'as'   => 'api.v1.categoryDetails.get'
+        ]);       
+
+        /**
         * Route for fetching faq with status 1
         */
         Route::get('all-faq-questions', [

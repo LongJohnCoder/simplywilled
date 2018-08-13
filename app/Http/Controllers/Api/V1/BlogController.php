@@ -34,6 +34,46 @@ use Illuminate\Support\Facades\Input;
 class BlogController extends Controller
 {
 
+    public function categoryDetails($slug) {
+
+      /*
+      * function to fetch category details from slug
+      * @param query : slug
+      * @return json response containing single category
+      * */
+      try {
+        if(strlen(trim($slug)) > 0) {
+          $categories = Categories::where('slug', 'LIKE', '%'.trim($slug).'%')->first();
+          if($categories) {
+            return response()->json([
+                'status'    => true,
+                'message'   => 'Result fetched successfully',
+                'data'      => $categories
+            ], 200);    
+          } else {
+
+            return response()->json([
+                'status'    => false,
+                'message'   => 'No data found',
+                'data'      => null
+            ], 400);
+          }
+        } else {
+          return response()->json([
+                'status'    => false,
+                'message'   => 'No slug passed',
+                'data'      => null
+            ], 400);
+        }
+      } catch(\Exception $e) {
+        return response()->json([
+                'status'    => false,
+                'message'   => 'ERROR : '. $e->getMessage() , ' LINE : ', $e->getLine(),
+                'data'      => null
+            ], 500);
+      }
+    }
+
     /*
      * function to fetch list of blogs from blog category slug
      * @param query : slug
