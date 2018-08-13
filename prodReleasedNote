@@ -62,3 +62,6 @@ V14.0 stable released to prod
         Change Request V2.0 stable
 
 
+V15.0 stable released to prod
+	Metadatas implemented.
+	Server Side prerendering.

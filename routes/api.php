@@ -50,6 +50,15 @@ Route::group(['prefix' => 'v1'], function() {
         'as'   => 'api.v1.fiduciaryOfUser.post'
     ]);
 
+    Route::get('trackmeta', [
+        'uses'=>'Api\V1\BlogController@trackmetaJSON',
+        'as' => 'api.trackmeta'
+    ]);
+
+    Route::get('trackmeta-categories', [
+        'uses'=>'Api\V1\CategoryController@trackmetaJSON',
+        'as' => 'api.trackmeta.categories'
+    ]);
     /**
      * Routes for Admin login
     */
@@ -887,3 +896,4 @@ Route::get('view-mail', [
   'uses'=>'Api\V1\PackageController@viewMail',
   'as' => 'api.viewMail'
 ]);
+

@@ -22,6 +22,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use Validator;
 use App\Models\LoginHistory;
 use Carbon\Carbon;
+use App\TellUsAboutYou;
 
 class AuthController extends Controller {
 
@@ -536,12 +537,13 @@ class AuthController extends Controller {
     {
       try {
         $userID = Crypt::decryptString($request->token);
-        $user = User::find($userID);
+        // $user = User::find($userID);
+        $user = TellUsAboutYou::where('user_id', $userID)->first();
         if ($user) {
           return response()->json([
             'status' => true,
             'data' => [
-              'userName' => $user->name
+              'userName' => ucwords($user->fullname)
             ]
           ], 200);
         } else {

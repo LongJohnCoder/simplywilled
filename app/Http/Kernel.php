@@ -36,6 +36,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \Barryvdh\Cors\HandleCors::class,
         ],
 
         'api' => [
@@ -65,5 +66,6 @@ class Kernel extends HttpKernel
         'jwt.refresh' => \App\Http\Middleware\RefreshJWTToken::class,
         'admin' => \App\Http\Middleware\AdminAuthenticated::class,
         'user.auth' => \App\Http\Middleware\UserAuthenticated::class,
+        'cors' => \Barryvdh\Cors\HandleCors::class,
     ];
 }

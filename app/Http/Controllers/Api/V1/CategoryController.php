@@ -20,6 +20,7 @@ use JWTAuth;
 use JWTAuthException;
 use Log;
 use Mail;
+use File;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 use App\CategoryBlogMapping;
@@ -35,6 +36,7 @@ class CategoryController extends Controller {
     public function categoryList(){
         try{
             $category = Categories::with('blogMapping.blog')->where('id', '!=', 1)->get();
+            $this->trackmetaJSON();
             if($category){
                 return response()->json([
                     'status' => true,
@@ -65,6 +67,7 @@ class CategoryController extends Controller {
     public function createCategory(Request $request){
         try{
             $categoryName = $request->categoryName;
+            // $keywords = explode(',', $request->meta_keywords);
 
             $validator = Validator::make($request->all(), [
                 'categoryName' => 'required'
@@ -80,9 +83,13 @@ class CategoryController extends Controller {
 
             $category = new Categories;
             $category->name = $categoryName;
+            $category->seo_title = $request->seo_title;
+            $category->meta_description = $request->meta_description;
+            $category->meta_keywords = $request->meta_keywords;
             // $category->slug = str_slug($categoryName).strtotime("now");
 
             if($category->save()){
+                $this->trackmetaJSON();
                 return response()->json([
                     'status' => true,
                     'message' => 'Category created successfully',
@@ -125,6 +132,7 @@ class CategoryController extends Controller {
             if ($categoryId) {
                 $category = Categories::find($categoryId);
                 if ($category) {
+                    $this->trackmetaJSON();
                     return response()->json([
                         'status' => true,
                         'message' => 'Category Details',
@@ -180,12 +188,17 @@ class CategoryController extends Controller {
         $categoryId = $request->categoryId;
         $categoryName = $request->categoryName;
         $categoryName = trim($categoryName);
+        // $keywords = explode(',', $request->meta_keywords);
         $categoryId = (int)$categoryId;
         if($categoryId) {
             $category = Categories::find($categoryId);
             if($category){
                 $category->name = $categoryName;
+                $category->seo_title = $request->seo_title;
+                $category->meta_description = $request->meta_description;
+                $category->meta_keywords = $request->meta_keywords;
                 if($category->save()){
+                    $this->trackmetaJSON();
                     return response()->json([
                         'status' => true,
                         'message' => 'Category updated successfully',
@@ -194,7 +207,7 @@ class CategoryController extends Controller {
                 } else {
                     return response()->json([
                         'status' => false,
-                        'message' => 'faild to update category ',
+                        'message' => 'failed to update category ',
                         'data' => []
                     ], 500);
                 }
@@ -245,6 +258,7 @@ class CategoryController extends Controller {
                     }
                     $category->blogMapping()->delete();
                     if ($category->delete()) {
+                        $this->trackmetaJSON();
                         // CategoryBLogMapping::where('category_id',$categoryId)->delete();
                         return response()->json([
                             'status' => true,
@@ -282,4 +296,24 @@ class CategoryController extends Controller {
 
     }
 
+    public function trackmetaJSON() {
+        $filePath = resource_path('assets/metas/categorymetadatas.json');
+        if (File::exists($filePath)) {
+            File::delete($filePath);
+        }
+        $categoryList = Categories::with('blogMapping.blog')->where('id', '!=', 1)->get();
+
+        foreach ($categoryList as $key => $category) {
+            $categoryDetails['seo_title'] = !is_null($category) && isset($category->seo_title) && !is_null($category->seo_title) ? $category->seo_title : null;
+            $categoryDetails['meta_description'] = !is_null($category) && isset($category->meta_description) && !is_null($category->meta_description) ? $category->meta_description : null;
+            $categoryDetails['meta_keywords'] = !is_null($category) && isset($category->meta_keywords) && !is_null($category->meta_keywords) ? $category->meta_keywords : null;
+            $categories[$category->slug] = $categoryDetails;
+        }
+        $categories['imageLink'] = url('/').'/blogImage/';
+        $file = 'categorymetadatas.json';
+        $destinationPath= resource_path('assets/metas/');
+        if (!is_dir($destinationPath)) {  mkdir($destinationPath,0777,true);  }
+        File::put($destinationPath.$file,json_encode($categories));
+        //dd(json_encode($blogs));
+    }
 }

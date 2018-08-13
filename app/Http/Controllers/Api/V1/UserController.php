@@ -301,7 +301,7 @@ class UserController extends Controller
         $registeredPartner  = $request->registered_partner;
         $legalMarried       = (string)$request->legal_married;
         $referral           = $request->referral;
-        $referral_other     = $request->referral_other;
+        $referral_other     = $request->referralOther;
 
         //$spouseDob = $request->spouseDob;
         $validator = Validator::make($request->all(), [

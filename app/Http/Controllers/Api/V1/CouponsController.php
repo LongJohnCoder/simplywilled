@@ -71,7 +71,7 @@ class CouponsController extends Controller
         $timeNow = Carbon::now()->format('Y-m-d');
         if ($request->expired_on != '') {
           if (Carbon::now()->lte(Carbon::parse($request->expired_on))) {
-            $expOn = Carbon::parse($request->expired_on);
+            $expOn = Carbon::parse($request->expired_on)->format('Y-m-d');
           } else {
             return response()->json([
                 'status'  => false,
@@ -122,7 +122,7 @@ class CouponsController extends Controller
           $coupon->max_user = $request->max_user;
         }
         $coupon->flag        = $request->flag;
-        $coupon->expired_on  = $expOn;
+        $coupon->expired_on  = $expOn.' 23:59:59';
         $coupon->description = $request->has('description') ? $request->description: '';
 
         if($coupon->save()) {
@@ -194,7 +194,7 @@ class CouponsController extends Controller
          $timeNow = Carbon::now()->format('Y-m-d');
          if ($request->expired_on != '') {
            if (Carbon::now()->lte(Carbon::parse($request->expired_on))) {
-             $expOn = Carbon::parse($request->expired_on);
+             $expOn = Carbon::parse($request->expired_on)->format('Y-m-d');;
            } else {
              return response()->json([
                  'status'  => false,
@@ -255,7 +255,7 @@ class CouponsController extends Controller
            $coupon->max_user = $request->max_user;
          }
          $coupon->flag        = $request->flag;
-         $coupon->expired_on  = $expOn;
+         $coupon->expired_on  = $expOn.' 23:59:59';
          $coupon->description = $request->has('description') ? $request->description: '';
 
          if($coupon->save()) {

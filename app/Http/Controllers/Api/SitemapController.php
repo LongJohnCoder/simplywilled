@@ -18,13 +18,20 @@ class SitemapController extends Controller
     */
     public function sitemap()
     {
+
       $categories         = Categories::all();
       $blogs              = Blogs::all();
       $data               = [];
       $data['categories'] = $categories;
       $data['blogs']      = $blogs;
+      $data['blogPages']  = floor(count($blogs)/10);
       $content            = view('sitemap')->with($data);
-      return response($content)
-          ->header('Content-Type', 'text/xml');
+      \Storage::disk('sitemap')->put('sitemap.xml', $content);
+        return response([
+            'status' => true,
+            'message' => 'Sitemap successfully generated.'
+        ],200);
+      /*return response($content)
+          ->header('Content-Type', 'text/xml');*/
     }
 }

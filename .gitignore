@@ -9,6 +9,7 @@ app/storage/
 resources/assets/simplywilled
 # Laravel 5 & Lumen specific
 public/storage
+public/sitemap.xml
 public/hot
 storage/*.key
 .env
@@ -24,3 +25,5 @@ package-lock.json
 
 /storage
 public/documents
+public/blogImageOld
+resources/assets/metas/

@@ -11,4 +11,4 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.copyDirectory('resources/assets/simplywilled/dist', 'public');
+mix.copyDirectory('resources/assets/simplywilled/dist', 'public/dist');

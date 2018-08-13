@@ -16,6 +16,7 @@ use Auth;
 use Crypt;
 use DB;
 use Validator;
+use File;
 use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -475,8 +476,15 @@ class BlogController extends Controller
                 if (in_array($extension, $supportedImageFormat)) {
                     // Save new file
                     $imageName = $generateFileName . '.' . $extension;
-                    $request->blogImage->move(public_path('/blogImage'), $imageName);
-                    $imagePath = asset('blogImage/' . $imageName);
+                    $request->blogImage->move(public_path('/blogImageOld'), $imageName);
+                    $imagePath = asset('blogImageOld/' . $imageName);
+                    // encode png image as jpg
+                    $jpg = (string) \Image::make(public_path('/blogImageOld/').$imageName)
+                            ->resize(900, null, function ($constraint) {
+                                $constraint->aspectRatio();
+                            })
+                            ->save(public_path('/blogImage/').$imageName, 80);
+                    chmod(public_path('/blogImageOld/').$imageName,0777);
                 } else {
                     return response()->json([
                         'status' => false,
@@ -517,6 +525,7 @@ class BlogController extends Controller
                     $saveBlogcategory->save();
                 }
                 $getBlogInfo = $saveBlog::where('id', $blogId)->with('blogCategory')->get(); // query to get created blog data
+                $this->trackmetaJSON();
                 return response()->json([
                     'status' => true,
                     'message' => 'Blog created successfully',
@@ -613,8 +622,14 @@ class BlogController extends Controller
                         if (in_array($extension, $supportedImageFormat)) {
                             // Save new file
                             $imageName = $generateFileName . '.' . $extension;
-                            $request->blogImage->move(public_path('/blogImage'), $imageName);
-                            $imagePath = asset('blogImage/' . $imageName);
+                            $request->blogImage->move(public_path('/blogImageOld'), $imageName);
+                            $imagePath = asset('blogImageOld/' . $imageName);
+                            $jpg = (string) \Image::make(public_path('/blogImageOld/').$imageName)
+                                    ->resize(900, null, function ($constraint) {
+                                        $constraint->aspectRatio();
+                                    })
+                                    ->save(public_path('/blogImage/').$imageName, 80);
+                            chmod(public_path('/blogImageOld/').$imageName,0777);
                         } else {
                             return response()->json([
                                 'status' => false,
@@ -669,6 +684,7 @@ class BlogController extends Controller
                         }
 
                         $getBlogInfo = $getBlogInfo::where('id', $blogId)->with('blogCategory')->get(); // query to get created blog data
+                        $this->trackmetaJSON();
                         return response()->json([
                             'status' => true,
                             'message' => 'Blog updated successfully',
@@ -727,6 +743,7 @@ class BlogController extends Controller
 
                 if ($deleteBlog->delete()) {
                     BlogComment::where('blog_id',$blogId)->delete();
+                    $this->trackmetaJSON();
                     return response()->json([
                         'status'  => true,
                         'message' => 'Blog deleted',
@@ -1486,6 +1503,27 @@ class BlogController extends Controller
                 }
             }
             return $blogArr;
+        }
+
+        public function trackmetaJSON() {
+            $filePath = resource_path('assets/metas/metadatas.json');
+            if (File::exists($filePath)) {
+                File::delete($filePath);
+            }
+            $blogList = $this->blogData();
+
+            foreach ($blogList as $key => $blog) {
+                $blogDetails['seo_title'] = array_key_exists('seo_title',$blog) ? $blog['seo_title'] : null;
+                $blogDetails['meta_description'] = array_key_exists('meta_description',$blog) ? $blog['meta_description'] : null;
+                $blogDetails['meta_keywords'] = array_key_exists('meta_keywords',$blog) ? $blog['meta_keywords'] : null;
+                $blogs[$blog['slug']] = $blogDetails;
+            }
+            $blogs['imageLink'] = url('/').'/blogImage/';
+            $file = 'metadatas.json';
+            $destinationPath= resource_path('assets/metas/');
+            if (!is_dir($destinationPath)) {  mkdir($destinationPath,0777,true);  }
+            File::put($destinationPath.$file,json_encode($blogs));
+            //dd(json_encode($blogs));
         }
 
 }
