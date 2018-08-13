@@ -492,6 +492,24 @@ Route::group(['prefix' => 'v1'], function() {
 
     Route::group(['prefix' => 'user'], function() {
 
+
+        /**
+        * Route for fetching formatted blog list with key as slug and data as object 
+        */
+        Route::get('formatted-blog-list', [
+            'uses' => 'Api\V1\BlogController@formattedBlogList',
+            'as'   => 'api.v1.formattedBlogList.get'
+        ]); 
+
+
+        /**
+        * Route for fetching category details
+        */
+        Route::get('category-details', [
+            'uses' => 'Api\V1\BlogController@categoryDetails',
+            'as'   => 'api.v1.categoryDetails.get'
+        ]);       
+
         /**
         * Route for fetching category details
         */

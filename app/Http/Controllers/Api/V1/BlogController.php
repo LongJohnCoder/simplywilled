@@ -34,7 +34,7 @@ use Illuminate\Support\Facades\Input;
 class BlogController extends Controller
 {
 
-    public function categoryDetails($slug) {
+    public function categoryDetails(Request $request) {
 
       /*
       * function to fetch category details from slug
@@ -42,29 +42,53 @@ class BlogController extends Controller
       * @return json response containing single category
       * */
       try {
-        if(strlen(trim($slug)) > 0) {
-          $categories = Categories::where('slug', 'LIKE', '%'.trim($slug).'%')->first();
-          if($categories) {
-            return response()->json([
-                'status'    => true,
-                'message'   => 'Result fetched successfully',
-                'data'      => $categories
-            ], 200);    
-          } else {
 
-            return response()->json([
-                'status'    => false,
-                'message'   => 'No data found',
-                'data'      => null
-            ], 400);
-          }
+        $page = 0;
+        if($request->has('page')) {
+          // return response()->json([
+          //       'status'    => false,
+          //       'message'   => 'page is required and should be more than 0',
+          //       'data'      => null
+          // ], 400); 
+          $page = $request->page;
+        }
+
+
+        // if($page == 0) {
+        //   return response()->json([
+        //         'status'    => false,
+        //         'message'   => 'page is required and should be more than 0',
+        //         'data'      => null
+        //   ], 400); 
+        // }
+
+        $limit = $request->has('limit') ? $request->limit : 0;
+        $categories = Categories::orderBy('name','ASC')->where('id' , '>', 1)->select('id', 'seo_title', 'slug', 'meta_description', 'meta_keywords');
+        if($limit > 0 && $page > 0) {
+          $categories = $categories->offset(($page-1)*$limit)->limit($limit);
+        } else {
+
+        }
+        $categories = $categories->get();
+        $ret = [];
+        foreach ($categories as $key => $value) {
+          $ret[$value->slug] = $value;
+        }
+
+        if($categories) {
+          return response()->json([
+              'status'    => true,
+              'message'   => 'Result fetched successfully',
+              'data'      => $ret
+          ], 200);
         } else {
           return response()->json([
-                'status'    => false,
-                'message'   => 'No slug passed',
-                'data'      => null
-            ], 400);
+              'status'    => false,
+              'message'   => 'No data found',
+              'data'      => null
+          ], 400);
         }
+        
       } catch(\Exception $e) {
         return response()->json([
                 'status'    => false,
@@ -168,6 +192,64 @@ class BlogController extends Controller
                     'data' => []
                 ], 400);
             }
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e->getMessage(),
+                'data' => []
+            ], 500);
+        }
+    }
+
+
+    /*
+     * function to fetch list of blogs
+     *
+     * */
+    public function formattedBlogList(Request $request)
+    {
+        try {
+
+            $blogArr = [];
+            $page = $request->has('page') ? (int) $request->page : 1;
+            $limit = $request->has('limit') ? (int) $request->limit : 10;
+
+            //dd(($page-1) * $limit);
+            if($request->has('page') && $request->has('limit')) {
+              $blogs = Blogs::orderBy('created_at','DESC')
+                        ->where('status','1')
+                        ->offset( (int)(($page-1) * $limit))
+                        ->limit($limit)
+                        ->get();
+            } else {
+              $blogs = Blogs::orderBy('created_at','DESC')
+                        ->where('status','1')
+                        ->get();
+            }
+
+            foreach ($blogs as $key => $value) {
+              // $blogArr[$value->slug]['author_id'] = $value->author_id;
+              // $blogArr[$value->slug]['body'] = $value->body;
+              // $blogArr[$value->slug]['created_at'] = $value->created_at->toDateTimeString();
+              // $blogArr[$value->slug]['featured'] = $value->featured;
+              // $blogArr[$value->slug]['id'] = $value->id;
+              $blogArr[$value->slug]['image'] = url('/blogImage').'/'.$value->image;
+              $blogArr[$value->slug]['meta_description'] = $value->meta_description;
+              $blogArr[$value->slug]['meta_keywords'] = $value->meta_keywords;
+              $blogArr[$value->slug]['seo_title'] = $value->seo_title;
+              $blogArr[$value->slug]['slug'] = $value->slug;
+              //$blogArr[$value->slug]['status'] = $value->status;
+              //$blogArr[$value->slug]['title'] = $value->title;
+              //$blogArr[$value->slug]['total_views'] = $value->total_views;
+              // $blogArr[$value->slug]['blog_category'] = $categories;
+              // $blogArr[$value->slug]['comments'] = $value->getComments;
+            }
+            return response()->json([
+                'status' => true,
+                'message' => 'Blog List',
+                'data' => ['BlogDetails' => $blogArr]
+            ], 200);
+            
         } catch (Exception $e) {
             return response()->json([
                 'status' => false,
@@ -1558,7 +1640,7 @@ class BlogController extends Controller
                 $blogDetails['meta_keywords'] = array_key_exists('meta_keywords',$blog) ? $blog['meta_keywords'] : null;
                 $blogs[$blog['slug']] = $blogDetails;
             }
-            $blogs['imageLink'] = url('/').'/blogImage/';
+            $blogs['imageLink'] = url('/') == 'http://127.0.0.1:8000' ? 'http://localhost:4200' : env('BASE_URL').'/blogImage/';
             $file = 'metadatas.json';
             $destinationPath= resource_path('assets/metas/');
             if (!is_dir($destinationPath)) {  mkdir($destinationPath,0777,true);  }

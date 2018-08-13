@@ -130,7 +130,7 @@ $style = [
                     <div style="text-align: center;padding: 15px 0; background: #fff;">
                               <div style="text-align: center;">
                                   <br><br>
-                                  <a href="{{env('BASE_URL')}}"><img src="{{env('BASE_URL')}}/images/callus.jpg" alt=""></a>
+                                  <a href="{{env('BASE_URL')}}"><img src="{{env('BASE_URL')}}/images/callus.png" alt=""></a>
                                   <br>
                               </div>
                               <p style="text-align: center; padding-top:15px;">

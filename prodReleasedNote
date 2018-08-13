@@ -73,3 +73,6 @@ V16.0 stable released to prod
 V17.0 stable released to prod
 	Payment issue fixed
 	Email issue fixed
+
+v20.0 stable released to prod
+	SSR issue with categories and blog details fixed

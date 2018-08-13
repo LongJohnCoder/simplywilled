@@ -418,7 +418,7 @@ class AuthController extends Controller {
                 $reset->token = $token;
                 $reset->created_at = date('Y-m-d h:i:j');
                 $reset->save();
-                $url = url('/') . '/reset-password/' . $user->email . '/' . $token;
+                $url = env('BASE_URL') . '/reset-password/' . $user->email . '/' . $token;
                 $name = $user->name;
 
                 \Mail::send('emails.resetpasswordEmail', [

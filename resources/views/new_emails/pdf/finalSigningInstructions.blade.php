@@ -44,7 +44,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <a href="{{env('BASE_URL')}}"><img src="{{env('BASE_URL')}}/images/logo.jpg" alt="simplywilled.com" style="display: block;"></a>
+                            <a href="{{env('BASE_URL')}}"><img src="{{env('BASE_URL')}}/images/logo.png" alt="simplywilled.com" style="display: block;"></a>
                         </td>
                     </tr>
                     <tr>
@@ -77,7 +77,7 @@
                              <div style="text-align: center;padding: 15px 0; background: #fff;">
                               <div style="text-align: center;">
                                   <br><br>
-                                  <a href="{{env('BASE_URL')}}"><img src="{{env('BASE_URL')}}/images/callus.jpg" alt=""></a>
+                                  <a href="{{env('BASE_URL')}}"><img src="{{env('BASE_URL')}}/images/callus.png" alt=""></a>
                                   <br>
                               </div>
                               <p style="text-align: center; padding-top:15px;">
@@ -90,7 +90,7 @@
                                   <span ><a href="https://www.instagram.com/simplywilled"><img src="{{env('BASE_URL')}}/images/gram-icon.png"></a></span>
                                   <br><br>
                               </p>
-                            </div> 
+                            </div>
                           </td>
                         </tr>
                         <tr>

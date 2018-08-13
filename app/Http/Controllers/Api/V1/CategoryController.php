@@ -309,7 +309,7 @@ class CategoryController extends Controller {
             $categoryDetails['meta_keywords'] = !is_null($category) && isset($category->meta_keywords) && !is_null($category->meta_keywords) ? $category->meta_keywords : null;
             $categories[$category->slug] = $categoryDetails;
         }
-        $categories['imageLink'] = url('/').'/blogImage/';
+        $categories['imageLink'] = env('BASE_URL').'/blogImage/';
         $file = 'categorymetadatas.json';
         $destinationPath= resource_path('assets/metas/');
         if (!is_dir($destinationPath)) {  mkdir($destinationPath,0777,true);  }
