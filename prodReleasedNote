@@ -76,3 +76,10 @@ V17.0 stable released to prod
 
 v20.0 stable released to prod
 	SSR issue with categories and blog details fixed
+
+v22.0 stable released to prod
+        registration issue fixed
+        loader integration in registration
+        resolver issue fixed
+        final arrangements error fixed
+
