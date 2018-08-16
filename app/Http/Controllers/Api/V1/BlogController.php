@@ -112,7 +112,8 @@ class BlogController extends Controller
             $totalBlog = Blogs::where('status','1')->whereHas('category', function($q) use($query){
                 $q->where('slug','LIKE','%'.$query.'%');
             })->count();
-            $blog = Blogs::with('getComments')->where('status','1')->offset(($page-1)*10)->limit(10)
+            //$blog = Blogs::with('getComments')->where('status','1')->offset(($page-1)*10)->limit(10)
+            $blog = Blogs::with('getComments')->where('status','1')->orderBy('created_at', 'DESC')->offset(($page-1)*10)->limit(10)
                               ->whereHas('category', function($q) use($query){
                                   $q->where('slug','LIKE','%'.$query.'%');
                               })->get();
@@ -631,6 +632,7 @@ class BlogController extends Controller
             $saveBlog->featured = (string)$blogFeatured;
             $saveBlog->seo_title = $blogSeoTitle;
             if ($saveBlog->save()) {
+                $this->trackmetaJSON();
                 $blogId = $saveBlog->id;
                 if (count($blogCategorys) > 0) {
                     foreach ($blogCategorys as $key => $value) {
@@ -647,7 +649,7 @@ class BlogController extends Controller
                     $saveBlogcategory->save();
                 }
                 $getBlogInfo = $saveBlog::where('id', $blogId)->with('blogCategory')->get(); // query to get created blog data
-                $this->trackmetaJSON();
+               // $this->trackmetaJSON();
                 return response()->json([
                     'status' => true,
                     'message' => 'Blog created successfully',
@@ -779,6 +781,7 @@ class BlogController extends Controller
                     $getBlogInfo->seo_title = $blogSeoTitle;
 
                     if ($getBlogInfo->save()) {
+                        $this->trackmetaJSON();
                         if(!isset($blogCategorys) || count($blogCategorys) == 0) {
                             $getBlogCategorys = CategoryBlogMapping::where('blog_id', $blogId)->orderBy('created_at','DESC')->delete();
                             $saveBlogcategory = new CategoryBlogMapping;
@@ -806,7 +809,7 @@ class BlogController extends Controller
                         }
 
                         $getBlogInfo = $getBlogInfo::where('id', $blogId)->with('blogCategory')->get(); // query to get created blog data
-                        $this->trackmetaJSON();
+                     //   $this->trackmetaJSON();
                         return response()->json([
                             'status' => true,
                             'message' => 'Blog updated successfully',
@@ -864,8 +867,9 @@ class BlogController extends Controller
                 $deleteBlogCategoryMap = CategoryBlogMapping::where('blog_id', $blogId)->delete();   //delete blog and category map
 
                 if ($deleteBlog->delete()) {
-                    BlogComment::where('blog_id',$blogId)->delete();
                     $this->trackmetaJSON();
+                    BlogComment::where('blog_id',$blogId)->delete();
+                   // $this->trackmetaJSON();
                     return response()->json([
                         'status'  => true,
                         'message' => 'Blog deleted',
@@ -1628,21 +1632,22 @@ class BlogController extends Controller
         }
 
         public function trackmetaJSON() {
-            $filePath = resource_path('assets/metas/metadatas.json');
-            if (File::exists($filePath)) {
-                File::delete($filePath);
-            }
+        //    $filePath = resource_path('assets/metas/metadatas.json');
+//            if (File::exists($filePath)) {
+//                File::delete($filePath);
+//            }
             $blogList = $this->blogData();
 
             foreach ($blogList as $key => $blog) {
                 $blogDetails['seo_title'] = array_key_exists('seo_title',$blog) ? $blog['seo_title'] : null;
                 $blogDetails['meta_description'] = array_key_exists('meta_description',$blog) ? $blog['meta_description'] : null;
                 $blogDetails['meta_keywords'] = array_key_exists('meta_keywords',$blog) ? $blog['meta_keywords'] : null;
+                $blogDetails['image'] = array_key_exists('image',$blog) ? $blog['image'] : null;
                 $blogs[$blog['slug']] = $blogDetails;
             }
             $blogs['imageLink'] = url('/') == 'http://127.0.0.1:8000' ? 'http://localhost:4200' : env('BASE_URL').'/blogImage/';
             $file = 'metadatas.json';
-            $destinationPath= resource_path('assets/metas/');
+            $destinationPath= public_path('metas/');
             if (!is_dir($destinationPath)) {  mkdir($destinationPath,0777,true);  }
             File::put($destinationPath.$file,json_encode($blogs));
             //dd(json_encode($blogs));

@@ -36,7 +36,7 @@ class CategoryController extends Controller {
     public function categoryList(){
         try{
             $category = Categories::with('blogMapping.blog')->where('id', '!=', 1)->get();
-            $this->trackmetaJSON();
+          //  $this->trackmetaJSON();
             if($category){
                 return response()->json([
                     'status' => true,
@@ -89,7 +89,7 @@ class CategoryController extends Controller {
             // $category->slug = str_slug($categoryName).strtotime("now");
 
             if($category->save()){
-                $this->trackmetaJSON();
+            //    $this->trackmetaJSON();
                 return response()->json([
                     'status' => true,
                     'message' => 'Category created successfully',
@@ -132,7 +132,7 @@ class CategoryController extends Controller {
             if ($categoryId) {
                 $category = Categories::find($categoryId);
                 if ($category) {
-                    $this->trackmetaJSON();
+                  //  $this->trackmetaJSON();
                     return response()->json([
                         'status' => true,
                         'message' => 'Category Details',
@@ -198,7 +198,7 @@ class CategoryController extends Controller {
                 $category->meta_description = $request->meta_description;
                 $category->meta_keywords = $request->meta_keywords;
                 if($category->save()){
-                    $this->trackmetaJSON();
+                 //   $this->trackmetaJSON();
                     return response()->json([
                         'status' => true,
                         'message' => 'Category updated successfully',
@@ -258,7 +258,7 @@ class CategoryController extends Controller {
                     }
                     $category->blogMapping()->delete();
                     if ($category->delete()) {
-                        $this->trackmetaJSON();
+                       // $this->trackmetaJSON();
                         // CategoryBLogMapping::where('category_id',$categoryId)->delete();
                         return response()->json([
                             'status' => true,
@@ -297,10 +297,10 @@ class CategoryController extends Controller {
     }
 
     public function trackmetaJSON() {
-        $filePath = resource_path('assets/metas/categorymetadatas.json');
+       /* $filePath = resource_path('assets/metas/categorymetadatas.json');
         if (File::exists($filePath)) {
             File::delete($filePath);
-        }
+        }*/
         $categoryList = Categories::with('blogMapping.blog')->where('id', '!=', 1)->get();
 
         foreach ($categoryList as $key => $category) {
@@ -311,7 +311,7 @@ class CategoryController extends Controller {
         }
         $categories['imageLink'] = env('BASE_URL').'/blogImage/';
         $file = 'categorymetadatas.json';
-        $destinationPath= resource_path('assets/metas/');
+        $destinationPath= public_path('metas/');
         if (!is_dir($destinationPath)) {  mkdir($destinationPath,0777,true);  }
         File::put($destinationPath.$file,json_encode($categories));
         //dd(json_encode($blogs));
