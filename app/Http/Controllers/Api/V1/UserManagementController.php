@@ -904,6 +904,31 @@ class UserManagementController extends Controller
 
         if($tellUsAboutYou) {
 
+            $referral = $tellUsAboutYou->referral;
+            if($referral !== null) {
+              if( strtolower(trim($referral)) == 'other') {
+                $referral = $tellUsAboutYou->referral_other;
+              }
+            }
+
+            $referralFlag = strlen(trim($referral)) > 0 ? true : false; 
+
+            //these necessary fields needs to be completed for any basic user
+            if(strlen(trim($tellUsAboutYou->fullname)) > 0 
+              && strlen(trim($tellUsAboutYou->dob)) > 0 
+              && strlen(trim($tellUsAboutYou->gender)) > 0
+              && strlen(trim($tellUsAboutYou->phone)) > 0
+              && strlen(trim($tellUsAboutYou->email)) > 0
+              && strlen(trim($tellUsAboutYou->address)) > 0
+              && strlen(trim($tellUsAboutYou->city)) > 0
+              && strlen(trim($tellUsAboutYou->state)) > 0
+              && strlen(trim($tellUsAboutYou->zip)) > 0
+              && $referralFlag) {
+
+            } else {
+              return false;
+            }
+
             //if the user has single status : single,widowed,divorced
 
             //if the number of children is more than 1
