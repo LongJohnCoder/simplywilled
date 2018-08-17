@@ -1620,6 +1620,7 @@ class BlogController extends Controller
                     $blogArr[$key]['status'] = $value->status;
                     $blogArr[$key]['title'] = $value->title;
                     $blogArr[$key]['total_views'] = $value->total_views;
+                    $blogArr[$key]['image_name'] = $value->image;
                     $categories = [];
                     foreach ($value->blogCategory as $ckey => $cvalue) {
                       $categories[$ckey] = $cvalue->category->name;
@@ -1642,7 +1643,7 @@ class BlogController extends Controller
                 $blogDetails['seo_title'] = array_key_exists('seo_title',$blog) ? $blog['seo_title'] : null;
                 $blogDetails['meta_description'] = array_key_exists('meta_description',$blog) ? $blog['meta_description'] : null;
                 $blogDetails['meta_keywords'] = array_key_exists('meta_keywords',$blog) ? $blog['meta_keywords'] : null;
-                $blogDetails['image'] = array_key_exists('image',$blog) ? $blog['image'] : null;
+                $blogDetails['image'] = array_key_exists('image_name',$blog) ? $blog['image_name'] : null;
                 $blogs[$blog['slug']] = $blogDetails;
             }
             $blogs['imageLink'] = url('/') == 'http://127.0.0.1:8000' ? 'http://localhost:4200' : env('BASE_URL').'/blogImage/';
