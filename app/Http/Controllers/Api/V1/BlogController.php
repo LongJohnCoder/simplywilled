@@ -633,6 +633,7 @@ class BlogController extends Controller
             $saveBlog->seo_title = $blogSeoTitle;
             if ($saveBlog->save()) {
                 $this->trackmetaJSON();
+                $this->sitemap();
                 $blogId = $saveBlog->id;
                 if (count($blogCategorys) > 0) {
                     foreach ($blogCategorys as $key => $value) {
@@ -782,6 +783,7 @@ class BlogController extends Controller
 
                     if ($getBlogInfo->save()) {
                         $this->trackmetaJSON();
+                        $this->sitemap();
                         if(!isset($blogCategorys) || count($blogCategorys) == 0) {
                             $getBlogCategorys = CategoryBlogMapping::where('blog_id', $blogId)->orderBy('created_at','DESC')->delete();
                             $saveBlogcategory = new CategoryBlogMapping;
@@ -868,6 +870,7 @@ class BlogController extends Controller
 
                 if ($deleteBlog->delete()) {
                     $this->trackmetaJSON();
+                    $this->sitemap();
                     BlogComment::where('blog_id',$blogId)->delete();
                    // $this->trackmetaJSON();
                     return response()->json([
@@ -1652,6 +1655,21 @@ class BlogController extends Controller
             if (!is_dir($destinationPath)) {  mkdir($destinationPath,0777,true);  }
             File::put($destinationPath.$file,json_encode($blogs));
             //dd(json_encode($blogs));
+        }
+
+        public function sitemap()
+        {
+    
+            $categories         = Categories::all();
+            $blogs              = Blogs::all();
+            $data               = [];
+            $data['categories'] = $categories;
+            $data['blogs']      = $blogs;
+            $data['blogPages']  = floor(count($blogs)/10);
+            $content            = view('sitemap')->with($data);
+            \Storage::disk('sitemap')->put('sitemap.xml', $content);
+            /*return response($content)
+                ->header('Content-Type', 'text/xml');*/
         }
 
 }

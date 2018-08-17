@@ -89,7 +89,8 @@ class CategoryController extends Controller {
             // $category->slug = str_slug($categoryName).strtotime("now");
 
             if($category->save()){
-            //    $this->trackmetaJSON();
+                $this->trackmetaJSON();
+                $this->sitemap();
                 return response()->json([
                     'status' => true,
                     'message' => 'Category created successfully',
@@ -198,7 +199,8 @@ class CategoryController extends Controller {
                 $category->meta_description = $request->meta_description;
                 $category->meta_keywords = $request->meta_keywords;
                 if($category->save()){
-                 //   $this->trackmetaJSON();
+                    $this->trackmetaJSON();
+                    $this->sitemap();
                     return response()->json([
                         'status' => true,
                         'message' => 'Category updated successfully',
@@ -258,7 +260,8 @@ class CategoryController extends Controller {
                     }
                     $category->blogMapping()->delete();
                     if ($category->delete()) {
-                       // $this->trackmetaJSON();
+                        $this->trackmetaJSON();
+                        $this->sitemap();
                         // CategoryBLogMapping::where('category_id',$categoryId)->delete();
                         return response()->json([
                             'status' => true,
@@ -315,5 +318,20 @@ class CategoryController extends Controller {
         if (!is_dir($destinationPath)) {  mkdir($destinationPath,0777,true);  }
         File::put($destinationPath.$file,json_encode($categories));
         //dd(json_encode($blogs));
+    }
+
+    public function sitemap()
+    {
+
+        $categories         = Categories::all();
+        $blogs              = Blogs::all();
+        $data               = [];
+        $data['categories'] = $categories;
+        $data['blogs']      = $blogs;
+        $data['blogPages']  = floor(count($blogs)/10);
+        $content            = view('sitemap')->with($data);
+        \Storage::disk('sitemap')->put('sitemap.xml', $content);
+        /*return response($content)
+            ->header('Content-Type', 'text/xml');*/
     }
 }
