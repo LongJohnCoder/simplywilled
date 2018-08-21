@@ -324,7 +324,7 @@ class PackageController extends Controller
 
         try {
             $payment->create(Paypalpayment::apiContext());
-            \Log::info('pre payment : '.print_r($payment, true));
+            // \Log::info('pre payment : '.print_r($payment, true));
         } catch (PPConnectionException $ex) {
             return response()->json([
               'status' => false,
@@ -401,9 +401,9 @@ class PackageController extends Controller
         $userPackage = UserPackage::where('payment_token', $paymentID)->first();
         if ($userPackage) {
           try {
-            \Log::info(' paypal success : payment - id : => '.$paymentID.'\n'.'paypal -->> '.print_r(Paypalpayment::apiContext(), true));
+            // \Log::info(' paypal success : payment - id : => '.$paymentID.'\n'.'paypal -->> '.print_r(Paypalpayment::apiContext(), true));
             $payment = Paypalpayment::getById($paymentID, Paypalpayment::apiContext());
-            \Log::info(' paypal : after payment => '. print_r($payment, true));
+            // \Log::info(' paypal : after payment => '. print_r($payment, true));
           } catch (PPConnectionException $ex) {
             return response()->json([
               'status' => false,
@@ -428,7 +428,7 @@ class PackageController extends Controller
           try {
             $mailData = [
               'userName' => $user->name,
-              'transactionID' => $userPackage->token,
+              'transactionID' => $userPackage->payment_token,
               'pkgName' => $userPackage->package->name,
               'amount' => $userPackage->amount,
               'paymentStatus' => 'Success',
@@ -954,7 +954,7 @@ class PackageController extends Controller
         $execution->setPayerId($PayerID);
         $result = $payment->execute($execution, $apiContext);
         $obj = json_decode($payment);
-        \Log::info('log resp paypal execute=> '.$payment);
+        // \Log::info('log resp paypal execute=> '.$payment);
 
         if ($obj->transactions[0]->related_resources[0]->sale->state == 'completed') {
           $userPackage = UserPackage::where('payment_token', $paymentID)->first();
@@ -975,7 +975,7 @@ class PackageController extends Controller
           try {
             $mailData = [
               'userName' => $user->name,
-              'transactionID' => $userPackage->token,
+              'transactionID' => $userPackage->payment_token,
               'pkgName' => $userPackage->package->name,
               'amount' => $userPackage->amount,
               'paymentStatus' => 'Success',
