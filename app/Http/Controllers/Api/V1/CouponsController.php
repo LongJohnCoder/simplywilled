@@ -46,7 +46,7 @@ class CouponsController extends Controller
                 $que->select('id','user_id','firstname','lastname','fullname','phone','email');
                 }]);
               }]);
-          }))->get();
+          }))->orderBy('created_at','DESC')->get();
         return response()->json([
             'status'   => true,
             'message'  => 'All coupons',
@@ -292,7 +292,7 @@ class CouponsController extends Controller
          $token = $request->token;
          $amount = $request->amount;
          $save = 0;
-         $coupon = Coupon::where('token', $token)->whereDate('expired_on', '>', date('Y-m-d H:i:s'))->first();
+         $coupon = Coupon::where('token', $token)->whereDate('expired_on', '>', date('Y-m-d H:i:s'))->where('status','1')->first();
          if ($coupon) {
            $countUsageCoupon = UserPackage::where('coupon_id',$coupon->id)->where('payment_status', '!=', '0')->count();
            if ($countUsageCoupon < $coupon->max_user) {
