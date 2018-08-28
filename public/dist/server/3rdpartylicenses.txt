@@ -337,6 +337,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 MIT
 MIT
 
+ngx-toastr@7.0.2
+MIT
+MIT
+
 angular-font-awesome@3.1.2
 MIT
 The MIT License
