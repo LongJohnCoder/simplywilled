@@ -242,6 +242,7 @@ class PackageController extends Controller
         $shippingCost  = 0.0;
         $taxCost       = 0.0;
         $items         = [];
+
         if (!$package) {
           return response()->json([
               'status'       => false,
@@ -313,7 +314,7 @@ class PackageController extends Controller
 
         $redirectUrls = Paypalpayment::redirectUrls();
         $redirectUrls->setReturnUrl(url("/api/paypal-payment-processing"))
-            ->setCancelUrl(url("/dashboard/packages/payment-failed"));
+            ->setCancelUrl(env('BASE_URL')."dashboard/packages/payment-failed");
 
         $payment = Paypalpayment::payment();
 
