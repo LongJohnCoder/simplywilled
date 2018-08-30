@@ -53,11 +53,16 @@
                                 <span>
                                     Dear {{$tellUsAboutYou['firstname']}},<br><br>
 
-                                        Thank you for choosing simplywilled.com. Please find the attached pdf file as PDF document. For any issue or query please contact to our customer support team.<br><br>
+                                       {{-- Thank you for choosing simplywilled.com. Please find the attached pdf file as PDF document. For any issue or query please contact to our customer support team.<br><br>
 
                                         Sincerely,<br>
 
-                                        Simplywilled Team<br>
+                                        Simplywilled Team<br>--}}
+                                        Thank you for choosing SimplyWilled.com for your online estate planning needs.Please find the attached healthcare power of attorney as a PDF document.If you have any questions please contact our customer support team.<br><br>
+
+                                        Sincerely,<br>
+
+                                        Simplywilled.com Support Team<br>
                                         <br><br>
                                 </span>
                             </p>

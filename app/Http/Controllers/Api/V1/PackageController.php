@@ -314,7 +314,7 @@ class PackageController extends Controller
 
         $redirectUrls = Paypalpayment::redirectUrls();
         $redirectUrls->setReturnUrl(url("/api/paypal-payment-processing"))
-            ->setCancelUrl(env('BASE_URL')."dashboard/packages/payment-failed");
+            ->setCancelUrl(env('BASE_URL')."/dashboard/packages/payment-failed");
 
         $payment = Paypalpayment::payment();
 
@@ -357,7 +357,7 @@ class PackageController extends Controller
         $user->name = $request->firstName.' '.$request->lastname;
         $user->save();
 
-        $tellUsAboutYou = TellUsAboutYou::where('user_id', $userID)->first();
+        /*$tellUsAboutYou = TellUsAboutYou::where('user_id', $userID)->first();
         if (!$tellUsAboutYou) {
           $tellUsAboutYou = new TellUsAboutYou;
         }
@@ -371,7 +371,7 @@ class PackageController extends Controller
         $tellUsAboutYou->state = $state;
         $tellUsAboutYou->zip = $zip;
         $tellUsAboutYou->email = $email;
-        $tellUsAboutYou->save();
+        $tellUsAboutYou->save();*/
 
         return response()->json([
           'status' => true,
