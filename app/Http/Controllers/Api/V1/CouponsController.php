@@ -292,7 +292,7 @@ class CouponsController extends Controller
          $token = $request->token;
          $amount = $request->amount;
          $save = 0;
-         $coupon = Coupon::where('token', $token)->whereDate('expired_on', '>', date('Y-m-d H:i:s'))->where('status','1')->first();
+         $coupon = Coupon::where('token', $token)->whereDate('expired_on', '>', date('Y-m-d H:i:s'))->first();
          if ($coupon) {
            $countUsageCoupon = UserPackage::where('coupon_id',$coupon->id)->where('payment_status', '!=', '0')->count();
            if ($countUsageCoupon < $coupon->max_user) {

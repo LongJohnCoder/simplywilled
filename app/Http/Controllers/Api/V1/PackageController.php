@@ -830,10 +830,27 @@ class PackageController extends Controller
     public function freeCheckout(Request $request)
     {
       try {
-        $userID  = $request->user_id;
-        $pkgID   = $request->pkg_id;
-        $user    = User::find($userID);
-        $package = Packages::find($pkgID);
+        $userID   = $request->user_id;
+        $pkgID    = $request->pkg_id;
+        $couponID = $request->coupon_id;
+        $user     = User::find($userID);
+        $package  = Packages::find($pkgID);
+        $coupon   = Coupon::find($couponID);
+
+        $userPackage = new UserPackage();
+        $userPackage->user_id = $userID;
+        $userPackage->package_id = $pkgID;
+        $userPackage->started_on = Carbon::now();
+        $userPackage->renew_date = Carbon::now();
+        $userPackage->payment_method = 'Free Coupon';
+        $userPackage->payment_token = null;
+        $userPackage->payment_status = '2';
+        $userPackage->payment_response = null;
+        $userPackage->amount = $package->amount;
+        $userPackage->coupon_id = $coupon->id;
+        $userPackage->coupon_amount = $coupon->flag != '1' ? $package->amount : $coupon->amount;
+        $userPackage->status = '1';
+        $userPackage->save();
 
         if (!$user) {
           return response()->json([
