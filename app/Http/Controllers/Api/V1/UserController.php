@@ -1708,7 +1708,7 @@ class UserController extends Controller
 
             $validator = Validator::make($request->all(), [
             'user_id'   =>  'required|numeric|integer|exists:users,id,deleted_at,NULL|in:'.\Auth::user()->id,
-            'giftType'  =>  'required|numeric|between:1,6|integer',
+            'giftType'  =>  'required|numeric|between:1,7|integer',
             'giftData'  =>  'required',
             'individual'=>  'required|numeric|integer|between:0,1',
             'charity'   =>  'required|numeric|integer|between:0,1',
@@ -1733,7 +1733,7 @@ class UserController extends Controller
         }
 
         $userId   = $request->user_id;
-        $giftType = $request->giftType; // giftType = 1,2,3,4,5,6
+        $giftType = $request->giftType; // giftType = 1,2,3,4,5,6,7
         $giftData = $request->giftData; // array of gift data
         $notThisTime  =$request->not_this_time;
 
@@ -1788,6 +1788,8 @@ class UserController extends Controller
                     break;
           case 6 :  $saveGift->disinherit_details = json_encode($giftData);
                     break;
+          case 7 :  $saveGift->percentage_gifts = GiftStatement::percentageGiftStatement($giftData[0],$tuay);
+                    break;
           default:  return response()->json([
                         'status' => true,
                         'message' => 'Something went wrong',
@@ -1825,7 +1827,7 @@ class UserController extends Controller
       try {
         $giftId = $request->id;
         $gift = Gifts::find($giftId);
-        $giftType = $request->giftType; // giftType = 1,2,3,4,5,6
+        $giftType = $request->giftType; // giftType = 1,2,3,4,5,6,7
         $giftData = $request->giftData; // array of gift data
         $userId = $request->user_id; // user_id
         $validator = Validator::make($request->all(), [
@@ -1876,6 +1878,8 @@ class UserController extends Controller
             case 5 :  $gift->rest_deatils = json_encode($giftData);
                       break;
             case 6 :  $gift->disinherit_details = json_encode($giftData);
+                      break;
+            case 7 :  $gift->percentage_gifts = GiftStatement::percentageGiftStatement($giftData[0],$tuay);
                       break;
             default:  return response()->json([
                           'status' => true,

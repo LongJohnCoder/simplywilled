@@ -415,5 +415,115 @@
 			$data['statement'] = $statement;
 			return json_encode([$data]);
 		}
+
+		/* *
+		* This function generates the gift statement for percentage gift and returns the object to the calling function
+		* @param cashDescription : cashDescription object, tuay : TellUsAboutYou object
+		* @return json object
+		*/
+		public static function percentageGiftStatement($percentageGiftData, $tuay) {
+
+			if(!array_key_exists('gift_to',$percentageGiftData)) {
+				$percentageGiftData['statement'] = '';
+				return json_encode([$percentageGiftData]);
+			}
+
+			$statement = '';
+			if($percentageGiftData['gift_to'] == 'CH') {
+
+				/********************************************************
+				 * PERCENTAGE GIFT FOR CHARITY :
+				 *
+				 * FIELDS CONCERNED :
+				 * gift_to : 'CH',
+				 * charity_gift_amt : (int),
+				 * organization_name : 'name of organization or charity',
+				 * organization_address : 'address of organization'
+				 *
+				 *********************************************************/
+
+				if(!array_key_exists('charity_gift_amt',$percentageGiftData) ||
+					!array_key_exists('organization_name',$percentageGiftData) ||
+					!array_key_exists('organization_address',$percentageGiftData)) {
+
+					$statement = '';
+				} else {
+
+					$statement .= (int)$percentageGiftData['charity_gift_amt'] . "% of my estate shall be distributed to " .
+						$percentageGiftData['organization_name']
+						.",".$percentageGiftData['organization_address'];
+				}
+				$percentageGiftData['statement'] = $statement;
+
+			} elseif ($percentageGiftData['gift_to'] == 'IN') {
+
+				/******************************************************
+				 * CASH GIFT FOR CHARITY : (EXAMPLE RESPONSE RECEIVED)
+				 *
+				 * FIELDS CONCERNED :
+				 * gift_to	: "IN",
+				 * b_gender	: "Male",
+				 * gift_amt 	: "100",
+				 * passed_by	: "Yes", (OR NO SOMETIMES)
+				 * relationship 		: "Friend",
+				 * full_legal_name	: "beneficiary full legal name",
+				 * other_relationship_string: null
+				 *
+				 ********************************************************/
+
+				if(!array_key_exists('b_gender',$percentageGiftData) ||
+					!array_key_exists('gift_amt',$percentageGiftData) ||
+					!array_key_exists('passed_by',$percentageGiftData) ||
+					!array_key_exists('relationship',$percentageGiftData) ||
+					!array_key_exists('full_legal_name',$percentageGiftData) ||
+					!array_key_exists('other_relationship_string',$percentageGiftData)) {
+
+					$percentageGiftData['statement'] = '';
+				} else {
+
+					//generating related variables
+					$relationName = $percentageGiftData['other_relationship_string'] == null
+						? $percentageGiftData['relationship']
+						: $percentageGiftData['other_relationship_string'];
+
+					$beneficiaryName = $percentageGiftData['full_legal_name'];
+
+					$salutation1 = $percentageGiftData['b_gender'] == 'Male' ? 'He' : 'She';
+					$salutation2 = $percentageGiftData['b_gender'] == 'Male' ? 'His' : 'Her';
+
+					$amount = $percentageGiftData['gift_amt'];
+
+					$passedBy = strtolower($percentageGiftData['passed_by']) == "yes" ? true : false;
+					//generating related variables ends
+
+					//generating statement
+					$statement .= (int)$amount . "% of my estate shall be distributed to My " . ucwords(strtolower($relationName)) . ", "
+						. ucwords(strtolower($beneficiaryName)) . ". If " . $salutation1 . " is not living at the time of distribution ";
+
+					if($passedBy) {
+						$statement .= "this gift shall be distributed to the " . ucwords(strtolower($beneficiaryName)) . "'s then living issue, ";
+						$state 	= $tuay->state;
+
+						//different legislation statement for state of california
+						if($state == 'California') {
+							$statement .= "by the right of representation. ";
+						} else {
+							$statement .= "per stripes. ";
+						}
+						$statement .= "However if " . ucwords(strtolower($beneficiaryName)) . " is not survived by issue this distribution shall fail and be added to the residue of my Estate. ";
+					} else {
+						$statement .= "this gift shall be distributed with the residue of my Estate.";
+					}
+					$percentageGiftData['statement'] = $statement;
+				}
+
+			} else {
+
+				$percentageGiftData['statement'] = '';
+			}
+
+			return json_encode([$percentageGiftData]);
+		}
+
 	}
 ?>

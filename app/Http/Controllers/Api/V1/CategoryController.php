@@ -22,7 +22,7 @@ use Log;
 use Mail;
 use File;
 use Tymon\JWTAuth\Exceptions\JWTException;
-
+use App\Blogs;
 use App\CategoryBlogMapping;
 
 class CategoryController extends Controller {
