@@ -23,6 +23,7 @@ use Validator;
 use App\Models\LoginHistory;
 use Carbon\Carbon;
 use App\TellUsAboutYou;
+use Newsletter;
 
 class AuthController extends Controller {
 
@@ -93,19 +94,27 @@ class AuthController extends Controller {
                     $loginHistory->jwt_token = $token;
                     $loginHistory->save();
 
-                    $response = [
-                      'status' => true,
-                      'message' => "User signed in successfully.",
-                      'user' => [
-                                  'id' => $user->id, 'name' => $user->name,
-                                  'email' =>  $user->email, 'role' => $role,
-                                  'avatar' => $user->avatar, 'document_path' => $user->document_path,
-                                  'status' => $user->status, 'package' => $user->package
-                              ],
-                      'token' => $token,
-                    ];
-                    $responseCode = 200;
-
+                    $registerSubscription = Newsletter::subscribe($user->email,[],'register');
+                    if (!$registerSubscription)  {
+                        $response = [
+                            'status' => false,
+                            'message' => "Could not subscribe to mailchimp.",
+                        ];
+                        $responseCode = 400;
+                    } else {
+                        $response = [
+                            'status' => true,
+                            'message' => "User signed in successfully.",
+                            'user' => [
+                                'id' => $user->id, 'name' => $user->name,
+                                'email' => $user->email, 'role' => $role,
+                                'avatar' => $user->avatar, 'document_path' => $user->document_path,
+                                'status' => $user->status, 'package' => $user->package
+                            ],
+                            'token' => $token,
+                        ];
+                        $responseCode = 200;
+                    }
                     Mail::send('new_emails.registration_first',[], function($mail) use($user){
                             $mail->from(config('settings.email'), 'Simplywilled Registration Successful');
                             $mail->to(strtolower($user->email), $user->name)->subject('You Registered Successfully in Simplywilled!');

@@ -34,6 +34,9 @@ return [
              */
             'id' => env('MAILCHIMP_LIST_ID'),
         ],
+        'register'  =>  [
+            'id' => env('MAILCHIMP_REGISTER_ID'),
+        ],
     ],
 
     /*
