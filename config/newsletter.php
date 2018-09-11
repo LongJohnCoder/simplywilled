@@ -35,7 +35,7 @@ return [
             'id' => env('MAILCHIMP_LIST_ID'),
         ],
         'register'  =>  [
-            'id' => env('MAILCHIMP_REGISTER_ID'),
+            'id' => env('MAILCHIMP_REGISTRATION_LIST_ID'),
         ],
     ],
 

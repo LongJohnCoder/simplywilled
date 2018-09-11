@@ -1059,11 +1059,13 @@ class UserManagementController extends Controller
               $gft = Gifts::where('user_id', $user->id)->first();
 
               if($gft) {
-
                 $flag = true;
               } else {
-
-                $flag = false;
+                  if ($pylo->not_this_time == 1) {
+                      $flag = true;
+                  } else {
+                      $flag = false;
+                  }
               }
             }
 
