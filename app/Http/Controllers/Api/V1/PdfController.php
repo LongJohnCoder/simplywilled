@@ -574,7 +574,7 @@ class PdfController extends Controller
         {
             $tellUsAboutYou = TellUsAboutYou::where('user_id', ID)->first();
             $finalArrangements = FinalArrangements::where('user_id', ID)->first();
-            $state = StatesInfo::where('name', 'LIKE', $tellUsAboutYou->state)->first();
+            $state = StatesInfo::where('name', 'LIKE', isset($tellUsAboutYou->state) ? $tellUsAboutYou->state : '')->first();
             $personalRepresentative = PersonalRepresentatives::where('user_id', ID)->where('is_backuprepresentative','0')->first();
             $backupPersonalRepresentative = PersonalRepresentatives::where('user_id', ID)->where('is_backuprepresentative','1')->first();
             $healthFinance = HealthFinance::where('userId', ID)->first();
