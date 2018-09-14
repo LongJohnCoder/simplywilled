@@ -1040,4 +1040,39 @@ class PackageController extends Controller
       }
 
     }
+
+   /**
+    * Checks the validity of a user package.
+    * @param Request $request
+    * @return \Illuminate\Http\JsonResponse
+    */
+    public function checkUserPaymentValidity(Request $request) {
+      try {
+        $userId = $request->user_id;
+        $user = User::findOrFail($userId);
+
+        $packageValid = !is_null($user) && isset($user->package) && !is_null($user->package);
+
+        if($user) {
+          return response()->json([
+              'status' => true,
+              'message' => 'Processed successfully.',
+              'data' => $packageValid
+          ], 200);
+        } else {
+          return response()->json([
+              'status' => true,
+              'message' => 'Bad request.User does not exist',
+              'data' => null
+          ], 404);
+        }
+
+      }  catch (\Exception $e) {
+        return response()->json([
+            'status' => false,
+            'message' => $e->getMessage(),
+            'line' => 'Problem encountered on line no. :'.$e->getLine()
+        ], 500);
+      }
+    }
 }

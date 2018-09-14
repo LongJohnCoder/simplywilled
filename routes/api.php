@@ -869,6 +869,13 @@ Route::group(['prefix' => 'v1'], function() {
             ]);
         });
 
+        /**
+         * Route for validating user package
+         */
+        Route::any('package-validity', [
+            'uses' => 'Api\V1\PackageController@checkUserPaymentValidity',
+            'as'   => 'api.v1.check.validity'
+        ]);
         /*
          * Route for get packages
          * */
